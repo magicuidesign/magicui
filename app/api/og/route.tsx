@@ -2,8 +2,6 @@ import { capitalize } from "@/lib/utils";
 import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
-export const alt = "Magic UI";
-export const contentType = "image/png";
 
 const interSemiBold = fetch(
   new URL("../../../assets/fonts/Inter-SemiBold.ttf", import.meta.url)
@@ -34,8 +32,11 @@ export async function GET(req: Request) {
             height: "100%",
           }}
         >
+          {/* @ts-ignore */}
           <img
+            // @ts-ignore
             src={imageData}
+            alt={title}
             style={{
               position: "absolute",
               inset: 0,

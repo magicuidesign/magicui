@@ -1,6 +1,5 @@
 "use client";
 
-import Hello from "@/components/hello";
 import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
@@ -48,13 +47,13 @@ const components = {
   pre: ({
     className,
     __rawString__,
-    __npmCommand__,
-    __pnpmCommand__,
-    __yarnCommand__,
+    // __npmCommand__,
+    // __pnpmCommand__,
+    // __yarnCommand__,
     __withMeta__,
     __src__,
-    __event__,
-    __style__,
+    // __event__,
+    // __style__,
     ...props
   }: React.HTMLAttributes<HTMLPreElement> & {
     // __style__?: Style["name"]
@@ -76,7 +75,7 @@ const components = {
           <CopyButton
             value={__rawString__}
             src={__src__}
-            event={__event__}
+            // event={__event__}
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
@@ -112,13 +111,8 @@ export function MDX({ code }: MDXProps) {
         `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:bg-gray-900 prose-pre:py-4 prose-pre:dark:bg-gray-900 prose-pre:px-0 prose-pre:text-sm prose-pre:tracking-tighter`
       )}
     >
-      <Component
-        components={{
-          ...components,
-          Hello,
-          // , MDXImage, MDXTweet, MDXRepo
-        }}
-      />
+      {/* @ts-ignore */}
+      <Component components={components} />
     </article>
   );
 }

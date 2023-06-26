@@ -41,30 +41,6 @@ export const MagicBorderContainer = ({
   const containerSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const [boxes, setBoxes] = useState<Array<HTMLElement>>([]);
 
-  useEffect(() => {
-    containerRef.current &&
-      setBoxes(
-        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
-      );
-  }, []);
-
-  useEffect(() => {
-    init();
-    window.addEventListener("resize", init);
-
-    return () => {
-      window.removeEventListener("resize", init);
-    };
-  }, [setBoxes]);
-
-  useEffect(() => {
-    onMouseMove();
-  }, [mousePosition]);
-
-  useEffect(() => {
-    init();
-  }, []);
-
   const init = () => {
     if (containerRef.current) {
       containerSize.current.w = containerRef.current.offsetWidth;
@@ -98,6 +74,30 @@ export const MagicBorderContainer = ({
       }
     }
   };
+
+  useEffect(() => {
+    containerRef.current &&
+      setBoxes(
+        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
+      );
+  }, []);
+
+  useEffect(() => {
+    init();
+    window.addEventListener("resize", init);
+
+    return () => {
+      window.removeEventListener("resize", init);
+    };
+  }, [setBoxes]);
+
+  useEffect(() => {
+    onMouseMove();
+  }, [mousePosition]);
+
+  useEffect(() => {
+    init();
+  }, []);
 
   return (
     <div className={className} ref={containerRef}>

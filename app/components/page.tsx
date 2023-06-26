@@ -19,8 +19,6 @@ export default async function ComponentPage() {
       return compareDesc(new Date(a.date), new Date(b.date));
     });
 
-  console.log(posts.map((p) => p.title));
-
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">

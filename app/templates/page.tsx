@@ -1,3 +1,4 @@
+import { Component } from "@/.contentlayer/generated";
 import { FadeIn } from "@/components/magicui/FadeIn";
 import { constructMetadata } from "@/lib/utils";
 import Link from "next/link";
@@ -9,7 +10,7 @@ export const metadata = constructMetadata({
 });
 
 export default async function TemplatePage() {
-  const posts = [];
+  const posts: Component[] = [];
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
