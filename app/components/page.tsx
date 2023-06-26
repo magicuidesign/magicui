@@ -40,51 +40,34 @@ export default async function ComponentPage() {
             <FadeIn key={post._id} delay={index * 0.1}>
               <article
                 key={post._id}
-                className="group relative space-y-2 flex grow flex-col overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300"
+                className="group relative flex grow flex-col overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300"
               >
-                {post.image && (
-                  <video
-                    src="https://media.graphassets.com/v4QIVBhuTUCT4uOrH6LO"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="aspect-video overflow-hidden"
-                  />
-                  // <Image
-                  //   src={post.image}
-                  //   alt={post.title}
-                  //   width={804}
-                  //   height={452}
-                  //   className="rounded-md border bg-muted transition-colors"
-                  //   priority={index <= 1}
-                  // />
+                {post.video && (
+                  <div className="overflow-hidden">
+                    <video
+                      src={post.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="relative -bottom-1 aspect-video" // needed because random black line at bottom of video
+                    />
+                  </div>
                 )}
-                <div className="flex grow flex-col px-3 pb-2 pt-3">
+                <div className="flex grow flex-col p-3">
                   <h2>{post.title}</h2>
                   {/* {post.date && (
-                  <p className="text-sm text-gray-500">
-                    {formatDate(post.date)}
-                  </p>
-                )} */}
+                    <p className="text-sm text-gray-500">
+                      {formatDate(post.date)}
+                    </p>
+                  )} */}
                   {post.summary && (
                     <p className="mb-2 text-sm text-muted-foreground">
                       {post.summary}
                     </p>
                   )}
-                  {/* <p className="mb-2 text-sm text-gray-500">
-                  A gradient that follows your cursor to paint a border.
-                </p> */}
                 </div>
-                {/* <h2 className="text-2xl font-extrabold">{post.title}</h2>
-              {post.summary && (
-                <p className="text-muted-foreground">{post.summary}</p>
-              )}
-              {post.date && (
-                <p className="text-sm text-muted-foreground">
-                  {formatDate(post.date)}
-                </p>
-              )} */}
+
                 <Link href={post.url} className="absolute inset-0">
                   <span className="sr-only">View Article</span>
                 </Link>

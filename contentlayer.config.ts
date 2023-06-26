@@ -8,17 +8,6 @@ import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
 import { env } from "./env.mjs";
 
-// const computedFields = {
-//   slug: {
-//     type: "string",
-//     resolve: (doc) => `/${doc._raw.flattenedPath}`,
-//   },
-//   slugAsParams: {
-//     type: "string",
-//     resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
-//   },
-// }
-
 export const Component = defineDocumentType(() => ({
   name: "Component",
   filePathPattern: `components/**/*.mdx`,
@@ -26,7 +15,7 @@ export const Component = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
-    // image: { type: "string", required: false },
+    video: { type: "string", required: false },
     summary: { type: "string", required: true },
     author: { type: "string", required: true },
     published: { type: "boolean", required: false, default: true },
