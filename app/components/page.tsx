@@ -74,7 +74,7 @@ export default async function ComponentPage() {
           ))}
         </div>
       ) : (
-        <p>No posts published.</p>
+        <p>No components yet.</p>
       )}
     </div>
   );
