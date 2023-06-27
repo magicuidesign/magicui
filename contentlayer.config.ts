@@ -8,6 +8,46 @@ import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
 import { env } from "./env.mjs";
 
+/** @type {import('contentlayer/source-files').ComputedFields} */
+const computedFields = {
+  url: {
+    type: "string",
+    resolve: (post: any) => `/${post._raw.flattenedPath}`,
+  },
+  image: {
+    type: "string",
+    resolve: (post: any) =>
+      `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURI(post.title)}`,
+  },
+  slug: {
+    type: "string",
+    resolve: (doc: any) => `/${doc._raw.flattenedPath}`,
+  },
+  slugAsParams: {
+    type: "string",
+    resolve: (doc: any) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+  },
+  structuredData: {
+    type: "json",
+    resolve: (doc: any) =>
+      ({
+        "@context": "https://schema.org",
+        "@type": `BlogPosting`,
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.date,
+        description: doc.summary,
+        image: doc.image,
+        url: `https://magicuikit.com/${doc._raw.flattenedPath}`,
+        author: {
+          "@type": "Person",
+          name: doc.author,
+          url: `https://twitter.com/${doc.author}`,
+        },
+      } as WithContext<BlogPosting>),
+  },
+};
+
 export const Component = defineDocumentType(() => ({
   name: "Component",
   filePathPattern: `components/**/*.mdx`,
@@ -21,45 +61,30 @@ export const Component = defineDocumentType(() => ({
     published: { type: "boolean", required: false, default: true },
     toc: { type: "boolean", default: true, required: false },
   },
-  computedFields: {
-    url: {
+  // @ts-ignore
+  computedFields,
+}));
+
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: `pages/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
       type: "string",
-      resolve: (post) => `/${post._raw.flattenedPath}`,
+      required: true,
     },
-    image: {
+    description: {
       type: "string",
-      resolve: (post) =>
-        `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURI(post.title)}`,
-    },
-    slug: {
-      type: "string",
-      resolve: (post) => post._raw.flattenedPath.replace(`components/`, ""),
-    },
-    structuredData: {
-      type: "json",
-      resolve: (doc) =>
-        ({
-          "@context": "https://schema.org",
-          "@type": `BlogPosting`,
-          headline: doc.title,
-          datePublished: doc.date,
-          dateModified: doc.date,
-          description: doc.summary,
-          image: doc.image,
-          url: `https://magicuikit.com/${doc._raw.flattenedPath}`,
-          author: {
-            "@type": "Person",
-            name: doc.author,
-            url: `https://twitter.com/${doc.author}`,
-          },
-        } as WithContext<BlogPosting>),
     },
   },
+  // @ts-ignore
+  computedFields,
 }));
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Component],
+  documentTypes: [Component, Page],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
