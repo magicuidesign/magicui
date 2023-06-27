@@ -20,7 +20,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
-          {item?.items?.length && (
+          {item?.items?.length > 0 && (
             <DocsSidebarNavItems items={item.items} pathname={pathname} />
           )}
         </div>
