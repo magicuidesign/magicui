@@ -41,7 +41,7 @@ export async function generateMetadata({
     date: publishedTime,
     summary: description,
     image,
-    slug,
+    slugAsParams,
   } = component;
 
   return constructMetadata({
@@ -61,7 +61,7 @@ export async function generateMetadata({
         "Components",
         "Next.js",
       ],
-      url: `https://magicuikit.com/components/${slug}`,
+      url: `https://magicuikit.com/components/${slugAsParams}`,
       images: [
         {
           url: image,
