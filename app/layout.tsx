@@ -1,11 +1,17 @@
-"use client";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import { fontSans } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
-import "./mdx.css";
+import { cn, constructMetadata } from "@/lib/utils";
+import "@/styles/globals.css";
+import "@/styles/mdx.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = constructMetadata({
+  title: "Magic UI",
+  description:
+    "Beautiful UI components and templates to make your landing page look stunning.",
+  image: "https://magicuikit.com/api/og",
+});
 
 export default function RootLayout({
   children,
@@ -22,16 +28,11 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
-            <div className="flex-1">{children}</div>
-            <SiteFooter />
-          </div>
+          {children}
+          <Toaster />
+          {/* <Analytics /> */}
           {/* <TailwindIndicator /> */}
         </ThemeProvider>
-        {/* <Analytics /> */}
-        {/* <NewYorkToaster />
-    <DefaultToaster /> */}
       </body>
     </html>
   );

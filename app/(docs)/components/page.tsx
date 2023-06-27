@@ -8,7 +8,7 @@ export const metadata = constructMetadata({
   title: "Components - Magic UI",
   description:
     "Beautiful UI components to make your landing page look stunning.",
-  image: "https://magicuikit.com/components/opengraph-image",
+  image: "https://magicuikit.com/api/og",
 });
 
 export default async function ComponentPage() {

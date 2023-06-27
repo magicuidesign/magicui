@@ -1,29 +1,41 @@
+import Twitter from "@/components/icons/twitter";
 import { FadeIn } from "@/components/magicui/FadeIn";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { cn, constructMetadata } from "@/lib/utils";
-import { Metadata } from "next";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-export const metadata: Metadata = constructMetadata({
-  title: "Magic UI",
-  description:
-    "Beautiful UI components and templates to make your landing page look stunning.",
-  image: "https://magicuikit.com/components/opengraph-image",
-});
+import { CSSProperties } from "react";
 
 export default function Home() {
   return (
     <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+      <section className="space-y-6 pb-8 pt-20 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <FadeIn className="z-10 flex flex-col items-center justify-center w-full h-full">
             <Link
               href={siteConfig.links.twitter}
-              className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
+              className={cn(
+                "flex justify-center items-center flex-row",
+                "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
+                "transition-shadow hover:shadow-[inset_0_-5px_10px_#8fdfff3f] ease-out duration-500",
+                "relative after:block after:w-full after:h-full after:absolute after:inset-0 after:p-[1px] after:[border-radius:inherit] after:bg-gradient-to-r after:from-[#ffaa40]/50 after:via-[#9c40ff]/50 after:to-[#ffaa40]/50 after:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] after:content-[''] after:[mask-composite:xor]",
+                "after:animate-gradient after:bg-[length:var(--bg-size)_100%]"
+              )}
               target="_blank"
+              style={
+                {
+                  "--bg-size": "300%",
+                } as CSSProperties
+              }
             >
-              Follow along on Twitter
+              <Twitter className="h-4 w-4 mr-2 inline-block" />
+              <div
+                className={cn(
+                  `bg-clip-text text-transparent bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] animate-gradient bg-[length:var(--bg-size)_100%]`
+                )}
+              >
+                Follow along on Twitter
+              </div>
             </Link>
           </FadeIn>
           <FadeIn

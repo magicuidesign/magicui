@@ -1,4 +1,3 @@
-import { MDX } from "@/components/MDX";
 import ComponentWrapper from "@/components/component-wrapper";
 import Facebook from "@/components/icons/facebook";
 import LinkedIn from "@/components/icons/linkedin";
@@ -7,6 +6,7 @@ import {
   MagicBorderCard,
   MagicBorderContainer,
 } from "@/components/magicui/magic-border";
+import { MDX } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
