@@ -6,7 +6,7 @@ import {
   MagicBorderCard,
   MagicBorderContainer,
 } from "@/components/magicui/magic-border";
-import { MDX } from "@/components/mdx-components";
+import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
@@ -162,7 +162,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
               </MagicBorderCard>
             </MagicBorderContainer>
           </ComponentWrapper>
-          <MDX code={component.body.code} />
+          <Mdx code={component.body.code} />
         </div>
       </div>
 
