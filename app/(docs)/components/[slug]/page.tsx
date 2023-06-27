@@ -20,7 +20,7 @@ import Balancer from "react-wrap-balancer";
 
 export async function generateStaticParams() {
   return allComponents.map((component) => ({
-    slug: component.slug,
+    slug: component.slugAsParams,
   }));
 }
 
@@ -30,7 +30,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata | undefined> {
   const component = allComponents.find(
-    (component) => component.slug === params.slug
+    (component) => component.slugAsParams === params.slug
   );
   if (!component) {
     return;
@@ -76,7 +76,7 @@ export async function generateMetadata({
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const component = allComponents.find(
-    (component) => component.slug === params.slug
+    (component) => component.slugAsParams === params.slug
   );
   if (!component) {
     notFound();
@@ -116,7 +116,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <Link
-              href={`https://twitter.com/intent/tweet?text=${component.title}&url=https://magicuikit.com/components/${component.slug}&via=${component.author}`}
+              href={`https://twitter.com/intent/tweet?text=${component.title}&url=https://magicuikit.com/components/${component.slugAsParams}&via=${component.author}`}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-all hover:scale-110"
@@ -125,7 +125,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
             </Link>
             <Link
               href={`
-            http://www.linkedin.com/shareArticle?mini=true&url=https://magicuikit.com/components/${component.slug}`}
+            http://www.linkedin.com/shareArticle?mini=true&url=https://magicuikit.com/components/${component.slugAsParams}`}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-all hover:scale-110"
@@ -133,7 +133,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
               <LinkedIn className="h-6 w-6" />
             </Link>
             <Link
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://magicuikit.com/components/${component.slug}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://magicuikit.com/components/${component.slugAsParams}`}
               target="_blank"
               rel="noopener noreferrer"
               className="transition-all hover:scale-110"

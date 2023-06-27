@@ -25,7 +25,7 @@ export const docsConfig: DocsConfig = {
         .filter((post) => post.published)
         .map((component) => ({
           title: component.title,
-          href: `/components/${component.slug}`,
+          href: `/components/${component.slugAsParams}`,
           items: [],
         })),
     },
