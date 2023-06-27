@@ -10,7 +10,7 @@ import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
-import { cn, constructMetadata } from "@/lib/utils";
+import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { allComponents } from "contentlayer/generated";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -41,7 +41,7 @@ export async function generateMetadata({
     date: publishedTime,
     summary: description,
     image,
-    slugAsParams,
+    slug,
   } = component;
 
   return constructMetadata({
@@ -61,7 +61,7 @@ export async function generateMetadata({
         "Components",
         "Next.js",
       ],
-      url: `https://magicuikit.com/components/${slugAsParams}`,
+      url: absoluteUrl(slug),
       images: [
         {
           url: image,
