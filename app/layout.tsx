@@ -1,3 +1,4 @@
+import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { fontSans } from "@/lib/fonts";
@@ -30,7 +31,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Toaster />
-          {/* <Analytics /> */}
+          <Analytics />
           {/* <TailwindIndicator /> */}
         </ThemeProvider>
       </body>
