@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useId } from "react";
 
 export function GridPattern({
   width,
@@ -15,10 +15,7 @@ export function GridPattern({
   squares?: any;
   [key: string]: any;
 }) {
-  const [id, setId] = useState<string>("");
-  useEffect(() => {
-    setId(new Date().getTime().toString());
-  }, []);
+  const id = useId();
 
   return (
     <svg aria-hidden="true" {...props}>

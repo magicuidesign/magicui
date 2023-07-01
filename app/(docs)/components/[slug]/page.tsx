@@ -9,6 +9,7 @@ import {
 import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { getCurrentUser } from "@/lib/session";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { allComponents } from "contentlayer/generated";
@@ -18,11 +19,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 
-export async function generateStaticParams() {
-  return allComponents.map((component) => ({
-    slug: component.slugAsParams,
-  }));
-}
+// TODO: Fix this in future
+// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
+
+// export async function generateStaticParams() {
+//   return allComponents.map((component) => ({
+//     slug: component.slugAsParams,
+//   }));
+// }
 
 export async function generateMetadata({
   params,
@@ -75,6 +79,12 @@ export async function generateMetadata({
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    notFound();
+  }
+
   const component = allComponents.find(
     (component) => component.slugAsParams === params.slug
   );

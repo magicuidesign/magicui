@@ -1,5 +1,5 @@
 import { allComponents } from "@/.contentlayer/generated";
-import { MainNavItem, SidebarNavItem } from "@/types/nav";
+import { MainNavItem, SidebarNavItem } from "@/types";
 
 interface DocsConfig {
   mainNav: MainNavItem[];
