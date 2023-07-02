@@ -13,7 +13,12 @@ export default function NotFound() {
         You will get access to all future components and their source code so
         you can use them in your projects 🎉
       </EmptyPlaceholder.Description>
-      <Link href="/" className={buttonVariants({ variant: "outline" })}>
+      <Link
+        href="https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
+        target="_blank"
+        rel="noreferrer"
+        className={buttonVariants({ variant: "outline" })}
+      >
         Pre-order
       </Link>
     </EmptyPlaceholder>
