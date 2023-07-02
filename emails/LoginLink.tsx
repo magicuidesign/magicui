@@ -48,10 +48,10 @@ const Email = ({ firstName, loginLink = "https://magicuikit.com" }: Props) => {
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
               Welcome to <strong>Magic UI</strong> 🎉
             </Heading>
-            <Text className="text-black text-[14px] leading-[24px]">
+            {/* <Text className="text-black text-[14px] leading-[24px]">
               {firstName && `Hello ${firstName} 👋`}
               {!firstName && `Hello 👋`}
-            </Text>
+            </Text> */}
             <Text className="text-black text-[14px] leading-[24px]">
               Click the link below to login to your account.
             </Text>

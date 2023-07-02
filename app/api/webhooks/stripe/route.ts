@@ -80,6 +80,12 @@ export async function POST(req: Request) {
             // await signIn("email", {
             //   email: session.customer_details.email,
             // });
+
+            // await sendLoginEmail({
+            //   email: session.customer_details.email,
+            //   url: "https://magicuikit.com",
+            // });
+
             // await sendLoginEmail(session.customer_details.email);
           }
           break;
