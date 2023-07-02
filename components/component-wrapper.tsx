@@ -1,9 +1,20 @@
 import { cn } from "@/lib/utils";
 import { CSSProperties } from "react";
 
-const ComponentWrapper = ({ children }: { children: any }) => {
+const ComponentWrapper = ({
+  className,
+  children,
+}: {
+  className: string;
+  children: any;
+}) => {
   return (
-    <div className="relative rounded-xl border dark:border-slate-800 md:p-8 flex justify-center items-center flex-col max-w-[65ch]">
+    <div
+      className={cn(
+        "relative rounded-xl border dark:border-slate-800 md:p-8 flex justify-center items-center flex-col max-w-[65ch]",
+        className
+      )}
+    >
       {children}
 
       <div

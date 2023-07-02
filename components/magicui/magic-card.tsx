@@ -204,7 +204,7 @@ export function MagicCard({
   background = `rgba(255,255,255,0.1)`,
 }: MagicCardProps) {
   const spotlightStyles =
-    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-lg";
+    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-xs";
 
   const borderStyles =
     "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";

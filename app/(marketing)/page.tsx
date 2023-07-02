@@ -73,7 +73,7 @@ export default async function Home() {
             className="z-10 flex flex-col items-center justify-center w-full h-full"
             delay={0.3}
           >
-            <div className="space-x-4">
+            <div className="flex flex-col md:flex-row gap-4">
               {user && (
                 <Link
                   href="/components"
