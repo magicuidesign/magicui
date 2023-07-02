@@ -1,12 +1,14 @@
 import { DashboardHeader } from "@/components/dashboard/header";
+import { OrderList } from "@/components/dashboard/order-list";
 import { DashboardShell } from "@/components/dashboard/shell";
 import { authOptions } from "@/lib/auth";
 import { getCurrentUser } from "@/lib/session";
+import { getUserPayments } from "@/lib/stripe-utils";
 import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Billing | Magic UI",
-  description: "Manage billing and your subscription plan.",
+  description: "Manage billing information.",
 };
 
 export default async function BillingPage() {
@@ -16,29 +18,13 @@ export default async function BillingPage() {
     redirect(authOptions?.pages?.signIn || "/login");
   }
 
-  // const subscriptionPlan = await getUserSubscriptionPlan(user.id);
-
-  // // If user has a pro plan, check cancel status on Stripe.
-  // let isCanceled = false;
-  // if (subscriptionPlan.isPro && subscriptionPlan.stripeSubscriptionId) {
-  //   const stripePlan = await stripe.subscriptions.retrieve(
-  //     subscriptionPlan.stripeSubscriptionId
-  //   );
-  //   isCanceled = stripePlan.cancel_at_period_end;
-  // }
+  const payments = await getUserPayments(user.id);
 
   return (
     <DashboardShell>
       <DashboardHeader heading="Billing" text="Manage billing information" />
       <div className="grid gap-8">
-        {/* <BillingForm
-          subscriptionPlan={
-            {
-              // ...subscriptionPlan,
-              // isCanceled,
-            }
-          }
-        /> */}
+        <OrderList payments={payments} />
       </div>
     </DashboardShell>
   );

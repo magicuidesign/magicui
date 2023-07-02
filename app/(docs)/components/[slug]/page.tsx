@@ -7,8 +7,10 @@ import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getCurrentUser } from "@/lib/session";
+import { getUserPayments } from "@/lib/stripe-utils";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
+import { Payment } from "@prisma/client";
 import { allComponents } from "contentlayer/generated";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -76,8 +78,17 @@ export async function generateMetadata({
   });
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+interface Props {
+  params: { slug: string };
+}
+
+export default async function Component({ params }: Props) {
   const user = await getCurrentUser();
+  const { payments } = await getUserPayments(user?.id!);
+
+  const paid = payments.some(
+    (payment: Payment) => payment.status === "succeeded"
+  );
 
   const component = allComponents.find(
     (component) => component.slugAsParams === params.slug
@@ -170,8 +181,8 @@ export default async function Post({ params }: { params: { slug: string } }) {
             </MagicContainer>
           </ComponentWrapper>
 
-          {user && <Mdx code={component.body.code} />}
-          {!user && <NotFound />}
+          {user && paid && <Mdx code={component.body.code} />}
+          {(!user || !paid) && <NotFound />}
         </div>
       </div>
 

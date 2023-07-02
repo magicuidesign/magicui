@@ -33,3 +33,7 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     stripeCurrentPeriodEnd: number;
     isPro: boolean;
   };
+
+export type UserPayments = Pick<User> & {
+  payments: Payment[];
+};

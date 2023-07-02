@@ -4,6 +4,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import { sendLoginEmail } from "./emails/send-login-email";
+import { upsertCustomer } from "./stripe-utils";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
@@ -67,7 +68,11 @@ export const authOptions: NextAuthOptions = {
           email: message.user.email,
         },
       };
-      // await sendWelcomeEmail(params); // <-- send welcome email
+
+      if (message.user.email) {
+        await upsertCustomer(message.user.email!, message.user.name!);
+        // await sendWelcomeEmail(params); // <-- send welcome email
+      }
     },
   },
 };

@@ -36,7 +36,7 @@ async function seed() {
       const user = await db.user.upsert({
         where: { email: c.email },
         update: {},
-        create: { email: c.email },
+        create: { email: c.email, name: c.name },
       });
 
       const customer = await db.customer.upsert({
@@ -50,13 +50,17 @@ async function seed() {
 
       const stripePayments = await stripe.getPaymentIntents(c.id);
 
+      console.log(stripePayments);
+
       for (const stripePayment of stripePayments) {
         await db.payment.create({
           data: {
+            customerId: customer.id,
             stripeId: stripePayment.id,
             amount: stripePayment.amount,
             currency: stripePayment.currency,
-            customerId: customer.id,
+            status: stripePayment.status,
+            receiptUrl: stripePayment.receipt_url,
           },
         });
       }

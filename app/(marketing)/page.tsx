@@ -1,12 +1,16 @@
 import { FadeIn } from "@/components/magicui/FadeIn";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { getCurrentUser } from "@/lib/session";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { env } from "process";
 import { CSSProperties } from "react";
 
-export default function Home() {
+export default async function Home() {
+  const user = await getCurrentUser();
+
   return (
     <>
       <section className="space-y-6 pb-8 pt-20 md:pb-12 md:pt-10 lg:py-32">
@@ -70,21 +74,36 @@ export default function Home() {
             delay={0.3}
           >
             <div className="space-x-4">
+              {user && (
+                <Link
+                  href="/components"
+                  className={cn(buttonVariants({ size: "lg" }))}
+                >
+                  Get Started
+                </Link>
+              )}
+              {!user && (
+                <Link
+                  href={
+                    env.NODE_ENV === "development"
+                      ? "https://buy.stripe.com/test_bIY7uvbbzecfcw09AB"
+                      : "https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
+                  }
+                  // href="https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(buttonVariants({ size: "lg" }))}
+                >
+                  Pre-order
+                </Link>
+              )}
               <Link
-                href="https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
-                target="_blank"
-                rel="noreferrer"
-                className={cn(buttonVariants({ size: "lg" }))}
-              >
-                Pre-order
-              </Link>
-              <Link
-                href="/components"
+                href="https://twitter.com/dillionverma"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" })
                 )}
               >
-                Components
+                Follow along on Twitter
               </Link>
             </div>
           </FadeIn>

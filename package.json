@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "dev:email": "email dev -p 3004",
-    "dev:stripe": "stripe listen --forward-to localhost:3004/api/v1/stripe/webhook",
+    "dev:stripe": "stripe listen --forward-to localhost:3003/api/webhooks/stripe",
     "dev:migrate": "dotenv -e .env.local -- npx prisma db push",
     "dev:reset": "dotenv -e .env.local -- npx prisma migrate reset",
     "dev:seed": "npx tsx prisma/seed.ts"
