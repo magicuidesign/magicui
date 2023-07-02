@@ -13,7 +13,7 @@ export default function Home() {
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <FadeIn className="z-10 flex flex-col items-center justify-center w-full h-full">
             <Link
-              href="/components/magic-border"
+              href="/components/magic-card"
               className={cn(
                 "flex justify-center items-center flex-row",
                 "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
