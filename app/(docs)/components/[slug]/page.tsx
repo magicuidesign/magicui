@@ -176,6 +176,7 @@ export default async function Component({ params }: Props) {
             >
               <MagicCard
                 borderRadius={16}
+                // background="radial-gradient(var(--mask-size) circle at var(--mouse-x) var(--mouse-y),#ffaa40 0,#9c40ff 50%,transparent 100%)"
                 className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200 p-6"
               >
                 <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
@@ -184,6 +185,7 @@ export default async function Component({ params }: Props) {
               </MagicCard>
               <MagicCard
                 borderRadius={16}
+                // background="radial-gradient(var(--mask-size) circle at var(--mouse-x) var(--mouse-y),#ffaa40 0,#9c40ff 50%,transparent 100%)"
                 className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200"
               >
                 <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">

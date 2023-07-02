@@ -40,11 +40,11 @@ export default async function Home() {
                 Follow along on Twitter
               </div> */}
               🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-              <span className="sm:hidden">Style, a new CLI and more.</span>
+              {/* <span className="sm:hidden">Style, a new CLI and more.</span> */}
               <span
                 className={cn(
                   `bg-clip-text text-transparent bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] animate-gradient bg-[length:var(--bg-size)_100%]`,
-                  `hidden sm:inline`
+                  `inline`
                 )}
               >
                 Introducing Magic Card
