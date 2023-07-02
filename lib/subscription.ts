@@ -1,34 +1,37 @@
 // @ts-nocheck
 
-// export async function getUserSubscriptionPlan(
-//   userId: string
-// ): Promise<UserSubscriptionPlan> {
-//   const user = await db.user.findFirst({
-//     where: {
-//       id: userId,
-//     },
-//     select: {
-//       stripeSubscriptionId: true,
-//       stripeCurrentPeriodEnd: true,
-//       stripeCustomerId: true,
-//       stripePriceId: true,
-//     },
-//   });
+import { freePlan, proPlan } from "@/config/subscriptions";
+import { db } from "@/lib/db";
 
-//   if (!user) {
-//     throw new Error("User not found");
-//   }
+export async function getUserSubscriptionPlan(
+  userId: string
+): Promise<UserSubscriptionPlan> {
+  const user = await db.user.findFirst({
+    where: {
+      id: userId,
+    },
+    select: {
+      // stripeSubscriptionId: true,
+      // stripeCurrentPeriodEnd: true,
+      // stripeCustomerId: true,
+      // stripePriceId: true,
+    },
+  });
 
-//   // Check if user is on a pro plan.
-//   const isPro = user.stripePriceId === proPlan.stripePriceId;
-//   // user.stripeCurrentPeriodEnd?.getTime() + 86_400_000 > Date.now();
+  if (!user) {
+    throw new Error("User not found");
+  }
 
-//   const plan = isPro ? proPlan : freePlan;
+  // Check if user is on a pro plan.
+  const isPro = user.stripePriceId === proPlan.stripePriceId;
+  // user.stripeCurrentPeriodEnd?.getTime() + 86_400_000 > Date.now();
 
-//   return {
-//     ...plan,
-//     ...user,
-//     // stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime(),
-//     isPro,
-//   };
-// }
+  const plan = isPro ? proPlan : freePlan;
+
+  return {
+    ...plan,
+    ...user,
+    // stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime(),
+    isPro,
+  };
+}

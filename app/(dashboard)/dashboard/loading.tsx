@@ -1,6 +1,4 @@
 import { DashboardHeader } from "@/components/dashboard/header";
-// import { PostCreateButton } from "@/components/post-create-button"
-// import { PostItem } from "@/components/post-item"
 import { DashboardShell } from "@/components/dashboard/shell";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -18,9 +16,10 @@ function SkeletonRow() {
 export default function DashboardLoading() {
   return (
     <DashboardShell>
-      <DashboardHeader heading="Dashboard" text="Manage account">
-        {/* <PostCreateButton /> */}
-      </DashboardHeader>
+      <DashboardHeader
+        heading="Dashboard"
+        text="Manage account"
+      ></DashboardHeader>
       <div className="divide-border-200 divide-y rounded-md border">
         <SkeletonRow />
         <SkeletonRow />
