@@ -1,12 +1,16 @@
+import { cn } from "@/lib/utils";
 import { CSSProperties } from "react";
 
 const ComponentWrapper = ({ children }: { children: any }) => {
   return (
-    <div className="relative rounded-xl border border-dashed p-8 dark:border-slate-800 md:p-8 flex justify-center items-center flex-col max-w-[65ch]">
+    <div className="relative rounded-xl border dark:border-slate-800 md:p-8 flex justify-center items-center flex-col max-w-[65ch]">
       {children}
 
       <div
-        className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)]"
+        className={cn(
+          `absolute inset-0 -z-10 h-full w-full [background-size:16px_16px]`,
+          `bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)]`
+        )}
         style={
           {
             "--mask-offset": "50px",
@@ -15,6 +19,7 @@ const ComponentWrapper = ({ children }: { children: any }) => {
               "linear-gradient(to bottom,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent),linear-gradient(to right,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent)",
             maskComposite: "intersect",
             WebkitMaskComposite: "source-in, xor",
+            // backgroundImage: `linear-gradient(to right,#1f2937 1px, transparent 1px), linear-gradient(to bottom,#1f2937 1px,transparent 1px)`,
           } as CSSProperties
         }
       />

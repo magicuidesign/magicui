@@ -2,27 +2,31 @@ import ComponentWrapper from "@/components/component-wrapper";
 import Facebook from "@/components/icons/facebook";
 import LinkedIn from "@/components/icons/linkedin";
 import Twitter from "@/components/icons/twitter";
-import {
-  MagicBorderCard,
-  MagicBorderContainer,
-} from "@/components/magicui/magic-border";
+import { MagicCard, MagicContainer } from "@/components/magicui/magic-card";
 import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { getCurrentUser } from "@/lib/session";
+import { getUserPayments } from "@/lib/stripe-utils";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
+import { Payment } from "@prisma/client";
 import { allComponents } from "contentlayer/generated";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
+import NotFound from "./not-found";
 
-export async function generateStaticParams() {
-  return allComponents.map((component) => ({
-    slug: component.slugAsParams,
-  }));
-}
+// TODO: Fix this in future
+// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
+
+// export async function generateStaticParams() {
+//   return allComponents.map((component) => ({
+//     slug: component.slugAsParams,
+//   }));
+// }
 
 export async function generateMetadata({
   params,
@@ -74,7 +78,18 @@ export async function generateMetadata({
   });
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+interface Props {
+  params: { slug: string };
+}
+
+export default async function Component({ params }: Props) {
+  const user = await getCurrentUser();
+  const { payments } = await getUserPayments(user?.id!);
+
+  const paid = payments.some(
+    (payment: Payment) => payment.status === "succeeded"
+  );
+
   const component = allComponents.find(
     (component) => component.slugAsParams === params.slug
   );
@@ -119,7 +134,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
               href={`https://twitter.com/intent/tweet?text=${component.title}&url=https://magicuikit.com/components/${component.slugAsParams}&via=${component.author}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-all hover:scale-110"
             >
               <Twitter className="h-6 w-6" />
             </Link>
@@ -128,7 +142,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
             http://www.linkedin.com/shareArticle?mini=true&url=https://magicuikit.com/components/${component.slugAsParams}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-all hover:scale-110"
             >
               <LinkedIn className="h-6 w-6" />
             </Link>
@@ -136,33 +149,40 @@ export default async function Post({ params }: { params: { slug: string } }) {
               href={`https://www.facebook.com/sharer/sharer.php?u=https://magicuikit.com/components/${component.slugAsParams}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-all hover:scale-110"
             >
               <Facebook className="h-6 w-6" />
             </Link>
           </div>
         </div>
 
-        <div className="pb-12 pt-8">
+        <div className="flex flex-col pt-8 gap-4">
           <ComponentWrapper>
-            <MagicBorderContainer
+            <MagicContainer
               className={
-                "grid w-full sm:grid-cols-2 grid-cols-1 gap-4 min-h-[300px] p-8"
+                "grid w-full lg:grid-cols-2 grid-cols-1 gap-4 min-h-[500px] lg:min-h-[300px] p-8"
               }
             >
-              <MagicBorderCard className="group relative rounded-xl bg-gray-200 dark:bg-gray-800 p-4 shadow-2xl flex justify-center items-center  overflow-hidden border dark:border-gray-800 border-gray-200 bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200">
+              <MagicCard
+                borderRadius={16}
+                className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200 p-6"
+              >
                 <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
                   Magic
                 </p>
-              </MagicBorderCard>
-              <MagicBorderCard className="group relative rounded-xl bg-gray-200 dark:bg-gray-800 p-4 shadow-2xl flex justify-center items-center dark:to-gray-900 overflow-hidden border dark:border-gray-800 border-gray-200 bg-gradient-to-br dark:from-gray-800 from-gray-100 to-gray-200">
+              </MagicCard>
+              <MagicCard
+                borderRadius={16}
+                className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200"
+              >
                 <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
-                  Border
+                  Card
                 </p>
-              </MagicBorderCard>
-            </MagicBorderContainer>
+              </MagicCard>
+            </MagicContainer>
           </ComponentWrapper>
-          <Mdx code={component.body.code} />
+
+          {user && paid && <Mdx code={component.body.code} />}
+          {(!user || !paid) && <NotFound />}
         </div>
       </div>
 

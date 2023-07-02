@@ -1,6 +1,6 @@
 "use client";
 
-import { SidebarNavItem } from "@/types/nav";
+import { SidebarNavItem } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,7 +20,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
-          {item?.items?.length > 0 && (
+          {item?.items && (
             <DocsSidebarNavItems items={item.items} pathname={pathname} />
           )}
         </div>

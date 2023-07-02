@@ -1,0 +1,345 @@
+---
+title: Magic Card
+date: 2023-06-25
+summary: A spotlight effect that follows your mouse cursor and highlights borders on hover.
+author: dillionverma
+published: true
+video: https://cdn.magicuikit.com/magic-border.webm
+---
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss tailwind-merge clsx
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and page the following code into your project.
+
+```text
+components/magicui/magic-border.tsx
+```
+
+<ComponentSource name="magic-border" >
+
+```tsx showLineNumbers
+"use client";
+
+import clsx, { ClassValue } from "clsx";
+import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
+export default function useMousePosition(): MousePosition {
+  const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
+
+  useEffect(() => {
+    const handleMouseMove = (event: globalThis.MouseEvent) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return mousePosition;
+}
+
+export const MagicContainer = ({
+  children,
+  className,
+}: {
+  children?: ReactNode;
+  className?: any;
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mousePosition = useMousePosition();
+  const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const containerSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
+  const [boxes, setBoxes] = useState<Array<HTMLElement>>([]);
+
+  useEffect(() => {
+    init();
+    containerRef.current &&
+      setBoxes(
+        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
+      );
+  }, []);
+
+  useEffect(() => {
+    init();
+    window.addEventListener("resize", init);
+
+    return () => {
+      window.removeEventListener("resize", init);
+    };
+  }, [setBoxes]);
+
+  useEffect(() => {
+    onMouseMove();
+  }, [mousePosition]);
+
+  const init = () => {
+    if (containerRef.current) {
+      containerSize.current.w = containerRef.current.offsetWidth;
+      containerSize.current.h = containerRef.current.offsetHeight;
+    }
+  };
+
+  const onMouseMove = () => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const { w, h } = containerSize.current;
+      const x = mousePosition.x - rect.left;
+      const y = mousePosition.y - rect.top;
+      const inside = x < w && x > 0 && y < h && y > 0;
+
+      mouse.current.x = x;
+      mouse.current.y = y;
+      boxes.forEach((box) => {
+        const boxX =
+          -(box.getBoundingClientRect().left - rect.left) + mouse.current.x;
+        const boxY =
+          -(box.getBoundingClientRect().top - rect.top) + mouse.current.y;
+        box.style.setProperty("--mouse-x", `${boxX}px`);
+        box.style.setProperty("--mouse-y", `${boxY}px`);
+
+        if (inside) {
+          box.style.setProperty("--opacity", `1`);
+        } else {
+          box.style.setProperty("--opacity", `0`);
+        }
+      });
+    }
+  };
+
+  return (
+    <div className={className} ref={containerRef}>
+      {children}
+    </div>
+  );
+};
+
+interface MagicCardProps {
+  /**
+   * @default ""
+   * @type string
+   * @description
+   * The className of the card
+   */
+  className?: string;
+
+  /**
+   * @default ""
+   * @type ReactNode
+   * @description
+   * The children of the card
+   * */
+  children?: ReactNode;
+
+  /**
+   * @default 600
+   * @type number
+   * @description
+   * The size of the spotlight effect in pixels
+   * */
+  size?: number;
+
+  /**
+   * ]@default "#475569"
+   * @type string
+   * @description
+   * The border color of the card
+   */
+  borderColor?: string;
+
+  /**
+   * @default 1
+   * @type number
+   * @description
+   * The border width of the card
+   * */
+  borderWidth?: number;
+
+  /**
+   * @default 16
+   * @type number
+   * @description
+   * The border radius of the card
+   * */
+  borderRadius?: number;
+
+  /**
+   * @default true
+   * @type boolean
+   * @description
+   * Whether to show the spotlight
+   * */
+  spotlight?: boolean;
+
+  /**
+   * @default "rgba(255,255,255,0.03)"
+   * @type string
+   * @description
+   * The color of the spotlight
+   * */
+  spotlightColor?: string;
+
+  /**
+   * @default true
+   * @type boolean
+   * @description
+   * Whether to isolate the card which is being hovered
+   * */
+  isolated?: boolean;
+
+  /**
+   * @default "rgba(255,255,255,0.03)"
+   * @type string
+   * @description
+   * The background of the card
+   * */
+  background?: string;
+}
+
+export function MagicCard({
+  className,
+  children,
+  size = 600,
+  borderColor = "#475569",
+  borderWidth = 1,
+  borderRadius = 16,
+  spotlight = true,
+  spotlightColor = "rgba(255,255,255,0.03)",
+  isolated = true,
+  background = `rgba(255,255,255,0.1)`,
+}: MagicCardProps) {
+  const spotlightStyles =
+    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-lg";
+
+  const borderStyles =
+    "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
+
+  return (
+    <div
+      style={
+        {
+          "--border-radius": `${borderRadius}px`,
+          "--border-width": `${borderWidth}px`,
+          "--border-color": `${borderColor}`,
+          "--mask-size": `${size}px`,
+          "--spotlight-color": `${spotlightColor}`,
+          background,
+        } as CSSProperties
+      }
+      className={cn(
+        "relative rounded-[var(--border-radius)] overflow-hidden",
+        isolated && [borderStyles, "after:opacity-0 after:hover:opacity-100"],
+        isolated &&
+          spotlight && [
+            spotlightStyles,
+            "before:opacity-0 before:hover:opacity-100",
+          ],
+        !isolated && [borderStyles, "after:opacity-[var(--opacity)]"],
+        !isolated &&
+          spotlight && [spotlightStyles, "before:opacity-[var(--opacity)]"]
+      )}
+    >
+      <div
+        className={cn(
+          "absolute inset-[var(--border-width)] rounded-[var(--border-radius)] z-[2]",
+          className
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+```
+
+</ComponentSource>
+
+</Step>
+
+</Steps>
+
+## Usage
+
+Now you can use the `MagicContainer` and `MagicCard` components to create a magic card effect.
+
+```tsx
+<MagicContainer
+  className={
+    "grid w-full lg:grid-cols-2 grid-cols-1 gap-4 min-h-[500px] lg:min-h-[300px] p-8"
+  }
+>
+  <MagicCard
+    borderRadius={16}
+    className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200 p-6"
+  >
+    <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
+      Magic
+    </p>
+  </MagicCard>
+  <MagicCard
+    borderRadius={16}
+    className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200"
+  >
+    <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
+      Border
+    </p>
+  </MagicCard>
+</MagicContainer>
+```
+
+## Props
+
+### MagicContainer
+
+| Prop name | Type      | Default | Description                             |
+| --------- | --------- | ------- | --------------------------------------- |
+| children  | ReactNode | -       | The children to render                  |
+| className | string    | -       | The className to apply to the container |
+
+### MagicCard
+
+| Prop name      | Type      | Default                | Description                        |
+| -------------- | --------- | ---------------------- | ---------------------------------- |
+| children       | ReactNode | -                      | The children to render             |
+| className      | string    | -                      | The className to apply to the card |
+| maskSize       | number    | 200                    | The size of the spotlight mask     |
+| borderColor    | string    | #475569                | The color of the border            |
+| borderWidth    | number    | 1                      | The width of the border            |
+| borderRadius   | number    | 16                     | The radius of the border           |
+| spotlight      | boolean   | true                   | Whether to show the spotlight      |
+| spotlightColor | string    | rgba(255,255,255,0.03) | The color of the spotlight         |
+| isolated       | boolean   | true                   | Whether to isolate the card        |
+| background     | string    | rgba(255,255,255,0.1)  | The background of the card         |
+
+## Credits
+
+This component is inspired by [Linear.app](https://linear.app/features)
