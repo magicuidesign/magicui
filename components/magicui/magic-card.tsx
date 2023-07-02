@@ -204,10 +204,10 @@ export function MagicCard({
   background = `rgba(255,255,255,0.1)`,
 }: MagicCardProps) {
   const spotlightStyles =
-    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:opacity-[var(--opacity)] before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-lg";
+    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-lg";
 
   const borderStyles =
-    "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:opacity-[var(--opacity)] after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
+    "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
 
   return (
     <div
@@ -223,14 +223,15 @@ export function MagicCard({
       }
       className={cn(
         "relative rounded-[var(--border-radius)] overflow-hidden",
-        isolated && [borderStyles, "before:opacity-0 before:hover:opacity-100"],
+        isolated && [borderStyles, "after:opacity-0 after:hover:opacity-100"],
         isolated &&
           spotlight && [
             spotlightStyles,
-            "after:opacity-0 after:hover:opacity-100",
+            "before:opacity-0 before:hover:opacity-100",
           ],
-        !isolated && borderStyles,
-        !isolated && spotlight && spotlightStyles
+        !isolated && [borderStyles, "after:opacity-[var(--opacity)]"],
+        !isolated &&
+          spotlight && [spotlightStyles, "before:opacity-[var(--opacity)]"]
       )}
     >
       <div
