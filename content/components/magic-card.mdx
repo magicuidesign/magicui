@@ -229,16 +229,16 @@ export function MagicCard({
   className,
   children,
   size = 600,
-  borderColor = "#475569",
+  borderColor = "rgba(120,119,198)",
   borderWidth = 1,
   borderRadius = 16,
   spotlight = true,
-  spotlightColor = "rgba(255,255,255,0.03)",
+  spotlightColor = "rgba(120,119,198,0.08)",
   isolated = true,
   background = `rgba(255,255,255,0.1)`,
 }: MagicCardProps) {
   const spotlightStyles =
-    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-lg";
+    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-xs";
 
   const borderStyles =
     "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
@@ -297,13 +297,13 @@ Now you can use the `MagicContainer` and `MagicCard` components to create a magi
     "grid w-full lg:grid-cols-2 grid-cols-1 gap-4 min-h-[500px] lg:min-h-[300px] p-8"
   }
 >
-  <MagicCard className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200 p-6">
-    <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
+  <MagicCard className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-background p-6">
+    <p className="text-4xl font-medium whitespace-nowrap text-gray-800 dark:text-gray-200">
       Magic
     </p>
   </MagicCard>
-  <MagicCard className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200">
-    <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
+  <MagicCard className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-background">
+    <p className="text-4xl font-medium whitespace-nowrap text-gray-800 dark:text-gray-200">
       Card
     </p>
   </MagicCard>
