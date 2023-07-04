@@ -6,7 +6,6 @@ import Link from "next/link";
 export const metadata = constructMetadata({
   title: "Templates - Magic UI",
   description: "Beautiful templates to make your landing page look stunning.",
-  image: "https://magicuikit.com/api/og",
 });
 
 export default async function TemplatePage() {

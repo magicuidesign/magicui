@@ -174,21 +174,13 @@ export default async function Component({ params }: Props) {
                 "grid w-full lg:grid-cols-2 grid-cols-1 gap-4 min-h-[500px] lg:min-h-[300px] p-8"
               }
             >
-              <MagicCard
-                borderRadius={16}
-                // background="radial-gradient(var(--mask-size) circle at var(--mouse-x) var(--mouse-y),#ffaa40 0,#9c40ff 50%,transparent 100%)"
-                className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200 p-6"
-              >
-                <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
+              <MagicCard className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-background p-6">
+                <p className="text-4xl font-medium whitespace-nowrap text-gray-800 dark:text-gray-200">
                   Magic
                 </p>
               </MagicCard>
-              <MagicCard
-                borderRadius={16}
-                // background="radial-gradient(var(--mask-size) circle at var(--mouse-x) var(--mouse-y),#ffaa40 0,#9c40ff 50%,transparent 100%)"
-                className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 from-gray-100 to-gray-200"
-              >
-                <p className="text-4xl font-semibold whitespace-nowrap text-gray-800 dark:text-gray-200">
+              <MagicCard className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-background">
+                <p className="text-4xl font-medium whitespace-nowrap text-gray-800 dark:text-gray-200">
                   Card
                 </p>
               </MagicCard>

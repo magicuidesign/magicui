@@ -2,7 +2,6 @@ import { CommandMenu } from "@/components/command-menu";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
-import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAccountNav } from "@/components/user-account-nav";
 import { siteConfig } from "@/config/site";
@@ -16,7 +15,7 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ user }: SiteHeaderProps) {
   return (
-    <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/60 backdrop-blur">
+    <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full backdrop-blur">
       <div className="container flex h-16 items-center">
         <MainNav />
         <MobileNav />
@@ -59,7 +58,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
-            <ModeToggle />
+            {/* <ModeToggle /> */}
 
             {user && (
               <UserAccountNav
@@ -85,6 +84,13 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </nav>
         </div>
       </div>
+      <div
+        className="absolute w-full h-px bottom-0"
+        style={{
+          background:
+            "radial-gradient(50% 100% at 50% 100%,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 100%)",
+        }}
+      ></div>
     </header>
   );
 }

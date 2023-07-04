@@ -195,11 +195,11 @@ export function MagicCard({
   className,
   children,
   size = 600,
-  borderColor = "#475569",
+  borderColor = "rgba(120,119,198)",
   borderWidth = 1,
   borderRadius = 16,
   spotlight = true,
-  spotlightColor = "rgba(255,255,255,0.03)",
+  spotlightColor = "rgba(120,119,198,0.08)",
   isolated = true,
   background = `rgba(255,255,255,0.1)`,
 }: MagicCardProps) {

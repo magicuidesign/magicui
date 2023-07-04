@@ -8,6 +8,9 @@ const ComponentWrapper = ({
   className: string;
   children: any;
 }) => {
+  const mask =
+    "linear-gradient(to bottom,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent),linear-gradient(to right,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent)";
+
   return (
     <div
       className={cn(
@@ -24,10 +27,9 @@ const ComponentWrapper = ({
         )}
         style={
           {
-            "--mask-offset": "50px",
-            mask: "linear-gradient(to bottom,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent),linear-gradient(to right,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent)",
-            WebkitMask:
-              "linear-gradient(to bottom,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent),linear-gradient(to right,transparent,#fff var(--mask-offset) calc(100% - var(--mask-offset)),transparent)",
+            "--mask-offset": "80px",
+            mask: mask,
+            WebkitMask: mask,
             maskComposite: "intersect",
             WebkitMaskComposite: "source-in, xor",
             // backgroundImage: `linear-gradient(to right,#1f2937 1px, transparent 1px), linear-gradient(to bottom,#1f2937 1px,transparent 1px)`,

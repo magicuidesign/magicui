@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <>
-      <section className="space-y-6 pb-8 pt-20 md:pb-12 md:pt-10 lg:py-32">
+      <section className="space-y-6 pb-8 pt-20 md:pb-12 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <FadeIn className="z-10 flex flex-col items-center justify-center w-full h-full">
             <Link
@@ -56,8 +56,8 @@ export default async function Home() {
             delay={0.1}
             className="z-10 flex flex-col items-center justify-center w-full h-full"
           >
-            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-              Create beautiful landing pages in minutes.
+            <h1 className="font-medium text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+              Create Magical <br /> Landing Pages
             </h1>
           </FadeIn>
           <FadeIn
@@ -65,8 +65,8 @@ export default async function Home() {
             delay={0.2}
           >
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-              Magic UI is a curated collection of beautiful landing page
-              components built using React + Tailwind CSS + Framer Motion
+              Magic UI is a curated collection of React + Tailwind CSS + Framer
+              Motion components
             </p>
           </FadeIn>
           <FadeIn
