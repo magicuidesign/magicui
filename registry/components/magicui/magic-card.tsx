@@ -13,7 +13,7 @@ interface MousePosition {
   y: number;
 }
 
-export default function useMousePosition(): MousePosition {
+function useMousePosition(): MousePosition {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: 0,
     y: 0,
@@ -34,13 +34,12 @@ export default function useMousePosition(): MousePosition {
   return mousePosition;
 }
 
-export const MagicContainer = ({
-  children,
-  className,
-}: {
+interface MagicContainerProps {
   children?: ReactNode;
   className?: any;
-}) => {
+}
+
+const MagicContainer = ({ children, className }: MagicContainerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mousePosition = useMousePosition();
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -191,7 +190,7 @@ interface MagicCardProps {
   background?: string;
 }
 
-export function MagicCard({
+const MagicCard = ({
   className,
   children,
   size = 600,
@@ -201,8 +200,8 @@ export function MagicCard({
   spotlight = true,
   spotlightColor = "rgba(120,119,198,0.08)",
   isolated = true,
-  background = `rgba(255,255,255,0.1)`,
-}: MagicCardProps) {
+  background = `rgba(120,119,198, 0.2)`,
+}: MagicCardProps) => {
   const spotlightStyles =
     "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-xs";
 
@@ -244,4 +243,6 @@ export function MagicCard({
       </div>
     </div>
   );
-}
+};
+
+export { MagicCard, MagicContainer };

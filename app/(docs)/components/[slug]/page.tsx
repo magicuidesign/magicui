@@ -1,8 +1,6 @@
-import ComponentWrapper from "@/components/component-wrapper";
 import Facebook from "@/components/icons/facebook";
 import LinkedIn from "@/components/icons/linkedin";
 import Twitter from "@/components/icons/twitter";
-import { MagicCard, MagicContainer } from "@/components/magicui/magic-card";
 import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -17,7 +15,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
-import NotFound from "./not-found";
 
 // TODO: Fix this in future
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
@@ -156,7 +153,7 @@ export default async function Component({ params }: Props) {
         </div>
 
         <div className="flex flex-col pt-8 gap-4">
-          {component.video && (
+          {/* {component.video && (
             <div className="flex md:hidden overflow-hidden relative rounded-xl border dark:border-slate-800 md:p-8 justify-center items-center flex-col max-w-[65ch]">
               <video
                 src={component.video}
@@ -167,28 +164,8 @@ export default async function Component({ params }: Props) {
                 className="relative -bottom-1 aspect-video" // needed because random black line at bottom of video
               />
             </div>
-          )}
-          <ComponentWrapper className={"hidden md:flex"}>
-            <MagicContainer
-              className={
-                "grid w-full lg:grid-cols-2 grid-cols-1 gap-4 min-h-[500px] lg:min-h-[300px] p-8"
-              }
-            >
-              <MagicCard className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-background p-6">
-                <p className="text-4xl font-medium whitespace-nowrap text-gray-800 dark:text-gray-200">
-                  Magic
-                </p>
-              </MagicCard>
-              <MagicCard className="cursor-pointer shadow-2xl flex justify-center items-center overflow-hidden bg-background">
-                <p className="text-4xl font-medium whitespace-nowrap text-gray-800 dark:text-gray-200">
-                  Card
-                </p>
-              </MagicCard>
-            </MagicContainer>
-          </ComponentWrapper>
-
-          {user && paid && <Mdx code={component.body.code} />}
-          {(!user || !paid) && <NotFound />}
+          )} */}
+          <Mdx code={component.body.code} />
         </div>
       </div>
 

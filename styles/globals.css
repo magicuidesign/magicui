@@ -27,12 +27,12 @@
     --secondary-foreground: 240 5.9% 10%;
 
     --accent: 240 4.8% 95.9%;
-    --accent-foreground: ;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --ring: 220 9% 46%;
+    --ring: 240 5% 64.9%;
 
     --radius: 0.5rem;
   }
@@ -41,9 +41,8 @@
     --background: 233 100% 4%;
     --foreground: 0 0% 98%;
 
-    --muted: 216 34% 10%;
-    
-    --muted-foreground: 220 9% 46%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
     --popover: var(--background);
     --popover-foreground: var(--foreground);

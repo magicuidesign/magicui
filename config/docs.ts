@@ -1,5 +1,6 @@
 import { allComponents } from "@/.contentlayer/generated";
 import { MainNavItem, SidebarNavItem } from "@/types";
+import { compareDesc } from "date-fns";
 
 interface DocsConfig {
   mainNav: MainNavItem[];
@@ -21,8 +22,10 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       items: allComponents
-        .filter((post) => post.date)
-        .filter((post) => post.published)
+        .filter((post) => post.date && post.published)
+        .sort((a, b) => {
+          return compareDesc(new Date(a.date), new Date(b.date));
+        })
         .map((component) => ({
           title: component.title,
           href: `/components/${component.slugAsParams}`,

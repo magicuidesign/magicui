@@ -1,6 +1,6 @@
 import { Component } from "@/.contentlayer/generated";
-import { FadeIn } from "@/components/magicui/FadeIn";
 import { constructMetadata } from "@/lib/utils";
+import { FadeIn } from "@/registry/components/magicui/fade-in";
 import Link from "next/link";
 
 export const metadata = constructMetadata({
