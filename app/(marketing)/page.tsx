@@ -1,11 +1,10 @@
-import { FadeIn } from "@/components/magicui/FadeIn";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { getCurrentUser } from "@/lib/session";
 import { cn } from "@/lib/utils";
+import { FadeIn } from "@/registry/components/magicui/fade-in";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { env } from "process";
 import { CSSProperties } from "react";
 
 export default async function Home() {
@@ -53,16 +52,16 @@ export default async function Home() {
             </Link>
           </FadeIn>
           <FadeIn
-            delay={0.1}
+            // delay={0.0}
             className="z-10 flex flex-col items-center justify-center w-full h-full"
           >
-            <h1 className="font-medium text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="font-medium text-5xl sm:text-6xl md:text-7xl lg:text-9xl tracking-tight">
               Create Magical <br /> Landing Pages
             </h1>
           </FadeIn>
           <FadeIn
             className="z-10 flex flex-col items-center justify-center w-full h-full"
-            delay={0.2}
+            delay={0.1}
           >
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
               Magic UI is a curated collection of React + Tailwind CSS + Framer
@@ -71,32 +70,31 @@ export default async function Home() {
           </FadeIn>
           <FadeIn
             className="z-10 flex flex-col items-center justify-center w-full h-full"
-            delay={0.3}
+            delay={0.2}
           >
             <div className="flex flex-col md:flex-row gap-4">
-              {user && (
+              <Link
+                href="/components"
+                className={cn(buttonVariants({ size: "lg" }))}
+              >
+                Get Started
+              </Link>
+              {/* {!user && (
                 <Link
                   href="/components"
+                  // href={
+                  //   env.NODE_ENV === "development"
+                  //     ? "https://buy.stripe.com/test_bIY7uvbbzecfcw09AB"
+                  //     : "https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
+                  // }
+                  // href="https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
+                  // target="_blank"
+                  // rel="noreferrer"
                   className={cn(buttonVariants({ size: "lg" }))}
                 >
                   Get Started
                 </Link>
-              )}
-              {!user && (
-                <Link
-                  href={
-                    env.NODE_ENV === "development"
-                      ? "https://buy.stripe.com/test_bIY7uvbbzecfcw09AB"
-                      : "https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
-                  }
-                  // href="https://buy.stripe.com/3cs8zHafOdUa0tG9AA"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={cn(buttonVariants({ size: "lg" }))}
-                >
-                  Pre-order
-                </Link>
-              )}
+              )} */}
               <Link
                 href="https://twitter.com/dillionverma"
                 className={cn(

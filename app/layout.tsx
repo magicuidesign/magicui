@@ -1,4 +1,5 @@
 import { Analytics } from "@/components/analytics";
+import SessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { fontSans } from "@/lib/fonts";
@@ -28,12 +29,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          <Toaster />
-          <Analytics />
-          {/* <TailwindIndicator /> */}
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <Toaster />
+            <Analytics />
+            {/* <TailwindIndicator /> */}
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );

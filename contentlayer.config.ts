@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
 import { env } from "./env.mjs";
+import { rehypeComponent } from "./lib/rehype-component";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -89,6 +90,7 @@ export default makeSource({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
+      rehypeComponent,
       () => (tree) => {
         visit(tree, (node) => {
           if (node?.type === "element" && node?.tagName === "pre") {
@@ -135,6 +137,36 @@ export default makeSource({
           },
         },
       ],
+      () => (tree) => {
+        visit(tree, (node) => {
+          if (node?.type === "element" && node?.tagName === "div") {
+            if (!("data-rehype-pretty-code-fragment" in node.properties)) {
+              return;
+            }
+
+            const preElement = node.children.at(-1);
+            if (preElement.tagName !== "pre") {
+              return;
+            }
+
+            preElement.properties["__withMeta__"] =
+              node.children.at(0).tagName === "div";
+            preElement.properties["__rawString__"] = node.__rawString__;
+
+            if (node.__src__) {
+              preElement.properties["__src__"] = node.__src__;
+            }
+
+            if (node.__event__) {
+              preElement.properties["__event__"] = node.__event__;
+            }
+
+            if (node.__style__) {
+              preElement.properties["__style__"] = node.__style__;
+            }
+          }
+        });
+      },
       [
         rehypeAutolinkHeadings,
         {

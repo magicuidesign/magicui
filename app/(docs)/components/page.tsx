@@ -1,5 +1,5 @@
-import { FadeIn } from "@/components/magicui/FadeIn";
 import { constructMetadata } from "@/lib/utils";
+import { FadeIn } from "@/registry/components/magicui/fade-in";
 import { allComponents } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import Link from "next/link";
@@ -12,8 +12,7 @@ export const metadata = constructMetadata({
 
 export default async function ComponentPage() {
   const posts = allComponents
-    .filter((post) => post.date)
-    .filter((post) => post.published)
+    .filter((post) => post.date && post.published)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     });

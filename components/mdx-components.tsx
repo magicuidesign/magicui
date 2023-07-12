@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
 import { CopyButton } from "./copy-button";
 
@@ -29,8 +30,9 @@ const components = {
   a: CustomLink,
   Image,
   ComponentSource,
+  ComponentPreview,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto">
+    <div className="w-full overflow-y-auto">
       <table className={cn("w-full", className)} {...props} />
     </div>
   ),
@@ -132,8 +134,11 @@ export function Mdx({ code }: MDXProps) {
       className={cn(
         `prose dark:prose-invert prose-gray leading-tighter tracking-tighter`,
         // `md:prose-lg lg:prose-xl`,
-        `prose-a:transition-colors prose-a:duration-200 prose-a:ease-out`,
-        `dark:prose-a:text-gray-200 prose-a:underline-offset-4 dark:hover:prose-a:text-gray-700 prose-a:font-semibold hover:prose-a:text-gray-400`,
+
+        // no underline on links
+        `prose-a:no-underline`,
+        // `prose-a:transition-colors prose-a:duration-200 prose-a:ease-out`,
+        // `dark:prose-a:text-gray-200 prose-a:underline-offset-4 dark:hover:prose-a:text-gray-700 prose-a:font-semibold hover:prose-a:text-gray-400`,
         // `prose-pre:bg-gray-900 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-pre:border prose-pre:px-0 `,
         `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:bg-gray-900 prose-pre:py-4 prose-pre:dark:bg-gray-900 prose-pre:px-0 prose-pre:text-xs md:prose-pre:text-sm prose-pre:tracking-tighter`
       )}
