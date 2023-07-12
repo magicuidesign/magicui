@@ -1,6 +1,5 @@
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-// import { StyleSwitcher } from "@/components/style-switcher";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { registry } from "@/registry/index";

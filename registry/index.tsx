@@ -6,25 +6,16 @@ const ui: Registry = {
     name: "magic-card",
     type: "components:ui",
     files: ["registry/components/magicui/magic-card.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/magicui/magic-card")
-    ),
   },
   "linear-gradient": {
     name: "linear-gradient",
     type: "components:ui",
     files: ["registry/components/magicui/linear-gradient.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/magicui/linear-gradient")
-    ),
   },
   "radial-gradient": {
     name: "radial-gradient",
     type: "components:ui",
     files: ["registry/components/magicui/radial-gradient.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/magicui/radial-gradient")
-    ),
   },
 };
 
