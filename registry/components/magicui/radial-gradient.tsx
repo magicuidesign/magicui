@@ -58,7 +58,7 @@ interface RadialProps {
 
 const RadialGradient = ({
   type = "circle",
-  from = "hsla(263, 80%, 20%, 1)",
+  from = "rgba(120,119,198,0.3)",
   to = "hsla(0, 0%, 0%, 0)",
   size = 300,
   origin = "center",

@@ -63,7 +63,7 @@ interface LinearGradientProps {
 
 const LinearGradient = ({
   from = "#00000000",
-  to = "#290A5C",
+  to = "rgba(120,119,198,0.3)",
   width = "100%",
   height = "100%",
   transitionPoint = "50%",
