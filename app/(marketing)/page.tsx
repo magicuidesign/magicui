@@ -16,7 +16,7 @@ export default async function Home() {
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
           <FadeIn className="z-10 flex flex-col items-center justify-center w-full h-full">
             <Link
-              href="/components/magic-card"
+              href="/components/meteors"
               className={cn(
                 "flex justify-center items-center flex-row",
                 "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
@@ -46,7 +46,7 @@ export default async function Home() {
                   `inline`
                 )}
               >
-                Introducing Magic Card
+                Introducing Meteors
               </span>
               <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
             </Link>

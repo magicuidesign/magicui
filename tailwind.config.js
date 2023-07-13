@@ -62,6 +62,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         gradient: "gradient 8s linear infinite",
+        meteor: "meteor 5s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -75,6 +76,14 @@ module.exports = {
         gradient: {
           to: {
             backgroundPosition: "var(--bg-size) 0",
+          },
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
+          "70%": { opacity: 1 },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: 0,
           },
         },
       },

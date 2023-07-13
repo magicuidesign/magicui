@@ -17,6 +17,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/radial-gradient.tsx"],
   },
+  meteors: {
+    name: "meteors",
+    type: "components:ui",
+    files: ["registry/components/magicui/meteors.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -42,6 +47,14 @@ const example: Registry = {
     files: ["registry/components/example/radial-gradient-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/radial-gradient-demo")
+    ),
+  },
+  "meteors-demo": {
+    name: "meteors-demo",
+    type: "components:example",
+    files: ["registry/components/example/meteors-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/meteors-demo")
     ),
   },
 };
