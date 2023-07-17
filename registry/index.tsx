@@ -32,11 +32,14 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/dot-pattern.tsx"],
   },
+<<<<<<< HEAD
   marquee: {
     name: "marquee",
     type: "components:ui",
     files: ["registry/components/magicui/marquee.tsx"],
   },
+=======
+>>>>>>> 9b8bd23 (✨ feat: Add grid and dot pattern)
 };
 
 const example: Registry = {
@@ -112,6 +115,7 @@ const example: Registry = {
       () => import("@/registry/components/example/dot-pattern-linear-gradient")
     ),
   },
+<<<<<<< HEAD
   "marquee-demo": {
     name: "marquee-demo",
     type: "components:example",
@@ -128,6 +132,8 @@ const example: Registry = {
       () => import("@/registry/components/example/marquee-logos")
     ),
   },
+=======
+>>>>>>> 9b8bd23 (✨ feat: Add grid and dot pattern)
 };
 
 export const registry: Registry = {
