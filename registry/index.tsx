@@ -22,6 +22,16 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/meteors.tsx"],
   },
+  "grid-pattern": {
+    name: "grid-pattern",
+    type: "components:ui",
+    files: ["registry/components/magicui/grid-pattern.tsx"],
+  },
+  "dot-pattern": {
+    name: "dot-pattern",
+    type: "components:ui",
+    files: ["registry/components/magicui/dot-pattern.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -55,6 +65,46 @@ const example: Registry = {
     files: ["registry/components/example/meteors-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/meteors-demo")
+    ),
+  },
+  "grid-pattern-demo": {
+    name: "grid-pattern-demo",
+    type: "components:example",
+    files: ["registry/components/example/grid-pattern-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/grid-pattern-demo")
+    ),
+  },
+  "grid-pattern-linear-gradient": {
+    name: "grid-pattern-linear-gradient",
+    type: "components:example",
+    files: ["registry/components/example/grid-pattern-linear-gradient.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/grid-pattern-linear-gradient")
+    ),
+  },
+  "grid-pattern-dashed": {
+    name: "grid-pattern-dashed",
+    type: "components:example",
+    files: ["registry/components/example/grid-pattern-dashed.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/grid-pattern-dashed")
+    ),
+  },
+  "dot-pattern-demo": {
+    name: "dot-pattern-demo",
+    type: "components:example",
+    files: ["registry/components/example/dot-pattern-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/dot-pattern-demo")
+    ),
+  },
+  "dot-pattern-linear-gradient": {
+    name: "dot-pattern-linear-gradient",
+    type: "components:example",
+    files: ["registry/components/example/dot-pattern-linear-gradient.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/dot-pattern-linear-gradient")
     ),
   },
 };

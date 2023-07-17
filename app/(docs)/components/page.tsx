@@ -12,7 +12,7 @@ export const metadata = constructMetadata({
 
 export default async function ComponentPage() {
   const posts = allComponents
-    .filter((post) => post.date && post.published)
+    .filter((post) => post.date <= new Date().toISOString() && post.published)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     });
@@ -36,7 +36,7 @@ export default async function ComponentPage() {
             <FadeIn key={post._id} delay={index * 0.1}>
               <article
                 key={post._id}
-                className="group relative flex grow flex-col overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300"
+                className="group relative flex grow flex-col w-full h-full overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300"
               >
                 {post.video && (
                   <div className="overflow-hidden">
@@ -50,7 +50,7 @@ export default async function ComponentPage() {
                     />
                   </div>
                 )}
-                <div className="flex grow flex-col p-3">
+                <div className="flex flex-1 justify-end flex-col p-3">
                   <h2>{post.title}</h2>
                   {/* {post.date && (
                     <p className="text-sm text-gray-500">
