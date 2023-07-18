@@ -7,7 +7,7 @@ export default function MagicCardWithGradient() {
   return (
     <MagicContainer
       className={
-        "grid w-full lg:grid-cols-2 grid-cols-1 gap-4 min-h-[500px] lg:min-h-[250px]"
+        "flex flex-col gap-4 h-[500px] lg:h-[250px] w-full lg:flex-row"
       }
     >
       <MagicCard className="cursor-pointer shadow-2xl flex flex-col justify-center items-center overflow-hidden bg-background p-6">

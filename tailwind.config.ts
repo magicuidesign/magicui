@@ -1,4 +1,6 @@
 const colors = require("tailwindcss/colors");
+import { type Config } from "tailwindcss";
+
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -63,15 +65,16 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         gradient: "gradient 8s linear infinite",
         meteor: "meteor 5s linear infinite",
+        grid: "grid 15s linear infinite",
       },
       keyframes: {
         "accordion-down": {
-          from: { height: 0 },
+          from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+          to: { height: "0" },
         },
         gradient: {
           to: {
@@ -79,15 +82,19 @@ module.exports = {
           },
         },
         meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
-          "70%": { opacity: 1 },
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
           "100%": {
             transform: "rotate(215deg) translateX(-500px)",
-            opacity: 0,
+            opacity: "0",
           },
+        },
+        grid: {
+          "0%": { transform: "rotateX(45deg) translateY(-50%)" },
+          "100%": { transform: "rotateX(45deg) translateY(0)" },
         },
       },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-};
+} satisfies Config;

@@ -110,6 +110,13 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
 
 interface MagicCardProps {
   /**
+   * @default div
+   * @type React.ElementType
+   * @description
+   * The component to render the card as
+   * */
+  as?: React.ElementType;
+  /**
    * @default ""
    * @type string
    * @description
@@ -191,6 +198,7 @@ interface MagicCardProps {
 }
 
 const MagicCard = ({
+  as: Component = "div", // Default to 'div' if no component is passed
   className,
   children,
   size = 600,
@@ -209,7 +217,7 @@ const MagicCard = ({
     "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
 
   return (
-    <div
+    <Component
       style={
         {
           "--border-radius": `${borderRadius}px`,
@@ -221,7 +229,7 @@ const MagicCard = ({
         } as CSSProperties
       }
       className={cn(
-        "relative rounded-[var(--border-radius)] overflow-hidden",
+        "relative w-full h-full rounded-[var(--border-radius)] overflow-hidden",
         isolated && [borderStyles, "after:opacity-0 after:hover:opacity-100"],
         isolated &&
           spotlight && [
@@ -241,7 +249,7 @@ const MagicCard = ({
       >
         {children}
       </div>
-    </div>
+    </Component>
   );
 };
 
