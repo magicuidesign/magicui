@@ -32,14 +32,17 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/dot-pattern.tsx"],
   },
-<<<<<<< HEAD
+
   marquee: {
     name: "marquee",
     type: "components:ui",
     files: ["registry/components/magicui/marquee.tsx"],
   },
-=======
->>>>>>> 9b8bd23 (✨ feat: Add grid and dot pattern)
+  "tweet-card": {
+    name: "tweet-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/tweet-card.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -115,7 +118,7 @@ const example: Registry = {
       () => import("@/registry/components/example/dot-pattern-linear-gradient")
     ),
   },
-<<<<<<< HEAD
+
   "marquee-demo": {
     name: "marquee-demo",
     type: "components:example",
@@ -132,8 +135,14 @@ const example: Registry = {
       () => import("@/registry/components/example/marquee-logos")
     ),
   },
-=======
->>>>>>> 9b8bd23 (✨ feat: Add grid and dot pattern)
+  "tweet-card-demo": {
+    name: "tweet-card-demo",
+    type: "components:example",
+    files: ["registry/components/example/tweet-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/tweet-card-demo")
+    ),
+  },
 };
 
 export const registry: Registry = {
