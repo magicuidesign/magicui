@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 
-const RetroGrid = ({ className }) => {
+const RetroGrid = ({ className }: { className?: string }) => {
   const gridStyle = {
     width: "100%",
     height: "600px",
