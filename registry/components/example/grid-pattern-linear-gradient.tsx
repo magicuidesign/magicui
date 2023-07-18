@@ -15,14 +15,6 @@ const GridPatternDemo2 = () => {
         height={20}
         x={-1}
         y={-1}
-        // squares={[
-        //   [4, 4],
-        //   [5, 1],
-        //   [8, 2],
-        //   [6, 6],
-        //   [10, 5],
-        //   [13, 3],
-        // ]}
         className={cn(
           "absolute w-full h-full inset-0 stroke-white/10 fill-white/10",
           "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
