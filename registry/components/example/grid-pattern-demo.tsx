@@ -6,7 +6,7 @@ import RadialGradient from "@/registry/components/magicui/radial-gradient";
 
 const GridPatternDemo = () => {
   return (
-    <div className="border rounded-lg h-full w-full relative flex justify-center items-center bg-background overflow-hidden">
+    <div className="border rounded-lg h-full w-full relative flex justify-center items-center bg-background overflow-hidden p-20">
       <p className="text-5xl font-medium tracking-tighter whitespace-nowrap text-black dark:text-white z-10">
         Grid Pattern
       </p>

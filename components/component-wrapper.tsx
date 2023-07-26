@@ -12,7 +12,7 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
   return (
     <div
       className={cn(
-        "relative rounded-xl border md:p-20 p-10 flex justify-center items-center flex-col max-w-[65ch]",
+        "relative rounded-xl border md:p-10 p-10 flex justify-center items-center flex-col max-w-[65ch] not-prose",
         className
       )}
     >
@@ -25,7 +25,7 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
         )}
         style={
           {
-            "--mask-offset": "60px",
+            "--mask-offset": "30px",
             mask: mask,
             WebkitMask: mask,
             maskComposite: "intersect",
