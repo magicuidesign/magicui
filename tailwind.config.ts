@@ -66,6 +66,7 @@ module.exports = {
         gradient: "gradient 8s linear infinite",
         meteor: "meteor 5s linear infinite",
         grid: "grid 15s linear infinite",
+        marquee: "marquee 20s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -92,6 +93,10 @@ module.exports = {
         grid: {
           "0%": { transform: "rotateX(45deg) translateY(-50%)" },
           "100%": { transform: "rotateX(45deg) translateY(0)" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
         },
       },
     },

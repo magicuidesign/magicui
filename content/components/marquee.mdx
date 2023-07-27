@@ -1,0 +1,85 @@
+---
+title: Marquee
+date: 2023-07-21
+summary: An infinite scrolling component that can be used to display text, images, or videos.
+author: dillionverma
+published: true
+video: https://cdn.magicuikit.com/marquee.mp4
+# toc: false
+---
+
+<ComponentPreview name="marquee-demo" />
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge
+```
+
+Copy and page the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        marquee: "marquee 20s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
+        },
+      },
+    },
+  },
+};
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and page the following code into your project.
+
+```text
+components/magicui/marquee.tsx
+```
+
+<ComponentSource name="marquee" />
+
+</Step>
+
+</Steps>
+
+## Examples
+
+### Logos
+
+<ComponentPreview name="marquee-logos" />
+
+## Props
+
+| Prop         | Type    | Default | Description                                                                  |
+| ------------ | ------- | ------- | ---------------------------------------------------------------------------- |
+| className    | string  |         | The class name to apply to the component.                                    |
+| reverse      | boolean | false   | Whether or not to reverse the direction of the marquee.                      |
+| pauseOnHover | boolean | false   | Whether or not to pause the marquee when the user hovers over the component. |
+| children     | node    |         | The content to display in the marquee.                                       |
