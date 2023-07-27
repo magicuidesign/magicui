@@ -71,6 +71,7 @@
     "react-dom": "18.2.0",
     "react-email": "1.9.4",
     "react-hook-form": "^7.45.0",
+    "react-tweet": "^3.0.3",
     "react-wrap-balancer": "^1.0.0",
     "resend": "^0.16.0",
     "schema-dts": "^1.1.2",

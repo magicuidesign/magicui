@@ -32,10 +32,16 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/dot-pattern.tsx"],
   },
+
   marquee: {
     name: "marquee",
     type: "components:ui",
     files: ["registry/components/magicui/marquee.tsx"],
+  },
+  "tweet-card": {
+    name: "tweet-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/tweet-card.tsx"],
   },
 };
 
@@ -112,6 +118,7 @@ const example: Registry = {
       () => import("@/registry/components/example/dot-pattern-linear-gradient")
     ),
   },
+
   "marquee-demo": {
     name: "marquee-demo",
     type: "components:example",
@@ -126,6 +133,14 @@ const example: Registry = {
     files: ["registry/components/example/marquee-logos.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/marquee-logos")
+    ),
+  },
+  "tweet-card-demo": {
+    name: "tweet-card-demo",
+    type: "components:example",
+    files: ["registry/components/example/tweet-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/tweet-card-demo")
     ),
   },
 };

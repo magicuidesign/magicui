@@ -6,8 +6,8 @@ import LinearGradient from "@/registry/components/magicui/linear-gradient";
 
 const DotPatternDemo2 = () => {
   return (
-    <div className="border rounded-lg h-full w-full relative flex justify-center items-center bg-background overflow-hidden">
-      <p className="text-5xl font-medium tracking-tighter whitespace-nowrap text-black dark:text-white z-10">
+    <div className="border rounded-lg h-full w-full relative flex justify-center items-center bg-background overflow-hidden p-20">
+      <p className="text-5xl font-medium tracking-tighter text-black dark:text-white z-10 whitespace-pre-wrap text-center">
         Dot Pattern
       </p>
       <DotPattern

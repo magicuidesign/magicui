@@ -1,7 +1,14 @@
 "use client";
 
 import clsx, { ClassValue } from "clsx";
-import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
+import React, {
+  CSSProperties,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -110,12 +117,12 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
 
 interface MagicCardProps {
   /**
-   * @default div
-   * @type React.ElementType
+   * @default <div />
+   * @type ReactElement
    * @description
-   * The component to render the card as
+   * The component to be rendered as the card
    * */
-  as?: React.ElementType;
+  as?: ReactElement;
   /**
    * @default ""
    * @type string
@@ -198,7 +205,7 @@ interface MagicCardProps {
 }
 
 const MagicCard = ({
-  as: Component = "div", // Default to 'div' if no component is passed
+  as: Element = <div />, // Default to 'div' if no component is passed
   className,
   children,
   size = 600,
@@ -216,19 +223,18 @@ const MagicCard = ({
   const borderStyles =
     "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
 
-  return (
-    <Component
-      style={
-        {
-          "--border-radius": `${borderRadius}px`,
-          "--border-width": `${borderWidth}px`,
-          "--border-color": `${borderColor}`,
-          "--mask-size": `${size}px`,
-          "--spotlight-color": `${spotlightColor}`,
-          background,
-        } as CSSProperties
-      }
-      className={cn(
+  return React.cloneElement(
+    Element,
+    {
+      style: {
+        "--border-radius": `${borderRadius}px`,
+        "--border-width": `${borderWidth}px`,
+        "--border-color": `${borderColor}`,
+        "--mask-size": `${size}px`,
+        "--spotlight-color": `${spotlightColor}`,
+        background,
+      } as CSSProperties,
+      className: cn(
         "relative w-full h-full rounded-[var(--border-radius)] overflow-hidden",
         isolated && [borderStyles, "after:opacity-0 after:hover:opacity-100"],
         isolated &&
@@ -239,17 +245,16 @@ const MagicCard = ({
         !isolated && [borderStyles, "after:opacity-[var(--opacity)]"],
         !isolated &&
           spotlight && [spotlightStyles, "before:opacity-[var(--opacity)]"]
+      ),
+    },
+    <div
+      className={cn(
+        "absolute inset-[var(--border-width)] rounded-[var(--border-radius)] z-[2]",
+        className
       )}
     >
-      <div
-        className={cn(
-          "absolute inset-[var(--border-width)] rounded-[var(--border-radius)] z-[2]",
-          className
-        )}
-      >
-        {children}
-      </div>
-    </Component>
+      {children}
+    </div>
   );
 };
 

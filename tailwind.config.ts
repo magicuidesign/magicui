@@ -1,5 +1,4 @@
 const colors = require("tailwindcss/colors");
-import { type Config } from "tailwindcss";
 
 /** @type {import('tailwindcss').Config} */
 
@@ -94,6 +93,7 @@ module.exports = {
           "0%": { transform: "rotateX(45deg) translateY(-50%)" },
           "100%": { transform: "rotateX(45deg) translateY(0)" },
         },
+
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
@@ -102,4 +102,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-} satisfies Config;
+};
