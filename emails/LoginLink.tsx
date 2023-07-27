@@ -41,7 +41,7 @@ const Email = ({ firstName, loginLink = "https://magicuikit.com" }: Props) => {
                 src={`https://magicuikit.com/icon.png`}
                 width="40"
                 height="37"
-                alt="Vercel"
+                alt="Magic UI"
                 className="my-0 mx-auto"
               />
             </Section>
