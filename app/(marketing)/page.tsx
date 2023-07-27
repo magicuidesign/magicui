@@ -30,7 +30,7 @@ const tweetUrls = [
   "https://twitter.com/beneverman/status/1681477151042797568",
 ].map((t) => t.split("/").slice(-1)[0]);
 
-export async function getTweets() {
+async function getTweets() {
   try {
     const tweets = await Promise.all(
       tweetUrls.map(async (id) => {

@@ -164,7 +164,13 @@ export const TweetCard = ({
   return <MyTweet tweet={data} components={components} {...props} />;
 };
 
-export const ServerTweetCard = ({ tweet, ...props }) => {
+export const ServerTweetCard = ({
+  tweet,
+  ...props
+}: {
+  tweet: any;
+  [key: string]: any;
+}) => {
   return <MyTweet tweet={tweet} {...props} />;
 };
 

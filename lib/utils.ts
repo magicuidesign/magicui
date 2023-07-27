@@ -12,6 +12,9 @@ export const truncate = (str: string | null, length: number) => {
   return `${str.slice(0, length - 3)}...`;
 };
 
+export const fetcher = (...args: Parameters<typeof fetch>) =>
+  fetch(...args).then((res) => res.json());
+
 /**
  * Capitalizes first letters of words in string.
  * @param {string} str String to be modified
