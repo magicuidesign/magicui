@@ -2,7 +2,7 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import LinearGradient from "@/registry/components/magicui/linear-gradient";
+import RadialGradient from "@/registry/components/magicui/radial-gradient";
 import { Twitter } from "lucide-react";
 import {
   enrichTweet,
@@ -19,7 +19,7 @@ export const truncate = (str: string | null, length: number) => {
 };
 
 export const TweetSkeleton = () => (
-  <div className="flex flex-col w-full h-full border rounded-lg p-4 gap-2">
+  <div className="flex flex-col w-full h-full border rounded-lg p-4 gap-2 min-w-[18rem] max-h-max">
     <div className="flex flex-row gap-2">
       <Skeleton className="h-10 w-10 rounded-full shrink-0" />
       <Skeleton className="h-10 w-full" />
@@ -35,7 +35,7 @@ export const TweetNotFound = (_props: { error?: any }) => (
 );
 
 export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="flex items-center justify-between tracking-tight">
+  <div className="flex justify-between tracking-tight flex-row">
     <div className="flex items-center space-x-2">
       <a href={tweet.user.url} target="_blank" rel="noreferrer">
         <img
@@ -51,7 +51,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center font-semibold"
+          className="flex items-center font-semibold whitespace-nowrap"
         >
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified || tweet.user.is_blue_verified ? (
@@ -80,14 +80,14 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     </div>
     <a href={tweet.url} target="_blank" rel="noreferrer">
       <span className="sr-only">Link to tweet</span>
-      <Twitter className="h-5 w-5 text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
+      <Twitter className="h-5 w-5 text-[#3BA9EE] transition-all ease-in-out hover:scale-105 items-start" />
     </a>
   </div>
 );
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
   <div className="break-words tracking-tighter leading-normal">
-    {tweet.entities.map((entity) => {
+    {tweet.entities.map((entity, idx) => {
       switch (entity.type) {
         case "url":
         case "symbol":
@@ -95,6 +95,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
         case "mention":
           return (
             <a
+              key={idx}
               href={entity.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -106,6 +107,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
         case "text":
           return (
             <span
+              key={idx}
               className="text-sm"
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
@@ -131,14 +133,14 @@ export const MyTweet = ({
   return (
     <div
       className={cn(
-        "backdrop-blur-md rounded-lg p-4 border relative gap-2 flex flex-col w-full h-full overflow-hidden",
+        "backdrop-blur-md rounded-lg p-4 border relative gap-2 flex flex-col w-full h-32 overflow-hidden max-h-max",
         className
       )}
       {...props}
     >
       <TweetHeader tweet={tweet} />
       <TweetBody tweet={tweet} />
-      <LinearGradient />
+      <RadialGradient from="rgba(120,119,198,0.2)" to="rgba(0,0,0,0.0)" />
     </div>
   );
 };
@@ -160,6 +162,10 @@ export const TweetCard = ({
   }
 
   return <MyTweet tweet={data} components={components} {...props} />;
+};
+
+export const ServerTweetCard = ({ tweet, ...props }) => {
+  return <MyTweet tweet={tweet} {...props} />;
 };
 
 export default TweetCard;

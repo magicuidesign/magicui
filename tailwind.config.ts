@@ -65,7 +65,7 @@ module.exports = {
         gradient: "gradient 8s linear infinite",
         meteor: "meteor 5s linear infinite",
         grid: "grid 15s linear infinite",
-        marquee: "marquee 20s linear infinite",
+        marquee: "marquee var(--duration) linear infinite",
       },
       keyframes: {
         "accordion-down": {
