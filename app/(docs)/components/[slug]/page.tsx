@@ -128,7 +128,7 @@ export default async function Component({ params }: Props) {
         <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <Link
-              href={`https://twitter.com/intent/tweet?text=${component.title}&url=https://magicuikit.com/components/${component.slugAsParams}&via=${component.author}`}
+              href={`https://twitter.com/intent/tweet?text=${component.title}&url=magicuikit.com/components/${component.slugAsParams}&via=${component.author}`}
               target="_blank"
               rel="noopener noreferrer"
             >

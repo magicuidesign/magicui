@@ -4,7 +4,8 @@ import DotPattern from "@/registry/components/magicui/dot-pattern";
 import FadeIn from "@/registry/components/magicui/fade-in";
 import { MagicCard } from "@/registry/components/magicui/magic-card";
 import Meteors from "@/registry/components/magicui/meteors";
-import { ExternalLinkIcon, Link } from "lucide-react";
+import { ExternalLinkIcon } from "lucide-react";
+import Link from "next/link";
 
 export const PriceCard = ({
   item,
@@ -29,9 +30,9 @@ export const PriceCard = ({
               ${item.price}
             </span>
           </div>
-          <span className="text-xl text-foreground/20 font-semibold">
+          {/* <span className="text-xl text-foreground/20 font-semibold">
             one-time payment
-          </span>
+          </span> */}
           <p className="text-foreground">{item.desc}</p>
           <Link
             href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
