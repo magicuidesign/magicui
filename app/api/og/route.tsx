@@ -84,7 +84,7 @@ export async function GET(req: Request) {
                 color: "transparent",
               }}
             >
-              magicuikit.com
+              Beautifully Crafted React + Tailwind CSS components
             </span>
           </h1>
         </div>
