@@ -135,7 +135,7 @@ export default async function Home() {
       <section className="relative flex flex-col gap-4 pb-8 pt-20 md:pb-12">
         <Marquee className="[--duration:120s] max-w-screen" pauseOnHover>
           {firstRow?.map((data, idx) => (
-            <FadeIn delay={0.2 + idx * 0.15}>
+            <FadeIn delay={0.06 + idx * 0.04}>
               <ServerTweetCard
                 tweet={data}
                 key={idx}
@@ -150,7 +150,7 @@ export default async function Home() {
           pauseOnHover
         >
           {secondRow?.map((data, idx) => (
-            <FadeIn delay={0.2 + idx * 0.15}>
+            <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)}>
               <ServerTweetCard
                 tweet={data}
                 key={idx}
