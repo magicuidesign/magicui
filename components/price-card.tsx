@@ -1,5 +1,8 @@
+"use client";
+
+import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, hasApplePay } from "@/lib/utils";
 import DotPattern from "@/registry/components/magicui/dot-pattern";
 import FadeIn from "@/registry/components/magicui/fade-in";
 import { MagicCard } from "@/registry/components/magicui/magic-card";
@@ -34,17 +37,32 @@ export const PriceCard = ({
             one-time payment
           </span> */}
           <p className="text-foreground">{item.desc}</p>
-          <Link
-            href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
-            target="_blank"
-            className={cn(
-              buttonVariants({ variant: "default", size: "lg" }),
-              "w-full"
-            )}
-          >
-            Get Lifetime Access
-            <ExternalLinkIcon className="ml-2 h-4 w-4" />
-          </Link>
+          {!hasApplePay() && (
+            <Link
+              href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+              target="_blank"
+              className={cn(
+                buttonVariants({ variant: "default", size: "lg" }),
+                "w-full"
+              )}
+            >
+              Get Lifetime Access
+              <ExternalLinkIcon className="ml-2 h-4 w-4" />
+            </Link>
+          )}
+          {hasApplePay() && (
+            <Link
+              href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+              target="_blank"
+              className={cn(
+                buttonVariants({ variant: "default", size: "lg" }),
+                "w-full text-xl gap-1"
+              )}
+            >
+              <Icons.apple className="ml-2 h-5 w-5" />
+              <p>Pay</p>
+            </Link>
+          )}
         </div>
         <ul className="space-y-3">
           <li className="pb-2 text-foreground font-medium">

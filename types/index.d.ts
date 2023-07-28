@@ -1,5 +1,11 @@
 import { Icons } from "@/components/icons";
 
+declare global {
+  interface Window {
+    ApplePaySession: any;
+  }
+}
+
 export interface NavItem {
   title: string;
   href?: string;
