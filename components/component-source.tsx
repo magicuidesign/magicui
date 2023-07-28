@@ -1,5 +1,3 @@
-"use client";
-
 import { CodeBlockWrapper } from "@/components/code-block-wrapper";
 import PreOrder from "@/components/preorder";
 import { cn, fetcher } from "@/lib/utils";

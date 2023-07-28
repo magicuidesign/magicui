@@ -229,7 +229,7 @@ const MagicCard = ({
       }
     >
       {/* Border */}
-      <div className="pointer-events-none absolute w-full h-full rounded-lg top-0 left-0 duration-500 transition-opacity bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] -z-30 bg-gray-800" />
+      <div className="pointer-events-none absolute w-full h-full rounded-lg top-0 left-0 duration-500 transition-opacity bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] -z-30 dark:bg-gray-700 bg-gray-300" />
 
       {children}
 

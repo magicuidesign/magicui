@@ -13,12 +13,12 @@ export function EmptyPlaceholder({
   return (
     <div
       className={cn(
-        "flex min-h-[400px] flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50",
+        "flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50",
         className
       )}
       {...props}
     >
-      <div className="mx-auto flex max-w-[420px] flex-col items-center justify-center text-center">
+      <div className="mx-auto flex flex-col items-center justify-center text-center">
         {children}
       </div>
     </div>

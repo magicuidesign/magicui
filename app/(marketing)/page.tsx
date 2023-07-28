@@ -130,7 +130,7 @@ export default async function Home() {
       </section>
 
       <section className="relative flex flex-col gap-4 pb-8 pt-20 md:pb-12">
-        <Marquee pauseOnHover className="[--duration:120s]">
+        <Marquee className="[--duration:120s] max-w-screen" pauseOnHover>
           {firstRow?.map((data, idx) => (
             <FadeIn delay={0.2 + idx * 0.15}>
               <ServerTweetCard
@@ -141,7 +141,11 @@ export default async function Home() {
             </FadeIn>
           ))}
         </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:120s]">
+        <Marquee
+          className="[--duration:120s] max-w-screen"
+          reverse
+          pauseOnHover
+        >
           {secondRow?.map((data, idx) => (
             <FadeIn delay={0.2 + idx * 0.15}>
               <ServerTweetCard
@@ -155,6 +159,19 @@ export default async function Home() {
         <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r dark:from-background from-white"></div>
         <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l dark:from-background from-white"></div>
       </section>
+      {/* <section
+        id="faq"
+        className="mx-auto max-w-container px-4 sm:px-6 lg:px-8"
+      >
+        <Accordion type="single" collapsible className="flex w-full flex-1">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Is it accessible?</AccordionTrigger>
+            <AccordionContent>
+              Yes. It adheres to the WAI-ARIA design pattern.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section> */}
     </>
   );
 }

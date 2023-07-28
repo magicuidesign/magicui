@@ -36,7 +36,7 @@ export default async function ComponentPage() {
             <FadeIn key={post._id} delay={index * 0.1}>
               <article
                 key={post._id}
-                className="group relative flex grow flex-col w-full h-full overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300"
+                className="group relative flex grow flex-col w-full h-full overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300 bg-background"
               >
                 {post.video && (
                   <div className="overflow-hidden">

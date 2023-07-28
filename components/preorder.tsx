@@ -1,12 +1,10 @@
-"use client";
-
-import { EmptyPlaceholder } from "@/components/empty-placeholder";
-import { buttonVariants } from "@/components/ui/button";
+import { PriceCard } from "@/components/price-card";
+import { plans } from "@/config/pricing";
+import { MagicContainer } from "@/registry/components/magicui/magic-card";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 
 export default function PreOrder() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const user = session?.user;
 
   const url = new URL(
@@ -15,28 +13,15 @@ export default function PreOrder() {
       : "https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
   );
 
-  if (user && user.email) {
+  if (status === "authenticated" && user && user.email) {
     url.searchParams.append("prefilled_email", user.email);
   }
 
   return (
-    <EmptyPlaceholder className="w-full">
-      <EmptyPlaceholder.Icon name="logo" />
-      <EmptyPlaceholder.Title className="lg:text-2xl">
-        Pre-order to get access Magic UI 🪄
-      </EmptyPlaceholder.Title>
-      <EmptyPlaceholder.Description>
-        You get the complete source code of all components and templates so you
-        can use them in your projects 🎉
-      </EmptyPlaceholder.Description>
-      <Link
-        href={url.toString()}
-        target="_blank"
-        rel="noreferrer"
-        className={buttonVariants({ variant: "default", size: "lg" })}
-      >
-        Pre-order
-      </Link>
-    </EmptyPlaceholder>
+    <MagicContainer className="not-prose w-full">
+      {plans.map((item, idx) => (
+        <PriceCard key={idx} item={item} />
+      ))}
+    </MagicContainer>
   );
 }
