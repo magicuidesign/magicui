@@ -113,7 +113,10 @@ export default async function Home() {
             delay={0.2}
           >
             <div className="flex flex-col md:flex-row gap-4">
-              <Link href="/buy" className={cn(buttonVariants({ size: "lg" }))}>
+              <Link
+                href="/pricing"
+                className={cn(buttonVariants({ size: "lg" }))}
+              >
                 Buy Now
               </Link>
               <Link
