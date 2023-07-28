@@ -1,7 +1,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { FadeIn } from "@/registry/components/magicui/fade-in";
+import FadeIn from "@/registry/components/magicui/fade-in";
 import Marquee from "@/registry/components/magicui/marquee";
 import { ServerTweetCard } from "@/registry/components/magicui/tweet-card";
 import { ChevronRight } from "lucide-react";
@@ -113,19 +113,16 @@ export default async function Home() {
             delay={0.2}
           >
             <div className="flex flex-col md:flex-row gap-4">
-              <Link
-                href="/components"
-                className={cn(buttonVariants({ size: "lg" }))}
-              >
-                Get Started
+              <Link href="/buy" className={cn(buttonVariants({ size: "lg" }))}>
+                Buy Now
               </Link>
               <Link
-                href="https://twitter.com/dillionverma"
+                href="/components"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" })
                 )}
               >
-                Follow along on Twitter
+                Get Started
               </Link>
             </div>
           </FadeIn>

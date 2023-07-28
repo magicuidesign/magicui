@@ -1,7 +1,7 @@
 "use client";
 
 import clsx, { ClassValue } from "clsx";
-import React, {
+import {
   CSSProperties,
   ReactElement,
   ReactNode,
@@ -202,58 +202,48 @@ interface MagicCardProps {
    * The background of the card
    * */
   background?: string;
+
+  [key: string]: any;
 }
 
 const MagicCard = ({
-  as: Element = <div />, // Default to 'div' if no component is passed
   className,
   children,
   size = 600,
-  borderColor = "rgba(120,119,198)",
   borderWidth = 1,
-  borderRadius = 16,
   spotlight = true,
-  spotlightColor = "rgba(120,119,198,0.08)",
+  spotlightColor = "rgba(120,119,198,0.1)",
   isolated = true,
-  background = `rgba(120,119,198, 0.2)`,
+  ...props
 }: MagicCardProps) => {
-  const spotlightStyles =
-    "before:pointer-events-none before:absolute before:w-full before:h-full before:rounded-[var(--border-radius)] before:top-0 before:left-0 before:duration-500 before:transition-opacity before:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] before:z-[3] before:blur-xs";
-
-  const borderStyles =
-    "after:pointer-events-none after:absolute after:w-full after:h-full after:rounded-[var(--border-radius)] after:top-0 after:left-0 after:duration-500 after:transition-opacity after:bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_40%)] after:z-[1]";
-
-  return React.cloneElement(
-    Element,
-    {
-      style: {
-        "--border-radius": `${borderRadius}px`,
-        "--border-width": `${borderWidth}px`,
-        "--border-color": `${borderColor}`,
-        "--mask-size": `${size}px`,
-        "--spotlight-color": `${spotlightColor}`,
-        background,
-      } as CSSProperties,
-      className: cn(
-        "relative w-full h-full rounded-[var(--border-radius)] overflow-hidden",
-        isolated && [borderStyles, "after:opacity-0 after:hover:opacity-100"],
-        isolated &&
-          spotlight && [
-            spotlightStyles,
-            "before:opacity-0 before:hover:opacity-100",
-          ],
-        !isolated && [borderStyles, "after:opacity-[var(--opacity)]"],
-        !isolated &&
-          spotlight && [spotlightStyles, "before:opacity-[var(--opacity)]"]
-      ),
-    },
+  return (
     <div
-      className={cn(
-        "absolute inset-[var(--border-width)] rounded-[var(--border-radius)] z-[2]",
-        className
-      )}
+      {...props}
+      className={cn("relative w-full h-full rounded-lg", className)}
+      style={
+        {
+          "--border-width": `${borderWidth}px`,
+          "--mask-size": `${size}px`,
+          "--spotlight-color": `${spotlightColor}`,
+        } as CSSProperties
+      }
     >
+      {/* Border */}
+      <div className="pointer-events-none absolute w-full h-full rounded-lg top-0 left-0 duration-500 transition-opacity bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] -z-30 bg-gray-800" />
+
       {children}
+
+      {/* Background */}
+      <div className={"absolute inset-[1px] rounded-lg -z-20 bg-background"} />
+
+      {/* Spotlight */}
+      {spotlight && (
+        <div
+          className={
+            "pointer-events-none absolute w-full h-full rounded-lg top-0 left-0 duration-500 transition-opacity bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] -z-10 blur-xs"
+          }
+        />
+      )}
     </div>
   );
 };

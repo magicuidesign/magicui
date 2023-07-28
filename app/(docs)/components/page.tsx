@@ -1,5 +1,5 @@
 import { constructMetadata } from "@/lib/utils";
-import { FadeIn } from "@/registry/components/magicui/fade-in";
+import FadeIn from "@/registry/components/magicui/fade-in";
 import { allComponents } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import Link from "next/link";

@@ -13,10 +13,10 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       href: "/components",
     },
-    // {
-    //   title: "Templates",
-    //   href: "/templates",
-    // },
+    {
+      title: "Buy",
+      href: "/buy",
+    },
   ],
   sidebarNav: [
     {
