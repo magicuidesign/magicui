@@ -4,7 +4,7 @@ import { absoluteUrl, constructMetadata } from "@/lib/utils";
 import FadeIn from "@/registry/components/magicui/fade-in";
 import { MagicContainer } from "@/registry/components/magicui/magic-card";
 
-const metadata = constructMetadata({
+export const metadata = constructMetadata({
   title: "Lifetime Access to Beautifully Crafted Tailwind CSS Components",
   description:
     "Get lifetime access to beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project. Get lifetime access to all components and templates",
