@@ -2,7 +2,6 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import RadialGradient from "@/registry/components/magicui/radial-gradient";
 import { Twitter } from "lucide-react";
 import {
   enrichTweet,
@@ -140,7 +139,6 @@ export const MyTweet = ({
     >
       <TweetHeader tweet={tweet} />
       <TweetBody tweet={tweet} />
-      <RadialGradient from="rgba(120,119,198,0.2)" to="rgba(0,0,0,0.0)" />
     </div>
   );
 };
