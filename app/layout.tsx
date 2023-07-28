@@ -30,7 +30,7 @@ export default function RootLayout({
         )}
       >
         <SessionProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             {children}
             <Toaster />
             <Analytics />
