@@ -139,7 +139,7 @@ export default async function Home() {
               <ServerTweetCard
                 tweet={data}
                 key={idx}
-                className="w-72 min-w-[18rem]"
+                className="w-72 min-w-[18rem] h-36"
               />
             </FadeIn>
           ))}
@@ -150,7 +150,7 @@ export default async function Home() {
               <ServerTweetCard
                 tweet={data}
                 key={idx}
-                className="w-72 min-w-[18rem]"
+                className="w-72 min-w-[18rem] h-36"
               />
             </FadeIn>
           ))}
