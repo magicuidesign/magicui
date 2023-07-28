@@ -17,7 +17,10 @@ export function ComponentSource({
   ...props
 }: ComponentSourceProps) {
   const { data: session, status } = useSession();
-  const { data, isLoading } = useSWR("/api/me", fetcher);
+  const { data, isLoading } = useSWR(
+    status === "authenticated" && "/api/me",
+    fetcher
+  );
 
   if (status === "loading") return null;
   if (status === "unauthenticated") return <PreOrder />;
