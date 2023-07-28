@@ -36,6 +36,7 @@ export const PriceCard = ({
           <p className="text-foreground">{item.desc}</p>
           <Link
             href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+            target="_blank"
             className={cn(
               buttonVariants({ variant: "default", size: "lg" }),
               "w-full"
