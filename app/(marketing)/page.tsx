@@ -58,11 +58,9 @@ export default async function Home() {
             <Link
               href="/components/marquee"
               className={cn(
-                "flex justify-center items-center flex-row",
+                "relative flex justify-center items-center flex-row",
                 "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
-                "transition-shadow hover:shadow-[inset_0_-5px_10px_#8fdfff3f] ease-out duration-500",
-                "relative after:block after:w-full after:h-full after:absolute after:inset-0 after:p-[1px] after:[border-radius:inherit] after:bg-gradient-to-r after:from-[#ffaa40]/50 after:via-[#9c40ff]/50 after:to-[#ffaa40]/50 after:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] after:content-[''] after:[mask-composite:xor]",
-                "after:animate-gradient after:bg-[length:var(--bg-size)_100%]"
+                "transition-shadow hover:shadow-[inset_0_-5px_10px_#8fdfff3f] ease-out duration-500"
               )}
               style={
                 {
@@ -70,16 +68,7 @@ export default async function Home() {
                 } as CSSProperties
               }
             >
-              {/* <Twitter className="h-4 w-4 mr-2 inline-block" />
-              <div
-                className={cn(
-                  `bg-clip-text text-transparent bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] animate-gradient bg-[length:var(--bg-size)_100%]`
-                )}
-              >
-                Follow along on Twitter
-              </div> */}
               🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-              {/* <span className="sm:hidden">Style, a new CLI and more.</span> */}
               <span
                 className={cn(
                   `bg-clip-text text-transparent bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] animate-gradient bg-[length:var(--bg-size)_100%]`,
@@ -89,6 +78,7 @@ export default async function Home() {
                 Introducing Marquee
               </span>
               <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
+              <div className="block w-full h-full absolute inset-0 p-[1px] [border-radius:inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] [mask-composite:xor] animate-gradient bg-[length:var(--bg-size)_100%]" />
             </Link>
           </FadeIn>
           <FadeIn
