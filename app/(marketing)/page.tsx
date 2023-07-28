@@ -155,8 +155,8 @@ export default async function Home() {
             </FadeIn>
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r dark:from-black from-white"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l dark:from-black from-white"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r dark:from-background from-white"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l dark:from-background from-white"></div>
       </section>
     </>
   );
