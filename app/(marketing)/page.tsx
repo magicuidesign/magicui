@@ -22,6 +22,7 @@ const tweetUrls = [
   "https://twitter.com/yazinsai/status/1668617800934641672",
   "https://twitter.com/wes_walke/status/1668612106696941570",
   "https://twitter.com/DevAlien/status/1668618017528479745",
+  "https://twitter.com/fredmaiaarantes/status/1684676668445622272",
   "https://twitter.com/DesignSumu/status/1668559314272022528",
   "https://twitter.com/commandodev/status/1668640878225764354",
   "https://twitter.com/SandBoxSo/status/1668570645741948930",
