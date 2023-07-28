@@ -20,7 +20,7 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
 
       <div
         className={cn(
-          `absolute inset-0 -z-10 h-full w-full [background-size:16px_16px]`,
+          `absolute inset-0 -z-50 h-full w-full [background-size:16px_16px]`,
           `bg-[radial-gradient(#00000055_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)]`
         )}
         style={

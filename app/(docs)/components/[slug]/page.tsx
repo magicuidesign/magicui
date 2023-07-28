@@ -46,11 +46,11 @@ export async function generateMetadata({
   } = component;
 
   return constructMetadata({
-    title: `${title} - Magic UI`,
+    title: `${title} | Magic UI`,
     description,
     image,
     openGraph: {
-      title: `${title} - Magic UI`,
+      title: `${title} | Magic UI`,
       description,
       type: "article",
       publishedTime,

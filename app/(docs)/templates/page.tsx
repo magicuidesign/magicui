@@ -4,7 +4,7 @@ import { FadeIn } from "@/registry/components/magicui/fade-in";
 import Link from "next/link";
 
 export const metadata = constructMetadata({
-  title: "Templates - Magic UI",
+  title: "Templates | Magic UI",
   description: "Beautiful templates to make your landing page look stunning.",
 });
 
