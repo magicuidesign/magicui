@@ -13,10 +13,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = constructMetadata({
-  title:
-    // 30 - 65 chars
-    "Lifetime Access to Beautifully Crafted Tailwind CSS Components",
-  // "Lifetime Access to Beautifully Crafted React + Tailwind CSS + Framer Motion Components and Templates",
+  title: "Lifetime Access to Beautifully Crafted Tailwind CSS Components",
   description:
     "Get lifetime access to beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project. Get lifetime access to all components and templates",
   image: absoluteUrl(`/api/og`),
