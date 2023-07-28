@@ -7,6 +7,7 @@ export function Analytics() {
     <>
       <Script
         async
+        defer
         src="https://www.googletagmanager.com/gtag/js?id=G-4CVHZX68BT"
       ></Script>
       <Script id="gtag">
