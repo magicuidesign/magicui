@@ -1,3 +1,5 @@
+"use client";
+
 import { PriceCard } from "@/components/price-card";
 import { plans } from "@/config/pricing";
 import { MagicContainer } from "@/registry/components/magicui/magic-card";

@@ -10,7 +10,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "center" | "start" | "end";
 }
 
-export async function ComponentPreview({
+export function ComponentPreview({
   name,
   children,
   className,

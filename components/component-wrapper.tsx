@@ -12,7 +12,7 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
   return (
     <div
       className={cn(
-        "not-prose relative flex max-w-[65ch] flex-col items-center justify-center rounded-xl border p-10 md:p-10",
+        "not-prose relative flex max-w-[65ch] flex-col items-center justify-center rounded-xl border p-8 md:p-20",
         className,
       )}
     >
@@ -25,7 +25,7 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
         )}
         style={
           {
-            "--mask-offset": "30px",
+            "--mask-offset": "60px",
             mask: mask,
             WebkitMask: mask,
             maskComposite: "intersect",
