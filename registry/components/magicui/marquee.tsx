@@ -20,7 +20,7 @@ const Marquee = ({
     <div
       {...props}
       className={cn(
-        "flex w-full overflow-hidden [--duration:20s] [--gap:1rem]",
+        "flex w-full overflow-hidden [--duration:40s] [--gap:1rem]",
         className,
       )}
     >
