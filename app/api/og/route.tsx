@@ -4,11 +4,11 @@ import { ImageResponse } from "next/server";
 export const runtime = "edge";
 
 const interSemiBold = fetch(
-  new URL("../../../assets/fonts/Inter-SemiBold.ttf", import.meta.url)
+  new URL("../../../assets/fonts/Inter-SemiBold.ttf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const image = fetch(
-  new URL("../../../assets/images/og-bg.png", import.meta.url)
+  new URL("../../../assets/images/og-bg.png", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export async function GET(req: Request) {
@@ -100,7 +100,7 @@ export async function GET(req: Request) {
             weight: 400,
           },
         ],
-      }
+      },
     );
   } catch (e: any) {
     console.log(`${e.message}`);

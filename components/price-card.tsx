@@ -24,12 +24,12 @@ export const PriceCard = ({
         className="relative flex flex-col gap-8 overflow-hidden p-8"
       >
         <div className="flex flex-col space-y-4">
-          <span className="text-foreground font-medium">{item.name}</span>
+          <span className="font-medium text-foreground">{item.name}</span>
           <div className="flex flex-row gap-2">
-            <span className="text-7xl text-foreground font-semibold">
+            <span className="text-7xl font-semibold text-foreground">
               ${item.discountPrice}
             </span>
-            <span className="line-through text-4xl text-gray-700 font-normal">
+            <span className="text-4xl font-normal text-gray-700 line-through">
               ${item.price}
             </span>
           </div>
@@ -43,7 +43,7 @@ export const PriceCard = ({
               target="_blank"
               className={cn(
                 buttonVariants({ variant: "default", size: "lg" }),
-                "w-full"
+                "w-full",
               )}
             >
               Get Lifetime Access
@@ -56,7 +56,7 @@ export const PriceCard = ({
               target="_blank"
               className={cn(
                 buttonVariants({ variant: "default", size: "lg" }),
-                "w-full text-xl gap-1"
+                "w-full gap-1 text-xl",
               )}
             >
               <Icons.apple className="ml-2 h-5 w-5" />
@@ -65,13 +65,13 @@ export const PriceCard = ({
           )}
         </div>
         <ul className="space-y-3">
-          <li className="pb-2 text-foreground font-medium">
+          <li className="pb-2 font-medium text-foreground">
             <p>Features</p>
           </li>
           {item.features.map((featureItem: any, idx: any) => (
             <li
               key={idx}
-              className="flex items-center gap-5 text-foreground text-sm"
+              className="flex items-center gap-5 text-sm text-foreground"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,8 +100,8 @@ export const PriceCard = ({
           cy={1}
           cr={1}
           className={cn(
-            "absolute w-full h-full inset-0 fill-white/20",
-            "[mask-image:linear-gradient(to_top_left,white,transparent,transparent)]"
+            "absolute inset-0 h-full w-full fill-white/20",
+            "[mask-image:linear-gradient(to_top_left,white,transparent,transparent)]",
           )}
         />
       </MagicCard>

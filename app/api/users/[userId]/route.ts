@@ -12,7 +12,7 @@ const routeContextSchema = z.object({
 
 export async function PATCH(
   req: Request,
-  context: z.infer<typeof routeContextSchema>
+  context: z.infer<typeof routeContextSchema>,
 ) {
   try {
     // Validate the route context.

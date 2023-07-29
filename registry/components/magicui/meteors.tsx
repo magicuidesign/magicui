@@ -8,7 +8,7 @@ interface MeteorsProps {
 }
 export const Meteors = ({ number = 20 }: MeteorsProps) => {
   const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>(
-    []
+    [],
   );
 
   useEffect(() => {
@@ -28,12 +28,12 @@ export const Meteors = ({ number = 20 }: MeteorsProps) => {
         <span
           key={idx}
           className={clsx(
-            "pointer-events-none absolute top-1/2 left-1/2 h-0.5 w-0.5 rotate-[215deg] animate-meteor rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10] -z-10"
+            "pointer-events-none absolute left-1/2 top-1/2 -z-10 h-0.5 w-0.5 rotate-[215deg] animate-meteor rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10]",
           )}
           style={style}
         >
           {/* Meteor Tail */}
-          <div className="pointer-events-none -z-10 absolute w-[50px] h-[1px] bg-gradient-to-r from-slate-500 to-transparent top-1/2 -translate-y-1/2" />
+          <div className="pointer-events-none absolute top-1/2 -z-10 h-[1px] w-[50px] -translate-y-1/2 bg-gradient-to-r from-slate-500 to-transparent" />
         </span>
       ))}
     </>

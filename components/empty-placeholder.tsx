@@ -14,7 +14,7 @@ export function EmptyPlaceholder({
     <div
       className={cn(
         "flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -71,7 +71,7 @@ EmptyPlaceholder.Description = function EmptyPlaceholderDescription({
     <p
       className={cn(
         "mb-8 mt-2 text-center text-sm font-normal leading-6 text-muted-foreground",
-        className
+        className,
       )}
       {...props}
     />

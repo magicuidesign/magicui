@@ -10,7 +10,7 @@ export default function PreOrder() {
   const url = new URL(
     process.env.NODE_ENV === "development"
       ? "https://buy.stripe.com/test_bIY7uvbbzecfcw09AB"
-      : "https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+      : "https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD",
   );
 
   if (status === "authenticated" && user && user.email) {

@@ -13,7 +13,7 @@ export const registrySchema = z.record(
       "components:example",
     ]),
     component: z.function().args(z.any()).returns(z.any()).optional(),
-  })
+  }),
 );
 
 export type Registry = z.infer<typeof registrySchema>;

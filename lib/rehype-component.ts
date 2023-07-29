@@ -61,7 +61,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            })
+            }),
           );
           // }
         } catch (error) {
@@ -115,7 +115,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            })
+            }),
           );
           // }
         } catch (error) {

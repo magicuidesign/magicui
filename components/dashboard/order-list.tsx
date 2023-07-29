@@ -61,7 +61,7 @@ export function OrderList({ payments, className, ...props }: OrderListProps) {
                     variant={"outline"}
                     className={cn(
                       payment.status === "succeeded" && " bg-green-400/40",
-                      payment.status === "failed" && " bg-red-400/40"
+                      payment.status === "failed" && " bg-red-400/40",
                     )}
                   >
                     {payment.status}
@@ -78,7 +78,7 @@ export function OrderList({ payments, className, ...props }: OrderListProps) {
                     <Link
                       className={cn(
                         buttonVariants({ size: "sm", variant: "default" }),
-                        "text-sm"
+                        "text-sm",
                       )}
                       href={payment.receiptUrl || ""}
                     >

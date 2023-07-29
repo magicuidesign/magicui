@@ -43,7 +43,7 @@ const components = {
     <th
       className={cn(
         "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
+        className,
       )}
       {...props}
     />
@@ -51,8 +51,8 @@ const components = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right whitespace-pre",
-        className
+        "whitespace-pre border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        className,
       )}
       {...props}
     />
@@ -61,7 +61,7 @@ const components = {
     <div
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -95,7 +95,7 @@ const components = {
         <pre
           className={cn(
             "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
-            className
+            className,
           )}
           {...props}
         />
@@ -132,7 +132,7 @@ export function Mdx({ code }: MDXProps) {
   return (
     <article
       className={cn(
-        `prose dark:prose-invert prose-gray leading-tighter tracking-tighter`,
+        `leading-tighter prose prose-gray tracking-tighter dark:prose-invert`,
         // `md:prose-lg lg:prose-xl`,
 
         // no underline on links
@@ -140,7 +140,7 @@ export function Mdx({ code }: MDXProps) {
         // `prose-a:transition-colors prose-a:duration-200 prose-a:ease-out`,
         // `dark:prose-a:text-gray-200 prose-a:underline-offset-4 dark:hover:prose-a:text-gray-700 prose-a:font-semibold hover:prose-a:text-gray-400`,
         // `prose-pre:bg-gray-900 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-pre:border prose-pre:px-0 `,
-        `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:bg-gray-900 prose-pre:py-4 prose-pre:dark:bg-gray-900 prose-pre:px-0 prose-pre:text-xs md:prose-pre:text-sm prose-pre:tracking-tighter`
+        `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:bg-gray-900 prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter prose-pre:dark:bg-gray-900 md:prose-pre:text-sm`,
       )}
     >
       {/* @ts-ignore */}

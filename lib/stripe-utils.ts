@@ -45,7 +45,7 @@ export async function getUserPayments(userId: string): Promise<UserPayments> {
 
 export const upsertPayment = async (
   paymentIntent: string,
-  customerId: string
+  customerId: string,
 ) => {
   const p = await stripe.paymentIntents.retrieve(paymentIntent);
 

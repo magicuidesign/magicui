@@ -32,7 +32,7 @@ const RetroGrid = ({ className }: { className?: string }) => {
     <div className={cn("overflow-hidden", className)}>
       <div style={gridStyle}>
         <div
-          className="w-screen h-screen animate-grid"
+          className="h-screen w-screen animate-grid"
           style={gridLinesStyle}
         />
       </div>

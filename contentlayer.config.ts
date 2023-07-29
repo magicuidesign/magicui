@@ -45,7 +45,7 @@ const computedFields = {
           name: doc.author,
           url: `https://twitter.com/${doc.author}`,
         },
-      } as WithContext<BlogPosting>),
+      }) as WithContext<BlogPosting>,
   },
 };
 

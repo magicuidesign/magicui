@@ -9,10 +9,10 @@ export default function NotFound() {
   const router = useRouter();
   return (
     <section>
-      <div className="container flex items-center min-h-[calc(100vh-8rem)] px-6 py-12 mx-auto">
-        <div className="flex flex-col items-center max-w-sm mx-auto text-center">
-          <p className="p-3 text-sm font-medium rounded-full bg-blue-50 dark:bg-gray-800">
-            <Icons.warning className="w-6 h-6" />
+      <div className="container mx-auto flex min-h-[calc(100vh-8rem)] items-center px-6 py-12">
+        <div className="mx-auto flex max-w-sm flex-col items-center text-center">
+          <p className="rounded-full bg-blue-50 p-3 text-sm font-medium dark:bg-gray-800">
+            <Icons.warning className="h-6 w-6" />
           </p>
           <h1 className="mt-3 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
             Page not found
@@ -21,12 +21,12 @@ export default function NotFound() {
             The page you are looking for doesn&apos;t exist.
           </p>
 
-          <div className="flex items-center w-full mt-6 gap-x-3 shrink-0 sm:w-auto group">
+          <div className="group mt-6 flex w-full shrink-0 items-center gap-x-3 sm:w-auto">
             <Button
               onClick={() => router.back()}
               className={buttonVariants({ variant: "secondary" })}
             >
-              <Icons.chevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+              <Icons.chevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
               <span>Go back</span>
             </Button>
 

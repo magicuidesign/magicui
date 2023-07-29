@@ -20,12 +20,12 @@ const Marquee = ({
     <div
       {...props}
       className={cn(
-        "flex w-full overflow-hidden [--gap:1rem] [--duration:20s]",
-        className
+        "flex w-full overflow-hidden [--duration:20s] [--gap:1rem]",
+        className,
       )}
     >
       <div
-        className={cn("animate-marquee flex items-stretch w-max gap-[--gap]", {
+        className={cn("flex w-max animate-marquee items-stretch gap-[--gap]", {
           "[animation-direction:reverse]": reverse,
           "hover:[animation-play-state:paused]": pauseOnHover,
         })}

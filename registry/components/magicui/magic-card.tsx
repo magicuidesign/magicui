@@ -57,7 +57,9 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
     init();
     containerRef.current &&
       setBoxes(
-        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
+        Array.from(containerRef.current.children).map(
+          (el) => el as HTMLElement,
+        ),
       );
   }, []);
 
@@ -219,7 +221,7 @@ const MagicCard = ({
   return (
     <div
       {...props}
-      className={cn("relative w-full h-full rounded-lg", className)}
+      className={cn("relative h-full w-full rounded-lg", className)}
       style={
         {
           "--border-width": `${borderWidth}px`,
@@ -229,18 +231,18 @@ const MagicCard = ({
       }
     >
       {/* Border */}
-      <div className="pointer-events-none absolute w-full h-full rounded-lg top-0 left-0 duration-500 transition-opacity bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] -z-30 dark:bg-gray-700 bg-gray-300" />
+      <div className="pointer-events-none absolute left-0 top-0 -z-30 h-full w-full rounded-lg bg-gray-300 bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] transition-opacity duration-500 dark:bg-gray-700" />
 
       {children}
 
       {/* Background */}
-      <div className={"absolute inset-[1px] rounded-lg -z-20 bg-background"} />
+      <div className={"absolute inset-[1px] -z-20 rounded-lg bg-background"} />
 
       {/* Spotlight */}
       {spotlight && (
         <div
           className={
-            "pointer-events-none absolute w-full h-full rounded-lg top-0 left-0 duration-500 transition-opacity bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] -z-10 blur-xs"
+            "blur-xs pointer-events-none absolute left-0 top-0 -z-10 h-full w-full rounded-lg bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] transition-opacity duration-500"
           }
         />
       )}

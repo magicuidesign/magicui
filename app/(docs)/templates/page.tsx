@@ -15,7 +15,7 @@ export default async function TemplatePage() {
     <div className="container max-w-4xl py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
+          <h1 className="font-heading inline-block text-4xl tracking-tight lg:text-5xl">
             Templates
           </h1>
           <p className="text-xl text-muted-foreground">
@@ -30,7 +30,7 @@ export default async function TemplatePage() {
             <FadeIn key={post._id} delay={index * 0.1}>
               <article
                 key={post._id}
-                className="group relative space-y-2 flex grow flex-col overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300"
+                className="group relative flex grow flex-col space-y-2 overflow-hidden rounded-xl border transition-all duration-300 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700"
               >
                 {post.image && (
                   <video

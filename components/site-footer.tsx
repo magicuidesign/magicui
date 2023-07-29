@@ -4,7 +4,7 @@ export function SiteFooter() {
   return (
     <footer className="relative py-6 md:px-8 md:py-0">
       <div
-        className="absolute w-full h-px top-0"
+        className="absolute top-0 h-px w-full"
         style={{
           background:
             "radial-gradient(50% 100% at 50% 100%,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 100%)",

@@ -23,7 +23,7 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: allComponents
         .filter(
-          (post) => post.date <= new Date().toISOString() && post.published
+          (post) => post.date <= new Date().toISOString() && post.published,
         )
         .sort((a, b) => {
           return compareDesc(new Date(a.date), new Date(b.date));

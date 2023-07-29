@@ -51,7 +51,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/magic-card-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/magic-card-demo")
+      () => import("@/registry/components/example/magic-card-demo"),
     ),
   },
   "linear-gradient-demo": {
@@ -59,7 +59,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/linear-gradient-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/linear-gradient-demo")
+      () => import("@/registry/components/example/linear-gradient-demo"),
     ),
   },
   "radial-gradient-demo": {
@@ -67,7 +67,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/radial-gradient-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/radial-gradient-demo")
+      () => import("@/registry/components/example/radial-gradient-demo"),
     ),
   },
   "meteors-demo": {
@@ -75,7 +75,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/meteors-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/meteors-demo")
+      () => import("@/registry/components/example/meteors-demo"),
     ),
   },
   "grid-pattern-demo": {
@@ -83,7 +83,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/grid-pattern-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/grid-pattern-demo")
+      () => import("@/registry/components/example/grid-pattern-demo"),
     ),
   },
   "grid-pattern-linear-gradient": {
@@ -91,7 +91,8 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/grid-pattern-linear-gradient.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/grid-pattern-linear-gradient")
+      () =>
+        import("@/registry/components/example/grid-pattern-linear-gradient"),
     ),
   },
   "grid-pattern-dashed": {
@@ -99,7 +100,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/grid-pattern-dashed.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/grid-pattern-dashed")
+      () => import("@/registry/components/example/grid-pattern-dashed"),
     ),
   },
   "dot-pattern-demo": {
@@ -107,7 +108,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/dot-pattern-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/dot-pattern-demo")
+      () => import("@/registry/components/example/dot-pattern-demo"),
     ),
   },
   "dot-pattern-linear-gradient": {
@@ -115,7 +116,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/dot-pattern-linear-gradient.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/dot-pattern-linear-gradient")
+      () => import("@/registry/components/example/dot-pattern-linear-gradient"),
     ),
   },
 
@@ -124,7 +125,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/marquee-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/marquee-demo")
+      () => import("@/registry/components/example/marquee-demo"),
     ),
   },
   "marquee-logos": {
@@ -132,7 +133,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/marquee-logos.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/marquee-logos")
+      () => import("@/registry/components/example/marquee-logos"),
     ),
   },
   "tweet-card-demo": {
@@ -140,7 +141,7 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/tweet-card-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/tweet-card-demo")
+      () => import("@/registry/components/example/tweet-card-demo"),
     ),
   },
 };

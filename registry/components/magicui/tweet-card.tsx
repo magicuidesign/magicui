@@ -18,9 +18,9 @@ export const truncate = (str: string | null, length: number) => {
 };
 
 export const TweetSkeleton = () => (
-  <div className="flex flex-col w-full h-full border rounded-lg p-4 gap-2 min-w-[18rem] max-h-max">
+  <div className="flex h-full max-h-max w-full min-w-[18rem] flex-col gap-2 rounded-lg border p-4">
     <div className="flex flex-row gap-2">
-      <Skeleton className="h-10 w-10 rounded-full shrink-0" />
+      <Skeleton className="h-10 w-10 shrink-0 rounded-full" />
       <Skeleton className="h-10 w-full" />
     </div>
     <Skeleton className="h-20 w-full" />
@@ -28,13 +28,13 @@ export const TweetSkeleton = () => (
 );
 
 export const TweetNotFound = (_props: { error?: any }) => (
-  <div className="flex flex-col w-full h-full border rounded-lg p-4 gap-2 items-center">
+  <div className="flex h-full w-full flex-col items-center gap-2 rounded-lg border p-4">
     <h3>Tweet not found</h3>
   </div>
 );
 
 export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="flex justify-between tracking-tight flex-row">
+  <div className="flex flex-row justify-between tracking-tight">
     <div className="flex items-center space-x-2">
       <a href={tweet.user.url} target="_blank" rel="noreferrer">
         <img
@@ -50,7 +50,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center font-semibold whitespace-nowrap"
+          className="flex items-center whitespace-nowrap font-semibold"
         >
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified || tweet.user.is_blue_verified ? (
@@ -79,13 +79,13 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     </div>
     <a href={tweet.url} target="_blank" rel="noreferrer">
       <span className="sr-only">Link to tweet</span>
-      <Twitter className="h-5 w-5 text-[#3BA9EE] transition-all ease-in-out hover:scale-105 items-start" />
+      <Twitter className="h-5 w-5 items-start text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
     </a>
   </div>
 );
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="break-words tracking-tighter leading-normal">
+  <div className="break-words leading-normal tracking-tighter">
     {tweet.entities.map((entity, idx) => {
       switch (entity.type) {
         case "url":
@@ -132,8 +132,8 @@ export const MyTweet = ({
   return (
     <div
       className={cn(
-        "backdrop-blur-md rounded-lg p-4 border relative gap-2 flex flex-col w-full h-32 overflow-hidden max-h-max",
-        className
+        "relative flex h-32 max-h-max w-full flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
+        className,
       )}
       {...props}
     >

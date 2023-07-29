@@ -14,7 +14,7 @@ export const metadata = constructMetadata({
 export default function Buy() {
   return (
     <section className="py-14">
-      <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <FadeIn>
             <h4 className="text-xl font-bold tracking-tight text-foreground">
@@ -34,7 +34,7 @@ export default function Buy() {
             </p>
           </FadeIn>
         </div>
-        <MagicContainer className="mt-16 w-full max-w-[400px] mx-auto">
+        <MagicContainer className="mx-auto mt-16 w-full max-w-[400px]">
           {plans.map((item, idx) => (
             <PriceCard key={idx} item={item} />
           ))}

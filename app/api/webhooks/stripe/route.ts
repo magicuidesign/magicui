@@ -71,7 +71,7 @@ export async function POST(req: Request) {
             }
             const customer = await upsertCustomer(
               session.customer_details.email,
-              session.customer_details.name || ""
+              session.customer_details.name || "",
             );
             await upsertPayment(session.payment_intent as string, customer.id);
 

@@ -17,7 +17,7 @@ export function ComponentSource({
   const { data: session, status } = useSession();
   const { data, isLoading } = useSWR(
     status === "authenticated" && "/api/me",
-    fetcher
+    fetcher,
   );
 
   if (status === "loading") return null;

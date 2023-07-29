@@ -21,7 +21,7 @@ export default async function ComponentPage() {
     <div className="container max-w-4xl py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-medium text-4xl lg:text-5xl">
+          <h1 className="inline-block text-4xl font-medium lg:text-5xl">
             Components
           </h1>
           <p className="text-xl text-muted-foreground">
@@ -36,7 +36,7 @@ export default async function ComponentPage() {
             <FadeIn key={post._id} delay={index * 0.1}>
               <article
                 key={post._id}
-                className="group relative flex grow flex-col w-full h-full overflow-hidden rounded-xl border hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 transition-all duration-300 bg-background"
+                className="group relative flex h-full w-full grow flex-col overflow-hidden rounded-xl border bg-background transition-all duration-300 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700"
               >
                 {post.video && (
                   <div className="overflow-hidden">
@@ -50,7 +50,7 @@ export default async function ComponentPage() {
                     />
                   </div>
                 )}
-                <div className="flex flex-1 justify-end flex-col p-3">
+                <div className="flex flex-1 flex-col justify-end p-3">
                   <h2>{post.title}</h2>
                   {/* {post.date && (
                     <p className="text-sm text-gray-500">

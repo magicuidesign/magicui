@@ -31,7 +31,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata | undefined> {
   const component = allComponents.find(
-    (component) => component.slugAsParams === params.slug
+    (component) => component.slugAsParams === params.slug,
   );
   if (!component) {
     return;
@@ -84,11 +84,11 @@ export default async function Component({ params }: Props) {
   const { payments } = await getUserPayments(user?.id!);
 
   const paid = payments.some(
-    (payment: Payment) => payment.status === "succeeded"
+    (payment: Payment) => payment.status === "succeeded",
   );
 
   const component = allComponents.find(
-    (component) => component.slugAsParams === params.slug
+    (component) => component.slugAsParams === params.slug,
   );
   if (!component) {
     notFound();
@@ -152,7 +152,7 @@ export default async function Component({ params }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col pt-8 gap-4">
+        <div className="flex flex-col gap-4 pt-8">
           {/* {component.video && (
             <div className="flex md:hidden overflow-hidden relative rounded-xl border dark:border-slate-800 md:p-8 justify-center items-center flex-col max-w-[65ch]">
               <video

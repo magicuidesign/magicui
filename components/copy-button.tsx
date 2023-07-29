@@ -54,7 +54,7 @@ export function CopyButton({
       variant="ghost"
       className={cn(
         "relative z-10 h-6 w-6 text-zinc-50 hover:bg-background hover:text-zinc-50",
-        className
+        className,
       )}
       onClick={() => {
         copyToClipboardWithMeta(
@@ -66,7 +66,7 @@ export function CopyButton({
                   code: value,
                 },
               }
-            : undefined
+            : undefined,
         );
         setHasCopied(true);
       }}
@@ -115,7 +115,7 @@ export function CopyWithClassNames({
           variant="ghost"
           className={cn(
             "relative z-10 h-6 w-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
-            className
+            className,
           )}
         >
           {hasCopied ? (

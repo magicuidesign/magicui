@@ -34,31 +34,31 @@ const Email = ({ firstName, loginLink = "https://magicuikit.com" }: Props) => {
       </Head>
       <Preview>{previewText}</Preview>
       <Tailwind>
-        <Body className="bg-white my-auto mx-auto font-sans">
-          <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px] max-w-[465px]">
+        <Body className="mx-auto my-auto bg-white font-sans">
+          <Container className="mx-auto my-[40px] w-[465px] max-w-[465px] rounded border border-solid border-[#eaeaea] p-[20px]">
             <Section className="mt-[32px]">
               <Img
                 src={`https://magicuikit.com/icon.png`}
                 width="40"
                 height="37"
                 alt="Magic UI"
-                className="my-0 mx-auto"
+                className="mx-auto my-0"
               />
             </Section>
-            <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
+            <Heading className="mx-0 my-[30px] p-0 text-center text-[24px] font-normal text-black">
               Welcome to <strong>Magic UI</strong> 🎉
             </Heading>
             {/* <Text className="text-black text-[14px] leading-[24px]">
               {firstName && `Hello ${firstName} 👋`}
               {!firstName && `Hello 👋`}
             </Text> */}
-            <Text className="text-black text-[14px] leading-[24px]">
+            <Text className="text-[14px] leading-[24px] text-black">
               Click the link below to login to your account.
             </Text>
 
-            <Section className="text-center mt-[20px] mb-[20px]">
+            <Section className="mb-[20px] mt-[20px] text-center">
               <Button
-                className="bg-[#000000] rounded text-white text-[12px] font-semibold no-underline text-center px-5 py-3"
+                className="rounded bg-[#000000] px-5 py-3 text-center text-[12px] font-semibold text-white no-underline"
                 href={loginLink}
               >
                 Get Started
@@ -71,8 +71,8 @@ const Email = ({ firstName, loginLink = "https://magicuikit.com" }: Props) => {
                 {loginLink}
               </Link>
             </Text> */}
-            <Hr className="border-[#eaeaea] my-[26px] mx-0 w-full" />
-            <Text className="text-[#666666] text-[12px] leading-[24px]">
+            <Hr className="mx-0 my-[26px] w-full border-[#eaeaea]" />
+            <Text className="text-[12px] leading-[24px] text-[#666666]">
               If you were not expecting this invitation, you can ignore this
               email.
             </Text>

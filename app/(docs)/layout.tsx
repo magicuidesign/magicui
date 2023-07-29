@@ -15,13 +15,13 @@ export default async function MarketingLayout({
   const user = await getCurrentUser();
 
   return (
-    <div className="flex min-h-screen flex-col relative">
+    <div className="relative flex min-h-screen flex-col">
       <SiteHeader user={user} />
       <main className="flex-1">{children}</main>
       <SiteFooter />
 
       {/* Top Ellipse Gradient */}
-      <div className="pointer-events-none h-screen absolute inset-0 dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.2),rgba(255,255,255,0))]" />
+      <div className="pointer-events-none absolute inset-0 h-screen dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.2),rgba(255,255,255,0))]" />
 
       {/* Grid Pattern */}
       <GridPattern
@@ -30,15 +30,15 @@ export default async function MarketingLayout({
         x={-1}
         y={-1}
         className={cn(
-          "absolute w-screen h-screen inset-0 stroke-white/10 fill-white/10",
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] -z-50",
-          "skew-y-12 inset-x-0 -top-[4rem] -z-50"
+          "absolute inset-0 h-screen w-screen fill-white/10 stroke-white/10",
+          "-z-50 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
+          "inset-x-0 -top-[4rem] -z-50 skew-y-12",
         )}
       />
 
       {/* Linear Gradient */}
       <LinearGradient
-        className="w-screen h-screen"
+        className="h-screen w-screen"
         from="rgba(120,119,198,0.1)"
         to="rgba(0,0,0,0.0)"
         direction="bottom right"

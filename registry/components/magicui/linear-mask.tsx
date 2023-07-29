@@ -38,7 +38,7 @@ const LinearMask: React.FC<Props> = ({ className, children }) => {
     <div
       className={cn(
         "[mask:linear-gradient(180deg,transparent,#fff_30%,#fff_70%,transparent)]",
-        className
+        className,
       )}
     >
       {children}

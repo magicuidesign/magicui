@@ -52,7 +52,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0"
+                  "w-9 px-0",
                 )}
               >
                 <Icons.twitter className="h-4 w-4 fill-current" />
@@ -76,7 +76,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                 href="/login"
                 className={cn(
                   buttonVariants({ variant: "secondary", size: "sm" }),
-                  "px-4"
+                  "px-4",
                 )}
               >
                 Login
@@ -85,7 +85,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </nav>
         </div>
       </div>
-      <div className="absolute w-full h-px bottom-0 dark:bg-[radial-gradient(50%_100%_at_50%_100%,rgba(255,255,255,.32)_0%,rgba(255,255,255,0)_100%)] bg-[radial-gradient(50%_100%_at_50%_100%,rgba(0,0,0,.12)_0%,rgba(255,255,255,0)_100%)]" />
+      <div className="absolute bottom-0 h-px w-full bg-[radial-gradient(50%_100%_at_50%_100%,rgba(0,0,0,.12)_0%,rgba(255,255,255,0)_100%)] dark:bg-[radial-gradient(50%_100%_at_50%_100%,rgba(255,255,255,.32)_0%,rgba(255,255,255,0)_100%)]" />
     </header>
   );
 }

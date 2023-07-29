@@ -12,8 +12,8 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
   return (
     <div
       className={cn(
-        "relative rounded-xl border md:p-10 p-10 flex justify-center items-center flex-col max-w-[65ch] not-prose",
-        className
+        "not-prose relative flex max-w-[65ch] flex-col items-center justify-center rounded-xl border p-10 md:p-10",
+        className,
       )}
     >
       {children}
@@ -21,7 +21,7 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
       <div
         className={cn(
           `absolute inset-0 -z-50 h-full w-full [background-size:16px_16px]`,
-          `bg-[radial-gradient(#00000055_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)]`
+          `bg-[radial-gradient(#00000055_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)]`,
         )}
         style={
           {

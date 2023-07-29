@@ -37,7 +37,7 @@ async function getTweets() {
       tweetUrls.map(async (id) => {
         const tweet = await getTweet(id);
         return tweet;
-      })
+      }),
     );
     return tweets.length ? { props: { tweets } } : { notFound: true };
   } catch (error) {
@@ -54,13 +54,13 @@ export default async function Home() {
     <>
       <section className="space-y-6 pb-8 pt-20 md:pb-12">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <FadeIn className="z-10 flex flex-col items-center justify-center w-full h-full">
+          <FadeIn className="z-10 flex h-full w-full flex-col items-center justify-center">
             <Link
               href="/components/marquee"
               className={cn(
-                "relative flex justify-center items-center flex-row",
+                "relative flex flex-row items-center justify-center",
                 "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
-                "transition-shadow hover:shadow-[inset_0_-5px_10px_#8fdfff3f] ease-out duration-500"
+                "transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f]",
               )}
               style={
                 {
@@ -71,26 +71,26 @@ export default async function Home() {
               🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
               <span
                 className={cn(
-                  `bg-clip-text text-transparent bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] animate-gradient bg-[length:var(--bg-size)_100%]`,
-                  `inline`
+                  `animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+                  `inline`,
                 )}
               >
                 Introducing Marquee
               </span>
               <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
-              <div className="block w-full h-full absolute inset-0 p-[1px] [border-radius:inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] [mask-composite:xor] [-webkit-mask-composite:xor] animate-gradient bg-[length:var(--bg-size)_100%]" />
+              <div className="absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] [-webkit-mask-composite:xor] [border-radius:inherit] [mask-composite:xor] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]" />
             </Link>
           </FadeIn>
           <FadeIn
             // delay={0.0}
-            className="z-10 flex flex-col items-center justify-center w-full h-full"
+            className="z-10 flex h-full w-full flex-col items-center justify-center"
           >
-            <h1 className="font-medium text-5xl sm:text-6xl md:text-7xl lg:text-9xl tracking-tight">
+            <h1 className="text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-9xl">
               Create Magical <br /> Landing Pages
             </h1>
           </FadeIn>
           <FadeIn
-            className="z-10 flex flex-col items-center justify-center w-full h-full"
+            className="z-10 flex h-full w-full flex-col items-center justify-center"
             delay={0.1}
           >
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
@@ -99,10 +99,10 @@ export default async function Home() {
             </p>
           </FadeIn>
           <FadeIn
-            className="z-10 flex flex-col items-center justify-center w-full h-full"
+            className="z-10 flex h-full w-full flex-col items-center justify-center"
             delay={0.2}
           >
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-col gap-4 md:flex-row">
               <Link
                 href="/pricing"
                 className={cn(buttonVariants({ size: "lg" }))}
@@ -112,7 +112,7 @@ export default async function Home() {
               <Link
                 href="/components"
                 className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" })
+                  buttonVariants({ variant: "outline", size: "lg" }),
                 )}
               >
                 Get Started
@@ -123,19 +123,19 @@ export default async function Home() {
       </section>
 
       <section className="relative flex flex-col gap-4 pb-8 pt-20 md:pb-12">
-        <Marquee className="[--duration:120s] max-w-screen" pauseOnHover>
+        <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
           {firstRow?.map((data, idx) => (
             <FadeIn delay={0.06 + idx * 0.04}>
               <ServerTweetCard
                 tweet={data}
                 key={idx}
-                className="w-72 min-w-[18rem] h-36"
+                className="h-36 w-72 min-w-[18rem]"
               />
             </FadeIn>
           ))}
         </Marquee>
         <Marquee
-          className="[--duration:120s] max-w-screen"
+          className="max-w-screen [--duration:120s]"
           reverse
           pauseOnHover
         >
@@ -144,13 +144,13 @@ export default async function Home() {
               <ServerTweetCard
                 tweet={data}
                 key={idx}
-                className="w-72 min-w-[18rem] h-36"
+                className="h-36 w-72 min-w-[18rem]"
               />
             </FadeIn>
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r dark:from-background from-white"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l dark:from-background from-white"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
       </section>
       {/* <section
         id="faq"
