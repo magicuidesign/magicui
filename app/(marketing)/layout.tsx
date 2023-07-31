@@ -15,7 +15,8 @@ export default async function MarketingLayout({
   const user = await getCurrentUser();
 
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <>
+      {/* // <div className="relative flex min-h-screen flex-col"> */}
       <SiteHeader user={user} />
       <main className="flex-1">{children}</main>
       <SiteFooter />
@@ -32,7 +33,7 @@ export default async function MarketingLayout({
         className={cn(
           "absolute inset-0 h-screen w-screen fill-white/10 stroke-white/10",
           "-z-50 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
-          "inset-x-0 -top-[4rem] -z-50 skew-y-12",
+          "inset-x-0 -top-[1rem] -z-50 h-[80%] skew-y-12",
         )}
       />
 
@@ -43,6 +44,6 @@ export default async function MarketingLayout({
         to="rgba(0,0,0,0.0)"
         direction="bottom right"
       />
-    </div>
+    </>
   );
 }
