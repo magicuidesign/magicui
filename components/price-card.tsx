@@ -10,6 +10,34 @@ import Meteors from "@/registry/components/magicui/meteors";
 import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 
+const RegularButton = () => (
+  <Link
+    href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+    target="_blank"
+    className={cn(
+      buttonVariants({ variant: "default", size: "lg" }),
+      "w-full gap-1 text-lg",
+    )}
+  >
+    Get Lifetime Access
+    <ExternalLinkIcon className="ml-2 h-4 w-4" />
+  </Link>
+);
+
+const ApplePayButton = () => (
+  <Link
+    href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+    target="_blank"
+    className={cn(
+      buttonVariants({ variant: "default", size: "lg" }),
+      "w-full gap-1 text-xl",
+    )}
+  >
+    <Icons.apple className="ml-2 h-5 w-5" />
+    <p>Pay</p>
+  </Link>
+);
+
 export const PriceCard = ({
   item,
   className,
@@ -37,32 +65,8 @@ export const PriceCard = ({
             one-time payment
           </span> */}
           <p className="text-foreground">{item.desc}</p>
-          {!hasApplePay() && (
-            <Link
-              href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
-              target="_blank"
-              className={cn(
-                buttonVariants({ variant: "default", size: "lg" }),
-                "w-full",
-              )}
-            >
-              Get Lifetime Access
-              <ExternalLinkIcon className="ml-2 h-4 w-4" />
-            </Link>
-          )}
-          {hasApplePay() && (
-            <Link
-              href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
-              target="_blank"
-              className={cn(
-                buttonVariants({ variant: "default", size: "lg" }),
-                "w-full gap-1 text-xl",
-              )}
-            >
-              <Icons.apple className="ml-2 h-5 w-5" />
-              <p>Pay</p>
-            </Link>
-          )}
+          {!hasApplePay() && <RegularButton />}
+          {hasApplePay() && <ApplePayButton />}
         </div>
         <ul className="space-y-3">
           <li className="pb-2 font-medium text-foreground">
