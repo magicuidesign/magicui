@@ -34,7 +34,12 @@ export default function Hero() {
               Introducing Marquee
             </span>
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
-            <div className="absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] [-webkit-mask-composite:subtract] [border-radius:inherit] [mask-composite:subtract] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]" />
+            <div
+              className={cn(
+                `absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
+                `[--webkit-mask-composite:xor] [mask-composite:xor]`,
+              )}
+            />
           </Link>
         </FadeIn>
         <FadeIn
