@@ -38,6 +38,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/marquee.tsx"],
   },
+  globe: {
+    name: "globe",
+    type: "components:ui",
+    files: ["registry/components/magicui/globe.tsx"],
+  },
   "tweet-card": {
     name: "tweet-card",
     type: "components:ui",
@@ -119,7 +124,6 @@ const example: Registry = {
       () => import("@/registry/components/example/dot-pattern-linear-gradient"),
     ),
   },
-
   "marquee-demo": {
     name: "marquee-demo",
     type: "components:example",
@@ -134,6 +138,14 @@ const example: Registry = {
     files: ["registry/components/example/marquee-logos.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/marquee-logos"),
+    ),
+  },
+  "globe-demo": {
+    name: "globe-demo",
+    type: "components:example",
+    files: ["registry/components/example/globe-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/globe-demo"),
     ),
   },
   "tweet-card-demo": {
