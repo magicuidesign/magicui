@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import createGlobe, { COBEOptions } from "cobe";
-import { useEffect, useRef } from "react";
-import { useSpring } from "react-spring";
+import { useCallback, useEffect, useRef } from "react";
+import { config, useSpring } from "react-spring";
 
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
@@ -38,6 +38,8 @@ export default function Globe({
   className?: string;
   config?: COBEOptions;
 }) {
+  let phi = 0;
+  let width = 0;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
@@ -64,16 +66,23 @@ export default function Globe({
     }
   };
 
+  const onRender = useCallback(
+    (state: Record<string, any>) => {
+      if (!pointerInteracting.current) phi += 0.005;
+      state.phi = phi + r.get();
+      state.width = width * 2;
+      state.height = width * 2;
+    },
+    [pointerInteracting, phi, r],
+  );
+
+  const onResize = () => {
+    if (canvasRef.current) {
+      width = canvasRef.current.offsetWidth;
+    }
+  };
+
   useEffect(() => {
-    let phi = 0;
-    let width = 0;
-
-    const onResize = () => {
-      if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth;
-      }
-    };
-
     window.addEventListener("resize", onResize);
     onResize();
 
@@ -81,12 +90,7 @@ export default function Globe({
       ...config,
       width: width * 2,
       height: width * 2,
-      onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005;
-        state.phi = phi + r.get();
-        state.width = width * 2;
-        state.height = width * 2;
-      },
+      onRender,
     });
 
     setTimeout(() => (canvasRef.current!.style.opacity = "1"));
