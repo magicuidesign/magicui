@@ -68,7 +68,7 @@ export default function Hero() {
               href="/pricing"
               className={cn(buttonVariants({ size: "lg" }))}
             >
-              Buy Now
+              Get Lifetime Access
             </Link>
             <Link
               href="/components"
