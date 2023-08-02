@@ -2,7 +2,7 @@ export const plans = [
   {
     name: "Magic UI",
     desc: "Beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project.",
-    discountPrice: 49,
+    discountPrice: 59,
     price: 79,
     isMostPop: false,
     features: [
