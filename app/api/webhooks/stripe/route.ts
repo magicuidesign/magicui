@@ -70,7 +70,7 @@ export async function POST(req: Request) {
               throw new Error("No email provided");
             }
             const customer = await upsertCustomer(
-              session.customer_details.email,
+              session.customer_details.email.toLowerCase(),
               session.customer_details.name || "",
             );
             await upsertPayment(session.payment_intent as string, customer.id);
