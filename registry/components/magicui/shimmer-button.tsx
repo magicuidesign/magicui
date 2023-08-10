@@ -20,7 +20,7 @@ const ShimmerButton = ({
   shimmerSize = "0.1em",
   shimmerDuration = "1.5s",
   borderRadius = "100px",
-  background = "radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(13, 13, 33))",
+  background = "radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(18, 18, 38))",
   className,
   children,
 }: ShimmerButtonProps) => {
@@ -45,7 +45,7 @@ const ShimmerButton = ({
       )}
     >
       {/* spark container */}
-      <div className="absolute inset-0  overflow-visible [container-type:size]">
+      <div className="absolute inset-0 overflow-visible [container-type:size]">
         {/* spark */}
         <div className="absolute inset-0 h-[100cqh] animate-slide [aspect-ratio:1] [border-radius:0] [mask:none] ">
           {/* spark before */}
@@ -56,7 +56,8 @@ const ShimmerButton = ({
       {/* backdrop */}
       <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" />
       {/* content */}
-      {children}
+
+      <div className="pointer-events-none relative z-10">{children}</div>
     </button>
   );
 };
