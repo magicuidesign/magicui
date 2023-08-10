@@ -150,30 +150,6 @@ interface MagicCardProps {
   size?: number;
 
   /**
-   * ]@default "#475569"
-   * @type string
-   * @description
-   * The border color of the card
-   */
-  borderColor?: string;
-
-  /**
-   * @default 1
-   * @type number
-   * @description
-   * The border width of the card
-   * */
-  borderWidth?: number;
-
-  /**
-   * @default 16
-   * @type number
-   * @description
-   * The border radius of the card
-   * */
-  borderRadius?: number;
-
-  /**
    * @default true
    * @type boolean
    * @description
@@ -212,7 +188,6 @@ const MagicCard = ({
   className,
   children,
   size = 600,
-  borderWidth = 1,
   spotlight = true,
   spotlightColor = "rgba(120,119,198,0.1)",
   isolated = true,
@@ -221,28 +196,29 @@ const MagicCard = ({
   return (
     <div
       {...props}
-      className={cn("relative h-full w-full rounded-lg", className)}
+      className={cn("relative h-full w-full rounded-2xl", className)}
       style={
         {
-          "--border-width": `${borderWidth}px`,
           "--mask-size": `${size}px`,
           "--spotlight-color": `${spotlightColor}`,
         } as CSSProperties
       }
     >
       {/* Border */}
-      <div className="pointer-events-none absolute inset-0 -z-[3] h-full w-full rounded-lg bg-gray-300 bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] transition-opacity duration-500 dark:bg-gray-700 " />
+      <div className="pointer-events-none absolute inset-0 -z-[3] h-full w-full rounded-2xl bg-gray-300 bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] transition-opacity duration-500 dark:bg-gray-700 " />
 
       {children}
 
       {/* Background */}
-      <div className={"absolute inset-[1px] -z-[2] rounded-lg bg-background"} />
+      <div
+        className={"absolute inset-[1px] -z-[2] rounded-2xl bg-background"}
+      />
 
       {/* Spotlight */}
       {spotlight && (
         <div
           className={
-            "blur-xs pointer-events-none absolute left-0 top-0 -z-[1] h-full w-full rounded-lg bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] transition-opacity duration-500"
+            "blur-xs pointer-events-none absolute left-0 top-0 -z-[1] h-full w-full rounded-2xl bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] transition-opacity duration-500"
           }
         />
       )}

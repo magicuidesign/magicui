@@ -10,7 +10,10 @@ export default function MagicCardWithGradient() {
         "flex h-[500px] w-full flex-col gap-4 lg:h-[250px] lg:flex-row"
       }
     >
-      <MagicCard className="flex w-full cursor-pointer flex-col items-center justify-center overflow-hidden p-20 shadow-2xl">
+      <MagicCard
+        borderWidth={3}
+        className="flex w-full cursor-pointer flex-col items-center justify-center overflow-hidden p-20 shadow-2xl"
+      >
         <p className="z-10 whitespace-nowrap text-4xl font-medium text-gray-800 dark:text-gray-200">
           Magic
         </p>

@@ -97,8 +97,13 @@ export default async function Component({ params }: Props) {
   const toc = await getTableOfContents(component.body.raw);
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-      <div className="mx-auto w-full min-w-0">
+    <main
+      className={cn(
+        "relative py-6 lg:gap-10 lg:py-8 xl:grid ",
+        "xl:grid-cols-[1fr_300px]",
+      )}
+    >
+      <div className="mx-auto w-full">
         {/* Breadcrumb */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <Link
@@ -152,21 +157,7 @@ export default async function Component({ params }: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 pt-8">
-          {/* {component.video && (
-            <div className="flex md:hidden overflow-hidden relative rounded-xl border dark:border-slate-800 md:p-8 justify-center items-center flex-col max-w-[65ch]">
-              <video
-                src={component.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="relative -bottom-1 aspect-video" // needed because random black line at bottom of video
-              />
-            </div>
-          )} */}
-          <Mdx code={component.body.code} />
-        </div>
+        <Mdx code={component.body.code} />
       </div>
 
       {component.toc && (
@@ -178,6 +169,7 @@ export default async function Component({ params }: Props) {
           </div>
         </div>
       )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
