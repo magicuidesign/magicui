@@ -48,6 +48,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/tweet-card.tsx"],
   },
+  "shimmer-button": {
+    name: "shimmer-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/shimmer-button.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -154,6 +159,14 @@ const example: Registry = {
     files: ["registry/components/example/tweet-card-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/tweet-card-demo"),
+    ),
+  },
+  "shimmer-button-demo": {
+    name: "shimmer-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/shimmer-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shimmer-button-demo"),
     ),
   },
 };
