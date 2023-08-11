@@ -51,7 +51,7 @@ export const PriceCard = ({
         spotlight={false}
         className="relative flex flex-col gap-8 overflow-hidden p-8"
       >
-        <div className="flex flex-col space-y-4">
+        <div className="z-10 flex flex-col space-y-4">
           <span className="font-medium text-foreground">{item.name}</span>
           <div className="flex flex-row gap-2">
             <span className="text-7xl font-semibold text-foreground">
@@ -68,7 +68,7 @@ export const PriceCard = ({
           {!hasApplePay() && <RegularButton />}
           {hasApplePay() && <ApplePayButton />}
         </div>
-        <ul className="space-y-3">
+        <ul className="z-10 space-y-3">
           <li className="pb-2 font-medium text-foreground">
             <p>Features</p>
           </li>
