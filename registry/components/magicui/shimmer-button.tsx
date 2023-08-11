@@ -11,6 +11,7 @@ interface ShimmerButtonProps {
   background?: string;
   className?: string;
   children?: React.ReactNode;
+  [key: string]: any; // ...props
 }
 
 const ShimmerButton = ({
@@ -23,6 +24,7 @@ const ShimmerButton = ({
   background = "radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(18, 18, 38))",
   className,
   children,
+  ...props
 }: ShimmerButtonProps) => {
   return (
     <button
@@ -43,6 +45,7 @@ const ShimmerButton = ({
         { "hover:[--active:1]": shadowEnabled },
         className,
       )}
+      {...props}
     >
       {/* spark container */}
       <div className="absolute inset-0 overflow-visible [container-type:size]">
