@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
         <FadeIn className="z-10 flex h-full w-full flex-col items-center justify-center">
           <Link
-            href="/components/marquee"
+            href="/components/shimmer-button"
             className={cn(
               "relative flex flex-row items-center justify-center",
               "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
@@ -31,7 +31,7 @@ export default function Hero() {
                 `inline`,
               )}
             >
-              Introducing Marquee
+              Introducing Shimmer Button
             </span>
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
             <div
