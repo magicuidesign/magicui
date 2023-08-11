@@ -2,8 +2,6 @@ import { cn } from "@/lib/utils";
 import { CSSProperties } from "react";
 
 interface ShimmerButtonProps {
-  shadow?: string;
-  shadowEnabled?: boolean;
   shimmerColor?: string;
   shimmerSize?: string;
   borderRadius?: string;
@@ -15,8 +13,6 @@ interface ShimmerButtonProps {
 }
 
 const ShimmerButton = ({
-  shadow = "0 0 calc(var(--active) * 4em) calc(var(--active) * 2em) hsl(260 97% 61% / 0.75),0 0.05em 0 0 hsl(260 calc(var(--active) * 97%) calc((var(--active) * 50%) + 30%)) inset,0 -0.05em 0 0 hsl(260 calc(var(--active) * 97%) calc(var(--active) * 60%)) inset",
-  shadowEnabled = true,
   shimmerColor = "#ffffff",
   shimmerSize = "0.1em",
   shimmerDuration = "1.5s",
@@ -36,13 +32,11 @@ const ShimmerButton = ({
           "--speed": shimmerDuration,
           "--cut": shimmerSize,
           "--bg": background,
-          "--shadow": shadow,
         } as CSSProperties
       }
       className={cn(
-        "group relative grid cursor-pointer place-items-center overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] [box-shadow:var(--shadow)]",
-        "transition-all [--active:0] hover:scale-110",
-        { "hover:[--active:1]": shadowEnabled },
+        "group relative cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] ",
+        "transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_8px_rgba(62,61,117,0.7)]",
         className,
       )}
       {...props}
@@ -60,7 +54,9 @@ const ShimmerButton = ({
       <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" />
       {/* content */}
 
-      <div className="pointer-events-none relative z-10">{children}</div>
+      <div className="pointer-events-none relative z-10 flex text-white dark:text-black">
+        {children}
+      </div>
     </button>
   );
 };
