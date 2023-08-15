@@ -6213,10 +6213,10 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-react-tweet@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/react-tweet/-/react-tweet-3.0.3.tgz#809d8e8b5889a170ac15e1f77b7717bccf5510b2"
-  integrity sha512-dKPpCCGGo07hV8QtOthAwVbG/VfDA22kg5ny53UHnYYMR18gv7hDYiT9ZjMS4hWLzEObz++e616Sf4qLo9hhag==
+react-tweet@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-tweet/-/react-tweet-3.1.1.tgz#dc9a3a5dfef5e6290698df23c459e805ffebe5b3"
+  integrity sha512-8GQLa5y0G56kvGQkN7OiaKkjFAhWYVdyFq62ioY2qVtpMrjchVU+3KnqneCyp0+BemOQZkg6WWp/qoCNeEMH6A==
   dependencies:
     "@swc/helpers" "^0.5.1"
     clsx "^1.2.1"
