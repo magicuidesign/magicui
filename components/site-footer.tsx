@@ -2,7 +2,7 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="relative py-6 md:px-8 md:py-0">
+    <footer className="relative py-6 md:py-0">
       <div
         className="absolute top-0 h-px w-full"
         style={{
