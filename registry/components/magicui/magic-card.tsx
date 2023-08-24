@@ -111,7 +111,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
   };
 
   return (
-    <div className={className} ref={containerRef}>
+    <div className={cn("h-full w-full", className)} ref={containerRef}>
       {children}
     </div>
   );
@@ -190,6 +190,7 @@ const MagicCard = ({
   size = 600,
   spotlight = true,
   spotlightColor = "rgba(120,119,198,0.1)",
+  borderColor = "rgba(120,119,198,0.7)",
   isolated = true,
   ...props
 }: MagicCardProps) => {
@@ -201,11 +202,18 @@ const MagicCard = ({
         {
           "--mask-size": `${size}px`,
           "--spotlight-color": `${spotlightColor}`,
+          "--border-color": `${borderColor}`,
         } as CSSProperties
       }
     >
       {/* Border */}
-      <div className="pointer-events-none absolute inset-0 h-full w-full rounded-2xl bg-gray-300 bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] transition-opacity duration-500 dark:bg-gray-700 " />
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 h-full w-full rounded-2xl bg-gray-300 transition-opacity duration-500 dark:bg-gray-700",
+          // "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)]",
+          "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
+        )}
+      />
 
       {/* Background */}
       <div className={"absolute inset-[1px] rounded-2xl bg-background"} />

@@ -32,7 +32,6 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/dot-pattern.tsx"],
   },
-
   marquee: {
     name: "marquee",
     type: "components:ui",
@@ -43,15 +42,20 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/globe.tsx"],
   },
-  "tweet-card": {
-    name: "tweet-card",
-    type: "components:ui",
-    files: ["registry/components/magicui/tweet-card.tsx"],
-  },
   "shimmer-button": {
     name: "shimmer-button",
     type: "components:ui",
     files: ["registry/components/magicui/shimmer-button.tsx"],
+  },
+  "hero-video": {
+    name: "hero-video",
+    type: "components:ui",
+    files: ["registry/components/magicui/hero-video.tsx"],
+  },
+  "tweet-card": {
+    name: "tweet-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/tweet-card.tsx"],
   },
 };
 
@@ -167,6 +171,14 @@ const example: Registry = {
     files: ["registry/components/example/shimmer-button-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/shimmer-button-demo"),
+    ),
+  },
+  "hero-video-demo": {
+    name: "hero-video-demo",
+    type: "components:example",
+    files: ["registry/components/example/hero-video-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/hero-video-demo"),
     ),
   },
 };

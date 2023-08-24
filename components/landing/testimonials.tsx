@@ -23,6 +23,7 @@ const tweetUrls = [
   "https://twitter.com/sxndrao/status/1668634137547399168",
   "https://twitter.com/jordienr/status/1681389309037772820",
   "https://twitter.com/beneverman/status/1681477151042797568",
+  "",
 ].map((t) => t.split("/").slice(-1)[0]);
 
 async function getTweets() {

@@ -1,0 +1,47 @@
+---
+title: Hero Video
+date: 2023-08-16
+summary: A react component that renders a video in a modal with a play button.
+author: dillionverma
+published: true
+video: https://cdn.magicuikit.com/hero-video.mp4
+---
+
+<ComponentPreview name="hero-video-demo" />
+
+<Steps>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+```text
+components/magicui/hero-video.tsx
+```
+
+<ComponentSource name="hero-video" />
+
+</Step>
+
+</Steps>
+
+## Examples
+
+## Props
+
+### Hero Video
+
+| Prop | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
