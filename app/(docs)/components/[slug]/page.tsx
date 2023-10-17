@@ -4,11 +4,8 @@ import Twitter from "@/components/icons/twitter";
 import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { getCurrentUser } from "@/lib/session";
-import { getUserPayments } from "@/lib/stripe-utils";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
-import { Payment } from "@prisma/client";
 import { allComponents } from "contentlayer/generated";
 import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -80,13 +77,6 @@ interface Props {
 }
 
 export default async function Component({ params }: Props) {
-  const user = await getCurrentUser();
-  const { payments } = await getUserPayments(user?.id!);
-
-  const paid = payments.some(
-    (payment: Payment) => payment.status === "succeeded",
-  );
-
   const component = allComponents.find(
     (component) => component.slugAsParams === params.slug,
   );
@@ -98,17 +88,16 @@ export default async function Component({ params }: Props) {
 
   return (
     <main
-      className={cn(
-        "relative py-6 lg:gap-10 lg:py-8 xl:grid ",
-        "xl:grid-cols-[1fr_300px]",
-      )}
+      className={cn("relative py-6 lg:gap-10 lg:py-8 xl:grid ", {
+        "xl:grid-cols-[1fr_300px]": component.toc,
+      })}
     >
       <div className="mx-auto w-full">
         {/* Breadcrumb */}
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <Link
             href="/components"
-            className="transition-colors  hover:text-foreground/80"
+            className="transition-colors hover:text-foreground/80"
           >
             <div className="overflow-hidden text-ellipsis whitespace-nowrap">
               Components

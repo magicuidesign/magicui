@@ -34,9 +34,9 @@ export default function Buy() {
             </p>
           </FadeIn>
         </div>
-        <MagicContainer className="mx-auto mt-16 w-full max-w-[400px]">
+        <MagicContainer className="mx-auto mt-16 grid w-full grid-cols-1 place-items-center gap-8">
           {plans.map((item, idx) => (
-            <PriceCard key={idx} item={item} />
+            <PriceCard key={idx} item={item} className="max-w-[400px]" />
           ))}
         </MagicContainer>
       </div>

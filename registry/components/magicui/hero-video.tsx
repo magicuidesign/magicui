@@ -1,16 +1,52 @@
+"use client";
+
 import { cn } from "@/lib/utils";
-import ShimmerButton from "@/registry/components/magicui/shimmer-button";
 import { Dialog, Transition } from "@headlessui/react";
 import { X } from "lucide-react";
-import { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 
 interface HeroVideoProps {
   children?: React.ReactNode;
   image?: string;
   className?: string;
+  caption?: React.ReactNode;
+  video?: string;
+  title?: string;
 }
 
-const HeroVideo = ({ children, image, className }: HeroVideoProps) => {
+interface HeroVideoContextType {
+  openModal?: () => void;
+  closeModal?: () => void;
+}
+
+const HeroVideoContext = React.createContext<HeroVideoContextType>({});
+
+export const HeroVideoAction = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const context = useContext(HeroVideoContext);
+
+  if (!context) {
+    throw new Error("HeroVideoAction must be used within a HeroVideo");
+  }
+
+  const { openModal } = context;
+
+  // Create a clone of the child and inject the onClick event to it
+  const childWithOnClick = React.cloneElement(children, {
+    onClick: openModal,
+  });
+
+  return (
+    <div className="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform">
+      {childWithOnClick}
+    </div>
+  );
+};
+
+const HeroVideo = ({ children, image, title = "Demo" }: HeroVideoProps) => {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -21,35 +57,33 @@ const HeroVideo = ({ children, image, className }: HeroVideoProps) => {
     setIsOpen(true);
   }
 
-  return (
-    <div
-      className={cn(
-        "absolute inset-[1px] flex overflow-hidden rounded-2xl",
-        className,
-      )}
-    >
-      <img
-        className="pointer-events-none h-full w-full object-cover"
-        src={image}
-      />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-        <ShimmerButton onClick={openModal}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="h-6 w-6 dark:text-white"
-          >
-            <path
-              fillRule="evenodd"
-              d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
-              clipRule="evenodd"
-            />
-          </svg>
+  // Extracting children based on type
+  let actionChild: React.ReactElement | null = null;
+  let otherChildren: React.ReactElement[] = [];
 
-          {/* <span className="dark:text-white">play</span> */}
-        </ShimmerButton>
+  React.Children.forEach(children, (child) => {
+    if (React.isValidElement(child)) {
+      if (child.type === HeroVideoAction) {
+        actionChild = child;
+      } else {
+        otherChildren.push(child);
+      }
+    }
+  });
+
+  return (
+    <HeroVideoContext.Provider value={{ openModal, closeModal }}>
+      <div
+        className={cn("absolute inset-[1px] flex overflow-hidden rounded-2xl")}
+      >
+        {actionChild}
+        <img
+          className="pointer-events-none h-full w-full object-cover"
+          src={image}
+        />
       </div>
+
+      {/* Modal */}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={closeModal}>
           {/* Backdrop */}
@@ -77,33 +111,25 @@ const HeroVideo = ({ children, image, className }: HeroVideoProps) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="flex w-full max-w-4xl transform flex-col gap-2 overflow-hidden rounded-2xl p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="flex w-full max-w-4xl transform flex-col gap-2 overflow-hidden rounded-2xl p-6 text-left align-middle transition-all">
                   <div className="flex flex-row items-center justify-between">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-lg font-medium leading-6 text-gray-100"
-                    >
-                      Magic UI Demo
-                    </Dialog.Title>
-
-                    <button onClick={closeModal}>
-                      <X className="h-6 w-6" />
-                    </button>
+                    <h3 className="text-lg font-medium leading-6 text-gray-100">
+                      {title}
+                    </h3>
+                    {closeModal && (
+                      <button onClick={closeModal} aria-label="Close">
+                        <X className="h-6 w-6 text-gray-100" />
+                      </button>
+                    )}
                   </div>
-                  <video
-                    autoPlay
-                    className="rounded-xl border"
-                    poster={image}
-                    playsInline
-                    src="https://cdn.magicuikit.com/globe.mp4"
-                  />
+                  {otherChildren}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
           </div>
         </Dialog>
       </Transition>
-    </div>
+    </HeroVideoContext.Provider>
   );
 };
 

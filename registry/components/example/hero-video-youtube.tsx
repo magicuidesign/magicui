@@ -26,25 +26,26 @@ export default function HeroVideoDemo() {
   return (
     <div className="relative flex w-full flex-col items-center justify-center gap-8 overflow-hidden rounded-lg border bg-background p-10">
       <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
-        Hero Video
+        Never gonna give you up
       </span>
-
-      <MagicContainer>
-        <MagicCard className="min-h-[400px] [mask:linear-gradient(0deg,transparent_40%,#fff_100%)]">
+      {/* Magic Card  */}
+      <MagicContainer className="relative">
+        <MagicCard className="min-h-[400px] [mask:linear-gradient(0deg,transparent_20%,#fff_100%)]">
           <HeroVideo
-            title="Magic UI Demo"
-            image="https://cdn.dribbble.com/userupload/4145843/file/original-c7a2c9a768450460259f232259d103d2.png?resize=1600x1200"
+            title="Never gonna give you up"
+            image="https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1024"
           >
             <HeroVideoAction>
               <Button className="h-20 w-20 rounded-full" variant="outline">
                 <PlayButton />
               </Button>
             </HeroVideoAction>
-            <video
-              autoPlay
-              className="rounded-xl dark:border"
-              playsInline
-              src="https://cdn.magicuikit.com/globe.mp4"
+            <iframe
+              height="500"
+              className="h-[500px] rounded-xl border"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=FmFbhzaToJQ9iXN4"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             />
           </HeroVideo>
         </MagicCard>

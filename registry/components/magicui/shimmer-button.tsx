@@ -40,7 +40,7 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
           } as CSSProperties
         }
         className={cn(
-          "group relative cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] ",
+          "group relative z-0 cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] ",
           "transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_20px_10px_rgba(62,61,117,0.5)]",
           className,
         )}
@@ -48,7 +48,7 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
         {...props}
       >
         {/* spark container */}
-        <div className="absolute inset-0 overflow-visible [container-type:size]">
+        <div className="absolute inset-0 -z-30 overflow-visible [container-type:size]">
           {/* spark */}
           <div className="absolute inset-0 h-[100cqh] animate-slide [aspect-ratio:1] [border-radius:0] [mask:none] ">
             {/* spark before */}
@@ -56,13 +56,13 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
           </div>
         </div>
 
-        {/* backdrop */}
-        <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" />
         {/* content */}
-
-        <div className="pointer-events-none relative z-10 flex text-white dark:text-black">
+        <div className="pointer-events-none relative z-10 text-white dark:text-black">
           {children}
         </div>
+
+        {/* backdrop */}
+        <div className="absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" />
       </button>
     );
   },

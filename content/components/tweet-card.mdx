@@ -1,9 +1,9 @@
 ---
 title: Tweet Card
-date: 2023-07-29
+date: 2023-10-15
 summary: A card that displays a tweet with the author's name, handle, and profile picture.
 author: dillionverma
-published: false
+published: true
 video: https://cdn.magicuikit.com/tweet-card.mp4
 ---
 
@@ -27,6 +27,51 @@ components/magicui/tweet-card.tsx
 
 </Steps>
 
+## Usage
+
+To render on client side:
+
+```tsx
+"use client";
+import { TweetCard } from "components/magicui/tweet-card.tsx";
+
+function App() {
+  return <TweetCard id="1441032681968212480" />;
+}
+```
+
+To render on server side using RSC:
+
+```tsx
+import { ServerTweetCard } from "components/magicui/tweet-card.tsx";
+
+const id = "1441032681968212480";
+
+async function getTweets() {
+  try {
+    const tweet = await getTweet(id);
+    return { props: { tweet } };
+  } catch (error) {
+    return { notFound: true };
+  }
+}
+
+export default async function Testimonials() {
+  const { props } = await getTweets();
+  return <ServerTweetCard tweet={props.tweet} />;
+}
+```
+
 ## Props
 
-### Tweet Card
+### TweetCard
+
+| Prop | Type | Description                     |
+| ---- | ---- | ------------------------------- |
+| id   | id   | The id of the tweet to display. |
+
+### ServerTweetCard
+
+| Prop  | Type   | Description           |
+| ----- | ------ | --------------------- |
+| tweet | object | The tweet to display. |

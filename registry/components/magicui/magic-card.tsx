@@ -184,7 +184,7 @@ interface MagicCardProps {
   [key: string]: any;
 }
 
-const MagicCard = ({
+const MagicCard: React.FC<MagicCardProps> = ({
   className,
   children,
   size = 600,
@@ -193,11 +193,16 @@ const MagicCard = ({
   borderColor = "rgba(120,119,198,0.7)",
   isolated = true,
   ...props
-}: MagicCardProps) => {
+}) => {
   return (
     <div
       {...props}
-      className={cn("relative h-full w-full rounded-2xl", className)}
+      className={cn(
+        "relative z-0 h-full w-full rounded-2xl p-6",
+        "bg-gray-300 dark:bg-gray-700",
+        "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
+        className,
+      )}
       style={
         {
           "--mask-size": `${size}px`,
@@ -206,18 +211,6 @@ const MagicCard = ({
         } as CSSProperties
       }
     >
-      {/* Border */}
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-0 h-full w-full rounded-2xl bg-gray-300 transition-opacity duration-500 dark:bg-gray-700",
-          // "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)]",
-          "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
-        )}
-      />
-
-      {/* Background */}
-      <div className={"absolute inset-[1px] rounded-2xl bg-background"} />
-
       {children}
 
       {/* Spotlight */}
@@ -228,6 +221,13 @@ const MagicCard = ({
           }
         />
       )}
+
+      {/* Background */}
+      <div
+        className={
+          "absolute inset-[1px] -z-20 rounded-2xl bg-white dark:bg-background"
+        }
+      />
     </div>
   );
 };

@@ -20,7 +20,7 @@ export default function PreOrder() {
   }
 
   return (
-    <MagicContainer className="not-prose w-full">
+    <MagicContainer className="not-prose mx-auto max-w-[400px]">
       {plans.map((item, idx) => (
         <PriceCard key={idx} item={item} />
       ))}

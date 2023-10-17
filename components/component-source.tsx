@@ -9,6 +9,14 @@ interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
   src: string;
 }
 
+const Preview = ({ className }: { className?: string }) => {
+  return (
+    <>
+      <PreOrder />
+    </>
+  );
+};
+
 export function ComponentSource({
   children,
   className,
@@ -21,11 +29,11 @@ export function ComponentSource({
   );
 
   if (status === "loading") return null;
-  if (status === "unauthenticated") return <PreOrder />;
+  if (status === "unauthenticated") return <Preview />;
   if (isLoading) return null;
 
   // TODO: Make this cleaner
-  if (data?.user?.customer.payments.length === 0) return <PreOrder />;
+  if (data?.user?.customer.payments.length === 0) return <Preview />;
 
   return (
     <CodeBlockWrapper
