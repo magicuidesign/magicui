@@ -68,6 +68,14 @@ const example: Registry = {
       () => import("@/registry/components/example/magic-card-demo"),
     ),
   },
+  "magic-card-gradient": {
+    name: "magic-card-gradient",
+    type: "components:example",
+    files: ["registry/components/example/magic-card-gradient.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/magic-card-gradient"),
+    ),
+  },
   "linear-gradient-demo": {
     name: "linear-gradient-demo",
     type: "components:example",
@@ -179,6 +187,14 @@ const example: Registry = {
     files: ["registry/components/example/hero-video-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/hero-video-demo"),
+    ),
+  },
+  "hero-video-youtube": {
+    name: "hero-video-youtube",
+    type: "components:example",
+    files: ["registry/components/example/hero-video-youtube.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/hero-video-youtube"),
     ),
   },
 };

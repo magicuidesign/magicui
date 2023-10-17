@@ -1,0 +1,24 @@
+version: "3.7"
+
+# For local development, only database is running
+#
+# docker-compose up -d
+#
+
+services:
+  default_database:
+    restart: unless-stopped
+    image: postgres:latest
+    volumes:
+      - default_database_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DEFAULT_DATABASE_DB}
+      - POSTGRES_USER=${DEFAULT_DATABASE_USER}
+      - POSTGRES_PASSWORD=${DEFAULT_DATABASE_PASSWORD}
+    env_file:
+      - .env
+    ports:
+      - "${DEFAULT_DATABASE_PORT}:5432"
+
+volumes:
+  default_database_data:

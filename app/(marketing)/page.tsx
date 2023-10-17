@@ -6,6 +6,7 @@ export default async function Home() {
     <>
       <Hero />
       <Testimonials />
+      {/* <FeatureSections /> */}
       {/* <Faq /> */}
     </>
   );

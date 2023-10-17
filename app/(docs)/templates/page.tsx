@@ -1,6 +1,14 @@
 import { Component } from "@/.contentlayer/generated";
 import { constructMetadata } from "@/lib/utils";
 import FadeIn from "@/registry/components/magicui/fade-in";
+import HeroVideo, {
+  HeroVideoAction,
+} from "@/registry/components/magicui/hero-video";
+import {
+  MagicCard,
+  MagicContainer,
+} from "@/registry/components/magicui/magic-card";
+import ShimmerButton from "@/registry/components/magicui/shimmer-button";
 import Link from "next/link";
 
 export const metadata = constructMetadata({
@@ -24,6 +32,48 @@ export default async function TemplatePage() {
         </div>
       </div>
       <hr className="my-8" />
+
+      <MagicContainer>
+        <MagicCard className="flex flex-col items-center justify-center p-4">
+          <h2>this is a test card</h2>
+          <ShimmerButton>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-6 w-6 dark:text-white"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </ShimmerButton>
+        </MagicCard>
+      </MagicContainer>
+      <HeroVideo
+        title="Magic UI Demo"
+        image="https://cdn.dribbble.com/userupload/4145843/file/original-c7a2c9a768450460259f232259d103d2.png?resize=1600x1200"
+        video="https://cdn.magicuikit.com/globe.mp4"
+      >
+        <HeroVideoAction>
+          <ShimmerButton>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-6 w-6 dark:text-white"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </ShimmerButton>
+        </HeroVideoAction>
+      </HeroVideo>
       {posts?.length ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {posts.map((post, index) => (

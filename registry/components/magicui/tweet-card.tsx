@@ -1,6 +1,5 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import {
   enrichTweet,
@@ -50,6 +49,18 @@ const Verified = ({ className, ...props }: TwitterIconProps) => (
 export const truncate = (str: string | null, length: number) => {
   if (!str || str.length <= length) return str;
   return `${str.slice(0, length - 3)}...`;
+};
+
+const Skeleton = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div
+      className={cn("animate-pulse rounded-md bg-primary/10", className)}
+      {...props}
+    />
+  );
 };
 
 export const TweetSkeleton = () => (
@@ -144,19 +155,43 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
   </div>
 );
 
-type Props = {
-  tweet: Tweet;
-  components?: TwitterComponents;
-  className?: string;
-};
+export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
+  <div className="flex flex-1 items-center justify-center">
+    {tweet.video && (
+      <video
+        poster={tweet.video.poster}
+        src={tweet.video.variants[0].src}
+        autoPlay
+        loop
+        muted
+        className="rounded-xl border shadow-sm"
+      />
+    )}
+    {tweet.photos && (
+      <div className="flex flex-row gap-2">
+        {tweet.photos.map((photo) => (
+          <img
+            key={photo.url}
+            src={photo.url}
+            className="rounded-xl border shadow-sm"
+          />
+        ))}
+      </div>
+    )}
+  </div>
+);
 
-export const MyTweet = ({
-  tweet: t,
+export const MagicTweet = ({
+  tweet,
   components,
   className,
   ...props
-}: Props) => {
-  const tweet = enrichTweet(t);
+}: {
+  tweet: Tweet;
+  components?: TwitterComponents;
+  className?: string;
+}) => {
+  const enrichedTweet = enrichTweet(tweet);
   return (
     <div
       className={cn(
@@ -165,35 +200,16 @@ export const MyTweet = ({
       )}
       {...props}
     >
-      <TweetHeader tweet={tweet} />
-      <TweetBody tweet={tweet} />
-      <div className="flex flex-1 items-center justify-center">
-        {tweet.video && (
-          <video
-            poster={tweet.video.poster}
-            src={tweet.video.variants[0].src}
-            autoPlay
-            loop
-            muted
-            className="rounded-xl border shadow-sm"
-          />
-        )}
-        {tweet.photos && (
-          <div className="flex flex-row gap-2">
-            {tweet.photos.map((photo) => (
-              <img
-                key={photo.url}
-                src={photo.url}
-                className="rounded-xl border shadow-sm"
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <TweetHeader tweet={enrichedTweet} />
+      <TweetBody tweet={enrichedTweet} />
+      <TweetMedia tweet={enrichedTweet} />
     </div>
   );
 };
 
+/**
+ * TweetCard (Client Side Only)
+ */
 export const TweetCard = ({
   id,
   apiUrl,
@@ -210,9 +226,12 @@ export const TweetCard = ({
     return <NotFound error={onError ? onError(error) : error} />;
   }
 
-  return <MyTweet tweet={data} components={components} {...props} />;
+  return <MagicTweet tweet={data} components={components} {...props} />;
 };
 
+/**
+ * TweetCard (Server Side Only)
+ */
 export const ServerTweetCard = ({
   tweet,
   ...props
@@ -220,7 +239,7 @@ export const ServerTweetCard = ({
   tweet: any;
   [key: string]: any;
 }) => {
-  return <MyTweet tweet={tweet} {...props} />;
+  return <MagicTweet tweet={tweet} {...props} />;
 };
 
 export default TweetCard;
