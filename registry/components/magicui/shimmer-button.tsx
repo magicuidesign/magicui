@@ -20,7 +20,7 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
       shimmerSize = "0.1em",
       shimmerDuration = "1.5s",
       borderRadius = "100px",
-      background = "radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(18, 18, 38))",
+      background = "rgba(18, 18, 38)",
       className,
       children,
       ...props
@@ -40,15 +40,20 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
           } as CSSProperties
         }
         className={cn(
-          "group relative z-0 cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] ",
-          "transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_0_20px_10px_rgba(62,61,117,0.5)]",
+          "group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap px-6 py-4 text-white [background:var(--bg)] [border-radius:var(--radius)] dark:text-black",
           className,
         )}
         ref={ref}
         {...props}
       >
         {/* spark container */}
-        <div className="absolute inset-0 -z-30 overflow-visible [container-type:size]">
+        <div
+          className={cn(
+            "blur-lg",
+            "-z-30",
+            "absolute inset-0 overflow-visible border border-white [container-type:size]",
+          )}
+        >
           {/* spark */}
           <div className="absolute inset-0 h-[100cqh] animate-slide [aspect-ratio:1] [border-radius:0] [mask:none] ">
             {/* spark before */}
@@ -56,13 +61,17 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
           </div>
         </div>
 
-        {/* content */}
-        <div className="pointer-events-none relative z-10 text-white dark:text-black">
-          {children}
-        </div>
+        {children}
+
+        {/* Highlight */}
+        <div className="absolute bottom-0 left-1/2 h-2/5 w-3/4 -translate-x-1/2 rounded-full bg-white/10 opacity-50 blur-lg transition-all duration-300 ease-in-out group-hover:h-3/5 group-hover:opacity-100"></div>
 
         {/* backdrop */}
-        <div className="absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" />
+        <div
+          className={cn(
+            "absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]",
+          )}
+        />
       </button>
     );
   },

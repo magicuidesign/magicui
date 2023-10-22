@@ -5,7 +5,7 @@ export default function ShimmerButtonDemo() {
   return (
     <div className="relative flex h-full w-full items-center justify-center rounded-lg border bg-background py-20 shadow-2xl">
       <ShimmerButton>
-        <span className="whitespace-pre-wrap bg-gradient-to-b from-black from-30% to-gray-300/80 bg-clip-text text-center text-sm font-semibold leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 dark:text-transparent lg:text-2xl">
+        <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
           Shimmer Button
         </span>
       </ShimmerButton>
