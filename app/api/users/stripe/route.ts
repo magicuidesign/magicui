@@ -1,9 +1,8 @@
 import { authOptions } from "@/lib/auth";
-import { absoluteUrl } from "@/lib/utils";
 import { getServerSession } from "next-auth/next";
 import { z } from "zod";
 
-const billingUrl = absoluteUrl("/dashboard/billing");
+// const billingUrl = absoluteUrl("/dashboard/billing");
 
 export async function GET(req: Request) {
   try {

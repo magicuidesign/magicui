@@ -24,7 +24,7 @@ const HeroVideoContext = React.createContext<HeroVideoContextType>({});
 export const HeroVideoAction = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactElement;
 }) => {
   const context = useContext(HeroVideoContext);
 
