@@ -46,8 +46,8 @@ export default function Hero() {
           // delay={0.0}
           className="z-10 flex h-full w-full flex-col items-center justify-center"
         >
-          <h1 className="text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-9xl">
-            Create Magical <br /> Landing Pages
+          <h1 className="text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+            Create Magical <br /> Landing Pages <br /> in Minutes
           </h1>
         </FadeIn>
         <FadeIn
