@@ -66,7 +66,7 @@ To render on server side using RSC (Next.js 13):
 ```tsx
 import { TweetCard } from "components/magicui/tweet-card.tsx";
 
-function App() {
+export default async function App() {
   return <TweetCard id="1441032681968212480" />;
 }
 ```
@@ -77,7 +77,7 @@ To render on client side:
 "use client";
 import { ClientTweetCard } from "components/magicui/client-tweet-card.tsx";
 
-function App() {
+export default function App() {
   return <ClientTweetCard id="1441032681968212480" />;
 }
 ```
