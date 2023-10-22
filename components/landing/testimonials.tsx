@@ -1,6 +1,7 @@
 import FadeIn from "@/registry/components/magicui/fade-in";
 import Marquee from "@/registry/components/magicui/marquee";
 import TweetCard from "@/registry/components/magicui/tweet-card";
+import Link from "next/link";
 
 const tweets = [
   "https://twitter.com/pkp_io/status/1684561895481802753",
@@ -33,14 +34,18 @@ export default async function Testimonials() {
       <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
         {firstRow.map((id, idx) => (
           <FadeIn delay={0.06 + idx * 0.04} key={idx}>
-            <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
+            <Link href={`https://twitter.com/i/web/status/${id}`}>
+              <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
+            </Link>
           </FadeIn>
         ))}
       </Marquee>
       <Marquee className="max-w-screen [--duration:120s]" reverse pauseOnHover>
         {secondRow.map((id, idx) => (
           <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)} key={idx}>
-            <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
+            <Link href={`https://twitter.com/i/web/status/${id}`}>
+              <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
+            </Link>
           </FadeIn>
         ))}
       </Marquee>
