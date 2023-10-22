@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import createGlobe, { COBEOptions } from "cobe";
 import { useCallback, useEffect, useRef } from "react";

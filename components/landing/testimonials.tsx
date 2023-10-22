@@ -1,9 +1,8 @@
 import FadeIn from "@/registry/components/magicui/fade-in";
 import Marquee from "@/registry/components/magicui/marquee";
-import { ServerTweetCard } from "@/registry/components/magicui/tweet-card";
-import { getTweet } from "react-tweet/api";
+import TweetCard from "@/registry/components/magicui/tweet-card";
 
-const tweetUrls = [
+const tweets = [
   "https://twitter.com/pkp_io/status/1684561895481802753",
   "https://twitter.com/devcagatay/status/1684573935466328065",
   "https://twitter.com/KanishkKhurana_/status/1684613797984800768",
@@ -25,46 +24,23 @@ const tweetUrls = [
   "https://twitter.com/beneverman/status/1681477151042797568",
 ].map((t) => t.split("/").slice(-1)[0]);
 
-async function getTweets() {
-  try {
-    const tweets = await Promise.all(
-      tweetUrls.map(async (id) => {
-        const tweet = await getTweet(id);
-        return tweet;
-      }),
-    );
-    return tweets.length ? { props: { tweets } } : { notFound: true };
-  } catch (error) {
-    return { notFound: true };
-  }
-}
-
 export default async function Testimonials() {
-  const { props } = await getTweets();
-  const firstRow = props?.tweets?.slice(0, props?.tweets?.length / 2);
-  const secondRow = props?.tweets?.slice(props?.tweets?.length / 2);
+  const firstRow = tweets.slice(0, tweets.length / 2);
+  const secondRow = tweets.slice(tweets.length / 2);
 
   return (
     <section className="relative flex flex-col gap-4 pb-8 pt-20 md:pb-12">
       <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
-        {firstRow?.map((data, idx) => (
-          <FadeIn delay={0.06 + idx * 0.04}>
-            <ServerTweetCard
-              tweet={data}
-              key={idx}
-              className="h-36 w-72 min-w-[18rem]"
-            />
+        {firstRow.map((id, idx) => (
+          <FadeIn delay={0.06 + idx * 0.04} key={idx}>
+            <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
           </FadeIn>
         ))}
       </Marquee>
       <Marquee className="max-w-screen [--duration:120s]" reverse pauseOnHover>
-        {secondRow?.map((data, idx) => (
-          <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)}>
-            <ServerTweetCard
-              tweet={data}
-              key={idx}
-              className="h-36 w-72 min-w-[18rem]"
-            />
+        {secondRow.map((id, idx) => (
+          <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)} key={idx}>
+            <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
           </FadeIn>
         ))}
       </Marquee>

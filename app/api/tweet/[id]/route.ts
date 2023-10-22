@@ -8,12 +8,11 @@ const schema = z.object({
 });
 
 export async function GET(req: Request, context: z.infer<typeof schema>) {
-  console.log(context);
   try {
     const { params } = schema.parse(context);
     const tweet = await getTweet(params.id);
+    console.log(params.id);
 
-    console.log(tweet);
     if (tweet) {
       return new Response(JSON.stringify({ data: tweet }));
     } else {

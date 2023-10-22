@@ -57,6 +57,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/tweet-card.tsx"],
   },
+  "client-tweet-card": {
+    name: "tweet-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/client-tweet-card.tsx"],
+  },
 };
 
 const example: Registry = {

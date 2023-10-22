@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
@@ -29,8 +27,8 @@ const CustomLink = (props: any) => {
 const components = {
   a: CustomLink,
   Image,
-  ComponentSource,
   ComponentPreview,
+  ComponentSource: (props: any) => <ComponentSource {...props} />,
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="w-full overflow-y-auto">
       <table className={cn("w-full", className)} {...props} />

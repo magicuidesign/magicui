@@ -1,14 +1,12 @@
-"use client";
-
 import { cn } from "@/lib/utils";
+import { Suspense } from "react";
 import {
   enrichTweet,
-  useTweet,
   type EnrichedTweet,
   type TweetProps,
   type TwitterComponents,
 } from "react-tweet";
-import type { Tweet } from "react-tweet/api";
+import { getTweet, type Tweet } from "react-tweet/api";
 
 interface TwitterIconProps {
   className?: string;
@@ -18,7 +16,7 @@ const Twitter = ({ className, ...props }: TwitterIconProps) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
-    stroke-width="0"
+    strokeWidth="0"
     viewBox="0 0 24 24"
     height="1em"
     width="1em"
@@ -63,8 +61,20 @@ const Skeleton = ({
   );
 };
 
-export const TweetSkeleton = () => (
-  <div className="flex h-full max-h-max w-full min-w-[18rem] flex-col gap-2 rounded-lg border p-4">
+export const TweetSkeleton = ({
+  className,
+  ...props
+}: {
+  className?: string;
+  [key: string]: any;
+}) => (
+  <div
+    className={cn(
+      "flex h-full max-h-max w-full min-w-[18rem] flex-col gap-2 rounded-lg border p-4",
+      className,
+    )}
+    {...props}
+  >
     <div className="flex flex-row gap-2">
       <Skeleton className="h-10 w-10 shrink-0 rounded-full" />
       <Skeleton className="h-10 w-full" />
@@ -73,8 +83,20 @@ export const TweetSkeleton = () => (
   </div>
 );
 
-export const TweetNotFound = (_props: { error?: any }) => (
-  <div className="flex h-full w-full flex-col items-center gap-2 rounded-lg border p-4">
+export const TweetNotFound = ({
+  className,
+  ...props
+}: {
+  className?: string;
+  [key: string]: any;
+}) => (
+  <div
+    className={cn(
+      "flex h-full w-full flex-col items-center justify-center gap-2 rounded-lg border p-4",
+      className,
+    )}
+    {...props}
+  >
     <h3>Tweet not found</h3>
   </div>
 );
@@ -160,12 +182,15 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
     {tweet.video && (
       <video
         poster={tweet.video.poster}
-        src={tweet.video.variants[0].src}
         autoPlay
         loop
         muted
+        playsInline
         className="rounded-xl border shadow-sm"
-      />
+      >
+        <source src={tweet.video.variants[0].src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     )}
     {tweet.photos && (
       <div className="flex flex-row gap-2">
@@ -195,7 +220,7 @@ export const MagicTweet = ({
   return (
     <div
       className={cn(
-        "relative flex h-32 max-h-max w-full flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
+        "relative flex max-h-max w-full flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
         className,
       )}
       {...props}
@@ -208,38 +233,37 @@ export const MagicTweet = ({
 };
 
 /**
- * TweetCard (Client Side Only)
- */
-export const TweetCard = ({
-  id,
-  apiUrl,
-  fallback = <TweetSkeleton />,
-  components,
-  onError,
-  ...props
-}: TweetProps & { className?: string }) => {
-  const { data, error, isLoading } = useTweet(id, apiUrl);
-
-  if (isLoading) return fallback;
-  if (error || !data) {
-    const NotFound = components?.TweetNotFound || TweetNotFound;
-    return <NotFound error={onError ? onError(error) : error} />;
-  }
-
-  return <MagicTweet tweet={data} components={components} {...props} />;
-};
-
-/**
  * TweetCard (Server Side Only)
  */
-export const ServerTweetCard = ({
-  tweet,
+export const TweetCard = async ({
+  id,
+  components,
+  fallback = <TweetSkeleton />,
+  onError,
   ...props
-}: {
-  tweet: any;
-  [key: string]: any;
+}: TweetProps & {
+  className?: string;
 }) => {
-  return <MagicTweet tweet={tweet} {...props} />;
+  const tweet = id
+    ? await getTweet(id).catch((err) => {
+        if (onError) {
+          onError(err);
+        } else {
+          console.error(err);
+        }
+      })
+    : undefined;
+
+  if (!tweet) {
+    const NotFound = components?.TweetNotFound || TweetNotFound;
+    return <NotFound {...props} />;
+  }
+
+  return (
+    <Suspense fallback={fallback}>
+      <MagicTweet tweet={tweet} {...props} />
+    </Suspense>
+  );
 };
 
 export default TweetCard;
