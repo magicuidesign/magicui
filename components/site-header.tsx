@@ -16,7 +16,7 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ user }: SiteHeaderProps) {
   return (
-    <header className="supports-backdrop-blur:bg-background/80 sticky top-0 z-40 w-full backdrop-blur">
+    <header className="supports-backdrop-blur:bg-background/80 sticky top-0 z-40 w-full bg-[radial-gradient(transparent_1px,white_1px)] backdrop-blur-sm [background-size:8px_8px] dark:bg-[radial-gradient(transparent_1px,#000214_1px)]">
       <div className="container flex h-16 items-center">
         <MainNav />
         <MobileNav />
