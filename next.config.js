@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    serverActions: true,
+    optimizeCss: true,
   },
   images: {
     domains: ["localhost", "cdn.magicuikit.com"],

@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     EmailProvider({
-      name: "email",
+      type: "email",
       server: "",
       from: EMAIL_FROM,
       sendVerificationRequest: async ({
