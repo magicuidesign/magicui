@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import DotPattern from "@/registry/components/magicui/dot-pattern";
-import RadialGradient from "@/registry/components/magicui/radial-gradient";
 
 const DotPatternDemo = () => {
   return (
@@ -12,10 +11,9 @@ const DotPatternDemo = () => {
       </p>
       <DotPattern
         className={cn(
-          "[mask-image:radial-gradient(200px_circle_at_center,white,transparent)]",
+          "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
         )}
       />
-      <RadialGradient from="rgba(120,119,198,0.3)" to="rgba(0,0,0,0.0)" />
     </div>
   );
 };

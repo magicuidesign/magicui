@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import DotPattern from "@/registry/components/magicui/dot-pattern";
-import LinearGradient from "@/registry/components/magicui/linear-gradient";
 
 const DotPatternDemo2 = () => {
   return (
@@ -19,11 +18,6 @@ const DotPatternDemo2 = () => {
         className={cn(
           "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
         )}
-      />
-      <LinearGradient
-        to="rgba(120,119,198,0.3)"
-        from="rgba(0,0,0,0.0)"
-        direction="bottom right"
       />
     </div>
   );

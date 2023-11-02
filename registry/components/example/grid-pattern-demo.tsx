@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import GridPattern from "@/registry/components/magicui/grid-pattern";
-import RadialGradient from "@/registry/components/magicui/radial-gradient";
 
 const GridPatternDemo = () => {
   return (
@@ -20,11 +19,10 @@ const GridPatternDemo = () => {
           [13, 3],
         ]}
         className={cn(
-          "[mask-image:radial-gradient(200px_circle_at_center,white,transparent)]",
+          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
           "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
         )}
       />
-      <RadialGradient from="rgba(120,119,198,0.3)" to="rgba(0,0,0,0.0)" />
     </div>
   );
 };

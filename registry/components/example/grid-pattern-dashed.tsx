@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import GridPattern from "@/registry/components/magicui/grid-pattern";
-import RadialGradient from "@/registry/components/magicui/radial-gradient";
 
 const GridPatternDashed = () => {
   return (
@@ -20,7 +19,6 @@ const GridPatternDashed = () => {
           "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
         )}
       />
-      <RadialGradient from="rgba(120,119,198,0.3)" to="rgba(0,0,0,0.0)" />
     </div>
   );
 };

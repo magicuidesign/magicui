@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import GridPattern from "@/registry/components/magicui/grid-pattern";
-import LinearGradient from "@/registry/components/magicui/linear-gradient";
 
 const GridPatternLinearGradient = () => {
   return (
@@ -18,11 +17,6 @@ const GridPatternLinearGradient = () => {
         className={cn(
           "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
         )}
-      />
-      <LinearGradient
-        to="rgba(120,119,198,0.3)"
-        from="rgba(0,0,0,0.0)"
-        direction="bottom right"
       />
     </div>
   );

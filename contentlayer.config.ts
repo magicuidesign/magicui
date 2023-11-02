@@ -60,7 +60,7 @@ export const Component = defineDocumentType(() => ({
     summary: { type: "string", required: true },
     author: { type: "string", required: true },
     published: { type: "boolean", required: false, default: true },
-    toc: { type: "boolean", default: true, required: false },
+    toc: { type: "boolean", default: false, required: false },
   },
   // @ts-ignore
   computedFields,

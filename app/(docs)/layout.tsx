@@ -29,7 +29,7 @@ export default async function MarketingLayout({
         x={-1}
         y={-1}
         className={cn(
-          "absolute inset-0 h-screen w-screen fill-black/[.06] stroke-black/[.06] dark:fill-white/[.06] dark:stroke-white/[.06]",
+          "absolute inset-0 h-screen w-screen fill-black/[.03] stroke-black/[.03] dark:fill-white/[.03] dark:stroke-white/[.03]",
           "-z-50 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
           "inset-x-0 -top-[1rem] -z-50 h-[80%] skew-y-12",
         )}

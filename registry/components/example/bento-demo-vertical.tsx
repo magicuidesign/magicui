@@ -4,55 +4,61 @@ import { ChevronRight } from "lucide-react";
 
 const features = [
   {
-    name: "Graph view",
+    name: "1. Graph view",
     description:
       "Visualize relationships between items in your library to find connections.",
     image:
       "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 1,
+    span: "row-start-1 row-end-4 col-start-2 col-end-3",
     href: "/",
   },
   {
-    name: "Graph view",
+    name: "2. Graph view",
     description:
       "Visualize relationships between items in your library to find connections.",
     image:
       "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 2,
+    span: "col-start-1 col-end-2 row-start-1 row-end-3",
     href: "/",
   },
   {
-    name: "Graph view",
+    name: "3. Graph view",
     description:
       "Visualize relationships between items in your library to find connections.",
     image:
       "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 2,
+    span: "col-start-1 col-end-2 row-start-3 row-end-4",
     href: "/",
   },
   {
-    name: "Graph view",
+    name: "4. Graph view",
     description:
       "Visualize relationships between items in your library to find connections.",
     image:
       "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 1,
+    span: "col-start-3 col-end-3 row-start-1 row-end-2",
+    href: "/",
+  },
+  {
+    name: "5. Graph view",
+    description:
+      "Visualize relationships between items in your library to find connections.",
+    image:
+      "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
+    span: "col-start-3 col-end-3 row-start-2 row-end-4",
     href: "/",
   },
 ];
 
 export default async function BentoDemo() {
   return (
-    <div className="grid w-full auto-rows-[22rem] grid-cols-3 gap-y-4 md:gap-4">
+    <div className="grid grid-cols-3 grid-rows-3 gap-4">
       {features.map((feature) => (
         <div
           key={feature.name}
           className={cn(
-            "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]  dark:bg-neutral-900 ",
-            {
-              "lg:col-span-1": feature.span === 1,
-              "lg:col-span-2": feature.span === 2,
-            },
+            "group relative col-span-1 flex flex-col justify-between overflow-hidden rounded-xl bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-neutral-900",
+            feature.span,
           )}
         >
           <div>
@@ -65,10 +71,8 @@ export default async function BentoDemo() {
             <h3 className="mb-1 text-base font-medium text-neutral-700 dark:text-neutral-300">
               {feature.name}
             </h3>
-
             <p className="max-w-lg text-neutral-400">{feature.description}</p>
           </div>
-
           <div
             className={cn(
               "flex flex-row items-center justify-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",

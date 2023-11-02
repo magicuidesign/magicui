@@ -210,6 +210,14 @@ const example: Registry = {
       () => import("@/registry/components/example/bento-demo"),
     ),
   },
+  "bento-demo-vertical": {
+    name: "bento-demo-vertical",
+    type: "components:example",
+    files: ["registry/components/example/bento-demo-vertical.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/bento-demo-vertical"),
+    ),
+  },
 };
 
 export const registry: Registry = {

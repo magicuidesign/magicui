@@ -1,6 +1,3 @@
-import Facebook from "@/components/icons/facebook";
-import LinkedIn from "@/components/icons/linkedin";
-import Twitter from "@/components/icons/twitter";
 import { Mdx } from "@/components/mdx-components";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -119,7 +116,7 @@ export default async function Component({ params }: Props) {
           )}
         </div>
 
-        <div className="mt-4 flex items-center justify-between">
+        {/* <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <Link
               href={`https://twitter.com/intent/tweet?text=${component.title}&url=magicuikit.com/components/${component.slugAsParams}&via=${component.author}`}
@@ -144,7 +141,7 @@ export default async function Component({ params }: Props) {
               <Facebook className="h-6 w-6" />
             </Link>
           </div>
-        </div>
+        </div> */}
 
         <Mdx code={component.body.code} />
       </div>

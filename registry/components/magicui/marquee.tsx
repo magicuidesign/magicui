@@ -32,6 +32,7 @@ const Marquee = ({
       >
         {Children.map(children, (child) => cloneElement(child as any))}
         {Children.map(children, (child) => cloneElement(child as any))}
+        {Children.map(children, (child) => cloneElement(child as any))}
       </div>
     </div>
   );
