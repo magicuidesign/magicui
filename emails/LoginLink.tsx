@@ -17,7 +17,7 @@ interface Props {
   loginLink?: string;
 }
 
-const Email = ({ firstName, loginLink = "https://magicuikit.com" }: Props) => {
+const Email = ({ firstName, loginLink = "https://magicui.design" }: Props) => {
   const previewText = firstName
     ? `Welcome to Magic UI, ${firstName}!`
     : `Welcome to Magic UI!`;
@@ -38,7 +38,7 @@ const Email = ({ firstName, loginLink = "https://magicuikit.com" }: Props) => {
           <Container className="mx-auto my-[40px] w-[465px] max-w-[465px] rounded border border-solid border-[#eaeaea] p-[20px]">
             <Section className="mt-[32px]">
               <Img
-                src={`https://magicuikit.com/icon.png`}
+                src={`https://magicui.design/icon.png`}
                 width="40"
                 height="37"
                 alt="Magic UI"
