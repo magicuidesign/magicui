@@ -58,9 +58,14 @@ const ui: Registry = {
     files: ["registry/components/magicui/tweet-card.tsx"],
   },
   "client-tweet-card": {
-    name: "tweet-card",
+    name: "client-tweet-card",
     type: "components:ui",
     files: ["registry/components/magicui/client-tweet-card.tsx"],
+  },
+  "bento-grid": {
+    name: "bento-grid",
+    type: "components:ui",
+    files: ["registry/components/magicui/bento-grid.tsx"],
   },
 };
 

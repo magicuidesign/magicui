@@ -1,91 +1,136 @@
-import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
+import { BentoCard, BentoGrid } from "@/registry/components/magicui/bento-grid";
+import Globe from "@/registry/components/magicui/globe";
+import Marquee from "@/registry/components/magicui/marquee";
+import {
+  CalendarIcon,
+  FileTextIcon,
+  GlobeIcon,
+  InputIcon,
+} from "@radix-ui/react-icons";
+
+const files = [
+  {
+    name: "bitcoin.pdf",
+    body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+  },
+  {
+    name: "finances.xlsx",
+    body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+  },
+  {
+    name: "logo.svg",
+    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
+  },
+  {
+    name: "keys.gpg",
+    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+  },
+  {
+    name: "seed.txt",
+    body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+  },
+];
 
 const features = [
   {
-    name: "Graph view",
-    description:
-      "Visualize relationships between items in your library to find connections.",
-    image:
-      "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 1,
+    Icon: FileTextIcon,
+    name: "Save your files",
+    description: "We automatically save your files as you type.",
+    span: "col-span-3 lg:col-span-1",
     href: "/",
+    background: (
+      <Marquee
+        pauseOnHover
+        className="absolute top-10 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
+      >
+        {files.map((f, idx) => (
+          <figure
+            key={idx}
+            className={cn(
+              "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+              "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+              "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+              "blur-[1px] transition-all duration-300 ease-out hover:blur-none",
+            )}
+          >
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-col">
+                <figcaption className="text-sm font-medium dark:text-white ">
+                  {f.name}
+                </figcaption>
+              </div>
+            </div>
+            <blockquote className="mt-2 text-xs">{f.body}</blockquote>
+          </figure>
+        ))}
+      </Marquee>
+    ),
   },
   {
-    name: "Graph view",
-    description:
-      "Visualize relationships between items in your library to find connections.",
-    image:
-      "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 2,
+    Icon: InputIcon,
+    name: "Full text search",
+    description: "Search through all your files in one place.",
+    span: "col-span-3 lg:col-span-2",
     href: "/",
+    background: (
+      <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
+        <CommandInput placeholder="Type a command or search..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Suggestions">
+            <CommandItem>screenshot.png</CommandItem>
+            <CommandItem>bitcoin.pdf</CommandItem>
+            <CommandItem>finances.xlsx</CommandItem>
+            <CommandItem>logo.svg</CommandItem>
+            <CommandItem>keys.gpg</CommandItem>
+            <CommandItem>seed.txt</CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </Command>
+    ),
   },
   {
-    name: "Graph view",
-    description:
-      "Visualize relationships between items in your library to find connections.",
-    image:
-      "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 2,
+    Icon: GlobeIcon,
+    name: "Multilingual",
+    description: "Supports 100+ languages and counting.",
+    span: "col-span-3 lg:col-span-2",
     href: "/",
+    background: (
+      <Globe className="top-0 h-[600px] w-[600px] transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)] group-hover:scale-105 sm:left-40" />
+    ),
   },
   {
-    name: "Graph view",
-    description:
-      "Visualize relationships between items in your library to find connections.",
-    image:
-      "https://assets.vercel.com/image/upload/v1675318695/nextjs/showcase/loom-illustration.svg",
-    span: 1,
+    Icon: CalendarIcon,
+    name: "Calendar",
+    description: "Use the calendar to filter your files by date.",
+    span: "col-span-3 lg:col-span-1",
     href: "/",
+    background: (
+      <Calendar
+        mode="single"
+        selected={new Date(2022, 4, 11, 0, 0, 0)}
+        className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
+      />
+    ),
   },
 ];
 
 export default async function BentoDemo() {
   return (
-    <div className="grid w-full auto-rows-[22rem] grid-cols-3 gap-y-4 md:gap-4">
-      {features.map((feature) => (
-        <div
-          key={feature.name}
-          className={cn(
-            "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]  dark:bg-neutral-900 ",
-            {
-              "lg:col-span-1": feature.span === 1,
-              "lg:col-span-2": feature.span === 2,
-            },
-          )}
-        >
-          <div>
-            <img
-              className="absolute -right-20 -top-20 opacity-60"
-              src={feature.image}
-            />
-          </div>
-          <div className="p-6 transition-all duration-300 group-hover:-translate-y-10">
-            <h3 className="mb-1 text-base font-medium text-neutral-700 dark:text-neutral-300">
-              {feature.name}
-            </h3>
-
-            <p className="max-w-lg text-neutral-400">{feature.description}</p>
-          </div>
-
-          <div
-            className={cn(
-              "flex flex-row items-center justify-center transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
-              "translate-y-10 opacity-0",
-              "absolute bottom-4 w-full",
-            )}
-          >
-            <Button variant="ghost" size="sm" asChild>
-              <a href={feature.href}>
-                Learn more
-                <ChevronRight className="h-4 w-4" />
-              </a>
-            </Button>
-          </div>
-          <div className="pointer-events-none absolute inset-0 transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
-        </div>
+    <BentoGrid>
+      {features.map((feature, idx) => (
+        <BentoCard key={idx} {...feature} />
       ))}
-    </div>
+    </BentoGrid>
   );
 }

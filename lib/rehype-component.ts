@@ -85,8 +85,8 @@ export function rehypeComponent() {
           const filePath = path.join(process.cwd(), src);
           let source = fs.readFileSync(filePath, "utf8");
 
-          console.log("name ", name);
-          console.log("source ", source);
+          // console.log("name ", name);
+          // console.log("source ", source);
 
           // Replace imports.
           // TODO: Use @swc/core and a visitor to replace this.
