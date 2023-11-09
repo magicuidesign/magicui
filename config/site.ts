@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Magic UI",
-  url: "https://magicuikit.com",
-  ogImage: "https://magicuikit/og.jpg",
+  url: "https://magicui.design",
+  ogImage: "https://magicui.design/og.jpg",
   description:
     "Beautifully designed landing page components built with React & Tailwind CSS.",
   links: {

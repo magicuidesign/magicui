@@ -8,7 +8,7 @@ const nextConfig = {
     optimizeCss: true,
   },
   images: {
-    domains: ["localhost", "cdn.magicuikit.com"],
+    domains: ["localhost", "cdn.magicui.design"],
   },
 };
 

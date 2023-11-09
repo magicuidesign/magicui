@@ -39,7 +39,7 @@ const computedFields = {
         dateModified: doc.date,
         description: doc.summary,
         image: doc.image,
-        url: `https://magicuikit.com/${doc._raw.flattenedPath}`,
+        url: `https://magicui.design/${doc._raw.flattenedPath}`,
         author: {
           "@type": "Person",
           name: doc.author,

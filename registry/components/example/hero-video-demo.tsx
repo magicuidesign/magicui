@@ -44,7 +44,7 @@ export default function HeroVideoDemo() {
               autoPlay
               className="rounded-xl dark:border"
               playsInline
-              src="https://cdn.magicuikit.com/globe.mp4"
+              src="https://cdn.magicui.design/globe.mp4"
             />
           </HeroVideo>
         </MagicCard>

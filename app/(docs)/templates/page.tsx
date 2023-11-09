@@ -55,7 +55,7 @@ export default async function TemplatePage() {
       <HeroVideo
         title="Magic UI Demo"
         image="https://cdn.dribbble.com/userupload/4145843/file/original-c7a2c9a768450460259f232259d103d2.png?resize=1600x1200"
-        video="https://cdn.magicuikit.com/globe.mp4"
+        video="https://cdn.magicui.design/globe.mp4"
       >
         <HeroVideoAction>
           <ShimmerButton>
