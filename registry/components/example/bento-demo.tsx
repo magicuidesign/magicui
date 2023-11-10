@@ -46,8 +46,8 @@ const features = [
     Icon: FileTextIcon,
     name: "Save your files",
     description: "We automatically save your files as you type.",
-    span: "col-span-3 lg:col-span-1",
     href: "/",
+    className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
         pauseOnHover
@@ -80,8 +80,8 @@ const features = [
     Icon: InputIcon,
     name: "Full text search",
     description: "Search through all your files in one place.",
-    span: "col-span-3 lg:col-span-2",
     href: "/",
+    className: "col-span-3 lg:col-span-2",
     background: (
       <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
         <CommandInput placeholder="Type a command or search..." />
@@ -103,8 +103,8 @@ const features = [
     Icon: GlobeIcon,
     name: "Multilingual",
     description: "Supports 100+ languages and counting.",
-    span: "col-span-3 lg:col-span-2",
     href: "/",
+    className: "col-span-3 lg:col-span-2",
     background: (
       <Globe className="top-0 h-[600px] w-[600px] transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)] group-hover:scale-105 sm:left-40" />
     ),
@@ -113,7 +113,7 @@ const features = [
     Icon: CalendarIcon,
     name: "Calendar",
     description: "Use the calendar to filter your files by date.",
-    span: "col-span-3 lg:col-span-1",
+    className: "col-span-3 lg:col-span-1",
     href: "/",
     background: (
       <Calendar
