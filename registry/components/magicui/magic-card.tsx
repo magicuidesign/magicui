@@ -217,7 +217,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
       {spotlight && (
         <div
           className={
-            "blur-xs pointer-events-none absolute left-0 top-0 h-full w-full rounded-2xl bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] transition-opacity duration-500"
+            "pointer-events-none absolute left-0 top-0 h-full w-full transform-gpu rounded-2xl bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] blur-sm transition-opacity duration-500"
           }
         />
       )}
