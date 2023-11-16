@@ -29,6 +29,7 @@ const BentoCard = ({
   Icon,
   description,
   href,
+  cta,
 }: {
   name: string;
   className: string;
@@ -36,6 +37,7 @@ const BentoCard = ({
   Icon: any;
   description: string;
   href: string;
+  cta: string;
 }) => (
   <div
     key={name}
@@ -50,7 +52,7 @@ const BentoCard = ({
   >
     <div>{background}</div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-      <Icon className="h-12 w-12 transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
+      <Icon className="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75" />
       <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
         {name}
       </h3>
@@ -64,7 +66,7 @@ const BentoCard = ({
     >
       <Button variant="ghost" asChild size="sm" className="pointer-events-auto">
         <a href={href}>
-          Learn more
+          {cta}
           <ArrowRightIcon className="ml-2 h-4 w-4" />
         </a>
       </Button>

@@ -47,6 +47,7 @@ const features = [
     name: "Save your files",
     description: "We automatically save your files as you type.",
     href: "/",
+    cta: "Learn more",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
@@ -81,6 +82,7 @@ const features = [
     name: "Full text search",
     description: "Search through all your files in one place.",
     href: "/",
+    cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
       <Command className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
@@ -104,6 +106,7 @@ const features = [
     name: "Multilingual",
     description: "Supports 100+ languages and counting.",
     href: "/",
+    cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
       <Globe className="top-0 h-[600px] w-[600px] transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)] group-hover:scale-105 sm:left-40" />
@@ -115,6 +118,7 @@ const features = [
     description: "Use the calendar to filter your files by date.",
     className: "col-span-3 lg:col-span-1",
     href: "/",
+    cta: "Learn more",
     background: (
       <Calendar
         mode="single"
