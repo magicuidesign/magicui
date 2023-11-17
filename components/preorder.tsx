@@ -17,9 +17,9 @@ export default function PreOrder() {
   }
 
   return (
-    <MagicContainer className="not-prose max-w-[400px]">
+    <MagicContainer className="not-prose mt-8 grid w-full max-w-screen-md justify-center gap-8 lg:grid-cols-2">
       {plans.map((item, idx) => (
-        <PriceCard key={idx} item={item} />
+        <PriceCard key={idx} item={item} className="h-fit" />
       ))}
     </MagicContainer>
   );

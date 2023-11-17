@@ -27,16 +27,16 @@ export default function Buy() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="mt-6 text-xl leading-8 text-foreground/60">
+            <p className="mt-6 text-xl leading-8 text-foreground/80">
               Get <strong>lifetime access</strong> to all components and
               templates available today , plus any new ones we add in the future
               for a simple one-time price.
             </p>
           </FadeIn>
         </div>
-        <MagicContainer className="mx-auto mt-16 grid w-full grid-cols-1 place-items-center gap-8">
+        <MagicContainer className="mx-auto mt-16 grid w-full max-w-screen-md justify-center gap-8 lg:grid-cols-2">
           {plans.map((item, idx) => (
-            <PriceCard key={idx} item={item} className="max-w-[400px]" />
+            <PriceCard key={idx} item={item} className="h-fit max-w-[400px]" />
           ))}
         </MagicContainer>
       </div>

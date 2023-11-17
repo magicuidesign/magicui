@@ -85,9 +85,12 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                 </Link>
                 <Link
                   className={cn(
-                    buttonVariants(),
+                    buttonVariants({
+                      size: "sm",
+                    }),
                     "hidden gap-2 whitespace-pre md:flex",
-                    "group relative w-full max-w-fit justify-center gap-2 overflow-hidden rounded-sm transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+                    "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
+                    "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
                   )}
                   href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK}
                 >

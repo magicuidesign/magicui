@@ -25,7 +25,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "relative flex min-h-screen w-full flex-col justify-center scroll-smooth bg-background font-sans antialiased",
+          "relative flex min-h-screen w-full flex-col justify-center scroll-smooth bg-background antialiased",
           fontSans.className,
         )}
       >

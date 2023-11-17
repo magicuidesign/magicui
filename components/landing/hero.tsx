@@ -66,13 +66,27 @@ export default function Hero() {
           <div className="flex flex-col gap-4 md:flex-row">
             <Link
               href="/pricing"
-              className={cn(buttonVariants({ size: "lg" }))}
+              className={cn(
+                buttonVariants({
+                  size: "lg",
+                }),
+                "hidden gap-2 whitespace-pre md:flex",
+                "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
+                "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+              )}
             >
               Buy Now
             </Link>
             <Link
               href="/components"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+              className={cn(
+                buttonVariants({
+                  variant: "outline",
+                  size: "lg",
+                }),
+                "hidden gap-2 whitespace-pre md:flex",
+                "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
+              )}
             >
               Get Started
             </Link>
