@@ -36,14 +36,14 @@ export default async function Testimonials() {
       <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
         {firstRow.map((id, idx) => (
           <FadeIn delay={0.06 + idx * 0.04} key={idx}>
-            <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
+            <TweetCard id={id} className="max-h-32 w-72 min-w-[18rem]" />
           </FadeIn>
         ))}
       </Marquee>
       <Marquee className="max-w-screen [--duration:120s]" reverse pauseOnHover>
         {secondRow.map((id, idx) => (
           <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)} key={idx}>
-            <TweetCard id={id} className="h-36 w-72 min-w-[18rem]" />
+            <TweetCard id={id} className="max-h-32 w-72 min-w-[18rem]" />
           </FadeIn>
         ))}
       </Marquee>
