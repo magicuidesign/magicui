@@ -112,16 +112,16 @@ module.exports = {
         },
         spin: {
           "0%": {
-            rotate: "0deg",
+            transform: "translateZ(0) rotate(0)",
           },
           "15%, 35%": {
-            rotate: "90deg",
+            transform: "translateZ(0) rotate(90deg)",
           },
           "65%, 85%": {
-            rotate: "270deg",
+            transform: "translateZ(0) rotate(270deg)",
           },
           "100%": {
-            rotate: "360deg",
+            transform: "translateZ(0) rotate(360deg)",
           },
         },
         slide: {
