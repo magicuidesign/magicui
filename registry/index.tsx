@@ -67,6 +67,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/bento-grid.tsx"],
   },
+  particles: {
+    name: "particles",
+    type: "components:ui",
+    files: ["registry/components/magicui/particles.tsx"],
+  },
 };
 
 const example: Registry = {
