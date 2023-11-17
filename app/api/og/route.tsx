@@ -56,15 +56,15 @@ export async function GET(req: Request) {
             }}
           ></div> */}
 
-          <h1 tw="absolute inset-0 flex justify-center items-center mb-55 flex-row">
+          <h1 tw="absolute inset-0 flex justify-center items-center mb-57 flex-row">
             <img
-              tw="h-12 w-12"
+              tw="h-10 w-10"
               alt={title}
               // @ts-ignore
               src={logoData}
             />
             <span
-              tw="ml-4"
+              tw="ml-3"
               style={{
                 background:
                   // "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
@@ -72,7 +72,7 @@ export async function GET(req: Request) {
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
-                fontSize: 40,
+                fontSize: 35,
                 letterSpacing: "-1.5px",
                 ...font("Inter 700"),
               }}
@@ -106,7 +106,7 @@ export async function GET(req: Request) {
             </p>
           )}
 
-          <h1 tw="absolute inset-0 flex justify-center items-center mt-55 flex-col">
+          <h1 tw="absolute inset-0 flex justify-center items-center mt-57 flex-col">
             <span
               style={{
                 background:
