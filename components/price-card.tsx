@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const RegularButton = () => (
   <Link
-    href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK as string}
+    href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK}
     target="_blank"
     className={cn(
       buttonVariants({ variant: "default", size: "lg" }),
@@ -25,7 +25,7 @@ const RegularButton = () => (
 
 const ApplePayButton = () => (
   <Link
-    href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK as string}
+    href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK}
     target="_blank"
     className={cn(
       buttonVariants({ variant: "default", size: "lg" }),
