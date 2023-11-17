@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={cn(
           "relative flex min-h-screen w-full flex-col justify-center scroll-smooth bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.className,
         )}
       >
         <SessionProvider>
