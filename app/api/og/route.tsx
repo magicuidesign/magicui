@@ -3,16 +3,31 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-const interSemiBold = fetch(
-  new URL("../../../assets/fonts/Inter-SemiBold.ttf", import.meta.url),
+const inter600 = fetch(
+  new URL(
+    `../../../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff`,
+    import.meta.url,
+  ),
+).then((res) => res.arrayBuffer());
+
+const inter700 = fetch(
+  new URL(
+    `../../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff`,
+    import.meta.url,
+  ),
 ).then((res) => res.arrayBuffer());
 
 const image = fetch(
-  new URL("../../../assets/images/og-bg.png", import.meta.url),
+  new URL("../../../assets/images/og-bg-2.png", import.meta.url),
 ).then((res) => res.arrayBuffer());
+
+const logo = fetch(new URL("../../../app/icon.png", import.meta.url)).then(
+  (res) => res.arrayBuffer(),
+);
 
 export async function GET(req: Request) {
   const imageData = await image;
+  const logoData = await logo;
 
   const url = new URL(req.url);
   const params = Object.fromEntries(url.searchParams);
@@ -21,28 +36,12 @@ export async function GET(req: Request) {
   try {
     return new ImageResponse(
       (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            position: "relative",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          {/* @ts-ignore */}
+        <div tw="flex justify-center flex-col relative w-full h-full items-center bg-white">
           <img
+            tw="absolute inset-0 w-full h-full"
+            alt={title}
             // @ts-ignore
             src={imageData}
-            alt={title}
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-            }}
           />
 
           {/* Lighting Effects */}
@@ -53,38 +52,75 @@ export async function GET(req: Request) {
               width: "100%",
               height: "100%",
               backgroundImage:
-                "radial-gradient(circle at 0% 15%, rgba(171, 112, 243, 0.1), rgba(0,0,0,0) 40%), radial-gradient(circle at 100% 85%, rgba(233, 132, 23, 0.1),rgba(0,0,0,0) 40%)",
+                "radial-gradient(circle at 0% 15%, #FFBD7A22, rgba(0,0,0,0) 40%), radial-gradient(circle at 100% 85%, #9E7AFF22,rgba(0,0,0,0) 40%)",
             }}
           ></div> */}
+
+          <h1 tw="absolute inset-0 flex justify-center items-center mb-55 flex-row">
+            <img
+              tw="h-12 w-12"
+              alt={title}
+              // @ts-ignore
+              src={logoData}
+            />
+            <span
+              tw="ml-4"
+              style={{
+                background:
+                  // "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
+                  "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 1) 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                fontSize: 40,
+                letterSpacing: "-1.5px",
+                ...font("Inter 700"),
+              }}
+            >
+              Magic UI
+            </span>
+          </h1>
 
           {title && (
             <p
               style={{
-                fontSize: 150,
+                position: "absolute",
+                whiteSpace: "pre-wrap",
+                // background:
+                //   "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
+                // background:
+                //   "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 0.6) 100%)",
                 background:
-                  "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 0.6) 100%)",
+                  "linear-gradient(315deg,#9E7AFF 0%,#FE8BBB 33.33%,#FFBD7A 66.67%,#F8EAC3 100%)",
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
+                textAlign: "center",
+                fontSize: 150,
+                letterSpacing: "-10px",
                 color: "transparent",
+                WebkitTextFillColor: "transparent",
+                ...font("Inter 600"),
               }}
             >
               {title}
             </p>
           )}
-          <h1 tw="text-gray-300 font-medium bg-clip-text bg-gradient-to-b from-white to-gray-300/90 mx-auto text-center text-3xl">
+
+          <h1 tw="absolute inset-0 flex justify-center items-center mt-55 flex-col">
             <span
               style={{
-                letterSpacing: 1,
-                opacity: 0.8,
                 background:
-                  "linear-gradient(90deg, rgba(171, 112, 243, 1) 0%, rgba(238, 90, 132, 1) 50%, rgba(233, 132, 23, 1) 100%)",
+                  "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 1) 100%)",
+                // "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
                 backgroundClip: "text",
-                // @ts-ignore
-                "-webkit-background-clip": "text",
+                WebkitBackgroundClip: "text",
                 color: "transparent",
+                fontSize: 25,
+                letterSpacing: "-1.5px",
+                ...font("Inter 700"),
               }}
             >
-              Beautifully Crafted React + Tailwind CSS components
+              Create magical landing pages in minutes.
             </span>
           </h1>
         </div>
@@ -94,10 +130,12 @@ export async function GET(req: Request) {
         height: 630,
         fonts: [
           {
-            name: "Inter",
-            data: await interSemiBold,
-            style: "normal",
-            weight: 400,
+            name: "Inter 600",
+            data: await inter600,
+          },
+          {
+            name: "Inter 700",
+            data: await inter700,
           },
         ],
       },
@@ -108,4 +146,8 @@ export async function GET(req: Request) {
       status: 500,
     });
   }
+}
+
+function font(fontFamily: string) {
+  return { fontFamily };
 }

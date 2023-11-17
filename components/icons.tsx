@@ -21,14 +21,15 @@ import {
   SunMedium,
   Trash,
   User,
-  Wand2,
   X,
 } from "lucide-react";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
-  logo: Wand2,
+  logo: ({ className, ...props }: { className: string }) => (
+    <img src="/icon.png" alt="Magic UI" className={className} {...props} />
+  ),
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
