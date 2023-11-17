@@ -1847,17 +1847,17 @@
   dependencies:
     tslib "^2.4.0"
 
-"@t3-oss/env-core@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@t3-oss/env-core/-/env-core-0.4.1.tgz#3f863904c5647679c52400df3c79653c994a4cbc"
-  integrity sha512-JZI8vxlHwtiZO7OYS3qSX9Ngt7UcdqsugLwhBwx7UVi5wp1PtRo2tzMyNoBEGbfHdmkd2QU9IbvYjqtaLUA7TQ==
+"@t3-oss/env-core@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@t3-oss/env-core/-/env-core-0.7.1.tgz#5e0568203d539bb2a35c96f02d33b6e204a194e5"
+  integrity sha512-3+SQt39OlmSaRLqYVFv8uRm1BpFepM5TIiMytRqO9cjH+wB77o6BIJdeyM5h5U4qLBMEzOJWCY4MBaU/rLwbYw==
 
-"@t3-oss/env-nextjs@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@t3-oss/env-nextjs/-/env-nextjs-0.4.1.tgz#06fc6c67c2e38eb8fcf145b3eda468c62ba34373"
-  integrity sha512-lDbewJvZwOW7bFwHzdKtAH4+YcVTvGU7UEJfHwlb1RqVe9ejPrKn6ax2OGv/nFji1JXGKecKYHz3Xkpru6TFbw==
+"@t3-oss/env-nextjs@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@t3-oss/env-nextjs/-/env-nextjs-0.7.1.tgz#556a49382d22c190e5f9900e703679107cac483e"
+  integrity sha512-tQDbNLGCOvKGi+JoGuJ/CJInJI7/kLWJqtgGppAKS7ZFLdVOqZYR/uRjxlXOWPnxmUKF8VswOAsq7fXUpNZDhA==
   dependencies:
-    "@t3-oss/env-core" "0.4.1"
+    "@t3-oss/env-core" "0.7.1"
 
 "@tailwindcss/typography@^0.5.9":
   version "0.5.10"

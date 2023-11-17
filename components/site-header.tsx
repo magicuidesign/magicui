@@ -6,6 +6,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAccountNav } from "@/components/user-account-nav";
 import { siteConfig } from "@/config/site";
+import { env } from "@/env.mjs";
 import { cn } from "@/lib/utils";
 import { User } from "next-auth";
 import Link from "next/link";
@@ -88,9 +89,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                     "hidden gap-2 whitespace-pre md:flex",
                     "group relative w-full max-w-fit justify-center gap-2 overflow-hidden rounded-sm transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
                   )}
-                  href={
-                    "https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
-                  }
+                  href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK as string}
                 >
                   <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-24 dark:bg-black" />
                   {/* <Icons.logo className="h-4 w-4" /> */}

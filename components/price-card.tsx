@@ -2,6 +2,7 @@
 
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
+import { env } from "@/env.mjs";
 import { cn, hasApplePay } from "@/lib/utils";
 import DotPattern from "@/registry/components/magicui/dot-pattern";
 import FadeIn from "@/registry/components/magicui/fade-in";
@@ -11,7 +12,7 @@ import Link from "next/link";
 
 const RegularButton = () => (
   <Link
-    href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+    href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK as string}
     target="_blank"
     className={cn(
       buttonVariants({ variant: "default", size: "lg" }),
@@ -24,7 +25,7 @@ const RegularButton = () => (
 
 const ApplePayButton = () => (
   <Link
-    href="https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD"
+    href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK as string}
     target="_blank"
     className={cn(
       buttonVariants({ variant: "default", size: "lg" }),

@@ -9,11 +9,7 @@ export default function PreOrder() {
   const { data: session, status } = useSession();
   const user = session?.user;
 
-  const url = new URL(
-    process.env.NODE_ENV === "development"
-      ? "https://buy.stripe.com/test_bIY7uvbbzecfcw09AB"
-      : "https://buy.stripe.com/00g7vD4Vu8zQb8k5kl?prefilled_promo_code=EARLYBIRD",
-  );
+  const url = new URL(process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK as string);
 
   if (status === "authenticated" && user && user.email) {
     url.searchParams.append("prefilled_email", user.email);
