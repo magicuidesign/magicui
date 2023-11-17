@@ -17,6 +17,11 @@ export const docsConfig: DocsConfig = {
       title: "Pricing",
       href: "/pricing",
     },
+    {
+      title: "Roadmap",
+      href: "https://magicui.featurebase.app",
+      external: true,
+    },
   ],
   sidebarNav: [
     {

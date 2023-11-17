@@ -25,6 +25,7 @@ export function MainNav() {
           <Link
             key={item.href}
             href={item.href!}
+            target={item.external ? "_blank" : undefined}
             className={cn(
               "transition-colors hover:text-foreground/80",
               pathname?.startsWith(item.href!)
