@@ -19,7 +19,12 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Roadmap",
-      href: "https://magicui.featurebase.app",
+      href: "https://magicui.featurebase.app/roadmap",
+      external: true,
+    },
+    {
+      title: "Submit Feedback",
+      href: "https://magicui.featurebase.app/",
       external: true,
     },
   ],
