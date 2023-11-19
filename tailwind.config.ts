@@ -70,6 +70,7 @@ module.exports = {
         rotate: "rotate var(--spark) linear infinite both",
         spin: "spin calc(var(--speed) * 2) infinite linear",
         slide: "slide var(--speed) ease-in-out infinite alternate",
+        ripple: "ripple 3400ms ease infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -94,10 +95,9 @@ module.exports = {
           },
         },
         grid: {
-          "0%": { transform: "rotateX(45deg) translateY(-50%)" },
-          "100%": { transform: "rotateX(45deg) translateY(0)" },
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
         },
-
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
@@ -122,6 +122,14 @@ module.exports = {
           },
           "100%": {
             transform: "translateZ(0) rotate(360deg)",
+          },
+        },
+        ripple: {
+          "0%, 100%": {
+            transform: "translate(-50%, -50%) scale(1)",
+          },
+          "50%": {
+            transform: "translate(-50%, -50%) scale(0.9)",
           },
         },
         slide: {

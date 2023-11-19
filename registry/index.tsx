@@ -72,6 +72,21 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/particles.tsx"],
   },
+  "number-ticker": {
+    name: "number-ticker",
+    type: "components:ui",
+    files: ["registry/components/magicui/number-ticker.tsx"],
+  },
+  ripple: {
+    name: "ripple",
+    type: "components:ui",
+    files: ["registry/components/magicui/ripple.tsx"],
+  },
+  "retro-grid": {
+    name: "retro-grid",
+    type: "components:ui",
+    files: ["registry/components/magicui/retro-grid.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -226,6 +241,30 @@ const example: Registry = {
     files: ["registry/components/example/bento-demo-vertical.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/bento-demo-vertical"),
+    ),
+  },
+  "number-ticker-demo": {
+    name: "number-ticker-demo",
+    type: "components:example",
+    files: ["registry/components/example/number-ticker-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/number-ticker-demo"),
+    ),
+  },
+  "ripple-demo": {
+    name: "ripple-demo",
+    type: "components:example",
+    files: ["registry/components/example/ripple-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/ripple-demo"),
+    ),
+  },
+  "retro-grid-demo": {
+    name: "retro-grid-demo",
+    type: "components:example",
+    files: ["registry/components/example/retro-grid-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/retro-grid-demo"),
     ),
   },
 };
