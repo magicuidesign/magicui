@@ -2,8 +2,6 @@ import { cn } from "@/lib/utils";
 
 const RetroGrid = ({ className }: { className?: string }) => {
   const gridLinesStyle = {
-    backgroundImage:
-      "linear-gradient(to right, rgba(255, 255, 255, 0.3) 1px, transparent 0), linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 1px, transparent 0)",
     backgroundSize: "60px 60px",
     backgroundRepeat: "repeat",
     transformOrigin: "100% 0 0",
@@ -16,17 +14,28 @@ const RetroGrid = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "absolute h-full w-full overflow-hidden [perspective:600px]",
+        "absolute h-full w-full overflow-hidden [perspective:400px]",
         className,
       )}
     >
       {/* Grid */}
-      <div className="absolute inset-0 [transform:rotateX(65deg)]">
-        <div className="animate-grid" style={gridLinesStyle} />
+      <div className="absolute inset-0 [transform:rotateX(55deg)]">
+        <div
+          className={cn(
+            "animate-grid",
+
+            // Light Styles
+            "[background-image:linear-gradient(to_right,rgba(0,0,0,0.2)_1px,transparent_0),linear-gradient(to_bottom,rgba(0,0,0,0.2)_1px,transparent_0)]",
+
+            // Dark styles
+            "dark:[background-image:linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_0),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_0)]",
+          )}
+          style={gridLinesStyle}
+        />
       </div>
 
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent dark:from-black" />
     </div>
   );
 };
