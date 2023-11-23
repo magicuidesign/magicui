@@ -34,6 +34,13 @@ export default function Buy() {
             </p>
           </FadeIn>
         </div>
+        <div
+          className={`absolute inset-0 z-0 m-auto h-full max-h-[800px] w-full max-w-[800px] rounded-full opacity-20 blur-[150px]`}
+          style={{
+            background:
+              "linear-gradient(180deg, #9E7AFF 0%,#FE8BBB 33.33%,#FFBD7A 66.67%,#F8EAC3 100%)",
+          }}
+        ></div>
         <MagicContainer className="mx-auto mt-16 grid w-full max-w-screen-md justify-center gap-8 lg:grid-cols-2">
           {plans.map((item, idx) => (
             <PriceCard key={idx} item={item} className="h-fit max-w-[400px]" />
