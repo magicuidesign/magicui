@@ -75,7 +75,7 @@ export default function Hero() {
                 "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
               )}
             >
-              Buy Now
+              Get Lifetime Access - $79
             </Link>
             <Link
               href="/components"
@@ -88,7 +88,7 @@ export default function Hero() {
                 "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
               )}
             >
-              Get Started
+              Read Docs
             </Link>
           </div>
         </FadeIn>
