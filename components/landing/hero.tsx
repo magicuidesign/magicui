@@ -31,7 +31,7 @@ export default function Hero() {
                 `inline`,
               )}
             >
-              Introducing Bento Grid
+              Introducing Retro Grid
             </span>
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
             <div
