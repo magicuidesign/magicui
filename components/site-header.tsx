@@ -17,7 +17,12 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ user }: SiteHeaderProps) {
   return (
-    <header className="supports-backdrop-blur:bg-background/80 sticky top-0 z-40 w-full bg-[radial-gradient(transparent_1px,white_1px)] backdrop-blur-sm [background-size:8px_8px] dark:bg-[radial-gradient(transparent_1px,#09090B_1px)]">
+    <header
+      className={cn(
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full  bg-background/40 backdrop-blur-lg",
+        // "[background-size:8px_8px] dark:bg-[radial-gradient(transparent_1px,#09090B_1px)] bg-[radial-gradient(transparent_1px,white_1px)]",
+      )}
+    >
       <div className="container flex h-16 items-center">
         <MainNav />
         <MobileNav />
@@ -106,7 +111,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
           </nav>
         </div>
       </div>
-      <div className="absolute bottom-0 h-px w-full bg-[radial-gradient(50%_100%_at_50%_100%,rgba(0,0,0,.12)_0%,rgba(255,255,255,0)_100%)] dark:bg-[radial-gradient(50%_100%_at_50%_100%,rgba(255,255,255,.32)_0%,rgba(255,255,255,0)_100%)]" />
+      <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
     </header>
   );
 }
