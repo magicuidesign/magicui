@@ -8,13 +8,17 @@ export function SiteBanner() {
           href="/pricing"
           className="text-center text-sm leading-loose text-muted-foreground"
         >
-          ✨<span className="font-bold text-white"> Black Friday Sale - </span>{" "}
+          ✨
+          <span className="font-bold text-black dark:text-white">
+            {" "}
+            Black Friday Sale -{" "}
+          </span>{" "}
           Get{" "}
-          <span className="font-bold text-white">
+          <span className="font-bold text-black dark:text-white">
             $30 off on Friday November 24th ONLY
           </span>{" "}
           with code{" "}
-          <span className="rounded-md bg-green-600 p-1 font-bold text-white">
+          <span className="rounded-md bg-green-600 p-1 font-bold text-black dark:text-white">
             ONEDAYSPECIAL
           </span>{" "}
           ✨
