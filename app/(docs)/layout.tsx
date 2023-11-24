@@ -14,7 +14,7 @@ export default async function MarketingLayout({
   const user = await getCurrentUser();
 
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <>
       <SiteHeader user={user} />
       <main className="flex-1">{children}</main>
       <SiteFooter />
@@ -42,6 +42,6 @@ export default async function MarketingLayout({
         to="rgba(0,0,0,0.0)"
         direction="bottom right"
       /> */}
-    </div>
+    </>
   );
 }
