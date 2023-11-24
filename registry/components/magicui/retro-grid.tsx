@@ -25,7 +25,7 @@ const RetroGrid = ({ className }: { className?: string }) => {
             "animate-grid",
 
             // Light Styles
-            "[background-image:linear-gradient(to_right,rgba(0,0,0,0.2)_1px,transparent_0),linear-gradient(to_bottom,rgba(0,0,0,0.2)_1px,transparent_0)]",
+            "[background-image:linear-gradient(to_right,rgba(0,0,0,0.3)_1px,transparent_0),linear-gradient(to_bottom,rgba(0,0,0,0.3)_1px,transparent_0)]",
 
             // Dark styles
             "dark:[background-image:linear-gradient(to_right,rgba(255,255,255,0.2)_1px,transparent_0),linear-gradient(to_bottom,rgba(255,255,255,0.2)_1px,transparent_0)]",
@@ -35,7 +35,7 @@ const RetroGrid = ({ className }: { className?: string }) => {
       </div>
 
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent dark:from-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white from-10% to-transparent dark:from-black" />
     </div>
   );
 };
