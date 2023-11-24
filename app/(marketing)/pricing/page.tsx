@@ -13,7 +13,7 @@ export const metadata = constructMetadata({
   image: absoluteUrl(`/api/og`),
 });
 
-export default function Buy() {
+export default function Pricing() {
   return (
     <>
       <section id="pricing" className="py-14">

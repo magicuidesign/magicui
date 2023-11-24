@@ -3,6 +3,7 @@ import { User2Icon, Users2Icon } from "lucide-react";
 
 export const plans = [
   {
+    stripePriceId: "price_1ODMUcKqaLcdpMYsOJ4j8XtA",
     Icon: <User2Icon className="flex h-10 w-10 rounded-full stroke-white/40" />,
     name: "Personal",
     sub: "For individual developers and freelancers.",

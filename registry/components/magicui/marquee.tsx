@@ -25,10 +25,13 @@ const Marquee = ({
       )}
     >
       <div
-        className={cn("flex w-max animate-marquee items-stretch gap-[--gap]", {
-          "[animation-direction:reverse]": reverse,
-          "hover:[animation-play-state:paused]": pauseOnHover,
-        })}
+        className={cn(
+          "flex w-max transform-gpu animate-marquee items-stretch gap-[--gap]",
+          {
+            "[animation-direction:reverse]": reverse,
+            "hover:[animation-play-state:paused]": pauseOnHover,
+          },
+        )}
       >
         {Children.map(children, (child) => cloneElement(child as any))}
         {Children.map(children, (child) => cloneElement(child as any))}
