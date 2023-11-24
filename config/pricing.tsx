@@ -35,7 +35,7 @@ export const plans = [
     discountPrice: 349,
     price: 499,
     isMostPop: false,
-    banner: "30% OFF",
+    banner: "30% off",
     href: "https://buy.stripe.com/eVabLTafO5nE4JWbIN?prefilled_promo_code=EARLYBIRDTEAM",
     featureHeader: "Everything in Personal, plus:",
     features: ["10 developer licenses"],
