@@ -11,7 +11,7 @@ export function SiteBanner() {
           ✨<span className="font-bold text-white"> Black Friday Sale - </span>{" "}
           Get{" "}
           <span className="font-bold text-white">
-            50% off Friday November 24th ONLY
+            60% off on Friday November 24th ONLY
           </span>{" "}
           with code{" "}
           <span className="rounded-md bg-green-600 p-1 font-bold text-white">

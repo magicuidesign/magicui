@@ -8,10 +8,10 @@ export const plans = [
     name: "Personal",
     sub: "For individual developers and freelancers.",
     desc: "Beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project.",
-    discountPrice: 79,
+    discountPrice: 49,
     price: 149,
     isMostPop: true,
-    banner: "50% OFF",
+    banner: "$100 off",
     href: env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK,
     featureHeader: "What's included:",
     features: [
