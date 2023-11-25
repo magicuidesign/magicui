@@ -39,6 +39,9 @@ export default function NumberTicker({
   );
 
   return (
-    <span className={`w-full text-right tabular-nums ${className}`} ref={ref} />
+    <span
+      className={`inline-block w-full text-right tabular-nums ${className}`}
+      ref={ref}
+    />
   );
 }
