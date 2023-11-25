@@ -6,9 +6,11 @@ import { useEffect, useRef } from "react";
 export default function NumberTicker({
   value,
   direction = "up",
+  className,
 }: {
   value: number;
   direction?: "up" | "down";
+  className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === "down" ? value : 0);
@@ -36,5 +38,7 @@ export default function NumberTicker({
     [springValue],
   );
 
-  return <span ref={ref} />;
+  return (
+    <span className={`w-full text-right tabular-nums ${className}`} ref={ref} />
+  );
 }
