@@ -211,6 +211,14 @@ const example: Registry = {
       () => import("@/registry/components/example/tweet-card-images"),
     ),
   },
+  "tweet-card-meta-preview": {
+    name: "tweet-card-meta-preview",
+    type: "components:example",
+    files: ["registry/components/example/tweet-card-meta-preview.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/tweet-card-meta-preview"),
+    ),
+  },
   "shimmer-button-demo": {
     name: "shimmer-button-demo",
     type: "components:example",
