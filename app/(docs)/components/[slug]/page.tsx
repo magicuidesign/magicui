@@ -1,4 +1,8 @@
+import Facebook from "@/components/icons/facebook";
+import LinkedIn from "@/components/icons/linkedin";
+import Twitter from "@/components/icons/twitter";
 import { Mdx } from "@/components/mdx-components";
+import { ComponentPager } from "@/components/pager";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
@@ -116,10 +120,10 @@ export default async function Component({ params }: Props) {
           )}
         </div>
 
-        {/* <div className="mt-4 flex items-center justify-between">
+        <div className="mt-4 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <Link
-              href={`https://twitter.com/intent/tweet?text=${component.title}&url=magicuikit.com/components/${component.slugAsParams}&via=${component.author}`}
+              href={`https://twitter.com/intent/tweet?text=${component.title}&url=magicui.design/components/${component.slugAsParams}&via=${component.author}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -127,23 +131,26 @@ export default async function Component({ params }: Props) {
             </Link>
             <Link
               href={`
-            http://www.linkedin.com/shareArticle?mini=true&url=https://magicuikit.com/components/${component.slugAsParams}`}
+            http://www.linkedin.com/shareArticle?mini=true&url=https://magicui.design/components/${component.slugAsParams}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <LinkedIn className="h-6 w-6" />
             </Link>
             <Link
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://magicuikit.com/components/${component.slugAsParams}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://magicui.design/components/${component.slugAsParams}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <Facebook className="h-6 w-6" />
             </Link>
           </div>
-        </div> */}
+        </div>
 
-        <Mdx code={component.body.code} />
+        <div className="pb-12 pt-8">
+          <Mdx code={component.body.code} />
+        </div>
+        <ComponentPager doc={component} />
       </div>
 
       {component.toc && (
