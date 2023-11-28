@@ -205,14 +205,16 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
         <div className="shrink-0 snap-center sm:w-2" />
       </div>
     )}
-
-    {!tweet.video && !tweet.photos && (
-      <img
-        // @ts-ignore
-        src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
-        className="h-64 rounded-xl border object-cover shadow-sm"
-      />
-    )}
+    {!tweet.video &&
+      !tweet.photos &&
+      // @ts-ignore
+      tweet?.card?.binding_values.thumbnail_image_large.image_value.url && (
+        <img
+          // @ts-ignore
+          src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
+          className="h-64 rounded-xl border object-cover shadow-sm"
+        />
+      )}
   </div>
 );
 
