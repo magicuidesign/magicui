@@ -1,4 +1,3 @@
-import { SiteBanner } from "@/components/site-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getCurrentUser } from "@/lib/session";
@@ -16,8 +15,7 @@ export default async function MarketingLayout({
 
   return (
     <>
-      <SiteBanner />
-      {/* // <div className="relative flex min-h-screen flex-col"> */}
+      {/* <SiteBanner /> */}
       <SiteHeader user={user} />
       <main className="flex-1">{children}</main>
       <SiteFooter />

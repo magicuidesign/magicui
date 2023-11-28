@@ -39,9 +39,11 @@ export const PriceCard = ({
             <span className="text-7xl font-bold text-foreground">
               ${item.discountPrice}
             </span>
-            <span className="text-4xl font-bold text-gray-600 line-through dark:text-gray-400">
-              ${item.price}
-            </span>
+            {item.isDiscounted && (
+              <span className="text-4xl font-bold text-gray-600 line-through dark:text-gray-400">
+                ${item.price}
+              </span>
+            )}
           </div>
           {/* <span className="text-xl font-semibold text-foreground/20">
             one-time payment
