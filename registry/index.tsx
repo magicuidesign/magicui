@@ -203,6 +203,14 @@ const example: Registry = {
       () => import("@/registry/components/example/tweet-card-demo"),
     ),
   },
+  "tweet-card-images": {
+    name: "tweet-card-images",
+    type: "components:example",
+    files: ["registry/components/example/tweet-card-images.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/tweet-card-images"),
+    ),
+  },
   "shimmer-button-demo": {
     name: "shimmer-button-demo",
     type: "components:example",

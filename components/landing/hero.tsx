@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
         <FadeIn className="z-10 flex h-full w-full flex-col items-center justify-center">
           <Link
-            href="/components/bento-grid"
+            href="/components/retro-grid"
             className={cn(
               "relative flex flex-row items-center justify-center",
               "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",

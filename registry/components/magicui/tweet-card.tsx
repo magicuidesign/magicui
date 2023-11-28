@@ -159,7 +159,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               href={entity.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500"
+              className="text-sm font-normal text-gray-500"
             >
               <span>{entity.text}</span>
             </a>
@@ -168,7 +168,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
           return (
             <span
               key={idx}
-              className="text-sm"
+              className="text-sm font-normal"
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           );
@@ -193,15 +193,25 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
       </video>
     )}
     {tweet.photos && (
-      <div className="flex flex-row gap-2">
+      <div className="relative flex transform-gpu snap-x snap-mandatory gap-4 overflow-x-auto">
+        <div className="shrink-0 snap-center sm:w-2" />
         {tweet.photos.map((photo) => (
           <img
             key={photo.url}
             src={photo.url}
-            className="rounded-xl border shadow-sm"
+            className="h-64 w-5/6 shrink-0 snap-center snap-always rounded-xl border object-cover shadow-sm"
           />
         ))}
+        <div className="shrink-0 snap-center sm:w-2" />
       </div>
+    )}
+
+    {!tweet.video && !tweet.photos && (
+      <img
+        // @ts-ignore
+        src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
+        className="h-64 rounded-xl border object-cover shadow-sm"
+      />
     )}
   </div>
 );
