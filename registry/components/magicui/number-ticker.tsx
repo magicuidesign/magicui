@@ -6,11 +6,13 @@ import { useEffect, useRef } from "react";
 export default function NumberTicker({
   value,
   direction = "up",
+  delay = 0,
   className,
 }: {
   value: number;
   direction?: "up" | "down";
   className?: string;
+  delay?: number; // delay in s
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === "down" ? value : 0);
@@ -21,10 +23,10 @@ export default function NumberTicker({
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
-    if (isInView) {
+    setTimeout(() => {
       motionValue.set(direction === "down" ? 0 : value);
-    }
-  }, [motionValue, isInView]);
+    }, delay * 1000);
+  }, [motionValue, isInView, delay]);
 
   useEffect(
     () =>
@@ -40,7 +42,7 @@ export default function NumberTicker({
 
   return (
     <span
-      className={`inline-block w-full text-right tabular-nums ${className}`}
+      className={`inline-block tabular-nums text-black dark:text-white ${className}`}
       ref={ref}
     />
   );

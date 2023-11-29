@@ -46,7 +46,7 @@ export default async function Testimonials() {
             <FadeIn delay={0.06 + idx * 0.04} key={idx}>
               <TweetCard
                 id={id}
-                className="max-h-32 w-72 min-w-[18rem] bg-background"
+                className="max-h-32 w-72 min-w-[18rem] bg-background/60"
               />
             </FadeIn>
           ))}
@@ -60,7 +60,7 @@ export default async function Testimonials() {
             <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)} key={idx}>
               <TweetCard
                 id={id}
-                className="max-h-32 w-72 min-w-[18rem] bg-background"
+                className="max-h-32 w-72 min-w-[18rem] bg-background/60"
               />
             </FadeIn>
           ))}

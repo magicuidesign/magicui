@@ -6,30 +6,33 @@ interface MarqueeProps {
   reverse?: boolean;
   pauseOnHover?: boolean;
   children?: React.ReactNode;
-  [key: string]: any;
+  vertical?: boolean;
 }
 
-const Marquee = ({
+export default function Marquee({
   className,
   reverse,
   pauseOnHover = false,
   children,
+  vertical = false,
   ...props
-}: MarqueeProps) => {
+}: MarqueeProps) {
   return (
     <div
       {...props}
       className={cn(
-        "flex w-full overflow-hidden [--duration:40s] [--gap:1rem]",
+        "flex h-full w-full overflow-hidden [--duration:40s] [--gap:1rem]",
         className,
       )}
     >
       <div
         className={cn(
-          "flex w-max transform-gpu animate-marquee items-stretch gap-[--gap]",
+          "flex h-max w-max transform-gpu items-stretch gap-[--gap]",
           {
             "[animation-direction:reverse]": reverse,
             "hover:[animation-play-state:paused]": pauseOnHover,
+            "animate-marquee-vertical flex-col": vertical,
+            "animate-marquee flex-row": !vertical,
           },
         )}
       >
@@ -39,6 +42,4 @@ const Marquee = ({
       </div>
     </div>
   );
-};
-
-export default Marquee;
+}

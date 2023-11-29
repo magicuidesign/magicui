@@ -32,7 +32,10 @@ export default async function Testimonials() {
   const secondRow = tweets.slice(tweets.length / 2);
 
   return (
-    <section id="testimonials" className="flex flex-col gap-4 pb-8 pt-20">
+    <section
+      id="testimonials"
+      className="relative flex flex-col gap-4 pb-8 pt-20"
+    >
       <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
         {firstRow.map((id, idx) => (
           <FadeIn delay={0.06 + idx * 0.04} key={idx}>
