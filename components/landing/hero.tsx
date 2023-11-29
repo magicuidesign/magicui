@@ -17,8 +17,8 @@ export default async function Hero() {
   });
 
   return (
-    <section className="space-y-6 pb-8 pt-20 md:pb-12">
-      <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
+    <section id="hero" className="container py-14">
+      <div className="container flex max-w-[64rem] flex-col items-center gap-6 pb-8 pt-20 text-center md:pb-12">
         <FadeIn>
           <Link
             href="/components/retro-grid"
@@ -94,26 +94,30 @@ export default async function Hero() {
             </Link>
           </div>
         </FadeIn>
-      </div>
-      <FadeIn delay={0.3}>
-        <div className="container flex flex-col items-center justify-center sm:flex-row">
-          <div className="flex flex-row">
-            <StarFilledIcon className="h-4 w-4 text-yellow-300" />
-            <StarFilledIcon className="h-4 w-4 text-yellow-300" />
-            <StarFilledIcon className="h-4 w-4 text-yellow-300" />
-            <StarFilledIcon className="h-4 w-4 text-yellow-300" />
-            <StarFilledIcon className="h-4 w-4 text-yellow-300" />
+        <FadeIn delay={0.3}>
+          <div className="container flex flex-col items-center justify-center sm:flex-row">
+            <div className="flex flex-row">
+              <StarFilledIcon className="h-4 w-4 text-yellow-300" />
+              <StarFilledIcon className="h-4 w-4 text-yellow-300" />
+              <StarFilledIcon className="h-4 w-4 text-yellow-300" />
+              <StarFilledIcon className="h-4 w-4 text-yellow-300" />
+              <StarFilledIcon className="h-4 w-4 text-yellow-300" />
+            </div>
+
+            <span className="mx-1.5 hidden h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400 sm:block" />
+
+            <span className="inline-block text-center text-xs font-medium leading-snug tracking-tighter">
+              Trusted by{" "}
+              <NumberTicker
+                value={payments}
+                className="font-bold"
+                delay={0.2}
+              />{" "}
+              developers to make beautiful landing pages
+            </span>
           </div>
-
-          <span className="mx-1.5 hidden h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400 sm:block" />
-
-          <span className="inline-block text-center text-xs font-medium leading-snug tracking-tighter">
-            Used by{" "}
-            <NumberTicker value={payments} className="font-bold" delay={0.2} />{" "}
-            developers to make beautiful landing pages
-          </span>
-        </div>
-      </FadeIn>
+        </FadeIn>
+      </div>
     </section>
   );
 }

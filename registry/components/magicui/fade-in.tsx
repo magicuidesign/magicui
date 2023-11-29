@@ -18,7 +18,7 @@ export default function FadeIn({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, {
-    once: true,
+    once: false,
     margin: viewTriggerOffset ? "-128px" : "0px",
   });
 

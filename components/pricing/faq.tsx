@@ -84,7 +84,7 @@ const faqs = [
 
 const Faq = () => {
   return (
-    <section id="faq" className="py-14">
+    <section id="faqs" className="container py-14">
       <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
         Frequently Asked Questions
       </h2>

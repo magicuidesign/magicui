@@ -32,26 +32,38 @@ export default async function Testimonials() {
   const secondRow = tweets.slice(tweets.length / 2);
 
   return (
-    <section
-      id="testimonials"
-      className="relative flex flex-col gap-4 pb-8 pt-20"
-    >
-      <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
-        {firstRow.map((id, idx) => (
-          <FadeIn delay={0.06 + idx * 0.04} key={idx}>
-            <TweetCard id={id} className="max-h-32 w-72 min-w-[18rem]" />
-          </FadeIn>
-        ))}
-      </Marquee>
-      <Marquee className="max-w-screen [--duration:120s]" reverse pauseOnHover>
-        {secondRow.map((id, idx) => (
-          <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)} key={idx}>
-            <TweetCard id={id} className="max-h-32 w-72 min-w-[18rem]" />
-          </FadeIn>
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+    <section id="testimonials" className="container py-14">
+      <FadeIn delay={0.3}>
+        <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
+          What People Are Saying
+        </h2>
+        <h4 className="text-foreground/80text-lg mb-8 text-center font-medium tracking-tight">
+          Don't just take our word for it. Here's what{" "}
+          <strong>real people</strong> are saying about Magic UI on Twitter.
+        </h4>
+      </FadeIn>
+      <div className="relative flex flex-col gap-4">
+        <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
+          {firstRow.map((id, idx) => (
+            <FadeIn delay={0.06 + idx * 0.04} key={idx}>
+              <TweetCard id={id} className="max-h-32 w-72 min-w-[18rem]" />
+            </FadeIn>
+          ))}
+        </Marquee>
+        <Marquee
+          className="max-w-screen [--duration:120s]"
+          reverse
+          pauseOnHover
+        >
+          {secondRow.map((id, idx) => (
+            <FadeIn delay={0.06 + 0.04 * (secondRow.length - idx)} key={idx}>
+              <TweetCard id={id} className="max-h-32 w-72 min-w-[18rem]" />
+            </FadeIn>
+          ))}
+        </Marquee>
+        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+      </div>
     </section>
   );
 }
