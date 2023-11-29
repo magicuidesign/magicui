@@ -195,6 +195,14 @@ const example: Registry = {
       () => import("@/registry/components/example/marquee-logos"),
     ),
   },
+  "marquee-3d": {
+    name: "marquee-3d",
+    type: "components:example",
+    files: ["registry/components/example/marquee-3d.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/marquee-3d"),
+    ),
+  },
   "globe-demo": {
     name: "globe-demo",
     type: "components:example",

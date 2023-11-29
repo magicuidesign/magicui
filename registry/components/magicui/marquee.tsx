@@ -7,6 +7,7 @@ interface MarqueeProps {
   pauseOnHover?: boolean;
   children?: React.ReactNode;
   vertical?: boolean;
+  [key: string]: any;
 }
 
 export default function Marquee({
@@ -27,7 +28,7 @@ export default function Marquee({
     >
       <div
         className={cn(
-          "flex h-max w-max transform-gpu items-stretch gap-[--gap]",
+          "flex h-max w-max transform-gpu items-stretch gap-[--gap] p-4",
           {
             "[animation-direction:reverse]": reverse,
             "hover:[animation-play-state:paused]": pauseOnHover,
