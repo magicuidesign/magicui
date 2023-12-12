@@ -103,8 +103,9 @@ const Faq = () => {
               collapsible
               className="flex w-full flex-col items-center justify-center"
             >
-              {faq.qa.map((faq) => (
+              {faq.qa.map((faq, idx2) => (
                 <AccordionItem
+                  key={idx2}
                   value={faq.question}
                   className="w-full max-w-[600px]"
                 >
