@@ -87,6 +87,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/retro-grid.tsx"],
   },
+  "animated-list": {
+    name: "animated-list",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-list.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -297,6 +302,14 @@ const example: Registry = {
     files: ["registry/components/example/retro-grid-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/retro-grid-demo"),
+    ),
+  },
+  "animated-list-demo": {
+    name: "animated-list-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-list-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-list-demo"),
     ),
   },
 };
