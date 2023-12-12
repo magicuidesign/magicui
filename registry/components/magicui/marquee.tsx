@@ -28,7 +28,7 @@ export default function Marquee({
     >
       <div
         className={cn(
-          "flex h-max w-max transform-gpu items-stretch gap-[--gap] p-4",
+          "flex h-max w-max transform-gpu items-stretch gap-[--gap] p-2",
           {
             "[animation-direction:reverse]": reverse,
             "hover:[animation-play-state:paused]": pauseOnHover,

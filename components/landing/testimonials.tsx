@@ -42,7 +42,7 @@ export default async function Testimonials() {
           <strong>real people</strong> are saying about Magic UI on Twitter.
         </h4>
       </FadeIn>
-      <div className="relative flex flex-col gap-4">
+      <div className="relative flex flex-col">
         <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
           {firstRow.map((id, idx) => (
             <FadeIn delay={0.06 + idx * 0.04} key={idx}>

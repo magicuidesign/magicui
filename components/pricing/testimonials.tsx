@@ -32,7 +32,7 @@ export default async function Testimonials() {
   const secondRow = tweets.slice(tweets.length / 2);
 
   return (
-    <section id="testimonials" className="py-14">
+    <section id="testimonials" className="container py-14">
       <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
         What People Are Saying
       </h2>
@@ -40,7 +40,7 @@ export default async function Testimonials() {
         Don't just take our word for it. Here's what{" "}
         <strong>real people</strong> are saying about Magic UI on Twitter.
       </h4>
-      <div className="flex flex-col gap-4">
+      <div className="relative flex flex-col">
         <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
           {firstRow.map((id, idx) => (
             <FadeIn delay={0.06 + idx * 0.04} key={idx}>
@@ -65,6 +65,8 @@ export default async function Testimonials() {
             </FadeIn>
           ))}
         </Marquee>
+        {/* <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l from-white dark:from-background"></div> */}
       </div>
     </section>
   );
