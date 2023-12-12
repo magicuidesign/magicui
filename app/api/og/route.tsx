@@ -4,21 +4,15 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 
 const inter600 = fetch(
-  new URL(
-    `../../../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff`,
-    import.meta.url,
-  ),
+  new URL(`../../../assets/fonts/Inter-SemiBold.ttf`, import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const inter700 = fetch(
-  new URL(
-    `../../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff`,
-    import.meta.url,
-  ),
+  new URL(`../../../assets/fonts/Inter-Bold.ttf`, import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const image = fetch(
-  new URL("../../../assets/images/og-bg-2.png", import.meta.url),
+  new URL("../../../assets/images/og-bg-2.jpg", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const logo = fetch(new URL("../../../app/icon.png", import.meta.url)).then(
