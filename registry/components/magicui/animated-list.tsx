@@ -7,7 +7,7 @@ import {
   motion,
   useIsPresent,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 
 export function AnimatedList({
   className,
@@ -52,7 +52,9 @@ export function AnimatedList({
     <div className={cn("flex flex-col items-center gap-4", className)}>
       <AnimatePresence>
         {items.map((item, index) => (
-          <AnimatedListItem key={item.key || index}>{item}</AnimatedListItem>
+          <AnimatedListItem key={(item as ReactElement)?.key || index}>
+            {item}
+          </AnimatedListItem>
         ))}
       </AnimatePresence>
     </div>
