@@ -39,11 +39,11 @@ let notifications = [
 
 notifications = Array.from({ length: 10 }, () => notifications).flat();
 
-const AnimatedListItem = ({ name, description, icon, color }: Item) => {
+const Notification = ({ name, description, icon, color }: Item) => {
   return (
     <figure
       className={cn(
-        "relative mx-auto w-full max-w-[400px] transform cursor-pointer overflow-hidden rounded-2xl p-4",
+        "relative mx-auto min-h-fit w-full max-w-[400px] transform cursor-pointer overflow-hidden rounded-2xl p-4",
         // animation styles
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
         // light styles
@@ -54,12 +54,12 @@ const AnimatedListItem = ({ name, description, icon, color }: Item) => {
     >
       <div className="flex flex-row items-center gap-4">
         <div
-          className="font-lg flex min-h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-2xl"
+          className="flex h-10 w-10 items-center justify-center rounded-2xl"
           style={{
             backgroundColor: color,
           }}
         >
-          {icon}
+          <span className="text-lg">{icon}</span>
         </div>
         <div className="flex flex-col gap-1">
           <figcaption className="text-lg font-medium dark:text-white">
@@ -79,7 +79,7 @@ export default function AnimatedListDemo() {
     <div className="relative flex max-h-[500px] min-h-[500px] w-full flex-col overflow-hidden rounded-lg border bg-background p-6 shadow-lg">
       <AnimatedList>
         {notifications.map((item, idx) => (
-          <AnimatedListItem {...item} key={idx}></AnimatedListItem>
+          <Notification {...item} key={idx} />
         ))}
       </AnimatedList>
     </div>
