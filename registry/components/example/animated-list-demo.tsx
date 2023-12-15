@@ -8,38 +8,44 @@ interface Item {
   description: string;
   icon: string;
   color: string;
+  time: string;
 }
 
 let notifications = [
   {
-    name: "New task added",
-    description: "Magic UI · 15m ago",
-    icon: "📝",
-    color: "#1E86FF",
-  },
-  {
-    name: "New message",
-    description: "Magic UI · 10m ago",
-    icon: "💬",
-    color: "#FF3D71",
+    name: "Payment received",
+    description: "Magic UI",
+    time: "15m ago",
+
+    icon: "💸",
+    color: "#00C9A7",
   },
   {
     name: "User signed up",
-    description: "Magic UI · 5m ago",
+    description: "Magic UI",
+    time: "10m ago",
     icon: "👤",
     color: "#FFB800",
   },
   {
-    name: "Payment received",
-    description: "Magic UI · 2m ago",
-    icon: "💸",
-    color: "#00C9A7",
+    name: "New message",
+    description: "Magic UI",
+    time: "5m ago",
+    icon: "💬",
+    color: "#FF3D71",
+  },
+  {
+    name: "New event",
+    description: "User shared a post",
+    time: "2m ago",
+    icon: "🗞️",
+    color: "#1E86FF",
   },
 ];
 
 notifications = Array.from({ length: 10 }, () => notifications).flat();
 
-const Notification = ({ name, description, icon, color }: Item) => {
+const Notification = ({ name, description, icon, color, time }: Item) => {
   return (
     <figure
       className={cn(
@@ -61,9 +67,11 @@ const Notification = ({ name, description, icon, color }: Item) => {
         >
           <span className="text-lg">{icon}</span>
         </div>
-        <div className="flex flex-col gap-1">
-          <figcaption className="text-lg font-medium dark:text-white">
-            {name}
+        <div className="flex flex-col">
+          <figcaption className="flex flex-row items-center text-lg font-medium dark:text-white">
+            <span>{name}</span>
+            <span className="mx-1">·</span>
+            <span className="text-xs text-gray-500">{time}</span>
           </figcaption>
           <p className="text-sm font-normal dark:text-white/60">
             {description}
