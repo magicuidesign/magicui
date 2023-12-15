@@ -10,31 +10,7 @@ interface Item {
   color: string;
 }
 
-const notifications = [
-  {
-    name: "New task added",
-    description: "Magic UI · 15m ago",
-    icon: "📝",
-    color: "#1E86FF",
-  },
-  {
-    name: "New message",
-    description: "Magic UI · 10m ago",
-    icon: "💬",
-    color: "#FF3D71",
-  },
-  {
-    name: "User signed up",
-    description: "Magic UI · 5m ago",
-    icon: "👤",
-    color: "#FFB800",
-  },
-  {
-    name: "Payment received",
-    description: "Magic UI · 2m ago",
-    icon: "💸",
-    color: "#00C9A7",
-  },
+let notifications = [
   {
     name: "New task added",
     description: "Magic UI · 15m ago",
@@ -61,6 +37,8 @@ const notifications = [
   },
 ];
 
+notifications = Array.from({ length: 10 }, () => notifications).flat();
+
 const AnimatedListItem = ({ name, description, icon, color }: Item) => {
   return (
     <figure
@@ -76,7 +54,7 @@ const AnimatedListItem = ({ name, description, icon, color }: Item) => {
     >
       <div className="flex flex-row items-center gap-4">
         <div
-          className="font-lg flex min-h-[3rem] min-w-[3rem] items-center justify-center rounded-2xl"
+          className="font-lg flex min-h-[2.5rem] min-w-[2.5rem] items-center justify-center rounded-2xl"
           style={{
             backgroundColor: color,
           }}
@@ -99,10 +77,6 @@ const AnimatedListItem = ({ name, description, icon, color }: Item) => {
 export default function AnimatedListDemo() {
   return (
     <div className="relative flex max-h-[500px] min-h-[500px] w-full flex-col overflow-hidden rounded-lg border bg-background p-6 shadow-lg">
-      {/* <span className="pointer-events-none hidden whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10 sm:block sm:text-7xl">
-        Animated List
-      </span> */}
-
       <AnimatedList>
         {notifications.map((item, idx) => (
           <AnimatedListItem {...item} key={idx}></AnimatedListItem>

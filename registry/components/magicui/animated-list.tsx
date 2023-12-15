@@ -1,76 +1,52 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import {
-  AnimatePresence,
-  MotionProps,
-  motion,
-  useIsPresent,
-} from "framer-motion";
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { ReactElement, useEffect, useMemo, useState } from "react";
 
-export function AnimatedList({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  const [items, setItems] = useState<React.ReactNode[]>([]);
-  const childQueue = useRef(React.Children.toArray(children));
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+export const AnimatedList = React.memo(
+  ({
+    className,
+    children,
+    delay = 1000,
+  }: {
+    className?: string;
+    children: React.ReactNode;
+    delay?: number;
+  }) => {
+    const [index, setIndex] = useState(0);
+    const childrenArray = React.Children.toArray(children);
 
-  useEffect(() => {
-    // Update the queue when the children prop changes
-    childQueue.current = React.Children.toArray(children);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length);
+      }, delay);
 
-    // Start or restart the interval to add children every 1 second
-    clearInterval(intervalRef.current!); // Clear any existing interval
-    intervalRef.current = setInterval(() => {
-      setItems((prevItems) => {
-        if (childQueue.current.length > 0) {
-          // Dequeue the next child and add it to the list of items
-          const nextChild = childQueue.current.shift();
-          return [nextChild, ...prevItems];
-        } else {
-          // When no children are left in the queue, clear the interval
-          clearInterval(intervalRef.current!);
-        }
-        return prevItems;
-      });
-    }, 1300);
+      return () => clearInterval(interval);
+    }, [childrenArray.length, delay]);
 
-    // Cleanup the interval on component unmount
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [children]); // Depend on children, so it restarts when children change
+    const itemsToShow = useMemo(
+      () => childrenArray.slice(0, index + 1).reverse(),
+      [index, childrenArray],
+    );
 
-  return (
-    <div className={cn("flex flex-col items-center gap-4", className)}>
-      <AnimatePresence>
-        {items.map((item, index) => (
-          <AnimatedListItem key={(item as ReactElement)?.key || index}>
-            {item}
-          </AnimatedListItem>
-        ))}
-      </AnimatePresence>
-    </div>
-  );
-}
+    return (
+      <div className={`flex flex-col items-center gap-4 ${className}`}>
+        <AnimatePresence>
+          {itemsToShow.map((item) => (
+            <AnimatedListItem key={(item as ReactElement).key}>
+              {item}
+            </AnimatedListItem>
+          ))}
+        </AnimatePresence>
+      </div>
+    );
+  },
+);
 
 AnimatedList.displayName = "AnimatedList";
 
 export function AnimatedListItem({ children }: { children: React.ReactNode }) {
-  const isPresent = useIsPresent();
-  const animations: MotionProps = {
-    style: {
-      position: isPresent ? "static" : "absolute",
-      width: "100%",
-      margin: "0 auto",
-    },
+  const animations = {
     initial: { scale: 0, opacity: 0 },
     animate: { scale: 1, opacity: 1, originY: 0 },
     exit: { scale: 0, opacity: 0 },
@@ -78,7 +54,7 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <motion.div {...animations} layout>
+    <motion.div {...animations} layout className="mx-auto w-full">
       {children}
     </motion.div>
   );
