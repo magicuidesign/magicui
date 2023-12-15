@@ -36,7 +36,7 @@ let notifications = [
   },
   {
     name: "New event",
-    description: "User shared a post",
+    description: "Magic UI",
     time: "2m ago",
     icon: "🗞️",
     color: "#1E86FF",
