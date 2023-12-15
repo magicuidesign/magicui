@@ -18,7 +18,7 @@ export default async function ComponentPage() {
     });
 
   return (
-    <div className="container max-w-4xl py-6 lg:py-10">
+    <div className="container max-w-screen-xl py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
           <h1 className="inline-block text-4xl font-medium tracking-tighter lg:text-5xl">
@@ -50,7 +50,7 @@ export default async function ComponentPage() {
                     />
                   </div>
                 )}
-                <div className="flex flex-1 flex-col justify-end p-3">
+                <div className="flex flex-1 flex-col justify-start p-3">
                   <h2>{post.title}</h2>
                   {/* {post.date && (
                     <p className="text-sm text-gray-500">
@@ -58,7 +58,7 @@ export default async function ComponentPage() {
                     </p>
                   )} */}
                   {post.summary && (
-                    <p className="mb-2 text-sm text-muted-foreground">
+                    <p className="mb-2 text-base text-muted-foreground">
                       {post.summary}
                     </p>
                   )}
