@@ -208,7 +208,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
     {!tweet.video &&
       !tweet.photos &&
       // @ts-ignore
-      tweet?.card?.binding_values.thumbnail_image_large.image_value.url && (
+      tweet?.card?.binding_values?.thumbnail_image_large?.image_value.url && (
         <img
           // @ts-ignore
           src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
