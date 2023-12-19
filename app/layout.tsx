@@ -1,4 +1,6 @@
 import { Analytics } from "@/components/analytics";
+import PosthogIdentify from "@/components/posthog-identify";
+import { PHProvider } from "@/components/posthog-provider";
 import SessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -29,14 +31,18 @@ export default function RootLayout({
           fontSans.className,
         )}
       >
-        <SessionProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            {children}
-            <Toaster />
-            <Analytics />
-            {/* <TailwindIndicator /> */}
-          </ThemeProvider>
-        </SessionProvider>
+        <PHProvider>
+          <SessionProvider>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              {children}
+              <PosthogIdentify />
+
+              <Toaster />
+              <Analytics />
+              {/* <TailwindIndicator /> */}
+            </ThemeProvider>
+          </SessionProvider>
+        </PHProvider>
       </body>
     </html>
   );

@@ -2,6 +2,10 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
+  /*
+   * Serverside Environment variables, not available on the client.
+   * Will throw if you access these variables on the client.
+   */
   server: {
     // This is optional because it's only used in development.
     // See https://next-auth.js.org/deployment.
@@ -22,10 +26,23 @@ export const env = createEnv({
     // STRIPE_WEBHOOK_SECRET: z.string().min(1),
     // STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1),
   },
+  /*
+   * Environment variables available on the client (and server).
+   *
+   * 💡 You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
+   */
   client: {
     NEXT_PUBLIC_APP_URL: z.string().min(1),
     NEXT_PUBLIC_STRIPE_PAYMENT_LINK: z.string().min(1),
+    NEXT_PUBLIC_POSTHOG_API_KEY: z.string().optional(),
   },
+
+  /*
+   * Due to how Next.js bundles environment variables on Edge and Client,
+   * we need to manually destructure them to make sure all are included in bundle.
+   *
+   * 💡 You'll get type errors if not all variables from `server` & `client` are included here.
+   */
   runtimeEnv: {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
@@ -46,5 +63,7 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_STRIPE_PAYMENT_LINK:
       process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK,
+
+    NEXT_PUBLIC_POSTHOG_API_KEY: process.env.NEXT_PUBLIC_POSTHOG_API_KEY,
   },
 });
