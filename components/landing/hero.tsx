@@ -33,6 +33,12 @@ export default async function Hero() {
               } as CSSProperties
             }
           >
+            <div
+              className={cn(
+                `absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
+                `p-[0.5px] [-webkit-mask-composite:exclude] [mask-composite:exclude]`,
+              )}
+            />
             🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
             <span
               className={cn(
@@ -43,12 +49,6 @@ export default async function Hero() {
               Introducing Retro Grid
             </span>
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
-            <div
-              className={cn(
-                `absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
-                `[-webkit-mask-composite:xor] [mask-composite:xor]`,
-              )}
-            />
           </Link>
         </FadeIn>
         <FadeIn
