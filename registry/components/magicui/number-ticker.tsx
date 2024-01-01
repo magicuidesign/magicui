@@ -20,7 +20,7 @@ export default function NumberTicker({
     damping: 60,
     stiffness: 100,
   });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   useEffect(() => {
     isInView &&
