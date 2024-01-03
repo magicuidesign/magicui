@@ -36,7 +36,7 @@ export default async function Hero() {
             <div
               className={cn(
                 `absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
-                `p-[0.5px] [-webkit-mask-composite:exclude] [mask-composite:exclude]`,
+                `p-[1px] [mask-composite:subtract]`,
               )}
             />
             🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
