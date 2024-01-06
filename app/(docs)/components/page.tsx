@@ -46,7 +46,7 @@ export default async function ComponentPage() {
                       loop
                       muted
                       playsInline
-                      className="relative -bottom-1 aspect-video" // needed because random black line at bottom of video
+                      className="pointer-events-none relative -bottom-1 aspect-video" // needed because random black line at bottom of video
                     />
                   </div>
                 )}
