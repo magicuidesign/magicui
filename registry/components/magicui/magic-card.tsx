@@ -200,7 +200,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
       className={cn(
         "relative z-0 h-full w-full rounded-2xl p-6",
         "bg-gray-300 dark:bg-gray-700",
-        "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
+        "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),hsl(var(--primary))_0,hsl(var(--secondary))_50%,transparent_100%)]",
         className,
       )}
       style={
