@@ -21,7 +21,7 @@ export default async function Hero() {
       <div className="container flex max-w-[64rem] flex-col items-center gap-6 pb-8 pt-20 text-center md:pb-12">
         <FadeIn>
           <Link
-            href="/components/retro-grid"
+            href="/components/animated-list"
             className={cn(
               "relative flex flex-row items-center justify-center",
               "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
@@ -46,7 +46,7 @@ export default async function Hero() {
                 `inline`,
               )}
             >
-              Introducing Retro Grid
+              Introducing Animated List
             </span>
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
           </Link>
