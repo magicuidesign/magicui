@@ -189,38 +189,27 @@ const MagicCard: React.FC<MagicCardProps> = ({
   children,
   size = 600,
   spotlight = true,
-  spotlightColor = "rgba(120,119,198,0.1)",
-  borderColor = "rgba(120,119,198,0.7)",
+  borderColor = "hsl(0 0% 98%)",
   isolated = true,
   ...props
 }) => {
   return (
     <div
-      {...props}
-      className={cn(
-        "relative z-0 h-full w-full rounded-2xl p-6",
-        "bg-gray-300 dark:bg-gray-700",
-        "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),hsl(var(--primary))_0,hsl(var(--secondary))_50%,transparent_100%)]",
-        className,
-      )}
       style={
         {
           "--mask-size": `${size}px`,
-          "--spotlight-color": `${spotlightColor}`,
           "--border-color": `${borderColor}`,
         } as CSSProperties
       }
+      className={cn(
+        "relative z-0 h-full w-full rounded-2xl p-6",
+        "bg-gray-300 dark:bg-gray-700",
+        "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
+        className,
+      )}
+      {...props}
     >
       {children}
-
-      {/* Spotlight */}
-      {spotlight && (
-        <div
-          className={
-            "pointer-events-none absolute left-0 top-0 h-full w-full transform-gpu rounded-2xl bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_40%)] blur-sm transition-opacity duration-500"
-          }
-        />
-      )}
 
       {/* Background */}
       <div
