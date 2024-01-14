@@ -106,6 +106,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     <div className="flex items-center space-x-2">
       <a href={tweet.user.url} target="_blank" rel="noreferrer">
         <img
+          title={tweet.user.screen_name}
           alt={tweet.user.screen_name}
           height={48}
           width={48}
@@ -199,6 +200,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
           <img
             key={photo.url}
             src={photo.url}
+            title={tweet.text}
             alt={tweet.text}
             className="h-64 w-5/6 shrink-0 snap-center snap-always rounded-xl border object-cover shadow-sm"
           />
