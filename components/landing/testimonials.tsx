@@ -37,10 +37,10 @@ export default async function Testimonials() {
         <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
           What People Are Saying
         </h2>
-        <h4 className="text-foreground/80text-lg mb-8 text-center font-medium tracking-tight">
+        <h3 className="text-foreground/80text-lg mb-8 text-center font-medium tracking-tight">
           Don't just take our word for it. Here's what{" "}
           <strong>real people</strong> are saying about Magic UI on Twitter.
-        </h4>
+        </h3>
       </FadeIn>
       <div className="relative flex flex-col">
         <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>

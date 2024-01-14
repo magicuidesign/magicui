@@ -88,10 +88,10 @@ const Faq = () => {
       <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
         Frequently Asked Questions
       </h2>
-      <h4 className="mb-8 text-center text-lg font-medium tracking-tight text-foreground/80">
+      <h3 className="mb-8 text-center text-lg font-medium tracking-tight text-foreground/80">
         Need help with something? Here are some of the most common questions we
         get.
-      </h4>
+      </h3>
       <div className="container mx-auto my-12 max-w-[600px] space-y-12">
         {faqs.map((faq, idx) => (
           <section key={idx} id={"faq-" + faq.section}>
@@ -117,12 +117,12 @@ const Faq = () => {
           </section>
         ))}
       </div>
-      <h4 className="mb-12 text-center text-sm font-medium tracking-tight text-foreground/80">
+      <h3 className="mb-12 text-center text-sm font-medium tracking-tight text-foreground/80">
         Still have questions? Email us at{" "}
         <a href="mailto:support@magicui.design" className="underline">
           support@magicui.design
         </a>
-      </h4>
+      </h3>
     </section>
   );
 };
