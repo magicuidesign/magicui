@@ -92,6 +92,16 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/animated-list.tsx"],
   },
+  "animated-lines": {
+    name: "animated-lines",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-lines.tsx"],
+  },
+  "text-shimmer": {
+    name: "text-shimmer",
+    type: "components:ui",
+    files: ["registry/components/magicui/text-shimmer.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -310,6 +320,22 @@ const example: Registry = {
     files: ["registry/components/example/animated-list-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/animated-list-demo"),
+    ),
+  },
+  "animated-lines-demo": {
+    name: "animated-lines-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-lines-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-lines-demo"),
+    ),
+  },
+  "text-shimmer-demo": {
+    name: "text-shimmer-demo",
+    type: "components:example",
+    files: ["registry/components/example/text-shimmer-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/text-shimmer-demo"),
     ),
   },
 };
