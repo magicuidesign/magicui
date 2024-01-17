@@ -69,7 +69,7 @@ module.exports = {
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         flip: "flip calc(var(--spark) * 2) infinite steps(2, end)",
         rotate: "rotate var(--spark) linear infinite both",
-        spin: "spin calc(var(--speed) * 2) infinite linear",
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         slide: "slide var(--speed) ease-in-out infinite alternate",
         ripple: "ripple 3400ms ease infinite",
         line: "line 2s linear infinite",
@@ -117,7 +117,7 @@ module.exports = {
             transform: "rotate(90deg)",
           },
         },
-        spin: {
+        "spin-around": {
           "0%": {
             transform: "translateZ(0) rotate(0)",
           },

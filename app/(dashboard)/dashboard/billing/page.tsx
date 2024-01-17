@@ -1,9 +1,8 @@
 import { DashboardHeader } from "@/components/dashboard/header";
-import { OrderList } from "@/components/dashboard/order-list";
 import { DashboardShell } from "@/components/dashboard/shell";
+import { BillingPortalButton } from "@/components/stripe-portal-button";
 import { authOptions } from "@/lib/auth";
 import { getCurrentUser } from "@/lib/session";
-import { getUserPayments } from "@/lib/stripe-utils";
 import { redirect } from "next/navigation";
 
 export const metadata = {
@@ -18,14 +17,15 @@ export default async function BillingPage() {
     redirect(authOptions?.pages?.signIn || "/login");
   }
 
-  const payments = await getUserPayments(user.id);
+  // const payments = await getUserPayments(user.id);
 
   return (
     <DashboardShell>
       <DashboardHeader heading="Billing" text="Manage billing information" />
-      <div className="grid gap-8">
+      <BillingPortalButton>Manage Billing</BillingPortalButton>
+      {/* <div className="grid gap-8">
         <OrderList payments={payments} />
-      </div>
+      </div> */}
     </DashboardShell>
   );
 }
