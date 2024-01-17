@@ -37,11 +37,11 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        spin: "spin calc(var(--speed) * 2) infinite linear",
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         slide: "slide var(--speed) ease-in-out infinite alternate",
       },
       keyframes: {
-        spin: {
+        "spin-around": {
           "0%": {
             transform: "translateZ(0) rotate(0)",
           },
