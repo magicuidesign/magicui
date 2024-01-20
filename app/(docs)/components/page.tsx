@@ -18,7 +18,7 @@ export default async function ComponentPage() {
     });
 
   return (
-    <div className="container max-w-screen-xl py-6 lg:py-10">
+    <div className="container max-w-screen-lg py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
           <h1 className="inline-block text-4xl font-medium tracking-tighter lg:text-5xl">
@@ -33,7 +33,7 @@ export default async function ComponentPage() {
       {posts?.length ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {posts.map((post, index) => (
-            <FadeIn key={post._id} delay={index * 0.1}>
+            <FadeIn key={post._id} delay={index * 0.04}>
               <article
                 key={post._id}
                 className="group relative flex h-full w-full grow flex-col overflow-hidden rounded-xl border bg-background transition-all duration-300 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700"
@@ -50,7 +50,7 @@ export default async function ComponentPage() {
                     />
                   </div>
                 )}
-                <div className="flex flex-1 flex-col justify-start p-3">
+                <div className="flex flex-1 flex-col justify-end p-3">
                   <h2>{post.title}</h2>
                   {/* {post.date && (
                     <p className="text-sm text-gray-500">
