@@ -1,5 +1,4 @@
 import { Component } from "@/.contentlayer/generated";
-import { HeroImage } from "@/components/hero-image";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
@@ -23,8 +22,6 @@ export default async function TemplatePage() {
         </div>
       </div>
       <hr className="my-8" />
-
-      <HeroImage />
     </div>
   );
 }
