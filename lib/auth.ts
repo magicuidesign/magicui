@@ -3,6 +3,7 @@ import { EMAIL_FROM } from "@/lib/emails/constants";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
+import posthog from "posthog-js";
 import { sendLoginEmail } from "./emails/send-login-email";
 import { upsertCustomer } from "./stripe-utils";
 
@@ -71,6 +72,9 @@ export const authOptions: NextAuthOptions = {
 
       if (message.user.email) {
         await upsertCustomer(message.user.email!, message.user.name!);
+        posthog.capture("user_created", {
+          distinct_id: message.user.email,
+        });
         // await sendWelcomeEmail(params); // <-- send welcome email
       }
     },
