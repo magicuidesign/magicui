@@ -17,8 +17,6 @@ export default async function BillingPage() {
     redirect(authOptions?.pages?.signIn || "/login");
   }
 
-  // const payments = await getUserPayments(user.id);
-
   return (
     <DashboardShell>
       <DashboardHeader heading="Billing" text="Manage billing information" />
