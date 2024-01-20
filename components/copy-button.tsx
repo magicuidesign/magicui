@@ -5,20 +5,15 @@ import * as React from "react";
 // import { NpmCommands } from "types/unist";
 
 import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { Event, trackEvent } from "@/lib/events";
-import { Button } from "@/components/ui/button";
+import { Event, trackEvent } from "@/lib/events";
 import { cn } from "@/lib/utils";
-
-interface Event {
-  name: string;
-  properties?: Record<string, any>;
-}
 
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string;
@@ -29,7 +24,7 @@ interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 async function copyToClipboardWithMeta(value: string, event?: Event) {
   navigator.clipboard.writeText(value);
   if (event) {
-    // trackEvent(event);
+    trackEvent(event);
   }
 }
 
@@ -63,6 +58,7 @@ export function CopyButton({
             ? {
                 name: event,
                 properties: {
+                  name: src!,
                   code: value,
                 },
               }

@@ -1,3 +1,4 @@
+import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
@@ -78,15 +79,17 @@ const components = {
     // __yarnCommand__,
     __withMeta__,
     __src__,
-    // __event__,
+    __event__,
     // __style__,
+    __name__,
     ...props
   }: React.HTMLAttributes<HTMLPreElement> & {
     // __style__?: Style["name"]
     __rawString__?: string;
     __withMeta__?: boolean;
     __src__?: string;
-    // __event__?: Event["name"]
+    __event__?: Event["name"];
+    __name__?: string;
   }) => {
     return (
       <>
@@ -101,7 +104,7 @@ const components = {
           <CopyButton
             value={__rawString__}
             src={__src__}
-            // event={__event__}
+            event={__event__}
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}

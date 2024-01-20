@@ -53,6 +53,9 @@ export function rehypeComponent() {
                   properties: {
                     className: ["language-tsx"],
                   },
+                  data: {
+                    meta: `event="copy_source_code"`,
+                  },
                   children: [
                     {
                       type: "text",
@@ -106,6 +109,9 @@ export function rehypeComponent() {
                   tagName: "code",
                   properties: {
                     className: ["language-tsx"],
+                  },
+                  data: {
+                    meta: `event="copy_usage_code"`,
                   },
                   children: [
                     {
