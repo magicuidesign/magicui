@@ -1,27 +1,269 @@
-import { cn } from "@/lib/utils";
-import { CSSProperties } from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+
+interface MousePosition {
+  x: number;
+  y: number;
+}
+
+function MousePosition(): MousePosition {
+  const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: 0,
+    y: 0,
+  });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return mousePosition;
+}
 
 interface ParticlesProps {
   className?: string;
+  quantity?: number;
+  staticity?: number;
+  ease?: number;
+  size?: number;
+  refresh?: boolean;
+  color?: string;
+  vx?: number;
+  vy?: number;
+}
+function hexToRgb(hex: string): number[] {
+  hex = hex.replace("#", "");
+  const hexInt = parseInt(hex, 16);
+  const red = (hexInt >> 16) & 255;
+  const green = (hexInt >> 8) & 255;
+  const blue = hexInt & 255;
+  return [red, green, blue];
 }
 
-const Particles: React.FC<ParticlesProps> = ({ className, ...props }) => {
-  return (
-    <div
-      style={
-        {
-          "--svg-animation":
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 122 116'%3E%3Cpath id='b' stroke='%23fff' stroke-linecap='round' stroke-width='0' d='M17.9256 115C17.434 111.774 13.1701 104.086 13.4282 95.6465C13.6862 87.207 18.6628 76.0721 17.9256 64.3628C17.1883 52.6535 8.7772 35.9512 9.00452 25.3907C9.23185 14.8302 16.2114 5.06512 17.9256 1'%3E%3C/path%3E%3Cpath id='d' stroke='%23fff' stroke-linecap='round' stroke-width='0' d='M84.1628 115C85.2376 112.055 94.5618 98.8394 93.9975 91.1338C93.4332 83.4281 82.5505 73.2615 84.1628 62.5704C85.775 51.8793 96.4803 35.4248 95.9832 25.7826C95.4861 16.1404 87.9113 4.71163 84.1628 1'%3E%3C/path%3E%3Cpath id='f' stroke='%23fff' stroke-linecap='round' stroke-width='0' d='M37.0913 115C37.9604 111.921 44.4347 99.4545 45.3816 92.9773C48.9305 68.7011 35.7877 73.9552 37.0913 62.7781C38.3949 51.6011 47.3889 36.9895 46.9869 26.9091C46.585 16.8286 40.1222 4.88034 37.0913 1'%3E%3C/path%3E%3Cpath id='h' stroke='%23fff' stroke-linecap='round' stroke-width='0' d='M112.443 115C111.698 112.235 108.25 106.542 107.715 93.7582C107.241 82.4286 107.229 83.9543 112.443 66.1429C116.085 44.0408 100.661 42.5908 101.006 33.539C101.35 24.4871 109.843 4.48439 112.443 1'%3E%3C/path%3E%3Cg%3E%3Ccircle r='1.5' fill='%23D9D9D9'%3E%3CanimateMotion dur='12s' repeatCount='indefinite'%3E%3Cmpath href='%23b'%3E%3C/mpath%3E%3C/animateMotion%3E%3C/circle%3E%3C/g%3E%3Cg%3E%3Ccircle r='1' fill='%23fff' fill-opacity='1' shape-rendering='crispEdges'%3E%3CanimateMotion dur='8s' repeatCount='indefinite'%3E%3Cmpath href='%23d'%3E%3C/mpath%3E%3C/animateMotion%3E%3C/circle%3E%3C/g%3E%3Cg%3E%3Ccircle r='.5' fill='%23fff' fill-opacity='1' shape-rendering='crispEdges'%3E%3CanimateMotion dur='10s' repeatCount='indefinite'%3E%3Cmpath href='%23f'%3E%3C/mpath%3E%3C/animateMotion%3E%3C/circle%3E%3C/g%3E%3Cg%3E%3Ccircle r='.8' fill='%23fff' fill-opacity='1' shape-rendering='crispEdges'%3E%3CanimateMotion dur='6s' repeatCount='indefinite'%3E%3Cmpath href='%23h'%3E%3C/mpath%3E%3C/animateMotion%3E%3C/circle%3E%3C/g%3E%3C/svg%3E\")",
-        } as CSSProperties
+const Particles: React.FC<ParticlesProps> = ({
+  className = "",
+  quantity = 100,
+  staticity = 50,
+  ease = 50,
+  size = 0.4,
+  refresh = false,
+  color = "#ffffff",
+  vx = 0,
+  vy = 0,
+}) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const context = useRef<CanvasRenderingContext2D | null>(null);
+  const circles = useRef<any[]>([]);
+  const mousePosition = MousePosition();
+  const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
+  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      context.current = canvasRef.current.getContext("2d");
+    }
+    initCanvas();
+    animate();
+    window.addEventListener("resize", initCanvas);
+
+    return () => {
+      window.removeEventListener("resize", initCanvas);
+    };
+  }, [color]);
+
+  useEffect(() => {
+    onMouseMove();
+  }, [mousePosition.x, mousePosition.y]);
+
+  useEffect(() => {
+    initCanvas();
+  }, [refresh]);
+
+  const initCanvas = () => {
+    resizeCanvas();
+    drawParticles();
+  };
+
+  const onMouseMove = () => {
+    if (canvasRef.current) {
+      const rect = canvasRef.current.getBoundingClientRect();
+      const { w, h } = canvasSize.current;
+      const x = mousePosition.x - rect.left - w / 2;
+      const y = mousePosition.y - rect.top - h / 2;
+      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
+      if (inside) {
+        mouse.current.x = x;
+        mouse.current.y = y;
       }
-      className={cn(
-        "[--halo-opacity:0.7]",
-        `absolute h-full w-full bg-[100%_100%,_50%] opacity-[var(--halo-opacity)] [mask:linear-gradient(to_top,_transparent,_black,_transparent)]`,
-        "[background-position:center,center_top_100%] [background-repeat:no-repeat,repeat] [background-size:100%_100%,50%] [background:var(--svg-animation),var(--svg-animation)]",
-        className,
-      )}
-      {...props}
-    />
+    }
+  };
+
+  type Circle = {
+    x: number;
+    y: number;
+    translateX: number;
+    translateY: number;
+    size: number;
+    alpha: number;
+    targetAlpha: number;
+    dx: number;
+    dy: number;
+    magnetism: number;
+  };
+
+  const resizeCanvas = () => {
+    if (canvasContainerRef.current && canvasRef.current && context.current) {
+      circles.current.length = 0;
+      canvasSize.current.w = canvasContainerRef.current.offsetWidth;
+      canvasSize.current.h = canvasContainerRef.current.offsetHeight;
+      canvasRef.current.width = canvasSize.current.w * dpr;
+      canvasRef.current.height = canvasSize.current.h * dpr;
+      canvasRef.current.style.width = `${canvasSize.current.w}px`;
+      canvasRef.current.style.height = `${canvasSize.current.h}px`;
+      context.current.scale(dpr, dpr);
+    }
+  };
+
+  const circleParams = (): Circle => {
+    const x = Math.floor(Math.random() * canvasSize.current.w);
+    const y = Math.floor(Math.random() * canvasSize.current.h);
+    const translateX = 0;
+    const translateY = 0;
+    const pSize = Math.floor(Math.random() * 2) + size;
+    const alpha = 0;
+    const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+    const dx = (Math.random() - 0.5) * 0.1;
+    const dy = (Math.random() - 0.5) * 0.1;
+    const magnetism = 0.1 + Math.random() * 4;
+    return {
+      x,
+      y,
+      translateX,
+      translateY,
+      size: pSize,
+      alpha,
+      targetAlpha,
+      dx,
+      dy,
+      magnetism,
+    };
+  };
+
+  const rgb = hexToRgb(color);
+
+  const drawCircle = (circle: Circle, update = false) => {
+    if (context.current) {
+      const { x, y, translateX, translateY, size, alpha } = circle;
+      context.current.translate(translateX, translateY);
+      context.current.beginPath();
+      context.current.arc(x, y, size, 0, 2 * Math.PI);
+      context.current.fillStyle = `rgba(${rgb.join(", ")}, ${alpha})`;
+      context.current.fill();
+      context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      if (!update) {
+        circles.current.push(circle);
+      }
+    }
+  };
+
+  const clearContext = () => {
+    if (context.current) {
+      context.current.clearRect(
+        0,
+        0,
+        canvasSize.current.w,
+        canvasSize.current.h,
+      );
+    }
+  };
+
+  const drawParticles = () => {
+    clearContext();
+    const particleCount = quantity;
+    for (let i = 0; i < particleCount; i++) {
+      const circle = circleParams();
+      drawCircle(circle);
+    }
+  };
+
+  const remapValue = (
+    value: number,
+    start1: number,
+    end1: number,
+    start2: number,
+    end2: number,
+  ): number => {
+    const remapped =
+      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
+    return remapped > 0 ? remapped : 0;
+  };
+
+  const animate = () => {
+    clearContext();
+    circles.current.forEach((circle: Circle, i: number) => {
+      // Handle the alpha value
+      const edge = [
+        circle.x + circle.translateX - circle.size, // distance from left edge
+        canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
+        circle.y + circle.translateY - circle.size, // distance from top edge
+        canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+      ];
+      const closestEdge = edge.reduce((a, b) => Math.min(a, b));
+      const remapClosestEdge = parseFloat(
+        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
+      );
+      if (remapClosestEdge > 1) {
+        circle.alpha += 0.02;
+        if (circle.alpha > circle.targetAlpha) {
+          circle.alpha = circle.targetAlpha;
+        }
+      } else {
+        circle.alpha = circle.targetAlpha * remapClosestEdge;
+      }
+      circle.x += circle.dx + vx;
+      circle.y += circle.dy + vy;
+      circle.translateX +=
+        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
+        ease;
+      circle.translateY +=
+        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
+        ease;
+
+      drawCircle(circle, true);
+
+      // circle gets out of the canvas
+      if (
+        circle.x < -circle.size ||
+        circle.x > canvasSize.current.w + circle.size ||
+        circle.y < -circle.size ||
+        circle.y > canvasSize.current.h + circle.size
+      ) {
+        // remove the circle from the array
+        circles.current.splice(i, 1);
+        // create a new circle
+        const newCircle = circleParams();
+        drawCircle(newCircle);
+        // update the circle position
+      }
+    });
+    window.requestAnimationFrame(animate);
+  };
+
+  return (
+    <div className={className} ref={canvasContainerRef} aria-hidden="true">
+      <canvas ref={canvasRef} className="h-full w-full" />
+    </div>
   );
 };
 
