@@ -22,7 +22,6 @@ const ParticlesDemo = () => {
       <Particles
         className="absolute inset-0"
         quantity={100}
-        staticity={80}
         ease={80}
         color={color}
         refresh
