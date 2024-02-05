@@ -102,6 +102,16 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/text-shimmer.tsx"],
   },
+  "animated-grid-pattern": {
+    name: "animated-grid-pattern",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-grid-pattern.tsx"],
+  },
+  "border-beam": {
+    name: "border-beam",
+    type: "components:ui",
+    files: ["registry/components/magicui/border-beam.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -344,6 +354,22 @@ const example: Registry = {
     files: ["registry/components/example/particles-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/particles-demo"),
+    ),
+  },
+  "animated-grid-pattern-demo": {
+    name: "animated-grid-pattern-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-grid-pattern-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-grid-pattern-demo"),
+    ),
+  },
+  "border-beam-demo": {
+    name: "border-beam-demo",
+    type: "components:example",
+    files: ["registry/components/example/border-beam-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/border-beam-demo"),
     ),
   },
 };

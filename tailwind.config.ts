@@ -74,6 +74,7 @@ module.exports = {
         ripple: "ripple 3400ms ease infinite",
         line: "line 2s linear infinite",
         shimmer: "shimmer 8s infinite",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
       },
       keyframes: {
         "accordion-down": {
@@ -147,6 +148,11 @@ module.exports = {
         line: {
           "0%": { "mask-position-x": "0%" },
           "100%": { "mask-position-x": "100%" },
+        },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
         },
         shimmer: {
           "0%, 90%, 100%": {

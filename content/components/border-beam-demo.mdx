@@ -1,0 +1,94 @@
+---
+title: Border Beam
+date: 2024-02-05
+summary: An animated beam of light which travels along the border of its container.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/border-beam.mp4
+---
+
+<ComponentPreview name="border-beam-demo" />
+
+<Steps>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+      },
+      keyframes: {
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+```text
+components/magicui/border-beam.tsx
+```
+
+<ComponentSource name="border-beam" />
+
+</Step>
+
+</Steps>
+
+## Usage
+
+Just place the border beam component inside a div with relative positioning, width, and height. You will notice the beam automatically moves around the perimeter of it's container.
+
+```tsx
+import { BorderBeam } from "@/components/magicui/border-beam.tsx";
+
+export default async function App() {
+  return (
+    <div className="relative h-[200px] w-[200px] rounded-xl">
+      <BorderBeam />
+    </div>
+  );
+}
+```
+
+## Props
+
+### Border Beam
+
+| Prop        | Type   | Description                            | Default |
+| ----------- | ------ | -------------------------------------- | ------- |
+| className   | string | Custom class to apply to the component | -       |
+| size        | number | Size of the beam                       | 300     |
+| duration    | number | Duration of the animation              | 15      |
+| anchor      | number | Anchor point of the beam               | 90      |
+| borderWidth | number | Width of the beam                      | 1.5     |
+| colorFrom   | string | Start color of the beam                | #ffaa40 |
+| colorTo     | string | End color of the beam                  | #9c40ff |
+| delay       | number | Delay before the animation starts      | 0       |
+
+## Credits
+
+- Credit to [@linear](https://linear.app/) where I first saw this effect.
+- Credit to [@jh3yy](https://twitter.com/jh3yy) for the inspiration to create this component.
