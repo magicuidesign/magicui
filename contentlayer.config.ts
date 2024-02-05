@@ -55,6 +55,7 @@ export const Component = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
+    type: { type: "string", required: false },
     date: { type: "date", required: true },
     video: { type: "string", required: false },
     summary: { type: "string", required: true },
