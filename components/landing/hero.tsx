@@ -1,3 +1,4 @@
+import { allComponents } from "@/.contentlayer/generated";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
@@ -5,6 +6,7 @@ import { cn } from "@/lib/utils";
 import FadeIn from "@/registry/components/magicui/fade-in";
 import NumberTicker from "@/registry/components/magicui/number-ticker";
 import { StarFilledIcon } from "@radix-ui/react-icons";
+import { compareDesc } from "date-fns";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { CSSProperties } from "react";
@@ -16,12 +18,18 @@ export default async function Hero() {
     },
   });
 
+  const post = allComponents
+    .filter((post) => post.date <= new Date().toISOString() && post.published)
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date));
+    })[0];
+
   return (
     <section id="hero" className="container py-14">
       <div className="container flex max-w-[64rem] flex-col items-center gap-6 pb-8 pt-20 text-center md:pb-12">
         <FadeIn>
           <Link
-            href="/components/animated-list"
+            href={post.slug}
             className={cn(
               "relative flex flex-row items-center justify-center",
               "rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f]",
@@ -46,7 +54,7 @@ export default async function Hero() {
                 `inline`,
               )}
             >
-              Introducing Animated List
+              Introducing {post.title}
             </span>
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
           </Link>
