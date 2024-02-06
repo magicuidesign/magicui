@@ -5,10 +5,16 @@ export default function BorderBeamDemo() {
     <div className="relative rounded-xl">
       <img
         src="/dashboard-dark.png"
-        className="rounded-[inherit] border object-contain"
+        alt="Hero Image"
+        className="hidden max-w-[700px] rounded-[inherit] border object-contain shadow-lg dark:block"
+      />
+      <img
+        src="/dashboard-light.png"
+        alt="Hero Image"
+        className="block max-w-[700px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
       />
 
-      <BorderBeam />
+      <BorderBeam size={250} duration={12} delay={9} />
     </div>
   );
 }
