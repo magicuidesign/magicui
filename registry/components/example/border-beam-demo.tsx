@@ -6,12 +6,12 @@ export default function BorderBeamDemo() {
       <img
         src="/dashboard-dark.png"
         alt="Hero Image"
-        className="hidden max-w-[700px] rounded-[inherit] border object-contain shadow-lg dark:block"
+        className="hidden w-[700px] rounded-[inherit] border object-contain shadow-lg dark:block"
       />
       <img
         src="/dashboard-light.png"
         alt="Hero Image"
-        className="block max-w-[700px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
+        className="block w-[700px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
       />
 
       <BorderBeam size={250} duration={12} delay={9} />

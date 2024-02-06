@@ -3,6 +3,7 @@ import Marquee from "@/registry/components/magicui/marquee";
 import TweetCard from "@/registry/components/magicui/tweet-card";
 
 const tweets = [
+  "https://x.com/chronark_/status/1754781648262967323",
   "https://x.com/pkp_io/status/1684561895481802753",
   "https://x.com/devcagatay/status/1684573935466328065",
   "https://x.com/KanishkKhurana_/status/1684613797984800768",
