@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Children, cloneElement } from "react";
 
 interface MarqueeProps {
   className?: string;
@@ -7,6 +6,7 @@ interface MarqueeProps {
   pauseOnHover?: boolean;
   children?: React.ReactNode;
   vertical?: boolean;
+  repeat?: number;
   [key: string]: any;
 }
 
@@ -16,31 +16,36 @@ export default function Marquee({
   pauseOnHover = false,
   children,
   vertical = false,
+  repeat = 4,
   ...props
 }: MarqueeProps) {
   return (
     <div
       {...props}
       className={cn(
-        "flex h-full w-full overflow-hidden [--duration:40s] [--gap:1rem]",
+        "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
+        {
+          "flex-row": !vertical,
+          "flex-col": vertical,
+        },
         className,
       )}
     >
-      <div
-        className={cn(
-          "flex h-max w-max transform-gpu items-stretch gap-[--gap] p-2",
-          {
-            "[animation-direction:reverse]": reverse,
-            "hover:[animation-play-state:paused]": pauseOnHover,
-            "animate-marquee-vertical flex-col": vertical,
-            "animate-marquee flex-row": !vertical,
-          },
-        )}
-      >
-        {Children.map(children, (child) => cloneElement(child as any))}
-        {Children.map(children, (child) => cloneElement(child as any))}
-        {Children.map(children, (child) => cloneElement(child as any))}
-      </div>
+      {Array(repeat)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            key={i}
+            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+              "animate-marquee flex-row": !vertical,
+              "animate-marquee-vertical flex-col": vertical,
+              "group-hover:[animation-play-state:paused]": pauseOnHover,
+              "[animation-direction:reverse]": reverse,
+            })}
+          >
+            {children}
+          </div>
+        ))}
     </div>
   );
 }

@@ -43,11 +43,11 @@ module.exports = {
       keyframes: {
         marquee: {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
         },
         "marquee-vertical": {
           from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
     },
@@ -96,3 +96,4 @@ components/magicui/marquee.tsx
 | pauseOnHover | boolean | false   | Whether or not to pause the marquee when the user hovers over the component. |
 | vertical     | boolean | false   | Whether or not to display the marquee vertically.                            |
 | children     | node    |         | The content to display in the marquee.                                       |
+| repeat       | number  | 1       | The number of times to repeat the content.                                   |

@@ -65,7 +65,7 @@ module.exports = {
         gradient: "gradient 8s linear infinite",
         meteor: "meteor 5s linear infinite",
         grid: "grid 15s linear infinite",
-        marquee: "marquee var(--duration) linear infinite",
+        marquee: "marquee var(--duration) infinite linear",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         flip: "flip calc(var(--spark) * 2) infinite steps(2, end)",
         rotate: "rotate var(--spark) linear infinite both",
@@ -104,11 +104,11 @@ module.exports = {
         },
         marquee: {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
         },
         "marquee-vertical": {
           from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
         flip: {
           to: { rotate: "360deg" },
