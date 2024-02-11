@@ -13,7 +13,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className,
       )}
     >
@@ -38,7 +38,7 @@ export default function AnimatedBeamDemo() {
       ref={containerRef}
     >
       <div className="flex h-full w-full flex-col items-stretch justify-between gap-10">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref}>
             <Icons.googleDrive />
           </Circle>
@@ -46,18 +46,18 @@ export default function AnimatedBeamDemo() {
             <Icons.googleDocs />
           </Circle>
         </div>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row items-center justify-between">
           <Circle ref={div2Ref}>
             <Icons.notion />
           </Circle>
-          <Circle ref={div4Ref}>
+          <Circle ref={div4Ref} className="h-16 w-16">
             <Icons.openai />
           </Circle>
           <Circle ref={div6Ref}>
             <Icons.zapier />
           </Circle>
         </div>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row items-center justify-between">
           <Circle ref={div3Ref}>
             <Icons.whatsapp />
           </Circle>

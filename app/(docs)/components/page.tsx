@@ -4,6 +4,12 @@ import { allComponents } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import Link from "next/link";
 
+export async function generateStaticParams() {
+  return allComponents.map((component) => ({
+    slug: component.slugAsParams,
+  }));
+}
+
 export const metadata = constructMetadata({
   title: "Components | Magic UI",
   description:
