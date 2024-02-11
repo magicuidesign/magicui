@@ -13,7 +13,11 @@ video: https://cdn.magicui.design/dot-pattern.mp4
 
 <Step>
 
-## Installation
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge
+```
 
 Copy and paste the following code into your project.
 
@@ -26,6 +30,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
 
 ```text
 components/magicui/dot-pattern.tsx

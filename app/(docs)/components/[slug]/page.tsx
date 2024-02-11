@@ -17,11 +17,11 @@ import Balancer from "react-wrap-balancer";
 // TODO: Fix this in future
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 
-// export async function generateStaticParams() {
-//   return allComponents.map((component) => ({
-//     slug: component.slugAsParams,
-//   }));
-// }
+export async function generateStaticParams() {
+  return allComponents.map((component) => ({
+    slug: component.slugAsParams,
+  }));
+}
 
 export async function generateMetadata({
   params,

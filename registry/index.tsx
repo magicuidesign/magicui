@@ -112,6 +112,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/border-beam.tsx"],
   },
+  "animated-beam": {
+    name: "animated-beam",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-beam.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -370,6 +375,49 @@ const example: Registry = {
     files: ["registry/components/example/border-beam-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/border-beam-demo"),
+    ),
+  },
+  "animated-beam-demo": {
+    name: "animated-beam-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-beam-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-beam-demo"),
+    ),
+  },
+  "animated-beam-unidirectional": {
+    name: "animated-beam-unidirectional",
+    type: "components:example",
+    files: ["registry/components/example/animated-beam-unidirectional.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/animated-beam-unidirectional"),
+    ),
+  },
+  "animated-beam-bidirectional": {
+    name: "animated-beam-bidirectional",
+    type: "components:example",
+    files: ["registry/components/example/animated-beam-bidirectional.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-beam-bidirectional"),
+    ),
+  },
+  "animated-beam-multiple-inputs": {
+    name: "animated-beam-multiple-inputs",
+    type: "components:example",
+    files: ["registry/components/example/animated-beam-multiple-inputs.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/animated-beam-multiple-inputs"),
+    ),
+  },
+  "animated-beam-multiple-outputs": {
+    name: "animated-beam-multiple-outputs",
+    type: "components:example",
+    files: ["registry/components/example/animated-beam-multiple-outputs.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/animated-beam-multiple-outputs"),
     ),
   },
 };

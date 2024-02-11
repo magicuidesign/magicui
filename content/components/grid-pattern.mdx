@@ -12,8 +12,11 @@ video: https://cdn.magicui.design/grid-pattern.mp4
 <Steps>
 
 <Step>
+## Prerequisites
 
-## Installation
+```bash
+npm install -D tailwindcss clsx tailwind-merge
+```
 
 Copy and paste the following code into your project.
 
@@ -26,6 +29,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 ```
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
 
 ```text
 components/magicui/grid-pattern.tsx
