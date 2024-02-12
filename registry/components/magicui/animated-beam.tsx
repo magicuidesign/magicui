@@ -141,6 +141,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       />
       <path
         d={pathD}
+        strokeWidth={pathWidth}
         stroke={`url(#${id})`}
         strokeOpacity="1"
         strokeLinecap="round"
