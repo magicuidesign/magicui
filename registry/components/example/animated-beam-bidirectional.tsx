@@ -38,7 +38,7 @@ export default function AnimatedBeamDemo() {
             <Icons.user className="text-black" />
           </Circle>
           <Circle ref={div2Ref}>
-            <Icons.openai />
+            <Icons.openai className="h-6 w-6" />
           </Circle>
         </div>
       </div>

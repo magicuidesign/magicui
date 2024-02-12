@@ -40,29 +40,29 @@ export default function AnimatedBeamDemo() {
       <div className="flex h-full w-full flex-col items-stretch justify-between gap-10">
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref}>
-            <Icons.googleDrive />
+            <Icons.googleDrive className="h-6 w-6" />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.googleDocs />
+            <Icons.googleDocs className="h-6 w-6" />
           </Circle>
         </div>
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div2Ref}>
-            <Icons.notion />
+            <Icons.notion className="h-6 w-6" />
           </Circle>
           <Circle ref={div4Ref} className="h-16 w-16">
-            <Icons.openai />
+            <Icons.openai className="h-6 w-6" />
           </Circle>
           <Circle ref={div6Ref}>
-            <Icons.zapier />
+            <Icons.zapier className="h-6 w-6" />
           </Circle>
         </div>
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div3Ref}>
-            <Icons.whatsapp />
+            <Icons.whatsapp className="h-6 w-6" />
           </Circle>
           <Circle ref={div7Ref}>
-            <Icons.messenger />
+            <Icons.messenger className="h-6 w-6" />
           </Circle>
         </div>
       </div>

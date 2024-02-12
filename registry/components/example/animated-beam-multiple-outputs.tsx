@@ -45,24 +45,24 @@ export default function AnimatedBeamDemo() {
         </div>
         <div className="flex flex-col justify-center">
           <Circle ref={div6Ref} className="h-16 w-16">
-            <Icons.openai />
+            <Icons.openai className="h-6 w-6" />
           </Circle>
         </div>
         <div className="flex flex-col justify-center gap-2">
           <Circle ref={div1Ref}>
-            <Icons.googleDrive />
+            <Icons.googleDrive className="h-6 w-6" />
           </Circle>
           <Circle ref={div2Ref}>
-            <Icons.googleDocs />
+            <Icons.googleDocs className="h-6 w-6" />
           </Circle>
           <Circle ref={div3Ref}>
-            <Icons.whatsapp />
+            <Icons.whatsapp className="h-6 w-6" />
           </Circle>
           <Circle ref={div4Ref}>
-            <Icons.messenger />
+            <Icons.messenger className="h-6 w-6" />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.notion />
+            <Icons.notion className="h-6 w-6" />
           </Circle>
         </div>
       </div>
