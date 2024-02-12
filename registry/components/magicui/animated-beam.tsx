@@ -149,6 +149,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       />
       <defs>
         <motion.linearGradient
+          className="transform-gpu"
           id={id}
           gradientUnits={"userSpaceOnUse"}
           animate={{
