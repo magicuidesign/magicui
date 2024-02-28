@@ -39,7 +39,7 @@ export default async function ComponentPage() {
       {posts?.length ? (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {posts.map((post, index) => (
-            <FadeIn key={post._id} delay={index * 0.04}>
+            <FadeIn key={post._id} delay={0.2}>
               <article
                 key={post._id}
                 className="group relative flex h-full w-full grow flex-col overflow-hidden rounded-xl border bg-background transition-all duration-300 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700"
