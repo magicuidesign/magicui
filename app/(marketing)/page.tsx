@@ -6,9 +6,11 @@ export default async function Home() {
   return (
     <>
       <Hero />
+      {/* <WhatIsMagicUI /> */}
       <Testimonials />
       {/* <FeatureGrid /> */}
       {/* <FeatureSections /> */}
+      {/* <ChangelogSection /> */}
       <Faq />
     </>
   );
