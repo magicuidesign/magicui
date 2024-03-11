@@ -1,3 +1,4 @@
+import { BlockPreview } from "@/components/block-preview";
 import {
   Accordion,
   AccordionContent,
@@ -48,6 +49,7 @@ const components = {
     <TweetCard id={id} className="not-prose mx-auto" />
   ),
   ComponentPreview,
+  BlockPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p

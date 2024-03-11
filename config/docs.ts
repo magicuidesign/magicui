@@ -14,22 +14,27 @@ export const docsConfig: DocsConfig = {
       href: "/components",
     },
     {
-      title: "Pricing",
-      href: "/pricing",
+      title: "Blocks",
+      href: "/blocks",
     },
-    {
-      title: "Submit Feedback",
-      href: "https://magicui.featurebase.app/",
-      external: true,
-    },
-    {
-      title: "Roadmap",
-      href: "https://magicui.featurebase.app/roadmap",
-      external: true,
-    },
+    // {
+    //   title: "Pricing",
+    //   href: "/pricing",
+    // },
+    // {
+    //   title: "Submit Feedback",
+    //   href: "https://magicui.featurebase.app/",
+    //   external: true,
+    // },
+    // {
+    //   title: "Roadmap",
+    //   href: "https://magicui.featurebase.app/roadmap",
+    //   external: true,
+    // },
   ],
   sidebarNav: [
     {
+<<<<<<< HEAD
       title: "Getting Started",
       items: [
         {
@@ -52,6 +57,60 @@ export const docsConfig: DocsConfig = {
         //   href: "/docs/story",
         //   items: [],
         // },
+=======
+      title: "Blocks",
+      items: [
+        {
+          title: "Header",
+          href: `/blocks/header`,
+          items: [],
+        },
+        {
+          title: "Hero",
+          href: `/blocks/hero`,
+          items: [],
+        },
+        {
+          title: "Social Proof Press",
+          href: `/blocks/social-proof-press`,
+          items: [],
+        },
+        {
+          title: "Social Proof Companies",
+          href: `/blocks/social-proof-companies`,
+          items: [],
+        },
+        {
+          title: "Social Proof Testimonials",
+          href: `/blocks/social-proof-testimonials`,
+          items: [],
+        },
+        {
+          title: "Features",
+          href: `/blocks/features`,
+          items: [],
+        },
+        {
+          title: "Call To Action",
+          href: `/blocks/call-to-action`,
+          items: [],
+        },
+        {
+          title: "Pricing",
+          href: `/blocks/pricing`,
+          items: [],
+        },
+        {
+          title: "FAQ",
+          href: `/blocks/faq`,
+          items: [],
+        },
+        {
+          title: "Footer",
+          href: `/blocks/footer`,
+          items: [],
+        },
+>>>>>>> 0c5630b (wip: magic ui blocks wip)
       ],
     },
     {
