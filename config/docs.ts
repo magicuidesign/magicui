@@ -15,7 +15,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Blocks",
-      href: "/blocks",
+      href: "/docs/blocks",
     },
     // {
     //   title: "Pricing",
@@ -26,15 +26,14 @@ export const docsConfig: DocsConfig = {
     //   href: "https://magicui.featurebase.app/",
     //   external: true,
     // },
-    // {
-    //   title: "Roadmap",
-    //   href: "https://magicui.featurebase.app/roadmap",
-    //   external: true,
-    // },
+    {
+      title: "Roadmap",
+      href: "https://magicui.featurebase.app/roadmap",
+      external: true,
+    },
   ],
   sidebarNav: [
     {
-<<<<<<< HEAD
       title: "Getting Started",
       items: [
         {
@@ -57,60 +56,78 @@ export const docsConfig: DocsConfig = {
         //   href: "/docs/story",
         //   items: [],
         // },
-=======
+      ],
+    },
+    {
       title: "Blocks",
       items: [
-        {
-          title: "Header",
-          href: `/blocks/header`,
-          items: [],
-        },
-        {
-          title: "Hero",
-          href: `/blocks/hero`,
-          items: [],
-        },
+        // {
+        //   title: "Header",
+        //   href: `/docs/blocks/header`,
+        //   items: [],
+        // },
+        // {
+        //   title: "Hero",
+        //   href: `/docs/blocks/hero`,
+        //   items: [],
+        // },
         {
           title: "Social Proof Press",
-          href: `/blocks/social-proof-press`,
+          href: `/docs/blocks/social-proof-press`,
           items: [],
         },
         {
           title: "Social Proof Companies",
-          href: `/blocks/social-proof-companies`,
+          href: `/docs/blocks/social-proof-companies`,
           items: [],
         },
-        {
-          title: "Social Proof Testimonials",
-          href: `/blocks/social-proof-testimonials`,
-          items: [],
-        },
-        {
-          title: "Features",
-          href: `/blocks/features`,
-          items: [],
-        },
+        // {
+        //   title: "Social Proof Testimonials",
+        //   href: `/docs/blocks/social-proof-testimonials`,
+        //   items: [],
+        // },
+        // {
+        //   title: "Features",
+        //   href: `/docs/blocks/features`,
+        //   items: [],
+        // },
         {
           title: "Call To Action",
-          href: `/blocks/call-to-action`,
+          href: `/docs/blocks/call-to-action`,
           items: [],
         },
+
         {
           title: "Pricing",
-          href: `/blocks/pricing`,
+          href: `/docs/blocks/pricing`,
           items: [],
         },
         {
           title: "FAQ",
-          href: `/blocks/faq`,
+          href: `/docs/blocks/faq`,
           items: [],
         },
         {
           title: "Footer",
-          href: `/blocks/footer`,
+          href: `/docs/blocks/footer`,
           items: [],
         },
->>>>>>> 0c5630b (wip: magic ui blocks wip)
+
+        // {
+        //   title: "Pricing",
+        //   href: `/docs/blocks/pricing`,
+        //   items: [],
+        // },
+        // {
+        //   title: "FAQ",
+        //   href: `/docs/blocks/faq`,
+        //   items: [],
+        // },
+        // {
+        //   title: "Footer",
+        //   href: `/docs/blocks/footer`,
+        //   items: [],
+        // },
       ],
     },
     {

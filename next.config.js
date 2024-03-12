@@ -38,6 +38,11 @@ const nextConfig = {
         destination: "/docs/components/animated-beam",
         permanent: true,
       },
+      {
+        source: "/blocks",
+        destination: "/blocks/call-to-action",
+        permanent: true,
+      },
     ];
   },
 };
