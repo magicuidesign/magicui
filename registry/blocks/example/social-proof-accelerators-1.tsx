@@ -7,6 +7,8 @@ const press = [
   "TechCrunch",
   "TheGuardian",
   "Wired",
+  "ProductHunt",
+  "Reddit",
 ];
 
 export default function Press() {

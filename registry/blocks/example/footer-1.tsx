@@ -1,7 +1,6 @@
-import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { LinkedInLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { ChevronRight, HeartHandshake } from "lucide-react";
 
 const footerNavs = [
@@ -88,7 +87,7 @@ const footerSocials = [
   {
     href: "/",
     name: "Twitter",
-    icon: <Icons.twitter className="size-4" />,
+    icon: <TwitterLogoIcon className="size-4" />,
   },
 ];
 
@@ -138,9 +137,8 @@ export default function Footer() {
                   {nav.items.map((item) => (
                     <li key={item.name}>
                       <a
-                        // href={item.href}
-                        href="/"
-                        className="group inline-flex cursor-pointer items-center justify-start gap-1 text-gray-400 duration-200 hover:text-black hover:opacity-90"
+                        href={item.href}
+                        className="group inline-flex cursor-pointer items-center justify-start gap-1 text-gray-400 duration-200 hover:text-foreground hover:opacity-90"
                       >
                         {item.name}
                         <ChevronRight className="h-4 w-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
