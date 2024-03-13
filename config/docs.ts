@@ -1,4 +1,4 @@
-import { allComponents } from "@/.contentlayer/generated";
+import { allDocs } from "@/.contentlayer/generated";
 import { MainNavItem, SidebarNavItem } from "@/types";
 import { compareDesc } from "date-fns";
 
@@ -30,8 +30,28 @@ export const docsConfig: DocsConfig = {
   ],
   sidebarNav: [
     {
+      title: "Getting Started",
+      items: [
+        {
+          title: "Introduction",
+          href: "/docs",
+          items: [],
+        },
+        {
+          title: "Installation",
+          href: "/docs/installation",
+          items: [],
+        },
+        {
+          title: "Changelog",
+          href: "/docs/changelog",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Components",
-      items: allComponents
+      items: allDocs
         .filter(
           (post) => post.date <= new Date().toISOString() && post.published,
         )
@@ -40,7 +60,7 @@ export const docsConfig: DocsConfig = {
         })
         .map((component) => ({
           title: component.title,
-          href: `/components/${component.slugAsParams}`,
+          href: `/docs/${component.slugAsParams}`,
           items: [],
         })),
     },

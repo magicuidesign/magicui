@@ -1,5 +1,12 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
+import TweetCard from "@/registry/components/magicui/tweet-card";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,10 +33,43 @@ const CustomLink = (props: any) => {
 };
 
 const components = {
-  a: CustomLink,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  a: (props: any) => (
+    <CustomLink
+      {...props}
+      className={"font-medium underline underline-offset-4"}
+    />
+  ),
   Image,
+  Tweet: ({ id }: { id: string }) => (
+    <TweetCard id={id} className="not-prose mx-auto" />
+  ),
   ComponentPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p
+      className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
+      {...props}
+    />
+  ),
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+  ),
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+  ),
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <li className={cn("mt-2", className)} {...props} />
+  ),
+  blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <blockquote
+      className={cn("mt-6 border-l-2 pl-6 italic", className)}
+      {...props}
+    />
+  ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="w-full overflow-y-auto">
       <table className={cn("w-full", className)} {...props} />
@@ -138,11 +178,12 @@ export function Mdx({ code }: MDXProps) {
         // `md:prose-lg lg:prose-xl`,
 
         // no underline on links
-        `prose-a:no-underline`,
+        // `prose-a:no-underline`,
         // `prose-a:transition-colors prose-a:duration-200 prose-a:ease-out`,
         // `dark:prose-a:text-gray-200 prose-a:underline-offset-4 dark:hover:prose-a:text-gray-700 prose-a:font-semibold hover:prose-a:text-gray-400`,
         // `prose-pre:bg-gray-900 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-pre:border prose-pre:px-0 `,
-        `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:bg-gray-900 prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter prose-pre:dark:bg-gray-900 md:prose-pre:text-sm`,
+
+        `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter md:prose-pre:text-sm`,
       )}
     >
       {/* @ts-ignore */}

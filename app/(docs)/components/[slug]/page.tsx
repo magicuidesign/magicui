@@ -2,7 +2,7 @@ import Facebook from "@/components/icons/facebook";
 import LinkedIn from "@/components/icons/linkedin";
 import Twitter from "@/components/icons/twitter";
 import { Mdx } from "@/components/mdx-components";
-import { ComponentPager } from "@/components/pager";
+import { DocPager } from "@/components/pager";
 import { DashboardTableOfContents } from "@/components/toc";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
@@ -150,7 +150,7 @@ export default async function Component({ params }: Props) {
         <div className="pb-12 pt-8">
           <Mdx code={component.body.code} />
         </div>
-        <ComponentPager doc={component} />
+        <DocPager doc={component} />
       </div>
 
       {component.toc && (

@@ -1,4 +1,4 @@
-import { allComponents } from "@/.contentlayer/generated";
+import { allDocs } from "@/.contentlayer/generated";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
@@ -18,7 +18,7 @@ export default async function Hero() {
     },
   });
 
-  const post = allComponents
+  const post = allDocs
     .filter((post) => post.date <= new Date().toISOString() && post.published)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));

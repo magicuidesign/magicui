@@ -10,7 +10,7 @@ interface DocsPagerProps {
   doc: Component;
 }
 
-export function ComponentPager({ doc }: DocsPagerProps) {
+export function DocPager({ doc }: DocsPagerProps) {
   const pager = getPagerForDoc(doc);
 
   if (!pager) {
