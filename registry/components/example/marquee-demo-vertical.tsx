@@ -20,19 +20,8 @@ const reviews = [
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/john",
   },
-  // {
-  //   name: "Jane",
-  //   username: "@jane",
-  //   body: "I'm at a loss for words. This is amazing. I love it.",
-  //   img: "https://avatar.vercel.sh/jane",
-  // },
-  // {
-  //   name: "Jenny",
-  //   username: "@jenny",
-  //   body: "I'm at a loss for words. This is amazing. I love it.",
-  //   img: "https://avatar.vercel.sh/jenny",
-  // },
 ];
+
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 
@@ -84,8 +73,8 @@ const MarqueeDemoVertical = () => {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      {/* <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div> */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
     </div>
   );
 };
