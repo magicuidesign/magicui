@@ -72,7 +72,7 @@ export function rehypeComponent() {
         }
       }
 
-      if (node.name === "ComponentPreview") {
+      if (node.name === "ComponentPreview" || node.name === "BlockPreview") {
         const name = getNodeAttributeByName(node, "name")?.value as string;
 
         if (!name) {

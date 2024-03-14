@@ -11,6 +11,7 @@ export const registrySchema = z.record(
       "components:ui",
       "components:component",
       "components:example",
+      "blocks:example",
     ]),
     component: z.function().args(z.any()).returns(z.any()).optional(),
   }),

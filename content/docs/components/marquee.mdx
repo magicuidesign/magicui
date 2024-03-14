@@ -11,25 +11,9 @@ video: https://cdn.magicui.design/marquee.mp4
 
 <Steps>
 
-<Step>
-
-## Prerequisites
-
-```bash
-npm install -D tailwindcss clsx tailwind-merge
-```
+### Installation
 
 Copy and paste the following code into your project.
-
-```typescript
-// lib/utils.ts
-import clsx, { ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
 
 ```js
 // tailwind.config.js
@@ -55,21 +39,11 @@ module.exports = {
 };
 ```
 
-</Step>
-
-<Step>
-
-## Installation
-
-Copy and paste the following code into your project.
-
 ```text
 components/magicui/marquee.tsx
 ```
 
 <ComponentSource name="marquee" />
-
-</Step>
 
 </Steps>
 
@@ -82,10 +56,6 @@ components/magicui/marquee.tsx
 ### 3D
 
 <ComponentPreview name="marquee-3d" />
-
-### Logos
-
-<ComponentPreview name="marquee-logos" />
 
 ## Props
 

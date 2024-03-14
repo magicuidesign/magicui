@@ -11,41 +11,19 @@ video: https://cdn.magicui.design/globe.mp4
 
 <Steps>
 
-<Step>
+### Installation
 
-## Prerequisites
+Copy and paste the following code into your project.
 
 ```bash
-npm install -D tailwindcss clsx tailwind-merge cobe react-spring
+npm install -D cobe react-spring
 ```
-
-Copy and paste the following code into your project.
-
-```typescript
-// lib/utils.ts
-import clsx, { ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-
-</Step>
-
-<Step>
-
-## Installation
-
-Copy and paste the following code into your project.
 
 ```text
 components/magicui/globe.tsx
 ```
 
 <ComponentSource name="globe" />
-
-</Step>
 
 </Steps>
 

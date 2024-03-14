@@ -1,3 +1,4 @@
+import { BlockPreview } from "@/components/block-preview";
 import {
   Accordion,
   AccordionContent,
@@ -37,6 +38,60 @@ const components = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h1
+      className={cn(
+        "font-heading mt-2 scroll-m-20 text-4xl font-bold",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      className={cn(
+        "font-heading mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight first:mt-0",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      className={cn(
+        "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h4
+      className={cn(
+        "font-heading mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h5
+      className={cn(
+        "mt-8 scroll-m-20 text-lg font-semibold tracking-tight",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h6
+      className={cn(
+        "mt-8 scroll-m-20 text-base font-semibold tracking-tight",
+        className,
+      )}
+      {...props}
+    />
+  ),
   a: (props: any) => (
     <CustomLink
       {...props}
@@ -48,6 +103,7 @@ const components = {
     <TweetCard id={id} className="not-prose mx-auto" />
   ),
   ComponentPreview,
+  BlockPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
@@ -107,10 +163,11 @@ const components = {
   ),
   Steps: ({ ...props }) => (
     <div
-      className="[&>div]:step mb-12 ml-4 border-l pl-8 [counter-reset:step]"
+      className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step]"
       {...props}
     />
   ),
+
   pre: ({
     className,
     __rawString__,

@@ -422,7 +422,161 @@ const example: Registry = {
   },
 };
 
+const blocks: Registry = {
+  "header-1": {
+    name: "header-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/header-1.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/header-1")),
+  },
+  "header-2": {
+    name: "header-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/header-2.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/header-2")),
+  },
+  "footer-1": {
+    name: "footer-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/footer-1.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/footer-1")),
+  },
+  "footer-2": {
+    name: "footer-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/footer-2.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/footer-2")),
+  },
+  "hero-1": {
+    name: "hero-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/hero-1.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/hero-1")),
+  },
+  "social-proof-press-1": {
+    name: "social-proof-press-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-press-1.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-press-1"),
+    ),
+  },
+  "social-proof-press-2": {
+    name: "social-proof-press-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-press-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-press-2"),
+    ),
+  },
+  "social-proof-press-3": {
+    name: "social-proof-press-3",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-press-3.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-press-3"),
+    ),
+  },
+  "social-proof-companies-1": {
+    name: "social-proof-companies-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-companies-1.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-companies-1"),
+    ),
+  },
+  "social-proof-companies-2": {
+    name: "social-proof-companies-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-companies-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-companies-2"),
+    ),
+  },
+  "social-proof-companies-3": {
+    name: "social-proof-companies-3",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-companies-3.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-companies-3"),
+    ),
+  },
+  "social-proof-companies-4": {
+    name: "social-proof-companies-4",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-companies-4.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-companies-4"),
+    ),
+  },
+  "social-proof-testimonials-1": {
+    name: "social-proof-testimonials-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-testimonials-1.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-testimonials-1"),
+    ),
+  },
+  "features-1": {
+    name: "features-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/features-1.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/features-1")),
+  },
+  "call-to-action-1": {
+    name: "call-to-action-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/call-to-action-1.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/call-to-action-1"),
+    ),
+  },
+  "call-to-action-2": {
+    name: "call-to-action-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/call-to-action-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/call-to-action-2"),
+    ),
+  },
+  "call-to-action-3": {
+    name: "call-to-action-3",
+    type: "blocks:example",
+    files: ["registry/blocks/example/call-to-action-3.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/call-to-action-3"),
+    ),
+  },
+  "call-to-action-4": {
+    name: "call-to-action-4",
+    type: "blocks:example",
+    files: ["registry/blocks/example/call-to-action-4.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/call-to-action-4"),
+    ),
+  },
+  "pricing-1": {
+    name: "pricing-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/pricing-1.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/pricing-1")),
+  },
+  "pricing-2": {
+    name: "pricing-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/pricing-2.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/pricing-2")),
+  },
+  "faq-1": {
+    name: "faq-1",
+    type: "blocks:example",
+    files: ["registry/blocks/example/faq-1.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/faq-1")),
+  },
+};
+
 export const registry: Registry = {
   ...ui,
   ...example,
+  ...blocks,
 };
