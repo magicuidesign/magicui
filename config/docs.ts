@@ -265,38 +265,6 @@ export const docsConfig: DocsConfig = {
       ],
     },
 
-    // ...Object.entries(
-    //   allDocs
-    //     .filter(
-    //       (post) =>
-    //         post.date &&
-    //         post.date <= new Date().toISOString() &&
-    //         post.published &&
-    //         post.slug.includes("components"),
-    //     )
-    //     .reduce((acc: Record<string, any[]>, post) => {
-    //       const group = post._raw.flattenedPath.split("/")[2]; // Get the group name from the path
-    //       if (!acc[group]) {
-    //         acc[group] = [];
-    //       }
-    //       acc[group].push(post);
-    //       return acc;
-    //     }, {}),
-    // ).map(([group, components]) => ({
-    //   title: capitalize(group.replace(/-/g, " ")),
-    //   items: components
-    //     .sort((a, b) => {
-    //       if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
-    //       if (!a.date) return 1; // Move a to the end if date is undefined
-    //       if (!b.date) return -1; // Move b to the end if date is undefined
-    //       return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
-    //     })
-    //     .map((component) => ({
-    //       title: component.title,
-    //       href: `/docs/${component.slugAsParams}`,
-    //       items: [],
-    //     })),
-    // })),
     // {
     //   title: "Components",
     //   items: allDocs
