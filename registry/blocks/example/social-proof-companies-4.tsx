@@ -107,7 +107,7 @@ export default function Companies() {
                 />
               ))}
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full bg-gradient-to-t from-background from-20%"></div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full bg-gradient-to-t from-white from-20% dark:from-black"></div>
           </div>
         </div>
       </div>
