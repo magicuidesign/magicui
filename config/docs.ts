@@ -188,6 +188,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Magic Card",
+          href: `/docs/components/magic-card`,
+          items: [],
+        },
+        {
           title: "Meteors",
           href: `/docs/components/meteors`,
           items: [],
