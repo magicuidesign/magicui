@@ -57,7 +57,7 @@ export function DocsSidebarNavItems({
           >
             <span className="shrink-0">{item.title}</span>
             {item.label && (
-              <span className="ml-2 rounded-md bg-[#ffaa40] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+              <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                 {item.label}
               </span>
             )}
