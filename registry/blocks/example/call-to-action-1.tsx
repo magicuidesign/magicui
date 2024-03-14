@@ -2,7 +2,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Marquee from "@/registry/components/magicui/marquee";
 import { ChevronRight, HeartHandshake } from "lucide-react";
-import Link from "next/link";
 
 const reviews = [
   {
@@ -144,8 +143,8 @@ export default function CallToAction() {
               <p className="mt-2">
                 Start your 7-day free trial. No credit card required.
               </p>
-              <Link
-                href={{ pathname: "/" }}
+              <a
+                href="/"
                 className={cn(
                   buttonVariants({
                     size: "lg",
@@ -156,7 +155,7 @@ export default function CallToAction() {
               >
                 Get Started
                 <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
-              </Link>
+              </a>
             </div>
             <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-b from-transparent to-white to-70% dark:to-black" />
           </div>
