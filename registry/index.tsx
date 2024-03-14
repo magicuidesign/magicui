@@ -477,22 +477,6 @@ const blocks: Registry = {
       () => import("@/registry/blocks/example/social-proof-press-3"),
     ),
   },
-  // "social-proof-press-4": {
-  //   name: "social-proof-press-4",
-  //   type: "blocks:example",
-  //   files: ["registry/blocks/example/social-proof-press-4.tsx"],
-  //   component: React.lazy(
-  //     () => import("@/registry/blocks/example/social-proof-press-4"),
-  //   ),
-  // },
-  // "social-proof-press-5": {
-  //   name: "social-proof-press-5",
-  //   type: "blocks:example",
-  //   files: ["registry/blocks/example/social-proof-press-5.tsx"],
-  //   component: React.lazy(
-  //     () => import("@/registry/blocks/example/social-proof-press-5"),
-  //   ),
-  // },
   "social-proof-companies-1": {
     name: "social-proof-companies-1",
     type: "blocks:example",
