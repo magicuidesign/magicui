@@ -109,11 +109,6 @@ export const Doc = defineDocumentType(() => ({
       default: false,
       required: false,
     },
-    component: {
-      type: "boolean",
-      default: false,
-      required: false,
-    },
     toc: { type: "boolean", default: false, required: false },
     author: { type: "string", required: false },
     video: { type: "string", required: false },

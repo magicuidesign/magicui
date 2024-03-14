@@ -40,7 +40,12 @@ const nextConfig = {
       },
       {
         source: "/blocks",
-        destination: "/blocks/call-to-action",
+        destination: "/docs/blocks/call-to-action",
+        permanent: true,
+      },
+      {
+        source: "/docs/blocks",
+        destination: "/docs/blocks/call-to-action",
         permanent: true,
       },
     ];

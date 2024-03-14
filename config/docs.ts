@@ -15,7 +15,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Blocks",
-      href: "/docs/blocks",
+      href: "/blocks",
     },
     // {
     //   title: "Pricing",
@@ -29,6 +29,11 @@ export const docsConfig: DocsConfig = {
     {
       title: "Roadmap",
       href: "https://magicui.featurebase.app/roadmap",
+      external: true,
+    },
+    {
+      title: "Discord",
+      href: "/discord",
       external: true,
     },
   ],
@@ -97,16 +102,16 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
 
-        {
-          title: "Pricing",
-          href: `/docs/blocks/pricing`,
-          items: [],
-        },
-        {
-          title: "FAQ",
-          href: `/docs/blocks/faq`,
-          items: [],
-        },
+        // {
+        //   title: "Pricing",
+        //   href: `/docs/blocks/pricing`,
+        //   items: [],
+        // },
+        // {
+        //   title: "FAQ",
+        //   href: `/docs/blocks/faq`,
+        //   items: [],
+        // },
         {
           title: "Footer",
           href: `/docs/blocks/footer`,
@@ -137,7 +142,8 @@ export const docsConfig: DocsConfig = {
           (post) =>
             post.date &&
             post.date <= new Date().toISOString() &&
-            post.published,
+            post.published &&
+            post.slug.includes("components"),
         )
         .sort((a, b) => {
           if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
