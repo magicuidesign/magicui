@@ -19,6 +19,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/discord",
+        destination: "https://discord.gg/WfefJAwQhF",
+        permanent: true,
+      },
+      {
         source: "/components",
         destination: "/docs/components/animated-beam",
         permanent: true,
