@@ -119,7 +119,7 @@ export default function CallToAction() {
           <div className="relative flex w-full max-w-[1000px] flex-col items-center justify-center overflow-hidden rounded-[2rem] border">
             <Marquee
               reverse
-              className="delay-[-200ms] [--duration:20s]"
+              className="-delay-[200ms] [--duration:20s]"
               repeat={4}
             >
               {randomReviews1.map((review, idx) => (
@@ -133,7 +133,7 @@ export default function CallToAction() {
             </Marquee>
             <Marquee
               reverse
-              className="delay-[-200ms] [--duration:20s]"
+              className="-delay-[200ms] [--duration:20s]"
               repeat={4}
             >
               {randomReviews3.map((review, idx) => (

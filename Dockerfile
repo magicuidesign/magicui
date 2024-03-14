@@ -35,6 +35,7 @@ WORKDIR /app
 RUN npm i -g turbo
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN npx prisma generate
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
