@@ -187,6 +187,11 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/border-beam`,
           items: [],
         },
+        {
+          title: "Meteors",
+          href: `/docs/components/meteors`,
+          items: [],
+        },
       ],
     },
     {
