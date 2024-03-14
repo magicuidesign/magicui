@@ -78,11 +78,13 @@ export const docsConfig: DocsConfig = {
           title: "Social Proof Press",
           href: `/docs/sections/social-proof-press`,
           items: [],
+          label: "New",
         },
         {
           title: "Social Proof Companies",
           href: `/docs/sections/social-proof-companies`,
           items: [],
+          label: "New",
         },
         // {
         //   title: "Social Proof Testimonials",
@@ -98,6 +100,7 @@ export const docsConfig: DocsConfig = {
           title: "Call To Action",
           href: `/docs/sections/call-to-action`,
           items: [],
+          label: "New",
         },
 
         // {
@@ -114,6 +117,7 @@ export const docsConfig: DocsConfig = {
           title: "Footer",
           href: `/docs/sections/footer`,
           items: [],
+          label: "New",
         },
 
         // {
