@@ -5,7 +5,8 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev -p 3003",
-    "build": "next build",
+    "prebuild": "npm run prisma generate",
+    "build": "npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "dx": "run-s db:up db:migrate dev",
