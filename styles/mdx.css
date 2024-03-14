@@ -84,3 +84,7 @@
 [data-rehype-pretty-code-title] + pre {
   @apply mt-2;
 }
+
+article > .steps:first-child > h3:first-child {
+  @apply mt-0;
+}

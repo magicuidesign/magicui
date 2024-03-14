@@ -39,13 +39,13 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/blocks",
-        destination: "/docs/blocks/call-to-action",
+        source: "/sections",
+        destination: "/docs/sections/call-to-action",
         permanent: true,
       },
       {
-        source: "/docs/blocks",
-        destination: "/docs/blocks/call-to-action",
+        source: "/docs/sections",
+        destination: "/docs/sections/call-to-action",
         permanent: true,
       },
     ];
