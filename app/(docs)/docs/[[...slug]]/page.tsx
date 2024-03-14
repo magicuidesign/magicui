@@ -1,3 +1,11 @@
+import { Mdx } from "@/components/mdx-components";
+import { DocPager } from "@/components/pager";
+import { DashboardTableOfContents } from "@/components/toc";
+import { badgeVariants } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { siteConfig } from "@/config/site";
+import { getTableOfContents } from "@/lib/toc";
+import { absoluteUrl, cn } from "@/lib/utils";
 import "@/styles/mdx.css";
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 import { allDocs } from "contentlayer/generated";
@@ -5,18 +13,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
-
-import { Mdx } from "@/components/mdx-components";
-import { siteConfig } from "@/config/site";
-import { getTableOfContents } from "@/lib/toc";
-import { absoluteUrl, cn } from "@/lib/utils";
-// import { DocsPager } from "@/components/pager"
-import { DocPager } from "@/components/pager";
-import { DashboardTableOfContents } from "@/components/toc";
-import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
-// import { badgeVariants } from "@/registry/new-york/ui/badge"
-// import { ScrollArea } from "@/registry/new-york/ui/scroll-area"
 
 interface DocPageProps {
   params: {
@@ -82,7 +78,7 @@ export async function generateStaticParams(): Promise<
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams({ params });
 
-  if (!doc) {
+  if (!doc || !doc.published) {
     notFound();
   }
 
@@ -154,6 +150,13 @@ export default async function DocPage({ params }: DocPageProps) {
           </div>
         </div>
       )}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(doc.structuredData),
+        }}
+      />
     </main>
   );
 }

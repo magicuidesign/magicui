@@ -37,26 +37,37 @@ export const docsConfig: DocsConfig = {
           href: "/docs",
           items: [],
         },
-        {
-          title: "Installation",
-          href: "/docs/installation",
-          items: [],
-        },
-        {
-          title: "Changelog",
-          href: "/docs/changelog",
-          items: [],
-        },
+        // {
+        //   title: "Installation",
+        //   href: "/docs/installation",
+        //   items: [],
+        // },
+        // {
+        //   title: "Changelog",
+        //   href: "/docs/changelog",
+        //   items: [],
+        // },
+        // {
+        //   title: "Story",
+        //   href: "/docs/story",
+        //   items: [],
+        // },
       ],
     },
     {
       title: "Components",
       items: allDocs
         .filter(
-          (post) => post.date <= new Date().toISOString() && post.published,
+          (post) =>
+            post.date &&
+            post.date <= new Date().toISOString() &&
+            post.published,
         )
         .sort((a, b) => {
-          return compareDesc(new Date(a.date), new Date(b.date));
+          if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
+          if (!a.date) return 1; // Move a to the end if date is undefined
+          if (!b.date) return -1; // Move b to the end if date is undefined
+          return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
         })
         .map((component) => ({
           title: component.title,

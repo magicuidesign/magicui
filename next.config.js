@@ -24,6 +24,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/components/:path*",
+        destination: "/docs/components/:path*",
+        permanent: true,
+      },
+      {
         source: "/docs/components",
         destination: "/docs/components/animated-beam",
         permanent: true,

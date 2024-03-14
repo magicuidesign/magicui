@@ -53,24 +53,6 @@ const computedFields = {
   },
 };
 
-// export const Component = defineDocumentType(() => ({
-//   name: "Component",
-//   filePathPattern: `components/**/*.mdx`,
-//   contentType: "mdx",
-//   fields: {
-//     title: { type: "string", required: true },
-//     type: { type: "string", required: false },
-//     date: { type: "date", required: true },
-//     video: { type: "string", required: false },
-//     summary: { type: "string", required: true },
-//     author: { type: "string", required: true },
-//     published: { type: "boolean", required: false, default: true },
-//     toc: { type: "boolean", default: false, required: false },
-//   },
-//   // @ts-ignore
-//   computedFields,
-// }));
-
 export const Page = defineDocumentType(() => ({
   name: "Page",
   filePathPattern: `pages/**/*.mdx`,
