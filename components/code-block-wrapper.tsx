@@ -39,12 +39,12 @@ export function CodeBlockWrapper({
         </CollapsibleContent>
         <div
           className={cn(
-            "absolute flex items-center justify-center bg-gradient-to-b from-background/10 to-background/90 p-2",
+            "absolute flex items-center justify-center bg-gradient-to-b from-background/10 to-background to-90% p-2",
             isOpened ? "inset-x-0 bottom-0 h-12 from-gray-900/30" : "inset-0 ",
           )}
         >
           <CollapsibleTrigger asChild>
-            <Button variant="secondary" className="h-8 text-xs">
+            <Button variant="secondary" className="mb-8 h-8 text-xs">
               {isOpened ? "Collapse" : expandButtonTitle}
             </Button>
           </CollapsibleTrigger>
