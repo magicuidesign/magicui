@@ -1,5 +1,9 @@
 // contentlayer.config.ts
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -49,24 +53,6 @@ const computedFields = {
   },
 };
 
-export const Component = defineDocumentType(() => ({
-  name: "Component",
-  filePathPattern: `components/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: { type: "string", required: true },
-    type: { type: "string", required: false },
-    date: { type: "date", required: true },
-    video: { type: "string", required: false },
-    summary: { type: "string", required: true },
-    author: { type: "string", required: true },
-    published: { type: "boolean", required: false, default: true },
-    toc: { type: "boolean", default: false, required: false },
-  },
-  // @ts-ignore
-  computedFields,
-}));
-
 export const Page = defineDocumentType(() => ({
   name: "Page",
   filePathPattern: `pages/**/*.mdx`,
@@ -84,9 +70,61 @@ export const Page = defineDocumentType(() => ({
   computedFields,
 }));
 
+const LinksProperties = defineNestedType(() => ({
+  name: "LinksProperties",
+  fields: {
+    doc: {
+      type: "string",
+    },
+    api: {
+      type: "string",
+    },
+  },
+}));
+
+export const Doc = defineDocumentType(() => ({
+  name: "Doc",
+  filePathPattern: `docs/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    date: { type: "date", required: false },
+    published: {
+      type: "boolean",
+      default: true,
+    },
+    links: {
+      type: "nested",
+      of: LinksProperties,
+    },
+    featured: {
+      type: "boolean",
+      default: false,
+      required: false,
+    },
+    component: {
+      type: "boolean",
+      default: false,
+      required: false,
+    },
+    toc: { type: "boolean", default: false, required: false },
+    author: { type: "string", required: false },
+    video: { type: "string", required: false },
+  },
+  // @ts-ignore
+  computedFields,
+}));
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Component, Page],
+  documentTypes: [Page, Doc],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

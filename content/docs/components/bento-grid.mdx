@@ -1,0 +1,59 @@
+---
+title: Bento Grid
+date: 2023-11-09
+description: Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
+author: dillionverma
+published: true
+toc: false
+video: https://cdn.magicui.design/bento-grid.mp4
+---
+
+<ComponentPreview name="bento-demo" />
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge
+npm install @radix-ui/react-icons
+npx shadcn-ui@latest add button calendar command
+```
+
+Install [**marquee**](/components/marquee) and [**globe**](/components/globe) from Magic UI.
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/bento-grid.tsx
+```
+
+<ComponentSource name="bento-grid" />
+
+</Step>
+
+</Steps>
+
+## Examples
+
+<ComponentPreview name="bento-demo-vertical" />

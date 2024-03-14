@@ -16,6 +16,25 @@ const nextConfig = {
   images: {
     domains: ["localhost", "cdn.magicui.design"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/components",
+        destination: "/docs/components/animated-beam",
+        permanent: true,
+      },
+      {
+        source: "/components/:path*",
+        destination: "/docs/components/:path*",
+        permanent: true,
+      },
+      {
+        source: "/docs/components",
+        destination: "/docs/components/animated-beam",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withContentlayer(nextConfig);

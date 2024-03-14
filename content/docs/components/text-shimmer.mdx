@@ -1,0 +1,69 @@
+---
+title: Text Shimmer
+date: 2024-01-16
+description: A light glare effect which pans across text making it appear as if it is shimmering.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/text-shimmer.mp4
+---
+
+<ComponentPreview name="text-shimmer-demo" />
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        shimmer: "shimmer 8s infinite",
+      },
+      keyframes: {
+        shimmer: {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shimmer-width)) 0",
+          },
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shimmer-width)) 0",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/text-shimmer.tsx
+```
+
+<ComponentSource name="text-shimmer" />
+
+</Step>
+
+</Steps>
+
+## Props
+
+| Prop         | Type   | Description                                  | Default |
+| ------------ | ------ | -------------------------------------------- | ------- |
+| children     |        | The text to be shimmered.                    |         |
+| className    | string | The class name to be applied to the shimmer. |         |
+| shimmerWidth | number | The width of the shimmer in pixels.          | 100     |

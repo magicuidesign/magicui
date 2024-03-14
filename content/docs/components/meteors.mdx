@@ -1,0 +1,71 @@
+---
+title: Meteors
+date: 2023-07-13
+description: A meteor shower effect.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/meteors.mp4
+---
+
+<ComponentPreview name="meteors-demo" />
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        meteor: "meteor 5s linear infinite",
+      },
+      keyframes: {
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
+          "70%": { opacity: 1 },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: 0,
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/meteors.tsx
+```
+
+<ComponentSource name="meteors" >
+
+</ComponentSource>
+
+</Step>
+
+</Steps>
+
+## Props
+
+### Meteors
+
+| Prop   | Type   | Description       | Default |
+| ------ | ------ | ----------------- | ------- |
+| number | number | Number of meteors | 20      |

@@ -1,16 +1,16 @@
+import { Doc } from "@/.contentlayer/generated";
 import { buttonVariants } from "@/components/ui/button";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 import { NavItem, NavItemWithChildren } from "@/types";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import { Component } from "contentlayer/generated";
 import Link from "next/link";
 
 interface DocsPagerProps {
-  doc: Component;
+  doc: Doc;
 }
 
-export function ComponentPager({ doc }: DocsPagerProps) {
+export function DocPager({ doc }: DocsPagerProps) {
   const pager = getPagerForDoc(doc);
 
   if (!pager) {
@@ -41,7 +41,7 @@ export function ComponentPager({ doc }: DocsPagerProps) {
   );
 }
 
-export function getPagerForDoc(doc: Component) {
+export function getPagerForDoc(doc: Doc) {
   const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
   const activeIndex = flattenedLinks.findIndex(
     (link) => doc.slug === link?.href,

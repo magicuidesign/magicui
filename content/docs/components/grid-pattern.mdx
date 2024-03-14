@@ -1,0 +1,72 @@
+---
+title: Grid Pattern
+date: 2023-07-18
+description: A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/grid-pattern.mp4
+---
+
+<ComponentPreview name="grid-pattern-demo" />
+
+<Steps>
+
+<Step>
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge
+```
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+
+```text
+components/magicui/grid-pattern.tsx
+```
+
+<ComponentSource name="grid-pattern" />
+
+</Step>
+
+</Steps>
+
+## Examples
+
+### Linear Gradient
+
+<ComponentPreview name="grid-pattern-linear-gradient" />
+
+### Dashed Stroke
+
+<ComponentPreview name="grid-pattern-dashed" />
+
+## Props
+
+### GridPattern
+
+| Prop            | Type   | Description                                   | Default |
+| --------------- | ------ | --------------------------------------------- | ------- |
+| width           | number | Width of the pattern                          | 40      |
+| height          | number | Height of the pattern                         | 40      |
+| x               | number | X offset of the pattern                       | -1      |
+| y               | number | Y offset of the pattern                       | -1      |
+| squares         | number | X Y coordinates of filled squares as 2D array | []      |
+| strokeDasharray | string | Stroke dash array for the pattern             | 0       |

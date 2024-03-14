@@ -1,0 +1,56 @@
+---
+title: Animated Lines
+date: 2023-12-19
+description: A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.
+author: dillionverma
+published: false
+video: https://cdn.magicui.design/animated-lines.mp4
+---
+
+<ComponentPreview name="animated-lines-demo" />
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge framer-motion
+```
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/animated-lines.tsx
+```
+
+<ComponentSource name="animated-lines" />
+
+</Step>
+
+</Steps>
+
+## Props
+
+| Prop      | Type   | Description                      | Default |
+| --------- | ------ | -------------------------------- | ------- |
+| className | string | The class name for the component | ""      |

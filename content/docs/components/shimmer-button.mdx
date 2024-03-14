@@ -1,0 +1,101 @@
+---
+title: Shimmer Button
+date: 2023-08-10
+description: A button with a shimmering light which travels around the perimeter.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/shimmer-button.mp4
+---
+
+<ComponentPreview name="shimmer-button-demo" />
+
+<Steps>
+
+<Step>
+
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge
+```
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+        slide: "slide var(--speed) ease-in-out infinite alternate",
+      },
+      keyframes: {
+        "spin-around": {
+          "0%": {
+            transform: "translateZ(0) rotate(0)",
+          },
+          "15%, 35%": {
+            transform: "translateZ(0) rotate(90deg)",
+          },
+          "65%, 85%": {
+            transform: "translateZ(0) rotate(270deg)",
+          },
+          "100%": {
+            transform: "translateZ(0) rotate(360deg)",
+          },
+        },
+        slide: {
+          to: {
+            transform: "translate(calc(100cqw - 100%), 0)",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/shimmer-button.tsx
+```
+
+<ComponentSource name="shimmer-button" />
+
+</Step>
+
+</Steps>
+
+## Props
+
+| Prop Name     | Type            | Description                         | Default Value    |
+| ------------- | --------------- | ----------------------------------- | ---------------- |
+| shimmerColor  | string          | The color of the shimmer            | #ffffff          |
+| shimmerSize   | string          | The size of the shimmer             | 0.05em           |
+| borderRadius  | string          | The border radius of the button     | 100px            |
+| sparkDuration | string          | The duration of the spark animation | 3s               |
+| background    | string          | The background of the button        | rgba(0, 0, 0, 1) |
+| className     | string          | The class name of the button        | undefined        |
+| children      | React.ReactNode | The children of the button          | undefined        |
+
+## Credits
+
+Credit to [@jh3yy](https://twitter.com/jh3yy/status/1656423856276488192) for the inspiration behind this component.

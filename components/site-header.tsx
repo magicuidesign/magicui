@@ -8,6 +8,7 @@ import { UserAccountNav } from "@/components/user-account-nav";
 import { siteConfig } from "@/config/site";
 import { env } from "@/env.mjs";
 import { cn } from "@/lib/utils";
+import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { User } from "next-auth";
 import Link from "next/link";
 
@@ -31,23 +32,17 @@ export function SiteHeader({ user }: SiteHeaderProps) {
             <CommandMenu />
           </div>
           <nav className="flex items-center gap-2">
-            {/* <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <Link href="/discord" target="_blank" rel="noreferrer">
               <div
                 className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "w-9 px-0"
+                  buttonVariants({ variant: "ghost" }),
+                  "hover-[#5865F2] w-9 gap-2 px-0 text-[#5865F2]",
                 )}
               >
-                <Icons.gitHub className="h-4 w-4" />
-                <span className="sr-only">Twitter</span>
+                <DiscordLogoIcon className="h-4 w-4 fill-current" />
+                <span className="sr-only">Discord</span>
               </div>
-            </Link> */}
+            </Link>
             <Link
               href={siteConfig.links.twitter}
               target="_blank"

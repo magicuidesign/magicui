@@ -1,4 +1,4 @@
-import { allComponents } from "@/.contentlayer/generated";
+import { allDocs } from "@/.contentlayer/generated";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
@@ -18,10 +18,16 @@ export default async function Hero() {
     },
   });
 
-  const post = allComponents
-    .filter((post) => post.date <= new Date().toISOString() && post.published)
+  const post = allDocs
+    .filter(
+      (post) =>
+        post.date && post.date <= new Date().toISOString() && post.published,
+    )
     .sort((a, b) => {
-      return compareDesc(new Date(a.date), new Date(b.date));
+      if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
+      if (!a.date) return 1; // Move a to the end if date is undefined
+      if (!b.date) return -1; // Move b to the end if date is undefined
+      return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
     })[0];
 
   return (
@@ -59,9 +65,7 @@ export default async function Hero() {
             <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
           </Link>
         </FadeIn>
-        <FadeIn
-        // delay={0.0}
-        >
+        <FadeIn>
           <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
             Create Magical <br /> Landing Pages <br />
           </h1>

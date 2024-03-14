@@ -1,0 +1,130 @@
+---
+title: Animated Beam
+date: 2024-02-11
+description: An animated beam of light which travels along a path. Useful for showcasing the "integration" features of a website.
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/animated-beam.mp4
+---
+
+<ComponentPreview name="animated-beam-demo" />
+
+<Steps>
+
+<Step>
+## Prerequisites
+
+```bash
+npm install -D tailwindcss clsx tailwind-merge framer-motion
+```
+
+Copy and paste the following code into your project.
+
+```typescript
+// lib/utils.ts
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+</Step>
+
+<Step>
+
+## Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/animated-beam.tsx
+```
+
+<ComponentSource name="animated-beam" />
+
+</Step>
+
+
+</Steps>
+
+## Usage
+
+To create an animated beam, you need a container element with a ref, and two elements with refs that the beam will travel between.
+
+```tsx
+import { AnimatedBeam } from "@/components/magicui/animated-beam";
+
+export default function AnimatedBeamDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const div1Ref = useRef<HTMLDivElement>(null);
+  const div2Ref = useRef<HTMLDivElement>(null);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative flex h-full w-full justify-between"
+    >
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div2Ref}
+      />
+      <div
+        ref={div1Ref}
+        className="z-10 h-10 w-10 rounded-full bg-white shadow-xl"
+      />
+      <div
+        ref={div2Ref}
+        className="z-10 h-10 w-10 rounded-full bg-white shadow-xl"
+      />
+    </div>
+  );
+}
+```
+
+## Examples
+
+### Animated Beam Uni-Directional
+
+<ComponentPreview name="animated-beam-unidirectional" />
+
+### Animated Beam Bi-Directional
+
+<ComponentPreview name="animated-beam-bidirectional" />
+
+### Animated Beam Multiple Inputs
+
+<ComponentPreview name="animated-beam-multiple-inputs" />
+
+### Animated Beam Multiple Outputs
+
+<ComponentPreview name="animated-beam-multiple-outputs" />
+
+## Props
+
+### Animated Beam
+
+| Prop               | Type    | Description                                              | Default   |
+| ------------------ | ------- | -------------------------------------------------------- | --------- |
+| className          | string  | The class name for the component.                        | -         |
+| containerRef       | ref     | The container ref.                                       | -         |
+| fromRef            | ref     | The ref of the element from which the beam should start. | -         |
+| toRef              | ref     | The ref of the element to which the beam should end.     | -         |
+| curvature          | number  | The curvature of the beam.                               | 0         |
+| reverse            | boolean | Whether the beam should be reversed.                     | false     |
+| duration           | number  | The duration of the beam.                                | 5         |
+| delay              | number  | The delay of the beam.                                   | 0         |
+| pathColor          | string  | The color of the beam.                                   | "gray"    |
+| pathWidth          | number  | The width of the beam.                                   | 2         |
+| pathOpacity        | number  | The opacity of the beam.                                 | 0.2       |
+| gradientStartColor | string  | The start color of the gradient.                         | "#ffaa40" |
+| gradientStopColor  | string  | The stop color of the gradient.                          | "#9c40ff" |
+| startXOffset       | number  | The start x offset of the beam.                          | 0         |
+| startYOffset       | number  | The start y offset of the beam.                          | 0         |
+| endXOffset         | number  | The end x offset of the beam.                            | 0         |
+| endYOffset         | number  | The end y offset of the beam.                            | 0         |
+
+## Credits
+
+- Credit to [@itsarghyadas](https://twitter.com/itsarghyadas) for figuring out the foundation of this!
