@@ -81,10 +81,7 @@ export default function StickyHeader() {
                 delay: 0.05,
               }}
               className={cn(
-                "0 mx-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-white px-6 py-2.5 transition-all dark:bg-transparent lg:w-auto lg:p-1.5 lg:py-2",
-                {
-                  "dark:bg-neutral-900": active,
-                },
+                "supports-backdrop-blur:bg-white/90 mx-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-white bg-white/40 px-3 py-2.5 backdrop-blur-md transition-all dark:bg-black/40 lg:w-auto lg:p-1.5 lg:py-2",
               )}
             >
               <ul className="flex h-full w-full flex-row justify-between gap-6 lg:flex-row lg:justify-start lg:gap-1">
