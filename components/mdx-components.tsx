@@ -230,7 +230,7 @@ export function Mdx({ code }: MDXProps) {
   return (
     <article
       className={cn(
-        "max-w-[100ch]",
+        "max-w-[120ch]",
         `leading-tighter prose prose-gray tracking-tighter dark:prose-invert`,
         // `md:prose-lg lg:prose-xl`,
 

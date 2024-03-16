@@ -91,7 +91,7 @@ export function BlockPreview({
   return (
     <div
       className={cn(
-        "not-prose relative my-4 flex flex-col space-y-2 lg:max-w-[100ch]",
+        "not-prose relative my-4 flex flex-col space-y-2 lg:max-w-[120ch]",
         className,
       )}
       {...props}
