@@ -1,12 +1,11 @@
 "use client";
 
-import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
+import { Loader } from "lucide-react";
 import { useState } from "react";
 
 type Interval = "month" | "year";
@@ -202,7 +201,7 @@ export default function Pricing() {
               setInterval(checked ? "year" : "month");
             }}
           />
-          <Label htmlFor="interval">Annual</Label>
+          <span>Annual</span>
           <span className="inline-block whitespace-nowrap rounded-full bg-black px-2.5 py-1 text-[11px] font-semibold uppercase leading-5 tracking-wide text-white dark:bg-white dark:text-black">
             2 MONTHS FREE ✨
           </span>
@@ -261,7 +260,7 @@ export default function Pricing() {
 
                     {isLoading && id === price.id && <p>Subscribing</p>}
                     {isLoading && id === price.id && (
-                      <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader className="mr-2 h-4 w-4 animate-spin" />
                     )}
                   </Button>
 
