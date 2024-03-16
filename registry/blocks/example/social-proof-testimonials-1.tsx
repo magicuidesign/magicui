@@ -132,9 +132,9 @@ const testimonials = [
   },
 ];
 
-export default function Testimonial2() {
+export default function SocialProofTestimonials() {
   return (
-    <section id="testimonial">
+    <section id="testimonials">
       <div className="py-14">
         <div className="mx-auto md:container md:px-8">
           <h3 className="text-center text-sm font-semibold text-gray-600">
