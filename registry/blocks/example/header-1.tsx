@@ -13,41 +13,22 @@ export default function StickyHeader() {
   const headerParentRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
 
-  const [breakpoint, setBreakpoint] = useState(() => {
-    const width = window.innerWidth;
-    if (width < 640) {
-      return "xs"; // Extra small devices (portrait phones)
-    } else if (width >= 640 && width < 768) {
-      return "sm"; // Small devices (landscape phones)
-    } else if (width >= 768 && width < 1024) {
-      return "md"; // Medium devices (tablets)
-    } else if (width >= 1024 && width < 1280) {
-      return "lg"; // Large devices (desktops)
-    } else if (width >= 1280 && width < 1536) {
-      return "xl"; // Extra large devices (large desktops)
-    } else {
-      return "2xl"; // 2X Large devices (larger desktops)
-    }
-  });
+  const getBreakpoint = (width: number) => {
+    if (width < 640) return "xs";
+    if (width < 768) return "sm";
+    if (width < 1024) return "md";
+    if (width < 1280) return "lg";
+    if (width < 1536) return "xl";
+    return "2xl";
+  };
+
+  const [breakpoint, setBreakpoint] = useState(() =>
+    getBreakpoint(window.innerWidth),
+  );
 
   useEffect(() => {
-    const updateBreakpoint = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        setBreakpoint("xs");
-      } else if (width >= 640 && width < 768) {
-        setBreakpoint("sm");
-      } else if (width >= 768 && width < 1024) {
-        setBreakpoint("md");
-      } else if (width >= 1024 && width < 1280) {
-        setBreakpoint("lg");
-      } else if (width >= 1280 && width < 1536) {
-        setBreakpoint("xl");
-      } else {
-        setBreakpoint("2xl");
-      }
-    };
-
+    const updateBreakpoint = () =>
+      setBreakpoint(getBreakpoint(window.innerWidth));
     window.addEventListener("resize", updateBreakpoint);
     return () => window.removeEventListener("resize", updateBreakpoint);
   }, []);
