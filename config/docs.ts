@@ -104,15 +104,17 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
 
-        // {
-        //   title: "Pricing",
-        //   href: `/docs/sections/pricing`,
-        //   items: [],
-        // },
+        {
+          title: "Pricing",
+          href: `/docs/sections/pricing`,
+          items: [],
+          label: "New",
+        },
         // {
         //   title: "FAQ",
         //   href: `/docs/sections/faq`,
         //   items: [],
+        // label: "New",
         // },
         {
           title: "Footer",
@@ -120,22 +122,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
-
-        // {
-        //   title: "Pricing",
-        //   href: `/docs/sections/pricing`,
-        //   items: [],
-        // },
-        // {
-        //   title: "FAQ",
-        //   href: `/docs/sections/faq`,
-        //   items: [],
-        // },
-        // {
-        //   title: "Footer",
-        //   href: `/docs/sections/footer`,
-        //   items: [],
-        // },
       ],
     },
     {
