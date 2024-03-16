@@ -65,7 +65,7 @@ export default function StickyHeader() {
             <a href="#">Magic UI</a>
           </div>
           {/* <h1 className="hidden lg:flex">Logo</h1> */}
-          <div className="absolute inset-x-0 top-6 z-[60] flex items-center justify-center">
+          <div className="absolute inset-x-0 top-6 z-50 flex items-center justify-center">
             <motion.div
               initial={{ x: 0 }}
               animate={{
@@ -81,7 +81,7 @@ export default function StickyHeader() {
                 delay: 0.05,
               }}
               className={cn(
-                "supports-backdrop-blur:bg-white/90 mx-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-white bg-white/40 px-3 py-2.5 backdrop-blur-md transition-all dark:bg-black/40 lg:w-auto lg:p-1.5 lg:py-2",
+                "supports-backdrop-blur:bg-white/90 mx-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-white bg-white/40 px-3 py-2.5 backdrop-blur-md transition-all dark:bg-black/20 lg:w-auto lg:p-1.5 lg:py-2",
               )}
             >
               <ul className="flex h-full w-full flex-row justify-between gap-6 lg:flex-row lg:justify-start lg:gap-1">
