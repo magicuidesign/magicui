@@ -62,6 +62,23 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Templates",
+      items: [
+        {
+          title: "Startup",
+          href: `/docs/templates/startup`,
+          items: [],
+          label: "Coming soon",
+        },
+        // {
+        //   title: "Dark",
+        //   href: `/docs/templates/dark`,
+        //   items: [],
+        //   label: "Coming soon",
+        // },
+      ],
+    },
+    {
       title: "Page Sections",
       items: [
         {
