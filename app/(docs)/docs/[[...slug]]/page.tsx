@@ -41,7 +41,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: doc.title,
+    title: `${doc.title} | Magic UI`,
     description: doc.description,
     openGraph: {
       title: doc.title,
@@ -50,7 +50,7 @@ export async function generateMetadata({
       url: absoluteUrl(doc.slug),
       images: [
         {
-          url: siteConfig.ogImage,
+          url: doc.image,
           width: 1200,
           height: 630,
           alt: siteConfig.name,
@@ -61,7 +61,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [siteConfig.ogImage],
+      images: [doc.image],
       creator: "@shadcn",
     },
   };

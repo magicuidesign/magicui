@@ -25,7 +25,14 @@ export async function GET(req: Request) {
 
   const url = new URL(req.url);
   const params = Object.fromEntries(url.searchParams);
-  const title = capitalize((params.title || "Magic UI").replace(/-/g, " "));
+  const title = capitalize(
+    (params.title || "Magic UI")
+      .replace(/-/g, " ")
+      .split(" ")
+      .slice(0, 3)
+      .join(" ")
+      .substring(0, 20),
+  );
 
   try {
     return new ImageResponse(
@@ -89,7 +96,7 @@ export async function GET(req: Request) {
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 textAlign: "center",
-                fontSize: 150,
+                fontSize: 100,
                 letterSpacing: "-10px",
                 color: "transparent",
                 WebkitTextFillColor: "transparent",
