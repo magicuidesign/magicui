@@ -435,6 +435,7 @@ const blocks: Registry = {
     files: ["registry/blocks/example/header-2.tsx"],
     component: React.lazy(() => import("@/registry/blocks/example/header-2")),
   },
+
   "footer-1": {
     name: "footer-1",
     type: "blocks:example",

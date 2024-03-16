@@ -1,155 +1,175 @@
 "use client";
 
-import { AnimatePresence, MotionConfig, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
+const SCROLL_BOUNDARY = 120;
+
 export default function StickyHeader() {
   const [scrollY, setScrollY] = useState(0);
-  const fixedNavRef = useRef<HTMLElement>(null);
+  const headerParentRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
-  const [active, setActive] = useState(false);
+
+  const [breakpoint, setBreakpoint] = useState(() => {
+    const width = window.innerWidth;
+    if (width < 640) {
+      return "xs"; // Extra small devices (portrait phones)
+    } else if (width >= 640 && width < 768) {
+      return "sm"; // Small devices (landscape phones)
+    } else if (width >= 768 && width < 1024) {
+      return "md"; // Medium devices (tablets)
+    } else if (width >= 1024 && width < 1280) {
+      return "lg"; // Large devices (desktops)
+    } else if (width >= 1280 && width < 1536) {
+      return "xl"; // Extra large devices (large desktops)
+    } else {
+      return "2xl"; // 2X Large devices (larger desktops)
+    }
+  });
+
+  useEffect(() => {
+    const updateBreakpoint = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setBreakpoint("xs");
+      } else if (width >= 640 && width < 768) {
+        setBreakpoint("sm");
+      } else if (width >= 768 && width < 1024) {
+        setBreakpoint("md");
+      } else if (width >= 1024 && width < 1280) {
+        setBreakpoint("lg");
+      } else if (width >= 1280 && width < 1536) {
+        setBreakpoint("xl");
+      } else {
+        setBreakpoint("2xl");
+      }
+    };
+
+    window.addEventListener("resize", updateBreakpoint);
+    return () => window.removeEventListener("resize", updateBreakpoint);
+  }, []);
+
+  const active =
+    scrollY >= SCROLL_BOUNDARY ||
+    breakpoint === "xs" ||
+    breakpoint === "sm" ||
+    breakpoint === "md";
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (headerParentRef.current) {
+        setScrollY(headerParentRef.current.scrollTop);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const parentElement = headerParentRef.current;
+    parentElement?.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      parentElement?.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [headerParentRef.current]);
 
-  /* chenge the nav to header and remove unncessary elements as much as you can */
   return (
-    <header
-      ref={fixedNavRef}
-      className=" bg-white px-10 py-7 dark:bg-neutral-900 xl:px-0"
-    >
-      <section className="relative mx-auto flex max-w-5xl items-center justify-between">
-        <h1>Logo</h1>
-
-        <ul className="fixed left-4 right-4 top-4 z-[60] hidden items-center justify-center gap-x-5 md:flex">
-          <motion.div
-            initial={{ x: 0 }}
-            animate={{
-              boxShadow:
-                scrollY >= 120
+    <div ref={headerParentRef} className="max-h-[450px] overflow-y-scroll">
+      <div className="h-[100vh]">
+        <header className="mx-auto flex max-w-5xl items-center justify-between bg-transparent px-10 py-7 dark:bg-transparent">
+          <div className="hidden flex-row items-center justify-center gap-2 lg:flex">
+            <a href="#" className="flex h-8 w-8">
+              <img src="/icon.png" className="h-full w-full" />
+            </a>
+            <a href="#">Magic UI</a>
+          </div>
+          {/* <h1 className="hidden lg:flex">Logo</h1> */}
+          <div className="absolute inset-x-0 top-6 z-[60] flex items-center justify-center">
+            <motion.div
+              initial={{ x: 0 }}
+              animate={{
+                boxShadow: active
                   ? theme === "dark"
                     ? "0 0 0 1px rgba(255,255,255,.08), 0 1px 2px -1px rgba(255,255,255,.08), 0 2px 4px rgba(255,255,255,.04)"
                     : "0 0 0 1px rgba(17,24,28,.08), 0 1px 2px -1px rgba(17,24,28,.08), 0 2px 4px rgba(17,24,28,.04)"
                   : "none",
-            }}
-            transition={{
-              ease: "linear",
-              duration: 0.05,
-              delay: 0.05,
-            }}
-            className="flex h-12 w-auto items-center justify-center gap-x-5 overflow-hidden rounded-full bg-white px-6 py-2.5 transition-all dark:bg-neutral-900 md:p-1.5 md:py-2"
-          >
-            <nav className="relative hidden h-full items-center justify-between gap-x-3.5 md:flex">
-              <ul className="flex h-full flex-col justify-center gap-6 md:flex-row md:justify-start md:gap-0 lg:gap-1">
-                <li className="px-[0.75rem] py-[0.375rem]">Home</li>
-                <li className="px-[0.75rem] py-[0.375rem]">About</li>
-                <li className="px-[0.75rem] py-[0.375rem]">Services</li>
-                <li className="px-[0.75rem] py-[0.375rem]">Contact</li>
-              </ul>
-            </nav>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{
-                width: scrollY >= 120 ? "auto" : 0,
               }}
               transition={{
                 ease: "linear",
-                duration: 0.25,
+                duration: 0.05,
                 delay: 0.05,
               }}
-              className="!hidden overflow-hidden rounded-full md:!block"
+              className={cn(
+                "0 mx-4 flex w-full items-center justify-center overflow-hidden rounded-full bg-white px-6 py-2.5 transition-all dark:bg-transparent lg:w-auto lg:p-1.5 lg:py-2",
+                {
+                  "dark:bg-neutral-900": active,
+                },
+              )}
             >
-              <AnimatePresence>
-                {scrollY >= 120 && (
-                  <motion.ul
-                    initial={{ x: "125%" }}
-                    animate={{ x: "0" }}
-                    exit={{
-                      x: "125%",
-                      transition: { ease: "linear", duration: 1 },
+              <ul className="flex h-full w-full flex-row justify-between gap-6 lg:flex-row lg:justify-start lg:gap-1">
+                <li className="flex items-center justify-center px-2 py-0.5">
+                  <a href="#" className="flex h-8 w-8 lg:hidden">
+                    <img src="/icon.png" className="h-full w-full" />
+                  </a>
+                  <a href="#" className="hidden lg:flex">
+                    Home
+                  </a>
+                </li>
+                <li className="hidden items-center justify-center px-2 py-0.5 lg:flex">
+                  <a href="#">Features</a>
+                </li>
+                <li className="hidden items-center justify-center px-2 py-0.5 lg:flex">
+                  <a href="#">Pricing</a>
+                </li>
+                <li className="hidden items-center justify-center px-2 py-0.5 lg:flex">
+                  <a href="#">Contact</a>
+                </li>
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{
+                      width: active ? "auto" : 0,
                     }}
-                    transition={{ ease: "linear", duration: 0.3 }}
-                    className="shrink-0 whitespace-nowrap"
+                    transition={{
+                      ease: "easeOut",
+                      duration: 0.25,
+                      delay: 0.05,
+                    }}
                   >
-                    <li>
-                      <a
-                        href="#"
-                        className="transition-fg relative inline-flex w-fit items-center justify-center gap-x-1.5 overflow-hidden rounded-full bg-neutral-900 px-3 py-1.5 text-white outline-none dark:bg-white dark:text-black"
-                      >
-                        <span data-sb-field-path=".label">Get Started</span>
-                      </a>
-                    </li>
-                  </motion.ul>
-                )}
-              </AnimatePresence>
+                    <AnimatePresence>
+                      {active && (
+                        <motion.a
+                          initial={{ x: "125%" }}
+                          animate={{ x: "0" }}
+                          exit={{
+                            x: "125%",
+                            transition: { ease: "easeOut", duration: 2.2 },
+                          }}
+                          transition={{ ease: "easeOut", duration: 0.5 }}
+                          className="relative inline-flex w-fit shrink-0 items-center justify-center gap-x-1.5 overflow-hidden whitespace-nowrap rounded-full bg-neutral-900 px-3 py-1.5 text-white outline-none dark:bg-white dark:text-black"
+                        >
+                          Get Started
+                        </motion.a>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </AnimatePresence>
+              </ul>
             </motion.div>
-          </motion.div>
-        </ul>
+          </div>
 
-        <div className="z-[999] hidden items-center gap-x-5 md:flex">
-          <button>Get Started</button>
-          {/* <ModeToggle /> */}
-        </div>
-        <MotionConfig transition={{ duration: 0.3, ease: "easeInOut" }}>
-          <motion.button
-            onClick={() => setActive((prev) => !prev)}
-            animate={active ? "open" : "close"}
-            className="relative flex h-8 w-8 items-center justify-center rounded-md md:hidden"
-          >
-            <motion.span
-              style={{ left: "50%", top: "35%", x: "-50%", y: "-50%" }}
-              className="absolute h-0.5 w-5 bg-black dark:bg-white"
-              variants={{
-                open: {
-                  rotate: ["0deg", "0deg", "45deg"],
-                  top: ["35%", "50%", "50%"],
-                },
-                close: {
-                  rotate: ["45deg", "0deg", "0deg"],
-                  top: ["50%", "50%", "35%"],
-                },
-              }}
-              transition={{ duration: 0.3 }}
-            ></motion.span>
-            <motion.span
-              style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
-              className="absolute h-0.5 w-5 bg-black dark:bg-white"
-              variants={{
-                open: {
-                  opacity: 0,
-                },
-                close: {
-                  opacity: 1,
-                },
-              }}
-            ></motion.span>
-            <motion.span
-              style={{ left: "50%", bottom: "30%", x: "-50%", y: "-50%" }}
-              className="absolute h-0.5 w-5 bg-black dark:bg-white"
-              variants={{
-                open: {
-                  rotate: ["0deg", "0deg", "-45deg"],
-                  top: ["65%", "50%", "50%"],
-                },
-                close: {
-                  rotate: ["-45deg", "0deg", "0deg"],
-                  top: ["50%", "50%", "65%"],
-                },
-              }}
-            ></motion.span>
-          </motion.button>
-        </MotionConfig>
-      </section>
-    </header>
+          {/* <div className="flex items-center gap-x-5"> */}
+          <a className="relative hidden w-fit items-center justify-center gap-x-1.5 overflow-hidden rounded-full bg-neutral-900 px-3 py-1.5 text-white outline-none dark:bg-white dark:text-black lg:inline-flex">
+            Get Started
+          </a>
+          {/* </div> */}
+        </header>
+
+        <h2 className="mt-12 flex flex-col items-center justify-center text-center">
+          Scroll down
+          <ChevronDown className="animate-bounce" />
+        </h2>
+      </div>
+    </div>
   );
 }

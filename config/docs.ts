@@ -64,15 +64,17 @@ export const docsConfig: DocsConfig = {
     {
       title: "Page Sections",
       items: [
-        // {
-        //   title: "Header",
-        //   href: `/docs/sections/header`,
-        //   items: [],
-        // },
+        {
+          title: "Header",
+          href: `/docs/sections/header`,
+          items: [],
+          label: "New",
+        },
         // {
         //   title: "Hero",
         //   href: `/docs/sections/hero`,
         //   items: [],
+        // label: "New",
         // },
         {
           title: "Social Proof Press",
