@@ -526,6 +526,14 @@ const blocks: Registry = {
       () => import("@/registry/blocks/example/social-proof-testimonials-2"),
     ),
   },
+  "social-proof-testimonials-3": {
+    name: "social-proof-testimonials-3",
+    type: "blocks:example",
+    files: ["registry/blocks/example/social-proof-testimonials-3.tsx"],
+    component: React.lazy(
+      () => import("@/registry/blocks/example/social-proof-testimonials-3"),
+    ),
+  },
   "features-1": {
     name: "features-1",
     type: "blocks:example",

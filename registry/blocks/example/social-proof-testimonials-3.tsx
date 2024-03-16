@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Marquee from "@/registry/components/magicui/marquee";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
 export const Highlight = ({
@@ -202,54 +203,58 @@ const testimonials = [
       </p>
     ),
   },
-  // {
-  //   name: "Sofia Patel",
-  //   role: "CEO at EduTech Innovations",
-  //   description: (
-  //     <p>
-  //       #LearnSmart's AI-driven personalized learning plans have doubled student
-  //       performance metrics.
-  //       <Highlight>Education tailored to every learner's needs.</Highlight>{" "}
-  //       Transforming the educational landscape.
-  //     </p>
-  //   ),
-  // },
-  // {
-  //   name: "Jake Morrison",
-  //   role: "CTO at SecureNet Tech",
-  //   description: (
-  //     <p>
-  //       With #CyberShield's AI-powered security systems, our data protection
-  //       levels are unmatched.
-  //       <Highlight>Ensuring safety and trust in digital spaces.</Highlight>{" "}
-  //       Redefining cybersecurity standards.
-  //     </p>
-  //   ),
-  // },
-  // {
-  //   name: "Nadia Ali",
-  //   role: "Product Manager at Creative Solutions",
-  //   description: (
-  //     <p>
-  //       #DesignPro's AI has streamlined our creative process, enhancing
-  //       productivity and innovation.
-  //       <Highlight>Bringing creativity and technology together.</Highlight> A
-  //       game-changer for creative industries.
-  //     </p>
-  //   ),
-  // },
-  // {
-  //   name: "Omar Farooq",
-  //   role: "Founder at Startup Hub",
-  //   description: (
-  //     <p>
-  //       #VentureAI's insights into startup ecosystems have been invaluable for
-  //       our growth and funding strategies.
-  //       <Highlight>Empowering startups with data-driven decisions.</Highlight> A
-  //       catalyst for startup success.
-  //     </p>
-  //   ),
-  // },
+  {
+    name: "Sofia Patel",
+    role: "CEO at EduTech Innovations",
+    img: "https://randomuser.me/api/portraits/women/73.jpg",
+    description: (
+      <p>
+        #LearnSmart's AI-driven personalized learning plans have doubled student
+        performance metrics.
+        <Highlight>Education tailored to every learner's needs.</Highlight>{" "}
+        Transforming the educational landscape.
+      </p>
+    ),
+  },
+  {
+    name: "Jake Morrison",
+    role: "CTO at SecureNet Tech",
+    img: "https://randomuser.me/api/portraits/men/25.jpg",
+    description: (
+      <p>
+        With #CyberShield's AI-powered security systems, our data protection
+        levels are unmatched.
+        <Highlight>Ensuring safety and trust in digital spaces.</Highlight>{" "}
+        Redefining cybersecurity standards.
+      </p>
+    ),
+  },
+  {
+    name: "Nadia Ali",
+    role: "Product Manager at Creative Solutions",
+    img: "https://randomuser.me/api/portraits/women/78.jpg",
+    description: (
+      <p>
+        #DesignPro's AI has streamlined our creative process, enhancing
+        productivity and innovation.
+        <Highlight>Bringing creativity and technology together.</Highlight> A
+        game-changer for creative industries.
+      </p>
+    ),
+  },
+  {
+    name: "Omar Farooq",
+    role: "Founder at Startup Hub",
+    img: "https://randomuser.me/api/portraits/men/54.jpg",
+    description: (
+      <p>
+        #VentureAI's insights into startup ecosystems have been invaluable for
+        our growth and funding strategies.
+        <Highlight>Empowering startups with data-driven decisions.</Highlight> A
+        catalyst for startup success.
+      </p>
+    ),
+  },
 ];
 
 export default function SocialProofTestimonials() {
@@ -260,13 +265,28 @@ export default function SocialProofTestimonials() {
           <h3 className="text-center text-sm font-semibold text-gray-500">
             TESTIMONIALS
           </h3>
-          <div className="relative mt-6 max-h-[700px] overflow-hidden py-14">
-            <div className="gap-4 md:columns-2 xl:columns-3 2xl:columns-4 ">
-              {testimonials.map((card, idx) => (
-                <TestimonialCard {...card} key={idx} />
-              ))}
+          <div className="relative mt-6 max-h-[650px] overflow-hidden">
+            <div className="gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
+              {Array(Math.ceil(testimonials.length / 3))
+                .fill(0)
+                .map((_, i) => (
+                  <Marquee
+                    vertical
+                    key={i}
+                    className={cn({
+                      "[--duration:60s]": i === 1,
+                      "[--duration:30s]": i === 2,
+                      "[--duration:70s]": i === 3,
+                    })}
+                  >
+                    {testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
+                      <TestimonialCard {...card} key={idx} />
+                    ))}
+                  </Marquee>
+                ))}
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full bg-gradient-to-t from-white from-20% dark:from-black"></div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 w-full bg-gradient-to-t from-white from-20% dark:from-black"></div>
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 w-full bg-gradient-to-b from-white from-20% dark:from-black"></div>
           </div>
         </div>
       </div>
