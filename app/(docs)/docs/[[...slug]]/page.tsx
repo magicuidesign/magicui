@@ -62,7 +62,7 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       images: [doc.image],
-      creator: "@shadcn",
+      creator: "@dillionverma",
     },
   };
 }
