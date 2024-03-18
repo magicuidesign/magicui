@@ -5,20 +5,44 @@ version: "3.7"
 # docker-compose up -d
 #
 
+# https://github.com/vercel/next.js/blob/canary/examples/with-docker-compose/docker-compose.dev.yml
+
 services:
-  default_database:
+  web:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
+    env_file:
+      - .env.local
+    restart: always
+
+  
+  database:
     restart: unless-stopped
     image: postgres:latest
     volumes:
-      - default_database_data:/var/lib/postgresql/data
+      - database_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=${DEFAULT_DATABASE_DB}
-      - POSTGRES_USER=${DEFAULT_DATABASE_USER}
-      - POSTGRES_PASSWORD=${DEFAULT_DATABASE_PASSWORD}
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     env_file:
-      - .env
+      - .env.local
     ports:
-      - "${DEFAULT_DATABASE_PORT}:5432"
+      - "5432:5432"
+    networks:
+      - my_network
 
 volumes:
-  default_database_data:
+  database_data:
+
+networks:
+  my_network:
+    external: true
