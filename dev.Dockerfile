@@ -1,5 +1,18 @@
 FROM node:20-alpine
 
+ARG DATABASE_URL
+ARG NEXTAUTH_SECRET
+ARG NEXTAUTH_URL
+ARG NEXT_PUBLIC_APP_URL
+ARG RESEND_API_KEY
+ARG STRIPE_API_KEY
+ARG NEXT_PUBLIC_STRIPE_PAYMENT_LINK
+ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE
+ARG NODE_ENV
+ARG SERVER_URL
+ARG STRIPE_SECRET_KEY_LIVE
+ARG STRIPE_WEBHOOK_SECRET
+
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
@@ -12,10 +25,14 @@ RUN \
     else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
     fi
 
-COPY src ./src
+COPY . .
 COPY public ./public
 COPY next.config.js .
 COPY tsconfig.json .
+
+RUN npx prisma generate
+RUN npx prisma db push
+
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line to disable telemetry at run time

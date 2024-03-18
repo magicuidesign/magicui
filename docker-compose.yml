@@ -16,7 +16,7 @@ services:
       - ./src:/app/src
       - ./public:/app/public
     ports:
-      - "3000:3000"
+      - "3000:3003"
     environment:
       - DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
     env_file:
@@ -37,12 +37,6 @@ services:
       - .env.local
     ports:
       - "5432:5432"
-    networks:
-      - my_network
 
 volumes:
   database_data:
-
-networks:
-  my_network:
-    external: true
