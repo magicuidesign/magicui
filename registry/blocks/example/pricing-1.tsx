@@ -94,23 +94,19 @@ export default function Pricing() {
     <section id="pricing">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
         <div className="mx-auto max-w-5xl text-center">
-          <div>
-            <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">
-              Pricing
-            </h4>
-          </div>
-          <div>
-            <h2 className="text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">
-              Simple pricing for everyone.
-            </h2>
-          </div>
-          <div>
-            <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
-              Choose an <strong>affordable plan</strong> that&apos;s packed with
-              the best features for engaging your audience, creating customer
-              loyalty, and driving sales.
-            </p>
-          </div>
+          <h4 className="text-xl font-bold tracking-tight text-black dark:text-white">
+            Pricing
+          </h4>
+
+          <h2 className="text-5xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">
+            Simple pricing for everyone.
+          </h2>
+
+          <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
+            Choose an <strong>affordable plan</strong> that&apos;s packed with
+            the best features for engaging your audience, creating customer
+            loyalty, and driving sales.
+          </p>
         </div>
 
         <div className="flex w-full items-center justify-center space-x-2">

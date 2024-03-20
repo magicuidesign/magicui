@@ -129,12 +129,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
-        // {
-        //   title: "FAQ",
-        //   href: `/docs/sections/faq`,
-        //   items: [],
-        // label: "New",
-        // },
+        {
+          title: "FAQ",
+          href: `/docs/sections/faq`,
+          items: [],
+          label: "New",
+        },
         {
           title: "Footer",
           href: `/docs/sections/footer`,
