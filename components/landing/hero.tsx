@@ -1,4 +1,5 @@
 import { allDocs } from "@/.contentlayer/generated";
+import BuyButton from "@/components/landing/buy-button";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";
@@ -78,19 +79,7 @@ export default async function Hero() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <div className="flex flex-col gap-4 md:flex-row">
-            <Link
-              href="/pricing"
-              className={cn(
-                buttonVariants({
-                  size: "lg",
-                }),
-                "gap-2 whitespace-pre md:flex",
-                "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
-                "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
-              )}
-            >
-              Get Lifetime Access - $79
-            </Link>
+            <BuyButton />
             <Link
               href="/components"
               className={cn(

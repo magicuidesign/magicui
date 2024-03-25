@@ -6,7 +6,6 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAccountNav } from "@/components/user-account-nav";
 import { siteConfig } from "@/config/site";
-import { env } from "@/env.mjs";
 import { cn } from "@/lib/utils";
 import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { User } from "next-auth";
@@ -83,7 +82,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                 >
                   Login
                 </Link>
-                <Link
+                {/* <Link
                   className={cn(
                     buttonVariants({
                       size: "sm",
@@ -95,12 +94,8 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                   href={env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK}
                 >
                   <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-24 dark:bg-black" />
-                  {/* <Icons.logo className="h-4 w-4" /> */}
                   Buy Now
-                  {/* <div className="hidden items-center gap-1 text-sm text-gray-500 md:flex">
-                <StarIcon className="h-4 w-4 transition-all duration-300 group-hover:text-yellow-300" />
-              </div> */}
-                </Link>
+                </Link> */}
               </>
             )}
           </nav>
