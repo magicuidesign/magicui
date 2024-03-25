@@ -35,7 +35,10 @@ export function ComponentSource({
   if (isLoading) return null;
 
   // TODO: Make this cleaner
-  if (data?.user?.customer.payments.length === 0 && data?.user.role !== "ADMIN")
+  if (
+    data?.user?.customer?.payments.length === 0 &&
+    data?.user.role !== "ADMIN"
+  )
     return <Preview />;
 
   return (
