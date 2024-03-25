@@ -8,35 +8,35 @@ version: "3.7"
 # https://github.com/vercel/next.js/blob/canary/examples/with-docker-compose/docker-compose.dev.yml
 
 services:
-  web:
+  app:
+    container_name: app
     build:
       context: .
       dockerfile: dev.Dockerfile
     volumes:
-      - ./src:/app/src
-      - ./public:/app/public
+      - .:/app
+      - /app/node_modules
+      - /app/.next
     ports:
-      - "3000:3003"
-    environment:
-      - DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres
+      - "3000:3000"
+    environment:  
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:${POSTGRES_PORT}/${POSTGRES_DB}
     env_file:
       - .env.local
     restart: always
+    depends_on:
+      - database
 
-  
   database:
+    container_name: database
     restart: unless-stopped
     image: postgres:latest
     volumes:
       - database_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
     env_file:
       - .env.local
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
 
 volumes:
   database_data:
