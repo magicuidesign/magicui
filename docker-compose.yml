@@ -20,7 +20,7 @@ services:
     ports:
       - "3000:3000"
     environment:  
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:${POSTGRES_PORT}/${POSTGRES_DB}
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:5432/${POSTGRES_DB}?schema=public
     env_file:
       - .env.local
     restart: always
@@ -33,8 +33,10 @@ services:
     image: postgres:latest
     volumes:
       - database_data:/var/lib/postgresql/data
-    env_file:
-      - .env.local
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "${POSTGRES_PORT}:5432"
 
