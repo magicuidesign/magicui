@@ -22,16 +22,23 @@ export default function StickyHeader() {
     return "2xl";
   };
 
-  const [breakpoint, setBreakpoint] = useState(() =>
-    getBreakpoint(window.innerWidth),
-  );
+  const [breakpoint, setBreakpoint] = useState("xl"); // Default to 'xl' or any other default value
 
   useEffect(() => {
-    const updateBreakpoint = () =>
+    // This function will only run in the client-side environment
+    const handleResize = () => {
       setBreakpoint(getBreakpoint(window.innerWidth));
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
-  }, []);
+    };
+
+    // Set the initial value when the component mounts
+    handleResize();
+
+    // Optionally, update the breakpoint on window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener when the component unmounts
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty dependency array ensures this effect runs only once on mount
 
   const active =
     scrollY >= SCROLL_BOUNDARY ||
