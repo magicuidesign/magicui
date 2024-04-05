@@ -67,7 +67,7 @@ export default function FeatureCard3() {
         whileHover="whileHover"
         className="flex h-full w-full cursor-pointer flex-col justify-between gap-y-5"
       >
-        <motion.div className="flex h-full w-full cursor-pointer flex-col items-center justify-center gap-y-2 overflow-hidden rounded-t-xl border-b border-neutral-200 p-8 dark:border-neutral-800">
+        <motion.div className="flex h-[310px] w-full cursor-pointer flex-col items-center justify-center gap-y-2 overflow-hidden rounded-t-xl border-b border-neutral-200 p-8 dark:border-neutral-800">
           <motion.p
             variants={variant1}
             className="w-fit rounded-full border px-2 text-[15px]"

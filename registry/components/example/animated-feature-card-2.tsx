@@ -45,7 +45,7 @@ export default function FeatureCard2() {
       },
     }),
     whileHover: (index: number) => ({
-      y: -100,
+      y: -110,
       opacity: 1,
       scale: index === 0 ? 0.85 : index === 3 ? 1 : 1,
       transition: {
@@ -74,7 +74,7 @@ export default function FeatureCard2() {
         className="flex h-full w-full cursor-pointer flex-col justify-between gap-y-5"
       >
         <div className="flex h-full w-full items-center justify-center rounded-t-xl border-b border-neutral-200 dark:border-neutral-800">
-          <motion.div className="flex h-[310px] w-full cursor-pointer flex-col gap-y-3.5 overflow-hidden rounded-t-md p-5">
+          <motion.div className="flex h-[310px] w-full cursor-pointer flex-col gap-y-5 overflow-hidden rounded-t-md p-5">
             {texts.map((text, index) => (
               <motion.div
                 key={text.id}

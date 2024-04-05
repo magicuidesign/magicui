@@ -97,7 +97,7 @@ export default function FeatureCard4() {
         className="flex h-full w-full cursor-pointer flex-col items-start justify-between gap-y-5"
       >
         <div className="flex h-full w-full items-center justify-center rounded-t-xl border-b border-neutral-200 bg-transparent p-10 dark:border-neutral-800 ">
-          <motion.div className="flex w-full items-center justify-between gap-x-4 ">
+          <motion.div className="flex h-[310px] w-full items-center justify-between gap-x-4">
             <motion.div
               variants={variant1}
               className="z-[3] flex h-fit w-full  flex-col items-center justify-between gap-x-2 gap-y-2 rounded-md border border-neutral-400/20 bg-white p-5 px-2.5 transition-all duration-100 ease-linear dark:border-neutral-800 dark:bg-neutral-900"
