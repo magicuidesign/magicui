@@ -85,7 +85,6 @@ export const docsConfig: DocsConfig = {
           title: "Header",
           href: `/docs/sections/header`,
           items: [],
-          label: "New",
         },
         // {
         //   title: "Hero",
@@ -97,19 +96,16 @@ export const docsConfig: DocsConfig = {
           title: "Social Proof Press",
           href: `/docs/sections/social-proof-press`,
           items: [],
-          label: "New",
         },
         {
           title: "Social Proof Companies",
           href: `/docs/sections/social-proof-companies`,
           items: [],
-          label: "New",
         },
         {
           title: "Social Proof Testimonials",
           href: `/docs/sections/social-proof-testimonials`,
           items: [],
-          label: "New",
         },
         // {
         //   title: "Features",
@@ -120,26 +116,22 @@ export const docsConfig: DocsConfig = {
           title: "Call To Action",
           href: `/docs/sections/call-to-action`,
           items: [],
-          label: "New",
         },
 
         {
           title: "Pricing",
           href: `/docs/sections/pricing`,
           items: [],
-          label: "New",
         },
         {
           title: "FAQ",
           href: `/docs/sections/faq`,
           items: [],
-          label: "New",
         },
         {
           title: "Footer",
           href: `/docs/sections/footer`,
           items: [],
-          label: "New",
         },
       ],
     },
@@ -150,7 +142,7 @@ export const docsConfig: DocsConfig = {
           title: "Feature Cards",
           href: `/docs/components/feature-cards`,
           items: [],
-          label: "8 New",
+          label: "10 New",
         },
         {
           title: "Bento Grid",
