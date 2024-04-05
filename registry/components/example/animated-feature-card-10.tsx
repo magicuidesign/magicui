@@ -133,7 +133,7 @@ export default function FeatureCard10() {
                   href={card.link}
                   className="rounded-md border border-neutral-700/50 bg-neutral-600 p-2 py-0.5 text-white shadow-xl drop-shadow-lg hover:bg-neutral-500 dark:border-neutral-400/20 dark:bg-gray-500"
                 >
-                  See Website
+                  Website
                 </a>
               </motion.div>
             ))}
