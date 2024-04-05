@@ -142,7 +142,7 @@ export const docsConfig: DocsConfig = {
           title: "Feature Cards",
           href: `/docs/components/feature-cards`,
           items: [],
-          label: "10 New",
+          label: "8+ New",
         },
         {
           title: "Bento Grid",
