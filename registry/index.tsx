@@ -420,6 +420,86 @@ const example: Registry = {
         import("@/registry/components/example/animated-beam-multiple-outputs"),
     ),
   },
+  "animated-feature-card-1": {
+    name: "animated-feature-card-1",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-1.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-1"),
+    ),
+  },
+  "animated-feature-card-2": {
+    name: "animated-feature-card-2",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-2"),
+    ),
+  },
+  "animated-feature-card-3": {
+    name: "animated-feature-card-3",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-3.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-3"),
+    ),
+  },
+  "animated-feature-card-4": {
+    name: "animated-feature-card-4",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-4.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-4"),
+    ),
+  },
+  "animated-feature-card-5": {
+    name: "animated-feature-card-5",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-5.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-5"),
+    ),
+  },
+  "animated-feature-card-6": {
+    name: "animated-feature-card-6",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-6.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-6"),
+    ),
+  },
+  "animated-feature-card-7": {
+    name: "animated-feature-card-7",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-7.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-7"),
+    ),
+  },
+  "animated-feature-card-8": {
+    name: "animated-feature-card-8",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-8.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-8"),
+    ),
+  },
+  "animated-feature-card-9": {
+    name: "animated-feature-card-9",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-9.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-9"),
+    ),
+  },
+  "animated-feature-card-10": {
+    name: "animated-feature-card-10",
+    type: "components:example",
+    files: ["registry/components/example/animated-feature-card-10.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-feature-card-10"),
+    ),
+  },
 };
 
 const blocks: Registry = {
