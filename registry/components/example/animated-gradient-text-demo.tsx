@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
-import AnimatedGradientPill from "@/registry/components/magicui/animated-gradient-pill";
+import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
 import { ChevronRight } from "lucide-react";
 
-export default async function AnimatedGradientPillDemo() {
+export default async function AnimatedGradientTextDemo() {
   return (
     <div className="z-10 flex min-h-[16rem] items-center justify-center">
-      <AnimatedGradientPill>
+      <AnimatedGradientText>
         🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-border" />{" "}
         <span
           className={cn(
@@ -15,7 +15,7 @@ export default async function AnimatedGradientPillDemo() {
           Introducing Magic UI
         </span>
         <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
-      </AnimatedGradientPill>
+      </AnimatedGradientText>
     </div>
   );
 }

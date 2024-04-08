@@ -97,10 +97,10 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/animated-lines.tsx"],
   },
-  "text-shimmer": {
-    name: "text-shimmer",
+  "animated-shiny-text": {
+    name: "animated-shiny-text",
     type: "components:ui",
-    files: ["registry/components/magicui/text-shimmer.tsx"],
+    files: ["registry/components/magicui/animated-shiny-text.tsx"],
   },
   "animated-grid-pattern": {
     name: "animated-grid-pattern",
@@ -122,10 +122,10 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/text-reveal.tsx"],
   },
-  "animated-gradient-pill": {
-    name: "animated-gradient-pill",
+  "animated-gradient-text": {
+    name: "animated-gradient-text",
     type: "components:ui",
-    files: ["registry/components/magicui/animated-gradient-pill.tsx"],
+    files: ["registry/components/magicui/animated-gradient-text.tsx"],
   },
 };
 
@@ -355,12 +355,12 @@ const example: Registry = {
       () => import("@/registry/components/example/animated-lines-demo"),
     ),
   },
-  "text-shimmer-demo": {
-    name: "text-shimmer-demo",
+  "animated-shiny-text-demo": {
+    name: "animated-shiny-text-demo",
     type: "components:example",
-    files: ["registry/components/example/text-shimmer-demo.tsx"],
+    files: ["registry/components/example/animated-shiny-text-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/text-shimmer-demo"),
+      () => import("@/registry/components/example/animated-shiny-text-demo"),
     ),
   },
 
@@ -519,12 +519,12 @@ const example: Registry = {
       () => import("@/registry/components/example/text-reveal-demo"),
     ),
   },
-  "animated-gradient-pill-demo": {
-    name: "animated-gradient-pill-demo",
+  "animated-gradient-text-demo": {
+    name: "animated-gradient-text-demo",
     type: "components:example",
-    files: ["registry/components/example/animated-gradient-pill-demo.tsx"],
+    files: ["registry/components/example/animated-gradient-text-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/animated-gradient-pill-demo"),
+      () => import("@/registry/components/example/animated-gradient-text-demo"),
     ),
   },
 };

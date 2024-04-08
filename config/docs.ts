@@ -169,12 +169,6 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/globe`,
           items: [],
         },
-        {
-          title: "Animated Gradient Pill",
-          href: `/docs/components/animated-gradient-pill`,
-          items: [],
-          label: "New",
-        },
       ],
     },
 
@@ -222,9 +216,15 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Text Shimmer",
-          href: `/docs/components/text-shimmer`,
+          title: "Animated Shiny Text",
+          href: `/docs/components/animated-shiny-text`,
           items: [],
+        },
+        {
+          title: "Animated Gradient Text",
+          href: `/docs/components/animated-gradient-text`,
+          items: [],
+          label: "New",
         },
         {
           title: "Text Reveal",

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default function AnimatedGradientPill({
+export default function AnimatedGradientText({
   children,
 }: {
   children: ReactNode;
