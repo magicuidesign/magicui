@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useEffect, useId, useRef } from "react";
 
-const reviews = [
+const tiles = [
   {
     icon: <HeartHandshake className="size-full" />,
     bg: (
@@ -71,10 +71,10 @@ const shuffleArray = (array: any[]) => {
   return array;
 };
 
-const randomReviews1 = shuffleArray([...reviews]);
-const randomReviews2 = shuffleArray([...reviews]);
-const randomReviews3 = shuffleArray([...reviews]);
-const randomReviews4 = shuffleArray([...reviews]);
+const randomTiles1 = shuffleArray([...tiles]);
+const randomTiles2 = shuffleArray([...tiles]);
+const randomTiles3 = shuffleArray([...tiles]);
+const randomTiles4 = shuffleArray([...tiles]);
 
 const Card = (card: { icon: JSX.Element; bg: JSX.Element }) => {
   const id = useId();
@@ -122,12 +122,12 @@ export default function CallToAction() {
               className="-delay-[200ms] [--duration:20s]"
               repeat={4}
             >
-              {randomReviews1.map((review, idx) => (
+              {randomTiles1.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
             </Marquee>
             <Marquee reverse className="[--duration:30s]" repeat={4}>
-              {randomReviews2.map((review, idx) => (
+              {randomTiles2.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
             </Marquee>
@@ -136,12 +136,12 @@ export default function CallToAction() {
               className="-delay-[200ms] [--duration:20s]"
               repeat={4}
             >
-              {randomReviews3.map((review, idx) => (
+              {randomTiles3.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
             </Marquee>
             <Marquee reverse className="[--duration:30s]" repeat={4}>
-              {randomReviews4.map((review, idx) => (
+              {randomTiles4.map((review, idx) => (
                 <Card key={idx} {...review} />
               ))}
             </Marquee>
