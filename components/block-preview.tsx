@@ -3,7 +3,6 @@
 import BlockWrapper from "@/components/block-wrapper";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-import PreOrder from "@/components/preorder";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -22,14 +21,6 @@ interface BlockPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   free?: boolean;
   scroller?: boolean;
 }
-
-const PayWall = ({ className }: { className?: string }) => {
-  return (
-    <>
-      <PreOrder />
-    </>
-  );
-};
 
 export function BlockPreview({
   name,

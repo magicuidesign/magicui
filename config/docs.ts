@@ -220,6 +220,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/text-shimmer`,
           items: [],
         },
+        {
+          title: "Text Reveal",
+          href: `/docs/components/text-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
