@@ -1,6 +1,7 @@
 "use client";
 
 import BlockWrapper from "@/components/block-wrapper";
+import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
 import PreOrder from "@/components/preorder";
 import { Badge } from "@/components/ui/badge";
@@ -34,7 +35,7 @@ export function BlockPreview({
   name,
   children,
   className,
-  align = "center",
+  align = "start",
   free = false,
   scroller = false,
   ...props
@@ -151,22 +152,41 @@ export function BlockPreview({
           )}
         </div>
         <TabsContent value="preview" className="relative rounded-md">
-          <BlockWrapper>
-            <React.Suspense
-              fallback={
-                <div className="space-y-4">
-                  <Skeleton className="h-[150px] w-full" />
-                </div>
-              }
-            >
-              {scroller && (
-                <div className="max-h-[450px] overflow-y-scroll">
-                  <div className="h-screen">{Preview}</div>
-                </div>
-              )}
-              {!scroller && Preview}
-            </React.Suspense>
-          </BlockWrapper>
+          {align === "center" ? (
+            <ComponentWrapper>
+              <React.Suspense
+                fallback={
+                  <div className="space-y-4">
+                    <Skeleton className="h-[150px] w-full" />
+                  </div>
+                }
+              >
+                {scroller && (
+                  <div className="max-h-[450px] overflow-y-scroll">
+                    <div className="h-screen">{Preview}</div>
+                  </div>
+                )}
+                {!scroller && Preview}
+              </React.Suspense>
+            </ComponentWrapper>
+          ) : (
+            <BlockWrapper>
+              <React.Suspense
+                fallback={
+                  <div className="space-y-4">
+                    <Skeleton className="h-[150px] w-full" />
+                  </div>
+                }
+              >
+                {scroller && (
+                  <div className="max-h-[450px] overflow-y-scroll">
+                    <div className="h-screen">{Preview}</div>
+                  </div>
+                )}
+                {!scroller && Preview}
+              </React.Suspense>
+            </BlockWrapper>
+          )}
         </TabsContent>
         <TabsContent value="code">
           <div className="flex flex-col space-y-4">
