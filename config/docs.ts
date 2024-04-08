@@ -169,6 +169,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/globe`,
           items: [],
         },
+        {
+          title: "Animated Gradient Pill",
+          href: `/docs/components/animated-gradient-pill`,
+          items: [],
+          label: "New",
+        },
       ],
     },
 

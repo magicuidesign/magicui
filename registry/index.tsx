@@ -122,6 +122,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/text-reveal.tsx"],
   },
+  "animated-gradient-pill": {
+    name: "animated-gradient-pill",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-gradient-pill.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -512,6 +517,14 @@ const example: Registry = {
     files: ["registry/components/example/text-reveal-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/text-reveal-demo"),
+    ),
+  },
+  "animated-gradient-pill-demo": {
+    name: "animated-gradient-pill-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-gradient-pill-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-gradient-pill-demo"),
     ),
   },
 };
