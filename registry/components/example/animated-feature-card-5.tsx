@@ -65,7 +65,7 @@ export default function FeatureCard5() {
       >
         <div className="flex h-full w-full items-center justify-center bg-transparent ">
           <div className="relative h-full w-full cursor-pointer overflow-hidden rounded-t-xl border-b border-neutral-200 p-10 dark:border-neutral-800">
-            <div className="relative h-[150px] w-full cursor-pointer overflow-hidden rounded-xl border border-slate-200/50 bg-white dark:border-neutral-700/50 dark:bg-neutral-800">
+            <div className="relative h-[150px] w-full cursor-pointer overflow-hidden rounded-xl border border-slate-200/50 bg-white dark:border-neutral-700/50 dark:bg-neutral-900">
               <motion.p
                 variants={variant2}
                 className=" absolute left-5 top-5 z-[9] w-fit text-[15px]"

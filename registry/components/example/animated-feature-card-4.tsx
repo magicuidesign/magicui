@@ -158,7 +158,7 @@ export default function FeatureCard4() {
         <div className="flex flex-col items-start gap-y-1 px-5 pb-4">
           <h2 className="text-xl font-semibold">Social</h2>
           <p className="text-base font-normal text-neutral-500 dark:text-neutral-400">
-            Write once, share infinitely
+            Write once, share with your friends
           </p>
         </div>
       </motion.div>
