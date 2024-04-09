@@ -2,57 +2,114 @@
 
 import { cn } from "@/lib/utils";
 import Marquee from "@/registry/components/magicui/marquee";
-import { cubicBezier, motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
+import {
+  BarChart,
+  File,
+  Globe,
+  HeartHandshake,
+  Rss,
+  Shield,
+} from "lucide-react";
+import { useEffect, useId, useRef } from "react";
+
+const tiles = [
+  {
+    icon: <HeartHandshake className="size-full" />,
+    bg: (
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px] filter"></div>
+    ),
+  },
+  {
+    icon: <Globe className="size-full" />,
+    bg: (
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-70 blur-[20px] filter"></div>
+    ),
+  },
+  {
+    icon: <File className="size-full" />,
+    bg: (
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-green-500 via-teal-500 to-emerald-600 opacity-70 blur-[20px] filter"></div>
+    ),
+  },
+  {
+    icon: <Shield className="size-full" />,
+    bg: (
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 opacity-70 blur-[20px] filter"></div>
+    ),
+  },
+  {
+    icon: <Rss className="size-full" />,
+    bg: (
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px] filter"></div>
+    ),
+  },
+  {
+    icon: <BarChart className="size-full" />,
+    bg: (
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-70 blur-[20px] filter"></div>
+    ),
+  },
+];
+
+const shuffleArray = (array: any[]) => {
+  let currentIndex = array.length,
+    randomIndex;
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
+};
+
+const randomTiles1 = shuffleArray([...tiles]);
+const randomTiles2 = shuffleArray([...tiles]);
+const randomTiles3 = shuffleArray([...tiles]);
+const randomTiles4 = shuffleArray([...tiles]);
+
+const Card = (card: { icon: JSX.Element; bg: JSX.Element }) => {
+  const id = useId();
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        transition: { delay: Math.random() * 2, ease: "easeOut", duration: 1 },
+      });
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      key={id}
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={controls}
+      className={cn(
+        "relative size-20 cursor-pointer overflow-hidden rounded-2xl border p-4",
+        // light styles
+        "bg-white",
+        // dark styles
+        "transform-gpu dark:bg-transparent dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+      )}
+    >
+      {card.icon}
+      {card.bg}
+    </motion.div>
+  );
+};
 
 export default function FeatureCard7() {
-  const variant1 = {
-    initial: {
-      y: 0,
-      scale: 0.95,
-      transition: {
-        delay: 0,
-        duration: 0.2,
-        ease: cubicBezier(0.22, 1, 0.36, 1),
-      },
-    },
-    whileHover: {
-      y: -10,
-      scale: 1,
-      boxShadow:
-        "rgba(39,127,245,0.15) 0px 20px 70px -10px, rgba(36,42,66,0.04) 0px 10px 24px -8px, rgba(36,42,66,0.06) 0px 1px 4px -1px",
-      transition: {
-        delay: 0,
-        duration: 0.2,
-        ease: cubicBezier(0.22, 1, 0.36, 1),
-      },
-    },
-  };
-  const variant2 = {
-    initial: {
-      y: 15,
-      x: 2,
-      opacity: 0,
-      scale: 0.95,
-      transition: {
-        delay: 0,
-        duration: 0.2,
-        ease: cubicBezier(0.22, 1, 0.36, 1),
-      },
-    },
-    whileHover: {
-      y: 10,
-      x: -3,
-      display: "flex",
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: 0.1,
-        duration: 0.25,
-        ease: cubicBezier(0.22, 1, 0.36, 1),
-      },
-    },
-  };
-
   const containerVariants = {
     initial: {},
     whileHover: {
@@ -60,41 +117,6 @@ export default function FeatureCard7() {
         staggerChildren: 0.1,
       },
     },
-  };
-
-  const logos = [
-    {
-      name: "Microsoft",
-      img: "https://cdn.simpleicons.org/microsoft/000/fff",
-    },
-    {
-      name: "Apple",
-      img: "https://cdn.simpleicons.org/apple/000/fff",
-    },
-    {
-      name: "Google",
-      img: "https://cdn.simpleicons.org/google/000/fff",
-    },
-    {
-      name: "Facebook",
-      img: "https://cdn.simpleicons.org/facebook/000/fff",
-    },
-    {
-      name: "LinkedIn",
-      img: "https://cdn.simpleicons.org/linkedin/000/fff",
-    },
-    {
-      name: "Twitter",
-      img: "https://cdn.simpleicons.org/twitter/000/fff",
-    },
-  ];
-
-  const Logo = ({ name, img }: { name: string; img: string }) => {
-    return (
-      <div className={cn("h-12 w-12 cursor-pointer")}>
-        <img src={img} alt={name} />
-      </div>
-    );
   };
 
   return (
@@ -107,25 +129,32 @@ export default function FeatureCard7() {
       >
         <div className="group relative flex h-[300px] w-full cursor-pointer flex-col items-center justify-center gap-y-1 overflow-hidden rounded-t-xl border-b border-neutral-200 p-4 dark:border-neutral-800 ">
           <div className="relative flex flex-col items-center justify-center gap-y-2 px-10">
-            <Marquee className="[--gap:3rem]">
-              {logos.map((logo, idx) => (
-                <div className={cn("h-12 w-12 cursor-pointer")} key={idx}>
-                  <img src={logo.img} />
-                </div>
+            <Marquee
+              reverse
+              className="-delay-[200ms] [--duration:20s]"
+              repeat={4}
+            >
+              {randomTiles1.map((review, idx) => (
+                <Card key={idx} {...review} />
               ))}
             </Marquee>
-            <Marquee className="[--gap:3rem]">
-              {logos.map((logo, idx) => (
-                <div className={cn("h-12 w-12 cursor-pointer")} key={idx}>
-                  <img src={logo.img} />
-                </div>
+            <Marquee reverse className="[--duration:30s]" repeat={4}>
+              {randomTiles2.map((review, idx) => (
+                <Card key={idx} {...review} />
               ))}
             </Marquee>
-            <Marquee className="[--gap:3rem]">
-              {logos.map((logo, idx) => (
-                <div className={cn("h-12 w-12 cursor-pointer")} key={idx}>
-                  <img src={logo.img} />
-                </div>
+            <Marquee
+              reverse
+              className="-delay-[200ms] [--duration:20s]"
+              repeat={4}
+            >
+              {randomTiles3.map((review, idx) => (
+                <Card key={idx} {...review} />
+              ))}
+            </Marquee>
+            <Marquee reverse className="[--duration:30s]" repeat={4}>
+              {randomTiles4.map((review, idx) => (
+                <Card key={idx} {...review} />
               ))}
             </Marquee>
             <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
@@ -133,9 +162,9 @@ export default function FeatureCard7() {
           </div>
         </div>
         <div className="flex flex-col items-start gap-y-1 px-5 pb-4">
-          <h2 className="text-xl font-semibold">Reply</h2>
+          <h2 className="text-xl font-semibold">Integrations</h2>
           <p className="text-base font-normal text-neutral-500 dark:text-neutral-400">
-            Easily reply to the other people
+            Integrate with all your favourite apps
           </p>
         </div>
       </motion.div>
