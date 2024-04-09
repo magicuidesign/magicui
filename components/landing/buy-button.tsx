@@ -49,7 +49,7 @@ export default function BuyButton() {
   );
 
   const isUserAuthenticatedAndLoaded = status === "authenticated" && !isLoading;
-  const hasMadePayments = data?.user?.customer?.payments.length > 0;
+  const hasMadePayments = data?.user?.customer?.payments?.length > 0;
   const isAdmin = data?.user?.role === "ADMIN";
 
   if (status === "loading" || status === "unauthenticated" || isLoading) {
