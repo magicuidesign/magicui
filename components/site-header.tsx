@@ -1,13 +1,10 @@
 import { CommandMenu } from "@/components/command-menu";
-import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAccountNav } from "@/components/user-account-nav";
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { DiscordLogoIcon } from "@radix-ui/react-icons";
 import { User } from "next-auth";
 import Link from "next/link";
 
@@ -31,7 +28,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
             <CommandMenu />
           </div>
           <nav className="flex items-center gap-2">
-            <Link href="/discord" target="_blank" rel="noreferrer">
+            {/* <Link href="/discord" target="_blank" rel="noreferrer">
               <div
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
@@ -41,8 +38,8 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                 <DiscordLogoIcon className="h-4 w-4 fill-current" />
                 <span className="sr-only">Discord</span>
               </div>
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               href={siteConfig.links.twitter}
               target="_blank"
               rel="noreferrer"
@@ -58,7 +55,7 @@ export function SiteHeader({ user }: SiteHeaderProps) {
                 <Icons.twitter className="h-4 w-4 fill-current" />
                 <span className="sr-only">Twitter</span>
               </div>
-            </Link>
+            </Link> */}
             <ModeToggle />
 
             {user && (
