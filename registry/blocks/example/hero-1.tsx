@@ -98,13 +98,33 @@ export default function Hero() {
             variants={fadeUpVariants}
             initial={false}
             transition={{
-              duration: 0.6,
+              duration: 1.4,
               delay: 0.4,
               ease: [0.21, 0.47, 0.32, 0.98],
               type: "spring",
             }}
             className="relative mt-24 h-full w-full rounded-xl after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_30%,transparent)]"
           >
+            <div
+              className={cn(
+                "absolute inset-0 bottom-1/2 h-full w-full [filter:blur(120px)] ",
+
+                // light styles
+                "[background-image:linear-gradient(to_bottom,#ffaa40,transparent_30%)]",
+
+                // dark styles
+                "dark:[background-image:linear-gradient(to_bottom,#ffffff,transparent_30%)]",
+              )}
+            />
+
+            <img
+              src="/dashboard-light.png"
+              className="relative block h-full w-full rounded-xl border dark:hidden"
+            />
+            <img
+              src="/dashboard-dark.png"
+              className="relative hidden h-full w-full rounded-xl border dark:block"
+            />
             {/* <video
               autoPlay
               loop
@@ -112,16 +132,9 @@ export default function Hero() {
               src="demo.mp4"
               className="h-auto w-full"
             /> */}
-            <img
-              src="/dashboard-light.png"
-              className="block h-full w-full rounded-xl border dark:hidden"
-            />
-            <img
-              src="/dashboard-dark.png"
-              className="hidden h-full w-full rounded-xl border dark:block"
-            />
-            <BorderBeam />
-            <BorderBeam delay={20} />
+
+            <BorderBeam size={150} />
+            <BorderBeam size={150} delay={7} />
           </motion.div>
         </div>
       </div>

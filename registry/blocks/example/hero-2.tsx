@@ -107,6 +107,17 @@ export default function Hero() {
             }}
             className="relative mt-24 h-full w-full rounded-xl border shadow-2xl"
           >
+            <div
+              className={cn(
+                "absolute inset-0 bottom-1/2 h-full w-full [filter:blur(120px)] ",
+
+                // light styles
+                "[background-image:linear-gradient(to_bottom,#ffaa40,transparent_30%)]",
+
+                // dark styles
+                "dark:[background-image:linear-gradient(to_bottom,#ffffff,transparent_30%)]",
+              )}
+            />
             {/* <video
               autoPlay
               loop
@@ -116,11 +127,11 @@ export default function Hero() {
             /> */}
             <img
               src="/dashboard-light.png"
-              className="block h-full w-full rounded-xl dark:hidden"
+              className="relative block h-full w-full rounded-xl dark:hidden"
             />
             <img
               src="/dashboard-dark.png"
-              className="hidden h-full w-full rounded-xl dark:block"
+              className="relative hidden h-full w-full rounded-xl dark:block"
             />
             <BorderBeam />
           </motion.div>
