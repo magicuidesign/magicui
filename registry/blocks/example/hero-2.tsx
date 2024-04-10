@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/registry/components/magicui/border-beam";
+import RetroGrid from "@/registry/components/magicui/retro-grid";
 import { motion, useInView } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useRef } from "react";
@@ -26,6 +27,7 @@ export default function Hero() {
   return (
     <section id="hero">
       <div className="relative h-full overflow-hidden py-14">
+        <RetroGrid className="z-0" />
         <div className="container z-10 flex flex-col">
           <div className="mt-20 grid grid-cols-1">
             <div className="flex flex-col items-center gap-6 pb-8 text-center">
@@ -103,7 +105,7 @@ export default function Hero() {
               ease: [0.21, 0.47, 0.32, 0.98],
               type: "spring",
             }}
-            className="relative mt-24 h-full w-full rounded-xl after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_30%,transparent)]"
+            className="relative mt-24 h-full w-full rounded-xl border shadow-2xl"
           >
             {/* <video
               autoPlay
@@ -114,14 +116,13 @@ export default function Hero() {
             /> */}
             <img
               src="/dashboard-light.png"
-              className="block h-full w-full rounded-xl border dark:hidden"
+              className="block h-full w-full rounded-xl dark:hidden"
             />
             <img
               src="/dashboard-dark.png"
-              className="hidden h-full w-full rounded-xl border dark:block"
+              className="hidden h-full w-full rounded-xl dark:block"
             />
             <BorderBeam />
-            <BorderBeam delay={20} />
           </motion.div>
         </div>
       </div>

@@ -561,6 +561,12 @@ const blocks: Registry = {
     files: ["registry/blocks/example/hero-1.tsx"],
     component: React.lazy(() => import("@/registry/blocks/example/hero-1")),
   },
+  "hero-2": {
+    name: "hero-2",
+    type: "blocks:example",
+    files: ["registry/blocks/example/hero-2.tsx"],
+    component: React.lazy(() => import("@/registry/blocks/example/hero-2")),
+  },
   "social-proof-press-1": {
     name: "social-proof-press-1",
     type: "blocks:example",
