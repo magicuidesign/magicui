@@ -86,12 +86,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/sections/header`,
           items: [],
         },
-        // {
-        //   title: "Hero",
-        //   href: `/docs/sections/hero`,
-        //   items: [],
-        // label: "New",
-        // },
+        {
+          title: "Hero",
+          href: `/docs/sections/hero`,
+          items: [],
+          label: "New",
+        },
         {
           title: "Social Proof Press",
           href: `/docs/sections/social-proof-press`,
