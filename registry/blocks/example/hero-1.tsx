@@ -103,7 +103,7 @@ export default function Hero() {
               ease: [0.21, 0.47, 0.32, 0.98],
               type: "spring",
             }}
-            className="relative mt-24 h-full w-full rounded-xl after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_30%,transparent)]"
+            className="relative mt-24 h-full w-full rounded-xl after:absolute after:inset-0 after:z-10 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_30%,transparent)]"
           >
             <div
               className={cn(

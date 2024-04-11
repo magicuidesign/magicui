@@ -129,7 +129,7 @@ export default function Pricing() {
               className={cn(
                 " relative flex h-full max-w-[400px] flex-col gap-8 overflow-hidden rounded-2xl border p-4 text-black dark:text-white",
                 {
-                  "border-4 border-neutral-700 shadow-lg shadow-neutral-500 dark:border-neutral-400 dark:shadow-neutral-600":
+                  "border-2 border-neutral-700 shadow-lg shadow-neutral-500 dark:border-neutral-400 dark:shadow-neutral-600":
                     price.isMostPopular,
                 },
               )}

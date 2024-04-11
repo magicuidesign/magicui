@@ -82,7 +82,7 @@ const faqs = [
   },
 ];
 
-const Faq = () => {
+export default function FAQ() {
   return (
     <section id="faqs" className="container py-14">
       <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
@@ -125,6 +125,4 @@ const Faq = () => {
       </h3>
     </section>
   );
-};
-
-export default Faq;
+}

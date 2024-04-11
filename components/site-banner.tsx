@@ -11,15 +11,15 @@ export function SiteBanner() {
           ✨
           <span className="font-bold text-black dark:text-white">
             {" "}
-            Black Friday Sale -{" "}
+            New Page Sections Launch Sale -{" "}
           </span>{" "}
           Get{" "}
           <span className="font-bold text-black dark:text-white">
-            $30 off on Friday November 24th ONLY
+            $30 off
           </span>{" "}
           with code{" "}
-          <span className="rounded-md bg-green-600 p-1 font-bold text-black dark:text-white">
-            ONEDAYSPECIAL
+          <span className="rounded-md bg-orange-400 p-1 font-bold text-black dark:text-white">
+            BLOCKPARTY
           </span>{" "}
           ✨
         </Link>

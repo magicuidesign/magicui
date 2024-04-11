@@ -1,6 +1,7 @@
 import Hero from "@/components/landing/hero";
-import Testimonials from "@/components/landing/testimonials";
 import Faq from "@/components/pricing/faq";
+import Pricing from "@/components/pricing/pricing";
+import Testimonials from "@/components/pricing/testimonials";
 
 export default async function Home() {
   return (
@@ -11,6 +12,7 @@ export default async function Home() {
       {/* <FeatureGrid /> */}
       {/* <FeatureSections /> */}
       {/* <ChangelogSection /> */}
+      <Pricing />
       <Faq />
     </>
   );

@@ -36,7 +36,7 @@ const UnPaid = ({ className }: { className?: string }) => {
         "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
       )}
     >
-      Get Lifetime Access - $79
+      Get Lifetime Access
     </Link>
   );
 };

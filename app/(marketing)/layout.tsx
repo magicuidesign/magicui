@@ -1,8 +1,6 @@
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getCurrentUser } from "@/lib/session";
-import { cn } from "@/lib/utils";
-import GridPattern from "@/registry/components/magicui/grid-pattern";
 
 interface MarketingLayoutProps {
   children: React.ReactNode;
@@ -21,10 +19,10 @@ export default async function MarketingLayout({
       <SiteFooter />
 
       {/* Top Ellipse Gradient */}
-      {/* <div className="pointer-events-none absolute inset-0 h-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.2),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.2),rgba(255,255,255,0))]" /> */}
+      <div className="pointer-events-none absolute inset-0 h-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,189,122,0.2),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.5),rgba(255,255,255,0))]" />
 
       {/* Grid Pattern */}
-      <GridPattern
+      {/* <GridPattern
         width={80}
         height={80}
         x={-1}
@@ -34,7 +32,7 @@ export default async function MarketingLayout({
           "-z-50 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]",
           "inset-x-0 -top-[1rem] -z-50 h-[80%] skew-y-12",
         )}
-      />
+      /> */}
 
       {/* Linear Gradient */}
       {/* <LinearGradient
