@@ -209,7 +209,7 @@ export default function HeroClient({
           >
             <div
               className={cn(
-                "absolute inset-0 bottom-1/2 h-full w-full [filter:blur(120px)] ",
+                "absolute inset-0 bottom-1/2 h-full w-full transform-gpu [filter:blur(120px)]",
 
                 // light styles
                 "[background-image:linear-gradient(to_bottom,rgba(255,189,122,0.2),transparent_30%)]",

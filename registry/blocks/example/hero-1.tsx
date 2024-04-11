@@ -107,7 +107,7 @@ export default function Hero() {
           >
             <div
               className={cn(
-                "absolute inset-0 bottom-1/2 h-full w-full [filter:blur(120px)] ",
+                "absolute inset-0 bottom-1/2 h-full w-full transform-gpu [filter:blur(120px)]",
 
                 // light styles
                 "[background-image:linear-gradient(to_bottom,#ffaa40,transparent_30%)]",
