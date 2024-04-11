@@ -12,7 +12,7 @@ import NumberTicker from "@/registry/components/magicui/number-ticker";
 import RetroGrid from "@/registry/components/magicui/retro-grid";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import { motion, useInView } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Gift } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -85,7 +85,7 @@ export default function HeroClient({
               </motion.h1>
 
               <motion.p
-                className="text-balance text-lg tracking-tight text-gray-400 md:text-xl"
+                className="max-w-[64rem] text-balance text-lg tracking-tight text-gray-400 md:text-xl"
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
                 initial={false}
@@ -96,9 +96,11 @@ export default function HeroClient({
                   type: "spring",
                 }}
               >
-                Magic UI is the largest collection of professional handcrafted
-                components in the world. Save thousands of hours, and ship a
-                beautiful landing page to impress your customers in minutes.
+                Magic UI is the <strong>largest collection </strong> of
+                handcrafted animated components in the world{" "}
+                <strong>built for developers</strong>.<br />
+                Save thousands of hours, create a beautiful landing, and impress
+                your customers.
               </motion.p>
 
               <motion.div
@@ -130,6 +132,20 @@ export default function HeroClient({
                   </Link>
                 </div>
               </motion.div>
+
+              <div className="inline-flex items-center justify-center gap-2">
+                <Gift className="h-4 w-4 animate-bounce" />
+                <span>
+                  <strong>
+                    $40 off for the first {Math.ceil(payments / 100) * 100}
+                  </strong>{" "}
+                  customers (
+                  {payments > 0
+                    ? Math.ceil(payments / 100) * 100 - payments
+                    : 0}{" "}
+                  left)
+                </span>
+              </div>
               <FadeIn delay={0.3}>
                 <div className="container flex flex-col items-center justify-center gap-2 sm:flex-row">
                   <div className="flex flex-row items-center justify-center -space-x-4">
@@ -189,7 +205,7 @@ export default function HeroClient({
               ease: [0.21, 0.47, 0.32, 0.98],
               type: "spring",
             }}
-            className="relative mx-auto mt-24 h-full w-full max-w-[1200px] rounded-xl after:absolute after:inset-0 after:z-10 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_30%,transparent)]"
+            className="relative mx-auto mt-24 h-full w-full max-w-[1200px] rounded-xl after:absolute after:inset-0 after:z-10 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_10%,transparent)]"
           >
             <div
               className={cn(
@@ -220,7 +236,7 @@ export default function HeroClient({
             /> */}
 
             <BorderBeam size={150} />
-            <BorderBeam size={150} delay={7} />
+            {/* <BorderBeam size={150} delay={7} /> */}
           </motion.div>
         </div>
       </div>
