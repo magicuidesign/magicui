@@ -12,7 +12,7 @@ import NumberTicker from "@/registry/components/magicui/number-ticker";
 import RetroGrid from "@/registry/components/magicui/retro-grid";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import { motion, useInView } from "framer-motion";
-import { ChevronRight, Gift } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -133,7 +133,7 @@ export default function HeroClient({
                 </div>
               </motion.div>
 
-              <div className="inline-flex items-center justify-center gap-2">
+              {/* <div className="inline-flex items-center justify-center gap-2">
                 <Gift className="h-4 w-4 animate-bounce" />
                 <span>
                   <strong>
@@ -145,7 +145,7 @@ export default function HeroClient({
                     : 0}{" "}
                   left)
                 </span>
-              </div>
+              </div> */}
               <FadeIn delay={0.3}>
                 <div className="container flex flex-col items-center justify-center gap-2 sm:flex-row">
                   <div className="flex flex-row items-center justify-center -space-x-4">
