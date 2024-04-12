@@ -105,7 +105,7 @@ export default function Hero() {
               ease: [0.21, 0.47, 0.32, 0.98],
               type: "spring",
             }}
-            className="relative mt-24 h-full w-full rounded-xl border shadow-2xl"
+            className="relative mx-auto mt-24 h-full w-full max-w-[768px] rounded-xl border shadow-2xl"
           >
             <div
               className={cn(
