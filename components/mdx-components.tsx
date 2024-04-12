@@ -1,4 +1,6 @@
 import { BlockPreview } from "@/components/block-preview";
+import RepoDownload from "@/components/repo-download";
+import TemplatePreview from "@/components/template-preview";
 import {
   Accordion,
   AccordionContent,
@@ -38,6 +40,8 @@ const components = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  RepoDownload,
+  TemplatePreview,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(

@@ -3,7 +3,7 @@ import PosthogIdentify from "@/components/posthog-identify";
 import { PHProvider } from "@/components/posthog-provider";
 import SessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 import { fontSans } from "@/lib/fonts";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import "@/styles/globals.css";
