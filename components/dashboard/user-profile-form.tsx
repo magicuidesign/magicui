@@ -1,7 +1,7 @@
 "use client";
 
 import { Icons } from "@/components/icons";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -20,23 +20,33 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
-import { cn } from "@/lib/utils";
+import { cn, fetcher } from "@/lib/utils";
 import { userNameSchema } from "@/lib/validations/user";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { User } from "@prisma/client";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { HTMLAttributes, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import useSWR from "swr";
 import * as z from "zod";
 
-interface UserNameFormProps extends HTMLAttributes<HTMLFormElement> {
-  user: Pick<User, "id" | "name">;
+interface UserProfileFormProps extends HTMLAttributes<HTMLFormElement> {
+  // user: Pick<User, "id" | "name">;
 }
 
 type FormData = z.infer<typeof userNameSchema>;
 
-export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
+export function UserProfileForm({ className, ...props }: UserProfileFormProps) {
+  const { data: session, status } = useSession();
+  const { data, isLoading } = useSWR(
+    status === "authenticated" && "/api/me",
+    fetcher,
+  );
+
+  const user = data?.user || null;
+
   const router = useRouter();
   const form = useForm<FormData>({
     resolver: zodResolver(userNameSchema),
@@ -49,7 +59,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
   async function onSubmit(data: FormData) {
     setIsSaving(true);
 
-    const response = await fetch(`/api/users/${user.id}`, {
+    const response = await fetch(`/api/users/${user?.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -62,19 +72,21 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
     setIsSaving(false);
 
     if (!response?.ok) {
-      return toast({
-        title: "Something went wrong.",
-        description: "Your name was not updated. Please try again.",
-        variant: "destructive",
+      toast.error("Something went wrong.", {
+        description: "Your profile was not updated. Please try again.",
       });
     }
 
-    toast({
-      description: "Your name has been updated.",
-    });
+    toast.success("Your profile has been updated.");
 
     router.refresh();
   }
+
+  if (status === "loading") return null;
+  if (isLoading) return null;
+  if (!user) return null;
+
+  console.log(user);
 
   return (
     <Form {...form}>
@@ -113,6 +125,24 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
                 )}
               />
             </div>
+
+            {user.accounts.some((account) => account.provider === "github") ? (
+              <div className="text-green-500">Connected GitHub account</div>
+            ) : (
+              <Button
+                type="button" // This already ensures the button does not trigger form submit
+                className="gap-2"
+                onClick={async (e) => {
+                  e.preventDefault(); // Explicitly prevent form submission
+                  await signIn("github", {
+                    callbackUrl: "/dashboard/settings",
+                  });
+                }}
+              >
+                Connect to Github
+                <GitHubLogoIcon className="h-4 w-4" />
+              </Button>
+            )}
           </CardContent>
           <CardFooter>
             <button

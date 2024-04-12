@@ -21,6 +21,7 @@ export async function GET() {
             payments: true,
           },
         },
+        accounts: true,
       },
     });
 

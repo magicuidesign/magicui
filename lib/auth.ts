@@ -3,6 +3,7 @@ import { EMAIL_FROM } from "@/lib/emails/constants";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
+import GitHubProvider, { GithubProfile } from "next-auth/providers/github";
 import posthog from "posthog-js";
 import { sendLoginEmail } from "./emails/send-login-email";
 import { upsertCustomer } from "./stripe-utils";
@@ -13,7 +14,22 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
+
   providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
+      allowDangerousEmailAccountLinking: true,
+      profile(profile: GithubProfile) {
+        return {
+          id: profile.id.toString(),
+          name: profile.name,
+          userName: profile.login,
+          email: profile.email,
+          image: profile.avatar_url,
+        };
+      },
+    }),
     EmailProvider({
       type: "email",
       server: "",
