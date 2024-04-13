@@ -96,11 +96,12 @@ export default function HeroClient({
                   type: "spring",
                 }}
               >
-                Magic UI is the <strong>largest collection </strong> of
-                handcrafted animated components in the world{" "}
-                <strong>built for developers</strong>.<br />
-                Save thousands of hours, create a beautiful landing, and impress
-                your customers.
+                Magic UI is a <strong>next generation UI library</strong>{" "}
+                emphasizing <strong>microinteractions and animations</strong>{" "}
+                built for developers.
+                <br />
+                Save thousands of hours, create a beautiful landing page, and
+                impress your customers.
               </motion.p>
 
               <motion.div

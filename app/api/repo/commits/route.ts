@@ -17,19 +17,15 @@ export async function POST(request: NextRequest) {
     const { owner, repo } = bodySchema.parse(body);
 
     const response = await octokit.request(
-      "GET /repos/{owner}/{repo}/zipball",
+      "GET /repos/{owner}/{repo}/commits",
       {
-        owner: owner,
-        repo: repo,
-        headers: {
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
+        owner,
+        repo,
+        per_page: 5,
       },
     );
-    const status = response.status;
-    const downloadUrl = response.url;
 
-    return NextResponse.json({ success: true, status, downloadUrl });
+    return NextResponse.json({ success: true, commits: response.data });
   } catch (error: any) {
     return NextResponse.json(
       { success: false, error: error.message },

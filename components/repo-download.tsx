@@ -38,7 +38,7 @@ export default function RepoDownload({
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/repo`,
+        `${process.env.NEXT_PUBLIC_APP_URL}/api/repo/download`,
         {
           method: "POST",
           headers: {
