@@ -16,20 +16,6 @@ export default function GithubInvite({
   username: string;
 }) {
   const [loading, setLoading] = useState(false);
-  // const { data: session, status } = useSession();
-  // const [paywall, setPaywall] = useState(true);
-  // const { data, isLoading } = useSWR(
-  //   status === "authenticated" && "/api/me",
-  //   fetcher,
-  // );
-
-  // useEffect(() => {
-  //   const shouldShowPaywall =
-  //     status === "unauthenticated" ||
-  //     (data?.user?.customer?.payments?.length === 0 &&
-  //       data?.user?.role !== "ADMIN");
-  //   setPaywall(shouldShowPaywall);
-  // }, [status, data]);
 
   const handleDownload = async () => {
     setLoading(true);
@@ -50,9 +36,6 @@ export default function GithubInvite({
       }
       const data = await response.json();
       console.log(data);
-      // const downloadUrl = data.downloadUrl;
-      // /* window.open(downloadUrl, "_blank"); */
-      // window.location.href = downloadUrl;
     } catch (error) {
       toast.error("Error occured while downloading. Please try again.");
       console.error("error", error);
