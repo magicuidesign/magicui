@@ -1,5 +1,7 @@
 import { BlockPreview } from "@/components/block-preview";
+import CommitList from "@/components/commit-list";
 import RepoDownload from "@/components/repo-download";
+import TechStack from "@/components/tech-stack";
 import TemplatePreview from "@/components/template-preview";
 import {
   Accordion,
@@ -40,6 +42,8 @@ const components = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  TechStack,
+  CommitList,
   RepoDownload,
   TemplatePreview,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -116,10 +120,10 @@ const components = {
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li className={cn("mt-2", className)} {...props} />

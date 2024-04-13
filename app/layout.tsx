@@ -4,6 +4,7 @@ import { PHProvider } from "@/components/posthog-provider";
 import SessionProvider from "@/components/session-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontSans } from "@/lib/fonts";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -34,12 +35,14 @@ export default function RootLayout({
         <PHProvider>
           <SessionProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-              {children}
-              <PosthogIdentify />
+              <TooltipProvider>
+                {children}
+                <PosthogIdentify />
 
-              <Toaster />
-              <Analytics />
-              {/* <TailwindIndicator /> */}
+                <Toaster />
+                <Analytics />
+                {/* <TailwindIndicator /> */}
+              </TooltipProvider>
             </ThemeProvider>
           </SessionProvider>
         </PHProvider>

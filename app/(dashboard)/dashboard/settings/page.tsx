@@ -23,10 +23,6 @@ export default async function SettingsPage() {
       <div className="grid gap-10">
         <UserProfileForm />
       </div>
-      {/* <GithubInvite
-        repo="startup-template"
-        owner="dillionverma"
-      /> */}
     </DashboardShell>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { Icons } from "@/components/icons";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -23,8 +23,7 @@ import { Input } from "@/components/ui/input";
 import { cn, fetcher } from "@/lib/utils";
 import { userNameSchema } from "@/lib/validations/user";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { HTMLAttributes, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -95,7 +94,7 @@ export function UserProfileForm({ className, ...props }: UserProfileFormProps) {
         onSubmit={form.handleSubmit(onSubmit)}
         {...props}
       >
-        <Card>
+        <Card className="shadow-none">
           <CardHeader>
             <CardTitle>Your Name</CardTitle>
             <CardDescription>
@@ -126,23 +125,19 @@ export function UserProfileForm({ className, ...props }: UserProfileFormProps) {
               />
             </div>
 
-            {user.accounts.some((account) => account.provider === "github") ? (
-              <div className="text-green-500">Connected GitHub account</div>
-            ) : (
-              <Button
-                type="button" // This already ensures the button does not trigger form submit
-                className="gap-2"
-                onClick={async (e) => {
-                  e.preventDefault(); // Explicitly prevent form submission
-                  await signIn("github", {
-                    callbackUrl: "/dashboard/settings",
-                  });
-                }}
-              >
-                Connect to Github
-                <GitHubLogoIcon className="h-4 w-4" />
-              </Button>
-            )}
+            {/* <Button
+              type="button" // This already ensures the button does not trigger form submit
+              className="gap-2"
+              onClick={async (e) => {
+                e.preventDefault(); // Explicitly prevent form submission
+                await signIn("github", {
+                  callbackUrl: "/dashboard/settings",
+                });
+              }}
+            >
+              Connect to Github
+              <GitHubLogoIcon className="h-4 w-4" />
+            </Button> */}
           </CardContent>
           <CardFooter>
             <button
