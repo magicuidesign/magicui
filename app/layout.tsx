@@ -1,4 +1,5 @@
 import { Analytics } from "@/components/analytics";
+import { CrispChat } from "@/components/crisp-chat";
 import PosthogIdentify from "@/components/posthog-identify";
 import { PHProvider } from "@/components/posthog-provider";
 import SessionProvider from "@/components/session-provider";
@@ -38,7 +39,7 @@ export default function RootLayout({
               <TooltipProvider>
                 {children}
                 <PosthogIdentify />
-
+                <CrispChat />
                 <Toaster />
                 <Analytics />
                 {/* <TailwindIndicator /> */}

@@ -68,6 +68,7 @@
     "cmdk": "^0.2.0",
     "cobe": "^0.6.3",
     "contentlayer": "^0.3.4",
+    "crisp-sdk-web": "^1.0.25",
     "critters": "^0.0.20",
     "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",

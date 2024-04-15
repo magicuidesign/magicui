@@ -143,6 +143,9 @@ dependencies:
   contentlayer:
     specifier: ^0.3.4
     version: 0.3.4(esbuild@0.20.1)
+  crisp-sdk-web:
+    specifier: ^1.0.25
+    version: 1.0.25
   critters:
     specifier: ^0.0.20
     version: 0.0.20
@@ -6555,6 +6558,10 @@ packages:
       is-directory: 0.3.1
       js-yaml: 3.14.1
       parse-json: 4.0.0
+    dev: false
+
+  /crisp-sdk-web@1.0.25:
+    resolution: {integrity: sha512-CWTHFFeHRV0oqiXoPh/aIAKhFs6xcIM4NenGPnClAMCZUDQgQsF1OWmZWmnVNjJriXUmWRgDfeUxcxygS0dCRA==}
     dev: false
 
   /critters@0.0.20:
