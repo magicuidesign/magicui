@@ -40,7 +40,7 @@ export const PriceCard = ({
               ${item.discountPrice}
             </span>
             {item.isDiscounted && (
-              <span className="text-4xl font-bold text-gray-600 line-through dark:text-gray-400">
+              <span className="text-4xl font-bold text-gray-500 line-through dark:text-gray-500">
                 ${item.price}
               </span>
             )}
