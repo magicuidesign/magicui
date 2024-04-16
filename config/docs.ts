@@ -79,7 +79,7 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Page Sections",
+      title: "Page Sections (PRO)",
       items: [
         {
           title: "Header",
@@ -139,7 +139,7 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "Feature Cards",
+          title: "Feature Cards (PRO)",
           href: `/docs/components/feature-cards`,
           items: [],
           label: "10+ New",

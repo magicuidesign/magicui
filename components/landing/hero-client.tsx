@@ -5,11 +5,20 @@ import BuyButton from "@/components/landing/buy-button";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import AnimatedBeamMultipleInputDemo from "@/registry/components/example/animated-beam-multiple-inputs";
+import FeatureCard1 from "@/registry/components/example/animated-feature-card-1";
+import FeatureCard2 from "@/registry/components/example/animated-feature-card-2";
+import FeatureCard3 from "@/registry/components/example/animated-feature-card-3";
+import FeatureCard4 from "@/registry/components/example/animated-feature-card-4";
+import FeatureCard6 from "@/registry/components/example/animated-feature-card-6";
+import FeatureCard7 from "@/registry/components/example/animated-feature-card-7";
+import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
+import BentoDemo from "@/registry/components/example/bento-demo";
+import GlobeDemo from "@/registry/components/example/globe-demo";
+import RetroGridDemo from "@/registry/components/example/retro-grid-demo";
 import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
-import { BorderBeam } from "@/registry/components/magicui/border-beam";
 import FadeIn from "@/registry/components/magicui/fade-in";
 import NumberTicker from "@/registry/components/magicui/number-ticker";
-import RetroGrid from "@/registry/components/magicui/retro-grid";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import { motion, useInView } from "framer-motion";
 import { ChevronRight } from "lucide-react";
@@ -42,7 +51,7 @@ export default function HeroClient({
   return (
     <section id="hero">
       <div className="relative h-full overflow-hidden py-14">
-        <RetroGrid className="z-0" />
+        {/* <RetroGrid className="z-0" /> */}
         <div className="container z-10 flex flex-col">
           <div className="mt-20 grid grid-cols-1">
             <div className="flex flex-col items-center gap-6 pb-8 text-center">
@@ -68,7 +77,7 @@ export default function HeroClient({
                   </AnimatedGradientText>
                 </Link>
               </FadeIn>
-              <motion.h1
+              {/* <motion.h1
                 ref={fadeInRef}
                 className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-8xl"
                 animate={fadeInInView ? "animate" : "initial"}
@@ -82,10 +91,26 @@ export default function HeroClient({
                 }}
               >
                 Create Magical <br /> Landing Pages <br />
+              </motion.h1> */}
+              <motion.h1
+                ref={fadeInRef}
+                animate={fadeInInView ? "animate" : "initial"}
+                variants={fadeUpVariants}
+                initial={false}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                  type: "spring",
+                }}
+                className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-7xl"
+              >
+                React components to build
+                <br className="hidden md:block" /> beautiful landing pages.
               </motion.h1>
 
               <motion.p
-                className="max-w-[64rem] text-balance text-lg tracking-tight text-gray-400 md:text-xl"
+                className="max-w-[64rem] text-balance text-lg tracking-tight text-gray-500 md:text-xl"
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
                 initial={false}
@@ -96,13 +121,36 @@ export default function HeroClient({
                   type: "spring",
                 }}
               >
-                Magic UI is a <strong>next generation UI library</strong>{" "}
-                emphasizing <strong>microinteractions and animations</strong>{" "}
-                built for developers.
+                50+ open-source animated components built with React, Tailwind
+                CSS, and Framer Motion.
                 <br />
                 Save thousands of hours, create a beautiful landing page, and
-                impress your customers.
+                convert your visitors into customers.
               </motion.p>
+
+              {/* <motion.div
+                animate={fadeInInView ? "animate" : "initial"}
+                variants={fadeUpVariants}
+                initial={false}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.2,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                  type: "spring",
+                }}
+              >
+                <TechStack
+                  className="text-foreground"
+                  technologies={[
+                    // "nextjs",
+                    "react",
+                    "typescript",
+                    "tailwindcss",
+                    "framermotion",
+                    // "shadcn",
+                  ]}
+                />
+              </motion.div> */}
 
               <motion.div
                 animate={fadeInInView ? "animate" : "initial"}
@@ -117,20 +165,21 @@ export default function HeroClient({
                 }}
               >
                 <div className="flex flex-col gap-4 md:flex-row">
-                  <BuyButton />
                   <Link
                     href="/components"
                     className={cn(
                       buttonVariants({
-                        variant: "outline",
+                        variant: "default",
                         size: "lg",
                       }),
                       "gap-2 whitespace-pre md:flex",
-                      "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
+                      "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
                     )}
                   >
-                    Read Docs
+                    Browse Components
+                    <ChevronRight className="ml-1 size-12 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
+                  <BuyButton />
                 </div>
               </motion.div>
 
@@ -196,7 +245,68 @@ export default function HeroClient({
             </div>
           </div>
 
-          <motion.div
+          <div className="container relative mx-auto mt-32 w-full max-w-[1000px]">
+            <motion.span
+              animate={["initial"]}
+              whileHover={["hover"]}
+              variants={{
+                hover: {
+                  scale: 1.1,
+                  rotate: -6,
+                  transition: {
+                    duration: 0.2,
+                  },
+                },
+                initial: {
+                  y: [-8, 8],
+                  transition: {
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  },
+                },
+              }}
+              className="absolute left-0 right-auto top-2 cursor-pointer lg:-top-20"
+            >
+              <span className="flex items-center">
+                <span className="mt-3 inline-block whitespace-nowrap rounded-full bg-neutral-800 px-2.5 py-1 text-[11px] font-semibold uppercase leading-5 tracking-wide text-white">
+                  Real component demos!
+                </span>
+                <svg
+                  className="mr-6 h-8 w-14 [transform:rotateY(180deg)rotateX(0deg)]"
+                  width="45"
+                  height="25"
+                  viewBox="0 0 45 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M43.2951 3.47877C43.8357 3.59191 44.3656 3.24541 44.4788 2.70484C44.5919 2.16427 44.2454 1.63433 43.7049 1.52119L43.2951 3.47877ZM4.63031 24.4936C4.90293 24.9739 5.51329 25.1423 5.99361 24.8697L13.8208 20.4272C14.3011 20.1546 14.4695 19.5443 14.1969 19.0639C13.9242 18.5836 13.3139 18.4152 12.8336 18.6879L5.87608 22.6367L1.92723 15.6792C1.65462 15.1989 1.04426 15.0305 0.563943 15.3031C0.0836291 15.5757 -0.0847477 16.1861 0.187863 16.6664L4.63031 24.4936ZM43.7049 1.52119C32.7389 -0.77401 23.9595 0.99522 17.3905 5.28788C10.8356 9.57127 6.58742 16.2977 4.53601 23.7341L6.46399 24.2659C8.41258 17.2023 12.4144 10.9287 18.4845 6.96211C24.5405 3.00476 32.7611 1.27399 43.2951 3.47877L43.7049 1.52119Z"
+                    fill="currentColor"
+                    className="fill-gray-300 dark:fill-gray-700"
+                  />
+                </svg>
+              </span>
+            </motion.span>
+
+            <BentoDemo />
+
+            <div className="mt-4 grid w-full justify-center gap-4 lg:grid-cols-2">
+              <AnimatedBeamMultipleInputDemo />
+              <AnimatedListDemo />
+              <RetroGridDemo />
+              <GlobeDemo />
+              <FeatureCard1 />
+              <FeatureCard2 />
+              <FeatureCard7 />
+              <FeatureCard3 />
+              <FeatureCard4 />
+              {/* <FeatureCard5 /> */}
+              <FeatureCard6 />
+            </div>
+          </div>
+
+          {/* <motion.div
             animate={fadeInInView ? "animate" : "initial"}
             variants={fadeUpVariants}
             initial={false}
@@ -228,17 +338,15 @@ export default function HeroClient({
               src="/dashboard-dark.png"
               className="relative hidden h-full w-full rounded-xl border dark:block"
             />
-            {/* <video
+            <video
               autoPlay
               loop
               muted
               src="demo.mp4"
               className="h-auto w-full"
-            /> */}
-
+            /> 
             <BorderBeam size={150} />
-            {/* <BorderBeam size={150} delay={7} /> */}
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

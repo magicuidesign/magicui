@@ -84,14 +84,14 @@ export default function FeatureCard8() {
   };
 
   return (
-    <div className="relative h-full w-full transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px] md:max-w-[500px]">
+    <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileHover="whileHover"
-        className="flex h-full w-full cursor-pointer flex-col items-start justify-between gap-y-5"
+        className="flex h-full w-full cursor-pointer flex-col items-start justify-between"
       >
-        <div className="flex h-full w-full cursor-pointer flex-col items-center justify-center gap-y-1 overflow-hidden rounded-t-xl border-b border-neutral-200 bg-transparent dark:border-neutral-800">
+        <div className="flex h-full w-full cursor-pointer flex-col items-center justify-center gap-y-1 overflow-hidden rounded-t-xl bg-transparent">
           <div className="relative flex flex-col items-center justify-center gap-y-2 px-10 py-20">
             <motion.div
               variants={variant1}
@@ -139,7 +139,7 @@ export default function FeatureCard8() {
             </motion.div>
           </div>
         </div>
-        <div className="flex flex-col items-start gap-y-1 px-5 pb-4">
+        <div className="flex w-full flex-col items-start border-t border-neutral-200 p-4 dark:border-neutral-800">
           <h2 className="text-xl font-semibold">Reply</h2>
           <p className="text-base font-normal text-neutral-500 dark:text-neutral-400">
             Reply to other creators in app

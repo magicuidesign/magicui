@@ -11,7 +11,7 @@ export const stripe = new Stripe(process.env.STRIPE_API_KEY!, {
 async function seed() {
   const user = await db.user.findFirst({
     where: {
-      email: "astrecttv@gmail.com",
+      email: "arjit@offcampus.io",
     },
     include: {
       customer: true,

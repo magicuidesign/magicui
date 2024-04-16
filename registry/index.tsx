@@ -363,7 +363,6 @@ const example: Registry = {
       () => import("@/registry/components/example/animated-shiny-text-demo"),
     ),
   },
-
   "particles-demo": {
     name: "particles-demo",
     type: "components:example",
@@ -646,12 +645,6 @@ const blocks: Registry = {
     component: React.lazy(
       () => import("@/registry/blocks/example/social-proof-testimonials-3"),
     ),
-  },
-  "features-1": {
-    name: "features-1",
-    type: "blocks:example",
-    files: ["registry/blocks/example/features-1.tsx"],
-    component: React.lazy(() => import("@/registry/blocks/example/features-1")),
   },
   "call-to-action-1": {
     name: "call-to-action-1",

@@ -22,7 +22,7 @@ const Circle = forwardRef<
   );
 });
 
-export default function AnimatedBeamDemo() {
+export default function AnimatedBeamMultipleInputDemo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -34,7 +34,7 @@ export default function AnimatedBeamDemo() {
 
   return (
     <div
-      className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-2xl"
+      className="relative flex w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl"
       ref={containerRef}
     >
       <div className="flex h-full w-full flex-row items-stretch justify-between gap-10">

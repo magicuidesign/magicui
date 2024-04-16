@@ -1,6 +1,8 @@
 "use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import { cn, fetcher } from "@/lib/utils";
+import { ChevronRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import useSWR from "swr";
@@ -12,13 +14,15 @@ const LoggedInAndPaid = ({ className }: { className?: string }) => {
       className={cn(
         buttonVariants({
           size: "lg",
+          variant: "ghost",
         }),
         "gap-2 whitespace-pre md:flex",
-        "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
-        "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+        "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
+        // "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
       )}
     >
       Get Started
+      <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
     </Link>
   );
 };
@@ -30,13 +34,15 @@ const UnPaid = ({ className }: { className?: string }) => {
       className={cn(
         buttonVariants({
           size: "lg",
+          variant: "secondary",
         }),
         "gap-2 whitespace-pre md:flex",
-        "group relative w-full gap-1 overflow-hidden rounded-sm text-sm font-semibold tracking-tighter",
-        "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+        "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
+        // "transform-gpu rounded-sm ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
       )}
     >
-      Get Lifetime Access
+      Get Magic UI Pro
+      <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
     </Link>
   );
 };

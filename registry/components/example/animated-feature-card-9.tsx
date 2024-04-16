@@ -142,7 +142,7 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
 
 export default function FeatureCard9() {
   return (
-    <div className="relative flex h-full max-h-[500px] min-h-[500px] w-full transform-gpu flex-col justify-between overflow-hidden rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-w-[500px]">
+    <div className="relative flex h-full max-h-[500px] min-h-[500px] w-full max-w-[32rem] transform-gpu flex-col justify-between overflow-hidden rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]">
       <div className="flex items-center justify-center overflow-hidden">
         <AnimatedList>
           {notifications.map((item, idx) => (

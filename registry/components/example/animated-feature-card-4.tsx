@@ -89,15 +89,15 @@ export default function FeatureCard4() {
   };
 
   return (
-    <div className="relative h-full w-full transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px] md:max-w-[500px]">
+    <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] dark:[border:1px_solid_rgba(255,255,255,.1)] md:max-h-[500px]">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileHover="whileHover"
-        className="flex h-full w-full cursor-pointer flex-col items-start justify-between gap-y-5"
+        className="flex h-full w-full cursor-pointer flex-col items-start justify-between"
       >
-        <div className="flex h-full w-full items-center justify-center rounded-t-xl border-b border-neutral-200 bg-transparent p-10 dark:border-neutral-800 ">
-          <motion.div className="flex h-[310px] w-full items-center justify-between gap-x-4">
+        <div className="flex h-full w-full items-center justify-center rounded-t-xl bg-transparent p-10">
+          <motion.div className="flex h-[230px] w-full items-center justify-between gap-x-4">
             <motion.div
               variants={variant1}
               className="z-[3] flex h-fit w-full  flex-col items-center justify-between gap-x-2 gap-y-2 rounded-md border border-neutral-400/20 bg-white p-5 px-2.5 transition-all duration-100 ease-linear dark:border-neutral-800 dark:bg-neutral-900"
@@ -155,7 +155,7 @@ export default function FeatureCard4() {
           </motion.div>
         </div>
 
-        <div className="flex flex-col items-start gap-y-1 px-5 pb-4">
+        <div className="flex w-full flex-col items-start border-t border-neutral-200 p-4 dark:border-neutral-800">
           <h2 className="text-xl font-semibold">Social</h2>
           <p className="text-base font-normal text-neutral-500 dark:text-neutral-400">
             Write once, share with your friends

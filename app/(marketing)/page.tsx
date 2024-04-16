@@ -1,6 +1,5 @@
+import CTASection from "@/components/landing/cta-section";
 import Hero from "@/components/landing/hero";
-import Faq from "@/components/pricing/faq";
-import Pricing from "@/components/pricing/pricing";
 import Testimonials from "@/components/pricing/testimonials";
 
 export default async function Home() {
@@ -12,8 +11,9 @@ export default async function Home() {
       {/* <FeatureGrid /> */}
       {/* <FeatureSections /> */}
       {/* <ChangelogSection /> */}
-      <Pricing />
-      <Faq />
+      {/* <Pricing /> */}
+      {/* <Faq /> */}
+      <CTASection />
     </>
   );
 }
