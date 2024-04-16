@@ -291,7 +291,7 @@ export default function HeroClient({
 
             <BentoDemo />
 
-            <div className="mt-4 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-2">
+            <div className="mt-4 grid w-full grid-cols-1 place-items-center justify-center gap-4 lg:grid-cols-2">
               <AnimatedBeamMultipleInputDemo />
               <AnimatedListDemo />
               <RetroGridDemo />
