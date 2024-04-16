@@ -35,17 +35,19 @@ export default async function Hero() {
           </FadeIn>
         </div>
 
-        <div className="mx-auto my-8 inline-flex w-full items-center justify-center gap-2">
-          <Gift className="h-4 w-4 animate-bounce" />
-          <span>
-            <strong>
-              $50 off for the first {Math.ceil(payments / 100) * 100}
-            </strong>{" "}
-            customers (
-            {payments > 0 ? Math.ceil(payments / 100) * 100 - payments : 0}{" "}
-            left)
-          </span>
-        </div>
+        <FadeIn delay={0.3}>
+          <div className="mx-auto my-8 inline-flex w-full items-center justify-center gap-2">
+            <Gift className="h-4 w-4 animate-bounce" />
+            <span>
+              <strong>
+                $50 off for the first {Math.ceil(payments / 100) * 100}
+              </strong>{" "}
+              customers (
+              {payments > 0 ? Math.ceil(payments / 100) * 100 - payments : 0}{" "}
+              left)
+            </span>
+          </div>
+        </FadeIn>
 
         <MagicContainer className="mx-auto grid w-full max-w-screen-md justify-center gap-8 lg:grid-cols-1">
           {plans.map((item, idx) => (
