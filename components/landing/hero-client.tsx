@@ -177,7 +177,7 @@ export default function HeroClient({
                     )}
                   >
                     Browse Components
-                    <ChevronRight className="ml-1 size-12 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                    <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                   <BuyButton />
                 </div>
@@ -222,7 +222,7 @@ export default function HeroClient({
                   </div>
 
                   <div className="flex flex-col gap-x-2">
-                    <div className="flex flex-row items-center justify-start">
+                    <div className="mx-auto flex flex-row items-center justify-start">
                       <StarFilledIcon className="h-4 w-4 text-orange-300" />
                       <StarFilledIcon className="h-4 w-4 text-orange-300" />
                       <StarFilledIcon className="h-4 w-4 text-orange-300" />
@@ -266,7 +266,7 @@ export default function HeroClient({
                   },
                 },
               }}
-              className="absolute left-0 right-auto top-2 cursor-pointer lg:-top-20"
+              className="absolute -top-16 left-0 right-auto cursor-pointer lg:-top-20"
             >
               <span className="flex items-center">
                 <span className="mt-3 inline-block whitespace-nowrap rounded-full bg-neutral-800 px-2.5 py-1 text-[11px] font-semibold uppercase leading-5 tracking-wide text-white">
@@ -291,7 +291,7 @@ export default function HeroClient({
 
             <BentoDemo />
 
-            <div className="mt-4 grid w-full justify-center gap-4 lg:grid-cols-2">
+            <div className="mt-4 grid w-full grid-cols-1 justify-center gap-4 lg:grid-cols-2">
               <AnimatedBeamMultipleInputDemo />
               <AnimatedListDemo />
               <RetroGridDemo />

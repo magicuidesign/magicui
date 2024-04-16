@@ -21,7 +21,7 @@ export const plans = [
       "5+ full templates (coming soon)",
       "Dark mode support",
       "Lifetime access",
-      "Free lifetime updates",
+      "Lifetime updates",
       "Use on unlimited projects",
       "Single developer license",
     ],
