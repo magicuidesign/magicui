@@ -14,11 +14,11 @@ export function CrispChat() {
       autoload: false,
     });
 
-    if (!session?.user) {
-      Crisp.chat.show();
-    } else {
-      Crisp.chat.hide();
-    }
+    // if (!session?.user) {
+    Crisp.chat.show();
+    // } else {
+    //   Crisp.chat.hide();
+    // }
 
     if (session?.user?.email) {
       Crisp.user.setEmail(session.user.email);
