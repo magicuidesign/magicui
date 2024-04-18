@@ -10,6 +10,9 @@ export function CrispChat() {
   useEffect(() => {
     if (!process.env.NEXT_PUBLIC_CRISP_CHAT_ID) return;
 
+    console.log("Setting up crisp");
+    console.log(process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
+
     Crisp.configure(process.env.NEXT_PUBLIC_CRISP_CHAT_ID, {
       autoload: false,
     });
@@ -24,6 +27,8 @@ export function CrispChat() {
       Crisp.user.setEmail(session.user.email);
       Crisp.user.setNickname(session.user.name || session.user.email);
     }
+
+    console.log("Crisp should be setup");
   }, [session]);
 
   return null;
