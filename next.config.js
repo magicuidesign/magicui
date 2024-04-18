@@ -21,7 +21,7 @@ const nextConfig = {
     return [
       {
         source: "/discord",
-        destination: "https://discord.gg/87p2vpsat5",
+        destination: "https://discord.gg/X4BBMBjHNf",
         permanent: true,
       },
       {

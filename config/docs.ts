@@ -31,7 +31,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Discord",
-      href: "https://discord.gg/WfefJAwQhF",
+      href: "https://discord.gg/X4BBMBjHNf",
       external: true,
     },
   ],
