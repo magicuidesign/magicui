@@ -34,7 +34,7 @@ const UnPaid = ({ className }: { className?: string }) => {
       className={cn(
         buttonVariants({
           size: "lg",
-          variant: "secondary",
+          variant: "outline",
         }),
         "gap-2 whitespace-pre md:flex",
         "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
