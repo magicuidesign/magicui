@@ -13,7 +13,7 @@ import {
   Rss,
   Shield,
 } from "lucide-react";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const tiles = [
   {
@@ -71,11 +71,6 @@ const shuffleArray = (array: any[]) => {
   return array;
 };
 
-const randomTiles1 = shuffleArray([...tiles]);
-const randomTiles2 = shuffleArray([...tiles]);
-const randomTiles3 = shuffleArray([...tiles]);
-const randomTiles4 = shuffleArray([...tiles]);
-
 const Card = (card: { icon: JSX.Element; bg: JSX.Element }) => {
   const id = useId();
   const controls = useAnimation();
@@ -112,6 +107,21 @@ const Card = (card: { icon: JSX.Element; bg: JSX.Element }) => {
 };
 
 export default function CallToAction() {
+  const [randomTiles1, setRandomTiles1] = useState<typeof tiles>([]);
+  const [randomTiles2, setRandomTiles2] = useState<typeof tiles>([]);
+  const [randomTiles3, setRandomTiles3] = useState<typeof tiles>([]);
+  const [randomTiles4, setRandomTiles4] = useState<typeof tiles>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Ensures this runs client-side
+      setRandomTiles1(shuffleArray([...tiles]));
+      setRandomTiles2(shuffleArray([...tiles]));
+      setRandomTiles3(shuffleArray([...tiles]));
+      setRandomTiles4(shuffleArray([...tiles]));
+    }
+  }, []);
+
   return (
     <section id="cta">
       <div className="py-14">

@@ -127,6 +127,7 @@
     "unist-util-visit": "^4.1.2"
   },
   "engines": {
-    "node": ">=20.6.1"
+    "node": ">=20.6.1",
+    "pnpm": ">=9"
   }
 }
