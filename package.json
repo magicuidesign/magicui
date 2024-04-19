@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
-    "prebuild": "npm run prisma generate",
+    "prebuild": "npx prisma generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
