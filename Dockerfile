@@ -25,7 +25,7 @@ COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
     if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
     elif [ -f package-lock.json ]; then npm ci; \
-    elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && NODE_ENV=development pnpm i --frozen-lockfile; \
+    elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && corepack use pnpm@9 && NODE_ENV=development pnpm i --frozen-lockfile; \
     else echo "Lockfile not found." && exit 1; \
     fi
 
