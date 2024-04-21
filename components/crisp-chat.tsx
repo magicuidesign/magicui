@@ -7,6 +7,8 @@ import { useEffect } from "react";
 export function CrispChat() {
   const { data: session } = useSession();
 
+  console.log("NEXT PUB", process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
+
   useEffect(() => {
     if (!process.env.NEXT_PUBLIC_CRISP_CHAT_ID) return;
 
