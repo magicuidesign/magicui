@@ -35,7 +35,7 @@ export default function RootLayout({
       >
         <PHProvider>
           <SessionProvider>
-            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
               <TooltipProvider>
                 {children}
                 <PosthogIdentify />
