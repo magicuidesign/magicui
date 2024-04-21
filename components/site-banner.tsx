@@ -5,7 +5,8 @@ export function SiteBanner() {
     <div className="relative top-0 bg-background py-3 md:py-0">
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
-          href="/discord"
+          href="https://discord.gg/X4BBMBjHNf"
+          target="_blank"
           className="text-center text-sm leading-loose text-muted-foreground"
         >
           ✨
