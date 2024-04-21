@@ -7,13 +7,13 @@ import { useEffect } from "react";
 export function CrispChat() {
   const { data: session } = useSession();
 
-  console.log("NEXT PUB", process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
+  console.error("NEXT PUB", process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
 
   useEffect(() => {
     if (!process.env.NEXT_PUBLIC_CRISP_CHAT_ID) return;
 
-    console.log("Setting up crisp");
-    console.log(process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
+    console.error("Setting up crisp");
+    console.error(process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
 
     Crisp.configure(process.env.NEXT_PUBLIC_CRISP_CHAT_ID, {
       autoload: false,
@@ -30,7 +30,7 @@ export function CrispChat() {
       Crisp.user.setNickname(session.user.name || session.user.email);
     }
 
-    console.log("Crisp should be setup");
+    console.error("Crisp should be setup");
   }, [session]);
 
   return null;
