@@ -7,15 +7,8 @@ import { useEffect } from "react";
 export function CrispChat() {
   const { data: session } = useSession();
 
-  console.error("NEXT PUB", process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
-
   useEffect(() => {
-    if (!process.env.NEXT_PUBLIC_CRISP_CHAT_ID) return;
-
-    console.error("Setting up crisp");
-    console.error(process.env.NEXT_PUBLIC_CRISP_CHAT_ID);
-
-    Crisp.configure(process.env.NEXT_PUBLIC_CRISP_CHAT_ID, {
+    Crisp.configure("5a280d36-3e81-4bbe-89a7-787f6b34b481", {
       autoload: false,
     });
 
