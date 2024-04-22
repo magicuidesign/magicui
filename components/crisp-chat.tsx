@@ -22,8 +22,6 @@ export function CrispChat() {
       Crisp.user.setEmail(session.user.email);
       Crisp.user.setNickname(session.user.name || session.user.email);
     }
-
-    console.error("Crisp should be setup");
   }, [session]);
 
   return null;
