@@ -9,10 +9,20 @@ export default function OrbitingCirclesDemo() {
       </span>
 
       {/* Inner Circles */}
-      <OrbitingCircles className="h-[40px] w-[40px]">
+      <OrbitingCircles
+        className="h-[40px] w-[40px]"
+        duration={20}
+        delay={20}
+        radius={80}
+      >
         <BarChartIcon className="text-black dark:text-white" />
       </OrbitingCircles>
-      <OrbitingCircles className="h-[40px] w-[40px]" duration={20} delay={20}>
+      <OrbitingCircles
+        className="h-[40px] w-[40px]"
+        duration={20}
+        delay={10}
+        radius={80}
+      >
         <LinkIcon className="text-black dark:text-white" />
       </OrbitingCircles>
 
@@ -20,7 +30,7 @@ export default function OrbitingCirclesDemo() {
       <OrbitingCircles
         className="h-[50px] w-[50px]"
         reverse
-        radius={140}
+        radius={160}
         duration={20}
       >
         hello
@@ -28,7 +38,7 @@ export default function OrbitingCirclesDemo() {
       <OrbitingCircles
         className="h-[50px] w-[50px]"
         reverse
-        radius={140}
+        radius={160}
         duration={20}
         delay={20}
       >
