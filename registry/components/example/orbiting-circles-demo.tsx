@@ -10,7 +10,7 @@ export default function OrbitingCirclesDemo() {
 
       {/* Inner Circles */}
       <OrbitingCircles
-        className="h-[40px] w-[40px]"
+        className="h-[30px] w-[30px]"
         duration={20}
         delay={20}
         radius={80}
@@ -18,7 +18,7 @@ export default function OrbitingCirclesDemo() {
         <BarChartIcon className="text-black dark:text-white" />
       </OrbitingCircles>
       <OrbitingCircles
-        className="h-[40px] w-[40px]"
+        className="h-[30px] w-[30px]"
         duration={20}
         delay={10}
         radius={80}
