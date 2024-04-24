@@ -169,6 +169,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/globe`,
           items: [],
         },
+        {
+          title: "Orbiting Circles",
+          href: `/docs/components/orbiting-circles`,
+          items: [],
+          label: "New",
+        },
       ],
     },
 

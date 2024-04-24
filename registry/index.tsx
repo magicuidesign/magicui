@@ -127,6 +127,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/animated-gradient-text.tsx"],
   },
+  "orbiting-circles": {
+    name: "orbiting-circles",
+    type: "components:ui",
+    files: ["registry/components/magicui/orbiting-circles.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -524,6 +529,14 @@ const example: Registry = {
     files: ["registry/components/example/animated-gradient-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/animated-gradient-text-demo"),
+    ),
+  },
+  "orbiting-circles-demo": {
+    name: "orbiting-circles-demo",
+    type: "components:example",
+    files: ["registry/components/example/orbiting-circles-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/orbiting-circles-demo"),
     ),
   },
 };

@@ -1,0 +1,58 @@
+---
+title: Orbiting Circles
+date: 2024-04-24
+description: A collection of circles which move in orbit along a circular path
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/orbiting-circles.mp4
+---
+
+<ComponentPreview name="orbiting-circles-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        orbit: "orbit calc(var(--duration)*1s) linear infinite",
+      },
+      keyframes: {
+        orbit: {
+            "0%": {
+                transform: "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
+            },
+            "100%": {
+                transform: "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
+            },
+        },
+      },
+    },
+  },
+};
+```
+
+```text
+components/magicui/orbiting-circles.tsx
+```
+
+<ComponentSource name="orbiting-circles" />
+
+</Steps>
+
+## Props
+
+| Prop        | Type            | Description                                  | Default |
+| ----------- | --------------- | -------------------------------------------- | ------- |
+| className   | string          | The class name for the component             | ""      |
+| children    | React.ReactNode | The children nodes of the component          | null    |
+| reverse     | boolean         | If true, the animation plays in reverse      | false   |
+| duration    | number          | The duration of the animation in seconds     | 20      |
+| delay       | number          | The delay before the animation starts in seconds | 10   |
+| radius      | number          | The radius of the orbit in pixels            | 50      |
