@@ -10,7 +10,7 @@ export default function FadeIn({
   delay,
   viewTriggerOffset,
 }: {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
   noVertical?: boolean;
   delay?: number;
