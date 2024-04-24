@@ -17,7 +17,6 @@ import BentoDemo from "@/registry/components/example/bento-demo";
 import GlobeDemo from "@/registry/components/example/globe-demo";
 import RetroGridDemo from "@/registry/components/example/retro-grid-demo";
 import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
-import FadeIn from "@/registry/components/magicui/fade-in";
 import NumberTicker from "@/registry/components/magicui/number-ticker";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import { motion, useInView } from "framer-motion";
@@ -55,7 +54,18 @@ export default function HeroClient({
         <div className="container z-10 flex flex-col">
           <div className="mt-20 grid grid-cols-1">
             <div className="flex flex-col items-center gap-6 pb-8 text-center">
-              <FadeIn>
+              <motion.div
+                ref={fadeInRef}
+                animate={fadeInInView ? "animate" : "initial"}
+                variants={fadeUpVariants}
+                initial={false}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                  type: "spring",
+                }}
+              >
                 <Link href={post.slug}>
                   <AnimatedGradientText>
                     <div
@@ -76,7 +86,7 @@ export default function HeroClient({
                     <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
                   </AnimatedGradientText>
                 </Link>
-              </FadeIn>
+              </motion.div>
               {/* <motion.h1
                 ref={fadeInRef}
                 className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-8xl"
@@ -196,7 +206,18 @@ export default function HeroClient({
                   left)
                 </span>
               </div> */}
-              <FadeIn delay={0.3}>
+              <motion.div
+                ref={fadeInRef}
+                animate={fadeInInView ? "animate" : "initial"}
+                variants={fadeUpVariants}
+                initial={false}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.3,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                  type: "spring",
+                }}
+              >
                 <div className="container flex flex-col items-center justify-center gap-2 sm:flex-row">
                   <div className="flex flex-row items-center justify-center -space-x-4">
                     <img
@@ -241,7 +262,7 @@ export default function HeroClient({
                     </span>
                   </div>
                 </div>
-              </FadeIn>
+              </motion.div>
             </div>
           </div>
 
