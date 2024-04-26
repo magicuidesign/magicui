@@ -175,6 +175,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Dock",
+          href: `/docs/components/dock`,
+          items: [],
+          label: "New",
+        },
       ],
     },
 

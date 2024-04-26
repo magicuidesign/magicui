@@ -132,6 +132,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/orbiting-circles.tsx"],
   },
+  dock: {
+    name: "dock",
+    type: "components:ui",
+    files: ["registry/components/magicui/dock.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -537,6 +542,14 @@ const example: Registry = {
     files: ["registry/components/example/orbiting-circles-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/orbiting-circles-demo"),
+    ),
+  },
+  "dock-demo": {
+    name: "dock-demo",
+    type: "components:example",
+    files: ["registry/components/example/dock-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/dock-demo"),
     ),
   },
 };

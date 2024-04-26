@@ -1,0 +1,52 @@
+---
+title: Dock
+date: 2024-04-25
+description: An implementation of the MacOS dock using react + tailwindcss + framer motion
+author: dillionverma
+published: true
+video: https://cdn.magicui.design/dock.mp4
+---
+
+<ComponentPreview name="dock-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/dock.tsx
+```
+
+<ComponentSource name="dock" />
+
+</Steps>
+
+## Props
+
+### Dock
+
+| Prop            | Type    | Description                          | Default                  |
+|-----------------|---------|--------------------------------------|--------------------------|
+| className       | string  | Custom CSS class for styling         | -                        |
+| children        | ReactNode | Children elements                   | -                        |
+| magnification   | number  | Level of icon magnification          | 60  |
+| distance        | number  | Distance from cursor to magnify icon | 140       |
+
+### DockIcon
+
+| Prop            | Type            | Description                          | Default                  |
+|-----------------|-----------------|--------------------------------------|--------------------------|
+| size            | number          | Size of the icon                     | -                        |
+| magnification   | number          | Level of icon magnification          | 60  |
+| distance        | number          | Distance from cursor to magnify icon | 140       |
+| mouseX          | any             | Mouse X position for magnification   | -                        |
+| className       | string          | Custom CSS class for styling         | -                        |
+| children        | React.ReactNode | Children elements                    | -                        |
+| props           | PropsWithChildren | Additional props                   | -                        |
+
+## Credits
+
+Credits to [midday.ai](https://midday.ai) for this fantastic component
+Credits to [Ritesh Bucha](https://twitter.com/bucha_ritesh) for finding and implementing this
