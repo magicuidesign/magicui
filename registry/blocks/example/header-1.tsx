@@ -141,11 +141,9 @@ export default function StickyHeader() {
         </motion.div>
       </div>
 
-      {/* <div className="flex items-center gap-x-5"> */}
       <a className="relative hidden w-fit items-center justify-center gap-x-1.5 overflow-hidden rounded-full bg-neutral-900 px-3 py-1.5 text-white outline-none dark:bg-white dark:text-black lg:inline-flex">
         Get Started
       </a>
-      {/* </div> */}
     </header>
   );
 }
