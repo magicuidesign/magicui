@@ -4,7 +4,7 @@ import { Crisp } from "crisp-sdk-web";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-export function CrispChat() {
+export function CrispChat({ isNewVisitor }: { isNewVisitor: boolean }) {
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -21,6 +21,17 @@ export function CrispChat() {
     if (session?.user?.email) {
       Crisp.user.setEmail(session.user.email);
       Crisp.user.setNickname(session.user.name || session.user.email);
+    }
+
+    if (isNewVisitor) {
+      const timeoutId1 = setTimeout(() => {
+        Crisp.message.show("text", "hi there!");
+      }, 1000);
+
+      // Cleanup function to clear timeouts
+      return () => {
+        clearTimeout(timeoutId1);
+      };
     }
   }, [session]);
 
