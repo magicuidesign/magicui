@@ -40,10 +40,12 @@ export default async function Hero() {
             <Gift className="h-4 w-4 animate-bounce" />
             <span>
               <strong>
-                $50 off for the first {Math.ceil(payments / 100) * 100}
+                $50 off for the first {Math.ceil((payments + 1) / 100) * 100}
               </strong>{" "}
               customers (
-              {payments > 0 ? Math.ceil(payments / 100) * 100 - payments : 0}{" "}
+              {payments > 0
+                ? Math.ceil((payments + 1) / 100) * 100 - payments
+                : 0}{" "}
               left)
             </span>
           </div>
