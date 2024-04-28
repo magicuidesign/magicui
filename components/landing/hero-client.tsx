@@ -50,7 +50,6 @@ export default function HeroClient({
   return (
     <section id="hero">
       <div className="relative h-full overflow-hidden py-14">
-        {/* <RetroGrid className="z-0" /> */}
         <div className="container z-10 flex flex-col">
           <div className="mt-20 grid grid-cols-1">
             <div className="flex flex-col items-center gap-6 pb-8 text-center">
@@ -103,7 +102,6 @@ export default function HeroClient({
                 Create Magical <br /> Landing Pages <br />
               </motion.h1> */}
               <motion.h1
-                ref={fadeInRef}
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
                 initial={false}
@@ -207,7 +205,6 @@ export default function HeroClient({
                 </span>
               </div> */}
               <motion.div
-                ref={fadeInRef}
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
                 initial={false}
