@@ -62,13 +62,13 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Templates",
+      title: "Templates (PRO)",
       items: [
         {
           title: "Startup",
           href: `/docs/templates/startup`,
           items: [],
-          label: "New",
+          label: "",
         },
         // {
         //   title: "Dark",
@@ -90,7 +90,7 @@ export const docsConfig: DocsConfig = {
           title: "Hero",
           href: `/docs/sections/hero`,
           items: [],
-          label: "New",
+          label: "",
         },
         {
           title: "Social Proof Press",
@@ -112,6 +112,12 @@ export const docsConfig: DocsConfig = {
         //   href: `/docs/sections/features`,
         //   items: [],
         // },
+        {
+          title: "Feature Cards",
+          href: `/docs/components/feature-cards`,
+          items: [],
+          label: "10+ New",
+        },
         {
           title: "Call To Action",
           href: `/docs/sections/call-to-action`,
@@ -138,12 +144,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Components",
       items: [
-        {
-          title: "Feature Cards (PRO)",
-          href: `/docs/components/feature-cards`,
-          items: [],
-          label: "10+ New",
-        },
         {
           title: "Bento Grid",
           href: `/docs/components/bento-grid`,
@@ -173,13 +173,13 @@ export const docsConfig: DocsConfig = {
           title: "Orbiting Circles",
           href: `/docs/components/orbiting-circles`,
           items: [],
-          label: "New",
+          label: "",
         },
         {
           title: "Dock",
           href: `/docs/components/dock`,
           items: [],
-          label: "New",
+          label: "",
         },
       ],
     },
@@ -236,13 +236,13 @@ export const docsConfig: DocsConfig = {
           title: "Animated Gradient Text",
           href: `/docs/components/animated-gradient-text`,
           items: [],
-          label: "New",
+          label: "",
         },
         {
           title: "Text Reveal",
           href: `/docs/components/text-reveal`,
           items: [],
-          label: "New",
+          label: "",
         },
       ],
     },

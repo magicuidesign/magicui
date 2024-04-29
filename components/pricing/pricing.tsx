@@ -18,7 +18,7 @@ export default async function Hero() {
         <div className="mx-auto max-w-2xl text-center">
           <FadeIn>
             <h4 className="text-xl font-bold tracking-tight text-foreground">
-              Magic UI
+              Magic UI PRO
             </h4>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -40,7 +40,7 @@ export default async function Hero() {
             <Gift className="h-4 w-4 animate-bounce" />
             <span>
               <strong>
-                $50 off for the first {Math.ceil((payments + 1) / 100) * 100}
+                $100 off for the first {Math.ceil((payments + 1) / 100) * 100}
               </strong>{" "}
               customers (
               {payments > 0
