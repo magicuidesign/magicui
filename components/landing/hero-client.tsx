@@ -2,6 +2,7 @@
 
 import { Doc } from "@/.contentlayer/generated";
 import BuyButton from "@/components/landing/buy-button";
+import TechStack from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -14,7 +15,9 @@ import FeatureCard6 from "@/registry/components/example/animated-feature-card-6"
 import FeatureCard7 from "@/registry/components/example/animated-feature-card-7";
 import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
 import BentoDemo from "@/registry/components/example/bento-demo";
+import DockDemo from "@/registry/components/example/dock-demo";
 import GlobeDemo from "@/registry/components/example/globe-demo";
+import OrbitingCirclesDemo from "@/registry/components/example/orbiting-circles-demo";
 import RetroGridDemo from "@/registry/components/example/retro-grid-demo";
 import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
 import NumberTicker from "@/registry/components/magicui/number-ticker";
@@ -136,30 +139,6 @@ export default function HeroClient({
                 convert your visitors into customers.
               </motion.p>
 
-              {/* <motion.div
-                animate={fadeInInView ? "animate" : "initial"}
-                variants={fadeUpVariants}
-                initial={false}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.2,
-                  ease: [0.21, 0.47, 0.32, 0.98],
-                  type: "spring",
-                }}
-              >
-                <TechStack
-                  className="text-foreground"
-                  technologies={[
-                    // "nextjs",
-                    "react",
-                    "typescript",
-                    "tailwindcss",
-                    "framermotion",
-                    // "shadcn",
-                  ]}
-                />
-              </motion.div> */}
-
               <motion.div
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
@@ -263,6 +242,31 @@ export default function HeroClient({
             </div>
           </div>
 
+          <motion.div
+            className="relative mx-auto flex w-full max-w-[1000px] items-center justify-center"
+            animate={fadeInInView ? "animate" : "initial"}
+            variants={fadeUpVariants}
+            initial={false}
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+              ease: [0.21, 0.47, 0.32, 0.98],
+              type: "spring",
+            }}
+          >
+            <TechStack
+              className="mx-auto text-foreground"
+              technologies={[
+                // "nextjs",
+                "react",
+                "typescript",
+                "tailwindcss",
+                "framermotion",
+                // "shadcn",
+              ]}
+            />
+          </motion.div>
+
           <div className="container relative mx-auto mt-32 w-full max-w-[1000px]">
             <motion.span
               animate={["initial"]}
@@ -314,6 +318,8 @@ export default function HeroClient({
               <AnimatedListDemo />
               <RetroGridDemo />
               <GlobeDemo />
+              <OrbitingCirclesDemo />
+              <DockDemo />
               <FeatureCard1 />
               <FeatureCard2 />
               <FeatureCard7 />
