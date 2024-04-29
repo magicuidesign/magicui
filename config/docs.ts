@@ -68,7 +68,7 @@ export const docsConfig: DocsConfig = {
           title: "Startup",
           href: `/docs/templates/startup`,
           items: [],
-          label: "",
+          label: "New",
         },
         // {
         //   title: "Dark",
