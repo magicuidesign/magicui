@@ -12,20 +12,17 @@ export function CrispChat({ isNewVisitor }: { isNewVisitor: boolean }) {
       autoload: false,
     });
 
-    // if (!session?.user) {
     Crisp.chat.show();
-    // } else {
-    //   Crisp.chat.hide();
-    // }
 
     if (session?.user?.email) {
       Crisp.user.setEmail(session.user.email);
       Crisp.user.setNickname(session.user.name || session.user.email);
     }
 
-    if (isNewVisitor) {
+    if (!localStorage.getItem("crispMessageShown")) {
       const timeoutId1 = setTimeout(() => {
         Crisp.message.show("text", "hi there! can i help with anything?");
+        localStorage.setItem("crispMessageShown", "true");
       }, 1000);
 
       // Cleanup function to clear timeouts
@@ -33,7 +30,7 @@ export function CrispChat({ isNewVisitor }: { isNewVisitor: boolean }) {
         clearTimeout(timeoutId1);
       };
     }
-  }, [session]);
+  }, [session, isNewVisitor]);
 
   return null;
 }
