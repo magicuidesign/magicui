@@ -25,7 +25,7 @@ export function CrispChat({ isNewVisitor }: { isNewVisitor: boolean }) {
 
     if (isNewVisitor) {
       const timeoutId1 = setTimeout(() => {
-        Crisp.message.show("text", "hi there!");
+        Crisp.message.show("text", "hi there! can i help with anything?");
       }, 1000);
 
       // Cleanup function to clear timeouts
