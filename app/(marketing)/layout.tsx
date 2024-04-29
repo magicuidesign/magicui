@@ -12,7 +12,6 @@ export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
   const user = await getCurrentUser();
-
   const cookieStore = cookies();
   const isNewVisitor =
     cookieStore.get("__Host-next-auth.csrf-token") === undefined;
