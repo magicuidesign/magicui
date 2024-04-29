@@ -15,10 +15,10 @@ export const docsConfig: DocsConfig = {
     //   title: "Blocks",
     //   href: "/blocks",
     // },
-    // {
-    //   title: "Pricing",
-    //   href: "/pricing",
-    // },
+    {
+      title: "Pricing",
+      href: "/pricing",
+    },
     // {
     //   title: "Submit Feedback",
     //   href: "https://magicui.featurebase.app/",
