@@ -1,4 +1,3 @@
-import { env } from "@/env.mjs";
 import { User2Icon } from "lucide-react";
 
 export const plans = [
@@ -10,10 +9,10 @@ export const plans = [
     desc: "Beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project.",
     discountPrice: 69,
     isDiscounted: true,
-    price: 79,
+    price: 129,
     isMostPop: true,
-    banner: "$10 off",
-    href: env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK,
+    banner: "$60 off",
+    href: "https://buy.stripe.com/14k9DLgEcg2i6S45kq?prefilled_promo_code=SPRINGSALE",
     featureHeader: "What's included:",
     features: [
       "20+ building blocks",
