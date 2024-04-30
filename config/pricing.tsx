@@ -7,11 +7,11 @@ export const plans = [
     name: "Magic UI PRO",
     sub: "For individual developers and freelancers.",
     desc: "Beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project.",
-    discountPrice: 69,
+    discountPrice: 29,
     isDiscounted: true,
     price: 129,
     isMostPop: true,
-    banner: "$60 off",
+    banner: "$100 off",
     href: "https://buy.stripe.com/14k9DLgEcg2i6S45kq?prefilled_promo_code=SPRINGSALE",
     featureHeader: "What's included:",
     features: [

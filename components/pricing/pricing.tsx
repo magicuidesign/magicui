@@ -39,7 +39,7 @@ export default async function Hero() {
           <div className="mx-auto my-8 inline-flex w-full items-center justify-center gap-2">
             <Gift className="h-4 w-4 animate-bounce" />
             <span>
-              <strong>$60 off for the next</strong>{" "}
+              <strong>$100 off for the next</strong>{" "}
               {payments > 0
                 ? Math.ceil((payments + 1) / 100) * 100 - payments
                 : 0}{" "}
