@@ -116,8 +116,9 @@ export default function HeroClient({
                 }}
                 className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-7xl"
               >
-                React components to build
-                <br className="hidden md:block" /> beautiful landing pages.
+                UI library for Design Engineers
+                {/* React components to build
+                <br className="hidden md:block" /> beautiful landing pages. */}
               </motion.h1>
 
               <motion.p
@@ -132,8 +133,10 @@ export default function HeroClient({
                   type: "spring",
                 }}
               >
-                50+ open-source animated components built with React, Tailwind
-                CSS, and Framer Motion.
+                50+ open-source animated components built with{" "}
+                <strong>React</strong>, <strong>Typescript</strong>,{" "}
+                <strong>Tailwind CSS</strong>, and{" "}
+                <strong>Framer Motion</strong>.
                 <br />
                 Save thousands of hours, create a beautiful landing page, and
                 convert your visitors into customers.
