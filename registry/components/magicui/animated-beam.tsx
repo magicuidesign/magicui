@@ -152,6 +152,12 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
           className="transform-gpu"
           id={id}
           gradientUnits={"userSpaceOnUse"}
+          initial={{
+            x1: "0%",
+            x2: "0%",
+            y1: "0%",
+            y2: "0%",
+          }}
           animate={{
             x1: gradientCoordinates.x1,
             x2: gradientCoordinates.x2,
