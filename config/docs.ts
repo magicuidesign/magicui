@@ -70,6 +70,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Portfolio",
+          href: `/docs/templates/portfolio`,
+          items: [],
+          label: "New",
+        },
         // {
         //   title: "Dark",
         //   href: `/docs/templates/dark`,
