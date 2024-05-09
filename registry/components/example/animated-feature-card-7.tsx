@@ -11,7 +11,7 @@ import {
   Rss,
   Shield,
 } from "lucide-react";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const tiles = [
   {
@@ -69,11 +69,6 @@ const shuffleArray = (array: any[]) => {
   return array;
 };
 
-const randomTiles1 = shuffleArray([...tiles]);
-const randomTiles2 = shuffleArray([...tiles]);
-const randomTiles3 = shuffleArray([...tiles]);
-const randomTiles4 = shuffleArray([...tiles]);
-
 const Card = (card: { icon: JSX.Element; bg: JSX.Element }) => {
   const id = useId();
   const controls = useAnimation();
@@ -118,6 +113,10 @@ export default function FeatureCard7() {
       },
     },
   };
+  const [randomTiles1] = useState(() => shuffleArray([...tiles]));
+  const [randomTiles2] = useState(() => shuffleArray([...tiles]));
+  const [randomTiles3] = useState(() => shuffleArray([...tiles]));
+  const [randomTiles4] = useState(() => shuffleArray([...tiles]));
 
   return (
     <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
