@@ -1,15 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Magic UI
 
-## Getting Started
+Animated Components that you can copy and paste into your apps. Free. Open Source.
 
-First, run the development server:
+<img alt="Magic UI - UI Library for Design Engineers" src="https://cdn.magicui.design/bento-grid.gif" width="100%">
+
+## Documentation
+
+Visit https://magicui.design/docs to view the documentation.
+
+## Contributing
 
 ```bash
+git clone https://github.com/magicuidesign/magicui.git
+cd magicui
+pnpm i
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## License
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Licensed under the [MIT license](https://github.com/magicuidesign/magicui/blob/main/LICENSE.md).
