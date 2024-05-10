@@ -15,7 +15,7 @@ export const plans = [
     href: "https://buy.stripe.com/14k9DLgEcg2i6S45kq",
     featureHeader: "What's included:",
     features: [
-      "20+ building blocks",
+      "50+ building blocks",
       "2 templates (more coming soon)",
       "Dark mode support",
       "Lifetime access",
