@@ -12,7 +12,7 @@ export const plans = [
     price: 129,
     isMostPop: true,
     banner: "$80 off",
-    href: "https://buy.stripe.com/14k9DLgEcg2i6S45kq",
+    href: "https://buy.stripe.com/14k9DLgEcg2i6S45kq?prefilled_promo_code=SPRINGSALE",
     featureHeader: "What's included:",
     features: [
       "50+ building blocks",
