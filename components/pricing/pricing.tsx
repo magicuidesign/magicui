@@ -29,7 +29,7 @@ export default async function Hero() {
           <FadeIn delay={0.2}>
             <p className="mt-6 text-xl leading-8 text-foreground/80">
               Get <strong>lifetime access</strong> to all components and
-              templates available today , plus any new ones we add in the future
+              templates available today, plus any new ones we add in the future
               for a simple one-time price.
             </p>
           </FadeIn>

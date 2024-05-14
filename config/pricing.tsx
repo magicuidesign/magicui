@@ -15,8 +15,8 @@ export const plans = [
     href: "https://buy.stripe.com/14k9DLgEcg2i6S45kq?prefilled_promo_code=SPRINGSALE",
     featureHeader: "What's included:",
     features: [
-      "50+ building blocks",
-      "2 templates (more coming soon)",
+      "50+ building blocks (300 expected)",
+      "2 templates (5 expected)",
       "Dark mode support",
       "Lifetime access",
       "Lifetime updates",
