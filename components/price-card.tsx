@@ -91,13 +91,13 @@ export const PriceCard = ({
           )}
         </div>
 
-        <Link
+        {/* <Link
           className="text-center text-xs"
           href="mailto:support@magicui.design?subject=Need%20a%20discount"
         >
           Can't afford it? Are you a student? <br /> Need a geographic discount?
           Please ask us <span className="underline">here.</span>
-        </Link>
+        </Link> */}
 
         {/* <Meteors /> */}
         {/* <div className="absolute inset-[1px] rounded-2xl bg-[radial-gradient(164.75%_100%_at_50%_0%,#334155_0%,#0F172A_48.73%)]" /> */}
