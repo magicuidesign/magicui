@@ -1,8 +1,4 @@
-import { BlockPreview } from "@/components/block-preview";
-import CommitList from "@/components/commit-list";
-import RepoDownload from "@/components/repo-download";
 import TechStack from "@/components/tech-stack";
-import TemplatePreview from "@/components/template-preview";
 import {
   Accordion,
   AccordionContent,
@@ -43,9 +39,6 @@ const components = {
   AccordionItem,
   AccordionTrigger,
   TechStack,
-  CommitList,
-  RepoDownload,
-  TemplatePreview,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -111,7 +104,6 @@ const components = {
     <TweetCard id={id} className="not-prose mx-auto" />
   ),
   ComponentPreview,
-  BlockPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
@@ -240,14 +232,6 @@ export function Mdx({ code }: MDXProps) {
       className={cn(
         "max-w-[120ch]",
         `leading-tighter prose prose-gray tracking-tighter dark:prose-invert`,
-        // `md:prose-lg lg:prose-xl`,
-
-        // no underline on links
-        // `prose-a:no-underline`,
-        // `prose-a:transition-colors prose-a:duration-200 prose-a:ease-out`,
-        // `dark:prose-a:text-gray-200 prose-a:underline-offset-4 dark:hover:prose-a:text-gray-700 prose-a:font-semibold hover:prose-a:text-gray-400`,
-        // `prose-pre:bg-gray-900 prose-pre:rounded-xl prose-pre:overflow-x-auto prose-pre:border prose-pre:px-0 `,
-
         `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter md:prose-pre:text-sm`,
       )}
     >

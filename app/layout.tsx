@@ -1,5 +1,4 @@
 import { Analytics } from "@/components/analytics";
-import { CrispChat } from "@/components/crisp-chat";
 import PosthogIdentify from "@/components/posthog-identify";
 import { PHProvider } from "@/components/posthog-provider";
 import SessionProvider from "@/components/session-provider";
@@ -11,7 +10,6 @@ import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/mdx.css";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
 
 export const metadata: Metadata = constructMetadata({
   title: "Magic UI",
@@ -25,10 +23,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = cookies();
-  const isNewVisitor =
-    cookieStore.get("__Host-next-auth.csrf-token") === undefined;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -44,10 +38,8 @@ export default function RootLayout({
               <TooltipProvider>
                 {children}
                 <PosthogIdentify />
-                <CrispChat isNewVisitor={isNewVisitor} />
                 <Toaster />
                 <Analytics />
-                {/* <TailwindIndicator /> */}
               </TooltipProvider>
             </ThemeProvider>
           </SessionProvider>

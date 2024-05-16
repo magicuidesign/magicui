@@ -1,18 +1,11 @@
 "use client";
 
 import { Doc } from "@/.contentlayer/generated";
-import BuyButton from "@/components/landing/buy-button";
 import TechStack from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import AnimatedBeamMultipleInputDemo from "@/registry/components/example/animated-beam-multiple-inputs";
-import FeatureCard1 from "@/registry/components/example/animated-feature-card-1";
-import FeatureCard2 from "@/registry/components/example/animated-feature-card-2";
-import FeatureCard3 from "@/registry/components/example/animated-feature-card-3";
-import FeatureCard4 from "@/registry/components/example/animated-feature-card-4";
-import FeatureCard6 from "@/registry/components/example/animated-feature-card-6";
-import FeatureCard7 from "@/registry/components/example/animated-feature-card-7";
 import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
 import BentoDemo from "@/registry/components/example/bento-demo";
 import DockDemo from "@/registry/components/example/dock-demo";
@@ -27,13 +20,7 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 
-export default function HeroClient({
-  payments,
-  post,
-}: {
-  payments: number;
-  post: Doc;
-}) {
+export default function HeroClient({ post }: { post: Doc }) {
   const fadeInRef = useRef(null);
   const fadeInInView = useInView(fadeInRef, {
     once: true,
@@ -89,21 +76,7 @@ export default function HeroClient({
                   </AnimatedGradientText>
                 </Link>
               </motion.div>
-              {/* <motion.h1
-                ref={fadeInRef}
-                className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-8xl"
-                animate={fadeInInView ? "animate" : "initial"}
-                variants={fadeUpVariants}
-                initial={false}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.1,
-                  ease: [0.21, 0.47, 0.32, 0.98],
-                  type: "spring",
-                }}
-              >
-                Create Magical <br /> Landing Pages <br />
-              </motion.h1> */}
+
               <motion.h1
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
@@ -169,23 +142,23 @@ export default function HeroClient({
                     Browse Components
                     <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
-                  <BuyButton />
+                  <Link
+                    href="/docs"
+                    className={cn(
+                      buttonVariants({
+                        size: "lg",
+                        variant: "ghost",
+                      }),
+                      "gap-2 whitespace-pre md:flex",
+                      "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
+                    )}
+                  >
+                    Get Started
+                    <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                  </Link>
                 </div>
               </motion.div>
 
-              {/* <div className="inline-flex items-center justify-center gap-2">
-                <Gift className="h-4 w-4 animate-bounce" />
-                <span>
-                  <strong>
-                    $40 off for the first {Math.ceil(payments / 100) * 100}
-                  </strong>{" "}
-                  customers (
-                  {payments > 0
-                    ? Math.ceil(payments / 100) * 100 - payments
-                    : 0}{" "}
-                  left)
-                </span>
-              </div> */}
               <motion.div
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
@@ -233,11 +206,11 @@ export default function HeroClient({
 
                     <span className="inline-block text-center text-xs font-medium leading-snug tracking-tighter">
                       <NumberTicker
-                        value={payments}
+                        value={500}
                         className="font-extrabold"
                         delay={0.2}
-                      />{" "}
-                      developers making beautiful landing pages
+                      />
+                      + developers making beautiful landing pages
                     </span>
                   </div>
                 </div>
@@ -323,57 +296,8 @@ export default function HeroClient({
               <GlobeDemo />
               <OrbitingCirclesDemo />
               <DockDemo />
-              <FeatureCard1 />
-              <FeatureCard2 />
-              <FeatureCard7 />
-              <FeatureCard3 />
-              <FeatureCard4 />
-              {/* <FeatureCard5 /> */}
-              <FeatureCard6 />
             </div>
           </div>
-
-          {/* <motion.div
-            animate={fadeInInView ? "animate" : "initial"}
-            variants={fadeUpVariants}
-            initial={false}
-            transition={{
-              duration: 1.4,
-              delay: 0.4,
-              ease: [0.21, 0.47, 0.32, 0.98],
-              type: "spring",
-            }}
-            className="relative mx-auto mt-24 h-full w-full max-w-[1200px] rounded-xl after:absolute after:inset-0 after:z-10 after:[background:linear-gradient(to_top,#fff_30%,transparent)] dark:after:[background:linear-gradient(to_top,#000000_10%,transparent)]"
-          >
-            <div
-              className={cn(
-                "absolute inset-0 bottom-1/2 h-full w-full transform-gpu [filter:blur(120px)]",
-
-                // light styles
-                "[background-image:linear-gradient(to_bottom,rgba(255,189,122,0.2),transparent_30%)]",
-
-                // dark styles
-                "dark:[background-image:linear-gradient(to_bottom,rgba(120,119,198,0.5),transparent_30%)]",
-              )}
-            />
-
-            <img
-              src="/dashboard-light.png"
-              className="relative block h-full w-full rounded-xl border dark:hidden"
-            />
-            <img
-              src="/dashboard-dark.png"
-              className="relative hidden h-full w-full rounded-xl border dark:block"
-            />
-            <video
-              autoPlay
-              loop
-              muted
-              src="demo.mp4"
-              className="h-auto w-full"
-            /> 
-            <BorderBeam size={150} />
-          </motion.div> */}
         </div>
       </div>
     </section>

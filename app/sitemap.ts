@@ -12,10 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${protocol}://${domain}`,
       lastModified: new Date(),
     },
-    {
-      url: `${protocol}://${domain}/pricing`,
-      lastModified: new Date(),
-    },
     ...allPages.map((post) => ({
       url: `${protocol}://${domain}/${post.slugAsParams}`,
       lastModified: new Date(),
