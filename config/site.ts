@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Beautifully designed landing page components built with React & Tailwind CSS.",
   links: {
-    twitter: "https://twitter.com/dillionverma",
+    twitter: "https://twitter.com/magicuidesign",
     discord: "https://discord.gg/87p2vpsat5",
   },
   keywords: [
