@@ -13,8 +13,6 @@ import GlobeDemo from "@/registry/components/example/globe-demo";
 import OrbitingCirclesDemo from "@/registry/components/example/orbiting-circles-demo";
 import RetroGridDemo from "@/registry/components/example/retro-grid-demo";
 import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
-import NumberTicker from "@/registry/components/magicui/number-ticker";
-import { StarFilledIcon } from "@radix-ui/react-icons";
 import { motion, useInView } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -106,13 +104,12 @@ export default function HeroClient({ post }: { post: Doc }) {
                   type: "spring",
                 }}
               >
-                50+ open-source animated components built with{" "}
+                20+ free and open-source animated components built with{" "}
                 <strong>React</strong>, <strong>Typescript</strong>,{" "}
                 <strong>Tailwind CSS</strong>, and{" "}
                 <strong>Framer Motion</strong>.
                 <br />
-                Save thousands of hours, create a beautiful landing page, and
-                convert your visitors into customers.
+                100% open-source, and customizable.
               </motion.p>
 
               <motion.div
@@ -159,7 +156,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                 </div>
               </motion.div>
 
-              <motion.div
+              {/* <motion.div
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
                 initial={false}
@@ -214,7 +211,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
 

@@ -85,7 +85,6 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
     {
       title: "Special Effects",
       items: [
@@ -158,7 +157,6 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
     {
       title: "Backgrounds",
       items: [
