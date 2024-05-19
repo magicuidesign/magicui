@@ -26,7 +26,7 @@ const nextConfig = {
       },
       {
         source: "/components",
-        destination: "/docs/components/bento-grid",
+        destination: "/docs/components/animated-beam",
         permanent: true,
       },
       {
@@ -36,7 +36,7 @@ const nextConfig = {
       },
       {
         source: "/docs/components",
-        destination: "/docs/components/bento-grid",
+        destination: "/docs/components/animated-beam",
         permanent: true,
       },
     ];
