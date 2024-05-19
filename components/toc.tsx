@@ -1,7 +1,7 @@
 "use client";
 
-import { useMounted } from "@/hooks/use-mounted";
 import { TableOfContents } from "@/lib/toc";
+import { useMounted } from "@/lib/use-mounted";
 import { cn } from "@/lib/utils";
 import { useEffect, useMemo, useState } from "react";
 
