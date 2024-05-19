@@ -11,19 +11,11 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       href: "/components",
     },
-    // {
-    //   title: "Blocks",
-    //   href: "/blocks",
-    // },
-    // {
-    //   title: "Pricing",
-    //   href: "/pricing",
-    // },
-    // {
-    //   title: "Submit Feedback",
-    //   href: "https://magicui.featurebase.app/",
-    //   external: true,
-    // },
+    {
+      title: "Magic UI PRO",
+      href: "https://pro.magicui.design",
+      external: true,
+    },
     {
       title: "Roadmap",
       href: "https://magicui.featurebase.app/roadmap",
@@ -47,102 +39,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Installation",
           href: "/docs/installation",
-          items: [],
-        },
-        // {
-        //   title: "Changelog",
-        //   href: "/docs/changelog",
-        //   items: [],
-        // },
-        // {
-        //   title: "Story",
-        //   href: "/docs/story",
-        //   items: [],
-        // },
-      ],
-    },
-    {
-      title: "Templates (PRO)",
-      items: [
-        {
-          title: "Startup",
-          href: `/docs/templates/startup`,
-          items: [],
-          label: "New",
-        },
-        {
-          title: "Portfolio",
-          href: `/docs/templates/portfolio`,
-          items: [],
-          label: "New",
-        },
-        // {
-        //   title: "Dark",
-        //   href: `/docs/templates/dark`,
-        //   items: [],
-        //   label: "Coming soon",
-        // },
-      ],
-    },
-    {
-      title: "Page Sections (PRO)",
-      items: [
-        {
-          title: "Header",
-          href: `/docs/sections/header`,
-          items: [],
-        },
-        {
-          title: "Hero",
-          href: `/docs/sections/hero`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Social Proof Press",
-          href: `/docs/sections/social-proof-press`,
-          items: [],
-        },
-        {
-          title: "Social Proof Companies",
-          href: `/docs/sections/social-proof-companies`,
-          items: [],
-        },
-        {
-          title: "Social Proof Testimonials",
-          href: `/docs/sections/social-proof-testimonials`,
-          items: [],
-        },
-        // {
-        //   title: "Features",
-        //   href: `/docs/sections/features`,
-        //   items: [],
-        // },
-        {
-          title: "Feature Cards",
-          href: `/docs/components/feature-cards`,
-          items: [],
-          label: "10+ New",
-        },
-        {
-          title: "Call To Action",
-          href: `/docs/sections/call-to-action`,
-          items: [],
-        },
-
-        {
-          title: "Pricing",
-          href: `/docs/sections/pricing`,
-          items: [],
-        },
-        {
-          title: "FAQ",
-          href: `/docs/sections/faq`,
-          items: [],
-        },
-        {
-          title: "Footer",
-          href: `/docs/sections/footer`,
           items: [],
         },
       ],
@@ -189,7 +85,6 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
     {
       title: "Special Effects",
       items: [
@@ -262,7 +157,6 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
     {
       title: "Backgrounds",
       items: [
@@ -298,28 +192,5 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
-    // {
-    //   title: "Components",
-    //   items: allDocs
-    //     .filter(
-    //       (post) =>
-    //         post.date &&
-    //         post.date <= new Date().toISOString() &&
-    //         post.published &&
-    //         post.slug.includes("components"),
-    //     )
-    //     .sort((a, b) => {
-    //       if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
-    //       if (!a.date) return 1; // Move a to the end if date is undefined
-    //       if (!b.date) return -1; // Move b to the end if date is undefined
-    //       return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
-    //     })
-    //     .map((component) => ({
-    //       title: component.title,
-    //       href: `/docs/${component.slugAsParams}`,
-    //       items: [],
-    //     })),
-    // },
   ],
 };

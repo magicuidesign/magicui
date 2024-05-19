@@ -1,49 +1,23 @@
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export function SiteBanner() {
   return (
-    <div className="relative top-0 bg-background py-3 md:py-0">
+    <div className="relative top-0 bg-indigo-600 py-3 text-white md:py-0">
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
-          href="https://discord.gg/X4BBMBjHNf"
+          href="https://pro.magicui.design"
           target="_blank"
-          className="text-center text-sm leading-loose text-muted-foreground"
+          className="group inline-flex items-center justify-center text-center text-sm leading-loose"
         >
           ✨
-          <span className="font-bold text-black dark:text-white">
+          <span className="font-bold">
             {" "}
-            Join our new discord community <strong>here</strong>
+            Introducing Magic UI Pro - 50+ blocks and templates to build
+            beautiful landing pages in minutes.
           </span>{" "}
-          ✨
-          {/* Get{" "}
-          <span className="font-bold text-black dark:text-white">
-            $30 off
-          </span>{" "}
-          with code{" "}
-          <span className="rounded-md bg-orange-400 p-1 font-bold text-black dark:text-white">
-            BLOCKPARTY
-          </span>{" "}
-          ✨ */}
+          <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
         </Link>
-        {/* <Link
-          href="/pricing"
-          className="text-center text-sm leading-loose text-muted-foreground"
-        >
-          ✨
-          <span className="font-bold text-black dark:text-white">
-            {" "}
-            New Page Sections Launch Sale -{" "}
-          </span>{" "}
-          Get{" "}
-          <span className="font-bold text-black dark:text-white">
-            $30 off
-          </span>{" "}
-          with code{" "}
-          <span className="rounded-md bg-orange-400 p-1 font-bold text-black dark:text-white">
-            BLOCKPARTY
-          </span>{" "}
-          ✨
-        </Link> */}
       </div>
       <hr className="absolute bottom-0 m-0 h-px w-full bg-neutral-200/30" />
     </div>

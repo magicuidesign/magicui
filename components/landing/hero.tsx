@@ -1,15 +1,8 @@
 import { allDocs } from "@/.contentlayer/generated";
 import HeroClient from "@/components/landing/hero-client";
-import { db } from "@/lib/db";
 import { compareDesc } from "date-fns";
 
 export default async function Hero() {
-  const payments = await db.payment.count({
-    where: {
-      status: "succeeded",
-    },
-  });
-
   const post = allDocs
     .filter(
       (post) =>
@@ -22,5 +15,5 @@ export default async function Hero() {
       return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
     })[0];
 
-  return <HeroClient payments={payments} post={post} />;
+  return <HeroClient post={post} />;
 }
