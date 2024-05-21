@@ -151,6 +151,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Typing Animation",
+          href: `/docs/components/typing-animation`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
