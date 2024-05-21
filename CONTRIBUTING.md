@@ -4,13 +4,42 @@ First of all, thanks for your interest in supporting this project! We could use 
 
 ## How to Contribute
 
-1. Install the project locally
+1. Fork this repo
+   You can fork this repo by [clicking here](https://github.com/magicuidesign/magicui/fork)
 
-```bash
-git clone https://github.com/magicuidesign/magicui.git
+2. Clone on your local machine
+
+```
+git clone https://github.com/<USERNAME>/magicui.git
+```
+
+3. Navigate to project directory
+
+```
 cd magicui
-touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.local
+```
+
+3. Create a new Branch
+
+```
+git checkout -b my-new-branch
+```
+
+4. Install dependencies
+
+```
 pnpm i
+```
+
+6. Create `.env.local` file
+
+```
+touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.local
+```
+
+5. Run project
+
+```
 pnpm dev
 ```
 
