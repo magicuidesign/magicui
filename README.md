@@ -10,12 +10,7 @@ Visit https://magicui.design/docs to view the documentation.
 
 ## Contributing
 
-```bash
-git clone https://github.com/magicuidesign/magicui.git
-cd magicui
-pnpm i
-pnpm dev
-```
+Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes around 5 minutes!
 
 ## License
 
