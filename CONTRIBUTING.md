@@ -9,6 +9,7 @@ First of all, thanks for your interest in supporting this project! We could use 
 ```bash
 git clone https://github.com/magicuidesign/magicui.git
 cd magicui
+touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.local
 pnpm i
 pnpm dev
 ```
