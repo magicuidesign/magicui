@@ -145,6 +145,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Word Rotate",
+          href: `/docs/components/word-rotate`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

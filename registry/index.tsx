@@ -137,6 +137,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/dock.tsx"],
   },
+  "word-rotate": {
+    name: "word-rotate",
+    type: "components:ui",
+    files: ["registry/components/magicui/word-rotate.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -550,6 +555,14 @@ const example: Registry = {
     files: ["registry/components/example/dock-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/dock-demo"),
+    ),
+  },
+  "word-rotate-demo": {
+    name: "word-rotate-demo",
+    type: "components:example",
+    files: ["registry/components/example/word-rotate-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/word-rotate-demo"),
     ),
   },
 };
