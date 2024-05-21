@@ -5,7 +5,8 @@ First of all, thanks for your interest in supporting this project! We could use 
 ## How to Contribute
 
 1. Fork this repo
-   You can fork this repo by [clicking here](https://github.com/magicuidesign/magicui/fork)
+
+You can fork this repo by [clicking here](https://github.com/magicuidesign/magicui/fork)
 
 2. Clone on your local machine
 
