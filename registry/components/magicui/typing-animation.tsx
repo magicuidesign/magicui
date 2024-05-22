@@ -33,12 +33,7 @@ export default function TypingAnimation({
   }, [duration, i]);
 
   return (
-    <h1
-      className={cn(
-        'text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]',
-        className,
-      )}
-    >
+    <h1 className={cn('drop-shadow-sm', className)}>
       {displayedText ? displayedText : text}
     </h1>
   );

@@ -578,6 +578,14 @@ const example: Registry = {
       () => import("@/registry/components/example/typing-animation-demo"),
     ),
   },
+  "flip-text-demo": {
+    name: "flip-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/flip-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/flip-text-demo"),
+    ),
+  },
 };
 
 export const registry: Registry = {
