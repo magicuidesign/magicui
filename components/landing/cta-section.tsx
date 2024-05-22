@@ -13,11 +13,11 @@ export default function CTASection() {
             </div>
             <div className="z-10 mt-4 flex flex-col items-center text-center text-black dark:text-white">
               <h1 className="text-3xl font-bold lg:text-4xl">
-                Stop wasting time on design.
+                Looking for templates instead?
               </h1>
-              <p className="mt-2">Get Unlimited Lifetime Access to Magic UI</p>
+              <p className="mt-2">Check out Magic UI Pro</p>
               <a
-                href="/pricing"
+                href="https://pro.magicui.design/"
                 className={cn(
                   buttonVariants({
                     size: "lg",
