@@ -7,6 +7,7 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/magicuidesign",
     discord: "https://discord.gg/87p2vpsat5",
+    github: "https://github.com/magicuidesign/magicui",
   },
   keywords: [
     "React",
