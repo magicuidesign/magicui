@@ -46,8 +46,8 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
           <Link
             className={cn(
               buttonVariants(),
-              "hidden max-w-64 gap-2 overflow-hidden whitespace-pre md:flex",
-              "group relative w-full justify-center gap-2 rounded-full transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+              "hidden max-w-52 gap-2 overflow-hidden whitespace-pre md:flex",
+              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
             )}
             target="_blank"
             href={siteConfig.links.github}
