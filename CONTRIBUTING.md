@@ -2,7 +2,7 @@
 
 First of all, thanks for your interest in supporting this project! We could use all the help we can get to make the best possible experience for our community.
 
-## How to Contribute
+## How to install locally
 
 1. Fork this repo
 
@@ -44,7 +44,9 @@ touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.loca
 pnpm dev
 ```
 
-2. Read the [example PR](https://github.com/magicuidesign/magicui/pull/12) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
+## How to add a new component
+
+Read the [example PR](https://github.com/magicuidesign/magicui/pull/12) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
 
 ## Ask for help
 
