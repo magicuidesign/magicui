@@ -32,7 +32,7 @@ export default function FlipText({
             exit="hidden"
             variants={framerProps}
             transition={{ duration, delay: i * delayMultiple }}
-            className={cn("origin-center drop-shadow-sm", className)}
+            className={cn("origin-center", className)}
           >
             {char}
           </motion.span>

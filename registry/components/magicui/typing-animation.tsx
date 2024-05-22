@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 interface TypingAnimationProps {
@@ -33,7 +32,7 @@ export default function TypingAnimation({
   }, [duration, i]);
 
   return (
-    <h1 className={cn('drop-shadow-sm', className)}>
+    <h1 className={className}>
       {displayedText ? displayedText : text}
     </h1>
   );
