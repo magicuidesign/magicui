@@ -31,6 +31,7 @@ interface ParallaxProps {
 export function VelocityScroll({
   text,
   default_velocity = 5,
+  className,
 }: VelocityScrollProps) {
   function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps) {
     const baseX = useMotionValue(0);
@@ -95,8 +96,8 @@ export function VelocityScroll({
   
   return (
     <section>
-      <ParallaxText baseVelocity={default_velocity}>{text}</ParallaxText>
-      <ParallaxText baseVelocity={-default_velocity}>{text}</ParallaxText>
+      <ParallaxText baseVelocity={default_velocity} className={className}>{text}</ParallaxText>
+      <ParallaxText baseVelocity={-default_velocity} className={className}>{text}</ParallaxText>
     </section>
   );
 }
