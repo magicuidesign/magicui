@@ -1,13 +1,10 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import React from "react";
-
-// this comes from the framer-motion docs, just ported to twcss
+import { cn } from "@/lib/utils";
+import React, { useEffect, useState, useRef } from "react";
 import { wrap } from "@motionone/utils";
 import {
   motion,
-  AnimatePresence,
   useScroll,
   useSpring,
   useTransform,
@@ -46,21 +43,32 @@ export function VelocityScroll({
       clamp: false,
     });
 
-    /**
-     * This is a magic wrapping for the length of the text - you
-     * have to replace for wrapping that works for you or dynamically
-     * calculate
-     */
-    const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+    const [repetitions, setRepetitions] = useState(1);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLSpanElement>(null);
+
+    useEffect(() => {
+      const calculateRepetitions = () => {
+        if (containerRef.current && textRef.current) {
+          const containerWidth = containerRef.current.offsetWidth;
+          const textWidth = textRef.current.offsetWidth;
+          const newRepetitions = Math.ceil(containerWidth / textWidth) + 2;
+          setRepetitions(newRepetitions);
+        }
+      };
+
+      calculateRepetitions();
+
+      window.addEventListener("resize", calculateRepetitions);
+      return () => window.removeEventListener("resize", calculateRepetitions);
+    }, [children]);
+
+    const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
 
     const directionFactor = React.useRef<number>(1);
     useAnimationFrame((t, delta) => {
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-      /**
-       * This is what changes the direction of the scroll once we
-       * switch scrolling directions.
-       */
       if (velocityFactor.get() < 0) {
         directionFactor.current = -1;
       } else if (velocityFactor.get() > 0) {
@@ -72,30 +80,22 @@ export function VelocityScroll({
       baseX.set(baseX.get() + moveBy);
     });
 
-    /**
-     * The number of times to repeat the child text should be dynamically calculated
-     * based on the size of the text and viewport. Likewise, the x motion value is
-     * currently wrapped between -20 and -45% - this 25% is derived from the fact
-     * we have four children (100% / 4). This would also want deriving from the
-     * dynamically generated number of children.
-     */
     return (
-      <div className="parallax">
+      <div className="parallax overflow-hidden whitespace-nowrap w-full" ref={containerRef}>
         <motion.div
-          className={cn("scroller", className)}
+          className={cn("scroller inline-block", className)}
           style={{ x }}
         >
-          <span>{children} </span>
-          <span>{children} </span>
-          <span>{children} </span>
-          <span>{children} </span>
+          {Array.from({ length: repetitions }).map((_, i) => (
+            <span key={i} ref={i === 0 ? textRef : null}>{children} </span>
+          ))}
         </motion.div>
       </div>
     );
   }
-  
+
   return (
-    <section>
+    <section className="relative w-full">
       <ParallaxText baseVelocity={default_velocity} className={className}>{text}</ParallaxText>
       <ParallaxText baseVelocity={-default_velocity} className={className}>{text}</ParallaxText>
     </section>
