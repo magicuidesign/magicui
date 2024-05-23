@@ -193,6 +193,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Word Pull Up",
+          href: `/docs/components/word-pull-up`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

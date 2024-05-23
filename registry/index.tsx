@@ -147,6 +147,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/avatar-circles.tsx"],
   },
+  "word-pull-up": {
+    name: "word-pull-up",
+    type: "components:ui",
+    files: ["registry/components/magicui/word-pull-up.tsx"],
+  },
   "typing-animation": {
     name: "typing-animation",
     type: "components:ui",
@@ -601,6 +606,14 @@ const example: Registry = {
     files: ["registry/components/example/avatar-circles-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/avatar-circles-demo"),
+    ),
+  },
+  "word-pull-up-demo": {
+    name: "word-pull-up-demo",
+    type: "components:example",
+    files: ["registry/components/example/word-pull-up-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/word-pull-up-demo"),
     ),
   },
   "typing-animation-demo": {
