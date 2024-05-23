@@ -635,14 +635,6 @@ const example: Registry = {
       () => import("@/registry/components/example/scroll-based-velocity-demo"),
     ),
   },
-  "separate-text-demo": {
-    name: "separate-text-demo",
-    type: "components:example",
-    files: ["registry/components/example/separate-text-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/separate-text-demo"),
-    ),
-  },
   "letter-pullup-demo": {
     name: "letter-pullup-demo",
     type: "components:example",
