@@ -147,6 +147,7 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/typing-animation.tsx"],
   },
+<<<<<<< HEAD
   "letter-pullup": {
     name: "letter-pullup",
     type: "components:ui",
@@ -161,6 +162,12 @@ const ui: Registry = {
     name: "box-reveal",
     type: "components:ui",
     files: ["registry/components/magicui/box-reveal.tsx"],
+=======
+  "separate-text": {
+    name: "separate-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/separate-text.tsx"],
+>>>>>>> parent of eb88f9c (letter-pullup)
   },
 };
 
@@ -593,6 +600,7 @@ const example: Registry = {
       () => import("@/registry/components/example/typing-animation-demo"),
     ),
   },
+<<<<<<< HEAD
   "letter-pullup-demo": {
     name: "letter-pullup-demo",
     type: "components:example",
@@ -617,6 +625,16 @@ const example: Registry = {
         () => import("@/registry/components/example/box-reveal-demo"),
       ),
   },
+=======
+  "separate-text-demo": {
+    name: "separate-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/separate-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/separate-text-demo"),
+    ),
+  },
+>>>>>>> parent of eb88f9c (letter-pullup)
 };
 
 export const registry: Registry = {

@@ -163,6 +163,7 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+<<<<<<< HEAD
         {
           title: "Letter Pullup",
           href: `/docs/components/letter-pullup`,
@@ -175,6 +176,8 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         }
+=======
+>>>>>>> parent of eb88f9c (letter-pullup)
       ],
     },
     {
