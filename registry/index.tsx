@@ -142,11 +142,6 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/word-rotate.tsx"],
   },
-  "avatar-circles": {
-    name: "avatar-circles",
-    type: "components:ui",
-    files: ["registry/components/magicui/avatar-circles.tsx"],
-  },
   "typing-animation": {
     name: "typing-animation",
     type: "components:ui",
@@ -593,14 +588,6 @@ const example: Registry = {
     files: ["registry/components/example/word-rotate-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/word-rotate-demo"),
-    ),
-  },
-  "avatar-circles-demo": {
-    name: "avatar-circles-demo",
-    type: "components:example",
-    files: ["registry/components/example/avatar-circles-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/avatar-circles-demo"),
     ),
   },
   "typing-animation-demo": {
