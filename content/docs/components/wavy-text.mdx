@@ -1,0 +1,34 @@
+---
+title: Wave Text
+date: 2024-05-23
+description: An animated text component that waves the text.
+author: DoffuXx
+published: true
+---
+
+<ComponentPreview name="wavy-text-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/wavy-text.tsx
+```
+
+<ComponentSource name="wavy-text" />
+
+</Steps>
+
+## Props
+
+| Prop        | Type            | Description                                        | Default |
+| ----------- | --------------- | -------------------------------------------------- | ------- |
+| className   | string          | The class name to be applied to the component      |         |
+| duration    | number          | Durations (seconds) for the animation              | 0.5     |
+| words       | string          | The word to be animated                            |         |
+| variant     | object          | Custom animation variants for motion component     |     hidden: { y: 10 },
+    visible: { y: -10 },
+        |

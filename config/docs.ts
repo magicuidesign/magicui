@@ -158,11 +158,17 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Wavy Text",
+          href: `/docs/components/wavy-text`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Letter Pullup",
           href: `/docs/components/letter-pullup`,
           items: [],
           label: "New",
-        },
+        }
       ],
     },
     {
