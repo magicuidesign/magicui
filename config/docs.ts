@@ -199,6 +199,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Slight Flip",
+          href: `/docs/components/slight-flip`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

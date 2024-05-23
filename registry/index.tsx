@@ -177,6 +177,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/letter-pullup.tsx"],
   },
+  "slight-flip": {
+    name: "slight-flip",
+    type: "components:ui",
+    files: ["registry/components/magicui/slight-flip.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -662,6 +667,14 @@ const example: Registry = {
     files: ["registry/components/example/letter-pullup-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/letter-pullup-demo"),
+    ),
+  },
+  "slight-flip-demo": {
+    name: "slight-flip-demo",
+    type: "components:example",
+    files: ["registry/components/example/slight-flip-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/slight-flip-demo"),
     ),
   },
 };
