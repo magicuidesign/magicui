@@ -163,6 +163,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Separate Text",
+          href: `/docs/components/separate-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

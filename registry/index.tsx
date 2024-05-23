@@ -152,6 +152,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/typing-animation.tsx"],
   },
+  "separate-text": {
+    name: "separate-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/separate-text.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -589,6 +594,14 @@ const example: Registry = {
     files: ["registry/components/example/typing-animation-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/typing-animation-demo"),
+    ),
+  },
+  "separate-text-demo": {
+    name: "separate-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/separate-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/separate-text-demo"),
     ),
   },
 };
