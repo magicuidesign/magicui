@@ -162,11 +162,6 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/separate-away.tsx"],
   },
-  "separate-text": {
-    name: "separate-text",
-    type: "components:ui",
-    files: ["registry/components/magicui/separate-text.tsx"],
-  },
   "letter-pullup": {
     name: "letter-pullup",
     type: "components:ui",
