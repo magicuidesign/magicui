@@ -157,6 +157,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/wavy-text.tsx"],
   },
+  "box-reveal": {
+    name: "box-reveal",
+    type: "components:ui",
+    files: ["registry/components/magicui/box-reveal.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -603,6 +608,14 @@ const example: Registry = {
     component: React.lazy(
       () => import("@/registry/components/example/wavy-text-demo"),
     ),
+  },
+  "box-reveal-demo": {
+      name: "box-reveal-demo",
+      type: "components:example",
+      files: ["registry/components/example/box-reveal-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/components/example/box-reveal-demo"),
+      ),
   },
 };
 

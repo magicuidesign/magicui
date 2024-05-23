@@ -168,6 +168,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/letter-pullup`,
           items: [],
           label: "New",
+        },
+        {
+          title: "Box Reveal",
+          href: `/docs/components/box-reveal`,
+          items: [],
+          label: "New",
         }
       ],
     },
