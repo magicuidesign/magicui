@@ -157,6 +157,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Wavy Text",
+          href: `/docs/components/wavy-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
