@@ -147,19 +147,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/typing-animation.tsx"],
   },
-<<<<<<< HEAD
-  "separate-text": {
-    name: "separate-text",
-    type: "components:ui",
-    files: ["registry/components/magicui/separate-text.tsx"],
-  },
   "letter-pullup": {
     name: "letter-pullup",
     type: "components:ui",
     files: ["registry/components/magicui/letter-pullup.tsx"],
   },
-=======
->>>>>>> parent of d98dfc0 (separate text animation)
 };
 
 const example: Registry = {
