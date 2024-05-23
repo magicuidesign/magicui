@@ -147,6 +147,7 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/typing-animation.tsx"],
   },
+<<<<<<< HEAD
   "separate-text": {
     name: "separate-text",
     type: "components:ui",
@@ -157,6 +158,8 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/letter-pullup.tsx"],
   },
+=======
+>>>>>>> parent of d98dfc0 (separate text animation)
 };
 
 const example: Registry = {
@@ -588,6 +591,7 @@ const example: Registry = {
       () => import("@/registry/components/example/typing-animation-demo"),
     ),
   },
+<<<<<<< HEAD
   "separate-text-demo": {
     name: "separate-text-demo",
     type: "components:example",
@@ -604,6 +608,8 @@ const example: Registry = {
       () => import("@/registry/components/example/letter-pullup-demo"),
     ),
   },
+=======
+>>>>>>> parent of d98dfc0 (separate text animation)
 };
 
 export const registry: Registry = {
