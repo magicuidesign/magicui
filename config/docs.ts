@@ -83,12 +83,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
-        {
-          title: "Avatar Circles",
-          href: `/docs/components/avatar-circles`,
-          items: [],
-          label: "New",
-        },
       ],
     },
     {
