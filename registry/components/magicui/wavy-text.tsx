@@ -12,12 +12,14 @@ interface WavyTextProps {
     visible: { y: number };
   };
   duration?: number;
+  delay?: number;
 }
 const WavyText = ({
   word,
   className,
   variant,
   duration = 0.5,
+  delay = 0.05,
 }: WavyTextProps) => {
   const defaultVariants = {
     hidden: { y: 10 },
@@ -26,7 +28,7 @@ const WavyText = ({
   const combinedVariants = variant || defaultVariants;
   const characters = useMemo(() => word.split(""), [word]);
   return (
-    <div className="overflow-hidden py-2">
+    <div className="overflow-hidden p-2">
       <div className="flex justify-center space-x-2">
         <AnimatePresence>
           {characters.map((char, i) => (
@@ -39,11 +41,11 @@ const WavyText = ({
               transition={{
                 yoyo: Infinity,
                 duration: duration,
-                delay: i * 0.2,
+                delay: i * delay,
               }}
               className={cn(
                 className,
-                "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]",
+                "font-display text-center text-4xl font-bold tracking-[-0.1em] md:text-7xl",
               )}
             >
               {char}

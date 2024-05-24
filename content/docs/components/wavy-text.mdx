@@ -1,7 +1,7 @@
 ---
-title: Wave Text
+title: Wavy Text
 date: 2024-05-23
-description: An animated text component that waves the text.
+description: An animated text component that staggers text up
 author: DoffuXx
 published: true
 ---
@@ -24,11 +24,10 @@ components/magicui/wavy-text.tsx
 
 ## Props
 
-| Prop        | Type            | Description                                        | Default |
-| ----------- | --------------- | -------------------------------------------------- | ------- |
-| className   | string          | The class name to be applied to the component      |         |
-| duration    | number          | Durations (seconds) for the animation              | 0.5     |
-| words       | string          | The word to be animated                            |         |
-| variant     | object          | Custom animation variants for motion component     |     hidden: { y: 10 },
-    visible: { y: -10 },
-        |
+| Prop      | Type   | Description                                        | Default |
+| --------- | ------ | -------------------------------------------------- | ------- |
+| className | string | The class name to be applied to the component      |         |
+| duration  | number | Duration (seconds) for the animation               | 0.5     |
+| delay     | number | Duration (seconds) for stagger between each letter | 0.02    |
+| words     | string | The word to be animated                            |         |
+| variant   | object | Custom animation variants for motion component     | {}      |
