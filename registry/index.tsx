@@ -1,7 +1,7 @@
 import { Registry } from "@/registry/schema";
 import * as React from "react";
 
-const ui: Registry = {
+export const ui: Registry = {
   "magic-card": {
     name: "magic-card",
     type: "components:ui",

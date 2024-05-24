@@ -2,6 +2,7 @@ import { env } from "@/env.mjs";
 import clsx, { ClassValue } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
+import * as z from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -106,3 +107,19 @@ export function constructMetadata({
     ...props,
   };
 }
+
+export const componentSchemaCli = z.object({
+  name: z.string(),
+  dependencies: z.array(z.string()).optional(),
+  files: z.array(
+    z.object({
+      name: z.string(),
+      dir: z.string(),
+      content: z.string(),
+    }),
+  ),
+});
+
+export type ComponentTypeCli = z.infer<typeof componentSchemaCli>;
+
+export const componentSchemaParser = z.array(componentSchemaCli);
