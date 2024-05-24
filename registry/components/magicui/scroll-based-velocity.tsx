@@ -1,17 +1,17 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useRef } from "react";
 import { wrap } from "@motionone/utils";
 import {
   motion,
+  useAnimationFrame,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
-  useMotionValue,
   useVelocity,
-  useAnimationFrame,
 } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
 interface VelocityScrollProps {
   text: string;
@@ -30,7 +30,11 @@ export function VelocityScroll({
   default_velocity = 5,
   className,
 }: VelocityScrollProps) {
-  function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps) {
+  function ParallaxText({
+    children,
+    baseVelocity = 100,
+    className,
+  }: ParallaxProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
@@ -81,13 +85,15 @@ export function VelocityScroll({
     });
 
     return (
-      <div className="parallax overflow-hidden whitespace-nowrap w-full" ref={containerRef}>
-        <motion.div
-          className={cn("scroller inline-block", className)}
-          style={{ x }}
-        >
+      <div
+        className="w-full overflow-hidden whitespace-nowrap"
+        ref={containerRef}
+      >
+        <motion.div className={cn("inline-block", className)} style={{ x }}>
           {Array.from({ length: repetitions }).map((_, i) => (
-            <span key={i} ref={i === 0 ? textRef : null}>{children} </span>
+            <span key={i} ref={i === 0 ? textRef : null}>
+              {children}{" "}
+            </span>
           ))}
         </motion.div>
       </div>
@@ -96,8 +102,12 @@ export function VelocityScroll({
 
   return (
     <section className="relative w-full">
-      <ParallaxText baseVelocity={default_velocity} className={className}>{text}</ParallaxText>
-      <ParallaxText baseVelocity={-default_velocity} className={className}>{text}</ParallaxText>
+      <ParallaxText baseVelocity={default_velocity} className={className}>
+        {text}
+      </ParallaxText>
+      <ParallaxText baseVelocity={-default_velocity} className={className}>
+        {text}
+      </ParallaxText>
     </section>
   );
 }
