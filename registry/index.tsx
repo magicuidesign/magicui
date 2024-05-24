@@ -192,6 +192,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/gradual-spacing.tsx"],
   },
+  "word-fade-in": {
+    name: "word-fade-in",
+    type: "components:ui",
+    files: ["registry/components/magicui/word-fade-in.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -701,6 +706,14 @@ const example: Registry = {
     files: ["registry/components/example/gradual-spacing-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/gradual-spacing-demo"),
+    ),
+  },
+  "word-fade-in-demo": {
+    name: "word-fade-in-demo",
+    type: "components:example",
+    files: ["registry/components/example/word-fade-in-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/word-fade-in-demo"),
     ),
   },
 };
