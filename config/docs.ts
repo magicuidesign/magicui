@@ -105,11 +105,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/animated-beam`,
           items: [],
         },
-        // {
-        //   title: "Animated Grid Pattern",
-        //   href: `/docs/components/animated-grid-pattern`,
-        //   items: [],
-        // },
+
         // {
         //   title: "Animated Lines",
         //   href: `/docs/components/animated-lines`,
@@ -226,6 +222,11 @@ export const docsConfig: DocsConfig = {
     {
       title: "Backgrounds",
       items: [
+        {
+          title: "Animated Grid Pattern",
+          href: `/docs/components/animated-grid-pattern`,
+          items: [],
+        },
         {
           title: "Retro Grid",
           href: `/docs/components/retro-grid`,
