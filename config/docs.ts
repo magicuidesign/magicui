@@ -207,6 +207,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gradual Spacing",
+          href: `/docs/components/gradual-spacing`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
