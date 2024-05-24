@@ -40,7 +40,7 @@ export default function LetterPullup({
           initial = "initial"
           animate = "animate"
           custom = { i }
-          className = { cn("text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]", className) }
+          className = { cn("text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem] dark:text-white", className) }
         >
           {letter === " " ? <span>&nbsp;</span> : letter}
         </motion.h1>
