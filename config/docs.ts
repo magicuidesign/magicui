@@ -200,8 +200,8 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
-          title: "Slight Flip",
-          href: `/docs/components/slight-flip`,
+          title: "Flip Text",
+          href: `/docs/components/flip-text`,
           items: [],
           label: "New",
         },
