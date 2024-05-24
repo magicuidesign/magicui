@@ -163,6 +163,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Blur In",
+          href: `/docs/components/blur-in`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

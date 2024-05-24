@@ -152,6 +152,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/wavy-text.tsx"],
   },
+  "blur-in": {
+    name: "blur-in",
+    type: "components:ui",
+    files: ["registry/components/magicui/blur-in.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -589,6 +594,15 @@ const example: Registry = {
     files: ["registry/components/example/wavy-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/wavy-text-demo"),
+    ),
+  },
+
+  "blur-in-demo": {
+    name: "blur-in-demo",
+    type: "components:example",
+    files: ["registry/components/example/blur-in-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/blur-in-demo"),
     ),
   },
 };
