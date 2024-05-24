@@ -219,6 +219,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Fade Text",
+          href: `/docs/components/fade-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

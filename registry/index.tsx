@@ -721,6 +721,14 @@ const example: Registry = {
       () => import("@/registry/components/example/word-fade-in-demo"),
     ),
   },
+  "fade-text-demo": {
+    name: "fade-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/fade-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/fade-text-demo"),
+    ),
+  },
 };
 export const registry: Registry = {
   ...ui,
