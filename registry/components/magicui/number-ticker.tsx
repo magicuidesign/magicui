@@ -43,7 +43,7 @@ export default function NumberTicker({
 
   return (
     <span
-      className={`inline-block tabular-nums text-white dark:text-black ${className}`}
+      className={`inline-block tabular-nums text-foreground ${className}`}
       ref={ref}
     />
   );

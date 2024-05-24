@@ -59,7 +59,7 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
               <StarIcon className="h-4 w-4 transition-all duration-300 group-hover:text-yellow-300" />
               <NumberTicker
                 value={stars}
-                className="font-display font-medium text-white"
+                className="font-display font-medium text-white dark:text-black"
               />
             </div>
           </Link>
