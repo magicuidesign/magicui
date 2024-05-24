@@ -226,6 +226,7 @@ export const docsConfig: DocsConfig = {
           title: "Animated Grid Pattern",
           href: `/docs/components/animated-grid-pattern`,
           items: [],
+          label: "New",
         },
         {
           title: "Retro Grid",
