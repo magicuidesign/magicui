@@ -14,7 +14,7 @@ interface SlightFlipProps {
 export default function SlightFlip({
   word,
   duration = 0.5,
-  delayMultiple = 0.2,
+  delayMultiple = 0.08,
   framerProps = {
     hidden: { rotateX: -90, opacity: 0 },
     visible: { rotateX: 0, opacity: 1 },
@@ -22,7 +22,7 @@ export default function SlightFlip({
   className,
 }: SlightFlipProps) {
   return (
-    <div className="flex space-x-2 justify-center">
+    <div className="flex justify-center space-x-2">
       <AnimatePresence mode="wait">
         {word.split("").map((char, i) => (
           <motion.span
