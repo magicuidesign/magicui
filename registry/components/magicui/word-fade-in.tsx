@@ -7,13 +7,13 @@ interface WordFadeInProps {
   words: string;
   className?: string;
   delay?: number;
-  wordVariants?: Variants;
+  variants?: Variants;
 }
 
 export default function WordFadeIn({
   words,
   delay = 0.15,
-  wordVariants = {
+  variants = {
     hidden: { opacity: 0 },
     visible: (i: any) => ({
       y: 0,
@@ -27,7 +27,7 @@ export default function WordFadeIn({
 
   return (
     <motion.h1
-      variants={wordVariants}
+      variants={variants}
       initial="hidden"
       animate="visible"
       className={cn(
@@ -36,7 +36,7 @@ export default function WordFadeIn({
       )}
     >
       {_words.map((word, i) => (
-        <motion.span key={word} variants={wordVariants} custom={i}>
+        <motion.span key={word} variants={variants} custom={i}>
           {word}{" "}
         </motion.span>
       ))}
