@@ -14,64 +14,6 @@ published: true
 
 Copy and paste the following code into your project.
 
-```css
-.shiny__Button {
-  --bg: 255, 255, 255;
-  --overlay-color: 0, 0, 0;
-
-  @apply relative px-6 py-2 rounded-lg hover:shadow
-  transition-[box-shadow] duration-300 ease-in-out;
-}
-
-.dark .shiny__Button {
-  --bg: 0, 0, 0;
-  --overlay-color: 255, 255, 255;
-  @apply bg-radial font-medium hover:shadow-[0_0_20px_rgba(var(--overlay-color),10%)];
-}
-
-.shiny__Button::after {
-  content: '';
-  @apply inset-0 block absolute z-10 rounded-[inherit] p-px linear-overlay;
-}
-
-.shiny__Button--text {
-  @apply text-[rgb(var(--overlay-color),65%)] uppercase tracking-wide text-sm h-full w-full block relative linear-mask;
-}
-.dark .shiny__Button--text {
-  @apply text-[rgb(var(--overlay-color),90%)] font-light;
-}
-
-/* @UTILITIES */
-.linear-mask {
-  mask-image: linear-gradient(
-    -75deg,
-    rgb(var(--overlay-color)) calc(var(--x) + 20%),
-    transparent calc(var(--x) + 30%),
-    rgb(var(--overlay-color)) calc(var(--x) + 100%)
-  );
-}
-
-.bg-radial {
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgb(var(--overlay-color), 10%) 0%,
-    transparent 60%
-  );
-}
-
-.linear-overlay {
-  background-image: linear-gradient(
-    -75deg,
-    rgba(var(--overlay-color), 0.1) calc(var(--x) + 20%),
-    rgba(var(--overlay-color), 0.5) calc(var(--x) + 25%),
-    rgba(var(--overlay-color), 0.1) calc(var(--x) + 100%)
-  );
-  mask: linear-gradient(rgb(var(--bg)), rgb(var(--bg))) content-box,
-    linear-gradient(rgb(var(--bg)), rgb(var(--bg)));
-  mask-composite: exclude;
-}
-```
-
 ```text
 components/magicui/shiny-button.tsx
 ```
