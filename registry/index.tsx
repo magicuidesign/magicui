@@ -187,6 +187,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/icon-cloud.tsx"],
   },
+  "rotating-circles": {
+    name: "rotating-circles",
+    type: "components:ui",
+    files: ["registry/components/magicui/rotating-circles.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -688,6 +693,14 @@ const example: Registry = {
     files: ["registry/components/example/icon-cloud-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/icon-cloud-demo"),
+    ),
+  },
+  "rotating-circles-demo": {
+    name: "rotating-circles-demo",
+    type: "components:example",
+    files: ["registry/components/example/rotating-circles-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/rotating-circles-demo"),
     ),
   },
 };

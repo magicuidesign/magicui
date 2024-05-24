@@ -126,6 +126,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/meteors`,
           items: [],
         },
+        {
+          title: "Rotating Circles",
+          href: `/docs/components/rotating-circles`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
