@@ -188,7 +188,7 @@ const ui: Registry = {
     files: ["registry/components/magicui/icon-cloud.tsx"],
   },
   "wavy-dot-pattern": {
-    name: "icon-cloud",
+    name: "wavy-dot-pattern",
     type: "components:ui",
     files: ["registry/components/magicui/wavy-dot-pattern.tsx"],
   },
