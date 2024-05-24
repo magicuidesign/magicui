@@ -89,6 +89,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Interactive Icon Cloud",
+          href: `/docs/components/icon-cloud`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

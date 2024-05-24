@@ -182,6 +182,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/flip-text.tsx"],
   },
+  "icon-cloud": {
+    name: "icon-cloud",
+    type: "components:ui",
+    files: ["registry/components/magicui/icon-cloud.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -677,8 +682,15 @@ const example: Registry = {
       () => import("@/registry/components/example/flip-text-demo"),
     ),
   },
+  "icon-cloud-demo": {
+    name: "icon-cloud-demo",
+    type: "components:example",
+    files: ["registry/components/example/icon-cloud-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/icon-cloud-demo"),
+    ),
+  },
 };
-
 export const registry: Registry = {
   ...ui,
   ...example,
