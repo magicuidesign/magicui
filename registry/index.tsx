@@ -212,6 +212,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/shiny-button.tsx"],
   },
+  "box-reveal": {
+    name: "box-reveal",
+    type: "components:ui",
+    files: ["registry/components/magicui/box-reveal.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -745,6 +750,14 @@ const example: Registry = {
     files: ["registry/components/example/shiny-button-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/shiny-button-demo"),
+    ),
+  },
+  "box-reveal-demo": {
+    name: "box-reveal-demo",
+    type: "components:example",
+    files: ["registry/components/example/box-reveal-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/box-reveal-demo"),
     ),
   },
 };
