@@ -181,6 +181,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Letter Pullup",
+          href: `/docs/components/letter-pullup`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
