@@ -258,6 +258,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/radial-gradient`,
           items: [],
         },
+        {
+          title: "Wavy Dot Pattern",
+          href: `/docs/components/wavy-dot-pattern`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],

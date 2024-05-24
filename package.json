@@ -89,6 +89,7 @@
     "postcss": "8.4.32",
     "posthog-js": "^1.96.1",
     "react": "18.2.0",
+    "react-anime": "^4.1.1",
     "react-day-picker": "^8.9.1",
     "react-dom": "18.2.0",
     "react-email": "1.9.4",
