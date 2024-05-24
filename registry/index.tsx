@@ -157,6 +157,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/blur-in.tsx"],
   },
+  "separate-away": {
+    name: "separate-away",
+    type: "components:ui",
+    files: ["registry/components/magicui/separate-away.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -596,13 +601,20 @@ const example: Registry = {
       () => import("@/registry/components/example/wavy-text-demo"),
     ),
   },
-
   "blur-in-demo": {
     name: "blur-in-demo",
     type: "components:example",
     files: ["registry/components/example/blur-in-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/blur-in-demo"),
+    ),
+  },
+  "separate-away-demo": {
+    name: "separate-away-demo",
+    type: "components:example",
+    files: ["registry/components/example/separate-away-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/separate-away-demo"),
     ),
   },
 };

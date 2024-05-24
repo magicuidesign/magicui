@@ -169,6 +169,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Separate Away",
+          href: `/docs/components/separate-away`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
