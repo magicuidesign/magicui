@@ -1,5 +1,7 @@
-import { cn } from 'lib/utils';
+"use client";
+
 import { motion, Variants } from "framer-motion";
+import { cn } from "lib/utils";
 
 interface WordPullUpProps {
   words: string;
@@ -32,9 +34,10 @@ export default function WordPullUp({
       variants={wrapperFramerProps}
       initial="hidden"
       animate="show"
-      className={
-        cn("text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]",
-          className)}
+      className={cn(
+        "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]",
+        className,
+      )}
     >
       {words.split(" ").map((word, i) => (
         <motion.span
