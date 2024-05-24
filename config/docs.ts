@@ -175,6 +175,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Scroll Based Velocity",
+          href: `/docs/components/scroll-based-velocity`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
