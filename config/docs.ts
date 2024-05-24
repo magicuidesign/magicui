@@ -199,6 +199,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Flip Text",
+          href: `/docs/components/flip-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

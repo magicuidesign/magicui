@@ -177,6 +177,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/letter-pullup.tsx"],
   },
+  "flip-text": {
+    name: "flip-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/flip-text.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -662,6 +667,14 @@ const example: Registry = {
     files: ["registry/components/example/letter-pullup-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/letter-pullup-demo"),
+    ),
+  },
+  "flip-text-demo": {
+    name: "flip-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/flip-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/flip-text-demo"),
     ),
   },
 };
