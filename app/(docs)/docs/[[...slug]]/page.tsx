@@ -9,6 +9,7 @@ import { absoluteUrl, cn } from "@/lib/utils";
 import "@/styles/mdx.css";
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 import { allDocs } from "contentlayer/generated";
+import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -145,6 +146,10 @@ export default async function DocPage({ params }: DocPageProps) {
             <ScrollArea className="pb-10">
               <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
                 <DashboardTableOfContents toc={toc} />
+                <div className="my-20 w-full rounded-xl bg-indigo-600 p-6 text-2xl font-medium text-white">
+                  Looking for templates instead?
+                  <br /> Check out Magic UI PRO <ArrowUpRight />
+                </div>
               </div>
             </ScrollArea>
           </div>
