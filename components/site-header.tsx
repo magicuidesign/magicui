@@ -55,11 +55,11 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
             <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
             <Icons.gitHub className="h-4 w-4" />
             Star on GitHub
-            <div className="hidden items-center gap-1 text-sm text-gray-500 md:flex">
-              <StarIcon className="h-4 w-4 transition-all duration-300 group-hover:text-yellow-300" />
+            <div className="hidden items-center gap-1 text-sm md:flex">
+              <StarIcon className="h-4 w-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
               <NumberTicker
                 value={stars}
-                className="font-display font-medium text-white"
+                className="font-display font-medium text-white dark:text-black"
               />
             </div>
           </Link>
