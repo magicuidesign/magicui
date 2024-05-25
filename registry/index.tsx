@@ -187,6 +187,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/icon-cloud.tsx"],
   },
+  "gradual-spacing": {
+    name: "gradual-spacing",
+    type: "components:ui",
+    files: ["registry/components/magicui/gradual-spacing.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -688,6 +693,14 @@ const example: Registry = {
     files: ["registry/components/example/icon-cloud-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/icon-cloud-demo"),
+    ),
+  },
+  "gradual-spacing-demo": {
+    name: "gradual-spacing-demo",
+    type: "components:example",
+    files: ["registry/components/example/gradual-spacing-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/gradual-spacing-demo"),
     ),
   },
 };
