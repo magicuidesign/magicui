@@ -213,6 +213,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Word Fade In",
+          href: `/docs/components/word-fade-in`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

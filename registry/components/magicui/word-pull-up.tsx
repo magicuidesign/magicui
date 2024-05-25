@@ -5,7 +5,6 @@ import { cn } from "lib/utils";
 
 interface WordPullUpProps {
   words: string;
-  duration?: number;
   delayMultiple?: number;
   wrapperFramerProps?: Variants;
   framerProps?: Variants;
