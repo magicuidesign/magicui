@@ -235,6 +235,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/shimmer-button`,
           items: [],
         },
+        {
+          title: "Shiny Button",
+          href: `/docs/components/shiny-button`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

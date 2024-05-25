@@ -207,6 +207,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/fade-text.tsx"],
   },
+  "shiny-button": {
+    name: "shiny-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/shiny-button.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -732,6 +737,14 @@ const example: Registry = {
     files: ["registry/components/example/fade-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/fade-text-demo"),
+    ),
+  },
+  "shiny-button-demo": {
+    name: "shiny-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/shiny-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shiny-button-demo"),
     ),
   },
 };
