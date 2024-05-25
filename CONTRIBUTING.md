@@ -48,7 +48,7 @@ pnpm dev
 
 Read the [example PR](https://github.com/magicuidesign/magicui/pull/12) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
 
-Once done, open a [pull request] from your forked repo to the main repo [here](https://github.com/magicuidesign/magicui/compare)
+Once done, open a pull request from your forked repo to the main repo [here](https://github.com/magicuidesign/magicui/compare)
 
 ## Ask for help
 
