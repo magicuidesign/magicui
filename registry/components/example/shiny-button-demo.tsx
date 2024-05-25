@@ -1,4 +1,4 @@
-import ShinyButton from "../magicui/shiny-button";
+import ShinyButton from "@/registry/components/magicui/shiny-button";
 
 export default function ShinyButtonDemo() {
   return <ShinyButton text="Shiny Button" />;

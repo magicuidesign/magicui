@@ -715,7 +715,6 @@ const example: Registry = {
       () => import("@/registry/components/example/icon-cloud-demo"),
     ),
   },
-<<<<<<< HEAD
   "gradual-spacing-demo": {
     name: "gradual-spacing-demo",
     type: "components:example",
@@ -738,8 +737,8 @@ const example: Registry = {
     files: ["registry/components/example/fade-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/fade-text-demo"),
-    )
-    },
+    ),
+  },
   "shiny-button-demo": {
     name: "shiny-button-demo",
     type: "components:example",
