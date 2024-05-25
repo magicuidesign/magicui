@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 
-import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
 const defaultIcons = [
   "https://framerusercontent.com/images/5usrgId9ZEo1bpHmL0oKtTgLJzo.png",

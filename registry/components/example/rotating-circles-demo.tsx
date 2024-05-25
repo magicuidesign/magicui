@@ -1,4 +1,4 @@
-import RotatingCircles from "../magicui/rotating-circles";
+import RotatingCircles from "@/registry/components/magicui/rotating-circles";
 
 const RotatingCirclesDemo = () => {
   return (
@@ -9,7 +9,6 @@ const RotatingCirclesDemo = () => {
         </p>
       </div>
       <RotatingCircles>
-        {" "}
         <p className=" text-center font-bold text-gray-700">
           You can scroll up and down to rotate the circles 🔄
         </p>
