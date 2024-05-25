@@ -202,6 +202,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/scroll-based-velocity.tsx"],
   },
+  "fade-text": {
+    name: "fade-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/fade-text.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -719,6 +724,14 @@ const example: Registry = {
     files: ["registry/components/example/word-fade-in-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/word-fade-in-demo"),
+    ),
+  },
+  "fade-text-demo": {
+    name: "fade-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/fade-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/fade-text-demo"),
     ),
   },
 };
