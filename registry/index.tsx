@@ -197,6 +197,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/word-fade-in.tsx"],
   },
+  "scroll-based-velocity": {
+    name: "scroll-based-velocity",
+    type: "components:ui",
+    files: ["registry/components/magicui/scroll-based-velocity.tsx"],
+  },
 };
 
 const example: Registry = {
