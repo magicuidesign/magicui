@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { getPromptsFromUser } from "./utils/getPromptsFromUser";
+
+//
 import path from "path";
 import fs from "fs/promises";
 import { existsSync } from "fs";
@@ -8,6 +9,10 @@ import ora from "ora";
 import { getPackageManager } from "./utils/getPackageManager";
 import { logger } from "./utils/logger";
 import { Command } from "commander";
+import {
+  getPromptsForComponents,
+  getPromptsforInit,
+} from "./utils/getPromptsFromUser";
 
 // event listeners to kill process
 
@@ -25,12 +30,15 @@ async function main() {
     .description("Add components to the folder")
     .action(async (inputComponents: string[]) => {
       const { components, dir, componentsNotFound } =
-        await getPromptsFromUser(inputComponents);
+        await getPromptsForComponents(inputComponents);
 
-      const destinationDir = path.join(process.cwd(), dir);
-      console.log(destinationDir);
+      // checking if the src directory exists
+      const destinationDir = existsSync(path.join(process.cwd(), "src"))
+        ? path.join(process.cwd(), "src", dir)
+        : path.join(process.cwd(), dir);
+
       if (!existsSync(destinationDir)) {
-        const spinner = ora(`Creating ${dir}...`).start();
+        const spinner = ora(`Creating ${destinationDir}...`).start();
         await fs.mkdir(destinationDir, { recursive: true });
         spinner.succeed("Created directory");
       }
@@ -43,24 +51,79 @@ async function main() {
         const spinner = ora(`${component.name}...`).start();
 
         for (const file of component.files) {
-          const filePath = path.resolve(dir, file.name);
+          const filePath = path.resolve(destinationDir, file.name);
           await fs.writeFile(filePath, file.content);
         }
 
         if (component.dependencies?.length) {
-          const dependencies = component.dependencies.join(" ");
-          await execa(packageManager, [
-            packageManager === "npm" ? "install" : "add",
-            dependencies,
-          ]);
+          for (const dep of component.dependencies) {
+            await execa(packageManager, [
+              packageManager === "npm" ? "install" : "add",
+              dep,
+            ]);
+          }
         }
         spinner.succeed(component.name);
+        logger.success(`${component.name} installed`);
       }
 
       if (componentsNotFound && componentsNotFound.length) {
         logger.info(`${componentsNotFound.join(" ")} were not found. Exiting`);
         process.exit(0);
       }
+    });
+
+  // init command
+
+  const libUtilsFile = `import clsx, { ClassValue } from "clsx";
+  import { twMerge } from "tailwind-merge";
+   
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }`;
+
+  program
+    .command("init")
+    .description(
+      "Installs requried dependencies and built required directories",
+    )
+    .action(async () => {
+      const { root, isSrc } = await getPromptsforInit();
+      let workDir: string;
+      workDir = root;
+
+      if (root === ".") {
+        workDir = process.cwd();
+      }
+
+      if (!existsSync(path.join(workDir, "package.json"))) {
+        logger.info("No package json detected. Exiting");
+        process.exit(0);
+      }
+      const packageManager = getPackageManager();
+
+      const defaultDeps = ["clsx", "tailwind-merge", "framer-motion"];
+      const spinner = ora("Initializing components").start();
+
+      for (const dep of defaultDeps) {
+        await execa(packageManager, [
+          packageManager === "npm" ? "install" : "add",
+          dep,
+        ]);
+      }
+
+      const destinationDir = isSrc
+        ? path.join(workDir, "src", "lib")
+        : path.join(workDir, "lib");
+
+      if (!existsSync(destinationDir)) {
+        await fs.mkdir(destinationDir, { recursive: true });
+      }
+      await fs.writeFile(path.join(destinationDir, "utils.ts"), libUtilsFile);
+
+      spinner.succeed(
+        "project initliazed. Try adding component using npx magicui add",
+      );
     });
 
   // handle invalid commands

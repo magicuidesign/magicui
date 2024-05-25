@@ -8,7 +8,7 @@ type UserPrompt = {
   componentsNotFound?: string[];
 };
 
-export async function getPromptsFromUser(
+export async function getPromptsForComponents(
   inputComponents: string[],
 ): Promise<UserPrompt> {
   const availableComponents = await getAvailableComponents();
@@ -41,6 +41,7 @@ export async function getPromptsFromUser(
         initial: "./components/magicui",
       },
     ]);
+    console.log(options.components);
     return options;
   }
 
@@ -73,4 +74,25 @@ export async function getPromptsFromUser(
     dir: options.dir,
     componentsNotFound: inputComponents.filter((c) => !validComponents.has(c)),
   };
+}
+
+export async function getPromptsforInit() {
+  const options = await prompts([
+    {
+      type: "text",
+      initial: ".",
+      message: "Path to root directory?",
+      name: "root",
+    },
+    {
+      type: "select",
+      message: "Are you using a source directory?",
+      name: "isSrc",
+      choices: [
+        { title: "Yes", value: true },
+        { title: "No", value: false },
+      ],
+    },
+  ]);
+  return { ...options } as { root: string; isSrc: boolean };
 }

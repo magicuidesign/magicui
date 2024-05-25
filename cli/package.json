@@ -1,6 +1,6 @@
 {
-  "name": "magicui",
-  "version": "1.0.0",
+  "name": "magicui-cli",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "start": "node dist/index.mjs"
   },
   "bin": {
-    "magicui": "./dist/index.mjs"
+    "magicui-cli": "./dist/index.mjs"
   },
   "keywords": [],
   "author": "",
