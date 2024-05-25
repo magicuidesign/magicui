@@ -27,11 +27,7 @@ export function FadeText({
   const axis = direction === "up" || direction === "down" ? "y" : "x";
 
   const FADE_ANIMATION_VARIANTS = useMemo(() => {
-    const {
-      hidden,
-      show,
-      ...rest
-    } = framerProps as {
+    const { hidden, show, ...rest } = framerProps as {
       [name: string]: { [name: string]: number; opacity: number };
     };
 
@@ -57,9 +53,7 @@ export function FadeText({
       viewport={{ once: true }}
       variants={FADE_ANIMATION_VARIANTS}
     >
-      <motion.h1 className={className}>
-        {text}
-      </motion.h1>
+      <motion.h1 className={className}>{text}</motion.h1>
     </motion.div>
   );
 }

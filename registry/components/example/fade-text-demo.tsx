@@ -2,38 +2,38 @@ import { FadeText } from "@/registry/components/magicui/fade-text";
 
 export default async function FadeTextDemo() {
   return (
-    <div className="flex flex-col space-y-8">
+    <div className="flex flex-col space-y-8 text-center">
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
         direction="up"
         framerProps={{
-          show: { transition: { delay: 0.5 } },
+          show: { transition: { delay: 0.2 } },
         }}
-        text="Building Magic"
+        text="Fade Up"
       />
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
         direction="right"
         framerProps={{
-          show: { transition: { delay: 2 } },
+          show: { transition: { delay: 0.4 } },
         }}
-        text="Building Magic"
+        text="Fade Right"
       />
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
         direction="down"
         framerProps={{
-          show: { transition: { delay: 4 } },
+          show: { transition: { delay: 0.6 } },
         }}
-        text="Building Magic"
+        text="Fade Down"
       />
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
         direction="left"
         framerProps={{
-          show: { transition: { delay: 6 } },
+          show: { transition: { delay: 0.8 } },
         }}
-        text="Building Magic"
+        text="Fade Left"
       />
     </div>
   );
