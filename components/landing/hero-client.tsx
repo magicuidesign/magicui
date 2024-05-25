@@ -133,7 +133,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                         size: "lg",
                       }),
                       "gap-2 whitespace-pre md:flex",
-                      "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
+                      "group relative w-full gap-1 rounded-full text-sm font-semibold tracking-tighter",
                     )}
                   >
                     Browse Components
