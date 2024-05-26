@@ -42,7 +42,6 @@ export default function HeroVideoDemo() {
             </HeroVideoAction>
             <video
               autoPlay
-              playsInline
               className="rounded-xl dark:border"
               playsInline
               src="https://cdn.magicui.design/globe.mp4"
