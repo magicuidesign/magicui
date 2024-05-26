@@ -225,6 +225,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Box Reveal",
+          href: `/docs/components/box-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -281,12 +287,6 @@ export const docsConfig: DocsConfig = {
           title: "Radial Gradient",
           href: `/docs/components/radial-gradient`,
           items: [],
-        },
-        {
-          title: "Box Reveal",
-          href: `/docs/components/box-reveal`,
-          items: [],
-          label: "New",
         },
       ],
     },
