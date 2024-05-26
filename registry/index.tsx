@@ -110,7 +110,10 @@ const ui: Registry = {
   "border-beam": {
     name: "border-beam",
     type: "components:ui",
-    files: ["registry/components/magicui/border-beam.tsx"],
+    files: [
+      "registry/components/magicui/border-beam.tsx",
+      "registry/components/magicui/BorderBeam.svelte",
+    ],
   },
   "animated-beam": {
     name: "animated-beam",
