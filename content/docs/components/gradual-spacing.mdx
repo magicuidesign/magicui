@@ -1,0 +1,33 @@
+---
+title: Gradual Spacing
+date: 2024-05-25
+description: Word animation for gradual spacing between letters
+author: wellitsabhi
+published: true
+---
+
+<ComponentPreview name="gradual-spacing-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/gradual-spacing.tsx
+```
+
+<ComponentSource name="gradual-spacing" />
+
+</Steps>
+
+## Props
+
+| Prop          | Type            | Description                                        | Default |
+| ------------- | --------------- | -------------------------------------------------- | ------- |
+| className     | string          | The class name to be applied to the component      |         |
+| duration      | number          | The class name to be applied to the shimmer.       | 0.5     |
+| delayMultiple | number          | The class name to be applied to the shimmer.       | 0.1     |
+| text          | string          | An array of words to rotate through                | ""      |
+| framerProps   | HTMLMotionProps | An object containing framer-motion animation props | {}      |

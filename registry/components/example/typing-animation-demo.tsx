@@ -4,7 +4,7 @@ export default async function TextRevealDemo() {
   return (
     <TypingAnimation
       className="text-4xl font-bold text-black dark:text-white"
-      text="Building Magic"
+      text="Typing Animation"
     />
   );
 }

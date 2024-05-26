@@ -32,7 +32,10 @@ If your project is already using the `shadcn-ui`, don't worry! You can still use
 npx shadcn-ui init
 ```
 
-Just add these two lines to your `components,json` file:
+Just add these two lines to your `components,json` file and install `framer-motion`
+```bash
+npm install framer-motion
+```
 ```diff
 {
   "$schema": "https://ui.shadcn.com/schema.json",

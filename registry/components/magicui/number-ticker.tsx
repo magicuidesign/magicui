@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -43,7 +44,10 @@ export default function NumberTicker({
 
   return (
     <span
-      className={`inline-block tabular-nums text-black dark:text-white ${className}`}
+      className={cn(
+        "inline-block tabular-nums text-black dark:text-white",
+        className,
+      )}
       ref={ref}
     />
   );
