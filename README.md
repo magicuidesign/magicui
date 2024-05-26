@@ -21,6 +21,12 @@ Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/mai
   <img src="https://contrib.rocks/image?repo=magicuidesign/magicui" />
 </a>
 
+## Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmagicuidesign%2Fmagicui)
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/kd94U5?referralCode=xaYd2G)
+
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/38b63c4514a8a4cd7d1307985af2889c78d67bcc.svg "Repobeats analytics image")
