@@ -187,6 +187,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/icon-cloud.tsx"],
   },
+  "shine-border": {
+    name: "shine-border",
+    type: "components:ui",
+    files: ["registry/components/magicui/shine-border.tsx"]
+  }
 };
 
 const example: Registry = {
@@ -690,6 +695,14 @@ const example: Registry = {
       () => import("@/registry/components/example/icon-cloud-demo"),
     ),
   },
+  "shine-border-demo": {
+    name: "shine-border-demo",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo"),
+    )
+  }
 };
 export const registry: Registry = {
   ...ui,

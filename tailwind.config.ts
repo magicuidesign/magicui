@@ -173,6 +173,17 @@ module.exports = {
               "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
           },
         },
+        "shine-pulse": {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "100%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
       },
     },
   },

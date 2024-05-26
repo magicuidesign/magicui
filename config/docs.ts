@@ -258,6 +258,11 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/radial-gradient`,
           items: [],
         },
+        { title: "Shine Border",
+          href: `/docs/components/shine-border`,
+          items: [],
+          label: "New",
+        }
       ],
     },
   ],
