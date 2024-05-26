@@ -9,10 +9,12 @@ import AnimatedBeamMultipleInputDemo from "@/registry/components/example/animate
 import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
 import BentoDemo from "@/registry/components/example/bento-demo";
 import DockDemo from "@/registry/components/example/dock-demo";
-import GlobeDemo from "@/registry/components/example/globe-demo";
 import OrbitingCirclesDemo from "@/registry/components/example/orbiting-circles-demo";
 import RetroGridDemo from "@/registry/components/example/retro-grid-demo";
 import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
+import { VelocityScroll } from "@/registry/components/magicui/scroll-based-velocity";
+import TypingAnimation from "@/registry/components/magicui/typing-animation";
+import WordRotate from "@/registry/components/magicui/word-rotate";
 import { motion, useInView } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -137,7 +139,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     )}
                   >
                     Browse Components
-                    <ChevronRight  className="ml-1  size-4 transition-all duration-300 ease-out group-hover:translate-x-1 flex-shrink-0" />
+                    <ChevronRight className="ml-1  size-4 flex-shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/docs"
@@ -151,7 +153,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     )}
                   >
                     Get Started
-                    <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1 flex-shrink-0" />
+                    <ChevronRight className="ml-1 size-4 flex-shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
               </motion.div>
@@ -290,7 +292,38 @@ export default function HeroClient({ post }: { post: Doc }) {
               <AnimatedBeamMultipleInputDemo />
               <AnimatedListDemo />
               <RetroGridDemo />
-              <GlobeDemo />
+              <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+                <TypingAnimation
+                  className="text-4xl font-bold text-black dark:text-white"
+                  text="Typing Animation"
+                />
+              </div>
+              <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-4 md:shadow-xl">
+                <WordRotate
+                  className="text-4xl font-bold text-black dark:text-white"
+                  words={[
+                    "Web Development.",
+                    "UI/UX Design.",
+                    "Cloud Computing.",
+                    "Web Security.",
+                    "Frontend Frameworks.",
+                    "Backend Architectures.",
+                    "API Design.",
+                    "Content Management Systems.",
+                    "SEO Strategies.",
+                    "Web Performance Optimization.",
+                    "Responsive Design.",
+                    "JavaScript Libraries.",
+                  ]}
+                />
+              </div>
+              <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background py-4 md:shadow-xl">
+                <VelocityScroll
+                  text="Velocity Scroll"
+                  default_velocity={5}
+                  className="font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
+                />
+              </div>
               <OrbitingCirclesDemo />
               <DockDemo />
             </div>
