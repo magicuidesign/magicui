@@ -7,6 +7,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/magic-card.tsx"],
   },
+  "neon-gradient-card": {
+    name: "neon-gradient-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/neon-gradient-card.tsx"],
+  },
   "linear-gradient": {
     name: "linear-gradient",
     type: "components:ui",
@@ -226,6 +231,14 @@ const example: Registry = {
     files: ["registry/components/example/magic-card-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/magic-card-demo"),
+    ),
+  },
+  "neon-gradient-card-demo": {
+    name: "neon-gradient-card-demo",
+    type: "components:example",
+    files: ["registry/components/example/neon-gradient-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/neon-gradient-card-demo"),
     ),
   },
   "magic-card-gradient": {
