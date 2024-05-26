@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -67,17 +67,16 @@ export function ComponentPreview({
               Code
             </TabsTrigger>
           </TabsList>
-          <Button
-            onClick={() => setKey((prev) => prev + 1)}
-            className="ml-4 flex items-center space-x-2 rounded  px-3 py-1"
-            variant="ghost"
-          >
-            <span>Reload</span>
-            <RotateCcw size={16} />
-          </Button>
         </div>
         <TabsContent value="preview" className="relative rounded-md" key={key}>
           <ComponentWrapper>
+            <Button
+              onClick={() => setKey((prev) => prev + 1)}
+              className="absolute right-0 top-0 z-50 ml-4 flex items-center rounded-lg px-3 py-1"
+              variant="ghost"
+            >
+              <RotateCcw size={16} />
+            </Button>
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">
