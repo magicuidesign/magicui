@@ -48,6 +48,44 @@ pnpm dev
 
 Read the [example PR](https://github.com/magicuidesign/magicui/pull/12) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
 
+## How to use CLI
+
+1. Run CLI script from project `root` folder
+
+```bash
+pnpm run install:cli
+```
+```bash
+pnpm run dev:cli
+```
+```bash
+pnpm run build:cli
+```
+```bash
+pnpm run release:cli
+```
+
+
+2. Run CLI script from `/packages/cli` folder
+
+```bash
+pnpm run install
+```
+```bash
+pnpm run dev
+```
+```bash
+pnpm run build
+```
+```bash
+pnpm run release
+```
+Lot more usefull script are available in package.json
+
+
+The CLI in development uses index.json from default `3000` port on localhost. Otherwise [https://magicui.design](https://magicui.design/registry/index.json)
+
+
 ## Ask for help
 
 For any help or questions, please open a new github issue and we will get back to you :)
