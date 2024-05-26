@@ -1,4 +1,4 @@
-import OrbitingCircles from "@/registry/components/magicui/orbiting-circles";
+import OrbitingCircles from "@/components/magicui/orbiting-circles";
 import { IconProps } from "@radix-ui/react-icons/dist/types";
 
 export default function OrbitingCirclesDemo() {

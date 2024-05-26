@@ -8,9 +8,9 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
-import { BentoCard, BentoGrid } from "@/registry/components/magicui/bento-grid";
-import Globe from "@/registry/components/magicui/globe";
-import Marquee from "@/registry/components/magicui/marquee";
+import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import Globe from "@/components/magicui/globe";
+import Marquee from "@/components/magicui/marquee";
 import {
   CalendarIcon,
   FileTextIcon,

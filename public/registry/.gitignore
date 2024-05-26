@@ -1,0 +1,4 @@
+# Components data will be generated in build time
+# pnpm run build:registry
+
+*.json

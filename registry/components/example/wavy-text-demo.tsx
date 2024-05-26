@@ -1,4 +1,4 @@
-import WavyText from "../magicui/wavy-text";
+import WavyText from "@/components/magicui/wavy-text";
 
 const WavyTextDemo = () => {
   return (

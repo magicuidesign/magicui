@@ -1,4 +1,4 @@
-import LetterPullup from "@/registry/components/magicui/letter-pullup";
+import LetterPullup from "@/components/magicui/letter-pullup";
 
  export default async function LetterPullupDemo() {
    return (

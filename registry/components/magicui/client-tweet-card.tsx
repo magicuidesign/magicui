@@ -4,7 +4,7 @@ import {
   MagicTweet,
   TweetNotFound,
   TweetSkeleton,
-} from "@/registry/components/magicui/tweet-card";
+} from "@/components/magicui/tweet-card";
 import { TweetProps, useTweet } from "react-tweet";
 
 const ClientTweetCard = ({

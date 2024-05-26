@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import TextShimmer from "@/registry/components/magicui/animated-shiny-text";
+import TextShimmer from "@/components/magicui/animated-shiny-text";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default async function TextShimmerDemo() {
