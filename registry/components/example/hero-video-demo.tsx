@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import HeroVideo, {
   HeroVideoAction,
-} from "@/registry/components/magicui/hero-video";
+} from "@/components/magicui/hero-video";
 import {
   MagicCard,
   MagicContainer,
-} from "@/registry/components/magicui/magic-card";
+} from "@/components/magicui/magic-card";
 
 const PlayButton = () => (
   <svg

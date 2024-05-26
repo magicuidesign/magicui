@@ -1,4 +1,4 @@
-import RadialGradient from "@/registry/components/magicui/radial-gradient";
+import RadialGradient from "@/components/magicui/radial-gradient";
 
 export default function RadialGradientDemo() {
   return (

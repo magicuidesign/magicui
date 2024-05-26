@@ -1,4 +1,4 @@
-import AvatarCircles from "@/registry/components/magicui/avatar-circles";
+import AvatarCircles from "@/components/magicui/avatar-circles";
 
 const avatarUrls = [
   "https://avatars.githubusercontent.com/u/16860528",

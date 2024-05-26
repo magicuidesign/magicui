@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import AnimatedGridPattern from "@/registry/components/magicui/animated-grid-pattern";
+import AnimatedGridPattern from "@/components/magicui/animated-grid-pattern";
 
 const AnimatedGridPatternDemo = () => {
   return (

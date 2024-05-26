@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import GridPattern from "@/registry/components/magicui/grid-pattern";
+import GridPattern from "@/components/magicui/grid-pattern";
 
 const GridPatternDashed = () => {
   return (

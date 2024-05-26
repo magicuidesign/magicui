@@ -1,7 +1,7 @@
 "use client";
 
+import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/registry/components/magicui/animated-beam";
 import React, { forwardRef, useRef } from "react";
 
 const Circle = forwardRef<

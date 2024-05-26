@@ -1,4 +1,4 @@
-import { BentoCard, BentoGrid } from "@/registry/components/magicui/bento-grid";
+import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import {
   BellIcon,
   CalendarIcon,
