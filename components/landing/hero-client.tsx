@@ -137,7 +137,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     )}
                   >
                     Browse Components
-                    <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                    <ChevronRight  className="ml-1  size-4 transition-all duration-300 ease-out group-hover:translate-x-1 flex-shrink-0" />
                   </Link>
                   <Link
                     href="/docs"
@@ -151,7 +151,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     )}
                   >
                     Get Started
-                    <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                    <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1 flex-shrink-0" />
                   </Link>
                 </div>
               </motion.div>

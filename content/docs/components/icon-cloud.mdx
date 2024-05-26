@@ -28,6 +28,12 @@ components/magicui/icon-cloud.tsx
 
 ## Props
 
+## IconCloud 
+Displays a dynamic cloud of icons from the Simple Icons library based on provided slugs.
+|       Prop       |                       type                      |  default  |                                                                           description                                                                          |
+|:----------------:|:-----------------------------------------------:|:---------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| iconSlugs           | string[]                                         |           |An array of icon slugs corresponding to the icons you want to display. Each slug should match a supported icon from the Simple Icons library.                                                             |    
+
 ## Cloud
 |      Prop      |                 type                              | default |                           description                           |
 |:--------------:|:-------------------------------------------------:|:-------:|:---------------------------------------------------------------:|
@@ -38,6 +44,7 @@ components/magicui/icon-cloud.tsx
 | options        | IOptions \| undefined                             | {}      | https://www.goat1000.com/tagcanvas-options.php                  |
 | maxSpeed        | int                             | 0.04      | To adjust the rotation speed in idle state                 |
 | minSpeed        | int                             | 0.02      | To adjust the rotation speed when hovering                 |
+| dragControl        | boolean                             | false      | Enable or disable the ability to drag and interact with the icon cloud.                   |
 
 ## renderSimpleIcon
 Used to create a tag for the Cloud component
@@ -56,3 +63,7 @@ Used when you cant statically import simple icons during built time. Calling thi
 |       Prop       |                       type                      |  default  |                                                                           description                                                                          |
 |:----------------:|:-----------------------------------------------:|:---------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | slugs           | string[]                                         |           | Slugs to fetch svgs and colors for. The return icons may be passed to renderSimpleIcon                                                                         |    
+
+## Credits
+
+- Credits to (https://github.com/teaguestockwell/react-icon-cloud)
