@@ -207,6 +207,30 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gradual Spacing",
+          href: `/docs/components/gradual-spacing`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Word Fade In",
+          href: `/docs/components/word-fade-in`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Fade Text",
+          href: `/docs/components/fade-text`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Box Reveal",
+          href: `/docs/components/box-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -216,6 +240,12 @@ export const docsConfig: DocsConfig = {
           title: "Shimmer Button",
           href: `/docs/components/shimmer-button`,
           items: [],
+        },
+        {
+          title: "Shiny Button",
+          href: `/docs/components/shiny-button`,
+          items: [],
+          label: "New",
         },
       ],
     },
