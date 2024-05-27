@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import posthog from "posthog-js";
 
 export function SiteBanner() {
   return (
@@ -7,6 +8,7 @@ export function SiteBanner() {
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
           href="https://pro.magicui.design"
+          onClick={() => posthog.capture("banner_cta_clicked")}
           target="_blank"
           className="group inline-flex items-center justify-center text-center text-sm leading-loose"
         >
