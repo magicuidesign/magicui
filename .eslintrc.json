@@ -1,7 +1,6 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "turbo",
     "prettier",
     "plugin:tailwindcss/recommended"
   ],

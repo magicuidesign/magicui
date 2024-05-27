@@ -89,5 +89,19 @@ export const ASCII_TEXT = printer.multiline(TEXT)
 export const ASCII_LOGO = printer.multiline(LOGO)
 export const ASCII_PRO = printer.multiline(PRO)
 
-export const tryPro = "\nTry Magic UI Pro for more premium templates and components.\n -> https://pro.magicui.design\n"
+export const tryPro = `
+Try Magic UI Pro for more premium components & blocks.
+ → https://pro.magicui.design
+`;
+
+export const hasPro = `
+
+Authenticated ✅
+
+You are using Magic UI Pro. Welcome ❤︎
+ → use '--pro' option with add command to view the premium components & blocks.
+ → https://pro.magicui.design
+
+`;
+
 export const ColorFullText = (string: string) => printer.multiline(string)
