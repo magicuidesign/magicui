@@ -3,7 +3,14 @@ import path from "path";
 import { getConfig } from "@/src/utils/get-config";
 import { getPackageManager } from "@/src/utils/get-package-manager";
 import { handleError } from "@/src/utils/handle-error";
-import { logger, tryPro, ASCII_TEXT } from "@/src/utils/logger";
+import {
+	logger,
+	tryPro,
+	hasPro,
+	ASCII_TEXT,
+	ASCII_PRO,
+	ColorFullText,
+} from "@/src/utils/logger";
 import {
 	fetchTree,
 	fetchTreeFromShadcn,
@@ -20,6 +27,7 @@ import { execa } from "execa";
 import ora from "ora";
 import prompts from "prompts";
 import { z } from "zod";
+import { getEnv, parseEnvFile } from "../utils/get-env";
 
 const addOptionsSchema = z.object({
 	components: z.array(z.string()).optional(),
@@ -27,14 +35,17 @@ const addOptionsSchema = z.object({
 	overwrite: z.boolean(),
 	cwd: z.string(),
 	all: z.boolean(),
-	// pro: z.boolean(),
+	pro: z.boolean(),
 	example: z.boolean(),
 	shadcn: z.boolean(),
 	path: z.string().optional(),
 });
 
+const MAGICUI_PRO_ENV = getEnv();
+
 export const add = new Command()
-	.name("add").addHelpText("before", ASCII_TEXT)//.addHelpText("after", ColorFullText(tryPro))
+	.addHelpText("before", ColorFullText(MAGICUI_PRO_ENV ? hasPro : tryPro))
+	.name("add")
 	.description("Add ui components to your project")
 	.argument("[components...]", "the components to add")
 	.option("-y, --yes", "skip confirmation prompt.", true)
@@ -45,11 +56,12 @@ export const add = new Command()
 		process.cwd(),
 	)
 	.option("-a, --all", "add all available components", false)
-	// .option(
-	// 	"-m, --pro",
-	// 	"include pro magic-ui components (make sure to add your secret .env)",
-	// 	false,
-	// )
+	.option(
+		"-m, --pro",
+		"include pro magic-ui blocks & components (make sure to add your secret .env)",
+		false,
+	)
+	.addHelpText("after", ColorFullText(MAGICUI_PRO_ENV ? hasPro : tryPro))
 	.option("-e, --example", "include available examples & demos", false)
 	.option("-s, --shadcn", "include available components from shadcn-ui", false)
 	.option("-p, --path <path>", "the path to add the component to.")
@@ -77,10 +89,12 @@ export const add = new Command()
 				process.exit(1);
 			}
 
-			const registryIndex = !options.shadcn ? (await getRegistryIndex({})).filter((e) => {
-				const type = e.type.split(":")[1] as "magicui" | "example";
-				return options.example ? type === "example" : type === "magicui";
-			}) : [];
+			const registryIndex = !options.shadcn
+				? (await getRegistryIndex({})).filter((e) => {
+						const type = e.type.split(":")[1] as "magicui" | "example";
+						return options.example ? type === "example" : type === "magicui";
+					})
+				: [];
 			const shadcnRegistryIndex = await getRegistryIndex({ shadcn: true });
 
 			let selectedComponents = options.all
@@ -90,7 +104,7 @@ export const add = new Command()
 				: options.components;
 
 			if (!options.components?.length && !options.all) {
-				!options.shadcn && console.log(tryPro)
+				!options.shadcn && console.log(tryPro);
 				const { components } = await prompts({
 					type: "multiselect",
 					name: "components",
