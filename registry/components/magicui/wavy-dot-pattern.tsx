@@ -1,8 +1,30 @@
 import { anime } from 'react-anime'
 import { cn } from "@/lib/utils"
+import { useState } from 'react'
 
-const handleDotClick = (e: any, width: number, height: number) => {
-    anime({
+interface WavyDotPatternProps {
+    className?: string
+    gridWidth?: number
+    gridHeight?: number
+    dotWidth?: number,
+    dotHeight?: number
+}
+
+export const WavyDotPattern = ({
+    className,
+    gridWidth,
+    gridHeight,
+    dotWidth,
+    dotHeight
+  }: WavyDotPatternProps) => {
+
+    const [dotClickDisabled, setDotClickDisabled] = useState<boolean>(false);
+
+    const handleDotClick = (e: any, width: number, height: number) => {
+    
+      setDotClickDisabled(true)
+
+      anime({
         targets: ".dot-point",
         scale: [
             { value: 1.35, easing: "easeOutSine", duration: 250 },
@@ -20,24 +42,10 @@ const handleDotClick = (e: any, width: number, height: number) => {
             grid: [width, height],
             from: e.target.dataset.index
         })
-    })
-}
+      })
 
-interface WavyDotPatternProps {
-    className?: string
-    gridWidth?: number
-    gridHeight?: number
-    dotWidth?: number,
-    dotHeight?: number
-}
-
-export const WavyDotPattern = ({
-    className,
-    gridWidth,
-    gridHeight,
-    dotWidth,
-    dotHeight
-  }: WavyDotPatternProps) => {
+      setTimeout(() => setDotClickDisabled(false), 2000)
+  }
     
     const GRID_WIDTH = gridWidth ? gridWidth : 30
     const GRID_HEIGHT = gridHeight ? gridHeight : 30
@@ -53,11 +61,12 @@ export const WavyDotPattern = ({
       
         for (let j = 0; j < GRID_HEIGHT; j++) {
         dots.push(
-          <div
+          <button
             className = "p-[0.8rem] rounded-[8px]"
             onClick = { (e) => handleDotClick(e, GRID_WIDTH, GRID_HEIGHT) }
             data-index = { index }
             key = { `${i}-${j}` }
+            disabled = { dotClickDisabled }
           >
             <div 
                 className = { cn(
@@ -68,7 +77,7 @@ export const WavyDotPattern = ({
                 )}
                 data-index = { index }
             />
-          </div>
+          </button>
         );
         index++;
       }
