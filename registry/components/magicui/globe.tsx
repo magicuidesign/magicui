@@ -108,7 +108,7 @@ export default function Globe({
     >
       <canvas
         className={cn(
-          "h-full w-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
+          "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
         )}
         ref={canvasRef}
         onPointerDown={(e) =>

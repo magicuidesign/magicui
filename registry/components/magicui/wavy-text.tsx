@@ -45,7 +45,7 @@ const WavyText = ({
               }}
               className={cn(
                 className,
-                "font-display text-center text-4xl font-bold tracking-[-0.1em] md:text-7xl",
+                "font-display text-center text-4xl font-bold -tracking-widest md:text-7xl",
               )}
             >
               {char}

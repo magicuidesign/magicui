@@ -54,14 +54,14 @@ export default function FeatureCard5() {
   };
 
   return (
-    <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
+    <div className="relative size-full max-w-lg transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileHover="whileHover"
-        className="flex h-full w-full cursor-pointer flex-col items-start justify-between"
+        className="flex size-full cursor-pointer flex-col items-start justify-between"
       >
-        <div className="relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden rounded-t-xl bg-transparent p-10">
+        <div className="relative flex size-full cursor-pointer items-center justify-center overflow-hidden rounded-t-xl bg-transparent p-10">
           <div className="relative h-[150px] w-full cursor-pointer overflow-hidden rounded-xl border border-slate-200/50 bg-white dark:border-neutral-700/50 dark:bg-neutral-900">
             <motion.p
               variants={variant2}
@@ -74,7 +74,7 @@ export default function FeatureCard5() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               preserveAspectRatio="none"
-              className="absolute inset-0 h-full w-full"
+              className="absolute inset-0 size-full"
               viewBox="0 -950 366 1408"
             >
               <path

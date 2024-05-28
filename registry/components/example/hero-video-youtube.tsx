@@ -36,7 +36,7 @@ export default function HeroVideoDemo() {
             image="https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1024"
           >
             <HeroVideoAction>
-              <Button className="h-20 w-20 rounded-full" variant="outline">
+              <Button className="size-20 rounded-full" variant="outline">
                 <PlayButton />
               </Button>
             </HeroVideoAction>

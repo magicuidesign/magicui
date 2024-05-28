@@ -84,22 +84,22 @@ export default function FeatureCard8() {
   };
 
   return (
-    <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
+    <div className="relative size-full max-w-lg transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileHover="whileHover"
-        className="flex h-full w-full cursor-pointer flex-col items-start justify-between"
+        className="flex size-full cursor-pointer flex-col items-start justify-between"
       >
-        <div className="flex h-full w-full cursor-pointer flex-col items-center justify-center gap-y-1 overflow-hidden rounded-t-xl bg-transparent">
+        <div className="flex size-full cursor-pointer flex-col items-center justify-center gap-y-1 overflow-hidden rounded-t-xl bg-transparent">
           <div className="relative flex flex-col items-center justify-center gap-y-2 px-10 py-20">
             <motion.div
               variants={variant1}
               className=" relative flex items-start gap-x-2 rounded-lg border border-neutral-400/20 bg-white p-4 shadow-[0px_0px_40px_-25px_rgba(0,0,0,0.25)] dark:border-neutral-800 dark:bg-neutral-900"
             >
-              <div className="h-6 w-6 rounded-full bg-blue-500">
+              <div className="size-6 rounded-full bg-blue-500">
                 <img
-                  className="h-full w-full rounded-full object-cover"
+                  className="size-full rounded-full object-cover"
                   src="https://avatar.vercel.sh/joshua"
                   alt="joshua"
                 />
@@ -116,9 +116,9 @@ export default function FeatureCard8() {
               className=" absolute inset-10 -bottom-14 z-[3] m-auto flex h-fit items-start gap-x-2 rounded-lg border border-neutral-400/20 bg-white p-4 shadow-[0px_0px_40px_-25px_rgba(0,0,0,0.25)] dark:border-neutral-800 dark:bg-neutral-900"
             >
               <div className="w-8 ">
-                <div className="h-6 w-6 rounded-full bg-blue-500">
+                <div className="size-6 rounded-full bg-blue-500">
                   <img
-                    className="h-full w-full rounded-full object-cover"
+                    className="size-full rounded-full object-cover"
                     src="https://avatar.vercel.sh/christina"
                     alt="christina"
                   />

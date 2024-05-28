@@ -24,7 +24,7 @@ export function DocPager({ doc }: DocsPagerProps) {
           href={pager.prev.href}
           className={buttonVariants({ variant: "outline" })}
         >
-          <ChevronLeftIcon className="mr-2 h-4 w-4" />
+          <ChevronLeftIcon className="mr-2 size-4" />
           {pager.prev.title}
         </Link>
       )}
@@ -34,7 +34,7 @@ export function DocPager({ doc }: DocsPagerProps) {
           className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
         >
           {pager.next.title}
-          <ChevronRightIcon className="ml-2 h-4 w-4" />
+          <ChevronRightIcon className="ml-2 size-4" />
         </Link>
       )}
     </div>

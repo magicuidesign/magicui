@@ -66,14 +66,14 @@ export default function FeatureCard2() {
   };
 
   return (
-    <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
+    <div className="relative size-full max-w-lg transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileHover="whileHover"
-        className="flex h-full w-full cursor-pointer flex-col justify-between"
+        className="flex size-full cursor-pointer flex-col justify-between"
       >
-        <div className="flex h-full w-full items-center justify-center rounded-t-xl">
+        <div className="flex size-full items-center justify-center rounded-t-xl">
           <motion.div className="flex h-[310px] w-full cursor-pointer flex-col gap-y-5 overflow-hidden rounded-t-md p-5">
             {texts.map((text, index) => (
               <motion.div

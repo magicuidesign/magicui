@@ -109,7 +109,7 @@ const features = [
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <Globe className="top-0 h-[600px] w-[600px] transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)] group-hover:scale-105 sm:left-40" />
+      <Globe className="top-0 size-[600px] transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)] group-hover:scale-105 sm:left-40" />
     ),
   },
   {

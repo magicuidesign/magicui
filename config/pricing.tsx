@@ -3,7 +3,7 @@ import { User2Icon } from "lucide-react";
 export const plans = [
   {
     stripePriceId: "price_1ODMUcKqaLcdpMYsOJ4j8XtA",
-    Icon: <User2Icon className="flex h-10 w-10 rounded-full stroke-white/40" />,
+    Icon: <User2Icon className="flex size-10 rounded-full stroke-white/40" />,
     name: "Magic UI PRO",
     sub: "For individual developers and freelancers.",
     desc: "Beautifully crafted React + Tailwind CSS + Framer Motion components and templates for your next web project.",

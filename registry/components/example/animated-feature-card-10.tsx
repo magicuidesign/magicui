@@ -126,7 +126,7 @@ export default function FeatureCard10() {
                 <img
                   src={card.image}
                   alt={card.title}
-                  className="h-20 w-20 rounded-full object-cover"
+                  className="size-20 rounded-full object-cover"
                 />
                 <p className="text-sm dark:text-neutral-200/50">{card.title}</p>
                 <a

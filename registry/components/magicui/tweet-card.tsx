@@ -70,13 +70,13 @@ export const TweetSkeleton = ({
 }) => (
   <div
     className={cn(
-      "flex h-full max-h-max w-full min-w-[18rem] flex-col gap-2 rounded-lg border p-4",
+      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-lg border p-4",
       className,
     )}
     {...props}
   >
     <div className="flex flex-row gap-2">
-      <Skeleton className="h-10 w-10 shrink-0 rounded-full" />
+      <Skeleton className="size-10 shrink-0 rounded-full" />
       <Skeleton className="h-10 w-full" />
     </div>
     <Skeleton className="h-20 w-full" />
@@ -92,7 +92,7 @@ export const TweetNotFound = ({
 }) => (
   <div
     className={cn(
-      "flex h-full w-full flex-col items-center justify-center gap-2 rounded-lg border p-4",
+      "flex size-full flex-col items-center justify-center gap-2 rounded-lg border p-4",
       className,
     )}
     {...props}
@@ -124,7 +124,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified ||
             (tweet.user.is_blue_verified && (
-              <Verified className="ml-1 inline h-4 w-4 text-blue-500" />
+              <Verified className="ml-1 inline size-4 text-blue-500" />
             ))}
         </a>
         <div className="flex items-center space-x-1">
@@ -141,7 +141,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     </div>
     <a href={tweet.url} target="_blank" rel="noreferrer">
       <span className="sr-only">Link to tweet</span>
-      <Twitter className="h-5 w-5 items-start text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
+      <Twitter className="size-5 items-start text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
     </a>
   </div>
 );
@@ -235,7 +235,7 @@ export const MagicTweet = ({
   return (
     <div
       className={cn(
-        "relative flex h-full w-full max-w-[32rem] flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
+        "relative flex size-full max-w-lg flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
         className,
       )}
       {...props}

@@ -13,7 +13,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className,
       )}
     >
@@ -21,7 +21,7 @@ const Circle = forwardRef<
     </div>
   );
 });
-
+Circle.displayName = "Circle";
 export default function AnimatedBeamDemo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
@@ -32,13 +32,13 @@ export default function AnimatedBeamDemo() {
       className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl"
       ref={containerRef}
     >
-      <div className="flex h-full w-full flex-col items-stretch justify-between gap-10">
+      <div className="flex size-full flex-col items-stretch justify-between gap-10">
         <div className="flex flex-row justify-between">
           <Circle ref={div1Ref}>
             <Icons.user className="text-black" />
           </Circle>
           <Circle ref={div2Ref}>
-            <Icons.openai className="h-6 w-6" />
+            <Icons.openai className="size-6" />
           </Circle>
         </div>
       </div>

@@ -41,3 +41,5 @@ next-env.d.ts
 
 .contentlayer
 .react-email
+.turbo
+.turbo/turbo-build.log

@@ -30,7 +30,7 @@ const logos = [
 
 const Logo = ({ name, img }: { name: string; img: string }) => {
   return (
-    <div className={cn("h-12 w-12 cursor-pointer")}>
+    <div className={cn("size-12 cursor-pointer")}>
       <img src={img} alt={name} />
     </div>
   );
@@ -38,7 +38,7 @@ const Logo = ({ name, img }: { name: string; img: string }) => {
 
 const MarqueeLogos = () => {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
+    <div className="relative flex size-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
       <Marquee className="[--gap:3rem]">
         {logos.map((logo, idx) => (
           <Logo key={idx} {...logo} />

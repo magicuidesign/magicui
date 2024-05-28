@@ -13,7 +13,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-border bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className,
       )}
     >
@@ -21,7 +21,7 @@ const Circle = forwardRef<
     </div>
   );
 });
-
+Circle.displayName = "Circle";
 export default function AnimatedBeamMultipleInputDemo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
@@ -34,30 +34,30 @@ export default function AnimatedBeamMultipleInputDemo() {
 
   return (
     <div
-      className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl"
+      className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl"
       ref={containerRef}
     >
-      <div className="flex h-full w-full flex-row items-stretch justify-between gap-10">
+      <div className="flex size-full flex-row items-stretch justify-between gap-10">
         <div className="flex flex-col justify-center gap-2">
           <Circle ref={div1Ref}>
-            <Icons.googleDrive className="h-6 w-6" />
+            <Icons.googleDrive className="size-6" />
           </Circle>
           <Circle ref={div2Ref}>
-            <Icons.googleDocs className="h-6 w-6" />
+            <Icons.googleDocs className="size-6" />
           </Circle>
           <Circle ref={div3Ref}>
-            <Icons.whatsapp className="h-6 w-6" />
+            <Icons.whatsapp className="size-6" />
           </Circle>
           <Circle ref={div4Ref}>
-            <Icons.messenger className="h-6 w-6" />
+            <Icons.messenger className="size-6" />
           </Circle>
           <Circle ref={div5Ref}>
-            <Icons.notion className="h-6 w-6" />
+            <Icons.notion className="size-6" />
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
-          <Circle ref={div6Ref} className="h-16 w-16">
-            <Icons.openai className="h-6 w-6" />
+          <Circle ref={div6Ref} className="size-16">
+            <Icons.openai className="size-6" />
           </Circle>
         </div>
         <div className="flex flex-col justify-center">

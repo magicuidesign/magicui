@@ -106,7 +106,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
   };
 
   return (
-    <div className={cn("h-full w-full", className)} ref={containerRef}>
+    <div className={cn("size-full", className)} ref={containerRef}>
       {children}
     </div>
   );
@@ -197,7 +197,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
         } as CSSProperties
       }
       className={cn(
-        "relative z-0 h-full w-full rounded-2xl p-6",
+        "relative z-0 size-full rounded-2xl p-6",
         "bg-gray-300 dark:bg-gray-700",
         "bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
         className,
@@ -209,7 +209,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
       {/* Background */}
       <div
         className={
-          "absolute inset-[1px] -z-20 rounded-2xl bg-white dark:bg-black/95"
+          "absolute inset-px -z-20 rounded-2xl bg-white dark:bg-black/95"
         }
       />
     </div>

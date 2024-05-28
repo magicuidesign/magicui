@@ -36,7 +36,7 @@ export default function HeroVideoDemo() {
             image="https://cdn.dribbble.com/userupload/4145843/file/original-c7a2c9a768450460259f232259d103d2.png?resize=1600x1200"
           >
             <HeroVideoAction>
-              <Button className="h-20 w-20 rounded-full" variant="outline">
+              <Button className="size-20 rounded-full" variant="outline">
                 <PlayButton />
               </Button>
             </HeroVideoAction>

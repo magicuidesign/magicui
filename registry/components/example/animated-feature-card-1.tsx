@@ -80,22 +80,22 @@ export default function FeatureCard1() {
   };
 
   return (
-    <div className="relative h-full w-full max-w-[32rem] transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
+    <div className="relative size-full max-w-lg transform-gpu rounded-lg border bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] md:max-h-[500px]">
       <motion.div
         variants={containerVariants}
         initial="initial"
         whileHover="whileHover"
-        className="flex h-full w-full cursor-pointer flex-col justify-between"
+        className="flex size-full cursor-pointer flex-col justify-between"
       >
-        <div className="flex h-full w-full items-center justify-center rounded-t-xl">
+        <div className="flex size-full items-center justify-center rounded-t-xl">
           <div className="relative flex flex-col items-center justify-center gap-y-2 p-10">
             <motion.div
               variants={variant1}
-              className="z-[1] flex h-full w-full items-center justify-between gap-x-2 rounded-md border bg-white p-5 px-2.5 dark:border-neutral-800 dark:bg-neutral-900"
+              className="z-[1] flex size-full items-center justify-between gap-x-2 rounded-md border bg-white p-5 px-2.5 dark:border-neutral-800 dark:bg-neutral-900"
             >
-              <div className="h-8 w-8 rounded-full bg-pink-300">
+              <div className="size-8 rounded-full bg-pink-300">
                 <img
-                  className="h-full w-full rounded-full object-cover"
+                  className="size-full rounded-full object-cover"
                   src="https://avatar.vercel.sh/jack"
                   alt="jack"
                 />
@@ -108,11 +108,11 @@ export default function FeatureCard1() {
             </motion.div>
             <motion.div
               variants={variant2}
-              className="z-[2] flex h-full w-full items-center justify-between gap-x-2 rounded-md border bg-white p-5 px-2.5 dark:border-neutral-800 dark:bg-neutral-900"
+              className="z-[2] flex size-full items-center justify-between gap-x-2 rounded-md border bg-white p-5 px-2.5 dark:border-neutral-800 dark:bg-neutral-900"
             >
-              <div className="h-8 w-8 rounded-full bg-pink-300">
+              <div className="size-8 rounded-full bg-pink-300">
                 <img
-                  className="h-full w-full rounded-full object-cover"
+                  className="size-full rounded-full object-cover"
                   src="https://avatar.vercel.sh/jane"
                   alt="jane"
                 />
@@ -125,11 +125,11 @@ export default function FeatureCard1() {
             </motion.div>
             <motion.div
               variants={variant3}
-              className="absolute bottom-0 z-[3] m-auto flex h-fit w-fit items-center justify-between gap-x-2 rounded-md border bg-white p-5 px-2.5 dark:border-neutral-800 dark:bg-neutral-900"
+              className="absolute bottom-0 z-[3] m-auto flex size-fit items-center justify-between gap-x-2 rounded-md border bg-white p-5 px-2.5 dark:border-neutral-800 dark:bg-neutral-900"
             >
-              <div className="h-8 w-8 rounded-full bg-pink-300">
+              <div className="size-8 rounded-full bg-pink-300">
                 <img
-                  className="h-full w-full rounded-full object-cover"
+                  className="size-full rounded-full object-cover"
                   src="https://avatar.vercel.sh/jill"
                   alt="jill"
                 />

@@ -57,8 +57,8 @@ export default function HeroClient({ post }: { post: Doc }) {
                   <AnimatedGradientText>
                     <div
                       className={cn(
-                        `absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
-                        `p-[1px] ![mask-composite:subtract]`,
+                        `absolute inset-0 block size-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
+                        `p-px ![mask-composite:subtract]`,
                       )}
                     />
                     🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
@@ -70,7 +70,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     >
                       Introducing {post.title}
                     </span>
-                    <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
+                    <ChevronRight className="ml-1 size-4 text-gray-500" />
                   </AnimatedGradientText>
                 </Link>
               </motion.div>
@@ -93,7 +93,7 @@ export default function HeroClient({ post }: { post: Doc }) {
               </motion.h1>
 
               <motion.p
-                className="max-w-[64rem] text-balance text-lg tracking-tight text-gray-500 md:text-xl"
+                className="max-w-5xl text-balance text-lg tracking-tight text-gray-500 md:text-xl"
                 animate={fadeInInView ? "animate" : "initial"}
                 variants={fadeUpVariants}
                 initial={false}
@@ -132,7 +132,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                         variant: "default",
                         size: "lg",
                       }),
-                      "gap-2 whitespace-pre md:flex",
+                      "whitespace-pre md:flex",
                       "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
                     )}
                   >
@@ -146,7 +146,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                         size: "lg",
                         variant: "ghost",
                       }),
-                      "gap-2 whitespace-pre md:flex",
+                      "whitespace-pre md:flex",
                       "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter",
                     )}
                   >
