@@ -222,6 +222,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/box-reveal.tsx"],
   },
+  "gauge-circle": {
+    name: "gauge-circle",
+    type: "components:ui",
+    files: ["registry/components/magicui/gauge-circle.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -773,6 +778,14 @@ const example: Registry = {
       () => import("@/registry/components/example/box-reveal-demo"),
     ),
   },
+  "gauge-circle-demo": {
+    name: "gauge-circle-demo",
+    type: "components:example",
+    files: ["registry/components/example/gauge-circle-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/gauge-circle-demo"),
+    ),
+  }
 };
 export const registry: Registry = {
   ...ui,

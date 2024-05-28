@@ -95,6 +95,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gauge Circle",
+          href: `/docs/components/gauge-circle`,
+          items: [],
+          label: "New",
+        }
       ],
     },
     {
