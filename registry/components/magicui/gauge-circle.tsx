@@ -9,23 +9,10 @@ interface Props {
   className?: string;
 }
 
-export default function GaugeCircle({
-  max=100,
-  min=0,
-  value=0,
-  gaugePrimaryColor,
-  gaugeSecondaryColor,
-  className
-}: Props) {
-  const circumference = 2 * Math.PI * 45;
-  const percentPx = circumference / 100;
-  const currentPercent = ((value - min) / (max - min)) * 100;
-
-  return (
-    <div>
-      <style>
-        {`
-.gauge_circle {
+/*
+  This is the css that should be added to a css file
+ */
+const css = `.gauge_circle {
 --transition-length: 1s;
 --transition-step: 200ms;
 --delay: 0s;
@@ -58,13 +45,27 @@ transform: translateZ(0);
     to {
         opacity: 1
     }
-}
-`}
-      </style>
+}`;
+
+export default function GaugeCircle({
+  max = 100,
+  min = 0,
+  value = 0,
+  gaugePrimaryColor,
+  gaugeSecondaryColor,
+  className,
+}: Props) {
+  const circumference = 2 * Math.PI * 45;
+  const percentPx = circumference / 100;
+  const currentPercent = ((value - min) / (max - min)) * 100;
+
+  return (
+    <div>
+      <style>{css}</style>
       <div
         className={cn(
           "gauge_circle gauge_animate !relative h-40 w-40 text-2xl font-semibold",
-          className
+          className,
         )}
         style={
           {

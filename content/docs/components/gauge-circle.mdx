@@ -14,7 +14,11 @@ published: true
 
 Copy and paste the following code into your project.
 
-```jsx
+<ComponentSource name="gauge-circle" />
+
+### Example Usage
+
+```js
 import GaugeCircle fom 'components/magicui/gauge-circle.tsx'
 
 const App = () => {
@@ -30,73 +34,18 @@ const App = () => {
 }
 ```
 
-```css
-.gauge_circle {
-  --transition-length: 1s;
-  --transition-step: 200ms;
-  --delay: 0s;
-  --percent-to-deg: 3.6deg;
-  transform: translateZ(0);
-}
-
-.gauge_animate .gauge_arc {
-  stroke-dasharray: calc(var(--stroke-percent) * var(--percent-to-px)) var(
-      --circumference
-    );
-  transition:
-    var(--transition-length) ease var(--delay),
-    stroke var(--transition-length) ease var(--delay);
-  transition-property: stroke-dasharray, transform;
-  transform: rotate(
-    calc(
-      -90deg + var(--gap-percent) * var(--offset-factor) * var(--percent-to-deg)
-    )
-  );
-  transform-origin: calc(var(--circle-size) / 2) calc(var(--circle-size) / 2);
-}
-
-.gauge_animate .gauge_arcSecondary {
-  --offset-factor-secondary: calc(1 - var(--offset-factor));
-  stroke-dasharray: calc(var(--stroke-percent) * var(--percent-to-px)) var(
-      --circumference
-    );
-  transform: rotate(
-      calc(
-        1turn - 90deg -
-          (
-            var(--gap-percent) * var(--percent-to-deg) * var(--offset-factor-secondary)
-          )
-      )
-    ) scaleY(-1);
-  transition: all var(--transition-length) ease var(--delay);
-  transform-origin: calc(var(--circle-size) / 2) calc(var(--circle-size) / 2);
-}
-
-.gauge_animate .gauge_content {
-  animation: gauge_fadeIn var(--transition-length) ease forwards;
-  animation-delay: var(--delay);
-}
-
-@keyframes gauge_fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-```
-
 </Steps>
 
 ## Props
 
-| Prop          | Type            | Description                                        | Default |
-| ------------- | --------------- | -------------------------------------------------- | ------- |
-| className     | string          | The class name to be applied to the component      |         |
-| max           | number          | The maximum value of the gauge                     | 100     |
-| min           | number          | The minimum value of the gauge                     | 0       |
-| value         | number          | The current value of the gauge                     | 0       |
-| gaugePrimaryColor | string      | The primary color of the gauge                     |         |
-| gaugeSecondaryColor | string    | The secondary color of the gauge                   |         |
-
+| Prop                | Type   | Description                                   | Default |
+| ------------------- | ------ | --------------------------------------------- | ------- |
+| className           | string | The class name to be applied to the component |         |
+| max                 | number | The maximum value of the gauge                | 100     |
+| min                 | number | The minimum value of the gauge                | 0       |
+| value               | number | The current value of the gauge                | 0       |
+| gaugePrimaryColor   | string | The primary color of the gauge                |         |
+| gaugeSecondaryColor | string | The secondary color of the gauge              |         |
 
 ## Credits
 
