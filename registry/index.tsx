@@ -217,7 +217,6 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/box-reveal.tsx"],
   },
-
   "shine-border": {
     name: "shine-border",
     type: "components:ui",

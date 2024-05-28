@@ -177,7 +177,7 @@ module.exports = {
           "0%": {
             "background-position": "0% 0%",
           },
-          "100%": {
+          "50%": {
             "background-position": "100% 100%",
           },
           to: {
@@ -187,5 +187,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+  ],
 };
