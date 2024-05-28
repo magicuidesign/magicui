@@ -1,0 +1,32 @@
+---
+title: Fade Text
+date: 2024-05-22
+description: Characters appearing from faded view
+author: imanubhardwaj
+published: true
+---
+
+<ComponentPreview name="fade-text-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/fade-text.tsx
+```
+
+<ComponentSource name="fade-text" />
+
+</Steps>
+
+## Props
+
+| Prop        | Type            | Description                                        | Default |
+| ----------- | --------------- | -------------------------------------------------- | ------- |
+| className   | string          | The class name to be applied to the component      |         |
+| direction   | string          | Can be: "down" , "left", "right", "up"             | "up"    |
+| text        | string          | Text to animate                                    | ""      |
+| framerProps | HTMLMotionProps | An object containing framer-motion animation props | {}      |

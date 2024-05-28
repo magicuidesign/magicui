@@ -1,0 +1,57 @@
+---
+title: Neon Gradient Card
+date: 2024-05-26
+description: A beautiful neon card effect
+author: Draxx0
+published: true
+---
+
+<ComponentPreview name="neon-gradient-card-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        backgroundPositionSpin:
+          "background-position-spin 3000ms infinite alternate",
+      },
+      keyframes: {
+        "background-position-spin": {
+          "0%": { backgroundPosition: "top center" },
+          "100%": { backgroundPosition: "bottom center" },
+        },
+      },
+    },
+  },
+};
+```
+
+```text
+components/magicui/neon-gradient-card.tsx
+```
+
+<ComponentSource name="neon-gradient-card" />
+
+</Steps>
+
+## Props
+
+| Prop         | Type      | Description                                   | Default                                             |
+| ------------ | --------- | --------------------------------------------- | --------------------------------------------------- |
+| className    | string    | The class name to be applied to the component | -                                                   |
+| children     | ReactNode | Children elements                             | -                                                   |
+| borderSize   | number    | The size of the border                        | 5                                                   |
+| borderRadius | number    | The size of the radius                        | 20                                                  |
+| neonColors   | object    | The colors of the neon gradient               | `{ firstColor: "#ff00aa", secondColor: "#00FFF1" }` |
+
+## Credits
+
+- Credit to [@Unleashed-Design](https://unleashed-design.de/)

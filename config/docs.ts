@@ -106,11 +106,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         // {
-        //   title: "Animated Grid Pattern",
-        //   href: `/docs/components/animated-grid-pattern`,
-        //   items: [],
-        // },
-        // {
         //   title: "Animated Lines",
         //   href: `/docs/components/animated-lines`,
         //   items: [],
@@ -129,6 +124,12 @@ export const docsConfig: DocsConfig = {
           title: "Meteors",
           href: `/docs/components/meteors`,
           items: [],
+        },
+        {
+          title: "Neon Gradient Card",
+          href: `/docs/components/neon-gradient-card`,
+          items: [],
+          label: "New",
         },
       ],
     },
@@ -211,6 +212,30 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gradual Spacing",
+          href: `/docs/components/gradual-spacing`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Word Fade In",
+          href: `/docs/components/word-fade-in`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Fade Text",
+          href: `/docs/components/fade-text`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Box Reveal",
+          href: `/docs/components/box-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -221,11 +246,23 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/shimmer-button`,
           items: [],
         },
+        {
+          title: "Shiny Button",
+          href: `/docs/components/shiny-button`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
       title: "Backgrounds",
       items: [
+        {
+          title: "Animated Grid Pattern",
+          href: `/docs/components/animated-grid-pattern`,
+          items: [],
+          label: "New",
+        },
         {
           title: "Retro Grid",
           href: `/docs/components/retro-grid`,

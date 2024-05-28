@@ -7,6 +7,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/magic-card.tsx"],
   },
+  "neon-gradient-card": {
+    name: "neon-gradient-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/neon-gradient-card.tsx"],
+  },
   "linear-gradient": {
     name: "linear-gradient",
     type: "components:ui",
@@ -187,6 +192,36 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/icon-cloud.tsx"],
   },
+  "gradual-spacing": {
+    name: "gradual-spacing",
+    type: "components:ui",
+    files: ["registry/components/magicui/gradual-spacing.tsx"],
+  },
+  "word-fade-in": {
+    name: "word-fade-in",
+    type: "components:ui",
+    files: ["registry/components/magicui/word-fade-in.tsx"],
+  },
+  "scroll-based-velocity": {
+    name: "scroll-based-velocity",
+    type: "components:ui",
+    files: ["registry/components/magicui/scroll-based-velocity.tsx"],
+  },
+  "fade-text": {
+    name: "fade-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/fade-text.tsx"],
+  },
+  "shiny-button": {
+    name: "shiny-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/shiny-button.tsx"],
+  },
+  "box-reveal": {
+    name: "box-reveal",
+    type: "components:ui",
+    files: ["registry/components/magicui/box-reveal.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -196,6 +231,14 @@ const example: Registry = {
     files: ["registry/components/example/magic-card-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/magic-card-demo"),
+    ),
+  },
+  "neon-gradient-card-demo": {
+    name: "neon-gradient-card-demo",
+    type: "components:example",
+    files: ["registry/components/example/neon-gradient-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/neon-gradient-card-demo"),
     ),
   },
   "magic-card-gradient": {
@@ -688,6 +731,46 @@ const example: Registry = {
     files: ["registry/components/example/icon-cloud-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/icon-cloud-demo"),
+    ),
+  },
+  "gradual-spacing-demo": {
+    name: "gradual-spacing-demo",
+    type: "components:example",
+    files: ["registry/components/example/gradual-spacing-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/gradual-spacing-demo"),
+    ),
+  },
+  "word-fade-in-demo": {
+    name: "word-fade-in-demo",
+    type: "components:example",
+    files: ["registry/components/example/word-fade-in-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/word-fade-in-demo"),
+    ),
+  },
+  "fade-text-demo": {
+    name: "fade-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/fade-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/fade-text-demo"),
+    ),
+  },
+  "shiny-button-demo": {
+    name: "shiny-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/shiny-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shiny-button-demo"),
+    ),
+  },
+  "box-reveal-demo": {
+    name: "box-reveal-demo",
+    type: "components:example",
+    files: ["registry/components/example/box-reveal-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/box-reveal-demo"),
     ),
   },
 };
