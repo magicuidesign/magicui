@@ -20,7 +20,7 @@
     "prod:migrate": "dotenv -e .env -- npx prisma db push",
     "prod:seed": "dotenv -e .env -- npx tsx prisma/seed.ts",
     "prepare": "husky",
-    "lint": "eslint --fix"
+    "lint": " eslint */**/*.{ts,tsx} --fix"
   },
   "husky": {
     "hooks": {
@@ -119,6 +119,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^20.8.9",
     "@types/react": "18.2.12",
