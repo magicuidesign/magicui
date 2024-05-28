@@ -119,7 +119,7 @@ export default function GaugeCircle({
           />
         </svg>
         <span
-          data-current-value="50%"
+          data-current-value={currentPercent}
           className="gauge_content absolute inset-0 m-auto h-fit w-fit opacity-0"
         >
           {currentPercent}
