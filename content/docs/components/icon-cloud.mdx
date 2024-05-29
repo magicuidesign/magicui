@@ -28,6 +28,10 @@ components/magicui/icon-cloud.tsx
 
 ## Props
 
+## NOTE
+Avoid using the IconCloud component in parent components where the component interacts with hooks or undergoes frequent state changes. Such interactions may lead to unexpected behavior, such as continuous spinning.
+Consider creating a separate component for the section of your application that utilizes hooks or undergoes frequent state changes in parent component. 
+
 ## IconCloud 
 Displays a dynamic cloud of icons from the Simple Icons library based on provided slugs.
 |       Prop       |                       type                      |  default  |                                                                           description                                                                          |
@@ -35,16 +39,21 @@ Displays a dynamic cloud of icons from the Simple Icons library based on provide
 | iconSlugs           | string[]                                         |           |An array of icon slugs corresponding to the icons you want to display. Each slug should match a supported icon from the Simple Icons library.                                                             |    
 
 ## Cloud
+There are a number of options for modifying the way the cloud looks and behaves. Go to https://www.goat1000.com/tagcanvas-options.php to see the list of all available options for your cloud.
 |      Prop      |                 type                              | default |                           description                           |
 |:--------------:|:-------------------------------------------------:|:-------:|:---------------------------------------------------------------:|
 | canvasProps    | HTMLAttributes < HTMLCanvasElement > \| undefined | {}      | Attributes that will be passed to the underlying canvas element |
 | children       | Tag[]                                             | []      | Tags rendered using the provided renderers                      |
 | containerProps | HTMLAttributes < HTMLDivElement >  \| undefined   | {}      | Attributes passed to the root div element                       |
 | id             | string \| number \| undefined                                  | uuid    | Should be provided when using SSR                               |
-| options        | IOptions \| undefined                             | {}      | https://www.goat1000.com/tagcanvas-options.php                  |
 | maxSpeed        | int                             | 0.04      | To adjust the rotation speed in idle state                 |
 | minSpeed        | int                             | 0.02      | To adjust the rotation speed when hovering                 |
 | dragControl        | boolean                             | false      | Enable or disable the ability to drag and interact with the icon cloud.                   |
+| dragThreshold         | number                             |   	4    | The number of pixels that the cursor must move to count as a drag instead of a click.                  |
+| decel        | number                             |    0.95    | Deceleration rate when mouse leaves canvas.                  |
+| freezeDecel        | boolean                             |  false     |  Whether to freeze the cloud when dragging stops.                  |
+
+
 
 ## renderSimpleIcon
 Used to create a tag for the Cloud component
