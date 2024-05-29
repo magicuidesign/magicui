@@ -222,6 +222,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/box-reveal.tsx"],
   },
+  "shine-border": {
+    name: "shine-border",
+    type: "components:ui",
+    files: ["registry/components/magicui/shine-border.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -771,6 +776,22 @@ const example: Registry = {
     files: ["registry/components/example/box-reveal-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/box-reveal-demo"),
+    ),
+  },
+  "shine-border-demo": {
+    name: "shine-border-demo",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo"),
+    ),
+  },
+  "shine-border-demo-2": {
+    name: "shine-border-demo-2",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo-2"),
     ),
   },
 };
