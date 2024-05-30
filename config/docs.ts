@@ -105,7 +105,6 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/animated-beam`,
           items: [],
         },
-
         // {
         //   title: "Animated Lines",
         //   href: `/docs/components/animated-lines`,
@@ -131,6 +130,12 @@ export const docsConfig: DocsConfig = {
           title: "Meteors",
           href: `/docs/components/meteors`,
           items: [],
+        },
+        {
+          title: "Neon Gradient Card",
+          href: `/docs/components/neon-gradient-card`,
+          items: [],
+          label: "New",
         },
       ],
     },

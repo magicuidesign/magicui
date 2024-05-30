@@ -24,6 +24,7 @@ export default function SidebarCTA() {
       <video
         autoPlay
         loop
+        playsInline
         muted
         src="/startup-template-demo.mp4"
         className="w-full overflow-hidden rounded-xl shadow-2xl"

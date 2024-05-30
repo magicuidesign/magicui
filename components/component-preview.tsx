@@ -1,9 +1,12 @@
+"use client";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { registry } from "@/registry/index";
+import { RotateCcw } from "lucide-react";
 import * as React from "react";
+import { Button } from "./ui/button";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -17,6 +20,7 @@ export function ComponentPreview({
   align = "center",
   ...props
 }: ComponentPreviewProps) {
+  const [key, setKey] = React.useState(0); // State to trigger re-render of preview
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[0]; // first child
 
@@ -24,6 +28,7 @@ export function ComponentPreview({
     const Component = registry[name]?.component;
 
     if (!Component) {
+      console.error(`Component with name "${name}" not found in registry.`);
       return (
         <p className="text-sm text-muted-foreground">
           Component{" "}
@@ -36,7 +41,7 @@ export function ComponentPreview({
     }
 
     return <Component />;
-  }, [name]);
+  }, [name, key]);
 
   return (
     <div
@@ -63,8 +68,15 @@ export function ComponentPreview({
             </TabsTrigger>
           </TabsList>
         </div>
-        <TabsContent value="preview" className="relative rounded-md">
+        <TabsContent value="preview" className="relative rounded-md" key={key}>
           <ComponentWrapper>
+            <Button
+              onClick={() => setKey((prev) => prev + 1)}
+              className="absolute right-0 top-0 z-50 ml-4 flex items-center rounded-lg px-3 py-1"
+              variant="ghost"
+            >
+              <RotateCcw size={16} />
+            </Button>
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">
