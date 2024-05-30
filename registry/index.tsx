@@ -227,6 +227,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/shine-border.tsx"],
   },
+  "gauge-circle": {
+    name: "gauge-circle",
+    type: "components:ui",
+    files: ["registry/components/magicui/gauge-circle.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -778,20 +783,12 @@ const example: Registry = {
       () => import("@/registry/components/example/box-reveal-demo"),
     ),
   },
-  "shine-border-demo": {
-    name: "shine-border-demo",
+  "gauge-circle-demo": {
+    name: "gauge-circle-demo",
     type: "components:example",
-    files: ["registry/components/example/shine-border-demo.tsx"],
+    files: ["registry/components/example/gauge-circle-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/shine-border-demo"),
-    ),
-  },
-  "shine-border-demo-2": {
-    name: "shine-border-demo-2",
-    type: "components:example",
-    files: ["registry/components/example/shine-border-demo-2.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/shine-border-demo-2"),
+      () => import("@/registry/components/example/gauge-circle-demo"),
     ),
   },
 };
