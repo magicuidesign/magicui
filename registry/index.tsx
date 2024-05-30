@@ -791,6 +791,22 @@ const example: Registry = {
       () => import("@/registry/components/example/gauge-circle-demo"),
     ),
   },
+  "shine-border-demo": {
+    name: "shine-border-demo",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo"),
+    ),
+  },
+  "shine-border-demo-2": {
+    name: "shine-border-demo-2",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo-2"),
+    ),
+  },
 };
 export const registry: Registry = {
   ...ui,
