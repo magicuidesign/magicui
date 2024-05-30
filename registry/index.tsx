@@ -783,6 +783,14 @@ const example: Registry = {
       () => import("@/registry/components/example/box-reveal-demo"),
     ),
   },
+  "gauge-circle-demo": {
+    name: "gauge-circle-demo",
+    type: "components:example",
+    files: ["registry/components/example/gauge-circle-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/gauge-circle-demo"),
+    ),
+  },
 };
 export const registry: Registry = {
   ...ui,
