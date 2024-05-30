@@ -35,7 +35,7 @@ export default function TypingAnimation({
   return (
     <h1
       className={cn(
-        'text-center font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]',
+        "font-display text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm",
         className,
       )}
     >

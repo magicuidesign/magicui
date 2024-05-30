@@ -95,6 +95,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gauge Circle",
+          href: `/docs/components/gauge-circle`,
+          items: [],
+          label: "New",
+        }
       ],
     },
     {
@@ -105,7 +111,6 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/animated-beam`,
           items: [],
         },
-
         // {
         //   title: "Animated Lines",
         //   href: `/docs/components/animated-lines`,
@@ -117,6 +122,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Shine Border",
+          href: `/docs/components/shine-border`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Magic Card",
           href: `/docs/components/magic-card`,
           items: [],
@@ -125,6 +136,12 @@ export const docsConfig: DocsConfig = {
           title: "Meteors",
           href: `/docs/components/meteors`,
           items: [],
+        },
+        {
+          title: "Neon Gradient Card",
+          href: `/docs/components/neon-gradient-card`,
+          items: [],
+          label: "New",
         },
       ],
     },
@@ -207,6 +224,30 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gradual Spacing",
+          href: `/docs/components/gradual-spacing`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Word Fade In",
+          href: `/docs/components/word-fade-in`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Fade Text",
+          href: `/docs/components/fade-text`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Box Reveal",
+          href: `/docs/components/box-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -216,6 +257,12 @@ export const docsConfig: DocsConfig = {
           title: "Shimmer Button",
           href: `/docs/components/shimmer-button`,
           items: [],
+        },
+        {
+          title: "Shiny Button",
+          href: `/docs/components/shiny-button`,
+          items: [],
+          label: "New",
         },
       ],
     },
