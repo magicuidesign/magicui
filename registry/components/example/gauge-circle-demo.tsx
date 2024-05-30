@@ -1,6 +1,7 @@
 "use client";
+
+import GaugeCircle from "@/registry/components/magicui/gauge-circle";
 import { useEffect, useState } from "react";
-import GaugeCircle from "../magicui/gauge-circle";
 
 export default function GaugeCircleDemo() {
   const [value, setValue] = useState(0);
@@ -23,7 +24,7 @@ export default function GaugeCircleDemo() {
       min={0}
       value={value}
       gaugePrimaryColor="rgb(79 70 229)"
-      gaugeSecondaryColor="hsl(var(--border))"
+      gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
     />
   );
 }

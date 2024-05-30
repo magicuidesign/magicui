@@ -23,10 +23,7 @@ export default function GaugeCircle({
 
   return (
     <div
-      className={cn(
-        "gauge_circle gauge_animate !relative h-40 w-40 text-2xl font-semibold",
-        className,
-      )}
+      className={cn("relative h-40 w-40 text-2xl font-semibold", className)}
       style={
         {
           "--circle-size": "100px",
@@ -82,7 +79,7 @@ export default function GaugeCircle({
           strokeDashoffset="0"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="gauge_arc opacity-100"
+          className="opacity-100"
           style={
             {
               stroke: gaugePrimaryColor,
