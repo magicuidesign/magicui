@@ -122,6 +122,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Shine Border",
+          href: `/docs/components/shine-border`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Magic Card",
           href: `/docs/components/magic-card`,
           items: [],
