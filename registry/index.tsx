@@ -237,6 +237,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/confetti.tsx"],
   },
+  "animated-subscribe-button": {
+    name: "animated-subscribe-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-subscribe-button.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -866,6 +871,15 @@ const example: Registry = {
     files: ["registry/components/example/confetti-emoji.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/confetti-emoji"),
+    ),
+  },
+  "animated-subscribe-button-demo": {
+    name: "animated-subscribe-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-subscribe-button-demo.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/animated-subscribe-button-demo"),
     ),
   },
 };
