@@ -270,6 +270,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Sparkles Text",
+          href: `/docs/components/sparkles-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
