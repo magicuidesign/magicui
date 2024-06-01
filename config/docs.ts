@@ -51,7 +51,7 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
             {
-              title: "Svelte.js",
+              title: "Svelte",
               href: `/docs/installation/svelte`,
               items: [],
             },
