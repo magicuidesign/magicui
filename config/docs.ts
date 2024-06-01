@@ -41,8 +41,8 @@ export const docsConfig: DocsConfig = {
           href: "/docs/installation",
           items: [
             {
-              title: "Next.js",
-              href: `/docs/installation/next`,
+              title: "React.js",
+              href: `/docs/installation/react`,
               items: [],
             },
             {
