@@ -143,6 +143,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Confetti",
+          href: `/docs/components/confetti`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
