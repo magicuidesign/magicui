@@ -39,7 +39,23 @@ export const docsConfig: DocsConfig = {
         {
           title: "Installation",
           href: "/docs/installation",
-          items: [],
+          items: [
+            {
+              title: "Next.js",
+              href: `/docs/installation/next`,
+              items: [],
+            },
+            {
+              title: "Vue.js",
+              href: `/docs/installation/vue`,
+              items: [],
+            },
+            {
+              title: "Svelte.js",
+              href: `/docs/installation/svelte`,
+              items: [],
+            },
+          ],
         },
       ],
     },
