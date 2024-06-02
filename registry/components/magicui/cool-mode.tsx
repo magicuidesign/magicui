@@ -1,6 +1,3 @@
-// src/utils/coolMode.ts
-// Credits: Adapted from https://github.com/BankkRoll/ClickFusion
-
 import React, { ReactNode, RefObject, useEffect, useRef } from "react";
 
 export interface BaseParticle {
