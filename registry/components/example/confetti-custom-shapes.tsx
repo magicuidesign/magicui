@@ -1,14 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Confetti } from "@/registry/components/magicui/confetti";
-import React from "react";
 
 export default function ConfettiCustomShapes() {
   const handleClick = () => {
     const scalar = 2;
-    const triangle = Confetti.shapeFromPath({ path: "M0 10 L5 0 L10 10z", scalar });
-    const square = Confetti.shapeFromPath({ path: "M0 0 L10 0 L10 10 L0 10 Z", scalar });
-    const coin = Confetti.shapeFromPath({ path: "M5 0 A5 5 0 1 0 5 10 A5 5 0 1 0 5 0 Z", scalar });
-    const tree = Confetti.shapeFromPath({ path: "M5 0 L10 10 L0 10 Z", scalar });
+    const triangle = Confetti.shapeFromPath({
+      path: "M0 10 L5 0 L10 10z",
+      scalar,
+    });
+    const square = Confetti.shapeFromPath({
+      path: "M0 0 L10 0 L10 10 L0 10 Z",
+      scalar,
+    });
+    const coin = Confetti.shapeFromPath({
+      path: "M5 0 A5 5 0 1 0 5 10 A5 5 0 1 0 5 0 Z",
+      scalar,
+    });
+    const tree = Confetti.shapeFromPath({
+      path: "M5 0 L10 10 L0 10 Z",
+      scalar,
+    });
 
     const defaults = {
       spread: 360,

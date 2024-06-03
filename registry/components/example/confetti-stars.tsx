@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Confetti } from "@/registry/components/magicui/confetti";
-import React from "react";
 
 export default function ConfettiStars() {
   const handleClick = () => {

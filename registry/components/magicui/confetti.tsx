@@ -1,7 +1,6 @@
-// import confetti from "canvas-confetti";
-const confetti = require("canvas-confetti").default;
+import confetti from "canvas-confetti";
 
-interface ConfettiOptions {
+interface ConfettiOptions extends confetti.Options {
   particleCount?: number;
   angle?: number;
   spread?: number;
@@ -13,7 +12,7 @@ interface ConfettiOptions {
   ticks?: number;
   origin?: { x: number; y: number };
   colors?: string[];
-  shapes?: string[];
+  shapes?: confetti.Shape[];
   zIndex?: number;
   disableForReducedMotion?: boolean;
   useWorker?: boolean;
