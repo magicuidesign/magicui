@@ -1,6 +1,6 @@
 "use client";
 
-import { TableOfContents } from "@/lib/toc";
+import type { TableOfContents } from "@/lib/toc";
 import { useMounted } from "@/lib/use-mounted";
 import { cn } from "@/lib/utils";
 import { useEffect, useMemo, useState } from "react";
@@ -9,17 +9,29 @@ interface TocProps {
   toc: TableOfContents;
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {
+export function DashboardTableOfContents({ toc }: TocProps) {  
+  const refinedToc = useMemo(()=>{
+    const [firstLink, ...rest] = toc.items || []    
+    const [ins] = firstLink.items || []
+      if(ins?.title === 'Installation'){
+        return {
+          items: [ins, ...rest]
+        }
+      }
+      return toc
+    
+  }, [toc])
+
   const itemIds: string[] = useMemo(
     () =>
-      toc.items
-        ? toc.items
+      refinedToc.items
+        ? refinedToc.items
             .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
             .flat()
             .filter(Boolean)
             .map((id) => id?.split("#")[1])
         : [],
-    [toc],
+    [refinedToc],
   ) as string[];
 
   const activeHeading = useActiveItem(itemIds);
@@ -32,7 +44,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   return (
     <div className="space-y-2">
       <p className="font-medium">On This Page</p>
-      <Tree tree={toc} activeItem={activeHeading} />
+      <Tree tree={refinedToc} activeItem={activeHeading} />
     </div>
   );
 }
@@ -81,7 +93,7 @@ interface TreeProps {
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
   return tree?.items?.length && level < 3 ? (
     <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
-      {tree.items.map((item, index) => {
+      {tree.items.map((item, index) => {        
         return (
           <li key={index} className={cn("mt-0 pt-2")}>
             <a
