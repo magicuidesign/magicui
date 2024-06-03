@@ -53,7 +53,7 @@ export function FadeText({
       viewport={{ once: true }}
       variants={FADE_ANIMATION_VARIANTS}
     >
-      <motion.h1 className={className}>{text}</motion.h1>
+      <motion.span className={className}>{text}</motion.span>
     </motion.div>
   );
 }
