@@ -276,6 +276,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Cool Mode",
+          href: `/docs/components/cool-mode`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
