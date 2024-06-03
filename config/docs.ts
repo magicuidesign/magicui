@@ -286,6 +286,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Animated Subscribe Button",
+          href: `/docs/components/animated-subscribe-button`,
+          items: [],
+          label: "New"
+        },
       ],
     },
     {
