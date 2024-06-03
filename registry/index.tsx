@@ -900,6 +900,14 @@ const example: Registry = {
         import("@/registry/components/example/animated-subscribe-button-demo"),
     ),
   },
+  "cool-mode-demo": {
+    name: "cool-mode-demo",
+    type: "components:example",
+    files: ["registry/components/example/cool-mode-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/cool-mode-demo"),
+    ),
+  },
   "cool-mode-custom": {
     name: "cool-mode-custom",
     type: "components:example",
