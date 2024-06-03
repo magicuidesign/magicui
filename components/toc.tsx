@@ -9,16 +9,16 @@ interface TocProps {
   toc: TableOfContents;
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {  
+export function DashboardTableOfContents({ toc }: TocProps) {
   const refinedToc = useMemo(()=>{
-    const [firstLink, ...rest] = toc.items || []    
-    const [ins] = firstLink.items || []
-      if(ins?.title === 'Installation'){
-        return {
-          items: [ins, ...rest]
-        }
+    const [linksInSteps, ...rest] = toc.items || []
+
+    if((linksInSteps.items?.length ?? 0) > 0){
+      return {
+        items: [...(linksInSteps.items ?? []), ...rest]
       }
-      return toc
+    }
+    return toc
     
   }, [toc])
 
