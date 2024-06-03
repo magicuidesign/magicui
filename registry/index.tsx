@@ -182,6 +182,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/letter-pullup.tsx"],
   },
+  "sparkles-text": {
+    name: "sparkles-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/sparkles-text.tsx"],
+  },
   "flip-text": {
     name: "flip-text",
     type: "components:ui",
@@ -743,6 +748,14 @@ const example: Registry = {
     files: ["registry/components/example/flip-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/flip-text-demo"),
+    ),
+  },
+  "sparkles-text-demo": {
+    name: "sparkles-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/sparkles-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/sparkles-text-demo"),
     ),
   },
   "icon-cloud-demo": {
