@@ -64,6 +64,7 @@
     "@t3-oss/env-nextjs": "^0.7.1",
     "@vercel/og": "^0.5.20",
     "autoprefixer": "10.4.14",
+    "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.6.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
@@ -131,6 +132,5 @@
   "engines": {
     "node": ">=20.6.1",
     "pnpm": ">=9"
-  },
-  "packageManager": "pnpm@9.0.4"
+  }
 }

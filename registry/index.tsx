@@ -232,6 +232,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/gauge-circle.tsx"],
   },
+  confetti: {
+    name: "confetti",
+    type: "components:ui",
+    files: ["registry/components/magicui/confetti.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -805,6 +810,62 @@ const example: Registry = {
     files: ["registry/components/example/shine-border-demo-2.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/shine-border-demo-2"),
+    ),
+  },
+  "confetti-basic-cannon": {
+    name: "confetti-basic-cannon",
+    type: "components:example",
+    files: ["registry/components/example/confetti-basic-cannon.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-basic-cannon"),
+    ),
+  },
+  "confetti-random-direction": {
+    name: "confetti-random-direction",
+    type: "components:example",
+    files: ["registry/components/example/confetti-random-direction.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-random-direction"),
+    ),
+  },
+  "confetti-fireworks": {
+    name: "confetti-fireworks",
+    type: "components:example",
+    files: ["registry/components/example/confetti-fireworks.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-fireworks"),
+    ),
+  },
+  "confetti-stars": {
+    name: "confetti-stars",
+    type: "components:example",
+    files: ["registry/components/example/confetti-stars.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-stars"),
+    ),
+  },
+  "confetti-side-cannons": {
+    name: "confetti-side-cannons",
+    type: "components:example",
+    files: ["registry/components/example/confetti-side-cannons.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-side-cannons"),
+    ),
+  },
+  "confetti-custom-shapes": {
+    name: "confetti-custom-shapes",
+    type: "components:example",
+    files: ["registry/components/example/confetti-custom-shapes.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-custom-shapes"),
+    ),
+  },
+  "confetti-emoji": {
+    name: "confetti-emoji",
+    type: "components:example",
+    files: ["registry/components/example/confetti-emoji.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-emoji"),
     ),
   },
 };
