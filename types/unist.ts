@@ -19,7 +19,7 @@ export interface UnistNode extends Node {
   children?: UnistNode[];
 }
 
-export interface UnistTree extends Node {
+export interface UnistTree extends UnistNode {
   children: UnistNode[];
 }
 
