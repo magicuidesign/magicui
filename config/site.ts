@@ -8,6 +8,7 @@ export const siteConfig = {
     twitter: "https://twitter.com/magicuidesign",
     discord: "https://discord.gg/87p2vpsat5",
     github: "https://github.com/magicuidesign/magicui",
+    instagram: "https://instagram.com/magicuidesign/",
   },
   keywords: [
     "React",

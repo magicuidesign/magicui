@@ -12,18 +12,8 @@ export const docsConfig: DocsConfig = {
       href: "/components",
     },
     {
-      title: "Magic UI PRO",
+      title: "Templates",
       href: "https://pro.magicui.design",
-      external: true,
-    },
-    {
-      title: "Roadmap",
-      href: "https://magicui.featurebase.app/roadmap",
-      external: true,
-    },
-    {
-      title: "Discord",
-      href: "https://discord.gg/X4BBMBjHNf",
       external: true,
     },
   ],
