@@ -165,6 +165,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Particles",
+          href: `/docs/components/particles`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -302,7 +308,7 @@ export const docsConfig: DocsConfig = {
           title: "Animated Subscribe Button",
           href: `/docs/components/animated-subscribe-button`,
           items: [],
-          label: "New"
+          label: "New",
         },
       ],
     },
