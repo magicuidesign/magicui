@@ -2,11 +2,7 @@
 import { PulsatingButton } from "../magicui/pulsating-button"
 
 export default function PulsatingButtonDemo() {
-  return <PulsatingButton
-    buttonColor="#00B4D8"
-    buttonTextColor="#ffffff"
-    buttonText="Join Affiliate Program"
-  />;
+  return <PulsatingButton/>;
 }
 
 /** 
