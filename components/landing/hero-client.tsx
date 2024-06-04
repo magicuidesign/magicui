@@ -148,7 +148,7 @@ export default function HeroClient({ post }: { post: Doc }) {
               className="absolute -top-16 left-0 right-auto cursor-pointer lg:-top-20"
             >
               <span className="flex items-center">
-                <span className="mt-3 inline-block whitespace-nowrap rounded-full bg-neutral-800 px-2.5 py-1 text-[11px] font-semibold uppercase leading-5 tracking-wide text-white">
+                <span className="mt-3 inline-block whitespace-nowrap rounded-full bg-neutral-800 px-4 py-1.5 text-[12px] font-semibold uppercase leading-5 tracking-wide text-white">
                   Real component demos!
                 </span>
                 <svg
