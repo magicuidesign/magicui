@@ -26,7 +26,7 @@ export const PulsatingButton: React.FC = () => {
     display: 'block',
     textAlign: 'center',
     color: 'white',
-    backgroundColor: '#rgba(90, 153, 212)',
+    backgroundColor: 'rgba(90, 153, 212)',
     cursor: 'pointer',
     animation: 'pulse 1.5s infinite',
   };
@@ -35,7 +35,7 @@ export const PulsatingButton: React.FC = () => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <button 
         style={buttonStyle}
-        className="relative rounded bg-white w-[200px] p-[10px] flex justify-center items-center"
+        className="rounded w-[150px] p-[10px] flex justify-center items-center"
         >Join Affialate
       </button>
     </div>
