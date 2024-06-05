@@ -233,7 +233,7 @@ const ui: Registry = {
   "pulsating-button": {
     name: "pulsating-button",
     type: "components:ui",
-    files: ["registry/components/magicui/pulsating-button.tsx"]
+    files: ["registry/components/magicui/pulsating-button.tsx"],
   },
   "box-reveal": {
     name: "box-reveal",
