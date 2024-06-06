@@ -24,7 +24,7 @@ Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/mai
 
 ## Authors
 
-<a href="https://github.com/unkeyed/unkey/graphs/contributors">
+<a href="https://github.com/magicuidesign/magicui/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=magicuidesign/magicui" />
 </a>
 
