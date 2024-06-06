@@ -31,7 +31,7 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
         next: {
           revalidate: 3600,
         },
-      }
+      },
     );
 
     if (response.ok) {
@@ -45,7 +45,7 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg"
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg",
       )}
     >
       <div className="container flex h-16 items-center">
@@ -56,17 +56,17 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
             className={cn(
               buttonVariants(),
               "hidden max-w-52 gap-2 overflow-hidden whitespace-pre md:flex",
-              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2"
+              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
             )}
             target="_blank"
             href={siteConfig.links.github}
           >
             <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
-            <div className="flex items-center"> {/* Added a container div */}
+            <div className="flex items-center">
               <Icons.gitHub className="h-4 w-4" />
-              <span className="ml-1">Star on GitHub</span> {/* Adjusted spacing */}
+              <span className="ml-1">Star on GitHub</span>{" "}
             </div>
-            <div className="flex items-center gap-1 text-sm md:flex ml-2"> {/* Adjusted alignment */}
+            <div className="ml-2 flex items-center gap-1 text-sm md:flex">
               <StarIcon className="h-4 w-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
               <NumberTicker
                 value={stars}
@@ -74,10 +74,79 @@ export async function SiteHeader({ user }: SiteHeaderProps) {
               />
             </div>
           </Link>
+
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenu />
           </div>
-          <nav className="flex items-center gap-2">
+          <nav className="flex items-center gap-1">
+            <Link
+              href={siteConfig.links.discord}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0",
+                )}
+              >
+                <Icons.discord className="h-4 w-4" />
+                <span className="sr-only">Discord</span>
+              </div>
+            </Link>
+            <Link
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0",
+                )}
+              >
+                <Icons.gitHub className="h-4 w-4" />
+                <span className="sr-only">GitHub</span>
+              </div>
+            </Link>
+            <Link
+              href={siteConfig.links.twitter}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0",
+                )}
+              >
+                <Icons.twitter className="h-4 w-4 fill-current" />
+                <span className="sr-only">Twitter</span>
+              </div>
+            </Link>
+            <Link
+              href={siteConfig.links.instagram}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0",
+                )}
+              >
+                <Icons.instagram className="h-4 w-4 fill-current" />
+                <span className="sr-only">Instagram</span>
+              </div>
+            </Link>
             <ModeToggle />
           </nav>
         </div>
