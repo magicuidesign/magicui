@@ -843,6 +843,14 @@ const example: Registry = {
       () => import("@/registry/components/example/confetti-basic-cannon"),
     ),
   },
+  "confetti-from-button": {
+    name: "confetti-from-button",
+    type: "components:example",
+    files: ["registry/components/example/confetti-from-button.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-from-button"),
+    ),
+  },
   "confetti-random-direction": {
     name: "confetti-random-direction",
     type: "components:example",
