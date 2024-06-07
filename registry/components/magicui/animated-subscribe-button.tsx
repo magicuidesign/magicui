@@ -4,16 +4,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 
 interface AnimatedSubscribeButtonProps {
-  brand: string;
-  subscribeStatus: boolean;
+  buttonColor: string;
   buttonTextColor?: string;
+  subscribeStatus: boolean;
   initialText: React.ReactElement | string;
   changeText: React.ReactElement | string;
 }
 
 export const AnimatedSubscribeButton: React.FC<
   AnimatedSubscribeButtonProps
-> = ({ brand, subscribeStatus, buttonTextColor, changeText, initialText }) => {
+> = ({ buttonColor, subscribeStatus, buttonTextColor, changeText, initialText }) => {
   const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
 
   return (
@@ -31,7 +31,7 @@ export const AnimatedSubscribeButton: React.FC<
             className="relative block h-full w-full font-semibold"
             initial={{ y: -50 }}
             animate={{ y: 0 }}
-            style={{ color: brand }}
+            style={{ color: buttonColor }}
           >
             {changeText}
           </motion.span>
@@ -39,7 +39,7 @@ export const AnimatedSubscribeButton: React.FC<
       ) : (
         <motion.button
           className="relative flex w-[200px] cursor-pointer items-center justify-center rounded-md border-none p-[10px]"
-          style={{ backgroundColor: brand, color: buttonTextColor }}
+          style={{ backgroundColor: buttonColor, color: buttonTextColor }}
           onClick={() => setIsSubscribed(true)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
