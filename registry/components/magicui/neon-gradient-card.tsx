@@ -96,6 +96,13 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (containerRef.current) {
+      const { offsetWidth, offsetHeight } = containerRef.current;
+      setDimensions({ width: offsetWidth, height: offsetHeight });
+    }
+  }, [children]);
+
   return (
     <div
       ref={containerRef}
