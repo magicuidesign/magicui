@@ -22,13 +22,11 @@ const agent = process.env.https_proxy
   : undefined
 
 
-export async function getRegistryIndexMagicUI(env?: string) {
+export async function getRegistryIndexMagicUI(env?:boolean) {
   try {
 
     const [result] = await fetchRegistry(["index.json"], baseUrl)
-    const [resultPro] = env ? await fetchRegistry(["index.json"], proBaseUrl, env) : [[]]
-
-    if (env)  console.log(env)
+    const [resultPro] = env ? await fetchRegistry(["index.json"], proBaseUrl) : [[]]
 
     // @ts-ignore
     return registryIndexSchema.parse([...result, ...resultPro])
@@ -269,6 +267,6 @@ async function fetchRegistry(paths: string[], fetchBaseUrl = baseUrl, env?: stri
     )
     return results
   } catch (error) {
-    throw new Error(`Failed to fetch registry from ${baseUrl}.`)
+    throw new Error(`Failed to fetch registry from ${fetchBaseUrl}.`)
   }
 }

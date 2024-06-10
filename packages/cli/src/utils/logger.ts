@@ -104,4 +104,13 @@ You are using Magic UI Pro. Welcome ❤︎
 
 `;
 
+export const authMessage = `
+
+Go to Magic UI Pro website for auth secrets.
+  → https://pro.magicui.design
+  → npx magicui-cli auth --login <secret-env>
+
+`;
+
+
 export const ColorFullText = (string: string) => printer.multiline(string)

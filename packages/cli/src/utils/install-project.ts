@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { logger } from './logger'
-import { Readable } from 'stream'
-import { createWriteStream } from 'fs'
+import { Readable } from 'node:stream'
+import { createWriteStream } from 'node:fs'
 
 const baseUrl = process.env.PRO_REGISTRY_URL ?? "https://pro.magicui.design"
 
@@ -16,13 +16,13 @@ export const getAllProjectTemplates = async () => {
     return z.array(projectTemplatesSchema).parse(await fetch(`${baseUrl}/registry/templates.json`).then(e => e.json()))
 }
 
-export const getProjectLink = async (repo: string, owner: string, env?:string) => {
+export const getProjectLink = async (repo: string, owner: string, env:string) => {
     const project = await fetch(`${baseUrl}/api/repo/download`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ repo, owner }),
+        body: JSON.stringify({ repo, owner, env }),
     }).then(e => e.json())
 
     const linkZod = z.object({

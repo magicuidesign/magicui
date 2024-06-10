@@ -7,6 +7,7 @@ import {
     ColorFullText,
     tryPro,
     hasPro,
+    authMessage,
 } from "../utils/logger";
 import { z } from "zod";
 import prompts from "prompts";
@@ -17,12 +18,6 @@ const optionSchema = z.object({
 });
 
 const MAGICUI_PRO_ENV = getEnv();
-const authMessage = `
-
-Go to Magic UI Pro website for auth secrets.
-  → https://pro.magicui.design
-
-`;
 
 export const project = new Command()
     .name("project")
@@ -39,13 +34,7 @@ export const project = new Command()
         );
 
         const options = optionSchema.parse(opts);
-        const allTemplates = [{
-            repo: "portfolio-template",
-            owner: "dillionverma",
-            preview: "",
-            description: "hi",
-
-        }]
+        const allTemplates = await getAllProjectTemplates()
 
         const getSelectedTemplates = async () => {
             if (!options.template) {
@@ -83,8 +72,13 @@ export const project = new Command()
             logger.warn("Selected Template is not exist")
             return;
         }
+        
+        if (!MAGICUI_PRO_ENV) {
+            logger.warn("You are not authenticated to download premium templates.")
+            return;
+        }
 
-        const file = await getProjectLink(data.repo, data.owner)
+        const file = await getProjectLink(data.repo, data.owner, MAGICUI_PRO_ENV)
 
         if (!file.success) {
             logger.error("Failed to fetch project downloading link")
