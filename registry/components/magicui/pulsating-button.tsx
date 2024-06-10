@@ -1,6 +1,7 @@
+
 "use client";
 
-import React, { CSSProperties } from "react";
+import React from "react";
 
 interface PulsatingButtonProps {
   text: string;
@@ -21,55 +22,42 @@ export const PulsatingButton: React.FC<PulsatingButtonProps> = ({
   buttonWidth,
   buttonHeight
 }) => {
-  const pulseKeyframes = `
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(${pulseColor}, 0);
-      }
-      50% {
-        box-shadow: 0 0 0 10px rgba(${pulseColor}, 0.5);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(${pulseColor}, 0);
-      }
-    }
-  `;
-
-  const styleElement = document.createElement('style');
-  styleElement.innerHTML = pulseKeyframes;
-  document.head.appendChild(styleElement);
-
-  const buttonStyle: React.CSSProperties = {
-    position: 'relative',
-    display: 'block',
-    textAlign: 'center',
-    color: textColor,
-    backgroundColor: backgroundColor,
-    width: buttonWidth,
-    height: buttonHeight,
-    cursor: 'pointer',
-    animation: "pulse infinite", animationDuration,
+  const pulseKeyframes = {
+    '--tw-pulse-color': pulseColor,
+    animation: `pulse ${animationDuration} infinite`,
   };
 
   return (
     <div 
-    style=
-    {{ 
-      display: 'flex', 
-      justifyContent: 'center',
-      alignItems: 'center' 
-      }}>
-        <button 
-          style={buttonStyle}
-          className="rounded flex justify-center items-center"
-        >
-          <b>
-            {text}
-          </b>
-        </button>
-      </div>
+      className="flex justify-center items-center"
+    >
+      <button
+        className="relative block text-center cursor-pointer flex justify-center items-center rounded"
+        style={{
+          color: textColor,
+          backgroundColor: backgroundColor,
+          width: buttonWidth,
+          height: buttonHeight,
+          ...pulseKeyframes,
+        }}
+      >
+        <b>{text}</b>
+        <style jsx>{`
+          @keyframes pulse {
+            0% {
+              box-shadow: 0 0 0 0 rgba(var(--tw-pulse-color), 0);
+            }
+            50% {
+              box-shadow: 0 0 0 10px rgba(var(--tw-pulse-color), 0.5);
+            }
+            100% {
+              box-shadow: 0 0 0 0 rgba(var(--tw-pulse-color), 0);
+            }
+          }
+        `}</style>
+      </button>
+    </div>
   );
 };
 
 export default PulsatingButton;
-
