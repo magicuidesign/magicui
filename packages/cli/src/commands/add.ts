@@ -16,7 +16,8 @@ import {
 	fetchTreeFromShadcn,
 	getItemTargetPath,
 	getRegistryBaseColor,
-	getRegistryIndex,
+	getRegistryIndexShadcn,
+	getRegistryIndexMagicUI,
 	resolveTree,
 	resolveTreeWithShadcn,
 } from "@/src/utils/registry";
@@ -44,7 +45,6 @@ const addOptionsSchema = z.object({
 const MAGICUI_PRO_ENV = getEnv();
 
 export const add = new Command()
-	.addHelpText("before", ColorFullText(MAGICUI_PRO_ENV ? hasPro : tryPro))
 	.name("add")
 	.description("Add ui components to your project")
 	.argument("[components...]", "the components to add")
@@ -66,6 +66,14 @@ export const add = new Command()
 	.option("-s, --shadcn", "include available components from shadcn-ui", false)
 	.option("-p, --path <path>", "the path to add the component to.")
 	.action(async (components, opts) => {
+		console.log(
+			MAGICUI_PRO_ENV ? ASCII_PRO : ASCII_TEXT,
+			ColorFullText(
+				!MAGICUI_PRO_ENV
+					? tryPro
+					: hasPro,
+			),
+		);
 		try {
 			const options = addOptionsSchema.parse({
 				components,
@@ -90,28 +98,36 @@ export const add = new Command()
 			}
 
 			const registryIndex = !options.shadcn
-				? (await getRegistryIndex({})).filter((e) => {
-						const type = e.type.split(":")[1] as "magicui" | "example";
-						return options.example ? type === "example" : type === "magicui";
-					})
+				? (await getRegistryIndexMagicUI(options.pro ? MAGICUI_PRO_ENV : undefined))
 				: [];
-			const shadcnRegistryIndex = await getRegistryIndex({ shadcn: true });
+			const shadcnRegistryIndex = await getRegistryIndexShadcn();
 
 			let selectedComponents = options.all
 				? (options.shadcn ? shadcnRegistryIndex : registryIndex).map(
-						(entry) => entry.name,
-					)
+					(entry) => entry.name,
+				)
 				: options.components;
 
 			if (!options.components?.length && !options.all) {
-				!options.shadcn && console.log(tryPro);
+				const filterIndex = (): typeof registryIndex => registryIndex.filter((e) => {
+					const type = e.type.split(":")[1] as string
+					if (options.pro)
+						return type === "blocks"
+
+					if (options.example)
+						return type === "example"
+
+					return type === "magicui"
+				})
+
+				const multiselectChoice = options.shadcn ? shadcnRegistryIndex : filterIndex();
 				const { components } = await prompts({
 					type: "multiselect",
 					name: "components",
 					message: "Which components would you like to add?",
 					hint: "Space to select. A to toggle all. Enter to submit.",
 					instructions: false,
-					choices: (options.shadcn ? shadcnRegistryIndex : registryIndex).map(
+					choices: multiselectChoice.map(
 						(entry) => ({
 							title: entry.name,
 							value: entry.name,
@@ -137,7 +153,7 @@ export const add = new Command()
 				options.shadcn,
 			);
 
-			const magicuiPayload = await fetchTree(magicuiTree);
+			const magicuiPayload = await fetchTree(magicuiTree, MAGICUI_PRO_ENV);
 			const shadcnPayload = await fetchTreeFromShadcn(config.style, shadcnTree);
 			const baseColor = await getRegistryBaseColor(config.tailwind.baseColor);
 
@@ -248,8 +264,7 @@ export const add = new Command()
 						);
 					} catch (error) {
 						logger.warn(
-							`\nFailed to install dependencies for ${
-								item.name
+							`\nFailed to install dependencies for ${item.name
 							}.\n\t-${item.dependencies.join("\n\t- ")}\n\nReason: ${error}`,
 						);
 					}
@@ -271,8 +286,7 @@ export const add = new Command()
 						);
 					} catch (error) {
 						logger.warn(
-							`\nFailed to install devDependencies for ${
-								item.name
+							`\nFailed to install devDependencies for ${item.name
 							}.\n\t-${item.devDependencies.join(
 								"\n\t- ",
 							)}\n\nReason: ${error}`,
