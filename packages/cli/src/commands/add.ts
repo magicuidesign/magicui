@@ -97,8 +97,13 @@ export const add = new Command()
 				process.exit(1);
 			}
 
+			if (options.pro && !MAGICUI_PRO_ENV) {
+				logger.warn("You're not authenticated to add Magic UI Pro components")
+				return
+			}
+
 			const registryIndex = !options.shadcn
-				? (await getRegistryIndexMagicUI(options.pro ? MAGICUI_PRO_ENV : undefined))
+				? (await getRegistryIndexMagicUI(options.pro))
 				: [];
 			const shadcnRegistryIndex = await getRegistryIndexShadcn();
 

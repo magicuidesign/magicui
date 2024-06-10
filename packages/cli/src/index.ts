@@ -34,7 +34,7 @@ async function main() {
 			"display the version number",
 		);
 
-	program.addCommand(init).addCommand(add).addCommand(diff).addCommand(auth).addCommand(project)
+	program.addCommand(init).addCommand(add).addCommand(auth).addCommand(project)
 
 	program.parse();
 }

@@ -6,6 +6,7 @@ import {
 	ColorFullText,
 	tryPro,
 	hasPro,
+	authMessage,
 } from "../utils/logger";
 import { z } from "zod";
 import prompts from "prompts";
@@ -16,13 +17,6 @@ const optionSchema = z.object({
 });
 
 const MAGICUI_PRO_ENV = getEnv();
-const authMessage = `
-
-Go to Magic UI Pro website for auth secrets.
-  → https://pro.magicui.design
-  → npx magicui auth --login <secret-env>
-
-`;
 
 export const auth = new Command()
 	.addHelpText("before", MAGICUI_PRO_ENV ? ASCII_PRO : ASCII_TEXT)
