@@ -8,7 +8,8 @@ import {
   fetchTreeFromShadcn,
   getItemTargetPath,
   getRegistryBaseColor,
-  getRegistryIndex,
+  getRegistryIndexShadcn,
+  getRegistryIndexMagicUI,
 } from "@/src/utils/registry";
 import { registryIndexSchema } from "@/src/utils/registry/schema";
 import { transform } from "@/src/utils/transformers";
@@ -58,8 +59,8 @@ export const diff = new Command()
         process.exit(1);
       }
 
-      const registryIndex = await getRegistryIndex({});
-      const shadcnRegistryIndex = await getRegistryIndex({ shadcn: true });
+      const registryIndex = await getRegistryIndexMagicUI();
+      const shadcnRegistryIndex = await getRegistryIndexShadcn();
 
       if (!options.component) {
         const targetDir = config.resolvedPaths.components;

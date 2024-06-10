@@ -12,6 +12,7 @@ import fetch from "node-fetch"
 import { z } from "zod"
 
 const baseUrl = process.env.COMPONENTS_REGISTRY_URL ?? "https://magicui.design"
+const proBaseUrl = process.env.PRO_REGISTRY_URL ?? "https://pro.magicui.design"
 const shadcnBaseUrl = "https://ui.shadcn.com"
 
 type theTree = z.infer<typeof registryIndexSchema>
@@ -20,14 +21,31 @@ const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
   : undefined
 
-export async function getRegistryIndex({ shadcn }: { shadcn?: boolean }) {
+
+export async function getRegistryIndexMagicUI(env?: string) {
   try {
-    const [result] = await fetchRegistry(["index.json"], shadcn ? shadcnBaseUrl : baseUrl)
+
+    const [result] = await fetchRegistry(["index.json"], baseUrl)
+    const [resultPro] = env ? await fetchRegistry(["index.json"], proBaseUrl, env) : [[]]
+
+    if (env)  console.log(env)
+
+    // @ts-ignore
+    return registryIndexSchema.parse([...result, ...resultPro])
+  } catch (error) {
+    console.error(error)
+    throw new Error("Failed to fetch components from Magic UI registry.")
+  }
+}
+
+export async function getRegistryIndexShadcn() {
+  try {
+    const [result] = await fetchRegistry(["index.json"], shadcnBaseUrl)
 
     return registryIndexSchema.parse(result)
   } catch (error) {
     console.error(error)
-    throw new Error(`Failed to fetch components from ${shadcn ? "Shadcn UI" : "Magic UI"} registry.`)
+    throw new Error("Failed to fetch components from Shadcn UI registry.")
   }
 }
 
@@ -37,7 +55,7 @@ export async function getRegistryStyles() {
 
     return stylesSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch styles from registry.`)
+    throw new Error("Failed to fetch styles from registry.")
   }
 }
 
@@ -72,7 +90,7 @@ export async function getRegistryBaseColor(baseColor: string) {
 
     return registryBaseColorSchema.parse(result)
   } catch (error) {
-    throw new Error(`Failed to fetch base color from registry.`)
+    throw new Error("Failed to fetch base color from registry.")
   }
 }
 
@@ -177,17 +195,25 @@ export async function resolveTree(
 }
 
 export async function fetchTree(
-  tree: theTree
+  tree: theTree, env?: string
 ) {
   try {
+    const treeNormal = tree.filter((item) => !item.type.includes("blocks"))
+    const treePro = tree.filter((item) => item.type.includes("blocks"))
     // {baseUrl}/registry/components/magicui/[name].json.
-    const paths = tree.map((item) => {
+    const paths = treeNormal.map((item) => {
       const [parent, subfolder] = item.type.split(":")
       return `${parent}/${subfolder}/${item.name}.json`
     })
-    const result = await fetchRegistry(paths)
+    const result = await fetchRegistry(paths, baseUrl)
 
-    return registryWithContentSchema.parse(result)
+    const pathsPro = treePro.map((item) => {
+      const [parent, subfolder] = item.type.split(":")
+      return `${parent}/${subfolder}/${item.name}.json`
+    })
+    const resultPro = await fetchRegistry(pathsPro, proBaseUrl, env)
+
+    return registryWithContentSchema.parse([...result, ...resultPro])
   } catch (error) {
     throw new Error(`Failed to fetch tree from Magic UI registry.`)
   }
@@ -227,12 +253,16 @@ export async function getItemTargetPath(
   )
 }
 
-async function fetchRegistry(paths: string[], fetchBaseUrl = baseUrl) {
+async function fetchRegistry(paths: string[], fetchBaseUrl = baseUrl, env?: string) {
   try {
     const results = await Promise.all(
       paths.map(async (path) => {
         const response = await fetch(`${fetchBaseUrl}/registry/${path}`, {
           agent,
+          headers: env ? {
+            // the Pro registry route will valid this env cookie
+            cookie: `x-magicui-env=${env}`
+          } : {}
         })
         return await response.json()
       })

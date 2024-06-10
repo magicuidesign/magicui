@@ -14,6 +14,7 @@ import {
 	hasPro,
 } from "./utils/logger";
 import { auth } from "./commands/auth";
+import { project } from "./commands/template";
 
 process.on("SIGINT", () => process.exit(0));
 process.on("SIGTERM", () => process.exit(0));
@@ -33,7 +34,7 @@ async function main() {
 			"display the version number",
 		);
 
-	program.addCommand(init).addCommand(add).addCommand(diff).addCommand(auth);
+	program.addCommand(init).addCommand(add).addCommand(diff).addCommand(auth).addCommand(project)
 
 	program.parse();
 }
