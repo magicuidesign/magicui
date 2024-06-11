@@ -35,10 +35,10 @@ export default async function Testimonials() {
   return (
     <section id="testimonials" className="container py-14">
       <FadeIn delay={0.3}>
-        <h2 className="mb-4 text-center text-5xl font-bold tracking-tight text-foreground">
+        <h2 className="mb-4 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
           What People Are Saying
         </h2>
-        <h3 className="text-foreground/80text-lg mb-8 text-center font-medium tracking-tight">
+        <h3 className="mx-auto mb-8 max-w-lg text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
           Don't just take our word for it. Here's what{" "}
           <strong>real people</strong> are saying about Magic UI on Twitter.
         </h3>
@@ -62,8 +62,8 @@ export default async function Testimonials() {
             </FadeIn>
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/3 bg-gradient-to-l from-background"></div>
       </div>
     </section>
   );

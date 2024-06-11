@@ -7,6 +7,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/magic-card.tsx"],
   },
+  "neon-gradient-card": {
+    name: "neon-gradient-card",
+    type: "components:ui",
+    files: ["registry/components/magicui/neon-gradient-card.tsx"],
+  },
   "linear-gradient": {
     name: "linear-gradient",
     type: "components:magicui",
@@ -184,6 +189,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/letter-pullup.tsx"],
   },
+  "sparkles-text": {
+    name: "sparkles-text",
+    type: "components:ui",
+    files: ["registry/components/magicui/sparkles-text.tsx"],
+  },
   "flip-text": {
     name: "flip-text",
     type: "components:magicui",
@@ -194,6 +204,11 @@ const ui: Registry = {
     type: "components:magicui",
     dependencies: ["next-themes", "react-icon-cloud"],
     files: ["registry/components/magicui/icon-cloud.tsx"],
+  },
+  "wavy-dot-pattern": {
+    name: "wavy-dot-pattern",
+    type: "components:ui",
+    files: ["registry/components/magicui/wavy-dot-pattern.tsx"],
   },
   "gradual-spacing": {
     name: "gradual-spacing",
@@ -225,6 +240,31 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/box-reveal.tsx"],
   },
+  "shine-border": {
+    name: "shine-border",
+    type: "components:ui",
+    files: ["registry/components/magicui/shine-border.tsx"],
+  },
+  "gauge-circle": {
+    name: "gauge-circle",
+    type: "components:ui",
+    files: ["registry/components/magicui/gauge-circle.tsx"],
+  },
+  confetti: {
+    name: "confetti",
+    type: "components:ui",
+    files: ["registry/components/magicui/confetti.tsx"],
+  },
+  "animated-subscribe-button": {
+    name: "animated-subscribe-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-subscribe-button.tsx"],
+  },
+  "cool-mode": {
+    name: "cool-mode",
+    type: "components:ui",
+    files: ["registry/components/magicui/cool-mode.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -235,6 +275,14 @@ const example: Registry = {
     files: ["registry/components/example/magic-card-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/magic-card-demo"),
+    ),
+  },
+  "neon-gradient-card-demo": {
+    name: "neon-gradient-card-demo",
+    type: "components:example",
+    files: ["registry/components/example/neon-gradient-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/neon-gradient-card-demo"),
     ),
   },
   "magic-card-gradient": {
@@ -779,6 +827,14 @@ const example: Registry = {
       () => import("@/registry/components/example/flip-text-demo"),
     ),
   },
+  "sparkles-text-demo": {
+    name: "sparkles-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/sparkles-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/sparkles-text-demo"),
+    ),
+  },
   "icon-cloud-demo": {
     name: "icon-cloud-demo",
     type: "components:example",
@@ -786,6 +842,14 @@ const example: Registry = {
     files: ["registry/components/example/icon-cloud-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/icon-cloud-demo"),
+    ),
+  },
+  "wavy-dot-pattern-demo": {
+    name: "wavy-dot-pattern-demo",
+    type: "components:example",
+    files: ["registry/components/example/wavy-dot-pattern-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/wavy-dot-pattern-demo"),
     ),
   },
   "gradual-spacing-demo": {
@@ -831,6 +895,111 @@ const example: Registry = {
     files: ["registry/components/example/box-reveal-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/box-reveal-demo"),
+    ),
+  },
+  "gauge-circle-demo": {
+    name: "gauge-circle-demo",
+    type: "components:example",
+    files: ["registry/components/example/gauge-circle-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/gauge-circle-demo"),
+    ),
+  },
+  "shine-border-demo": {
+    name: "shine-border-demo",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo"),
+    ),
+  },
+  "shine-border-demo-2": {
+    name: "shine-border-demo-2",
+    type: "components:example",
+    files: ["registry/components/example/shine-border-demo-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/shine-border-demo-2"),
+    ),
+  },
+  "confetti-basic-cannon": {
+    name: "confetti-basic-cannon",
+    type: "components:example",
+    files: ["registry/components/example/confetti-basic-cannon.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-basic-cannon"),
+    ),
+  },
+  "confetti-random-direction": {
+    name: "confetti-random-direction",
+    type: "components:example",
+    files: ["registry/components/example/confetti-random-direction.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-random-direction"),
+    ),
+  },
+  "confetti-fireworks": {
+    name: "confetti-fireworks",
+    type: "components:example",
+    files: ["registry/components/example/confetti-fireworks.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-fireworks"),
+    ),
+  },
+  "confetti-stars": {
+    name: "confetti-stars",
+    type: "components:example",
+    files: ["registry/components/example/confetti-stars.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-stars"),
+    ),
+  },
+  "confetti-side-cannons": {
+    name: "confetti-side-cannons",
+    type: "components:example",
+    files: ["registry/components/example/confetti-side-cannons.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-side-cannons"),
+    ),
+  },
+  "confetti-custom-shapes": {
+    name: "confetti-custom-shapes",
+    type: "components:example",
+    files: ["registry/components/example/confetti-custom-shapes.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-custom-shapes"),
+    ),
+  },
+  "confetti-emoji": {
+    name: "confetti-emoji",
+    type: "components:example",
+    files: ["registry/components/example/confetti-emoji.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-emoji"),
+    ),
+  },
+  "animated-subscribe-button-demo": {
+    name: "animated-subscribe-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-subscribe-button-demo.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/animated-subscribe-button-demo"),
+    ),
+  },
+  "cool-mode-demo": {
+    name: "cool-mode-demo",
+    type: "components:example",
+    files: ["registry/components/example/cool-mode-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/cool-mode-demo"),
+    ),
+  },
+  "cool-mode-custom": {
+    name: "cool-mode-custom",
+    type: "components:example",
+    files: ["registry/components/example/cool-mode-custom.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/cool-mode-custom"),
     ),
   },
 };

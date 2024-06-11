@@ -1,0 +1,68 @@
+---
+title: Shine Border
+date: 2024-05-25
+description: Shine border is an animated background border effect.
+author: unnamed-lab
+published: true
+---
+
+<ComponentPreview name="shine-border-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "shine-pulse": {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
+```text
+components/magicui/shine-border.tsx
+```
+
+<ComponentSource name="shine-border" />
+
+</Steps>
+
+## Examples
+
+### Silver
+
+<ComponentPreview name="shine-border-demo-2" />
+
+## Props
+
+| Prop         | Type                           | Description                                         | Default    |
+| ------------ | ------------------------------ | --------------------------------------------------- | ---------- |
+| className    | string                         | The class name to be applied to the component.       |            |
+| duration     | number                         | Defines the animation duration to be applied on the shining border. | 14 seconds |
+| color        | `#${string}` OR `#${string}`[] | A string or string array to define border color.    | #FFFFFF    |
+| borderRadius | number                         | Defines the radius of the border.                   | 8px        |
+| borderWidth  | number                         | Defines the width of the border.                    | 1px        |
+| children     | ReactNode                | Contains react node elements.                       | {}         |
+
+## Credits
+
+- Credits to [Matthew Goshman](https://codepen.io/matthewgoshman/pen/bGMpKZy) for this fantastic component.
+- Credits to [Anu Adebayo](https://twitter.com/unnamedcodes) for improving and customizing the component.
