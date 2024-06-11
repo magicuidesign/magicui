@@ -4,9 +4,9 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react";
 export default function AnimatedSubscribeButtonDemo() {
   return (
     <AnimatedSubscribeButton
-      brand="#ffbd7a"
+      buttonColor="#000000"
+      buttonTextColor="#ffffff"
       subscribeStatus={false}
-      buttonTextColor="#000009"
       initialText={
         <span className="group inline-flex items-center">
           Subscribe{" "}
