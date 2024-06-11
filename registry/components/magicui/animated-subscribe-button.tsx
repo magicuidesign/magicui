@@ -13,14 +13,20 @@ interface AnimatedSubscribeButtonProps {
 
 export const AnimatedSubscribeButton: React.FC<
   AnimatedSubscribeButtonProps
-> = ({ buttonColor, subscribeStatus, buttonTextColor, changeText, initialText }) => {
+> = ({
+  buttonColor,
+  subscribeStatus,
+  buttonTextColor,
+  changeText,
+  initialText,
+}) => {
   const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
 
   return (
     <AnimatePresence mode="wait">
       {isSubscribed ? (
         <motion.button
-          className="relative flex w-[200px] items-center justify-center bg-white p-[10px]"
+          className="relative flex w-[200px] items-center justify-center overflow-hidden rounded-md bg-white p-[10px] outline outline-1 outline-black"
           onClick={() => setIsSubscribed(false)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
