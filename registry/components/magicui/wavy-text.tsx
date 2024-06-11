@@ -28,31 +28,29 @@ const WavyText = ({
   const combinedVariants = variant || defaultVariants;
   const characters = useMemo(() => word.split(""), [word]);
   return (
-    <div className="overflow-hidden p-2">
-      <div className="flex justify-center space-x-2">
-        <AnimatePresence>
-          {characters.map((char, i) => (
-            <motion.h1
-              key={i}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={combinedVariants}
-              transition={{
-                yoyo: Infinity,
-                duration: duration,
-                delay: i * delay,
-              }}
-              className={cn(
-                className,
-                "font-display text-center text-4xl font-bold tracking-[-0.1em] md:text-7xl",
-              )}
-            >
-              {char}
-            </motion.h1>
-          ))}
-        </AnimatePresence>
-      </div>
+    <div className="flex justify-center space-x-2 overflow-hidden p-3">
+      <AnimatePresence>
+        {characters.map((char, i) => (
+          <motion.h1
+            key={i}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={combinedVariants}
+            transition={{
+              yoyo: Infinity,
+              duration: duration,
+              delay: i * delay,
+            }}
+            className={cn(
+              className,
+              "font-display text-center text-4xl font-bold tracking-[-0.15em] md:text-7xl",
+            )}
+          >
+            {char}
+          </motion.h1>
+        ))}
+      </AnimatePresence>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
+import { ComponentInstallation } from "./component-installation";
 import { CopyButton } from "./copy-button";
 
 const CustomLink = (props: any) => {
@@ -105,6 +106,7 @@ const components = {
   ),
   ComponentPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
+  ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
