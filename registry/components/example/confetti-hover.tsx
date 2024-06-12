@@ -15,7 +15,7 @@ export default function ConfettiBasicCannon() {
 
       <Confetti
         ref={confettiRef}
-        className="absolute left-0 top-0 z-50 h-full w-full"
+        className="absolute left-0 top-0 z-0 h-full w-full"
         onMouseEnter={() => {
           confettiRef.current?.fire({});
         }}
