@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Confetti } from "@/registry/components/magicui/confetti";
+import confetti from "canvas-confetti";
 
 export default function ConfettiSideCannons() {
   const handleClick = () => {
@@ -9,7 +9,7 @@ export default function ConfettiSideCannons() {
     const frame = () => {
       if (Date.now() > end) return;
 
-      Confetti({
+      confetti({
         particleCount: 2,
         angle: 60,
         spread: 55,
@@ -17,7 +17,7 @@ export default function ConfettiSideCannons() {
         origin: { x: 0, y: 0.5 },
         colors: colors,
       });
-      Confetti({
+      confetti({
         particleCount: 2,
         angle: 120,
         spread: 55,
@@ -33,7 +33,7 @@ export default function ConfettiSideCannons() {
   };
 
   return (
-    <div className="relative justify-center">
+    <div className="relative">
       <Button onClick={handleClick}>Trigger Side Cannons</Button>
     </div>
   );

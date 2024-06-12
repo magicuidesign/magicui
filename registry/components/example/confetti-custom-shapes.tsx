@@ -1,24 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { Confetti } from "@/registry/components/magicui/confetti";
+import confetti from "canvas-confetti";
 
 export default function ConfettiCustomShapes() {
   const handleClick = () => {
     const scalar = 2;
-    const triangle = Confetti.shapeFromPath({
+    const triangle = confetti.shapeFromPath({
       path: "M0 10 L5 0 L10 10z",
-      scalar,
     });
-    const square = Confetti.shapeFromPath({
+    const square = confetti.shapeFromPath({
       path: "M0 0 L10 0 L10 10 L0 10 Z",
-      scalar,
     });
-    const coin = Confetti.shapeFromPath({
+    const coin = confetti.shapeFromPath({
       path: "M5 0 A5 5 0 1 0 5 10 A5 5 0 1 0 5 0 Z",
-      scalar,
     });
-    const tree = Confetti.shapeFromPath({
+    const tree = confetti.shapeFromPath({
       path: "M5 0 L10 10 L0 10 Z",
-      scalar,
     });
 
     const defaults = {
@@ -32,18 +28,17 @@ export default function ConfettiCustomShapes() {
     };
 
     const shoot = () => {
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 30,
       });
 
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 5,
-        flat: true,
       });
 
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 15,
         scalar: scalar / 2,

@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Confetti } from "@/registry/components/magicui/confetti";
+import confetti from "canvas-confetti";
 
 export default function ConfettiEmoji() {
   const handleClick = () => {
     const scalar = 2;
-    const unicorn = Confetti.shapeFromText({ text: "🦄", scalar });
+    const unicorn = confetti.shapeFromText({ text: "🦄", scalar });
 
     const defaults = {
       spread: 360,
@@ -17,18 +17,17 @@ export default function ConfettiEmoji() {
     };
 
     const shoot = () => {
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 30,
       });
 
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 5,
-        flat: true,
       });
 
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 15,
         scalar: scalar / 2,

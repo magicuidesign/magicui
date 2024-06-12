@@ -1,11 +1,11 @@
 "use client";
 
-import type { Ref as ConfettiApiRef } from "@/registry/components/magicui/confetti";
+import type { ConfettiRef } from "@/registry/components/magicui/confetti";
 import Confetti from "@/registry/components/magicui/confetti";
 import { useRef } from "react";
 
 export default function ConfettiBasicCannon() {
-  const confettiRef = useRef<ConfettiApiRef>(null);
+  const confettiRef = useRef<ConfettiRef>(null);
 
   return (
     <div className="relative flex h-[500px] w-full max-w-[32rem] flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
