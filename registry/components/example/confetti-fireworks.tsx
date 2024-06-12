@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Confetti } from "@/registry/components/magicui/confetti";
+import confetti from "canvas-confetti";
 
 export default function ConfettiFireworks() {
   const handleClick = () => {
@@ -18,12 +18,12 @@ export default function ConfettiFireworks() {
       }
 
       const particleCount = 50 * (timeLeft / duration);
-      Confetti({
+      confetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
       });
-      Confetti({
+      confetti({
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
@@ -32,7 +32,7 @@ export default function ConfettiFireworks() {
   };
 
   return (
-    <div className="relative justify-center">
+    <div className="relative">
       <Button onClick={handleClick}>Trigger Fireworks</Button>
     </div>
   );

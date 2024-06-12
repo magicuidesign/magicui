@@ -848,6 +848,14 @@ const example: Registry = {
       () => import("@/registry/components/example/shine-border-demo-2"),
     ),
   },
+  "confetti-hover": {
+    name: "confetti-hover",
+    type: "components:example",
+    files: ["registry/components/example/confetti-hover.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/confetti-hover"),
+    ),
+  },
   "confetti-basic-cannon": {
     name: "confetti-basic-cannon",
     type: "components:example",

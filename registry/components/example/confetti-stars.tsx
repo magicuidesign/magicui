@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Confetti } from "@/registry/components/magicui/confetti";
+import confetti from "canvas-confetti";
 
 export default function ConfettiStars() {
   const handleClick = () => {
@@ -13,14 +13,14 @@ export default function ConfettiStars() {
     };
 
     const shoot = () => {
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 40,
         scalar: 1.2,
         shapes: ["star"],
       });
 
-      Confetti({
+      confetti({
         ...defaults,
         particleCount: 10,
         scalar: 0.75,
@@ -34,7 +34,7 @@ export default function ConfettiStars() {
   };
 
   return (
-    <div className="relative justify-center">
+    <div className="relative">
       <Button onClick={handleClick}>Trigger Stars</Button>
     </div>
   );
