@@ -1,0 +1,96 @@
+---
+title: Confetti
+date: 2024-05-26
+description: Confetti animations are best used to delight your users when something special happens
+author: Bankkroll
+published: true
+---
+
+<ComponentPreview name="confetti-hover" />
+
+<Steps>
+
+### Installation
+
+The confetti is built on canvas confetti.
+
+```bash
+npm install --save canvas-confetti
+```
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/confetti.tsx
+```
+
+<ComponentSource name="confetti" />
+
+</Steps>
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="confetti-basic-cannon" />
+
+### Random Direction
+
+<ComponentPreview name="confetti-random-direction" />
+
+### Fireworks
+
+<ComponentPreview name="confetti-fireworks" />
+
+### Side Cannons
+
+<ComponentPreview name="confetti-side-cannons" />
+
+### Stars
+
+<ComponentPreview name="confetti-stars" />
+
+### Custom Shapes
+
+<ComponentPreview name="confetti-custom-shapes" />
+
+### Emoji
+
+<ComponentPreview name="confetti-emoji" />
+
+## Props
+
+### Confetti
+
+| Prop                    | Type                      | Description                                      | Default                                                                       |
+| ----------------------- | ------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| particleCount           | Integer                   | The number of confetti particles to launch       | 50                                                                            |
+| angle                   | Number                    | The angle in degrees at which to launch confetti | 90                                                                            |
+| spread                  | Number                    | The spread in degrees of the confetti            | 45                                                                            |
+| startVelocity           | Number                    | The initial velocity of the confetti             | 45                                                                            |
+| decay                   | Number                    | The rate at which confetti slows down            | 0.9                                                                           |
+| gravity                 | Number                    | The gravity applied to confetti particles        | 1                                                                             |
+| drift                   | Number                    | The horizontal drift applied to particles        | 0                                                                             |
+| flat                    | Boolean                   | Whether confetti particles are flat              | false                                                                         |
+| ticks                   | Number                    | The number of frames confetti lasts              | 200                                                                           |
+| origin                  | Object                    | The origin point of the confetti                 | `{ x: 0.5, y: 0.5 }`                                                          |
+| colors                  | Array of Strings          | Array of color strings in HEX format             | ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'] |
+| shapes                  | Array of Strings          | Array of shapes for the confetti                 | ['square', 'circle']                                                          |
+| zIndex                  | Integer                   | The z-index of the confetti                      | 100                                                                           |
+| disableForReducedMotion | Boolean                   | Disables confetti for users who prefer no motion | false                                                                         |
+| useWorker               | Boolean                   | Use Web Worker for better performance            | true                                                                          |
+| resize                  | Boolean                   | Whether to resize the canvas                     | true                                                                          |
+| canvas                  | HTMLCanvasElement or null | Custom canvas element to draw confetti           | null                                                                          |
+| scalar                  | Number                    | Scaling factor for confetti size                 | 1                                                                             |
+
+### ConfettiButton
+
+| Prop     | Type            | Description                          | Default |
+| -------- | --------------- | ------------------------------------ | ------- |
+| options  | Object          | Options for the confetti             | {}      |
+| children | React.ReactNode | Children to render inside the button | null    |
+
+## Credits
+
+- Credit to [Bankk](https://www.x.com/bankkroll_eth)
+- Inspired by [canvas-confetti](https://www.npmjs.com/package/canvas-confetti)
