@@ -257,6 +257,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/cool-mode.tsx"],
   },
+  "gradient-border": {
+    name: "gradient-border",
+    type: "components:ui",
+    files: ["registry/components/magicui/gradient-border.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -935,6 +940,14 @@ const example: Registry = {
     files: ["registry/components/example/cool-mode-custom.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/cool-mode-custom"),
+    ),
+  },
+  "gradient-border-demo": {
+    name: "gradient-border-demo",
+    type: "components:example",
+    files: ["registry/components/example/gradient-border-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/gradient-border-demo"),
     ),
   },
 };
