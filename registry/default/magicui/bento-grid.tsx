@@ -4,13 +4,22 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-const BentoGrid = ({
-  children,
-  className,
-}: {
+type BentoGridProps = {
   children: ReactNode;
   className?: string;
-}) => {
+};
+
+type BentoCardProps = {
+  name: string;
+  className: string;
+  background: ReactNode;
+  Icon: any;
+  description: string;
+  href: string;
+  cta: string;
+};
+
+const BentoGrid = ({ children, className }: BentoGridProps) => {
   return (
     <div
       className={cn(
@@ -31,15 +40,7 @@ const BentoCard = ({
   description,
   href,
   cta,
-}: {
-  name: string;
-  className: string;
-  background: ReactNode;
-  Icon: any;
-  description: string;
-  href: string;
-  cta: string;
-}) => (
+}: BentoCardProps) => (
   <div
     key={name}
     className={cn(
