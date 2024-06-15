@@ -300,6 +300,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Animated Buttons",
+          href: `/docs/components/animated-button`,
+          items: [],
+          label: "New",
+        }
       ],
     },
     {

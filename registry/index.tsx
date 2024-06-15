@@ -252,6 +252,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/cool-mode.tsx"],
   },
+  "animated-button": {
+    name: "animated-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/animated-button.tsx"]
+  }
 };
 
 const example: Registry = {
@@ -916,6 +921,14 @@ const example: Registry = {
       () => import("@/registry/components/example/cool-mode-custom"),
     ),
   },
+  "animated-button-demo": {
+    name: "animated-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/animated-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-button-demo")
+    )
+  }
 };
 export const registry: Registry = {
   ...ui,
