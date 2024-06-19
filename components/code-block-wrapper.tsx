@@ -6,22 +6,25 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   expandButtonTitle?: string;
+  multi?: boolean;
 }
 
 export function CodeBlockWrapper({
   expandButtonTitle = "View Code",
   className,
   children,
+  multi,
   ...props
 }: CodeBlockProps) {
   const [isOpened, setIsOpened] = React.useState(false);
 
-  return (
+  const renderContent = (content: React.ReactNode) => (
     <Collapsible open={isOpened} onOpenChange={setIsOpened}>
       <div className={cn("relative overflow-hidden", className)} {...props}>
         <CollapsibleContent
@@ -34,7 +37,7 @@ export function CodeBlockWrapper({
               !isOpened ? "[&_pre]:overflow-hidden" : "[&_pre]:overflow-auto]",
             )}
           >
-            {children}
+            {content}
           </div>
         </CollapsibleContent>
         <div
@@ -52,4 +55,23 @@ export function CodeBlockWrapper({
       </div>
     </Collapsible>
   );
+
+  if (multi) {
+    const childrenArray = React.Children.toArray(children);
+    const reactCode = childrenArray[0];
+    const svelteCode = childrenArray[1];
+
+    return (
+      <Tabs defaultValue="react" className="w-[400px]">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="react">React</TabsTrigger>
+          <TabsTrigger value="svelte">Svelte 5</TabsTrigger>
+        </TabsList>
+        <TabsContent value="react">{renderContent(reactCode)}</TabsContent>
+        <TabsContent value="svelte">{renderContent(svelteCode)}</TabsContent>
+      </Tabs>
+    );
+  }
+
+  return renderContent(children);
 }
