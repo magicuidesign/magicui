@@ -43,11 +43,7 @@ export const PulsatingButton: React.FC<PulsatingButtonProps> = ({
         }}
       >
         <b>{text}</b>
-        <style jsx
-          // style={{
-          //   borderRadius: '24px',
-          // }}
-        >{`
+        <style jsx>{`
           @keyframes pulse {
             0% {
               box-shadow: 0 0 0 0 rgba(var(--tw-pulse-color), 0);
