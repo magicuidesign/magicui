@@ -38,11 +38,11 @@ export const PulsatingButton: React.FC<PulsatingButtonProps> = ({
           backgroundColor: backgroundColor,
           width: buttonWidth,
           height: buttonHeight,
-          borderRadius: '16px',
+          borderRadius: '12px',
           ...pulseKeyframes,
         }}
       >
-        <b>{text}</b>
+        <div>{text}</div>
         <style jsx>{`
           @keyframes pulse {
             0% {
@@ -62,7 +62,7 @@ export const PulsatingButton: React.FC<PulsatingButtonProps> = ({
             left: 50%;
             width: 100%;
             height: 100%;
-            border-radius: 24px;
+            border-radius: 20px;
             background: inherit;
             animation: inherit;
             transform: translate(-50%, -50%);
