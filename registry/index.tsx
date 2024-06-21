@@ -1,6 +1,4 @@
 import { Registry } from "@/registry/schema";
-import { compact } from "@headlessui/react/dist/utils/render";
-import { Component } from "lucide-react";
 import * as React from "react";
 
 const ui: Registry = {
@@ -230,11 +228,6 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/shiny-button.tsx"],
   },
-  "pulsating-button": {
-    name: "pulsating-button",
-    type: "components:ui",
-    files: ["registry/components/magicui/pulsating-button.tsx"],
-  },
   "box-reveal": {
     name: "box-reveal",
     type: "components:magicui",
@@ -264,6 +257,11 @@ const ui: Registry = {
     name: "cool-mode",
     type: "components:magicui",
     files: ["registry/components/magicui/cool-mode.tsx"],
+  },
+  "pulsating-button": {
+    name: "pulsating-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/pulsating-button.tsx"],
   },
 };
 
@@ -872,15 +870,6 @@ const example: Registry = {
       () => import("@/registry/components/example/shiny-button-demo"),
     ),
   },
-  "pulsating-button-demo": {
-    name: "pulsating-button-demo",
-    type: "components:example",
-    files: ["registry/components/example/pulsating-button-demo.tsx"],
-    component: React.lazy(
-      () =>
-        import("@/registry/components/example/pulsating-button-demo"),
-    ),
-  },
   "box-reveal-demo": {
     name: "box-reveal-demo",
     type: "components:example",
@@ -1000,6 +989,14 @@ const example: Registry = {
     files: ["registry/components/example/cool-mode-custom.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/cool-mode-custom"),
+    ),
+  },
+  "pulsating-button-demo": {
+    name: "pulsating-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/pulsating-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/pulsating-button-demo"),
     ),
   },
 };
