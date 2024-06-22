@@ -20,6 +20,7 @@ Visit https://magicui.design/docs to view the documentation.
 Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
 
 ## Let's talk
+
 <a href="https://cal.com/dillionverma/magicui?utm_source=banner&utm_campaign=oss"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 ## Authors

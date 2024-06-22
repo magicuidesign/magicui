@@ -10,21 +10,21 @@ interface TocProps {
 }
 
 export function DashboardTableOfContents({ toc }: TocProps) {
-const refinedToc = useMemo(() => {
-  if (!toc.items || toc.items.length === 0) {
+  const refinedToc = useMemo(() => {
+    if (!toc.items || toc.items.length === 0) {
+      return toc;
+    }
+
+    const [linksInSteps, ...rest] = toc.items;
+
+    if (linksInSteps.items && linksInSteps.items.length > 0) {
+      return {
+        items: [...linksInSteps.items, ...rest],
+      };
+    }
+
     return toc;
-  }
-
-  const [linksInSteps, ...rest] = toc.items;
-
-  if (linksInSteps.items && linksInSteps.items.length > 0) {
-    return {
-      items: [...linksInSteps.items, ...rest]
-    };
-  }
-
-  return toc;
-}, [toc]);
+  }, [toc]);
 
   const itemIds: string[] = useMemo(
     () =>
