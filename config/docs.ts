@@ -224,6 +224,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Scroll Progress",
+          href: `/docs/components/scroll-progress`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
