@@ -210,6 +210,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Video Modal",
+          href: `/docs/components/video-modal`,
+          items: [],
+          label: "",
+        },
       ],
     },
     {

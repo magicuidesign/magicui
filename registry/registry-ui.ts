@@ -603,4 +603,9 @@ export const ui: Registry = [
       },
     },
   },
+  {
+    name: "video-modal",
+    type: "registry:ui",
+    files: ["magicui/video-modal.tsx"],
+  },
 ];
