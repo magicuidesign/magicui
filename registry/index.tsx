@@ -257,6 +257,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/cool-mode.tsx"],
   },
+  "video-modal": {
+    name: "video-modal",
+    type: "components:ui",
+    files: ["registry/components/magicui/video-modal.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -935,6 +940,14 @@ const example: Registry = {
     files: ["registry/components/example/cool-mode-custom.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/cool-mode-custom"),
+    ),
+  },
+  "video-modal-demo": {
+    name: "video-modal",
+    type: "components:example",
+    files: ["registry/components/example/video-modal-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/video-modal-demo"),
     ),
   },
 };
