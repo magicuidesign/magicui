@@ -23,10 +23,24 @@ const findLastClosingBracePosition = (input: string): number => {
 const replaceRequire = (input: string): string => {
     const pattern = /"<require>(.*?)<require>"/g;
     return input.replace(pattern, (match, p1) => {
-      return `require('${p1}')`;
+        return `require('${p1}')`;
     });
-  };
-  
+};
+
+
+const isValidString = (str: string): boolean => {
+    const regex = /^[A-Za-z_][A-Za-z0-9_]*$/;
+    return regex.test(str);
+}
+
+const formatKeys = (input: string): string => {
+    const pattern = /"([^"]+)":/g;
+    return input.replace(pattern, (match, p1) => {
+        if (!isValidString(p1)) return match
+        return `${p1}:`;
+    });
+};
+
 
 export const updatedTailwindConfig = (tailwindConfig: string, listOfTailwindUpdates: object[], type: string): string | null => {
     const f = findPosition(tailwindConfig);
@@ -63,7 +77,9 @@ export const updatedTailwindConfig = (tailwindConfig: string, listOfTailwindUpda
 
     if (updatedMiddle.length === 0) return null
 
-    const newTailwindConfig = `${start} ${replaceRequire(updatedMiddle)}${end}`
+    const newTailwindConfig = `${start} ${
+        formatKeys(replaceRequire(updatedMiddle))
+    }${end}`
 
     return newTailwindConfig
 }
