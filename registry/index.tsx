@@ -56,7 +56,7 @@ const ui: Registry = {
   "hero-video": {
     name: "hero-video",
     type: "components:magicui",
-    dependencies: ["@headlessui/react" ],
+    dependencies: ["@headlessui/react"],
     // registryDependencies: [],
     files: ["registry/components/magicui/hero-video.tsx"],
   },
@@ -137,6 +137,22 @@ const ui: Registry = {
   "animated-gradient-text": {
     name: "animated-gradient-text",
     type: "components:magicui",
+    tailwindConfig: {
+      theme: {
+        extend: {
+          animation: {
+            gradient: "gradient 8s linear infinite",
+          },
+          keyframes: {
+            gradient: {
+              to: {
+                backgroundPosition: "var(--bg-size) 0",
+              },
+            },
+          },
+        },
+      },
+    },
     files: ["registry/components/magicui/animated-gradient-text.tsx"],
   },
   "orbiting-circles": {
@@ -469,7 +485,7 @@ const example: Registry = {
   "bento-demo": {
     name: "bento-demo",
     type: "components:example",
-    registryDependencies: ["bento-grid", "marquee", "globe", "shadcn:command", "shadcn:calendar" ],
+    registryDependencies: ["bento-grid", "marquee", "globe", "shadcn:command", "shadcn:calendar"],
     dependencies: ["@radix-ui/react-icons"],
     files: ["registry/components/example/bento-demo.tsx"],
     component: React.lazy(
@@ -1008,6 +1024,6 @@ export const registry: Registry = {
   ...example,
 };
 
-const resolvedExamples = Object.entries(example).map(([key, value]) => ({...value, component: () => void 0}));
-const updatedExample:Registry = resolvedExamples.reduce((acc, curr) => ({...acc, [curr.name]: curr}), {});
-export const downloadRegistry: Registry = {...ui, ...updatedExample};
+const resolvedExamples = Object.entries(example).map(([key, value]) => ({ ...value, component: () => void 0 }));
+const updatedExample: Registry = resolvedExamples.reduce((acc, curr) => ({ ...acc, [curr.name]: curr }), {});
+export const downloadRegistry: Registry = { ...ui, ...updatedExample };

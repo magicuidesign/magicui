@@ -15,6 +15,10 @@ export const registrySchema = z.record(
       "components:blocks",
     ]),
     component: z.function().args(z.any()).returns(z.any()).optional(),
+
+    // [theme][extend][animation][gradient]: "gradient 8s linear infinite"
+    // [theme][extend][keyframes][gradient][to][backgroundPosition]: "var(--bg-size) 0"
+    tailwindConfig: z.record(z.any(), z.any()).optional(),
   }),
 );
 

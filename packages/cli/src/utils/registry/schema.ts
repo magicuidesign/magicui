@@ -8,6 +8,16 @@ export const registryItemSchema = z.object({
   registryDependencies: z.array(z.string()).optional(),
   files: z.array(z.string()),
   type: z.enum(["components:ui", "components:component", "components:example", "components:magicui", "components:blocks",]),
+
+  /**
+   * [theme][extend][animation][gradient]: "gradient 8s linear infinite"
+   * [theme][extend][keyframes][gradient][to][backgroundPosition]: "var(--bg-size) 0"
+   */
+  tailwindConfig: z.record(
+    // z.string().regex(/^(?:\[\w+\])+$/, "Invalid tailwind config path"),
+    z.any(),
+    z.any(),
+  ).optional(),
 })
 
 export const registryIndexSchema = z.array(registryItemSchema)

@@ -28,7 +28,8 @@ import { execa } from "execa";
 import ora from "ora";
 import prompts from "prompts";
 import { z } from "zod";
-import { getEnv, parseEnvFile } from "../utils/get-env";
+import { getEnv } from "../utils/get-env";
+import { updatedTailwindConfig } from "../utils/transformers/merge-tailwind";
 
 const addOptionsSchema = z.object({
 	components: z.array(z.string()).optional(),
@@ -187,6 +188,8 @@ export const add = new Command()
 				}
 			}
 
+			const savedTailwindUpdates = []
+
 			const spinner = ora(`Installing components...`).start();
 			for (const item of totalPayload) {
 				spinner.text = `Installing ${item.name}...`;
@@ -275,6 +278,10 @@ export const add = new Command()
 					}
 				}
 
+				if (item.tailwindConfig) {
+					savedTailwindUpdates.push(item.tailwindConfig)
+				}
+
 				// Install devDependencies.
 				if (item.devDependencies?.length) {
 					try {
@@ -299,7 +306,31 @@ export const add = new Command()
 					}
 				}
 			}
-			spinner.succeed(`Done.`);
+
+			if (savedTailwindUpdates.length) {
+				try {
+					const configPath = path.resolve(cwd, config.tailwind.config);
+
+					const fileExtension = path.extname(configPath)
+
+					if (fileExtension !== '.js' && fileExtension !== '.ts') {
+						logger.warn("Tailwind config file must be a .js or .ts file. Skipping update.")
+						return
+					}
+
+					const tailwindConfig = await fs.readFile(configPath, 'utf8');
+					const newTailwindConfig = updatedTailwindConfig(tailwindConfig, savedTailwindUpdates, fileExtension)
+
+					if (newTailwindConfig) {
+						await fs.writeFile(configPath, newTailwindConfig)
+					}
+				}
+				catch (error) {
+					logger.warn(`Failed to update tailwind config. Reason: ${error}`)
+				}
+			}
+
+			spinner.succeed("Done.");
 		} catch (error) {
 			handleError(error);
 		}
