@@ -1,14 +1,26 @@
-name: Linter
+name: MagicUI Linter by Unnamed
 run-name: ${{ github.actor }} is attempting to make a ${{github.event_name}}.
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  run-linters:
+  linter:
     name: Run Linters
     runs-on: ubuntu-latest
 
+    permissions:
+      checks: write
+      contents: write
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.7
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -30,11 +42,16 @@ jobs:
         run: pnpm install
 
       - name: Run Linters
-        uses: panda0603/lint-action@1.6.3
+        uses: wearerequired/lint-action@v2
         with:
-          github_token: ${{ secrets.MAGIC_BOT_TOKEN}}
-          eslint_extensions: js,ts,jsx,tsx,md,mdx
-          prettier: true
-          prettier_extensions: js,ts,jsx,tsx,md,mdx,css,scss,json
+          git_name: "MagicUI Lint"
           auto_fix: true
-          git_name: "MagicUI Lint Action"
+          continue_on_error: true
+          neutral_check_on_warning: true
+          github_token: ${{ secrets.GITHUB_TOKEN  }}
+          prettier: true
+          prettier_extensions: css,html,js,json,jsx,md,sass,scss,ts,tsx,vue
+          prettier_auto_fix: true
+          eslint: true
+          eslint_auto_fix: true
+          commit_message: "[fix] codebase style issues with ${linter}"
