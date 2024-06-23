@@ -2,24 +2,15 @@
 
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const VideoModal = DialogPrimitive.Root;
 
 const VideoModalTrigger = DialogPrimitive.Trigger;
 
-const VideoModalPortal = ({
-  children,
-  ...props
-}: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal {...props}>
-    <div className="min-w-screen fixed inset-0 z-50 flex min-h-screen items-center justify-center p-2">
-      {children}
-    </div>
-  </DialogPrimitive.Portal>
-);
-VideoModalPortal.displayName = DialogPrimitive.Portal.displayName;
+const VideoModalPortal = DialogPrimitive.Portal;
+
+const VideoModalClose = DialogPrimitive.Close;
 
 const VideoModalOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
@@ -27,16 +18,12 @@ const VideoModalOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cn("fixed inset-0 z-50 backdrop-blur-xl", className)}
+    className={cn(
+      "fixed inset-0 z-50 backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className,
+    )}
     {...props}
-    asChild
-  >
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    />
-  </DialogPrimitive.Overlay>
+  />
 ));
 VideoModalOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
@@ -46,25 +33,38 @@ const VideoModalContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <VideoModalPortal>
     <VideoModalOverlay />
-    <DialogPrimitive.Content ref={ref} {...props} asChild>
-      <motion.div
-        className={cn(
-          "fixed z-50 flex h-screen w-screen items-center justify-center p-3",
-          className,
-        )}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <motion.div
-          className="relative mx-auto flex h-full w-full items-center justify-center rounded-2xl border border-gray-950/[.1] bg-gray-50/[.2] dark:border-gray-50/[.1] dark:bg-gray-950/[.5]"
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ type: "spring", damping: 20, stiffness: 300 }}
-        >
-          {/* Mobile close button */}
-          <DialogPrimitive.Close className="absolute right-4 top-4 rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] lg:hidden">
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed left-[50%] top-[50%] z-50 flex h-screen w-screen translate-x-[-50%] translate-y-[-50%] items-center justify-center p-3",
+        "data-[state=closed]:zoom-out-98 data-[state=open]:zoom-in-98 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+        className,
+      )}
+      {...props}
+    >
+      <div className="relative mx-auto flex h-full w-full items-center justify-center rounded-2xl border border-gray-950/[.1] bg-gray-50/[.2] dark:border-gray-50/[.1] dark:bg-gray-950/[.5]">
+        {/* Mobile close button */}
+        <VideoModalClose className="absolute right-4 top-4 rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] lg:hidden">
+          <svg
+            fill="none"
+            height="12"
+            viewBox="0 0 12 12"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1L11 11M11 1L1 11"
+              className="stroke-current"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+            ></path>
+          </svg>
+          <span className="sr-only">Close</span>
+        </VideoModalClose>
+
+        <div className="flex h-[80%] w-full max-w-5xl gap-6">
+          <VideoModalClose className="hidden self-start rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] lg:block">
             <svg
               fill="none"
               height="12"
@@ -81,33 +81,12 @@ const VideoModalContent = React.forwardRef<
               ></path>
             </svg>
             <span className="sr-only">Close</span>
-          </DialogPrimitive.Close>
-
-          <div className="flex h-[80%] w-full max-w-5xl gap-6">
-            <DialogPrimitive.Close className="hidden self-start rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] lg:block">
-              <svg
-                fill="none"
-                height="12"
-                viewBox="0 0 12 12"
-                width="12"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 1L11 11M11 1L1 11"
-                  className="stroke-current"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                ></path>
-              </svg>
-              <span className="sr-only">Close</span>
-            </DialogPrimitive.Close>
-            <div className="flex w-full flex-col max-lg:p-4 max-lg:text-center">
-              {children}
-            </div>
+          </VideoModalClose>
+          <div className="flex w-full flex-col max-lg:p-4 max-lg:text-center">
+            {children}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </DialogPrimitive.Content>
   </VideoModalPortal>
 ));
