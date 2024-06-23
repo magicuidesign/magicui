@@ -82,6 +82,8 @@ module.exports = {
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
         backgroundPositionSpin:
           "background-position-spin 3000ms infinite alternate",
+        "modal-fade-in": "modal-fade-in 500ms ease-out",
+        "modal-fade-out": "modal-fade-out 500ms ease-in",
       },
       keyframes: {
         "accordion-down": {
@@ -194,11 +196,16 @@ module.exports = {
             "background-position": "0% 0%",
           },
         },
+        "modal-fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "modal-fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

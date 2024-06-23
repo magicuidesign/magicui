@@ -19,7 +19,7 @@ const VideoModalOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 backdrop-blur-xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 backdrop-blur-xl data-[state=closed]:animate-modal-fade-out data-[state=open]:animate-modal-fade-in",
       className,
     )}
     {...props}
@@ -37,7 +37,7 @@ const VideoModalContent = React.forwardRef<
       ref={ref}
       className={cn(
         "fixed left-[50%] top-[50%] z-50 flex h-screen w-screen translate-x-[-50%] translate-y-[-50%] items-center justify-center p-3",
-        "data-[state=closed]:zoom-out-98 data-[state=open]:zoom-in-98 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+        "transition-all data-[state=closed]:animate-modal-fade-out data-[state=open]:animate-modal-fade-in data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[50%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[50%]",
         className,
       )}
       {...props}
@@ -97,7 +97,7 @@ const VideoPreview = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "absolute inset-0 z-10 transition-opacity duration-300 group-[.playing]:pointer-events-none group-[.playing]:opacity-0",
+      "absolute inset-0 z-10 transition-opacity duration-500 group-[.playing]:pointer-events-none group-[.playing]:opacity-0",
       className,
     )}
     {...props}
