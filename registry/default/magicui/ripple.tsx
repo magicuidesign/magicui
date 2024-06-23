@@ -1,59 +1,29 @@
 import React, { CSSProperties } from "react";
 
-import { cn } from "@/lib/utils";
+// Modify these
+const MAIN_CIRCLE_SIZE = 210;
+const MAIN_CIRCLE_OPACITY = 0.24;
+const NUM_CIRCLES = 8;
 
-interface RippleProps {
-  mainCircleSize?: number;
-  mainCircleOpacity?: number;
-  numCircles?: number;
-  className?: string;
-}
-
-const Ripple = React.memo(function Ripple({
-  mainCircleSize = 210,
-  mainCircleOpacity = 0.24,
-  numCircles = 8,
-  className,
-}: RippleProps) {
+const Ripple = React.memo(() => {
   return (
-    <div
-      className={cn(
-        "pointer-events-none select-none absolute inset-0 [mask-image:linear-gradient(to_bottom,white,transparent)]",
-        className
-      )}
-    >
-      {Array.from({ length: numCircles }, (_, i) => {
-        const size = mainCircleSize + i * 70;
-        const opacity = mainCircleOpacity - i * 0.03;
-        const animationDelay = `${i * 0.06}s`;
-        const borderStyle = i === numCircles - 1 ? "dashed" : "solid";
-        const borderOpacity = 5 + i * 5;
-
-        return (
-          <div
-            key={i}
-            className={`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`}
-            style={
-              {
-                width: `${size}px`,
-                height: `${size}px`,
-                opacity,
-                animationDelay,
-                borderStyle,
-                borderWidth: "1px",
-                borderColor: `hsl(var(--foreground), ${borderOpacity / 100})`,
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%) scale(1)",
-              } as CSSProperties
-            }
-          />
-        );
-      })}
+    <div className="absolute left-1/2 top-1/2 h-full w-full overflow-visible">
+      {Array.from({ length: NUM_CIRCLES }, (_, i) => (
+        <div
+          key={i}
+          className={`absolute -translate-x-1/2 -translate-y-1/2 animate-ripple rounded-full bg-neutral-400`}
+          style={
+            {
+              width: MAIN_CIRCLE_SIZE + i * 70,
+              height: MAIN_CIRCLE_SIZE + i * 70,
+              opacity: MAIN_CIRCLE_OPACITY - i * 0.03,
+              animationDelay: `${i * 0.06}s`,
+            } as CSSProperties
+          }
+        ></div>
+      ))}
     </div>
   );
 });
-
-Ripple.displayName = "Ripple";
 
 export default Ripple;
