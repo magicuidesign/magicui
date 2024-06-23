@@ -44,44 +44,11 @@ const VideoModalContent = React.forwardRef<
     >
       <div className="relative mx-auto flex h-full w-full items-center justify-center rounded-2xl border border-gray-950/[.1] bg-gray-50/[.2] dark:border-gray-50/[.1] dark:bg-gray-950/[.5]">
         {/* Mobile close button */}
-        <VideoModalClose className="absolute right-4 top-4 rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] lg:hidden">
-          <svg
-            fill="none"
-            height="12"
-            viewBox="0 0 12 12"
-            width="12"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 1L11 11M11 1L1 11"
-              className="stroke-current"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-            ></path>
-          </svg>
-          <span className="sr-only">Close</span>
-        </VideoModalClose>
+        <CloseIcon isMobile />
 
         <div className="flex h-[80%] w-full max-w-5xl gap-6">
-          <VideoModalClose className="hidden self-start rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] lg:block">
-            <svg
-              fill="none"
-              height="12"
-              viewBox="0 0 12 12"
-              width="12"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 1L11 11M11 1L1 11"
-                className="stroke-current"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-              ></path>
-            </svg>
-            <span className="sr-only">Close</span>
-          </VideoModalClose>
+          {/* Desktop close button */}
+          <CloseIcon />
           <div className="flex w-full flex-col max-lg:p-4 max-lg:text-center">
             {children}
           </div>
@@ -90,6 +57,7 @@ const VideoModalContent = React.forwardRef<
     </DialogPrimitive.Content>
   </VideoModalPortal>
 ));
+
 VideoModalContent.displayName = DialogPrimitive.Content.displayName;
 
 const VideoModalTitle = React.forwardRef<
@@ -195,6 +163,44 @@ const VideoModalVideo = React.forwardRef<
   </div>
 ));
 VideoModalVideo.displayName = "VideoModalVideo";
+
+const CloseIcon = React.forwardRef<
+  React.ElementRef<typeof VideoModalClose>,
+  React.ComponentPropsWithoutRef<typeof VideoModalClose> & {
+    isMobile?: boolean;
+  }
+>(({ className, isMobile = false, ...props }, ref) => (
+  <VideoModalClose
+    ref={ref}
+    className={cn(
+      "rounded-full border border-gray-950/[.1] bg-gray-950/[.01] p-2 transition duration-300 hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      isMobile
+        ? "absolute right-4 top-4 lg:hidden"
+        : "hidden self-start lg:block",
+      className,
+    )}
+    {...props}
+  >
+    <svg
+      fill="none"
+      height="12"
+      viewBox="0 0 12 12"
+      width="12"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1 1L11 11M11 1L1 11"
+        className="stroke-current"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+      ></path>
+    </svg>
+    <span className="sr-only">Close</span>
+  </VideoModalClose>
+));
+
+CloseIcon.displayName = "CloseIcon";
 
 export {
   VideoModal,
