@@ -84,6 +84,8 @@ module.exports = {
         shine: "shine var(--duration) infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "modal-fade-in": "modal-fade-in 500ms ease-out",
+        "modal-fade-out": "modal-fade-out 500ms ease-in",
       },
       keyframes: {
         "accordion-down": {
@@ -196,8 +198,16 @@ module.exports = {
           "0%": { "background-position": "0%" },
           "100%": { "background-position": "200%" },
         },
+        "modal-fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "modal-fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
