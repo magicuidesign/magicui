@@ -83,13 +83,16 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.8.9",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
     "cssnano": "^6.0.3",
-    "dotenv": "^16.3.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-tailwindcss": "^3.17.0",
     "mdast-util-toc": "^6.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
