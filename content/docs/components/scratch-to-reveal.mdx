@@ -1,0 +1,38 @@
+---
+title: Scratch To Reveal
+date: 2024-06-28
+description: The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.
+author: dipesh_the_dev
+published: true
+---
+
+<ComponentPreview name="scratch-to-reveal-demo" />
+
+<Steps>
+
+### Installation
+
+Copy and paste the following code into your project.
+
+```text
+components/magicui/scratch-to-reveal.tsx
+```
+
+<ComponentSource name="scratch-to-reveal" />
+
+</Steps>
+
+## Props
+
+| Prop                 | Type     | Default | Description                                                                                   |
+| -------------------- | -------- | ------- | --------------------------------------------------------------------------------------------- |
+| className            | string   |         | The class name to apply to the component.                                                     |
+| width                | number   |         | Width of the scratch container.                                                               |
+| height               | number   |         | Height of the scratch container.                                                              |
+| minScratchPercentage | number   | 50      | Minimum percentage of scratched area to be considered as completed (Value between 0 and 100). |
+| children             | node     |         | The content to display in the marquee.                                                        |
+| onCompete            | function |         | Callback function called when scratch is completed                                            |
+
+## Credits
+
+- Credit to [dipesh_the_dev](https://www.x.com/dipesh_the_dev)
