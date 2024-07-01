@@ -26,7 +26,20 @@
     "dev:email": "email dev -p 3004",
     "dev:stripe": "stripe listen --forward-to localhost:3003/api/webhooks/stripe",
     "prod:migrate": "dotenv -e .env -- npx prisma db push",
-    "prod:seed": "dotenv -e .env -- npx tsx prisma/seed.ts"
+    "prod:seed": "dotenv -e .env -- npx tsx prisma/seed.ts",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add ."
+    ]
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
@@ -83,13 +96,18 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.8.9",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
     "cssnano": "^6.0.3",
-    "dotenv": "^16.3.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-tailwindcss": "^3.17.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
     "mdast-util-toc": "^6.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
