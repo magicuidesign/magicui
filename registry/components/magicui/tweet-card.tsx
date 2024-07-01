@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import { Suspense } from "react";
 import {
   enrichTweet,
@@ -7,6 +6,8 @@ import {
   type TwitterComponents,
 } from "react-tweet";
 import { getTweet, type Tweet } from "react-tweet/api";
+
+import { cn } from "@/lib/utils";
 
 interface TwitterIconProps {
   className?: string;

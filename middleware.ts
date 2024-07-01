@@ -1,15 +1,12 @@
 import { NextResponse } from "next/server";
-
 import type { NextRequest } from "next/server";
 
 export const config = {
-  matcher: [
-    "/((?!_next|api|[\\w-]+\\.\\w+).*)",
-  ],
+  matcher: ["/((?!_next|api|[\\w-]+\\.\\w+).*)"],
 };
 
 export default async function middleware(req: NextRequest) {
-  const engyneSubdomain = "magicui" // change this to your Engyne subdomain
+  const engyneSubdomain = "magicui"; // change this to your Engyne subdomain
   const url = req.nextUrl.clone();
 
   const { pathname } = req.nextUrl;
@@ -23,18 +20,18 @@ export default async function middleware(req: NextRequest) {
 
   if (pathname === "/engyne-sitemap.xml") {
     return NextResponse.rewrite(
-      new URL(pathname, `https://${engyneSubdomain}.engyne.page`)
+      new URL(pathname, `https://${engyneSubdomain}.engyne.page`),
     );
   }
 
   if (pathname.startsWith("/blog") || pathname.startsWith("/tags")) {
     return NextResponse.rewrite(
-      new URL(pathname, `https://${engyneSubdomain}.engyne.page`)
+      new URL(pathname, `https://${engyneSubdomain}.engyne.page`),
     );
   }
   if (pathname.startsWith("/_engyne")) {
     return NextResponse.rewrite(
-      new URL(pathname, `https://${engyneSubdomain}.engyne.page`)
+      new URL(pathname, `https://${engyneSubdomain}.engyne.page`),
     );
   }
 

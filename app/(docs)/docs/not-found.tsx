@@ -1,9 +1,10 @@
 "use client";
 
-import { Icons } from "@/components/icons";
-import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Icons } from "@/components/icons";
 
 export default function NotFound() {
   const router = useRouter();
@@ -12,7 +13,7 @@ export default function NotFound() {
       <div className="container mx-auto flex min-h-[calc(100vh-8rem)] items-center px-6 py-12">
         <div className="mx-auto flex max-w-sm flex-col items-center text-center">
           <p className="rounded-full bg-blue-50 p-3 text-sm font-medium dark:bg-gray-800">
-            <Icons.warning className="h-6 w-6" />
+            <Icons.warning className="size-6" />
           </p>
           <h1 className="mt-3 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
             Page not found
@@ -26,7 +27,7 @@ export default function NotFound() {
               onClick={() => router.back()}
               className={buttonVariants({ variant: "secondary" })}
             >
-              <Icons.chevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              <Icons.chevronLeft className="size-4 transition-transform group-hover:-translate-x-1" />
               <span>Go back</span>
             </Button>
 

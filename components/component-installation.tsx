@@ -23,7 +23,7 @@ export function ComponentInstallation({
           role="img"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10"
+          className="size-10"
           fill="currentColor"
         >
           <title>React.js</title>
@@ -38,7 +38,7 @@ export function ComponentInstallation({
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="ml-2 h-10 w-10"
+          className="ml-2 size-10"
           viewBox="0 0 18 8"
         >
           <title>Vue.js</title>
@@ -60,7 +60,7 @@ export function ComponentInstallation({
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-10 w-10"
+          className="size-10"
           viewBox="0 0 18 14"
         >
           <title>Svelte</title>

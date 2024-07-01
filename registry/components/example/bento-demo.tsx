@@ -1,6 +1,7 @@
-import AnimatedBeamMultipleOutputDemo from "@/components/example/animated-beam-multiple-outputs";
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
-import Marquee from "@/components/magicui/marquee";
+import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
+import { Share2Icon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Command,
@@ -10,9 +11,9 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { cn } from "@/lib/utils";
-import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
-import { Share2Icon } from "lucide-react";
+import AnimatedBeamMultipleOutputDemo from "@/components/example/animated-beam-multiple-outputs";
+import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import Marquee from "@/components/magicui/marquee";
 
 const files = [
   {

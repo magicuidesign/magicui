@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
-`
+`;
 
 export const UTILS_JS = `import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -12,7 +12,7 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
-`
+`;
 
 export const TAILWIND_CONFIG = `/** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -50,7 +50,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}`
+}`;
 
 export const TAILWIND_CONFIG_WITH_VARIABLES = `/** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -128,7 +128,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}`
+}`;
 
 export const TAILWIND_CONFIG_TS = `import type { Config } from "tailwindcss"
 
@@ -169,7 +169,7 @@ const config = {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
-export default config`
+export default config`;
 
 export const TAILWIND_CONFIG_TS_WITH_VARIABLES = `import type { Config } from "tailwindcss"
 
@@ -250,4 +250,4 @@ const config = {
   plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
-export default config`
+export default config`;

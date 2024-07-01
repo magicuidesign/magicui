@@ -1,12 +1,14 @@
+import { fontSans } from "@/lib/fonts";
+import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@/components/analytics";
 import { PHProvider } from "@/components/posthog-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { fontSans } from "@/lib/fonts";
-import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
+
 import "@/styles/globals.css";
 import "@/styles/mdx.css";
+
 import type { Viewport } from "next";
 import { Metadata } from "next";
 

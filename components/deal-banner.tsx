@@ -1,5 +1,5 @@
-import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 
 export function DealBanner() {
   return (
@@ -16,7 +16,7 @@ export function DealBanner() {
           </span>{" "}
           ✨ */}
           🔥🔥🔥 FIRE SALE - Get $100 off TODAY ONLY
-          <ExternalLink className="h-4 w-4" />
+          <ExternalLink className="size-4" />
           {/* with code{" "}
           <span className="rounded-md bg-orange-400 p-1 font-bold text-black dark:text-white">
             BLOCKPARTY

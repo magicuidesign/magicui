@@ -1,8 +1,9 @@
 "use client";
 
-import Particles from "@/components/magicui/particles";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+
+import Particles from "@/components/magicui/particles";
 
 const ParticlesDemo = () => {
   const { theme } = useTheme();

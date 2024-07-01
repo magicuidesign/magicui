@@ -1,8 +1,9 @@
 "use client";
 
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
-import { cn } from "@/lib/utils";
 import React, { forwardRef, useRef } from "react";
+
+import { cn } from "@/lib/utils";
+import { AnimatedBeam } from "@/components/magicui/animated-beam";
 
 const Circle = forwardRef<
   HTMLDivElement,

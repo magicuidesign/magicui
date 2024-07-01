@@ -1,10 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { Doc } from "@/.contentlayer/generated";
-import TechStack from "@/components/tech-stack";
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import TechStack from "@/components/tech-stack";
 import AnimatedBeamMultipleInputDemo from "@/registry/components/example/animated-beam-multiple-inputs";
 import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
 import BentoDemo from "@/registry/components/example/bento-demo";
@@ -15,9 +19,6 @@ import AnimatedGradientText from "@/registry/components/magicui/animated-gradien
 import { VelocityScroll } from "@/registry/components/magicui/scroll-based-velocity";
 import TypingAnimation from "@/registry/components/magicui/typing-animation";
 import WordRotate from "@/registry/components/magicui/word-rotate";
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 
 export default function HeroClient({ post }: { post: Doc }) {
   return (
@@ -30,8 +31,8 @@ export default function HeroClient({ post }: { post: Doc }) {
                 <AnimatedGradientText>
                   <div
                     className={cn(
-                      `absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
-                      `p-[1px] ![mask-composite:subtract]`,
+                      `absolute inset-0 block size-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
+                      `p-px ![mask-composite:subtract]`,
                     )}
                   />
                   🎉 <Separator className="mx-2 h-4" orientation="vertical" />
@@ -43,7 +44,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                   >
                     Introducing {post.title}
                   </span>
-                  <ChevronRight className="ml-1 h-4 w-4 text-gray-500" />
+                  <ChevronRight className="ml-1 size-4 text-gray-500" />
                 </AnimatedGradientText>
               </Link>
               <div className="relative flex flex-col gap-4 md:items-center lg:flex-row">
@@ -90,7 +91,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                     )}
                   >
                     Browse Components
-                    <ChevronRight className="ml-1  size-4 flex-shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                    <ChevronRight className="ml-1  size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="/docs"
@@ -104,14 +105,14 @@ export default function HeroClient({ post }: { post: Doc }) {
                     )}
                   >
                     Get Started
-                    <ChevronRight className="ml-1 size-4 flex-shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                    <ChevronRight className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-[16rem] items-center justify-center">
+          <div className="relative mx-auto flex w-full max-w-64 items-center justify-center">
             <TechStack
               className="mx-auto flex w-full items-center justify-between"
               technologies={[
@@ -175,13 +176,13 @@ export default function HeroClient({ post }: { post: Doc }) {
               <AnimatedBeamMultipleInputDemo />
               <AnimatedListDemo />
               <RetroGridDemo />
-              <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+              <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
                 <TypingAnimation
                   className="text-4xl font-bold text-black dark:text-white"
                   text="Typing Animation"
                 />
               </div>
-              <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-4 md:shadow-xl">
+              <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background p-4 md:shadow-xl">
                 <WordRotate
                   className="text-4xl font-bold text-black dark:text-white"
                   words={[
@@ -200,7 +201,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                   ]}
                 />
               </div>
-              <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background py-4 md:shadow-xl">
+              <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background py-4 md:shadow-xl">
                 <VelocityScroll
                   text="Velocity Scroll"
                   default_velocity={5}

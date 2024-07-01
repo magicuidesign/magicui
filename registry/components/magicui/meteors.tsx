@@ -1,7 +1,7 @@
 "use client";
 
-import clsx from "clsx";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 interface MeteorsProps {
   number?: number;

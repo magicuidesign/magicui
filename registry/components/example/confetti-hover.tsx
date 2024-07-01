@@ -1,8 +1,9 @@
 "use client";
 
+import { useRef } from "react";
+
 import type { ConfettiRef } from "@/components/magicui/confetti";
 import Confetti from "@/components/magicui/confetti";
-import { useRef } from "react";
 
 export default function ConfettiBasicCannon() {
   const confettiRef = useRef<ConfettiRef>(null);

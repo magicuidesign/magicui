@@ -1,13 +1,14 @@
 "use client";
 
-import { Icons } from "@/components/icons";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
+
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
+import { Icons } from "@/components/icons";
 
 export function MainNav() {
   const pathname = usePathname();
@@ -15,7 +16,7 @@ export function MainNav() {
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="relative mr-6 flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
+        <Icons.logo className="size-6" />
         <span className="hidden font-bold md:inline-block">
           {siteConfig.name}
         </span>

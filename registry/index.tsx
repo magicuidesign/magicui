@@ -1,5 +1,6 @@
-import { Registry } from "@/registry/schema";
 import * as React from "react";
+
+import { Registry } from "@/registry/schema";
 
 const ui: Registry = {
   "magic-card": {

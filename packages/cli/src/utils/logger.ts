@@ -1,23 +1,23 @@
-import chalk from "chalk"
+import chalk from "chalk";
 import gradient from "gradient-string";
 
 export const logger = {
   error(...args: unknown[]) {
-    console.log(chalk.red(...args))
+    console.log(chalk.red(...args));
   },
   warn(...args: unknown[]) {
-    console.log(chalk.yellow(...args))
+    console.log(chalk.yellow(...args));
   },
   info(...args: unknown[]) {
-    console.log(chalk.cyan(...args))
+    console.log(chalk.cyan(...args));
   },
   success(...args: unknown[]) {
-    console.log(chalk.green(...args))
+    console.log(chalk.green(...args));
   },
   break() {
-    console.log("")
+    console.log("");
   },
-}
+};
 
 const TEXT = `                                                   
  ##   ##                      ##                  ##   ##   #### 
@@ -28,7 +28,7 @@ const TEXT = `
  ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##  
  ##   ##   #####       ##    ####     ####         #####    #### 
                    #####                                         
-`
+`;
 
 const PRO = `
  ##   ##                      ##                  ##   ##   ####           ######                    
@@ -39,7 +39,7 @@ const PRO = `
  ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##             ##       ##      ##  ##  
  ##   ##   #####       ##    ####     ####         #####    ####           ####     ####      ####   
                    #####                                                                           
-`
+`;
 
 const LOGO = `
         ...:::::::::::::::::::::::::::::::::::::::..        
@@ -72,7 +72,7 @@ const LOGO = `
    ::---------------:::::::::::::::::::::::::............   
     .::-----------:::::::::::::::::::::::::............     
        ..:::-----::::::::::::::::::::::::::::.......        
-`
+`;
 
 const theme = {
   // blue: "#add7ff",
@@ -85,9 +85,9 @@ const theme = {
 
 const printer = gradient(Object.values(theme));
 
-export const ASCII_TEXT = printer.multiline(TEXT)
-export const ASCII_LOGO = printer.multiline(LOGO)
-export const ASCII_PRO = printer.multiline(PRO)
+export const ASCII_TEXT = printer.multiline(TEXT);
+export const ASCII_LOGO = printer.multiline(LOGO);
+export const ASCII_PRO = printer.multiline(PRO);
 
 export const tryPro = `
 Try Magic UI Pro for more premium components & blocks.
@@ -112,5 +112,4 @@ Go to Magic UI Pro website for auth secrets.
 
 `;
 
-
-export const ColorFullText = (string: string) => printer.multiline(string)
+export const ColorFullText = (string: string) => printer.multiline(string);

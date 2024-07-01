@@ -1,19 +1,21 @@
-import TechStack from "@/components/tech-stack";
+import Image from "next/image";
+import Link from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
+import { Event } from "@/lib/events";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Event } from "@/lib/events";
-import { cn } from "@/lib/utils";
+import TechStack from "@/components/tech-stack";
 import TweetCard from "@/registry/components/magicui/tweet-card";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import Image from "next/image";
-import Link from "next/link";
+
+import { ComponentInstallation } from "./component-installation";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
-import { ComponentInstallation } from "./component-installation";
 import { CopyButton } from "./copy-button";
 
 const CustomLink = (props: any) => {

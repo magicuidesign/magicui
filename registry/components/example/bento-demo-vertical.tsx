@@ -1,4 +1,3 @@
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import {
   BellIcon,
   CalendarIcon,
@@ -6,6 +5,8 @@ import {
   GlobeIcon,
   InputIcon,
 } from "@radix-ui/react-icons";
+
+import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 
 const features = [
   {

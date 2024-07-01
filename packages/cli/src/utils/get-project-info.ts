@@ -1,14 +1,14 @@
-import { existsSync } from "fs"
-import path from "path"
+import { existsSync } from "fs";
+import path from "path";
 import {
   Config,
-  RawConfig,
   getConfig,
+  RawConfig,
   resolveConfigPaths,
-} from "@/src/utils/get-config"
-import fg from "fast-glob"
-import fs, { pathExists } from "fs-extra"
-import { loadConfig } from "tsconfig-paths"
+} from "@/src/utils/get-config";
+import fg from "fast-glob";
+import fs, { pathExists } from "fs-extra";
+import { loadConfig } from "tsconfig-paths";
 
 // TODO: Add support for more frameworks.
 // We'll start with Next.js for now.
@@ -17,9 +17,9 @@ const PROJECT_TYPES = [
   "next-app-src",
   "next-pages",
   "next-pages-src",
-] as const
+] as const;
 
-type ProjectType = (typeof PROJECT_TYPES)[number]
+type ProjectType = (typeof PROJECT_TYPES)[number];
 
 const PROJECT_SHARED_IGNORE = [
   "**/node_modules/**",
@@ -27,7 +27,7 @@ const PROJECT_SHARED_IGNORE = [
   "public",
   "dist",
   "build",
-]
+];
 
 export async function getProjectInfo() {
   const info = {
@@ -36,10 +36,10 @@ export async function getProjectInfo() {
     appDir: false,
     srcComponentsUiDir: false,
     componentsUiDir: false,
-  }
+  };
 
   try {
-    const tsconfig = await getTsConfig()
+    const tsconfig = await getTsConfig();
 
     return {
       tsconfig,
@@ -49,43 +49,43 @@ export async function getProjectInfo() {
         existsSync(path.resolve("./src/app")),
       srcComponentsUiDir: existsSync(path.resolve("./src/components/ui")),
       componentsUiDir: existsSync(path.resolve("./components/ui")),
-    }
+    };
   } catch (error) {
-    return info
+    return info;
   }
 }
 
 export async function getTsConfig() {
   try {
-    const tsconfigPath = path.join("tsconfig.json")
-    const tsconfig = await fs.readJSON(tsconfigPath)
+    const tsconfigPath = path.join("tsconfig.json");
+    const tsconfig = await fs.readJSON(tsconfigPath);
 
     if (!tsconfig) {
-      throw new Error("tsconfig.json is missing")
+      throw new Error("tsconfig.json is missing");
     }
 
-    return tsconfig
+    return tsconfig;
   } catch (error) {
-    return null
+    return null;
   }
 }
 
 export async function getProjectConfig(cwd: string): Promise<Config | null> {
   // Check for existing component config.
-  const existingConfig = await getConfig(cwd)
+  const existingConfig = await getConfig(cwd);
   if (existingConfig) {
-    return existingConfig
+    return existingConfig;
   }
 
-  const projectType = await getProjectType(cwd)
-  const tailwindCssFile = await getTailwindCssFile(cwd)
-  const tsConfigAliasPrefix = await getTsConfigAliasPrefix(cwd)
+  const projectType = await getProjectType(cwd);
+  const tailwindCssFile = await getTailwindCssFile(cwd);
+  const tsConfigAliasPrefix = await getTsConfigAliasPrefix(cwd);
 
   if (!projectType || !tailwindCssFile || !tsConfigAliasPrefix) {
-    return null
+    return null;
   }
 
-  const isTsx = await isTypeScriptProject(cwd)
+  const isTsx = await isTypeScriptProject(cwd);
 
   const config: RawConfig = {
     $schema: "https://ui.shadcn.com/schema.json",
@@ -105,9 +105,9 @@ export async function getProjectConfig(cwd: string): Promise<Config | null> {
       magicui: `${tsConfigAliasPrefix}/components/magicui`,
       ui: `${tsConfigAliasPrefix}/components/ui`,
     },
-  }
+  };
 
-  return await resolveConfigPaths(cwd, config)
+  return await resolveConfigPaths(cwd, config);
 }
 
 export async function getProjectType(cwd: string): Promise<ProjectType | null> {
@@ -115,23 +115,23 @@ export async function getProjectType(cwd: string): Promise<ProjectType | null> {
     cwd,
     deep: 3,
     ignore: PROJECT_SHARED_IGNORE,
-  })
+  });
 
-  const isNextProject = files.find((file) => file.startsWith("next.config."))
+  const isNextProject = files.find((file) => file.startsWith("next.config."));
   if (!isNextProject) {
-    return null
+    return null;
   }
 
-  const isUsingSrcDir = await fs.pathExists(path.resolve(cwd, "src"))
+  const isUsingSrcDir = await fs.pathExists(path.resolve(cwd, "src"));
   const isUsingAppDir = await fs.pathExists(
-    path.resolve(cwd, `${isUsingSrcDir ? "src/" : ""}app`)
-  )
+    path.resolve(cwd, `${isUsingSrcDir ? "src/" : ""}app`),
+  );
 
   if (isUsingAppDir) {
-    return isUsingSrcDir ? "next-app-src" : "next-app"
+    return isUsingSrcDir ? "next-app-src" : "next-app";
   }
 
-  return isUsingSrcDir ? "next-pages-src" : "next-pages"
+  return isUsingSrcDir ? "next-pages-src" : "next-pages";
 }
 
 export async function getTailwindCssFile(cwd: string) {
@@ -139,43 +139,43 @@ export async function getTailwindCssFile(cwd: string) {
     cwd,
     deep: 3,
     ignore: PROJECT_SHARED_IGNORE,
-  })
+  });
 
   if (!files.length) {
-    return null
+    return null;
   }
 
   for (const file of files) {
-    const contents = await fs.readFile(path.resolve(cwd, file), "utf8")
+    const contents = await fs.readFile(path.resolve(cwd, file), "utf8");
     // Assume that if the file contains `@tailwind base` it's the main css file.
     if (contents.includes("@tailwind base")) {
-      return file
+      return file;
     }
   }
 
-  return null
+  return null;
 }
 
 export async function getTsConfigAliasPrefix(cwd: string) {
-  const tsConfig = await loadConfig(cwd)
+  const tsConfig = await loadConfig(cwd);
 
   if (tsConfig?.resultType === "failed" || !tsConfig?.paths) {
-    return null
+    return null;
   }
 
   // This assume that the first alias is the prefix.
   for (const [alias, paths] of Object.entries(tsConfig.paths)) {
     if (paths.includes("./*") || paths.includes("./src/*")) {
-      return alias.at(0)
+      return alias.at(0);
     }
   }
 
-  return null
+  return null;
 }
 
 export async function isTypeScriptProject(cwd: string) {
   // Check if cwd has a tsconfig.json file.
-  return pathExists(path.resolve(cwd, "tsconfig.json"))
+  return pathExists(path.resolve(cwd, "tsconfig.json"));
 }
 
 export async function preFlight(cwd: string) {
@@ -184,13 +184,13 @@ export async function preFlight(cwd: string) {
     cwd,
     deep: 3,
     ignore: PROJECT_SHARED_IGNORE,
-  })
+  });
 
   if (!tailwindConfig.length) {
     throw new Error(
-      "Tailwind CSS is not installed. Visit https://tailwindcss.com/docs/installation to get started."
-    )
+      "Tailwind CSS is not installed. Visit https://tailwindcss.com/docs/installation to get started.",
+    );
   }
 
-  return true
+  return true;
 }

@@ -1,5 +1,6 @@
-import { capitalize } from "@/lib/utils";
 import { ImageResponse } from "next/og";
+
+import { capitalize } from "@/lib/utils";
 
 export const runtime = "edge";
 

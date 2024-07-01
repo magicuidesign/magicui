@@ -1,7 +1,4 @@
-import {
-  MagicCard,
-  MagicContainer,
-} from "@/components/magicui/magic-card";
+import { MagicCard, MagicContainer } from "@/components/magicui/magic-card";
 
 export default function MagicCardGradient() {
   return (

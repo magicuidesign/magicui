@@ -1,14 +1,15 @@
+import Link from "next/link";
+import { StarIcon } from "@heroicons/react/24/solid";
+
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import { CommandMenu } from "@/components/command-menu";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 import NumberTicker from "@/registry/components/magicui/number-ticker";
-import { StarIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
 
 export async function SiteHeader() {
   let stars = 300; // Default value
@@ -56,13 +57,13 @@ export async function SiteHeader() {
             target="_blank"
             href={siteConfig.links.github}
           >
-            <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
+            <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
             <div className="flex items-center">
-              <Icons.gitHub className="h-4 w-4" />
+              <Icons.gitHub className="size-4" />
               <span className="ml-1">Star on GitHub</span>{" "}
             </div>
             <div className="ml-2 flex items-center gap-1 text-sm md:flex">
-              <StarIcon className="h-4 w-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
+              <StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
               <NumberTicker
                 value={stars}
                 className="font-display font-medium text-white dark:text-black"
@@ -87,7 +88,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.discord className="h-4 w-4" />
+                <Icons.discord className="size-4" />
                 <span className="sr-only">Discord</span>
               </div>
             </Link>
@@ -104,7 +105,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.gitHub className="h-4 w-4" />
+                <Icons.gitHub className="size-4" />
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
@@ -121,7 +122,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.twitter className="h-4 w-4 fill-current" />
+                <Icons.twitter className="size-4 fill-current" />
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
@@ -138,7 +139,7 @@ export async function SiteHeader() {
                   "w-9 px-0",
                 )}
               >
-                <Icons.instagram className="h-4 w-4 fill-current" />
+                <Icons.instagram className="size-4 fill-current" />
                 <span className="sr-only">Instagram</span>
               </div>
             </Link>

@@ -1,7 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import Marquee from "@/components/magicui/marquee";
+import { useEffect, useId, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import {
   BarChart,
@@ -11,7 +10,9 @@ import {
   Rss,
   Shield,
 } from "lucide-react";
-import { useEffect, useId, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
+import Marquee from "@/components/magicui/marquee";
 
 const tiles = [
   {

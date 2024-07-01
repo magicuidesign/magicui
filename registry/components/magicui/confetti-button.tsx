@@ -1,13 +1,13 @@
 "use client";
 
-import { Button, ButtonProps } from "@/components/ui/button";
-import confetti from "canvas-confetti";
 import React from "react";
-
+import confetti from "canvas-confetti";
 import type {
   GlobalOptions as ConfettiGlobalOptions,
   Options as ConfettiOptions,
 } from "canvas-confetti";
+
+import { Button, ButtonProps } from "@/components/ui/button";
 
 interface ConfettiButtonProps extends ButtonProps {
   options?: ConfettiOptions &

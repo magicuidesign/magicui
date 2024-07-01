@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
 import confetti from "canvas-confetti";
+
+import { Button } from "@/components/ui/button";
 
 export default function ConfettiCustomShapes() {
   const handleClick = () => {

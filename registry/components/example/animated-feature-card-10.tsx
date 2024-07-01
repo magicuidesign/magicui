@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import {
   AnimatePresence,
   cubicBezier,
@@ -7,7 +8,6 @@ import {
   useAnimation,
   useInView,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
 
 const cardImage = [
   {

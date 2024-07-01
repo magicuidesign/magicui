@@ -1,5 +1,5 @@
-import { existsSync, promises as fs } from "fs"
-import path from "path"
+import { existsSync, promises as fs } from "fs";
+import path from "path";
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -9,26 +9,26 @@ import {
   rawConfigSchema,
   resolveConfigPaths,
   type Config,
-} from "@/src/utils/get-config"
-import { getPackageManager } from "@/src/utils/get-package-manager"
-import { getProjectConfig, preFlight } from "@/src/utils/get-project-info"
-import { handleError } from "@/src/utils/handle-error"
-import { logger } from "@/src/utils/logger"
+} from "@/src/utils/get-config";
+import { getPackageManager } from "@/src/utils/get-package-manager";
+import { getProjectConfig, preFlight } from "@/src/utils/get-project-info";
+import { handleError } from "@/src/utils/handle-error";
+import { logger } from "@/src/utils/logger";
 import {
   getRegistryBaseColor,
   getRegistryBaseColors,
   getRegistryStyles,
-} from "@/src/utils/registry"
-import * as templates from "@/src/utils/templates"
-import chalk from "chalk"
-import { Command } from "commander"
-import { execa } from "execa"
-import template from "lodash.template"
-import ora from "ora"
-import prompts from "prompts"
-import { z } from "zod"
+} from "@/src/utils/registry";
+import * as templates from "@/src/utils/templates";
+import chalk from "chalk";
+import { Command } from "commander";
+import { execa } from "execa";
+import template from "lodash.template";
+import ora from "ora";
+import prompts from "prompts";
+import { z } from "zod";
 
-import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix"
+import { applyPrefixesCss } from "../utils/transformers/transform-tw-prefix";
 
 const PROJECT_DEPENDENCIES = [
   "tailwindcss-animate",
@@ -36,13 +36,13 @@ const PROJECT_DEPENDENCIES = [
   "clsx",
   "tailwind-merge",
   "framer-motion",
-]
+];
 
 const initOptionsSchema = z.object({
   cwd: z.string(),
   yes: z.boolean(),
   defaults: z.boolean(),
-})
+});
 
 export const init = new Command()
   .name("init")
@@ -52,64 +52,64 @@ export const init = new Command()
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
-    process.cwd()
+    process.cwd(),
   )
   .action(async (opts) => {
     try {
-      const options = initOptionsSchema.parse(opts)
-      const cwd = path.resolve(options.cwd)
+      const options = initOptionsSchema.parse(opts);
+      const cwd = path.resolve(options.cwd);
 
       // Ensure target directory exists.
       if (!existsSync(cwd)) {
-        logger.error(`The path ${cwd} does not exist. Please try again.`)
-        process.exit(1)
+        logger.error(`The path ${cwd} does not exist. Please try again.`);
+        process.exit(1);
       }
 
-      preFlight(cwd)
+      preFlight(cwd);
 
-      const projectConfig = await getProjectConfig(cwd)
+      const projectConfig = await getProjectConfig(cwd);
       if (projectConfig) {
         const config = await promptForMinimalConfig(
           cwd,
           projectConfig,
-          opts.defaults
-        )
-        await runInit(cwd, config)
+          opts.defaults,
+        );
+        await runInit(cwd, config);
       } else {
         // Read config.
-        const existingConfig = await getConfig(cwd)
-        const config = await promptForConfig(cwd, existingConfig, options.yes)
-        await runInit(cwd, config)
+        const existingConfig = await getConfig(cwd);
+        const config = await promptForConfig(cwd, existingConfig, options.yes);
+        await runInit(cwd, config);
       }
 
-      logger.info("")
+      logger.info("");
       logger.info(
         `${chalk.green(
-          "Success!"
-        )} Project initialization completed. You may now add both shadcn-ui and magic-ui components.`
-      )
-      logger.info("")
+          "Success!",
+        )} Project initialization completed. You may now add both shadcn-ui and magic-ui components.`,
+      );
+      logger.info("");
     } catch (error) {
-      handleError(error)
+      handleError(error);
     }
-  })
+  });
 
 export async function promptForConfig(
   cwd: string,
   defaultConfig: Config | null = null,
-  skip = false
+  skip = false,
 ) {
-  const highlight = (text: string) => chalk.cyan(text)
+  const highlight = (text: string) => chalk.cyan(text);
 
-  const styles = await getRegistryStyles()
-  const baseColors = await getRegistryBaseColors()
+  const styles = await getRegistryStyles();
+  const baseColors = await getRegistryBaseColors();
 
   const options = await prompts([
     {
       type: "toggle",
       name: "typescript",
       message: `Would you like to use ${highlight(
-        "TypeScript"
+        "TypeScript",
       )} (recommended)?`,
       initial: defaultConfig?.tsx ?? true,
       active: "yes",
@@ -128,7 +128,7 @@ export async function promptForConfig(
       type: "select",
       name: "tailwindBaseColor",
       message: `Which color would you like to use as ${highlight(
-        "base color"
+        "base color",
       )}?`,
       choices: baseColors.map((color) => ({
         title: color.label,
@@ -145,7 +145,7 @@ export async function promptForConfig(
       type: "toggle",
       name: "tailwindCssVariables",
       message: `Would you like to use ${highlight(
-        "CSS variables"
+        "CSS variables",
       )} for colors?`,
       initial: defaultConfig?.tailwind.cssVariables ?? true,
       active: "yes",
@@ -155,7 +155,7 @@ export async function promptForConfig(
       type: "text",
       name: "tailwindPrefix",
       message: `Are you using a custom ${highlight(
-        "tailwind prefix eg. tw-"
+        "tailwind prefix eg. tw-",
       )}? (Leave blank if not)`,
       initial: "",
     },
@@ -185,7 +185,7 @@ export async function promptForConfig(
       active: "yes",
       inactive: "no",
     },
-  ])
+  ]);
 
   const config = rawConfigSchema.parse({
     $schema: "https://ui.shadcn.com/schema.json",
@@ -205,46 +205,46 @@ export async function promptForConfig(
       ui: `${options.components}/ui`,
       magicui: `${options.components}/magicui`,
     },
-  })
+  });
 
   if (!skip) {
     const { proceed } = await prompts({
       type: "confirm",
       name: "proceed",
       message: `Write configuration to ${highlight(
-        "components.json"
+        "components.json",
       )}. Proceed?`,
       initial: true,
-    })
+    });
 
     if (!proceed) {
-      process.exit(0)
+      process.exit(0);
     }
   }
 
   // Write to file.
-  logger.info("")
-  const spinner = ora(`Writing components.json...`).start()
-  const targetPath = path.resolve(cwd, "components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
-  spinner.succeed()
+  logger.info("");
+  const spinner = ora(`Writing components.json...`).start();
+  const targetPath = path.resolve(cwd, "components.json");
+  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8");
+  spinner.succeed();
 
-  return await resolveConfigPaths(cwd, config)
+  return await resolveConfigPaths(cwd, config);
 }
 
 export async function promptForMinimalConfig(
   cwd: string,
   defaultConfig: Config,
-  defaults = false
+  defaults = false,
 ) {
-  const highlight = (text: string) => chalk.cyan(text)
-  let style = defaultConfig.style
-  let baseColor = defaultConfig.tailwind.baseColor
-  let cssVariables = defaultConfig.tailwind.cssVariables
+  const highlight = (text: string) => chalk.cyan(text);
+  let style = defaultConfig.style;
+  let baseColor = defaultConfig.tailwind.baseColor;
+  let cssVariables = defaultConfig.tailwind.cssVariables;
 
   if (!defaults) {
-    const styles = await getRegistryStyles()
-    const baseColors = await getRegistryBaseColors()
+    const styles = await getRegistryStyles();
+    const baseColors = await getRegistryBaseColors();
 
     const options = await prompts([
       {
@@ -260,7 +260,7 @@ export async function promptForMinimalConfig(
         type: "select",
         name: "tailwindBaseColor",
         message: `Which color would you like to use as ${highlight(
-          "base color"
+          "base color",
         )}?`,
         choices: baseColors.map((color) => ({
           title: color.label,
@@ -271,17 +271,17 @@ export async function promptForMinimalConfig(
         type: "toggle",
         name: "tailwindCssVariables",
         message: `Would you like to use ${highlight(
-          "CSS variables"
+          "CSS variables",
         )} for colors?`,
         initial: defaultConfig?.tailwind.cssVariables,
         active: "yes",
         inactive: "no",
       },
-    ])
+    ]);
 
-    style = options.style
-    baseColor = options.tailwindBaseColor
-    cssVariables = options.tailwindCssVariables
+    style = options.style;
+    baseColor = options.tailwindBaseColor;
+    cssVariables = options.tailwindCssVariables;
   }
 
   const content = {
@@ -295,22 +295,22 @@ export async function promptForMinimalConfig(
     rsc: defaultConfig?.rsc,
     tsx: defaultConfig?.tsx,
     aliases: defaultConfig?.aliases,
-  }
+  };
 
-  const config = rawConfigSchema.parse(content)
+  const config = rawConfigSchema.parse(content);
 
   // Write to file.
-  logger.info("")
-  const spinner = ora(`Writing components.json...`).start()
-  const targetPath = path.resolve(cwd, "components.json")
-  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8")
-  spinner.succeed()
+  logger.info("");
+  const spinner = ora(`Writing components.json...`).start();
+  const targetPath = path.resolve(cwd, "components.json");
+  await fs.writeFile(targetPath, JSON.stringify(config, null, 2), "utf8");
+  spinner.succeed();
 
-  return await resolveConfigPaths(cwd, config)
+  return await resolveConfigPaths(cwd, config);
 }
 
 export async function runInit(cwd: string, config: Config) {
-  const spinner = ora(`Initializing project...`)?.start()
+  const spinner = ora(`Initializing project...`)?.start();
 
   // Ensure all resolved paths directories exist.
   for (const [key, resolvedPath] of Object.entries(config.resolvedPaths)) {
@@ -318,36 +318,36 @@ export async function runInit(cwd: string, config: Config) {
     // TODO: is there a better way to do this?
     let dirname = path.extname(resolvedPath)
       ? path.dirname(resolvedPath)
-      : resolvedPath
+      : resolvedPath;
 
     // If the utils alias is set to something like "@/lib/utils",
     // assume this is a file and remove the "utils" file name.
     // TODO: In future releases we should add support for individual utils.
     if (key === "utils" && resolvedPath.endsWith("/utils")) {
       // Remove /utils at the end.
-      dirname = dirname.replace(/\/utils$/, "")
+      dirname = dirname.replace(/\/utils$/, "");
     }
 
     if (!existsSync(dirname)) {
-      await fs.mkdir(dirname, { recursive: true })
+      await fs.mkdir(dirname, { recursive: true });
     }
   }
 
-  const extension = config.tsx ? "ts" : "js"
+  const extension = config.tsx ? "ts" : "js";
 
   const tailwindConfigExtension = path.extname(
-    config.resolvedPaths.tailwindConfig
-  )
+    config.resolvedPaths.tailwindConfig,
+  );
 
-  let tailwindConfigTemplate: string
+  let tailwindConfigTemplate: string;
   if (tailwindConfigExtension === ".ts") {
     tailwindConfigTemplate = config.tailwind.cssVariables
       ? templates.TAILWIND_CONFIG_TS_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG_TS
+      : templates.TAILWIND_CONFIG_TS;
   } else {
     tailwindConfigTemplate = config.tailwind.cssVariables
       ? templates.TAILWIND_CONFIG_WITH_VARIABLES
-      : templates.TAILWIND_CONFIG
+      : templates.TAILWIND_CONFIG;
   }
 
   // Write tailwind config.
@@ -357,11 +357,11 @@ export async function runInit(cwd: string, config: Config) {
       extension,
       prefix: config.tailwind.prefix,
     }),
-    "utf8"
-  )
+    "utf8",
+  );
 
   // Write css file.
-  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor)
+  const baseColor = await getRegistryBaseColor(config.tailwind.baseColor);
   if (baseColor) {
     await fs.writeFile(
       config.resolvedPaths.tailwindCss,
@@ -370,35 +370,35 @@ export async function runInit(cwd: string, config: Config) {
           ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
           : baseColor.cssVarsTemplate
         : baseColor.inlineColorsTemplate,
-      "utf8"
-    )
+      "utf8",
+    );
   }
 
   // Write cn file.
   await fs.writeFile(
     `${config.resolvedPaths.utils}.${extension}`,
     extension === "ts" ? templates.UTILS : templates.UTILS_JS,
-    "utf8"
-  )
+    "utf8",
+  );
 
-  spinner?.succeed()
+  spinner?.succeed();
 
   // Install dependencies.
-  const dependenciesSpinner = ora(`Installing dependencies...`)?.start()
-  const packageManager = await getPackageManager(cwd)
+  const dependenciesSpinner = ora(`Installing dependencies...`)?.start();
+  const packageManager = await getPackageManager(cwd);
 
   // TODO: add support for other icon libraries.
   const deps = [
     ...PROJECT_DEPENDENCIES,
     config.style === "new-york" ? "@radix-ui/react-icons" : "lucide-react",
-  ]
+  ];
 
   await execa(
     packageManager,
     [packageManager === "npm" ? "install" : "add", ...deps],
     {
       cwd,
-    }
-  )
-  dependenciesSpinner?.succeed()
+    },
+  );
+  dependenciesSpinner?.succeed();
 }

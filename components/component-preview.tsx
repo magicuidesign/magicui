@@ -1,11 +1,14 @@
 "use client";
+
+import * as React from "react";
+import { RotateCcw } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 import { registry } from "@/registry/index";
-import { RotateCcw } from "lucide-react";
-import * as React from "react";
+
 import { Button } from "./ui/button";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -80,7 +83,7 @@ export function ComponentPreview({
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">
-                  <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                  <Icons.spinner className="mr-2 size-4 animate-spin" />
                   Loading...
                 </div>
               }

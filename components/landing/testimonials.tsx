@@ -43,11 +43,7 @@ export default async function Testimonials() {
       <div className="relative flex flex-col">
         <Marquee className="max-w-screen [--duration:120s]" pauseOnHover>
           {firstRow.map((id, idx) => (
-            <TweetCard
-              id={id}
-              className="max-h-32 w-72 min-w-[18rem]"
-              key={idx}
-            />
+            <TweetCard id={id} className="max-h-32 w-72 min-w-72" key={idx} />
           ))}
         </Marquee>
         <Marquee
@@ -56,11 +52,7 @@ export default async function Testimonials() {
           pauseOnHover
         >
           {secondRow.map((id, idx) => (
-            <TweetCard
-              id={id}
-              className="max-h-32 w-72 min-w-[18rem]"
-              key={idx}
-            />
+            <TweetCard id={id} className="max-h-32 w-72 min-w-72" key={idx} />
           ))}
         </Marquee>
         <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-background"></div>
