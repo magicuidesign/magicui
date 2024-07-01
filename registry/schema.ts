@@ -14,7 +14,7 @@ export const registrySchema = z.record(
       "components:example",
       "components:blocks",
     ]),
-    component: z.function().args(z.any()).returns(z.any()).optional(),
+    component: z.string().optional(),
   }),
 );
 

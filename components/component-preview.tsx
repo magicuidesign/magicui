@@ -25,9 +25,9 @@ export function ComponentPreview({
   const Code = Codes[0]; // first child
 
   const Preview = React.useMemo(() => {
-    const Component = registry[name]?.component;
+    const component = registry[name]?.component;
 
-    if (!Component) {
+    if (!component) {
       console.error(`Component with name "${name}" not found in registry.`);
       return (
         <p className="text-sm text-muted-foreground">
@@ -39,6 +39,8 @@ export function ComponentPreview({
         </p>
       );
     }
+
+    const Component = React.lazy(() => import(`@/registry/components/examples/${component}`))
 
     return <Component />;
   }, [name, key]);
