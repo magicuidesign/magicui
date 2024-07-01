@@ -1,8 +1,0 @@
-BRANCH_NAME=$(git branch --show-current)
-
-if [ "$BRANCH_NAME" = "main" ]; then
-
-  exit 1
-fi
-
-pnpm lint-staged
