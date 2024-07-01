@@ -1,18 +1,23 @@
-const { withContentlayer } = require("next-contentlayer");
+import { createContentlayerPlugin } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: process.env.NODE_ENV === "production" ? "standalone" : undefined,
   reactStrictMode: true,
   swcMinify: true,
-  productionBrowserSourceMaps: true,
   experimental: {
     optimizeCss: true,
-  },
-  compiler: {
-    // Remove console.log from production except for error logs
-    removeConsole:
-      process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+    turbo: {
+      resolveExtensions: [
+        ".mdx",
+        ".tsx",
+        ".ts",
+        ".jsx",
+        ".js",
+        ".mjs",
+        ".json",
+      ],
+    },
   },
   images: {
     domains: ["localhost", "cdn.magicui.design"],
@@ -43,4 +48,8 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+const withContentlayer = createContentlayerPlugin({
+  // Additional Contentlayer config options
+});
+
+export default withContentlayer(nextConfig);
