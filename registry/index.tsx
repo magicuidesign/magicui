@@ -9,7 +9,7 @@ const ui: Registry = {
   },
   "neon-gradient-card": {
     name: "neon-gradient-card",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/neon-gradient-card.tsx"],
   },
   "linear-gradient": {
@@ -56,7 +56,7 @@ const ui: Registry = {
   "hero-video": {
     name: "hero-video",
     type: "components:magicui",
-    dependencies: ["@headlessui/react" ],
+    dependencies: ["@headlessui/react"],
     // registryDependencies: [],
     files: ["registry/components/magicui/hero-video.tsx"],
   },
@@ -191,7 +191,7 @@ const ui: Registry = {
   },
   "sparkles-text": {
     name: "sparkles-text",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/sparkles-text.tsx"],
   },
   "flip-text": {
@@ -207,62 +207,62 @@ const ui: Registry = {
   },
   "wavy-dot-pattern": {
     name: "wavy-dot-pattern",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/wavy-dot-pattern.tsx"],
   },
   "gradual-spacing": {
     name: "gradual-spacing",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/gradual-spacing.tsx"],
   },
   "word-fade-in": {
     name: "word-fade-in",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/word-fade-in.tsx"],
   },
   "scroll-based-velocity": {
     name: "scroll-based-velocity",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/scroll-based-velocity.tsx"],
   },
   "fade-text": {
     name: "fade-text",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/fade-text.tsx"],
   },
   "shiny-button": {
     name: "shiny-button",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/shiny-button.tsx"],
   },
   "box-reveal": {
     name: "box-reveal",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/box-reveal.tsx"],
   },
   "shine-border": {
     name: "shine-border",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/shine-border.tsx"],
   },
   "gauge-circle": {
     name: "gauge-circle",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/gauge-circle.tsx"],
   },
   confetti: {
     name: "confetti",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/confetti.tsx"],
   },
   "animated-subscribe-button": {
     name: "animated-subscribe-button",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/animated-subscribe-button.tsx"],
   },
   "cool-mode": {
     name: "cool-mode",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/cool-mode.tsx"],
   },
 };
@@ -469,7 +469,13 @@ const example: Registry = {
   "bento-demo": {
     name: "bento-demo",
     type: "components:example",
-    registryDependencies: ["bento-grid", "marquee", "globe", "shadcn:command", "shadcn:calendar" ],
+    registryDependencies: [
+      "bento-grid",
+      "marquee",
+      "globe",
+      "shadcn:command",
+      "shadcn:calendar",
+    ],
     dependencies: ["@radix-ui/react-icons"],
     files: ["registry/components/example/bento-demo.tsx"],
     component: React.lazy(
@@ -1011,6 +1017,12 @@ export const registry: Registry = {
   ...example,
 };
 
-const resolvedExamples = Object.entries(example).map(([key, value]) => ({...value, component: () => void 0}));
-const updatedExample:Registry = resolvedExamples.reduce((acc, curr) => ({...acc, [curr.name]: curr}), {});
-export const downloadRegistry: Registry = {...ui, ...updatedExample};
+const resolvedExamples = Object.entries(example).map(([key, value]) => ({
+  ...value,
+  component: () => void 0,
+}));
+const updatedExample: Registry = resolvedExamples.reduce(
+  (acc, curr) => ({ ...acc, [curr.name]: curr }),
+  {},
+);
+export const downloadRegistry: Registry = { ...ui, ...updatedExample };
