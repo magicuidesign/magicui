@@ -1,4 +1,4 @@
-import { ConfettiButton } from "@/registry/components/magicui/confetti";
+import { ConfettiButton } from "@/components/magicui/confetti";
 
 export default function ConfettiButtonDemo() {
   return (

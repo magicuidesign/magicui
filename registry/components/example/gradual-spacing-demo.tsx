@@ -1,4 +1,4 @@
-import GradualSpacing from "@/registry/components/magicui/gradual-spacing";
+import GradualSpacing from "@/components/magicui/gradual-spacing";
 
 export default async function GradualSpacingDemo() {
   return (

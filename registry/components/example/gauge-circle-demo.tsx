@@ -1,6 +1,6 @@
 "use client";
 
-import GaugeCircle from "@/registry/components/magicui/gauge-circle";
+import GaugeCircle from "@/components/magicui/gauge-circle";
 import { useEffect, useState } from "react";
 
 export default function GaugeCircleDemo() {

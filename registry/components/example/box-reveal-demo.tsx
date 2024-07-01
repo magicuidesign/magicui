@@ -1,5 +1,4 @@
-import BoxReveal from "@/registry/components/magicui/box-reveal";
-
+import BoxReveal from "@/components/magicui/box-reveal";
 import { Button } from "@/components/ui/button";
 
 export default async function BoxRevealDemo() {

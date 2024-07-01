@@ -1,7 +1,7 @@
 "use client";
 
-import type { ConfettiRef } from "@/registry/components/magicui/confetti";
-import Confetti from "@/registry/components/magicui/confetti";
+import type { ConfettiRef } from "@/components/magicui/confetti";
+import Confetti from "@/components/magicui/confetti";
 import { useRef } from "react";
 
 export default function ConfettiBasicCannon() {

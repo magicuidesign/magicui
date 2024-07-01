@@ -1,4 +1,4 @@
-import WavyDotPattern from "@/registry/components/magicui/wavy-dot-pattern";
+import WavyDotPattern from "@/components/magicui/wavy-dot-pattern";
 
 export default function WavyDotPatternDemo() {
   return (
