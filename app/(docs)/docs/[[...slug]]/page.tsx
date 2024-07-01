@@ -13,7 +13,6 @@ import { allDocs } from "contentlayer/generated";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Balancer from "react-wrap-balancer";
 
 interface DocPageProps {
   params: {
@@ -104,8 +103,8 @@ export default async function DocPage({ params }: DocPageProps) {
             {doc.title}
           </h1>
           {doc.description && (
-            <p className="text-lg text-muted-foreground">
-              <Balancer>{doc.description}</Balancer>
+            <p className="text-balance text-lg text-muted-foreground">
+              {doc.description}
             </p>
           )}
         </div>
