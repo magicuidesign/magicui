@@ -1,9 +1,9 @@
-import { allDocs } from "@/.contentlayer/generated";
+import { docs } from "#/content";
 import HeroClient from "@/components/landing/hero-client";
 import { compareDesc } from "date-fns";
 
 export default async function Hero() {
-  const post = allDocs
+  const post = docs
     .filter(
       (post) =>
         post.date && post.date <= new Date().toISOString() && post.published,

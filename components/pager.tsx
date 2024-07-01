@@ -1,4 +1,4 @@
-import { Doc } from "@/.contentlayer/generated";
+import { Doc } from "@/.velite";
 import { buttonVariants } from "@/components/ui/button";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";

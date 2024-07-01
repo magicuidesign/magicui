@@ -4,7 +4,6 @@ import path from "path";
 import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 import { registry } from "../registry";
-// import { styles } from "../registry/styles"
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
@@ -72,7 +71,7 @@ export function rehypeComponent() {
         }
       }
 
-      if (node.name === "ComponentPreview" || node.name === "BlockPreview") {
+      if (node.name === "ComponentPreview") {
         const name = getNodeAttributeByName(node, "name")?.value as string;
 
         if (!name) {

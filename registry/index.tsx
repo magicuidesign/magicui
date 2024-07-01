@@ -198,11 +198,6 @@ const ui: Registry = {
     dependencies: ["next-themes", "react-icon-cloud"],
     files: ["registry/components/magicui/icon-cloud.tsx"],
   },
-  "wavy-dot-pattern": {
-    name: "wavy-dot-pattern",
-    type: "components:magicui",
-    files: ["registry/components/magicui/wavy-dot-pattern.tsx"],
-  },
   "gradual-spacing": {
     name: "gradual-spacing",
     type: "components:magicui",
@@ -823,14 +818,6 @@ const example: Registry = {
     files: ["registry/components/example/icon-cloud-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/icon-cloud-demo"),
-    ),
-  },
-  "wavy-dot-pattern-demo": {
-    name: "wavy-dot-pattern-demo",
-    type: "components:example",
-    files: ["registry/components/example/wavy-dot-pattern-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/wavy-dot-pattern-demo"),
     ),
   },
   "gradual-spacing-demo": {
