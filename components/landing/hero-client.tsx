@@ -1,6 +1,6 @@
 "use client";
 
-import { Doc } from "@/.contentlayer/generated";
+import { Doc } from "#/content";
 import TechStack from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";

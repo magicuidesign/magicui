@@ -39,6 +39,19 @@ const computedFields = <
   } as WithContext<BlogPosting>,
 });
 
+const pages = defineCollection({
+  name: "Page",
+  pattern: "pages/**/*.mdx",
+  schema: s
+    .object({
+      title: s.string(),
+      description: s.string(),
+      slug: s.path(),
+      code: s.mdx(),
+    })
+    .transform(computedFields),
+});
+
 const docs = defineCollection({
   name: "Doc",
   pattern: "docs/**/*.mdx",
@@ -79,6 +92,7 @@ export default defineConfig({
   },
   collections: {
     docs,
+    pages,
   },
   mdx: {
     rehypePlugins: [

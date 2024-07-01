@@ -1,4 +1,4 @@
-import { allDocs, allPages } from "@/.contentlayer/generated";
+import { docs, pages } from "#/content";
 import { MetadataRoute } from "next";
 import { headers } from "next/headers";
 
@@ -12,12 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${protocol}://${domain}`,
       lastModified: new Date(),
     },
-    ...allPages.map((post) => ({
-      url: `${protocol}://${domain}/${post.slugAsParams}`,
+    ...pages.map((post) => ({
+      url: `${protocol}://${domain}/${post.slug}`,
       lastModified: new Date(),
     })),
-    ...allDocs.map((post) => ({
-      url: `${protocol}://${domain}/docs/${post.slugAsParams}`,
+    ...docs.map((post) => ({
+      url: `${protocol}://${domain}/docs/${post.slug}`,
       lastModified: post.date,
     })),
   ];

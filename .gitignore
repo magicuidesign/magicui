@@ -39,7 +39,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.contentlayer
 .react-email
 .turbo
 

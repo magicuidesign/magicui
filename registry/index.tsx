@@ -53,18 +53,18 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/shimmer-button.tsx"],
   },
-  "tweet-card": {
-    name: "tweet-card",
-    type: "components:magicui",
-    dependencies: ["react-tweet"],
-    files: ["registry/components/magicui/tweet-card.tsx"],
-  },
-  "client-tweet-card": {
-    name: "client-tweet-card",
-    type: "components:magicui",
-    dependencies: ["react-tweet"],
-    files: ["registry/components/magicui/client-tweet-card.tsx"],
-  },
+  // "tweet-card": {
+  //   name: "tweet-card",
+  //   type: "components:magicui",
+  //   dependencies: ["react-tweet"],
+  //   files: ["registry/components/magicui/tweet-card.tsx"],
+  // },
+  // "client-tweet-card": {
+  //   name: "client-tweet-card",
+  //   type: "components:magicui",
+  //   dependencies: ["react-tweet"],
+  //   files: ["registry/components/magicui/client-tweet-card.tsx"],
+  // },
   "bento-grid": {
     name: "bento-grid",
     type: "components:magicui",
@@ -400,33 +400,33 @@ const example: Registry = {
       () => import("@/registry/components/example/globe-demo"),
     ),
   },
-  "tweet-card-demo": {
-    name: "tweet-card-demo",
-    type: "components:example",
-    registryDependencies: ["tweet-card"],
-    files: ["registry/components/example/tweet-card-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/tweet-card-demo"),
-    ),
-  },
-  "tweet-card-images": {
-    name: "tweet-card-images",
-    type: "components:example",
-    registryDependencies: ["tweet-card"],
-    files: ["registry/components/example/tweet-card-images.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/tweet-card-images"),
-    ),
-  },
-  "tweet-card-meta-preview": {
-    name: "tweet-card-meta-preview",
-    type: "components:example",
-    registryDependencies: ["tweet-card"],
-    files: ["registry/components/example/tweet-card-meta-preview.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/tweet-card-meta-preview"),
-    ),
-  },
+  // "tweet-card-demo": {
+  //   name: "tweet-card-demo",
+  //   type: "components:example",
+  //   registryDependencies: ["tweet-card"],
+  //   files: ["registry/components/example/tweet-card-demo.tsx"],
+  //   component: React.lazy(
+  //     () => import("@/registry/components/example/tweet-card-demo"),
+  //   ),
+  // },
+  // "tweet-card-images": {
+  //   name: "tweet-card-images",
+  //   type: "components:example",
+  //   registryDependencies: ["tweet-card"],
+  //   files: ["registry/components/example/tweet-card-images.tsx"],
+  //   component: React.lazy(
+  //     () => import("@/registry/components/example/tweet-card-images"),
+  //   ),
+  // },
+  // "tweet-card-meta-preview": {
+  //   name: "tweet-card-meta-preview",
+  //   type: "components:example",
+  //   registryDependencies: ["tweet-card"],
+  //   files: ["registry/components/example/tweet-card-meta-preview.tsx"],
+  //   component: React.lazy(
+  //     () => import("@/registry/components/example/tweet-card-meta-preview"),
+  //   ),
+  // },
   "shimmer-button-demo": {
     name: "shimmer-button-demo",
     type: "components:example",

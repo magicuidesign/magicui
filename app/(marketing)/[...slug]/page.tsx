@@ -1,9 +1,9 @@
-import { Mdx } from "@/components/mdx-components";
+import { pages } from "#/content";
+import { MDXContent } from "@/components/mdx-content";
 import { siteConfig } from "@/config/site";
 import { env } from "@/env.mjs";
 import { absoluteUrl } from "@/lib/utils";
 import "@/styles/mdx.css";
-import { allPages } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ interface PageProps {
 
 async function getPageFromParams(params: PageProps["params"]) {
   const slug = params?.slug?.join("/");
-  const page = allPages.find((page) => page.slugAsParams === slug);
+  const page = pages.find((page) => page.slug === slug);
 
   if (!page) {
     null;
@@ -67,8 +67,8 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  return allPages.map((page) => ({
-    slug: page.slugAsParams.split("/"),
+  return pages.map((page) => ({
+    slug: page.slug.split("/"),
   }));
 }
 
@@ -90,7 +90,7 @@ export default async function PagePage({ params }: PageProps) {
         )}
       </div>
       <hr className="my-4" />
-      <Mdx code={page.body.code} />
+      <MDXContent code={page.code} />
     </article>
   );
 }
