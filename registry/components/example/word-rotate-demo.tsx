@@ -1,4 +1,4 @@
-import WordRotate from "@/registry/components/magicui/word-rotate";
+import WordRotate from "@/components/magicui/word-rotate";
 
 export default async function WordRotateDemo() {
   return (

@@ -1,4 +1,4 @@
-import { AnimatedSubscribeButton } from "@/registry/components/magicui/animated-subscribe-button";
+import { AnimatedSubscribeButton } from "@/components/magicui/animated-subscribe-button";
 import { CheckIcon, ChevronRightIcon } from "lucide-react";
 
 export default function AnimatedSubscribeButtonDemo() {

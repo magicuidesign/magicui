@@ -1,4 +1,4 @@
-import WordPullUp from "@/registry/components/magicui/word-pull-up";
+import WordPullUp from "@/components/magicui/word-pull-up";
 
 export default async function WordPullUpDemo() {
   return (

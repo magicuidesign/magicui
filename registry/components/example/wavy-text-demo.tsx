@@ -1,4 +1,4 @@
-import WavyText from "@/registry/components/magicui/wavy-text";
+import WavyText from "@/components/magicui/wavy-text";
 
 export default function WavyTextDemo() {
   return (

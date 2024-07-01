@@ -1,4 +1,4 @@
-import { VelocityScroll } from "@/registry/components/magicui/scroll-based-velocity";
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 
 export default function ScrollBasedVelocityDemo() {
   return (

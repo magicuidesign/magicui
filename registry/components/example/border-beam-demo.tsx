@@ -1,4 +1,4 @@
-import { BorderBeam } from "@/registry/components/magicui/border-beam";
+import { BorderBeam } from "@/components/magicui/border-beam";
 
 export default function BorderBeamDemo() {
   return (

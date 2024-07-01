@@ -9,8 +9,10 @@ export const registrySchema = z.record(
     files: z.array(z.string()),
     type: z.enum([
       "components:ui",
+      "components:magicui",
       "components:component",
       "components:example",
+      "components:blocks",
     ]),
     component: z.function().args(z.any()).returns(z.any()).optional(),
   }),

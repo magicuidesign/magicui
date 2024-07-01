@@ -1,4 +1,4 @@
-import AnimatedLines from "@/registry/components/magicui/animated-lines";
+import AnimatedLines from "@/components/magicui/animated-lines";
 
 export default function AnimatedListDemo() {
   return (

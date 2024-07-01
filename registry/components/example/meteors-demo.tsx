@@ -1,4 +1,4 @@
-import Meteors from "@/registry/components/magicui/meteors";
+import Meteors from "@/components/magicui/meteors";
 
 export default function MeteorDemo() {
   return (

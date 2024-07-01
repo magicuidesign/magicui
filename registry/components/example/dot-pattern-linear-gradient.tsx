@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import DotPattern from "@/registry/components/magicui/dot-pattern";
+import DotPattern from "@/components/magicui/dot-pattern";
 
 const DotPatternDemo2 = () => {
   return (

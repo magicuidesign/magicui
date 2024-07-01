@@ -1,4 +1,4 @@
-import Marquee from "@/registry/components/magicui/marquee";
+import Marquee from "@/components/magicui/marquee";
 
 const logos = [
   {

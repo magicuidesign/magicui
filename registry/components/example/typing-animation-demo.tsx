@@ -1,4 +1,4 @@
-import TypingAnimation from "@/registry/components/magicui/typing-animation";
+import TypingAnimation from "@/components/magicui/typing-animation";
 
 export default async function TextRevealDemo() {
   return (

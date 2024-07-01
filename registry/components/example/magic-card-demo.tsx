@@ -1,7 +1,7 @@
 import {
   MagicCard,
   MagicContainer,
-} from "@/registry/components/magicui/magic-card";
+} from "@/components/magicui/magic-card";
 
 export default function MagicCardDemo() {
   return (

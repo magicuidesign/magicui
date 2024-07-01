@@ -22,32 +22,37 @@ Once done, open a pull request from your forked repo to the main repo [here](htt
 1. **Fork this repository**  
    Click [here](https://github.com/magicuidesign/magicui/fork) to fork the repository.
 
-2. **Clone your forked repository to your local machine**  
+2. **Clone your forked repository to your local machine**
+
    ```bash
    git clone https://github.com/<YOUR_USERNAME>/magicui.git
    ```
 
-3. **Navigate to the project directory**  
+3. **Navigate to the project directory**
+
    ```bash
    cd magicui
    ```
 
-4. **Create a new branch for your changes**  
+4. **Create a new branch for your changes**
+
    ```bash
    git checkout -b my-new-branch
    ```
 
-5. **Install dependencies**  
+5. **Install dependencies**
+
    ```bash
    pnpm i
    ```
 
-6. **Create a `.env.local` file**  
+6. **Create a `.env.local` file**
+
    ```bash
    touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.local
    ```
 
-7. **Run the project**  
+7. **Run the project**
    ```bash
    pnpm dev
    ```
@@ -118,7 +123,7 @@ export default ExampleComponentDemo;
 
 Create an MDX file for documenting your component.
 
-~~~md
+````md
 ---
 title: Example Component
 date: 2024-06-01
@@ -145,15 +150,14 @@ components/magicui/example-component.tsx
 
 ## Props
 
-| Prop                      | Type                      | Description                                                  | Default  |
-| ------------------------- | ------------------------- | ------------------------------------------------------------ | -------- |
-| color                     | String                    | The color of the component                                   | "blue"   |
+| Prop  | Type   | Description                | Default |
+| ----- | ------ | -------------------------- | ------- |
+| color | String | The color of the component | "blue"  |
 
 ## Credits
 
 - Credit to [Bankk](https://www.x.com/bankkroll_eth)
-~~~
-
+````
 
 ### 5. Add Registry Export
 
@@ -164,12 +168,12 @@ Export your component and example in the registry.
 ```typescript
 const ui: Registry = {
   // other components
-    "example-component": {
+  "example-component": {
     name: "example-component",
     type: "components:ui",
     files: ["registry/components/magicui/example-component.tsx"],
   },
-}
+};
 
 const example: Registry = {
   // other examples
@@ -181,10 +185,51 @@ const example: Registry = {
       () => import("@/registry/components/example/example-component-demo"),
     ),
   },
-}
+};
 ```
+
+## How to use CLI
+
+1. Run CLI script from project `root` folder
+
+```bash
+pnpm run install:cli
+```
+
+```bash
+pnpm run dev:cli
+```
+
+```bash
+pnpm run build:cli
+```
+
+```bash
+pnpm run release:cli
+```
+
+2. Run CLI script from `/packages/cli` folder
+
+```bash
+pnpm run install
+```
+
+```bash
+pnpm run dev
+```
+
+```bash
+pnpm run build
+```
+
+```bash
+pnpm run release
+```
+
+Lots more useful scripts are available in package.json
+
+The CLI in development uses index.json from default `3000` port on localhost. Otherwise [https://magicui.design](https://magicui.design/registry/index.json)
 
 ## Ask for Help
 
 For any help or questions, please open a new GitHub issue and we will get back to you :)
-
