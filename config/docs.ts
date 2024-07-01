@@ -144,6 +144,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+        
           title: "Neon Gradient Card",
           href: `/docs/components/neon-gradient-card`,
           items: [],
@@ -158,6 +159,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Particles",
           href: `/docs/components/particles`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Rotating Circles",
+          href: `/docs/components/rotating-circles`,
           items: [],
           label: "New",
         },
