@@ -107,6 +107,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Scratch To Reveal",
+          href: `/docs/components/scratch-to-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
