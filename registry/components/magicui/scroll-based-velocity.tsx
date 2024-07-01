@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { wrap } from "@motionone/utils";
 import {
   motion,
   useAnimationFrame,
@@ -24,6 +23,11 @@ interface ParallaxProps {
   baseVelocity: number;
   className?: string;
 }
+
+export const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
 
 export function VelocityScroll({
   text,

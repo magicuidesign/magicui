@@ -8,14 +8,9 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import NumberTicker from "@/registry/components/magicui/number-ticker";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { User } from "next-auth";
 import Link from "next/link";
 
-interface SiteHeaderProps {
-  user?: User;
-}
-
-export async function SiteHeader({ user }: SiteHeaderProps) {
+export async function SiteHeader() {
   let stars = 300; // Default value
 
   try {

@@ -53,13 +53,6 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/shimmer-button.tsx"],
   },
-  "hero-video": {
-    name: "hero-video",
-    type: "components:magicui",
-    dependencies: ["@headlessui/react"],
-    // registryDependencies: [],
-    files: ["registry/components/magicui/hero-video.tsx"],
-  },
   "tweet-card": {
     name: "tweet-card",
     type: "components:magicui",
@@ -446,24 +439,6 @@ const example: Registry = {
     files: ["registry/components/example/shimmer-button-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/shimmer-button-demo"),
-    ),
-  },
-  "hero-video-demo": {
-    name: "hero-video-demo",
-    type: "components:example",
-    registryDependencies: ["hero-video"],
-    files: ["registry/components/example/hero-video-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/hero-video-demo"),
-    ),
-  },
-  "hero-video-youtube": {
-    name: "hero-video-youtube",
-    type: "components:example",
-    registryDependencies: ["hero-video"],
-    files: ["registry/components/example/hero-video-youtube.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/hero-video-youtube"),
     ),
   },
   "bento-demo": {

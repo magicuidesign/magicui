@@ -7,10 +7,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function hasApplePay() {
-  return typeof window !== "undefined" && window.ApplePaySession;
-}
-
 export const truncate = (str: string | null, length: number) => {
   if (!str || str.length <= length) return str;
   return `${str.slice(0, length - 3)}...`;
@@ -99,10 +95,6 @@ export function constructMetadata({
       },
     ],
     creator: "dillionverma",
-    // themeColor: [
-    //   { media: "(prefers-color-scheme: light)", color: "white" },
-    //   { media: "(prefers-color-scheme: dark)", color: "black" },
-    // ],
     ...props,
   };
 }
