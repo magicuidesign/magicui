@@ -13,9 +13,12 @@
     "prebuild": "pnpm build:registry",
     "build": "next build",
     "build:registry": "tsx --tsconfig  ./tsconfig.scripts.json ./scripts/build-registry.ts",
-    "check-types": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "prepare": "husky"
   },
   "husky": {

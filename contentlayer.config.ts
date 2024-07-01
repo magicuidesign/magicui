@@ -1,4 +1,3 @@
-// contentlayer.config.ts
 import {
   defineDocumentType,
   defineNestedType,
@@ -10,7 +9,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
-import { env } from "./env.mjs";
+
 import { rehypeComponent } from "./lib/rehype-component";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
@@ -22,7 +21,7 @@ const computedFields = {
   image: {
     type: "string",
     resolve: (post: any) =>
-      `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURI(post.title)}`,
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURI(post.title)}`,
   },
   slug: {
     type: "string",
