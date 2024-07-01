@@ -8,9 +8,9 @@ import {
 import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import TweetCard from "@/registry/components/magicui/tweet-card";
-import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import * as runtime from "react/jsx-runtime";
 import { ComponentInstallation } from "./component-installation";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
@@ -34,7 +34,7 @@ const CustomLink = (props: any) => {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-const components = {
+const globalComponents = {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -222,13 +222,20 @@ const components = {
   },
 };
 
+// parse the Velite generated MDX code into a React component function
+const useMDXComponent = (code: string) => {
+  const fn = new Function(code);
+  return fn({ ...runtime }).default;
+};
+
 interface MDXProps {
   code: string;
+  components?: Record<string, React.ComponentType>;
 }
 
-export function Mdx({ code }: MDXProps) {
+// MDXContent component
+export const MDXContent = ({ code, components }: MDXProps) => {
   const Component = useMDXComponent(code);
-
   return (
     <article
       className={cn(
@@ -237,8 +244,7 @@ export function Mdx({ code }: MDXProps) {
         `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter md:prose-pre:text-sm`,
       )}
     >
-      {/* @ts-ignore */}
-      <Component components={components} />
+      <Component components={{ ...globalComponents, ...components }} />
     </article>
   );
-}
+};

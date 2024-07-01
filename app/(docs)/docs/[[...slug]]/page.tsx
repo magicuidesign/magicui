@@ -1,4 +1,5 @@
-import { Mdx } from "@/components/mdx-components";
+import { docs } from "#/content";
+import { MDXContent } from "@/components/mdx-content";
 import { DocPager } from "@/components/pager";
 import SidebarCTA from "@/components/sidebar-cta";
 import { DashboardTableOfContents } from "@/components/toc";
@@ -9,7 +10,6 @@ import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 import "@/styles/mdx.css";
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
-import { allDocs } from "contentlayer/generated";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -22,7 +22,7 @@ interface DocPageProps {
 
 async function getDocFromParams({ params }: DocPageProps) {
   const slug = params.slug?.join("/") || "";
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug);
+  const doc = docs.find((doc) => doc.slug === slug);
 
   if (!doc) {
     return null;
@@ -70,8 +70,8 @@ export async function generateMetadata({
 export async function generateStaticParams(): Promise<
   DocPageProps["params"][]
 > {
-  return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split("/"),
+  return docs.map((doc) => ({
+    slug: doc.slug.split("/"),
   }));
 }
 
@@ -82,7 +82,7 @@ export default async function DocPage({ params }: DocPageProps) {
     notFound();
   }
 
-  const toc = await getTableOfContents(doc.body.raw);
+  const toc = await getTableOfContents(doc.content);
 
   return (
     <main
@@ -135,7 +135,7 @@ export default async function DocPage({ params }: DocPageProps) {
           </div>
         ) : null}
         <div className="pb-12 pt-8">
-          <Mdx code={doc.body.code} />
+          <MDXContent code={doc.code} />
         </div>
         <DocPager doc={doc} />
       </div>

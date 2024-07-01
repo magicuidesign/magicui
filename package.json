@@ -69,13 +69,12 @@
     "postcss": "8.4.32",
     "posthog-js": "^1.96.1",
     "react": "18.2.0",
-    "react-anime": "^4.1.1",
     "react-day-picker": "^8.9.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.0",
     "react-icon-cloud": "^4.1.4",
     "react-spring": "^9.7.3",
-    "react-tweet": "^3.1.1",
+    "react-tweet": "^3.2.1",
     "schema-dts": "^1.1.2",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.0.0",
@@ -106,7 +105,8 @@
     "tsx": "^4.11.0",
     "typescript": "^5.3.3",
     "unist-builder": "^3.0.0",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^4.1.2",
+    "velite": "^0.1.0"
   },
   "engines": {
     "node": ">=20.6.1",
