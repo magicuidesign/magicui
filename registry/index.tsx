@@ -926,8 +926,8 @@ const example: Registry = {
     type: "components:example",
     files: ["registry/components/example/animated-button-demo.tsx"],
     component: React.lazy(
-      () => import("@/registry/components/example/animated-button-demo")
-    )
+      () => import("@/registry/components/example/animated-button-demo"),
+    ),
   }
 };
 export const registry: Registry = {
