@@ -139,7 +139,7 @@ export default function TechStack({
   className?: string;
 }) {
   return (
-    <div className={cn("not-prose flex flex-row gap-2", className)}>
+    <div className={cn("flex flex-row gap-2", className)}>
       {technologies.map((tech) => (
         <Tooltip key={tech}>
           <TooltipTrigger>{techComponents[tech].icon}</TooltipTrigger>

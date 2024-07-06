@@ -8,29 +8,47 @@ published: true
 
 <ComponentPreview name="animated-subscribe-button-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add animated-subscribe-button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
 <Steps>
 
-### Installation
-
-Copy and paste the following code into your project.
-
-```text
-components/magicui/animated-subscribe-button.tsx
-```
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="animated-subscribe-button" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Props
 
-| Prop                | Type    | Description                                                                                                                                                   |
-| ------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **buttonColor**     | string  | The accent color for the button. This allows you to set a custom color that matches your brand's theme.                                                       |
-| **buttonTextColor** | string  | The color of the button text. This allows you to ensure the text is visible and matches your desired color scheme.                                            |
-| **subscribeStatus** | boolean | A boolean flag to check the condition for the button. This property can be used to toggle the button's state, such as subscribed or unsubscribed.             |
-| **initialText**     | string  | The initial text displayed on the button. This is useful for setting a default label when the button first appears.                                           |
-| **changeText**      | string  | The final text displayed on the button after an action has been taken. This can be used to indicate a state change, such as from "Subscribe" to "Subscribed". |
+| Prop            | Type    | Description                                                                                                                                                   |
+| --------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| buttonColor     | string  | The accent color for the button. This allows you to set a custom color that matches your brand's theme.                                                       |
+| buttonTextColor | string  | The color of the button text. This allows you to ensure the text is visible and matches your desired color scheme.                                            |
+| subscribeStatus | boolean | A boolean flag to check the condition for the button. This property can be used to toggle the button's state, such as subscribed or unsubscribed.             |
+| initialText     | string  | The initial text displayed on the button. This is useful for setting a default label when the button first appears.                                           |
+| changeText      | string  | The final text displayed on the button after an action has been taken. This can be used to indicate a state change, such as from "Subscribe" to "Subscribed". |
 
 ## Credits
 

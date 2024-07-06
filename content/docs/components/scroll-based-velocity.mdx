@@ -8,23 +8,43 @@ published: true
 
 <ComponentPreview name="scroll-based-velocity-demo" />
 
-<Steps>
+## Installation
 
-### Installation
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-pnpm i @motionone/utils
+npx magicui-cli add scroll-based-velocity
 ```
 
-Copy and paste the following code into your project.
+</TabsContent>
 
-```text
-components/magicui/scroll-based-velocity.tsx
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install framer-motion
 ```
+
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="scroll-based-velocity" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Props
 

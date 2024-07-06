@@ -48,7 +48,7 @@ export default function CommitList({
   return (
     <ul>
       {commits.map((commit, index) => (
-        <li key={index} className="not-prose">
+        <li key={index}>
           {commit?.commit?.message}{" "}
           <Badge className="ml-2">
             {formatDistanceToNow(new Date(commit?.commit?.author?.date), {
