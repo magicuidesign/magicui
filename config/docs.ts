@@ -166,6 +166,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Gradient Border",
+          href: `/docs/components/gradient-border`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
