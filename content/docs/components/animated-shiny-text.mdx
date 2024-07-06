@@ -9,14 +9,30 @@ video: https://cdn.magicui.design/animated-shiny-text.mp4
 
 <ComponentPreview name="animated-shiny-text-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 <Steps>
 
-### Installation
+<Step>Run the following command:</Step>
 
-Copy and paste the following code into your project.
+```bash
+npx magicui-cli add animated-shiny-text
+```
 
-```js
-// tailwind.config.js
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-17}
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
@@ -38,13 +54,52 @@ module.exports = {
 };
 ```
 
-```text
-components/magicui/animated-shiny-text.tsx
-```
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="animated-shiny-text" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-17}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        shimmer: "shimmer 8s infinite",
+      },
+      keyframes: {
+        shimmer: {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shimmer-width)) 0",
+          },
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shimmer-width)) 0",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Props
 

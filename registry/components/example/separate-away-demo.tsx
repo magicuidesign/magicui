@@ -1,4 +1,4 @@
-import { SeparateAway } from "../magicui/separate-away";
+import { SeparateAway } from "@/components/magicui/separate-away";
 
 export default async function SeparateAwayDemo() {
   return (

@@ -11,10 +11,7 @@ export function ComponentInstallation({
   ...props
 }: ComponentInstallationProps) {
   return (
-    <div
-      className="not-prose mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6"
-      {...props}
-    >
+    <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6" {...props}>
       <a
         className="flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 sm:p-10"
         href="/docs/installation/react"

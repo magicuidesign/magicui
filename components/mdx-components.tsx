@@ -10,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TechStack from "@/components/tech-stack";
 import TweetCard from "@/registry/components/magicui/tweet-card";
 
@@ -96,19 +97,17 @@ const components = {
       {...props}
     />
   ),
-  a: (props: any) => (
-    <CustomLink
-      {...props}
-      className={"font-medium underline underline-offset-4"}
-    />
-  ),
   Image,
-  Tweet: ({ id }: { id: string }) => (
-    <TweetCard id={id} className="not-prose mx-auto" />
-  ),
+  Tweet: ({ id }: { id: string }) => <TweetCard id={id} className="mx-auto" />,
   ComponentPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
   ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    <CustomLink
+      className={cn("font-medium underline underline-offset-4", className)}
+      {...props}
+    />
+  ),
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
@@ -116,10 +115,10 @@ const components = {
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li className={cn("mt-2", className)} {...props} />
@@ -131,7 +130,7 @@ const components = {
     />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="w-full overflow-y-auto">
+    <div className="my-6 w-full overflow-y-auto">
       <table className={cn("w-full", className)} {...props} />
     </div>
   ),
@@ -150,14 +149,14 @@ const components = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "whitespace-pre border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
         className,
       )}
       {...props}
     />
   ),
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <div
+    <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
         className,
@@ -171,7 +170,45 @@ const components = {
       {...props}
     />
   ),
-
+  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
+    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+  ),
+  TabsList: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsList>) => (
+    <TabsList
+      className={cn(
+        "w-full justify-start rounded-none border-b bg-transparent p-0",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  TabsTrigger: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsTrigger>) => (
+    <TabsTrigger
+      className={cn(
+        "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  TabsContent: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsContent>) => (
+    <TabsContent
+      className={cn(
+        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        className,
+      )}
+      {...props}
+    />
+  ),
   pre: ({
     className,
     __rawString__,
@@ -222,6 +259,15 @@ const components = {
       </>
     );
   },
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cn(
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        className,
+      )}
+      {...props}
+    />
+  ),
 };
 
 interface MDXProps {
@@ -232,14 +278,7 @@ export function Mdx({ code }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <article
-      className={cn(
-        "max-w-[120ch]",
-        `leading-tighter prose prose-gray tracking-tighter dark:prose-invert`,
-        `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter md:prose-pre:text-sm`,
-      )}
-    >
-      {/* @ts-ignore */}
+    <article className={cn("max-w-[120ch]")}>
       <Component components={components} />
     </article>
   );

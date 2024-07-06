@@ -9,14 +9,30 @@ video: https://cdn.magicui.design/retro-grid.mp4
 
 <ComponentPreview name="retro-grid-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 <Steps>
 
-### Installation
+<Step>Run the following command:</Step>
 
-Copy and paste the following code into your project.
+```bash
+npx magicui-cli add retro-grid
+```
 
-```js
-// tailwind.config.js
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-13}
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
@@ -34,13 +50,48 @@ module.exports = {
 };
 ```
 
-```text
-components/magicui/retro-grid.tsx
-```
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="retro-grid" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-13}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        grid: "grid 15s linear infinite",
+      },
+      keyframes: {
+        grid: {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+    },
+  },
+};
+```
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Props
 

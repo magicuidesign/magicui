@@ -8,28 +8,37 @@ published: true
 
 <ComponentPreview name="bento-demo" />
 
-<Steps>
+## Installation
 
-### Prerequisites
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install @radix-ui/react-icons
-npx shadcn-ui@latest add button calendar command
+npx magicui-cli add bento-grid
 ```
 
-Install [**marquee**](/components/marquee) from Magic UI.
+</TabsContent>
 
-### Installation
+<TabsContent value="manual">
 
-Copy and paste the following code into your project.
+<Steps>
 
-```text
-components/magicui/bento-grid.tsx
-```
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="bento-grid" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Examples
 

@@ -151,9 +151,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "material-theme-palenight",
-          //   light: "material-theme-lighter",
-          // },
+          theme: "github-dark",
           onVisitLine(node: any) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
@@ -161,7 +159,6 @@ export default makeSource({
               node.children = [{ type: "text", value: " " }];
             }
           },
-          // keepBackground: true,
           onVisitHighlightedLine(node: any) {
             node.properties.className.push("line--highlighted");
           },

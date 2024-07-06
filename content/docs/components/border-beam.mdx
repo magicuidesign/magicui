@@ -9,14 +9,30 @@ video: https://cdn.magicui.design/border-beam.mp4
 
 <ComponentPreview name="border-beam-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
 <Steps>
 
-### Installation
+<Step>Run the following command:</Step>
 
-Copy and paste the following code into your project.
+```bash
+npx magicui-cli add border-beam
+```
 
-```js
-// tailwind.config.js
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-14}
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
@@ -35,13 +51,49 @@ module.exports = {
 };
 ```
 
-```text
-components/magicui/border-beam.tsx
-```
+</Steps>
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="border-beam" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-14}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+      },
+      keyframes: {
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Usage
 
