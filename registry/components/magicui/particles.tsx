@@ -41,6 +41,11 @@ interface ParticlesProps {
 }
 function hexToRgb(hex: string): number[] {
   hex = hex.replace("#", "");
+
+  if(hex.length === 3) {
+    hex = hex.split("").map((char) => char + char).join("");
+  }
+
   const hexInt = parseInt(hex, 16);
   const red = (hexInt >> 16) & 255;
   const green = (hexInt >> 8) & 255;
@@ -262,7 +267,7 @@ const Particles: React.FC<ParticlesProps> = ({
 
   return (
     <div className={className} ref={canvasContainerRef} aria-hidden="true">
-      <canvas ref={canvasRef} className="h-full w-full" />
+      <canvas ref={canvasRef} className="size-full" />
     </div>
   );
 };
