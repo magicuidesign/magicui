@@ -19,15 +19,13 @@ export const logger = {
   },
 };
 
-const TEXT = `                                                   
- ##   ##                      ##                  ##   ##   #### 
- ### ###                                          ##   ##    ##  
- #######   ####     ### ##   ###      ####        ##   ##    ##  
- #######      ##   ##  ##     ##     ##  ##       ##   ##    ##  
- ## # ##   #####   ##  ##     ##     ##           ##   ##    ##  
- ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##  
- ##   ##   #####       ##    ####     ####         #####    #### 
-                   #####                                         
+const TEXT = `
+   __    __     ______     ______     __     ______        __  __     __    
+  /\\ "-./  \\   /\\  __ \\   /\\  ___\\   /\\ \\   /\\  ___\\      /\\ \\/\\ \\   /\\ \\   
+  \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\ \\__ \\  \\ \\ \\  \\ \\ \\____     \\ \\ \\_\\ \\  \\ \\ \\  
+   \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\  \\ \\_____\\     \\ \\_____\\  \\ \\_\\ 
+    \\/_/  \\/_/   \\/_/\\/_/   \\/_____/   \\/_/   \\/_____/      \\/_____/   \\/_/ 
+                                                                   
 `;
 
 const PRO = `
@@ -75,12 +73,9 @@ const LOGO = `
 `;
 
 const theme = {
-  // blue: "#add7ff",
-  // cyan: "#89ddff",
-  // green: "#5de4c7",
-  magenta: "#fae4fc",
-  red: "#d0679d",
-  yellow: "#fffac2",
+  magenta: "#9E7AFF",
+  red: "#FE8BBB",
+  yellow: "#FFBD7A",
 };
 
 const printer = gradient(Object.values(theme));
@@ -90,7 +85,7 @@ export const ASCII_LOGO = printer.multiline(LOGO);
 export const ASCII_PRO = printer.multiline(PRO);
 
 export const tryPro = `
-Try Magic UI Pro for more premium components & blocks.
+Try Magic UI Pro for ready-made templates and more.
  → https://pro.magicui.design
 `;
 

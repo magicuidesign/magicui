@@ -1,6 +1,7 @@
 import { existsSync, promises as fs } from "fs";
 import path from "path";
 import { getConfig } from "@/src/utils/get-config";
+import { getEnv } from "@/src/utils/get-env";
 import { getPackageManager } from "@/src/utils/get-package-manager";
 import { handleError } from "@/src/utils/handle-error";
 import {
@@ -18,7 +19,6 @@ import {
   getRegistryBaseColor,
   getRegistryIndexMagicUI,
   getRegistryIndexShadcn,
-  resolveTree,
   resolveTreeWithShadcn,
 } from "@/src/utils/registry";
 import { transform } from "@/src/utils/transformers";
@@ -28,8 +28,6 @@ import { execa } from "execa";
 import ora from "ora";
 import prompts from "prompts";
 import { z } from "zod";
-
-import { getEnv, parseEnvFile } from "../utils/get-env";
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),

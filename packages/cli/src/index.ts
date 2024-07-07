@@ -1,11 +1,8 @@
 #!/usr/bin/env node
 import { add } from "@/src/commands/add";
-import { diff } from "@/src/commands/diff";
 import { init } from "@/src/commands/init";
 import { Command } from "commander";
 
-import { auth } from "./commands/auth";
-import { project } from "./commands/template";
 import { getEnv } from "./utils/get-env";
 import { getPackageInfo } from "./utils/get-package-info";
 import {
@@ -34,7 +31,9 @@ async function main() {
       "display the version number",
     );
 
-  program.addCommand(init).addCommand(add).addCommand(auth).addCommand(project);
+  program.addCommand(init).addCommand(add);
+
+  // .addCommand(auth).addCommand(project);
 
   program.parse();
 }
