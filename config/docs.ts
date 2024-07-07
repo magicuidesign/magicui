@@ -27,11 +27,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "CLI",
-          href: "/docs/cli",
-          items: [],
-        },
-        {
           title: "Installation",
           href: "/docs/installation",
           items: [
@@ -51,6 +46,11 @@ export const docsConfig: DocsConfig = {
               items: [],
             },
           ],
+        },
+        {
+          title: "CLI",
+          href: "/docs/cli",
+          items: [],
         },
       ],
     },
