@@ -7,6 +7,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
+import GradientBlur from "@/components/gradient-blur";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -16,7 +17,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname();
 
   return items.length ? (
-    <div className="w-full">
+    <div className="w-full pb-20">
       {items.map((item, index) => (
         <div key={index} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
@@ -27,6 +28,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
           )}
         </div>
       ))}
+      <GradientBlur className="z-0 absolute bottom-0 h-[100px]" />
     </div>
   ) : null;
 }

@@ -4,16 +4,16 @@ import * as React from "react";
 import { RotateCcw } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
 import { ComponentName, registry } from "@/registry/index";
 
-import { Button } from "./ui/button";
-
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: ComponentName;
   align?: "center" | "start" | "end";
+  preview?: boolean;
 }
 
 export function ComponentPreview({
@@ -21,6 +21,7 @@ export function ComponentPreview({
   children,
   className,
   align = "center",
+  preview = false,
   ...props
 }: ComponentPreviewProps) {
   const [key, setKey] = React.useState(0); // State to trigger re-render of preview
@@ -55,22 +56,24 @@ export function ComponentPreview({
       {...props}
     >
       <Tabs defaultValue="preview" className="relative mr-auto w-full">
-        <div className="flex items-center justify-between pb-3">
-          <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
-            <TabsTrigger
-              value="preview"
-              className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-            >
-              Preview
-            </TabsTrigger>
-            <TabsTrigger
-              value="code"
-              className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
-            >
-              Code
-            </TabsTrigger>
-          </TabsList>
-        </div>
+        {!preview && (
+          <div className="flex items-center justify-between pb-3">
+            <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
+              <TabsTrigger
+                value="preview"
+                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              >
+                Preview
+              </TabsTrigger>
+              <TabsTrigger
+                value="code"
+                className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+              >
+                Code
+              </TabsTrigger>
+            </TabsList>
+          </div>
+        )}
         <TabsContent value="preview" className="relative rounded-md" key={key}>
           <ComponentWrapper>
             <Button

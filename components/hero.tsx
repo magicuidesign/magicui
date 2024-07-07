@@ -1,7 +1,7 @@
 import { allDocs } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
 
-import HeroClient from "@/components/landing/hero-client";
+import HeroClient from "@/components/hero-client";
 
 export default async function Hero() {
   const post = allDocs

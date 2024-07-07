@@ -2,23 +2,37 @@
 
 import Link from "next/link";
 import { Doc } from "@/.contentlayer/generated";
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ArrowRightIcon, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import TechStack from "@/components/tech-stack";
-import AnimatedBeamMultipleInputDemo from "@/registry/components/example/animated-beam-multiple-inputs";
-import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
-import BentoDemo from "@/registry/components/example/bento-demo";
-import DockDemo from "@/registry/components/example/dock-demo";
-import OrbitingCirclesDemo from "@/registry/components/example/orbiting-circles-demo";
-import RetroGridDemo from "@/registry/components/example/retro-grid-demo";
-import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
-import { VelocityScroll } from "@/registry/components/magicui/scroll-based-velocity";
-import TypingAnimation from "@/registry/components/magicui/typing-animation";
-import WordRotate from "@/registry/components/magicui/word-rotate";
+import AnimatedShinyText from "@/registry/components/magicui/animated-shiny-text";
+
+function HeroPill({ href, title }: { href: string; title: string }) {
+  return (
+    <Link href={href}>
+      <div
+        className={cn(
+          "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
+        )}
+      >
+        <AnimatedShinyText
+          className="inline-flex items-center 
+    justify-center px-4 py-1"
+        >
+          🎉 <Separator className="mx-2 h-4" orientation="vertical" />
+          <span>{title}</span>
+          <ArrowRightIcon
+            className="ml-1 size-3 transition-transform 
+      duration-300 ease-in-out group-hover:translate-x-0.5"
+          />
+        </AnimatedShinyText>
+      </div>
+    </Link>
+  );
+}
 
 export default function HeroClient({ post }: { post: Doc }) {
   return (
@@ -27,26 +41,7 @@ export default function HeroClient({ post }: { post: Doc }) {
         <div className="z-10 flex flex-col">
           <div className="mt-10 grid grid-cols-1 md:mt-20">
             <div className="flex flex-col items-start gap-6 px-7 pb-8 text-center md:items-center md:px-10">
-              <Link href={post.slug}>
-                <AnimatedGradientText>
-                  <div
-                    className={cn(
-                      `absolute inset-0 block size-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
-                      `p-px ![mask-composite:subtract]`,
-                    )}
-                  />
-                  🎉 <Separator className="mx-2 h-4" orientation="vertical" />
-                  <span
-                    className={cn(
-                      `animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
-                      `inline`,
-                    )}
-                  >
-                    Introducing {post.title}
-                  </span>
-                  <ChevronRight className="ml-1 size-4 text-gray-500" />
-                </AnimatedGradientText>
-              </Link>
+              <HeroPill href={post.slug} title={`Introducing ${post.title}`} />
               <div className="relative flex flex-col gap-4 md:items-center lg:flex-row">
                 <h1
                   className={cn(
@@ -117,6 +112,7 @@ export default function HeroClient({ post }: { post: Doc }) {
             />
           </div>
 
+          {/* 
           <div className="container relative mx-auto mt-32 w-full max-w-[1000px]">
             <motion.span
               animate={["initial"]}
@@ -160,10 +156,10 @@ export default function HeroClient({ post }: { post: Doc }) {
                 </svg>
               </span>
             </motion.span>
-
+         
             <BentoDemo />
 
-            <div className="mt-4 grid w-full grid-cols-1 place-items-center justify-center gap-4 lg:grid-cols-2">
+         <div className="mt-4 grid w-full grid-cols-1 place-items-center justify-center gap-4 lg:grid-cols-2">
               <AnimatedBeamMultipleInputDemo />
               <AnimatedListDemo />
               <RetroGridDemo />
@@ -202,7 +198,7 @@ export default function HeroClient({ post }: { post: Doc }) {
               <OrbitingCirclesDemo />
               <DockDemo />
             </div>
-          </div>
+          </div>   */}
         </div>
       </div>
     </section>

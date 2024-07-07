@@ -276,13 +276,14 @@ const components = {
 
 interface MDXProps {
   code: string;
+  className?: string;
 }
 
-export function Mdx({ code }: MDXProps) {
+export function Mdx({ code, className }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <article className={cn("max-w-[120ch]")}>
+    <article className={cn("max-w-[120ch] mx-auto", className)}>
       <Component components={components} />
     </article>
   );
