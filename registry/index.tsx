@@ -13,16 +13,6 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/neon-gradient-card.tsx"],
   },
-  "linear-gradient": {
-    name: "linear-gradient",
-    type: "components:magicui",
-    files: ["registry/components/magicui/linear-gradient.tsx"],
-  },
-  "radial-gradient": {
-    name: "radial-gradient",
-    type: "components:magicui",
-    files: ["registry/components/magicui/radial-gradient.tsx"],
-  },
   meteors: {
     name: "meteors",
     type: "components:magicui",
@@ -97,11 +87,6 @@ const ui: Registry = {
     name: "animated-list",
     type: "components:magicui",
     files: ["registry/components/magicui/animated-list.tsx"],
-  },
-  "animated-lines": {
-    name: "animated-lines",
-    type: "components:magicui",
-    files: ["registry/components/magicui/animated-lines.tsx"],
   },
   "animated-shiny-text": {
     name: "animated-shiny-text",
@@ -464,15 +449,6 @@ const example: Registry = {
     files: ["registry/components/example/animated-list-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/animated-list-demo"),
-    ),
-  },
-  "animated-lines-demo": {
-    name: "animated-lines-demo",
-    type: "components:example",
-    registryDependencies: ["animated-lines"],
-    files: ["registry/components/example/animated-lines-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/animated-lines-demo"),
     ),
   },
   "animated-shiny-text-demo": {
