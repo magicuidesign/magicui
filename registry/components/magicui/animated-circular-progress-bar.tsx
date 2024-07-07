@@ -9,7 +9,7 @@ interface Props {
   className?: string;
 }
 
-export default function GaugeCircle({
+export default function AnimatedCircularProgressBar({
   max = 100,
   min = 0,
   value = 0,
@@ -23,7 +23,7 @@ export default function GaugeCircle({
 
   return (
     <div
-      className={cn("relative h-40 w-40 text-2xl font-semibold", className)}
+      className={cn("relative size-40 text-2xl font-semibold", className)}
       style={
         {
           "--circle-size": "100px",
@@ -41,7 +41,7 @@ export default function GaugeCircle({
     >
       <svg
         fill="none"
-        className="h-full w-full"
+        className="size-full"
         strokeWidth="2"
         viewBox="0 0 100 100"
       >
@@ -99,7 +99,7 @@ export default function GaugeCircle({
       </svg>
       <span
         data-current-value={currentPercent}
-        className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto h-fit w-fit ease-linear animate-in fade-in"
+        className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in"
       >
         {currentPercent}
       </span>

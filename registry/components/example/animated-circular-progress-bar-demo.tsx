@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import GaugeCircle from "@/components/magicui/gauge-circle";
+import AnimatedCircularProgressBar from "@/registry/components/magicui/animated-circular-progress-bar";
 
-export default function GaugeCircleDemo() {
+export default function AnimatedCircularProgressBarDemo() {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function GaugeCircleDemo() {
   }, []);
 
   return (
-    <GaugeCircle
+    <AnimatedCircularProgressBar
       max={100}
       min={0}
       value={value}

@@ -239,10 +239,10 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/shine-border.tsx"],
   },
-  "gauge-circle": {
-    name: "gauge-circle",
+  "animated-circular-progress-bar": {
+    name: "animated-circular-progress-bar",
     type: "components:magicui",
-    files: ["registry/components/magicui/gauge-circle.tsx"],
+    files: ["registry/components/magicui/animated-circular-progress-bar.tsx"],
   },
   confetti: {
     name: "confetti",
@@ -815,12 +815,17 @@ const example: Registry = {
       () => import("@/registry/components/example/box-reveal-demo"),
     ),
   },
-  "gauge-circle-demo": {
-    name: "gauge-circle-demo",
+  "animated-circular-progress-bar-demo": {
+    name: "animated-circular-progress-bar-demo",
     type: "components:example",
-    files: ["registry/components/example/gauge-circle-demo.tsx"],
+    files: [
+      "registry/components/example/animated-circular-progress-bar-demo.tsx",
+    ],
     component: React.lazy(
-      () => import("@/registry/components/example/gauge-circle-demo"),
+      () =>
+        import(
+          "@/registry/components/example/animated-circular-progress-bar-demo"
+        ),
     ),
   },
   "shine-border-demo": {
