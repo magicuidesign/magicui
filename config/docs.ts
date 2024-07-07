@@ -151,17 +151,7 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    {
-      title: "Developer Components",
-      items: [
-        {
-          title: "File Tree",
-          href: `/docs/components/file-tree`,
-          items: [],
-          label: "New",
-        },
-      ],
-    },
+
     {
       title: "Special Effects",
       items: [
@@ -223,6 +213,17 @@ export const docsConfig: DocsConfig = {
         {
           title: "Blur Fade",
           href: `/docs/components/blur-fade`,
+          items: [],
+          label: "New",
+        },
+      ],
+    },
+    {
+      title: "Developer Components",
+      items: [
+        {
+          title: "File Tree",
+          href: `/docs/components/file-tree`,
           items: [],
           label: "New",
         },
