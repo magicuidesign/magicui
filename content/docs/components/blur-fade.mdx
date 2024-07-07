@@ -1,0 +1,59 @@
+---
+title: Blur Fade
+date: 2024-07-07
+description: Blur fade in and out animation. Used to smoothly fade in and out content.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="blur-fade-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add blur-fade
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="blur-fade" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="blur-fade-text-demo" />
+
+## Props
+
+| Prop         | Type            | Description                                            | Default |
+| ------------ | --------------- | ------------------------------------------------------ | ------- |
+| children     | React.ReactNode | The content to be animated                             |         |
+| className    | string          | The class name to be applied to the component          |         |
+| variant      | object          | Custom animation variants for motion component         |         |
+| duration     | number          | Duration (seconds) for the animation                   | 0.4     |
+| delay        | number          | Delay (seconds) before the animation starts            | 0       |
+| yOffset      | number          | Vertical offset for the animation                      | 6       |
+| inView       | boolean         | Whether to trigger animation when component is in view | false   |
+| inViewMargin | string          | Margin for triggering the in-view animation            | "-50px" |
+| blur         | string          | Amount of blur to apply during the animation           | "6px"   |

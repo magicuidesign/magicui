@@ -217,7 +217,17 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
+    {
+      title: "Animations",
+      items: [
+        {
+          title: "Blur Fade",
+          href: `/docs/components/blur-fade`,
+          items: [],
+          label: "New",
+        },
+      ],
+    },
     {
       title: "Text Animations",
       items: [

@@ -234,6 +234,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/file-tree.tsx"],
   },
+  "blur-fade": {
+    name: "blur-fade",
+    type: "components:magicui",
+    files: ["registry/components/magicui/blur-fade.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -630,7 +635,6 @@ const example: Registry = {
       () => import("@/registry/components/example/typing-animation-demo"),
     ),
   },
-
   "blur-in-demo": {
     name: "blur-in-demo",
     type: "components:example",
@@ -640,7 +644,6 @@ const example: Registry = {
       () => import("@/registry/components/example/blur-in-demo"),
     ),
   },
-
   "scroll-based-velocity-demo": {
     name: "scroll-based-velocity-demo",
     type: "components:example",
@@ -857,6 +860,22 @@ const example: Registry = {
     files: ["registry/components/example/file-tree-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/file-tree-demo"),
+    ),
+  },
+  "blur-fade-demo": {
+    name: "blur-fade-demo",
+    type: "components:example",
+    files: ["registry/components/example/blur-fade-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/blur-fade-demo"),
+    ),
+  },
+  "blur-fade-text-demo": {
+    name: "blur-fade-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/blur-fade-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/blur-fade-text-demo"),
     ),
   },
 };
