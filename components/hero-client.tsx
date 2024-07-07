@@ -15,19 +15,16 @@ function HeroPill({ href, title }: { href: string; title: string }) {
     <Link href={href}>
       <div
         className={cn(
-          "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
+          "group rounded-full border border-black/5 bg-neutral-100 text-base text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800",
         )}
       >
-        <AnimatedShinyText
-          className="inline-flex items-center 
-    justify-center px-4 py-1"
-        >
-          🎉 <Separator className="mx-2 h-4" orientation="vertical" />
-          <span>{title}</span>
-          <ArrowRightIcon
-            className="ml-1 size-3 transition-transform 
-      duration-300 ease-in-out group-hover:translate-x-0.5"
-          />
+        <AnimatedShinyText className="flex items-center justify-center px-4 py-1">
+          <span className="flex items-center">
+            🎉
+            <Separator className="mx-2 h-4" orientation="vertical" />
+            {title}
+          </span>
+          <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </AnimatedShinyText>
       </div>
     </Link>
@@ -73,7 +70,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                         size: "lg",
                       }),
                       "gap-2 whitespace-pre md:flex",
-                      "group relative w-full gap-1 rounded-full text-sm font-semibold tracking-tighter ring-offset-inherit transition-all duration-150 ease-in-out hover:ring-2 hover:ring-black hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50",
+                      "group relative w-full gap-1 rounded-xl text-sm font-semibold tracking-tighter ring-offset-inherit transition-all duration-150 ease-in-out hover:ring-2 hover:ring-black hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50",
                     )}
                   >
                     Browse Components
@@ -87,7 +84,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                         variant: "outline",
                       }),
                       "gap-2 whitespace-pre md:flex",
-                      "group relative w-full gap-1 overflow-hidden rounded-full text-sm font-semibold tracking-tighter transition-all duration-150 ease-in-out hover:ring-2 hover:ring-neutral-300 hover:ring-offset-2 hover:ring-offset-inherit dark:hover:ring-black dark:hover:ring-offset-black ",
+                      "group relative w-full gap-1 overflow-hidden rounded-xl text-sm font-semibold tracking-tighter transition-all duration-150 ease-in-out hover:ring-2 hover:ring-neutral-300 hover:ring-offset-2 hover:ring-offset-inherit dark:hover:ring-black dark:hover:ring-offset-black ",
                     )}
                   >
                     Get Started
