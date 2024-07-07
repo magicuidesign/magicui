@@ -2,14 +2,14 @@ import OrbitingCircles from "@/components/magicui/orbiting-circles";
 
 export default function OrbitingCirclesDemo() {
   return (
-    <div className="relative flex h-[500px] w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
-      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+    <div className="relative flex h-[500px] w-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
         Circles
       </span>
 
       {/* Inner Circles */}
       <OrbitingCircles
-        className="h-[30px] w-[30px] border-none bg-transparent"
+        className="size-[30px] border-none bg-transparent"
         duration={20}
         delay={20}
         radius={80}
@@ -17,7 +17,7 @@ export default function OrbitingCirclesDemo() {
         <Icons.whatsapp />
       </OrbitingCircles>
       <OrbitingCircles
-        className="h-[30px] w-[30px] border-none bg-transparent"
+        className="size-[30px] border-none bg-transparent"
         duration={20}
         delay={10}
         radius={80}
@@ -27,7 +27,7 @@ export default function OrbitingCirclesDemo() {
 
       {/* Outer Circles (reverse) */}
       <OrbitingCircles
-        className="h-[50px] w-[50px] border-none bg-transparent"
+        className="size-[50px] border-none bg-transparent"
         radius={190}
         duration={20}
         reverse
@@ -35,7 +35,7 @@ export default function OrbitingCirclesDemo() {
         <Icons.googleDrive />
       </OrbitingCircles>
       <OrbitingCircles
-        className="h-[50px] w-[50px] border-none bg-transparent"
+        className="size-[50px] border-none bg-transparent"
         radius={190}
         duration={20}
         delay={20}
