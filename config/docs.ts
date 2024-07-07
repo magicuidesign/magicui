@@ -69,7 +69,7 @@ export const docsConfig: DocsConfig = {
           title: "Startup",
           href: `/docs/templates/startup`,
           items: [],
-          label: "",
+          label: "New",
           event: "template_startup_clicked",
         },
         {
