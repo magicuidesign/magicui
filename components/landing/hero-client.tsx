@@ -48,31 +48,22 @@ export default function HeroClient({ post }: { post: Doc }) {
                 </AnimatedGradientText>
               </Link>
               <div className="relative flex flex-col gap-4 md:items-center lg:flex-row">
-                <h1 className="relative mx-0 max-w-[43.5rem] text-balance bg-gradient-to-br from-black from-50% to-neutral-200/60 bg-clip-text pt-5 text-left text-5xl font-semibold tracking-tighter text-transparent dark:text-white sm:text-7xl md:mx-auto md:px-4 md:py-2 md:text-center md:text-7xl lg:text-7xl">
+                <h1
+                  className={cn(
+                    "text-black dark:text-white",
+                    "relative mx-0 max-w-[43.5rem]  pt-5  md:mx-auto md:px-4 md:py-2",
+                    "text-left tracking-tighter text-balance md:text-center font-semibold",
+                    "md:text-7xl lg:text-7xl sm:text-7xl text-5xl",
+                  )}
+                >
                   UI library for Design Engineers
                 </h1>
-                <span className="text-neutral-90 absolute -top-3.5 left-0 z-10 rotate-3 whitespace-nowrap rounded-full bg-neutral-800 px-2.5 py-1 text-[11px] font-semibold uppercase leading-5 tracking-wide text-white md:top-12 md:-rotate-12">
-                  100% open-source
-                </span>
               </div>
 
               <p className="max-w-xl text-balance text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg ">
-                20+ free and open-source animated components built with{" "}
-                <span className="font-bold text-black dark:text-white">
-                  React
-                </span>
-                ,{" "}
-                <span className="font-bold text-black dark:text-white">
-                  Typescript
-                </span>
-                ,{" "}
-                <span className="font-bold text-black dark:text-white">
-                  Tailwind CSS
-                </span>
-                , and{" "}
-                <span className="font-bold text-black dark:text-white">
-                  Framer Motion
-                </span>
+                50+ free and open-source animated components built with{" "}
+                <b>React</b>, <b>Typescript</b>, <b>Tailwind CSS</b>, and{" "}
+                <b>Framer Motion</b>
                 .
                 <br />
               </p>
@@ -112,7 +103,7 @@ export default function HeroClient({ post }: { post: Doc }) {
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-64 items-center justify-center">
+          <div className="relative mx-auto flex w-full max-w-48 items-center justify-center">
             <TechStack
               className="mx-auto flex w-full items-center justify-between"
               technologies={[
