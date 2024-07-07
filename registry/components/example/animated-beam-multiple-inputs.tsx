@@ -24,7 +24,11 @@ const Circle = forwardRef<
 
 Circle.displayName = "Circle";
 
-export default function AnimatedBeamMultipleInputDemo() {
+export default function AnimatedBeamMultipleOutputDemo({
+  className,
+}: {
+  className?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -36,7 +40,10 @@ export default function AnimatedBeamMultipleInputDemo() {
 
   return (
     <div
-      className="relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl"
+      className={cn(
+        "relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl",
+        className,
+      )}
       ref={containerRef}
     >
       <div className="flex size-full flex-row items-stretch justify-between gap-10 max-w-lg">
