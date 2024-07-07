@@ -646,6 +646,15 @@ const example: Registry = {
       () => import("@/registry/components/example/dock-demo-2"),
     ),
   },
+  "dock-demo-3": {
+    name: "dock-demo-3",
+    type: "components:example",
+    registryDependencies: ["dock"],
+    files: ["registry/components/example/dock-demo-3.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/dock-demo-3"),
+    ),
+  },
   "word-rotate-demo": {
     name: "word-rotate-demo",
     type: "components:example",
