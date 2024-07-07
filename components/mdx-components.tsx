@@ -11,7 +11,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import RepoDownload from "@/components/repo-download";
 import TechStack from "@/components/tech-stack";
+import TemplatePreview from "@/components/template-preview";
 import TweetCard from "@/registry/components/magicui/tweet-card";
 
 import { ComponentInstallation } from "./component-installation";
@@ -43,6 +45,8 @@ const components = {
   AccordionItem,
   AccordionTrigger,
   TechStack,
+  RepoDownload,
+  TemplatePreview,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
