@@ -259,6 +259,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/cool-mode.tsx"],
   },
+  "file-tree": {
+    name: "file-tree",
+    type: "components:magicui",
+    files: ["registry/components/magicui/file-tree.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -921,6 +926,14 @@ const example: Registry = {
     files: ["registry/components/example/cool-mode-custom.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/cool-mode-custom"),
+    ),
+  },
+  "file-tree-demo": {
+    name: "file-tree-demo",
+    type: "components:example",
+    files: ["registry/components/example/file-tree-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/file-tree-demo"),
     ),
   },
 };
