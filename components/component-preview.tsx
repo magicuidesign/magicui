@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-import { registry } from "@/registry/index";
+import { ComponentName, registry } from "@/registry/index";
 
 import { Button } from "./ui/button";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: string;
+  name: ComponentName;
   align?: "center" | "start" | "end";
 }
 

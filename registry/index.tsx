@@ -938,3 +938,5 @@ const updatedExample: Registry = resolvedExamples.reduce(
   {},
 );
 export const downloadRegistry: Registry = { ...ui, ...updatedExample };
+
+export type ComponentName = keyof (typeof ui & typeof example);
