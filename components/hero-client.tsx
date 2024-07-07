@@ -2,31 +2,35 @@
 
 import Link from "next/link";
 import { Doc } from "@/.contentlayer/generated";
-import { ArrowRightIcon, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import TechStack from "@/components/tech-stack";
-import AnimatedShinyText from "@/registry/components/magicui/animated-shiny-text";
+import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
 
 function HeroPill({ href, title }: { href: string; title: string }) {
   return (
     <Link href={href}>
-      <div
-        className={cn(
-          "group rounded-full border border-black/5 bg-neutral-100 text-base text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800",
-        )}
-      >
-        <AnimatedShinyText className="flex items-center justify-center px-4 py-1">
-          <span className="flex items-center">
-            🎉
-            <Separator className="mx-2 h-4" orientation="vertical" />
-            {title}
-          </span>
-          <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-        </AnimatedShinyText>
-      </div>
+      <AnimatedGradientText>
+        <div
+          className={cn(
+            `absolute inset-0 block size-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`,
+            `p-px ![mask-composite:subtract]`,
+          )}
+        />
+        🎉 <Separator className="mx-2 h-4" orientation="vertical" />
+        <span
+          className={cn(
+            `animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+            `inline`,
+          )}
+        >
+          {title}
+        </span>
+        <ChevronRight className="ml-1 size-4 text-gray-500" />
+      </AnimatedGradientText>
     </Link>
   );
 }
