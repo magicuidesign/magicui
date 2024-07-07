@@ -91,7 +91,7 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Components",
+      title: "Landing Page Components",
       items: [
         {
           title: "Bento Grid",
@@ -104,18 +104,24 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Tweet Card",
-          href: `/docs/components/tweet-card`,
-          items: [],
-        },
-        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],
         },
         {
+          title: "Dock",
+          href: `/docs/components/dock`,
+          items: [],
+          label: "",
+        },
+        {
           title: "Globe",
           href: `/docs/components/globe`,
+          items: [],
+        },
+        {
+          title: "Tweet Card",
+          href: `/docs/components/tweet-card`,
           items: [],
         },
         {
@@ -124,12 +130,7 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
-        {
-          title: "Dock",
-          href: `/docs/components/dock`,
-          items: [],
-          label: "",
-        },
+
         {
           title: "Avatar Circles",
           href: `/docs/components/avatar-circles`,
@@ -143,10 +144,21 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Gauge Circle",
-          href: `/docs/components/gauge-circle`,
+          title: "Animated Progress Bar",
+          href: `/docs/components/animated-progress-bar`,
           items: [],
           label: "",
+        },
+      ],
+    },
+    {
+      title: "Developer Components",
+      items: [
+        {
+          title: "File Tree",
+          href: `/docs/components/file-tree`,
+          items: [],
+          label: "New",
         },
       ],
     },
@@ -199,17 +211,7 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-    {
-      title: "Dev",
-      items: [
-        {
-          title: "File Tree",
-          href: `/docs/components/file-tree`,
-          items: [],
-          label: "New",
-        },
-      ],
-    },
+
     {
       title: "Text Animations",
       items: [
