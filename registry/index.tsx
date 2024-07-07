@@ -269,15 +269,6 @@ const example: Registry = {
       () => import("@/registry/components/example/neon-gradient-card-demo"),
     ),
   },
-  "magic-card-gradient": {
-    name: "magic-card-gradient",
-    type: "components:example",
-    registryDependencies: ["magic-card"],
-    files: ["registry/components/example/magic-card-gradient.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/magic-card-gradient"),
-    ),
-  },
   "meteors-demo": {
     name: "meteors-demo",
     type: "components:example",
