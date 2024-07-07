@@ -144,8 +144,8 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Animated Progress Bar",
-          href: `/docs/components/animated-progress-bar`,
+          title: "Animated Circular Progress Bar",
+          href: `/docs/components/animated-circular-progress-bar`,
           items: [],
           label: "",
         },
