@@ -4,14 +4,14 @@ export default function BorderBeamDemo() {
   return (
     <div className="relative rounded-xl">
       <img
-        src="/dashboard-dark.png"
+        src="/placeholder-dark.svg"
         alt="Hero Image"
-        className="hidden w-[700px] rounded-[inherit] border object-contain shadow-lg dark:block"
+        className="dark:block rounded-[inherit] border size-full mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center shadow-lg hidden"
       />
       <img
-        src="/dashboard-light.png"
+        src="/placeholder.svg"
         alt="Hero Image"
-        className="block w-[700px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
+        className="block rounded-[inherit] border size-full mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center shadow-lg dark:hidden"
       />
 
       <BorderBeam size={250} duration={12} delay={9} />
