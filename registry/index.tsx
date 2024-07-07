@@ -163,20 +163,10 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/typing-animation.tsx"],
   },
-  "wavy-text": {
-    name: "wavy-text",
-    type: "components:magicui",
-    files: ["registry/components/magicui/wavy-text.tsx"],
-  },
   "blur-in": {
     name: "blur-in",
     type: "components:magicui",
     files: ["registry/components/magicui/blur-in.tsx"],
-  },
-  "separate-away": {
-    name: "separate-away",
-    type: "components:magicui",
-    files: ["registry/components/magicui/separate-away.tsx"],
   },
   "letter-pullup": {
     name: "letter-pullup",
@@ -198,11 +188,6 @@ const ui: Registry = {
     type: "components:magicui",
     dependencies: ["next-themes", "react-icon-cloud"],
     files: ["registry/components/magicui/icon-cloud.tsx"],
-  },
-  "wavy-dot-pattern": {
-    name: "wavy-dot-pattern",
-    type: "components:magicui",
-    files: ["registry/components/magicui/wavy-dot-pattern.tsx"],
   },
   "gradual-spacing": {
     name: "gradual-spacing",
@@ -291,24 +276,6 @@ const example: Registry = {
     files: ["registry/components/example/magic-card-gradient.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/magic-card-gradient"),
-    ),
-  },
-  "linear-gradient-demo": {
-    name: "linear-gradient-demo",
-    type: "components:example",
-    registryDependencies: ["linear-gradient"],
-    files: ["registry/components/example/linear-gradient-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/linear-gradient-demo"),
-    ),
-  },
-  "radial-gradient-demo": {
-    name: "radial-gradient-demo",
-    type: "components:example",
-    registryDependencies: ["radial-gradient"],
-    files: ["registry/components/example/radial-gradient-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/radial-gradient-demo"),
     ),
   },
   "meteors-demo": {
@@ -696,15 +663,7 @@ const example: Registry = {
       () => import("@/registry/components/example/typing-animation-demo"),
     ),
   },
-  "wavy-text-demo": {
-    name: "wavy-text-demo",
-    type: "components:example",
-    registryDependencies: ["wavy-text"],
-    files: ["registry/components/example/wavy-text-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/wavy-text-demo"),
-    ),
-  },
+
   "blur-in-demo": {
     name: "blur-in-demo",
     type: "components:example",
@@ -714,15 +673,7 @@ const example: Registry = {
       () => import("@/registry/components/example/blur-in-demo"),
     ),
   },
-  "separate-away-demo": {
-    name: "separate-away-demo",
-    type: "components:example",
-    registryDependencies: ["separate-away"],
-    files: ["registry/components/example/separate-away-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/separate-away-demo"),
-    ),
-  },
+
   "scroll-based-velocity-demo": {
     name: "scroll-based-velocity-demo",
     type: "components:example",

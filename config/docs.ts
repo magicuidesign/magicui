@@ -209,6 +209,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Cool Mode",
+          href: `/docs/components/cool-mode`,
+          items: [],
+          label: "",
+        },
       ],
     },
 
@@ -250,20 +256,8 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Wavy Text",
-          href: `/docs/components/wavy-text`,
-          items: [],
-          label: "",
-        },
-        {
           title: "Blur In",
           href: `/docs/components/blur-in`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Separate Away",
-          href: `/docs/components/separate-away`,
           items: [],
           label: "",
         },
@@ -321,12 +315,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
-        {
-          title: "Cool Mode",
-          href: `/docs/components/cool-mode`,
-          items: [],
-          label: "",
-        },
       ],
     },
     {
@@ -379,22 +367,6 @@ export const docsConfig: DocsConfig = {
           title: "Grid Pattern",
           href: `/docs/components/grid-pattern`,
           items: [],
-        },
-        {
-          title: "Linear Gradient",
-          href: `/docs/components/linear-gradient`,
-          items: [],
-        },
-        {
-          title: "Radial Gradient",
-          href: `/docs/components/radial-gradient`,
-          items: [],
-        },
-        {
-          title: "Wavy Dot Pattern",
-          href: `/docs/components/wavy-dot-pattern`,
-          items: [],
-          label: "",
         },
       ],
     },
