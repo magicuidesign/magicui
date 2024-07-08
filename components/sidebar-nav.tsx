@@ -7,7 +7,6 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
-import GradientBlur from "@/components/gradient-blur";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -28,7 +27,6 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
           )}
         </div>
       ))}
-      <GradientBlur className="z-0 absolute bottom-0 h-[100px]" />
     </div>
   ) : null;
 }
