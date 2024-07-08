@@ -49,7 +49,7 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
   return (
     <figure
       className={cn(
-        "relative mx-auto min-h-fit w-full max-w-[400px] transform cursor-pointer overflow-hidden rounded-2xl p-4",
+        "relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl p-4",
         // animation styles
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
         // light styles
@@ -60,7 +60,7 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
     >
       <div className="flex flex-row items-center gap-3">
         <div
-          className="flex h-10 w-10 items-center justify-center rounded-2xl"
+          className="flex size-10 items-center justify-center rounded-2xl"
           style={{
             backgroundColor: color,
           }}
@@ -84,7 +84,7 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
 
 export default function AnimatedListDemo() {
   return (
-    <div className="relative flex max-h-[400px] min-h-[400px] w-full max-w-[32rem] flex-col overflow-hidden rounded-lg border bg-background p-6 shadow-lg">
+    <div className="relative flex h-[500px] w-full flex-col p-6 overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <AnimatedList>
         {notifications.map((item, idx) => (
           <Notification {...item} key={idx} />

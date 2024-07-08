@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 import { add } from "@/src/commands/add";
-import { diff } from "@/src/commands/diff";
 import { init } from "@/src/commands/init";
+import { posthog } from "@/src/utils/posthog";
 import { Command } from "commander";
 
-import { auth } from "./commands/auth";
-import { project } from "./commands/template";
 import { getEnv } from "./utils/get-env";
 import { getPackageInfo } from "./utils/get-package-info";
 import {
@@ -16,8 +14,15 @@ import {
   tryPro,
 } from "./utils/logger";
 
-process.on("SIGINT", () => process.exit(0));
-process.on("SIGTERM", () => process.exit(0));
+process.on("SIGINT", async () => {
+  await posthog.shutdown();
+  process.exit(0);
+});
+
+process.on("SIGTERM", async () => {
+  await posthog.shutdown();
+  process.exit(0);
+});
 
 async function main() {
   const packageInfo = await getPackageInfo();
@@ -34,7 +39,9 @@ async function main() {
       "display the version number",
     );
 
-  program.addCommand(init).addCommand(add).addCommand(auth).addCommand(project);
+  program.addCommand(init).addCommand(add);
+
+  // .addCommand(auth).addCommand(project);
 
   program.parse();
 }

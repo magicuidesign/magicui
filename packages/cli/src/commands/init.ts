@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs";
 import path from "path";
+import { generateDistinctId } from "@/src/utils/distinct-id";
 import {
   DEFAULT_COMPONENTS,
   DEFAULT_TAILWIND_CONFIG,
@@ -14,6 +15,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager";
 import { getProjectConfig, preFlight } from "@/src/utils/get-project-info";
 import { handleError } from "@/src/utils/handle-error";
 import { logger } from "@/src/utils/logger";
+import { posthog } from "@/src/utils/posthog";
 import {
   getRegistryBaseColor,
   getRegistryBaseColors,
@@ -81,6 +83,15 @@ export const init = new Command()
         const config = await promptForConfig(cwd, existingConfig, options.yes);
         await runInit(cwd, config);
       }
+
+      posthog.capture({
+        distinctId: generateDistinctId(),
+        event: "cli_init",
+        properties: {
+          cwd,
+          options,
+        },
+      });
 
       logger.info("");
       logger.info(

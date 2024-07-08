@@ -3,9 +3,10 @@
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-export function ModeToggle() {
+export function ModeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -13,7 +14,7 @@ export function ModeToggle() {
       variant="ghost"
       type="button"
       size="icon"
-      className="px-2"
+      className={cn("px-2", className)}
       aria-label={"Toggle theme"}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >

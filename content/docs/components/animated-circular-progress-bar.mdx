@@ -1,0 +1,56 @@
+---
+title: Animated Circular Progress Bar
+date: 2024-05-28
+description: Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.
+author: luis-codex
+published: true
+---
+
+<ComponentPreview name="animated-circular-progress-bar-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add animated-circular-progress-bar
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-circular-progress-bar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop                | Type   | Description                                   | Default |
+| ------------------- | ------ | --------------------------------------------- | ------- |
+| className           | string | The class name to be applied to the component |         |
+| max                 | number | The maximum value of the gauge                | 100     |
+| min                 | number | The minimum value of the gauge                | 0       |
+| value               | number | The current value of the gauge                | 0       |
+| gaugePrimaryColor   | string | The primary color of the gauge                |         |
+| gaugeSecondaryColor | string | The secondary color of the gauge              |         |
+
+## Credits
+
+- Credit to [@luis-code](https://luis-code.vercel.app/)

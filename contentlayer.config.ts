@@ -11,6 +11,7 @@ import { BlogPosting, WithContext } from "schema-dts";
 import { visit } from "unist-util-visit";
 
 import { rehypeComponent } from "./lib/rehype-component";
+import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -51,6 +52,72 @@ const computedFields = {
       }) as WithContext<BlogPosting>,
   },
 };
+
+export const Showcase = defineDocumentType(() => ({
+  name: "Showcase",
+  filePathPattern: `showcase/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    author: {
+      type: "string",
+      required: false,
+    },
+    description: {
+      type: "string",
+    },
+    image: {
+      type: "string",
+      required: true,
+    },
+    href: {
+      type: "string",
+      required: true,
+    },
+    affiliation: {
+      type: "string",
+      required: true,
+    },
+    featured: {
+      type: "boolean",
+      default: false,
+      required: false,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc: any) => `/${doc._raw.flattenedPath}`,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc: any) =>
+        doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+    structuredData: {
+      type: "json",
+      resolve: (doc: any) =>
+        ({
+          "@context": "https://schema.org",
+          "@type": `BlogPosting`,
+          headline: doc.title,
+          datePublished: doc.date,
+          dateModified: doc.date,
+          description: doc.summary,
+          image: doc.image,
+          url: `https://magicui.design/${doc._raw.flattenedPath}`,
+          author: {
+            "@type": "Person",
+            name: doc.author,
+            url: `https://twitter.com/${doc.author}`,
+          },
+        }) as WithContext<BlogPosting>,
+    },
+  },
+}));
 
 export const Page = defineDocumentType(() => ({
   name: "Page",
@@ -118,7 +185,7 @@ export const Doc = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Page, Doc],
+  documentTypes: [Page, Doc, Showcase],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
@@ -151,9 +218,7 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "material-theme-palenight",
-          //   light: "material-theme-lighter",
-          // },
+          theme: "github-dark",
           onVisitLine(node: any) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
@@ -161,7 +226,6 @@ export default makeSource({
               node.children = [{ type: "text", value: " " }];
             }
           },
-          // keepBackground: true,
           onVisitHighlightedLine(node: any) {
             node.properties.className.push("line--highlighted");
           },
@@ -200,6 +264,7 @@ export default makeSource({
           }
         });
       },
+      rehypeNpmCommand,
       [
         rehypeAutolinkHeadings,
         {

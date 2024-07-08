@@ -2,7 +2,7 @@ import { Command } from "commander";
 import prompts from "prompts";
 import { z } from "zod";
 
-import { clearAll, getEnv, login } from "../utils/get-env";
+import { getEnv } from "../utils/get-env";
 import {
   getAllProjectTemplates,
   getDataAndWrite,
@@ -15,7 +15,6 @@ import {
   ColorFullText,
   hasPro,
   logger,
-  tryPro,
 } from "../utils/logger";
 
 const optionSchema = z.object({

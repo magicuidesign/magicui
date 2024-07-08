@@ -1,13 +1,15 @@
-import CTASection from "@/components/landing/cta-section";
-import Hero from "@/components/landing/hero";
-import Testimonials from "@/components/landing/testimonials";
+import ComponentDemos from "@/components/sections/component-demos";
+import Hero from "@/components/sections/hero";
+import Showcase from "@/components/sections/showcase";
+import Testimonials from "@/components/sections/testimonials";
 
 export default async function Home() {
   return (
     <>
       <Hero />
+      <Showcase />
+      <ComponentDemos />
       <Testimonials />
-      <CTASection />
     </>
   );
 }

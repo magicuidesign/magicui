@@ -14,23 +14,43 @@ video: https://cdn.magicui.design/globe.mp4
 
 <ComponentPreview name="globe-demo" />
 
-<Steps>
+## Installation
 
-### Installation
+<Tabs defaultValue="cli">
 
-Copy and paste the following code into your project.
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npm install -D cobe react-spring
+npx magicui-cli add globe
 ```
 
-```text
-components/magicui/globe.tsx
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install cobe react-spring
 ```
+
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="globe" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Props
 

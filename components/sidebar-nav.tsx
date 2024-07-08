@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SidebarNavItem } from "@/types";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
 
@@ -14,7 +16,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname();
 
   return items.length ? (
-    <div className="w-full">
+    <div className="w-full pb-20">
       {items.map((item, index) => (
         <div key={index} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
@@ -45,6 +47,7 @@ export function DocsSidebarNavItems({
           <Link
             key={index}
             href={item.href}
+            onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
               "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
               item.disabled && "cursor-not-allowed opacity-60",
@@ -61,6 +64,7 @@ export function DocsSidebarNavItems({
                 {item.label}
               </span>
             )}
+            {item.external && <ExternalLinkIcon className="ml-2 size-4" />}
           </Link>
         ) : (
           <span

@@ -49,7 +49,7 @@ interface SparklesTextProps {
   sparklesCount?: number;
 
   /**
-   * @default "{first: '#A07CFE', second: '#FE8FB5'}"
+   * @default "{first: '#9E7AFF', second: '#FE8BBB'}"
    * @type string
    * @description
    * The colors of the sparkles
@@ -62,7 +62,7 @@ interface SparklesTextProps {
 
 const SparklesText: React.FC<SparklesTextProps> = ({
   text,
-  colors = { first: "#A07CFE", second: "#FE8FB5" },
+  colors = { first: "#9E7AFF", second: "#FE8BBB" },
   className,
   sparklesCount = 10,
   ...props
@@ -119,9 +119,7 @@ const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <strong className="bg-gradient-to-r from-[var(--sparkles-first-color)] to-[var(--sparkles-second-color)] bg-clip-text text-transparent">
-          {text}
-        </strong>
+        <strong>{text}</strong>
       </span>
     </div>
   );
