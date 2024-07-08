@@ -12,6 +12,10 @@ export const docsConfig: DocsConfig = {
       href: "/components",
     },
     {
+      title: "Showcase",
+      href: "/showcase",
+    },
+    {
       title: "Templates",
       href: "https://pro.magicui.design",
       external: true,
@@ -94,6 +98,11 @@ export const docsConfig: DocsConfig = {
       title: "Landing Page Components",
       items: [
         {
+          title: "Marquee",
+          href: `/docs/components/marquee`,
+          items: [],
+        },
+        {
           title: "Bento Grid",
           href: `/docs/components/bento-grid`,
           items: [],
@@ -101,11 +110,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Animated List",
           href: `/docs/components/animated-list`,
-          items: [],
-        },
-        {
-          title: "Marquee",
-          href: `/docs/components/marquee`,
           items: [],
         },
         {

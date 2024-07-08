@@ -6,15 +6,6 @@ Read the [example PR](https://github.com/magicuidesign/magicui/pull/12) to learn
 
 Once done, open a pull request from your forked repo to the main repo [here](https://github.com/magicuidesign/magicui/compare).
 
-- [Getting Started](#getting-started)
-  - [Fork and Clone the Repository](#fork-and-clone-the-repository)
-  - [Adding a New Component](#adding-a-new-component)
-    - [1. Add Sidebar Button Meta for Your Component](#1-add-sidebar-button-meta-for-your-component)
-    - [2. Create Your Component](#2-create-your-component)
-    - [3. Create a Basic Example Showcasing Your Component](#3-create-a-basic-example-showcasing-your-component)
-    - [4. Create MDX Page for Your Component](#4-create-mdx-page-for-your-component)
-    - [5. Add Registry Export](#5-add-registry-export)
-
 ## Getting Started
 
 ### Fork and Clone the Repository
@@ -61,14 +52,43 @@ Once done, open a pull request from your forked repo to the main repo [here](htt
 
 To add a new component to MagicUI, you will need to modify several files. Follow these steps:
 
-### 1. Add Sidebar Button Meta for Your Component
+### 1. Create Component
 
-**File:** `config/docs.ts`
-
-Add metadata for your component in the sidebar navigation.
+Create the main component in `registry/components/magicui/example-component.tsx`
 
 ```typescript
-// Add sidebar button meta for your component
+import React from 'react'
+
+export default function ExampleComponent() {
+  return (
+    <div>
+      This is your component.
+    </div>
+  )
+}
+```
+
+### 2. Create Component Demo
+
+Provide a basic example to showcase your component in `registry/components/example/example-component-demo.tsx`
+
+```typescript
+import ExampleComponent from '@/registry/components/magicui/example-component'
+
+export default function ExampleComponentDemo() {
+  return (
+    <div className="relative justify-center">
+    <ExampleComponent />
+  </div>
+  )
+}
+```
+
+### 3. Update Sidebar
+
+Add your component to the sidebar in `config/docs.ts`
+
+```typescript
 {
     title: "Example Component",
     href: `/docs/components/example-component`,
@@ -77,72 +97,52 @@ Add metadata for your component in the sidebar navigation.
 }
 ```
 
-### 2. Create Your Component
+### 4. Create docs
 
-**File:** `registry/components/magicui/example-component.tsx`
-
-Create the main component file.
-
-```typescript
-// Create your component here
-import React from 'react'
-
-const ExampleComponent = () => {
-  return (
-    <div>
-      This is your component.
-    </div>
-  )
-}
-
-export default ExampleComponent;
-```
-
-### 3. Create a Basic Example Showcasing Your Component
-
-**File:** `registry/components/example/example-component-demo.tsx`
-
-Provide a basic example to showcase your component.
-
-```typescript
-// Create a very basic example showcasing your component
-import ExampleComponent from '@/registry/components/magicui/example-component'
-
-const ExampleComponentDemo = () => (
-  <div className="relative justify-center">
-    <ExampleComponent />
-  </div>
-)
-
-export default ExampleComponentDemo;
-```
-
-### 4. Create MDX Page for Your Component
-
-**File:** `content/docs/components/example-component.mdx`
-
-Create an MDX file for documenting your component.
+Create an MDX file for documenting your component in `content/docs/components/example-component.mdx`
 
 ````md
 ---
 title: Example Component
 date: 2024-06-01
-description: Example component for demonstrating MagicUI integration
-author: Bankkroll
+description: Example component for Magic UI
+author: magicui
 published: true
 ---
 
 <ComponentPreview name="example-component-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add example-component
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
 <Steps>
 
-### Installation
+<Step>Copy and paste the following code into your project.</Step>
 
-Copy and paste the following code into your project.
+<ComponentSource name="example-component" />
 
-```text
-components/magicui/example-component.tsx
-```
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
 
 <ComponentSource name="example-component" />
 
@@ -153,21 +153,14 @@ components/magicui/example-component.tsx
 | Prop  | Type   | Description                | Default |
 | ----- | ------ | -------------------------- | ------- |
 | color | String | The color of the component | "blue"  |
-
-## Credits
-
-- Credit to [Bankk](https://www.x.com/bankkroll_eth)
 ````
 
-### 5. Add Registry Export
+### 5. Update Registry
 
-**File:** `registry/index.tsx`
-
-Export your component and example in the registry.
+Export your component and example in the registry in `registry/index.tsx`
 
 ```typescript
 const ui: Registry = {
-  // other components
   "example-component": {
     name: "example-component",
     type: "components:ui",
@@ -176,7 +169,6 @@ const ui: Registry = {
 };
 
 const example: Registry = {
-  // other examples
   "example-component-demo": {
     name: "example-component",
     type: "components:example",
@@ -187,6 +179,27 @@ const example: Registry = {
   },
 };
 ```
+
+## Adding to the showcase
+
+## 1. Create your showcase as a MDX file
+
+Create your showcase in `content/showcase/website-name.mdx`
+
+```mdx
+---
+title: website-name.com
+description: Website description
+image: /showcase/website-name.png
+href: https://website-name.com
+featured: true
+affiliation: YC S25, raised $10M
+---
+```
+
+## 2. Create an image
+
+Upload an image of your site to `public/showcase/website-name.png`
 
 ## How to use CLI
 
@@ -208,28 +221,8 @@ pnpm run build:cli
 pnpm run release:cli
 ```
 
-2. Run CLI script from `/packages/cli` folder
-
-```bash
-pnpm run install
-```
-
-```bash
-pnpm run dev
-```
-
-```bash
-pnpm run build
-```
-
-```bash
-pnpm run release
-```
-
-Lots more useful scripts are available in package.json
-
 The CLI in development uses index.json from default `3000` port on localhost. Otherwise [https://magicui.design](https://magicui.design/registry/index.json)
 
 ## Ask for Help
 
-For any help or questions, please open a new GitHub issue and we will get back to you :)
+For any help or questions, please open a new GitHub issue.

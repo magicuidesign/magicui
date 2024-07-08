@@ -62,6 +62,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                 <b>Framer Motion</b>
                 .
                 <br />
+                Perfect companion for <b>shadcn/ui</b>.
               </p>
 
               <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
@@ -99,7 +100,7 @@ export default function HeroClient({ post }: { post: Doc }) {
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-48 items-center justify-center">
+          <div className="relative mx-auto flex w-full max-w-56 items-center justify-center">
             <TechStack
               className="mx-auto flex w-full items-center justify-between"
               technologies={[
@@ -108,7 +109,7 @@ export default function HeroClient({ post }: { post: Doc }) {
                 "typescript",
                 "tailwindcss",
                 "framermotion",
-                // "shadcn",
+                "shadcn",
               ]}
             />
           </div>

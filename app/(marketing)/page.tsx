@@ -1,30 +1,15 @@
-import Hero from "@/components/hero";
-import { Mdx } from "@/components/mdx-components";
-
-import "@/styles/mdx.css";
-
-import { notFound } from "next/navigation";
-import { allPages } from "contentlayer/generated";
-
-import Testimonials from "@/components/testimonials";
-
-const PAGE = "home";
+import ComponentDemos from "@/components/sections/component-demos";
+import Hero from "@/components/sections/hero";
+import Showcase from "@/components/sections/showcase";
+import Testimonials from "@/components/sections/testimonials";
 
 export default async function Home() {
-  const page = allPages.find((page) => page.slugAsParams === PAGE);
-
-  if (!page) {
-    notFound();
-  }
-
   return (
     <>
       <Hero />
-      <section id="component-demos" className="container max-w-5xl">
-        <Mdx code={page.body.code} />
-      </section>
+      <Showcase />
+      <ComponentDemos />
       <Testimonials />
-      {/* <CTASection /> */}
     </>
   );
 }
