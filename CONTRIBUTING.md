@@ -182,7 +182,7 @@ const example: Registry = {
 
 ## Adding to the showcase
 
-## 1. Create your showcase as a MDX file
+### 1. Create your showcase as a MDX file
 
 Create your showcase in `content/showcase/website-name.mdx`
 
@@ -197,7 +197,7 @@ affiliation: YC S25, raised $10M
 ---
 ```
 
-## 2. Create an image
+### 2. Create an image
 
 Upload an image of your site to `public/showcase/website-name.png`
 
