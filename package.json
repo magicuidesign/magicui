@@ -60,6 +60,7 @@
     "next": "14.2.4",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.3.0",
+    "octokit": "^4.0.2",
     "postcss": "8.4.32",
     "posthog-js": "^1.96.1",
     "react": "18.2.0",
