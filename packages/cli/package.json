@@ -1,6 +1,6 @@
 {
   "name": "magicui-cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Add magic ui components to your apps. Shadcn-ui based config",
   "publishConfig": {
     "access": "public"
