@@ -19,7 +19,7 @@ import TweetCard from "@/registry/components/magicui/tweet-card";
 import { ComponentInstallation } from "./component-installation";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
-import { CopyButton } from "./copy-button";
+import { CopyButton, CopyNpmCommandButton } from "./copy-button";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -47,6 +47,11 @@ const components = {
   TechStack,
   RepoDownload,
   TemplatePreview,
+  Image,
+  Tweet: ({ id }: { id: string }) => <TweetCard id={id} className="mx-auto" />,
+  ComponentPreview,
+  ComponentSource: (props: any) => <ComponentSource {...props} />,
+  ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -101,11 +106,6 @@ const components = {
       {...props}
     />
   ),
-  Image,
-  Tweet: ({ id }: { id: string }) => <TweetCard id={id} className="mx-auto" />,
-  ComponentPreview,
-  ComponentSource: (props: any) => <ComponentSource {...props} />,
-  ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
   a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <CustomLink
       className={cn("font-medium underline underline-offset-4", className)}
@@ -216,9 +216,10 @@ const components = {
   pre: ({
     className,
     __rawString__,
-    // __npmCommand__,
-    // __pnpmCommand__,
-    // __yarnCommand__,
+    __npmCommand__,
+    __pnpmCommand__,
+    __yarnCommand__,
+    __bunCommand__,
     __withMeta__,
     __src__,
     __event__,
@@ -228,6 +229,10 @@ const components = {
   }: React.HTMLAttributes<HTMLPreElement> & {
     // __style__?: Style["name"]
     __rawString__?: string;
+    __npmCommand__?: string;
+    __pnpmCommand__?: string;
+    __yarnCommand__?: string;
+    __bunCommand__?: string;
     __withMeta__?: boolean;
     __src__?: string;
     __event__?: Event["name"];
@@ -250,16 +255,20 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-        {/* {__npmCommand__ && __yarnCommand__ && __pnpmCommand__ && (
-          <CopyNpmCommandButton
-            commands={{
-              __npmCommand__,
-              __pnpmCommand__,
-              __yarnCommand__,
-            }}
-            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-          />
-        )} */}
+        {__npmCommand__ &&
+          __yarnCommand__ &&
+          __pnpmCommand__ &&
+          __bunCommand__ && (
+            <CopyNpmCommandButton
+              commands={{
+                __npmCommand__,
+                __pnpmCommand__,
+                __yarnCommand__,
+                __bunCommand__,
+              }}
+              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
+            />
+          )}
       </>
     );
   },
