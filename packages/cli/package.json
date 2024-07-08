@@ -33,7 +33,7 @@
   "bin": "./dist/index.js",
   "scripts": {
     "dev": "tsup --watch --env.COMPONENTS_REGISTRY_URL http://localhost:3000 --env.PRO_REGISTRY_URL http://localhost:3001",
-    "build": "tsup --env.COMPONENTS_REGISTRY_URL https://magicui.design --env.PRO_REGISTRY_URL https://pro.magicui.design",
+    "build": "tsup --env.COMPONENTS_REGISTRY_URL https://magicui.design --env.PRO_REGISTRY_URL https://pro.magicui.design --env.POSTHOG_API_KEY $POSTHOG_API_KEY",
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
@@ -61,6 +61,7 @@
     "lodash.template": "^4.5.0",
     "node-fetch": "^3.3.0",
     "ora": "^6.1.2",
+    "posthog-node": "^4.0.1",
     "prompts": "^2.4.2",
     "recast": "^0.23.2",
     "ts-morph": "^18.0.0",

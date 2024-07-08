@@ -1,5 +1,6 @@
 import { existsSync, promises as fs } from "fs";
 import path from "path";
+import { generateDistinctId } from "@/src/utils/distinct-id";
 import { getConfig } from "@/src/utils/get-config";
 import { getEnv } from "@/src/utils/get-env";
 import { getPackageManager } from "@/src/utils/get-package-manager";
@@ -12,6 +13,7 @@ import {
   logger,
   tryPro,
 } from "@/src/utils/logger";
+import { posthog } from "@/src/utils/posthog";
 import {
   fetchTree,
   fetchTreeFromShadcn,
@@ -295,6 +297,17 @@ export const add = new Command()
           }
         }
       }
+
+      posthog.capture({
+        event: "cli_add",
+        distinctId: generateDistinctId(),
+        properties: {
+          components: selectedComponents,
+          style: config.style,
+          baseColor: config.tailwind.baseColor,
+        },
+      });
+
       spinner.succeed(`Done.`);
     } catch (error) {
       handleError(error);

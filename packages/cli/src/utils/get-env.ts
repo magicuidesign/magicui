@@ -1,7 +1,4 @@
-import fs from "fs";
-import path from "path";
 import Configstore from "configstore";
-import dotenv from "dotenv";
 
 const envName = "MAGICUI_PRO_ENV";
 const config = new Configstore("magicui");
