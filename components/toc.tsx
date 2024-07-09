@@ -10,7 +10,7 @@ interface TocProps {
   toc: TableOfContents;
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {
+export function TableOfContents({ toc }: TocProps) {
   const refinedToc = useMemo(() => {
     if (!toc.items || toc.items.length === 0) {
       return toc;
