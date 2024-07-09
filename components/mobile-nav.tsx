@@ -59,6 +59,7 @@ export function MobileNav() {
                 {item.items?.map((item) =>
                   !item.disabled && item.href ? (
                     <MobileLink
+                      key={item.href}
                       href={item.href}
                       onOpenChange={setOpen}
                       onClick={() => item.event && posthog.capture(item.event)}

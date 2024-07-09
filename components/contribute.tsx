@@ -53,7 +53,7 @@ export function Contribute({ doc }: { doc: Doc }) {
               rel="noopener noreferrer"
               className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              <link.icon className="mr-2 h-4 w-4" />
+              <link.icon className="mr-2 size-4" />
               {link.text}
             </Link>
           </li>
