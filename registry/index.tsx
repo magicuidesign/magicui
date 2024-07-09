@@ -178,6 +178,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/flip-text.tsx"],
   },
+  "text-underline": {
+    name: "text-underline",
+    type: "components:magicui",
+    files: ["registry/components/magicui/text-underline.tsx"],
+  },
   "icon-cloud": {
     name: "icon-cloud",
     type: "components:magicui",
@@ -710,6 +715,15 @@ const example: Registry = {
     files: ["registry/components/example/flip-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/flip-text-demo"),
+    ),
+  },
+  "text-underline-demo": {
+    name: "text-underline-demo",
+    type: "components:example",
+    registryDependencies: ["text-underline"],
+    files: ["registry/components/example/text-underline-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/text-underline-demo"),
     ),
   },
   "sparkles-text-demo": {
