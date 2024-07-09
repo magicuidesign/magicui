@@ -92,7 +92,7 @@ export const add = new Command()
 			if (!config) {
 				logger.warn(
 					`Configuration is missing. Please run ${chalk.green(
-						`init`,
+						"init",
 					)} to create a components.json file.`,
 				);
 				process.exit(1);
@@ -179,7 +179,7 @@ export const add = new Command()
 				const { proceed } = await prompts({
 					type: "confirm",
 					name: "proceed",
-					message: `Ready to install components and dependencies. Proceed?`,
+					message: "Ready to install components and dependencies. Proceed?",
 					initial: true,
 				});
 
@@ -190,7 +190,7 @@ export const add = new Command()
 
 			const savedTailwindUpdates = []
 
-			const spinner = ora(`Installing components...`).start();
+			const spinner = ora("Installing components...").start();
 			for (const item of totalPayload) {
 				spinner.text = `Installing ${item.name}...`;
 				const targetDir = await getItemTargetPath(
@@ -306,15 +306,32 @@ export const add = new Command()
 					}
 				}
 			}
+			spinner.succeed("Components installed.\n");
 
 			if (savedTailwindUpdates.length) {
+
+				const { edit } = await prompts({
+					type: "confirm",
+					name: "edit",
+					message: "Some components requies tailwind config file changes. Would you like to update?",
+					initial: false,
+				});
+
+				if (!edit) {
+					logger.warn("Skipping tailwind config update.")
+					return
+				}
+
+				const tailwindSpinner = ora("Updating tailwind.config...").start();
+					
+
 				try {
 					const configPath = path.resolve(cwd, config.tailwind.config);
 
 					const fileExtension = path.extname(configPath)
 
 					if (fileExtension !== '.js' && fileExtension !== '.ts') {
-						logger.warn("Tailwind config file must be a .js or .ts file. Skipping update.")
+						tailwindSpinner.warn("Tailwind config file must be a .js or .ts file. Skipping update.")
 						return
 					}
 
@@ -323,14 +340,15 @@ export const add = new Command()
 
 					if (newTailwindConfig) {
 						await fs.writeFile(configPath, newTailwindConfig)
+						tailwindSpinner.succeed("Updated tailwind config.");
 					}
+					else tailwindSpinner.warn("Something wrong with your tailwind config. Skipping update.");
 				}
 				catch (error) {
-					logger.warn(`Failed to update tailwind config. Reason: ${error}`)
+					tailwindSpinner.fail(`Failed to update tailwind config. Reason: ${error}`)
 				}
-			}
 
-			spinner.succeed("Done.");
+			}
 		} catch (error) {
 			handleError(error);
 		}
