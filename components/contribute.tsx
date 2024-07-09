@@ -36,6 +36,7 @@ export function Contribute({ doc }: { doc: Doc }) {
         repo: "magicui",
         title: `[docs]: ${doc.slug}`,
         labels: ["documentation"],
+        template: "documentation.md",
       }),
     },
   ];
