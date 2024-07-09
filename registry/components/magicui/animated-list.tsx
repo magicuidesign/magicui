@@ -3,11 +3,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
 
-type AnimatedListProps = {
+export interface AnimatedListProps {
   className?: string;
   children: React.ReactNode;
   delay?: number;
-};
+}
 
 export const AnimatedList = React.memo(
   ({ className, children, delay = 1000 }: AnimatedListProps) => {
