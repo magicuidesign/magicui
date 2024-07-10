@@ -1,13 +1,11 @@
 "use client";
 
-import AnimatedShinyText from "@/registry/components/magicui/animated-shiny-text";
-import WordPullUp from "@/registry/components/magicui/word-pull-up";
-
-import "@/styles/mdx.css";
-
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import posthog from "posthog-js";
+
+import AnimatedShinyText from "@/registry/components/magicui/animated-shiny-text";
+import WordPullUp from "@/registry/components/magicui/word-pull-up";
 
 export default function SidebarCTA() {
   return (

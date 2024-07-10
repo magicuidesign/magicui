@@ -51,7 +51,7 @@
     "crisp-sdk-web": "^1.0.25",
     "critters": "^0.0.24",
     "date-fns": "^2.30.0",
-    "eslint": "9.6.0",
+    "eslint": "8.55.0",
     "eslint-config-next": "14.2.4",
     "framer-motion": "^10.12.16",
     "geist": "^1.2.2",
