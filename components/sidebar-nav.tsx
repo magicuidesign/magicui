@@ -18,7 +18,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   return items.length ? (
     <div className="w-full pb-20">
       {items.map((item, index) => (
-        <div key={index} className={cn("pb-4")}>
+        <div key={index} className={"pb-4"}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
@@ -64,6 +64,11 @@ export function DocsSidebarNavItems({
                 {item.label}
               </span>
             )}
+            {item.paid && (
+              <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                Paid
+              </span>
+            )}
             {item.external && <ExternalLinkIcon className="ml-2 size-4" />}
           </Link>
         ) : (
@@ -78,6 +83,11 @@ export function DocsSidebarNavItems({
             {item.label && (
               <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
                 {item.label}
+              </span>
+            )}
+            {item.paid && (
+              <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                Paid
               </span>
             )}
           </span>

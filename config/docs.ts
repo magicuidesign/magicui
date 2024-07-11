@@ -74,6 +74,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/templates/startup`,
           items: [],
           label: "New",
+          paid: true,
           event: "template_startup_clicked",
         },
         {
@@ -82,6 +83,7 @@ export const docsConfig: DocsConfig = {
           items: [],
           disabled: true,
           label: "Coming soon",
+          paid: true,
           event: "template_saas_clicked",
         },
         {
@@ -90,12 +92,13 @@ export const docsConfig: DocsConfig = {
           items: [],
           disabled: true,
           label: "Coming soon",
+          paid: true,
           event: "template_app_clicked",
         },
       ],
     },
     {
-      title: "Landing Page Components",
+      title: "Components",
       items: [
         {
           title: "Marquee",
@@ -152,6 +155,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/animated-circular-progress-bar`,
           items: [],
           label: "",
+        },
+        {
+          title: "File Tree",
+          href: `/docs/components/file-tree`,
+          items: [],
+          label: "New",
         },
       ],
     },
@@ -217,17 +226,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Blur Fade",
           href: `/docs/components/blur-fade`,
-          items: [],
-          label: "New",
-        },
-      ],
-    },
-    {
-      title: "Developer Components",
-      items: [
-        {
-          title: "File Tree",
-          href: `/docs/components/file-tree`,
           items: [],
           label: "New",
         },
