@@ -13,6 +13,7 @@ Start by creating a new Remix project using `create-remix`:
 ```bash
 npx create-remix@latest my-app
 ```
+
 ### Run the CLI
 
 Run the `magicui-cli` init command to setup your project:
@@ -20,7 +21,6 @@ Run the `magicui-cli` init command to setup your project:
 ```bash
 npx magicui-cli init
 ```
-
 
 ### Configure components.json
 
@@ -44,7 +44,6 @@ You will be asked a few questions to configure `components.json`:
 
 **Note**: This app structure is only a suggestion. You can place the files wherever you want.
 
-
 - Place the UI components in the `app/components/magic-ui` folder.
 - Your own components can be placed in the `app/components` folder.
 - The `app/lib` folder contains all the utility functions. We have a `utils.ts` where we define the `cn` helper.
@@ -64,7 +63,7 @@ export default {
     tailwindcss: {},
     autoprefixer: {},
   },
-}
+};
 ```
 
 And finally we add the following to our `remix.config.js` file:
@@ -84,6 +83,7 @@ export default {
 ```bash
 npm install @remix-run/css-bundle
 ```
+
 In your `app/root.tsx` file, import the `tailwind.css` file:
 
 ```js {1, 4}
@@ -115,9 +115,9 @@ import BlurIn from "~/components/magicui/blur-in";
 export default function Home() {
   return (
     <div>
-       <BlurIn word={"Hello World"}></BlurIn>
+      <BlurIn word={"Hello World"}></BlurIn>
     </div>
-  )
+  );
 }
 ```
 

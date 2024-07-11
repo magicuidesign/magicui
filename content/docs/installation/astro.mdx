@@ -19,7 +19,7 @@ You will be asked a few questions to configure your project:
 
 ```txt showLineNumbers
 - Where should we create our new project?
-./puffy-proxima
+./your-app-name
 - How would you like to start your new project?
 Choose a starter template (or Empty)
 - Do you plan to write TypeScript? Yes
@@ -113,7 +113,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
-})
+});
 ```
 
 ### Update tailwind.config.mjs
@@ -123,7 +123,7 @@ When running `npx magicui-cli init`, your tailwind config for content will be ov
 ```js {1-4} showLineNumbers
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-}
+};
 ```
 
 ### That's it

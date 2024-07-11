@@ -53,9 +53,9 @@ npm i -D @types/node
 ```
 
 ```typescript
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
@@ -64,7 +64,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+});
 ```
 
 ### Run the CLI
@@ -107,9 +107,9 @@ import BlurIn from "@/components/magicui/blur-in";
 export default function Home() {
   return (
     <div>
-       <BlurIn word={"Hello World"}></BlurIn>
+      <BlurIn word={"Hello World"}></BlurIn>
     </div>
-  )
+  );
 }
 ```
 
