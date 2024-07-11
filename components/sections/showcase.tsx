@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { allShowcases } from "@/.contentlayer/generated";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
@@ -22,7 +21,7 @@ export function ShowcaseCard({
       href={href}
       className="flex flex-col gap-2 group relative overflow-hidden cursor-pointer"
     >
-      <Image
+      <img
         src={image}
         alt={title}
         width={500}
