@@ -41,7 +41,7 @@ export function ShowcaseCard({
   );
 }
 
-export default async function Showcase() {
+export default function Showcase() {
   return (
     <section id="showcase" className="container py-14">
       <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
