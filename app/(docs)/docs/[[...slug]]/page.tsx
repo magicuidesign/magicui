@@ -5,7 +5,6 @@ import { badgeVariants } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Mdx } from "@/components/mdx-components";
 import { DocPager } from "@/components/pager";
-import SidebarCTA from "@/components/sidebar-cta";
 
 import "@/styles/mdx.css";
 
@@ -148,7 +147,6 @@ export default async function DocPage({ params }: DocPageProps) {
               <div className="space-y-4 sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
                 <TableOfContents toc={toc} />
                 <Contribute doc={doc} />
-                <SidebarCTA />
               </div>
             </ScrollArea>
           </div>
