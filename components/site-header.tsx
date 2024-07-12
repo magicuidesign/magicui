@@ -126,23 +126,6 @@ export async function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
-            <Link
-              href={siteConfig.links.instagram}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "w-9 px-0",
-                )}
-              >
-                <Icons.instagram className="size-4 fill-current" />
-                <span className="sr-only">Instagram</span>
-              </div>
-            </Link>
             <ModeToggle />
           </nav>
         </div>

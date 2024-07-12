@@ -98,7 +98,7 @@ export default function DockDemo() {
       </span>
       <Dock direction="middle">
         {DATA.navbar.map((item) => (
-          <DockIcon key={item.href}>
+          <DockIcon key={item.label}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link
