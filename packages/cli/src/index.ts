@@ -13,6 +13,7 @@ import {
   hasPro,
   tryPro,
 } from "./utils/logger";
+import { svgl } from "./commands/svgl";
 
 process.on("SIGINT", async () => {
   await posthog.shutdown();
@@ -25,7 +26,6 @@ process.on("SIGTERM", async () => {
 });
 
 async function main() {
-  const packageInfo = await getPackageInfo();
   const MAGICUI_PRO_ENV = getEnv();
 
   const program = new Command()
@@ -34,12 +34,12 @@ async function main() {
     .name("magicui-cli")
     .description("Add Magic UI components to your apps.")
     .version(
-      packageInfo.version || "1.0.0",
+      "0.1.6",
       "-v, --version",
       "display the version number",
     );
 
-  program.addCommand(init).addCommand(add);
+  program.addCommand(init).addCommand(add).addCommand(svgl)
 
   // .addCommand(auth).addCommand(project);
 

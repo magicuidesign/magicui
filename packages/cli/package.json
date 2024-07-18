@@ -32,7 +32,7 @@
   "exports": "./dist/index.js",
   "bin": "./dist/index.js",
   "scripts": {
-    "dev": "tsup --watch --env.COMPONENTS_REGISTRY_URL http://localhost:3000 --env.PRO_REGISTRY_URL http://localhost:3001",
+    "dev": "tsup --watch --env.COMPONENTS_REGISTRY_URL http://localhost:3000 --env.PRO_REGISTRY_URL http://localhost:3001 --env.POSTHOG_API_KEY $POSTHOG_API_KEY",
     "build": "tsup --env.COMPONENTS_REGISTRY_URL https://magicui.design --env.PRO_REGISTRY_URL https://pro.magicui.design --env.POSTHOG_API_KEY $POSTHOG_API_KEY",
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
