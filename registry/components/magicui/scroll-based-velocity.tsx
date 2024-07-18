@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -10,7 +10,8 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface VelocityScrollProps {
   text: string;

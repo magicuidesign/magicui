@@ -1,13 +1,16 @@
 "use client";
-import { cn } from "@/lib/utils";
+
+import React, { PropsWithChildren, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { PropsWithChildren, useRef } from "react";
+
+import { cn } from "@/lib/utils";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
   className?: string;
   magnification?: number;
   distance?: number;
+  direction?: "top" | "middle" | "bottom";
   children: React.ReactNode;
 }
 
@@ -15,7 +18,7 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "mx-auto w-max mt-8 h-[58px] p-2 flex items-end gap-2 rounded-2xl border dark:border-[#707070]",
+  "mx-auto w-max mt-8 h-[58px] p-2 flex gap-2 rounded-2xl border supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-md",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -25,6 +28,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
       children,
       magnification = DEFAULT_MAGNIFICATION,
       distance = DEFAULT_DISTANCE,
+      direction = "bottom",
       ...props
     },
     ref,
@@ -47,7 +51,11 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         {...props}
-        className={cn(dockVariants({ className }), className)}
+        className={cn(dockVariants({ className }), {
+          "items-start": direction === "top",
+          "items-center": direction === "middle",
+          "items-end": direction === "bottom",
+        })}
       >
         {renderChildren()}
       </motion.div>
@@ -101,7 +109,7 @@ const DockIcon = ({
       ref={ref}
       style={{ width }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center rounded-full bg-neutral-400/40",
+        "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         className,
       )}
       {...props}

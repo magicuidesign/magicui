@@ -1,18 +1,16 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+export interface AnimatedListProps {
+  className?: string;
+  children: React.ReactNode;
+  delay?: number;
+}
 
 export const AnimatedList = React.memo(
-  ({
-    className,
-    children,
-    delay = 1000,
-  }: {
-    className?: string;
-    children: React.ReactNode;
-    delay?: number;
-  }) => {
+  ({ className, children, delay = 1000 }: AnimatedListProps) => {
     const [index, setIndex] = useState(0);
     const childrenArray = React.Children.toArray(children);
 

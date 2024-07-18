@@ -1,20 +1,25 @@
-import TechStack from "@/components/tech-stack";
+import Image from "next/image";
+import Link from "next/link";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
+import { Event } from "@/lib/events";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Event } from "@/lib/events";
-import { cn } from "@/lib/utils";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import RepoDownload from "@/components/repo-download";
+import TechStack from "@/components/tech-stack";
+import TemplatePreview from "@/components/template-preview";
 import TweetCard from "@/registry/components/magicui/tweet-card";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import Image from "next/image";
-import Link from "next/link";
+
+import { ComponentInstallation } from "./component-installation";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
-import { ComponentInstallation } from "./component-installation";
-import { CopyButton } from "./copy-button";
+import { CopyButton, CopyNpmCommandButton } from "./copy-button";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -40,6 +45,13 @@ const components = {
   AccordionItem,
   AccordionTrigger,
   TechStack,
+  RepoDownload,
+  TemplatePreview,
+  Image,
+  Tweet: ({ id }: { id: string }) => <TweetCard id={id} className="mx-auto" />,
+  ComponentPreview,
+  ComponentSource: (props: any) => <ComponentSource {...props} />,
+  ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -94,19 +106,12 @@ const components = {
       {...props}
     />
   ),
-  a: (props: any) => (
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <CustomLink
+      className={cn("font-medium underline underline-offset-4", className)}
       {...props}
-      className={"font-medium underline underline-offset-4"}
     />
   ),
-  Image,
-  Tweet: ({ id }: { id: string }) => (
-    <TweetCard id={id} className="not-prose mx-auto" />
-  ),
-  ComponentPreview,
-  ComponentSource: (props: any) => <ComponentSource {...props} />,
-  ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
@@ -114,10 +119,10 @@ const components = {
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 list-disc", className)} {...props} />
+    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 list-decimal", className)} {...props} />
+    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <li className={cn("mt-2", className)} {...props} />
@@ -129,7 +134,7 @@ const components = {
     />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="w-full overflow-y-auto">
+    <div className="my-6 w-full overflow-y-auto">
       <table className={cn("w-full", className)} {...props} />
     </div>
   ),
@@ -148,14 +153,14 @@ const components = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "whitespace-pre border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
         className,
       )}
       {...props}
     />
   ),
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <div
+    <h3
       className={cn(
         "font-heading mt-8 scroll-m-20 text-xl font-semibold tracking-tight",
         className,
@@ -169,13 +174,52 @@ const components = {
       {...props}
     />
   ),
-
+  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
+    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+  ),
+  TabsList: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsList>) => (
+    <TabsList
+      className={cn(
+        "w-full justify-start rounded-none border-b bg-transparent p-0",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  TabsTrigger: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsTrigger>) => (
+    <TabsTrigger
+      className={cn(
+        "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  TabsContent: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsContent>) => (
+    <TabsContent
+      className={cn(
+        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        className,
+      )}
+      {...props}
+    />
+  ),
   pre: ({
     className,
     __rawString__,
-    // __npmCommand__,
-    // __pnpmCommand__,
-    // __yarnCommand__,
+    __npmCommand__,
+    __pnpmCommand__,
+    __yarnCommand__,
+    __bunCommand__,
     __withMeta__,
     __src__,
     __event__,
@@ -185,6 +229,10 @@ const components = {
   }: React.HTMLAttributes<HTMLPreElement> & {
     // __style__?: Style["name"]
     __rawString__?: string;
+    __npmCommand__?: string;
+    __pnpmCommand__?: string;
+    __yarnCommand__?: string;
+    __bunCommand__?: string;
     __withMeta__?: boolean;
     __src__?: string;
     __event__?: Event["name"];
@@ -207,37 +255,44 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-        {/* {__npmCommand__ && __yarnCommand__ && __pnpmCommand__ && (
-          <CopyNpmCommandButton
-            commands={{
-              __npmCommand__,
-              __pnpmCommand__,
-              __yarnCommand__,
-            }}
-            className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-          />
-        )} */}
+        {__npmCommand__ &&
+          __yarnCommand__ &&
+          __pnpmCommand__ &&
+          __bunCommand__ && (
+            <CopyNpmCommandButton
+              commands={{
+                __npmCommand__,
+                __pnpmCommand__,
+                __yarnCommand__,
+                __bunCommand__,
+              }}
+              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
+            />
+          )}
       </>
     );
   },
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cn(
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        className,
+      )}
+      {...props}
+    />
+  ),
 };
 
 interface MDXProps {
   code: string;
+  className?: string;
 }
 
-export function Mdx({ code }: MDXProps) {
+export function Mdx({ code, className }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <article
-      className={cn(
-        "max-w-[120ch]",
-        `leading-tighter prose prose-gray tracking-tighter dark:prose-invert`,
-        `prose-pre:mb-4 prose-pre:mt-6 prose-pre:max-h-[650px] prose-pre:overflow-x-auto prose-pre:rounded-lg prose-pre:border prose-pre:px-0 prose-pre:py-4 prose-pre:text-xs prose-pre:tracking-tighter md:prose-pre:text-sm`,
-      )}
-    >
-      {/* @ts-ignore */}
+    <article className={cn("max-w-[120ch] mx-auto", className)}>
       <Component components={components} />
     </article>
   );

@@ -1,18 +1,21 @@
-import { Mdx } from "@/components/mdx-components";
-import { DocPager } from "@/components/pager";
-import SidebarCTA from "@/components/sidebar-cta";
-import { DashboardTableOfContents } from "@/components/toc";
-import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
+import { badgeVariants } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Mdx } from "@/components/mdx-components";
+import { DocPager } from "@/components/pager";
+
 import "@/styles/mdx.css";
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
-import { allDocs } from "contentlayer/generated";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
+import { allDocs } from "contentlayer/generated";
+
+import { Contribute } from "@/components/contribute";
+import { TableOfContents } from "@/components/toc";
 
 interface DocPageProps {
   params: {
@@ -92,10 +95,8 @@ export default async function DocPage({ params }: DocPageProps) {
     >
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
-            Docs
-          </div>
-          <ChevronRightIcon className="h-4 w-4" />
+          <div className="truncate">Docs</div>
+          <ChevronRightIcon className="size-4" />
           <div className="font-medium text-foreground">{doc.title}</div>
         </div>
         <div className="space-y-2">
@@ -118,7 +119,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 Docs
-                <ExternalLinkIcon className="h-3 w-3" />
+                <ExternalLinkIcon className="size-3" />
               </Link>
             )}
             {doc.links?.api && (
@@ -129,7 +130,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
               >
                 API Reference
-                <ExternalLinkIcon className="h-3 w-3" />
+                <ExternalLinkIcon className="size-3" />
               </Link>
             )}
           </div>
@@ -143,9 +144,9 @@ export default async function DocPage({ params }: DocPageProps) {
         <div className="hidden text-sm xl:block">
           <div className="sticky top-16 -mt-10 pt-4">
             <ScrollArea className="pb-10">
-              <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
-                <DashboardTableOfContents toc={toc} />
-                <SidebarCTA />
+              <div className="space-y-4 sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] py-12">
+                <TableOfContents toc={toc} />
+                <Contribute doc={doc} />
               </div>
             </ScrollArea>
           </div>

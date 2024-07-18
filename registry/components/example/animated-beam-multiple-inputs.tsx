@@ -1,8 +1,9 @@
 "use client";
 
+import React, { forwardRef, useRef } from "react";
+
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
-import React, { forwardRef, useRef } from "react";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -12,7 +13,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-border bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className,
       )}
     >
@@ -21,7 +22,13 @@ const Circle = forwardRef<
   );
 });
 
-export default function AnimatedBeamMultipleInputDemo() {
+Circle.displayName = "Circle";
+
+export default function AnimatedBeamMultipleOutputDemo({
+  className,
+}: {
+  className?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const div1Ref = useRef<HTMLDivElement>(null);
   const div2Ref = useRef<HTMLDivElement>(null);
@@ -33,10 +40,13 @@ export default function AnimatedBeamMultipleInputDemo() {
 
   return (
     <div
-      className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl"
+      className={cn(
+        "relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl",
+        className,
+      )}
       ref={containerRef}
     >
-      <div className="flex h-full w-full flex-row items-stretch justify-between gap-10">
+      <div className="flex size-full flex-row items-stretch justify-between gap-10 max-w-lg">
         <div className="flex flex-col justify-center gap-2">
           <Circle ref={div1Ref}>
             <Icons.googleDrive />
@@ -55,7 +65,7 @@ export default function AnimatedBeamMultipleInputDemo() {
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
-          <Circle ref={div6Ref} className="h-16 w-16">
+          <Circle ref={div6Ref} className="size-16">
             <Icons.openai />
           </Circle>
         </div>

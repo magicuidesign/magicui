@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 // TODO: Extract this to a shared package.
 export const registryItemSchema = z.object({
@@ -7,28 +7,34 @@ export const registryItemSchema = z.object({
   devDependencies: z.array(z.string()).optional(),
   registryDependencies: z.array(z.string()).optional(),
   files: z.array(z.string()),
-  type: z.enum(["components:ui", "components:component", "components:example", "components:magicui", "components:blocks",]),
-})
+  type: z.enum([
+    "components:ui",
+    "components:component",
+    "components:example",
+    "components:magicui",
+    "components:blocks",
+  ]),
+});
 
-export const registryIndexSchema = z.array(registryItemSchema)
+export const registryIndexSchema = z.array(registryItemSchema);
 
 export const registryItemWithContentSchema = registryItemSchema.extend({
   files: z.array(
     z.object({
       name: z.string(),
       content: z.string(),
-    })
+    }),
   ),
-})
+});
 
-export const registryWithContentSchema = z.array(registryItemWithContentSchema)
+export const registryWithContentSchema = z.array(registryItemWithContentSchema);
 
 export const stylesSchema = z.array(
   z.object({
     name: z.string(),
     label: z.string(),
-  })
-)
+  }),
+);
 
 export const registryBaseColorSchema = z.object({
   inlineColors: z.object({
@@ -41,4 +47,4 @@ export const registryBaseColorSchema = z.object({
   }),
   inlineColorsTemplate: z.string(),
   cssVarsTemplate: z.string(),
-})
+});

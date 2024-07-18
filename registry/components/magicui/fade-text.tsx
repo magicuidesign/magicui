@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
 import { useMemo } from "react";
+import { motion, Variants } from "framer-motion";
 
 type FadeTextProps = {
   className?: string;

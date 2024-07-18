@@ -6,27 +6,51 @@ author: Bankkroll
 published: true
 ---
 
-<ComponentPreview name="confetti-hover" />
+<ComponentPreview name="confetti-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 <Steps>
 
-### Installation
-
-The confetti is built on canvas confetti.
+<Step>Run the following command:</Step>
 
 ```bash
-npm install --save canvas-confetti
+npx magicui-cli add confetti
 ```
 
-Copy and paste the following code into your project.
+</Steps>
 
-```text
-components/magicui/confetti.tsx
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install canvas-confetti
 ```
+
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="confetti" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Examples
 

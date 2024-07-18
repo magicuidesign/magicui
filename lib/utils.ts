@@ -1,10 +1,20 @@
+import { Metadata } from "next";
 import { env } from "@/env.mjs";
 import clsx, { ClassValue } from "clsx";
-import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+export function humanize(name: string): string {
+  return name
+    .replace(/-/g, " ")
+    .replace(/([A-Z])/g, " $1")
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase())
+    .join(" ");
 }
 
 export const truncate = (str: string | null, length: number) => {

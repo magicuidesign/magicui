@@ -1,0 +1,80 @@
+---
+title: File Tree
+date: 2023-07-20
+description: A component used to showcase the folder and file structure of a directory.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="file-tree-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add file-tree
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="file-tree" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+### Tree
+
+| Prop                   | Type                | Default | Description                                                  |
+| ---------------------- | ------------------- | ------- | ------------------------------------------------------------ |
+| `initialSelectedId`    | `string`            | -       | The ID of the initially selected item.                       |
+| `indicator`            | `boolean`           | `true`  | Whether to show the tree indicator line.                     |
+| `elements`             | `TreeViewElement[]` | -       | An array of tree view elements to render.                    |
+| `initialExpandedItems` | `string[]`          | -       | An array of IDs for items that should be initially expanded. |
+| `openIcon`             | `React.ReactNode`   | -       | Custom icon for open folders.                                |
+| `closeIcon`            | `React.ReactNode`   | -       | Custom icon for closed folders.                              |
+| `dir`                  | `"rtl" \| "ltr"`    | `"ltr"` | The text direction of the tree.                              |
+
+### Folder
+
+| Prop           | Type      | Default | Description                               |
+| -------------- | --------- | ------- | ----------------------------------------- |
+| `element`      | `string`  | -       | The name of the folder.                   |
+| `value`        | `string`  | -       | The unique identifier for the folder.     |
+| `isSelectable` | `boolean` | `true`  | Whether the folder can be selected.       |
+| `isSelect`     | `boolean` | -       | Whether the folder is currently selected. |
+
+### File
+
+| Prop           | Type              | Default | Description                             |
+| -------------- | ----------------- | ------- | --------------------------------------- |
+| `value`        | `string`          | -       | The unique identifier for the file.     |
+| `isSelectable` | `boolean`         | `true`  | Whether the file can be selected.       |
+| `isSelect`     | `boolean`         | -       | Whether the file is currently selected. |
+| `fileIcon`     | `React.ReactNode` | -       | Custom icon for the file.               |
+
+### CollapseButton
+
+| Prop        | Type                | Default | Description                                |
+| ----------- | ------------------- | ------- | ------------------------------------------ |
+| `elements`  | `TreeViewElement[]` | -       | An array of tree view elements to control. |
+| `expandAll` | `boolean`           | `false` | Whether to expand all elements initially.  |

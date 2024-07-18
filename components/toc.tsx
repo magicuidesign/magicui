@@ -1,30 +1,31 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
+
 import type { TableOfContents } from "@/lib/toc";
 import { useMounted } from "@/lib/use-mounted";
 import { cn } from "@/lib/utils";
-import { useEffect, useMemo, useState } from "react";
 
 interface TocProps {
   toc: TableOfContents;
 }
 
-export function DashboardTableOfContents({ toc }: TocProps) {
-const refinedToc = useMemo(() => {
-  if (!toc.items || toc.items.length === 0) {
+export function TableOfContents({ toc }: TocProps) {
+  const refinedToc = useMemo(() => {
+    if (!toc.items || toc.items.length === 0) {
+      return toc;
+    }
+
+    const [linksInSteps, ...rest] = toc.items;
+
+    if (linksInSteps.items && linksInSteps.items.length > 0) {
+      return {
+        items: [...linksInSteps.items, ...rest],
+      };
+    }
+
     return toc;
-  }
-
-  const [linksInSteps, ...rest] = toc.items;
-
-  if (linksInSteps.items && linksInSteps.items.length > 0) {
-    return {
-      items: [...linksInSteps.items, ...rest]
-    };
-  }
-
-  return toc;
-}, [toc]);
+  }, [toc]);
 
   const itemIds: string[] = useMemo(
     () =>

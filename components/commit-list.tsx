@@ -1,9 +1,10 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
+import { formatDistanceToNow } from "date-fns";
 import { toast } from "sonner";
+
+import { Badge } from "@/components/ui/badge";
 
 export default function CommitList({
   repo,
@@ -47,7 +48,7 @@ export default function CommitList({
   return (
     <ul>
       {commits.map((commit, index) => (
-        <li key={index} className="not-prose">
+        <li key={index}>
           {commit?.commit?.message}{" "}
           <Badge className="ml-2">
             {formatDistanceToNow(new Date(commit?.commit?.author?.date), {

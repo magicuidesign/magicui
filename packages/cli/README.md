@@ -1,17 +1,17 @@
 # magicui
+
 A CLI for adding magic ui components to your project. Superset of shadcn-ui.
 
 ```bash
- ##   ##                      ##                  ##   ##   ####   
- ### ###                                          ##   ##    ##    
- #######   ####     ### ##   ###      ####        ##   ##    ##    
- #######      ##   ##  ##     ##     ##  ##       ##   ##    ##    
- ## # ##   #####   ##  ##     ##     ##           ##   ##    ##    
- ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##    
- ##   ##   #####       ##    ####     ####         #####    ####   
-                   #####    
-```                                   
-
+ ##   ##                      ##                  ##   ##   ####
+ ### ###                                          ##   ##    ##
+ #######   ####     ### ##   ###      ####        ##   ##    ##
+ #######      ##   ##  ##     ##     ##  ##       ##   ##    ##
+ ## # ##   #####   ##  ##     ##     ##           ##   ##    ##
+ ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##
+ ##   ##   #####       ##    ####     ####         #####    ####
+                   #####
+```
 
 ## Usage
 
@@ -23,16 +23,16 @@ The `init` command installs dependencies (`framer-motion`), adds the `cn` util, 
 npx magicui-cli init
 ```
 
+### shadcn-ui project
 
-### shadcn-ui project 
 If your project is already using the `shadcn-ui`, don't worry! You can still use magicui.
-
 
 ```bash
 npx shadcn-ui init
 ```
 
-Just add these two lines to your `components,json` file:
+Just add these two lines to your `components.json` file:
+
 ```diff
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -71,16 +71,16 @@ npx magicui-cli add bento-grid
 ```
 
 You can also use the optional `--all` flag to install all components:
+
 ```bash
 npx magicui-cli add --all
 ```
 
 You can also use the `--exmaple` flag to select and install example & demo you saw on webside:
+
 ```bash
 npx magicui-cli add --example
 ```
-
-
 
 You can also run the command without any arguments to view a list of all available components:
 
@@ -95,6 +95,7 @@ You can also use the same CLI for selecting & installing shadcn-ui components:
 ```bash
 npx magicui-cli add --shadcn button
 ```
+
 ```bash
 npx magicui-cli add --shadcn --all
 ```

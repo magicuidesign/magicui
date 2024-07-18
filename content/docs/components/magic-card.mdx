@@ -1,57 +1,57 @@
 ---
 title: Magic Card
-date: 2023-07-02
+date: 2024-07-07
 description: A spotlight effect that follows your mouse cursor and highlights borders on hover.
 author: dillionverma
 published: true
-video: https://cdn.magicui.design/magic-card.mp4
 ---
 
 <ComponentPreview name="magic-card-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add magic-card
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
 <Steps>
 
-### Installation
-
-Copy and paste the following code into your project.
-
-```text
-components/magicui/magic-card.tsx
-```
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="magic-card" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
 
-## Examples
+</TabsContent>
 
-### Radial Gradient border
-
-<ComponentPreview name="magic-card-gradient" />
+</Tabs>
 
 ## Props
 
-### MagicContainer
-
-| Prop name | Type      | Default | Description                             |
-| --------- | --------- | ------- | --------------------------------------- |
-| children  | ReactNode | -       | The children to render                  |
-| className | string    | -       | The className to apply to the container |
-
 ### MagicCard
 
-| Prop name      | Type      | Default                | Description                        |
-| -------------- | --------- | ---------------------- | ---------------------------------- |
-| children       | ReactNode | -                      | The children to render             |
-| className      | string    | -                      | The className to apply to the card |
-| maskSize       | number    | 200                    | The size of the spotlight mask     |
-| borderColor    | string    | rgba(120,119,198)      | The color of the border            |
-| borderWidth    | number    | 1                      | The width of the border            |
-| borderRadius   | number    | 16                     | The radius of the border           |
-| spotlight      | boolean   | true                   | Whether to show the spotlight      |
-| spotlightColor | string    | rgba(120,119,198,0.08) | The color of the spotlight         |
-| isolated       | boolean   | true                   | Whether to isolate the card        |
-| background     | string    | rgba(120,119,198, 0.2) | The background of the card         |
+| Prop name            | Type            | Default   | Description                                 |
+| -------------------- | --------------- | --------- | ------------------------------------------- |
+| children             | React.ReactNode | -         | The content to be rendered inside the card  |
+| className            | string          | -         | Additional CSS classes to apply to the card |
+| gradientSize         | number          | 200       | Size of the gradient effect                 |
+| gradientColor        | string          | "#262626" | Color of the gradient effect                |
+| gradientOpacity      | number          | -         | Opacity of the gradient effect              |
+| gradientTransparency | number          | 80        | Transparency level of the gradient effect   |
 
 ## Credits
 

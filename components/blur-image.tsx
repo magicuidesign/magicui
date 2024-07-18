@@ -1,7 +1,7 @@
 "use client";
 
-import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
+import Image, { ImageProps } from "next/image";
 
 export default function BlurImage(props: ImageProps) {
   const [loading, setLoading] = useState(true);

@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { Doc } from "@/.contentlayer/generated";
-import { buttonVariants } from "@/components/ui/button";
-import { docsConfig } from "@/config/docs";
-import { cn } from "@/lib/utils";
 import { NavItem, NavItemWithChildren } from "@/types";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
+
+import { docsConfig } from "@/config/docs";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 interface DocsPagerProps {
   doc: Doc;
@@ -24,7 +25,7 @@ export function DocPager({ doc }: DocsPagerProps) {
           href={pager.prev.href}
           className={buttonVariants({ variant: "outline" })}
         >
-          <ChevronLeftIcon className="mr-2 h-4 w-4" />
+          <ChevronLeftIcon className="mr-2 size-4" />
           {pager.prev.title}
         </Link>
       )}
@@ -34,7 +35,7 @@ export function DocPager({ doc }: DocsPagerProps) {
           className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
         >
           {pager.next.title}
-          <ChevronRightIcon className="ml-2 h-4 w-4" />
+          <ChevronRightIcon className="ml-2 size-4" />
         </Link>
       )}
     </div>

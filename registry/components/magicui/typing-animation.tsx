@@ -1,7 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface TypingAnimationProps {
   text: string;
@@ -20,7 +21,7 @@ export default function TypingAnimation({
   useEffect(() => {
     const typingEffect = setInterval(() => {
       if (i < text.length) {
-        setDisplayedText((prevState) => prevState + text.charAt(i));
+        setDisplayedText(text.substring(0, i + 1));
         setI(i + 1);
       } else {
         clearInterval(typingEffect);

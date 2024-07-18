@@ -8,8 +8,8 @@ import {
   fetchTreeFromShadcn,
   getItemTargetPath,
   getRegistryBaseColor,
-  getRegistryIndexShadcn,
   getRegistryIndexMagicUI,
+  getRegistryIndexShadcn,
 } from "@/src/utils/registry";
 import { registryIndexSchema } from "@/src/utils/registry/schema";
 import { transform } from "@/src/utils/transformers";
@@ -99,7 +99,7 @@ export const diff = new Command()
             });
           }
         }
-        
+
         // Check for updates in shadcn primitives.
         const componentsShadcnWithUpdates = [];
         for (const component of projectShadcnComponents) {

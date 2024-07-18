@@ -1,8 +1,10 @@
 "use client";
 
-import { SidebarNavItem } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SidebarNavItem } from "@/types";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
 
@@ -14,9 +16,9 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname();
 
   return items.length ? (
-    <div className="w-full">
+    <div className="w-full pb-20">
       {items.map((item, index) => (
-        <div key={index} className={cn("pb-4")}>
+        <div key={index} className={"pb-4"}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
@@ -45,6 +47,7 @@ export function DocsSidebarNavItems({
           <Link
             key={index}
             href={item.href}
+            onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
               "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
               item.disabled && "cursor-not-allowed opacity-60",
@@ -61,6 +64,12 @@ export function DocsSidebarNavItems({
                 {item.label}
               </span>
             )}
+            {item.paid && (
+              <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                Paid
+              </span>
+            )}
+            {item.external && <ExternalLinkIcon className="ml-2 size-4" />}
           </Link>
         ) : (
           <span
@@ -74,6 +83,11 @@ export function DocsSidebarNavItems({
             {item.label && (
               <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
                 {item.label}
+              </span>
+            )}
+            {item.paid && (
+              <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                Paid
               </span>
             )}
           </span>

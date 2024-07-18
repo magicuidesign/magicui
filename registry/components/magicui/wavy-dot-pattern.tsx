@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { anime } from "react-anime";
+
+import { cn } from "@/lib/utils";
 
 interface WavyDotPatternProps {
   className?: string;

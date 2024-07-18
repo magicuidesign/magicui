@@ -1,7 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils";
 
 interface LetterPullupProps {
   className?: string;

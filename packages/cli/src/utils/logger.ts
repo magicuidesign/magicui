@@ -1,34 +1,32 @@
-import chalk from "chalk"
+import chalk from "chalk";
 import gradient from "gradient-string";
 
 export const logger = {
   error(...args: unknown[]) {
-    console.log(chalk.red(...args))
+    console.log(chalk.red(...args));
   },
   warn(...args: unknown[]) {
-    console.log(chalk.yellow(...args))
+    console.log(chalk.yellow(...args));
   },
   info(...args: unknown[]) {
-    console.log(chalk.cyan(...args))
+    console.log(chalk.cyan(...args));
   },
   success(...args: unknown[]) {
-    console.log(chalk.green(...args))
+    console.log(chalk.green(...args));
   },
   break() {
-    console.log("")
+    console.log("");
   },
-}
+};
 
-const TEXT = `                                                   
- ##   ##                      ##                  ##   ##   #### 
- ### ###                                          ##   ##    ##  
- #######   ####     ### ##   ###      ####        ##   ##    ##  
- #######      ##   ##  ##     ##     ##  ##       ##   ##    ##  
- ## # ##   #####   ##  ##     ##     ##           ##   ##    ##  
- ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##  
- ##   ##   #####       ##    ####     ####         #####    #### 
-                   #####                                         
-`
+const TEXT = `
+   __    __     ______     ______     __     ______        __  __     __    
+  /\\ "-./  \\   /\\  __ \\   /\\  ___\\   /\\ \\   /\\  ___\\      /\\ \\/\\ \\   /\\ \\   
+  \\ \\ \\-./\\ \\  \\ \\  __ \\  \\ \\ \\__ \\  \\ \\ \\  \\ \\ \\____     \\ \\ \\_\\ \\  \\ \\ \\  
+   \\ \\_\\ \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\  \\ \\_____\\     \\ \\_____\\  \\ \\_\\ 
+    \\/_/  \\/_/   \\/_/\\/_/   \\/_____/   \\/_/   \\/_____/      \\/_____/   \\/_/ 
+                                                                   
+`;
 
 const PRO = `
  ##   ##                      ##                  ##   ##   ####           ######                    
@@ -39,7 +37,7 @@ const PRO = `
  ##   ##  ##  ##    #####     ##     ##  ##       ##   ##    ##             ##       ##      ##  ##  
  ##   ##   #####       ##    ####     ####         #####    ####           ####     ####      ####   
                    #####                                                                           
-`
+`;
 
 const LOGO = `
         ...:::::::::::::::::::::::::::::::::::::::..        
@@ -72,25 +70,22 @@ const LOGO = `
    ::---------------:::::::::::::::::::::::::............   
     .::-----------:::::::::::::::::::::::::............     
        ..:::-----::::::::::::::::::::::::::::.......        
-`
+`;
 
 const theme = {
-  // blue: "#add7ff",
-  // cyan: "#89ddff",
-  // green: "#5de4c7",
-  magenta: "#fae4fc",
-  red: "#d0679d",
-  yellow: "#fffac2",
+  magenta: "#9E7AFF",
+  red: "#FE8BBB",
+  yellow: "#FFBD7A",
 };
 
 const printer = gradient(Object.values(theme));
 
-export const ASCII_TEXT = printer.multiline(TEXT)
-export const ASCII_LOGO = printer.multiline(LOGO)
-export const ASCII_PRO = printer.multiline(PRO)
+export const ASCII_TEXT = printer.multiline(TEXT);
+export const ASCII_LOGO = printer.multiline(LOGO);
+export const ASCII_PRO = printer.multiline(PRO);
 
 export const tryPro = `
-Try Magic UI Pro for more premium components & blocks.
+Try Magic UI Pro for ready-made templates and more.
  → https://pro.magicui.design
 `;
 
@@ -112,5 +107,4 @@ Go to Magic UI Pro website for auth secrets.
 
 `;
 
-
-export const ColorFullText = (string: string) => printer.multiline(string)
+export const ColorFullText = (string: string) => printer.multiline(string);

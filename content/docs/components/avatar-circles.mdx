@@ -8,23 +8,41 @@ published: true
 
 <ComponentPreview name="avatar-circles-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add avatar-circles
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
 <Steps>
 
-### Installation
-
-Copy and paste the following code into your project.
-
-```text
-components/magicui/avatar-circles.tsx
-```
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="avatar-circles" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
 </Steps>
+
+</TabsContent>
+
+</Tabs>
 
 ## Props
 
-| Prop        | Type            | Description                                        | Default |
-| ----------- | --------------- | -------------------------------------------------- | ------- |
-| className   | string          | The class name to be applied to the component      |         |
-| numPeople   | number          | The number appearing in the last circle            | 99      |
+| Prop      | Type   | Description                                   | Default |
+| --------- | ------ | --------------------------------------------- | ------- |
+| className | string | The class name to be applied to the component |         |
+| numPeople | number | The number appearing in the last circle       | 99      |
