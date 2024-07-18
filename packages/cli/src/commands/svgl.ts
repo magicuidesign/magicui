@@ -11,7 +11,7 @@ import {
 } from "@/src/utils/logger";
 import { getSvgByName, getSvgCategory, getSvgsList, type iSVG } from "@/src/utils/svg/get-svgs-list";
 import { getSvgFolderPath } from "@/src/utils/svg/path";
-import { renderSvg } from "@/src/utils/svg/svg-file-template";
+import { renderSvg } from "@/src/utils/svg/render";
 import chalk from "chalk";
 import { Command } from "commander";
 import { existsSync, promises as fs } from "node:fs";
@@ -140,7 +140,7 @@ export const svgl = new Command()
 
 
             for (const svg of selectedSvgsVar) {
-                const { name, content } = await renderSvg(svg);
+                const { name, content } = await renderSvg(svg, config.tsx);
 
                 const fileName = `${name}.${config.tsx ? "tsx" : "jsx"}`
 
