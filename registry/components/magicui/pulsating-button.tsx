@@ -1,77 +1,38 @@
-
 "use client";
 
 import React from "react";
 
-interface PulsatingButtonProps {
-  text: string;
-  pulseColor: string;
-  backgroundColor: string;
-  textColor: string;
-  animationDuration: string;
-  buttonWidth: string;
-  buttonHeight: string;
+import { cn } from "@/lib/utils";
+
+interface PulsatingButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  pulseColor?: string;
+  duration?: string;
 }
 
-export const PulsatingButton: React.FC<PulsatingButtonProps> = ({
-  text,
-  pulseColor,
-  backgroundColor,
-  textColor,
-  animationDuration,
-  buttonWidth,
-  buttonHeight
-}) => {
-  const pulseKeyframes = {
-    '--tw-pulse-color': pulseColor,
-    animation: `pulse ${animationDuration} linear infinite`,
-  };
-
+export default function PulsatingButton({
+  className,
+  children,
+  pulseColor = "#0096ff",
+  duration = "1.5s",
+  ...props
+}: PulsatingButtonProps) {
   return (
-    <div 
-      className="flex justify-center items-center"
+    <button
+      className={cn(
+        "relative text-center cursor-pointer flex justify-center items-center rounded-lg text-white dark:text-black bg-blue-500 dark:bg-blue-500 px-4 py-2",
+        className,
+      )}
+      style={
+        {
+          "--pulse-color": pulseColor,
+          "--duration": duration,
+        } as React.CSSProperties
+      }
+      {...props}
     >
-      <button
-        className="relative block text-center cursor-pointer flex justify-center items-center"
-        style={{
-          color: textColor,
-          backgroundColor: backgroundColor,
-          width: buttonWidth,
-          height: buttonHeight,
-          borderRadius: '12px',
-          ...pulseKeyframes,
-        }}
-      >
-        <div>{text}</div>
-        <style jsx>{`
-          @keyframes pulse {
-            0% {
-              box-shadow: 0 0 0 0 rgba(var(--tw-pulse-color), 0);
-            }
-            50% {
-              box-shadow: 0 0 0 8px rgba(var(--tw-pulse-color), 0.5);
-            }
-            100% {
-              box-shadow: 0 0 0 0 rgba(var(--tw-pulse-color), 0);
-            }
-          }
-          button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            background: inherit;
-            animation: inherit;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-          }
-        `}</style>
-      </button>
-    </div>
+      <div className="relative z-10">{children}</div>
+      <div className="absolute top-1/2 left-1/2 size-full rounded-lg bg-inherit animate-pulse -translate-x-1/2 -translate-y-1/2" />
+    </button>
   );
-};
-
-export default PulsatingButton;
+}
