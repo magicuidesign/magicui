@@ -22,23 +22,23 @@ const Ripple = React.memo(function Ripple({
 
         return (
           <div
-          key={i}
-          className={`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`}
-          style={
-            {
-              width: `${size}px`,
-              height: `${size}px`,
-              opacity: opacity,
-              animationDelay: animationDelay,
-              borderStyle: borderStyle,
-              borderWidth: "1px",
-              borderColor: `rgba(var(--foreground-rgb), ${borderOpacity / 100})`,
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%) scale(1)',
-            } as CSSProperties
-          }
-        />
+            key={i}
+            className={`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`}
+            style={
+              {
+                width: `${size}px`,
+                height: `${size}px`,
+                opacity,
+                animationDelay,
+                borderStyle,
+                borderWidth: "1px",
+                borderColor: `hsl(var(--foreground), ${borderOpacity / 100})`,
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%) scale(1)",
+              } as CSSProperties
+            }
+          />
         );
       })}
     </div>
