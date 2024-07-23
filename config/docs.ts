@@ -257,6 +257,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Hyper Text",
+          href: `/docs/components/hyper-text`,
+          items: [],
+          label: "",
+        },
+        {
           title: "Word Rotate",
           href: `/docs/components/word-rotate`,
           items: [],
