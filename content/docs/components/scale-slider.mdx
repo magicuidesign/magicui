@@ -1,0 +1,57 @@
+---
+title: Scale Slider
+date: 2024-06-01
+description: An animated scale slider component for Magic UI
+author: mavdotso
+published: true
+---
+
+<ComponentPreview name="scale-slider-demo" />
+
+## Installation
+
+You can install the Scale Slider component using the Magic UI CLI:
+
+```bash
+npx magicui-cli add scale-slider
+```
+
+Alternatively, you can manually install the component:
+
+<Steps>
+  <Step>Copy and paste the following code into your project.</Step>
+  <ComponentSource name="scale-slider" />
+  <Step>Update the import paths to match your project setup.</Step>
+</Steps>
+
+Usage
+
+```tsx
+import ScaleSlider from "./scale-slider.tsx";
+
+function App() {
+  return (
+    <ScaleSlider
+      defaultValue={6}
+      minValue={1}
+      maxValue={10}
+      damping={20}
+      stiffness={300}
+    />
+  );
+}
+```
+
+## Props
+
+| Prop         | Type   | Description                                    | Default |
+| ------------ | ------ | ---------------------------------------------- | ------- |
+| defaultValue | number | The initial value of the slider                | 6       |
+| minValue     | number | The minimum value of the slider                | 1       |
+| maxValue     | number | The maximum value of the slider                | 10      |
+| damping      | number | Controls the damping of the spring animation   | 20      |
+| stiffness    | number | Controls the stiffness of the spring animation | 300     |
+
+## Credits
+
+- Credit to [@flornkm](https://x.com/flornkm)

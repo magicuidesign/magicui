@@ -262,6 +262,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/video-modal.tsx"],
   },
+  "scale-slider": {
+    name: "scale-slider",
+    type: "components:ui",
+    files: ["registry/components/magicui/scale-slider.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -948,6 +953,14 @@ const example: Registry = {
     files: ["registry/components/example/video-modal-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/video-modal-demo"),
+    ),
+  },
+  "scale-slider-demo": {
+    name: "scale-slider",
+    type: "components:example",
+    files: ["registry/components/example/scale-slider-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/scale-slider-demo"),
     ),
   },
 };
