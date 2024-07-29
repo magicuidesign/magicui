@@ -1,19 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface LetterPullupProps {
   className?: string;
   words: string;
   delay?: number;
+  as?: ElementType;
 }
 
 export default function LetterPullup({
   className,
   words,
   delay,
+  as = "h1"
 }: LetterPullupProps) {
   const letters = words.split("");
 
@@ -28,10 +32,12 @@ export default function LetterPullup({
     }),
   };
 
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+
   return (
     <div className="flex justify-center">
       {letters.map((letter, i) => (
-        <motion.h1
+        <MotionComponent
           key={i}
           variants={pullupVariant}
           initial="initial"
@@ -43,7 +49,7 @@ export default function LetterPullup({
           )}
         >
           {letter === " " ? <span>&nbsp;</span> : letter}
-        </motion.h1>
+        </MotionComponent>
       ))}
     </div>
   );

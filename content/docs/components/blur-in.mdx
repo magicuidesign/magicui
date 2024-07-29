@@ -42,9 +42,14 @@ npx magicui-cli add blur-in
 
 ## Props
 
-| Prop      | Type   | Description                                    | Default                                                                                      |
-| --------- | ------ | ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| className | string | The class name to be applied to the component  |                                                                                              |
-| duration  | number | Durations (seconds) for the animation          | 1                                                                                            |
-| word      | string | The word to be animated                        |                                                                                              |
-| variant   | object | Custom animation variants for motion component | `hidden: { filter: "blur(10px)", opacity: 0 }, visible: { filter: "blur(0px)", opacity: 1 }` |
+| Prop      | Type              | Description                                    | Default                                                                                      |
+| --------- | ----------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| className | string            | The class name to be applied to the component  |                                                                                              |
+| duration  | number            | Durations (seconds) for the animation          | 1                                                                                            |
+| word      | string            | The word to be animated                        |                                                                                              |
+| variant   | object            | Custom animation variants for motion component | `hidden: { filter: "blur(10px)", opacity: 0 }, visible: { filter: "blur(0px)", opacity: 1 }` |
+| as        | h1, h2, h3, h4, p | The element to render the text as              | h1                                                                                           |
+
+## Credits
+
+- Credit to [@CodeParth](https://twitter.com/Code_Parth) for the typography feature!

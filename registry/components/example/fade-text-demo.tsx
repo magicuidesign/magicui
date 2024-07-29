@@ -10,6 +10,7 @@ export default async function FadeTextDemo() {
           show: { transition: { delay: 0.2 } },
         }}
         text="Fade Up"
+        as="p"
       />
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
@@ -18,6 +19,7 @@ export default async function FadeTextDemo() {
           show: { transition: { delay: 0.4 } },
         }}
         text="Fade Right"
+        as="p"
       />
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
@@ -26,6 +28,7 @@ export default async function FadeTextDemo() {
           show: { transition: { delay: 0.6 } },
         }}
         text="Fade Down"
+        as="p"
       />
       <FadeText
         className="text-4xl font-bold text-black dark:text-white"
@@ -34,6 +37,7 @@ export default async function FadeTextDemo() {
           show: { transition: { delay: 0.8 } },
         }}
         text="Fade Left"
+        as="p"
       />
     </div>
   );

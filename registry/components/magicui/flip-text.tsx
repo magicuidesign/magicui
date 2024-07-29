@@ -1,8 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface SlightFlipProps {
   word: string;
@@ -10,6 +12,7 @@ interface SlightFlipProps {
   delayMultiple?: number;
   framerProps?: Variants;
   className?: string;
+  as?: ElementType;
 }
 
 export default function SlightFlip({
@@ -21,12 +24,15 @@ export default function SlightFlip({
     visible: { rotateX: 0, opacity: 1 },
   },
   className,
+  as = "h1",
 }: SlightFlipProps) {
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+
   return (
     <div className="flex justify-center space-x-2">
       <AnimatePresence mode="wait">
         {word.split("").map((char, i) => (
-          <motion.span
+          <MotionComponent
             key={i}
             initial="hidden"
             animate="visible"
@@ -36,7 +42,7 @@ export default function SlightFlip({
             className={cn("origin-center drop-shadow-sm", className)}
           >
             {char}
-          </motion.span>
+          </MotionComponent>
         ))}
       </AnimatePresence>
     </div>

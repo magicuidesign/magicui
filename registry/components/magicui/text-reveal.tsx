@@ -1,20 +1,26 @@
 "use client";
 
 import { FC, ReactNode, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface TextRevealByWordProps {
   text: string;
   className?: string;
+  as?: ElementType;
 }
 
 export const TextRevealByWord: FC<TextRevealByWordProps> = ({
   text,
   className,
+  as = "p"
 }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
+
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -28,7 +34,7 @@ export const TextRevealByWord: FC<TextRevealByWordProps> = ({
           "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-[1rem] py-[5rem]"
         }
       >
-        <p
+        <MotionComponent
           ref={targetRef}
           className={
             "flex flex-wrap p-5 text-2xl font-bold text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl"
@@ -43,7 +49,7 @@ export const TextRevealByWord: FC<TextRevealByWordProps> = ({
               </Word>
             );
           })}
-        </p>
+        </MotionComponent>
       </div>
     </div>
   );

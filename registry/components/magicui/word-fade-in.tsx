@@ -1,14 +1,17 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface WordFadeInProps {
   words: string;
   className?: string;
   delay?: number;
   variants?: Variants;
+  as?: ElementType;
 }
 
 export default function WordFadeIn({
@@ -23,11 +26,14 @@ export default function WordFadeIn({
     }),
   },
   className,
+  as = "h1",
 }: WordFadeInProps) {
   const _words = words.split(" ");
 
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+
   return (
-    <motion.h1
+    <MotionComponent
       variants={variants}
       initial="hidden"
       animate="visible"
@@ -41,6 +47,6 @@ export default function WordFadeIn({
           {word}{" "}
         </motion.span>
       ))}
-    </motion.h1>
+    </MotionComponent>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface GradualSpacingProps {
   text: string;
@@ -10,6 +12,7 @@ interface GradualSpacingProps {
   delayMultiple?: number;
   framerProps?: Variants;
   className?: string;
+  as?: ElementType;
 }
 
 export default function GradualSpacing({
@@ -21,12 +24,15 @@ export default function GradualSpacing({
     visible: { opacity: 1, x: 0 },
   },
   className,
+  as = "h1",
 }: GradualSpacingProps) {
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+
   return (
     <div className="flex justify-center space-x-1">
       <AnimatePresence>
         {text.split("").map((char, i) => (
-          <motion.h1
+          <MotionComponent
             key={i}
             initial="hidden"
             animate="visible"
@@ -36,7 +42,7 @@ export default function GradualSpacing({
             className={cn("drop-shadow-sm ", className)}
           >
             {char === " " ? <span>&nbsp;</span> : char}
-          </motion.h1>
+          </MotionComponent>
         ))}
       </AnimatePresence>
     </div>

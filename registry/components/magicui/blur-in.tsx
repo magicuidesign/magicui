@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface BlurIntProps {
   word: string;
@@ -12,16 +14,19 @@ interface BlurIntProps {
     visible: { filter: string; opacity: number };
   };
   duration?: number;
+  as?: ElementType;
 }
-const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
+const BlurIn = ({ word, className, variant, duration = 1, as = "h1" }: BlurIntProps) => {
   const defaultVariants = {
     hidden: { filter: "blur(10px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
   };
   const combinedVariants = variant || defaultVariants;
 
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+
   return (
-    <motion.h1
+    <MotionComponent
       initial="hidden"
       animate="visible"
       transition={{ duration }}
@@ -32,7 +37,7 @@ const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
       )}
     >
       {word}
-    </motion.h1>
+    </MotionComponent>
   );
 };
 

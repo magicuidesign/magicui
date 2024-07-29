@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
 interface WordPullUpProps {
   words: string;
@@ -10,6 +12,7 @@ interface WordPullUpProps {
   wrapperFramerProps?: Variants;
   framerProps?: Variants;
   className?: string;
+  as?: ElementType;
 }
 
 export default function WordPullUp({
@@ -28,9 +31,12 @@ export default function WordPullUp({
     show: { y: 0, opacity: 1 },
   },
   className,
+  as = "h1"
 }: WordPullUpProps) {
+  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+
   return (
-    <motion.h1
+    <MotionComponent
       variants={wrapperFramerProps}
       initial="hidden"
       animate="show"
@@ -48,6 +54,6 @@ export default function WordPullUp({
           {word === "" ? <span>&nbsp;</span> : word}
         </motion.span>
       ))}
-    </motion.h1>
+    </MotionComponent>
   );
 }

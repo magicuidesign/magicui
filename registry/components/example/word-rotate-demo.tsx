@@ -5,6 +5,7 @@ export default async function WordRotateDemo() {
     <WordRotate
       className="text-4xl font-bold text-black dark:text-white"
       words={["Word", "Rotate"]}
+      as="h1"
     />
   );
 }
