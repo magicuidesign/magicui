@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, HTMLMotionProps, motion, ForwardRefComponent } from "framer-motion";
+import {
+  AnimatePresence,
+  ForwardRefComponent,
+  HTMLMotionProps,
+  motion,
+} from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -29,7 +34,10 @@ export default function WordRotate({
 }: WordRotateProps) {
   const [index, setIndex] = useState(0);
 
-  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+  const MotionComponent = motion[as] as ForwardRefComponent<
+    HTMLElement,
+    HTMLMotionProps<ElementType>
+  >;
 
   useEffect(() => {
     const interval = setInterval(() => {

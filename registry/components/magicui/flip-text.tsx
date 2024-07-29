@@ -1,6 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
+import {
+  AnimatePresence,
+  ForwardRefComponent,
+  HTMLMotionProps,
+  motion,
+  Variants,
+} from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -26,7 +32,10 @@ export default function SlightFlip({
   className,
   as = "h1",
 }: SlightFlipProps) {
-  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+  const MotionComponent = motion[as] as ForwardRefComponent<
+    HTMLElement,
+    HTMLMotionProps<ElementType>
+  >;
 
   return (
     <div className="flex justify-center space-x-2">

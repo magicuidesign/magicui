@@ -1,6 +1,11 @@
 "use client";
 
-import { motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
+import {
+  ForwardRefComponent,
+  HTMLMotionProps,
+  motion,
+  Variants,
+} from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -30,7 +35,10 @@ export default function WordFadeIn({
 }: WordFadeInProps) {
   const _words = words.split(" ");
 
-  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+  const MotionComponent = motion[as] as ForwardRefComponent<
+    HTMLElement,
+    HTMLMotionProps<ElementType>
+  >;
 
   return (
     <MotionComponent

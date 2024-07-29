@@ -352,9 +352,9 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Pulsating Button",
-          href:'/docs/components/pulsating-button',
+          href: "/docs/components/pulsating-button",
           items: [],
-          label: "New"
+          label: "New",
         },
       ],
     },

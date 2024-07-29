@@ -1,7 +1,13 @@
 "use client";
 
 import { FC, ReactNode, useRef } from "react";
-import { motion, useScroll, useTransform, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
+import {
+  ForwardRefComponent,
+  HTMLMotionProps,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -16,11 +22,14 @@ interface TextRevealByWordProps {
 export const TextRevealByWord: FC<TextRevealByWordProps> = ({
   text,
   className,
-  as = "p"
+  as = "p",
 }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
 
-  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+  const MotionComponent = motion[as] as ForwardRefComponent<
+    HTMLElement,
+    HTMLMotionProps<ElementType>
+  >;
 
   const { scrollYProgress } = useScroll({
     target: targetRef,

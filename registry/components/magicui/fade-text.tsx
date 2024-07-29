@@ -1,7 +1,12 @@
 "use client";
 
 import { useMemo } from "react";
-import { motion, Variants, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
+import {
+  ForwardRefComponent,
+  HTMLMotionProps,
+  motion,
+  Variants,
+} from "framer-motion";
 
 type ElementType = "h1" | "h2" | "h3" | "h4" | "p";
 
@@ -50,7 +55,10 @@ export function FadeText({
     };
   }, [directionOffset, axis, framerProps]);
 
-  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+  const MotionComponent = motion[as] as ForwardRefComponent<
+    HTMLElement,
+    HTMLMotionProps<ElementType>
+  >;
 
   return (
     <motion.div

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, ForwardRefComponent, HTMLMotionProps } from "framer-motion";
+import { ForwardRefComponent, HTMLMotionProps, motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ export default function LetterPullup({
   className,
   words,
   delay,
-  as = "h1"
+  as = "h1",
 }: LetterPullupProps) {
   const letters = words.split("");
 
@@ -32,7 +32,10 @@ export default function LetterPullup({
     }),
   };
 
-  const MotionComponent = motion[as] as ForwardRefComponent<HTMLElement, HTMLMotionProps<ElementType>>;
+  const MotionComponent = motion[as] as ForwardRefComponent<
+    HTMLElement,
+    HTMLMotionProps<ElementType>
+  >;
 
   return (
     <div className="flex justify-center">
