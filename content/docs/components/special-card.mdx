@@ -1,0 +1,68 @@
+---
+title: Special Card
+date: 2024-07-30
+description: A special card component with animated hover effects.
+author: Mihir
+published: true
+---
+
+<ComponentPreview name="special-card-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+pnpm add styled-components @types/styled-components
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="special-card" />
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+</TabsContent>
+</Tabs>
+
+##Usage
+
+import SpecialCard from '@/components/magicui/SpecialCard';
+
+const cardData = {
+  coverImage: 'cover.jpg',
+  titleImage: 'title.png',
+  characterImage: 'character.png',
+};
+
+export default function SpecialCardDemo() {
+  return <SpecialCard card={cardData} />;
+}
+
+## Props
+
+##SpecialCard
+
+| Prop          | Type      | Description                                        | Default                                  |
+| ------------- | ------    | -------------------------------------------------- | ---------------------------------------- |
+| card          | CardProps | The data for the card including images             | -                                        |
+
+## CardProps
+
+| Prop             | Type   | Description                           | Default |
+| ---------------- | ------ | ------------------------------------- | ------- |
+| coverImage       | string | URL or path to the cover image.       | -       |
+| titleImage       | string | URL or path to the title image.       | -       |
+| characterImage   | string | URL or path to the character image.   | -       |
+
+
+## Credits
+
+- Credit to [@MihirJaiswal](https://github.com/MihirJaiswal)

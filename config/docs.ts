@@ -218,6 +218,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Special Card",
+          href: `/docs/components/special-card`,
+          items: [],
+          label: "New"
+        },
       ],
     },
     {

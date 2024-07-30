@@ -244,6 +244,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/blur-fade.tsx"],
   },
+  "special-card": {
+    name: "special-card",
+    type: "components:magicui",
+    files: ["registry/components/magicui/special-card.tsx"],
+  }
 };
 
 const example: Registry = {
@@ -889,6 +894,14 @@ const example: Registry = {
     files: ["registry/components/example/blur-fade-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/blur-fade-text-demo"),
+    ),
+  },
+  "special-card-demo": {
+    name: "special-card-demo",
+    type: "components:example",
+    files: ["registry/components/example/special-card-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/special-card-demo"),
     ),
   },
 };
