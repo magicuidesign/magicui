@@ -6,9 +6,9 @@ const specialcarddemo = () => {
     <div>
         <SpecialCard
         card={{
-        coverImage: 'https://github.com/MihirJaiswal/hero-hq/blob/main/public/spidermanposter.jpg',
-        titleImage:'https://github.com/MihirJaiswal/hero-hq/blob/main/public/pngwing1.png',
-        characterImage:'https://github.com/MihirJaiswal/hero-hq/blob/main/public/spidermanpng.png'
+        coverImage: 'https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanposter.jpg',
+        titleImage:'https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/pngwing1.png',
+        characterImage:'https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanpng.png'
         }}
         />
     </div>
