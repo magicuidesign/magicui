@@ -1,0 +1,48 @@
+---
+title: Animated Text
+date: 2024-7-6
+description: Animated Text component allows you to display animated text with a customizable font size, animation delay, and styling.
+author: Orace227
+published: true
+---
+
+<ComponentPreview name="animated-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add animated-text
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-text" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type               | Description                                                                              | Default         |
+| ----------- | ------------------ | ---------------------------------------------------------------------------------------- | --------------- |
+| `text`      | `string`           | The text to display and animate.                                                         | `"Hello world"` |
+| `className` | `string`           | Additional classes to apply to the text element.                                         | `""`            |
+| `delay`     | `number`           | The delay in milliseconds before the animation starts.                                   | `500`           |
+| `fontSize`  | `string \| number` | The font size of the text, can be in any valid CSS unit or a number representing pixels. | `"2rem"`        |

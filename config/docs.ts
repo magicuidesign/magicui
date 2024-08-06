@@ -235,6 +235,12 @@ export const docsConfig: DocsConfig = {
       title: "Text Animations",
       items: [
         {
+          title: "animated text",
+          href: `/docs/components/animated-text`,
+          items: [],
+          label: "New",
+      },
+        {
           title: "Number Ticker",
           href: `/docs/components/number-ticker`,
           items: [],
