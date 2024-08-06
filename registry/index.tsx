@@ -3,6 +3,11 @@ import * as React from "react";
 import { Registry } from "@/registry/schema";
 
 const ui: Registry = {
+  "animated-text": {
+    name: "animated-text",
+    type: "components:magicui",
+    files: ["registry/components/magicui/animated-text.tsx"],
+  },
   "magic-card": {
     name: "magic-card",
     type: "components:magicui",
@@ -252,6 +257,15 @@ const ui: Registry = {
 };
 
 const example: Registry = {
+  "animated-text-demo": {
+    name: "animated-text-demo",
+    type: "components:example",
+    registryDependencies: ["animated-text"],
+    files: ["registry/components/example/animated-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/animated-text-demo"),
+    ),
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     type: "components:example",
@@ -261,6 +275,7 @@ const example: Registry = {
       () => import("@/registry/components/example/magic-card-demo"),
     ),
   },
+
   "neon-gradient-card-demo": {
     name: "neon-gradient-card-demo",
     type: "components:example",
