@@ -15,7 +15,8 @@ import type {
   Options as ConfettiOptions,
 } from "canvas-confetti";
 
-import { Button, ButtonProps } from "@/components/ui/button";
+import { Button } from "~/components/ui/button";
+import type { ButtonProps } from "~/components/ui/button";
 
 type Api = {
   fire: (options?: ConfettiOptions) => void;
@@ -43,18 +44,18 @@ const Confetti = forwardRef<ConfettiRef, Props>((props, ref) => {
   const instanceRef = useRef<ConfettiInstance | null>(null); // confetti instance
 
   const canvasRef = useCallback(
-    // https://react.dev/reference/react-dom/components/common#ref-callback
-    // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
+        // https://react.dev/reference/react-dom/components/common#ref-callback
+        // https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
     (node: HTMLCanvasElement) => {
       if (node !== null) {
-        // <canvas> is mounted => create the confetti instance
+         // <canvas> is mounted => create the confetti instance
         if (instanceRef.current) return; // if not already created
         instanceRef.current = confetti.create(node, {
           ...globalOptions,
           resize: true,
         });
       } else {
-        // <canvas> is unmounted => reset and destroy instanceRef
+                // <canvas> is unmounted => reset and destroy instanceRef
         if (instanceRef.current) {
           instanceRef.current.reset();
           instanceRef.current = null;
@@ -66,7 +67,11 @@ const Confetti = forwardRef<ConfettiRef, Props>((props, ref) => {
 
   // `fire` is a function that calls the instance() with `opts` merged with `options`
   const fire = useCallback(
-    (opts = {}) => instanceRef.current?.({ ...options, ...opts }),
+    (opts = {}) => {
+      if (instanceRef.current) {
+        void instanceRef.current({ ...options, ...opts });
+      }
+    },
     [options],
   );
 
@@ -81,7 +86,7 @@ const Confetti = forwardRef<ConfettiRef, Props>((props, ref) => {
 
   useEffect(() => {
     if (!manualstart) {
-      fire();
+      void fire();
     }
   }, [manualstart, fire]);
 
@@ -93,9 +98,10 @@ const Confetti = forwardRef<ConfettiRef, Props>((props, ref) => {
   );
 });
 
-interface ConfettiButtonProps extends ButtonProps {
-  options?: ConfettiOptions &
-    ConfettiGlobalOptions & { canvas?: HTMLCanvasElement };
+Confetti.displayName = 'Confetti';
+
+export interface ConfettiButtonProps extends ButtonProps {
+  options?: ConfettiOptions & ConfettiGlobalOptions & { canvas?: HTMLCanvasElement };
   children?: React.ReactNode;
 }
 
@@ -104,7 +110,7 @@ function ConfettiButton({ options, children, ...props }: ConfettiButtonProps) {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
-    confetti({
+    void confetti({
       ...options,
       origin: {
         x: x / window.innerWidth,

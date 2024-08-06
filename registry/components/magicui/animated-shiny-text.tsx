@@ -1,4 +1,4 @@
-import { CSSProperties, FC, ReactNode } from "react";
+import type { CSSProperties, FC, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
