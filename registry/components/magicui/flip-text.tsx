@@ -4,7 +4,7 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-interface SlightFlipProps {
+interface FlipTextProps {
   word: string;
   duration?: number;
   delayMultiple?: number;
@@ -12,7 +12,7 @@ interface SlightFlipProps {
   className?: string;
 }
 
-export default function SlightFlip({
+export default function FlipText({
   word,
   duration = 0.5,
   delayMultiple = 0.08,
@@ -21,7 +21,7 @@ export default function SlightFlip({
     visible: { rotateX: 0, opacity: 1 },
   },
   className,
-}: SlightFlipProps) {
+}: FlipTextProps) {
   return (
     <div className="flex justify-center space-x-2">
       <AnimatePresence mode="wait">
