@@ -44,17 +44,22 @@ export default function TextUnderline({
   };
 
   return (
-    <motion.span
-      className={cn(
-        "bg-no-repeat !inline bg-right-bottom transition-[background-size] ease-linear hover:bg-left-bottom",
-        className,
-      )}
-      style={backgroundStyle}
+    <motion.div
+      whileHover="hover"
       variants={textVariants}
       initial="initial"
-      whileHover="hover"
+      animate="initial"
     >
-      {word}
-    </motion.span>
+      <motion.span
+        className={cn(
+          "bg-no-repeat !inline bg-right-bottom transition-[background-size] ease-linear hover:bg-left-bottom",
+          className,
+        )}
+        style={backgroundStyle}
+        variants={textVariants}
+      >
+        {word}
+      </motion.span>
+    </motion.div>
   );
 }
