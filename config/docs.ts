@@ -334,6 +334,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Text Underline",
+          href: `/docs/components/text-underline`,
+          items: [],
+          label: "New",
+        }
       ],
     },
     {
@@ -358,9 +364,9 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Pulsating Button",
-          href:'/docs/components/pulsating-button',
+          href: "/docs/components/pulsating-button",
           items: [],
-          label: "New"
+          label: "New",
         },
       ],
     },
