@@ -2,6 +2,8 @@
 
 import { motion, type AnimationProps } from "framer-motion";
 
+import { cn } from "@/lib/utils";
+
 const animationProps = {
   initial: { "--x": "100%", scale: 0.8 },
   animate: { "--x": "-100%", scale: 1 },
@@ -22,12 +24,21 @@ const animationProps = {
     },
   },
 } as AnimationProps;
-
-const ShinyButton = ({ text = "shiny-button" }) => {
+interface ShinyButtonProps {
+  text: string;
+  className?: string;
+}
+const ShinyButton = ({
+  text = "shiny-button",
+  className,
+}: ShinyButtonProps) => {
   return (
     <motion.button
       {...animationProps}
-      className="relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]"
+      className={cn(
+        "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
+        className,
+      )}
     >
       <span
         className="relative block h-full w-full text-sm uppercase tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)]"

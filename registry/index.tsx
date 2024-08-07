@@ -113,6 +113,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/text-reveal.tsx"],
   },
+  "hyper-text": {
+    name: "hyper-text",
+    type: "components:magicui",
+    files: ["registry/components/magicui/hyper-text.tsx"],
+  },
   "animated-gradient-text": {
     name: "animated-gradient-text",
     type: "components:magicui",
@@ -233,6 +238,11 @@ const ui: Registry = {
     name: "cool-mode",
     type: "components:magicui",
     files: ["registry/components/magicui/cool-mode.tsx"],
+  },
+  "pulsating-button": {
+    name: "pulsating-button",
+    type: "components:ui",
+    files: ["registry/components/magicui/pulsating-button.tsx"],
   },
   "file-tree": {
     name: "file-tree",
@@ -613,6 +623,15 @@ const example: Registry = {
       () => import("@/registry/components/example/word-rotate-demo"),
     ),
   },
+  "hyper-text-demo": {
+    name: "hyper-text-demo",
+    type: "components:example",
+    registryDependencies: ["hyper-text"],
+    files: ["registry/components/example/hyper-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/hyper-text-demo"),
+    ),
+  },
   "avatar-circles-demo": {
     name: "avatar-circles-demo",
     type: "components:example",
@@ -866,6 +885,14 @@ const example: Registry = {
     files: ["registry/components/example/cool-mode-custom.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/cool-mode-custom"),
+    ),
+  },
+  "pulsating-button-demo": {
+    name: "pulsating-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/pulsating-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/pulsating-button-demo"),
     ),
   },
   "file-tree-demo": {

@@ -82,6 +82,7 @@ module.exports = {
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
         backgroundPositionSpin:
           "background-position-spin 3000ms infinite alternate",
+        pulse: "pulse var(--duration) ease-out infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -193,6 +194,10 @@ module.exports = {
           to: {
             "background-position": "0% 0%",
           },
+        },
+        pulse: {
+          "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
+          "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
         },
       },
     },

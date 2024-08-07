@@ -17,7 +17,7 @@ import {
 
 interface CopyButtonProps extends ButtonProps {
   value: string;
-  src?: string;
+  src: string;
   event?: Event["name"];
 }
 
@@ -59,6 +59,7 @@ export function CopyButton({
             ? {
                 name: event,
                 properties: {
+                  name: src,
                   code: value,
                 },
               }
