@@ -339,7 +339,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/text-underline`,
           items: [],
           label: "New",
-        }
+        },
       ],
     },
     {
