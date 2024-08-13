@@ -19,7 +19,7 @@
     "lint:fix": "next lint --fix",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "prepare": "husky && test -f .env || cp .env.example .env.local"
+    "prepare": "husky && test -f .env.local || cp .env.example .env.local"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
