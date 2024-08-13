@@ -37,10 +37,12 @@ Once done, open a pull request from your forked repo to the main repo [here](htt
    pnpm i
    ```
 
-6. **Create a `.env.local` file**
+6. **Change your local port**
+
+   > For example, if the port for your current project is 3000.
 
    ```bash
-   touch .env.local && echo "NEXT_PUBLIC_APP_URL=http://localhost:3000" > .env.local
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
    ```
 
 7. **Run the project**
