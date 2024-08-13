@@ -247,7 +247,7 @@ const components = {
           )}
           {...props}
         />
-        {__rawString__ && (
+        {__rawString__ && !!__src__ && (
           <CopyButton
             value={__rawString__}
             src={__src__}
