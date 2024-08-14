@@ -1,0 +1,54 @@
+---
+title: Flickering Grid
+date: 2023-07-20
+description: A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="flickering-grid-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add flickering-grid
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="flickering-grid" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type   | Description                           | Default        |
+| ------------- | ------ | ------------------------------------- | -------------- |
+| squareSize    | number | Size of each square in the grid       | 4              |
+| gridGap       | number | Gap between squares in the grid       | 6              |
+| flickerChance | number | Probability of a square flickering    | 0.3            |
+| color         | string | Color of the squares                  | "rgb(0, 0, 0)" |
+| width         | number | Width of the canvas                   | -              |
+| height        | number | Height of the canvas                  | -              |
+| className     | string | Additional CSS classes for the canvas | -              |
+| maxOpacity    | number | Maximum opacity of the squares        | 0.2            |

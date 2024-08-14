@@ -368,6 +368,12 @@ export const docsConfig: DocsConfig = {
       title: "Backgrounds",
       items: [
         {
+          title: "Flickering Grid",
+          href: `/docs/components/flickering-grid`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Animated Grid Pattern",
           href: `/docs/components/animated-grid-pattern`,
           items: [],
