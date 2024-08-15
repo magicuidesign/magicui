@@ -28,6 +28,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/dot-pattern.tsx"],
   },
+  "flickering-grid": {
+    name: "flickering-grid",
+    type: "components:ui",
+    files: ["registry/components/magicui/flickering-grid.tsx"],
+  },
   marquee: {
     name: "marquee",
     type: "components:magicui",
@@ -322,6 +327,14 @@ const example: Registry = {
     files: ["registry/components/example/dot-pattern-linear-gradient.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/dot-pattern-linear-gradient"),
+    ),
+  },
+  "flickering-grid-demo": {
+    name: "flickering-grid",
+    type: "components:example",
+    files: ["registry/components/example/flickering-grid-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/flickering-grid-demo"),
     ),
   },
   "marquee-demo": {
