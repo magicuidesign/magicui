@@ -337,6 +337,15 @@ const example: Registry = {
       () => import("@/registry/components/example/flickering-grid-demo"),
     ),
   },
+  "flickering-grid-rounded-demo": {
+    name: "flickering-grid",
+    type: "components:example",
+    files: ["registry/components/example/flickering-grid-rounded-demo.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/flickering-grid-rounded-demo"),
+    ),
+  },
   "marquee-demo": {
     name: "marquee-demo",
     type: "components:example",
