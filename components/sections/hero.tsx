@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { allDocs } from "@/.contentlayer/generated";
+import { allDocs } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { ChevronRight } from "lucide-react";
 

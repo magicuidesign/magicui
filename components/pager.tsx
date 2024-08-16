@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Doc } from "@/.contentlayer/generated";
 import { NavItem, NavItemWithChildren } from "@/types";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { Doc } from "contentlayer/generated";
 
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";

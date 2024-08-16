@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { allShowcases } from "@/.contentlayer/generated";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
+import { allShowcases } from "contentlayer/generated";
 
 import Marquee from "@/registry/components/magicui/marquee";
 
