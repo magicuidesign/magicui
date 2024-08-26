@@ -101,6 +101,12 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Hero Video Dialog",
+          href: `/docs/components/hero-video-dialog`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],
