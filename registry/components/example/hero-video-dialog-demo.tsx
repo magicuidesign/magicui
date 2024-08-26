@@ -1,5 +1,5 @@
-import { BorderBeam } from "../magicui/border-beam";
-import HeroVideoDialog from "../magicui/hero-video-dialog";
+import { BorderBeam } from "@/registry/components/magicui/border-beam";
+import HeroVideoDialog from "@/registry/components/magicui/hero-video-dialog";
 
 export default function HeroVideoDialogDemo() {
   return (
@@ -8,7 +8,7 @@ export default function HeroVideoDialogDemo() {
         <BorderBeam />
         <HeroVideoDialog
           animationStyle="from-center"
-          videoSrc="https://www.youtube.com/embed/fYhInYej-lg"
+          videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
           thumbnailSrc="https://startup-template-sage.vercel.app/hero-dark.png"
           thumbnailAlt="Hero Video"
         />
