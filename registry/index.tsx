@@ -33,6 +33,11 @@ const ui: Registry = {
     type: "components:ui",
     files: ["registry/components/magicui/flickering-grid.tsx"],
   },
+  "hero-video-dialog": {
+    name: "hero-video-dialog",
+    type: "components:ui",
+    files: ["registry/components/magicui/hero-video-dialog.tsx"],
+  },
   marquee: {
     name: "marquee",
     type: "components:magicui",
@@ -344,6 +349,27 @@ const example: Registry = {
     component: React.lazy(
       () =>
         import("@/registry/components/example/flickering-grid-rounded-demo"),
+    ),
+  },
+  "hero-video-dialog-demo": {
+    name: "hero-video-dialog",
+    type: "components:example",
+    files: ["registry/components/example/hero-video-dialog-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/hero-video-dialog-demo"),
+    ),
+  },
+  "hero-video-dialog-demo-top-in-bottom-out": {
+    name: "hero-video-dialog",
+    type: "components:example",
+    files: [
+      "registry/components/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "@/registry/components/example/hero-video-dialog-demo-top-in-bottom-out"
+        ),
     ),
   },
   "marquee-demo": {
