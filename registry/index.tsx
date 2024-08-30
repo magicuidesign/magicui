@@ -30,12 +30,12 @@ const ui: Registry = {
   },
   "flickering-grid": {
     name: "flickering-grid",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/flickering-grid.tsx"],
   },
   "hero-video-dialog": {
     name: "hero-video-dialog",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/hero-video-dialog.tsx"],
   },
   marquee: {
@@ -246,7 +246,7 @@ const ui: Registry = {
   },
   "pulsating-button": {
     name: "pulsating-button",
-    type: "components:ui",
+    type: "components:magicui",
     files: ["registry/components/magicui/pulsating-button.tsx"],
   },
   "file-tree": {
