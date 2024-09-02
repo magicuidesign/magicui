@@ -1,0 +1,52 @@
+---
+title: Safari Mock
+date: 2024-09-01
+description: A Safari mockup for your website.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="safari-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add safari
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="safari" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop   | Type   | Description                                                 | Default |
+| ------ | ------ | ----------------------------------------------------------- | ------- |
+| url    | string | The URL to display in the Safari address bar                | -       |
+| src    | string | The source URL of the image to display in the Safari window | -       |
+| width  | number | The width of the Safari window                              | 1203    |
+| height | number | The height of the Safari window                             | 753     |
+
+The `Safari` component also accepts all properties of the `SVGElement` type.

@@ -259,6 +259,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/blur-fade.tsx"],
   },
+  safari: {
+    name: "safari",
+    type: "components:magicui",
+    files: ["registry/components/magicui/safari.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -951,6 +956,14 @@ const example: Registry = {
     files: ["registry/components/example/blur-fade-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/blur-fade-text-demo"),
+    ),
+  },
+  "safari-demo": {
+    name: "safari-demo",
+    type: "components:example",
+    files: ["registry/components/example/safari-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/safari-demo"),
     ),
   },
 };

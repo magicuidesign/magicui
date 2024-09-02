@@ -170,7 +170,17 @@ export const docsConfig: DocsConfig = {
         },
       ],
     },
-
+    {
+      title: "Device Mocks",
+      items: [
+        {
+          title: "Safari",
+          href: `/docs/components/safari`,
+          items: [],
+          label: "New",
+        },
+      ],
+    },
     {
       title: "Special Effects",
       items: [
