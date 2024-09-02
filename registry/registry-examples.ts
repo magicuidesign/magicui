@@ -8,6 +8,12 @@ export const examples: Registry = [
     files: ["example/magic-card-demo.tsx"],
   },
   {
+    name: "morphing-text-demo",
+    type: "registry:example",
+    registryDependencies: ["morphing-text"],
+    files: ["example/morphing-text-demo.tsx"],
+  },
+  {
     name: "scroll-progress-demo",
     type: "registry:example",
     registryDependencies: ["scroll-progress"],
