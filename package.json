@@ -53,7 +53,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.55.0",
     "eslint-config-next": "14.2.4",
-    "framer-motion": "^10.12.16",
+    "framer-motion": "^11.3.31",
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.401.0",
