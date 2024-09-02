@@ -1,18 +1,27 @@
 import React, { CSSProperties } from "react";
 
+import { cn } from "@/lib/utils";
+
 interface RippleProps {
   mainCircleSize?: number;
   mainCircleOpacity?: number;
   numCircles?: number;
+  className?: string;
 }
 
 const Ripple = React.memo(function Ripple({
   mainCircleSize = 210,
   mainCircleOpacity = 0.24,
   numCircles = 8,
+  className,
 }: RippleProps) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-white/5 [mask-image:linear-gradient(to_bottom,white,transparent)]">
+    <div
+      className={cn(
+        "absolute inset-0 bg-white/5 [mask-image:linear-gradient(to_bottom,white,transparent)]",
+        className,
+      )}
+    >
       {Array.from({ length: numCircles }, (_, i) => {
         const size = mainCircleSize + i * 70;
         const opacity = mainCircleOpacity - i * 0.03;
