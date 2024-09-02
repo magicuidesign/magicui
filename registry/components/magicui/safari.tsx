@@ -12,7 +12,6 @@ export default function Safari({
   url,
   width = 1203,
   height = 753,
-
   ...props
 }: SafariProps) {
   return (

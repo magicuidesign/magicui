@@ -179,6 +179,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "iPhone 15 Pro",
+          href: `/docs/components/iphone-15-pro`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

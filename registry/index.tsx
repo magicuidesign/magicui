@@ -264,6 +264,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/safari.tsx"],
   },
+  "iphone-15-pro": {
+    name: "iphone-15-pro",
+    type: "components:magicui",
+    files: ["registry/components/magicui/iphone-15-pro.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -964,6 +969,30 @@ const example: Registry = {
     files: ["registry/components/example/safari-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/safari-demo"),
+    ),
+  },
+  "safari-demo-2": {
+    name: "safari-demo-2",
+    type: "components:example",
+    files: ["registry/components/example/safari-demo-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/safari-demo-2"),
+    ),
+  },
+  "iphone-15-pro-demo": {
+    name: "iphone-15-pro-demo",
+    type: "components:example",
+    files: ["registry/components/example/iphone-15-pro-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/iphone-15-pro-demo"),
+    ),
+  },
+  "iphone-15-pro-demo-2": {
+    name: "iphone-15-pro-demo-2",
+    type: "components:example",
+    files: ["registry/components/example/iphone-15-pro-demo-2.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/iphone-15-pro-demo-2"),
     ),
   },
 };
