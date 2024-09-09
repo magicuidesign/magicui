@@ -1,0 +1,52 @@
+---
+title: Warp Animation Container
+date: 2024-03-14
+description: A container component that applies a warp animation effect to its children
+author: magicui
+published: true
+---
+
+<ComponentPreview name="warp-animation-container-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx magicui-cli add warp-animation-container
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="warp-animation-container" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop         | Type            | Description                                     | Default |
+| ------------ | --------------- | ----------------------------------------------- | ------- |
+| children     | React.ReactNode | The content to be put inside the warp animation | -       |
+| perspective  | number          | The perspective of the warp animation           | 100     |
+| beamsPerSide | number          | The number of beams per side                    | 3       |
+| beamSize     | number          | The size of the beams                           | 5       |
+| beamDelayMax | number          | The maximum delay of the beams                  | 5       |
+| beamDelayMin | number          | The minimum delay of the beams                  | 0       |
+| beamDuration | number          | The duration of the beams                       | 3       |
