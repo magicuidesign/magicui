@@ -232,6 +232,7 @@ const ui: Registry = {
   confetti: {
     name: "confetti",
     type: "components:magicui",
+    dependencies: ["canvas-confetti", "@types/canvas-confetti"],
     files: ["registry/components/magicui/confetti.tsx"],
   },
   "animated-subscribe-button": {

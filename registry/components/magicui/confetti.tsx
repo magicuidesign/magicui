@@ -8,12 +8,12 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import confetti from "canvas-confetti";
 import type {
   GlobalOptions as ConfettiGlobalOptions,
   CreateTypes as ConfettiInstance,
   Options as ConfettiOptions,
 } from "canvas-confetti";
+import confetti from "canvas-confetti";
 
 import { Button, ButtonProps } from "@/components/ui/button";
 
@@ -119,6 +119,8 @@ function ConfettiButton({ options, children, ...props }: ConfettiButtonProps) {
     </Button>
   );
 }
+
+Confetti.displayName = "Confetti";
 
 export { Confetti, ConfettiButton };
 
