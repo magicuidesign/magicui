@@ -346,7 +346,7 @@ const example: Registry = {
     ),
   },
   "flickering-grid-demo": {
-    name: "flickering-grid",
+    name: "flickering-grid-demo",
     type: "components:example",
     files: ["registry/components/example/flickering-grid-demo.tsx"],
     component: React.lazy(
@@ -354,7 +354,7 @@ const example: Registry = {
     ),
   },
   "flickering-grid-rounded-demo": {
-    name: "flickering-grid",
+    name: "flickering-grid-rounded-demo",
     type: "components:example",
     files: ["registry/components/example/flickering-grid-rounded-demo.tsx"],
     component: React.lazy(
@@ -363,7 +363,7 @@ const example: Registry = {
     ),
   },
   "hero-video-dialog-demo": {
-    name: "hero-video-dialog",
+    name: "hero-video-dialog-demo",
     type: "components:example",
     files: ["registry/components/example/hero-video-dialog-demo.tsx"],
     component: React.lazy(
@@ -371,7 +371,7 @@ const example: Registry = {
     ),
   },
   "hero-video-dialog-demo-top-in-bottom-out": {
-    name: "hero-video-dialog",
+    name: "hero-video-dialog-demo-top-in-bottom-out",
     type: "components:example",
     files: [
       "registry/components/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
