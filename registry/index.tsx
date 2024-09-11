@@ -499,6 +499,15 @@ const example: Registry = {
       () => import("@/registry/components/example/number-ticker-demo"),
     ),
   },
+  "number-ticker-decimal-demo": {
+    name: "number-ticker-decimal-demo",
+    type: "components:example",
+    registryDependencies: ["number-ticker"],
+    files: ["registry/components/example/number-ticker-decimal-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/number-ticker-decimal-demo"),
+    ),
+  },
   "ripple-demo": {
     name: "ripple-demo",
     type: "components:example",
