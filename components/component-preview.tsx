@@ -81,7 +81,7 @@ export function ComponentPreview({
               className="absolute right-0 top-0 z-10 ml-4 flex items-center rounded-lg px-3 py-1"
               variant="ghost"
             >
-              <RotateCcw size={16} />
+              <RotateCcw aria-label="restart-animation" size={16} />
             </Button>
             <React.Suspense
               fallback={

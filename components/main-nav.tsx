@@ -28,6 +28,7 @@ export function MainNav() {
           <Link
             key={item.href}
             href={item.href!}
+            aria-label={item.title}
             onClick={() => item.event && posthog.capture(item.event)}
             target={item.external ? "_blank" : undefined}
             className={cn(

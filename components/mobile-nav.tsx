@@ -145,6 +145,7 @@ function MobileLink({
   return (
     <Link
       href={href}
+      aria-label={href}
       onClick={() => {
         router.push(href.toString());
         onOpenChange?.(false);
