@@ -270,6 +270,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/iphone-15-pro.tsx"],
   },
+  "morphing-text": {
+    name: "morphing-text",
+    type: "components:magicui",
+    files: ["registry/components/magicui/morphing-text.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -994,6 +999,14 @@ const example: Registry = {
     files: ["registry/components/example/iphone-15-pro-demo-2.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/iphone-15-pro-demo-2"),
+    ),
+  },
+  "morphing-text-demo": {
+    name: "morphing-text-demo",
+    type: "components:example",
+    files: ["registry/components/example/morphing-text-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/morphing-text-demo"),
     ),
   },
 };

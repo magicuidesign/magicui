@@ -355,6 +355,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Morphing Text",
+          href: `/docs/components/morphing-text`,
+          items: [],
+          label: "New",
+        }
       ],
     },
     {
