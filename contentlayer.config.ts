@@ -22,7 +22,7 @@ const computedFields = {
   image: {
     type: "string",
     resolve: (post: any) =>
-      `${process.env.NEXT_PUBLIC_APP_URL}/api/og?title=${encodeURI(post.title)}`,
+      `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(post.title)}`,
   },
   slug: {
     type: "string",

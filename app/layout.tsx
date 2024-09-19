@@ -16,7 +16,7 @@ export const metadata: Metadata = constructMetadata({
   title: "Magic UI",
   description:
     "Beautiful UI components and templates to make your landing page look stunning.",
-  image: absoluteUrl("/api/og"),
+  image: absoluteUrl("/og"),
 });
 
 export const viewport: Viewport = {

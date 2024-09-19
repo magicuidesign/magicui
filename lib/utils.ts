@@ -57,7 +57,7 @@ export function absoluteUrl(path: string) {
 export function constructMetadata({
   title = "Magic UI - Modern React + Tailwind CSS components & Templates",
   description = "Magic UI is a curated collection of the best landing page components built using React + Tailwind CSS + Framer Motion",
-  image = absoluteUrl("/api/og"),
+  image = absoluteUrl("/og"),
   ...props
 }: {
   title?: string;
