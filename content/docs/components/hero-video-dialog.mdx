@@ -54,6 +54,8 @@ npx magicui-cli add hero-video-dialog
 | videoSrc       | string | URL of the video to be played    | -                 |
 | thumbnailSrc   | string | URL of the thumbnail image       | -                 |
 | thumbnailAlt   | string | Alt text for the thumbnail image | "Video thumbnail" |
+| startColor     | string | Start color for the play button  | "#333"            |
+| endColor       | string | End color for the play button    | "#333"            |
 
 ## Animation Styles
 
@@ -71,3 +73,4 @@ The `animationStyle` prop accepts the following values:
 ## Note
 
 - If using a YouTube video, make sure to use the `embed` version of the video URL.
+- Use CSS Colors Only: Accepts hex, RGB, RGBA, or HSL values. Tailwind color classes like red-500 won't work.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { Play, XIcon } from "lucide-react";
 
@@ -22,6 +23,8 @@ interface HeroVideoProps {
   thumbnailSrc: string;
   thumbnailAlt?: string;
   className?: string;
+  startColor?: string;
+  endColor?: string;
 }
 
 const animationVariants = {
@@ -73,9 +76,27 @@ export default function HeroVideoDialog({
   thumbnailSrc,
   thumbnailAlt = "Video thumbnail",
   className,
+  startColor = "#333",
+  endColor = "#333",
 }: HeroVideoProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
+
+  // Helper function to detect if the color is a Tailwind color
+  const isTailwindColor = (color: string) => color.includes("-");
+
+  // Conditionally set Tailwind gradient or custom gradient style
+  const gradientColor =
+    isTailwindColor(startColor) && isTailwindColor(endColor)
+      ? `from-${startColor} to-${endColor} bg-gradient-to-b`
+      : "";
+
+  const customGradientStyle =
+    !isTailwindColor(startColor) || !isTailwindColor(endColor)
+      ? {
+          backgroundImage: `linear-gradient(to bottom, ${startColor}, ${endColor})`,
+        }
+      : {};
 
   return (
     <div className={cn("relative", className)}>
@@ -93,7 +114,11 @@ export default function HeroVideoDialog({
         <div className="absolute inset-0 flex items-center justify-center group-hover:scale-100 scale-[0.9] transition-all duration-200 ease-out rounded-2xl">
           <div className="bg-primary/10 flex items-center justify-center rounded-full backdrop-blur-md size-28">
             <div
-              className={`flex items-center justify-center bg-gradient-to-b from-primary/30 to-primary shadow-md rounded-full size-20 transition-all ease-out duration-200 relative group-hover:scale-[1.2] scale-100`}
+              className={cn(
+                `flex items-center justify-center shadow-md rounded-full size-20 transition-all ease-out duration-200 relative group-hover:scale-[1.2] scale-100`,
+                gradientColor,
+              )}
+              style={customGradientStyle}
             >
               <Play
                 className="size-8 text-white fill-white group-hover:scale-105 scale-100 transition-transform duration-200 ease-out"
