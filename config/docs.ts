@@ -105,6 +105,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Rainbow Button",
+          href: `/docs/components/rainbow-button`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Hero Video Dialog",
           href: `/docs/components/hero-video-dialog`,
           items: [],

@@ -83,6 +83,7 @@ module.exports = {
         backgroundPositionSpin:
           "background-position-spin 3000ms infinite alternate",
         pulse: "pulse var(--duration) ease-out infinite",
+        rainbow: "rainbow var(--speed, 2s) infinite linear",
       },
       keyframes: {
         "accordion-down": {
@@ -198,6 +199,10 @@ module.exports = {
         pulse: {
           "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
           "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
+        },
+        rainbow: {
+          "0%": { "background-position": "0%" },
+          "100%": { "background-position": "200%" },
         },
       },
     },

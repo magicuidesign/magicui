@@ -270,6 +270,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/iphone-15-pro.tsx"],
   },
+  "rainbow-button": {
+    name: "rainbow-button",
+    type: "components:magicui",
+    files: ["registry/components/magicui/rainbow-button.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -994,6 +999,14 @@ const example: Registry = {
     files: ["registry/components/example/iphone-15-pro-demo-2.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/iphone-15-pro-demo-2"),
+    ),
+  },
+  "rainbow-button-demo": {
+    name: "rainbow-button-demo",
+    type: "components:example",
+    files: ["registry/components/example/rainbow-button-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/rainbow-button-demo"),
     ),
   },
 };
