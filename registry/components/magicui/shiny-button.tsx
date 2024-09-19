@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion, type AnimationProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
@@ -25,29 +26,27 @@ const animationProps = {
   },
 } as AnimationProps;
 interface ShinyButtonProps {
-  text: string;
+  children: React.ReactNode;
   className?: string;
 }
-const ShinyButton = ({
-  text = "shiny-button",
-  className,
-}: ShinyButtonProps) => {
+const ShinyButton = ({ children, className, ...props }: ShinyButtonProps) => {
   return (
     <motion.button
       {...animationProps}
+      {...props}
       className={cn(
-        "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-[box-shadow] duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
+        "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
         className,
       )}
     >
       <span
-        className="relative block h-full w-full text-sm uppercase tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)]"
+        className="relative block size-full text-sm uppercase tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)]"
         style={{
           maskImage:
             "linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))",
         }}
       >
-        {text}
+        {children}
       </span>
       <span
         style={{
