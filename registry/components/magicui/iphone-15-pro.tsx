@@ -4,12 +4,14 @@ export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
   src?: string;
+  videoSrc?: string;
 }
 
 export default function Iphone15Pro({
   width = 433,
   height = 882,
   src,
+  videoSrc,
   ...props
 }: Iphone15ProProps) {
   return (
@@ -65,6 +67,24 @@ export default function Iphone15Pro({
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#roundedCorners)"
         />
+      )}
+      {videoSrc && (
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
+          <video
+            src={videoSrc}
+            width="100%"
+            height="100%"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              objectFit: "cover",
+              borderRadius: "55.75px",
+              overflow: "hidden",
+            }}
+          />
+        </foreignObject>
       )}
       <path
         d="M154 48.5C154 38.2827 162.283 30 172.5 30H259.5C269.717 30 278 38.2827 278 48.5C278 58.7173 269.717 67 259.5 67H172.5C162.283 67 154 58.7173 154 48.5Z"
