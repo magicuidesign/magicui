@@ -270,6 +270,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/iphone-15-pro.tsx"],
   },
+  "warp-animation-container": {
+    name: "warp-animation-container",
+    type: "components:magicui",
+    files: ["registry/components/magicui/warp-animation-container.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -994,6 +999,15 @@ const example: Registry = {
     files: ["registry/components/example/iphone-15-pro-demo-2.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/iphone-15-pro-demo-2"),
+    ),
+  },
+  "warp-animation-container-demo": {
+    name: "warp-animation-container-demo",
+    type: "components:example",
+    files: ["registry/components/example/warp-animation-container-demo.tsx"],
+    component: React.lazy(
+      () =>
+        import("@/registry/components/example/warp-animation-container-demo"),
     ),
   },
 };

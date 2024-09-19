@@ -250,6 +250,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Warp Animation Container",
+          href: `/docs/components/warp-animation-container`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
