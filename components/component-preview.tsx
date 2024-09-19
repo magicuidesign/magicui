@@ -78,7 +78,7 @@ export function ComponentPreview({
           <ComponentWrapper>
             <Button
               onClick={() => setKey((prev) => prev + 1)}
-              className="absolute right-0 top-0 z-10 ml-4 flex items-center rounded-lg px-3 py-1"
+              className="absolute right-1.5 top-1.5 z-10 ml-4 flex items-center rounded-lg px-3 py-1"
               variant="ghost"
             >
               <RotateCcw aria-label="restart-btn" size={16} />
