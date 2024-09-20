@@ -38,7 +38,12 @@ export function MainNav() {
                 : "text-foreground/60",
             )}
           >
-            {item.title}
+            <span className="shrink-0">{item.title}</span>
+            {item.label && (
+              <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                {item.label}
+              </span>
+            )}
             {item.external && <ExternalLinkIcon className="ml-2 size-4" />}
           </Link>
         ))}

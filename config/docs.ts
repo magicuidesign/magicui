@@ -12,14 +12,14 @@ export const docsConfig: DocsConfig = {
       href: "/components",
     },
     {
-      title: "Showcase",
-      href: "/showcase",
-    },
-    {
       title: "Templates",
       href: "https://pro.magicui.design",
-      external: true,
       event: "header_cta_clicked",
+      label: "New",
+    },
+    {
+      title: "Showcase",
+      href: "/showcase",
     },
   ],
   sidebarNav: [
