@@ -6,6 +6,7 @@ interface Props {
   min: number;
   gaugePrimaryColor: string;
   gaugeSecondaryColor: string;
+  caption?: string;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export default function AnimatedCircularProgressBar({
   value = 0,
   gaugePrimaryColor,
   gaugeSecondaryColor,
+  caption,
   className,
 }: Props) {
   const circumference = 2 * Math.PI * 45;
@@ -99,9 +101,10 @@ export default function AnimatedCircularProgressBar({
       </svg>
       <span
         data-current-value={currentPercent}
-        className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in"
+        className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in flex flex-col items-center"
       >
         {currentPercent}
+        <span className="text-gray-600 text-sm">{caption}</span>
       </span>
     </div>
   );
