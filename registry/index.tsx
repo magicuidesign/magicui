@@ -244,6 +244,11 @@ const ui: Registry = {
     type: "components:magicui",
     files: ["registry/components/magicui/blur-fade.tsx"],
   },
+  "scale-slider": {
+    name: "scale-slider",
+    type: "components:ui",
+    files: ["registry/components/magicui/scale-slider.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -889,6 +894,14 @@ const example: Registry = {
     files: ["registry/components/example/blur-fade-text-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/blur-fade-text-demo"),
+    ),
+  },
+  "scale-slider-demo": {
+    name: "scale-slider-demo",
+    type: "components:example",
+    files: ["registry/components/example/scale-slider-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/scale-slider-demo"),
     ),
   },
 };

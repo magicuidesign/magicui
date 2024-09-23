@@ -328,6 +328,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Scale Slider",
+          href: `/docs/components/scale-slider`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
