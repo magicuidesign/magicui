@@ -1,18 +1,18 @@
+import { Mdx } from "@/components/mdx-components";
+import { DocPager } from "@/components/pager";
+import { badgeVariants } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
-import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Mdx } from "@/components/mdx-components";
-import { DocPager } from "@/components/pager";
 
 import "@/styles/mdx.css";
 
+import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
+import { allDocs } from "content-collections";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
-import { allDocs } from "contentlayer/generated";
 
 import { Contribute } from "@/components/contribute";
 import { TableOfContents } from "@/components/toc";
@@ -152,13 +152,6 @@ export default async function DocPage({ params }: DocPageProps) {
           </div>
         </div>
       )}
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(doc.structuredData),
-        }}
-      />
     </main>
   );
 }

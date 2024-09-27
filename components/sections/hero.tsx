@@ -1,4 +1,4 @@
-import { allDocs } from "@/.contentlayer/generated";
+import { allDocs } from "content-collections";
 import { compareDesc } from "date-fns";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";

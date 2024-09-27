@@ -1,16 +1,22 @@
+import { env } from "@/env.mjs";
+import { allShowcases } from "content-collections";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { env } from "@/env.mjs";
-import { allShowcases } from "contentlayer/generated";
 
+import { ShowcaseCard } from "@/components/sections/showcase";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
-import { ShowcaseCard } from "@/components/sections/showcase";
 
 interface PageProps {
   params: {
     slug: string[];
   };
+}
+
+export async function generateStaticParams(): Promise<PageProps["params"][]> {
+  return allShowcases.map((page) => ({
+    slug: page.slugAsParams.split("/"),
+  }));
 }
 
 async function getPageFromParams(params: PageProps["params"]) {
@@ -64,12 +70,6 @@ export async function generateMetadata({
       images: [ogUrl.toString()],
     },
   };
-}
-
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  return allShowcases.map((page) => ({
-    slug: page.slugAsParams.split("/"),
-  }));
 }
 
 export default async function PagePage({ params }: PageProps) {

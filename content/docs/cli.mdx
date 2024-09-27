@@ -1,91 +1,86 @@
 ---
 title: CLI
-description: A CLI for adding magic ui components to your project. Superset of shadcn-ui.
+description: Use the CLI to add components to your project.
 ---
 
-## Usage
+<Callout>
 
-Use the `init` command to initialize dependencies for a new project.
+**Note:** We rely on the [shadcn/ui](https://github.com/shadcn/ui) CLI to add components to your project.
 
-The `init` command installs dependencies (`framer-motion`), adds the `cn` util, configures `tailwind.config.js`, and CSS variables for the project.
+</Callout>
 
-```bash
-npx magicui-cli init
-```
+## init
 
-### shadcn-ui project
+Use the `init` command to initialize configuration and dependencies for a new project.
 
-If your project is already using the `shadcn-ui`, don't worry! You can still use magicui.
+The `init` command installs dependencies, adds the `cn` util, configures `tailwind.config.js`, and CSS variables for the project.
 
 ```bash
-npx shadcn-ui init
+npx shadcn@latest init
 ```
 
-Just add these two lines to your `components.json` file:
+You will be asked a few questions to configure `components.json`:
 
-```diff
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "app/globals.css",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils",
-+   "ui": "@/components/ui",
-+   "magicui": "@/components/magicui"
-  }
-}
+```txt showLineNumbers
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › no / yes
+```
+
+### Options
+
+```txt
+Usage: shadcn init [options] [components...]
+
+initialize your project and install dependencies
+
+Arguments:
+  components         the components to add or a url to the component.
+
+Options:
+  -d, --defaults    use default values i.e new-york, zinc and css variables. (default: false)
+  -f, --force       force overwrite of existing components.json. (default: false)
+  -y, --yes         skip confirmation prompt. (default: false)
+  -c, --cwd <cwd>   the working directory. defaults to the current directory.
+  -h, --help       display help for command
 ```
 
 ## add
 
-Use the `add` command to add components to your project.
-
-The `add` command adds a component to your project and installs all required dependencies.
+Use the `add` command to add components and dependencies to your project.
 
 ```bash
-npx magicui-cli add [component]
+npx shadcn@latest add [component]
 ```
 
-### Example
+### Options
 
-```bash
-npx magicui-cli add bento-grid
+```txt
+Usage: shadcn add [options] [components...]
+
+add a component to your project
+
+Arguments:
+  components         the components to add or a url to the component.
+
+Options:
+  -y, --yes          skip confirmation prompt. (default: false)
+  -o, --overwrite    overwrite existing files. (default: false)
+  -c, --cwd <cwd>    the working directory. defaults to the current directory.
+  -p, --path <path>  the path to add the component to.
+  -h, --help         display help for command
 ```
 
-You can also use the optional `--all` flag to install all components:
+## Monorepo
+
+In a monorepo, you can specify the path to your workspace with the `-c` or `--cwd` option.
 
 ```bash
-npx magicui-cli add --all
+npx shadcn@latest init -c ./apps/www
 ```
 
-You can also use the `--example` flag to select and install example & demo you saw on webside:
+or
 
 ```bash
-npx magicui-cli add --example
-```
-
-You can also run the command without any arguments to view a list of all available components:
-
-```bash
-npx magicui-cli add
-```
-
-## shadcn-ui
-
-You can also use the same CLI for selecting & installing shadcn-ui components:
-
-```bash
-npx magicui-cli add --shadcn button
-```
-
-```bash
-npx magicui-cli add --shadcn --all
+npx shadcn@latest add alert-dialog -c ./apps/www
 ```

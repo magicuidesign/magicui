@@ -1427,19 +1427,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "wavy-dot-pattern-demo": {
-      name: "wavy-dot-pattern-demo",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: ["registry/default/example/wavy-dot-pattern-demo.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/example/wavy-dot-pattern-demo.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
     "gradual-spacing-demo": {
       name: "gradual-spacing-demo",
       type: "registry:example",

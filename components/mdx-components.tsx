@@ -1,9 +1,11 @@
+import { useMDXComponent } from "@content-collections/mdx/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useMDXComponent } from "next-contentlayer/hooks";
 
-import { Event } from "@/lib/events";
-import { cn } from "@/lib/utils";
+import { Callout } from "@/components/callout";
+import RepoDownload from "@/components/repo-download";
+import TechStack from "@/components/tech-stack";
+import TemplatePreview from "@/components/template-preview";
 import {
   Accordion,
   AccordionContent,
@@ -11,10 +13,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Callout } from "@/components/callout";
-import RepoDownload from "@/components/repo-download";
-import TechStack from "@/components/tech-stack";
-import TemplatePreview from "@/components/template-preview";
+import { Event } from "@/lib/events";
+import { cn } from "@/lib/utils";
 import TweetCard from "@/registry/default/magicui/tweet-card";
 
 import { ComponentPreview } from "./component-preview";
