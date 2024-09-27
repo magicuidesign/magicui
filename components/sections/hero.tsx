@@ -79,7 +79,7 @@ export default async function Hero() {
                     <ChevronRight className="ml-1  size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                   <Link
-                    href="/docs"
+                    href="https://pro.magicui.design"
                     className={cn(
                       buttonVariants({
                         size: "lg",
@@ -88,7 +88,7 @@ export default async function Hero() {
                       "w-full gap-2"
                     )}
                   >
-                    Get Started
+                    Browse Templates
                     <ChevronRight className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
