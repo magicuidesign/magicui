@@ -1,0 +1,33 @@
+{
+  "name": "orbiting-circles",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "magicui/orbiting-circles.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nexport interface OrbitingCirclesProps {\n  className?: string\n  children?: React.ReactNode\n  reverse?: boolean\n  duration?: number\n  delay?: number\n  radius?: number\n  path?: boolean\n}\n\nexport default function OrbitingCircles({\n  className,\n  children,\n  reverse,\n  duration = 20,\n  delay = 10,\n  radius = 50,\n  path = true,\n}: OrbitingCirclesProps) {\n  return (\n    <>\n      {path && (\n        <svg\n          xmlns=\"http://www.w3.org/2000/svg\"\n          version=\"1.1\"\n          className=\"pointer-events-none absolute inset-0 size-full\"\n        >\n          <circle\n            className=\"stroke-black/10 stroke-1 dark:stroke-white/10\"\n            cx=\"50%\"\n            cy=\"50%\"\n            r={radius}\n            fill=\"none\"\n          />\n        </svg>\n      )}\n\n      <div\n        style={\n          {\n            \"--duration\": duration,\n            \"--radius\": radius,\n            \"--delay\": -delay,\n          } as React.CSSProperties\n        }\n        className={cn(\n          \"absolute flex size-full transform-gpu animate-orbit items-center justify-center rounded-full border bg-black/10 [animation-delay:calc(var(--delay)*1000ms)] dark:bg-white/10\",\n          { \"[animation-direction:reverse]\": reverse },\n          className\n        )}\n      >\n        {children}\n      </div>\n    </>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "animation": {
+            "orbit": "orbit calc(var(--duration)*1s) linear infinite"
+          },
+          "keyframes": {
+            "orbit": {
+              "0%": {
+                "transform": "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)"
+              },
+              "100%": {
+                "transform": "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

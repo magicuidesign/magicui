@@ -1,7 +1,6 @@
 ---
 title: Remix
 description: Install and configure Remix.
-author: abdrahmanES1
 ---
 
 <Steps>
@@ -16,10 +15,10 @@ npx create-remix@latest my-app
 
 ### Run the CLI
 
-Run the `magicui-cli` init command to setup your project:
+Run the `shadcn-ui` init command to setup your project:
 
 ```bash
-npx magicui-cli init
+npx shadcn@latest init
 ```
 
 ### Configure components.json
@@ -27,24 +26,20 @@ npx magicui-cli init
 You will be asked a few questions to configure `components.json`:
 
 ```txt showLineNumbers
-✔ Would you like to use TypeScript (recommended)? … no / yes
-✔ Which style would you like to use? › Default
-✔ Which color would you like to use as base color? › Slate
-✔ Where is your global CSS file? … app/tailwind.css
-✔ Would you like to use CSS variables for colors? … no / yes
-✔ Are you using a custom tailwind prefix eg. tw-? (Leave blank if not) …
-✔ Where is your tailwind.config.js located? … tailwind.config.ts
-✔ Configure the import alias for components: … ~/components
-✔ Configure the import alias for utils: … ~/lib/utils
-✔ Are you using React Server Components? … no / yes
-✔ Write configuration to components.json. Proceed? … yes
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › no / yes
 ```
 
 ### App structure
 
+<Callout>
+
 **Note**: This app structure is only a suggestion. You can place the files wherever you want.
 
-- Place the UI components in the `app/components/magic-ui` folder.
+</Callout>
+
+- Place the UI components in the `app/components/ui` folder.
 - Your own components can be placed in the `app/components` folder.
 - The `app/lib` folder contains all the utility functions. We have a `utils.ts` where we define the `cn` helper.
 - The `app/tailwind.css` file contains the global CSS.
@@ -80,23 +75,15 @@ export default {
 
 ### Add `tailwind.css` to your app
 
-```bash
-npm install @remix-run/css-bundle
-```
-
 In your `app/root.tsx` file, import the `tailwind.css` file:
 
 ```js {1, 4}
-import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction } from "@remix-run/node"; // or cloudflare/deno
-import styles from "./tailwind.css"
+import styles from "./tailwind.css?url"
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref
-    ? [{ rel: "stylesheet", href: cssBundleHref }]
-    : []),
-  // ...
-];
+  { rel: "stylesheet", href: styles },
+  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+]
 ```
 
 ### That's it
@@ -104,18 +91,18 @@ export const links: LinksFunction = () => [
 You can now start adding components to your project.
 
 ```bash
-npx magicui-cli add blur-in
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
 ```tsx {1,6} showLineNumbers
-import BlurIn from "~/components/magicui/blur-in";
+import { Button } from "~/components/ui/button";
 
 export default function Home() {
   return (
     <div>
-      <BlurIn word={"Hello World"}></BlurIn>
+      <Button>Click me</Button>
     </div>
   );
 }

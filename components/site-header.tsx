@@ -9,7 +9,7 @@ import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
-import NumberTicker from "@/registry/components/magicui/number-ticker";
+import NumberTicker from "@/registry/default/magicui/number-ticker";
 
 export async function SiteHeader() {
   let stars = 300; // Default value

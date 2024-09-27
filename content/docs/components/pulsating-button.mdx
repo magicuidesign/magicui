@@ -18,38 +18,9 @@ published: true
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add pulsating-button
+npx shadcn@latest add "https://magicui.design/r/pulsating-button"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-13}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        pulse: "pulse var(--duration) ease-out infinite",
-      },
-      keyframes: {
-        pulse: {
-          "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
-          "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 

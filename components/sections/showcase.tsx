@@ -2,7 +2,7 @@ import Link from "next/link";
 import { allShowcases } from "@/.contentlayer/generated";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 
-import Marquee from "@/registry/components/magicui/marquee";
+import Marquee from "@/registry/default/magicui/marquee";
 
 export interface ShowcaseCardProps {
   title: string;

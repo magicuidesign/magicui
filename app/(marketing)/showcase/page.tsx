@@ -1,7 +1,7 @@
 import { allShowcases } from "contentlayer/generated";
 
 import { ShowcaseCard } from "@/components/sections/showcase";
-import BlurFade from "@/registry/components/magicui/blur-fade";
+import BlurFade from "@/registry/default/magicui/blur-fade";
 
 export default async function Page() {
   return (

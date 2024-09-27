@@ -18,39 +18,9 @@ published: true
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add neon-gradient-card
+npx shadcn@latest add "https://magicui.design/r/neon-gradient-card"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-14}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        backgroundPositionSpin:
-          "background-position-spin 3000ms infinite alternate",
-      },
-      keyframes: {
-        "background-position-spin": {
-          "0%": { backgroundPosition: "top center" },
-          "100%": { backgroundPosition: "bottom center" },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 
@@ -74,7 +44,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        backgroundPositionSpin:
+        "background-position-spin":
           "background-position-spin 3000ms infinite alternate",
       },
       keyframes: {

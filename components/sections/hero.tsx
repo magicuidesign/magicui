@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import TechStack from "@/components/tech-stack";
-import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
+import AnimatedGradientText from "@/registry/default/magicui/animated-gradient-text";
 
 function HeroPill({ href, title }: { href: string; title: string }) {
   return (

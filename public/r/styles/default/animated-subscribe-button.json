@@ -1,0 +1,15 @@
+{
+  "name": "animated-subscribe-button",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "magicui/animated-subscribe-button.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { AnimatePresence, motion } from \"framer-motion\"\n\ninterface AnimatedSubscribeButtonProps {\n  buttonColor: string\n  buttonTextColor?: string\n  subscribeStatus: boolean\n  initialText: React.ReactElement | string\n  changeText: React.ReactElement | string\n}\n\nexport const AnimatedSubscribeButton: React.FC<\n  AnimatedSubscribeButtonProps\n> = ({\n  buttonColor,\n  subscribeStatus,\n  buttonTextColor,\n  changeText,\n  initialText,\n}) => {\n  const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus)\n\n  return (\n    <AnimatePresence mode=\"wait\">\n      {isSubscribed ? (\n        <motion.button\n          className=\"relative flex w-[200px] items-center justify-center overflow-hidden rounded-md bg-white p-[10px] outline outline-1 outline-black\"\n          onClick={() => setIsSubscribed(false)}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n        >\n          <motion.span\n            key=\"action\"\n            className=\"relative block h-full w-full font-semibold\"\n            initial={{ y: -50 }}\n            animate={{ y: 0 }}\n            style={{ color: buttonColor }}\n          >\n            {changeText}\n          </motion.span>\n        </motion.button>\n      ) : (\n        <motion.button\n          className=\"relative flex w-[200px] cursor-pointer items-center justify-center rounded-md border-none p-[10px]\"\n          style={{ backgroundColor: buttonColor, color: buttonTextColor }}\n          onClick={() => setIsSubscribed(true)}\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          exit={{ opacity: 0 }}\n        >\n          <motion.span\n            key=\"reaction\"\n            className=\"relative block font-semibold\"\n            initial={{ x: 0 }}\n            exit={{ x: 50, transition: { duration: 0.1 } }}\n          >\n            {initialText}\n          </motion.span>\n        </motion.button>\n      )}\n    </AnimatePresence>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

@@ -44,6 +44,11 @@ const nextConfig = {
         destination: "/docs/components/marquee",
         permanent: true,
       },
+      {
+        source: "/r/:name",
+        destination: "/r/styles/default/:name.json",
+        permanent: true,
+      },
     ];
   },
 };

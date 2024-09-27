@@ -1,0 +1,15 @@
+{
+  "name": "hyper-text",
+  "type": "registry:ui",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "magicui/hyper-text.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState } from \"react\"\nimport { AnimatePresence, motion, Variants } from \"framer-motion\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface HyperTextProps {\n  text: string\n  duration?: number\n  framerProps?: Variants\n  className?: string\n  animateOnLoad?: boolean\n}\n\nconst alphabets = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\".split(\"\")\n\nconst getRandomInt = (max: number) => Math.floor(Math.random() * max)\n\nexport default function HyperText({\n  text,\n  duration = 800,\n  framerProps = {\n    initial: { opacity: 0, y: -10 },\n    animate: { opacity: 1, y: 0 },\n    exit: { opacity: 0, y: 3 },\n  },\n  className,\n  animateOnLoad = true,\n}: HyperTextProps) {\n  const [displayText, setDisplayText] = useState(text.split(\"\"))\n  const [trigger, setTrigger] = useState(false)\n  const interations = useRef(0)\n  const isFirstRender = useRef(true)\n\n  const triggerAnimation = () => {\n    interations.current = 0\n    setTrigger(true)\n  }\n\n  useEffect(() => {\n    const interval = setInterval(\n      () => {\n        if (!animateOnLoad && isFirstRender.current) {\n          clearInterval(interval)\n          isFirstRender.current = false\n          return\n        }\n        if (interations.current < text.length) {\n          setDisplayText((t) =>\n            t.map((l, i) =>\n              l === \" \"\n                ? l\n                : i <= interations.current\n                  ? text[i]\n                  : alphabets[getRandomInt(26)]\n            )\n          )\n          interations.current = interations.current + 0.1\n        } else {\n          setTrigger(false)\n          clearInterval(interval)\n        }\n      },\n      duration / (text.length * 10)\n    )\n    // Clean up interval on unmount\n    return () => clearInterval(interval)\n  }, [text, duration, trigger, animateOnLoad])\n\n  return (\n    <div\n      className=\"overflow-hidden py-2 flex cursor-default scale-100\"\n      onMouseEnter={triggerAnimation}\n    >\n      <AnimatePresence mode=\"wait\">\n        {displayText.map((letter, i) => (\n          <motion.h1\n            key={i}\n            className={cn(\"font-mono\", letter === \" \" ? \"w-3\" : \"\", className)}\n            {...framerProps}\n          >\n            {letter.toUpperCase()}\n          </motion.h1>\n        ))}\n      </AnimatePresence>\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

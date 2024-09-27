@@ -1,17 +1,19 @@
 "use client";
 
 import * as React from "react";
+import { Index } from "__registry__";
 import { RotateCcw } from "lucide-react";
 
+import { useConfig } from "@/lib/use-config";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ComponentWrapper from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-import { ComponentName, registry } from "@/registry/index";
+import { styles } from "@/registry/registry-styles";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: ComponentName;
+  name: string;
   align?: "center" | "start" | "end";
   preview?: boolean;
 }
@@ -24,12 +26,15 @@ export function ComponentPreview({
   preview = false,
   ...props
 }: ComponentPreviewProps) {
-  const [key, setKey] = React.useState(0); // State to trigger re-render of preview
+  const [key, setKey] = React.useState(0);
+  const [config] = useConfig();
+  const index = styles.findIndex((style) => style.name === config.style);
+
   const Codes = React.Children.toArray(children) as React.ReactElement[];
-  const Code = Codes[0]; // first child
+  const Code = Codes[index];
 
   const Preview = React.useMemo(() => {
-    const Component = registry[name]?.component;
+    const Component = Index[config.style][name]?.component;
 
     if (!Component) {
       console.error(`Component with name "${name}" not found in registry.`);
@@ -45,7 +50,7 @@ export function ComponentPreview({
     }
 
     return <Component />;
-  }, [name, key]);
+  }, [name, config.style]);
 
   return (
     <div
