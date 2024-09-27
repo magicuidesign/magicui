@@ -52,14 +52,16 @@ export async function SiteHeader() {
             className={cn(
               buttonVariants({
                 variant: "rainbow",
-              })
+              }),
+              "hidden md:inline-flex"
             )}
             target="_blank"
             href={siteConfig.links.github}
           >
             <div className="flex items-center">
               <Icons.gitHub className="size-4" />
-              <span className="ml-1">Star on GitHub</span>{" "}
+              <span className="ml-1 lg:hidden">Star</span>
+              <span className="ml-1 hidden lg:inline">Star on GitHub</span>{" "}
             </div>
             <div className="ml-2 flex items-center gap-1 text-sm md:flex">
               <StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" />
