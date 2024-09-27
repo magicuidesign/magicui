@@ -27,7 +27,7 @@ export async function SiteHeader() {
         next: {
           revalidate: 3600,
         },
-      },
+      }
     );
 
     if (response.ok) {
@@ -41,7 +41,7 @@ export async function SiteHeader() {
   return (
     <header
       className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg",
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg"
       )}
     >
       <div className="container flex h-16 items-center">
@@ -50,14 +50,13 @@ export async function SiteHeader() {
         <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
           <Link
             className={cn(
-              buttonVariants(),
-              "hidden max-w-52 overflow-hidden whitespace-pre md:flex",
-              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+              buttonVariants({
+                variant: "rainbow",
+              })
             )}
             target="_blank"
             href={siteConfig.links.github}
           >
-            <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40" />
             <div className="flex items-center">
               <Icons.gitHub className="size-4" />
               <span className="ml-1">Star on GitHub</span>{" "}
@@ -85,7 +84,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.discord className="size-4" />
@@ -102,7 +101,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.gitHub className="size-4" />
@@ -119,7 +118,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.twitter className="size-4 fill-current" />
