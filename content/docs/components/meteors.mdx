@@ -19,42 +19,9 @@ video: https://cdn.magicui.design/meteors.mp4
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add meteors
+npx shadcn@latest add "https://magicui.design/r/meteors"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-17}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        meteor: "meteor 5s linear infinite",
-      },
-      keyframes: {
-        meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
-          "70%": { opacity: "1" },
-          "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
-            opacity: "0",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 

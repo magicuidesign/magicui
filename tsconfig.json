@@ -50,5 +50,7 @@
     "node_modules",
     "packages/**/*",
     "scripts/**/*",
+    "scripts/build-registry.ts", 
+    "__registry__"
   ]
 }

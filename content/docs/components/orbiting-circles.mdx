@@ -19,44 +19,9 @@ video: https://cdn.magicui.design/orbiting-circles.mp4
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add orbiting-circles
+npx shadcn@latest add "https://magicui.design/r/orbiting-circles"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-19}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        orbit: "orbit calc(var(--duration)*1s) linear infinite",
-      },
-      keyframes: {
-        orbit: {
-          "0%": {
-            transform:
-              "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
-          },
-          "100%": {
-            transform:
-              "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 

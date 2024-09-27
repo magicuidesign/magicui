@@ -1,13 +1,13 @@
-import Link from "next/link";
 import { allDocs } from "@/.contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
-import { cn } from "@/lib/utils";
+import TechStack from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import TechStack from "@/components/tech-stack";
-import AnimatedGradientText from "@/registry/components/magicui/animated-gradient-text";
+import { cn } from "@/lib/utils";
+import AnimatedGradientText from "@/registry/default/magicui/animated-gradient-text";
 
 function HeroPill({ href, title }: { href: string; title: string }) {
   return (
@@ -59,8 +59,8 @@ export default async function Hero() {
                   className={cn(
                     "text-black dark:text-white",
                     "relative mx-0 max-w-[43.5rem]  pt-5  md:mx-auto md:px-4 md:py-2",
-                    "text-left tracking-tighter text-balance md:text-center font-semibold",
-                    "md:text-7xl lg:text-7xl sm:text-7xl text-5xl",
+                    "text-balance text-left font-semibold tracking-tighter md:text-center",
+                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl",
                   )}
                 >
                   UI library for Design Engineers
@@ -86,7 +86,7 @@ export default async function Hero() {
                         size: "lg",
                       }),
                       "gap-2 whitespace-pre md:flex",
-                      "group relative w-full gap-1 rounded-xl text-sm font-semibold tracking-tighter ring-offset-inherit transition-all duration-150 ease-in-out hover:ring-2 hover:ring-black hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50",
+                      "group relative w-full rounded-xl text-sm font-semibold tracking-tighter ring-offset-inherit transition-all duration-150 ease-in-out hover:ring-2 hover:ring-black hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50",
                     )}
                   >
                     Browse Components
@@ -100,7 +100,7 @@ export default async function Hero() {
                         variant: "outline",
                       }),
                       "gap-2 whitespace-pre md:flex",
-                      "group relative w-full gap-1 overflow-hidden rounded-xl text-sm font-semibold tracking-tighter transition-all duration-150 ease-in-out hover:ring-2 hover:ring-neutral-300 hover:ring-offset-2 hover:ring-offset-inherit dark:hover:ring-black dark:hover:ring-offset-black ",
+                      "group relative w-full overflow-hidden rounded-xl text-sm font-semibold tracking-tighter transition-all duration-150 ease-in-out hover:ring-2 hover:ring-neutral-300 hover:ring-offset-2 hover:ring-offset-inherit dark:hover:ring-black dark:hover:ring-offset-black ",
                     )}
                   >
                     Get Started

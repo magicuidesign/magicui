@@ -19,42 +19,9 @@ video: https://cdn.magicui.design/ripple.mp4
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add ripple
+npx shadcn@latest add "https://magicui.design/r/ripple"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-17}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
-      },
-      keyframes: {
-        ripple: {
-          "0%, 100%": {
-            transform: "translate(-50%, -50%) scale(1)",
-          },
-          "50%": {
-            transform: "translate(-50%, -50%) scale(0.9)",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 

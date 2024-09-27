@@ -19,54 +19,9 @@ video: https://cdn.magicui.design/shimmer-button.mp4
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add shimmer-button
+npx shadcn@latest add "https://magicui.design/r/shimmer-button"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-29}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
-        slide: "slide var(--speed) ease-in-out infinite alternate",
-      },
-      keyframes: {
-        "spin-around": {
-          "0%": {
-            transform: "translateZ(0) rotate(0)",
-          },
-          "15%, 35%": {
-            transform: "translateZ(0) rotate(90deg)",
-          },
-          "65%, 85%": {
-            transform: "translateZ(0) rotate(270deg)",
-          },
-          "100%": {
-            transform: "translateZ(0) rotate(360deg)",
-          },
-        },
-        slide: {
-          to: {
-            transform: "translate(calc(100cqw - 100%), 0)",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 
@@ -84,14 +39,15 @@ module.exports = {
 
 Add the following animations to your `tailwind.config.js` file:
 
-```js title="tailwind.config.js" {5-29}
+```js title="tailwind.config.js" {5-30}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
       animation: {
+        "shimmer-slide":
+          "shimmer-slide var(--speed) ease-in-out infinite alternate",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
-        slide: "slide var(--speed) ease-in-out infinite alternate",
       },
       keyframes: {
         "spin-around": {
@@ -108,7 +64,7 @@ module.exports = {
             transform: "translateZ(0) rotate(360deg)",
           },
         },
-        slide: {
+        "shimmer-slide": {
           to: {
             transform: "translate(calc(100cqw - 100%), 0)",
           },

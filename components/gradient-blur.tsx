@@ -40,7 +40,7 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
   };
 
   return (
-    <div className={cn(`z-5 inset-x-0 pointer-events-none h-full`, className)}>
+    <div className={cn(`z-5 pointer-events-none inset-x-0 h-full`, className)}>
       <div
         className="absolute inset-0"
         style={{

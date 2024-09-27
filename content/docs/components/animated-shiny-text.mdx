@@ -19,42 +19,9 @@ video: https://cdn.magicui.design/animated-shiny-text.mp4
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add animated-shiny-text
+npx shadcn@latest add "https://magicui.design/r/animated-shiny-text"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-17}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        shimmer: "shimmer 8s infinite",
-      },
-      keyframes: {
-        shimmer: {
-          "0%, 90%, 100%": {
-            "background-position": "calc(-100% - var(--shimmer-width)) 0",
-          },
-          "30%, 60%": {
-            "background-position": "calc(100% + var(--shimmer-width)) 0",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 
@@ -78,10 +45,10 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        shimmer: "shimmer 8s infinite",
+        "shiny-text": "shiny-text 8s infinite",
       },
       keyframes: {
-        shimmer: {
+        "shiny-text": {
           "0%, 90%, 100%": {
             "background-position": "calc(-100% - var(--shimmer-width)) 0",
           },

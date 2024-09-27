@@ -1,7 +1,6 @@
 ---
 title: Vite
 description: Install and configure Vite.
-author: abdrahmanES1
 ---
 
 <Steps>
@@ -26,7 +25,33 @@ npx tailwindcss init -p
 
 ### Edit tsconfig.json file
 
-Add the following code to the `tsconfig.json` or `tsconfig.app.json` file to resolve paths:
+The current version of Vite splits TypeScript configuration into three files, two of which need to be edited.
+Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the `tsconfig.json` and
+`tsconfig.app.json` files:
+
+```ts {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+### Edit tsconfig.app.json file
+
+Add the following code to the `tsconfig.app.json` file to resolve paths, for your IDE:
 
 ```ts {4-9} showLineNumbers
 {
@@ -69,10 +94,10 @@ export default defineConfig({
 
 ### Run the CLI
 
-Run the `magicui-cli` init command to setup your project:
+Run the `shadcn-ui` init command to setup your project:
 
 ```bash
-npx magicui-cli init
+npx shadcn@latest init
 ```
 
 ### Configure components.json
@@ -80,15 +105,9 @@ npx magicui-cli init
 You will be asked a few questions to configure `components.json`:
 
 ```txt showLineNumbers
-Would you like to use TypeScript (recommended)? no / yes
-Which style would you like to use? › Default
-Which color would you like to use as base color? › Slate
-Where is your global CSS file? › › src/index.css
+Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
 Do you want to use CSS variables for colors? › no / yes
-Where is your tailwind.config.js located? › tailwind.config.js
-Configure the import alias for components: › @/components
-Configure the import alias for utils: › @/lib/utils
-Are you using React Server Components? › no / yes (no)
 ```
 
 ### That's it
@@ -96,18 +115,18 @@ Are you using React Server Components? › no / yes (no)
 You can now start adding components to your project.
 
 ```bash
-npx magicui-cli add blur-in
+npx shadcn@latest add button
 ```
 
 The command above will add the `Button` component to your project. You can then import it like this:
 
 ```tsx {1,6} showLineNumbers
-import BlurIn from "@/components/magicui/blur-in";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
     <div>
-      <BlurIn word={"Hello World"}></BlurIn>
+      <Button>Click me</Button>
     </div>
   );
 }

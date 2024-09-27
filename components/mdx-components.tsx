@@ -11,12 +11,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Callout } from "@/components/callout";
 import RepoDownload from "@/components/repo-download";
 import TechStack from "@/components/tech-stack";
 import TemplatePreview from "@/components/template-preview";
-import TweetCard from "@/registry/components/magicui/tweet-card";
+import TweetCard from "@/registry/default/magicui/tweet-card";
 
-import { ComponentInstallation } from "./component-installation";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
 import { CopyButton, CopyNpmCommandButton } from "./copy-button";
@@ -44,6 +44,7 @@ const components = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Callout,
   TechStack,
   RepoDownload,
   TemplatePreview,
@@ -51,7 +52,6 @@ const components = {
   Tweet: ({ id }: { id: string }) => <TweetCard id={id} className="mx-auto" />,
   ComponentPreview,
   ComponentSource: (props: any) => <ComponentSource {...props} />,
-  ComponentInstallation: (props: any) => <ComponentInstallation {...props} />,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -281,6 +281,15 @@ const components = {
       {...props}
     />
   ),
+  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn(
+        "flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 sm:p-10",
+        className,
+      )}
+      {...props}
+    />
+  ),
 };
 
 interface MDXProps {
@@ -292,7 +301,7 @@ export function Mdx({ code, className }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <article className={cn("max-w-[120ch] mx-auto", className)}>
+    <article className={cn("mx-auto max-w-[120ch]", className)}>
       <Component components={components} />
     </article>
   );

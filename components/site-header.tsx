@@ -1,15 +1,15 @@
-import Link from "next/link";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import { CommandMenu } from "@/components/command-menu";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
-import NumberTicker from "@/registry/components/magicui/number-ticker";
+import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import NumberTicker from "@/registry/default/magicui/number-ticker";
 
 export async function SiteHeader() {
   let stars = 300; // Default value
@@ -51,7 +51,7 @@ export async function SiteHeader() {
           <Link
             className={cn(
               buttonVariants(),
-              "hidden max-w-52 gap-2 overflow-hidden whitespace-pre md:flex",
+              "hidden max-w-52 overflow-hidden whitespace-pre md:flex",
               "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
             )}
             target="_blank"

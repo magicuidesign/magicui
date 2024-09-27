@@ -18,42 +18,9 @@ published: true
 </TabsList>
 <TabsContent value="cli">
 
-<Steps>
-
-<Step>Run the following command:</Step>
-
 ```bash
-npx magicui-cli add shine-border
+npx shadcn@latest add "https://magicui.design/r/shine-border"
 ```
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-17}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      keyframes: {
-        "shine-pulse": {
-          "0%": {
-            "background-position": "0% 0%",
-          },
-          "50%": {
-            "background-position": "100% 100%",
-          },
-          to: {
-            "background-position": "0% 0%",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
-</Steps>
 
 </TabsContent>
 
@@ -76,8 +43,11 @@ Add the following animations to your `tailwind.config.js` file:
 module.exports = {
   theme: {
     extend: {
+      animation: {
+        shine: "shine var(--duration) infinite linear",
+      },
       keyframes: {
-        "shine-pulse": {
+        shine: {
           "0%": {
             "background-position": "0% 0%",
           },

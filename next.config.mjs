@@ -7,17 +7,6 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     optimizeCss: true,
-    turbo: {
-      resolveExtensions: [
-        ".mdx",
-        ".tsx",
-        ".ts",
-        ".jsx",
-        ".js",
-        ".mjs",
-        ".json",
-      ],
-    },
   },
   images: {
     domains: ["localhost", "cdn.magicui.design"],
@@ -42,6 +31,11 @@ const nextConfig = {
       {
         source: "/docs/components",
         destination: "/docs/components/marquee",
+        permanent: true,
+      },
+      {
+        source: "/r/:name",
+        destination: "/r/styles/default/:name.json",
         permanent: true,
       },
     ];
