@@ -16,8 +16,8 @@ import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 const prettyCodeOptions: Options = {
   theme: JSON.parse(
     String(
-      readFileSync(path.join(process.cwd(), "/lib/highlighter-theme.json"))
-    )
+      readFileSync(path.join(process.cwd(), "/lib/highlighter-theme.json")),
+    ),
   ),
   getHighlighter: (options) =>
     createHighlighter({
