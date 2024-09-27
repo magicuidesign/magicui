@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { AnimatePresence, motion, Variants } from "framer-motion"
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface GradualSpacingProps {
-  text: string
-  duration?: number
-  delayMultiple?: number
-  framerProps?: Variants
-  className?: string
+  text: string;
+  duration?: number;
+  delayMultiple?: number;
+  framerProps?: Variants;
+  className?: string;
 }
 
 export default function GradualSpacing({
@@ -40,5 +40,5 @@ export default function GradualSpacing({
         ))}
       </AnimatePresence>
     </div>
-  )
+  );
 }

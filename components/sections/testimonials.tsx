@@ -37,7 +37,7 @@ export default async function Testimonials() {
         What People Are Saying
       </h2>
       <h3 className="mx-auto mb-8 max-w-lg text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
-        Don't just take our word for it. Here's what{" "}
+        Don&apos;t just take our word for it. Here&apos;s what{" "}
         <strong>real people</strong> are saying about Magic UI on Twitter.
       </h3>
       <div className="relative flex flex-col">

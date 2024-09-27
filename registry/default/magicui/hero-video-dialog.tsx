@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { Play, XIcon } from "lucide-react"
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Play, XIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type AnimationStyle =
   | "from-bottom"
@@ -14,14 +14,14 @@ type AnimationStyle =
   | "from-right"
   | "fade"
   | "top-in-bottom-out"
-  | "left-in-right-out"
+  | "left-in-right-out";
 
 interface HeroVideoProps {
-  animationStyle?: AnimationStyle
-  videoSrc: string
-  thumbnailSrc: string
-  thumbnailAlt?: string
-  className?: string
+  animationStyle?: AnimationStyle;
+  videoSrc: string;
+  thumbnailSrc: string;
+  thumbnailAlt?: string;
+  className?: string;
 }
 
 const animationVariants = {
@@ -65,7 +65,7 @@ const animationVariants = {
     animate: { x: 0, opacity: 1 },
     exit: { x: "100%", opacity: 0 },
   },
-}
+};
 
 export default function HeroVideoDialog({
   animationStyle = "from-center",
@@ -74,8 +74,8 @@ export default function HeroVideoDialog({
   thumbnailAlt = "Video thumbnail",
   className,
 }: HeroVideoProps) {
-  const [isVideoOpen, setIsVideoOpen] = useState(false)
-  const selectedAnimation = animationVariants[animationStyle]
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const selectedAnimation = animationVariants[animationStyle];
 
   return (
     <div className={cn("relative", className)}>
@@ -136,5 +136,5 @@ export default function HeroVideoDialog({
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

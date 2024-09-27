@@ -1,9 +1,9 @@
-import { useTheme } from "next-themes"
+import { useTheme } from "next-themes";
 
-import { MagicCard } from "@/registry/default/magicui/magic-card"
+import { MagicCard } from "@/registry/default/magicui/magic-card";
 
 export default function MagicCardDemo() {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
   return (
     <div
       className={
@@ -23,5 +23,5 @@ export default function MagicCardDemo() {
         Card
       </MagicCard>
     </div>
-  )
+  );
 }

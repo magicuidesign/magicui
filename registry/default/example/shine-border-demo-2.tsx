@@ -1,9 +1,9 @@
-import { useTheme } from "next-themes"
+import { useTheme } from "next-themes";
 
-import ShineBorder from "@/registry/default/magicui/shine-border"
+import ShineBorder from "@/registry/default/magicui/shine-border";
 
 export default function ShineBorderDemo() {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <ShineBorder
       className="text-center text-2xl font-bold capitalize"
@@ -11,5 +11,5 @@ export default function ShineBorderDemo() {
     >
       Shine Border
     </ShineBorder>
-  )
+  );
 }

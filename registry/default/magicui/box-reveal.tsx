@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { motion, useAnimation, useInView } from "framer-motion"
+import { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 interface BoxRevealProps {
-  children: JSX.Element
-  width?: "fit-content" | "100%"
-  boxColor?: string
-  duration?: number
+  children: JSX.Element;
+  width?: "fit-content" | "100%";
+  boxColor?: string;
+  duration?: number;
 }
 
 export const BoxReveal = ({
@@ -16,21 +16,21 @@ export const BoxReveal = ({
   boxColor,
   duration,
 }: BoxRevealProps) => {
-  const mainControls = useAnimation()
-  const slideControls = useAnimation()
+  const mainControls = useAnimation();
+  const slideControls = useAnimation();
 
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView) {
-      slideControls.start("visible")
-      mainControls.start("visible")
+      slideControls.start("visible");
+      mainControls.start("visible");
     } else {
-      slideControls.start("hidden")
-      mainControls.start("hidden")
+      slideControls.start("hidden");
+      mainControls.start("hidden");
     }
-  }, [isInView, mainControls, slideControls])
+  }, [isInView, mainControls, slideControls]);
 
   return (
     <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
@@ -65,7 +65,7 @@ export const BoxReveal = ({
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default BoxReveal
+export default BoxReveal;

@@ -1,4 +1,4 @@
-import { File, Folder, Tree } from "@/registry/default/magicui/file-tree"
+import { File, Folder, Tree } from "@/registry/default/magicui/file-tree";
 
 export default function FileTreeDemo() {
   return (
@@ -51,7 +51,7 @@ export default function FileTreeDemo() {
         </Folder>
       </Tree>
     </div>
-  )
+  );
 }
 
 const ELEMENTS = [
@@ -108,4 +108,4 @@ const ELEMENTS = [
       },
     ],
   },
-]
+];

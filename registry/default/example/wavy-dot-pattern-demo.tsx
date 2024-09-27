@@ -1,4 +1,4 @@
-import WavyDotPattern from "@/registry/default/magicui/wavy-dot-pattern"
+import WavyDotPattern from "@/registry/default/magicui/wavy-dot-pattern";
 
 export default function WavyDotPatternDemo() {
   return (
@@ -14,5 +14,5 @@ export default function WavyDotPatternDemo() {
         dotHeight={8}
       />
     </div>
-  )
+  );
 }

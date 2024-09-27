@@ -1,4 +1,4 @@
-import Marquee from "@/registry/default/magicui/marquee"
+import Marquee from "@/registry/default/magicui/marquee";
 
 const logos = [
   {
@@ -25,7 +25,7 @@ const logos = [
     name: "Twitter",
     img: "https://picsum.photos/id/6/200/300",
   },
-]
+];
 
 export default function Marquee3D() {
   return (
@@ -53,5 +53,5 @@ export default function Marquee3D() {
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
     </div>
-  )
+  );
 }

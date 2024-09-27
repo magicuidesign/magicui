@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils"
-import AnimatedGridPattern from "@/registry/default/magicui/animated-grid-pattern"
+import { cn } from "@/lib/utils";
+import AnimatedGridPattern from "@/registry/default/magicui/animated-grid-pattern";
 
 export default function AnimatedGridPatternDemo() {
   return (
@@ -14,9 +14,9 @@ export default function AnimatedGridPatternDemo() {
         repeatDelay={1}
         className={cn(
           "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
         )}
       />
     </div>
-  )
+  );
 }

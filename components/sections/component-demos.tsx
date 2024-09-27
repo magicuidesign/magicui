@@ -15,7 +15,7 @@ export default function ComponentDemos() {
   }
 
   return (
-    <section id="component-demos" className="container py-14 max-w-5xl">
+    <section id="component-demos" className="container max-w-5xl py-14">
       <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
         Component Demos
       </h2>

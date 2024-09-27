@@ -1,9 +1,9 @@
-import { SVGProps } from "react"
+import { SVGProps } from "react";
 
 export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
-  width?: number
-  height?: number
-  src?: string
+  width?: number;
+  height?: number;
+  src?: string;
 }
 
 export default function Iphone15Pro({
@@ -91,5 +91,5 @@ export default function Iphone15Pro({
         </clipPath>
       </defs>
     </svg>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import FlipText from "@/registry/default/magicui/flip-text"
+import FlipText from "@/registry/default/magicui/flip-text";
 
 export default function FlipTextDemo() {
   return (
@@ -6,5 +6,5 @@ export default function FlipTextDemo() {
       className="text-4xl font-bold -tracking-widest text-black dark:text-white md:text-7xl md:leading-[5rem]"
       word="Flip Text"
     />
-  )
+  );
 }

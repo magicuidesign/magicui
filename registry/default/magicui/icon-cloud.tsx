@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useEffect, useMemo, useState } from "react"
-import { useTheme } from "next-themes"
+import { useEffect, useMemo, useState } from "react";
+import { useTheme } from "next-themes";
 import {
   Cloud,
   fetchSimpleIcons,
   ICloud,
   renderSimpleIcon,
   SimpleIcon,
-} from "react-icon-cloud"
+} from "react-icon-cloud";
 
 export const cloudProps: Omit<ICloud, "children"> = {
   containerProps: {
@@ -35,12 +35,12 @@ export const cloudProps: Omit<ICloud, "children"> = {
     minSpeed: 0.02,
     // dragControl: false,
   },
-}
+};
 
 export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510"
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff"
-  const minContrastRatio = theme === "dark" ? 2 : 1.2
+  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
+  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
+  const minContrastRatio = theme === "dark" ? 2 : 1.2;
 
   return renderSimpleIcon({
     icon,
@@ -54,35 +54,35 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       rel: undefined,
       onClick: (e: any) => e.preventDefault(),
     },
-  })
-}
+  });
+};
 
 export type DynamicCloudProps = {
-  iconSlugs: string[]
-}
+  iconSlugs: string[];
+};
 
-type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>
+type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
 
 export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
-  const [data, setData] = useState<IconData | null>(null)
-  const { theme } = useTheme()
+  const [data, setData] = useState<IconData | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData)
-  }, [iconSlugs])
+    fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
+  }, [iconSlugs]);
 
   const renderedIcons = useMemo(() => {
-    if (!data) return null
+    if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light")
-    )
-  }, [data, theme])
+      renderCustomIcon(icon, theme || "light"),
+    );
+  }, [data, theme]);
 
   return (
     // @ts-ignore
     <Cloud {...cloudProps}>
       <>{renderedIcons}</>
     </Cloud>
-  )
+  );
 }

@@ -301,7 +301,7 @@ export function Mdx({ code, className }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <article className={cn("max-w-[120ch] mx-auto", className)}>
+    <article className={cn("mx-auto max-w-[120ch]", className)}>
       <Component components={components} />
     </article>
   );

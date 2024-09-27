@@ -1,4 +1,4 @@
-import Safari from "@/registry/default/magicui/safari"
+import Safari from "@/registry/default/magicui/safari";
 
 export default function SafariDemo() {
   return (
@@ -9,5 +9,5 @@ export default function SafariDemo() {
         src="https://via.placeholder.com/1200x750"
       />
     </div>
-  )
+  );
 }

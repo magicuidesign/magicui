@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 // interface LinearMaskProps {
 //   color?: string;
@@ -30,8 +30,8 @@ import { cn } from "@/lib/utils"
 // };
 
 interface Props {
-  className?: string
-  children?: ReactNode
+  className?: string;
+  children?: ReactNode;
 }
 
 const LinearMask: React.FC<Props> = ({ className, children }) => {
@@ -39,12 +39,12 @@ const LinearMask: React.FC<Props> = ({ className, children }) => {
     <div
       className={cn(
         "[mask:linear-gradient(180deg,transparent,#fff_30%,#fff_70%,transparent)]",
-        className
+        className,
       )}
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default LinearMask
+export default LinearMask;

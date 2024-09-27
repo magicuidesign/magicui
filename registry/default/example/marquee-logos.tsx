@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils"
-import Marquee from "@/registry/default/magicui/marquee"
+import { cn } from "@/lib/utils";
+import Marquee from "@/registry/default/magicui/marquee";
 
 const logos = [
   {
@@ -26,15 +26,15 @@ const logos = [
     name: "Twitter",
     img: "https://cdn.simpleicons.org/twitter/000/fff",
   },
-]
+];
 
 const Logo = ({ name, img }: { name: string; img: string }) => {
   return (
     <div className={cn("size-12 cursor-pointer")}>
       <img src={img} alt={name} />
     </div>
-  )
-}
+  );
+};
 
 export default function MarqueeLogos() {
   return (
@@ -47,5 +47,5 @@ export default function MarqueeLogos() {
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
     </div>
-  )
+  );
 }

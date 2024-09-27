@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
-import Particles from "@/registry/default/magicui/particles"
+import Particles from "@/registry/default/magicui/particles";
 
 export default function ParticlesDemo() {
-  const { theme } = useTheme()
-  const [color, setColor] = useState("#ffffff")
+  const { theme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
 
   useEffect(() => {
-    setColor(theme === "dark" ? "#ffffff" : "#000000")
-  }, [theme])
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
+  }, [theme]);
 
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
@@ -26,5 +26,5 @@ export default function ParticlesDemo() {
         refresh
       />
     </div>
-  )
+  );
 }

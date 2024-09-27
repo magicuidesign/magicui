@@ -1,4 +1,4 @@
-import TypingAnimation from "@/registry/default/magicui/typing-animation"
+import TypingAnimation from "@/registry/default/magicui/typing-animation";
 
 export default function TypingAnimationDemo() {
   return (
@@ -6,5 +6,5 @@ export default function TypingAnimationDemo() {
       className="text-4xl font-bold text-black dark:text-white"
       text="Typing Animation"
     />
-  )
+  );
 }

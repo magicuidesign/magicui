@@ -1,20 +1,20 @@
-import React from "react"
-import Link from "next/link"
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
+import React from "react";
+import Link from "next/link";
+import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { ModeToggle } from "@/components/mode-toggle"
-import { Dock, DockIcon } from "@/registry/default/magicui/dock"
+} from "@/components/ui/tooltip";
+import { ModeToggle } from "@/components/mode-toggle";
+import { Dock, DockIcon } from "@/registry/default/magicui/dock";
 
-export type IconProps = React.HTMLAttributes<SVGElement>
+export type IconProps = React.HTMLAttributes<SVGElement>;
 
 const Icons = {
   calendar: (props: IconProps) => <CalendarIcon {...props} />,
@@ -58,7 +58,7 @@ const Icons = {
       ></path>
     </svg>
   ),
-}
+};
 
 const DATA = {
   navbar: [
@@ -89,7 +89,7 @@ const DATA = {
       },
     },
   },
-}
+};
 
 export default function DockDemo() {
   return (
@@ -108,7 +108,7 @@ export default function DockDemo() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12 rounded-full",
                     )}
                   >
                     <item.icon className="size-4" />
@@ -130,7 +130,7 @@ export default function DockDemo() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
+                      "size-12 rounded-full",
                     )}
                   >
                     <social.icon className="size-4" />
@@ -156,5 +156,5 @@ export default function DockDemo() {
         </Dock>
       </TooltipProvider>
     </div>
-  )
+  );
 }

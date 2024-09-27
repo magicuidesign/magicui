@@ -4,9 +4,9 @@ import {
   FileTextIcon,
   GlobeIcon,
   InputIcon,
-} from "@radix-ui/react-icons"
+} from "@radix-ui/react-icons";
 
-import { BentoCard, BentoGrid } from "@/registry/default/magicui/bento-grid"
+import { BentoCard, BentoGrid } from "@/registry/default/magicui/bento-grid";
 
 const features = [
   {
@@ -55,7 +55,7 @@ const features = [
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
-]
+];
 
 export default async function BentoDemo() {
   return (
@@ -64,5 +64,5 @@ export default async function BentoDemo() {
         <BentoCard key={feature.name} {...feature} />
       ))}
     </BentoGrid>
-  )
+  );
 }

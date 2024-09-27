@@ -1,4 +1,4 @@
-import { BorderBeam } from "@/registry/default/magicui/border-beam"
+import { BorderBeam } from "@/registry/default/magicui/border-beam";
 
 export default function BorderBeamDemo() {
   return (
@@ -16,5 +16,5 @@ export default function BorderBeamDemo() {
 
       <BorderBeam size={250} duration={12} delay={9} />
     </div>
-  )
+  );
 }

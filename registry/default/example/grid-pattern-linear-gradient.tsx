@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import GridPattern from "@/registry/default/magicui/grid-pattern"
+import { cn } from "@/lib/utils";
+import GridPattern from "@/registry/default/magicui/grid-pattern";
 
 export default function GridPatternLinearGradient() {
   return (
@@ -15,9 +15,9 @@ export default function GridPatternLinearGradient() {
         x={-1}
         y={-1}
         className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
         )}
       />
     </div>
-  )
+  );
 }

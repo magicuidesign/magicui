@@ -1508,7 +1508,7 @@ export const colors = {
       hsl: "hsl(343.1,87.7%,15.9%)",
     },
   ],
-}
+};
 
 export const colorMapping = {
   light: {
@@ -1563,4 +1563,4 @@ export const colorMapping = {
     "chart-4": "280 65% 60%",
     "chart-5": "340 75% 55%",
   },
-} as const
+} as const;

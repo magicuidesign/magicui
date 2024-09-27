@@ -1,7 +1,7 @@
-import { ChevronRight } from "lucide-react"
+import { ChevronRight } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import AnimatedGradientText from "@/registry/default/magicui/animated-gradient-text"
+import { cn } from "@/lib/utils";
+import AnimatedGradientText from "@/registry/default/magicui/animated-gradient-text";
 
 export default async function AnimatedGradientTextDemo() {
   return (
@@ -10,7 +10,7 @@ export default async function AnimatedGradientTextDemo() {
         🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
         <span
           className={cn(
-            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
           )}
         >
           Introducing Magic UI
@@ -18,5 +18,5 @@ export default async function AnimatedGradientTextDemo() {
         <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
       </AnimatedGradientText>
     </div>
-  )
+  );
 }

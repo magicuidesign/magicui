@@ -1,14 +1,14 @@
-import { useState } from "react"
-import { anime } from "react-anime"
+import { useState } from "react";
+import { anime } from "react-anime";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface WavyDotPatternProps {
-  className?: string
-  gridWidth?: number
-  gridHeight?: number
-  dotWidth?: number
-  dotHeight?: number
+  className?: string;
+  gridWidth?: number;
+  gridHeight?: number;
+  dotWidth?: number;
+  dotHeight?: number;
 }
 
 export const WavyDotPattern = ({
@@ -18,10 +18,10 @@ export const WavyDotPattern = ({
   dotWidth,
   dotHeight,
 }: WavyDotPatternProps) => {
-  const [dotClickDisabled, setDotClickDisabled] = useState<boolean>(false)
+  const [dotClickDisabled, setDotClickDisabled] = useState<boolean>(false);
 
   const handleDotClick = (e: any, width: number, height: number) => {
-    setDotClickDisabled(true)
+    setDotClickDisabled(true);
 
     anime({
       targets: ".dot-point",
@@ -41,20 +41,20 @@ export const WavyDotPattern = ({
         grid: [width, height],
         from: e.target.dataset.index,
       }),
-    })
+    });
 
-    setTimeout(() => setDotClickDisabled(false), 2000)
-  }
+    setTimeout(() => setDotClickDisabled(false), 2000);
+  };
 
-  const GRID_WIDTH = gridWidth ? gridWidth : 30
-  const GRID_HEIGHT = gridHeight ? gridHeight : 30
+  const GRID_WIDTH = gridWidth ? gridWidth : 30;
+  const GRID_HEIGHT = gridHeight ? gridHeight : 30;
 
-  const DOT_WIDTH = dotWidth ? "w-[" + dotWidth + "px]" : "w-[8px]"
-  const DOT_HEIGHT = dotHeight ? "h-[" + dotHeight + "px]" : "h-[8px]"
+  const DOT_WIDTH = dotWidth ? "w-[" + dotWidth + "px]" : "w-[8px]";
+  const DOT_HEIGHT = dotHeight ? "h-[" + dotHeight + "px]" : "h-[8px]";
 
-  let index = 0
+  let index = 0;
 
-  const dots = []
+  const dots = [];
 
   for (let i = 0; i < GRID_WIDTH; i++) {
     for (let j = 0; j < GRID_HEIGHT; j++) {
@@ -71,13 +71,13 @@ export const WavyDotPattern = ({
               "dot-point",
               "rounded-xl bg-gradient-to-r from-[#d9cab3] to-black opacity-35 hover:from-black hover:to-black hover:opacity-100",
               DOT_WIDTH,
-              DOT_HEIGHT
+              DOT_HEIGHT,
             )}
             data-index={index}
           />
-        </button>
-      )
-      index++
+        </button>,
+      );
+      index++;
     }
   }
 
@@ -88,7 +88,7 @@ export const WavyDotPattern = ({
     >
       {dots.map((dot) => dot)}
     </div>
-  )
-}
+  );
+};
 
-export default WavyDotPattern
+export default WavyDotPattern;

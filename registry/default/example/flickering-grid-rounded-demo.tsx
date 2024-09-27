@@ -1,4 +1,4 @@
-import FlickeringGrid from "@/registry/default/magicui/flickering-grid"
+import FlickeringGrid from "@/registry/default/magicui/flickering-grid";
 
 export default function FlickeringGridRoundedDemo() {
   return (
@@ -14,5 +14,5 @@ export default function FlickeringGridRoundedDemo() {
         width={800}
       />
     </div>
-  )
+  );
 }

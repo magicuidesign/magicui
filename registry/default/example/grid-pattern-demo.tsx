@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import GridPattern from "@/registry/default/magicui/grid-pattern"
+import { cn } from "@/lib/utils";
+import GridPattern from "@/registry/default/magicui/grid-pattern";
 
 export default function GridPatternDemo() {
   return (
@@ -26,9 +26,9 @@ export default function GridPatternDemo() {
         ]}
         className={cn(
           "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
         )}
       />
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Registry } from "@/registry/schema"
+import { Registry } from "@/registry/schema";
 
 export const examples: Registry = [
   {
@@ -477,4 +477,4 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/rainbow-button-demo.tsx"],
   },
-]
+];

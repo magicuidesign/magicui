@@ -751,6 +751,6 @@ export const baseColors = [
       },
     },
   },
-] as const
+] as const;
 
-export type BaseColor = (typeof baseColors)[number]
+export type BaseColor = (typeof baseColors)[number];

@@ -1,4 +1,4 @@
-import BlurFade from "@/registry/default/magicui/blur-fade"
+import BlurFade from "@/registry/default/magicui/blur-fade";
 
 export default function BlurFadeTextDemo() {
   return (
@@ -14,5 +14,5 @@ export default function BlurFadeTextDemo() {
         </span>
       </BlurFade>
     </section>
-  )
+  );
 }

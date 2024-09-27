@@ -7,17 +7,6 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     optimizeCss: true,
-    turbo: {
-      resolveExtensions: [
-        ".mdx",
-        ".tsx",
-        ".ts",
-        ".jsx",
-        ".js",
-        ".mjs",
-        ".json",
-      ],
-    },
   },
   images: {
     domains: ["localhost", "cdn.magicui.design"],

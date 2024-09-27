@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface AvatarCirclesProps {
-  className?: string
-  numPeople?: number
-  avatarUrls: string[]
+  className?: string;
+  numPeople?: number;
+  avatarUrls: string[];
 }
 
 const AvatarCircles = ({
@@ -34,7 +34,7 @@ const AvatarCircles = ({
         +{numPeople}
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default AvatarCircles
+export default AvatarCircles;

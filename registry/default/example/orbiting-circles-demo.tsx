@@ -1,4 +1,4 @@
-import OrbitingCircles from "@/registry/default/magicui/orbiting-circles"
+import OrbitingCircles from "@/registry/default/magicui/orbiting-circles";
 
 export default function OrbitingCirclesDemo() {
   return (
@@ -44,7 +44,7 @@ export default function OrbitingCirclesDemo() {
         <Icons.gitHub />
       </OrbitingCircles>
     </div>
-  )
+  );
 }
 
 const Icons = {
@@ -173,4 +173,4 @@ const Icons = {
       />
     </svg>
   ),
-}
+};

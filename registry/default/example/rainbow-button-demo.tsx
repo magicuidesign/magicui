@@ -1,5 +1,5 @@
-import { RainbowButton } from "@/registry/default/magicui/rainbow-button"
+import { RainbowButton } from "@/registry/default/magicui/rainbow-button";
 
 export default function RainbowButtonDemo() {
-  return <RainbowButton>Get Unlimited Access</RainbowButton>
+  return <RainbowButton>Get Unlimited Access</RainbowButton>;
 }

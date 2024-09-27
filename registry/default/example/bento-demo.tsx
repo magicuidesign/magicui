@@ -1,12 +1,12 @@
-import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons"
-import { BellIcon, Share2Icon } from "lucide-react"
+import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
+import { BellIcon, Share2Icon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
-import AnimatedBeamMultipleOutputDemo from "@/registry/default/example/animated-beam-multiple-outputs"
-import AnimatedListDemo from "@/registry/default/example/animated-list-demo"
-import { BentoCard, BentoGrid } from "@/registry/default/magicui/bento-grid"
-import Marquee from "@/registry/default/magicui/marquee"
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import AnimatedBeamMultipleOutputDemo from "@/registry/default/example/animated-beam-multiple-outputs";
+import AnimatedListDemo from "@/registry/default/example/animated-list-demo";
+import { BentoCard, BentoGrid } from "@/registry/default/magicui/bento-grid";
+import Marquee from "@/registry/default/magicui/marquee";
 
 const files = [
   {
@@ -29,7 +29,7 @@ const files = [
     name: "seed.txt",
     body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
   },
-]
+];
 
 const features = [
   {
@@ -51,7 +51,7 @@ const features = [
               "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
               "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
               "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none",
             )}
           >
             <div className="flex flex-row items-center gap-2">
@@ -104,7 +104,7 @@ const features = [
       />
     ),
   },
-]
+];
 
 export default function BentoDemo() {
   return (
@@ -113,5 +113,5 @@ export default function BentoDemo() {
         <BentoCard key={idx} {...feature} />
       ))}
     </BentoGrid>
-  )
+  );
 }

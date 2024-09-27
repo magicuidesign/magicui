@@ -1,4 +1,4 @@
-import { FadeText } from "@/registry/default/magicui/fade-text"
+import { FadeText } from "@/registry/default/magicui/fade-text";
 
 export default function FadeTextDemo() {
   return (
@@ -36,5 +36,5 @@ export default function FadeTextDemo() {
         text="Fade Left"
       />
     </div>
-  )
+  );
 }

@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useEffect, useId, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useId, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface GridPatternProps {
-  width?: number
-  height?: number
-  x?: number
-  y?: number
-  strokeDasharray?: any
-  numSquares?: number
-  className?: string
-  maxOpacity?: number
-  duration?: number
-  repeatDelay?: number
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  strokeDasharray?: any;
+  numSquares?: number;
+  className?: string;
+  maxOpacity?: number;
+  duration?: number;
+  repeatDelay?: number;
 }
 
 export function GridPattern({
@@ -31,16 +31,16 @@ export function GridPattern({
   repeatDelay = 0.5,
   ...props
 }: GridPatternProps) {
-  const id = useId()
-  const containerRef = useRef(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [squares, setSquares] = useState(() => generateSquares(numSquares))
+  const id = useId();
+  const containerRef = useRef(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [squares, setSquares] = useState(() => generateSquares(numSquares));
 
   function getPos() {
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
-    ]
+    ];
   }
 
   // Adjust the generateSquares function to return objects with an id, x, and y
@@ -48,7 +48,7 @@ export function GridPattern({
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       pos: getPos(),
-    }))
+    }));
   }
 
   // Function to update a single square's position
@@ -60,17 +60,17 @@ export function GridPattern({
               ...sq,
               pos: getPos(),
             }
-          : sq
-      )
-    )
-  }
+          : sq,
+      ),
+    );
+  };
 
   // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
-      setSquares(generateSquares(numSquares))
+      setSquares(generateSquares(numSquares));
     }
-  }, [dimensions, numSquares])
+  }, [dimensions, numSquares]);
 
   // Resize observer to update container dimensions
   useEffect(() => {
@@ -79,20 +79,20 @@ export function GridPattern({
         setDimensions({
           width: entry.contentRect.width,
           height: entry.contentRect.height,
-        })
+        });
       }
-    })
+    });
 
     if (containerRef.current) {
-      resizeObserver.observe(containerRef.current)
+      resizeObserver.observe(containerRef.current);
     }
 
     return () => {
       if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current)
+        resizeObserver.unobserve(containerRef.current);
       }
-    }
-  }, [containerRef])
+    };
+  }, [containerRef]);
 
   return (
     <svg
@@ -100,7 +100,7 @@ export function GridPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
-        className
+        className,
       )}
       {...props}
     >
@@ -144,7 +144,7 @@ export function GridPattern({
         ))}
       </svg>
     </svg>
-  )
+  );
 }
 
-export default GridPattern
+export default GridPattern;

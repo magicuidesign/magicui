@@ -1,4 +1,4 @@
-import WordPullUp from "@/registry/default/magicui/word-pull-up"
+import WordPullUp from "@/registry/default/magicui/word-pull-up";
 
 export default function WordPullUpDemo() {
   return (
@@ -6,5 +6,5 @@ export default function WordPullUpDemo() {
       className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem]"
       words="Word Pull Up"
     />
-  )
+  );
 }

@@ -1,14 +1,14 @@
-import Link from "next/link";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import { CommandMenu } from "@/components/command-menu";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { ModeToggle } from "@/components/mode-toggle";
+import { buttonVariants } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 import NumberTicker from "@/registry/default/magicui/number-ticker";
 
 export async function SiteHeader() {
@@ -27,7 +27,7 @@ export async function SiteHeader() {
         next: {
           revalidate: 3600,
         },
-      },
+      }
     );
 
     if (response.ok) {
@@ -41,7 +41,7 @@ export async function SiteHeader() {
   return (
     <header
       className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg",
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg"
       )}
     >
       <div className="container flex h-16 items-center">
@@ -51,8 +51,8 @@ export async function SiteHeader() {
           <Link
             className={cn(
               buttonVariants(),
-              "hidden max-w-52 gap-2 overflow-hidden whitespace-pre md:flex",
-              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+              "hidden max-w-52 overflow-hidden whitespace-pre md:flex",
+              "group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2"
             )}
             target="_blank"
             href={siteConfig.links.github}
@@ -85,7 +85,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.discord className="size-4" />
@@ -102,7 +102,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.gitHub className="size-4" />
@@ -119,7 +119,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0",
+                  "w-9 px-0"
                 )}
               >
                 <Icons.twitter className="size-4 fill-current" />

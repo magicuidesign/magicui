@@ -48,7 +48,7 @@ export function DocsSidebarNavItems({
   groupId,
 }: DocsSidebarNavItemsProps) {
   return items?.length ? (
-    <div className="grid grid-flow-row auto-rows-max text-sm gap-0.5 relative">
+    <div className="relative grid grid-flow-row auto-rows-max gap-0.5 text-sm">
       {items.map((item, index) =>
         item.href && !item.disabled ? (
           <Link
@@ -56,7 +56,7 @@ export function DocsSidebarNavItems({
             href={item.href}
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 relative",
+              "group relative flex w-full items-center rounded-md border border-transparent px-2 py-1",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href
                 ? "font-medium text-foreground"
@@ -68,7 +68,7 @@ export function DocsSidebarNavItems({
             {pathname === item.href && (
               <motion.div
                 layoutId={groupId}
-                className="absolute border-l-2 border-neutral-300 dark:border-neutral-600 inset-0 rounded-r-md bg-neutral-100 dark:bg-neutral-800"
+                className="absolute inset-0 rounded-r-md border-l-2 border-neutral-300 bg-neutral-100 dark:border-neutral-600 dark:bg-neutral-800"
                 initial={false}
                 transition={{
                   type: "spring",

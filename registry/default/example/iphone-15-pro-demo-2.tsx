@@ -1,4 +1,4 @@
-import Iphone15Pro from "@/registry/default/magicui/iphone-15-pro"
+import Iphone15Pro from "@/registry/default/magicui/iphone-15-pro";
 
 export default function Iphone15ProDemo() {
   return (
@@ -8,5 +8,5 @@ export default function Iphone15ProDemo() {
         src="https://via.placeholder.com/430x880"
       />
     </div>
-  )
+  );
 }
