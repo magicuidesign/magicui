@@ -29,10 +29,10 @@
         "./*"
       ],
       "@/components/magicui/*": [
-        "./registry/components/magicui/*"
+        "./registry/default/magicui/*"
       ],
       "@/components/example/*": [
-        "./registry/components/example/*"
+        "./registry/default/example/*"
       ],
       "content-collections": ["./.content-collections/generated"]
     }

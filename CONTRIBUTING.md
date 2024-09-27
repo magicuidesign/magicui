@@ -54,7 +54,7 @@ To add a new component to MagicUI, you will need to modify several files. Follow
 
 ### 1. Create Component
 
-Create the main component in `registry/components/magicui/example-component.tsx`
+Create the main component in `registry/default/magicui/example-component.tsx`
 
 ```typescript
 import React from 'react'
@@ -70,16 +70,16 @@ export default function ExampleComponent() {
 
 ### 2. Create Component Demo
 
-Provide a basic example to showcase your component in `registry/components/example/example-component-demo.tsx`
+Provide a basic example to showcase your component in `registry/default/example/example-component-demo.tsx`
 
 ```typescript
-import ExampleComponent from '@/registry/components/magicui/example-component'
+import ExampleComponent from '@/registry/default/magicui/example-component'
 
 export default function ExampleComponentDemo() {
   return (
     <div className="relative justify-center">
-    <ExampleComponent />
-  </div>
+      <ExampleComponent />
+    </div>
   )
 }
 ```
@@ -157,28 +157,37 @@ npx magicui-cli add example-component
 
 ### 5. Update Registry
 
-Export your component and example in the registry in `registry/index.tsx`
+Export your component and example in the registry files:
+
+In `registry/registry-ui.ts`:
 
 ```typescript
-const ui: Registry = {
-  "example-component": {
+export const ui: Registry = [
+  // ... existing components ...
+  {
     name: "example-component",
-    type: "components:ui",
-    files: ["registry/components/magicui/example-component.tsx"],
+    type: "registry:ui",
+    files: ["magicui/example-component.tsx"],
+    // Add any dependencies or tailwind configurations if needed
   },
-};
-
-const example: Registry = {
-  "example-component-demo": {
-    name: "example-component",
-    type: "components:example",
-    files: ["registry/components/example/example-component-demo.tsx"],
-    component: React.lazy(
-      () => import("@/registry/components/example/example-component-demo"),
-    ),
-  },
-};
+];
 ```
+
+In `registry/registry-examples.ts`:
+
+```typescript
+export const examples: Registry = [
+  // ... existing examples ...
+  {
+    name: "example-component-demo",
+    type: "registry:example",
+    registryDependencies: ["example-component"],
+    files: ["example/example-component-demo.tsx"],
+  },
+];
+```
+
+Make sure to add any necessary dependencies, tailwind configurations, or other properties as needed for your specific component.
 
 ## Adding to the showcase
 
