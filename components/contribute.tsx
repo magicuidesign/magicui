@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Doc } from "contentlayer/generated";
+import { Doc } from "content-collections";
 import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react";
+import Link from "next/link";
 
 import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github";
 

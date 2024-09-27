@@ -333,11 +333,6 @@ export const examples: Registry = [
     files: ["example/icon-cloud-demo.tsx"],
   },
   {
-    name: "wavy-dot-pattern-demo",
-    type: "registry:example",
-    files: ["example/wavy-dot-pattern-demo.tsx"],
-  },
-  {
     name: "gradual-spacing-demo",
     type: "registry:example",
     files: ["example/gradual-spacing-demo.tsx"],

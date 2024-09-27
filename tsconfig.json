@@ -34,9 +34,7 @@
       "@/components/example/*": [
         "./registry/components/example/*"
       ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
+      "content-collections": ["./.content-collections/generated"]
     }
   },
   "include": [
@@ -44,7 +42,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated",
+    ".content-colletions/generated",
   ],
   "exclude": [
     "node_modules",

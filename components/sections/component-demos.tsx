@@ -2,8 +2,8 @@ import { Mdx } from "@/components/mdx-components";
 
 import "@/styles/mdx.css";
 
+import { allPages } from "content-collections";
 import { notFound } from "next/navigation";
-import { allPages } from "contentlayer/generated";
 
 const PAGE = "home";
 

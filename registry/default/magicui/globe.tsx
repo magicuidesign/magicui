@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
 import createGlobe, { COBEOptions } from "cobe";
-import { useSpring } from "react-spring";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -46,37 +45,31 @@ export default function Globe({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
-  const [{ r }, api] = useSpring(() => ({
-    r: 0,
-    config: {
-      mass: 1,
-      tension: 280,
-      friction: 40,
-      precision: 0.001,
-    },
-  }));
+  const [r, setR] = useState(0);
 
   const updatePointerInteraction = (value: any) => {
     pointerInteracting.current = value;
-    canvasRef.current!.style.cursor = value ? "grabbing" : "grab";
+    if (canvasRef.current) {
+      canvasRef.current.style.cursor = value ? "grabbing" : "grab";
+    }
   };
 
   const updateMovement = (clientX: any) => {
     if (pointerInteracting.current !== null) {
       const delta = clientX - pointerInteracting.current;
       pointerInteractionMovement.current = delta;
-      api.start({ r: delta / 200 });
+      setR(delta / 200);
     }
   };
 
   const onRender = useCallback(
     (state: Record<string, any>) => {
       if (!pointerInteracting.current) phi += 0.005;
-      state.phi = phi + r.get();
+      state.phi = phi + r;
       state.width = width * 2;
       state.height = width * 2;
     },
-    [pointerInteracting, phi, r],
+    [r],
   );
 
   const onResize = () => {
@@ -109,7 +102,7 @@ export default function Globe({
     >
       <canvas
         className={cn(
-          "h-full w-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
+          "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
         )}
         ref={canvasRef}
         onPointerDown={(e) =>
