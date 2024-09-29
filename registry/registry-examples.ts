@@ -104,6 +104,11 @@ export const examples: Registry = [
     files: ["example/code-comparison-demo.tsx"],
   },
   {
+    name: "script-copy-btn-demo",
+    type: "registry:example",
+    files: ["example/script-copy-btn-demo.tsx"],
+  },
+  {
     name: "marquee-demo",
     type: "registry:example",
     registryDependencies: ["marquee"],

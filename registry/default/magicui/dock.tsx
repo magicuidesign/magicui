@@ -1,15 +1,15 @@
 "use client";
 
-import React, { PropsWithChildren, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   motion,
+  MotionProps,
   MotionValue,
   useMotionValue,
   useSpring,
   useTransform,
-  MotionProps,
 } from "framer-motion";
+import React, { PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 

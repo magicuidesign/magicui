@@ -105,6 +105,11 @@ export const ui: Registry = [
     files: ["magicui/code-comparison.tsx"],
   },
   {
+    name: "script-copy-btn",
+    type: "registry:ui",
+    files: ["magicui/script-copy-btn.tsx"],
+  },
+  {
     name: "marquee",
     type: "registry:ui",
     files: ["magicui/marquee.tsx"],
