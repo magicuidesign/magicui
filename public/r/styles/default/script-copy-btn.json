@@ -1,6 +1,11 @@
 {
   "name": "script-copy-btn",
   "type": "registry:ui",
+  "dependencies": [
+    "framer-motion",
+    "shiki",
+    "next-themes"
+  ],
   "files": [
     {
       "path": "magicui/script-copy-btn.tsx",

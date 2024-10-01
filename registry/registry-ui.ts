@@ -107,6 +107,7 @@ export const ui: Registry = [
   {
     name: "script-copy-btn",
     type: "registry:ui",
+    dependencies: ["framer-motion", "shiki", "next-themes"],
     files: ["magicui/script-copy-btn.tsx"],
   },
   {
