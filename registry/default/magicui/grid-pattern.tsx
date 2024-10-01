@@ -8,7 +8,7 @@ interface GridPatternProps {
   x?: number;
   y?: number;
   squares?: Array<[x: number, y: number]>;
-  strokeDasharray?: number;
+  strokeDasharray?: string;
   className?: string;
   [key: string]: unknown;
 }
@@ -18,7 +18,7 @@ export function GridPattern({
   height = 40,
   x = -1,
   y = -1,
-  strokeDasharray = 0,
+  strokeDasharray = "0",
   squares,
   className,
   ...props
