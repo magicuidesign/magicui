@@ -60,7 +60,7 @@ export const ui: Registry = [
   {
     name: "code-comparison",
     type: "registry:ui",
-    dependencies: ["shiki"],
+    dependencies: ["shiki", "framer-motion", "next-themes"],
     files: ["magicui/code-comparison.tsx"],
   },
   {

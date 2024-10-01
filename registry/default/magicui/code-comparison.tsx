@@ -73,9 +73,9 @@ export default function CodeComparison({
 
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <Card className="w-full">
-        <CardContent className="h-full p-0">
-          <div className="relative grid h-full overflow-hidden rounded-md md:grid-cols-2">
+      <Card className="w-full shadow-none">
+        <CardContent className="h-full overflow-hidden rounded-xl p-0">
+          <div className="relative grid h-full md:grid-cols-2">
             <div className="h-full border-r border-neutral-200 dark:border-neutral-800">
               <div className="flex items-center bg-[#1e1e1e] p-2 font-mono text-sm text-white">
                 <svg
