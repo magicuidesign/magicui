@@ -472,4 +472,9 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/rainbow-button-demo.tsx"],
   },
+   {
+      name: "background-light-demo",
+      type: "registry:example",
+      files: ["example/background-light-demo.tsx"],
+    },
 ];

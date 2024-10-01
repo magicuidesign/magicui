@@ -529,6 +529,32 @@ export const ui: Registry = [
     files: ["magicui/iphone-15-pro.tsx"],
   },
   {
+    name: "background-light",
+    type: "registry:ui",
+    files: ["magicui/background-light.tsx"],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            animation: {
+              "background-light": "background-light 60s linear infinite",
+            },
+            keyframes: {
+              "background-light": {
+                from: {
+                  backgroundPosition: "50% 50%, 50% 50%",
+                },
+                to: {
+                  backgroundPosition: "350% 50%, 350% 50%",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     name: "rainbow-button",
     type: "registry:ui",
     files: ["magicui/rainbow-button.tsx"],
