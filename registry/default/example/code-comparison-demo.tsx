@@ -59,8 +59,8 @@ export default function CodeComparisonDemo() {
       afterCode={afterCode}
       language="typescript"
       filename="middleware.ts"
-      lightTheme="vitesse-light"
-      darkTheme="vitesse-dark"
+      lightTheme="github-light"
+      darkTheme="github-dark"
     />
   );
 }

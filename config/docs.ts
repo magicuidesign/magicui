@@ -136,12 +136,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Code Comparison",
-          href: `/docs/components/code-comparison`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Animated List",
           href: `/docs/components/animated-list`,
           items: [],
@@ -192,6 +186,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/file-tree`,
           items: [],
           label: "",
+        },
+        {
+          title: "Code Comparison",
+          href: `/docs/components/code-comparison`,
+          items: [],
+          label: "New",
         },
       ],
     },

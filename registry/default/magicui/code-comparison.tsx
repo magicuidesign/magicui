@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { codeToHtml } from "shiki";
-import { Card, CardContent } from "@/components/ui/card";
+import { FileIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { codeToHtml } from "shiki";
 
 interface CodeComparisonProps {
   beforeCode: string;
@@ -58,60 +58,43 @@ export default function CodeComparison({
     if (highlighted) {
       return (
         <div
-          className="h-full font-mono text-sm [&>pre]:h-full [&>pre]:bg-[#1e1e1e] [&>pre]:p-4 [&_code]:whitespace-pre-wrap [&_code]:break-all"
+          className="h-full overflow-auto bg-neutral-900 font-mono text-xs [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all"
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );
     } else {
       return (
-        <pre className="h-full whitespace-pre-wrap break-all bg-background p-4 font-mono text-sm text-foreground">
+        <pre className="h-full overflow-auto break-all bg-background p-4 font-mono text-xs text-foreground">
           {code}
         </pre>
       );
     }
   };
-
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <Card className="w-full shadow-none">
-        <CardContent className="h-full overflow-hidden rounded-xl p-0">
-          <div className="relative grid h-full md:grid-cols-2">
-            <div className="h-full border-r border-neutral-200 dark:border-neutral-800">
-              <div className="flex items-center bg-[#1e1e1e] p-2 font-mono text-sm text-white">
-                <svg
-                  className="mr-2 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM7 7h4v4H7V7zm6 0h4v4h-4V7zm-6 6h4v4H7v-4zm6 0h4v4h-4v-4z" />
-                </svg>
-                {filename}
-                <span className="ml-auto">before</span>
-              </div>
-              {renderCode(beforeCode, highlightedBefore)}
+      <div className="w-full overflow-hidden rounded-xl border border-border">
+        <div className="relative grid md:grid-cols-2 md:divide-x md:divide-border">
+          <div>
+            <div className="flex items-center bg-muted p-2 text-sm text-foreground">
+              <FileIcon className="mr-2 h-4 w-4" />
+              {filename}
+              <span className="ml-auto">before</span>
             </div>
-            <div className="h-full">
-              <div className="flex items-center bg-[#1e1e1e] p-2 font-mono text-sm text-white">
-                <svg
-                  className="mr-2 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M3 3h18v18H3V3zm16 16V5H5v14h14zM7 7h4v4H7V7zm6 0h4v4h-4V7zm-6 6h4v4H7v-4zm6 0h4v4h-4v-4z" />
-                </svg>
-                {filename}
-                <span className="ml-auto">after</span>
-              </div>
-              {renderCode(afterCode, highlightedAfter)}
-            </div>
-            <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-neutral-700 text-sm text-white">
-              VS
-            </div>
+            {renderCode(beforeCode, highlightedBefore)}
           </div>
-        </CardContent>
-      </Card>
+          <div>
+            <div className="flex items-center bg-muted p-2 text-sm text-foreground">
+              <FileIcon className="mr-2 h-4 w-4" />
+              {filename}
+              <span className="ml-auto">after</span>
+            </div>
+            {renderCode(afterCode, highlightedAfter)}
+          </div>
+        </div>
+        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-neutral-700 text-xs text-white">
+          VS
+        </div>
+      </div>
     </div>
   );
 }
