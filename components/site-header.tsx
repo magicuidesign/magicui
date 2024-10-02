@@ -27,7 +27,7 @@ export async function SiteHeader() {
         next: {
           revalidate: 3600,
         },
-      }
+      },
     );
 
     if (response.ok) {
@@ -41,7 +41,7 @@ export async function SiteHeader() {
   return (
     <header
       className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg"
+        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full bg-background/40 backdrop-blur-lg",
       )}
     >
       <div className="container flex h-16 items-center">
@@ -53,7 +53,7 @@ export async function SiteHeader() {
               buttonVariants({
                 variant: "rainbow",
               }),
-              "hidden md:inline-flex"
+              "hidden md:inline-flex",
             )}
             target="_blank"
             href={siteConfig.links.github}
@@ -86,7 +86,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0"
+                  "w-9 px-0",
                 )}
               >
                 <Icons.discord className="size-4" />
@@ -103,7 +103,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0"
+                  "w-9 px-0",
                 )}
               >
                 <Icons.gitHub className="size-4" />
@@ -120,7 +120,7 @@ export async function SiteHeader() {
                   buttonVariants({
                     variant: "ghost",
                   }),
-                  "w-9 px-0"
+                  "w-9 px-0",
                 )}
               >
                 <Icons.twitter className="size-4 fill-current" />
