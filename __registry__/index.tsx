@@ -96,6 +96,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "code-comparison": {
+      name: "code-comparison",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/code-comparison.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/code-comparison.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     marquee: {
       name: "marquee",
       type: "registry:ui",
@@ -856,6 +869,19 @@ export const Index: Record<string, any> = {
           import(
             "@/registry/default/example/hero-video-dialog-demo-top-in-bottom-out.tsx"
           ),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "code-comparison-demo": {
+      name: "code-comparison-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/code-comparison-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/code-comparison-demo.tsx"),
       ),
       source: "",
       category: "undefined",

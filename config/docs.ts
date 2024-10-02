@@ -187,6 +187,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Code Comparison",
+          href: `/docs/components/code-comparison`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
