@@ -96,6 +96,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "script-copy-btn": {
+      name: "script-copy-btn",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/script-copy-btn.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/script-copy-btn.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     marquee: {
       name: "marquee",
       type: "registry:ui",
@@ -856,6 +869,19 @@ export const Index: Record<string, any> = {
           import(
             "@/registry/default/example/hero-video-dialog-demo-top-in-bottom-out.tsx"
           ),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "script-copy-btn-demo": {
+      name: "script-copy-btn-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/script-copy-btn-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/script-copy-btn-demo.tsx"),
       ),
       source: "",
       category: "undefined",

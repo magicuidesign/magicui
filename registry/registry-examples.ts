@@ -69,6 +69,11 @@ export const examples: Registry = [
     files: ["example/hero-video-dialog-demo-top-in-bottom-out.tsx"],
   },
   {
+    name: "script-copy-btn-demo",
+    type: "registry:example",
+    files: ["example/script-copy-btn-demo.tsx"],
+  },
+  {
     name: "marquee-demo",
     type: "registry:example",
     registryDependencies: ["marquee"],

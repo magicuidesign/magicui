@@ -1,0 +1,50 @@
+---
+title: Script Copy Button
+date: 2023-11-18
+description: Copy code to clipboard
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="script-copy-btn-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/script-copy-btn"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="script-copy-btn" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop                       | Type                    | Description                                                 | Default |
+| -------------------------- | ----------------------- | ----------------------------------------------------------- | ------- |
+| className                  | string                  | The class name to be applied to the component               |         |
+| showMultiplePackageOptions | boolean                 | Whether to show options for multiple package managers       | false   |
+| codeLanguage               | string                  | The language of the code snippet (e.g., "shell")            |         |
+| lightTheme                 | string                  | The theme to use for light mode                             |         |
+| darkTheme                  | string                  | The theme to use for dark mode                              |         |
+| commandMap                 | Record< string, string> | A map of package manager names to their respective commands |         |
