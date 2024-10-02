@@ -16,7 +16,7 @@ export default function WordFadeIn({
   delay = 0.15,
   variants = {
     hidden: { opacity: 0 },
-    visible: (i: any) => ({
+    visible: (i: number) => ({
       y: 0,
       opacity: 1,
       transition: { delay: i * delay },
@@ -33,9 +33,8 @@ export default function WordFadeIn({
       animate="visible"
       className={cn(
         "font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]",
-        className,
-      )}
-    >
+        className
+      )}>
       {_words.map((word, i) => (
         <motion.span key={word} variants={variants} custom={i}>
           {word}{" "}
