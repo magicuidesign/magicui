@@ -93,7 +93,7 @@ export default async function DocPage({ params }: DocPageProps) {
         "xl:grid-cols-[1fr_300px]": doc.toc,
       })}
     >
-      <div className="mx-auto w-full min-w-0">
+      <div className="mx-auto w-full min-w-0 mt-32 max-h-screen">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="size-4" />
