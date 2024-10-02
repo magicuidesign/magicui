@@ -58,7 +58,7 @@ export default function CodeComparison({
     if (highlighted) {
       return (
         <div
-          className="h-full overflow-auto bg-neutral-900 font-mono text-xs [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all"
+          className="h-full overflow-auto bg-background font-mono text-xs [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all"
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );
@@ -72,10 +72,10 @@ export default function CodeComparison({
   };
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <div className="w-full overflow-hidden rounded-xl border border-border">
+      <div className="relative w-full overflow-hidden rounded-xl border border-border">
         <div className="relative grid md:grid-cols-2 md:divide-x md:divide-border">
           <div>
-            <div className="flex items-center bg-muted p-2 text-sm text-foreground">
+            <div className="flex items-center bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               {filename}
               <span className="ml-auto">before</span>
@@ -83,7 +83,7 @@ export default function CodeComparison({
             {renderCode(beforeCode, highlightedBefore)}
           </div>
           <div>
-            <div className="flex items-center bg-muted p-2 text-sm text-foreground">
+            <div className="flex items-center bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               {filename}
               <span className="ml-auto">after</span>
@@ -91,7 +91,7 @@ export default function CodeComparison({
             {renderCode(afterCode, highlightedAfter)}
           </div>
         </div>
-        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-neutral-700 text-xs text-white">
+        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-accent text-xs text-foreground">
           VS
         </div>
       </div>
