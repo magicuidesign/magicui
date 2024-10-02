@@ -3,15 +3,15 @@ import { useId } from "react";
 import { cn } from "@/lib/utils";
 
 interface DotPatternProps {
-  width?: any;
-  height?: any;
-  x?: any;
-  y?: any;
-  cx?: any;
-  cy?: any;
-  cr?: any;
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  cx?: number;
+  cy?: number;
+  cr?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 export function DotPattern({
   width = 16,
@@ -30,11 +30,10 @@ export function DotPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80",
-        className,
+        "pointer-events-none absolute inset-0 size-full fill-neutral-400/80",
+        className
       )}
-      {...props}
-    >
+      {...props}>
       <defs>
         <pattern
           id={id}
@@ -43,8 +42,7 @@ export function DotPattern({
           patternUnits="userSpaceOnUse"
           patternContentUnits="userSpaceOnUse"
           x={x}
-          y={y}
-        >
+          y={y}>
           <circle id="pattern-circle" cx={cx} cy={cy} r={cr} />
         </pattern>
       </defs>
