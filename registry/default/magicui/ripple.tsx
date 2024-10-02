@@ -19,9 +19,8 @@ const Ripple = React.memo(function Ripple({
     <div
       className={cn(
         "absolute inset-0 bg-white/5 [mask-image:linear-gradient(to_bottom,white,transparent)]",
-        className,
-      )}
-    >
+        className
+      )}>
       {Array.from({ length: numCircles }, (_, i) => {
         const size = mainCircleSize + i * 70;
         const opacity = mainCircleOpacity - i * 0.03;
@@ -32,7 +31,7 @@ const Ripple = React.memo(function Ripple({
         return (
           <div
             key={i}
-            className={`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`}
+            className={`[--i: absolute animate-ripple rounded-full border bg-foreground/25 shadow-xl${i}]`}
             style={
               {
                 width: `${size}px`,
