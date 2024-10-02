@@ -43,14 +43,14 @@ export default function NumberTicker({
           }).format(Number(latest.toFixed(decimalPlaces)));
         }
       }),
-    [springValue, decimalPlaces]
+    [springValue, decimalPlaces],
   );
 
   return (
     <span
       className={cn(
         "inline-block tabular-nums tracking-wider text-black dark:text-white",
-        className
+        className,
       )}
       ref={ref}
     />

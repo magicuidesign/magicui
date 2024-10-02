@@ -21,7 +21,7 @@ export default function PulsatingButton({
     <button
       className={cn(
         "relative flex cursor-pointer items-center justify-center rounded-lg bg-blue-500 px-4 py-2 text-center text-white dark:bg-blue-500 dark:text-black",
-        className
+        className,
       )}
       style={
         {
@@ -29,7 +29,8 @@ export default function PulsatingButton({
           "--duration": duration,
         } as React.CSSProperties
       }
-      {...props}>
+      {...props}
+    >
       <div className="relative z-10">{children}</div>
       <div className="absolute left-1/2 top-1/2 size-full -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-lg bg-inherit" />
     </button>

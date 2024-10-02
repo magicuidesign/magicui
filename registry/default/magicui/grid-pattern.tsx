@@ -30,9 +30,10 @@ export function GridPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 size-full fill-gray-400/30 stroke-gray-400/30",
-        className
+        className,
       )}
-      {...props}>
+      {...props}
+    >
       <defs>
         <pattern
           id={id}
@@ -40,7 +41,8 @@ export function GridPattern({
           height={height}
           patternUnits="userSpaceOnUse"
           x={x}
-          y={y}>
+          y={y}
+        >
           <path
             d={`M.5 ${height}V.5H${width}`}
             fill="none"

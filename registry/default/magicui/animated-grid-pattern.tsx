@@ -50,7 +50,7 @@ export function AnimatedGridPattern({
         pos: getPos(),
       }));
     },
-    [getPos]
+    [getPos],
   );
 
   const [squares, setSquares] = useState(() => generateSquares(numSquares));
@@ -64,8 +64,8 @@ export function AnimatedGridPattern({
               ...sq,
               pos: getPos(),
             }
-          : sq
-      )
+          : sq,
+      ),
     );
   };
 
@@ -100,9 +100,10 @@ export function AnimatedGridPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 size-full fill-gray-400/30 stroke-gray-400/30",
-        className
+        className,
       )}
-      {...props}>
+      {...props}
+    >
       <defs>
         <pattern
           id={id}
@@ -110,7 +111,8 @@ export function AnimatedGridPattern({
           height={height}
           patternUnits="userSpaceOnUse"
           x={x}
-          y={y}>
+          y={y}
+        >
           <path
             d={`M.5 ${height}V.5H${width}`}
             fill="none"

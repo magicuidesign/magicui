@@ -30,13 +30,15 @@ export const AnimatedSubscribeButton: React.FC<
           onClick={() => setIsSubscribed(false)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}>
+          exit={{ opacity: 0 }}
+        >
           <motion.span
             key="action"
             className="relative block size-full font-semibold"
             initial={{ y: -50 }}
             animate={{ y: 0 }}
-            style={{ color: buttonColor }}>
+            style={{ color: buttonColor }}
+          >
             {changeText}
           </motion.span>
         </motion.button>
@@ -47,12 +49,14 @@ export const AnimatedSubscribeButton: React.FC<
           onClick={() => setIsSubscribed(true)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}>
+          exit={{ opacity: 0 }}
+        >
           <motion.span
             key="reaction"
             className="relative block font-semibold"
             initial={{ x: 0 }}
-            exit={{ x: 50, transition: { duration: 0.1 } }}>
+            exit={{ x: 50, transition: { duration: 0.1 } }}
+          >
             {initialText}
           </motion.span>
         </motion.button>
