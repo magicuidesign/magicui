@@ -7,7 +7,7 @@ interface MarqueeProps {
   children?: React.ReactNode;
   vertical?: boolean;
   repeat?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export default function Marquee({
@@ -28,9 +28,8 @@ export default function Marquee({
           "flex-row": !vertical,
           "flex-col": vertical,
         },
-        className,
-      )}
-    >
+        className
+      )}>
       {Array(repeat)
         .fill(0)
         .map((_, i) => (
@@ -41,8 +40,7 @@ export default function Marquee({
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
               "[animation-direction:reverse]": reverse,
-            })}
-          >
+            })}>
             {children}
           </div>
         ))}
