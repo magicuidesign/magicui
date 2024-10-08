@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 
 interface MousePosition {
@@ -269,7 +270,7 @@ const Particles: React.FC<ParticlesProps> = ({
   };
 
   return (
-    <div className={className} ref={canvasContainerRef} aria-hidden="true">
+    <div className={cn("pointer-events-none", className)} ref={canvasContainerRef} aria-hidden="true">
       <canvas ref={canvasRef} className="size-full" />
     </div>
   );
