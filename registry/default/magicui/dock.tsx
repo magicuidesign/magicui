@@ -80,8 +80,6 @@ export interface DockIconProps {
 }
 
 const DockIcon = ({
-  size,
-  magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
   mouseX,
   className,
@@ -96,13 +94,13 @@ const DockIcon = ({
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthSync = useTransform(
+  const paddingSync = useTransform(
     distanceCalc,
     [-distance, 0, distance],
-    [40, magnification, 40],
+    [0, 8, 0],
   );
 
-  let width = useSpring(widthSync, {
+  const padding = useSpring(paddingSync, {
     mass: 0.1,
     stiffness: 150,
     damping: 12,
@@ -111,7 +109,7 @@ const DockIcon = ({
   return (
     <motion.div
       ref={ref}
-      style={{ width }}
+      style={{ paddingLeft: padding, paddingRight: padding }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
         className,
