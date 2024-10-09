@@ -19,8 +19,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:write": "npx prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "npx prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "prepare": "husky"
   },
   "dependencies": {
@@ -43,7 +43,6 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@t3-oss/env-nextjs": "^0.7.1",
-    "concurrently": "^9.0.1",
     "@types/lodash.template": "^4.5.3",
     "autoprefixer": "10.4.14",
     "canvas-confetti": "^1.9.3",
@@ -51,6 +50,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "cobe": "^0.6.3",
+    "concurrently": "^9.0.1",
     "crisp-sdk-web": "^1.0.25",
     "critters": "^0.0.24",
     "date-fns": "^2.30.0",
