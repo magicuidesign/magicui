@@ -4,11 +4,6 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 
-// interface AvatarCirclesProps {
-//   className?: string;
-//   numPeople?: number;
-//   avatarUrls: string[];
-// }
 interface Avatar {
   imageUrl: string;
   profileUrl: string;
