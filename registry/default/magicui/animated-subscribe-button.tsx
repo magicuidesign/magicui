@@ -34,7 +34,7 @@ export const AnimatedSubscribeButton: React.FC<
         >
           <motion.span
             key="action"
-            className="relative block h-full w-full font-semibold"
+            className="relative block size-full font-semibold"
             initial={{ y: -50 }}
             animate={{ y: 0 }}
             style={{ color: buttonColor }}

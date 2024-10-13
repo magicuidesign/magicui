@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 interface TwitterIconProps {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 const Twitter = ({ className, ...props }: TwitterIconProps) => (
   <svg
@@ -64,7 +64,7 @@ export const TweetSkeleton = ({
   ...props
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => (
   <div
     className={cn(
@@ -86,7 +86,7 @@ export const TweetNotFound = ({
   ...props
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => (
   <div
     className={cn(
