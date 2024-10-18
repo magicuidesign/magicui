@@ -514,6 +514,33 @@ export const ui: Registry = [
     },
   },
   {
+    name: "ripple-button",
+    type: "registry:ui",
+    files: ["magicui/ripple-button.tsx"],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            animation: {
+              rippling: "rippling var(--duration) ease-out",
+            },
+            keyframes: {
+              rippling: {
+                "0%": {
+                  opacity: "1",
+                },
+                "100%": {
+                  transform: "scale(2)",
+                  opacity: "0",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     name: "file-tree",
     type: "registry:ui",
     files: ["magicui/file-tree.tsx"],
