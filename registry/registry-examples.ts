@@ -438,6 +438,11 @@ export const examples: Registry = [
     files: ["example/pulsating-button-demo.tsx"],
   },
   {
+    name: "ripple-button-demo",
+    type: "registry:example",
+    files: ["example/ripple-button-demo.tsx"],
+  },
+  {
     name: "file-tree-demo",
     type: "registry:example",
     files: ["example/file-tree-demo.tsx"],
