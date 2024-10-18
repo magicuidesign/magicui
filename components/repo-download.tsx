@@ -1,48 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import { ArrowRightIcon, Download } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "sonner";
 
-import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface RepoDownloadProps {
-  repo: string;
-  owner: string;
+  url: string;
   free?: boolean;
 }
 
-export default function RepoDownload({
-  repo,
-  owner,
-  free = false,
-}: RepoDownloadProps) {
+export default function RepoDownload({ url, free = false }: RepoDownloadProps) {
   const [loading, setLoading] = useState(false);
 
   const handleDownload = async () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/repo/download`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ repo, owner }),
-        },
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      const downloadUrl = data.downloadUrl;
-      /* window.open(downloadUrl, "_blank"); */
-      window.location.href = downloadUrl;
+      window.location.href = url;
     } catch (error) {
       toast.error("Error occured while downloading. Please try again.");
       console.error("error", error);
@@ -73,7 +52,7 @@ export default function RepoDownload({
         buttonVariants({
           variant: "default",
         }),
-        "not-prose group relative w-full gap-1",
+        "not-prose group relative w-full gap-1"
       )}
     >
       Buy Now
