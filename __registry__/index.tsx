@@ -646,6 +646,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "ripple-button": {
+      name: "ripple-button",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/ripple-button.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/ripple-button.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "file-tree": {
       name: "file-tree",
       type: "registry:ui",
@@ -1716,6 +1729,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/pulsating-button-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/pulsating-button-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "ripple-button-demo": {
+      name: "ripple-button-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/ripple-button-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/ripple-button-demo.tsx"),
       ),
       source: "",
       category: "undefined",
