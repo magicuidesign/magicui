@@ -92,15 +92,16 @@ const DATA = {
 };
 
 export default function DockDemo() {
+  const mouseX = useMotionValue(Infinity);
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
         Dock
       </span>
       <TooltipProvider>
-        <Dock direction="middle">
+        <Dock direction="middle" mouseX={mouseX}>
           {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
+            <DockIcon key={item.label} mouseX={mouseX}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
@@ -122,7 +123,7 @@ export default function DockDemo() {
           ))}
           <Separator orientation="vertical" className="h-full" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
-            <DockIcon key={name}>
+            <DockIcon key={name} mouseX={mouseX}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
@@ -143,7 +144,7 @@ export default function DockDemo() {
             </DockIcon>
           ))}
           <Separator orientation="vertical" className="h-full py-2" />
-          <DockIcon>
+          <DockIcon mouseX={mouseX} mouseX={mouseX}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <ModeToggle className="rounded-full" />
