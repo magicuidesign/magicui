@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, ReactNode, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -25,7 +25,7 @@ export const TextRevealByWord: FC<TextRevealByWordProps> = ({
     <div ref={targetRef} className={cn("relative z-0 h-[200vh]", className)}>
       <div
         className={
-          "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-[1rem] py-[5rem]"
+          "sticky top-0 mx-auto flex h-[1/2] max-w-4xl items-center bg-transparent px-4 py-20"
         }
       >
         <p
@@ -51,7 +51,7 @@ export const TextRevealByWord: FC<TextRevealByWordProps> = ({
 
 interface WordProps {
   children: ReactNode;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
 }
 
