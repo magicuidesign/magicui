@@ -5,19 +5,20 @@ import { Dock, DockIcon } from "@/registry/default/magicui/dock";
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export default function DockDemo() {
+  const mouseX = useMotionValue(Infinity);
   return (
     <div className="relative">
-      <Dock direction="middle">
-        <DockIcon>
+      <Dock direction="middle" mouseX={mouseX}>
+        <DockIcon mouseX={mouseX}>
           <Icons.gitHub className="size-6" />
         </DockIcon>
-        <DockIcon>
+        <DockIcon mouseX={mouseX}>
           <Icons.googleDrive className="size-6" />
         </DockIcon>
-        <DockIcon>
+        <DockIcon mouseX={mouseX}>
           <Icons.notion className="size-6" />
         </DockIcon>
-        <DockIcon>
+        <DockIcon mouseX={mouseX}>
           <Icons.whatsapp className="size-6" />
         </DockIcon>
       </Dock>
