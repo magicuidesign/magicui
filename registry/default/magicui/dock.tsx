@@ -36,8 +36,6 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     },
     ref,
   ) => {
-    // const mouseX = useMotionValue(Infinity);
-
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === DockIcon) {
