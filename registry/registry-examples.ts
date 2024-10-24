@@ -161,6 +161,12 @@ export const examples: Registry = [
     files: ["example/number-ticker-decimal-demo.tsx"],
   },
   {
+    name: "number-ticker-duration-demo",
+    type: "registry:example",
+    registryDependencies: ["number-ticker"],
+    files: ["example/number-ticker-duration-demo.tsx"],
+  },
+  {
     name: "ripple-demo",
     type: "registry:example",
     registryDependencies: ["ripple"],
