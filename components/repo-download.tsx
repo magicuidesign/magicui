@@ -52,7 +52,7 @@ export default function RepoDownload({ url, free = false }: RepoDownloadProps) {
         buttonVariants({
           variant: "default",
         }),
-        "not-prose group relative w-full gap-1"
+        "not-prose group relative w-full gap-1",
       )}
     >
       Buy Now
