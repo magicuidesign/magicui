@@ -7,7 +7,7 @@
   <a href="https://github.com/magicuidesign/magicui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/magicuidesign/magicui"></a>
   <a href="https://twitter.com/magicuidesign"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/magicuidesign"></a>
   <a href="https://github.com/magicuidesign/magicui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-  <img alt="Discord" src="https://img.shields.io/discord/1151315619246002176">
+  <a href="https://discord.com/invite/87p2vpsat5"><img alt="Discord" src="https://img.shields.io/discord/1151315619246002176"></a>
   
 </div>
 
@@ -20,6 +20,7 @@ Visit https://magicui.design/docs to view the documentation.
 Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
 
 ## Let's talk
+
 <a href="https://cal.com/dillionverma/magicui?utm_source=banner&utm_campaign=oss"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 ## Authors
