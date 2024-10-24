@@ -1243,6 +1243,32 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "text-reveal-demo-2": {
+      name: "text-reveal-demo-2",
+      type: "registry:example",
+      registryDependencies: ["text-reveal", "border-beam", "ripple"],
+      files: ["registry/default/example/text-reveal-demo-2.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/text-reveal-demo-2.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "text-reveal-demo-3": {
+      name: "text-reveal-demo-3",
+      type: "registry:example",
+      registryDependencies: ["text-reveal", "border-beam", "ripple"],
+      files: ["registry/default/example/text-reveal-demo-3.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/text-reveal-demo-3.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "animated-gradient-text-demo": {
       name: "animated-gradient-text-demo",
       type: "registry:example",
