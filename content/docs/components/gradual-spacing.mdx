@@ -42,10 +42,14 @@ npx shadcn@latest add "https://magicui.design/r/gradual-spacing"
 
 ## Props
 
-| Prop          | Type            | Description                                        | Default |
-| ------------- | --------------- | -------------------------------------------------- | ------- |
-| className     | string          | The class name to be applied to the component      |         |
-| duration      | number          | Duration of the animation                          | 0.5     |
-| delayMultiple | number          | Transition delay multiplier.                       | 0.1     |
-| text          | string          | An array of words to rotate through                | ""      |
-| framerProps   | HTMLMotionProps | An object containing framer-motion animation props | {}      |
+| Prop          | Type            | Description                                        | Default  |
+| ------------- | --------------- | -------------------------------------------------- | -------- |
+| className     | string          | The class name to be applied to the component      |          |
+| textClassName | string          | The class name to be applied to the text           |          |
+| duration      | number          | Duration of the animation                          | 0.5      |
+| delay         | number          | Initial transition delay                           | 0        |
+| delayMultiple | number          | Transition delay multiplier.                       | 0.1      |
+| heading       | headings        | The heading level of the text                      | 1        |
+| lineHeight    | lineHeight      | The line height of the text                        | "normal" |
+| text          | string          | An array of words to rotate through                | ""       |
+| framerProps   | HTMLMotionProps | An object containing framer-motion animation props | {}       |
