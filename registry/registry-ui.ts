@@ -603,4 +603,10 @@ export const ui: Registry = [
       },
     },
   },
+  {
+    name: "ripple-effect-button",
+    type: "registry:ui",
+    dependencies: ["framer-motion"],
+    files: ["magicui/ripple-effect-button.tsx"],
+  },
 ];

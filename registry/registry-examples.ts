@@ -477,4 +477,10 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/rainbow-button-demo.tsx"],
   },
+  {
+    name: "ripple-effect-button-demo",
+    type: "registry:example",
+    registryDependencies: ["framer-motion"],
+    files: ["example/ripple-effect-button-demo.tsx"],
+  },
 ];
