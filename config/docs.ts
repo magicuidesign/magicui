@@ -193,6 +193,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Video Modal",
+          href: `/docs/components/video-modal`,
+          items: [],
+          label: "",
+        },
       ],
     },
     {
@@ -207,12 +213,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "iPhone 15 Pro",
           href: `/docs/components/iphone-15-pro`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Video Modal",
-          href: `/docs/components/video-modal`,
           items: [],
           label: "",
         },
