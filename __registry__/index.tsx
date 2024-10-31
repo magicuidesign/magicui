@@ -711,6 +711,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "video-modal": {
+      name: "video-modal",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/video-modal.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/video-modal.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "magic-card-demo": {
       name: "magic-card-demo",
       type: "registry:example",
@@ -869,6 +882,19 @@ export const Index: Record<string, any> = {
           import(
             "@/registry/default/example/hero-video-dialog-demo-top-in-bottom-out.tsx"
           ),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "video-modal-demo": {
+      name: "video-modal-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/video-modal-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/video-modal-demo.tsx"),
       ),
       source: "",
       category: "undefined",
