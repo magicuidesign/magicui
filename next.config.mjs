@@ -34,9 +34,26 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/r/:name",
+        source: "/r",
+        destination: "/r/index.json",
+        permanent: true,
+      },
+      {
+        source: "/r/index",
+        destination: "/r/index.json",
+        permanent: true,
+      },
+      {
+        source: "/r/:name((?!index\\.json|styles/default/).*)",
         destination: "/r/styles/default/:name.json",
         permanent: true,
+        missing: [
+          {
+            type: "query",
+            key: "_redirected",
+            value: undefined,
+          },
+        ],
       },
     ];
   },
