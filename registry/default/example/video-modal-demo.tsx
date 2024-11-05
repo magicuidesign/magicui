@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { PlayCircle } from "lucide-react";
 import {
   VideoModal,
@@ -17,7 +18,9 @@ const VideoModalDemo = () => {
     <div className="relative justify-center">
       <VideoModal>
         <VideoModalTrigger>
-          <Button>Open modal</Button>
+          <span className="rounded-lg border border-border bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm">
+            Open modal
+          </span>
         </VideoModalTrigger>
         <VideoModalContent>
           <VideoModalTitle>Modal Video Demo</VideoModalTitle>
@@ -33,7 +36,7 @@ const VideoModalDemo = () => {
                 />
               </VideoPreview>
               <VideoPlayButton>
-                <button className="flex h-32 w-32 items-center justify-center rounded-full border border-white border-opacity-10 bg-white bg-opacity-5 transition duration-300 hover:bg-opacity-10">
+                <button className="flex h-32 w-32 items-center justify-center rounded-full border border-white/10 bg-white/5 transition duration-300 hover:bg-white/10">
                   <PlayCircle className="h-20 w-20 stroke-1 text-white" />
                 </button>
               </VideoPlayButton>
