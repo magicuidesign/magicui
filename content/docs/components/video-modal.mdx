@@ -1,0 +1,69 @@
+---
+title: Video Modal
+date: 2024-10-30
+description: Example component for demonstrating Video Modal component
+author: mavdotso
+published: true
+---
+
+<ComponentPreview name="video-modal-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+```bash
+npx shadcn@latest add "https://magicui.design/r/video-modal"
+```
+</TabsContent>
+<TabsContent value="manual">
+<Steps>
+
+<Step>Install @radix-ui/react-dialog.</Step>
+
+```text
+npm install @radix-ui/react-dialog
+```
+
+<Step>Update `tailwind.config.js`</Step>
+Add the following animations to your `tailwind.config.js` file:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        "modal-fade-in": "modal-fade-in 500ms ease-out",
+        "modal-fade-out": "modal-fade-out 500ms ease-in",
+      },
+      keyframes: {
+        "modal-fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "modal-fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+      },
+    },
+  },
+};
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="video-modal" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
