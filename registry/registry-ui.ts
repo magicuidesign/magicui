@@ -603,4 +603,10 @@ export const ui: Registry = [
       },
     },
   },
+  {
+    name: "interactive-hover-button",
+    type: "registry:ui",
+    dependencies: ["lucide-react"],
+    files: ["magicui/interactive-hover-button.tsx"],
+  },
 ];
