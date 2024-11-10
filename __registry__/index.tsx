@@ -564,6 +564,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "interactive-hover-button": {
+      name: "interactive-hover-button",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/interactive-hover-button.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/interactive-hover-button.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "box-reveal": {
       name: "box-reveal",
       type: "registry:ui",
@@ -1538,6 +1551,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/shiny-button-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/shiny-button-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "interactive-hover-button-demo": {
+      name: "interactive-hover-button-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/interactive-hover-button-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/interactive-hover-button-demo.tsx"),
       ),
       source: "",
       category: "undefined",
