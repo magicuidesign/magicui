@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-interface GridPatternProps {
+interface AnimatedGridPatternProps {
   width?: number;
   height?: number;
   x?: number;
@@ -18,7 +18,7 @@ interface GridPatternProps {
   repeatDelay?: number;
 }
 
-export function GridPattern({
+export default function AnimatedGridPattern({
   width = 40,
   height = 40,
   x = -1,
@@ -30,7 +30,7 @@ export function GridPattern({
   duration = 4,
   repeatDelay = 0.5,
   ...props
-}: GridPatternProps) {
+}: AnimatedGridPatternProps) {
   const id = useId();
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -146,5 +146,3 @@ export function GridPattern({
     </svg>
   );
 }
-
-export default GridPattern;
