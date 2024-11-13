@@ -43,28 +43,16 @@ npx shadcn@latest add "https://magicui.design/r/text-reveal"
 
 ## Examples
 
-### Custom Position
-
 <ComponentPreview name="text-reveal-demo-2" />
-
-### Custom Size
-
-<ComponentPreview name="text-reveal-demo-3" />
 
 ## Props
 
-| Prop             | Type                            | Description                                                                                       | Default     |
-| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------------- | ----------- |
-| className        | `string`                        | The class name to be applied to the outermost container for additional styling.                   | `""`        |
-| text             | `string`                        | The text that will be animated word by word as you scroll.                                        | `""`        |
-| scrollHeight     | `string`                        | The vertical scrolling height for the animation.                                                  | `"100vh"`   |
-| stickyHeight     | `string`                        | The height of the sticky container in which the text remains during scrolling.                    | `"100vh"`   |
-| textWidth        | `string`                        | The width of the animated text container. Controls the maximum width of the text.                 | `undefined` |
-| alignX           | `"left" \| "right" \| "center"` | Controls the horizontal alignment of the text: left, right, or center.                            | `"center"`  |
-| alignY           | `"top" \| "bottom" \| "center"` | Controls the vertical alignment of the text: top, bottom, or center.                              | `"center"`  |
-| stickyOffset     | `number \| "center"`            | Controls the top offset of the sticky container during the scroll animation.                      | `"center"`  |
-| stickyPaddingTop | `number`                        | The amount of padding at the top of the sticky container.                                         | `undefined` |
-| children         | `ReactNode`                     | Any additional elements or components that should be rendered within the animated text container. | `undefined` |
+| Prop      | Type                            | Description                                                                                                    | Default     |
+| --------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------- |
+| className | `string`                        | The class name to be applied to the outermost container for additional styling.                                | `""`        |
+| text      | `string \| string[]`            | The text that will be animated word by word as you scroll. Supports string or string[] for custom line breaks. | `""`        |
+| side      | `"left" \| "right" \| "center"` | Controls the horizontal alignment of the text: left, right, or center.                                         | `"center"`  |
+| children  | `ReactNode`                     | Any additional elements or components that should be rendered within the animated text container.              | `undefined` |
 
 ## Credits
 
