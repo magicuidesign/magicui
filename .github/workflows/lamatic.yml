@@ -1,0 +1,23 @@
+name: Lamatic Index Flow
+
+on:
+  push:
+    branches:
+      - lamatic # Replace with your branch if necessary
+    paths:
+      - '**.mdx' # Adjust to only trigger for changes to specific file types
+
+jobs:
+  send-changes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send File Changes to Webhook
+        uses: Lamatic/Index-to-lamatic@v1.6 # Uses action
+        with:
+          webhook_url: 'https://hooks.lamatic.ai/hook/7c284486-c0a9-4d60-9ad7-10746a7b3bbe' # Replace with your secret
+          webhook_key: ${{ secrets.WEBHOOK_KEY }} # Replace with your secret
+          github_ref: ${{ github.ref }}
+          file_type: 'mdx' # Adjust the file type as needed
+          mode: 'full-refresh' # or "full-refresh"
+          verbose: 'true' # or "false"
