@@ -22,6 +22,7 @@ interface HeroVideoProps {
   thumbnailSrc: string;
   thumbnailAlt?: string;
   className?: string;
+  maskGradient?: string;
 }
 
 const animationVariants = {
@@ -73,6 +74,7 @@ export default function HeroVideoDialog({
   thumbnailSrc,
   thumbnailAlt = "Video thumbnail",
   className,
+  maskGradient,
 }: HeroVideoProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
@@ -80,7 +82,7 @@ export default function HeroVideoDialog({
   return (
     <div className={cn("relative", className)}>
       <div
-        className="relative cursor-pointer group"
+        className={cn("relative cursor-pointer group", maskGradient)}
         onClick={() => setIsVideoOpen(true)}
       >
         <img
