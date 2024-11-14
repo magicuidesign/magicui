@@ -415,6 +415,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Ripple Effect Button",
+          href: "/docs/components/ripple-effect-button",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
