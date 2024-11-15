@@ -1,12 +1,28 @@
 import AvatarCircles from "@/registry/default/magicui/avatar-circles";
 
-const avatarUrls = [
-  "https://avatars.githubusercontent.com/u/16860528",
-  "https://avatars.githubusercontent.com/u/20110627",
-  "https://avatars.githubusercontent.com/u/106103625",
-  "https://avatars.githubusercontent.com/u/59228569",
+const avatars = [
+  {
+    imageUrl: "https://avatars.githubusercontent.com/u/16860528",
+    profileUrl: "https://github.com/dillionverma",
+  },
+  {
+    imageUrl: "https://avatars.githubusercontent.com/u/20110627",
+    profileUrl: "https://github.com/tomonarifeehan",
+  },
+  {
+    imageUrl: "https://avatars.githubusercontent.com/u/106103625",
+    profileUrl: "https://github.com/BankkRoll",
+  },
+  {
+    imageUrl: "https://avatars.githubusercontent.com/u/59228569",
+    profileUrl: "https://github.com/safethecode",
+  },
+  {
+    imageUrl: "https://avatars.githubusercontent.com/u/59442788",
+    profileUrl: "https://github.com/sanjay-mali",
+  },
 ];
 
-export default function AvatarCirclesDemo() {
-  return <AvatarCircles numPeople={99} avatarUrls={avatarUrls} />;
+export default async function AvatarCirclesDemo() {
+  return <AvatarCircles numPeople={99} avatarUrls={avatars} />;
 }
