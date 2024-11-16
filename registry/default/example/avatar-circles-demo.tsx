@@ -21,8 +21,12 @@ const avatars = [
     imageUrl: "https://avatars.githubusercontent.com/u/59442788",
     profileUrl: "https://github.com/sanjay-mali",
   },
+  {
+    imageUrl: "https://avatars.githubusercontent.com/u/89768406",
+    profileUrl: "https://github.com/itsarghyadas",
+  },
 ];
 
-export default async function AvatarCirclesDemo() {
+export default function AvatarCirclesDemo() {
   return <AvatarCircles numPeople={99} avatarUrls={avatars} />;
 }
