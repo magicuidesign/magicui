@@ -83,10 +83,18 @@ export const docsConfig: DocsConfig = {
       title: "Templates",
       items: [
         {
+          title: "Dev Tool",
+          href: `/docs/templates/devtool`,
+          items: [],
+          label: "New",
+          paid: true,
+          event: "template_devtool_clicked",
+        },
+        {
           title: "Mobile",
           href: `/docs/templates/mobile`,
           items: [],
-          label: "New",
+          label: "",
           paid: true,
           event: "template_mobile_clicked",
         },
