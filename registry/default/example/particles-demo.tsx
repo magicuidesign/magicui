@@ -5,13 +5,13 @@ import { useTheme } from "next-themes";
 
 import Particles from "@/registry/default/magicui/particles";
 
-export default function ParticlesDemo() {
-  const { theme } = useTheme();
+const ParticlesDemo = () => {
+  const { resolvedTheme } = useTheme();
   const [color, setColor] = useState("#ffffff");
 
   useEffect(() => {
-    setColor(theme === "dark" ? "#ffffff" : "#000000");
-  }, [theme]);
+    setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000");
+  }, [resolvedTheme]);
 
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
