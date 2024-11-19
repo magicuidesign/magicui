@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 
 import Particles from "@/registry/default/magicui/particles";
 
-const ParticlesDemo = () => {
+export default function ParticlesDemo() {
   const { resolvedTheme } = useTheme();
   const [color, setColor] = useState("#ffffff");
 
