@@ -22,7 +22,7 @@ export default async function BoxRevealDemo() {
           <p>
             -&gt; 20+ free and open-source animated components built with
             <span className="font-semibold text-[#5046e6]"> React</span>,
-            <span className="font-semibold text-[#5046e6]"> Typescript</span>,
+            <span className="font-semibold text-[#5046e6]"> TypeScript</span>,
             <span className="font-semibold text-[#5046e6]"> Tailwind CSS</span>,
             and
             <span className="font-semibold text-[#5046e6]"> Framer Motion</span>
