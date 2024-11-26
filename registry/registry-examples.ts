@@ -241,6 +241,12 @@ export const examples: Registry = [
     files: ["example/text-reveal-demo.tsx"],
   },
   {
+    name: "text-reveal-demo-2",
+    type: "registry:example",
+    registryDependencies: ["text-reveal"],
+    files: ["example/text-reveal-demo-2.tsx"],
+  },
+  {
     name: "animated-gradient-text-demo",
     type: "registry:example",
     registryDependencies: ["animated-gradient-text"],

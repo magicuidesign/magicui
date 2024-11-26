@@ -41,12 +41,18 @@ npx shadcn@latest add "https://magicui.design/r/text-reveal"
 
 </Tabs>
 
+## Examples
+
+<ComponentPreview name="text-reveal-demo-2" />
+
 ## Props
 
-| Prop      | Type   | Description                                  | Default |
-| --------- | ------ | -------------------------------------------- | ------- |
-| className | string | The class name to be applied to the shimmer. |         |
-| text      | string | The text to do the animation for             | ""      |
+| Prop      | Type                            | Description                                                                                                    | Default     |
+| --------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------- |
+| className | `string`                        | The class name to be applied to the outermost container for additional styling.                                | `""`        |
+| text      | `string \| string[]`            | The text that will be animated word by word as you scroll. Supports string or string[] for custom line breaks. | `""`        |
+| side      | `"left" \| "right" \| "center"` | Controls the horizontal alignment of the text: left, right, or center.                                         | `"center"`  |
+| children  | `ReactNode`                     | Any additional elements or components that should be rendered within the animated text container.              | `undefined` |
 
 ## Credits
 
