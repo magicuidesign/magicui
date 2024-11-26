@@ -76,6 +76,7 @@ module.exports = {
         "shimmer-slide":
           "shimmer-slide var(--speed) ease-in-out infinite alternate",
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+        rippling: "rippling var(--duration, 0.6s) ease-out",
         line: "line 2s linear infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
@@ -144,6 +145,15 @@ module.exports = {
           "50%": {
             transform: "translate(-50%, -50%) scale(0.9)",
           },
+        },
+        rippling: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            transform: "scale(2)",
+            opacity: "0",
+          }
         },
         "shimmer-slide": {
           to: {

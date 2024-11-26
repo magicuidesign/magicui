@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { SidebarNavItem } from "@/types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
@@ -87,7 +87,7 @@ export function DocsSidebarNavItems({
             )}
             {item.paid && (
               <span className="relative z-10 ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                Paid
+                Pro
               </span>
             )}
             {item.external && (
@@ -110,7 +110,7 @@ export function DocsSidebarNavItems({
             )}
             {item.paid && (
               <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                Paid
+                Pro
               </span>
             )}
           </span>

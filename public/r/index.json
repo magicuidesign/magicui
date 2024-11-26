@@ -51,7 +51,33 @@
         "path": "magicui/meteors.tsx",
         "type": "registry:ui"
       }
-    ]
+    ],
+    "tailwind": {
+      "config": {
+        "theme": {
+          "extend": {
+            "animation": {
+              "meteor": "meteor 5s linear infinite"
+            },
+            "keyframes": {
+              "meteor": {
+                "0%": {
+                  "transform": "rotate(215deg) translateX(0)",
+                  "opacity": "1"
+                },
+                "70%": {
+                  "opacity": "1"
+                },
+                "100%": {
+                  "transform": "rotate(215deg) translateX(-500px)",
+                  "opacity": "0"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   {
     "name": "grid-pattern",
@@ -102,6 +128,10 @@
   {
     "name": "code-comparison",
     "type": "registry:ui",
+    "dependencies": [
+      "shiki",
+      "next-themes"
+    ],
     "files": [
       {
         "path": "magicui/code-comparison.tsx",
@@ -820,6 +850,38 @@
                 },
                 "50%": {
                   "boxShadow": "0 0 0 8px var(--pulse-color)"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "ripple-button",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "magicui/ripple-button.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "tailwind": {
+      "config": {
+        "theme": {
+          "extend": {
+            "animation": {
+              "rippling": "rippling var(--duration) ease-out"
+            },
+            "keyframes": {
+              "rippling": {
+                "0%": {
+                  "opacity": "1"
+                },
+                "100%": {
+                  "transform": "scale(2)",
+                  "opacity": "0"
                 }
               }
             }
