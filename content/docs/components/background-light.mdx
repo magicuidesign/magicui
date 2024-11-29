@@ -1,0 +1,59 @@
+---
+title: Background Light 
+date: 2024-10-1
+description: Background Light Component for Magic UI
+author: Gitstar-OC
+published: true
+---
+
+<ComponentPreview name="backgroun-light-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magicui-cli add background-light
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="background-light" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+<ComponentSource name="example-component" />
+
+</Steps>
+
+## Props
+
+| Prop               | Type                | Description                                                                                     | Default |
+| ------------------ | ------------------- | ----------------------------------------------------------------------------------------------- | ------- |
+| children           | String or Component | The content inside the `BackgroundLight`. This can be any valid JSX such as text, elements, or other components | None    |
+| showRadialGradient  | Boolean             | Determines whether to show a radial gradient mask on the background                              | true    |
+| className          | String              | Custom CSS classes to style the outer container of the `BackgroundLight`                         | ""      |
+| initial            | Object              | The initial state for the `motion.div` animation. You can define properties like opacity and position | `{ opacity: 0.0, y: 40 }` |
+| whileInView        | Object              | Defines the state the component transitions to when it comes into view (e.g., opacity, position) | `{ opacity: 1, y: 0 }` |
+| transition         | Object              | Defines the transition properties (delay, duration, easing) for the `motion.div` animation       | `{ delay: 0.2, duration: 0.8, ease: "easeInOut" }` |
+| id                 | String              | Standard HTML `id` attribute for the container                                                   | ""      |
+| style              | Object              | Inline styles for the container (can be used for custom background colors, etc.)                 | None    |
+| onClick            | Function            | Event handler for click events on the `BackgroundLight` container                                | None    |
