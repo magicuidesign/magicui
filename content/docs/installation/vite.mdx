@@ -73,14 +73,13 @@ Add the following code to the `tsconfig.app.json` file to resolve paths, for you
 Add the following code to the vite.config.ts so your app can resolve paths without error
 
 ```bash
-# (so you can import "path" without error)
 npm i -D @types/node
 ```
 
 ```typescript
-import path from "path";
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
@@ -89,7 +88,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+})
 ```
 
 ### Run the CLI
