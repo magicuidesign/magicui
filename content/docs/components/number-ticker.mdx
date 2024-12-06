@@ -47,6 +47,10 @@ npx shadcn@latest add "https://magicui.design/r/number-ticker"
 
 <ComponentPreview name="number-ticker-decimal-demo" />
 
+### Custom Duration
+
+<ComponentPreview name="number-ticker-duration-demo" />
+
 ## Props
 
 | Prop          | Type       | Description                          | Default |
@@ -55,3 +59,4 @@ npx shadcn@latest add "https://magicui.design/r/number-ticker"
 | direction     | up \| down | The direction to count in            | up      |
 | delay         | number     | The delay before counting            | 0       |
 | decimalPlaces | number     | The number of decimal places to show | 0       |
+| duration      | number     | The duration of the animation, when not provided, the animation will be a [spring animation](https://www.framer.com/motion/use-spring) | undefined |
