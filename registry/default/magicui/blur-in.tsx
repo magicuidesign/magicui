@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-interface BlurIntProps {
+interface BlurInProps {
   word: string;
   className?: string;
   variant?: {
@@ -13,7 +13,7 @@ interface BlurIntProps {
   };
   duration?: number;
 }
-const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
+const BlurIn = ({ word, className, variant, duration = 1 }: BlurInProps) => {
   const defaultVariants = {
     hidden: { filter: "blur(10px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
