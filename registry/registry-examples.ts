@@ -482,4 +482,9 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/rainbow-button-demo.tsx"],
   },
+  {
+    name: "interactive-hover-button-demo",
+    type: "registry:example",
+    files: ["example/interactive-hover-button-demo.tsx"],
+  },
 ];
