@@ -435,6 +435,12 @@ export const docsConfig: DocsConfig = {
       title: "Backgrounds",
       items: [
         {
+          title: "Background Light",
+          href: `/docs/components/background-light`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Flickering Grid",
           href: `/docs/components/flickering-grid`,
           items: [],
