@@ -53,8 +53,8 @@ export default function HyperText({
                 ? l
                 : i <= interations.current
                   ? text[i]
-                  : alphabets[getRandomInt(26)]
-            )
+                  : alphabets[getRandomInt(26)],
+            ),
           );
           interations.current = interations.current + 0.1;
         } else {
@@ -62,7 +62,7 @@ export default function HyperText({
           clearInterval(interval);
         }
       },
-      duration / (text.length * 10)
+      duration / (text.length * 10),
     );
     // Clean up interval on unmount
     return () => clearInterval(interval);
