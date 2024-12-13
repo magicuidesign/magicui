@@ -315,6 +315,12 @@ export const examples: Registry = [
     files: ["example/scroll-based-velocity-demo.tsx"],
   },
   {
+    name: "scratch-to-reveal-demo",
+    type: "registry:example",
+    registryDependencies: ["scratch-to-reveal"],
+    files: ["example/scratch-to-reveal-demo.tsx"],
+  },
+  {
     name: "letter-pullup-demo",
     type: "registry:example",
     registryDependencies: ["letter-pullup"],
