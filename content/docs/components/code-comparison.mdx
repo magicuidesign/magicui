@@ -1,0 +1,51 @@
+---
+title: Code Comparison
+date: 2024-10-02
+description: A component which compares two code snippets.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="code-comparison-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/code-comparison"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="code-comparison" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop       | Type     | Description                                            | Default        |
+| ---------- | -------- | ------------------------------------------------------ | -------------- |
+| className  | `string` | The class name to be applied to the component          |                |
+| beforeCode | `string` | The code snippet to display in the "before" section    |                |
+| afterCode  | `string` | The code snippet to display in the "after" section     |                |
+| language   | `string` | The language of the code snippets (e.g., "typescript") |                |
+| filename   | `string` | The filename to display for the code snippets          |                |
+| lightTheme | `string` | The theme to use for light mode                        | "github-light" |
+| darkTheme  | `string` | The theme to use for dark mode                         | "github-dark"  |

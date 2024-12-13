@@ -34,6 +34,30 @@ export const ui: Registry = [
     name: "meteors",
     type: "registry:ui",
     files: ["magicui/meteors.tsx"],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            animation: {
+              meteor: "meteor 5s linear infinite",
+            },
+            keyframes: {
+              meteor: {
+                "0%": {
+                  transform: "rotate(215deg) translateX(0)",
+                  opacity: "1",
+                },
+                "70%": { opacity: "1" },
+                "100%": {
+                  transform: "rotate(215deg) translateX(-500px)",
+                  opacity: "0",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   {
     name: "grid-pattern",
@@ -56,6 +80,12 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["framer-motion"],
     files: ["magicui/hero-video-dialog.tsx"],
+  },
+  {
+    name: "code-comparison",
+    type: "registry:ui",
+    dependencies: ["shiki", "next-themes"],
+    files: ["magicui/code-comparison.tsx"],
   },
   {
     name: "marquee",
@@ -417,6 +447,12 @@ export const ui: Registry = [
     files: ["magicui/scroll-based-velocity.tsx"],
   },
   {
+    name: "scratch-to-reveal",
+    type: "registry:ui",
+    dependencies: ["framer-motion"],
+    files: ["magicui/scratch-to-reveal.tsx"],
+  },
+  {
     name: "fade-text",
     type: "registry:ui",
     dependencies: ["framer-motion"],
@@ -500,6 +536,33 @@ export const ui: Registry = [
               pulse: {
                 "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
                 "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
+    name: "ripple-button",
+    type: "registry:ui",
+    files: ["magicui/ripple-button.tsx"],
+    tailwind: {
+      config: {
+        theme: {
+          extend: {
+            animation: {
+              rippling: "rippling var(--duration) ease-out",
+            },
+            keyframes: {
+              rippling: {
+                "0%": {
+                  opacity: "1",
+                },
+                "100%": {
+                  transform: "scale(2)",
+                  opacity: "0",
+                },
               },
             },
           },

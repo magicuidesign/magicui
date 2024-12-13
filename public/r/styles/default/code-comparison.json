@@ -1,0 +1,16 @@
+{
+  "name": "code-comparison",
+  "type": "registry:ui",
+  "dependencies": [
+    "shiki",
+    "next-themes"
+  ],
+  "files": [
+    {
+      "path": "magicui/code-comparison.tsx",
+      "content": "\"use client\";\n\nimport { FileIcon } from \"lucide-react\";\nimport { useTheme } from \"next-themes\";\nimport { useEffect, useState } from \"react\";\nimport { codeToHtml } from \"shiki\";\n\ninterface CodeComparisonProps {\n  beforeCode: string;\n  afterCode: string;\n  language: string;\n  filename: string;\n  lightTheme: string;\n  darkTheme: string;\n}\n\nexport default function CodeComparison({\n  beforeCode,\n  afterCode,\n  language,\n  filename,\n  lightTheme,\n  darkTheme,\n}: CodeComparisonProps) {\n  const { theme, systemTheme } = useTheme();\n  const [highlightedBefore, setHighlightedBefore] = useState(\"\");\n  const [highlightedAfter, setHighlightedAfter] = useState(\"\");\n\n  useEffect(() => {\n    const currentTheme = theme === \"system\" ? systemTheme : theme;\n    const selectedTheme = currentTheme === \"dark\" ? darkTheme : lightTheme;\n\n    async function highlightCode() {\n      const before = await codeToHtml(beforeCode, {\n        lang: language,\n        theme: selectedTheme,\n      });\n      const after = await codeToHtml(afterCode, {\n        lang: language,\n        theme: selectedTheme,\n      });\n      setHighlightedBefore(before);\n      setHighlightedAfter(after);\n    }\n\n    highlightCode();\n  }, [\n    theme,\n    systemTheme,\n    beforeCode,\n    afterCode,\n    language,\n    lightTheme,\n    darkTheme,\n  ]);\n\n  const renderCode = (code: string, highlighted: string) => {\n    if (highlighted) {\n      return (\n        <div\n          className=\"h-full overflow-auto bg-background font-mono text-xs [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all\"\n          dangerouslySetInnerHTML={{ __html: highlighted }}\n        />\n      );\n    } else {\n      return (\n        <pre className=\"h-full overflow-auto break-all bg-background p-4 font-mono text-xs text-foreground\">\n          {code}\n        </pre>\n      );\n    }\n  };\n  return (\n    <div className=\"mx-auto w-full max-w-5xl\">\n      <div className=\"relative w-full overflow-hidden rounded-xl border border-border\">\n        <div className=\"relative grid md:grid-cols-2 md:divide-x md:divide-border\">\n          <div>\n            <div className=\"flex items-center bg-accent p-2 text-sm text-foreground\">\n              <FileIcon className=\"mr-2 h-4 w-4\" />\n              {filename}\n              <span className=\"ml-auto\">before</span>\n            </div>\n            {renderCode(beforeCode, highlightedBefore)}\n          </div>\n          <div>\n            <div className=\"flex items-center bg-accent p-2 text-sm text-foreground\">\n              <FileIcon className=\"mr-2 h-4 w-4\" />\n              {filename}\n              <span className=\"ml-auto\">after</span>\n            </div>\n            {renderCode(afterCode, highlightedAfter)}\n          </div>\n        </div>\n        <div className=\"absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-accent text-xs text-foreground\">\n          VS\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

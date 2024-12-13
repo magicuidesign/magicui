@@ -69,6 +69,11 @@ export const examples: Registry = [
     files: ["example/hero-video-dialog-demo-top-in-bottom-out.tsx"],
   },
   {
+    name: "code-comparison-demo",
+    type: "registry:example",
+    files: ["example/code-comparison-demo.tsx"],
+  },
+  {
     name: "marquee-demo",
     type: "registry:example",
     registryDependencies: ["marquee"],
@@ -310,6 +315,12 @@ export const examples: Registry = [
     files: ["example/scroll-based-velocity-demo.tsx"],
   },
   {
+    name: "scratch-to-reveal-demo",
+    type: "registry:example",
+    registryDependencies: ["scratch-to-reveal"],
+    files: ["example/scratch-to-reveal-demo.tsx"],
+  },
+  {
     name: "letter-pullup-demo",
     type: "registry:example",
     registryDependencies: ["letter-pullup"],
@@ -431,6 +442,11 @@ export const examples: Registry = [
     name: "pulsating-button-demo",
     type: "registry:example",
     files: ["example/pulsating-button-demo.tsx"],
+  },
+  {
+    name: "ripple-button-demo",
+    type: "registry:example",
+    files: ["example/ripple-button-demo.tsx"],
   },
   {
     name: "file-tree-demo",

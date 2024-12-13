@@ -4,7 +4,7 @@ export default function FlickeringGridRoundedDemo() {
   return (
     <div className="relative size-[600px] rounded-lg w-full bg-background overflow-hidden border">
       <FlickeringGrid
-        className="z-0 absolute inset-0 [mask:radial-gradient(circle_at_center,#fff_300px,transparent_0)]"
+        className="z-0 relative inset-0 [mask-image:radial-gradient(450px_circle_at_center,white,transparent)]"
         squareSize={4}
         gridGap={6}
         color="#60A5FA"

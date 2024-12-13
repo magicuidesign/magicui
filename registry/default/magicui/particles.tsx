@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 
 interface MousePosition {
@@ -75,6 +76,7 @@ const Particles: React.FC<ParticlesProps> = ({
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const rafID = useRef<number | null>(null);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -85,6 +87,9 @@ const Particles: React.FC<ParticlesProps> = ({
     window.addEventListener("resize", initCanvas);
 
     return () => {
+      if (rafID.current != null) {
+        window.cancelAnimationFrame(rafID.current);
+      }
       window.removeEventListener("resize", initCanvas);
     };
   }, [color]);
@@ -265,11 +270,15 @@ const Particles: React.FC<ParticlesProps> = ({
         // update the circle position
       }
     });
-    window.requestAnimationFrame(animate);
+    rafID.current = window.requestAnimationFrame(animate);
   };
 
   return (
-    <div className={className} ref={canvasContainerRef} aria-hidden="true">
+    <div
+      className={cn("pointer-events-none", className)}
+      ref={canvasContainerRef}
+      aria-hidden="true"
+    >
       <canvas ref={canvasRef} className="size-full" />
     </div>
   );

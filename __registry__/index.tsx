@@ -96,6 +96,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "code-comparison": {
+      name: "code-comparison",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/code-comparison.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/code-comparison.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     marquee: {
       name: "marquee",
       type: "registry:ui",
@@ -512,6 +525,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "scratch-to-reveal": {
+      name: "scratch-to-reveal",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/scratch-to-reveal.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/scratch-to-reveal.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "fade-text": {
       name: "fade-text",
       type: "registry:ui",
@@ -627,6 +653,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/magicui/pulsating-button.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/pulsating-button.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "ripple-button": {
+      name: "ripple-button",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/ripple-button.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/ripple-button.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -856,6 +895,19 @@ export const Index: Record<string, any> = {
           import(
             "@/registry/default/example/hero-video-dialog-demo-top-in-bottom-out.tsx"
           ),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "code-comparison-demo": {
+      name: "code-comparison-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/code-comparison-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/code-comparison-demo.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -1375,6 +1427,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "scratch-to-reveal-demo": {
+      name: "scratch-to-reveal-demo",
+      type: "registry:example",
+      registryDependencies: ["scratch-to-reveal"],
+      files: ["registry/default/example/scratch-to-reveal-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/scratch-to-reveal-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "letter-pullup-demo": {
       name: "letter-pullup-demo",
       type: "registry:example",
@@ -1690,6 +1755,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/pulsating-button-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/pulsating-button-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "ripple-button-demo": {
+      name: "ripple-button-demo",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/ripple-button-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/ripple-button-demo.tsx"),
       ),
       source: "",
       category: "undefined",

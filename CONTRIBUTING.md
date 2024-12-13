@@ -146,8 +146,6 @@ npx magicui-cli add example-component
 
 <ComponentSource name="example-component" />
 
-</Steps>
-
 ## Props
 
 | Prop  | Type   | Description                | Default |
