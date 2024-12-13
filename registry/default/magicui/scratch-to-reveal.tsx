@@ -6,9 +6,10 @@ interface ScratchToRevealProps {
   children: React.ReactNode;
   width: number;
   height: number;
-  minScratchPercentage?: number; // Minimum percentage of scratched area to be considered as completed (Value between 0 and 100)
+  minScratchPercentage?: number;
   className?: string;
   onComplete?: () => void;
+  gradientColors?: [string, string, string];
 }
 
 const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
@@ -18,10 +19,11 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
   onComplete,
   children,
   className,
+  gradientColors = ["#A97CF8", "#F38CB8", "#FDCC92"],
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isScratching, setIsScratching] = useState(false);
-  const [isComplete, setIsComplete] = useState(false); // New state to track completion
+  const [isComplete, setIsComplete] = useState(false);
 
   const controls = useAnimation();
 
@@ -31,20 +33,19 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     if (canvas && ctx) {
       ctx.fillStyle = "#ccc";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      // Optionally add a background image or gradient
       const gradient = ctx.createLinearGradient(
         0,
         0,
         canvas.width,
-        canvas.height
+        canvas.height,
       );
-      gradient.addColorStop(0, "#A97CF8");
-      gradient.addColorStop(0.5, "#F38CB8");
-      gradient.addColorStop(1, "#FDCC92");
+      gradient.addColorStop(0, gradientColors[0]);
+      gradient.addColorStop(0.5, gradientColors[1]);
+      gradient.addColorStop(1, gradientColors[2]);
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
-  }, []);
+  }, [gradientColors]);
 
   useEffect(() => {
     const handleDocumentMouseMove = (event: MouseEvent) => {
@@ -96,7 +97,7 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     const ctx = canvas?.getContext("2d");
     if (canvas && ctx) {
       const rect = canvas.getBoundingClientRect();
-      const x = clientX - rect.left + 16; // offset to position the scratched circle with cursor
+      const x = clientX - rect.left + 16;
       const y = clientY - rect.top + 16;
       ctx.globalCompositeOperation = "destination-out";
       ctx.beginPath();
@@ -105,8 +106,21 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     }
   };
 
+  const startAnimation = async () => {
+    await controls.start({
+      scale: [1, 1.5, 1],
+      rotate: [0, 10, -10, 10, -10, 0],
+      transition: { duration: 0.5 },
+    });
+
+    // Call onComplete after animation finishes
+    if (onComplete) {
+      onComplete();
+    }
+  };
+
   const checkCompletion = () => {
-    if (isComplete) return; // Check if already completed
+    if (isComplete) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
@@ -123,22 +137,11 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
       const percentage = (clearPixels / totalPixels) * 100;
 
       if (percentage >= minScratchPercentage) {
-        setIsComplete(true); // Set complete flag
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas to reveal everything
+        setIsComplete(true);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         startAnimation();
-        if (onComplete) {
-          onComplete();
-        }
       }
     }
-  };
-
-  const startAnimation = () => {
-    controls.start({
-      scale: [1, 1.5, 1],
-      rotate: [0, 10, -10, 10, -10, 0],
-      transition: { duration: 0.5 },
-    });
   };
 
   return (
@@ -156,7 +159,7 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
         ref={canvasRef}
         width={width}
         height={height}
-        className="absolute top-0 left-0"
+        className="absolute left-0 top-0"
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       ></canvas>

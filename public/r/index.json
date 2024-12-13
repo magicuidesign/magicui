@@ -708,6 +708,19 @@
     ]
   },
   {
+    "name": "scratch-to-reveal",
+    "type": "registry:ui",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      {
+        "path": "magicui/scratch-to-reveal.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "fade-text",
     "type": "registry:ui",
     "dependencies": [

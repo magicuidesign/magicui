@@ -447,6 +447,12 @@ export const ui: Registry = [
     files: ["magicui/scroll-based-velocity.tsx"],
   },
   {
+    name: "scratch-to-reveal",
+    type: "registry:ui",
+    dependencies: ["framer-motion"],
+    files: ["magicui/scratch-to-reveal.tsx"],
+  },
+  {
     name: "fade-text",
     type: "registry:ui",
     dependencies: ["framer-motion"],

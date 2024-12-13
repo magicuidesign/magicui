@@ -201,6 +201,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Scratch To Reveal",
+          href: `/docs/components/scratch-to-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
@@ -217,12 +223,6 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/iphone-15-pro`,
           items: [],
           label: "",
-        },
-        {
-          title: "Scratch To Reveal",
-          href: `/docs/components/scratch-to-reveal`,
-          items: [],
-          label: "New",
         },
       ],
     },

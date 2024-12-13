@@ -525,6 +525,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "scratch-to-reveal": {
+      name: "scratch-to-reveal",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/scratch-to-reveal.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/scratch-to-reveal.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "fade-text": {
       name: "fade-text",
       type: "registry:ui",
@@ -1408,6 +1421,19 @@ export const Index: Record<string, any> = {
       component: React.lazy(
         () =>
           import("@/registry/default/example/scroll-based-velocity-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "scratch-to-reveal-demo": {
+      name: "scratch-to-reveal-demo",
+      type: "registry:example",
+      registryDependencies: ["scratch-to-reveal"],
+      files: ["registry/default/example/scratch-to-reveal-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/scratch-to-reveal-demo.tsx"),
       ),
       source: "",
       category: "undefined",
