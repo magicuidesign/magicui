@@ -75,7 +75,8 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0",
     "ts-morph": "^23.0.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@ecomm/secure-template": "workspace:*"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
