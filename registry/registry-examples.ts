@@ -484,6 +484,11 @@ export const examples: Registry = [
     files: ["example/iphone-15-pro-demo-2.tsx"],
   },
   {
+    name: "iphone-15-pro-demo-3",
+    type: "registry:example",
+    files: ["example/iphone-15-pro-demo-3.tsx"],
+  },
+  {
     name: "rainbow-button-demo",
     type: "registry:example",
     files: ["example/rainbow-button-demo.tsx"],

@@ -4,12 +4,14 @@ export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
   src?: string;
+  videoSrc?: string;
 }
 
 export default function Iphone15Pro({
   width = 433,
   height = 882,
   src,
+  videoSrc,
   ...props
 }: Iphone15ProProps) {
   return (
@@ -43,7 +45,7 @@ export default function Iphone15Pro({
       />
       <path
         d="M6 74C6 35.3401 37.3401 4 76 4H356C394.66 4 426 35.3401 426 74V808C426 846.66 394.66 878 356 878H76C37.3401 878 6 846.66 6 808V74Z"
-        className="dark:fill-[#262626] fill-white"
+        className="fill-white dark:fill-[#262626]"
       />
       <path
         opacity="0.5"
@@ -52,7 +54,7 @@ export default function Iphone15Pro({
       />
       <path
         d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z"
-        className="fill-[#E5E5E5] dark:fill-[#404040] stroke-[#E5E5E5] dark:stroke-[#404040] stroke-[0.5]"
+        className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
       />
 
       {src && (
@@ -66,13 +68,25 @@ export default function Iphone15Pro({
           clipPath="url(#roundedCorners)"
         />
       )}
+      {videoSrc && (
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
+          <video
+            className="size-full overflow-hidden rounded-[55.75px] object-cover"
+            src={videoSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </foreignObject>
+      )}
       <path
         d="M154 48.5C154 38.2827 162.283 30 172.5 30H259.5C269.717 30 278 38.2827 278 48.5C278 58.7173 269.717 67 259.5 67H172.5C162.283 67 154 58.7173 154 48.5Z"
-        className="dark:fill-[#262626] fill-[#F5F5F5]"
+        className="fill-[#F5F5F5] dark:fill-[#262626]"
       />
       <path
         d="M249 48.5C249 42.701 253.701 38 259.5 38C265.299 38 270 42.701 270 48.5C270 54.299 265.299 59 259.5 59C253.701 59 249 54.299 249 48.5Z"
-        className="dark:fill-[#262626] fill-[#F5F5F5]"
+        className="fill-[#F5F5F5] dark:fill-[#262626]"
       />
       <path
         d="M254 48.5C254 45.4624 256.462 43 259.5 43C262.538 43 265 45.4624 265 48.5C265 51.5376 262.538 54 259.5 54C256.462 54 254 51.5376 254 48.5Z"
