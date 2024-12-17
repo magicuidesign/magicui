@@ -418,6 +418,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Interactive Hover Button",
+          href: `/docs/components/interactive-hover-button`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Animated Subscribe Button",
           href: `/docs/components/animated-subscribe-button`,
           items: [],
