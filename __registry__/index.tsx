@@ -1878,6 +1878,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "iphone-15-pro-demo-3": {
+      name: "iphone-15-pro-demo-3",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/iphone-15-pro-demo-3.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/iphone-15-pro-demo-3.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "rainbow-button-demo": {
       name: "rainbow-button-demo",
       type: "registry:example",
