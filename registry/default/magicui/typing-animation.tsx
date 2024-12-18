@@ -1,28 +1,70 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { cn } from "@/lib/utils";
+import { motion, MotionProps } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
-interface TypingAnimationProps {
-  text: string;
-  duration?: number;
+interface TypingAnimationProps extends MotionProps {
+  children: string;
   className?: string;
+  duration?: number;
+  delay?: number;
+  as?: React.ElementType;
+  startOnView?: boolean;
 }
 
 export default function TypingAnimation({
-  text,
-  duration = 200,
+  children,
   className,
+  duration = 100,
+  delay = 0,
+  as: Component = "div",
+  startOnView = false,
+  ...props
 }: TypingAnimationProps) {
+  const MotionComponent = motion.create(Component, {
+    forwardMotionProps: true,
+  });
+
   const [displayedText, setDisplayedText] = useState<string>("");
-  const [i, setI] = useState<number>(0);
+  const [started, setStarted] = useState(false);
+  const elementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    if (!startOnView) {
+      const startTimeout = setTimeout(() => {
+        setStarted(true);
+      }, delay);
+      return () => clearTimeout(startTimeout);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setStarted(true);
+          }, delay);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay, startOnView]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    let i = 0;
     const typingEffect = setInterval(() => {
-      if (i < text.length) {
-        setDisplayedText(text.substring(0, i + 1));
-        setI(i + 1);
+      if (i < children.length) {
+        setDisplayedText(children.substring(0, i + 1));
+        i++;
       } else {
         clearInterval(typingEffect);
       }
@@ -31,16 +73,18 @@ export default function TypingAnimation({
     return () => {
       clearInterval(typingEffect);
     };
-  }, [duration, i]);
+  }, [children, duration, started]);
 
   return (
-    <h1
+    <MotionComponent
+      ref={elementRef}
       className={cn(
-        "font-display text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm",
+        "text-4xl font-bold leading-[5rem] tracking-[-0.02em]",
         className,
       )}
+      {...props}
     >
-      {displayedText ? displayedText : text}
-    </h1>
+      {displayedText}
+    </MotionComponent>
   );
 }
