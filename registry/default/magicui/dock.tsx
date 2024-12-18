@@ -1,8 +1,14 @@
 "use client";
 
-import React, { PropsWithChildren, useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  MotionProps,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import React, { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -68,15 +74,14 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 );
 
 Dock.displayName = "Dock";
-
-export interface DockIconProps {
+export interface DockIconProps
+  extends Omit<MotionProps & React.HTMLAttributes<HTMLDivElement>, "children"> {
   size?: number;
   magnification?: number;
   distance?: number;
   mouseX?: any;
   className?: string;
   children?: React.ReactNode;
-  props?: PropsWithChildren;
 }
 
 const DockIcon = ({
