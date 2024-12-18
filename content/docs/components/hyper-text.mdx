@@ -1,7 +1,7 @@
 ---
 title: Hyper Text
 date: 2024-08-03
-description: A hyper changing text animation as you hover.
+description: A text animation that scrambles letters before revealing the final text.
 author: SwayambhuPrasad
 published: true
 ---
@@ -48,10 +48,13 @@ npm install framer-motion
 
 ## Props
 
-| Prop          | Type     | Description                                        | Default |
-| ------------- | -------- | -------------------------------------------------- | ------- |
-| className     | string   | The class name to be applied to the component      |         |
-| duration      | number   | The duration for which the animation runs.         | 80      |
-| text          | string   | Text to animate                                    | ""      |
-| framerProps   | Variants | An object containing framer-motion animation props | {}      |
-| animateOnLoad | boolean  | Play animation on load                             | true    |
+| Prop           | Type              | Description                                   | Default |
+| -------------- | ----------------- | --------------------------------------------- | ------- |
+| children       | string            | Text content to animate                       |         |
+| className      | string            | The class name to be applied to the component |         |
+| duration       | number            | Duration of the animation in milliseconds     | 800     |
+| delay          | number            | Delay before animation starts (in ms)         | 0       |
+| as             | React.ElementType | Component to render as                        | "div"   |
+| startOnView    | boolean           | Start animation when component is in view     | false   |
+| animateOnHover | boolean           | Enable hover animation                        | true    |
+| characterSet   | string[]          | Custom character set for scramble effect      | A-Z     |

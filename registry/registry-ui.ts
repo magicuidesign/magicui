@@ -316,7 +316,7 @@ export const ui: Registry = [
   {
     name: "hyper-text",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/hyper-text.tsx"],
   },
   {
