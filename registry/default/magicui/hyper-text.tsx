@@ -54,7 +54,7 @@ export default function HyperText({
   const elementRef = useRef<HTMLElement>(null);
 
   const handleAnimationTrigger = () => {
-    if (animateOnHover) {
+    if (animateOnHover && !isAnimating) {
       iterationCount.current = 0;
       setIsAnimating(true);
     }
