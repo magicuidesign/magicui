@@ -14,13 +14,21 @@ import {
 import { getPackageManager } from "@/src/utils/get-package-manager";
 import { getProjectConfig, preFlight } from "@/src/utils/get-project-info";
 import { handleError } from "@/src/utils/handle-error";
-import { logger } from "@/src/utils/logger";
+import {
+  ASCII_PRO,
+  ASCII_TEXT,
+  ColorFullText,
+  hasPro,
+  logger,
+  tryPro,
+} from "@/src/utils/logger";
 import { posthog } from "@/src/utils/posthog";
 import {
   getRegistryBaseColor,
   getRegistryBaseColors,
   getRegistryStyles,
 } from "@/src/utils/registry";
+import { getEnv } from "@/src/utils/get-env";
 import * as templates from "@/src/utils/templates";
 import chalk from "chalk";
 import { Command } from "commander";
@@ -46,6 +54,8 @@ const initOptionsSchema = z.object({
   defaults: z.boolean(),
 });
 
+const MAGICUI_PRO_ENV = getEnv();
+
 export const init = new Command()
   .name("init")
   .description("Initialize your project with shadcn-ui config & magic-ui")
@@ -57,6 +67,10 @@ export const init = new Command()
     process.cwd(),
   )
   .action(async (opts) => {
+    console.log(
+      MAGICUI_PRO_ENV ? ASCII_PRO : ASCII_TEXT,
+      ColorFullText(!MAGICUI_PRO_ENV ? tryPro : hasPro),
+    );
     try {
       const options = initOptionsSchema.parse(opts);
       const cwd = path.resolve(options.cwd);
