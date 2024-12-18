@@ -4,7 +4,7 @@ export default function FileTreeDemo() {
   return (
     <div className="relative flex h-[300px] w-1/2 flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <Tree
-        className="p-2 overflow-hidden rounded-md bg-background"
+        className="overflow-hidden rounded-md bg-background p-2"
         initialSelectedId="7"
         initialExpandedItems={[
           "1",
