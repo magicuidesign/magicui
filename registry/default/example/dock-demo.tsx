@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
 import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
-import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ModeToggle } from "@/components/mode-toggle";
+import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/registry/default/magicui/dock";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
