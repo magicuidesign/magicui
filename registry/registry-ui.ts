@@ -396,6 +396,7 @@ export const ui: Registry = [
   {
     name: "typing-animation",
     type: "registry:ui",
+    dependencies: ["motion"],
     files: ["magicui/typing-animation.tsx"],
   },
   {
