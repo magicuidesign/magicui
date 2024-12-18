@@ -14,15 +14,15 @@ export function rehypeNpmCommand() {
         node.properties["__npmCommand__"] = npmCommand;
         node.properties["__yarnCommand__"] = npmCommand.replace(
           "npm install",
-          "yarn add"
+          "yarn add",
         );
         node.properties["__pnpmCommand__"] = npmCommand.replace(
           "npm install",
-          "pnpm add"
+          "pnpm add",
         );
         node.properties["__bunCommand__"] = npmCommand.replace(
           "npm install",
-          "bun add"
+          "bun add",
         );
       }
 
@@ -32,15 +32,15 @@ export function rehypeNpmCommand() {
         node.properties["__npmCommand__"] = npmCommand;
         node.properties["__yarnCommand__"] = npmCommand.replace(
           "npx create-",
-          "yarn create "
+          "yarn create ",
         );
         node.properties["__pnpmCommand__"] = npmCommand.replace(
           "npx create-",
-          "pnpm create "
+          "pnpm create ",
         );
         node.properties["__bunCommand__"] = npmCommand.replace(
           "npx",
-          "bunx --bun"
+          "bunx --bun",
         );
       }
 
@@ -54,11 +54,11 @@ export function rehypeNpmCommand() {
         node.properties["__yarnCommand__"] = npmCommand;
         node.properties["__pnpmCommand__"] = npmCommand.replace(
           "npx",
-          "pnpm dlx"
+          "pnpm dlx",
         );
         node.properties["__bunCommand__"] = npmCommand.replace(
           "npx",
-          "bunx --bun"
+          "bunx --bun",
         );
       }
       // npm create.
@@ -67,15 +67,15 @@ export function rehypeNpmCommand() {
         node.properties["__npmCommand__"] = npmCommand;
         node.properties["__yarnCommand__"] = npmCommand.replace(
           "npm create",
-          "yarn create"
+          "yarn create",
         );
         node.properties["__pnpmCommand__"] = npmCommand.replace(
           "npm create",
-          "pnpm create"
+          "pnpm create",
         );
         node.properties["__bunCommand__"] = npmCommand.replace(
           "npm create",
-          "bun create"
+          "bun create",
         );
       }
     });
