@@ -18,6 +18,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "scroll-progress": {
+      name: "scroll-progress",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/scroll-progress.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/scroll-progress.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "neon-gradient-card": {
       name: "neon-gradient-card",
       type: "registry:ui",
@@ -757,6 +770,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/magic-card-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/magic-card-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "scroll-progress-demo": {
+      name: "scroll-progress-demo",
+      type: "registry:example",
+      registryDependencies: ["scroll-progress"],
+      files: ["registry/default/example/scroll-progress-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/scroll-progress-demo.tsx"),
       ),
       source: "",
       category: "undefined",
