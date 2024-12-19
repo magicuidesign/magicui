@@ -475,7 +475,7 @@
     "name": "hyper-text",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -595,6 +595,9 @@
   {
     "name": "typing-animation",
     "type": "registry:ui",
+    "dependencies": [
+      "motion"
+    ],
     "files": [
       {
         "path": "magicui/typing-animation.tsx",
