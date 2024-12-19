@@ -26,7 +26,7 @@ export const AnimatedSubscribeButton: React.FC<
     <AnimatePresence mode="wait">
       {isSubscribed ? (
         <motion.button
-          className="relative flex w-[200px] items-center justify-center overflow-hidden rounded-md bg-white p-[10px] outline outline-1 outline-black"
+          className="relative flex h-10 w-[200px] items-center justify-center overflow-hidden rounded-md bg-white outline outline-1 outline-black"
           onClick={() => setIsSubscribed(false)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -34,7 +34,7 @@ export const AnimatedSubscribeButton: React.FC<
         >
           <motion.span
             key="action"
-            className="relative block h-full w-full font-semibold"
+            className="relative flex h-full w-full items-center justify-center font-semibold"
             initial={{ y: -50 }}
             animate={{ y: 0 }}
             style={{ color: buttonColor }}
@@ -44,7 +44,7 @@ export const AnimatedSubscribeButton: React.FC<
         </motion.button>
       ) : (
         <motion.button
-          className="relative flex w-[200px] cursor-pointer items-center justify-center rounded-md border-none p-[10px]"
+          className="relative flex h-10 w-[200px] cursor-pointer items-center justify-center rounded-md border-none"
           style={{ backgroundColor: buttonColor, color: buttonTextColor }}
           onClick={() => setIsSubscribed(true)}
           initial={{ opacity: 0 }}
@@ -53,7 +53,7 @@ export const AnimatedSubscribeButton: React.FC<
         >
           <motion.span
             key="reaction"
-            className="relative block font-semibold"
+            className="relative flex items-center justify-center font-semibold"
             initial={{ x: 0 }}
             exit={{ x: 50, transition: { duration: 0.1 } }}
           >
