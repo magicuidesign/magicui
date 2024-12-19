@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { Dock, DockIcon } from "@/registry/default/magicui/dock";
