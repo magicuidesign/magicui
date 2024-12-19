@@ -13,6 +13,19 @@
     ]
   },
   {
+    "name": "scroll-progress",
+    "type": "registry:ui",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      {
+        "path": "magicui/scroll-progress.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "neon-gradient-card",
     "type": "registry:ui",
     "files": [

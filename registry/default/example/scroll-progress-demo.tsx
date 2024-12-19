@@ -1,22 +1,18 @@
-import ScrollProgress from "@/registry/components/magicui/scroll-progress";
-
-const dummyContent = Array.from({ length: 10 }, (_, i) => (
-  <p key={i}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam
-    lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra
-    nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget
-    libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut
-    porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies
-    a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </p>
-));
+import ScrollProgress from "@/registry/default/magicui/scroll-progress";
 
 const ScrollProgressDemo = () => {
   return (
-    <div>
+    <div className="z-10 rounded-lg border border-gray-200 bg-white p-4">
       <ScrollProgress className="top-[65px]" />
-      <strong>Note: The scroll progress is shown below the navbar of the page.</strong>
-      {dummyContent}
+      <h2 className="pb-4 font-bold">
+        Note: The scroll progress is shown below the navbar of the page.
+      </h2>
+      <p className="pb-4">
+        Magic UI is a collection of re-usable components that you can copy and
+        paste into your web apps. It primarily features components, blocks, and
+        templates geared towards creating landing pages and user-facing
+        marketing materials.
+      </p>
     </div>
   );
 };

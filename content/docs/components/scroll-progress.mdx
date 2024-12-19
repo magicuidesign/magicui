@@ -1,6 +1,6 @@
 ---
 title: Scroll Progress
-date: 2024-06-24
+date: 2024-12-19
 description: Animated Scroll Progress for your pages
 author: dipesh_the_dev
 published: true
@@ -8,25 +8,42 @@ published: true
 
 <ComponentPreview name="scroll-progress-demo" />
 
+## Installation
+
+<Tabs defaultValue="cli">
+<TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/scroll-progress"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
 <Steps>
 
-### Installation
-
-Copy and paste the following code into your project.
-
-```text
-components/magicui/scroll-progress.tsx
-```
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="scroll-progress" />
 
 </Steps>
 
+</TabsContent>
+
+</Tabs>
+
 ## Props
 
-| Prop        | Type            | Description                                        | Default |
-| ----------- | --------------- | -------------------------------------------------- | ------- |
-| className   | string          | The class name to be applied to the component      |         |
+| Prop      | Type   | Description                                   | Default |
+| --------- | ------ | --------------------------------------------- | ------- |
+| className | string | The class name to be applied to the component | -       |
+
+The `ScrollProgress` component also accepts all properties of the `HTMLDivElement` type.
 
 ## Credits
 
