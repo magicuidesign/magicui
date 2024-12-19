@@ -78,7 +78,7 @@ export default function HyperText({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1, rootMargin: "-30% 0px -30% 0px" },
     );
 
     if (elementRef.current) {
@@ -123,7 +123,7 @@ export default function HyperText({
       onMouseEnter={handleAnimationTrigger}
       {...props}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {displayText.map((letter, index) => (
           <motion.span
             key={index}
