@@ -6,7 +6,7 @@ export default function SafariDemo() {
       <Safari
         url="magicui.design"
         className="size-full"
-        imageSrc="https://via.placeholder.com/1200x750"
+        videoSrc="https://videos.pexels.com/video-files/27180348/12091515_2560_1440_50fps.mp4"
       />
     </div>
   );
