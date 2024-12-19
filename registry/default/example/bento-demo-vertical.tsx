@@ -57,7 +57,7 @@ const features = [
   },
 ];
 
-export default async function BentoDemo() {
+export default function BentoDemo() {
   return (
     <BentoGrid className="lg:grid-rows-3">
       {features.map((feature) => (
