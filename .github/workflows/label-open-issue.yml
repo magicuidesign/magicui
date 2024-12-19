@@ -1,0 +1,120 @@
+name: Search & Update Issue Label by Unnamed
+run-name: ${{github.actor}} opened an issue.
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+jobs:
+  error:
+    if: |
+      startsWith(github.event.issue.title, 'bug') ||
+      startsWith(github.event.issue.title, 'bugs') ||
+      startsWith(github.event.issue.title, '[bug]') ||
+      contains(github.event.issue.title, 'bug')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: "Identify error issue"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: bug
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+
+  help:
+    if: |
+      startsWith(github.event.issue.title, 'fix') ||
+      startsWith(github.event.issue.title, '[fix]') ||
+      contains(github.event.issue.title, 'help') ||
+      contains(github.event.issue.title, 'help needed') ||
+      contains(github.event.issue.title, 'HELP') ||
+      contains(github.event.issue.title, 'HELP NEEDED') ||
+      contains(github.event.issue.title, 'assist') ||
+      contains(github.event.issue.title, 'typo')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: "Identify help request"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: help wanted
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+
+  question:
+    if: |
+      startsWith(github.event.issue.title, 'question') ||
+      startsWith(github.event.issue.title, '[question]') ||
+      contains(github.event.issue.title, 'question')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: "Identify question request"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: question
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+
+  feature:
+    if: |
+      startsWith(github.event.issue.title, 'feature') ||
+      startsWith(github.event.issue.title, '[feature]') ||
+      startsWith(github.event.issue.title, 'enhancement') ||
+      startsWith(github.event.issue.title, '[enhancement]') ||
+      contains(github.event.issue.title, 'enhancement') ||
+      contains(github.event.issue.title, 'feature')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: "Identify new feature request"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: enhancement
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+
+  component:
+    if: |
+      startsWith(github.event.issue.title, 'component') ||
+      startsWith(github.event.issue.title, '[component]') ||
+      contains(github.event.issue.title, 'component')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: "Identify new component request"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: component
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
+
+  document:
+    if: |
+      startsWith(github.event.issue.title, 'documentation') ||
+      startsWith(github.event.issue.title, '[documentation]') ||
+      startsWith(github.event.issue.title, '[doc]') ||
+      startsWith(github.event.issue.title, 'doc') ||
+      contains(github.event.issue.title, 'doc')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: "Identify new document request"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: documentation
+        run: gh issue edit "$NUMBER" --add-label "$LABELS"
