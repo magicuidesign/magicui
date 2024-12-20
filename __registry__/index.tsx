@@ -27,6 +27,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "warp-animation-container": {
+      name: "warp-animation-container",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/warp-animation-container.tsx"],
+      component: React.lazy(() => import("@/registry/default/magicui/warp-animation-container.tsx")),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "morphing-text": {
       name: "morphing-text",
       type: "registry:ui",
@@ -126,6 +137,7 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+<<<<<<< HEAD
     "script-copy-btn": {
       name: "script-copy-btn",
       type: "registry:ui",
@@ -137,6 +149,8 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+=======
+>>>>>>> 4207758 (fix: added the warp grid lines)
     "marquee": {
       name: "marquee",
       type: "registry:ui",
@@ -687,6 +701,7 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+<<<<<<< HEAD
     "android-demo": {
       name: "android-demo",
       type: "registry:example",
@@ -715,6 +730,14 @@ export const Index: Record<string, any> = {
       registryDependencies: ["android"],
       files: ["registry/default/example/android-demo-3.tsx"],
       component: React.lazy(() => import("@/registry/default/example/android-demo-3.tsx")),
+=======
+    "warp-animation-container-demo": {
+      name: "warp-animation-container-demo",
+      type: "registry:example",
+      registryDependencies: ["warp-animation-container"],
+      files: ["registry/default/example/warp-animation-container-demo.tsx"],
+      component: React.lazy(() => import("@/registry/default/example/warp-animation-container-demo.tsx")),
+>>>>>>> 4207758 (fix: added the warp grid lines)
       source: "",
       category: "undefined",
       subcategory: "undefined",
@@ -873,6 +896,7 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+<<<<<<< HEAD
     },
     "script-copy-btn-demo": {
       name: "script-copy-btn-demo",
@@ -884,6 +908,8 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+=======
+>>>>>>> 4207758 (fix: added the warp grid lines)
     },
     "marquee-demo": {
       name: "marquee-demo",
@@ -1357,6 +1383,7 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+<<<<<<< HEAD
     },
     "icon-cloud-demo-2": {
       name: "icon-cloud-demo-2",
@@ -1368,6 +1395,8 @@ export const Index: Record<string, any> = {
       category: "undefined",
       subcategory: "undefined",
       chunks: []
+=======
+>>>>>>> 4207758 (fix: added the warp grid lines)
     },
     "gradual-spacing-demo": {
       name: "gradual-spacing-demo",
