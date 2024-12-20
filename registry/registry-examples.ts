@@ -8,6 +8,24 @@ export const examples: Registry = [
     files: ["example/magic-card-demo.tsx"],
   },
   {
+    name: "android-demo",
+    type: "registry:example",
+    registryDependencies: ["android"],
+    files: ["example/android-demo.tsx"],
+  },
+  {
+    name: "android-demo-2",
+    type: "registry:example",
+    registryDependencies: ["android"],
+    files: ["example/android-demo-2.tsx"],
+  },
+  {
+    name: "android-demo-3",
+    type: "registry:example",
+    registryDependencies: ["android"],
+    files: ["example/android-demo-3.tsx"],
+  },
+  {
     name: "morphing-text-demo",
     type: "registry:example",
     registryDependencies: ["morphing-text"],

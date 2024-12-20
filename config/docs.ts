@@ -224,6 +224,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Android",
+          href: `/docs/components/android`,
+          items: [],
+          label: "",
+        },
       ],
     },
     {
