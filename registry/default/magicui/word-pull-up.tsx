@@ -1,20 +1,24 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-
 import { cn } from "@/lib/utils";
+import { motion, MotionProps, useInView, Variants } from "motion/react";
+import { useRef } from "react";
 
-interface WordPullUpProps {
-  words: string;
-  delayMultiple?: number;
-  wrapperFramerProps?: Variants;
-  framerProps?: Variants;
+interface WordPullUpProps extends MotionProps {
+  children: string;
   className?: string;
+  as?: React.ElementType;
+  delayMultiple?: number;
+  variants?: Variants;
+  wordVariants?: Variants;
+  startOnView?: boolean;
 }
 
 export default function WordPullUp({
-  words,
-  wrapperFramerProps = {
+  children,
+  className,
+  as: Component = "h1",
+  variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -23,31 +27,37 @@ export default function WordPullUp({
       },
     },
   },
-  framerProps = {
+  wordVariants = {
     hidden: { y: 20, opacity: 0 },
     show: { y: 0, opacity: 1 },
   },
-  className,
+  startOnView = false,
 }: WordPullUpProps) {
+  const MotionComponent = motion.create(Component);
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-30% 0px -30% 0px" });
+  const shouldAnimate = startOnView ? inView : true;
+
   return (
-    <motion.h1
-      variants={wrapperFramerProps}
+    <MotionComponent
+      ref={ref}
+      variants={variants}
       initial="hidden"
-      animate="show"
+      animate={shouldAnimate ? "show" : "hidden"}
       className={cn(
-        "font-display text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm",
+        "text-4xl font-bold leading-[5rem] tracking-[-0.02em]",
         className,
       )}
     >
-      {words.split(" ").map((word, i) => (
+      {children.split(" ").map((word, i) => (
         <motion.span
           key={i}
-          variants={framerProps}
+          variants={wordVariants}
           style={{ display: "inline-block", paddingRight: "8px" }}
         >
           {word === "" ? <span>&nbsp;</span> : word}
         </motion.span>
       ))}
-    </motion.h1>
+    </MotionComponent>
   );
 }

@@ -42,9 +42,12 @@ npx shadcn@latest add "https://magicui.design/r/word-pull-up"
 
 ## Props
 
-| Prop               | Type            | Description                                        | Default |
-| ------------------ | --------------- | -------------------------------------------------- | ------- |
-| className          | string          | The class name to be applied to the component      |         |
-| words              | string          | An string of word to pull up                       | ""      |
-| framerProps        | HTMLMotionProps | An object containing framer-motion animation props | {}      |
-| wrapperFramerProps | HTMLMotionProps | An object containing framer-motion animation props | {}      |
+| Prop          | Type              | Description                                   | Default |
+| ------------- | ----------------- | --------------------------------------------- | ------- |
+| className     | string            | The class name to be applied to the component |         |
+| children      | string            | The text content to be animated               | ""      |
+| as            | React.ElementType | The component type to render as               | "h1"    |
+| delayMultiple | number            | The delay multiplier for staggered animation  |         |
+| variants      | Variants          | Variants for the parent motion component      |         |
+| wordVariants  | Variants          | Variants for the word motion components       |         |
+| startOnView   | boolean           | Whether to start the animation on view        | false   |
