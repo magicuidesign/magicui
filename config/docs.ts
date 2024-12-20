@@ -139,12 +139,6 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Script Copy Button",
-          href: `/docs/components/script-copy-btn`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Bento Grid",
           href: `/docs/components/bento-grid`,
           items: [],
@@ -206,6 +200,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/code-comparison`,
           items: [],
           label: "",
+        },
+        {
+          title: "Script Copy Button",
+          href: `/docs/components/script-copy-btn`,
+          items: [],
+          label: "New",
         },
         {
           title: "Scratch To Reveal",
