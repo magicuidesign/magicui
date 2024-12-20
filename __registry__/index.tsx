@@ -18,6 +18,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "morphing-text": {
+      name: "morphing-text",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/morphing-text.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/morphing-text.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "scroll-progress": {
       name: "scroll-progress",
       type: "registry:ui",
@@ -770,6 +783,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/magic-card-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/magic-card-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "morphing-text-demo": {
+      name: "morphing-text-demo",
+      type: "registry:example",
+      registryDependencies: ["morphing-text"],
+      files: ["registry/default/example/morphing-text-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/morphing-text-demo.tsx"),
       ),
       source: "",
       category: "undefined",

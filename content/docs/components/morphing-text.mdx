@@ -19,7 +19,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx magicui-cli add morphing-text
+npx shadcn@latest add "https://magicui.design/r/morphing-text"
 ```
 
 </TabsContent>
@@ -32,44 +32,18 @@ npx magicui-cli add morphing-text
 
 <ComponentSource name="morphing-text" />
 
-<Step>Update the import paths to match your project setup.</Step>
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
 
-<ComponentSource name="morphing-text" />
-
 ## Props
 
-| Prop      | Type     | Description                       | Default |
-| --------- | -------- | --------------------------------- | ------- |
-| `texts`   | `string[]` | Array of texts to morph between | `[]`    |
-| `className` | `string?` | Additional classes for the container | `""`    |
-
-## Usage Example
-
-```tsx
-import MorphingText from "../magicui/morphing-text";
-
-const texts = [
-  "Dynamic",
-  "Morphing",
-  "Text",
-  "Animation",
-  "React",
-  "Component",
-  "Smooth",
-  "Transition",
-  "Engaging",
-];
-
-export default function MorphingTextDemo() {
-  return <MorphingText texts={texts} />;
-}
-```
+| Prop        | Type       | Description                          | Default |
+| ----------- | ---------- | ------------------------------------ | ------- |
+| `texts`     | `string[]` | Array of texts to morph between      | `[]`    |
+| `className` | `string?`  | Additional classes for the container | `""`    |
 
 This `MorphingText` component dynamically transitions between an array of text strings, creating a smooth, engaging visual effect.
 

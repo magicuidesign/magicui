@@ -13,6 +13,19 @@
     ]
   },
   {
+    "name": "morphing-text",
+    "type": "registry:ui",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      {
+        "path": "magicui/morphing-text.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "scroll-progress",
     "type": "registry:ui",
     "dependencies": [
