@@ -1,18 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Copy } from "lucide-react";
-import { codeToHtml } from "shiki";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Check, Copy } from "lucide-react";
 import { useTheme } from "next-themes";
+import { HTMLAttributes, useEffect, useState } from "react";
+import { codeToHtml } from "shiki";
 
-interface ScriptCopyBtnProps {
+interface ScriptCopyBtnProps extends HTMLAttributes<HTMLDivElement> {
   showMultiplePackageOptions?: boolean;
   codeLanguage: string;
   lightTheme: string;
   darkTheme: string;
   commandMap: Record<string, string>;
+  className?: string;
 }
 
 export default function ScriptCopyBtn({
@@ -21,13 +23,13 @@ export default function ScriptCopyBtn({
   lightTheme,
   darkTheme,
   commandMap,
+  className,
 }: ScriptCopyBtnProps) {
   const packageManagers = Object.keys(commandMap);
   const [packageManager, setPackageManager] = useState(packageManagers[0]);
   const [copied, setCopied] = useState(false);
   const [highlightedCode, setHighlightedCode] = useState("");
   const { theme } = useTheme();
-
   const command = commandMap[packageManager];
 
   useEffect(() => {
@@ -58,7 +60,12 @@ export default function ScriptCopyBtn({
   };
 
   return (
-    <section className="mx-auto flex max-w-md items-center justify-center">
+    <div
+      className={cn(
+        "mx-auto flex max-w-md items-center justify-center",
+        className,
+      )}
+    >
       <div className="w-full space-y-2">
         <div className="mb-2 flex items-center justify-between">
           {showMultiplePackageOptions && (
@@ -135,6 +142,6 @@ export default function ScriptCopyBtn({
           </Button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
