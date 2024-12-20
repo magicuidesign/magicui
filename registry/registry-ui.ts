@@ -8,6 +8,11 @@ export const ui: Registry = [
     files: ["magicui/magic-card.tsx"],
   },
   {
+    name: "android",
+    type: "registry:ui",
+    files: ["magicui/android.tsx"],
+  },
+  {
     name: "morphing-text",
     type: "registry:ui",
     dependencies: ["framer-motion"],

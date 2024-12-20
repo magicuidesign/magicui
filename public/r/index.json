@@ -13,6 +13,16 @@
     ]
   },
   {
+    "name": "android",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "magicui/android.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "morphing-text",
     "type": "registry:ui",
     "dependencies": [
