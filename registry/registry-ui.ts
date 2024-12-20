@@ -8,6 +8,12 @@ export const ui: Registry = [
     files: ["magicui/magic-card.tsx"],
   },
   {
+    name: "morphing-text",
+    type: "registry:ui",
+    dependencies: ["framer-motion"],
+    files: ["magicui/morphing-text.tsx"],
+  },
+  {
     name: "scroll-progress",
     type: "registry:ui",
     dependencies: ["framer-motion"],
