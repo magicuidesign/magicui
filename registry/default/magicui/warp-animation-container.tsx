@@ -80,13 +80,7 @@ const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
   const leftBeams = useMemo(() => generateBeams(), [generateBeams]);
 
   return (
-    <div
-      className={cn(
-        "relative grid place-items-center rounded border p-20",
-        className,
-      )}
-      {...props}
-    >
+    <div className={cn("relative rounded border p-20", className)} {...props}>
       <div
         style={
           {
