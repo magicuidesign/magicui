@@ -406,7 +406,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/morphing-text`,
           items: [],
           label: "New",
-        }
+        },
       ],
     },
     {
