@@ -374,6 +374,12 @@ export const examples: Registry = [
     files: ["example/icon-cloud-demo.tsx"],
   },
   {
+    name: "icon-cloud-demo-2",
+    type: "registry:example",
+    registryDependencies: ["icon-cloud"],
+    files: ["example/icon-cloud-demo-2.tsx"],
+  },
+  {
     name: "gradual-spacing-demo",
     type: "registry:example",
     files: ["example/gradual-spacing-demo.tsx"],
