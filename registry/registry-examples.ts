@@ -533,4 +533,10 @@ export const examples: Registry = [
     type: "registry:example",
     files: ["example/interactive-hover-button-demo.tsx"],
   },
+  {
+    name: "terminal-demo",
+    type: "registry:example",
+    registryDependencies: ["terminal"],
+    files: ["example/terminal-demo.tsx"],
+  },
 ];

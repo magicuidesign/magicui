@@ -207,6 +207,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Terminal",
+          href: `/docs/components/terminal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

@@ -660,4 +660,9 @@ export const ui: Registry = [
     dependencies: ["lucide-react"],
     files: ["magicui/interactive-hover-button.tsx"],
   },
+  {
+    name: "terminal",
+    type: "registry:ui",
+    files: ["magicui/terminal.tsx"],
+  },
 ];

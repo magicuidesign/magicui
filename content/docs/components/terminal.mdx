@@ -1,0 +1,95 @@
+---
+title: Terminal
+description: A customizable terminal component with command support
+author: dillionverma
+date: 2024-03-21
+published: true
+---
+
+<ComponentPreview name="terminal-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/terminal"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="terminal" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import Terminal from "@/components/ui/terminal"
+
+export default function Demo() {
+  const customCommands = [
+    {
+      command: "about",
+      description: "Learn more about the project",
+      action: () => {
+        window.open("https://github.com/your-username/your-project", "_blank");
+      },
+    }
+  ];
+
+  return (
+    <Terminal 
+      commands={customCommands}
+      initialMessage="Welcome! Type 'help' to see available commands."
+    />
+  )
+}
+```
+
+## Props
+
+| Prop           | Type      | Description                                | Default |
+| -------------- | --------- | ------------------------------------------ | ------- |
+| className      | string    | Additional classes for the terminal        | -       |
+| initialMessage | string    | Initial message shown in the terminal      | "Type 'help' to see available commands" |
+| commands       | Command[] | Array of custom commands for the terminal  | []      |
+
+### Command Interface
+
+```typescript
+interface Command {
+  command: string;      // Command trigger word
+  description: string;  // Command description shown in help
+  action: () => void;   // Function to execute when command is triggered
+}
+```
+
+## Built-in Commands
+
+The terminal comes with two built-in commands:
+
+- `help`: Shows all available commands and their descriptions
+- `clear`: Clears the terminal history
+
+## Credits
+
+- Credit to [@ishanaudichya](https://ishanaudichya.xyz) for figuring out the foundation of this!
