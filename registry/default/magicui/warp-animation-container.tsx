@@ -29,13 +29,15 @@ const Beam = ({
 
   return (
     <motion.div
-      className={`absolute top-0`}
-      style={{
-        left: x,
-        width,
-        aspectRatio: 1 / ar,
-        background: `linear-gradient(hsl(${hue} 80% 60%), transparent)`,
-      }}
+    style={
+      {
+        "--x": `${x}`,
+        "--width": `${width}`,
+        "--aspect-ratio": `${ar}`,
+        "--background": `linear-gradient(hsl(${hue} 80% 60%), transparent)`,
+      } as React.CSSProperties
+    }
+      className={`absolute left-[var(--x)] top-0 [aspect-ratio:1/var(--aspect-ratio)] [background:var(--background)] [width:var(--width)]`}
       initial={{ y: "100cqmax", x: "-50%" }}
       animate={{ y: "-100%", x: "-50%" }}
       transition={{
