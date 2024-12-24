@@ -207,7 +207,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
-     
       ],
     },
     {
@@ -309,7 +308,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
- 
       ],
     },
     {
@@ -473,8 +471,8 @@ export const docsConfig: DocsConfig = {
       title: "Backgrounds",
       items: [
         {
-          title: "Warp Animation Container",
-          href: `/docs/components/warp-animation-container`,
+          title: "Warp Background",
+          href: `/docs/components/warp-background`,
           items: [],
           label: "New",
         },
