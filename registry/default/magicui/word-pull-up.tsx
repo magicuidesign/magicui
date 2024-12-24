@@ -7,11 +7,11 @@ import { useRef } from "react";
 interface WordPullUpProps extends MotionProps {
   children: string;
   className?: string;
-  as?: React.ElementType;
   delayMultiple?: number;
   variants?: Variants;
   wordVariants?: Variants;
   startOnView?: boolean;
+  as?: React.ElementType;
 }
 
 export default function WordPullUp({
@@ -46,7 +46,7 @@ export default function WordPullUp({
       animate={shouldAnimate ? "show" : "hidden"}
       className={cn(
         "text-4xl font-bold leading-[5rem] tracking-[-0.02em]",
-        className,
+        className
       )}
     >
       {children.split(" ").map((word, i) => (
