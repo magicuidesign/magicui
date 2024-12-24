@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import React, { HTMLAttributes, useCallback, useMemo } from "react";
 
-interface WarpAnimationContainerProps extends HTMLAttributes<HTMLDivElement> {
+interface WarpBackgroundProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   perspective?: number;
   beamsPerSide?: number;
@@ -29,14 +29,14 @@ const Beam = ({
 
   return (
     <motion.div
-    style={
-      {
-        "--x": `${x}`,
-        "--width": `${width}`,
-        "--aspect-ratio": `${ar}`,
-        "--background": `linear-gradient(hsl(${hue} 80% 60%), transparent)`,
-      } as React.CSSProperties
-    }
+      style={
+        {
+          "--x": `${x}`,
+          "--width": `${width}`,
+          "--aspect-ratio": `${ar}`,
+          "--background": `linear-gradient(hsl(${hue} 80% 60%), transparent)`,
+        } as React.CSSProperties
+      }
       className={`absolute left-[var(--x)] top-0 [aspect-ratio:1/var(--aspect-ratio)] [background:var(--background)] [width:var(--width)]`}
       initial={{ y: "100cqmax", x: "-50%" }}
       animate={{ y: "-100%", x: "-50%" }}
@@ -50,7 +50,7 @@ const Beam = ({
   );
 };
 
-const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
+export const WarpBackground: React.FC<WarpBackgroundProps> = ({
   children,
   perspective = 100,
   className,
@@ -148,5 +148,3 @@ const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
     </div>
   );
 };
-
-export default WarpAnimationContainer;

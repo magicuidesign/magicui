@@ -207,12 +207,7 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
-        {
-          title: "Scratch To Reveal",
-          href: `/docs/components/scratch-to-reveal`,
-          items: [],
-          label: "New",
-        },
+     
       ],
     },
     {
@@ -292,6 +287,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Scratch To Reveal",
+          href: `/docs/components/scratch-to-reveal`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Scroll Progress",
           href: `/docs/components/scroll-progress`,
           items: [],
@@ -308,12 +309,7 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
-        {
-          title: "Warp Animation Container",
-          href: `/docs/components/warp-animation-container`,
-          items: [],
-          label: "New",
-        },
+ 
       ],
     },
     {
@@ -434,7 +430,7 @@ export const docsConfig: DocsConfig = {
           title: "Rainbow Button",
           href: `/docs/components/rainbow-button`,
           items: [],
-          label: "New",
+          label: "",
         },
         {
           title: "Shimmer Button",
@@ -451,7 +447,7 @@ export const docsConfig: DocsConfig = {
           title: "Interactive Hover Button",
           href: `/docs/components/interactive-hover-button`,
           items: [],
-          label: "New",
+          label: "",
         },
         {
           title: "Animated Subscribe Button",
@@ -476,6 +472,12 @@ export const docsConfig: DocsConfig = {
     {
       title: "Backgrounds",
       items: [
+        {
+          title: "Warp Animation Container",
+          href: `/docs/components/warp-animation-container`,
+          items: [],
+          label: "New",
+        },
         {
           title: "Flickering Grid",
           href: `/docs/components/flickering-grid`,

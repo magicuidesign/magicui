@@ -13,10 +13,10 @@ export const ui: Registry = [
     files: ["magicui/android.tsx"],
   },
   {
-    name: "warp-animation-container",
+    name: "warp-background",
     type: "registry:ui",
     dependencies: ["framer-motion"],
-    files: ["magicui/warp-animation-container.tsx"],
+    files: ["magicui/warp-background.tsx"],
   },
   {
     name: "morphing-text",

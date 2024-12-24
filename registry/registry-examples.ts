@@ -26,10 +26,10 @@ export const examples: Registry = [
     files: ["example/android-demo-3.tsx"],
   },
   {
-    name: "warp-animation-container-demo",
+    name: "warp-background-demo",
     type: "registry:example",
-    registryDependencies: ["warp-animation-container"],
-    files: ["example/warp-animation-container-demo.tsx"],
+    registryDependencies: ["warp-background"],
+    files: ["example/warp-background-demo.tsx"],
   },
   {
     name: "morphing-text-demo",

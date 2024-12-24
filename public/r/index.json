@@ -23,14 +23,14 @@
     ]
   },
   {
-    "name": "warp-animation-container",
+    "name": "warp-background",
     "type": "registry:ui",
     "dependencies": [
       "framer-motion"
     ],
     "files": [
       {
-        "path": "magicui/warp-animation-container.tsx",
+        "path": "magicui/warp-background.tsx",
         "type": "registry:ui"
       }
     ]
