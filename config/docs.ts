@@ -202,6 +202,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Script Copy Button",
+          href: `/docs/components/script-copy-btn`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Scratch To Reveal",
           href: `/docs/components/scratch-to-reveal`,
           items: [],
