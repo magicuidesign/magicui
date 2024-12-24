@@ -23,6 +23,19 @@
     ]
   },
   {
+    "name": "warp-animation-container",
+    "type": "registry:ui",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "files": [
+      {
+        "path": "magicui/warp-animation-container.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "morphing-text",
     "type": "registry:ui",
     "dependencies": [
