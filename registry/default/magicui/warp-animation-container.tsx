@@ -93,24 +93,8 @@ const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
           "pointer-events-none absolute left-0 top-0 size-full overflow-hidden [clip-path:inset(0)] [container-type:size] [perspective:var(--perspective)] [transform-style:preserve-3d]"
         }
       >
-        <div
-          style={{
-            position: "absolute",
-            transformStyle: "preserve-3d",
-            containerType: "inline-size",
-            width: "100cqi",
-            height: "100cqmax",
-            transformOrigin: "50% 0%",
-            transform: "rotateX(-90deg)",
-            backgroundSize: `var(--beam-size) var(--beam-size)`,
-            background: `
-            linear-gradient(var(--grid-color) 0 1px, transparent 1px var(--beam-size)) 50% -0.5px /
-            var(--beam-size) var(--beam-size),
-            linear-gradient(90deg, var(--grid-color) 0 1px, transparent 1px var(--beam-size))
-            50% 50% / var(--beam-size) var(--beam-size)
-          `,
-          }}
-        >
+        {/* top side */}
+        <div className="absolute [transform-style:preserve-3d] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [container-type:inline-size] [height:100cqmax] [transform-origin:50%_0%] [transform:rotateX(-90deg)] [width:100cqi]">
           {topBeams.map((beam, index) => (
             <Beam
               key={`top-${index}`}
@@ -121,25 +105,8 @@ const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
             />
           ))}
         </div>
-        <div
-          style={{
-            position: "absolute",
-            transformStyle: "preserve-3d",
-            containerType: "inline-size",
-            width: "100cqi",
-            height: "100cqmax",
-            top: "100%",
-            transformOrigin: "50% 0%",
-            transform: "rotateX(-90deg)",
-            backgroundSize: `var(--beam-size) var(--beam-size)`,
-            background: `
-            linear-gradient(var(--grid-color) 0 1px, transparent 1px var(--beam-size)) 50% -0.5px /
-            var(--beam-size) var(--beam-size),
-            linear-gradient(90deg, var(--grid-color) 0 1px, transparent 1px var(--beam-size))
-            50% 50% / var(--beam-size) var(--beam-size)
-          `,
-          }}
-        >
+        {/* bottom side */}
+        <div className="absolute top-full [transform-style:preserve-3d] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [container-type:inline-size] [height:100cqmax] [transform-origin:50%_0%] [transform:rotateX(-90deg)] [width:100cqi]">
           {bottomBeams.map((beam, index) => (
             <Beam
               key={`bottom-${index}`}
@@ -150,26 +117,8 @@ const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
             />
           ))}
         </div>
-        <div
-          style={{
-            position: "absolute",
-            transformStyle: "preserve-3d",
-            containerType: "inline-size",
-            width: "100cqh",
-            height: "100cqmax",
-            top: 0,
-            left: 0,
-            transformOrigin: "0% 0%",
-            transform: "rotate(90deg) rotateX(-90deg)",
-            backgroundSize: `var(--beam-size) var(--beam-size)`,
-            background: `
-            linear-gradient(var(--grid-color) 0 1px, transparent 1px var(--beam-size)) 50% -0.5px /
-            var(--beam-size) var(--beam-size),
-            linear-gradient(90deg, var(--grid-color) 0 1px, transparent 1px var(--beam-size))
-            50% 50% / var(--beam-size) var(--beam-size)
-          `,
-          }}
-        >
+        {/* left side */}
+        <div className="absolute left-0 top-0 [transform-style:preserve-3d] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [container-type:inline-size] [height:100cqmax] [transform-origin:0%_0%] [transform:rotate(90deg)_rotateX(-90deg)] [width:100cqh]">
           {leftBeams.map((beam, index) => (
             <Beam
               key={`left-${index}`}
@@ -180,26 +129,8 @@ const WarpAnimationContainer: React.FC<WarpAnimationContainerProps> = ({
             />
           ))}
         </div>
-        <div
-          style={{
-            position: "absolute",
-            transformStyle: "preserve-3d",
-            containerType: "inline-size",
-            width: "100cqh",
-            height: "100cqmax",
-            top: 0,
-            right: 0,
-            transformOrigin: "100% 0%",
-            transform: "rotate(-90deg) rotateX(-90deg)",
-            backgroundSize: `var(--beam-size) var(--beam-size)`,
-            background: `
-            linear-gradient(var(--grid-color) 0 1px, transparent 1px var(--beam-size)) 50% -0.5px /
-            var(--beam-size) var(--beam-size),
-            linear-gradient(90deg, var(--grid-color) 0 1px, transparent 1px var(--beam-size))
-            50% 50% / var(--beam-size) var(--beam-size)
-          `,
-          }}
-        >
+        {/* right side */}
+        <div className="absolute right-0 top-0 [transform-style:preserve-3d] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [container-type:inline-size] [height:100cqmax] [width:100cqh] [transform-origin:100%_0%] [transform:rotate(-90deg)_rotateX(-90deg)]">
           {rightBeams.map((beam, index) => (
             <Beam
               key={`right-${index}`}
