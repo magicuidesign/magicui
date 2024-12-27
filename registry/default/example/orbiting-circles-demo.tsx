@@ -1,4 +1,4 @@
-import OrbitingCircles from "@/registry/default/magicui/orbiting-circles";
+import { OrbitingCircles } from "@/registry/default/magicui/orbiting-circles";
 
 export default function OrbitingCirclesDemo() {
   return (
@@ -7,41 +7,12 @@ export default function OrbitingCirclesDemo() {
         Circles
       </span>
 
-      {/* Inner Circles */}
-      <OrbitingCircles
-        className="size-[30px] border-none bg-transparent"
-        duration={20}
-        delay={20}
-        radius={80}
-      >
+      <OrbitingCircles>
         <Icons.whatsapp />
-      </OrbitingCircles>
-      <OrbitingCircles
-        className="size-[30px] border-none bg-transparent"
-        duration={20}
-        delay={10}
-        radius={80}
-      >
         <Icons.notion />
-      </OrbitingCircles>
-
-      {/* Outer Circles (reverse) */}
-      <OrbitingCircles
-        className="size-[50px] border-none bg-transparent"
-        radius={190}
-        duration={20}
-        reverse
-      >
+        <Icons.openai />
         <Icons.googleDrive />
-      </OrbitingCircles>
-      <OrbitingCircles
-        className="size-[50px] border-none bg-transparent"
-        radius={190}
-        duration={20}
-        delay={20}
-        reverse
-      >
-        <Icons.gitHub />
+        <Icons.whatsapp />
       </OrbitingCircles>
     </div>
   );
