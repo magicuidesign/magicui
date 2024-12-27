@@ -17,6 +17,7 @@ interface VelocityScrollProps {
   text: string;
   default_velocity?: number;
   className?: string;
+  rowsAmount?: number;
 }
 
 interface ParallaxProps {
@@ -34,6 +35,7 @@ export function VelocityScroll({
   text,
   default_velocity = 5,
   className,
+  rowsAmount = 1,
 }: VelocityScrollProps) {
   function ParallaxText({
     children,
@@ -107,12 +109,15 @@ export function VelocityScroll({
 
   return (
     <section className="relative w-full">
-      <ParallaxText baseVelocity={default_velocity} className={className}>
-        {text}
-      </ParallaxText>
-      <ParallaxText baseVelocity={-default_velocity} className={className}>
-        {text}
-      </ParallaxText>
+      {Array.from({ length: rowsAmount }).map((_, i) => (
+        <ParallaxText
+          key={i}
+          baseVelocity={default_velocity * (i % 2 === 0 ? 1 : -1)}
+          className={className}
+        >
+          {text}
+        </ParallaxText>
+      ))}
     </section>
   );
 }
