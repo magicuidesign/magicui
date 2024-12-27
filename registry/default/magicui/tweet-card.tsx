@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react";
 import {
   enrichTweet,
@@ -11,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 interface TwitterIconProps {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 const Twitter = ({ className, ...props }: TwitterIconProps) => (
   <svg
@@ -64,12 +65,12 @@ export const TweetSkeleton = ({
   ...props
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => (
   <div
     className={cn(
       "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-lg border p-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -86,12 +87,12 @@ export const TweetNotFound = ({
   ...props
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => (
   <div
     className={cn(
       "flex size-full flex-col items-center justify-center gap-2 rounded-lg border p-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -214,6 +215,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
           // @ts-ignore
           src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
           className="h-64 rounded-xl border object-cover shadow-sm"
+          alt={tweet.text}
         />
       )}
   </div>
@@ -234,7 +236,7 @@ export const MagicTweet = ({
     <div
       className={cn(
         "relative flex size-full max-w-lg flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
-        className,
+        className
       )}
       {...props}
     >

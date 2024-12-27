@@ -19,7 +19,7 @@ export default function LetterPullup({
 
   const pullupVariant = {
     initial: { y: 100, opacity: 0 },
-    animate: (i: any) => ({
+    animate: (i: number) => ({
       y: 0,
       opacity: 1,
       transition: {
@@ -39,7 +39,7 @@ export default function LetterPullup({
           custom={i}
           className={cn(
             "font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-4xl md:leading-[5rem]",
-            className,
+            className
           )}
         >
           {letter === " " ? <span>&nbsp;</span> : letter}
