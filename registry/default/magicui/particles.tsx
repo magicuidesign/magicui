@@ -40,6 +40,7 @@ interface ParticlesProps {
   vx?: number;
   vy?: number;
 }
+
 function hexToRgb(hex: string): number[] {
   hex = hex.replace("#", "");
 
@@ -56,6 +57,19 @@ function hexToRgb(hex: string): number[] {
   const blue = hexInt & 255;
   return [red, green, blue];
 }
+
+type Circle = {
+  x: number;
+  y: number;
+  translateX: number;
+  translateY: number;
+  size: number;
+  alpha: number;
+  targetAlpha: number;
+  dx: number;
+  dy: number;
+  magnetism: number;
+};
 
 const Particles: React.FC<ParticlesProps> = ({
   className = "",
@@ -77,6 +91,7 @@ const Particles: React.FC<ParticlesProps> = ({
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const rafID = useRef<number | null>(null);
+  const resizeTimeout = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -84,13 +99,26 @@ const Particles: React.FC<ParticlesProps> = ({
     }
     initCanvas();
     animate();
-    window.addEventListener("resize", initCanvas);
+
+    const handleResize = () => {
+      if (resizeTimeout.current) {
+        clearTimeout(resizeTimeout.current);
+      }
+      resizeTimeout.current = setTimeout(() => {
+        initCanvas();
+      }, 200);
+    };
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
       if (rafID.current != null) {
         window.cancelAnimationFrame(rafID.current);
       }
-      window.removeEventListener("resize", initCanvas);
+      if (resizeTimeout.current) {
+        clearTimeout(resizeTimeout.current);
+      }
+      window.removeEventListener("resize", handleResize);
     };
   }, [color]);
 
@@ -121,29 +149,23 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   };
 
-  type Circle = {
-    x: number;
-    y: number;
-    translateX: number;
-    translateY: number;
-    size: number;
-    alpha: number;
-    targetAlpha: number;
-    dx: number;
-    dy: number;
-    magnetism: number;
-  };
-
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
-      circles.current.length = 0;
       canvasSize.current.w = canvasContainerRef.current.offsetWidth;
       canvasSize.current.h = canvasContainerRef.current.offsetHeight;
+
       canvasRef.current.width = canvasSize.current.w * dpr;
       canvasRef.current.height = canvasSize.current.h * dpr;
       canvasRef.current.style.width = `${canvasSize.current.w}px`;
       canvasRef.current.style.height = `${canvasSize.current.h}px`;
       context.current.scale(dpr, dpr);
+
+      // Clear existing particles and create new ones with exact quantity
+      circles.current = [];
+      for (let i = 0; i < quantity; i++) {
+        const circle = circleParams();
+        drawCircle(circle);
+      }
     }
   };
 
@@ -267,7 +289,6 @@ const Particles: React.FC<ParticlesProps> = ({
         // create a new circle
         const newCircle = circleParams();
         drawCircle(newCircle);
-        // update the circle position
       }
     });
     rafID.current = window.requestAnimationFrame(animate);
