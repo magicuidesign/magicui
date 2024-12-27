@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react";
 import {
   enrichTweet,
@@ -11,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 interface TwitterIconProps {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 const Twitter = ({ className, ...props }: TwitterIconProps) => (
   <svg
@@ -64,7 +65,7 @@ export const TweetSkeleton = ({
   ...props
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => (
   <div
     className={cn(
@@ -86,7 +87,7 @@ export const TweetNotFound = ({
   ...props
 }: {
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => (
   <div
     className={cn(
@@ -214,6 +215,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
           // @ts-ignore
           src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
           className="h-64 rounded-xl border object-cover shadow-sm"
+          alt={tweet.text}
         />
       )}
   </div>

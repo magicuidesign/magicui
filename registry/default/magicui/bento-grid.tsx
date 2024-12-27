@@ -13,7 +13,7 @@ type BentoCardProps = {
   name: string;
   className: string;
   background: ReactNode;
-  Icon: any;
+  Icon: React.ElementType;
   description: string;
   href: string;
   cta: string;
