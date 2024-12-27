@@ -13,14 +13,12 @@ export default function MagicCardDemo() {
       <MagicCard
         className="cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl shadow-2xl"
         gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-        gradientColors={["#00ffff", "#0088ff", "#0033cc"]}
       >
         Magic
       </MagicCard>
       <MagicCard
         className="cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl shadow-2xl"
         gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-        gradientColors={["#00ffff", "#0088ff", "#0033cc"]}
       >
         Card
       </MagicCard>
