@@ -18,7 +18,6 @@ export default function ParticlesDemo() {
       <span className="pointer-events-none z-10 whitespace-pre-wrap text-center text-8xl font-semibold leading-none">
         Particles
       </span>
-      q
       <Particles
         className="absolute inset-0 z-0"
         quantity={100}
