@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, MotionProps } from "framer-motion";
+import { AnimatePresence, motion, MotionProps } from "motion/react";
 
 import { cn } from "@/lib/utils";
 

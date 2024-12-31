@@ -2,12 +2,12 @@
   "name": "scroll-progress",
   "type": "registry:ui",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {
       "path": "magicui/scroll-progress.tsx",
-      "content": "import { cn } from \"@/lib/utils\";\nimport { motion, useScroll, useSpring } from \"framer-motion\";\n\ninterface ScrollProgressProps {\n  className?: string;\n}\n\nexport default function ScrollProgress({ className }: ScrollProgressProps) {\n  const { scrollYProgress } = useScroll();\n\n  const scaleX = useSpring(scrollYProgress, {\n    stiffness: 200,\n    damping: 50,\n    restDelta: 0.001,\n  });\n\n  return (\n    <motion.div\n      className={cn(\n        \"fixed inset-x-0 top-0 z-[1000] h-1 origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]\",\n        className,\n      )}\n      style={{\n        scaleX,\n      }}\n    />\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion, useScroll, useSpring } from \"motion/react\";\n\ninterface ScrollProgressProps {\n  className?: string;\n}\n\nexport default function ScrollProgress({ className }: ScrollProgressProps) {\n  const { scrollYProgress } = useScroll();\n\n  const scaleX = useSpring(scrollYProgress, {\n    stiffness: 200,\n    damping: 50,\n    restDelta: 0.001,\n  });\n\n  return (\n    <motion.div\n      className={cn(\n        \"fixed inset-x-0 top-0 z-[1000] h-1 origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]\",\n        className,\n      )}\n      style={{\n        scaleX,\n      }}\n    />\n  );\n}\n",
       "type": "registry:ui",
       "target": ""
     }

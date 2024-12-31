@@ -2,7 +2,7 @@
   "name": "flickering-grid",
   "type": "registry:ui",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {

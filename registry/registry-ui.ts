@@ -4,7 +4,7 @@ export const ui: Registry = [
   {
     name: "magic-card",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/magic-card.tsx"],
   },
   {
@@ -15,19 +15,19 @@ export const ui: Registry = [
   {
     name: "warp-background",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/warp-background.tsx"],
   },
   {
     name: "morphing-text",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/morphing-text.tsx"],
   },
   {
     name: "scroll-progress",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/scroll-progress.tsx"],
   },
   {
@@ -95,13 +95,13 @@ export const ui: Registry = [
   {
     name: "flickering-grid",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/flickering-grid.tsx"],
   },
   {
     name: "hero-video-dialog",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/hero-video-dialog.tsx"],
   },
   {
@@ -113,7 +113,7 @@ export const ui: Registry = [
   {
     name: "script-copy-btn",
     type: "registry:ui",
-    dependencies: ["framer-motion", "shiki", "next-themes"],
+    dependencies: ["motion", "shiki", "next-themes"],
     files: ["magicui/script-copy-btn.tsx"],
   },
   {
@@ -216,7 +216,7 @@ export const ui: Registry = [
   {
     name: "number-ticker",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/number-ticker.tsx"],
   },
   {
@@ -271,7 +271,7 @@ export const ui: Registry = [
   {
     name: "animated-list",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/animated-list.tsx"],
   },
   {
@@ -303,7 +303,7 @@ export const ui: Registry = [
   {
     name: "animated-grid-pattern",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/animated-grid-pattern.tsx"],
   },
   {
@@ -333,13 +333,13 @@ export const ui: Registry = [
   {
     name: "animated-beam",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/animated-beam.tsx"],
   },
   {
     name: "text-reveal",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/text-reveal.tsx"],
   },
   {
@@ -402,13 +402,13 @@ export const ui: Registry = [
   {
     name: "dock",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/dock.tsx"],
   },
   {
     name: "word-rotate",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/word-rotate.tsx"],
   },
   {
@@ -419,7 +419,7 @@ export const ui: Registry = [
   {
     name: "word-pull-up",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/word-pull-up.tsx"],
   },
   {
@@ -431,25 +431,25 @@ export const ui: Registry = [
   {
     name: "blur-in",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/blur-in.tsx"],
   },
   {
     name: "letter-pullup",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/letter-pullup.tsx"],
   },
   {
     name: "sparkles-text",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/sparkles-text.tsx"],
   },
   {
     name: "flip-text",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/flip-text.tsx"],
   },
   {
@@ -461,43 +461,43 @@ export const ui: Registry = [
   {
     name: "gradual-spacing",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/gradual-spacing.tsx"],
   },
   {
     name: "word-fade-in",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/word-fade-in.tsx"],
   },
   {
     name: "scroll-based-velocity",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/scroll-based-velocity.tsx"],
   },
   {
     name: "scratch-to-reveal",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/scratch-to-reveal.tsx"],
   },
   {
     name: "fade-text",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/fade-text.tsx"],
   },
   {
     name: "shiny-button",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/shiny-button.tsx"],
   },
   {
     name: "box-reveal",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/box-reveal.tsx"],
   },
   {
@@ -543,7 +543,7 @@ export const ui: Registry = [
   {
     name: "animated-subscribe-button",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/animated-subscribe-button.tsx"],
   },
   {
@@ -608,7 +608,7 @@ export const ui: Registry = [
   {
     name: "blur-fade",
     type: "registry:ui",
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
     files: ["magicui/blur-fade.tsx"],
   },
   {

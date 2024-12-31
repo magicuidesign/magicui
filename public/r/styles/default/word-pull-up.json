@@ -2,7 +2,7 @@
   "name": "word-pull-up",
   "type": "registry:ui",
   "dependencies": [
-    "framer-motion"
+    "motion"
   ],
   "files": [
     {
