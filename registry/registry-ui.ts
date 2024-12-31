@@ -88,6 +88,11 @@ export const ui: Registry = [
     files: ["magicui/grid-pattern.tsx"],
   },
   {
+    name: "interactive-grid-pattern",
+    type: "registry:ui",
+    files: ["magicui/interactive-grid-pattern.tsx"],
+  },
+  {
     name: "dot-pattern",
     type: "registry:ui",
     files: ["magicui/dot-pattern.tsx"],

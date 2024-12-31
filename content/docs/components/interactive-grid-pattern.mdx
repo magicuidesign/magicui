@@ -1,0 +1,51 @@
+---
+title: Interactive Grid Pattern
+date: 2024-12-31
+description: A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
+author: h3rmel
+published: true
+---
+
+<ComponentPreview name="interactive-grid-pattern-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/interactive-grid-pattern"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="interactive-grid-pattern" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+<ComponentSource name="interactive-grid-pattern" />
+
+## Props
+
+| Prop    | Type             | Description                               | Default |
+| ------- | ---------------- | ----------------------------------------- | ------- |
+| width   | number           | Width of the squares                      | 40      |
+| height  | number           | Height of the squares                     | 40      |
+| squares | [number, number] | Defines the width and height of the grid. | []      |

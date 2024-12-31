@@ -478,6 +478,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/grid-pattern`,
           items: [],
         },
+        {
+          title: "Interactive Grid Pattern",
+          href: `/docs/components/interactive-grid-pattern`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],
