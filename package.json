@@ -54,7 +54,6 @@
     "crisp-sdk-web": "^1.0.25",
     "critters": "^0.0.24",
     "date-fns": "^2.30.0",
-    "framer-motion": "^11.3.31",
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",
     "jotai": "^2.10.0",

@@ -8,7 +8,7 @@ import {
   useMotionValue,
   useSpring,
   useTransform,
-} from "framer-motion";
+} from "motion/react";
 import React, { PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";

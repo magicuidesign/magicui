@@ -3,7 +3,7 @@
     "name": "magic-card",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -26,7 +26,7 @@
     "name": "warp-background",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -39,7 +39,7 @@
     "name": "morphing-text",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -52,7 +52,7 @@
     "name": "scroll-progress",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -152,7 +152,7 @@
     "name": "flickering-grid",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -165,7 +165,7 @@
     "name": "hero-video-dialog",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -192,7 +192,7 @@
     "name": "script-copy-btn",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion",
+      "motion",
       "shiki",
       "next-themes"
     ],
@@ -353,7 +353,7 @@
     "name": "number-ticker",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -428,7 +428,7 @@
     "name": "animated-list",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -472,7 +472,7 @@
     "name": "animated-grid-pattern",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -513,7 +513,7 @@
     "name": "animated-beam",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -526,7 +526,7 @@
     "name": "text-reveal",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -611,7 +611,7 @@
     "name": "dock",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -624,7 +624,7 @@
     "name": "word-rotate",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -647,7 +647,7 @@
     "name": "word-pull-up",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -673,7 +673,7 @@
     "name": "blur-in",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -686,7 +686,7 @@
     "name": "letter-pullup",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -699,7 +699,7 @@
     "name": "sparkles-text",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -712,7 +712,7 @@
     "name": "flip-text",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -739,7 +739,7 @@
     "name": "gradual-spacing",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -752,7 +752,7 @@
     "name": "word-fade-in",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -765,7 +765,7 @@
     "name": "scroll-based-velocity",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -778,7 +778,7 @@
     "name": "scratch-to-reveal",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -791,7 +791,7 @@
     "name": "fade-text",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -804,7 +804,7 @@
     "name": "shiny-button",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -817,7 +817,7 @@
     "name": "box-reveal",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -888,7 +888,7 @@
     "name": "animated-subscribe-button",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
@@ -984,7 +984,7 @@
     "name": "blur-fade",
     "type": "registry:ui",
     "dependencies": [
-      "framer-motion"
+      "motion"
     ],
     "files": [
       {
