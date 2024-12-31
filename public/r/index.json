@@ -749,14 +749,14 @@
     ]
   },
   {
-    "name": "word-fade-in",
+    "name": "text-animate",
     "type": "registry:ui",
     "dependencies": [
       "motion"
     ],
     "files": [
       {
-        "path": "magicui/word-fade-in.tsx",
+        "path": "magicui/text-animate.tsx",
         "type": "registry:ui"
       }
     ]

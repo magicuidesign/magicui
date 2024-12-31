@@ -314,6 +314,12 @@ export const docsConfig: DocsConfig = {
       title: "Text Animations",
       items: [
         {
+          title: "Text Animate",
+          href: `/docs/components/text-animate`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Number Ticker",
           href: `/docs/components/number-ticker`,
           items: [],
@@ -386,12 +392,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Gradual Spacing",
           href: `/docs/components/gradual-spacing`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Word Fade In",
-          href: `/docs/components/word-fade-in`,
           items: [],
           label: "",
         },

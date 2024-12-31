@@ -564,13 +564,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "word-fade-in": {
-      name: "word-fade-in",
+    "text-animate": {
+      name: "text-animate",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: ["registry/default/magicui/word-fade-in.tsx"],
+      files: ["registry/default/magicui/text-animate.tsx"],
       component: React.lazy(
-        () => import("@/registry/default/magicui/word-fade-in.tsx"),
+        () => import("@/registry/default/magicui/text-animate.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -1687,13 +1687,13 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "word-fade-in-demo": {
-      name: "word-fade-in-demo",
+    "text-animate-demo": {
+      name: "text-animate-demo",
       type: "registry:example",
       registryDependencies: undefined,
-      files: ["registry/default/example/word-fade-in-demo.tsx"],
+      files: ["registry/default/example/text-animate-demo.tsx"],
       component: React.lazy(
-        () => import("@/registry/default/example/word-fade-in-demo.tsx"),
+        () => import("@/registry/default/example/text-animate-demo.tsx"),
       ),
       source: "",
       category: "undefined",
