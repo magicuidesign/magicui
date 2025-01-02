@@ -1,6 +1,3 @@
-import { useMDXComponent } from "@content-collections/mdx/react";
-import Image from "next/image";
-import Link from "next/link";
 import { Callout } from "@/components/callout";
 import RepoDownload from "@/components/repo-download";
 import TechStack from "@/components/tech-stack";
@@ -15,6 +12,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import TweetCard from "@/registry/default/magicui/tweet-card";
+import { useMDXComponent } from "@content-collections/mdx/react";
+import Image from "next/image";
+import Link from "next/link";
 import { ComponentPreview } from "./component-preview";
 import { ComponentSource } from "./component-source";
 import { CopyButton, CopyNpmCommandButton } from "./copy-button";
@@ -132,9 +132,9 @@ const components = {
     />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="table-container my-6 w-full overflow-y-auto rounded-lg border border-border">
+    <div className="my-6 w-full overflow-y-auto rounded-lg border border-border">
       <table
-        className={cn("table-container my-0 w-full overflow-hidden", className)}
+        className={cn("my-0 w-full overflow-hidden", className)}
         {...props}
       />
     </div>
@@ -163,7 +163,7 @@ const components = {
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        "text-balance border-r border-border bg-neutral-50 px-6 py-3 text-left font-mono text-sm font-semibold tracking-tight text-secondary-foreground last:border-r-0 dark:bg-neutral-900",
+        "text-balance border-r border-border bg-neutral-50 px-6 py-3 text-left font-mono text-sm font-semibold tracking-tight text-secondary-foreground last:border-r-0 dark:bg-neutral-950",
         className,
       )}
       {...props}
