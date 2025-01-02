@@ -51,11 +51,11 @@ module.exports = {
         orbit: {
           "0%": {
             transform:
-              "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
+              "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))",
           },
           "100%": {
             transform:
-              "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
+              "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))",
           },
         },
       },
@@ -79,4 +79,7 @@ module.exports = {
 | reverse   | boolean         | If true, the animation plays in reverse          | false   |
 | duration  | number          | The duration of the animation in seconds         | 20      |
 | delay     | number          | The delay before the animation starts in seconds | 10      |
-| radius    | number          | The radius of the orbit in pixels                | 50      |
+| radius    | number          | The radius of the orbit in pixels                | 160     |
+| path      | boolean         | If true, a path is displayed for the orbit       | true    |
+| iconSize  | number          | The size of the icon in pixels                   | 30      |
+| speed     | number          | The speed of the animation                       | 1       |

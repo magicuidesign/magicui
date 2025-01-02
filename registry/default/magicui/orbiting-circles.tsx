@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
+import React from "react";
 
-export interface OrbitingCirclesProps {
+export interface OrbitingCirclesProps
+  extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
   reverse?: boolean;
@@ -8,17 +10,22 @@ export interface OrbitingCirclesProps {
   delay?: number;
   radius?: number;
   path?: boolean;
+  iconSize?: number;
+  speed?: number;
 }
 
-export default function OrbitingCircles({
+export function OrbitingCircles({
   className,
   children,
   reverse,
   duration = 20,
-  delay = 10,
-  radius = 50,
+  radius = 160,
   path = true,
+  iconSize = 30,
+  speed = 1,
+  ...props
 }: OrbitingCirclesProps) {
+  const calculatedDuration = duration / speed;
   return (
     <>
       {path && (
@@ -36,23 +43,29 @@ export default function OrbitingCircles({
           />
         </svg>
       )}
-
-      <div
-        style={
-          {
-            "--duration": duration,
-            "--radius": radius,
-            "--delay": -delay,
-          } as React.CSSProperties
-        }
-        className={cn(
-          "absolute flex size-full transform-gpu animate-orbit items-center justify-center rounded-full border bg-black/10 [animation-delay:calc(var(--delay)*1000ms)] dark:bg-white/10",
-          { "[animation-direction:reverse]": reverse },
-          className,
-        )}
-      >
-        {children}
-      </div>
+      {React.Children.map(children, (child, index) => {
+        const angle = (360 / React.Children.count(children)) * index;
+        return (
+          <div
+            style={
+              {
+                "--duration": calculatedDuration,
+                "--radius": radius,
+                "--angle": angle,
+                "--icon-size": `${iconSize}px`,
+              } as React.CSSProperties
+            }
+            className={cn(
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full`,
+              { "[animation-direction:reverse]": reverse },
+              className,
+            )}
+            {...props}
+          >
+            {child}
+          </div>
+        );
+      })}
     </>
   );
 }

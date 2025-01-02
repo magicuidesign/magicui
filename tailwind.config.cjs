@@ -153,7 +153,7 @@ module.exports = {
           "100%": {
             transform: "scale(2)",
             opacity: "0",
-          }
+          },
         },
         "shimmer-slide": {
           to: {
@@ -180,11 +180,11 @@ module.exports = {
         orbit: {
           "0%": {
             transform:
-              "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
+              "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))",
           },
           "100%": {
             transform:
-              "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
+              "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))",
           },
         },
         shine: {
