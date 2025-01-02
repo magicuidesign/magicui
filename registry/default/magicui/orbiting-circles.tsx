@@ -10,6 +10,8 @@ export interface OrbitingCirclesProps
   delay?: number;
   radius?: number;
   path?: boolean;
+  iconSize?: number;
+  speed?: number;
 }
 
 export function OrbitingCircles({
@@ -19,8 +21,11 @@ export function OrbitingCircles({
   duration = 20,
   radius = 160,
   path = true,
+  iconSize = 30,
+  speed = 1,
   ...props
 }: OrbitingCirclesProps) {
+  const calculatedDuration = duration / speed;
   return (
     <>
       {path && (
@@ -44,17 +49,14 @@ export function OrbitingCircles({
           <div
             style={
               {
-                "--duration": duration,
+                "--duration": calculatedDuration,
                 "--radius": radius,
                 "--angle": angle,
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
+                "--icon-size": `${iconSize}px`,
               } as React.CSSProperties
             }
             className={cn(
-              "flex size-[40px] transform-gpu animate-orbit items-center justify-center rounded-full",
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full`,
               { "[animation-direction:reverse]": reverse },
               className,
             )}
