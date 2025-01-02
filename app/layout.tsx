@@ -1,4 +1,4 @@
-import { fontSans } from "@/lib/fonts";
+import { fontMono, fontSans } from "@/lib/fonts";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -39,6 +39,7 @@ export default function RootLayout({
         className={cn(
           "relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
           fontSans.variable,
+          fontMono.variable,
         )}
       >
         <PHProvider>

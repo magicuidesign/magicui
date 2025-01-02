@@ -22,6 +22,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -153,7 +154,7 @@ module.exports = {
           "100%": {
             transform: "scale(2)",
             opacity: "0",
-          }
+          },
         },
         "shimmer-slide": {
           to: {
