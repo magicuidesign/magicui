@@ -17,6 +17,7 @@ export type DynamicCloudProps = {
 };
 
 export const cloudProps: Omit<ICloud, "children"> = {
+  id: "icon-cloud",
   containerProps: {
     style: {
       display: "flex",
