@@ -1,7 +1,9 @@
 {
   "name": "scratch-to-reveal",
   "type": "registry:ui",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "magicui/scratch-to-reveal.tsx",

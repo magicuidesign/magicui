@@ -465,10 +465,10 @@ export const ui: Registry = [
     files: ["magicui/gradual-spacing.tsx"],
   },
   {
-    name: "word-fade-in",
+    name: "text-animate",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/word-fade-in.tsx"],
+    files: ["magicui/text-animate.tsx"],
   },
   {
     name: "scroll-based-velocity",

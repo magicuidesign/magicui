@@ -396,9 +396,29 @@ export const examples: Registry = [
     files: ["example/gradual-spacing-demo.tsx"],
   },
   {
-    name: "word-fade-in-demo",
+    name: "text-animate-demo",
     type: "registry:example",
-    files: ["example/word-fade-in-demo.tsx"],
+    files: ["example/text-animate-demo.tsx"],
+  },
+  {
+    name: "text-animate-demo-2",
+    type: "registry:example",
+    files: ["example/text-animate-demo-2.tsx"],
+  },
+  {
+    name: "text-animate-demo-3",
+    type: "registry:example",
+    files: ["example/text-animate-demo-3.tsx"],
+  },
+  {
+    name: "text-animate-demo-4",
+    type: "registry:example",
+    files: ["example/text-animate-demo-4.tsx"],
+  },
+  {
+    name: "text-animate-demo-5",
+    type: "registry:example",
+    files: ["example/text-animate-demo-5.tsx"],
   },
   {
     name: "fade-text-demo",

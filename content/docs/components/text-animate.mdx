@@ -1,0 +1,73 @@
+---
+title: Text Animate
+date: 2025-01-01
+description: A text animation component that animates text using a variety of different animations.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="text-animate-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/text-animate"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="text-animate" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Blur In by Text
+
+<ComponentPreview name="text-animate-demo-2" />
+
+### Slide Up by Word
+
+<ComponentPreview name="text-animate-demo-3" />
+
+### Scale Up by Text
+
+<ComponentPreview name="text-animate-demo-4" />
+
+### Fade In by Line
+
+<ComponentPreview name="text-animate-demo-5" />
+
+## Props
+
+| Prop        | Type                                      | Description                                               | Default  |
+| ----------- | ----------------------------------------- | --------------------------------------------------------- | -------- |
+| children    | string                                    | The text content to animate                               |          |
+| className   | string                                    | The class name to be applied to the component             |          |
+| delay       | number                                    | Delay before animation starts                             | 0        |
+| duration    | number                                    | Duration of the animation                                 | 0.6      |
+| variants    | Variants                                  | Custom motion variants for the animation                  |          |
+| as          | ElementType                               | The element type to render                                | "div"    |
+| by          | "text" \| "word" \| "character" \| "line" | How to split the text ("text", "word", "character")       | "word"   |
+| startOnView | boolean                                   | Whether to start animation when component enters viewport | false    |
+| animation   | AnimationVariant                          | The animation preset to use                               | "fadeIn" |
