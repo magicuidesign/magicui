@@ -19,23 +19,34 @@ export function DocPager({ doc }: DocsPagerProps) {
   }
 
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between gap-4">
       {pager?.prev?.href && (
         <Link
           href={pager.prev.href}
-          className={buttonVariants({ variant: "outline" })}
+          className={cn(buttonVariants({ variant: "outline" }), "min-w-0")}
+          title={pager.prev.title}
         >
-          <ChevronLeftIcon className="mr-2 size-4" />
-          {pager.prev.title}
+          <ChevronLeftIcon
+            className="mr-2 size-4 shrink-0"
+            aria-hidden="true"
+          />
+          <span className="truncate">{pager.prev.title}</span>
         </Link>
       )}
       {pager?.next?.href && (
         <Link
           href={pager.next.href}
-          className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "ml-auto min-w-0 text-right",
+          )}
+          title={pager.next.title}
         >
-          {pager.next.title}
-          <ChevronRightIcon className="ml-2 size-4" />
+          <span className="truncate">{pager.next.title}</span>
+          <ChevronRightIcon
+            className="ml-2 size-4 shrink-0"
+            aria-hidden="true"
+          />
         </Link>
       )}
     </div>
