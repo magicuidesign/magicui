@@ -332,22 +332,10 @@ export const examples: Registry = [
     files: ["example/avatar-circles-demo.tsx"],
   },
   {
-    name: "word-pull-up-demo",
-    type: "registry:example",
-    registryDependencies: ["word-pull-up"],
-    files: ["example/word-pull-up-demo.tsx"],
-  },
-  {
     name: "typing-animation-demo",
     type: "registry:example",
     registryDependencies: ["typing-animation"],
     files: ["example/typing-animation-demo.tsx"],
-  },
-  {
-    name: "blur-in-demo",
-    type: "registry:example",
-    registryDependencies: ["blur-in"],
-    files: ["example/blur-in-demo.tsx"],
   },
   {
     name: "scroll-based-velocity-demo",
@@ -360,12 +348,6 @@ export const examples: Registry = [
     type: "registry:example",
     registryDependencies: ["scratch-to-reveal"],
     files: ["example/scratch-to-reveal-demo.tsx"],
-  },
-  {
-    name: "letter-pullup-demo",
-    type: "registry:example",
-    registryDependencies: ["letter-pullup"],
-    files: ["example/letter-pullup-demo.tsx"],
   },
   {
     name: "flip-text-demo",
@@ -397,11 +379,6 @@ export const examples: Registry = [
     files: ["example/icon-cloud-demo-3.tsx"],
   },
   {
-    name: "gradual-spacing-demo",
-    type: "registry:example",
-    files: ["example/gradual-spacing-demo.tsx"],
-  },
-  {
     name: "text-animate-demo",
     type: "registry:example",
     files: ["example/text-animate-demo.tsx"],
@@ -425,11 +402,6 @@ export const examples: Registry = [
     name: "text-animate-demo-5",
     type: "registry:example",
     files: ["example/text-animate-demo-5.tsx"],
-  },
-  {
-    name: "fade-text-demo",
-    type: "registry:example",
-    files: ["example/fade-text-demo.tsx"],
   },
   {
     name: "shiny-button-demo",

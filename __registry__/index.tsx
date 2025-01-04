@@ -460,19 +460,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "word-pull-up": {
-      name: "word-pull-up",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: ["registry/default/magicui/word-pull-up.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/magicui/word-pull-up.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
     "typing-animation": {
       name: "typing-animation",
       type: "registry:ui",
@@ -480,32 +467,6 @@ export const Index: Record<string, any> = {
       files: ["registry/default/magicui/typing-animation.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/typing-animation.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
-    "blur-in": {
-      name: "blur-in",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: ["registry/default/magicui/blur-in.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/magicui/blur-in.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
-    "letter-pullup": {
-      name: "letter-pullup",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: ["registry/default/magicui/letter-pullup.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/magicui/letter-pullup.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -551,19 +512,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "gradual-spacing": {
-      name: "gradual-spacing",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: ["registry/default/magicui/gradual-spacing.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/magicui/gradual-spacing.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
     "text-animate": {
       name: "text-animate",
       type: "registry:ui",
@@ -597,19 +545,6 @@ export const Index: Record<string, any> = {
       files: ["registry/default/magicui/scratch-to-reveal.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/scratch-to-reveal.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
-    "fade-text": {
-      name: "fade-text",
-      type: "registry:ui",
-      registryDependencies: undefined,
-      files: ["registry/default/magicui/fade-text.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/magicui/fade-text.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -1543,19 +1478,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "word-pull-up-demo": {
-      name: "word-pull-up-demo",
-      type: "registry:example",
-      registryDependencies: ["word-pull-up"],
-      files: ["registry/default/example/word-pull-up-demo.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/example/word-pull-up-demo.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
     "typing-animation-demo": {
       name: "typing-animation-demo",
       type: "registry:example",
@@ -1563,19 +1485,6 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/typing-animation-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/typing-animation-demo.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
-    "blur-in-demo": {
-      name: "blur-in-demo",
-      type: "registry:example",
-      registryDependencies: ["blur-in"],
-      files: ["registry/default/example/blur-in-demo.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/example/blur-in-demo.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -1603,19 +1512,6 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/scratch-to-reveal-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/scratch-to-reveal-demo.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
-    "letter-pullup-demo": {
-      name: "letter-pullup-demo",
-      type: "registry:example",
-      registryDependencies: ["letter-pullup"],
-      files: ["registry/default/example/letter-pullup-demo.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/example/letter-pullup-demo.tsx"),
       ),
       source: "",
       category: "undefined",
@@ -1687,19 +1583,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-    "gradual-spacing-demo": {
-      name: "gradual-spacing-demo",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: ["registry/default/example/gradual-spacing-demo.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/example/gradual-spacing-demo.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
     "text-animate-demo": {
       name: "text-animate-demo",
       type: "registry:example",
@@ -1759,19 +1642,6 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/text-animate-demo-5.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/text-animate-demo-5.tsx"),
-      ),
-      source: "",
-      category: "undefined",
-      subcategory: "undefined",
-      chunks: [],
-    },
-    "fade-text-demo": {
-      name: "fade-text-demo",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: ["registry/default/example/fade-text-demo.tsx"],
-      component: React.lazy(
-        () => import("@/registry/default/example/fade-text-demo.tsx"),
       ),
       source: "",
       category: "undefined",

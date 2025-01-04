@@ -595,10 +595,10 @@
             "keyframes": {
               "orbit": {
                 "0%": {
-                  "transform": "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)"
+                  "transform": "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))"
                 },
                 "100%": {
-                  "transform": "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)"
+                  "transform": "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))"
                 }
               }
             }
@@ -644,19 +644,6 @@
     ]
   },
   {
-    "name": "word-pull-up",
-    "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
-    "files": [
-      {
-        "path": "magicui/word-pull-up.tsx",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
     "name": "typing-animation",
     "type": "registry:ui",
     "dependencies": [
@@ -665,32 +652,6 @@
     "files": [
       {
         "path": "magicui/typing-animation.tsx",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
-    "name": "blur-in",
-    "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
-    "files": [
-      {
-        "path": "magicui/blur-in.tsx",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
-    "name": "letter-pullup",
-    "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
-    "files": [
-      {
-        "path": "magicui/letter-pullup.tsx",
         "type": "registry:ui"
       }
     ]
@@ -724,26 +685,10 @@
   {
     "name": "icon-cloud",
     "type": "registry:ui",
-    "dependencies": [
-      "next-themes",
-      "react-icon-cloud"
-    ],
+    "dependencies": [],
     "files": [
       {
         "path": "magicui/icon-cloud.tsx",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
-    "name": "gradual-spacing",
-    "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
-    "files": [
-      {
-        "path": "magicui/gradual-spacing.tsx",
         "type": "registry:ui"
       }
     ]
@@ -783,19 +728,6 @@
     "files": [
       {
         "path": "magicui/scratch-to-reveal.tsx",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
-    "name": "fade-text",
-    "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
-    "files": [
-      {
-        "path": "magicui/fade-text.tsx",
         "type": "registry:ui"
       }
     ]
