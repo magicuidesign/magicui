@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
-import React from "react";
 
 interface Icon {
   x: number;
@@ -22,7 +21,7 @@ function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
 
-export default function IconCloud({ icons, images }: IconCloudProps) {
+export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [iconPositions, setIconPositions] = useState<Icon[]>([]);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -100,15 +99,18 @@ export default function IconCloud({ icons, images }: IconCloudProps) {
     const items = icons || images || [];
     const newIcons: Icon[] = [];
     const numIcons = items.length || 20;
-    const phi = Math.PI * (3 - Math.sqrt(5));
+
+    // Fibonacci sphere parameters
+    const offset = 2 / numIcons;
+    const increment = Math.PI * (3 - Math.sqrt(5));
 
     for (let i = 0; i < numIcons; i++) {
-      const y = 1 - (i / (numIcons - 1)) * 2;
-      const radius = Math.sqrt(1 - y * y);
-      const theta = phi * i;
+      const y = i * offset - 1 + offset / 2;
+      const r = Math.sqrt(1 - y * y);
+      const phi = i * increment;
 
-      const x = Math.cos(theta) * radius;
-      const z = Math.sin(theta) * radius;
+      const x = Math.cos(phi) * r;
+      const z = Math.sin(phi) * r;
 
       newIcons.push({
         x: x * 100,
@@ -223,7 +225,7 @@ export default function IconCloud({ icons, images }: IconCloudProps) {
       const dx = mousePos.x - centerX;
       const dy = mousePos.y - centerY;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      const speed = 0.003 + (distance / maxDistance) * 0.006;
+      const speed = 0.003 + (distance / maxDistance) * 0.01;
 
       if (targetRotation) {
         const elapsed = performance.now() - targetRotation.startTime;

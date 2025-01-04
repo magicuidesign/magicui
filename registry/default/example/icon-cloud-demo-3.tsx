@@ -1,4 +1,4 @@
-import IconCloud from "@/registry/default/magicui/icon-cloud";
+import { IconCloud } from "@/registry/default/magicui/icon-cloud";
 
 const Icons = {
   gitHub: () => (
