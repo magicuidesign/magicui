@@ -1674,6 +1674,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "icon-cloud-demo-3": {
+      name: "icon-cloud-demo-3",
+      type: "registry:example",
+      registryDependencies: ["icon-cloud"],
+      files: ["registry/default/example/icon-cloud-demo-3.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/icon-cloud-demo-3.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "gradual-spacing-demo": {
       name: "gradual-spacing-demo",
       type: "registry:example",

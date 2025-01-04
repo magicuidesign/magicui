@@ -1,5 +1,5 @@
 ---
-title: Interactive Icon Cloud
+title: Icon Cloud
 date: 2024-05-24
 description: An interactive 3D tag cloud component
 author: dillionverma
@@ -28,12 +28,6 @@ npx shadcn@latest add "https://magicui.design/r/icon-cloud"
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
-
-```bash
-npm install react-icon-cloud next-themes
-```
-
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="icon-cloud" />
@@ -48,57 +42,13 @@ npm install react-icon-cloud next-themes
 
 <ComponentPreview name="icon-cloud-demo-2" />
 
-## ⚠️ Warning
+## With SVG Icons
 
-> Avoid using the IconCloud component in parent components where the component interacts with hooks or undergoes frequent state changes. Such interactions may lead to unexpected behavior, such as continuous spinning.
-> Consider creating a separate component for the section of your application that utilizes hooks or undergoes frequent state changes in parent component.
+<ComponentPreview name="icon-cloud-demo-3" />
 
 ## Props
 
-### IconCloud
-
-Displays a dynamic cloud of icons from the Simple Icons library based on provided slugs.
-| Prop | type | default | description |
-|:----------------:|:-----------------------------------------------:|:---------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| imageArray | string[] | | An array of image URLs corresponding to the images you want to display. |
-| iconSlugs | string[] | |An array of icon slugs corresponding to the icons you want to display. Each slug should match a supported icon from the Simple Icons library. |
-
-### Cloud
-
-There are a number of options for modifying the way the cloud looks and behaves. Go to https://www.goat1000.com/tagcanvas-options.php to see the list of all available options for your cloud.
-| Prop | type | default | description |
-|:--------------:|:-------------------------------------------------:|:-------:|:---------------------------------------------------------------:|
-| canvasProps | HTMLAttributes < HTMLCanvasElement > \| undefined | {} | Attributes that will be passed to the underlying canvas element |
-| children | Tag[] | [] | Tags rendered using the provided renderers |
-| containerProps | HTMLAttributes < HTMLDivElement > \| undefined | {} | Attributes passed to the root div element |
-| id | string \| number \| undefined | uuid | Should be provided when using SSR |
-| maxSpeed | int | 0.04 | To adjust the rotation speed in idle state |
-| minSpeed | int | 0.02 | To adjust the rotation speed when hovering |
-| dragControl | boolean | false | Enable or disable the ability to drag and interact with the icon cloud. |
-| dragThreshold | number | 4 | The number of pixels that the cursor must move to count as a drag instead of a click. |
-| decel | number | 0.95 | Deceleration rate when mouse leaves canvas. |
-| freezeDecel | boolean | false | Whether to freeze the cloud when dragging stops. |
-
-### renderSimpleIcon
-
-Used to create a tag for the Cloud component
-| Prop | type | default | description |
-|:----------------:|:-----------------------------------------------:|:---------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| aProps | HTMLAttributes < HTMLAnchorElement > \| undefined | {} | Attributes passed to the underlying anchor element |
-| bgHex | string \| undefined | '#fff' | The string hex of the background the icon will be rendered on. Ex: '#fff'. Used to determine if the min contrast ratio for the icons default color will be met |
-| fallbackHex | string \| undefined | '#000' | The color of the icon if the minContrastRatio is not met Ex: '#000' |
-| icon | any | undefined | The simple icon object you would like to render. Ex: import icon from "simple-icons/icons/javascript";
-| imgProps | HTMLAttributes < HTMLImageElement > \| undefined | {} | Attributes passed to the underlying img element | |
-| minContrastRatio | number \| undefined | 1 | 0 - 21 The min contrast ratio between icon and bgHex before the fallbackHex will be used for the icon color |
-| size | number \| undefined | 42 | The size in px of the icon |
-
-### fetchSimpleIcons
-
-Used when you cant statically import simple icons during build time. Calling this will use `fetch` to get icons for each provided slug.
-| Prop | type | default | description |
-|:----------------:|:-----------------------------------------------:|:---------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| slugs | string[] | | Slugs to fetch svgs and colors for. The return icons may be passed to renderSimpleIcon |
-
-## Credits
-
-- Credits to (https://github.com/teaguestockwell/react-icon-cloud)
+| Prop   | Type              | Description                                | Default |
+| ------ | ----------------- | ------------------------------------------ | ------- |
+| icons  | React.ReactNode[] | Array of icons to render in the cloud      | []      |
+| images | string[]          | Array of image URLs to render in the cloud | []      |

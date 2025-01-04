@@ -178,7 +178,7 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Interactive Icon Cloud",
+          title: "Icon Cloud",
           href: `/docs/components/icon-cloud`,
           items: [],
           label: "",
