@@ -245,6 +245,12 @@ export const examples: Registry = [
     files: ["example/interactive-grid-pattern-demo.tsx"],
   },
   {
+    name: "interactive-grid-pattern-demo-2",
+    type: "registry:example",
+    registryDependencies: ["interactive-grid-pattern"],
+    files: ["example/interactive-grid-pattern-demo-2.tsx"],
+  },
+  {
     name: "border-beam-demo",
     type: "registry:example",
     registryDependencies: ["border-beam"],

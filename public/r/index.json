@@ -139,6 +139,16 @@
     ]
   },
   {
+    "name": "interactive-grid-pattern",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "magicui/interactive-grid-pattern.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "dot-pattern",
     "type": "registry:ui",
     "files": [

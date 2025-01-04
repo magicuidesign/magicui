@@ -40,12 +40,18 @@ npx shadcn@latest add "https://magicui.design/r/interactive-grid-pattern"
 
 </Tabs>
 
-<ComponentSource name="interactive-grid-pattern" />
+## Examples
+
+### Colorful
+
+<ComponentPreview name="interactive-grid-pattern-demo-2" />
 
 ## Props
 
-| Prop    | Type             | Description                               | Default |
-| ------- | ---------------- | ----------------------------------------- | ------- |
-| width   | number           | Width of the squares                      | 40      |
-| height  | number           | Height of the squares                     | 40      |
-| squares | [number, number] | Defines the width and height of the grid. | []      |
+| Prop             | Type             | Description                                                                                   | Default |
+| ---------------- | ---------------- | --------------------------------------------------------------------------------------------- | ------- |
+| width            | number           | Width of each square in the grid                                                              | 40      |
+| height           | number           | Height of each square in the grid                                                             | 40      |
+| squares          | [number, number] | Number of squares in the grid. First number is horizontal squares, second is vertical squares | [24,24] |
+| className        | string           | Class name applied to the grid container                                                      | -       |
+| squaresClassName | string           | Class name applied to individual squares in the grid                                          | -       |

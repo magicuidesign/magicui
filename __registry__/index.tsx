@@ -109,6 +109,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "interactive-grid-pattern": {
+      name: "interactive-grid-pattern",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/interactive-grid-pattern.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/interactive-grid-pattern.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "dot-pattern": {
       name: "dot-pattern",
       type: "registry:ui",
@@ -1268,6 +1281,38 @@ export const Index: Record<string, any> = {
       component: React.lazy(
         () =>
           import("@/registry/default/example/animated-grid-pattern-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "interactive-grid-pattern-demo": {
+      name: "interactive-grid-pattern-demo",
+      type: "registry:example",
+      registryDependencies: ["interactive-grid-pattern"],
+      files: ["registry/default/example/interactive-grid-pattern-demo.tsx"],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/example/interactive-grid-pattern-demo.tsx"
+          ),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "interactive-grid-pattern-demo-2": {
+      name: "interactive-grid-pattern-demo-2",
+      type: "registry:example",
+      registryDependencies: ["interactive-grid-pattern"],
+      files: ["registry/default/example/interactive-grid-pattern-demo-2.tsx"],
+      component: React.lazy(
+        () =>
+          import(
+            "@/registry/default/example/interactive-grid-pattern-demo-2.tsx"
+          ),
       ),
       source: "",
       category: "undefined",
