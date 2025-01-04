@@ -187,6 +187,12 @@ export const examples: Registry = [
 
 Make sure to add any necessary dependencies, tailwind configurations, or other properties as needed for your specific component.
 
+### 6. Build registry
+
+```bash
+pnpm build:registry
+```
+
 ## Adding to the showcase
 
 ### 1. Create your showcase as a MDX file
