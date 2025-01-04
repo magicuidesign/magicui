@@ -455,7 +455,7 @@ export const ui: Registry = [
   {
     name: "icon-cloud",
     type: "registry:ui",
-    dependencies: ["next-themes", "react-icon-cloud"],
+    dependencies: [],
     files: ["magicui/icon-cloud.tsx"],
   },
   {
