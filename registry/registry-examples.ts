@@ -416,6 +416,11 @@ export const examples: Registry = [
     files: ["example/text-animate-demo-5.tsx"],
   },
   {
+    name: "text-animate-demo-6",
+    type: "registry:example",
+    files: ["example/text-animate-demo-6.tsx"],
+  },
+  {
     name: "shiny-button-demo",
     type: "registry:example",
     files: ["example/shiny-button-demo.tsx"],

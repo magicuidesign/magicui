@@ -1693,6 +1693,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "text-animate-demo-6": {
+      name: "text-animate-demo-6",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/text-animate-demo-6.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/text-animate-demo-6.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "shiny-button-demo": {
       name: "shiny-button-demo",
       type: "registry:example",
