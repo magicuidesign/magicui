@@ -2,12 +2,12 @@
 
 import { SidebarNavItem } from "@/types";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
-import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -56,7 +56,7 @@ export function DocsSidebarNavItems({
             href={item.href}
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
-              "group relative flex w-full items-center rounded-md border border-transparent px-2 py-1",
+              "group relative flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:text-foreground",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href
                 ? "font-medium text-foreground"
@@ -68,7 +68,7 @@ export function DocsSidebarNavItems({
             {pathname === item.href && (
               <motion.div
                 layoutId={groupId}
-                className="absolute inset-0 rounded-r-md border-l-2 border-neutral-300 bg-neutral-100 dark:border-neutral-600 dark:bg-neutral-800"
+                className="absolute inset-0 rounded-r-md border-l-2 border-border"
                 initial={false}
                 transition={{
                   type: "spring",
