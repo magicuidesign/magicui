@@ -417,28 +417,10 @@ export const ui: Registry = [
     files: ["magicui/avatar-circles.tsx"],
   },
   {
-    name: "word-pull-up",
-    type: "registry:ui",
-    dependencies: ["motion"],
-    files: ["magicui/word-pull-up.tsx"],
-  },
-  {
     name: "typing-animation",
     type: "registry:ui",
     dependencies: ["motion"],
     files: ["magicui/typing-animation.tsx"],
-  },
-  {
-    name: "blur-in",
-    type: "registry:ui",
-    dependencies: ["motion"],
-    files: ["magicui/blur-in.tsx"],
-  },
-  {
-    name: "letter-pullup",
-    type: "registry:ui",
-    dependencies: ["motion"],
-    files: ["magicui/letter-pullup.tsx"],
   },
   {
     name: "sparkles-text",
@@ -459,12 +441,6 @@ export const ui: Registry = [
     files: ["magicui/icon-cloud.tsx"],
   },
   {
-    name: "gradual-spacing",
-    type: "registry:ui",
-    dependencies: ["motion"],
-    files: ["magicui/gradual-spacing.tsx"],
-  },
-  {
     name: "text-animate",
     type: "registry:ui",
     dependencies: ["motion"],
@@ -481,12 +457,6 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["motion"],
     files: ["magicui/scratch-to-reveal.tsx"],
-  },
-  {
-    name: "fade-text",
-    type: "registry:ui",
-    dependencies: ["motion"],
-    files: ["magicui/fade-text.tsx"],
   },
   {
     name: "shiny-button",
