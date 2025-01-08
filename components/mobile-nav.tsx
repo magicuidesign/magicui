@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link, { LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import posthog from "posthog-js";
 
 import { docsConfig } from "@/config/docs";
@@ -136,6 +136,8 @@ function MobileLink({
   ...props
 }: MobileLinkProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const isActive = pathname === href;
   return (
     <SheetClose asChild>
       <Link
@@ -144,7 +146,13 @@ function MobileLink({
           router.push(href.toString());
           onOpenChange?.(false);
         }}
-        className={cn(className)}
+        className={cn(
+          className,
+          "text-[15px]",
+          isActive
+            ? "font-medium text-primary underline underline-offset-4"
+            : "",
+        )}
         {...props}
       >
         {children}
