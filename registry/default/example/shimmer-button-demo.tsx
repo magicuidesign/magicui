@@ -1,4 +1,4 @@
-import ShimmerButton from "@/registry/default/magicui/shimmer-button";
+import { ShimmerButton } from "@/registry/default/magicui/shimmer-button";
 
 export default function ShimmerButtonDemo() {
   return (

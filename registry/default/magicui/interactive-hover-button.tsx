@@ -7,7 +7,7 @@ interface InteractiveHoverButtonProps
   text?: string;
 }
 
-const InteractiveHoverButton = React.forwardRef<
+export const InteractiveHoverButton = React.forwardRef<
   HTMLButtonElement,
   InteractiveHoverButtonProps
 >(({ text = "Button", className, ...props }, ref) => {
@@ -33,5 +33,3 @@ const InteractiveHoverButton = React.forwardRef<
 });
 
 InteractiveHoverButton.displayName = "InteractiveHoverButton";
-
-export default InteractiveHoverButton;

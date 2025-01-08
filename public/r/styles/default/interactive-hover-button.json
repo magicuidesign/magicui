@@ -1,9 +1,7 @@
 {
   "name": "interactive-hover-button",
   "type": "registry:ui",
-  "dependencies": [
-    "lucide-react"
-  ],
+  "dependencies": ["lucide-react"],
   "files": [
     {
       "path": "magicui/interactive-hover-button.tsx",
