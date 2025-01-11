@@ -3,7 +3,7 @@ import { InteractiveHoverButton } from "@/registry/default/magicui/interactive-h
 export default function InteractiveHoverButtonDemo() {
   return (
     <div className="relative justify-center">
-      <InteractiveHoverButton />
+      <InteractiveHoverButton>Hover Me</InteractiveHoverButton>
     </div>
   );
 }

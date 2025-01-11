@@ -1,16 +1,16 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { HTMLMotionProps } from "motion/react";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useState } from "react";
 
-interface AnimatedSubscribeButtonProps extends HTMLMotionProps<"button"> {
-  buttonColor: string;
-  buttonTextColor?: string;
+interface AnimatedSubscribeButtonProps
+  extends Omit<HTMLMotionProps<"button">, "ref"> {
   subscribeStatus: boolean;
   initialText: React.ReactElement | string;
   changeText: React.ReactElement | string;
-  ref?: React.Ref<HTMLButtonElement>;
+  className?: string;
 }
 
 export const AnimatedSubscribeButton = React.forwardRef<
@@ -18,15 +18,7 @@ export const AnimatedSubscribeButton = React.forwardRef<
   AnimatedSubscribeButtonProps
 >(
   (
-    {
-      buttonColor,
-      subscribeStatus,
-      buttonTextColor,
-      changeText,
-      initialText,
-      onClick,
-      ...props
-    },
+    { subscribeStatus, changeText, initialText, onClick, className, ...props },
     ref,
   ) => {
     const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
@@ -36,7 +28,10 @@ export const AnimatedSubscribeButton = React.forwardRef<
         {isSubscribed ? (
           <motion.button
             ref={ref}
-            className="relative flex h-10 w-[200px] items-center justify-center overflow-hidden rounded-md bg-white outline outline-1 outline-black"
+            className={cn(
+              "relative flex h-10 w-fit items-center justify-center overflow-hidden rounded-lg bg-primary px-6 text-primary-foreground",
+              className,
+            )}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               setIsSubscribed(false);
               onClick?.(e);
@@ -47,20 +42,21 @@ export const AnimatedSubscribeButton = React.forwardRef<
             {...props}
           >
             <motion.span
-              ref={ref}
               key="action"
               className="relative flex h-full w-full items-center justify-center font-semibold"
               initial={{ y: -50 }}
               animate={{ y: 0 }}
-              style={{ color: buttonColor }}
             >
               {changeText}
             </motion.span>
           </motion.button>
         ) : (
           <motion.button
-            className="relative flex h-10 w-[200px] cursor-pointer items-center justify-center rounded-md border-none"
-            style={{ backgroundColor: buttonColor, color: buttonTextColor }}
+            ref={ref}
+            className={cn(
+              "relative flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg border-none bg-primary px-6 text-primary-foreground",
+              className,
+            )}
             onClick={(e) => {
               setIsSubscribed(true);
               onClick?.(e);

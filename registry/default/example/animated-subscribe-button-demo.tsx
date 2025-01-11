@@ -1,12 +1,10 @@
 import { CheckIcon, ChevronRightIcon } from "lucide-react";
-
 import { AnimatedSubscribeButton } from "@/registry/default/magicui/animated-subscribe-button";
 
 export default function AnimatedSubscribeButtonDemo() {
   return (
     <AnimatedSubscribeButton
-      buttonColor="#000000"
-      buttonTextColor="#ffffff"
+      className="w-36"
       subscribeStatus={false}
       initialText={
         <span className="group inline-flex items-center">

@@ -29,10 +29,9 @@ const animationProps = {
   },
 } as AnimationProps;
 
-interface ShinyButtonProps extends HTMLMotionProps<"button"> {
+interface ShinyButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
   children: React.ReactNode;
   className?: string;
-  ref?: React.Ref<HTMLButtonElement>;
 }
 
 export const ShinyButton = React.forwardRef<
@@ -42,12 +41,12 @@ export const ShinyButton = React.forwardRef<
   return (
     <motion.button
       ref={ref}
-      {...animationProps}
-      {...props}
       className={cn(
         "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
         className,
       )}
+      {...animationProps}
+      {...props}
     >
       <span
         className="relative block size-full text-sm uppercase tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)]"
