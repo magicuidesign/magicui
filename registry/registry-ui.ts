@@ -19,6 +19,11 @@ export const ui: Registry = [
     files: ["magicui/warp-background.tsx"],
   },
   {
+    name: "line-shadow-text",
+    type: "registry:ui",
+    files: ["magicui/line-shadow-text.tsx"],
+  },
+  {
     name: "morphing-text",
     type: "registry:ui",
     dependencies: ["motion"],

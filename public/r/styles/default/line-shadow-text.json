@@ -1,0 +1,12 @@
+{
+  "name": "line-shadow-text",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "magicui/line-shadow-text.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport function LineShadowText({\n  text = \"SHADOW\",\n  shadowColor = \"black\",\n  className,\n}: {\n  text?: string;\n  shadowColor?: string;\n  className?: string;\n}) {\n  return (\n    <span\n      style={{ \"--shadow-color\": shadowColor } as React.CSSProperties}\n      className={cn(\n        \"relative inline-flex\",\n\n        // positioning\n        \"after:absolute after:left-[0.04em] after:top-[0.04em] after:content-[attr(data-text)]\",\n\n        // color\n        \"after:bg-[linear-gradient(45deg,transparent_45%,var(--shadow-color)_45%,var(--shadow-color)_55%,transparent_0)]\",\n\n        // text\n        \"after:bg-[length:0.06em_0.06em] after:bg-clip-text after:text-transparent\",\n\n        // animation\n        \"after:animate-line-shadow\",\n\n        className,\n      )}\n      data-text={text}\n    >\n      {text}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

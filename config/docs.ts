@@ -320,6 +320,12 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Line Shadow Text",
+          href: `/docs/components/line-shadow-text`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Number Ticker",
           href: `/docs/components/number-ticker`,
           items: [],
