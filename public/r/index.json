@@ -2,9 +2,7 @@
   {
     "name": "magic-card",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/magic-card.tsx",
@@ -25,9 +23,7 @@
   {
     "name": "warp-background",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/warp-background.tsx",
@@ -46,11 +42,20 @@
     ]
   },
   {
+    "name": "aurora-text",
+    "type": "registry:ui",
+    "dependencies": ["motion"],
+    "files": [
+      {
+        "path": "magicui/aurora-text.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "morphing-text",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/morphing-text.tsx",
@@ -61,9 +66,7 @@
   {
     "name": "scroll-progress",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/scroll-progress.tsx",
@@ -171,9 +174,7 @@
   {
     "name": "flickering-grid",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/flickering-grid.tsx",
@@ -184,9 +185,7 @@
   {
     "name": "hero-video-dialog",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/hero-video-dialog.tsx",
@@ -197,10 +196,7 @@
   {
     "name": "code-comparison",
     "type": "registry:ui",
-    "dependencies": [
-      "shiki",
-      "next-themes"
-    ],
+    "dependencies": ["shiki", "next-themes"],
     "files": [
       {
         "path": "magicui/code-comparison.tsx",
@@ -211,11 +207,7 @@
   {
     "name": "script-copy-btn",
     "type": "registry:ui",
-    "dependencies": [
-      "motion",
-      "shiki",
-      "next-themes"
-    ],
+    "dependencies": ["motion", "shiki", "next-themes"],
     "files": [
       {
         "path": "magicui/script-copy-btn.tsx",
@@ -266,10 +258,7 @@
   {
     "name": "globe",
     "type": "registry:ui",
-    "dependencies": [
-      "cobe",
-      "react-spring"
-    ],
+    "dependencies": ["cobe", "react-spring"],
     "files": [
       {
         "path": "magicui/globe.tsx",
@@ -323,9 +312,7 @@
   {
     "name": "tweet-card",
     "type": "registry:ui",
-    "dependencies": [
-      "react-tweet"
-    ],
+    "dependencies": ["react-tweet"],
     "files": [
       {
         "path": "magicui/tweet-card.tsx",
@@ -336,9 +323,7 @@
   {
     "name": "client-tweet-card",
     "type": "registry:ui",
-    "dependencies": [
-      "react-tweet"
-    ],
+    "dependencies": ["react-tweet"],
     "files": [
       {
         "path": "magicui/client-tweet-card.tsx",
@@ -349,9 +334,7 @@
   {
     "name": "bento-grid",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-icons"
-    ],
+    "dependencies": ["@radix-ui/react-icons"],
     "files": [
       {
         "path": "magicui/bento-grid.tsx",
@@ -372,9 +355,7 @@
   {
     "name": "number-ticker",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/number-ticker.tsx",
@@ -447,9 +428,7 @@
   {
     "name": "animated-list",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/animated-list.tsx",
@@ -491,9 +470,7 @@
   {
     "name": "animated-grid-pattern",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/animated-grid-pattern.tsx",
@@ -532,9 +509,7 @@
   {
     "name": "animated-beam",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/animated-beam.tsx",
@@ -545,9 +520,7 @@
   {
     "name": "text-reveal",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/text-reveal.tsx",
@@ -558,9 +531,7 @@
   {
     "name": "hyper-text",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/hyper-text.tsx",
@@ -630,9 +601,7 @@
   {
     "name": "dock",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/dock.tsx",
@@ -643,9 +612,7 @@
   {
     "name": "word-rotate",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/word-rotate.tsx",
@@ -666,9 +633,7 @@
   {
     "name": "typing-animation",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/typing-animation.tsx",
@@ -679,9 +644,7 @@
   {
     "name": "sparkles-text",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/sparkles-text.tsx",
@@ -692,9 +655,7 @@
   {
     "name": "flip-text",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/flip-text.tsx",
@@ -716,9 +677,7 @@
   {
     "name": "text-animate",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/text-animate.tsx",
@@ -729,9 +688,7 @@
   {
     "name": "scroll-based-velocity",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/scroll-based-velocity.tsx",
@@ -742,9 +699,7 @@
   {
     "name": "scratch-to-reveal",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/scratch-to-reveal.tsx",
@@ -755,9 +710,7 @@
   {
     "name": "shiny-button",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/shiny-button.tsx",
@@ -768,9 +721,7 @@
   {
     "name": "box-reveal",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/box-reveal.tsx",
@@ -825,10 +776,7 @@
   {
     "name": "confetti",
     "type": "registry:ui",
-    "dependencies": [
-      "canvas-confetti",
-      "@types/canvas-confetti"
-    ],
+    "dependencies": ["canvas-confetti", "@types/canvas-confetti"],
     "files": [
       {
         "path": "magicui/confetti.tsx",
@@ -839,9 +787,7 @@
   {
     "name": "animated-subscribe-button",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/animated-subscribe-button.tsx",
@@ -935,9 +881,7 @@
   {
     "name": "blur-fade",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
+    "dependencies": ["motion"],
     "files": [
       {
         "path": "magicui/blur-fade.tsx",
@@ -1022,9 +966,7 @@
   {
     "name": "interactive-hover-button",
     "type": "registry:ui",
-    "dependencies": [
-      "lucide-react"
-    ],
+    "dependencies": ["lucide-react"],
     "files": [
       {
         "path": "magicui/interactive-hover-button.tsx",

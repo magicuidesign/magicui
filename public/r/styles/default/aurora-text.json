@@ -1,0 +1,15 @@
+{
+  "name": "aurora-text",
+  "type": "registry:ui",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "magicui/aurora-text.tsx",
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface AuroraTextProps {\n  className?: string;\n  children: React.ReactNode;\n}\n\nexport function AuroraText({ className, children }: AuroraTextProps) {\n  return (\n    <span className={cn(\"relative inline-flex overflow-hidden\", className)}>\n      {children}\n      <div className=\"pointer-events-none absolute inset-0 mix-blend-lighten dark:mix-blend-darken\">\n        {[...Array(5)].map((_, i) => (\n          <div\n            key={i}\n            className=\"absolute h-[60vw] w-[60vw]\"\n            style={{\n              backgroundColor: `hsl(var(--color-${i + 1}))`,\n              filter: \"blur(1rem)\",\n              animation: `aurora-border 6s ease-in-out infinite, aurora-${i + 1} 12s ease-in-out infinite alternate`,\n              mixBlendMode: \"overlay\",\n              ...getInitialPosition(i),\n            }}\n          />\n        ))}\n      </div>\n      <style jsx>{`\n        @keyframes aurora-border {\n          0%,\n          100% {\n            border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;\n          }\n          25% {\n            border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;\n          }\n          50% {\n            border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;\n          }\n          75% {\n            border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;\n          }\n        }\n        @keyframes aurora-1 {\n          0%,\n          100% {\n            top: 0;\n            right: 0;\n          }\n          50% {\n            top: 50%;\n            right: 25%;\n          }\n          75% {\n            top: 25%;\n            right: 50%;\n          }\n        }\n        @keyframes aurora-2 {\n          0%,\n          100% {\n            top: 0;\n            left: 0;\n          }\n          60% {\n            top: 75%;\n            left: 25%;\n          }\n          85% {\n            top: 50%;\n            left: 50%;\n          }\n        }\n        @keyframes aurora-3 {\n          0%,\n          100% {\n            bottom: 0;\n            left: 0;\n          }\n          40% {\n            bottom: 50%;\n            left: 25%;\n          }\n          65% {\n            bottom: 25%;\n            left: 50%;\n          }\n        }\n        @keyframes aurora-4 {\n          0%,\n          100% {\n            bottom: 0;\n            right: 0;\n          }\n          50% {\n            bottom: 25%;\n            right: 40%;\n          }\n          90% {\n            bottom: 50%;\n            right: 25%;\n          }\n        }\n      `}</style>\n    </span>\n  );\n}\n\nfunction getInitialPosition(index: number): React.CSSProperties {\n  const positions = [\n    { top: \"-50%\" },\n    { right: 0, top: 0 },\n    { left: 0, bottom: 0 },\n    { right: 0, bottom: \"-50%\" },\n  ];\n  return positions[index] || {};\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

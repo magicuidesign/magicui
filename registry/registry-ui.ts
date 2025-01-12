@@ -25,6 +25,12 @@ export const ui: Registry = [
     files: ["magicui/line-shadow-text.tsx"],
   },
   {
+    name: "aurora-text",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: ["magicui/aurora-text.tsx"],
+  },
+  {
     name: "morphing-text",
     type: "registry:ui",
     dependencies: ["motion"],
