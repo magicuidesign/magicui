@@ -44,6 +44,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "line-shadow-text": {
+      name: "line-shadow-text",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/line-shadow-text.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/line-shadow-text.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "morphing-text": {
       name: "morphing-text",
       type: "registry:ui",
@@ -822,6 +835,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/warp-background-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/warp-background-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "line-shadow-text-demo": {
+      name: "line-shadow-text-demo",
+      type: "registry:example",
+      registryDependencies: ["line-shadow-text"],
+      files: ["registry/default/example/line-shadow-text-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/line-shadow-text-demo.tsx"),
       ),
       source: "",
       category: "undefined",

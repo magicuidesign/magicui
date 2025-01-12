@@ -1,0 +1,72 @@
+---
+title: Line Shadow Text
+date: 2025-01-11
+description: A line shadow text component for Magic UI
+author: magicui
+published: true
+---
+
+<ComponentPreview name="line-shadow-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/line-shadow-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="line-shadow-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-13}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        "line-shadow": "line-shadow 15s linear infinite",
+      },
+      keyframes: {
+        "line-shadow": {
+          "0%": { "background-position": "0 0" },
+          "100%": { "background-position": "100% -100%" },
+        },
+      },
+    },
+  },
+};
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type   | Default   | Description                            |
+| ----------- | ------ | --------- | -------------------------------------- |
+| shadowColor | string | `"black"` | The color of the shadow effect         |
+| children    | string | -         | The text to display with shadow effect |
+| as          | string | `"span"`  | The HTML element to render the text as |

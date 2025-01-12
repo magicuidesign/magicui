@@ -86,6 +86,7 @@ module.exports = {
         shine: "shine var(--duration) infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "line-shadow": "line-shadow 15s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -206,6 +207,10 @@ module.exports = {
         rainbow: {
           "0%": { "background-position": "0%" },
           "100%": { "background-position": "200%" },
+        },
+        "line-shadow": {
+          "0%": { "background-position": "0 0" },
+          "100%": { "background-position": "100% -100%" },
         },
       },
     },

@@ -36,6 +36,16 @@
     ]
   },
   {
+    "name": "line-shadow-text",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "magicui/line-shadow-text.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "morphing-text",
     "type": "registry:ui",
     "dependencies": [

@@ -32,6 +32,12 @@ export const examples: Registry = [
     files: ["example/warp-background-demo.tsx"],
   },
   {
+    name: "line-shadow-text-demo",
+    type: "registry:example",
+    registryDependencies: ["line-shadow-text"],
+    files: ["example/line-shadow-text-demo.tsx"],
+  },
+  {
     name: "morphing-text-demo",
     type: "registry:example",
     registryDependencies: ["morphing-text"],
