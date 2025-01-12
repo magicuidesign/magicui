@@ -7,9 +7,8 @@ import React, { useState } from "react";
 
 interface AnimatedSubscribeButtonProps
   extends Omit<HTMLMotionProps<"button">, "ref"> {
-  subscribeStatus: boolean;
-  initialText: React.ReactElement | string;
-  changeText: React.ReactElement | string;
+  subscribeStatus?: boolean;
+  children: React.ReactNode;
   className?: string;
 }
 
@@ -18,10 +17,14 @@ export const AnimatedSubscribeButton = React.forwardRef<
   AnimatedSubscribeButtonProps
 >(
   (
-    { subscribeStatus, changeText, initialText, onClick, className, ...props },
+    { subscribeStatus = false, onClick, className, children, ...props },
     ref,
   ) => {
     const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
+
+    const childrenArray = React.Children.toArray(children);
+    const initialChild = childrenArray[0];
+    const changeChild = childrenArray[1];
 
     return (
       <AnimatePresence mode="wait">
@@ -47,7 +50,7 @@ export const AnimatedSubscribeButton = React.forwardRef<
               initial={{ y: -50 }}
               animate={{ y: 0 }}
             >
-              {changeText}
+              {changeChild} {/* Use children for subscribed state */}
             </motion.span>
           </motion.button>
         ) : (
@@ -72,7 +75,7 @@ export const AnimatedSubscribeButton = React.forwardRef<
               initial={{ x: 0 }}
               exit={{ x: 50, transition: { duration: 0.1 } }}
             >
-              {initialText}
+              {initialChild} {/* Use children for unsubscribed state */}
             </motion.span>
           </motion.button>
         )}
