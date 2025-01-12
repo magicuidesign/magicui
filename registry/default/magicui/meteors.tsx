@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface MeteorsProps {
+interface MeteorsProps extends React.HTMLAttributes<HTMLSpanElement> {
   number?: number;
 }
-export const Meteors = ({ number = 20 }: MeteorsProps) => {
+export const Meteors = ({ number = 20, ...props }: MeteorsProps) => {
   const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>(
     [],
   );
@@ -32,6 +32,7 @@ export const Meteors = ({ number = 20 }: MeteorsProps) => {
             "pointer-events-none absolute left-1/2 top-1/2 size-0.5 rotate-[215deg] animate-meteor rounded-full bg-slate-500 shadow-[0_0_0_1px_#ffffff10]",
           )}
           style={style}
+          {...props}
         >
           {/* Meteor Tail */}
           <div className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-slate-500 to-transparent" />
@@ -40,5 +41,3 @@ export const Meteors = ({ number = 20 }: MeteorsProps) => {
     </>
   );
 };
-
-export default Meteors;
