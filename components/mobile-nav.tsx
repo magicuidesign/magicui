@@ -58,25 +58,25 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
+      <SheetContent side="left">
         <MobileLink href="/" className="flex items-center">
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col space-y-1.5">
             {docsConfig.mainNav?.map(
               (item) =>
                 item.href && (
                   <MobileLink key={item.href} href={item.href}>
                     {item.title}
                   </MobileLink>
-                ),
+                )
             )}
           </div>
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col gap-y-2">
             {docsConfig.sidebarNav.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3 pt-6">
+              <div key={index} className="flex flex-col gap-y-1.5 pt-6">
                 <h4 className="font-medium">{item.title}</h4>
                 {item.items?.map((item) =>
                   !item.disabled && item.href ? (
@@ -86,7 +86,7 @@ export function MobileNav() {
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -101,7 +101,7 @@ export function MobileNav() {
                       key={index}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -111,7 +111,7 @@ export function MobileNav() {
                         </span>
                       )}
                     </span>
-                  ),
+                  )
                 )}
               </div>
             ))}
@@ -148,10 +148,10 @@ function MobileLink({
         }}
         className={cn(
           className,
-          "text-[15px]",
+          "p-1 pl-2.5 text-[15px]",
           isActive
-            ? "font-medium text-primary underline underline-offset-4"
-            : "",
+            ? "rounded-r-md border-l-2 border-primary/70 bg-secondary font-medium text-primary"
+            : ""
         )}
         {...props}
       >
