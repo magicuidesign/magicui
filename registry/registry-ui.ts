@@ -160,6 +160,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "lens",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: ["magicui/lens.tsx"],
+  },
+  {
     name: "neon-gradient-card",
     type: "registry:ui",
     title: "Neon Gradient Card",
