@@ -123,7 +123,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx magicui-cli add example-component
+npx shadcn@latest add "https://magicui.design/r/example-component"
 ```
 
 </TabsContent>
@@ -136,15 +136,11 @@ npx magicui-cli add example-component
 
 <ComponentSource name="example-component" />
 
-<Step>Update the import paths to match your project setup.</Step>
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
-
-<ComponentSource name="example-component" />
 
 ## Props
 
