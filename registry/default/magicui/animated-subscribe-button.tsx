@@ -22,6 +22,17 @@ export const AnimatedSubscribeButton = React.forwardRef<
   ) => {
     const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
 
+    if (
+      React.Children.count(children) !== 2 ||
+      !React.Children.toArray(children).every(
+        (child) => React.isValidElement(child) && child.type === "span",
+      )
+    ) {
+      throw new Error(
+        "AnimatedSubscribeButton expects two children, both of which must be <span> elements.",
+      );
+    }
+
     const childrenArray = React.Children.toArray(children);
     const initialChild = childrenArray[0];
     const changeChild = childrenArray[1];
