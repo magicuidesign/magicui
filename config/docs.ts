@@ -308,7 +308,7 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/lens`,
           items: [],
           label: "New",
-        }
+        },
       ],
     },
     {
