@@ -91,6 +91,12 @@ export const examples: Registry = [
     files: ["example/dot-pattern-linear-gradient.tsx"],
   },
   {
+    name: "dot-pattern-with-glow-effect",
+    type: "registry:example",
+    registryDependencies: ["dot-pattern"],
+    files: ["example/dot-pattern-with-glow-effect.tsx"],
+  },
+  {
     name: "flickering-grid-demo",
     type: "registry:example",
     files: ["example/flickering-grid-demo.tsx"],

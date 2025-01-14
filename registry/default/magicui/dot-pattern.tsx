@@ -1,5 +1,7 @@
-import { useId } from "react";
+"use client";
 
+import { useId, useRef, useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface DotPatternProps {
@@ -11,8 +13,10 @@ interface DotPatternProps {
   cy?: number;
   cr?: number;
   className?: string;
+  glow?: boolean;
   [key: string]: unknown;
 }
+
 export function DotPattern({
   width = 16,
   height = 16,
@@ -22,33 +26,90 @@ export function DotPattern({
   cy = 1,
   cr = 1,
   className,
+  glow = false,
   ...props
 }: DotPatternProps) {
   const id = useId();
+  const containerRef = useRef<SVGSVGElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect();
+        setDimensions({ width, height });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  const dots = Array.from(
+    {
+      length:
+        Math.ceil(dimensions.width / width) *
+        Math.ceil(dimensions.height / height),
+    },
+    (_, i) => {
+      const col = i % Math.ceil(dimensions.width / width);
+      const row = Math.floor(i / Math.ceil(dimensions.width / width));
+      return {
+        x: col * width + cx,
+        y: row * height + cy,
+        delay: Math.random() * 5,
+        duration: Math.random() * 3 + 2,
+      };
+    },
+  );
 
   return (
     <svg
+      ref={containerRef}
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80",
+        "pointer-events-none absolute inset-0 h-full w-full",
         className,
       )}
       {...props}
     >
       <defs>
-        <pattern
-          id={id}
-          width={width}
-          height={height}
-          patternUnits="userSpaceOnUse"
-          patternContentUnits="userSpaceOnUse"
-          x={x}
-          y={y}
-        >
-          <circle id="pattern-circle" cx={cx} cy={cy} r={cr} />
-        </pattern>
+        <radialGradient id={`${id}-gradient`}>
+          <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+        </radialGradient>
       </defs>
-      <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
+      {dots.map((dot, index) => (
+        <motion.circle
+          key={`${dot.x}-${dot.y}`}
+          cx={dot.x}
+          cy={dot.y}
+          r={cr}
+          fill={glow ? `url(#${id}-gradient)` : "currentColor"}
+          className="text-neutral-400/80"
+          initial={glow ? { opacity: 0.4, scale: 1 } : {}}
+          animate={
+            glow
+              ? {
+                  opacity: [0.4, 1, 0.4],
+                  scale: [1, 1.5, 1],
+                }
+              : {}
+          }
+          transition={
+            glow
+              ? {
+                  duration: dot.duration,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: dot.delay,
+                  ease: "easeInOut",
+                }
+              : {}
+          }
+        />
+      ))}
     </svg>
   );
 }
