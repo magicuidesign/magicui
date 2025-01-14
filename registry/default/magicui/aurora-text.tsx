@@ -1,14 +1,24 @@
 import { cn } from "@/lib/utils";
+import { motion, MotionProps } from "motion/react";
 import React from "react";
 
-interface AuroraTextProps extends React.HTMLAttributes<HTMLSpanElement> {
+interface AuroraTextProps
+  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
   className?: string;
   children: React.ReactNode;
+  as?: React.ElementType;
 }
 
-export function AuroraText({ className, children, ...props }: AuroraTextProps) {
+export function AuroraText({
+  className,
+  children,
+  as: Component = "div",
+  ...props
+}: AuroraTextProps) {
+  const MotionComponent = motion.create(Component);
+
   return (
-    <span
+    <MotionComponent
       className={cn("relative inline-flex overflow-hidden", className)}
       {...props}
     >
@@ -19,6 +29,6 @@ export function AuroraText({ className, children, ...props }: AuroraTextProps) {
         <div className="pointer-events-none absolute bottom-0 left-0 h-[30vw] w-[30vw] animate-[aurora-border_6s_ease-in-out_infinite,aurora-3_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--color-3))] mix-blend-overlay blur-[1rem]"></div>
         <div className="pointer-events-none absolute -bottom-1/2 right-0 h-[30vw] w-[30vw] animate-[aurora-border_6s_ease-in-out_infinite,aurora-4_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--color-4))] mix-blend-overlay blur-[1rem]"></div>
       </div>
-    </span>
+    </MotionComponent>
   );
 }
