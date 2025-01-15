@@ -144,9 +144,9 @@ npx shadcn@latest add "https://magicui.design/r/example-component"
 
 ## Props
 
-| Prop  | Type   | Description                | Default |
-| ----- | ------ | -------------------------- | ------- |
-| color | String | The color of the component | "blue"  |
+| Prop    | Type     | Default  | Description                |
+| ------- | -------- | -------- | -------------------------- |
+| `color` | `String` | `"blue"` | The color of the component |
 ````
 
 ### 5. Update Registry
