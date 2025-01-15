@@ -101,6 +101,7 @@ export const ui: Registry = [
   {
     name: "dot-pattern",
     type: "registry:ui",
+    dependencies: ["motion"],
     files: ["magicui/dot-pattern.tsx"],
   },
   {
