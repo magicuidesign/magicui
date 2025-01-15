@@ -56,7 +56,7 @@ interface DotPatternProps {
  * - The component is client-side only ("use client")
  * - Automatically responds to container size changes
  * - When glow is enabled, dots will animate with random delays and durations
- * - Uses Framer Motion for animations
+ * - Uses Motion for animations
  * - Dots color can be controlled via the text color utility classes
  */
 
