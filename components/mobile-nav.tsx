@@ -19,8 +19,9 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 export function MobileNav() {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
@@ -59,10 +60,16 @@ export function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left">
-        <MobileLink href="/" className="flex items-center">
+        <Link
+          href="/"
+          onClick={() => {
+            setIsOpen(false);
+          }}
+          className="flex items-center"
+        >
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
-        </MobileLink>
+        </Link>
         <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
           <div className="flex flex-col space-y-1.5">
             {docsConfig.mainNav?.map(
@@ -71,7 +78,7 @@ export function MobileNav() {
                   <MobileLink key={item.href} href={item.href}>
                     {item.title}
                   </MobileLink>
-                ),
+                )
             )}
           </div>
           <div className="flex flex-col gap-y-2">
@@ -86,7 +93,7 @@ export function MobileNav() {
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -101,7 +108,7 @@ export function MobileNav() {
                       key={index}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -111,7 +118,7 @@ export function MobileNav() {
                         </span>
                       )}
                     </span>
-                  ),
+                  )
                 )}
               </div>
             ))}
@@ -151,7 +158,7 @@ function MobileLink({
           "p-1 pl-2.5 text-[15px]",
           isActive
             ? "rounded-r-md border-l-2 border-primary/70 bg-secondary font-medium text-primary"
-            : "",
+            : ""
         )}
         {...props}
       >
