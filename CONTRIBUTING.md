@@ -123,7 +123,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx magicui-cli add example-component
+npx shadcn@latest add "https://magicui.design/r/example-component"
 ```
 
 </TabsContent>
@@ -136,21 +136,17 @@ npx magicui-cli add example-component
 
 <ComponentSource name="example-component" />
 
-<Step>Update the import paths to match your project setup.</Step>
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
 
-<ComponentSource name="example-component" />
-
 ## Props
 
-| Prop  | Type   | Description                | Default |
-| ----- | ------ | -------------------------- | ------- |
-| color | String | The color of the component | "blue"  |
+| Prop    | Type     | Default  | Description                |
+| ------- | -------- | -------- | -------------------------- |
+| `color` | `String` | `"blue"` | The color of the component |
 ````
 
 ### 5. Update Registry
@@ -192,6 +188,18 @@ Make sure to add any necessary dependencies, tailwind configurations, or other p
 ```bash
 pnpm build:registry
 ```
+
+### 7. Format and fix linting before committing
+
+```bash
+pnpm format:write
+```
+
+```bash
+pnpm lint:fix
+```
+
+Make sure to run these two commands before committing your changes.
 
 ## Adding to the showcase
 
