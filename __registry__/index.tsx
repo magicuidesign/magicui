@@ -2079,6 +2079,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "safari-demo-4": {
+      name: "safari-demo-4",
+      type: "registry:example",
+      registryDependencies: undefined,
+      files: ["registry/default/example/safari-demo-4.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/safari-demo-4.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "iphone-15-pro-demo": {
       name: "iphone-15-pro-demo",
       type: "registry:example",

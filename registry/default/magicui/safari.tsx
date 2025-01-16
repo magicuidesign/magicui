@@ -1,6 +1,7 @@
 import { SVGProps } from "react";
 
 type SafariMode = "default" | "simple";
+
 export interface SafariProps extends SVGProps<SVGSVGElement> {
   url?: string;
   imageSrc?: string;
