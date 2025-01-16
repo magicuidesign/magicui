@@ -78,7 +78,7 @@ export function MobileNav() {
                   <MobileLink key={item.href} href={item.href}>
                     {item.title}
                   </MobileLink>
-                )
+                ),
             )}
           </div>
           <div className="flex flex-col gap-y-2">
@@ -93,7 +93,7 @@ export function MobileNav() {
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60"
+                        item.disabled && "cursor-not-allowed opacity-60",
                       )}
                     >
                       {item.title}
@@ -108,7 +108,7 @@ export function MobileNav() {
                       key={index}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60"
+                        item.disabled && "cursor-not-allowed opacity-60",
                       )}
                     >
                       {item.title}
@@ -118,7 +118,7 @@ export function MobileNav() {
                         </span>
                       )}
                     </span>
-                  )
+                  ),
                 )}
               </div>
             ))}
@@ -158,7 +158,7 @@ function MobileLink({
           "p-1 pl-2.5 text-[15px]",
           isActive
             ? "rounded-r-md border-l-2 border-primary/70 bg-secondary font-medium text-primary"
-            : ""
+            : "",
         )}
         {...props}
       >
