@@ -29,6 +29,24 @@ export const ui: Registry = [
     type: "registry:ui",
     dependencies: ["motion"],
     files: ["magicui/aurora-text.tsx"],
+  },
+  {
+    name: "terminal",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: ["magicui/terminal.tsx"],
+  },
+  {
+    name: "terminal",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: ["magicui/terminal.tsx"],
+  },
+  {
+    name: "morphing-text",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: ["magicui/aurora-text.tsx"],
     cssVars: {
       light: {
         "--color-1": "0 100% 63%",
