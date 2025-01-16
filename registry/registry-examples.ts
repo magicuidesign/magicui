@@ -38,6 +38,12 @@ export const examples: Registry = [
     files: ["example/line-shadow-text-demo.tsx"],
   },
   {
+    name: "aurora-text-demo",
+    type: "registry:example",
+    registryDependencies: ["aurora-text"],
+    files: ["example/aurora-text-demo.tsx"],
+  },
+  {
     name: "morphing-text-demo",
     type: "registry:example",
     registryDependencies: ["morphing-text"],

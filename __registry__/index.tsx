@@ -57,6 +57,19 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
+    "aurora-text": {
+      name: "aurora-text",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/aurora-text.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/aurora-text.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     "morphing-text": {
       name: "morphing-text",
       type: "registry:ui",
@@ -848,6 +861,19 @@ export const Index: Record<string, any> = {
       files: ["registry/default/example/line-shadow-text-demo.tsx"],
       component: React.lazy(
         () => import("@/registry/default/example/line-shadow-text-demo.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "aurora-text-demo": {
+      name: "aurora-text-demo",
+      type: "registry:example",
+      registryDependencies: ["aurora-text"],
+      files: ["registry/default/example/aurora-text-demo.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/example/aurora-text-demo.tsx"),
       ),
       source: "",
       category: "undefined",
