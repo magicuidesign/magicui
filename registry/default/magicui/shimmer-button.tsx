@@ -13,7 +13,10 @@ export interface ShimmerButtonProps
   children?: React.ReactNode;
 }
 
-const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
+export const ShimmerButton = React.forwardRef<
+  HTMLButtonElement,
+  ShimmerButtonProps
+>(
   (
     {
       shimmerColor = "#ffffff",
@@ -92,5 +95,3 @@ const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
 );
 
 ShimmerButton.displayName = "ShimmerButton";
-
-export default ShimmerButton;

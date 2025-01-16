@@ -9,7 +9,10 @@ interface RippleButtonProps
   duration?: string;
 }
 
-const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
+export const RippleButton = React.forwardRef<
+  HTMLButtonElement,
+  RippleButtonProps
+>(
   (
     {
       className,
@@ -86,5 +89,3 @@ const RippleButton = React.forwardRef<HTMLButtonElement, RippleButtonProps>(
 );
 
 RippleButton.displayName = "RippleButton";
-
-export default RippleButton;
