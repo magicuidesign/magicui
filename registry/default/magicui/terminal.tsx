@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { motion, MotionProps } from "motion/react";
+import { useEffect, useState, useRef } from "react";
 
 interface AnimatedSpanProps {
   children: React.ReactNode;
@@ -18,49 +18,79 @@ export const AnimatedSpan = ({
   <motion.div
     initial={{ opacity: 0, y: -5 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3, delay }}
-    className={cn("font-regular grid font-mono text-sm", className)}
+    transition={{ duration: 0.3, delay: delay / 1000 }}
+    className={cn("grid text-sm font-normal tracking-tight", className)}
   >
     {children}
   </motion.div>
 );
 
-interface TerminalProps {
-  typingText?: string;
-  children: React.ReactNode;
+interface TypingAnimationProps extends MotionProps {
+  children: string;
   className?: string;
   duration?: number;
+  delay?: number;
+  as?: React.ElementType;
 }
 
-export const Terminal = ({
-  typingText = "Create Magical Landing Pages",
+export const TypingAnimation = ({
   children,
   className,
   duration = 100,
-}: TerminalProps) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [typingComplete, setTypingComplete] = useState(false);
+  delay = 0,
+  as: Component = "span",
+  ...props
+}: TypingAnimationProps) => {
+  const MotionComponent = motion.create(Component, {
+    forwardMotionProps: true,
+  });
+
+  const [displayedText, setDisplayedText] = useState<string>("");
+  const [started, setStarted] = useState(false);
+  const elementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    let i = 0;
-    let completed = false;
+    const startTimeout = setTimeout(() => {
+      setStarted(true);
+    }, delay);
+    return () => clearTimeout(startTimeout);
+  }, [delay]);
 
+  useEffect(() => {
+    if (!started) return;
+
+    let i = 0;
     const typingEffect = setInterval(() => {
-      if (i < typingText.length) {
-        setDisplayedText(typingText.substring(0, i + 1));
+      if (i < children.length) {
+        setDisplayedText(children.substring(0, i + 1));
         i++;
       } else {
         clearInterval(typingEffect);
-        if (!completed) {
-          completed = true;
-          setTypingComplete(true);
-        }
       }
     }, duration);
 
-    return () => clearInterval(typingEffect);
-  }, [typingText, duration]);
+    return () => {
+      clearInterval(typingEffect);
+    };
+  }, [children, duration, started]);
 
+  return (
+    <MotionComponent
+      ref={elementRef}
+      className={cn("text-sm font-normal tracking-tight", className)}
+      {...props}
+    >
+      {displayedText}
+    </MotionComponent>
+  );
+};
+
+interface TerminalProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const Terminal = ({ children, className }: TerminalProps) => {
   return (
     <div
       className={cn(
@@ -76,10 +106,7 @@ export const Terminal = ({
         </div>
       </div>
       <pre className="p-4">
-        <code className="grid">
-          <div className="font-regular font-mono text-sm">{displayedText}</div>
-          {typingComplete && <div className="grid pt-5">{children}</div>}
-        </code>
+        <code className="grid gap-y-2">{children}</code>
       </pre>
     </div>
   );

@@ -1,22 +1,39 @@
-import { Terminal, AnimatedSpan } from "@/registry/default/magicui/terminal";
+import {
+  Terminal,
+  AnimatedSpan,
+  TypingAnimation,
+} from "@/registry/default/magicui/terminal";
 
 export default function TerminalDemo() {
   return (
     <Terminal>
-      <AnimatedSpan>
-        <span>+---------------------+</span>
-        <span>| Magic UI |</span>
-        <span>+---------------------+</span>
+      <TypingAnimation className="text-blue-500">
+        ~ What is your Name?
+      </TypingAnimation>
+      <AnimatedSpan delay={2100}>
+        <span>+-----------------+</span>
+        <span>| Arghya Das |</span>
+        <span>+-----------------+</span>
       </AnimatedSpan>
-      <AnimatedSpan delay={0.2}>
-        <span>◇ Component Name</span>
-        <span>│ my-component</span>
-        <span>│</span>
+
+      <TypingAnimation delay={2500} className="text-blue-500">
+        ~ What is your Profession?
+      </TypingAnimation>
+      <AnimatedSpan delay={5200}>
+        <span>◇ I am a Full Stack Developer</span>
       </AnimatedSpan>
-      <AnimatedSpan delay={0.4}>
-        <span>◆ Choose a Component Style</span>
-        <span>│ ● Animated</span>
-        <span>│ ○ Static</span>
+
+      <TypingAnimation delay={5400} className="text-blue-500">
+        ~ Show me your work!
+      </TypingAnimation>
+      <AnimatedSpan delay={7500}>
+        <a
+          href="https://www.itsarghyadas.dev"
+          target="_blank"
+          className="underline-offset-4 hover:underline"
+        >
+          ◇ https://www.itsarghyadas.dev
+        </a>
       </AnimatedSpan>
     </Terminal>
   );

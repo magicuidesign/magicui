@@ -42,16 +42,25 @@ npx shadcn@latest add "https://magicui.design/r/terminal"
 
 ### Terminal
 
-| Prop         | Type     | Default                          | Description                                        |
-| ------------ | -------- | -------------------------------- | -------------------------------------------------- |
-| `typingText` | `string` | `"Create Magical Landing Pages"` | Text that will be typed out in the terminal.       |
-| `className`  | `string` | `-`                              | Custom CSS class for styling.                      |
-| `duration`   | `number` | `100`                            | Duration in milliseconds for each character typed. |
+| Prop        | Type        | Default | Description                              |
+| ----------- | ----------- | ------- | ---------------------------------------- |
+| `children`  | `ReactNode` | `-`     | Content to be typed out in the terminal. |
+| `className` | `string`    | `-`     | Custom CSS class for styling.            |
 
 ### AnimatedSpan
 
-| Prop        | Type        | Default | Description                                   |
-| ----------- | ----------- | ------- | --------------------------------------------- |
-| `children`  | `ReactNode` | `-`     | Content to be animated.                       |
-| `delay`     | `number`    | `0`     | Delay in seconds before the animation starts. |
-| `className` | `string`    | `-`     | Custom CSS class for styling.                 |
+| Prop        | Type        | Default | Description                                        |
+| ----------- | ----------- | ------- | -------------------------------------------------- |
+| `children`  | `ReactNode` | `-`     | Content to be animated.                            |
+| `delay`     | `number`    | `0`     | Delay in milliseconds before the animation starts. |
+| `className` | `string`    | `-`     | Custom CSS class for styling.                      |
+
+### TypingAnimation
+
+| Prop        | Type                | Default  | Description                                        |
+| ----------- | ------------------- | -------- | -------------------------------------------------- |
+| `children`  | `ReactNode`         | `-`      | Content to be animated.                            |
+| `delay`     | `number`            | `0`      | Delay in milliseconds before the animation starts. |
+| `className` | `string`            | `-`      | Custom CSS class for styling.                      |
+| `duration`  | `number`            | `100`    | Duration in milliseconds for each character typed. |
+| `as`        | `React.ElementType` | `"span"` | The component type to render.                      |
