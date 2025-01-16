@@ -553,6 +553,11 @@ export const examples: Registry = [
     files: ["example/safari-demo-3.tsx"],
   },
   {
+    name: "safari-demo-4",
+    type: "registry:example",
+    files: ["example/safari-demo-4.tsx"],
+  },
+  {
     name: "iphone-15-pro-demo",
     type: "registry:example",
     files: ["example/iphone-15-pro-demo.tsx"],
