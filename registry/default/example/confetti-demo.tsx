@@ -2,8 +2,10 @@
 
 import { useRef } from "react";
 
-import type { ConfettiRef } from "@/registry/default/magicui/confetti";
-import Confetti from "@/registry/default/magicui/confetti";
+import {
+  Confetti,
+  type ConfettiRef,
+} from "@/registry/default/magicui/confetti";
 
 export default function ConfettiDemo() {
   const confettiRef = useRef<ConfettiRef>(null);

@@ -1,24 +1,30 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useId, useRef, useState } from "react";
+import {
+  ComponentPropsWithoutRef,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
-interface AnimatedGridPatternProps {
+export interface AnimatedGridPatternProps
+  extends ComponentPropsWithoutRef<"svg"> {
   width?: number;
   height?: number;
   x?: number;
   y?: number;
   strokeDasharray?: any;
   numSquares?: number;
-  className?: string;
   maxOpacity?: number;
   duration?: number;
   repeatDelay?: number;
 }
 
-export default function AnimatedGridPattern({
+export function AnimatedGridPattern({
   width = 40,
   height = 40,
   x = -1,

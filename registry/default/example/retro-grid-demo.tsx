@@ -1,6 +1,6 @@
 "use client";
 
-import RetroGrid from "@/registry/default/magicui/retro-grid";
+import { RetroGrid } from "@/registry/default/magicui/retro-grid";
 
 export default function RetroGridDemo() {
   return (

@@ -1,4 +1,4 @@
-import WordRotate from "@/registry/default/magicui/word-rotate";
+import { WordRotate } from "@/registry/default/magicui/word-rotate";
 
 export default function WordRotateDemo() {
   return (

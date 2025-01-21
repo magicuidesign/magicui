@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React from "react";
-
 import { cn } from "@/lib/utils";
 
 interface Avatar {
@@ -15,7 +13,7 @@ interface AvatarCirclesProps {
   avatarUrls: Avatar[];
 }
 
-const AvatarCircles = ({
+export const AvatarCircles = ({
   numPeople,
   className,
   avatarUrls,
@@ -50,5 +48,3 @@ const AvatarCircles = ({
     </div>
   );
 };
-
-export default AvatarCircles;

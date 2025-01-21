@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion, MotionProps } from "motion/react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 interface WordRotateProps {
   words: string[];
   duration?: number;
-  framerProps?: MotionProps;
+  motionProps?: MotionProps;
   className?: string;
 }
 
-export default function WordRotate({
+export function WordRotate({
   words,
   duration = 2500,
-  framerProps = {
+  motionProps = {
     initial: { opacity: 0, y: -50 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: 50 },
@@ -40,7 +40,7 @@ export default function WordRotate({
         <motion.h1
           key={words[index]}
           className={cn(className)}
-          {...framerProps}
+          {...motionProps}
         >
           {words[index]}
         </motion.h1>

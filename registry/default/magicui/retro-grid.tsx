@@ -32,7 +32,7 @@ interface RetroGridProps extends React.HTMLAttributes<HTMLDivElement> {
   darkLineColor?: string;
 }
 
-export default function RetroGrid({
+export function RetroGrid({
   className,
   angle = 65,
   cellSize = 60,

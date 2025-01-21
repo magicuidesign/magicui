@@ -1,19 +1,15 @@
 "use client";
 
-import { FC, ReactNode, useRef } from "react";
 import { motion, MotionValue, useScroll, useTransform } from "motion/react";
+import { ComponentPropsWithoutRef, FC, ReactNode, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface TextRevealByWordProps {
+export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
   text: string;
-  className?: string;
 }
 
-export const TextRevealByWord: FC<TextRevealByWordProps> = ({
-  text,
-  className,
-}) => {
+export const TextReveal: FC<TextRevealProps> = ({ text, className }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -69,5 +65,3 @@ const Word: FC<WordProps> = ({ children, progress, range }) => {
     </span>
   );
 };
-
-export default TextRevealByWord;

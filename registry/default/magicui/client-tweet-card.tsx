@@ -8,7 +8,7 @@ import {
   TweetSkeleton,
 } from "@/registry/default/magicui/tweet-card";
 
-const ClientTweetCard = ({
+export const ClientTweetCard = ({
   id,
   apiUrl,
   fallback = <TweetSkeleton />,
@@ -27,5 +27,3 @@ const ClientTweetCard = ({
 
   return <MagicTweet tweet={data} components={components} {...props} />;
 };
-
-export default ClientTweetCard;

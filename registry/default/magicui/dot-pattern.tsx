@@ -2,7 +2,7 @@ import { useId } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface DotPatternProps {
+interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
   x?: number;
@@ -52,5 +52,3 @@ export function DotPattern({
     </svg>
   );
 }
-
-export default DotPattern;

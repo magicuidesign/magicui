@@ -1,9 +1,9 @@
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 import { cn } from "@/lib/utils";
-import AnimatedShinyText from "@/registry/default/magicui/animated-shiny-text";
+import { AnimatedShinyText } from "@/registry/default/magicui/animated-shiny-text";
 
-export default async function AnimatedShinyTextDemo() {
+export default function AnimatedShinyTextDemo() {
   return (
     <div className="z-10 flex min-h-64 items-center justify-center">
       <div

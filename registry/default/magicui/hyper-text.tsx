@@ -31,7 +31,7 @@ const DEFAULT_CHARACTER_SET = Object.freeze(
 
 const getRandomInt = (max: number): number => Math.floor(Math.random() * max);
 
-export default function HyperText({
+export function HyperText({
   children,
   className,
   duration = 800,

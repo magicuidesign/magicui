@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import Marquee from "@/registry/default/magicui/marquee";
+import { Marquee } from "@/registry/default/magicui/marquee";
 
 const logos = [
   {

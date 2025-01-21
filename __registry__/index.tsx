@@ -203,7 +203,7 @@ export const Index: Record<string, any> = {
     "script-copy-btn": {
       name: "script-copy-btn",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: ["registry/default/magicui/script-copy-btn.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/script-copy-btn.tsx"),
@@ -281,7 +281,7 @@ export const Index: Record<string, any> = {
     "bento-grid": {
       name: "bento-grid",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: ["registry/default/magicui/bento-grid.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/bento-grid.tsx"),
@@ -648,7 +648,7 @@ export const Index: Record<string, any> = {
     confetti: {
       name: "confetti",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["button"],
       files: ["registry/default/magicui/confetti.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/confetti.tsx"),

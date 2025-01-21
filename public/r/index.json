@@ -167,9 +167,6 @@
   {
     "name": "morphing-text",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
     "files": [
       {
         "path": "magicui/morphing-text.tsx",
@@ -290,9 +287,6 @@
   {
     "name": "flickering-grid",
     "type": "registry:ui",
-    "dependencies": [
-      "motion"
-    ],
     "files": [
       {
         "path": "magicui/flickering-grid.tsx",
@@ -334,6 +328,9 @@
       "motion",
       "shiki",
       "next-themes"
+    ],
+    "registryDependencies": [
+      "button"
     ],
     "files": [
       {
@@ -386,8 +383,7 @@
     "name": "globe",
     "type": "registry:ui",
     "dependencies": [
-      "cobe",
-      "react-spring"
+      "cobe"
     ],
     "files": [
       {
@@ -470,6 +466,9 @@
     "type": "registry:ui",
     "dependencies": [
       "@radix-ui/react-icons"
+    ],
+    "registryDependencies": [
+      "button"
     ],
     "files": [
       {
@@ -948,6 +947,9 @@
       "canvas-confetti",
       "@types/canvas-confetti"
     ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "magicui/confetti.tsx",
@@ -1141,9 +1143,6 @@
   {
     "name": "interactive-hover-button",
     "type": "registry:ui",
-    "dependencies": [
-      "lucide-react"
-    ],
     "files": [
       {
         "path": "magicui/interactive-hover-button.tsx",
