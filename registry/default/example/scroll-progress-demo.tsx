@@ -1,6 +1,6 @@
-import ScrollProgress from "@/registry/default/magicui/scroll-progress";
+import { ScrollProgress } from "@/registry/default/magicui/scroll-progress";
 
-const ScrollProgressDemo = () => {
+export default function ScrollProgressDemo() {
   return (
     <div className="z-10 rounded-lg border border-gray-200 bg-white p-4">
       <ScrollProgress className="top-[65px]" />
@@ -15,6 +15,4 @@ const ScrollProgressDemo = () => {
       </p>
     </div>
   );
-};
-
-export default ScrollProgressDemo;
+}

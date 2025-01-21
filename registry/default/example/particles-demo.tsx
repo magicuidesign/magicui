@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import Particles from "@/registry/default/magicui/particles";
+import { Particles } from "@/registry/default/magicui/particles";
 
 export default function ParticlesDemo() {
   const { resolvedTheme } = useTheme();

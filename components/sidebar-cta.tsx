@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import posthog from "posthog-js";
 
-import AnimatedShinyText from "@/registry/default/magicui/animated-shiny-text";
+import { AnimatedShinyText } from "@/registry/default/magicui/animated-shiny-text";
 import { TextAnimate } from "@/registry/default/magicui/text-animate";
 
 export default function SidebarCTA() {

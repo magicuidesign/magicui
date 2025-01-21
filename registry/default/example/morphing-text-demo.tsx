@@ -1,4 +1,4 @@
-import MorphingText from "@/registry/default/magicui/morphing-text";
+import { MorphingText } from "@/registry/default/magicui/morphing-text";
 
 const texts = [
   "Hello",

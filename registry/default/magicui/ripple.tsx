@@ -1,26 +1,27 @@
-import React, { CSSProperties } from "react";
+import React, { ComponentPropsWithoutRef, CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface RippleProps {
+interface RippleProps extends ComponentPropsWithoutRef<"div"> {
   mainCircleSize?: number;
   mainCircleOpacity?: number;
   numCircles?: number;
-  className?: string;
 }
 
-const Ripple = React.memo(function Ripple({
+export const Ripple = React.memo(function Ripple({
   mainCircleSize = 210,
   mainCircleOpacity = 0.24,
   numCircles = 8,
   className,
+  ...props
 }: RippleProps) {
   return (
     <div
       className={cn(
-        "pointer-events-none select-none absolute inset-0 [mask-image:linear-gradient(to_bottom,white,transparent)]",
+        "pointer-events-none absolute inset-0 select-none [mask-image:linear-gradient(to_bottom,white,transparent)]",
         className,
       )}
+      {...props}
     >
       {Array.from({ length: numCircles }, (_, i) => {
         const size = mainCircleSize + i * 70;
@@ -32,7 +33,7 @@ const Ripple = React.memo(function Ripple({
         return (
           <div
             key={i}
-            className={`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`}
+            className={`[--i: absolute animate-ripple rounded-full border bg-foreground/25 shadow-xl${i}]`}
             style={
               {
                 width: `${size}px`,
@@ -55,5 +56,3 @@ const Ripple = React.memo(function Ripple({
 });
 
 Ripple.displayName = "Ripple";
-
-export default Ripple;

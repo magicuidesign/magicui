@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 import { Check, Copy } from "lucide-react";
+import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { HTMLAttributes, useEffect, useState } from "react";
 import { codeToHtml } from "shiki";
@@ -17,7 +17,7 @@ interface ScriptCopyBtnProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export default function ScriptCopyBtn({
+export function ScriptCopyBtn({
   showMultiplePackageOptions = true,
   codeLanguage,
   lightTheme,

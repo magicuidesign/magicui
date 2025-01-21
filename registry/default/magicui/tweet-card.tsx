@@ -280,5 +280,3 @@ export const TweetCard = async ({
     </Suspense>
   );
 };
-
-export default TweetCard;

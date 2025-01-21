@@ -94,7 +94,6 @@ export const ui: Registry = [
   {
     name: "morphing-text",
     type: "registry:ui",
-    dependencies: ["motion"],
     files: ["magicui/morphing-text.tsx"],
   },
   {
@@ -173,7 +172,6 @@ export const ui: Registry = [
   {
     name: "flickering-grid",
     type: "registry:ui",
-    dependencies: ["motion"],
     files: ["magicui/flickering-grid.tsx"],
   },
   {
@@ -192,6 +190,7 @@ export const ui: Registry = [
     name: "script-copy-btn",
     type: "registry:ui",
     dependencies: ["motion", "shiki", "next-themes"],
+    registryDependencies: ["button"],
     files: ["magicui/script-copy-btn.tsx"],
   },
   {
@@ -225,7 +224,7 @@ export const ui: Registry = [
   {
     name: "globe",
     type: "registry:ui",
-    dependencies: ["cobe", "react-spring"],
+    dependencies: ["cobe"],
     files: ["magicui/globe.tsx"],
   },
   {
@@ -284,6 +283,7 @@ export const ui: Registry = [
     name: "bento-grid",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-icons"],
+    registryDependencies: ["button"],
     files: ["magicui/bento-grid.tsx"],
   },
   {
@@ -586,6 +586,7 @@ export const ui: Registry = [
     name: "confetti",
     type: "registry:ui",
     dependencies: ["canvas-confetti", "@types/canvas-confetti"],
+    registryDependencies: ["button"],
     files: ["magicui/confetti.tsx"],
   },
   {
@@ -717,7 +718,6 @@ export const ui: Registry = [
   {
     name: "interactive-hover-button",
     type: "registry:ui",
-    dependencies: ["lucide-react"],
     files: ["magicui/interactive-hover-button.tsx"],
   },
 ];

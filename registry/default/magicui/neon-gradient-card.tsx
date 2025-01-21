@@ -67,7 +67,7 @@ interface NeonGradientCardProps {
   [key: string]: any;
 }
 
-const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
+export const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
   className,
   children,
   borderSize = 2,
@@ -147,5 +147,3 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
     </div>
   );
 };
-
-export { NeonGradientCard };

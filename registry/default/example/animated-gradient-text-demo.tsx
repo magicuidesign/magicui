@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import AnimatedGradientText from "@/registry/default/magicui/animated-gradient-text";
+import { AnimatedGradientText } from "@/registry/default/magicui/animated-gradient-text";
 
 export default async function AnimatedGradientTextDemo() {
   return (

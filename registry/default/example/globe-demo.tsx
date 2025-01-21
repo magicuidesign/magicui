@@ -1,4 +1,4 @@
-import Globe from "@/registry/default/magicui/globe";
+import { Globe } from "@/registry/default/magicui/globe";
 
 export default function GlobeDemo() {
   return (

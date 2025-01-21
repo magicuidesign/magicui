@@ -1,10 +1,10 @@
-import FlickeringGrid from "@/registry/default/magicui/flickering-grid";
+import { FlickeringGrid } from "@/registry/default/magicui/flickering-grid";
 
 export default function FlickeringGridDemo() {
   return (
-    <div className="relative h-[500px] rounded-lg w-full bg-background overflow-hidden border">
+    <div className="relative h-[500px] w-full overflow-hidden rounded-lg border bg-background">
       <FlickeringGrid
-        className="z-0 absolute inset-0 size-full"
+        className="absolute inset-0 z-0 size-full"
         squareSize={4}
         gridGap={6}
         color="#6B7280"

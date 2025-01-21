@@ -1,9 +1,9 @@
 import { allShowcases } from "content-collections";
 
 import { ShowcaseCard } from "@/components/sections/showcase";
-import BlurFade from "@/registry/default/magicui/blur-fade";
+import { BlurFade } from "@/registry/default/magicui/blur-fade";
 
-export default async function Page() {
+export default function Page() {
   return (
     <article className="container max-w-[120ch] py-14">
       <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">

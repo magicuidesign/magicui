@@ -1,4 +1,4 @@
-import FlipText from "@/registry/default/magicui/flip-text";
+import { FlipText } from "@/registry/default/magicui/flip-text";
 
 export default function FlipTextDemo() {
   return (
