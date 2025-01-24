@@ -365,6 +365,7 @@ export function TextAnimate({
         animate={startOnView ? undefined : "show"}
         exit="exit"
         className={cn("whitespace-pre-wrap", className)}
+        viewport={{ once }}
         {...props}
       >
         {segments.map((segment, i) => (
@@ -374,7 +375,7 @@ export function TextAnimate({
             custom={i * staggerTimings[by]}
             className={cn(
               by === "line" ? "block" : "inline-block whitespace-pre",
-              segmentClassName,
+              segmentClassName
             )}
           >
             {segment}
