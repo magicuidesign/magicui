@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes";
 
-import ShineBorder from "@/registry/default/magicui/shine-border";
+import { ShineBorder } from "@/registry/default/magicui/shine-border";
 
 export default function ShineBorderDemo() {
   const theme = useTheme();

@@ -12,7 +12,7 @@ interface FlipTextProps {
   className?: string;
 }
 
-export default function FlipText({
+export function FlipText({
   word,
   duration = 0.5,
   delayMultiple = 0.08,

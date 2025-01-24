@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import React, {
   useCallback,
   useEffect,
@@ -8,7 +9,7 @@ import React, {
   useState,
 } from "react";
 
-interface FlickeringGridProps {
+interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
   squareSize?: number;
   gridGap?: number;
   flickerChance?: number;
@@ -16,11 +17,10 @@ interface FlickeringGridProps {
   width?: number;
   height?: number;
   className?: string;
-
   maxOpacity?: number;
 }
 
-const FlickeringGrid: React.FC<FlickeringGridProps> = ({
+export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   squareSize = 4,
   gridGap = 6,
   flickerChance = 0.3,
@@ -29,6 +29,7 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   height,
   className,
   maxOpacity = 0.3,
+  ...props
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -180,7 +181,11 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
 
   return (
-    <div ref={containerRef} className={`w-full h-full ${className}`}>
+    <div
+      ref={containerRef}
+      className={cn(`h-full w-full ${className}`)}
+      {...props}
+    >
       <canvas
         ref={canvasRef}
         className="pointer-events-none"
@@ -192,5 +197,3 @@ const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     </div>
   );
 };
-
-export default FlickeringGrid;

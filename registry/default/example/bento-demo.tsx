@@ -1,12 +1,12 @@
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
 import { BellIcon, Share2Icon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
 import AnimatedBeamMultipleOutputDemo from "@/registry/default/example/animated-beam-multiple-outputs";
 import AnimatedListDemo from "@/registry/default/example/animated-list-demo";
 import { BentoCard, BentoGrid } from "@/registry/default/magicui/bento-grid";
-import Marquee from "@/registry/default/magicui/marquee";
+import { Marquee } from "@/registry/default/magicui/marquee";
 
 const files = [
   {

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "motion/react";
+import { useEffect, useRef } from "react";
 
 interface BoxRevealProps {
   children: JSX.Element;
@@ -13,7 +13,7 @@ interface BoxRevealProps {
 export const BoxReveal = ({
   children,
   width = "fit-content",
-  boxColor,
+  boxColor = "#5046e6",
   duration,
 }: BoxRevealProps) => {
   const mainControls = useAnimation();
@@ -61,11 +61,9 @@ export const BoxReveal = ({
           left: 0,
           right: 0,
           zIndex: 20,
-          background: boxColor ? boxColor : "#5046e6",
+          background: boxColor,
         }}
       />
     </div>
   );
 };
-
-export default BoxReveal;

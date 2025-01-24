@@ -38,6 +38,12 @@ export const examples: Registry = [
     files: ["example/line-shadow-text-demo.tsx"],
   },
   {
+    name: "aurora-text-demo",
+    type: "registry:example",
+    registryDependencies: ["aurora-text"],
+    files: ["example/aurora-text-demo.tsx"],
+  },
+  {
     name: "morphing-text-demo",
     type: "registry:example",
     registryDependencies: ["morphing-text"],
@@ -551,6 +557,11 @@ export const examples: Registry = [
     name: "safari-demo-3",
     type: "registry:example",
     files: ["example/safari-demo-3.tsx"],
+  },
+  {
+    name: "safari-demo-4",
+    type: "registry:example",
+    files: ["example/safari-demo-4.tsx"],
   },
   {
     name: "iphone-15-pro-demo",

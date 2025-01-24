@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ScratchToRevealProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface ScratchToRevealProps {
   gradientColors?: [string, string, string];
 }
 
-const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
+export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
   width,
   height,
   minScratchPercentage = 50,
@@ -167,5 +167,3 @@ const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     </motion.div>
   );
 };
-
-export default ScratchToReveal;

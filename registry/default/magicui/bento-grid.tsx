@@ -1,15 +1,15 @@
-import { ReactNode } from "react";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-type BentoGridProps = {
+interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
   children: ReactNode;
   className?: string;
-};
+}
 
-type BentoCardProps = {
+interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string;
   className: string;
   background: ReactNode;
@@ -17,15 +17,16 @@ type BentoCardProps = {
   description: string;
   href: string;
   cta: string;
-};
+}
 
-const BentoGrid = ({ children, className }: BentoGridProps) => {
+const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
         "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
         className,
       )}
+      {...props}
     >
       {children}
     </div>
@@ -40,6 +41,7 @@ const BentoCard = ({
   description,
   href,
   cta,
+  ...props
 }: BentoCardProps) => (
   <div
     key={name}
@@ -51,6 +53,7 @@ const BentoCard = ({
       "transform-gpu dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
       className,
     )}
+    {...props}
   >
     <div>{background}</div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">

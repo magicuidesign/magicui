@@ -1,16 +1,35 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  ComponentPropsWithoutRef,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
-export interface AnimatedListProps {
-  className?: string;
+export function AnimatedListItem({ children }: { children: React.ReactNode }) {
+  const animations = {
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1, originY: 0 },
+    exit: { scale: 0, opacity: 0 },
+    transition: { type: "spring", stiffness: 350, damping: 40 },
+  };
+
+  return (
+    <motion.div {...animations} layout className="mx-auto w-full">
+      {children}
+    </motion.div>
+  );
+}
+
+export interface AnimatedListProps extends ComponentPropsWithoutRef<"div"> {
   children: React.ReactNode;
   delay?: number;
 }
 
 export const AnimatedList = React.memo(
-  ({ className, children, delay = 1000 }: AnimatedListProps) => {
+  ({ children, className, delay = 1000, ...props }: AnimatedListProps) => {
     const [index, setIndex] = useState(0);
     const childrenArray = useMemo(
       () => React.Children.toArray(children),
@@ -33,7 +52,10 @@ export const AnimatedList = React.memo(
     }, [index, childrenArray]);
 
     return (
-      <div className={`flex flex-col items-center gap-4 ${className}`}>
+      <div
+        className={`flex flex-col items-center gap-4 ${className}`}
+        {...props}
+      >
         <AnimatePresence>
           {itemsToShow.map((item) => (
             <AnimatedListItem key={(item as React.ReactElement).key}>
@@ -47,18 +69,3 @@ export const AnimatedList = React.memo(
 );
 
 AnimatedList.displayName = "AnimatedList";
-
-export function AnimatedListItem({ children }: { children: React.ReactNode }) {
-  const animations = {
-    initial: { scale: 0, opacity: 0 },
-    animate: { scale: 1, opacity: 1, originY: 0 },
-    exit: { scale: 0, opacity: 0 },
-    transition: { type: "spring", stiffness: 350, damping: 40 },
-  };
-
-  return (
-    <motion.div {...animations} layout className="mx-auto w-full">
-      {children}
-    </motion.div>
-  );
-}

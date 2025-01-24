@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import {
   AnimatePresence,
   motion,
@@ -8,6 +7,7 @@ import {
   UseInViewOptions,
   Variants,
 } from "motion/react";
+import { useRef } from "react";
 
 type MarginType = UseInViewOptions["margin"];
 
@@ -27,7 +27,7 @@ interface BlurFadeProps {
   blur?: string;
 }
 
-export default function BlurFade({
+export function BlurFade({
   children,
   className,
   variant,

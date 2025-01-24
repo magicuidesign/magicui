@@ -1,7 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  ComponentPropsWithoutRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 interface MousePosition {
   x: number;
@@ -29,7 +34,7 @@ function MousePosition(): MousePosition {
   return mousePosition;
 }
 
-interface ParticlesProps {
+interface ParticlesProps extends ComponentPropsWithoutRef<"div"> {
   className?: string;
   quantity?: number;
   staticity?: number;
@@ -71,7 +76,7 @@ type Circle = {
   magnetism: number;
 };
 
-const Particles: React.FC<ParticlesProps> = ({
+export const Particles: React.FC<ParticlesProps> = ({
   className = "",
   quantity = 100,
   staticity = 50,
@@ -81,6 +86,7 @@ const Particles: React.FC<ParticlesProps> = ({
   color = "#ffffff",
   vx = 0,
   vy = 0,
+  ...props
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasContainerRef = useRef<HTMLDivElement>(null);
@@ -299,10 +305,9 @@ const Particles: React.FC<ParticlesProps> = ({
       className={cn("pointer-events-none", className)}
       ref={canvasContainerRef}
       aria-hidden="true"
+      {...props}
     >
       <canvas ref={canvasRef} className="size-full" />
     </div>
   );
 };
-
-export default Particles;

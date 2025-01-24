@@ -13,7 +13,7 @@ interface TypingAnimationProps extends MotionProps {
   startOnView?: boolean;
 }
 
-export default function TypingAnimation({
+export function TypingAnimation({
   children,
   className,
   duration = 100,
