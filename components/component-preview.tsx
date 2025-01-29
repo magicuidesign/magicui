@@ -1,16 +1,17 @@
 "use client";
 
-import * as React from "react";
-import { Index } from "__registry__";
+import Registry from "@/registry.json";
 import { RotateCcw } from "lucide-react";
+import * as React from "react";
 
-import { useConfig } from "@/lib/use-config";
-import { cn } from "@/lib/utils";
+import { ComponentWrapper } from "@/components/component-wrapper";
+import { Icons } from "@/components/icons";
+import { OpenInV0Button } from "@/components/open-in-v0-button";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ComponentWrapper from "@/components/component-wrapper";
-import { Icons } from "@/components/icons";
-import { styles } from "@/registry/registry-styles";
+// import { useConfig } from "@/lib/use-config";
+import { cn } from "@/lib/utils";
+// import { styles } from "@/registry/registry-styles";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -27,16 +28,13 @@ export function ComponentPreview({
   ...props
 }: ComponentPreviewProps) {
   const [key, setKey] = React.useState(0);
-  const [config] = useConfig();
-  const index = styles.findIndex((style) => style.name === config.style);
-
   const Codes = React.Children.toArray(children) as React.ReactElement[];
-  const Code = Codes[index];
+  const Code = Codes[0];
 
   const Preview = React.useMemo(() => {
-    const Component = Index[config.style][name]?.component;
+    const registryItem = Registry.items.find((item) => item.name === name);
 
-    if (!Component) {
+    if (!registryItem) {
       console.error(`Component with name "${name}" not found in registry.`);
       return (
         <p className="text-sm text-muted-foreground">
@@ -49,8 +47,13 @@ export function ComponentPreview({
       );
     }
 
+    const Component = React.lazy(() => {
+      // Ensure we're using the correct path by removing any leading dots or slashes
+      const cleanPath = registryItem.files[0].path.replace(/^[./]+/, "");
+      return import(`../../${cleanPath}`);
+    });
     return <Component />;
-  }, [name, config.style]);
+  }, [name]);
 
   return (
     <div
@@ -81,13 +84,16 @@ export function ComponentPreview({
         )}
         <TabsContent value="preview" className="relative rounded-md" key={key}>
           <ComponentWrapper>
-            <Button
-              onClick={() => setKey((prev) => prev + 1)}
-              className="absolute right-1.5 top-1.5 z-10 ml-4 flex items-center rounded-lg px-3 py-1"
-              variant="ghost"
-            >
-              <RotateCcw aria-label="restart-btn" size={16} />
-            </Button>
+            <div className="absolute right-2 top-2 z-10 flex items-center justify-between gap-2">
+              <OpenInV0Button url={`https://magicui.design/r/${name}.json`} />
+              <Button
+                onClick={() => setKey((prev) => prev + 1)}
+                className="flex items-center rounded-lg px-3 py-1"
+                variant="ghost"
+              >
+                <RotateCcw aria-label="restart-btn" size={16} />
+              </Button>
+            </div>
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">

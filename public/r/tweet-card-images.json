@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tweet-card-images",
+  "type": "registry:component",
+  "registryDependencies": [
+    "tweet-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tweet-card-images.tsx",
+      "content": "import { ClientTweetCard } from \"@/registry/magicui/client-tweet-card\";\n\nexport default function TweetImages() {\n  return <ClientTweetCard id=\"1678577280489234432\" className=\"shadow-2xl\" />;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/ripple-button-demo.tsx",
+      "content": "import { RippleButton } from \"@/registry/magicui/ripple-button\";\n\nexport default function RippleButtonDemo() {\n  return <RippleButton rippleColor=\"#ADD8E6\">Click me</RippleButton>;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

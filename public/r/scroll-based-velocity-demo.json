@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-based-velocity-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "scroll-based-velocity"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-based-velocity-demo.tsx",
+      "content": "import { VelocityScroll } from \"@/registry/magicui/scroll-based-velocity\";\n\nexport default function ScrollBasedVelocityDemo() {\n  return <VelocityScroll>Velocity Scroll</VelocityScroll>;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

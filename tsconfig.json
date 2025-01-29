@@ -29,10 +29,10 @@
         "./*"
       ],
       "@/components/magicui/*": [
-        "./registry/default/magicui/*"
+        "registry/magicui/*"
       ],
       "@/components/example/*": [
-        "./registry/default/example/*"
+        "registry/example/*"
       ],
       "content-collections": ["./.content-collections/generated"]
     }
@@ -48,7 +48,5 @@
     "node_modules",
     "packages/**/*",
     "scripts/**/*",
-    "scripts/build-registry.ts", 
-    "__registry__"
   ]
 }

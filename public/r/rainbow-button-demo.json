@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rainbow-button-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/rainbow-button-demo.tsx",
+      "content": "import { RainbowButton } from \"@/registry/magicui/rainbow-button\";\n\nexport default function RainbowButtonDemo() {\n  return <RainbowButton>Get Unlimited Access</RainbowButton>;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

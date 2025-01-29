@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shiny-button",
+  "type": "registry:component",
+  "title": "Shiny Button",
+  "description": "A shiny button component with dynamic styles in the dark mode or light mode.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/shiny-button.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion, MotionProps, type AnimationProps } from \"motion/react\";\nimport React from \"react\";\n\nconst animationProps = {\n  initial: { \"--x\": \"100%\", scale: 0.8 },\n  animate: { \"--x\": \"-100%\", scale: 1 },\n  whileTap: { scale: 0.95 },\n  transition: {\n    repeat: Infinity,\n    repeatType: \"loop\",\n    repeatDelay: 1,\n    type: \"spring\",\n    stiffness: 20,\n    damping: 15,\n    mass: 2,\n    scale: {\n      type: \"spring\",\n      stiffness: 200,\n      damping: 5,\n      mass: 0.5,\n    },\n  },\n} as AnimationProps;\n\ninterface ShinyButtonProps\n  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,\n    MotionProps {\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport const ShinyButton = React.forwardRef<\n  HTMLButtonElement,\n  ShinyButtonProps\n>(({ children, className, ...props }, ref) => {\n  return (\n    <motion.button\n      ref={ref}\n      className={cn(\n        \"relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]\",\n        className,\n      )}\n      {...animationProps}\n      {...props}\n    >\n      <span\n        className=\"relative block size-full text-sm uppercase tracking-wide text-[rgb(0,0,0,65%)] dark:font-light dark:text-[rgb(255,255,255,90%)]\"\n        style={{\n          maskImage:\n            \"linear-gradient(-75deg,hsl(var(--primary)) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),hsl(var(--primary)) calc(var(--x) + 100%))\",\n        }}\n      >\n        {children}\n      </span>\n      <span\n        style={{\n          mask: \"linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box,linear-gradient(rgb(0,0,0), rgb(0,0,0))\",\n          maskComposite: \"exclude\",\n        }}\n        className=\"absolute inset-0 z-10 block rounded-[inherit] bg-[linear-gradient(-75deg,hsl(var(--primary)/10%)_calc(var(--x)+20%),hsl(var(--primary)/50%)_calc(var(--x)+25%),hsl(var(--primary)/10%)_calc(var(--x)+100%))] p-px\"\n      ></span>\n    </motion.button>\n  );\n});\n\nShinyButton.displayName = \"ShinyButton\";\n",
+      "type": "registry:component"
+    }
+  ]
+}

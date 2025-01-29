@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sparkles-text-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/sparkles-text-demo.tsx",
+      "content": "import { SparklesText } from \"@/registry/magicui/sparkles-text\";\n\nexport default function SparklesTextDemo() {\n  return <SparklesText text=\"Magic UI\" />;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

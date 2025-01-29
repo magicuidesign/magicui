@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-text-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "flip-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/flip-text-demo.tsx",
+      "content": "import { FlipText } from \"@/registry/magicui/flip-text\";\n\nexport default function FlipTextDemo() {\n  return (\n    <FlipText\n      className=\"text-4xl font-bold -tracking-widest text-black dark:text-white md:text-7xl md:leading-[5rem]\"\n      word=\"Flip Text\"\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

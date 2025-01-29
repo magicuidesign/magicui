@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tweet-card-meta-preview",
+  "type": "registry:component",
+  "registryDependencies": [
+    "tweet-card"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tweet-card-meta-preview.tsx",
+      "content": "import { ClientTweetCard } from \"@/registry/magicui/client-tweet-card\";\n\nexport default function TweetMetaPreview() {\n  return <ClientTweetCard id=\"1675849118445436929\" className=\"shadow-2xl\" />;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "safari-demo-2",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/safari-demo-2.tsx",
+      "content": "import { Safari } from \"@/registry/magicui/safari\";\n\nexport default function SafariDemo() {\n  return (\n    <div className=\"relative\">\n      <Safari\n        url=\"magicui.design\"\n        className=\"size-full\"\n        imageSrc=\"https://via.placeholder.com/1200x750\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

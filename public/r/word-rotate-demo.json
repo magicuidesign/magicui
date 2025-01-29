@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "word-rotate-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "word-rotate"
+  ],
+  "files": [
+    {
+      "path": "registry/example/word-rotate-demo.tsx",
+      "content": "import { WordRotate } from \"@/registry/magicui/word-rotate\";\n\nexport default function WordRotateDemo() {\n  return (\n    <WordRotate\n      className=\"text-4xl font-bold text-black dark:text-white\"\n      words={[\"Word\", \"Rotate\"]}\n    />\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

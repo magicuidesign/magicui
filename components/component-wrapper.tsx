@@ -4,7 +4,10 @@ interface ComponentWrapperProps {
   className?: string;
   children: any;
 }
-const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
+export const ComponentWrapper = ({
+  className,
+  children,
+}: ComponentWrapperProps) => {
   return (
     <div
       className={cn(
@@ -23,5 +26,3 @@ const ComponentWrapper = ({ className, children }: ComponentWrapperProps) => {
     </div>
   );
 };
-
-export default ComponentWrapper;

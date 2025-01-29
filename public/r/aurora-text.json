@@ -1,0 +1,120 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-text",
+  "type": "registry:component",
+  "title": "Aurora Text",
+  "description": "A beautiful aurora text effect",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/aurora-text.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { motion, MotionProps } from \"motion/react\";\nimport React from \"react\";\n\ninterface AuroraTextProps\n  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {\n  className?: string;\n  children: React.ReactNode;\n  as?: React.ElementType;\n}\n\nexport function AuroraText({\n  className,\n  children,\n  as: Component = \"span\",\n  ...props\n}: AuroraTextProps) {\n  const MotionComponent = motion.create(Component);\n\n  return (\n    <MotionComponent\n      className={cn(\"relative inline-flex overflow-hidden\", className)}\n      {...props}\n    >\n      {children}\n      <span className=\"pointer-events-none absolute inset-0 mix-blend-lighten dark:mix-blend-darken\">\n        <span className=\"pointer-events-none absolute -top-1/2 h-[30vw] w-[30vw] animate-[aurora-border_6s_ease-in-out_infinite,aurora-1_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--color-1))] mix-blend-overlay blur-[1rem]\"></span>\n        <span className=\"pointer-events-none absolute right-0 top-0 h-[30vw] w-[30vw] animate-[aurora-border_6s_ease-in-out_infinite,aurora-2_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--color-2))] mix-blend-overlay blur-[1rem]\"></span>\n        <span className=\"pointer-events-none absolute bottom-0 left-0 h-[30vw] w-[30vw] animate-[aurora-border_6s_ease-in-out_infinite,aurora-3_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--color-3))] mix-blend-overlay blur-[1rem]\"></span>\n        <span className=\"pointer-events-none absolute -bottom-1/2 right-0 h-[30vw] w-[30vw] animate-[aurora-border_6s_ease-in-out_infinite,aurora-4_12s_ease-in-out_infinite_alternate] bg-[hsl(var(--color-4))] mix-blend-overlay blur-[1rem]\"></span>\n      </span>\n    </MotionComponent>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "colors": {
+            "color-1": "hsl(var(--color-1))",
+            "color-2": "hsl(var(--color-2))",
+            "color-3": "hsl(var(--color-3))",
+            "color-4": "hsl(var(--color-4))",
+            "color-5": "hsl(var(--color-5))"
+          },
+          "keyframes": {
+            "aurora-border": {
+              "0%, 100%": {
+                "borderRadius": "37% 29% 27% 27% / 28% 25% 41% 37%"
+              },
+              "25%": {
+                "borderRadius": "47% 29% 39% 49% / 61% 19% 66% 26%"
+              },
+              "50%": {
+                "borderRadius": "57% 23% 47% 72% / 63% 17% 66% 33%"
+              },
+              "75%": {
+                "borderRadius": "28% 49% 29% 100% / 93% 20% 64% 25%"
+              }
+            },
+            "aurora-1": {
+              "0%, 100%": {
+                "top": "0",
+                "right": "0"
+              },
+              "50%": {
+                "top": "50%",
+                "right": "25%"
+              },
+              "75%": {
+                "top": "25%",
+                "right": "50%"
+              }
+            },
+            "aurora-2": {
+              "0%, 100%": {
+                "top": "0",
+                "left": "0"
+              },
+              "60%": {
+                "top": "75%",
+                "left": "25%"
+              },
+              "85%": {
+                "top": "50%",
+                "left": "50%"
+              }
+            },
+            "aurora-3": {
+              "0%, 100%": {
+                "bottom": "0",
+                "left": "0"
+              },
+              "40%": {
+                "bottom": "50%",
+                "left": "25%"
+              },
+              "65%": {
+                "bottom": "25%",
+                "left": "50%"
+              }
+            },
+            "aurora-4": {
+              "0%, 100%": {
+                "bottom": "0",
+                "right": "0"
+              },
+              "50%": {
+                "bottom": "25%",
+                "right": "40%"
+              },
+              "90%": {
+                "bottom": "50%",
+                "right": "25%"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "cssVars": {
+    "light": {
+      "--color-1": "0 100% 63%",
+      "--color-2": "270 100% 63%",
+      "--color-3": "210 100% 63%",
+      "--color-4": "195 100% 63%",
+      "--color-5": "90 100% 63%"
+    },
+    "dark": {
+      "--color-1": "0 100% 63%",
+      "--color-2": "270 100% 63%",
+      "--color-3": "210 100% 63%",
+      "--color-4": "195 100% 63%",
+      "--color-5": "90 100% 63%"
+    }
+  }
+}
