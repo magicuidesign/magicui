@@ -1,0 +1,472 @@
+---
+title: "Styling the React Hero Component with CSS and Sass"
+description: "Craft stunning landing pages fast with our pre-built React Hero component. Easily customize and style with CSS/Sass. Get started now!"
+image: https://cdn.magicui.design/assets/4164e675-3b4a-4190-8bfd-c4ec87e691a6.png
+author: Dillion Verma
+tag: Landing Page Examples
+publishedOn: 2024-08-13T10:45:36.783Z
+featured: false
+---
+
+Creating a landing page can feel like a daunting task. You have to organize a ton of information, prioritize some aspects over others, and optimally style the page to achieve your conversion goals. With so much to do, it’s easy to overlook individual components, such as the hero section. The hero section is crucial for grabbing users’ attention and spearheading their journey through your landing page. This is especially true for React [landing page examples,](https://magicui.design/blog/landing-page-examples) which help you quickly build interactive and engaging web applications. Here, we’ll focus on the hero component and how you can style it with CSS and Sass.
+
+MagicUI's [startup landing page template](https://pro.magicui.design/docs/templates/startup) has a ready-to-use React hero component to help you get started. It’s packed with sample content to illustrate the structure, so you can quickly customize it to fit your needs and create a stunning landing page.
+
+## Overview of the React Hero Component
+
+![React Hero Component](https://cdn.magicui.design/assets/4jqb2q54mv9.jpg)
+
+In a React application, a Hero Component is a visually prominent section at the top of a webpage. It is designed to be the first thing users see when they land on the site, often including:
+
+- Large image or video
+- Headline
+- Subheadline
+- Call-to-action (CTA) button
+
+Its primary purpose is to:
+
+- Grab attention
+- Convey a key message
+- Guide users toward necessary actions
+
+### Significance of the Hero Component 
+
+#### First Impressions
+
+It creates an immediate impact by being the first visual element users encounter, setting the tone for the website.
+
+#### Brand Messaging
+
+It effectively communicates the brand or product's core message or value proposition.
+
+#### User Engagement
+
+[Engages users](https://amplitude.com/glossary/terms/user-engagement) by incorporating interactive elements like CTA buttons, encouraging them to take actions such as signing up or making a purchase.
+
+#### Visual Appeal
+
+Enhances the overall user experience by visually appealing design elements to capture interest.
+
+#### Navigation
+
+Guides users towards necessary actions, improving site usability and conversion rates.
+
+### Popular Websites Utilizing Hero Components
+
+#### Dropbox
+
+Uses a simple and clean Hero Component with a headline, brief description, and a CTA button for user sign-up or login.
+
+#### Airbnb
+
+Features high-quality images of destinations with a search bar and CTA, driving users to start their booking process.
+
+#### Slack
+
+It employs vibrant visuals and a strong headline, including a [CTA button](https://www.hotjar.com/conversion-rate-optimization/glossary/call-to-action/) to try the product or learn more.
+
+### Related Reading
+
+- [FAQ Template](https://magicui.design/blog/faq-template)
+- [How To Create A Landing Page](https://magicui.design/blog/how-to-create-a-landing-page)
+- [Website Footer](https://magicui.design/blog/website-footer)
+- [Website Header Examples](https://magicui.design/blog/website-header-examples)
+- [How To Design A Landing Page](https://magicui.design/blog/how-to-design-a-landing-page)
+- [Creative Landing Page Design](https://magicui.design/blog/creative-landing-page-design)
+- [Pricing Page Examples](https://magicui.design/blog/pricing-page-examples)
+- [Tailwind Landing Page](https://magicui.design/blog/tailwind-landing-page)
+- [Landing Page UI](https://magicui.design/blog/landing-page-ui)
+- [Landing Page Copywriting](https://magicui.design/blog/landing-page-copywriting)
+- [App Landing Page](https://magicui.design/blog/app-landing-page)
+
+## Importance of Styling in User Experience
+
+![React Hero Component](https://cdn.magicui.design/assets/msjsttayo2h.jpg)
+
+### Visual Appeal and User Perception
+
+The visual appeal of a Hero Component plays a [critical role](https://www.michellepontvert.com/blog/what-hero-section#:~:text=The%20hero%20component%20of%20a%20website%20is%20typically%20a%20large,value%20proposition%20of%20the%20website.) in shaping user perception and interaction. A well-designed Hero Component engages users immediately with:
+
+- High-quality visuals
+- Compelling text
+
+It reflects the brand’s professionalism, which helps build trust with users. The site is also easier to navigate with clear and [intuitive design elements](https://www.concordia.ca/web/design/components/hero.html).
+
+### Studies and Surveys
+
+- _Adobe Study:_ Indicates that [38% of users](https://www.linkedin.com/pulse/15-essential-web-design-statistics-every-business-owner#:~:text=38%25%20of%20users%20will%20stop,an%20aesthetically%20pleasing%20website%20design.) will only engage with a website if the content or layout is attractive.
+- _HubSpot Report:_ Personalized and aesthetically pleasing Hero Components can boost [conversion rates by up to 202%](https://blog.hubspot.com/marketing/personalized-calls-to-action-convert-better-data).
+
+## Understanding the Basics of CSS and Sass
+
+![React Hero Component](https://cdn.magicui.design/assets/cf2zmuc0irh.jpg)
+
+### CSS Overview
+
+Cascading Style Sheets CSS styles web pages by controlling the:
+
+- Layout
+- Colors
+- Typography
+- Other visual aspects
+
+#### Css Helps In Layout
+
+Managing how elements are positioned and sized.
+
+_Colors:_ Defining text, background, and border colors.
+
+#### Typography
+
+Handling font styles, sizes, and text alignment.
+
+_Visual Effects:_ Applying shadows, gradients, and transitions to enhance the design.
+
+### Sass Overview
+
+Syntactically Awesome Style Sheets Sass extends CSS with additional features:
+
+#### Variables
+
+Allows the use of reusable variables for consistent styling.
+
+- _Example:_ $primary-color: #3498db;
+- _Nesting:_ Enables the nesting of selectors to improve readability and organization.
+- _Example:_ scss Copy code `.hero { .title { font-size: 2rem; } }`
+- _Mixins:_ Facilitates the reuse of common styles across different elements.
+- _Example:_ scss Copy code `@mixin button-style($color) { background-color: $color; border: none; padding: 10px; }`
+- _Functions:_ Allows dynamic styling through calculations and manipulations.
+- _Example:_ scss Copy code `@function calculate-spacing($base, $multiplier) { @return $base \* $multiplier; }`
+
+## Key Differences Between CSS and Sass
+
+![React Hero Component](https://cdn.magicui.design/assets/4a29uvxf5k8.jpg)
+
+### CSS vs. Sass: What’s the Difference?
+
+Developers can use either CSS or Sass when styling a website. Sass (Syntactically Awesome Style Sheets) is a CSS preprocessor that adds functionality to standard CSS. When developers write code in Sass, they write code in a language that resembles CSS before compiling it into standard CSS. This approach offers users many benefits, especially with large style sheets.
+
+### Sass Is a CSS Extension
+
+Sass is a superset of CSS that adds functionality to standard CSS. This means that all the code valid in CSS is also valid in Sass. Developers can start a project using Sass right away without any conversion. As they build styles for their project, they can compile the Sass into CSS for the browser to read.
+
+### Sass Syntax Is Cleaner
+
+While CSS and Sass have similar structures, Sass's syntax is much cleaner. There’s no need for repetitive code in Sass, which makes the structure much more readable. Developers can use nesting, mixins, and variables to reduce redundancy in their styles.
+
+### Sass Includes Variables for Consistency
+
+Sass supports [variables for colors](https://blog.logrocket.com/ux-design/what-is-website-hero-section/), fonts, or any CSS value that can be reused throughout a style sheet. While CSS also supports custom properties, Sass variables are much more powerful. Sass variables can be updated throughout the document, while CSS custom properties can only be updated with JavaScript.
+
+### Sass Allows Nesting of Selectors
+
+CSS allows developers to nest selectors to reduce redundancy and make the code more readable. This feature helps organize styles, visually showing the relationship between parent and child elements. In contrast, CSS does not support nesting, so developers must write out every class independently.
+
+### Sass Mixins Reduce Repetitive Code
+
+Sass mixins allow developers to create reusable styling blocks. When working on a project, developers can define a group of CSS properties within a mixin and call that mixin wherever they want to use those styles. This functionality reduces redundancy and helps to keep the code DRY (Don’t Repeat Yourself).
+
+### Sass Supports Inheritance
+
+Sass supports inheritance with the @extend feature. This allows developers to share styles between selectors, so they don’t have to write out all the properties for similar classes. While CSS has a form of inheritance, it doesn’t allow for this type of code sharing.
+
+### Sass Includes Functions for Calculations
+
+Sass includes built-in functions for mathematical calculations. When using Sass, developers can perform calculations and use the results directly in their styles. This helps to:
+
+- Eliminate errors
+- Improve efficiency
+
+While CSS now supports its calculations with the calc() function, it doesn’t have the same advanced functionality as Sass.
+
+### Sass Promotes Modularity
+
+Sass promotes modularity with partials and imports. Partials are small Sass files that can be included in other Sass files. This allows developers to break their styles into smaller, more manageable pieces that can be organized logically.
+
+Imports allow a main Sass file to pull in styles from other smaller files. This modular approach helps to:
+
+- Keep projects organized
+- Improve maintainability
+
+### Sass Offers Error Checking
+
+Sass comes with an enhanced error-checking feature. When developers compile their Sass into CSS, they receive a detailed report on any errors or issues in the code. The report includes the line numbers for both the Sass and CSS files, making it easy to troubleshoot problems.
+
+### Sass Requires Compilation
+
+Sass must be compiled or converted into CSS before a browser can read it. In contrast, browsers directly interpret CSS. This means developers must create a system to compile Sass files for their projects. Many code editors now come with built-in Sass compilation, which streamlines the process for developers.
+
+### Sass Simplifies Complex Styling Tasks
+
+[Using plain CSS](https://www.simplilearn.com/tutorials/css-tutorial/sass-css) to manage complex styling for a Hero Component might lead to repetitive code for similar elements. Sass simplifies this by using mixins for typical styles and variables for color schemes:
+
+- Reducing code duplication
+- Improving maintainability
+
+## Setting Up a React Project with CSS and Sass
+
+![React Hero Component](https://cdn.magicui.design/assets/cpob7xzq4oa.jpg)
+
+### Setting Up a Basic React Project with CSS
+
+#### 1\. Create a React Project
+
+Run the following command to create a new React application:
+
+```bash
+npx create-react-app my-app
+```
+
+#### 2\. Add CSS Files
+
+Create `.css` files inside your project’s `src` directory for styling.
+
+#### 3\. Import CSS
+
+[Import CSS files](https://www.w3schools.com/html/html_css.asp) into your React components using:
+
+```tsx
+import "./App.css";
+```
+
+#### 4\. Apply Styles
+
+Use class names in JSX to apply styles.
+
+### Setting Up a React Project with Sass
+
+#### 1\. Create a React Project
+
+Run the following command to create a new React application:
+
+```bash
+npx create-react-app my-app
+```
+
+#### 2\. Install Sass
+
+Execute `npm install sass` to add Sass support to your React project.
+
+#### 3\. Rename Files
+
+Change `.css` files to `.scss`.
+
+#### 4\. Import Sass 
+
+Import `.scss` files into React components with:
+
+```tsx
+import "./App.scss";
+```
+
+#### 5\. Compile Sass
+
+Sass compilation is handled automatically during development.
+
+### Structuring Stylesheets in a React Project
+
+It’s good practice to structure your stylesheets in a modular way. This helps keep your [React projects](https://www.geeksforgeeks.org/reactjs-components/) organized and easier to maintain.
+
+#### Component-Specific Styles 
+
+Create separate .scss or .css files for individual components to maintain modularity.
+
+#### Global Styles 
+
+Implement a global stylesheet (e.g., global.scss) for common styles and variables.
+
+#### Partial Files 
+
+In Sass, create partials (e.g., \_variables.scss) to organize reusable styles and import them where needed.
+
+## Styling the React Hero Component Using CSS
+
+![](https://cdn.magicui.design/assets/aq2ptyoxgqv.jpg)
+
+Styling a React Hero component using CSS is simple once you know how to do it. A Hero component is a significant, prominent component usually placed at the top of a website and contains eye-catching content encouraging users to take action.  Hero Components are often styled using CSS, which can be done in React just like in regular [HTML](https://en.wikipedia.org/wiki/HTML#).
+
+### Create a Hero Component in React
+
+To start, we need to create a Hero component. Below is an example of a simple Hero Component built with React.
+
+```javascript
+import React from "react";
+import "./Hero.css";
+
+const Hero = () => (
+  <div className="hero">
+        <h1 className="hero-title">Welcome to Our Website</h1>   {" "}
+    <p className="hero-subtitle">Discover amazing content</p>   {" "}
+    <button className="hero-cta">Get Started</button> {" "}
+  </div>
+);
+
+export default Hero;
+```
+
+The first step is to import React and create a functional component. Next, we define the structure of the Hero component. In this example, the Hero Component contains a title, a subtitle, and a call to action button. We export the component so we can import and use it in other files.
+
+### Define CSS Styles for the Hero Component 
+
+We must create a CSS file for the Hero Component styles. Below is an example of some CSS styles we can use to style the Hero Component.
+
+```javascript
+.hero {
+  background: url("hero-bg.jpg") no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #ddd;
+}
+
+.hero-cta {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+```
+
+Notice how the CSS targets specific classes we defined in the component. This is how we can [build and style](https://medium.com/@ryaddev/creating-a-stunning-hero-section-in-react-with-styled-components-e84d060f6cdc) a Hero Component in React.
+
+## Enhancing Hero Component Styling with Sass
+
+![React Hero Component](https://cdn.magicui.design/assets/x814wuhxj8g.jpg)
+
+Sass variables allow you to define reusable values for colors, fonts, spacing, and other design properties. Using variables ensures consistency across your styling and makes it easier to manage and update your design.
+
+### Color Variables
+
+Instead of hardcoding color values throughout your stylesheets, you can define them as variables. If you need to change a color, you only need to update it in one place rather than multiple [CSS rules](https://jenkov.com/tutorials/css/css-properties-css-rules.html). Set up a color scheme by defining variables for primary and secondary colors.
+
+You can then use these variables throughout your Hero Component to maintain a consistent color palette. This approach ensures that all elements share the same colors and that any updates to the color scheme are applied uniformly across the component.
+
+### Nesting Selectors for Cleaner Code
+
+Sass nesting allows you to organize related styles together, which enhances readability and maintainability. Instead of writing flat, repetitive CSS rules, you can nest selectors within their parent elements. This method mirrors the HTML structure, making the stylesheet:
+
+- More intuitive
+- Easier to navigate
+
+For a Hero Component, you might nest styles for the title, subtitle, and CTA buttons within the `.hero` class. This nesting clearly shows the relationship between these elements and their parent container, reducing redundancy and simplifying the management of complex styles.
+
+### Creating Reusable Mixins for Common Styles
+
+[Mixins in Sass](https://youtu.be/R5p-v-Ce9p4) enable you to define reusable chunks of CSS that can be applied to multiple elements. They are handy for consistently applying common styles like button styles, shadows, or padding throughout the component. Using mixins helps avoid repetition and ensures uniformity in styling.
+
+#### Button Mixin
+
+Create a mixin for consistent button styling that includes:
+
+- Padding
+- Background color
+- Border properties
+
+You can then include this mixin in various buttons within your Hero Component, ensuring all buttons have the same styling without duplicating code.
+
+###  Leveraging Sass Functions for Advanced Styling
+
+Sass functions allow you to perform calculations and create dynamic styles based on input values. They can be used for tasks like calculating responsive font sizes, spacing, or other design metrics based on screen size or other variables.
+
+You can use a Sass function to calculate responsive font sizes that adjust based on the viewport width. This dynamic approach ensures that text remains readable and visually appealing across:
+
+- Different devices
+- Screen sizes
+
+### Related Reading
+
+- [Portfolio Landing Page](https://magicui.design/blog/portfolio-landing-page)
+- [React Portfolio Template](https://magicui.design/blog/react-portfolio-template)
+- [NextJS Portfolio Template](https://magicui.design/blog/nextjs-portfolio-template)
+- [React Landing Page](https://magicui.design/blog/react-landing-page)
+- [Startup Landing Page](https://magicui.design/blog/startup-landing-page)
+- [Tailwind Portfolio Template](https://magicui.design/blog/tailwind-portfolio-template)
+- [Best Saas Landing Pages](https://magicui.design/blog/best-saas-landing-pages)
+- [React Header](https://magicui.design/blog/react-header)
+- [CTA Design](https://magicui.design/blog/cta-design)
+- [App Landing Page](https://magicui.design/blog/app-landing-page)
+- [Social Proof On Website](https://magicui.design/blog/social-proof-on-website)
+- [Hero Section Design](https://magicui.design/blog/hero-section-design)
+- [Waitlist Landing Page](https://magicui.design/blog/waitlist-landing-page)
+- [Best Web Developer Portfolios](https://magicui.design/blog/best-web-developer-portfolios)
+- [Nextjs Landing Page](https://magicui.design/blog/nextjs-landing-page)
+
+## Optimizing the Hero Component for Performance
+
+![React Hero Component](https://cdn.magicui.design/assets/7mmjh1p7pq9.jpg)
+
+### Lightweight Stylesheets Are Your Hero Component's Best Friend
+
+To improve performance, it's crucial to keep your stylesheets lightweight. This involves
+
+minifying CSS files to reduce size and removing unused styles to eliminate unnecessary code. Smaller files load faster, enhancing:
+
+- Page load times
+- Overall user experience
+
+Research shows that large CSS files can significantly impact page load times. For instance, reducing CSS file size by just 100 KB can improve load times by 1-2 seconds, depending on the user's internet speed.
+
+### Use Lazy Loading to Reduce Your Hero Component's Initial Load Time
+
+Lazy loading defers the loading of background images until they are needed, which helps improve initial [page load times](https://www.imperva.com/learn/performance/page-load-time/). By loading images only when they enter the viewport or are about to be viewed, you reduce the amount of data that needs to be loaded upfront, enhancing overall page performance.
+
+Implement lazy loading for the Hero Component's background image. Instead of loading the image with the initial page load, use a placeholder or a lower-resolution version until the user scrolls to the Hero Component.
+
+### Avoid Common CSS Pitfalls That Negatively Impact Performance
+
+[Common CSS mistakes](https://www.linkedin.com/pulse/navigating-pitfalls-common-css-mistakes-how-avoid-nitin-rachabathuni-e8sgc) can negatively impact performance. These include:
+
+- Excessive nesting leading to complex and inefficient CSS rules
+- Extensive media queries that slow-rendering
+
+Simplifying styles and reducing complexity help maintain performance. If a React application’s performance is impacted by excessive nesting, refactor the styles to reduce nesting levels and optimize media queries. This can lead to a more efficient rendering process and improved performance.
+
+## How to Create Scalable React Components with Styled Components
+
+![React Hero Component](https://cdn.magicui.design/assets/nuzq6zclff.jpg)
+
+[Styled Components](https://styled-components.com/) is a library for styling React components using CSS-in-JS. It allows you to create reusable and scalable UI components by combining JavaScript and CSS in a single file. Styled Components automatically handle the generation of unique class names to avoid style conflicts and ensure that styles are scoped to the components they are applied to.
+
+### Build Your Own React Hero Component with Styled Components
+
+One of the biggest benefits of using Styled Components in React is that it helps promote the development of scalable components. Each styled component you create encapsulates its style, which helps avoid global style conflicts. This makes it easier to manage and update styles as your application grows.
+
+If you want to build a _hero_ component for your application, using Styled Components can help ensure that this reusable [UI component](https://app.uxcel.com/courses/ui-components-n-patterns) is easy to maintain and will not cause styling issues later on.
+
+## Check Out Our React Component Library for Design Engineers
+
+[MagicUI](https://magicui.design/) is a free, open-source UI library that helps design engineers create stunning user interfaces for web applications. With its collection of over 20 animated components built with:
+
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+#### Animated Components
+
+This library focuses on interactive UI elements with a strong emphasis on animation. The result is a design-centric approach that helps bridge the gap between design and development, empowering engineers to craft captivating digital experiences. The highly customizable MagicUI components enable seamless adaptation to match any desired branding and design requirements.
+
+In addition to the free library, [MagicUI Pro](https://pro.magicui.design/docs/templates/startup) offers website templates that can help reduce time and costs. You can save thousands of hours using our startup landing page template to create a beautiful landing page and convert your visitors into customers.
+
+### Related Reading
+
+- [Landing Page Sections](https://magicui.design/blog/landing-page-sections)
+- [Interactive Landing Page](https://magicui.design/blog/interactive-landing-page)
+- [How To Display Testimonials On Website](https://magicui.design/blog/how-to-display-testimonials-on-website)
+- [Animated Landing Page](https://magicui.design/blog/animated-landing-page)
+- [Saas Landing Page Best Practices](https://magicui.design/blog/saas-landing-page-best-practices)
+- [How To Make An Animated Website](https://magicui.design/blog/how-to-make-an-animated-website)
+- [Landing Page Call To Action](https://magicui.design/blog/landing-page-call-to-action)
+- [Website Logo Examples](https://magicui.design/blog/website-logo-examples)
+- [How To Add Animation To Website](https://magicui.design/blog/how-to-add-animation-to-website)

@@ -194,6 +194,36 @@ const documents = defineCollection({
   },
 });
 
+const blogs = defineCollection({
+  name: "Blog",
+  directory: "content/blogs",
+  include: "**/*.mdx",
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    tag: z.string().optional(),
+    author: z.string().optional(),
+    publishedOn: z.string(),
+    featured: z.boolean().optional().default(false),
+  }),
+  transform: async (document, context) => {
+    const body = await compileMDX(context, document, {
+      remarkPlugins: [codeImport, remarkGfm],
+      rehypePlugins: [rehypeSlug, rehypeComponent],
+    });
+    return {
+      ...document,
+      slug: `/blog/${document._meta.path}`,
+      slugAsParams: document._meta.path,
+      body: {
+        raw: document.content,
+        code: body,
+      },
+    };
+  },
+});
+
 export default defineConfig({
-  collections: [documents, pages, showcase],
+  collections: [documents, pages, showcase, blogs],
 });

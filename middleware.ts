@@ -20,18 +20,18 @@ export default async function middleware(req: NextRequest) {
 
   if (pathname === "/engyne-sitemap.xml") {
     return NextResponse.rewrite(
-      new URL(pathname, `https://${engyneSubdomain}.engyne.page`),
+      new URL(pathname, `https://${engyneSubdomain}.engyne.page`)
     );
   }
 
-  if (pathname.startsWith("/blog") || pathname.startsWith("/tags")) {
+  if (pathname.startsWith("/blogs") || pathname.startsWith("/tag")) {
     return NextResponse.rewrite(
-      new URL(pathname, `https://${engyneSubdomain}.engyne.page`),
+      new URL(pathname, `https://${engyneSubdomain}.engyne.page`)
     );
   }
   if (pathname.startsWith("/_engyne")) {
     return NextResponse.rewrite(
-      new URL(pathname, `https://${engyneSubdomain}.engyne.page`),
+      new URL(pathname, `https://${engyneSubdomain}.engyne.page`)
     );
   }
 
