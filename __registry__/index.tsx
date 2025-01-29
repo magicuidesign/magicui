@@ -57,7 +57,6 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: [],
     },
-<<<<<<< HEAD
     "aurora-text": {
       name: "aurora-text",
       type: "registry:ui",
@@ -65,7 +64,12 @@ export const Index: Record<string, any> = {
       files: ["registry/default/magicui/aurora-text.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/aurora-text.tsx"),
-=======
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
     terminal: {
       name: "terminal",
       type: "registry:ui",
@@ -73,7 +77,32 @@ export const Index: Record<string, any> = {
       files: ["registry/default/magicui/terminal.tsx"],
       component: React.lazy(
         () => import("@/registry/default/magicui/terminal.tsx"),
->>>>>>> 0db000c (feat: adding terminal component)
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    terminal: {
+      name: "terminal",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/terminal.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/terminal.tsx"),
+      ),
+      source: "",
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: [],
+    },
+    "morphing-text": {
+      name: "morphing-text",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["registry/default/magicui/aurora-text.tsx"],
+      component: React.lazy(
+        () => import("@/registry/default/magicui/aurora-text.tsx"),
       ),
       source: "",
       category: "undefined",
