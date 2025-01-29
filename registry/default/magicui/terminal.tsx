@@ -2,9 +2,9 @@
 
 import { cn } from "@/lib/utils";
 import { motion, MotionProps } from "motion/react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-interface AnimatedSpanProps {
+interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
@@ -14,12 +14,14 @@ export const AnimatedSpan = ({
   children,
   delay = 0,
   className,
+  ...props
 }: AnimatedSpanProps) => (
   <motion.div
     initial={{ opacity: 0, y: -5 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3, delay: delay / 1000 }}
     className={cn("grid text-sm font-normal tracking-tight", className)}
+    {...props}
   >
     {children}
   </motion.div>
@@ -36,11 +38,15 @@ interface TypingAnimationProps extends MotionProps {
 export const TypingAnimation = ({
   children,
   className,
-  duration = 100,
+  duration = 60,
   delay = 0,
   as: Component = "span",
   ...props
 }: TypingAnimationProps) => {
+  if (typeof children !== "string") {
+    throw new Error("TypingAnimation: children must be a string. Received:");
+  }
+
   const MotionComponent = motion.create(Component, {
     forwardMotionProps: true,
   });
@@ -94,7 +100,7 @@ export const Terminal = ({ children, className }: TerminalProps) => {
   return (
     <div
       className={cn(
-        "z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-border bg-background",
+        "z-0 h-full max-h-[400px] w-full max-w-lg rounded-xl border border-border bg-background",
         className,
       )}
     >
@@ -106,7 +112,7 @@ export const Terminal = ({ children, className }: TerminalProps) => {
         </div>
       </div>
       <pre className="p-4">
-        <code className="grid gap-y-2">{children}</code>
+        <code className="grid gap-y-1 overflow-auto">{children}</code>
       </pre>
     </div>
   );
