@@ -49,6 +49,19 @@
     ]
   },
   {
+    "name": "terminal",
+    "type": "registry:ui",
+    "dependencies": [
+      "motion"
+    ],
+    "files": [
+      {
+        "path": "magicui/terminal.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "aurora-text",
     "type": "registry:ui",
     "dependencies": [
