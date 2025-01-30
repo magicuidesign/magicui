@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import React, {
   ComponentPropsWithoutRef,
@@ -26,10 +27,18 @@ export function AnimatedListItem({ children }: { children: React.ReactNode }) {
 export interface AnimatedListProps extends ComponentPropsWithoutRef<"div"> {
   children: React.ReactNode;
   delay?: number;
+  /** When true, the animation restarts after running through the list. */
+  repeating?: boolean;
 }
 
 export const AnimatedList = React.memo(
-  ({ children, className, delay = 1000, ...props }: AnimatedListProps) => {
+  ({
+    children,
+    className,
+    delay = 1000,
+    repeating,
+    ...props
+  }: AnimatedListProps) => {
     const [index, setIndex] = useState(0);
     const childrenArray = useMemo(
       () => React.Children.toArray(children),
@@ -37,14 +46,14 @@ export const AnimatedList = React.memo(
     );
 
     useEffect(() => {
-      if (index < childrenArray.length - 1) {
+      if (index < childrenArray.length - 1 || repeating) {
         const timeout = setTimeout(() => {
-          setIndex((prevIndex) => prevIndex + 1);
+          setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length);
         }, delay);
 
         return () => clearTimeout(timeout);
       }
-    }, [index, delay, childrenArray.length]);
+    }, [index, delay, childrenArray.length, repeating]);
 
     const itemsToShow = useMemo(() => {
       const result = childrenArray.slice(0, index + 1).reverse();
@@ -53,7 +62,7 @@ export const AnimatedList = React.memo(
 
     return (
       <div
-        className={`flex flex-col items-center gap-4 ${className}`}
+        className={cn("flex flex-col items-center gap-4", className)}
         {...props}
       >
         <AnimatePresence>

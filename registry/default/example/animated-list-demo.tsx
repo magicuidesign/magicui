@@ -16,7 +16,6 @@ let notifications = [
     name: "Payment received",
     description: "Magic UI",
     time: "15m ago",
-
     icon: "💸",
     color: "#00C9A7",
   },
@@ -94,7 +93,7 @@ export default function AnimatedListDemo({
         className,
       )}
     >
-      <AnimatedList>
+      <AnimatedList repeating>
         {notifications.map((item, idx) => (
           <Notification {...item} key={idx} />
         ))}
