@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import { allBlogs } from "content-collections";
 import type { Blog } from "content-collections";
+import { allBlogs } from "content-collections";
 import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 export function getReadingTime(text: string): number {
   const wordsPerMinute = 200;
@@ -10,7 +10,7 @@ export function getReadingTime(text: string): number {
   return Math.ceil(words / wordsPerMinute);
 }
 
-function getRelatedPosts(currentPost: Blog, limit: number = 3) {
+function getRelatedPosts(currentPost: Blog, limit = 3) {
   return allBlogs
     .filter((post) => post._meta.path !== currentPost._meta.path)
     .slice(0, limit);
