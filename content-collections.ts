@@ -214,6 +214,15 @@ const blog = defineCollection({
         rehypeSlug,
         rehypeComponent,
         [rehypePrettyCode, prettyCodeOptions],
+        [
+          rehypeAutolinkHeadings,
+          {
+            properties: {
+              className: ["subheading-anchor"],
+              ariaLabel: "Link to section",
+            },
+          },
+        ],
       ],
     });
     return {

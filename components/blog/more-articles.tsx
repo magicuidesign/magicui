@@ -30,6 +30,7 @@ export default function MoreArticles({ currentPost }: { currentPost: Blog }) {
           <Link
             key={post._meta.path}
             href={`/blog/${post._meta.path}`}
+            title={post.title}
             className="group flex flex-col"
           >
             <div className="relative overflow-hidden rounded-xl border border-border">
