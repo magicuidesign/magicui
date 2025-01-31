@@ -1,11 +1,11 @@
-import { allDocs, allPages } from "content-collections";
-import { MetadataRoute } from "next";
+import { allBlogs, allDocs, allPages } from "content-collections";
+import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const headersList = headers();
-  let domain = headersList.get("host") as string;
-  let protocol = "https";
+  const domain = headersList.get("host") as string;
+  const protocol = "https";
 
   return [
     {
@@ -19,6 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...allDocs.map((post) => ({
       url: `${protocol}://${domain}/docs/${post.slugAsParams}`,
       lastModified: post.date,
+    })),
+    ...allBlogs.map((post) => ({
+      url: `${protocol}://${domain}/blog/${post.slugAsParams}`,
+      lastModified: post.publishedOn,
     })),
   ];
 }
