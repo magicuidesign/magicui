@@ -15,6 +15,7 @@ export function SiteFooter() {
           Brought to you by{" "}
           <a
             href={siteConfig.links.twitter}
+            title="Twitter"
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"

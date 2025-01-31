@@ -1,0 +1,149 @@
+---
+title: "How to set Border Radius in Tailwind using React and Typescript"
+description: "Learn how to set border radius in Tailwind using React and Typescript with this comprehensive guide."
+image: https://cdn.magicui.design/assets/d71b5583-8832-4504-978d-f6f635d23d73.png
+author: Dillion Verma
+tag: Tailwind CSS
+publishedOn: 2024-06-03T12:10:44.253Z
+featured: false
+---
+
+Humans love circles. [According to BBC Science](https://www.sciencefocus.com/science/why-do-we-find-circles-so-beautiful), soft corners give off a feeling of safety, whereas sharp corners suggest threat and injury. It's no wonder that this phenomenon has surfaced in modern web design, where users highly prefer rounded elements over sharp ones.
+
+Do you ever look at a site from pre-2010 and gasp at the sharp buttons all over the place? Yep, me too. If you can master the border-radius, you can up-level your designs in minutes. Tailwind makes this even easier.
+
+In this blog post, I'll guide you through setting border-radius in Tailwind using React. Whether you're a seasoned developer or just starting out, this guide will help you effortlessly create visually appealing and consistent designs.
+
+## What is Border Radius in Tailwind CSS?
+
+Tailwind provides utility classes out of the box to apply [CSS' border-radius property](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius). Typically, you can apply any pixel amount of rounding, but Tailwind provides a common set that really helps with consistency across your designs.
+
+These include:
+
+- `rounded` - Applies a small border radius.
+- `rounded-lg` - Applies a larger border radius.
+- `rounded-full` - Makes the element a perfect circle if its height and width are equal.
+- `rounded-none` - Removes all rounded styling from the element. Best used when you want to override base roundedness on hover or responsive screen width change.
+
+## Setting Up Tailwind CSS in a React Project
+
+First, make sure that your React project has Tailwind CSS properly configured. Need help? We've written a full step-by-step guide on [how to install all the necessary packages for React here](/blog/install-tailwind-react).
+
+## Create a React Button component
+
+Let's add a button to the `App.tsx`. We will apply just the base level of roundedness with `rounded`.
+
+```tsx
+import "./App.css";
+import "./index.css";
+function App() {
+  return (
+    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
+      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+        'rounded'
+      </button>
+    </div>
+  );
+}
+export default App;
+```
+
+When rendered, this is what the button looks like - very aesthetically pleasing, right?
+
+![4 Tailwind buttons with varying border radius](https://cdn.magicui.design/assets/sh6gjuuht5.png)
+
+Let's add more rounded variations and see side-by-side how they compare.
+
+```tsx
+import "./App.css";
+import "./index.css";
+function App() {
+  return (
+    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
+      <button className="bg-blue-500 text-white px-4 py-2">
+        No Round Corners
+      </button>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+        'rounded' Corners
+      </button>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+        'rounded-md' Corners
+      </button>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-full">
+        'rounded-full' Corners
+      </button>
+    </div>
+  );
+}
+export default App;
+```
+
+Notice the different rounded utility classes added to each button element.
+
+![4 Tailwind buttons with varying border radius](https://cdn.magicui.design/assets/4hgdkrd90qv.png)
+
+## Modify Border Radius on hover
+
+When creating complex layouts, you can add more interactivity to your elements by modifying the border radius on hover.
+
+Here's a sample React card that has `rounded-lg` applied at the start but when the user hovers over it, it changes to `rounded-none` giving the element sharp edges.
+
+```tsx
+import "./App.css";
+import "./index.css";
+function App() {
+  return (
+    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
+      <div className="bg-white p-6 rounded-lg shadow-md hover:rounded-none">
+        <h2 className="text-xl font-bold">Card Title</h2>
+        <p className="text-gray-700">This is a card with a border radius.</p>
+      </div>
+    </div>
+  );
+}
+export default App;
+```
+
+This is what it looks like when rendered:
+
+![4 Tailwind buttons with varying border radius](https://cdn.magicui.design/assets/n88hvbhn9k.png)
+
+## Creating Responsive Design
+
+As with all the classes in Tailwind, you can apply different rounded classes based on what width screen the user is on.
+
+For smaller screens, the card below will have medium roundedness applied. It will switch to Large [at the Medium breakpoint](https://tailwindcss.com/docs/screens) and then stay Extra Large for all of the bigger screens.
+
+```tsx
+import "./App.css";
+import "./index.css";
+function App() {
+  return (
+    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
+      <div className="bg-white p-6 rounded-md md:rounded-lg lg:rounded-xl shadow-md">
+        <h2 className="text-xl font-bold">Responsive Card Title</h2>
+        <p className="text-gray-700">
+          This card adjusts its border radius based on the screen size.
+        </p>
+      </div>
+    </div>
+  );
+}
+export default App;
+```
+
+## Next Steps
+
+Now that you've learned how to set border radius in Tailwind using React, it's time to put that knowledge to use. Here are a few ideas to help you continue building your skills:
+
+- Experiment with Different Border Radii: Try out different values for the border-radius classes like `rounded-lg`, `rounded-full`, or `rounded-md`. See how they change the look of your components.
+
+- Combine with Other Tailwind Classes: Mix and match border radius with other Tailwind classes such as padding, margin, and colors. This will give you a better sense of how different utilities work together.
+
+- Create Custom Components: Use your new skills to create reusable React components with different border radii. We have written guides on using [Grid](https://magicui.design/blog/tailwind-css-grid) and [Font Sizes](https://magicui.design/blog/tailwind-font-size) in React that you can explore.
+
+- Practice by Building a Project: Start a small project, like a personal portfolio or a simple web app. Apply what you've learned about border radius in a real-world scenario.
+
+- Share Your Work: Post your creations on platforms like GitHub, CodePen, or your personal blog. Getting feedback from others can help you improve and learn new tricks.
+
+Keep experimenting and building, and you'll become more comfortable using Tailwind with React in no time. Happy coding!

@@ -1,0 +1,193 @@
+---
+title: "How to Install and Configure Tailwind CSS in React and Typescript [Updated 2024]"
+description: "Learn how to install and configure Tailwind CSS in React and Typescript with this comprehensive guide."
+image: https://cdn.magicui.design/assets/ae030c2c-427f-4ccf-8050-8a9d44c1d7d8.png
+author: Dillion Verma
+tag: Tailwind CSS
+publishedOn: 2024-06-01T14:53:56.784Z
+featured: false
+---
+
+I used to juggle around 100 different CSS files for all my projects. Each had a unique name, and maintaining them was a nightmare. Then, I discovered Tailwind CSS. The standardized style names were a dream to work with. Plus, their beautifully designed site didn't hurt either.
+
+Are you struggling with CSS chaos in your React and TypeScript projects? You're not alone.
+
+In this updated guide, I'll show you how to install and configure Tailwind CSS in a React and TypeScript setup. We'll cover everything from initializing your project to optimizing your Tailwind and TypeScript setup.
+
+Ready to transform your workflow? Let's dive in!
+
+## Getting Started: Setting Up Your React and Typescript Project
+
+First, let's initialize a new React project using Create React App with the TypeScript template. Open your terminal and run the following command:
+
+```javascript
+    npx create-react-app my-tailwind-app --template typescript
+```
+
+This command will set up a new React project with TypeScript pre-configured. The process may take a few minutes.
+
+![Console output from creating the React project](https://cdn.magicui.design/assets/vrszx8yz95j.png)
+
+Once it's done, navigate to your project directory:
+
+```javascript
+    cd my-tailwind-app
+```
+
+Next, ensure you have all the necessary dependencies installed. Create React App already includes React and React-DOM, but it's good practice to check for updates:
+
+```javascript
+    npm install react react-dom typescript @types/react @types/react-dom
+```
+
+Now you are good to run your development server with:
+
+```javascript
+    npm run start
+```
+
+Your browser should open up, and the sample React page should show http://localhost:3000.
+
+Now that we have React going, let's set up Tailwind next.
+
+---
+
+See related:
+
+- [How to create responsive Typography with React and Tailwind](/blog/tailwind-font-size)
+- [How to create a grid layout in Tailwind with React](/blog/tailwind-css-grid)
+
+## Installing Tailwind CSS: Quick and Easy Steps
+
+To get Tailwind CSS up and running, you need to install it along with its peer dependencies. Run the following command:
+
+```javascript
+    npm install tailwindcss postcss autoprefixer
+```
+
+PostCSS lets Tailwind generate CSS using JS code. This is really handy because you as the Developer can specify custom rules and configurations to your Tailwind setup and get exactly the right utility classes built for you at runtime.
+
+AutoPrefixer applies vendor prefixes like `webkit-` and `-moz-` given a CSS file. This way you can be sure that your CSS is compatible cross-browser.
+
+Next, create and configure the Tailwind configuration files. This file will allow you to customize Tailwind to suit your project's needs.
+
+```javascript
+    npx tailwindcss init -p
+```
+
+This command will create two new files in your project root: `tailwind.config.js` and `postcss.config.js`.
+
+Edit the `tailwind.config.js` to include:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+Now, include Tailwind in your CSS by importing it into your main CSS file. Open `src/index.css` and replace its contents with:
+
+```
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+```
+
+This will import Tailwind’s base styles, components, and utility classes into your project.
+
+To make sure it's included for our entire project, import it into the `App.tsx` like so:
+
+```javascript
+import "./index.css";
+```
+
+Now we're ready to start playing around with Tailwind. About time right?
+
+## Create your first React component with React
+
+Let's test out our Tailwind setup and make it work. Create a new file in `components/Card.tsx`
+
+```javascript
+    import { FC } from "react";
+    const Card: FC<any> = () => {
+      return (
+        <div className="max-w-sm rounded overflow-hidden shadow-md bg-white">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">Mountain Sunset</div>
+            <p className="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
+              quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
+              nihil.
+            </p>
+          </div>
+          <div className="px-6 pt-4 pb-2">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              #photography
+            </span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              #travel
+            </span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">
+              #winter
+            </span>
+          </div>
+        </div>
+      );
+};
+export default Card;
+```
+
+Now, we can import this into the `App.tsx` file:
+
+```javascript
+import "./App.css";
+import Card from "./components/Card";
+import "./index.css";
+function App() {
+  return (
+    <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100">
+      <Card />
+    </div>
+  );
+}
+export default App;
+```
+
+Start the server with `npm run start` and verify that your screen looks like below.
+
+If yes - Congratulations! You've successfully set up Tailwind CSS for your React project. If you're running into issues, try going back to the first step to make sure you're not missing something.
+
+![A card built using Tailwind CSS](https://cdn.magicui.design/assets/kxe4a5bo3v.png)
+
+## Optimizing Your Tailwind Setup for Production
+
+Tailwind typically creates many utility classes for all the available CSS properties under the hood. This is great for a Development run but not so much for a Production build since every byte sent over the wire that isn't needed is entirely wasted.
+
+Well, Tailwind lets you purge all the unused CSS so you can ship your project without any extra bloat.
+
+To set this up, edit your `postcss.config.js` with:
+
+```javascript
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    ...(process.env.NODE_ENV === "production"
+      ? {
+          cssnano: {},
+        }
+      : {}),
+  },
+};
+```
+
+This will purge your Tailwind classes but only in Production. In Dev, you keep all of them to make it easier to play around with styling.
+
+## Next Steps
+
+Now that you know how Tailwind works (and how much better than vanilla CSS it is), you can start migrating all your vanilla CSS with Tailwind utility classes. There's even a great [CSS to Tailwind converter tool here](https://transform.tools/css-to-tailwind) that makes this an easy job.
