@@ -18,7 +18,7 @@ MagicUI is your solution, offering the [React component library](https://magicui
 
 Material UI is a React-based UI framework designed to create consistent user interfaces across web and mobile applications. It includes many components and tools to help developers easily create modern user interfaces.
 
-It’s a one-stop solution for developers, providing a comprehensive library of components and tools to create modern user interfaces easily. From input to layout components, it has everything you need. The Material [UI card](https://mui.com/material-ui/react-card/) is an example of the Material UI surfaces.
+It's a one-stop solution for developers, providing a comprehensive library of components and tools to create modern user interfaces easily. From input to layout components, it has everything you need. The Material [UI card](https://mui.com/material-ui/react-card/) is an example of the Material UI surfaces.
 
 ## What Is Material UI Card?
 
@@ -69,9 +69,9 @@ Material UI, a component library in React, has many components. Paper is a compo
 ### Paper
 
 - Named after physical sheets of paper
-- Doesn’t extend any component; instead serves as a base for the Card component.
-- Doesn’t have any specific child components
-- Doesn’t have a set shadow or elevation
+- Doesn't extend any component; instead serves as a base for the Card component.
+- Doesn't have any specific child components
+- Doesn't have a set shadow or elevation
 
 In other words, Paper is the base from which the Card component is built. This also shows that Papers are more dynamic than Cards.
 
@@ -134,14 +134,13 @@ The CardMedia component in Material UI allows adding images, videos, icons, and 
 
 The CardContent component is used to wrap the core contents of the Card component. The code snippet below illustrates how to use the CardContent component:
 
-````jsx
+```jsx
 import { CardContent } from "@mui/material";
 import Card from "@mui/material/Card";
 <Card>
-  <CardContent>
-    {/* Card Contents */}
-  </CardContent>
+  <CardContent>{/* Card Contents */}</CardContent>
 </Card>;
+```
 
 ### CardActions
 
@@ -155,6 +154,7 @@ import Card from "@mui/material/Card";
     <Button>Click here</Button>
   </CardActions>
 </Card>;
+```
 
 ## Getting Started With Material UI Card
 
@@ -178,7 +178,7 @@ import {
   CardActions,
   CardContent,
   Button,
-  Typography
+  Typography,
 } from "@mui/material";
 import "./styles.css";
 
@@ -199,7 +199,8 @@ const BasicCard = () => {
           variant="h5"
           color="text.secondary"
         >
-          "MagicUI is a free and open-source UI library that we designed specifically for design engineers."
+          "MagicUI is a free and open-source UI library that we designed
+          specifically for design engineers."
         </Typography>
         <Typography sx={{ mb: 1 }} variant="body2">
           "Best UI Library" by MagicUI.
@@ -367,4 +368,3 @@ This allows for the creation of captivating digital experiences with minimal eff
 With [MagicUI](https://magicui.design/), you can save thousands of hours and effortlessly create beautiful landing pages to enhance user experiences and elevate your online presence. Embrace the power of MagicUI today and unlock a world of possibilities for creating visually appealing web applications.
 
 Visit [https://magicui.design/docs](https://magicui.design/docs) and use our free [React component library](https://magicui.design/) to enhance your UI design efforts.
-````

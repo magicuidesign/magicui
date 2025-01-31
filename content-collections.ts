@@ -210,7 +210,11 @@ const blogs = defineCollection({
   transform: async (document, context) => {
     const body = await compileMDX(context, document, {
       remarkPlugins: [codeImport, remarkGfm],
-      rehypePlugins: [rehypeSlug, rehypeComponent],
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeComponent,
+        [rehypePrettyCode, prettyCodeOptions],
+      ],
     });
     return {
       ...document,

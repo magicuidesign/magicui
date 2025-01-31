@@ -107,7 +107,7 @@ export default function BoxExample() {
 
 In the following example, a Box component is imported from the Material-UI library, and a basic function component is created that renders a box with the component prop set to section. The box includes some margin around it.
 
-````jsx
+```jsx
 import React from "react";
 import ReactDOM from "react-dom";
 import { Box } from "@material-ui/core";
@@ -138,9 +138,9 @@ The Box component in Material-UI can be styled using a shortcut prop called sx. 
 The backgroundColor and margin of the Box element, for instance, might be set using the sx prop as follows:
 
 ```jsx
-<Box component="span" sx={{ backgroundColor: 'primary.main', margin: 1 }}>
+<Box component="span" sx={{ backgroundColor: "primary.main", margin: 1 }}>
   This is a box with a primary color background and a small margin
-</Box>;
+</Box>
 ```
 
 The backgroundColor is set to the primary.main color specified by the Material-UI theme in the prior example, and the margin is set to 1 to correspond to the theme’s small margin size.
@@ -195,16 +195,16 @@ On the other hand, the Typography component can display text in various forms, i
 
 ![MUI Box](https://cdn.magicui.design/assets/z01ubapdoyq.jpg)
 
-The Box component in MUI serves as a wrapper element for your components. By default, it generates a new DOM element, specifically a <div>. This default functionality can be altered by utilizing the component prop. For instance, if you wish to utilize a `<span>` instead, you can simply set the component prop to "span":
+The Box component in MUI serves as a wrapper element for your components. By default, it generates a new DOM element, specifically a `<div>`. This default functionality can be altered by utilizing the component prop. For instance, if you wish to utilize a `<span>` instead, you can simply set the component prop to "span":
 
 ```jsx
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 export default function BoxComponent() {
   return (
-    <Box component="span" sx={{ p: 2, border: '1px dashed grey' }}>
+    <Box component="span" sx={{ p: 2, border: "1px dashed grey" }}>
       <Button>Save</Button>
     </Box>
   );
@@ -247,4 +247,3 @@ MagicUI aims to bridge the gap between design and development. With a focus on a
 [MagicUI](https://magicui.design/) components are highly customizable, allowing seamless adaptation to match desired branding and design requirements. The library's goal is to empower users to craft captivating digital experiences. In addition to the free component library, MagicUI Pro offers templates for creating beautiful landing pages that can convert visitors into customers.
 
 Are you ready to save thousands of hours and create a stunning user interface? Delve into the MagicUI [React component library](https://magicui.design/) for free today at [https://magicui.design/docs](https://magicui.design/docs).
-````
