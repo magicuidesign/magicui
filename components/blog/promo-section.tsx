@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function PromoSection() {
   return (
@@ -15,12 +15,8 @@ export default function PromoSection() {
         30+ beautiful sections and templates built with React, Typescript,
         Tailwind CSS, and Framer Motion.
       </p>
-      <Button
-        variant="outline"
-        asChild
-        className="flex w-full items-center justify-center bg-white text-indigo-600"
-      >
-        <Link href="/">
+      <Button variant="default" asChild className="w-full">
+        <Link href="https://pro.magicui.design">
           Get Pro
           <ArrowRightIcon className="ml-2 h-4 w-4" />
         </Link>
