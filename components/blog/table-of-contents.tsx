@@ -53,7 +53,7 @@ export default function BlogTableOfContents({
       {
         rootMargin: "-100px 0px -66%",
         threshold: [0, 1],
-      }
+      },
     );
 
     const headingElements =
@@ -63,7 +63,8 @@ export default function BlogTableOfContents({
     // Also update active heading on scroll
     const onScroll = () => {
       const headings = Array.from(
-        document.querySelector(".article-content")?.querySelectorAll("h2") || []
+        document.querySelector(".article-content")?.querySelectorAll("h2") ||
+          [],
       );
       const middle = window.innerHeight / 2;
 
@@ -107,7 +108,7 @@ export default function BlogTableOfContents({
           headings.map((heading, i) => {
             // Get the actual heading element to check its ID
             const headingElement = document.querySelector(
-              `.article-content h2:nth-of-type(${i + 1})`
+              `.article-content h2:nth-of-type(${i + 1})`,
             );
             const headingId = headingElement?.id || generateHeadingId(heading);
             const isActive = activeHeading === headingId;
