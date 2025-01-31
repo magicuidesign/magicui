@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 
-import { allBlogs } from "content-collections";
-import { MDXContent } from "@content-collections/mdx/react";
-import { ComponentProps } from "react";
-import BlogTableOfContents from "@/components/blog/table-of-contents";
-import PromoSection from "@/components/blog/promo-section";
 import MoreArticles, { getReadingTime } from "@/components/blog/more-articles";
-import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
-import type { Metadata } from "next";
+import PromoSection from "@/components/blog/promo-section";
+import BlogTableOfContents from "@/components/blog/table-of-contents";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
+import { MDXContent } from "@content-collections/mdx/react";
+import { allBlogs } from "content-collections";
+import { ArrowLeftIcon } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import type { ComponentProps } from "react";
 
 const components = {
   h1: ({ children, ...props }: ComponentProps<"h1">) => (
@@ -140,9 +140,9 @@ const components = {
 export async function generateMetadata({
   params,
 }: {
-  params: { slugs: string[] };
+  params: { slug: string[] };
 }): Promise<Metadata> {
-  const postSlug = Array.isArray(params.slugs) ? params.slugs[0] : params.slugs;
+  const postSlug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   const post = allBlogs.find((post) => post._meta.path === postSlug);
 
   if (!post) {
@@ -176,12 +176,12 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPage({ params }: { params: { slugs: string[] } }) {
-  const { slugs } = params;
+export default function BlogPage({ params }: { params: { slug: string[] } }) {
+  const { slug } = params;
 
-  const postSlug = Array.isArray(slugs) ? slugs[0] : slugs;
+  const postSlug = Array.isArray(slug) ? slug[0] : slug;
   const currentIndex = allBlogs.findIndex(
-    (post) => post._meta.path === postSlug
+    (post) => post._meta.path === postSlug,
   );
   const post = allBlogs[currentIndex];
 

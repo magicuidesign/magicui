@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { allBlogs } from "content-collections";
-import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { allBlogs } from "content-collections";
 import { Search } from "lucide-react";
+import { useState } from "react";
 
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200;
@@ -17,7 +17,7 @@ export default function BlogPage() {
 
   // Get unique tags and filter out undefined
   const tags = Array.from(
-    new Set(allBlogs.map((blog) => blog.tag).filter(Boolean))
+    new Set(allBlogs.map((blog) => blog.tag).filter(Boolean)),
   ).sort();
 
   // Get featured posts
@@ -109,6 +109,7 @@ export default function BlogPage() {
         {/* Tag filters */}
         <div className="flex flex-wrap gap-2">
           <button
+            type="button"
             onClick={() => setSelectedTag(null)}
             className={`rounded-full border border-border px-3 py-1 text-sm transition-colors ${
               selectedTag === null
@@ -121,6 +122,7 @@ export default function BlogPage() {
           {tags.map((tag) => (
             <button
               key={tag}
+              type="button"
               onClick={() => tag && setSelectedTag(tag)}
               className={`rounded-full border border-border px-3 py-1 text-sm transition-colors ${
                 selectedTag === tag
