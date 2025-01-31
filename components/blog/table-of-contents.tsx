@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useEffect, useState } from "react";
 
 // Helper function to generate consistent IDs
 const generateHeadingId = (text: string) => {
@@ -120,7 +120,7 @@ export default function BlogTableOfContents({
                 onClick={() => handleClick(headingId)}
                 className={`flex items-center gap-2 text-[15px] font-medium tracking-tight transition-colors ${
                   isActive
-                    ? "text-purple-600"
+                    ? "text-primary"
                     : "text-muted-foreground hover:text-primary"
                 }`}
               >

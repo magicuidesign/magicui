@@ -194,9 +194,9 @@ const documents = defineCollection({
   },
 });
 
-const blogs = defineCollection({
+const blog = defineCollection({
   name: "Blog",
-  directory: "content/blogs",
+  directory: "content/blog",
   include: "**/*.mdx",
   schema: (z) => ({
     title: z.string(),
@@ -229,5 +229,5 @@ const blogs = defineCollection({
 });
 
 export default defineConfig({
-  collections: [documents, pages, showcase, blogs],
+  collections: [documents, pages, showcase, blog],
 });

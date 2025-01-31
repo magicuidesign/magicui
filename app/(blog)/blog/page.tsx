@@ -3,6 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { allBlogs } from "content-collections";
 import { Search } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 function calculateReadingTime(content: string): number {
@@ -154,7 +155,7 @@ export default function BlogPage() {
               key={blog._meta.path}
               className="relative p-4 before:absolute before:-left-1 before:top-0 before:z-10 before:h-screen before:w-[1px] before:bg-border before:content-[''] after:absolute after:-top-1 after:left-0 after:z-10 after:h-[1px] after:w-screen after:bg-border after:content-['']"
             >
-              <a
+              <Link
                 href={`/blog/${blog._meta.path}`}
                 className="group grid grid-rows-1"
               >
@@ -176,7 +177,7 @@ export default function BlogPage() {
                     <span>{calculateReadingTime(blog.body.raw)} min read</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
