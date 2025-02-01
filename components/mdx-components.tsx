@@ -314,13 +314,14 @@ const components = {
 interface MDXProps {
   code: string;
   className?: string;
+  style?: React.CSSProperties
 }
 
-export function Mdx({ code, className }: MDXProps) {
+export function Mdx({ code, className, style }: MDXProps) {
   const Component = useMDXComponent(code);
 
   return (
-    <article className={cn("mx-auto max-w-[120ch]", className)}>
+    <article className={cn("mx-auto max-w-[120ch]", className)} style={style}>
       <Component components={components} />
     </article>
   );

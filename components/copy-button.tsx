@@ -79,12 +79,14 @@ interface CopyWithClassNamesProps extends DropdownMenuTriggerProps {
   value: string;
   classNames: string;
   className?: string;
+  style? : React.CSSProperties;
 }
 
 export function CopyWithClassNames({
   value,
   classNames,
   className,
+  style,
   ...props
 }: CopyWithClassNamesProps) {
   const [hasCopied, setHasCopied] = React.useState(false);
@@ -110,6 +112,7 @@ export function CopyWithClassNames({
             "relative z-10 size-6 text-zinc-50 hover:bg-zinc-700 hover:text-zinc-50",
             className,
           )}
+          style={style}
         >
           {hasCopied ? (
             <CheckIcon className="size-3" />

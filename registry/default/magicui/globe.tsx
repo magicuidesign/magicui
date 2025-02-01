@@ -36,9 +36,11 @@ const GLOBE_CONFIG: COBEOptions = {
 export function Globe({
   className,
   config = GLOBE_CONFIG,
+  style,
 }: {
   className?: string;
   config?: COBEOptions;
+  style?: React.CSSProperties;
 }) {
   let phi = 0;
   let width = 0;
@@ -99,6 +101,7 @@ export function Globe({
         "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[600px]",
         className,
       )}
+      style={style}
     >
       <canvas
         className={cn(

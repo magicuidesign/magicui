@@ -39,6 +39,7 @@ export function BlurFade({
   inView = false,
   inViewMargin = "-50px",
   blur = "6px",
+  style,
 }: BlurFadeProps) {
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
@@ -71,6 +72,7 @@ export function BlurFade({
           ease: "easeOut",
         }}
         className={className}
+        style={style}
       >
         {children}
       </motion.div>

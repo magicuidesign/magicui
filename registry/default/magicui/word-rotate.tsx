@@ -10,6 +10,7 @@ interface WordRotateProps {
   duration?: number;
   motionProps?: MotionProps;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export function WordRotate({
@@ -22,6 +23,7 @@ export function WordRotate({
     transition: { duration: 0.25, ease: "easeOut" },
   },
   className,
+  style,
 }: WordRotateProps) {
   const [index, setIndex] = useState(0);
 
@@ -41,6 +43,7 @@ export function WordRotate({
           key={words[index]}
           className={cn(className)}
           {...motionProps}
+          style={style}
         >
           {words[index]}
         </motion.h1>

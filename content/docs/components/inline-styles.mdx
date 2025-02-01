@@ -42,5 +42,23 @@ The style prop has been added to the following component interfaces (3 total):
 - ImageProps in blur-image.tsx
 - BlurFadeProps in blur-fade.tsx
 - GradientBlurProps in gradient-blur.tsx
+- CopyWithClassNamesProps in copy-button.tsx
 
-This enhancement ensures consistent style handling across all major components while maintaining type safety.
+## Update - February 1, 2025 - 6:00 PM EST
+
+Enhanced component styling capabilities by implementing MORE style prop support across multiple components:
+
+- Added style prop implementation to:
+  - BlurFade
+  - Copy-button
+  - MDX-components
+  - Flip-Text
+  - Shine-Border
+  - Word-Rotate
+
+Theses implementation properly forwards style props to underlying elements, ensuring consistent and reliable application of dynamic styles. This enhancement maintains full TypeScript type safety through proper interface inheritance.
+
+Note: Components already implementing React.HTMLAttributes<HTMLElement> or similar interfaces inherently support style props and were left unchanged to maintain existing functionality.
+
+These changes improve component flexibility while preserving the library's type-safe architecture.
+These enhancements ensure consistent style handling across all major components while maintaining type safety.

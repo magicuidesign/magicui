@@ -74,3 +74,4 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
 };
 
 export default GradientBlur;
+

@@ -11,6 +11,7 @@ interface ShineBorderProps {
   color?: TColorProp;
   className?: string;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -21,6 +22,7 @@ interface ShineBorderProps {
  * @param duration defines the animation duration to be applied on the shining border
  * @param color a string or string array to define border color.
  * @param className defines the class name to be applied to the component
+ * @param style defines the style to be applied to the component through vanilla css.
  * @param children contains react node elements.
  */
 export function ShineBorder({
@@ -30,14 +32,14 @@ export function ShineBorder({
   color = "#000000",
   className,
   children,
+  style,
 }: ShineBorderProps) {
   return (
     <div
-      style={
-        {
-          "--border-radius": `${borderRadius}px`,
-        } as React.CSSProperties
-      }
+      style={{
+        "--border-radius": `${borderRadius}px`,
+        ...style
+      } as React.CSSProperties}
       className={cn(
         "relative min-h-[60px] w-fit min-w-[300px] place-items-center rounded-[--border-radius] bg-white p-3 text-black dark:bg-black dark:text-white",
         className,
