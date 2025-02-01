@@ -25,6 +25,7 @@ interface BlurFadeProps {
   inView?: boolean;
   inViewMargin?: MarginType;
   blur?: string;
+  style?: React.CSSProperties;
 }
 
 export function BlurFade({

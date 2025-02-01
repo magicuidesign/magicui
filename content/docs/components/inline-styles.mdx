@@ -1,0 +1,46 @@
+---
+title: CSS Style Tag Addition
+date: 2025-02-01
+description: Adding the style css option to missing components to allow for more dynamic/flexible design.
+author: Itwela Ibomu
+published: true
+---
+
+## Introduction
+
+I love MAgic Ui. While working with MagicUI, I identified an opportunity to enhance the component library's flexibility by implementing inline style support. This addition enables more dynamic styling capabilities across all components.
+
+## Why This Matters
+
+The addition of the `style` prop provides several key benefits:
+- Enables runtime style modifications
+- Supports dynamic value injection
+- Allows for more complex styling patterns that aren't achievable through className alone
+
+## Implementation Example
+
+Here's a practical example demonstrating the value of this enhancement:
+
+```jsx
+<BlurFade className="h-[200px] w-[32%]" delay={1.618} inView
+    style={{
+        backgroundColor: JK_Colors?.purple,
+        boxShadow: `6.18px 6.18px 0px ${JK_Colors?.purple_accent}`
+    }}>
+    <Link href={'/dashboard/applications'} className="h-[200px] w-[32%] rounded-lg">
+    </Link>
+</BlurFade>
+
+In this example, we're using dynamic color values ( JK_Colors?.purple and JK_Colors?.purple_accent ) that 
+may change during runtime. While Tailwind CSS excels at static styling, it cannot handle dynamic values that 
+might be undefined or change after the initial render. The style prop provides a solution by allowing these 
+values to update reactively.
+
+## Technical Implementation
+The style prop has been added to the following component interfaces (3 total):
+
+- ImageProps in blur-image.tsx
+- BlurFadeProps in blur-fade.tsx
+- GradientBlurProps in gradient-blur.tsx
+
+This enhancement ensures consistent style handling across all major components while maintaining type safety.

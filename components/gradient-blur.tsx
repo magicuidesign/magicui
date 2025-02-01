@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface GradientBlurProps {
   numberOfLayers?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const GradientBlur: React.FC<GradientBlurProps> = ({
