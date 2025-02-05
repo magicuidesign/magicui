@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 
+import { useMounted } from "@/hooks/use-mounted";
 import type { TableOfContents } from "@/lib/toc";
-import { useMounted } from "@/lib/use-mounted";
 import { cn } from "@/lib/utils";
 
 interface TocProps {

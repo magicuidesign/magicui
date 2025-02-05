@@ -104,6 +104,9 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
+      jotai:
+        specifier: ^2.11.3
+        version: 2.11.3(@types/react@18.2.12)(react@18.3.1)
       lodash.template:
         specifier: ^4.5.0
         version: 4.5.0
@@ -3703,6 +3706,18 @@ packages:
   jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
+
+  jotai@2.11.3:
+    resolution: {integrity: sha512-B/PsewAQ0UOS5e2+TTWegUPQ3SCLPCjPY24LYUjfn2EorGlluTA2dFjVLgF1+xHLjK9Jit3y5mKHyMG3Xq/GZg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -9648,6 +9663,11 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.0: {}
+
+  jotai@2.11.3(@types/react@18.2.12)(react@18.3.1):
+    optionalDependencies:
+      '@types/react': 18.2.12
+      react: 18.3.1
 
   js-tokens@4.0.0: {}
 
