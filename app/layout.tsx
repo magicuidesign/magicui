@@ -1,10 +1,11 @@
-import { fontMono, fontSans } from "@/lib/fonts";
-import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@/components/analytics";
 import { PHProvider } from "@/components/posthog-provider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { fontMono, fontSans } from "@/lib/fonts";
+import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
+import { Provider as JotaiProvider } from "jotai";
 
 import "@/styles/globals.css";
 import "@/styles/mdx.css";
@@ -42,15 +43,17 @@ export default function RootLayout({
           fontMono.variable,
         )}
       >
-        <PHProvider>
-          <ThemeProvider attribute="class" defaultTheme="light">
-            <TooltipProvider>
-              {children}
-              <Toaster />
-              <Analytics />
-            </TooltipProvider>
-          </ThemeProvider>
-        </PHProvider>
+        <JotaiProvider>
+          <PHProvider>
+            <ThemeProvider attribute="class" defaultTheme="light">
+              <TooltipProvider>
+                {children}
+                <Toaster />
+                <Analytics />
+              </TooltipProvider>
+            </ThemeProvider>
+          </PHProvider>
+        </JotaiProvider>
       </body>
     </html>
   );

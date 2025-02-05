@@ -56,6 +56,7 @@
     "date-fns": "^2.30.0",
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",
+    "jotai": "^2.11.3",
     "lodash.template": "^4.5.0",
     "lucide-react": "^0.401.0",
     "motion": "^11.15.0",
