@@ -1,14 +1,14 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "rainbow-button",
-  "type": "registry:ui",
+  "type": "registry:component",
   "title": "Rainbow Button",
   "description": "An animated button with a rainbow effect.",
   "files": [
     {
       "path": "registry/magicui/rainbow-button.tsx",
       "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface RainbowButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}\n\nexport const RainbowButton = React.forwardRef<\n  HTMLButtonElement,\n  RainbowButtonProps\n>(({ children, className, ...props }, ref) => {\n  return (\n    <button\n      ref={ref}\n      className={cn(\n        \"group relative inline-flex h-11 animate-rainbow cursor-pointer items-center justify-center rounded-xl border-0 bg-[length:200%] px-8 py-2 font-medium text-primary-foreground transition-colors [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.08*1rem)_solid_transparent] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\",\n        // before styles\n        \"before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] before:[filter:blur(calc(0.8*1rem))]\",\n        // light mode colors\n        \"bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]\",\n        // dark mode colors\n        \"dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </button>\n  );\n});\n\nRainbowButton.displayName = \"RainbowButton\";\n",
-      "type": "registry:ui"
+      "type": "registry:component"
     }
   ],
   "tailwind": {

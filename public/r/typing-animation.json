@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "typing-animation",
-  "type": "registry:ui",
+  "type": "registry:component",
   "title": "Typing Animation",
   "description": "Characters appearing in typed animation",
   "dependencies": [
@@ -11,7 +11,7 @@
     {
       "path": "registry/magicui/typing-animation.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion, MotionProps } from \"motion/react\";\nimport { useEffect, useRef, useState } from \"react\";\n\ninterface TypingAnimationProps extends MotionProps {\n  children: string;\n  className?: string;\n  duration?: number;\n  delay?: number;\n  as?: React.ElementType;\n  startOnView?: boolean;\n}\n\nexport function TypingAnimation({\n  children,\n  className,\n  duration = 100,\n  delay = 0,\n  as: Component = \"div\",\n  startOnView = false,\n  ...props\n}: TypingAnimationProps) {\n  const MotionComponent = motion.create(Component, {\n    forwardMotionProps: true,\n  });\n\n  const [displayedText, setDisplayedText] = useState<string>(\"\");\n  const [started, setStarted] = useState(false);\n  const elementRef = useRef<HTMLElement | null>(null);\n\n  useEffect(() => {\n    if (!startOnView) {\n      const startTimeout = setTimeout(() => {\n        setStarted(true);\n      }, delay);\n      return () => clearTimeout(startTimeout);\n    }\n\n    const observer = new IntersectionObserver(\n      ([entry]) => {\n        if (entry.isIntersecting) {\n          setTimeout(() => {\n            setStarted(true);\n          }, delay);\n          observer.disconnect();\n        }\n      },\n      { threshold: 0.1 },\n    );\n\n    if (elementRef.current) {\n      observer.observe(elementRef.current);\n    }\n\n    return () => observer.disconnect();\n  }, [delay, startOnView]);\n\n  useEffect(() => {\n    if (!started) return;\n\n    let i = 0;\n    const typingEffect = setInterval(() => {\n      if (i < children.length) {\n        setDisplayedText(children.substring(0, i + 1));\n        i++;\n      } else {\n        clearInterval(typingEffect);\n      }\n    }, duration);\n\n    return () => {\n      clearInterval(typingEffect);\n    };\n  }, [children, duration, started]);\n\n  return (\n    <MotionComponent\n      ref={elementRef}\n      className={cn(\n        \"text-4xl font-bold leading-[5rem] tracking-[-0.02em]\",\n        className,\n      )}\n      {...props}\n    >\n      {displayedText}\n    </MotionComponent>\n  );\n}\n",
-      "type": "registry:ui"
+      "type": "registry:component"
     }
   ]
 }

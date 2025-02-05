@@ -1,14 +1,14 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-gradient-text",
-  "type": "registry:ui",
+  "type": "registry:component",
   "title": "Animated Gradient Text",
   "description": "An animated gradient background which transitions between colors for text.",
   "files": [
     {
       "path": "registry/magicui/animated-gradient-text.tsx",
       "content": "import { ComponentPropsWithoutRef, ReactNode } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface AnimatedGradientTextProps\n  extends ComponentPropsWithoutRef<\"div\"> {\n  children: ReactNode;\n}\n\nexport function AnimatedGradientText({\n  children,\n  className,\n  ...props\n}: AnimatedGradientTextProps) {\n  return (\n    <div\n      className={cn(\n        \"group relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-2xl bg-white/40 px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f] backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] hover:shadow-[inset_0_-5px_10px_#8fdfff3f] dark:bg-black/40\",\n        className,\n      )}\n      {...props}\n    >\n      <div\n        className={`absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] ![mask-composite:subtract] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`}\n      />\n\n      {children}\n    </div>\n  );\n}\n",
-      "type": "registry:ui"
+      "type": "registry:component"
     }
   ],
   "tailwind": {

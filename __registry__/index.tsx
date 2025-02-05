@@ -19,12 +19,12 @@ export const Index: Record<string, any> = {
     name: "magic-card",
     description:
       "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/magic-card.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -42,12 +42,12 @@ export const Index: Record<string, any> = {
   android: {
     name: "android",
     description: "A mockup of an Android device.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/android.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -65,12 +65,12 @@ export const Index: Record<string, any> = {
   "warp-background": {
     name: "warp-background",
     description: "A card with a time warping background effect.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/warp-background.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -88,12 +88,12 @@ export const Index: Record<string, any> = {
   "line-shadow-text": {
     name: "line-shadow-text",
     description: "A text component with a moving line shadow.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/line-shadow-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -111,12 +111,12 @@ export const Index: Record<string, any> = {
   "aurora-text": {
     name: "aurora-text",
     description: "A beautiful aurora text effect",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/aurora-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -134,12 +134,12 @@ export const Index: Record<string, any> = {
   "morphing-text": {
     name: "morphing-text",
     description: "A dynamic text morphing component for Magic UI.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/morphing-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -157,12 +157,12 @@ export const Index: Record<string, any> = {
   "scroll-progress": {
     name: "scroll-progress",
     description: "Animated Scroll Progress for your pages",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/scroll-progress.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -180,12 +180,12 @@ export const Index: Record<string, any> = {
   "neon-gradient-card": {
     name: "neon-gradient-card",
     description: "A beautiful neon card effect",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/neon-gradient-card.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -203,12 +203,12 @@ export const Index: Record<string, any> = {
   meteors: {
     name: "meteors",
     description: "A meteor shower effect.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/meteors.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -227,12 +227,12 @@ export const Index: Record<string, any> = {
     name: "grid-pattern",
     description:
       "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/grid-pattern.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -251,12 +251,12 @@ export const Index: Record<string, any> = {
     name: "interactive-grid-pattern",
     description:
       "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/interactive-grid-pattern.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -277,12 +277,12 @@ export const Index: Record<string, any> = {
     name: "dot-pattern",
     description:
       "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/dot-pattern.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -301,12 +301,12 @@ export const Index: Record<string, any> = {
     name: "flickering-grid",
     description:
       "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/flickering-grid.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -324,12 +324,12 @@ export const Index: Record<string, any> = {
   "hero-video-dialog": {
     name: "hero-video-dialog",
     description: "A hero video dialog component.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/hero-video-dialog.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -347,12 +347,12 @@ export const Index: Record<string, any> = {
   "code-comparison": {
     name: "code-comparison",
     description: "A component which compares two code snippets.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/code-comparison.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -370,12 +370,12 @@ export const Index: Record<string, any> = {
   "script-copy-btn": {
     name: "script-copy-btn",
     description: "Copy code to clipboard",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: ["button"],
     files: [
       {
         path: "registry/magicui/script-copy-btn.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -394,12 +394,12 @@ export const Index: Record<string, any> = {
     name: "marquee",
     description:
       "An infinite scrolling component that can be used to display text, images, or videos.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/marquee.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -418,12 +418,12 @@ export const Index: Record<string, any> = {
     name: "globe",
     description:
       "An autorotating, interactive, and highly performant globe made using WebGL.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/globe.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -442,12 +442,12 @@ export const Index: Record<string, any> = {
     name: "shimmer-button",
     description:
       "A button with a shimmering light which travels around the perimeter.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/shimmer-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -466,12 +466,12 @@ export const Index: Record<string, any> = {
     name: "tweet-card",
     description:
       "A card that displays a tweet with the author's name, handle, and profile picture.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/tweet-card.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -490,12 +490,12 @@ export const Index: Record<string, any> = {
     name: "client-tweet-card",
     description:
       "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/client-tweet-card.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -514,12 +514,12 @@ export const Index: Record<string, any> = {
     name: "bento-grid",
     description:
       "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: ["button"],
     files: [
       {
         path: "registry/magicui/bento-grid.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -538,12 +538,12 @@ export const Index: Record<string, any> = {
     name: "particles",
     description:
       "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/particles.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -561,12 +561,12 @@ export const Index: Record<string, any> = {
   "number-ticker": {
     name: "number-ticker",
     description: "Animate numbers to count up or down to a target number",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/number-ticker.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -585,12 +585,12 @@ export const Index: Record<string, any> = {
     name: "ripple",
     description:
       "An animated ripple effect typically used behind elements to emphasize them.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/ripple.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -608,12 +608,12 @@ export const Index: Record<string, any> = {
   "retro-grid": {
     name: "retro-grid",
     description: "An animated scrolling retro grid effect",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/retro-grid.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -632,12 +632,12 @@ export const Index: Record<string, any> = {
     name: "animated-list",
     description:
       "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-list.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -656,12 +656,12 @@ export const Index: Record<string, any> = {
     name: "animated-shiny-text",
     description:
       "A light glare effect which pans across text making it appear as if it is shimmering.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-shiny-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -680,12 +680,12 @@ export const Index: Record<string, any> = {
     name: "animated-grid-pattern",
     description:
       "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-grid-pattern.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -704,12 +704,12 @@ export const Index: Record<string, any> = {
     name: "border-beam",
     description:
       "An animated beam of light which travels along the border of its container.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/border-beam.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -728,12 +728,12 @@ export const Index: Record<string, any> = {
     name: "animated-beam",
     description:
       'An animated beam of light which travels along a path. Useful for showcasing the "integration" features of a website.',
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -751,12 +751,12 @@ export const Index: Record<string, any> = {
   "text-reveal": {
     name: "text-reveal",
     description: "Fade in text as you scroll down the page.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/text-reveal.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -775,12 +775,12 @@ export const Index: Record<string, any> = {
     name: "hyper-text",
     description:
       "A text animation that scrambles letters before revealing the final text.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/hyper-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -799,12 +799,12 @@ export const Index: Record<string, any> = {
     name: "animated-gradient-text",
     description:
       "An animated gradient background which transitions between colors for text.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-gradient-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -823,12 +823,12 @@ export const Index: Record<string, any> = {
     name: "orbiting-circles",
     description:
       "A collection of circles which move in orbit along a circular path",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/orbiting-circles.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -847,12 +847,12 @@ export const Index: Record<string, any> = {
     name: "dock",
     description:
       "An implementation of the MacOS dock using react + tailwindcss + framer motion",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/dock.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -870,12 +870,12 @@ export const Index: Record<string, any> = {
   "word-rotate": {
     name: "word-rotate",
     description: "A vertical rotation of words",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/word-rotate.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -893,12 +893,12 @@ export const Index: Record<string, any> = {
   "avatar-circles": {
     name: "avatar-circles",
     description: "Overlapping circles of avatars.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/avatar-circles.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -916,12 +916,12 @@ export const Index: Record<string, any> = {
   "typing-animation": {
     name: "typing-animation",
     description: "Characters appearing in typed animation",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/typing-animation.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -940,12 +940,12 @@ export const Index: Record<string, any> = {
     name: "sparkles-text",
     description:
       "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/sparkles-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -963,12 +963,12 @@ export const Index: Record<string, any> = {
   "flip-text": {
     name: "flip-text",
     description: "Text flipping character animation",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/flip-text.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -986,12 +986,12 @@ export const Index: Record<string, any> = {
   "icon-cloud": {
     name: "icon-cloud",
     description: "An interactive 3D tag cloud component",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/icon-cloud.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1010,12 +1010,12 @@ export const Index: Record<string, any> = {
     name: "text-animate",
     description:
       "A text animation component that animates text using a variety of different animations.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1033,12 +1033,12 @@ export const Index: Record<string, any> = {
   "scroll-based-velocity": {
     name: "scroll-based-velocity",
     description: "Scrolling text whose speed changes based on scroll speed",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/scroll-based-velocity.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1057,12 +1057,12 @@ export const Index: Record<string, any> = {
     name: "scratch-to-reveal",
     description:
       "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/scratch-to-reveal.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1081,12 +1081,12 @@ export const Index: Record<string, any> = {
     name: "shiny-button",
     description:
       "A shiny button component with dynamic styles in the dark mode or light mode.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/shiny-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1104,12 +1104,12 @@ export const Index: Record<string, any> = {
   "box-reveal": {
     name: "box-reveal",
     description: "Sliding box animation that reveals text behind it.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/box-reveal.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1127,12 +1127,12 @@ export const Index: Record<string, any> = {
   "shine-border": {
     name: "shine-border",
     description: "Shine border is an animated background border effect.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/shine-border.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1151,12 +1151,12 @@ export const Index: Record<string, any> = {
     name: "animated-circular-progress-bar",
     description:
       "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-circular-progress-bar.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1177,12 +1177,12 @@ export const Index: Record<string, any> = {
     name: "confetti",
     description:
       "Confetti animations are best used to delight your users when something special happens",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: ["button"],
     files: [
       {
         path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1201,12 +1201,12 @@ export const Index: Record<string, any> = {
     name: "animated-subscribe-button",
     description:
       "An animated subscribe button useful for showing a micro animation from intial to final result.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/animated-subscribe-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1226,12 +1226,12 @@ export const Index: Record<string, any> = {
   "cool-mode": {
     name: "cool-mode",
     description: "Cool mode effect for buttons, links, and other DOMs",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/cool-mode.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1250,12 +1250,12 @@ export const Index: Record<string, any> = {
     name: "pulsating-button",
     description:
       "An animated pulsating button useful for capturing attention of users.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/pulsating-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1273,12 +1273,12 @@ export const Index: Record<string, any> = {
   "ripple-button": {
     name: "ripple-button",
     description: "An animated button with ripple useful for user engagement.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/ripple-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1297,12 +1297,12 @@ export const Index: Record<string, any> = {
     name: "file-tree",
     description:
       "A component used to showcase the folder and file structure of a directory.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/file-tree.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1321,12 +1321,12 @@ export const Index: Record<string, any> = {
     name: "blur-fade",
     description:
       "Blur fade in and out animation. Used to smoothly fade in and out content.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/blur-fade.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1344,12 +1344,12 @@ export const Index: Record<string, any> = {
   safari: {
     name: "safari",
     description: "A safari browser mockup to showcase your website.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/safari.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1367,12 +1367,12 @@ export const Index: Record<string, any> = {
   "iphone-15-pro": {
     name: "iphone-15-pro",
     description: "A mockup of the iPhone 15 Pro",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/iphone-15-pro.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1390,12 +1390,12 @@ export const Index: Record<string, any> = {
   "rainbow-button": {
     name: "rainbow-button",
     description: "An animated button with a rainbow effect.",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/rainbow-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1413,12 +1413,12 @@ export const Index: Record<string, any> = {
   "interactive-hover-button": {
     name: "interactive-hover-button",
     description: "",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/interactive-hover-button.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],
@@ -1438,12 +1438,12 @@ export const Index: Record<string, any> = {
   terminal: {
     name: "terminal",
     description: "A terminal component",
-    type: "registry:ui",
+    type: "registry:component",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/terminal.tsx",
-        type: "registry:ui",
+        type: "registry:component",
         target: "",
       },
     ],

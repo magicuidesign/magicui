@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "box-reveal",
-  "type": "registry:ui",
+  "type": "registry:component",
   "title": "Box Reveal Animation",
   "description": "Sliding box animation that reveals text behind it.",
   "dependencies": [
@@ -11,7 +11,7 @@
     {
       "path": "registry/magicui/box-reveal.tsx",
       "content": "\"use client\";\n\nimport { motion, useAnimation, useInView } from \"motion/react\";\nimport { useEffect, useRef } from \"react\";\n\ninterface BoxRevealProps {\n  children: JSX.Element;\n  width?: \"fit-content\" | \"100%\";\n  boxColor?: string;\n  duration?: number;\n}\n\nexport const BoxReveal = ({\n  children,\n  width = \"fit-content\",\n  boxColor = \"#5046e6\",\n  duration,\n}: BoxRevealProps) => {\n  const mainControls = useAnimation();\n  const slideControls = useAnimation();\n\n  const ref = useRef(null);\n  const isInView = useInView(ref, { once: true });\n\n  useEffect(() => {\n    if (isInView) {\n      slideControls.start(\"visible\");\n      mainControls.start(\"visible\");\n    } else {\n      slideControls.start(\"hidden\");\n      mainControls.start(\"hidden\");\n    }\n  }, [isInView, mainControls, slideControls]);\n\n  return (\n    <div ref={ref} style={{ position: \"relative\", width, overflow: \"hidden\" }}>\n      <motion.div\n        variants={{\n          hidden: { opacity: 0, y: 75 },\n          visible: { opacity: 1, y: 0 },\n        }}\n        initial=\"hidden\"\n        animate={mainControls}\n        transition={{ duration: duration ? duration : 0.5, delay: 0.25 }}\n      >\n        {children}\n      </motion.div>\n\n      <motion.div\n        variants={{\n          hidden: { left: 0 },\n          visible: { left: \"100%\" },\n        }}\n        initial=\"hidden\"\n        animate={slideControls}\n        transition={{ duration: duration ? duration : 0.5, ease: \"easeIn\" }}\n        style={{\n          position: \"absolute\",\n          top: 4,\n          bottom: 4,\n          left: 0,\n          right: 0,\n          zIndex: 20,\n          background: boxColor,\n        }}\n      />\n    </div>\n  );\n};\n",
-      "type": "registry:ui"
+      "type": "registry:component"
     }
   ]
 }
