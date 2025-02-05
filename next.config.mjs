@@ -33,6 +33,11 @@ const nextConfig = {
         destination: "/docs/components/marquee",
         permanent: true,
       },
+      {
+        source: "/r/:path([^.]*)",
+        destination: "/r/:path.json",
+        permanent: true,
+      },
     ];
   },
 };
