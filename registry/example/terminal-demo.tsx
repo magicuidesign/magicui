@@ -2,7 +2,7 @@ import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
-} from "@/registry/default/magicui/terminal";
+} from "@/registry/magicui/terminal";
 
 export default function TerminalDemo() {
   return (
