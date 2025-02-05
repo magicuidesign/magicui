@@ -1293,6 +1293,18 @@
       ]
     },
     {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Terminal",
+      "description": "A terminal component",
+      "files": [
+        {
+          "path": "registry/magicui/terminal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",

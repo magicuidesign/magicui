@@ -1435,6 +1435,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  terminal: {
+    name: "terminal",
+    description: "A terminal component",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/terminal.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/terminal.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:

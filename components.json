@@ -3,13 +3,16 @@
   "style": "new-york",
   "rsc": true,
   "tailwind": {
-    "config": "tailwind.config.js",
+    "config": "tailwind.config.cjs",
     "css": "app/globals.css",
     "baseColor": "neutral",
     "cssVariables": true
   },
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils"
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   }
 }

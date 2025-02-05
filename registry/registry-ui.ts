@@ -883,4 +883,11 @@ export const ui: Registry["items"] = [
       { path: "magicui/interactive-hover-button.tsx", type: "registry:ui" },
     ],
   },
+  {
+    name: "terminal",
+    type: "registry:ui",
+    title: "Terminal",
+    description: "A terminal component",
+    files: [{ path: "magicui/terminal.tsx", type: "registry:ui" }],
+  },
 ];
