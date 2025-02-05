@@ -11,7 +11,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   preview?: boolean;
 }
 
-export async function ComponentPreview({
+export function ComponentPreview({
   name,
   children,
   className,
