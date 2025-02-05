@@ -1,4 +1,4 @@
-import CodeComparison from "@/registry/magicui/code-comparison";
+import { CodeComparison } from "@/registry/magicui/code-comparison";
 
 const beforeCode = `import { NextRequest } from 'next/server';
 

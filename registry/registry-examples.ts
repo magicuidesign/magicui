@@ -981,4 +981,11 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "terminal-demo",
+    type: "registry:example",
+    title: "Terminal Demo",
+    description: "Example showing a terminal with animated text.",
+    files: [{ path: "example/terminal-demo.tsx", type: "registry:example" }],
+  },
 ];

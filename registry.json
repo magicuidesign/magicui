@@ -2714,6 +2714,18 @@
       ]
     },
     {
+      "name": "terminal-demo",
+      "type": "registry:example",
+      "title": "Terminal Demo",
+      "description": "Example showing a terminal with animated text.",
+      "files": [
+        {
+          "path": "registry/example/terminal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "dependencies": [

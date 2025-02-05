@@ -1,3 +1,5 @@
+"use client";
+
 import { LineShadowText } from "@/registry/magicui/line-shadow-text";
 import { useTheme } from "next-themes";
 

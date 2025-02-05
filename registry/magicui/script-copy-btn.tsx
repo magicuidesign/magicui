@@ -6,7 +6,6 @@ import { Check, Copy } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { HTMLAttributes, useEffect, useState } from "react";
-import { codeToHtml } from "shiki";
 
 interface ScriptCopyBtnProps extends HTMLAttributes<HTMLDivElement> {
   showMultiplePackageOptions?: boolean;
@@ -35,6 +34,7 @@ export function ScriptCopyBtn({
   useEffect(() => {
     async function loadHighlightedCode() {
       try {
+        const { codeToHtml } = await import("shiki");
         const highlighted = await codeToHtml(command, {
           lang: codeLanguage,
           themes: {

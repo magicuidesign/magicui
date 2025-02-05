@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from "next-themes";
 
 import { ShineBorder } from "@/registry/magicui/shine-border";

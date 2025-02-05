@@ -3,7 +3,6 @@
 import { FileIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { codeToHtml } from "shiki";
 
 interface CodeComparisonProps {
   beforeCode: string;
@@ -14,7 +13,7 @@ interface CodeComparisonProps {
   darkTheme: string;
 }
 
-export default function CodeComparison({
+export function CodeComparison({
   beforeCode,
   afterCode,
   language,
@@ -31,18 +30,24 @@ export default function CodeComparison({
     const selectedTheme = currentTheme === "dark" ? darkTheme : lightTheme;
 
     async function highlightCode() {
-      const before = await codeToHtml(beforeCode, {
-        lang: language,
-        theme: selectedTheme,
-      });
-      const after = await codeToHtml(afterCode, {
-        lang: language,
-        theme: selectedTheme,
-      });
-      setHighlightedBefore(before);
-      setHighlightedAfter(after);
+      try {
+        const { codeToHtml } = await import("shiki");
+        const before = await codeToHtml(beforeCode, {
+          lang: language,
+          theme: selectedTheme,
+        });
+        const after = await codeToHtml(afterCode, {
+          lang: language,
+          theme: selectedTheme,
+        });
+        setHighlightedBefore(before);
+        setHighlightedAfter(after);
+      } catch (error) {
+        console.error("Error highlighting code:", error);
+        setHighlightedBefore(`<pre>${beforeCode}</pre>`);
+        setHighlightedAfter(`<pre>${afterCode}</pre>`);
+      }
     }
-
     highlightCode();
   }, [
     theme,
