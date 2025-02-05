@@ -160,8 +160,10 @@ export const ui: Registry = [
   // ... existing components ...
   {
     name: "example-component",
+    description: "A component that does something",
     type: "registry:ui",
-    files: ["magicui/example-component.tsx"],
+    dependencies: ["motion"],
+    files: [{ path: "magicui/example-component.tsx", type: "registry:ui" }],
     // Add any dependencies or tailwind configurations if needed
   },
 ];
@@ -174,9 +176,15 @@ export const examples: Registry = [
   // ... existing examples ...
   {
     name: "example-component-demo",
+    description: "An example of the example-component",
     type: "registry:example",
     registryDependencies: ["example-component"],
-    files: ["example/example-component-demo.tsx"],
+    files: [
+      {
+        path: "registry/example/example-component-demo.tsx",
+        type: "registry:example",
+      },
+    ],
   },
 ];
 ```
