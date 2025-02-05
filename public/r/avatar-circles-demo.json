@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "avatar-circles-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Avatar Circles Demo",
+  "description": "Example showing overlapping avatar circles.",
   "registryDependencies": [
-    "avatar-circles"
+    "https://magicui.design/r/avatar-circles"
   ],
   "files": [
     {
       "path": "registry/example/avatar-circles-demo.tsx",
       "content": "import { AvatarCircles } from \"@/registry/magicui/avatar-circles\";\n\nconst avatars = [\n  {\n    imageUrl: \"https://avatars.githubusercontent.com/u/16860528\",\n    profileUrl: \"https://github.com/dillionverma\",\n  },\n  {\n    imageUrl: \"https://avatars.githubusercontent.com/u/20110627\",\n    profileUrl: \"https://github.com/tomonarifeehan\",\n  },\n  {\n    imageUrl: \"https://avatars.githubusercontent.com/u/106103625\",\n    profileUrl: \"https://github.com/BankkRoll\",\n  },\n  {\n    imageUrl: \"https://avatars.githubusercontent.com/u/59228569\",\n    profileUrl: \"https://github.com/safethecode\",\n  },\n  {\n    imageUrl: \"https://avatars.githubusercontent.com/u/59442788\",\n    profileUrl: \"https://github.com/sanjay-mali\",\n  },\n  {\n    imageUrl: \"https://avatars.githubusercontent.com/u/89768406\",\n    profileUrl: \"https://github.com/itsarghyadas\",\n  },\n];\n\nexport default function AvatarCirclesDemo() {\n  return <AvatarCircles numPeople={99} avatarUrls={avatars} />;\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

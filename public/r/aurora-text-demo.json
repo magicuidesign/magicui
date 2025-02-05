@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "aurora-text-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Aurora Text Demo",
+  "description": "Example showing a beautiful aurora text effect.",
   "registryDependencies": [
-    "aurora-text"
+    "https://magicui.design/r/aurora-text"
   ],
   "files": [
     {
       "path": "registry/example/aurora-text-demo.tsx",
       "content": "import { AuroraText } from \"@/registry/magicui/aurora-text\";\n\nexport default function AuroraTextDemo() {\n  return (\n    <h1 className=\"text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl\">\n      Ship <AuroraText>beautiful</AuroraText>\n    </h1>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

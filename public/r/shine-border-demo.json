@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shine-border-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Shine Border Demo",
+  "description": "Example showing an animated shining border effect.",
+  "registryDependencies": [
+    "https://magicui.design/r/shine-border"
+  ],
   "files": [
     {
       "path": "registry/example/shine-border-demo.tsx",
       "content": "import { ShineBorder } from \"@/registry/magicui/shine-border\";\n\nexport default function ShineBorderDemo() {\n  return (\n    <ShineBorder\n      className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\"\n      color={[\"#A07CFE\", \"#FE8FB5\", \"#FFBE7B\"]}\n    >\n      <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n        Shine Border\n      </span>\n    </ShineBorder>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-animate-demo-5",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Text Animate Demo 5",
+  "description": "Fifth example showing various text animations.",
+  "registryDependencies": [
+    "https://magicui.design/r/text-animate"
+  ],
   "files": [
     {
       "path": "registry/example/text-animate-demo-5.tsx",
       "content": "import { TextAnimate } from \"@/registry/magicui/text-animate\";\n\nexport default function TextAnimateDemo5() {\n  return (\n    <TextAnimate animation=\"fadeIn\" by=\"line\" as=\"p\">\n      {`Fade in by line as paragraph\\n\\nFade in by line as paragraph\\n\\nFade in by line as paragraph`}\n    </TextAnimate>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

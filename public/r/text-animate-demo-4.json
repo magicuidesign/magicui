@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-animate-demo-4",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Text Animate Demo 4",
+  "description": "Fourth example showing various text animations.",
+  "registryDependencies": [
+    "https://magicui.design/r/text-animate"
+  ],
   "files": [
     {
       "path": "registry/example/text-animate-demo-4.tsx",
       "content": "import { TextAnimate } from \"@/registry/magicui/text-animate\";\n\nexport default function TextAnimateDemo4() {\n  return (\n    <TextAnimate animation=\"scaleUp\" by=\"text\">\n      Scale up by text\n    </TextAnimate>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

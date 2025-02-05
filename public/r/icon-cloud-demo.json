@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "icon-cloud-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Icon Cloud Demo",
+  "description": "Example showing an interactive 3D icon cloud.",
   "registryDependencies": [
-    "icon-cloud"
+    "https://magicui.design/r/icon-cloud"
   ],
   "files": [
     {
       "path": "registry/example/icon-cloud-demo.tsx",
       "content": "import { IconCloud } from \"@/registry/magicui/icon-cloud\";\n\nconst slugs = [\n  \"typescript\",\n  \"javascript\",\n  \"dart\",\n  \"java\",\n  \"react\",\n  \"flutter\",\n  \"android\",\n  \"html5\",\n  \"css3\",\n  \"nodedotjs\",\n  \"express\",\n  \"nextdotjs\",\n  \"prisma\",\n  \"amazonaws\",\n  \"postgresql\",\n  \"firebase\",\n  \"nginx\",\n  \"vercel\",\n  \"testinglibrary\",\n  \"jest\",\n  \"cypress\",\n  \"docker\",\n  \"git\",\n  \"jira\",\n  \"github\",\n  \"gitlab\",\n  \"visualstudiocode\",\n  \"androidstudio\",\n  \"sonarqube\",\n  \"figma\",\n];\n\nexport default function IconCloudDemo() {\n  const images = slugs.map(\n    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,\n  );\n\n  return (\n    <div className=\"relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background\">\n      <IconCloud images={images} />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

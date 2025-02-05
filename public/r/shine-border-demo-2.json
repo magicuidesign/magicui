@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shine-border-demo-2",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Shine Border Demo 2",
+  "description": "Second example showing an animated shining border effect.",
+  "registryDependencies": [
+    "https://magicui.design/r/shine-border"
+  ],
   "files": [
     {
       "path": "registry/example/shine-border-demo-2.tsx",
-      "content": "import { useTheme } from \"next-themes\";\n\nimport { ShineBorder } from \"@/registry/magicui/shine-border\";\n\nexport default function ShineBorderDemo() {\n  const theme = useTheme();\n  return (\n    <ShineBorder\n      className=\"text-center text-2xl font-bold capitalize\"\n      color={theme.theme === \"dark\" ? \"white\" : \"black\"}\n    >\n      Shine Border\n    </ShineBorder>\n  );\n}\n",
-      "type": "registry:component"
+      "content": "\"use client\";\n\nimport { useTheme } from \"next-themes\";\n\nimport { ShineBorder } from \"@/registry/magicui/shine-border\";\n\nexport default function ShineBorderDemo() {\n  const theme = useTheme();\n  return (\n    <ShineBorder\n      className=\"text-center text-2xl font-bold capitalize\"\n      color={theme.theme === \"dark\" ? \"white\" : \"black\"}\n    >\n      Shine Border\n    </ShineBorder>\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }

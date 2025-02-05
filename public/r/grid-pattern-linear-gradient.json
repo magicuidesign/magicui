@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "grid-pattern-linear-gradient",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Grid Pattern Linear Gradient",
+  "description": "Example showing a grid pattern with linear gradient effects.",
   "registryDependencies": [
-    "grid-pattern"
+    "https://magicui.design/r/grid-pattern"
   ],
   "files": [
     {
       "path": "registry/example/grid-pattern-linear-gradient.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { GridPattern } from \"@/registry/magicui/grid-pattern\";\n\nexport default function GridPatternLinearGradient() {\n  return (\n    <div className=\"relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white\">\n        Grid Pattern\n      </p>\n      <GridPattern\n        width={20}\n        height={20}\n        x={-1}\n        y={-1}\n        className={cn(\n          \"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] \",\n        )}\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

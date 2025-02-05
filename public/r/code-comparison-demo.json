@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-comparison-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Code Comparison Demo",
+  "description": "Example showing a component which compares two code snippets.",
+  "registryDependencies": [
+    "https://magicui.design/r/code-comparison"
+  ],
   "files": [
     {
       "path": "registry/example/code-comparison-demo.tsx",
-      "content": "import CodeComparison from \"@/registry/magicui/code-comparison\";\n\nconst beforeCode = `import { NextRequest } from 'next/server';\n\nexport const middleware = async (req: NextRequest) => {\n  let user = undefined;\n  let team = undefined;\n  const token = req.headers.get('token');\n\n  if(req.nextUrl.pathname.startsWith('/auth')) {\n    user = await getUserByToken(token);\n\n    if(!user) {\n      return NextResponse.redirect('/login');\n    }\n  }\n\n  if(req.nextUrl.pathname.startsWith('/team')) {\n    user = await getUserByToken(token);\n\n    if(!user) {\n      return NextResponse.redirect('/login');\n    }\n\n    const slug = req.nextUrl.query.slug;\n    team = await getTeamBySlug(slug);\n\n    if(!team) {\n      return NextResponse.redirect('/');\n    }\n  }\n\n  return NextResponse.next();\n}\n\nexport const config = {\n  matcher: ['/((?!_next/|_static|_vercel|[\\\\w-]+\\\\.\\\\w+).*)'],\n};`;\n\nconst afterCode = `import { createMiddleware, type MiddlewareFunctionProps } from '@app/(auth)/auth/_middleware';\nimport { auth } from '@app/(auth)/auth/_middleware';\nimport { team } from '@app/(team)/team/_middleware';\n\nconst middlewares = {\n  '/auth{/:path?}': auth,\n  '/team{/:slug?}': [ auth, team ],\n};\n\nexport const middleware = createMiddleware(middlewares);\n\nexport const config = {\n  matcher: ['/((?!_next/|_static|_vercel|[\\\\w-]+\\\\.\\\\w+).*)'],\n};`;\n\nexport default function CodeComparisonDemo() {\n  return (\n    <CodeComparison\n      beforeCode={beforeCode}\n      afterCode={afterCode}\n      language=\"typescript\"\n      filename=\"middleware.ts\"\n      lightTheme=\"github-light\"\n      darkTheme=\"github-dark\"\n    />\n  );\n}\n",
-      "type": "registry:component"
+      "content": "import { CodeComparison } from \"@/registry/magicui/code-comparison\";\n\nconst beforeCode = `import { NextRequest } from 'next/server';\n\nexport const middleware = async (req: NextRequest) => {\n  let user = undefined;\n  let team = undefined;\n  const token = req.headers.get('token');\n\n  if(req.nextUrl.pathname.startsWith('/auth')) {\n    user = await getUserByToken(token);\n\n    if(!user) {\n      return NextResponse.redirect('/login');\n    }\n  }\n\n  if(req.nextUrl.pathname.startsWith('/team')) {\n    user = await getUserByToken(token);\n\n    if(!user) {\n      return NextResponse.redirect('/login');\n    }\n\n    const slug = req.nextUrl.query.slug;\n    team = await getTeamBySlug(slug);\n\n    if(!team) {\n      return NextResponse.redirect('/');\n    }\n  }\n\n  return NextResponse.next();\n}\n\nexport const config = {\n  matcher: ['/((?!_next/|_static|_vercel|[\\\\w-]+\\\\.\\\\w+).*)'],\n};`;\n\nconst afterCode = `import { createMiddleware, type MiddlewareFunctionProps } from '@app/(auth)/auth/_middleware';\nimport { auth } from '@app/(auth)/auth/_middleware';\nimport { team } from '@app/(team)/team/_middleware';\n\nconst middlewares = {\n  '/auth{/:path?}': auth,\n  '/team{/:slug?}': [ auth, team ],\n};\n\nexport const middleware = createMiddleware(middlewares);\n\nexport const config = {\n  matcher: ['/((?!_next/|_static|_vercel|[\\\\w-]+\\\\.\\\\w+).*)'],\n};`;\n\nexport default function CodeComparisonDemo() {\n  return (\n    <CodeComparison\n      beforeCode={beforeCode}\n      afterCode={afterCode}\n      language=\"typescript\"\n      filename=\"middleware.ts\"\n      lightTheme=\"github-light\"\n      darkTheme=\"github-dark\"\n    />\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }

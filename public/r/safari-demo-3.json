@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "safari-demo-3",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Safari Demo 3",
+  "description": "Third example showing a Safari browser mockup.",
+  "registryDependencies": [
+    "https://magicui.design/r/safari"
+  ],
   "files": [
     {
       "path": "registry/example/safari-demo-3.tsx",
       "content": "import { Safari } from \"@/registry/magicui/safari\";\n\nexport default function SafariDemo() {\n  return (\n    <div className=\"relative\">\n      <Safari\n        url=\"magicui.design\"\n        className=\"size-full\"\n        videoSrc=\"https://videos.pexels.com/video-files/27180348/12091515_2560_1440_50fps.mp4\"\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

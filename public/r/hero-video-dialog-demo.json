@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hero-video-dialog-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Hero Video Dialog Demo",
+  "description": "Example showing a hero video dialog component.",
+  "registryDependencies": [
+    "https://magicui.design/r/hero-video-dialog"
+  ],
   "files": [
     {
       "path": "registry/example/hero-video-dialog-demo.tsx",
       "content": "import HeroVideoDialog from \"@/registry/magicui/hero-video-dialog\";\n\nexport default function HeroVideoDialogDemo() {\n  return (\n    <div className=\"relative\">\n      <HeroVideoDialog\n        className=\"block dark:hidden\"\n        animationStyle=\"from-center\"\n        videoSrc=\"https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb\"\n        thumbnailSrc=\"https://startup-template-sage.vercel.app/hero-light.png\"\n        thumbnailAlt=\"Hero Video\"\n      />\n      <HeroVideoDialog\n        className=\"hidden dark:block\"\n        animationStyle=\"from-center\"\n        videoSrc=\"https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb\"\n        thumbnailSrc=\"https://startup-template-sage.vercel.app/hero-dark.png\"\n        thumbnailAlt=\"Hero Video\"\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

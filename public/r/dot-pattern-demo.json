@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dot-pattern-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Dot Pattern Demo",
+  "description": "Example showing a background dot pattern made with SVGs.",
   "registryDependencies": [
-    "dot-pattern"
+    "https://magicui.design/r/dot-pattern"
   ],
   "files": [
     {
       "path": "registry/example/dot-pattern-demo.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { DotPattern } from \"@/registry/magicui/dot-pattern\";\n\nexport default function DotPatternDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white\">\n        Dot Pattern\n      </p>\n      <DotPattern\n        className={cn(\n          \"[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]\",\n        )}\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

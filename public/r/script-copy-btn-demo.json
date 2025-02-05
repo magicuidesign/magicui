@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "script-copy-btn-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Script Copy Button Demo",
+  "description": "Example showing how to copy code to clipboard.",
+  "registryDependencies": [
+    "https://magicui.design/r/script-copy-btn"
+  ],
   "files": [
     {
       "path": "registry/example/script-copy-btn-demo.tsx",
       "content": "import { ScriptCopyBtn } from \"@/registry/magicui/script-copy-btn\";\n\nexport default function ScriptCopyBtnDemo() {\n  const customCommandMap = {\n    npm: \"npm run shadcn add button\",\n    yarn: \"yarn shadcn add button\",\n    pnpm: \"pnpm dlx shadcn@latest add button\",\n    bun: \"bun x shadcn@latest add button\",\n  };\n  return (\n    <ScriptCopyBtn\n      showMultiplePackageOptions={true}\n      codeLanguage=\"shell\"\n      lightTheme=\"nord\"\n      darkTheme=\"vitesse-dark\"\n      commandMap={customCommandMap}\n    />\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

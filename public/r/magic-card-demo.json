@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "magic-card-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Magic Card Demo",
+  "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
   "registryDependencies": [
-    "magic-card"
+    "https://magicui.design/r/magic-card"
   ],
   "files": [
     {
       "path": "registry/example/magic-card-demo.tsx",
-      "content": "import { useTheme } from \"next-themes\";\n\nimport { MagicCard } from \"@/registry/magicui/magic-card\";\n\nexport default function MagicCardDemo() {\n  const { theme } = useTheme();\n  return (\n    <div\n      className={\n        \"flex h-[500px] w-full flex-col gap-4 lg:h-[250px] lg:flex-row\"\n      }\n    >\n      <MagicCard\n        className=\"cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl shadow-2xl\"\n        gradientColor={theme === \"dark\" ? \"#262626\" : \"#D9D9D955\"}\n      >\n        Magic\n      </MagicCard>\n      <MagicCard\n        className=\"cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl shadow-2xl\"\n        gradientColor={theme === \"dark\" ? \"#262626\" : \"#D9D9D955\"}\n      >\n        Card\n      </MagicCard>\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "content": "\"use client\";\n\nimport { useTheme } from \"next-themes\";\n\nimport { MagicCard } from \"@/registry/magicui/magic-card\";\n\nexport default function MagicCardDemo() {\n  const { theme } = useTheme();\n  return (\n    <div\n      className={\n        \"flex h-[500px] w-full flex-col gap-4 lg:h-[250px] lg:flex-row\"\n      }\n    >\n      <MagicCard\n        className=\"cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl shadow-2xl\"\n        gradientColor={theme === \"dark\" ? \"#262626\" : \"#D9D9D955\"}\n      >\n        Magic\n      </MagicCard>\n      <MagicCard\n        className=\"cursor-pointer flex-col items-center justify-center whitespace-nowrap text-4xl shadow-2xl\"\n        gradientColor={theme === \"dark\" ? \"#262626\" : \"#D9D9D955\"}\n      >\n        Card\n      </MagicCard>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }

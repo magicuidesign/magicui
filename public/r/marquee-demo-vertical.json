@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "marquee-demo-vertical",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Marquee Vertical Demo",
+  "description": "Example showing a vertical infinite scrolling component.",
   "registryDependencies": [
-    "marquee"
+    "https://magicui.design/r/marquee"
   ],
   "files": [
     {
       "path": "registry/example/marquee-demo-vertical.tsx",
       "content": "import { cn } from \"@/lib/utils\";\nimport { Marquee } from \"@/registry/magicui/marquee\";\n\nconst reviews = [\n  {\n    name: \"Jack\",\n    username: \"@jack\",\n    body: \"I've never seen anything like this before. It's amazing. I love it.\",\n    img: \"https://avatar.vercel.sh/jack\",\n  },\n  {\n    name: \"Jill\",\n    username: \"@jill\",\n    body: \"I don't know what to say. I'm speechless. This is amazing.\",\n    img: \"https://avatar.vercel.sh/jill\",\n  },\n  {\n    name: \"John\",\n    username: \"@john\",\n    body: \"I'm at a loss for words. This is amazing. I love it.\",\n    img: \"https://avatar.vercel.sh/john\",\n  },\n];\n\nconst firstRow = reviews.slice(0, reviews.length / 2);\nconst secondRow = reviews.slice(reviews.length / 2);\n\nconst ReviewCard = ({\n  img,\n  name,\n  username,\n  body,\n}: {\n  img: string;\n  name: string;\n  username: string;\n  body: string;\n}) => {\n  return (\n    <figure\n      className={cn(\n        \"relative h-40 w-36 cursor-pointer overflow-hidden rounded-xl border p-4\",\n        // light styles\n        \"border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]\",\n        // dark styles\n        \"dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]\",\n      )}\n    >\n      <div className=\"flex flex-row items-center gap-2\">\n        <img className=\"rounded-full\" width=\"32\" height=\"32\" alt=\"\" src={img} />\n        <div className=\"flex flex-col\">\n          <figcaption className=\"text-sm font-medium dark:text-white\">\n            {name}\n          </figcaption>\n          <p className=\"text-xs font-medium dark:text-white/40\">{username}</p>\n        </div>\n      </div>\n      <blockquote className=\"mt-2 text-sm\">{body}</blockquote>\n    </figure>\n  );\n};\n\nexport default function MarqueeDemoVertical() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <Marquee pauseOnHover vertical className=\"[--duration:20s]\">\n        {firstRow.map((review) => (\n          <ReviewCard key={review.username} {...review} />\n        ))}\n      </Marquee>\n      <Marquee reverse pauseOnHover vertical className=\"[--duration:20s]\">\n        {secondRow.map((review) => (\n          <ReviewCard key={review.username} {...review} />\n        ))}\n      </Marquee>\n      <div className=\"pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background\"></div>\n      <div className=\"pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background\"></div>\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

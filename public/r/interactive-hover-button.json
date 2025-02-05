@@ -1,14 +1,12 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "interactive-hover-button",
-  "type": "registry:component",
-  "title": "Interactive Hover Button",
-  "description": "A visually engaging button component that responds to hover with dynamic transitions, adapting smoothly between light and dark modes for enhanced user interactivity.",
+  "type": "registry:ui",
   "files": [
     {
       "path": "registry/magicui/interactive-hover-button.tsx",
       "content": "import React from \"react\";\nimport { ArrowRight } from \"lucide-react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface InteractiveHoverButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}\n\nexport const InteractiveHoverButton = React.forwardRef<\n  HTMLButtonElement,\n  InteractiveHoverButtonProps\n>(({ children, className, ...props }, ref) => {\n  return (\n    <button\n      ref={ref}\n      className={cn(\n        \"group relative w-auto cursor-pointer overflow-hidden rounded-full border bg-background p-2 px-6 text-center font-semibold\",\n        className,\n      )}\n      {...props}\n    >\n      <div className=\"flex items-center gap-2\">\n        <div className=\"h-2 w-2 rounded-full bg-primary transition-all duration-300 group-hover:scale-[100.8]\"></div>\n        <span className=\"inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0\">\n          {children}\n        </span>\n      </div>\n      <div className=\"absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-primary-foreground opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100\">\n        <span>{children}</span>\n        <ArrowRight />\n      </div>\n    </button>\n  );\n});\n\nInteractiveHoverButton.displayName = \"InteractiveHoverButton\";\n",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "line-shadow-text-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Line Shadow Text Demo",
+  "description": "Example showing a text component with a moving line shadow.",
   "registryDependencies": [
-    "line-shadow-text"
+    "https://magicui.design/r/line-shadow-text"
   ],
   "files": [
     {
       "path": "registry/example/line-shadow-text-demo.tsx",
-      "content": "import { LineShadowText } from \"@/registry/magicui/line-shadow-text\";\nimport { useTheme } from \"next-themes\";\n\nexport default function LineShadowTextDemo() {\n  const theme = useTheme();\n  const shadowColor = theme.resolvedTheme === \"dark\" ? \"white\" : \"black\";\n  return (\n    <h1 className=\"text-balance text-5xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl\">\n      Ship\n      <LineShadowText className=\"italic\" shadowColor={shadowColor}>\n        Fast\n      </LineShadowText>\n    </h1>\n  );\n}\n",
-      "type": "registry:component"
+      "content": "\"use client\";\n\nimport { LineShadowText } from \"@/registry/magicui/line-shadow-text\";\nimport { useTheme } from \"next-themes\";\n\nexport default function LineShadowTextDemo() {\n  const theme = useTheme();\n  const shadowColor = theme.resolvedTheme === \"dark\" ? \"white\" : \"black\";\n  return (\n    <h1 className=\"text-balance text-5xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl\">\n      Ship\n      <LineShadowText className=\"italic\" shadowColor={shadowColor}>\n        Fast\n      </LineShadowText>\n    </h1>\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }

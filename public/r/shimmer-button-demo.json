@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shimmer-button-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Shimmer Button Demo",
+  "description": "Example showing a button with a shimmering light effect.",
   "registryDependencies": [
-    "shimmer-button"
+    "https://magicui.design/r/shimmer-button"
   ],
   "files": [
     {
       "path": "registry/example/shimmer-button-demo.tsx",
       "content": "import { ShimmerButton } from \"@/registry/magicui/shimmer-button\";\n\nexport default function ShimmerButtonDemo() {\n  return (\n    <ShimmerButton className=\"shadow-2xl\">\n      <span className=\"whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg\">\n        Shimmer Button\n      </span>\n    </ShimmerButton>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scratch-to-reveal-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Scratch To Reveal Demo",
+  "description": "Example showing an interactive scratch-off reveal effect.",
   "registryDependencies": [
-    "scratch-to-reveal"
+    "https://magicui.design/r/scratch-to-reveal"
   ],
   "files": [
     {
       "path": "registry/example/scratch-to-reveal-demo.tsx",
-      "content": "import { ScratchToReveal } from \"@/registry/magicui/scratch-to-reveal\";\n\nconst ScratchToRevealDemo = () => {\n  const handleComplete = () => {\n    // Do Something\n  };\n\n  return (\n    <ScratchToReveal\n      width={250}\n      height={250}\n      minScratchPercentage={70}\n      className=\"flex items-center justify-center overflow-hidden rounded-2xl border-2 bg-gray-100\"\n      onComplete={handleComplete}\n      gradientColors={[\"#A97CF8\", \"#F38CB8\", \"#FDCC92\"]}\n    >\n      <p className=\"text-9xl\">😎</p>\n    </ScratchToReveal>\n  );\n};\n\nexport default ScratchToRevealDemo;\n",
-      "type": "registry:component"
+      "content": "import { ScratchToReveal } from \"@/registry/magicui/scratch-to-reveal\";\n\nexport default function ScratchToRevealDemo() {\n  return (\n    <ScratchToReveal\n      width={250}\n      height={250}\n      minScratchPercentage={70}\n      className=\"flex items-center justify-center overflow-hidden rounded-2xl border-2 bg-gray-100\"\n      gradientColors={[\"#A97CF8\", \"#F38CB8\", \"#FDCC92\"]}\n    >\n      <p className=\"text-9xl\">😎</p>\n    </ScratchToReveal>\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }

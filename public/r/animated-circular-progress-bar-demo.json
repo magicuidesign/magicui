@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-circular-progress-bar-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Animated Circular Progress Bar Demo",
+  "description": "Example showing an animated circular progress gauge.",
+  "registryDependencies": [
+    "https://magicui.design/r/animated-circular-progress-bar"
+  ],
   "files": [
     {
       "path": "registry/example/animated-circular-progress-bar-demo.tsx",
       "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { AnimatedCircularProgressBar } from \"@/registry/magicui/animated-circular-progress-bar\";\n\nexport default function AnimatedCircularProgressBarDemo() {\n  const [value, setValue] = useState(0);\n\n  useEffect(() => {\n    const handleIncrement = (prev: number) => {\n      if (prev === 100) {\n        return 0;\n      }\n      return prev + 10;\n    };\n    setValue(handleIncrement);\n    const interval = setInterval(() => setValue(handleIncrement), 2000);\n    return () => clearInterval(interval);\n  }, []);\n\n  return (\n    <AnimatedCircularProgressBar\n      max={100}\n      min={0}\n      value={value}\n      gaugePrimaryColor=\"rgb(79 70 229)\"\n      gaugeSecondaryColor=\"rgba(0, 0, 0, 0.1)\"\n    />\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

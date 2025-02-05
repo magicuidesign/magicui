@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "morphing-text-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Morphing Text Demo",
+  "description": "Example showing a dynamic text morphing component.",
   "registryDependencies": [
-    "morphing-text"
+    "https://magicui.design/r/morphing-text"
   ],
   "files": [
     {
       "path": "registry/example/morphing-text-demo.tsx",
       "content": "import { MorphingText } from \"@/registry/magicui/morphing-text\";\n\nconst texts = [\n  \"Hello\",\n  \"Morphing\",\n  \"Text\",\n  \"Animation\",\n  \"React\",\n  \"Component\",\n  \"Smooth\",\n  \"Transition\",\n  \"Engaging\",\n];\n\nexport default function MorphingTextDemo() {\n  return <MorphingText texts={texts} />;\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

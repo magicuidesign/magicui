@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dot-pattern-linear-gradient",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Dot Pattern Linear Gradient",
+  "description": "Example showing a dot pattern with linear gradient effects.",
   "registryDependencies": [
-    "dot-pattern"
+    "https://magicui.design/r/dot-pattern"
   ],
   "files": [
     {
       "path": "registry/example/dot-pattern-linear-gradient.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { DotPattern } from \"@/registry/magicui/dot-pattern\";\n\nexport default function DotPatternLinearGradient() {\n  return (\n    <div className=\"relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white\">\n        Dot Pattern\n      </p>\n      <DotPattern\n        width={20}\n        height={20}\n        cx={1}\n        cy={1}\n        cr={1}\n        className={cn(\n          \"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] \",\n        )}\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

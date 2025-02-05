@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "confetti-fireworks",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Confetti Fireworks",
+  "description": "Example showing fireworks-style confetti animation.",
+  "registryDependencies": [
+    "https://magicui.design/r/confetti"
+  ],
   "files": [
     {
       "path": "registry/example/confetti-fireworks.tsx",
-      "content": "import confetti from \"canvas-confetti\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ConfettiFireworks() {\n  const handleClick = () => {\n    const duration = 5 * 1000;\n    const animationEnd = Date.now() + duration;\n    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };\n\n    const randomInRange = (min: number, max: number) =>\n      Math.random() * (max - min) + min;\n\n    const interval = window.setInterval(() => {\n      const timeLeft = animationEnd - Date.now();\n\n      if (timeLeft <= 0) {\n        return clearInterval(interval);\n      }\n\n      const particleCount = 50 * (timeLeft / duration);\n      confetti({\n        ...defaults,\n        particleCount,\n        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },\n      });\n      confetti({\n        ...defaults,\n        particleCount,\n        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },\n      });\n    }, 250);\n  };\n\n  return (\n    <div className=\"relative\">\n      <Button onClick={handleClick}>Trigger Fireworks</Button>\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "content": "\"use client\";\n\nimport confetti from \"canvas-confetti\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ConfettiFireworks() {\n  const handleClick = () => {\n    const duration = 5 * 1000;\n    const animationEnd = Date.now() + duration;\n    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };\n\n    const randomInRange = (min: number, max: number) =>\n      Math.random() * (max - min) + min;\n\n    const interval = window.setInterval(() => {\n      const timeLeft = animationEnd - Date.now();\n\n      if (timeLeft <= 0) {\n        return clearInterval(interval);\n      }\n\n      const particleCount = 50 * (timeLeft / duration);\n      confetti({\n        ...defaults,\n        particleCount,\n        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },\n      });\n      confetti({\n        ...defaults,\n        particleCount,\n        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },\n      });\n    }, 250);\n  };\n\n  return (\n    <div className=\"relative\">\n      <Button onClick={handleClick}>Trigger Fireworks</Button>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }

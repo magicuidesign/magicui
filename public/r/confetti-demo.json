@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "confetti-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Confetti Demo",
+  "description": "Example showing confetti animations for celebrations.",
+  "registryDependencies": [
+    "https://magicui.design/r/confetti"
+  ],
   "files": [
     {
       "path": "registry/example/confetti-demo.tsx",
       "content": "\"use client\";\n\nimport { useRef } from \"react\";\n\nimport { Confetti, type ConfettiRef } from \"@/registry/magicui/confetti\";\n\nexport default function ConfettiDemo() {\n  const confettiRef = useRef<ConfettiRef>(null);\n\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n        Confetti\n      </span>\n\n      <Confetti\n        ref={confettiRef}\n        className=\"absolute left-0 top-0 z-0 size-full\"\n        onMouseEnter={() => {\n          confettiRef.current?.fire({});\n        }}\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "terminal-demo",
+  "type": "registry:example",
+  "title": "Terminal Demo",
+  "description": "Example showing a terminal with animated text.",
+  "registryDependencies": [
+    "https://magicui.design/r/terminal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/terminal-demo.tsx",
+      "content": "import {\n  AnimatedSpan,\n  Terminal,\n  TypingAnimation,\n} from \"@/registry/magicui/terminal\";\n\nexport default function TerminalDemo() {\n  return (\n    <Terminal>\n      <TypingAnimation>&gt; pnpm dlx shadcn@latest init</TypingAnimation>\n\n      <AnimatedSpan delay={1500} className=\"text-green-500\">\n        <span>✔ Preflight checks.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={2000} className=\"text-green-500\">\n        <span>✔ Verifying framework. Found Next.js.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={2500} className=\"text-green-500\">\n        <span>✔ Validating Tailwind CSS.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={3000} className=\"text-green-500\">\n        <span>✔ Validating import alias.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={3500} className=\"text-green-500\">\n        <span>✔ Writing components.json.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={4000} className=\"text-green-500\">\n        <span>✔ Checking registry.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={4500} className=\"text-green-500\">\n        <span>✔ Updating tailwind.config.ts</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={5000} className=\"text-green-500\">\n        <span>✔ Updating app/globals.css</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={5500} className=\"text-green-500\">\n        <span>✔ Installing dependencies.</span>\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={6000} className=\"text-blue-500\">\n        <span>ℹ Updated 1 file:</span>\n        <span className=\"pl-2\">- lib/utils.ts</span>\n      </AnimatedSpan>\n\n      <TypingAnimation delay={6500} className=\"text-muted-foreground\">\n        Success! Project initialization completed.\n      </TypingAnimation>\n\n      <TypingAnimation delay={7000} className=\"text-muted-foreground\">\n        You may now add components.\n      </TypingAnimation>\n    </Terminal>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

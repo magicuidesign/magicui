@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "box-reveal-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Box Reveal Demo",
+  "description": "Example showing a sliding box text reveal animation.",
+  "registryDependencies": [
+    "https://magicui.design/r/box-reveal"
+  ],
   "files": [
     {
       "path": "registry/example/box-reveal-demo.tsx",
       "content": "import { Button } from \"@/components/ui/button\";\nimport { BoxReveal } from \"@/registry/magicui/box-reveal\";\n\nexport default function BoxRevealDemo() {\n  return (\n    <div className=\"size-full max-w-lg items-center justify-center overflow-hidden pt-8\">\n      <BoxReveal boxColor={\"#5046e6\"} duration={0.5}>\n        <p className=\"text-[3.5rem] font-semibold\">\n          Magic UI<span className=\"text-[#5046e6]\">.</span>\n        </p>\n      </BoxReveal>\n\n      <BoxReveal boxColor={\"#5046e6\"} duration={0.5}>\n        <h2 className=\"mt-[.5rem] text-[1rem]\">\n          UI library for{\" \"}\n          <span className=\"text-[#5046e6]\">Design Engineers</span>\n        </h2>\n      </BoxReveal>\n\n      <BoxReveal boxColor={\"#5046e6\"} duration={0.5}>\n        <div className=\"mt-6\">\n          <p>\n            -&gt; 20+ free and open-source animated components built with\n            <span className=\"font-semibold text-[#5046e6]\"> React</span>,\n            <span className=\"font-semibold text-[#5046e6]\"> Typescript</span>,\n            <span className=\"font-semibold text-[#5046e6]\"> Tailwind CSS</span>,\n            and\n            <span className=\"font-semibold text-[#5046e6]\"> Framer Motion</span>\n            . <br />\n            -&gt; 100% open-source, and customizable. <br />\n          </p>\n        </div>\n      </BoxReveal>\n\n      <BoxReveal boxColor={\"#5046e6\"} duration={0.5}>\n        <Button className=\"mt-[1.6rem] bg-[#5046e6]\">Explore</Button>\n      </BoxReveal>\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

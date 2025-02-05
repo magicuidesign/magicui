@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "iphone-15-pro-demo-3",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "iPhone 15 Pro Demo 3",
+  "description": "Third example showing an iPhone 15 Pro mockup.",
+  "registryDependencies": [
+    "https://magicui.design/r/iphone-15-pro"
+  ],
   "files": [
     {
       "path": "registry/example/iphone-15-pro-demo-3.tsx",
       "content": "import Iphone15Pro from \"@/registry/magicui/iphone-15-pro\";\n\nexport default function Iphone15ProDemo() {\n  return (\n    <div className=\"relative\">\n      <Iphone15Pro\n        className=\"size-full\"\n        videoSrc=\"https://videos.pexels.com/video-files/8946986/8946986-uhd_1440_2732_25fps.mp4\"\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ripple-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Ripple Demo",
+  "description": "Example showing an animated ripple effect.",
   "registryDependencies": [
-    "ripple"
+    "https://magicui.design/r/ripple"
   ],
   "files": [
     {
       "path": "registry/example/ripple-demo.tsx",
       "content": "import { Ripple } from \"@/registry/magicui/ripple\";\n\nexport default function RippleDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-white\">\n        Ripple\n      </p>\n      <Ripple />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

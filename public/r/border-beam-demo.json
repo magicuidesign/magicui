@@ -1,15 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "border-beam-demo",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Border Beam Demo",
+  "description": "Example showing an animated border beam effect.",
   "registryDependencies": [
-    "border-beam"
+    "https://magicui.design/r/border-beam"
   ],
   "files": [
     {
       "path": "registry/example/border-beam-demo.tsx",
       "content": "import { BorderBeam } from \"@/registry/magicui/border-beam\";\n\nexport default function BorderBeamDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n        Border Beam\n      </span>\n      <BorderBeam size={250} duration={12} delay={9} />\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:example"
     }
   ]
 }

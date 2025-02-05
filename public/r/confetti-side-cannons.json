@@ -1,12 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "confetti-side-cannons",
-  "type": "registry:component",
+  "type": "registry:example",
+  "title": "Confetti Side Cannons",
+  "description": "Example showing side-mounted confetti cannons.",
+  "registryDependencies": [
+    "https://magicui.design/r/confetti"
+  ],
   "files": [
     {
       "path": "registry/example/confetti-side-cannons.tsx",
-      "content": "import confetti from \"canvas-confetti\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ConfettiSideCannons() {\n  const handleClick = () => {\n    const end = Date.now() + 3 * 1000; // 3 seconds\n    const colors = [\"#a786ff\", \"#fd8bbc\", \"#eca184\", \"#f8deb1\"];\n\n    const frame = () => {\n      if (Date.now() > end) return;\n\n      confetti({\n        particleCount: 2,\n        angle: 60,\n        spread: 55,\n        startVelocity: 60,\n        origin: { x: 0, y: 0.5 },\n        colors: colors,\n      });\n      confetti({\n        particleCount: 2,\n        angle: 120,\n        spread: 55,\n        startVelocity: 60,\n        origin: { x: 1, y: 0.5 },\n        colors: colors,\n      });\n\n      requestAnimationFrame(frame);\n    };\n\n    frame();\n  };\n\n  return (\n    <div className=\"relative\">\n      <Button onClick={handleClick}>Trigger Side Cannons</Button>\n    </div>\n  );\n}\n",
-      "type": "registry:component"
+      "content": "\"use client\";\n\nimport confetti from \"canvas-confetti\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ConfettiSideCannons() {\n  const handleClick = () => {\n    const end = Date.now() + 3 * 1000; // 3 seconds\n    const colors = [\"#a786ff\", \"#fd8bbc\", \"#eca184\", \"#f8deb1\"];\n\n    const frame = () => {\n      if (Date.now() > end) return;\n\n      confetti({\n        particleCount: 2,\n        angle: 60,\n        spread: 55,\n        startVelocity: 60,\n        origin: { x: 0, y: 0.5 },\n        colors: colors,\n      });\n      confetti({\n        particleCount: 2,\n        angle: 120,\n        spread: 55,\n        startVelocity: 60,\n        origin: { x: 1, y: 0.5 },\n        colors: colors,\n      });\n\n      requestAnimationFrame(frame);\n    };\n\n    frame();\n  };\n\n  return (\n    <div className=\"relative\">\n      <Button onClick={handleClick}>Trigger Side Cannons</Button>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
     }
   ]
 }
