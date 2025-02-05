@@ -17,7 +17,8 @@ export const Index: Record<string, any> = {
   },
   "magic-card": {
     name: "magic-card",
-    description: "",
+    description:
+      "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -40,7 +41,7 @@ export const Index: Record<string, any> = {
   },
   android: {
     name: "android",
-    description: "",
+    description: "A mockup of an Android device.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -63,7 +64,7 @@ export const Index: Record<string, any> = {
   },
   "warp-background": {
     name: "warp-background",
-    description: "",
+    description: "A card with a time warping background effect.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -86,7 +87,7 @@ export const Index: Record<string, any> = {
   },
   "line-shadow-text": {
     name: "line-shadow-text",
-    description: "",
+    description: "A text component with a moving line shadow.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -109,7 +110,7 @@ export const Index: Record<string, any> = {
   },
   "aurora-text": {
     name: "aurora-text",
-    description: "",
+    description: "A beautiful aurora text effect",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -132,7 +133,7 @@ export const Index: Record<string, any> = {
   },
   "morphing-text": {
     name: "morphing-text",
-    description: "",
+    description: "A dynamic text morphing component for Magic UI.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -155,7 +156,7 @@ export const Index: Record<string, any> = {
   },
   "scroll-progress": {
     name: "scroll-progress",
-    description: "",
+    description: "Animated Scroll Progress for your pages",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -178,7 +179,7 @@ export const Index: Record<string, any> = {
   },
   "neon-gradient-card": {
     name: "neon-gradient-card",
-    description: "",
+    description: "A beautiful neon card effect",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -201,7 +202,7 @@ export const Index: Record<string, any> = {
   },
   meteors: {
     name: "meteors",
-    description: "",
+    description: "A meteor shower effect.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -224,7 +225,8 @@ export const Index: Record<string, any> = {
   },
   "grid-pattern": {
     name: "grid-pattern",
-    description: "",
+    description:
+      "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -247,7 +249,8 @@ export const Index: Record<string, any> = {
   },
   "interactive-grid-pattern": {
     name: "interactive-grid-pattern",
-    description: "",
+    description:
+      "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -272,7 +275,8 @@ export const Index: Record<string, any> = {
   },
   "dot-pattern": {
     name: "dot-pattern",
-    description: "",
+    description:
+      "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -295,7 +299,8 @@ export const Index: Record<string, any> = {
   },
   "flickering-grid": {
     name: "flickering-grid",
-    description: "",
+    description:
+      "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -318,7 +323,7 @@ export const Index: Record<string, any> = {
   },
   "hero-video-dialog": {
     name: "hero-video-dialog",
-    description: "",
+    description: "A hero video dialog component.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -341,7 +346,7 @@ export const Index: Record<string, any> = {
   },
   "code-comparison": {
     name: "code-comparison",
-    description: "",
+    description: "A component which compares two code snippets.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -364,7 +369,7 @@ export const Index: Record<string, any> = {
   },
   "script-copy-btn": {
     name: "script-copy-btn",
-    description: "",
+    description: "Copy code to clipboard",
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
@@ -387,7 +392,8 @@ export const Index: Record<string, any> = {
   },
   marquee: {
     name: "marquee",
-    description: "",
+    description:
+      "An infinite scrolling component that can be used to display text, images, or videos.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -410,7 +416,8 @@ export const Index: Record<string, any> = {
   },
   globe: {
     name: "globe",
-    description: "",
+    description:
+      "An autorotating, interactive, and highly performant globe made using WebGL.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -433,7 +440,8 @@ export const Index: Record<string, any> = {
   },
   "shimmer-button": {
     name: "shimmer-button",
-    description: "",
+    description:
+      "A button with a shimmering light which travels around the perimeter.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -456,7 +464,8 @@ export const Index: Record<string, any> = {
   },
   "tweet-card": {
     name: "tweet-card",
-    description: "",
+    description:
+      "A card that displays a tweet with the author's name, handle, and profile picture.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -479,7 +488,8 @@ export const Index: Record<string, any> = {
   },
   "client-tweet-card": {
     name: "client-tweet-card",
-    description: "",
+    description:
+      "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -502,7 +512,8 @@ export const Index: Record<string, any> = {
   },
   "bento-grid": {
     name: "bento-grid",
-    description: "",
+    description:
+      "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
@@ -525,7 +536,8 @@ export const Index: Record<string, any> = {
   },
   particles: {
     name: "particles",
-    description: "",
+    description:
+      "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -548,7 +560,7 @@ export const Index: Record<string, any> = {
   },
   "number-ticker": {
     name: "number-ticker",
-    description: "",
+    description: "Animate numbers to count up or down to a target number",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -571,7 +583,8 @@ export const Index: Record<string, any> = {
   },
   ripple: {
     name: "ripple",
-    description: "",
+    description:
+      "An animated ripple effect typically used behind elements to emphasize them.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -594,7 +607,7 @@ export const Index: Record<string, any> = {
   },
   "retro-grid": {
     name: "retro-grid",
-    description: "",
+    description: "An animated scrolling retro grid effect",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -617,7 +630,8 @@ export const Index: Record<string, any> = {
   },
   "animated-list": {
     name: "animated-list",
-    description: "",
+    description:
+      "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -640,7 +654,8 @@ export const Index: Record<string, any> = {
   },
   "animated-shiny-text": {
     name: "animated-shiny-text",
-    description: "",
+    description:
+      "A light glare effect which pans across text making it appear as if it is shimmering.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -663,7 +678,8 @@ export const Index: Record<string, any> = {
   },
   "animated-grid-pattern": {
     name: "animated-grid-pattern",
-    description: "",
+    description:
+      "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -686,7 +702,8 @@ export const Index: Record<string, any> = {
   },
   "border-beam": {
     name: "border-beam",
-    description: "",
+    description:
+      "An animated beam of light which travels along the border of its container.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -709,7 +726,8 @@ export const Index: Record<string, any> = {
   },
   "animated-beam": {
     name: "animated-beam",
-    description: "",
+    description:
+      'An animated beam of light which travels along a path. Useful for showcasing the "integration" features of a website.',
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -732,7 +750,7 @@ export const Index: Record<string, any> = {
   },
   "text-reveal": {
     name: "text-reveal",
-    description: "",
+    description: "Fade in text as you scroll down the page.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -755,7 +773,8 @@ export const Index: Record<string, any> = {
   },
   "hyper-text": {
     name: "hyper-text",
-    description: "",
+    description:
+      "A text animation that scrambles letters before revealing the final text.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -778,7 +797,8 @@ export const Index: Record<string, any> = {
   },
   "animated-gradient-text": {
     name: "animated-gradient-text",
-    description: "",
+    description:
+      "An animated gradient background which transitions between colors for text.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -801,7 +821,8 @@ export const Index: Record<string, any> = {
   },
   "orbiting-circles": {
     name: "orbiting-circles",
-    description: "",
+    description:
+      "A collection of circles which move in orbit along a circular path",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -824,7 +845,8 @@ export const Index: Record<string, any> = {
   },
   dock: {
     name: "dock",
-    description: "",
+    description:
+      "An implementation of the MacOS dock using react + tailwindcss + framer motion",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -847,7 +869,7 @@ export const Index: Record<string, any> = {
   },
   "word-rotate": {
     name: "word-rotate",
-    description: "",
+    description: "A vertical rotation of words",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -870,7 +892,7 @@ export const Index: Record<string, any> = {
   },
   "avatar-circles": {
     name: "avatar-circles",
-    description: "",
+    description: "Overlapping circles of avatars.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -893,7 +915,7 @@ export const Index: Record<string, any> = {
   },
   "typing-animation": {
     name: "typing-animation",
-    description: "",
+    description: "Characters appearing in typed animation",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -916,7 +938,8 @@ export const Index: Record<string, any> = {
   },
   "sparkles-text": {
     name: "sparkles-text",
-    description: "",
+    description:
+      "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -939,7 +962,7 @@ export const Index: Record<string, any> = {
   },
   "flip-text": {
     name: "flip-text",
-    description: "",
+    description: "Text flipping character animation",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -962,7 +985,7 @@ export const Index: Record<string, any> = {
   },
   "icon-cloud": {
     name: "icon-cloud",
-    description: "",
+    description: "An interactive 3D tag cloud component",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -985,7 +1008,8 @@ export const Index: Record<string, any> = {
   },
   "text-animate": {
     name: "text-animate",
-    description: "",
+    description:
+      "A text animation component that animates text using a variety of different animations.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1008,7 +1032,7 @@ export const Index: Record<string, any> = {
   },
   "scroll-based-velocity": {
     name: "scroll-based-velocity",
-    description: "",
+    description: "Scrolling text whose speed changes based on scroll speed",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1031,7 +1055,8 @@ export const Index: Record<string, any> = {
   },
   "scratch-to-reveal": {
     name: "scratch-to-reveal",
-    description: "",
+    description:
+      "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1054,7 +1079,8 @@ export const Index: Record<string, any> = {
   },
   "shiny-button": {
     name: "shiny-button",
-    description: "",
+    description:
+      "A shiny button component with dynamic styles in the dark mode or light mode.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1077,7 +1103,7 @@ export const Index: Record<string, any> = {
   },
   "box-reveal": {
     name: "box-reveal",
-    description: "",
+    description: "Sliding box animation that reveals text behind it.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1100,7 +1126,7 @@ export const Index: Record<string, any> = {
   },
   "shine-border": {
     name: "shine-border",
-    description: "",
+    description: "Shine border is an animated background border effect.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1123,7 +1149,8 @@ export const Index: Record<string, any> = {
   },
   "animated-circular-progress-bar": {
     name: "animated-circular-progress-bar",
-    description: "",
+    description:
+      "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1148,7 +1175,8 @@ export const Index: Record<string, any> = {
   },
   confetti: {
     name: "confetti",
-    description: "",
+    description:
+      "Confetti animations are best used to delight your users when something special happens",
     type: "registry:ui",
     registryDependencies: ["button"],
     files: [
@@ -1171,7 +1199,8 @@ export const Index: Record<string, any> = {
   },
   "animated-subscribe-button": {
     name: "animated-subscribe-button",
-    description: "",
+    description:
+      "An animated subscribe button useful for showing a micro animation from intial to final result.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1196,7 +1225,7 @@ export const Index: Record<string, any> = {
   },
   "cool-mode": {
     name: "cool-mode",
-    description: "",
+    description: "Cool mode effect for buttons, links, and other DOMs",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1219,7 +1248,8 @@ export const Index: Record<string, any> = {
   },
   "pulsating-button": {
     name: "pulsating-button",
-    description: "",
+    description:
+      "An animated pulsating button useful for capturing attention of users.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1242,7 +1272,7 @@ export const Index: Record<string, any> = {
   },
   "ripple-button": {
     name: "ripple-button",
-    description: "",
+    description: "An animated button with ripple useful for user engagement.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1265,7 +1295,8 @@ export const Index: Record<string, any> = {
   },
   "file-tree": {
     name: "file-tree",
-    description: "",
+    description:
+      "A component used to showcase the folder and file structure of a directory.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1288,7 +1319,8 @@ export const Index: Record<string, any> = {
   },
   "blur-fade": {
     name: "blur-fade",
-    description: "",
+    description:
+      "Blur fade in and out animation. Used to smoothly fade in and out content.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1311,7 +1343,7 @@ export const Index: Record<string, any> = {
   },
   safari: {
     name: "safari",
-    description: "",
+    description: "A safari browser mockup to showcase your website.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1334,7 +1366,7 @@ export const Index: Record<string, any> = {
   },
   "iphone-15-pro": {
     name: "iphone-15-pro",
-    description: "",
+    description: "A mockup of the iPhone 15 Pro",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -1357,7 +1389,7 @@ export const Index: Record<string, any> = {
   },
   "rainbow-button": {
     name: "rainbow-button",
-    description: "",
+    description: "An animated button with a rainbow effect.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [

@@ -26,6 +26,8 @@
     {
       "name": "magic-card",
       "type": "registry:ui",
+      "title": "Magic Card",
+      "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
       "dependencies": [
         "motion"
       ],
@@ -39,6 +41,8 @@
     {
       "name": "android",
       "type": "registry:ui",
+      "title": "Android",
+      "description": "A mockup of an Android device.",
       "files": [
         {
           "path": "registry/magicui/android.tsx",
@@ -49,6 +53,8 @@
     {
       "name": "warp-background",
       "type": "registry:ui",
+      "title": "Warp Background",
+      "description": "A card with a time warping background effect.",
       "dependencies": [
         "motion"
       ],
@@ -62,6 +68,8 @@
     {
       "name": "line-shadow-text",
       "type": "registry:ui",
+      "title": "Line Shadow Text",
+      "description": "A text component with a moving line shadow.",
       "dependencies": [
         "motion"
       ],
@@ -75,6 +83,8 @@
     {
       "name": "aurora-text",
       "type": "registry:ui",
+      "title": "Aurora Text",
+      "description": "A beautiful aurora text effect",
       "dependencies": [
         "motion"
       ],
@@ -191,6 +201,8 @@
     {
       "name": "morphing-text",
       "type": "registry:ui",
+      "title": "Morphing Text",
+      "description": "A dynamic text morphing component for Magic UI.",
       "files": [
         {
           "path": "registry/magicui/morphing-text.tsx",
@@ -201,6 +213,8 @@
     {
       "name": "scroll-progress",
       "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "Animated Scroll Progress for your pages",
       "dependencies": [
         "motion"
       ],
@@ -214,6 +228,8 @@
     {
       "name": "neon-gradient-card",
       "type": "registry:ui",
+      "title": "Neon Gradient Card",
+      "description": "A beautiful neon card effect",
       "files": [
         {
           "path": "registry/magicui/neon-gradient-card.tsx",
@@ -245,6 +261,8 @@
     {
       "name": "meteors",
       "type": "registry:ui",
+      "title": "Meteors",
+      "description": "A meteor shower effect.",
       "files": [
         {
           "path": "registry/magicui/meteors.tsx",
@@ -281,6 +299,8 @@
     {
       "name": "grid-pattern",
       "type": "registry:ui",
+      "title": "Grid Pattern",
+      "description": "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
       "files": [
         {
           "path": "registry/magicui/grid-pattern.tsx",
@@ -291,6 +311,8 @@
     {
       "name": "interactive-grid-pattern",
       "type": "registry:ui",
+      "title": "Interactive Grid Pattern",
+      "description": "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
       "files": [
         {
           "path": "registry/magicui/interactive-grid-pattern.tsx",
@@ -301,6 +323,8 @@
     {
       "name": "dot-pattern",
       "type": "registry:ui",
+      "title": "Dot Pattern",
+      "description": "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
       "files": [
         {
           "path": "registry/magicui/dot-pattern.tsx",
@@ -311,6 +335,8 @@
     {
       "name": "flickering-grid",
       "type": "registry:ui",
+      "title": "Flickering Grid",
+      "description": "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
       "files": [
         {
           "path": "registry/magicui/flickering-grid.tsx",
@@ -321,6 +347,8 @@
     {
       "name": "hero-video-dialog",
       "type": "registry:ui",
+      "title": "Hero Video Dialog",
+      "description": "A hero video dialog component.",
       "dependencies": [
         "motion"
       ],
@@ -334,6 +362,8 @@
     {
       "name": "code-comparison",
       "type": "registry:ui",
+      "title": "Code Comparison",
+      "description": "A component which compares two code snippets.",
       "dependencies": [
         "shiki",
         "next-themes"
@@ -348,6 +378,8 @@
     {
       "name": "script-copy-btn",
       "type": "registry:ui",
+      "title": "Script Copy Button",
+      "description": "Copy code to clipboard",
       "dependencies": [
         "motion",
         "shiki",
@@ -366,6 +398,8 @@
     {
       "name": "marquee",
       "type": "registry:ui",
+      "title": "Marquee",
+      "description": "An infinite scrolling component that can be used to display text, images, or videos.",
       "files": [
         {
           "path": "registry/magicui/marquee.tsx",
@@ -406,6 +440,8 @@
     {
       "name": "globe",
       "type": "registry:ui",
+      "title": "Globe",
+      "description": "An autorotating, interactive, and highly performant globe made using WebGL.",
       "dependencies": [
         "cobe"
       ],
@@ -419,6 +455,8 @@
     {
       "name": "shimmer-button",
       "type": "registry:ui",
+      "title": "Shimmer Button",
+      "description": "A button with a shimmering light which travels around the perimeter.",
       "files": [
         {
           "path": "registry/magicui/shimmer-button.tsx",
@@ -462,6 +500,8 @@
     {
       "name": "tweet-card",
       "type": "registry:ui",
+      "title": "Tweet Card",
+      "description": "A card that displays a tweet with the author's name, handle, and profile picture.",
       "dependencies": [
         "react-tweet"
       ],
@@ -475,6 +515,8 @@
     {
       "name": "client-tweet-card",
       "type": "registry:ui",
+      "title": "Client Tweet Card",
+      "description": "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
       "dependencies": [
         "react-tweet"
       ],
@@ -488,6 +530,8 @@
     {
       "name": "bento-grid",
       "type": "registry:ui",
+      "title": "Bento Grid",
+      "description": "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
       "dependencies": [
         "@radix-ui/react-icons"
       ],
@@ -504,6 +548,8 @@
     {
       "name": "particles",
       "type": "registry:ui",
+      "title": "Particles",
+      "description": "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
       "files": [
         {
           "path": "registry/magicui/particles.tsx",
@@ -514,6 +560,8 @@
     {
       "name": "number-ticker",
       "type": "registry:ui",
+      "title": "Number Ticker",
+      "description": "Animate numbers to count up or down to a target number",
       "dependencies": [
         "motion"
       ],
@@ -527,6 +575,8 @@
     {
       "name": "ripple",
       "type": "registry:ui",
+      "title": "Ripple",
+      "description": "An animated ripple effect typically used behind elements to emphasize them.",
       "files": [
         {
           "path": "registry/magicui/ripple.tsx",
@@ -558,6 +608,8 @@
     {
       "name": "retro-grid",
       "type": "registry:ui",
+      "title": "Retro Grid",
+      "description": "An animated scrolling retro grid effect",
       "files": [
         {
           "path": "registry/magicui/retro-grid.tsx",
@@ -589,6 +641,8 @@
     {
       "name": "animated-list",
       "type": "registry:ui",
+      "title": "Animated List",
+      "description": "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
       "dependencies": [
         "motion"
       ],
@@ -602,6 +656,8 @@
     {
       "name": "animated-shiny-text",
       "type": "registry:ui",
+      "title": "Animated Shiny Text",
+      "description": "A light glare effect which pans across text making it appear as if it is shimmering.",
       "files": [
         {
           "path": "registry/magicui/animated-shiny-text.tsx",
@@ -633,6 +689,8 @@
     {
       "name": "animated-grid-pattern",
       "type": "registry:ui",
+      "title": "Animated Grid Pattern",
+      "description": "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
       "dependencies": [
         "motion"
       ],
@@ -646,6 +704,8 @@
     {
       "name": "border-beam",
       "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "An animated beam of light which travels along the border of its container.",
       "files": [
         {
           "path": "registry/magicui/border-beam.tsx",
@@ -674,6 +734,8 @@
     {
       "name": "animated-beam",
       "type": "registry:ui",
+      "title": "Animated Beam",
+      "description": "An animated beam of light which travels along a path. Useful for showcasing the \"integration\" features of a website.",
       "dependencies": [
         "motion"
       ],
@@ -687,6 +749,8 @@
     {
       "name": "text-reveal",
       "type": "registry:ui",
+      "title": "Text Reveal",
+      "description": "Fade in text as you scroll down the page.",
       "dependencies": [
         "motion"
       ],
@@ -700,6 +764,8 @@
     {
       "name": "hyper-text",
       "type": "registry:ui",
+      "title": "Hyper Text",
+      "description": "A text animation that scrambles letters before revealing the final text.",
       "dependencies": [
         "motion"
       ],
@@ -713,6 +779,8 @@
     {
       "name": "animated-gradient-text",
       "type": "registry:ui",
+      "title": "Animated Gradient Text",
+      "description": "An animated gradient background which transitions between colors for text.",
       "files": [
         {
           "path": "registry/magicui/animated-gradient-text.tsx",
@@ -741,6 +809,8 @@
     {
       "name": "orbiting-circles",
       "type": "registry:ui",
+      "title": "Orbiting Circles",
+      "description": "A collection of circles which move in orbit along a circular path",
       "files": [
         {
           "path": "registry/magicui/orbiting-circles.tsx",
@@ -772,6 +842,8 @@
     {
       "name": "dock",
       "type": "registry:ui",
+      "title": "Dock",
+      "description": "An implementation of the MacOS dock using react + tailwindcss + framer motion",
       "dependencies": [
         "motion"
       ],
@@ -785,6 +857,8 @@
     {
       "name": "word-rotate",
       "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "A vertical rotation of words",
       "dependencies": [
         "motion"
       ],
@@ -798,6 +872,8 @@
     {
       "name": "avatar-circles",
       "type": "registry:ui",
+      "title": "Avatar Circles",
+      "description": "Overlapping circles of avatars.",
       "files": [
         {
           "path": "registry/magicui/avatar-circles.tsx",
@@ -808,6 +884,8 @@
     {
       "name": "typing-animation",
       "type": "registry:ui",
+      "title": "Typing Animation",
+      "description": "Characters appearing in typed animation",
       "dependencies": [
         "motion"
       ],
@@ -821,6 +899,8 @@
     {
       "name": "sparkles-text",
       "type": "registry:ui",
+      "title": "Sparkles Text",
+      "description": "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
       "dependencies": [
         "motion"
       ],
@@ -834,6 +914,8 @@
     {
       "name": "flip-text",
       "type": "registry:ui",
+      "title": "Flip Text",
+      "description": "Text flipping character animation",
       "dependencies": [
         "motion"
       ],
@@ -847,6 +929,8 @@
     {
       "name": "icon-cloud",
       "type": "registry:ui",
+      "title": "Icon Cloud",
+      "description": "An interactive 3D tag cloud component",
       "dependencies": [],
       "files": [
         {
@@ -858,6 +942,8 @@
     {
       "name": "text-animate",
       "type": "registry:ui",
+      "title": "Text Animate",
+      "description": "A text animation component that animates text using a variety of different animations.",
       "dependencies": [
         "motion"
       ],
@@ -871,6 +957,8 @@
     {
       "name": "scroll-based-velocity",
       "type": "registry:ui",
+      "title": "Scroll Based Velocity",
+      "description": "Scrolling text whose speed changes based on scroll speed",
       "dependencies": [
         "motion"
       ],
@@ -884,6 +972,8 @@
     {
       "name": "scratch-to-reveal",
       "type": "registry:ui",
+      "title": "Scratch To Reveal",
+      "description": "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
       "dependencies": [
         "motion"
       ],
@@ -897,6 +987,8 @@
     {
       "name": "shiny-button",
       "type": "registry:ui",
+      "title": "Shiny Button",
+      "description": "A shiny button component with dynamic styles in the dark mode or light mode.",
       "dependencies": [
         "motion"
       ],
@@ -910,6 +1002,8 @@
     {
       "name": "box-reveal",
       "type": "registry:ui",
+      "title": "Box Reveal Animation",
+      "description": "Sliding box animation that reveals text behind it.",
       "dependencies": [
         "motion"
       ],
@@ -923,6 +1017,8 @@
     {
       "name": "shine-border",
       "type": "registry:ui",
+      "title": "Shine Border",
+      "description": "Shine border is an animated background border effect.",
       "files": [
         {
           "path": "registry/magicui/shine-border.tsx",
@@ -957,6 +1053,8 @@
     {
       "name": "animated-circular-progress-bar",
       "type": "registry:ui",
+      "title": "Animated Circular Progress Bar",
+      "description": "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
       "files": [
         {
           "path": "registry/magicui/animated-circular-progress-bar.tsx",
@@ -967,6 +1065,8 @@
     {
       "name": "confetti",
       "type": "registry:ui",
+      "title": "Confetti",
+      "description": "Confetti animations are best used to delight your users when something special happens",
       "dependencies": [
         "canvas-confetti",
         "@types/canvas-confetti"
@@ -984,6 +1084,8 @@
     {
       "name": "animated-subscribe-button",
       "type": "registry:ui",
+      "title": "Animated Subscribe Button",
+      "description": "An animated subscribe button useful for showing a micro animation from intial to final result.",
       "dependencies": [
         "motion"
       ],
@@ -997,6 +1099,8 @@
     {
       "name": "cool-mode",
       "type": "registry:ui",
+      "title": "Cool Mode",
+      "description": "Cool mode effect for buttons, links, and other DOMs",
       "files": [
         {
           "path": "registry/magicui/cool-mode.tsx",
@@ -1007,6 +1111,8 @@
     {
       "name": "pulsating-button",
       "type": "registry:ui",
+      "title": "Pulsating Button",
+      "description": "An animated pulsating button useful for capturing attention of users.",
       "files": [
         {
           "path": "registry/magicui/pulsating-button.tsx",
@@ -1038,6 +1144,8 @@
     {
       "name": "ripple-button",
       "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "An animated button with ripple useful for user engagement.",
       "files": [
         {
           "path": "registry/magicui/ripple-button.tsx",
@@ -1070,6 +1178,8 @@
     {
       "name": "file-tree",
       "type": "registry:ui",
+      "title": "File Tree",
+      "description": "A component used to showcase the folder and file structure of a directory.",
       "files": [
         {
           "path": "registry/magicui/file-tree.tsx",
@@ -1080,6 +1190,8 @@
     {
       "name": "blur-fade",
       "type": "registry:ui",
+      "title": "Blur Fade",
+      "description": "Blur fade in and out animation. Used to smoothly fade in and out content.",
       "dependencies": [
         "motion"
       ],
@@ -1093,6 +1205,8 @@
     {
       "name": "safari",
       "type": "registry:ui",
+      "title": "Safari",
+      "description": "A safari browser mockup to showcase your website.",
       "files": [
         {
           "path": "registry/magicui/safari.tsx",
@@ -1103,6 +1217,8 @@
     {
       "name": "iphone-15-pro",
       "type": "registry:ui",
+      "title": "iPhone 15 Pro",
+      "description": "A mockup of the iPhone 15 Pro",
       "files": [
         {
           "path": "registry/magicui/iphone-15-pro.tsx",
@@ -1113,6 +1229,8 @@
     {
       "name": "rainbow-button",
       "type": "registry:ui",
+      "title": "Rainbow Button",
+      "description": "An animated button with a rainbow effect.",
       "files": [
         {
           "path": "registry/magicui/rainbow-button.tsx",
