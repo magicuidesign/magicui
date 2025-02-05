@@ -147,8 +147,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(typescript@5.3.3)
       shadcn:
-        specifier: 2.2.0-canary.3
-        version: 2.2.0-canary.3(typescript@5.3.3)
+        specifier: 2.3.0
+        version: 2.3.0(typescript@5.3.3)
       sonner:
         specifier: ^1.5.0
         version: 1.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4873,8 +4873,8 @@ packages:
     resolution: {integrity: sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ==}
     engines: {node: '>= 0.4'}
 
-  shadcn@2.2.0-canary.3:
-    resolution: {integrity: sha512-P0adSoD8SY6W8JGqvTnOnUm26G2/u91XelxXs+JbMJWFhQz7JkGld0M9+BPAC9fO8JC4yVy4gdHWc52GhoXknA==}
+  shadcn@2.3.0:
+    resolution: {integrity: sha512-Q/ra8/r2wb5W0DX0LKuPpsT6/0vtgwW/DR9uunJ6/3lXMOBo2UyUeCQ2m9/XAlALHhyGnzHngf8s8NrW1kcg5Q==}
     hasBin: true
 
   shebang-command@1.2.0:
@@ -10882,11 +10882,11 @@ snapshots:
       functions-have-names: 1.2.3
       has-property-descriptors: 1.0.2
 
-  shadcn@2.2.0-canary.3(typescript@5.3.3):
+  shadcn@2.3.0(typescript@5.3.3):
     dependencies:
       '@antfu/ni': 0.21.12
       '@babel/core': 7.24.0
-      '@babel/parser': 7.24.0
+      '@babel/parser': 7.26.5
       '@babel/plugin-transform-typescript': 7.26.5(@babel/core@7.24.0)
       commander: 10.0.1
       cosmiconfig: 8.3.6(typescript@5.3.3)
@@ -10897,7 +10897,6 @@ snapshots:
       fs-extra: 11.3.0
       https-proxy-agent: 6.2.1
       kleur: 4.1.5
-      lodash.template: 4.5.0
       node-fetch: 3.3.2
       ora: 6.3.1
       postcss: 8.4.39

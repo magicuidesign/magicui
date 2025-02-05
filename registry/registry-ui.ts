@@ -1,40 +1,34 @@
-import { Registry } from "@/registry/schema";
+import { type Registry } from "shadcn/registry";
 
-export const ui: Registry = [
+export const ui: Registry["items"] = [
   {
     name: "magic-card",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/magic-card.tsx"],
+    files: [{ path: "magicui/magic-card.tsx", type: "registry:ui" }],
   },
   {
     name: "android",
     type: "registry:ui",
-    files: ["magicui/android.tsx"],
+    files: [{ path: "magicui/android.tsx", type: "registry:ui" }],
   },
   {
     name: "warp-background",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/warp-background.tsx"],
+    files: [{ path: "magicui/warp-background.tsx", type: "registry:ui" }],
   },
   {
     name: "line-shadow-text",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/line-shadow-text.tsx"],
-  },
-  {
-    name: "terminal",
-    type: "registry:ui",
-    dependencies: ["motion"],
-    files: ["magicui/terminal.tsx"],
+    files: [{ path: "magicui/line-shadow-text.tsx", type: "registry:ui" }],
   },
   {
     name: "aurora-text",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/aurora-text.tsx"],
+    files: [{ path: "magicui/aurora-text.tsx", type: "registry:ui" }],
     cssVars: {
       light: {
         "--color-1": "0 100% 63%",
@@ -100,18 +94,18 @@ export const ui: Registry = [
   {
     name: "morphing-text",
     type: "registry:ui",
-    files: ["magicui/morphing-text.tsx"],
+    files: [{ path: "magicui/morphing-text.tsx", type: "registry:ui" }],
   },
   {
     name: "scroll-progress",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/scroll-progress.tsx"],
+    files: [{ path: "magicui/scroll-progress.tsx", type: "registry:ui" }],
   },
   {
     name: "neon-gradient-card",
     type: "registry:ui",
-    files: ["magicui/neon-gradient-card.tsx"],
+    files: [{ path: "magicui/neon-gradient-card.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -134,7 +128,7 @@ export const ui: Registry = [
   {
     name: "meteors",
     type: "registry:ui",
-    files: ["magicui/meteors.tsx"],
+    files: [{ path: "magicui/meteors.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -163,46 +157,48 @@ export const ui: Registry = [
   {
     name: "grid-pattern",
     type: "registry:ui",
-    files: ["magicui/grid-pattern.tsx"],
+    files: [{ path: "magicui/grid-pattern.tsx", type: "registry:ui" }],
   },
   {
     name: "interactive-grid-pattern",
     type: "registry:ui",
-    files: ["magicui/interactive-grid-pattern.tsx"],
+    files: [
+      { path: "magicui/interactive-grid-pattern.tsx", type: "registry:ui" },
+    ],
   },
   {
     name: "dot-pattern",
     type: "registry:ui",
-    files: ["magicui/dot-pattern.tsx"],
+    files: [{ path: "magicui/dot-pattern.tsx", type: "registry:ui" }],
   },
   {
     name: "flickering-grid",
     type: "registry:ui",
-    files: ["magicui/flickering-grid.tsx"],
+    files: [{ path: "magicui/flickering-grid.tsx", type: "registry:ui" }],
   },
   {
     name: "hero-video-dialog",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/hero-video-dialog.tsx"],
+    files: [{ path: "magicui/hero-video-dialog.tsx", type: "registry:ui" }],
   },
   {
     name: "code-comparison",
     type: "registry:ui",
     dependencies: ["shiki", "next-themes"],
-    files: ["magicui/code-comparison.tsx"],
+    files: [{ path: "magicui/code-comparison.tsx", type: "registry:ui" }],
   },
   {
     name: "script-copy-btn",
     type: "registry:ui",
     dependencies: ["motion", "shiki", "next-themes"],
     registryDependencies: ["button"],
-    files: ["magicui/script-copy-btn.tsx"],
+    files: [{ path: "magicui/script-copy-btn.tsx", type: "registry:ui" }],
   },
   {
     name: "marquee",
     type: "registry:ui",
-    files: ["magicui/marquee.tsx"],
+    files: [{ path: "magicui/marquee.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -231,12 +227,12 @@ export const ui: Registry = [
     name: "globe",
     type: "registry:ui",
     dependencies: ["cobe"],
-    files: ["magicui/globe.tsx"],
+    files: [{ path: "magicui/globe.tsx", type: "registry:ui" }],
   },
   {
     name: "shimmer-button",
     type: "registry:ui",
-    files: ["magicui/shimmer-button.tsx"],
+    files: [{ path: "magicui/shimmer-button.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -277,36 +273,36 @@ export const ui: Registry = [
     name: "tweet-card",
     type: "registry:ui",
     dependencies: ["react-tweet"],
-    files: ["magicui/tweet-card.tsx"],
+    files: [{ path: "magicui/tweet-card.tsx", type: "registry:ui" }],
   },
   {
     name: "client-tweet-card",
     type: "registry:ui",
     dependencies: ["react-tweet"],
-    files: ["magicui/client-tweet-card.tsx"],
+    files: [{ path: "magicui/client-tweet-card.tsx", type: "registry:ui" }],
   },
   {
     name: "bento-grid",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-icons"],
     registryDependencies: ["button"],
-    files: ["magicui/bento-grid.tsx"],
+    files: [{ path: "magicui/bento-grid.tsx", type: "registry:ui" }],
   },
   {
     name: "particles",
     type: "registry:ui",
-    files: ["magicui/particles.tsx"],
+    files: [{ path: "magicui/particles.tsx", type: "registry:ui" }],
   },
   {
     name: "number-ticker",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/number-ticker.tsx"],
+    files: [{ path: "magicui/number-ticker.tsx", type: "registry:ui" }],
   },
   {
     name: "ripple",
     type: "registry:ui",
-    files: ["magicui/ripple.tsx"],
+    files: [{ path: "magicui/ripple.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -333,7 +329,7 @@ export const ui: Registry = [
   {
     name: "retro-grid",
     type: "registry:ui",
-    files: ["magicui/retro-grid.tsx"],
+    files: [{ path: "magicui/retro-grid.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -356,12 +352,12 @@ export const ui: Registry = [
     name: "animated-list",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/animated-list.tsx"],
+    files: [{ path: "magicui/animated-list.tsx", type: "registry:ui" }],
   },
   {
     name: "animated-shiny-text",
     type: "registry:ui",
-    files: ["magicui/animated-shiny-text.tsx"],
+    files: [{ path: "magicui/animated-shiny-text.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -388,12 +384,12 @@ export const ui: Registry = [
     name: "animated-grid-pattern",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/animated-grid-pattern.tsx"],
+    files: [{ path: "magicui/animated-grid-pattern.tsx", type: "registry:ui" }],
   },
   {
     name: "border-beam",
     type: "registry:ui",
-    files: ["magicui/border-beam.tsx"],
+    files: [{ path: "magicui/border-beam.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -418,24 +414,26 @@ export const ui: Registry = [
     name: "animated-beam",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/animated-beam.tsx"],
+    files: [{ path: "magicui/animated-beam.tsx", type: "registry:ui" }],
   },
   {
     name: "text-reveal",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/text-reveal.tsx"],
+    files: [{ path: "magicui/text-reveal.tsx", type: "registry:ui" }],
   },
   {
     name: "hyper-text",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/hyper-text.tsx"],
+    files: [{ path: "magicui/hyper-text.tsx", type: "registry:ui" }],
   },
   {
     name: "animated-gradient-text",
     type: "registry:ui",
-    files: ["magicui/animated-gradient-text.tsx"],
+    files: [
+      { path: "magicui/animated-gradient-text.tsx", type: "registry:ui" },
+    ],
     tailwind: {
       config: {
         theme: {
@@ -458,7 +456,7 @@ export const ui: Registry = [
   {
     name: "orbiting-circles",
     type: "registry:ui",
-    files: ["magicui/orbiting-circles.tsx"],
+    files: [{ path: "magicui/orbiting-circles.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -487,77 +485,77 @@ export const ui: Registry = [
     name: "dock",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/dock.tsx"],
+    files: [{ path: "magicui/dock.tsx", type: "registry:ui" }],
   },
   {
     name: "word-rotate",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/word-rotate.tsx"],
+    files: [{ path: "magicui/word-rotate.tsx", type: "registry:ui" }],
   },
   {
     name: "avatar-circles",
     type: "registry:ui",
-    files: ["magicui/avatar-circles.tsx"],
+    files: [{ path: "magicui/avatar-circles.tsx", type: "registry:ui" }],
   },
   {
     name: "typing-animation",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/typing-animation.tsx"],
+    files: [{ path: "magicui/typing-animation.tsx", type: "registry:ui" }],
   },
   {
     name: "sparkles-text",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/sparkles-text.tsx"],
+    files: [{ path: "magicui/sparkles-text.tsx", type: "registry:ui" }],
   },
   {
     name: "flip-text",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/flip-text.tsx"],
+    files: [{ path: "magicui/flip-text.tsx", type: "registry:ui" }],
   },
   {
     name: "icon-cloud",
     type: "registry:ui",
     dependencies: [],
-    files: ["magicui/icon-cloud.tsx"],
+    files: [{ path: "magicui/icon-cloud.tsx", type: "registry:ui" }],
   },
   {
     name: "text-animate",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/text-animate.tsx"],
+    files: [{ path: "magicui/text-animate.tsx", type: "registry:ui" }],
   },
   {
     name: "scroll-based-velocity",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/scroll-based-velocity.tsx"],
+    files: [{ path: "magicui/scroll-based-velocity.tsx", type: "registry:ui" }],
   },
   {
     name: "scratch-to-reveal",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/scratch-to-reveal.tsx"],
+    files: [{ path: "magicui/scratch-to-reveal.tsx", type: "registry:ui" }],
   },
   {
     name: "shiny-button",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/shiny-button.tsx"],
+    files: [{ path: "magicui/shiny-button.tsx", type: "registry:ui" }],
   },
   {
     name: "box-reveal",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/box-reveal.tsx"],
+    files: [{ path: "magicui/box-reveal.tsx", type: "registry:ui" }],
   },
   {
     name: "shine-border",
     type: "registry:ui",
-    files: ["magicui/shine-border.tsx"],
+    files: [{ path: "magicui/shine-border.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -586,30 +584,37 @@ export const ui: Registry = [
   {
     name: "animated-circular-progress-bar",
     type: "registry:ui",
-    files: ["magicui/animated-circular-progress-bar.tsx"],
+    files: [
+      {
+        path: "magicui/animated-circular-progress-bar.tsx",
+        type: "registry:ui",
+      },
+    ],
   },
   {
     name: "confetti",
     type: "registry:ui",
     dependencies: ["canvas-confetti", "@types/canvas-confetti"],
     registryDependencies: ["button"],
-    files: ["magicui/confetti.tsx"],
+    files: [{ path: "magicui/confetti.tsx", type: "registry:ui" }],
   },
   {
     name: "animated-subscribe-button",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/animated-subscribe-button.tsx"],
+    files: [
+      { path: "magicui/animated-subscribe-button.tsx", type: "registry:ui" },
+    ],
   },
   {
     name: "cool-mode",
     type: "registry:ui",
-    files: ["magicui/cool-mode.tsx"],
+    files: [{ path: "magicui/cool-mode.tsx", type: "registry:ui" }],
   },
   {
     name: "pulsating-button",
     type: "registry:ui",
-    files: ["magicui/pulsating-button.tsx"],
+    files: [{ path: "magicui/pulsating-button.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -631,7 +636,7 @@ export const ui: Registry = [
   {
     name: "ripple-button",
     type: "registry:ui",
-    files: ["magicui/ripple-button.tsx"],
+    files: [{ path: "magicui/ripple-button.tsx", type: "registry:ui" }],
     tailwind: {
       config: {
         theme: {
@@ -658,28 +663,28 @@ export const ui: Registry = [
   {
     name: "file-tree",
     type: "registry:ui",
-    files: ["magicui/file-tree.tsx"],
+    files: [{ path: "magicui/file-tree.tsx", type: "registry:ui" }],
   },
   {
     name: "blur-fade",
     type: "registry:ui",
     dependencies: ["motion"],
-    files: ["magicui/blur-fade.tsx"],
+    files: [{ path: "magicui/blur-fade.tsx", type: "registry:ui" }],
   },
   {
     name: "safari",
     type: "registry:ui",
-    files: ["magicui/safari.tsx"],
+    files: [{ path: "magicui/safari.tsx", type: "registry:ui" }],
   },
   {
     name: "iphone-15-pro",
     type: "registry:ui",
-    files: ["magicui/iphone-15-pro.tsx"],
+    files: [{ path: "magicui/iphone-15-pro.tsx", type: "registry:ui" }],
   },
   {
     name: "rainbow-button",
     type: "registry:ui",
-    files: ["magicui/rainbow-button.tsx"],
+    files: [{ path: "magicui/rainbow-button.tsx", type: "registry:ui" }],
     cssVars: {
       light: {
         "--color-1": "0 100% 63%",
@@ -724,6 +729,8 @@ export const ui: Registry = [
   {
     name: "interactive-hover-button",
     type: "registry:ui",
-    files: ["magicui/interactive-hover-button.tsx"],
+    files: [
+      { path: "magicui/interactive-hover-button.tsx", type: "registry:ui" },
+    ],
   },
 ];

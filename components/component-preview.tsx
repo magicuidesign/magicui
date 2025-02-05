@@ -1,17 +1,9 @@
-"use client";
-
-import Registry from "@/registry.json";
-import { RotateCcw } from "lucide-react";
-import * as React from "react";
-
+import { Index } from "@/__registry__";
 import { ComponentWrapper } from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import { useConfig } from "@/lib/use-config";
 import { cn } from "@/lib/utils";
-// import { styles } from "@/registry/registry-styles";
+import * as React from "react";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -19,7 +11,7 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   preview?: boolean;
 }
 
-export function ComponentPreview({
+export async function ComponentPreview({
   name,
   children,
   className,
@@ -27,14 +19,13 @@ export function ComponentPreview({
   preview = false,
   ...props
 }: ComponentPreviewProps) {
-  const [key, setKey] = React.useState(0);
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[0];
 
   const Preview = React.useMemo(() => {
-    const registryItem = Registry.items.find((item) => item.name === name);
+    const Component = Index[name]?.component;
 
-    if (!registryItem) {
+    if (!Component) {
       console.error(`Component with name "${name}" not found in registry.`);
       return (
         <p className="text-sm text-muted-foreground">
@@ -47,11 +38,6 @@ export function ComponentPreview({
       );
     }
 
-    const Component = React.lazy(() => {
-      // Ensure we're using the correct path by removing any leading dots or slashes
-      const cleanPath = registryItem.files[0].path.replace(/^[./]+/, "");
-      return import(`../../${cleanPath}`);
-    });
     return <Component />;
   }, [name]);
 
@@ -82,18 +68,8 @@ export function ComponentPreview({
             </TabsList>
           </div>
         )}
-        <TabsContent value="preview" className="relative rounded-md" key={key}>
-          <ComponentWrapper>
-            <div className="absolute right-2 top-2 z-10 flex items-center justify-between gap-2">
-              <OpenInV0Button url={`https://magicui.design/r/${name}.json`} />
-              <Button
-                onClick={() => setKey((prev) => prev + 1)}
-                className="flex items-center rounded-lg px-3 py-1"
-                variant="ghost"
-              >
-                <RotateCcw aria-label="restart-btn" size={16} />
-              </Button>
-            </div>
+        <TabsContent value="preview" className="relative rounded-md">
+          <ComponentWrapper name={name}>
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">
