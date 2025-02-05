@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retro-grid",
+  "type": "registry:component",
+  "title": "Retro Grid",
+  "description": "An animated scrolling retro grid effect",
+  "files": [
+    {
+      "path": "registry/magicui/retro-grid.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\n\ninterface RetroGridProps extends React.HTMLAttributes<HTMLDivElement> {\n  /**\n   * Additional CSS classes to apply to the grid container\n   */\n  className?: string;\n  /**\n   * Rotation angle of the grid in degrees\n   * @default 65\n   */\n  angle?: number;\n  /**\n   * Grid cell size in pixels\n   * @default 60\n   */\n  cellSize?: number;\n  /**\n   * Grid opacity value between 0 and 1\n   * @default 0.5\n   */\n  opacity?: number;\n  /**\n   * Grid line color in light mode\n   * @default \"gray\"\n   */\n  lightLineColor?: string;\n  /**\n   * Grid line color in dark mode\n   * @default \"gray\"\n   */\n  darkLineColor?: string;\n}\n\nexport function RetroGrid({\n  className,\n  angle = 65,\n  cellSize = 60,\n  opacity = 0.5,\n  lightLineColor = \"gray\",\n  darkLineColor = \"gray\",\n  ...props\n}: RetroGridProps) {\n  const gridStyles = {\n    \"--grid-angle\": `${angle}deg`,\n    \"--cell-size\": `${cellSize}px`,\n    \"--opacity\": opacity,\n    \"--light-line\": lightLineColor,\n    \"--dark-line\": darkLineColor,\n  } as React.CSSProperties;\n\n  return (\n    <div\n      className={cn(\n        \"pointer-events-none absolute size-full overflow-hidden [perspective:200px]\",\n        `opacity-[var(--opacity)]`,\n        className,\n      )}\n      style={gridStyles}\n      {...props}\n    >\n      <div className=\"absolute inset-0 [transform:rotateX(var(--grid-angle))]\">\n        <div className=\"animate-grid [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-repeat:repeat] [background-size:var(--cell-size)_var(--cell-size)] [height:300vh] [inset:0%_0px] [margin-left:-200%] [transform-origin:100%_0_0] [width:600vw] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]\" />\n      </div>\n\n      <div className=\"absolute inset-0 bg-gradient-to-t from-white to-transparent to-90% dark:from-black\" />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {
+          "animation": {
+            "grid": "grid 15s linear infinite"
+          },
+          "keyframes": {
+            "grid": {
+              "0%": {
+                "transform": "translateY(-50%)"
+              },
+              "100%": {
+                "transform": "translateY(0)"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

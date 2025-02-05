@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-random-direction",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/confetti-random-direction.tsx",
+      "content": "import { ConfettiButton } from \"@/registry/magicui/confetti\";\n\nexport default function ConfettiButtonDemo() {\n  return (\n    <div className=\"relative\">\n      <ConfettiButton\n        options={{\n          get angle() {\n            return Math.random() * 360;\n          },\n        }}\n      >\n        Random Confetti 🎉\n      </ConfettiButton>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

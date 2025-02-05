@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flickering-grid-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/flickering-grid-demo.tsx",
+      "content": "import { FlickeringGrid } from \"@/registry/magicui/flickering-grid\";\n\nexport default function FlickeringGridDemo() {\n  return (\n    <div className=\"relative h-[500px] w-full overflow-hidden rounded-lg border bg-background\">\n      <FlickeringGrid\n        className=\"absolute inset-0 z-0 size-full\"\n        squareSize={4}\n        gridGap={6}\n        color=\"#6B7280\"\n        maxOpacity={0.5}\n        flickerChance={0.1}\n        height={800}\n        width={800}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

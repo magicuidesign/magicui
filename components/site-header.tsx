@@ -9,7 +9,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { NumberTicker } from "@/registry/default/magicui/number-ticker";
+import { NumberTicker } from "@/registry/magicui/number-ticker";
 
 export async function SiteHeader() {
   let stars = 300; // Default value

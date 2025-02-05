@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-subscribe-button-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/animated-subscribe-button-demo.tsx",
+      "content": "import { AnimatedSubscribeButton } from \"@/registry/magicui/animated-subscribe-button\";\nimport { CheckIcon, ChevronRightIcon } from \"lucide-react\";\n\nexport default function AnimatedSubscribeButtonDemo() {\n  return (\n    <AnimatedSubscribeButton className=\"w-36\">\n      <span className=\"group inline-flex items-center\">\n        Follow\n        <ChevronRightIcon className=\"ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1\" />\n      </span>\n      <span className=\"group inline-flex items-center\">\n        <CheckIcon className=\"mr-2 size-4\" />\n        Subscribed\n      </span>\n    </AnimatedSubscribeButton>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

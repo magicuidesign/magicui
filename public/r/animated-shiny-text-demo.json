@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-shiny-text-demo",
+  "type": "registry:component",
+  "dependencies": [
+    "@radix-ui/react-icons"
+  ],
+  "registryDependencies": [
+    "animated-shiny-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-shiny-text-demo.tsx",
+      "content": "import { ArrowRightIcon } from \"@radix-ui/react-icons\";\n\nimport { cn } from \"@/lib/utils\";\nimport { AnimatedShinyText } from \"@/registry/magicui/animated-shiny-text\";\n\nexport default function AnimatedShinyTextDemo() {\n  return (\n    <div className=\"z-10 flex min-h-64 items-center justify-center\">\n      <div\n        className={cn(\n          \"group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800\",\n        )}\n      >\n        <AnimatedShinyText className=\"inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400\">\n          <span>✨ Introducing Magic UI</span>\n          <ArrowRightIcon className=\"ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5\" />\n        </AnimatedShinyText>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

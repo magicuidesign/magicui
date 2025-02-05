@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-stars",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/confetti-stars.tsx",
+      "content": "import confetti from \"canvas-confetti\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ConfettiStars() {\n  const handleClick = () => {\n    const defaults = {\n      spread: 360,\n      ticks: 50,\n      gravity: 0,\n      decay: 0.94,\n      startVelocity: 30,\n      colors: [\"#FFE400\", \"#FFBD00\", \"#E89400\", \"#FFCA6C\", \"#FDFFB8\"],\n    };\n\n    const shoot = () => {\n      confetti({\n        ...defaults,\n        particleCount: 40,\n        scalar: 1.2,\n        shapes: [\"star\"],\n      });\n\n      confetti({\n        ...defaults,\n        particleCount: 10,\n        scalar: 0.75,\n        shapes: [\"circle\"],\n      });\n    };\n\n    setTimeout(shoot, 0);\n    setTimeout(shoot, 100);\n    setTimeout(shoot, 200);\n  };\n\n  return (\n    <div className=\"relative\">\n      <Button onClick={handleClick}>Trigger Stars</Button>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-animate-demo-6",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/text-animate-demo-6.tsx",
+      "content": "import { TextAnimate } from \"@/registry/magicui/text-animate\";\n\nexport default function TextAnimateDemo6() {\n  return (\n    <TextAnimate animation=\"slideLeft\" by=\"character\">\n      Slide left by character\n    </TextAnimate>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

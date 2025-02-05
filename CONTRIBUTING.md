@@ -54,7 +54,7 @@ To add a new component to MagicUI, you will need to modify several files. Follow
 
 ### 1. Create Component
 
-Create the main component in `registry/default/magicui/example-component.tsx`
+Create the main component in `registry/magicui/example-component.tsx`
 
 ```typescript
 import React from 'react'
@@ -70,10 +70,10 @@ export default function ExampleComponent() {
 
 ### 2. Create Component Demo
 
-Provide a basic example to showcase your component in `registry/default/example/example-component-demo.tsx`
+Provide a basic example to showcase your component in `registry/example/example-component-demo.tsx`
 
 ```typescript
-import ExampleComponent from '@/registry/default/magicui/example-component'
+import ExampleComponent from '@/registry/magicui/example-component'
 
 export default function ExampleComponentDemo() {
   return (
@@ -160,8 +160,10 @@ export const ui: Registry = [
   // ... existing components ...
   {
     name: "example-component",
+    description: "A component that does something",
     type: "registry:ui",
-    files: ["magicui/example-component.tsx"],
+    dependencies: ["motion"],
+    files: [{ path: "magicui/example-component.tsx", type: "registry:ui" }],
     // Add any dependencies or tailwind configurations if needed
   },
 ];
@@ -174,9 +176,15 @@ export const examples: Registry = [
   // ... existing examples ...
   {
     name: "example-component-demo",
+    description: "An example of the example-component",
     type: "registry:example",
     registryDependencies: ["example-component"],
-    files: ["example/example-component-demo.tsx"],
+    files: [
+      {
+        path: "registry/example/example-component-demo.tsx",
+        type: "registry:example",
+      },
+    ],
   },
 ];
 ```

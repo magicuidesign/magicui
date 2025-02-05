@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-animate-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/text-animate-demo.tsx",
+      "content": "import { TextAnimate } from \"@/registry/magicui/text-animate\";\n\nexport default function TextAnimateDemo() {\n  return (\n    <TextAnimate animation=\"blurInUp\" by=\"character\">\n      Blur in by character\n    </TextAnimate>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "warp-background-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "warp-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/warp-background-demo.tsx",
+      "content": "import {\n  Card,\n  CardContent,\n  CardDescription,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { WarpBackground } from \"@/registry/magicui/warp-background\";\n\nexport default function ExampleComponentDemo() {\n  return (\n    <WarpBackground>\n      <Card className=\"w-80\">\n        <CardContent className=\"flex flex-col gap-2 p-4\">\n          <CardTitle>Congratulations on Your Promotion!</CardTitle>\n          <CardDescription>\n            Your hard work and dedication have paid off. We&apos;re thrilled to\n            see you take this next step in your career. Keep up the fantastic\n            work!\n          </CardDescription>\n        </CardContent>\n      </Card>\n    </WarpBackground>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

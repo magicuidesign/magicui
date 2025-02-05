@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo",
+  "type": "registry:component",
+  "registryDependencies": [
+    "typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\";\n\nexport default function TypingAnimationDemo() {\n  return <TypingAnimation>Typing Animation</TypingAnimation>;\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

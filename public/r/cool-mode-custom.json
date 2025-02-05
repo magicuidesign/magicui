@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cool-mode-custom",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/cool-mode-custom.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { CoolMode } from \"@/registry/magicui/cool-mode\";\n\nexport default function CoolModeCustom() {\n  return (\n    <div className=\"relative justify-center\">\n      <CoolMode\n        options={{\n          particle:\n            \"https://pbs.twimg.com/profile_images/1782811051504885763/YR5-kWOI_400x400.jpg\",\n        }}\n      >\n        <Button>Click Me!</Button>\n      </CoolMode>\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

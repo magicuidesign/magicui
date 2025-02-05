@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-fade-demo",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/blur-fade-demo.tsx",
+      "content": "/* eslint-disable @next/next/no-img-element */\nimport { BlurFade } from \"@/registry/magicui/blur-fade\";\n\nconst images = Array.from({ length: 9 }, (_, i) => {\n  const isLandscape = i % 2 === 0;\n  const width = isLandscape ? 800 : 600;\n  const height = isLandscape ? 600 : 800;\n  return `https://picsum.photos/seed/${i + 1}/${width}/${height}`;\n});\n\nexport default function BlurFadeDemo() {\n  return (\n    <section id=\"photos\">\n      <div className=\"columns-2 gap-4 sm:columns-3\">\n        {images.map((imageUrl, idx) => (\n          <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>\n            <img\n              className=\"mb-4 size-full rounded-lg object-contain\"\n              src={imageUrl}\n              alt={`Random stock image ${idx + 1}`}\n            />\n          </BlurFade>\n        ))}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -52,7 +52,7 @@ export default function BlogPage() {
                   <img
                     src={featuredPosts[0].image}
                     alt={featuredPosts[0].title}
-                    className="h-full w-full rounded-xl object-cover object-left"
+                    className="size-full rounded-xl object-cover object-left"
                   />
                 </div>
                 <div className="py-4">
@@ -153,7 +153,7 @@ export default function BlogPage() {
           {filteredBlogs.map((blog) => (
             <li
               key={blog._meta.path}
-              className="relative p-4 before:absolute before:-left-1 before:top-0 before:z-10 before:h-screen before:w-[1px] before:bg-border before:content-[''] after:absolute after:-top-1 after:left-0 after:z-10 after:h-[1px] after:w-screen after:bg-border after:content-['']"
+              className="relative p-4 before:absolute before:-left-1 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-1 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-['']"
             >
               <Link
                 href={`/blog/${blog._meta.path}`}
@@ -163,7 +163,7 @@ export default function BlogPage() {
                   <img
                     src={blog.image}
                     alt={blog.title}
-                    className="h-full w-full object-cover object-left transition-transform duration-300 ease-in-out group-hover:scale-[1.01] md:max-h-[200px]"
+                    className="size-full object-cover object-left transition-transform duration-300 ease-in-out group-hover:scale-[1.01] md:max-h-[200px]"
                   />
                 </div>
                 <div className="py-2">

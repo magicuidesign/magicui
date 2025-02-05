@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "iphone-15-pro-demo-2",
+  "type": "registry:component",
+  "files": [
+    {
+      "path": "registry/example/iphone-15-pro-demo-2.tsx",
+      "content": "import Iphone15Pro from \"@/registry/magicui/iphone-15-pro\";\n\nexport default function Iphone15ProDemo() {\n  return (\n    <div className=\"relative\">\n      <Iphone15Pro\n        className=\"size-full\"\n        src=\"https://via.placeholder.com/430x880\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}

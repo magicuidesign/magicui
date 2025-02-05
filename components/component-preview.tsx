@@ -1,16 +1,9 @@
-"use client";
-
-import * as React from "react";
-import { Index } from "__registry__";
-import { RotateCcw } from "lucide-react";
-
-import { useConfig } from "@/lib/use-config";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ComponentWrapper from "@/components/component-wrapper";
+import { Index } from "@/__registry__";
+import { ComponentWrapper } from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
-import { styles } from "@/registry/registry-styles";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
+import * as React from "react";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -26,15 +19,11 @@ export function ComponentPreview({
   preview = false,
   ...props
 }: ComponentPreviewProps) {
-  const [key, setKey] = React.useState(0);
-  const [config] = useConfig();
-  const index = styles.findIndex((style) => style.name === config.style);
-
   const Codes = React.Children.toArray(children) as React.ReactElement[];
-  const Code = Codes[index];
+  const Code = Codes[0];
 
   const Preview = React.useMemo(() => {
-    const Component = Index[config.style][name]?.component;
+    const Component = Index[name]?.component;
 
     if (!Component) {
       console.error(`Component with name "${name}" not found in registry.`);
@@ -50,7 +39,7 @@ export function ComponentPreview({
     }
 
     return <Component />;
-  }, [name, config.style]);
+  }, [name]);
 
   return (
     <div
@@ -79,15 +68,8 @@ export function ComponentPreview({
             </TabsList>
           </div>
         )}
-        <TabsContent value="preview" className="relative rounded-md" key={key}>
-          <ComponentWrapper>
-            <Button
-              onClick={() => setKey((prev) => prev + 1)}
-              className="absolute right-1.5 top-1.5 z-10 ml-4 flex items-center rounded-lg px-3 py-1"
-              variant="ghost"
-            >
-              <RotateCcw aria-label="restart-btn" size={16} />
-            </Button>
+        <TabsContent value="preview" className="relative rounded-md">
+          <ComponentWrapper name={name}>
             <React.Suspense
               fallback={
                 <div className="flex items-center text-sm text-muted-foreground">
