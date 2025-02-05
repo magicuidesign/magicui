@@ -23,7 +23,7 @@ export default function MoreArticles({ currentPost }: { currentPost: Blog }) {
     <section className="mx-auto max-w-6xl py-10">
       <h2 className="mb-5 flex items-center gap-2 text-xl font-medium tracking-tighter">
         Read more like this
-        <ArrowRightIcon className="h-4 w-4" />
+        <ArrowRightIcon className="size-4" />
       </h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {relatedPosts.map((post) => (
@@ -37,7 +37,7 @@ export default function MoreArticles({ currentPost }: { currentPost: Blog }) {
               <img
                 src={post.image}
                 alt={post.title}
-                className="h-full w-full object-contain object-left transition-all duration-300 group-hover:scale-[1.01]"
+                className="size-full object-contain object-left transition-all duration-300 group-hover:scale-[1.01]"
               />
             </div>
             <div className="mt-4 flex flex-col gap-2">

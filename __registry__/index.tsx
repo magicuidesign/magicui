@@ -1437,7 +1437,8 @@ export const Index: Record<string, any> = {
   },
   "magic-card-demo": {
     name: "magic-card-demo",
-    description: "",
+    description:
+      "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
     type: "registry:example",
     registryDependencies: ["magic-card"],
     files: [
@@ -1460,7 +1461,7 @@ export const Index: Record<string, any> = {
   },
   "android-demo": {
     name: "android-demo",
-    description: "",
+    description: "Example showing a mockup of an Android device.",
     type: "registry:example",
     registryDependencies: ["android"],
     files: [
@@ -1483,7 +1484,7 @@ export const Index: Record<string, any> = {
   },
   "android-demo-2": {
     name: "android-demo-2",
-    description: "",
+    description: "Second example showing a mockup of an Android device.",
     type: "registry:example",
     registryDependencies: ["android"],
     files: [
@@ -1506,7 +1507,7 @@ export const Index: Record<string, any> = {
   },
   "android-demo-3": {
     name: "android-demo-3",
-    description: "",
+    description: "Third example showing a mockup of an Android device.",
     type: "registry:example",
     registryDependencies: ["android"],
     files: [
@@ -1529,7 +1530,8 @@ export const Index: Record<string, any> = {
   },
   "warp-background-demo": {
     name: "warp-background-demo",
-    description: "",
+    description:
+      "Example showing a card with a time warping background effect.",
     type: "registry:example",
     registryDependencies: ["warp-background"],
     files: [
@@ -1552,7 +1554,7 @@ export const Index: Record<string, any> = {
   },
   "line-shadow-text-demo": {
     name: "line-shadow-text-demo",
-    description: "",
+    description: "Example showing a text component with a moving line shadow.",
     type: "registry:example",
     registryDependencies: ["line-shadow-text"],
     files: [
@@ -1575,7 +1577,7 @@ export const Index: Record<string, any> = {
   },
   "aurora-text-demo": {
     name: "aurora-text-demo",
-    description: "",
+    description: "Example showing a beautiful aurora text effect.",
     type: "registry:example",
     registryDependencies: ["aurora-text"],
     files: [
@@ -1598,7 +1600,7 @@ export const Index: Record<string, any> = {
   },
   "morphing-text-demo": {
     name: "morphing-text-demo",
-    description: "",
+    description: "Example showing a dynamic text morphing component.",
     type: "registry:example",
     registryDependencies: ["morphing-text"],
     files: [
@@ -1621,7 +1623,7 @@ export const Index: Record<string, any> = {
   },
   "scroll-progress-demo": {
     name: "scroll-progress-demo",
-    description: "",
+    description: "Example showing animated scroll progress for your pages.",
     type: "registry:example",
     registryDependencies: ["scroll-progress"],
     files: [
@@ -1644,7 +1646,7 @@ export const Index: Record<string, any> = {
   },
   "neon-gradient-card-demo": {
     name: "neon-gradient-card-demo",
-    description: "",
+    description: "Example showing a beautiful neon card effect.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1669,7 +1671,7 @@ export const Index: Record<string, any> = {
   },
   "meteors-demo": {
     name: "meteors-demo",
-    description: "",
+    description: "Example showing a meteor shower effect.",
     type: "registry:example",
     registryDependencies: ["meteors"],
     files: [
@@ -1692,7 +1694,7 @@ export const Index: Record<string, any> = {
   },
   "grid-pattern-demo": {
     name: "grid-pattern-demo",
-    description: "",
+    description: "Example showing a background grid pattern made with SVGs.",
     type: "registry:example",
     registryDependencies: ["grid-pattern"],
     files: [
@@ -1715,7 +1717,7 @@ export const Index: Record<string, any> = {
   },
   "grid-pattern-linear-gradient": {
     name: "grid-pattern-linear-gradient",
-    description: "",
+    description: "Example showing a grid pattern with linear gradient effects.",
     type: "registry:example",
     registryDependencies: ["grid-pattern"],
     files: [
@@ -1740,7 +1742,7 @@ export const Index: Record<string, any> = {
   },
   "grid-pattern-dashed": {
     name: "grid-pattern-dashed",
-    description: "",
+    description: "Example showing a dashed grid pattern.",
     type: "registry:example",
     registryDependencies: ["grid-pattern"],
     files: [
@@ -1763,7 +1765,7 @@ export const Index: Record<string, any> = {
   },
   "dot-pattern-demo": {
     name: "dot-pattern-demo",
-    description: "",
+    description: "Example showing a background dot pattern made with SVGs.",
     type: "registry:example",
     registryDependencies: ["dot-pattern"],
     files: [
@@ -1786,7 +1788,7 @@ export const Index: Record<string, any> = {
   },
   "dot-pattern-linear-gradient": {
     name: "dot-pattern-linear-gradient",
-    description: "",
+    description: "Example showing a dot pattern with linear gradient effects.",
     type: "registry:example",
     registryDependencies: ["dot-pattern"],
     files: [
@@ -1811,7 +1813,7 @@ export const Index: Record<string, any> = {
   },
   "flickering-grid-demo": {
     name: "flickering-grid-demo",
-    description: "",
+    description: "Example showing a flickering grid background.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1834,7 +1836,8 @@ export const Index: Record<string, any> = {
   },
   "flickering-grid-rounded-demo": {
     name: "flickering-grid-rounded-demo",
-    description: "",
+    description:
+      "Example showing a flickering grid background with rounded corners.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1859,7 +1862,7 @@ export const Index: Record<string, any> = {
   },
   "hero-video-dialog-demo": {
     name: "hero-video-dialog-demo",
-    description: "",
+    description: "Example showing a hero video dialog component.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1882,7 +1885,8 @@ export const Index: Record<string, any> = {
   },
   "hero-video-dialog-demo-top-in-bottom-out": {
     name: "hero-video-dialog-demo-top-in-bottom-out",
-    description: "",
+    description:
+      "Example showing a hero video dialog with top-in bottom-out animation.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1907,7 +1911,8 @@ export const Index: Record<string, any> = {
   },
   "code-comparison-demo": {
     name: "code-comparison-demo",
-    description: "",
+    description:
+      "Example showing a component which compares two code snippets.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1930,7 +1935,7 @@ export const Index: Record<string, any> = {
   },
   "script-copy-btn-demo": {
     name: "script-copy-btn-demo",
-    description: "",
+    description: "Example showing how to copy code to clipboard.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -1953,7 +1958,7 @@ export const Index: Record<string, any> = {
   },
   "marquee-demo": {
     name: "marquee-demo",
-    description: "",
+    description: "Example showing an infinite scrolling component.",
     type: "registry:example",
     registryDependencies: ["marquee"],
     files: [
@@ -1976,7 +1981,7 @@ export const Index: Record<string, any> = {
   },
   "marquee-demo-vertical": {
     name: "marquee-demo-vertical",
-    description: "",
+    description: "Example showing a vertical infinite scrolling component.",
     type: "registry:example",
     registryDependencies: ["marquee"],
     files: [
@@ -1999,7 +2004,7 @@ export const Index: Record<string, any> = {
   },
   "marquee-logos": {
     name: "marquee-logos",
-    description: "",
+    description: "Example showing an infinite scrolling logo carousel.",
     type: "registry:example",
     registryDependencies: ["marquee"],
     files: [
@@ -2022,7 +2027,7 @@ export const Index: Record<string, any> = {
   },
   "marquee-3d": {
     name: "marquee-3d",
-    description: "",
+    description: "Example showing a 3D infinite scrolling component.",
     type: "registry:example",
     registryDependencies: ["marquee"],
     files: [
@@ -2045,7 +2050,7 @@ export const Index: Record<string, any> = {
   },
   "globe-demo": {
     name: "globe-demo",
-    description: "",
+    description: "Example showing an autorotating, interactive WebGL globe.",
     type: "registry:example",
     registryDependencies: ["globe"],
     files: [
@@ -2068,7 +2073,7 @@ export const Index: Record<string, any> = {
   },
   "tweet-card-demo": {
     name: "tweet-card-demo",
-    description: "",
+    description: "Example showing a tweet card with author info.",
     type: "registry:example",
     registryDependencies: ["tweet-card"],
     files: [
@@ -2091,7 +2096,7 @@ export const Index: Record<string, any> = {
   },
   "tweet-card-images": {
     name: "tweet-card-images",
-    description: "",
+    description: "Example showing a tweet card with images.",
     type: "registry:example",
     registryDependencies: ["tweet-card"],
     files: [
@@ -2114,7 +2119,7 @@ export const Index: Record<string, any> = {
   },
   "tweet-card-meta-preview": {
     name: "tweet-card-meta-preview",
-    description: "",
+    description: "Example showing a tweet card with meta preview.",
     type: "registry:example",
     registryDependencies: ["tweet-card"],
     files: [
@@ -2139,7 +2144,7 @@ export const Index: Record<string, any> = {
   },
   "shimmer-button-demo": {
     name: "shimmer-button-demo",
-    description: "",
+    description: "Example showing a button with a shimmering light effect.",
     type: "registry:example",
     registryDependencies: ["shimmer-button"],
     files: [
@@ -2162,7 +2167,7 @@ export const Index: Record<string, any> = {
   },
   "bento-demo": {
     name: "bento-demo",
-    description: "",
+    description: "Example showing a bento grid layout for showcasing features.",
     type: "registry:example",
     registryDependencies: [
       "bento-grid",
@@ -2192,7 +2197,7 @@ export const Index: Record<string, any> = {
   },
   "bento-demo-vertical": {
     name: "bento-demo-vertical",
-    description: "",
+    description: "Example showing a vertical bento grid layout.",
     type: "registry:example",
     registryDependencies: ["bento-grid"],
     files: [
@@ -2215,7 +2220,7 @@ export const Index: Record<string, any> = {
   },
   "number-ticker-demo": {
     name: "number-ticker-demo",
-    description: "",
+    description: "Example showing animated counting numbers.",
     type: "registry:example",
     registryDependencies: ["number-ticker"],
     files: [
@@ -2238,7 +2243,7 @@ export const Index: Record<string, any> = {
   },
   "number-ticker-decimal-demo": {
     name: "number-ticker-decimal-demo",
-    description: "",
+    description: "Example showing animated counting decimal numbers.",
     type: "registry:example",
     registryDependencies: ["number-ticker"],
     files: [
@@ -2263,7 +2268,7 @@ export const Index: Record<string, any> = {
   },
   "ripple-demo": {
     name: "ripple-demo",
-    description: "",
+    description: "Example showing an animated ripple effect.",
     type: "registry:example",
     registryDependencies: ["ripple"],
     files: [
@@ -2286,7 +2291,7 @@ export const Index: Record<string, any> = {
   },
   "retro-grid-demo": {
     name: "retro-grid-demo",
-    description: "",
+    description: "Example showing an animated scrolling retro grid effect.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -2309,7 +2314,7 @@ export const Index: Record<string, any> = {
   },
   "animated-list-demo": {
     name: "animated-list-demo",
-    description: "",
+    description: "Example showing a list with sequenced item animations.",
     type: "registry:example",
     registryDependencies: ["animated-list"],
     files: [
@@ -2332,7 +2337,7 @@ export const Index: Record<string, any> = {
   },
   "animated-shiny-text-demo": {
     name: "animated-shiny-text-demo",
-    description: "",
+    description: "Example showing text with a shimmering light effect.",
     type: "registry:example",
     registryDependencies: ["animated-shiny-text"],
     files: [
@@ -2357,7 +2362,7 @@ export const Index: Record<string, any> = {
   },
   "particles-demo": {
     name: "particles-demo",
-    description: "",
+    description: "Example showing interactive particle effects.",
     type: "registry:example",
     registryDependencies: ["particles"],
     files: [
@@ -2380,7 +2385,7 @@ export const Index: Record<string, any> = {
   },
   "animated-grid-pattern-demo": {
     name: "animated-grid-pattern-demo",
-    description: "",
+    description: "Example showing an animated grid pattern background.",
     type: "registry:example",
     registryDependencies: ["animated-grid-pattern"],
     files: [
@@ -2405,7 +2410,7 @@ export const Index: Record<string, any> = {
   },
   "interactive-grid-pattern-demo": {
     name: "interactive-grid-pattern-demo",
-    description: "",
+    description: "Example showing an interactive grid pattern background.",
     type: "registry:example",
     registryDependencies: ["interactive-grid-pattern"],
     files: [
@@ -2430,7 +2435,8 @@ export const Index: Record<string, any> = {
   },
   "interactive-grid-pattern-demo-2": {
     name: "interactive-grid-pattern-demo-2",
-    description: "",
+    description:
+      "Second example showing an interactive grid pattern background.",
     type: "registry:example",
     registryDependencies: ["interactive-grid-pattern"],
     files: [
@@ -2455,7 +2461,7 @@ export const Index: Record<string, any> = {
   },
   "border-beam-demo": {
     name: "border-beam-demo",
-    description: "",
+    description: "Example showing an animated border beam effect.",
     type: "registry:example",
     registryDependencies: ["border-beam"],
     files: [
@@ -2478,7 +2484,7 @@ export const Index: Record<string, any> = {
   },
   "animated-beam-demo": {
     name: "animated-beam-demo",
-    description: "",
+    description: "Example showing an animated beam of light effect.",
     type: "registry:example",
     registryDependencies: ["animated-beam"],
     files: [
@@ -2501,7 +2507,7 @@ export const Index: Record<string, any> = {
   },
   "animated-beam-unidirectional": {
     name: "animated-beam-unidirectional",
-    description: "",
+    description: "Example showing a unidirectional animated beam effect.",
     type: "registry:example",
     registryDependencies: ["animated-beam"],
     files: [
@@ -2526,7 +2532,7 @@ export const Index: Record<string, any> = {
   },
   "animated-beam-bidirectional": {
     name: "animated-beam-bidirectional",
-    description: "",
+    description: "Example showing a bidirectional animated beam effect.",
     type: "registry:example",
     registryDependencies: ["animated-beam"],
     files: [
@@ -2551,7 +2557,7 @@ export const Index: Record<string, any> = {
   },
   "animated-beam-multiple-inputs": {
     name: "animated-beam-multiple-inputs",
-    description: "",
+    description: "Example showing animated beams with multiple input points.",
     type: "registry:example",
     registryDependencies: ["animated-beam"],
     files: [
@@ -2576,7 +2582,7 @@ export const Index: Record<string, any> = {
   },
   "animated-beam-multiple-outputs": {
     name: "animated-beam-multiple-outputs",
-    description: "",
+    description: "Example showing animated beams with multiple output points.",
     type: "registry:example",
     registryDependencies: ["animated-beam"],
     files: [
@@ -2601,7 +2607,7 @@ export const Index: Record<string, any> = {
   },
   "text-reveal-demo": {
     name: "text-reveal-demo",
-    description: "",
+    description: "Example showing text that fades in on scroll.",
     type: "registry:example",
     registryDependencies: ["text-reveal"],
     files: [
@@ -2624,7 +2630,7 @@ export const Index: Record<string, any> = {
   },
   "animated-gradient-text-demo": {
     name: "animated-gradient-text-demo",
-    description: "",
+    description: "Example showing text with animated gradient backgrounds.",
     type: "registry:example",
     registryDependencies: ["animated-gradient-text"],
     files: [
@@ -2649,7 +2655,7 @@ export const Index: Record<string, any> = {
   },
   "orbiting-circles-demo": {
     name: "orbiting-circles-demo",
-    description: "",
+    description: "Example showing circles moving in orbital paths.",
     type: "registry:example",
     registryDependencies: ["orbiting-circles"],
     files: [
@@ -2672,7 +2678,7 @@ export const Index: Record<string, any> = {
   },
   "dock-demo": {
     name: "dock-demo",
-    description: "",
+    description: "Example showing a MacOS-style dock implementation.",
     type: "registry:example",
     registryDependencies: ["dock"],
     files: [
@@ -2695,7 +2701,7 @@ export const Index: Record<string, any> = {
   },
   "dock-demo-2": {
     name: "dock-demo-2",
-    description: "",
+    description: "Second example showing a MacOS-style dock implementation.",
     type: "registry:example",
     registryDependencies: ["dock"],
     files: [
@@ -2718,7 +2724,7 @@ export const Index: Record<string, any> = {
   },
   "dock-demo-3": {
     name: "dock-demo-3",
-    description: "",
+    description: "Third example showing a MacOS-style dock implementation.",
     type: "registry:example",
     registryDependencies: ["dock"],
     files: [
@@ -2741,7 +2747,7 @@ export const Index: Record<string, any> = {
   },
   "word-rotate-demo": {
     name: "word-rotate-demo",
-    description: "",
+    description: "Example showing vertical word rotation animation.",
     type: "registry:example",
     registryDependencies: ["word-rotate"],
     files: [
@@ -2764,7 +2770,7 @@ export const Index: Record<string, any> = {
   },
   "hyper-text-demo": {
     name: "hyper-text-demo",
-    description: "",
+    description: "Example showing text with scrambling letter animations.",
     type: "registry:example",
     registryDependencies: ["hyper-text"],
     files: [
@@ -2787,7 +2793,7 @@ export const Index: Record<string, any> = {
   },
   "avatar-circles-demo": {
     name: "avatar-circles-demo",
-    description: "",
+    description: "Example showing overlapping avatar circles.",
     type: "registry:example",
     registryDependencies: ["avatar-circles"],
     files: [
@@ -2810,7 +2816,7 @@ export const Index: Record<string, any> = {
   },
   "typing-animation-demo": {
     name: "typing-animation-demo",
-    description: "",
+    description: "Example showing typed character animations.",
     type: "registry:example",
     registryDependencies: ["typing-animation"],
     files: [
@@ -2833,7 +2839,7 @@ export const Index: Record<string, any> = {
   },
   "scroll-based-velocity-demo": {
     name: "scroll-based-velocity-demo",
-    description: "",
+    description: "Example showing text speed changes based on scroll velocity.",
     type: "registry:example",
     registryDependencies: ["scroll-based-velocity"],
     files: [
@@ -2858,7 +2864,7 @@ export const Index: Record<string, any> = {
   },
   "scratch-to-reveal-demo": {
     name: "scratch-to-reveal-demo",
-    description: "",
+    description: "Example showing an interactive scratch-off reveal effect.",
     type: "registry:example",
     registryDependencies: ["scratch-to-reveal"],
     files: [
@@ -2881,7 +2887,7 @@ export const Index: Record<string, any> = {
   },
   "flip-text-demo": {
     name: "flip-text-demo",
-    description: "",
+    description: "Example showing text with character flip animations.",
     type: "registry:example",
     registryDependencies: ["flip-text"],
     files: [
@@ -2904,7 +2910,7 @@ export const Index: Record<string, any> = {
   },
   "sparkles-text-demo": {
     name: "sparkles-text-demo",
-    description: "",
+    description: "Example showing text with animated sparkle effects.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -2927,7 +2933,7 @@ export const Index: Record<string, any> = {
   },
   "icon-cloud-demo": {
     name: "icon-cloud-demo",
-    description: "",
+    description: "Example showing an interactive 3D icon cloud.",
     type: "registry:example",
     registryDependencies: ["icon-cloud"],
     files: [
@@ -2950,7 +2956,7 @@ export const Index: Record<string, any> = {
   },
   "icon-cloud-demo-2": {
     name: "icon-cloud-demo-2",
-    description: "",
+    description: "Second example showing an interactive 3D icon cloud.",
     type: "registry:example",
     registryDependencies: ["icon-cloud"],
     files: [
@@ -2973,7 +2979,7 @@ export const Index: Record<string, any> = {
   },
   "icon-cloud-demo-3": {
     name: "icon-cloud-demo-3",
-    description: "",
+    description: "Third example showing an interactive 3D icon cloud.",
     type: "registry:example",
     registryDependencies: ["icon-cloud"],
     files: [
@@ -2996,7 +3002,7 @@ export const Index: Record<string, any> = {
   },
   "text-animate-demo": {
     name: "text-animate-demo",
-    description: "",
+    description: "Example showing various text animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3019,7 +3025,7 @@ export const Index: Record<string, any> = {
   },
   "text-animate-demo-2": {
     name: "text-animate-demo-2",
-    description: "",
+    description: "Second example showing various text animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3042,7 +3048,7 @@ export const Index: Record<string, any> = {
   },
   "text-animate-demo-3": {
     name: "text-animate-demo-3",
-    description: "",
+    description: "Third example showing various text animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3065,7 +3071,7 @@ export const Index: Record<string, any> = {
   },
   "text-animate-demo-4": {
     name: "text-animate-demo-4",
-    description: "",
+    description: "Fourth example showing various text animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3088,7 +3094,7 @@ export const Index: Record<string, any> = {
   },
   "text-animate-demo-5": {
     name: "text-animate-demo-5",
-    description: "",
+    description: "Fifth example showing various text animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3111,7 +3117,7 @@ export const Index: Record<string, any> = {
   },
   "text-animate-demo-6": {
     name: "text-animate-demo-6",
-    description: "",
+    description: "Sixth example showing various text animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3134,7 +3140,7 @@ export const Index: Record<string, any> = {
   },
   "shiny-button-demo": {
     name: "shiny-button-demo",
-    description: "",
+    description: "Example showing a shiny button with dynamic styles.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3157,7 +3163,7 @@ export const Index: Record<string, any> = {
   },
   "box-reveal-demo": {
     name: "box-reveal-demo",
-    description: "",
+    description: "Example showing a sliding box text reveal animation.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3180,7 +3186,7 @@ export const Index: Record<string, any> = {
   },
   "animated-circular-progress-bar-demo": {
     name: "animated-circular-progress-bar-demo",
-    description: "",
+    description: "Example showing an animated circular progress gauge.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3205,7 +3211,7 @@ export const Index: Record<string, any> = {
   },
   "shine-border-demo": {
     name: "shine-border-demo",
-    description: "",
+    description: "Example showing an animated shining border effect.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3228,7 +3234,7 @@ export const Index: Record<string, any> = {
   },
   "shine-border-demo-2": {
     name: "shine-border-demo-2",
-    description: "",
+    description: "Second example showing an animated shining border effect.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3251,7 +3257,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-demo": {
     name: "confetti-demo",
-    description: "",
+    description: "Example showing confetti animations for celebrations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3274,7 +3280,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-basic-cannon": {
     name: "confetti-basic-cannon",
-    description: "",
+    description: "Example showing basic confetti cannon animation.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3297,7 +3303,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-random-direction": {
     name: "confetti-random-direction",
-    description: "",
+    description: "Example showing confetti with random directions.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3322,7 +3328,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-fireworks": {
     name: "confetti-fireworks",
-    description: "",
+    description: "Example showing fireworks-style confetti animation.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3345,7 +3351,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-stars": {
     name: "confetti-stars",
-    description: "",
+    description: "Example showing star-shaped confetti animation.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3368,7 +3374,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-side-cannons": {
     name: "confetti-side-cannons",
-    description: "",
+    description: "Example showing side-mounted confetti cannons.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3391,7 +3397,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-custom-shapes": {
     name: "confetti-custom-shapes",
-    description: "",
+    description: "Example showing confetti with custom shape particles.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3414,7 +3420,7 @@ export const Index: Record<string, any> = {
   },
   "confetti-emoji": {
     name: "confetti-emoji",
-    description: "",
+    description: "Example showing confetti with emoji particles.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3437,7 +3443,8 @@ export const Index: Record<string, any> = {
   },
   "animated-subscribe-button-demo": {
     name: "animated-subscribe-button-demo",
-    description: "",
+    description:
+      "Example showing an animated subscribe button with micro animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3462,7 +3469,7 @@ export const Index: Record<string, any> = {
   },
   "cool-mode-demo": {
     name: "cool-mode-demo",
-    description: "",
+    description: "Example showing cool mode effect for buttons and links.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3485,7 +3492,7 @@ export const Index: Record<string, any> = {
   },
   "cool-mode-custom": {
     name: "cool-mode-custom",
-    description: "",
+    description: "Example showing customized cool mode effects.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3508,7 +3515,7 @@ export const Index: Record<string, any> = {
   },
   "pulsating-button-demo": {
     name: "pulsating-button-demo",
-    description: "",
+    description: "Example showing an animated pulsating button.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3531,7 +3538,7 @@ export const Index: Record<string, any> = {
   },
   "ripple-button-demo": {
     name: "ripple-button-demo",
-    description: "",
+    description: "Example showing an animated button with ripple effect.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3554,7 +3561,8 @@ export const Index: Record<string, any> = {
   },
   "file-tree-demo": {
     name: "file-tree-demo",
-    description: "",
+    description:
+      "Example showing a component that displays folder and file structure.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3577,7 +3585,7 @@ export const Index: Record<string, any> = {
   },
   "blur-fade-demo": {
     name: "blur-fade-demo",
-    description: "",
+    description: "Example showing blur fade in and out animations.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3600,7 +3608,7 @@ export const Index: Record<string, any> = {
   },
   "blur-fade-text-demo": {
     name: "blur-fade-text-demo",
-    description: "",
+    description: "Example showing blur fade animations with text.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3623,7 +3631,7 @@ export const Index: Record<string, any> = {
   },
   "safari-demo": {
     name: "safari-demo",
-    description: "",
+    description: "Example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3646,7 +3654,7 @@ export const Index: Record<string, any> = {
   },
   "safari-demo-2": {
     name: "safari-demo-2",
-    description: "",
+    description: "Second example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3669,7 +3677,7 @@ export const Index: Record<string, any> = {
   },
   "safari-demo-3": {
     name: "safari-demo-3",
-    description: "",
+    description: "Third example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3692,7 +3700,7 @@ export const Index: Record<string, any> = {
   },
   "safari-demo-4": {
     name: "safari-demo-4",
-    description: "",
+    description: "Fourth example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3715,7 +3723,7 @@ export const Index: Record<string, any> = {
   },
   "iphone-15-pro-demo": {
     name: "iphone-15-pro-demo",
-    description: "",
+    description: "Example showing an iPhone 15 Pro mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3738,7 +3746,7 @@ export const Index: Record<string, any> = {
   },
   "iphone-15-pro-demo-2": {
     name: "iphone-15-pro-demo-2",
-    description: "",
+    description: "Second example showing an iPhone 15 Pro mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3761,7 +3769,7 @@ export const Index: Record<string, any> = {
   },
   "iphone-15-pro-demo-3": {
     name: "iphone-15-pro-demo-3",
-    description: "",
+    description: "Third example showing an iPhone 15 Pro mockup.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3784,7 +3792,7 @@ export const Index: Record<string, any> = {
   },
   "rainbow-button-demo": {
     name: "rainbow-button-demo",
-    description: "",
+    description: "Example showing an animated button with rainbow effect.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [
@@ -3807,7 +3815,7 @@ export const Index: Record<string, any> = {
   },
   "interactive-hover-button-demo": {
     name: "interactive-hover-button-demo",
-    description: "",
+    description: "Example showing an interactive button with hover effects.",
     type: "registry:example",
     registryDependencies: undefined,
     files: [

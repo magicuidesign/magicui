@@ -18,7 +18,7 @@ export default function PromoSection() {
       <Button variant="default" asChild className="w-full">
         <Link href="https://pro.magicui.design">
           Get Pro
-          <ArrowRightIcon className="ml-2 h-4 w-4" />
+          <ArrowRightIcon className="ml-2 size-4" />
         </Link>
       </Button>
     </div>

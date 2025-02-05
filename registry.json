@@ -1295,6 +1295,8 @@
     {
       "name": "magic-card-demo",
       "type": "registry:example",
+      "title": "Magic Card Demo",
+      "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
       "registryDependencies": [
         "magic-card"
       ],
@@ -1308,6 +1310,8 @@
     {
       "name": "android-demo",
       "type": "registry:example",
+      "title": "Android Demo",
+      "description": "Example showing a mockup of an Android device.",
       "registryDependencies": [
         "android"
       ],
@@ -1321,6 +1325,8 @@
     {
       "name": "android-demo-2",
       "type": "registry:example",
+      "title": "Android Demo 2",
+      "description": "Second example showing a mockup of an Android device.",
       "registryDependencies": [
         "android"
       ],
@@ -1334,6 +1340,8 @@
     {
       "name": "android-demo-3",
       "type": "registry:example",
+      "title": "Android Demo 3",
+      "description": "Third example showing a mockup of an Android device.",
       "registryDependencies": [
         "android"
       ],
@@ -1347,6 +1355,8 @@
     {
       "name": "warp-background-demo",
       "type": "registry:example",
+      "title": "Warp Background Demo",
+      "description": "Example showing a card with a time warping background effect.",
       "registryDependencies": [
         "warp-background"
       ],
@@ -1360,6 +1370,8 @@
     {
       "name": "line-shadow-text-demo",
       "type": "registry:example",
+      "title": "Line Shadow Text Demo",
+      "description": "Example showing a text component with a moving line shadow.",
       "registryDependencies": [
         "line-shadow-text"
       ],
@@ -1373,6 +1385,8 @@
     {
       "name": "aurora-text-demo",
       "type": "registry:example",
+      "title": "Aurora Text Demo",
+      "description": "Example showing a beautiful aurora text effect.",
       "registryDependencies": [
         "aurora-text"
       ],
@@ -1386,6 +1400,8 @@
     {
       "name": "morphing-text-demo",
       "type": "registry:example",
+      "title": "Morphing Text Demo",
+      "description": "Example showing a dynamic text morphing component.",
       "registryDependencies": [
         "morphing-text"
       ],
@@ -1399,6 +1415,8 @@
     {
       "name": "scroll-progress-demo",
       "type": "registry:example",
+      "title": "Scroll Progress Demo",
+      "description": "Example showing animated scroll progress for your pages.",
       "registryDependencies": [
         "scroll-progress"
       ],
@@ -1412,6 +1430,8 @@
     {
       "name": "neon-gradient-card-demo",
       "type": "registry:example",
+      "title": "Neon Gradient Card Demo",
+      "description": "Example showing a beautiful neon card effect.",
       "files": [
         {
           "path": "registry/example/neon-gradient-card-demo.tsx",
@@ -1422,6 +1442,8 @@
     {
       "name": "meteors-demo",
       "type": "registry:example",
+      "title": "Meteors Demo",
+      "description": "Example showing a meteor shower effect.",
       "registryDependencies": [
         "meteors"
       ],
@@ -1435,6 +1457,8 @@
     {
       "name": "grid-pattern-demo",
       "type": "registry:example",
+      "title": "Grid Pattern Demo",
+      "description": "Example showing a background grid pattern made with SVGs.",
       "registryDependencies": [
         "grid-pattern"
       ],
@@ -1448,6 +1472,8 @@
     {
       "name": "grid-pattern-linear-gradient",
       "type": "registry:example",
+      "title": "Grid Pattern Linear Gradient",
+      "description": "Example showing a grid pattern with linear gradient effects.",
       "registryDependencies": [
         "grid-pattern"
       ],
@@ -1461,6 +1487,8 @@
     {
       "name": "grid-pattern-dashed",
       "type": "registry:example",
+      "title": "Grid Pattern Dashed",
+      "description": "Example showing a dashed grid pattern.",
       "registryDependencies": [
         "grid-pattern"
       ],
@@ -1474,6 +1502,8 @@
     {
       "name": "dot-pattern-demo",
       "type": "registry:example",
+      "title": "Dot Pattern Demo",
+      "description": "Example showing a background dot pattern made with SVGs.",
       "registryDependencies": [
         "dot-pattern"
       ],
@@ -1487,6 +1517,8 @@
     {
       "name": "dot-pattern-linear-gradient",
       "type": "registry:example",
+      "title": "Dot Pattern Linear Gradient",
+      "description": "Example showing a dot pattern with linear gradient effects.",
       "registryDependencies": [
         "dot-pattern"
       ],
@@ -1500,6 +1532,8 @@
     {
       "name": "flickering-grid-demo",
       "type": "registry:example",
+      "title": "Flickering Grid Demo",
+      "description": "Example showing a flickering grid background.",
       "files": [
         {
           "path": "registry/example/flickering-grid-demo.tsx",
@@ -1510,6 +1544,8 @@
     {
       "name": "flickering-grid-rounded-demo",
       "type": "registry:example",
+      "title": "Flickering Grid Rounded Demo",
+      "description": "Example showing a flickering grid background with rounded corners.",
       "files": [
         {
           "path": "registry/example/flickering-grid-rounded-demo.tsx",
@@ -1520,6 +1556,8 @@
     {
       "name": "hero-video-dialog-demo",
       "type": "registry:example",
+      "title": "Hero Video Dialog Demo",
+      "description": "Example showing a hero video dialog component.",
       "files": [
         {
           "path": "registry/example/hero-video-dialog-demo.tsx",
@@ -1530,6 +1568,8 @@
     {
       "name": "hero-video-dialog-demo-top-in-bottom-out",
       "type": "registry:example",
+      "title": "Hero Video Dialog Top In Bottom Out Demo",
+      "description": "Example showing a hero video dialog with top-in bottom-out animation.",
       "files": [
         {
           "path": "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
@@ -1540,6 +1580,8 @@
     {
       "name": "code-comparison-demo",
       "type": "registry:example",
+      "title": "Code Comparison Demo",
+      "description": "Example showing a component which compares two code snippets.",
       "files": [
         {
           "path": "registry/example/code-comparison-demo.tsx",
@@ -1550,6 +1592,8 @@
     {
       "name": "script-copy-btn-demo",
       "type": "registry:example",
+      "title": "Script Copy Button Demo",
+      "description": "Example showing how to copy code to clipboard.",
       "files": [
         {
           "path": "registry/example/script-copy-btn-demo.tsx",
@@ -1560,6 +1604,8 @@
     {
       "name": "marquee-demo",
       "type": "registry:example",
+      "title": "Marquee Demo",
+      "description": "Example showing an infinite scrolling component.",
       "registryDependencies": [
         "marquee"
       ],
@@ -1573,6 +1619,8 @@
     {
       "name": "marquee-demo-vertical",
       "type": "registry:example",
+      "title": "Marquee Vertical Demo",
+      "description": "Example showing a vertical infinite scrolling component.",
       "registryDependencies": [
         "marquee"
       ],
@@ -1586,6 +1634,8 @@
     {
       "name": "marquee-logos",
       "type": "registry:example",
+      "title": "Marquee Logos",
+      "description": "Example showing an infinite scrolling logo carousel.",
       "registryDependencies": [
         "marquee"
       ],
@@ -1599,6 +1649,8 @@
     {
       "name": "marquee-3d",
       "type": "registry:example",
+      "title": "Marquee 3D",
+      "description": "Example showing a 3D infinite scrolling component.",
       "registryDependencies": [
         "marquee"
       ],
@@ -1612,6 +1664,8 @@
     {
       "name": "globe-demo",
       "type": "registry:example",
+      "title": "Globe Demo",
+      "description": "Example showing an autorotating, interactive WebGL globe.",
       "registryDependencies": [
         "globe"
       ],
@@ -1625,6 +1679,8 @@
     {
       "name": "tweet-card-demo",
       "type": "registry:example",
+      "title": "Tweet Card Demo",
+      "description": "Example showing a tweet card with author info.",
       "registryDependencies": [
         "tweet-card"
       ],
@@ -1638,6 +1694,8 @@
     {
       "name": "tweet-card-images",
       "type": "registry:example",
+      "title": "Tweet Card Images",
+      "description": "Example showing a tweet card with images.",
       "registryDependencies": [
         "tweet-card"
       ],
@@ -1651,6 +1709,8 @@
     {
       "name": "tweet-card-meta-preview",
       "type": "registry:example",
+      "title": "Tweet Card Meta Preview",
+      "description": "Example showing a tweet card with meta preview.",
       "registryDependencies": [
         "tweet-card"
       ],
@@ -1664,6 +1724,8 @@
     {
       "name": "shimmer-button-demo",
       "type": "registry:example",
+      "title": "Shimmer Button Demo",
+      "description": "Example showing a button with a shimmering light effect.",
       "registryDependencies": [
         "shimmer-button"
       ],
@@ -1677,6 +1739,8 @@
     {
       "name": "bento-demo",
       "type": "registry:example",
+      "title": "Bento Demo",
+      "description": "Example showing a bento grid layout for showcasing features.",
       "dependencies": [
         "@radix-ui/react-icons"
       ],
@@ -1698,6 +1762,8 @@
     {
       "name": "bento-demo-vertical",
       "type": "registry:example",
+      "title": "Bento Vertical Demo",
+      "description": "Example showing a vertical bento grid layout.",
       "dependencies": [
         "@radix-ui/react-icons"
       ],
@@ -1714,6 +1780,8 @@
     {
       "name": "number-ticker-demo",
       "type": "registry:example",
+      "title": "Number Ticker Demo",
+      "description": "Example showing animated counting numbers.",
       "registryDependencies": [
         "number-ticker"
       ],
@@ -1727,6 +1795,8 @@
     {
       "name": "number-ticker-decimal-demo",
       "type": "registry:example",
+      "title": "Number Ticker Decimal Demo",
+      "description": "Example showing animated counting decimal numbers.",
       "registryDependencies": [
         "number-ticker"
       ],
@@ -1740,6 +1810,8 @@
     {
       "name": "ripple-demo",
       "type": "registry:example",
+      "title": "Ripple Demo",
+      "description": "Example showing an animated ripple effect.",
       "registryDependencies": [
         "ripple"
       ],
@@ -1753,6 +1825,8 @@
     {
       "name": "retro-grid-demo",
       "type": "registry:example",
+      "title": "Retro Grid Demo",
+      "description": "Example showing an animated scrolling retro grid effect.",
       "files": [
         {
           "path": "registry/example/retro-grid-demo.tsx",
@@ -1763,6 +1837,8 @@
     {
       "name": "animated-list-demo",
       "type": "registry:example",
+      "title": "Animated List Demo",
+      "description": "Example showing a list with sequenced item animations.",
       "registryDependencies": [
         "animated-list"
       ],
@@ -1776,6 +1852,8 @@
     {
       "name": "animated-shiny-text-demo",
       "type": "registry:example",
+      "title": "Animated Shiny Text Demo",
+      "description": "Example showing text with a shimmering light effect.",
       "dependencies": [
         "@radix-ui/react-icons"
       ],
@@ -1792,6 +1870,8 @@
     {
       "name": "particles-demo",
       "type": "registry:example",
+      "title": "Particles Demo",
+      "description": "Example showing interactive particle effects.",
       "dependencies": [
         "next-themes"
       ],
@@ -1808,6 +1888,8 @@
     {
       "name": "animated-grid-pattern-demo",
       "type": "registry:example",
+      "title": "Animated Grid Pattern Demo",
+      "description": "Example showing an animated grid pattern background.",
       "registryDependencies": [
         "animated-grid-pattern"
       ],
@@ -1821,6 +1903,8 @@
     {
       "name": "interactive-grid-pattern-demo",
       "type": "registry:example",
+      "title": "Interactive Grid Pattern Demo",
+      "description": "Example showing an interactive grid pattern background.",
       "registryDependencies": [
         "interactive-grid-pattern"
       ],
@@ -1834,6 +1918,8 @@
     {
       "name": "interactive-grid-pattern-demo-2",
       "type": "registry:example",
+      "title": "Interactive Grid Pattern Demo 2",
+      "description": "Second example showing an interactive grid pattern background.",
       "registryDependencies": [
         "interactive-grid-pattern"
       ],
@@ -1847,6 +1933,8 @@
     {
       "name": "border-beam-demo",
       "type": "registry:example",
+      "title": "Border Beam Demo",
+      "description": "Example showing an animated border beam effect.",
       "registryDependencies": [
         "border-beam"
       ],
@@ -1860,6 +1948,8 @@
     {
       "name": "animated-beam-demo",
       "type": "registry:example",
+      "title": "Animated Beam Demo",
+      "description": "Example showing an animated beam of light effect.",
       "dependencies": [
         "@radix-ui/react-icons"
       ],
@@ -1876,6 +1966,8 @@
     {
       "name": "animated-beam-unidirectional",
       "type": "registry:example",
+      "title": "Animated Beam Unidirectional",
+      "description": "Example showing a unidirectional animated beam effect.",
       "registryDependencies": [
         "animated-beam"
       ],
@@ -1889,6 +1981,8 @@
     {
       "name": "animated-beam-bidirectional",
       "type": "registry:example",
+      "title": "Animated Beam Bidirectional",
+      "description": "Example showing a bidirectional animated beam effect.",
       "registryDependencies": [
         "animated-beam"
       ],
@@ -1902,6 +1996,8 @@
     {
       "name": "animated-beam-multiple-inputs",
       "type": "registry:example",
+      "title": "Animated Beam Multiple Inputs",
+      "description": "Example showing animated beams with multiple input points.",
       "registryDependencies": [
         "animated-beam"
       ],
@@ -1915,6 +2011,8 @@
     {
       "name": "animated-beam-multiple-outputs",
       "type": "registry:example",
+      "title": "Animated Beam Multiple Outputs",
+      "description": "Example showing animated beams with multiple output points.",
       "registryDependencies": [
         "animated-beam"
       ],
@@ -1928,6 +2026,8 @@
     {
       "name": "text-reveal-demo",
       "type": "registry:example",
+      "title": "Text Reveal Demo",
+      "description": "Example showing text that fades in on scroll.",
       "registryDependencies": [
         "text-reveal"
       ],
@@ -1941,6 +2041,8 @@
     {
       "name": "animated-gradient-text-demo",
       "type": "registry:example",
+      "title": "Animated Gradient Text Demo",
+      "description": "Example showing text with animated gradient backgrounds.",
       "dependencies": [
         "lucide-react"
       ],
@@ -1957,6 +2059,8 @@
     {
       "name": "orbiting-circles-demo",
       "type": "registry:example",
+      "title": "Orbiting Circles Demo",
+      "description": "Example showing circles moving in orbital paths.",
       "dependencies": [
         "@radix-ui/react-icons"
       ],
@@ -1973,6 +2077,8 @@
     {
       "name": "dock-demo",
       "type": "registry:example",
+      "title": "Dock Demo",
+      "description": "Example showing a MacOS-style dock implementation.",
       "registryDependencies": [
         "dock"
       ],
@@ -1986,6 +2092,8 @@
     {
       "name": "dock-demo-2",
       "type": "registry:example",
+      "title": "Dock Demo 2",
+      "description": "Second example showing a MacOS-style dock implementation.",
       "registryDependencies": [
         "dock"
       ],
@@ -1999,6 +2107,8 @@
     {
       "name": "dock-demo-3",
       "type": "registry:example",
+      "title": "Dock Demo 3",
+      "description": "Third example showing a MacOS-style dock implementation.",
       "registryDependencies": [
         "dock"
       ],
@@ -2012,6 +2122,8 @@
     {
       "name": "word-rotate-demo",
       "type": "registry:example",
+      "title": "Word Rotate Demo",
+      "description": "Example showing vertical word rotation animation.",
       "registryDependencies": [
         "word-rotate"
       ],
@@ -2025,6 +2137,8 @@
     {
       "name": "hyper-text-demo",
       "type": "registry:example",
+      "title": "Hyper Text Demo",
+      "description": "Example showing text with scrambling letter animations.",
       "registryDependencies": [
         "hyper-text"
       ],
@@ -2038,6 +2152,8 @@
     {
       "name": "avatar-circles-demo",
       "type": "registry:example",
+      "title": "Avatar Circles Demo",
+      "description": "Example showing overlapping avatar circles.",
       "registryDependencies": [
         "avatar-circles"
       ],
@@ -2051,6 +2167,8 @@
     {
       "name": "typing-animation-demo",
       "type": "registry:example",
+      "title": "Typing Animation Demo",
+      "description": "Example showing typed character animations.",
       "registryDependencies": [
         "typing-animation"
       ],
@@ -2064,6 +2182,8 @@
     {
       "name": "scroll-based-velocity-demo",
       "type": "registry:example",
+      "title": "Scroll Based Velocity Demo",
+      "description": "Example showing text speed changes based on scroll velocity.",
       "registryDependencies": [
         "scroll-based-velocity"
       ],
@@ -2077,6 +2197,8 @@
     {
       "name": "scratch-to-reveal-demo",
       "type": "registry:example",
+      "title": "Scratch To Reveal Demo",
+      "description": "Example showing an interactive scratch-off reveal effect.",
       "registryDependencies": [
         "scratch-to-reveal"
       ],
@@ -2090,6 +2212,8 @@
     {
       "name": "flip-text-demo",
       "type": "registry:example",
+      "title": "Flip Text Demo",
+      "description": "Example showing text with character flip animations.",
       "registryDependencies": [
         "flip-text"
       ],
@@ -2103,6 +2227,8 @@
     {
       "name": "sparkles-text-demo",
       "type": "registry:example",
+      "title": "Sparkles Text Demo",
+      "description": "Example showing text with animated sparkle effects.",
       "files": [
         {
           "path": "registry/example/sparkles-text-demo.tsx",
@@ -2113,6 +2239,8 @@
     {
       "name": "icon-cloud-demo",
       "type": "registry:example",
+      "title": "Icon Cloud Demo",
+      "description": "Example showing an interactive 3D icon cloud.",
       "registryDependencies": [
         "icon-cloud"
       ],
@@ -2126,6 +2254,8 @@
     {
       "name": "icon-cloud-demo-2",
       "type": "registry:example",
+      "title": "Icon Cloud Demo 2",
+      "description": "Second example showing an interactive 3D icon cloud.",
       "registryDependencies": [
         "icon-cloud"
       ],
@@ -2139,6 +2269,8 @@
     {
       "name": "icon-cloud-demo-3",
       "type": "registry:example",
+      "title": "Icon Cloud Demo 3",
+      "description": "Third example showing an interactive 3D icon cloud.",
       "registryDependencies": [
         "icon-cloud"
       ],
@@ -2152,6 +2284,8 @@
     {
       "name": "text-animate-demo",
       "type": "registry:example",
+      "title": "Text Animate Demo",
+      "description": "Example showing various text animations.",
       "files": [
         {
           "path": "registry/example/text-animate-demo.tsx",
@@ -2162,6 +2296,8 @@
     {
       "name": "text-animate-demo-2",
       "type": "registry:example",
+      "title": "Text Animate Demo 2",
+      "description": "Second example showing various text animations.",
       "files": [
         {
           "path": "registry/example/text-animate-demo-2.tsx",
@@ -2172,6 +2308,8 @@
     {
       "name": "text-animate-demo-3",
       "type": "registry:example",
+      "title": "Text Animate Demo 3",
+      "description": "Third example showing various text animations.",
       "files": [
         {
           "path": "registry/example/text-animate-demo-3.tsx",
@@ -2182,6 +2320,8 @@
     {
       "name": "text-animate-demo-4",
       "type": "registry:example",
+      "title": "Text Animate Demo 4",
+      "description": "Fourth example showing various text animations.",
       "files": [
         {
           "path": "registry/example/text-animate-demo-4.tsx",
@@ -2192,6 +2332,8 @@
     {
       "name": "text-animate-demo-5",
       "type": "registry:example",
+      "title": "Text Animate Demo 5",
+      "description": "Fifth example showing various text animations.",
       "files": [
         {
           "path": "registry/example/text-animate-demo-5.tsx",
@@ -2202,6 +2344,8 @@
     {
       "name": "text-animate-demo-6",
       "type": "registry:example",
+      "title": "Text Animate Demo 6",
+      "description": "Sixth example showing various text animations.",
       "files": [
         {
           "path": "registry/example/text-animate-demo-6.tsx",
@@ -2212,6 +2356,8 @@
     {
       "name": "shiny-button-demo",
       "type": "registry:example",
+      "title": "Shiny Button Demo",
+      "description": "Example showing a shiny button with dynamic styles.",
       "files": [
         {
           "path": "registry/example/shiny-button-demo.tsx",
@@ -2222,6 +2368,8 @@
     {
       "name": "box-reveal-demo",
       "type": "registry:example",
+      "title": "Box Reveal Demo",
+      "description": "Example showing a sliding box text reveal animation.",
       "files": [
         {
           "path": "registry/example/box-reveal-demo.tsx",
@@ -2232,6 +2380,8 @@
     {
       "name": "animated-circular-progress-bar-demo",
       "type": "registry:example",
+      "title": "Animated Circular Progress Bar Demo",
+      "description": "Example showing an animated circular progress gauge.",
       "files": [
         {
           "path": "registry/example/animated-circular-progress-bar-demo.tsx",
@@ -2242,6 +2392,8 @@
     {
       "name": "shine-border-demo",
       "type": "registry:example",
+      "title": "Shine Border Demo",
+      "description": "Example showing an animated shining border effect.",
       "files": [
         {
           "path": "registry/example/shine-border-demo.tsx",
@@ -2252,6 +2404,8 @@
     {
       "name": "shine-border-demo-2",
       "type": "registry:example",
+      "title": "Shine Border Demo 2",
+      "description": "Second example showing an animated shining border effect.",
       "files": [
         {
           "path": "registry/example/shine-border-demo-2.tsx",
@@ -2262,6 +2416,8 @@
     {
       "name": "confetti-demo",
       "type": "registry:example",
+      "title": "Confetti Demo",
+      "description": "Example showing confetti animations for celebrations.",
       "files": [
         {
           "path": "registry/example/confetti-demo.tsx",
@@ -2272,6 +2428,8 @@
     {
       "name": "confetti-basic-cannon",
       "type": "registry:example",
+      "title": "Confetti Basic Cannon",
+      "description": "Example showing basic confetti cannon animation.",
       "files": [
         {
           "path": "registry/example/confetti-basic-cannon.tsx",
@@ -2282,6 +2440,8 @@
     {
       "name": "confetti-random-direction",
       "type": "registry:example",
+      "title": "Confetti Random Direction",
+      "description": "Example showing confetti with random directions.",
       "files": [
         {
           "path": "registry/example/confetti-random-direction.tsx",
@@ -2292,6 +2452,8 @@
     {
       "name": "confetti-fireworks",
       "type": "registry:example",
+      "title": "Confetti Fireworks",
+      "description": "Example showing fireworks-style confetti animation.",
       "files": [
         {
           "path": "registry/example/confetti-fireworks.tsx",
@@ -2302,6 +2464,8 @@
     {
       "name": "confetti-stars",
       "type": "registry:example",
+      "title": "Confetti Stars",
+      "description": "Example showing star-shaped confetti animation.",
       "files": [
         {
           "path": "registry/example/confetti-stars.tsx",
@@ -2312,6 +2476,8 @@
     {
       "name": "confetti-side-cannons",
       "type": "registry:example",
+      "title": "Confetti Side Cannons",
+      "description": "Example showing side-mounted confetti cannons.",
       "files": [
         {
           "path": "registry/example/confetti-side-cannons.tsx",
@@ -2322,6 +2488,8 @@
     {
       "name": "confetti-custom-shapes",
       "type": "registry:example",
+      "title": "Confetti Custom Shapes",
+      "description": "Example showing confetti with custom shape particles.",
       "files": [
         {
           "path": "registry/example/confetti-custom-shapes.tsx",
@@ -2332,6 +2500,8 @@
     {
       "name": "confetti-emoji",
       "type": "registry:example",
+      "title": "Confetti Emoji",
+      "description": "Example showing confetti with emoji particles.",
       "files": [
         {
           "path": "registry/example/confetti-emoji.tsx",
@@ -2342,6 +2512,8 @@
     {
       "name": "animated-subscribe-button-demo",
       "type": "registry:example",
+      "title": "Animated Subscribe Button Demo",
+      "description": "Example showing an animated subscribe button with micro animations.",
       "files": [
         {
           "path": "registry/example/animated-subscribe-button-demo.tsx",
@@ -2352,6 +2524,8 @@
     {
       "name": "cool-mode-demo",
       "type": "registry:example",
+      "title": "Cool Mode Demo",
+      "description": "Example showing cool mode effect for buttons and links.",
       "files": [
         {
           "path": "registry/example/cool-mode-demo.tsx",
@@ -2362,6 +2536,8 @@
     {
       "name": "cool-mode-custom",
       "type": "registry:example",
+      "title": "Cool Mode Custom",
+      "description": "Example showing customized cool mode effects.",
       "files": [
         {
           "path": "registry/example/cool-mode-custom.tsx",
@@ -2372,6 +2548,8 @@
     {
       "name": "pulsating-button-demo",
       "type": "registry:example",
+      "title": "Pulsating Button Demo",
+      "description": "Example showing an animated pulsating button.",
       "files": [
         {
           "path": "registry/example/pulsating-button-demo.tsx",
@@ -2382,6 +2560,8 @@
     {
       "name": "ripple-button-demo",
       "type": "registry:example",
+      "title": "Ripple Button Demo",
+      "description": "Example showing an animated button with ripple effect.",
       "files": [
         {
           "path": "registry/example/ripple-button-demo.tsx",
@@ -2392,6 +2572,8 @@
     {
       "name": "file-tree-demo",
       "type": "registry:example",
+      "title": "File Tree Demo",
+      "description": "Example showing a component that displays folder and file structure.",
       "files": [
         {
           "path": "registry/example/file-tree-demo.tsx",
@@ -2402,6 +2584,8 @@
     {
       "name": "blur-fade-demo",
       "type": "registry:example",
+      "title": "Blur Fade Demo",
+      "description": "Example showing blur fade in and out animations.",
       "files": [
         {
           "path": "registry/example/blur-fade-demo.tsx",
@@ -2412,6 +2596,8 @@
     {
       "name": "blur-fade-text-demo",
       "type": "registry:example",
+      "title": "Blur Fade Text Demo",
+      "description": "Example showing blur fade animations with text.",
       "files": [
         {
           "path": "registry/example/blur-fade-text-demo.tsx",
@@ -2422,6 +2608,8 @@
     {
       "name": "safari-demo",
       "type": "registry:example",
+      "title": "Safari Demo",
+      "description": "Example showing a Safari browser mockup.",
       "files": [
         {
           "path": "registry/example/safari-demo.tsx",
@@ -2432,6 +2620,8 @@
     {
       "name": "safari-demo-2",
       "type": "registry:example",
+      "title": "Safari Demo 2",
+      "description": "Second example showing a Safari browser mockup.",
       "files": [
         {
           "path": "registry/example/safari-demo-2.tsx",
@@ -2442,6 +2632,8 @@
     {
       "name": "safari-demo-3",
       "type": "registry:example",
+      "title": "Safari Demo 3",
+      "description": "Third example showing a Safari browser mockup.",
       "files": [
         {
           "path": "registry/example/safari-demo-3.tsx",
@@ -2452,6 +2644,8 @@
     {
       "name": "safari-demo-4",
       "type": "registry:example",
+      "title": "Safari Demo 4",
+      "description": "Fourth example showing a Safari browser mockup.",
       "files": [
         {
           "path": "registry/example/safari-demo-4.tsx",
@@ -2462,6 +2656,8 @@
     {
       "name": "iphone-15-pro-demo",
       "type": "registry:example",
+      "title": "iPhone 15 Pro Demo",
+      "description": "Example showing an iPhone 15 Pro mockup.",
       "files": [
         {
           "path": "registry/example/iphone-15-pro-demo.tsx",
@@ -2472,6 +2668,8 @@
     {
       "name": "iphone-15-pro-demo-2",
       "type": "registry:example",
+      "title": "iPhone 15 Pro Demo 2",
+      "description": "Second example showing an iPhone 15 Pro mockup.",
       "files": [
         {
           "path": "registry/example/iphone-15-pro-demo-2.tsx",
@@ -2482,6 +2680,8 @@
     {
       "name": "iphone-15-pro-demo-3",
       "type": "registry:example",
+      "title": "iPhone 15 Pro Demo 3",
+      "description": "Third example showing an iPhone 15 Pro mockup.",
       "files": [
         {
           "path": "registry/example/iphone-15-pro-demo-3.tsx",
@@ -2492,6 +2692,8 @@
     {
       "name": "rainbow-button-demo",
       "type": "registry:example",
+      "title": "Rainbow Button Demo",
+      "description": "Example showing an animated button with rainbow effect.",
       "files": [
         {
           "path": "registry/example/rainbow-button-demo.tsx",
@@ -2502,6 +2704,8 @@
     {
       "name": "interactive-hover-button-demo",
       "type": "registry:example",
+      "title": "Interactive Hover Button Demo",
+      "description": "Example showing an interactive button with hover effects.",
       "files": [
         {
           "path": "registry/example/interactive-hover-button-demo.tsx",

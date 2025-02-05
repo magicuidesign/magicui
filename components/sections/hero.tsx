@@ -39,7 +39,7 @@ export default async function Hero() {
               >
                 🎉 <Separator className="mx-2 h-4" orientation="vertical" />
                 Introducing {post.title}
-                <ChevronRight className="ml-1 h-4 w-4 text-muted-foreground" />
+                <ChevronRight className="ml-1 size-4 text-muted-foreground" />
               </Link>
               <div className="relative flex flex-col gap-4 md:items-center lg:flex-row">
                 <h1

@@ -83,7 +83,7 @@
     "@content-collections/core": "^0.7.1",
     "@content-collections/mdx": "^0.1.5",
     "@content-collections/next": "^0.2.2",
-    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.22",
@@ -113,7 +113,7 @@
     "tailwindcss": "3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.11.0",
-    "typescript": "^5.3.3",
+    "typescript": "^5.7.3",
     "unist-builder": "4.0.0",
     "unist-util-visit": "^5.0.0"
   },

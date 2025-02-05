@@ -195,7 +195,7 @@ export default function BlogPage({ params }: { params: { slug: string[] } }) {
           href="/blog"
           className="flex h-8 w-fit items-center justify-center rounded-full border border-border bg-muted px-4 text-sm text-secondary-foreground"
         >
-          <ArrowLeftIcon className="mr-2 h-4 w-4" />
+          <ArrowLeftIcon className="mr-2 size-4" />
           Back to Blog
         </Link>
       </div>
@@ -206,7 +206,7 @@ export default function BlogPage({ params }: { params: { slug: string[] } }) {
               <img
                 src={post.image}
                 alt={post.title}
-                className="h-full w-full rounded-xl border border-border object-cover object-left"
+                className="size-full rounded-xl border border-border object-cover object-left"
               />
             </div>
             <div className="mx-auto flex flex-col items-center justify-center gap-y-2 border-y border-border p-5">
