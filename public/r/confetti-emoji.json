@@ -11,7 +11,8 @@
     {
       "path": "registry/example/confetti-emoji.tsx",
       "content": "\"use client\";\n\nimport confetti from \"canvas-confetti\";\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ConfettiEmoji() {\n  const handleClick = () => {\n    const scalar = 2;\n    const unicorn = confetti.shapeFromText({ text: \"🦄\", scalar });\n\n    const defaults = {\n      spread: 360,\n      ticks: 60,\n      gravity: 0,\n      decay: 0.96,\n      startVelocity: 20,\n      shapes: [unicorn],\n      scalar,\n    };\n\n    const shoot = () => {\n      confetti({\n        ...defaults,\n        particleCount: 30,\n      });\n\n      confetti({\n        ...defaults,\n        particleCount: 5,\n      });\n\n      confetti({\n        ...defaults,\n        particleCount: 15,\n        scalar: scalar / 2,\n        shapes: [\"circle\"],\n      });\n    };\n\n    setTimeout(shoot, 0);\n    setTimeout(shoot, 100);\n    setTimeout(shoot, 200);\n  };\n\n  return (\n    <div className=\"relative justify-center\">\n      <Button onClick={handleClick}>Trigger Emoji</Button>\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

@@ -11,7 +11,8 @@
     {
       "path": "registry/example/confetti-basic-cannon.tsx",
       "content": "import { ConfettiButton } from \"@/registry/magicui/confetti\";\n\nexport default function ConfettiButtonDemo() {\n  return (\n    <div className=\"relative\">\n      <ConfettiButton>Confetti 🎉</ConfettiButton>\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

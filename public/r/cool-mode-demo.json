@@ -11,7 +11,8 @@
     {
       "path": "registry/example/cool-mode-demo.tsx",
       "content": "import { Button } from \"@/components/ui/button\";\nimport { CoolMode } from \"@/registry/magicui/cool-mode\";\n\nexport default function CoolModeDemo() {\n  return (\n    <div className=\"relative justify-center\">\n      <CoolMode>\n        <Button>Click Me!</Button>\n      </CoolMode>\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

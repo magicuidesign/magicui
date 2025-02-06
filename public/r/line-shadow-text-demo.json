@@ -11,7 +11,8 @@
     {
       "path": "registry/example/line-shadow-text-demo.tsx",
       "content": "\"use client\";\n\nimport { LineShadowText } from \"@/registry/magicui/line-shadow-text\";\nimport { useTheme } from \"next-themes\";\n\nexport default function LineShadowTextDemo() {\n  const theme = useTheme();\n  const shadowColor = theme.resolvedTheme === \"dark\" ? \"white\" : \"black\";\n  return (\n    <h1 className=\"text-balance text-5xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl\">\n      Ship\n      <LineShadowText className=\"italic\" shadowColor={shadowColor}>\n        Fast\n      </LineShadowText>\n    </h1>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

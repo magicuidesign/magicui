@@ -8,7 +8,8 @@
     {
       "path": "registry/magicui/grid-pattern.tsx",
       "content": "import { useId } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface GridPatternProps extends React.SVGProps<SVGSVGElement> {\n  width?: number;\n  height?: number;\n  x?: number;\n  y?: number;\n  squares?: Array<[x: number, y: number]>;\n  strokeDasharray?: string;\n  className?: string;\n  [key: string]: unknown;\n}\n\nexport function GridPattern({\n  width = 40,\n  height = 40,\n  x = -1,\n  y = -1,\n  strokeDasharray = \"0\",\n  squares,\n  className,\n  ...props\n}: GridPatternProps) {\n  const id = useId();\n\n  return (\n    <svg\n      aria-hidden=\"true\"\n      className={cn(\n        \"pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30\",\n        className,\n      )}\n      {...props}\n    >\n      <defs>\n        <pattern\n          id={id}\n          width={width}\n          height={height}\n          patternUnits=\"userSpaceOnUse\"\n          x={x}\n          y={y}\n        >\n          <path\n            d={`M.5 ${height}V.5H${width}`}\n            fill=\"none\"\n            strokeDasharray={strokeDasharray}\n          />\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" strokeWidth={0} fill={`url(#${id})`} />\n      {squares && (\n        <svg x={x} y={y} className=\"overflow-visible\">\n          {squares.map(([x, y]) => (\n            <rect\n              strokeWidth=\"0\"\n              key={`${x}-${y}`}\n              width={width - 1}\n              height={height - 1}\n              x={x * width + 1}\n              y={y * height + 1}\n            />\n          ))}\n        </svg>\n      )}\n    </svg>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": ""
     }
   ]
 }

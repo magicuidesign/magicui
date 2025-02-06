@@ -11,7 +11,8 @@
     {
       "path": "registry/example/blur-fade-text-demo.tsx",
       "content": "import { BlurFade } from \"@/registry/magicui/blur-fade\";\n\nexport default function BlurFadeTextDemo() {\n  return (\n    <section id=\"header\">\n      <BlurFade delay={0.25} inView>\n        <h2 className=\"text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none\">\n          Hello World 👋\n        </h2>\n      </BlurFade>\n      <BlurFade delay={0.25 * 2} inView>\n        <span className=\"text-pretty text-xl tracking-tighter sm:text-3xl xl:text-4xl/none\">\n          Nice to meet you\n        </span>\n      </BlurFade>\n    </section>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

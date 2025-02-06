@@ -11,7 +11,8 @@
     {
       "path": "registry/example/text-animate-demo-3.tsx",
       "content": "import { TextAnimate } from \"@/registry/magicui/text-animate\";\n\nexport default function TextAnimateDemo3() {\n  return (\n    <TextAnimate animation=\"slideUp\" by=\"word\">\n      Slide up by word\n    </TextAnimate>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

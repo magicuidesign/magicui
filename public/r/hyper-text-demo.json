@@ -11,7 +11,8 @@
     {
       "path": "registry/example/hyper-text-demo.tsx",
       "content": "import { HyperText } from \"@/registry/magicui/hyper-text\";\n\nexport default function HyperTextDemo() {\n  return <HyperText>Hover Me!</HyperText>;\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

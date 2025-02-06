@@ -11,7 +11,8 @@
     {
       "path": "registry/example/android-demo-3.tsx",
       "content": "import Android from \"@/registry/magicui/android\";\n\nexport default function AndroidDemo() {\n  return (\n    <div className=\"relative\">\n      <Android\n        className=\"size-full\"\n        videoSrc=\"https://videos.pexels.com/video-files/14993748/14993748-uhd_1296_2304_30fps.mp4\"\n      />\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

@@ -11,7 +11,8 @@
     {
       "path": "registry/example/globe-demo.tsx",
       "content": "import { Globe } from \"@/registry/magicui/globe\";\n\nexport default function GlobeDemo() {\n  return (\n    <div className=\"relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background px-40 pb-40 pt-8 md:pb-60 md:shadow-xl\">\n      <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n        Globe\n      </span>\n      <Globe className=\"top-28\" />\n      <div className=\"pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]\" />\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

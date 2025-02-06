@@ -11,7 +11,8 @@
     {
       "path": "registry/example/safari-demo-4.tsx",
       "content": "import { Safari } from \"@/registry/magicui/safari\";\n\nexport default function SafariDemo() {\n  return (\n    <div className=\"relative\">\n      <Safari url=\"magicui.design\" mode=\"simple\" className=\"size-full\" />\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

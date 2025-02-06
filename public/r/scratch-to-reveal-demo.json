@@ -11,7 +11,8 @@
     {
       "path": "registry/example/scratch-to-reveal-demo.tsx",
       "content": "import { ScratchToReveal } from \"@/registry/magicui/scratch-to-reveal\";\n\nexport default function ScratchToRevealDemo() {\n  return (\n    <ScratchToReveal\n      width={250}\n      height={250}\n      minScratchPercentage={70}\n      className=\"flex items-center justify-center overflow-hidden rounded-2xl border-2 bg-gray-100\"\n      gradientColors={[\"#A97CF8\", \"#F38CB8\", \"#FDCC92\"]}\n    >\n      <p className=\"text-9xl\">😎</p>\n    </ScratchToReveal>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

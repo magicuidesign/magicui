@@ -11,7 +11,8 @@
     {
       "path": "registry/example/sparkles-text-demo.tsx",
       "content": "import { SparklesText } from \"@/registry/magicui/sparkles-text\";\n\nexport default function SparklesTextDemo() {\n  return <SparklesText text=\"Magic UI\" />;\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

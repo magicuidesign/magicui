@@ -11,7 +11,8 @@
     {
       "path": "registry/magicui/number-ticker.tsx",
       "content": "\"use client\";\n\nimport { useInView, useMotionValue, useSpring } from \"motion/react\";\nimport { ComponentPropsWithoutRef, useEffect, useRef } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface NumberTickerProps extends ComponentPropsWithoutRef<\"span\"> {\n  value: number;\n  direction?: \"up\" | \"down\";\n  delay?: number; // delay in s\n  decimalPlaces?: number;\n}\n\nexport function NumberTicker({\n  value,\n  direction = \"up\",\n  delay = 0,\n  className,\n  decimalPlaces = 0,\n  ...props\n}: NumberTickerProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const motionValue = useMotionValue(direction === \"down\" ? value : 0);\n  const springValue = useSpring(motionValue, {\n    damping: 60,\n    stiffness: 100,\n  });\n  const isInView = useInView(ref, { once: true, margin: \"0px\" });\n\n  useEffect(() => {\n    isInView &&\n      setTimeout(() => {\n        motionValue.set(direction === \"down\" ? 0 : value);\n      }, delay * 1000);\n  }, [motionValue, isInView, delay, value, direction]);\n\n  useEffect(\n    () =>\n      springValue.on(\"change\", (latest) => {\n        if (ref.current) {\n          ref.current.textContent = Intl.NumberFormat(\"en-US\", {\n            minimumFractionDigits: decimalPlaces,\n            maximumFractionDigits: decimalPlaces,\n          }).format(Number(latest.toFixed(decimalPlaces)));\n        }\n      }),\n    [springValue, decimalPlaces],\n  );\n\n  return (\n    <span\n      ref={ref}\n      className={cn(\n        \"inline-block tabular-nums tracking-wider text-black dark:text-white\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": ""
     }
   ]
 }

@@ -11,7 +11,8 @@
     {
       "path": "registry/example/android-demo.tsx",
       "content": "import Android from \"@/registry/magicui/android\";\n\nexport default function AndroidDemo() {\n  return (\n    <div className=\"relative\">\n      <Android className=\"size-full\" />\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

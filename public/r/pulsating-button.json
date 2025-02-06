@@ -8,7 +8,8 @@
     {
       "path": "registry/magicui/pulsating-button.tsx",
       "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface PulsatingButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  pulseColor?: string;\n  duration?: string;\n}\n\nexport const PulsatingButton = React.forwardRef<\n  HTMLButtonElement,\n  PulsatingButtonProps\n>(\n  (\n    {\n      className,\n      children,\n      pulseColor = \"#0096ff\",\n      duration = \"1.5s\",\n      ...props\n    },\n    ref,\n  ) => {\n    return (\n      <button\n        ref={ref}\n        className={cn(\n          \"relative flex cursor-pointer items-center justify-center rounded-lg bg-primary px-4 py-2 text-center text-primary-foreground\",\n          className,\n        )}\n        style={\n          {\n            \"--pulse-color\": pulseColor,\n            \"--duration\": duration,\n          } as React.CSSProperties\n        }\n        {...props}\n      >\n        <div className=\"relative z-10\">{children}</div>\n        <div className=\"absolute left-1/2 top-1/2 size-full -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-lg bg-inherit\" />\n      </button>\n    );\n  },\n);\n\nPulsatingButton.displayName = \"PulsatingButton\";\n",
-      "type": "registry:component"
+      "type": "registry:component",
+      "target": ""
     }
   ],
   "tailwind": {

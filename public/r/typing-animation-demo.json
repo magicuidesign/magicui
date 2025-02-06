@@ -11,7 +11,8 @@
     {
       "path": "registry/example/typing-animation-demo.tsx",
       "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\";\n\nexport default function TypingAnimationDemo() {\n  return <TypingAnimation>Typing Animation</TypingAnimation>;\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }

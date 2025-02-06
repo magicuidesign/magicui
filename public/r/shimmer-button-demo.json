@@ -11,7 +11,8 @@
     {
       "path": "registry/example/shimmer-button-demo.tsx",
       "content": "import { ShimmerButton } from \"@/registry/magicui/shimmer-button\";\n\nexport default function ShimmerButtonDemo() {\n  return (\n    <ShimmerButton className=\"shadow-2xl\">\n      <span className=\"whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg\">\n        Shimmer Button\n      </span>\n    </ShimmerButton>\n  );\n}\n",
-      "type": "registry:example"
+      "type": "registry:example",
+      "target": ""
     }
   ]
 }
