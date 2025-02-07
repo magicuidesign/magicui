@@ -52,13 +52,13 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {`;
   for (const item of registry.items) {
-    const resolveFiles = item.files?.map((file) => `registry/${file.path}`);
+    const resolveFiles = item.files?.map((file) => `${file.path}`);
     if (!resolveFiles) {
       continue;
     }
 
     const componentPath = item.files?.[0]?.path
-      ? `@/registry/${item.files[0].path}`
+      ? `@/${item.files[0].path}`
       : "";
 
     index += `
@@ -68,7 +68,7 @@ export const Index: Record<string, any> = {`;
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: [${item.files?.map((file) => {
-      const filePath = `registry/${typeof file === "string" ? file : file.path}`;
+      const filePath = `${typeof file === "string" ? file : file.path}`;
       const resolvedFilePath = path.resolve(filePath);
       return typeof file === "string"
         ? `"${resolvedFilePath}"`
@@ -107,7 +107,7 @@ async function buildRegistryJsonFile() {
       const files = item.files?.map((file) => {
         return {
           ...file,
-          path: `registry/${file.path}`,
+          path: `${file.path}`,
         };
       });
 

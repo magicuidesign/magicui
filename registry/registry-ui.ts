@@ -10,7 +10,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/magic-card.tsx",
+        path: "registry/magicui/magic-card.tsx",
         type: "registry:ui",
         target: "components/magicui/magic-card.tsx",
       },
@@ -23,7 +23,7 @@ export const ui: Registry["items"] = [
     description: "A mockup of an Android device.",
     files: [
       {
-        path: "magicui/android.tsx",
+        path: "registry/magicui/android.tsx",
         type: "registry:ui",
         target: "components/magicui/android.tsx",
       },
@@ -37,7 +37,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/warp-background.tsx",
+        path: "registry/magicui/warp-background.tsx",
         type: "registry:ui",
         target: "components/magicui/warp-background.tsx",
       },
@@ -51,7 +51,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/line-shadow-text.tsx",
+        path: "registry/magicui/line-shadow-text.tsx",
         type: "registry:ui",
         target: "components/magicui/line-shadow-text.tsx",
       },
@@ -65,7 +65,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/aurora-text.tsx",
+        path: "registry/magicui/aurora-text.tsx",
         type: "registry:ui",
         target: "components/magicui/aurora-text.tsx",
       },
@@ -139,7 +139,7 @@ export const ui: Registry["items"] = [
     description: "A dynamic text morphing component for Magic UI.",
     files: [
       {
-        path: "magicui/morphing-text.tsx",
+        path: "registry/magicui/morphing-text.tsx",
         type: "registry:ui",
         target: "components/magicui/morphing-text.tsx",
       },
@@ -153,7 +153,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/scroll-progress.tsx",
+        path: "registry/magicui/scroll-progress.tsx",
         type: "registry:ui",
         target: "components/magicui/scroll-progress.tsx",
       },
@@ -166,7 +166,7 @@ export const ui: Registry["items"] = [
     description: "A beautiful neon card effect",
     files: [
       {
-        path: "magicui/neon-gradient-card.tsx",
+        path: "registry/magicui/neon-gradient-card.tsx",
         type: "registry:ui",
         target: "components/magicui/neon-gradient-card.tsx",
       },
@@ -197,7 +197,7 @@ export const ui: Registry["items"] = [
     description: "A meteor shower effect.",
     files: [
       {
-        path: "magicui/meteors.tsx",
+        path: "registry/magicui/meteors.tsx",
         type: "registry:ui",
         target: "components/magicui/meteors.tsx",
       },
@@ -235,7 +235,7 @@ export const ui: Registry["items"] = [
       "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     files: [
       {
-        path: "magicui/grid-pattern.tsx",
+        path: "registry/magicui/grid-pattern.tsx",
         type: "registry:ui",
         target: "components/magicui/grid-pattern.tsx",
       },
@@ -249,7 +249,7 @@ export const ui: Registry["items"] = [
       "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     files: [
       {
-        path: "magicui/interactive-grid-pattern.tsx",
+        path: "registry/magicui/interactive-grid-pattern.tsx",
         type: "registry:ui",
         target: "components/magicui/interactive-grid-pattern.tsx",
       },
@@ -263,7 +263,7 @@ export const ui: Registry["items"] = [
       "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
     files: [
       {
-        path: "magicui/dot-pattern.tsx",
+        path: "registry/magicui/dot-pattern.tsx",
         type: "registry:ui",
         target: "components/magicui/dot-pattern.tsx",
       },
@@ -277,7 +277,7 @@ export const ui: Registry["items"] = [
       "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
     files: [
       {
-        path: "magicui/flickering-grid.tsx",
+        path: "registry/magicui/flickering-grid.tsx",
         type: "registry:ui",
         target: "components/magicui/flickering-grid.tsx",
       },
@@ -291,7 +291,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/hero-video-dialog.tsx",
+        path: "registry/magicui/hero-video-dialog.tsx",
         type: "registry:ui",
         target: "components/magicui/hero-video-dialog.tsx",
       },
@@ -305,7 +305,7 @@ export const ui: Registry["items"] = [
     dependencies: ["shiki", "next-themes"],
     files: [
       {
-        path: "magicui/code-comparison.tsx",
+        path: "registry/magicui/code-comparison.tsx",
         type: "registry:ui",
         target: "components/magicui/code-comparison.tsx",
       },
@@ -320,7 +320,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "magicui/script-copy-btn.tsx",
+        path: "registry/magicui/script-copy-btn.tsx",
         type: "registry:ui",
         target: "components/magicui/script-copy-btn.tsx",
       },
@@ -334,7 +334,7 @@ export const ui: Registry["items"] = [
       "An infinite scrolling component that can be used to display text, images, or videos.",
     files: [
       {
-        path: "magicui/marquee.tsx",
+        path: "registry/magicui/marquee.tsx",
         type: "registry:ui",
         target: "components/magicui/marquee.tsx",
       },
@@ -372,7 +372,7 @@ export const ui: Registry["items"] = [
     dependencies: ["cobe"],
     files: [
       {
-        path: "magicui/globe.tsx",
+        path: "registry/magicui/globe.tsx",
         type: "registry:ui",
         target: "components/magicui/globe.tsx",
       },
@@ -386,7 +386,7 @@ export const ui: Registry["items"] = [
       "A button with a shimmering light which travels around the perimeter.",
     files: [
       {
-        path: "magicui/shimmer-button.tsx",
+        path: "registry/magicui/shimmer-button.tsx",
         type: "registry:ui",
         target: "components/magicui/shimmer-button.tsx",
       },
@@ -436,7 +436,7 @@ export const ui: Registry["items"] = [
     dependencies: ["react-tweet"],
     files: [
       {
-        path: "magicui/tweet-card.tsx",
+        path: "registry/magicui/tweet-card.tsx",
         type: "registry:ui",
         target: "components/magicui/tweet-card.tsx",
       },
@@ -451,7 +451,7 @@ export const ui: Registry["items"] = [
     dependencies: ["react-tweet"],
     files: [
       {
-        path: "magicui/client-tweet-card.tsx",
+        path: "registry/magicui/client-tweet-card.tsx",
         type: "registry:ui",
         target: "components/magicui/client-tweet-card.tsx",
       },
@@ -467,7 +467,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "magicui/bento-grid.tsx",
+        path: "registry/magicui/bento-grid.tsx",
         type: "registry:ui",
         target: "components/magicui/bento-grid.tsx",
       },
@@ -481,7 +481,7 @@ export const ui: Registry["items"] = [
       "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
     files: [
       {
-        path: "magicui/particles.tsx",
+        path: "registry/magicui/particles.tsx",
         type: "registry:ui",
         target: "components/magicui/particles.tsx",
       },
@@ -495,7 +495,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/number-ticker.tsx",
+        path: "registry/magicui/number-ticker.tsx",
         type: "registry:ui",
         target: "components/magicui/number-ticker.tsx",
       },
@@ -509,7 +509,7 @@ export const ui: Registry["items"] = [
       "An animated ripple effect typically used behind elements to emphasize them.",
     files: [
       {
-        path: "magicui/ripple.tsx",
+        path: "registry/magicui/ripple.tsx",
         type: "registry:ui",
         target: "components/magicui/ripple.tsx",
       },
@@ -544,7 +544,7 @@ export const ui: Registry["items"] = [
     description: "An animated scrolling retro grid effect",
     files: [
       {
-        path: "magicui/retro-grid.tsx",
+        path: "registry/magicui/retro-grid.tsx",
         type: "registry:ui",
         target: "components/magicui/retro-grid.tsx",
       },
@@ -576,7 +576,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/animated-list.tsx",
+        path: "registry/magicui/animated-list.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-list.tsx",
       },
@@ -590,7 +590,7 @@ export const ui: Registry["items"] = [
       "A light glare effect which pans across text making it appear as if it is shimmering.",
     files: [
       {
-        path: "magicui/animated-shiny-text.tsx",
+        path: "registry/magicui/animated-shiny-text.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-shiny-text.tsx",
       },
@@ -626,7 +626,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/animated-grid-pattern.tsx",
+        path: "registry/magicui/animated-grid-pattern.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-grid-pattern.tsx",
       },
@@ -640,7 +640,7 @@ export const ui: Registry["items"] = [
       "An animated beam of light which travels along the border of its container.",
     files: [
       {
-        path: "magicui/border-beam.tsx",
+        path: "registry/magicui/border-beam.tsx",
         type: "registry:ui",
         target: "components/magicui/border-beam.tsx",
       },
@@ -674,7 +674,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/animated-beam.tsx",
+        path: "registry/magicui/animated-beam.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-beam.tsx",
       },
@@ -688,7 +688,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/text-reveal.tsx",
+        path: "registry/magicui/text-reveal.tsx",
         type: "registry:ui",
         target: "components/magicui/text-reveal.tsx",
       },
@@ -703,7 +703,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/hyper-text.tsx",
+        path: "registry/magicui/hyper-text.tsx",
         type: "registry:ui",
         target: "components/magicui/hyper-text.tsx",
       },
@@ -717,7 +717,7 @@ export const ui: Registry["items"] = [
       "An animated gradient background which transitions between colors for text.",
     files: [
       {
-        path: "magicui/animated-gradient-text.tsx",
+        path: "registry/magicui/animated-gradient-text.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-gradient-text.tsx",
       },
@@ -749,7 +749,7 @@ export const ui: Registry["items"] = [
       "A collection of circles which move in orbit along a circular path",
     files: [
       {
-        path: "magicui/orbiting-circles.tsx",
+        path: "registry/magicui/orbiting-circles.tsx",
         type: "registry:ui",
         target: "components/magicui/orbiting-circles.tsx",
       },
@@ -787,7 +787,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/dock.tsx",
+        path: "registry/magicui/dock.tsx",
         type: "registry:ui",
         target: "components/magicui/dock.tsx",
       },
@@ -801,7 +801,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/word-rotate.tsx",
+        path: "registry/magicui/word-rotate.tsx",
         type: "registry:ui",
         target: "components/magicui/word-rotate.tsx",
       },
@@ -814,7 +814,7 @@ export const ui: Registry["items"] = [
     description: "Overlapping circles of avatars.",
     files: [
       {
-        path: "magicui/avatar-circles.tsx",
+        path: "registry/magicui/avatar-circles.tsx",
         type: "registry:ui",
         target: "components/magicui/avatar-circles.tsx",
       },
@@ -828,7 +828,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/typing-animation.tsx",
+        path: "registry/magicui/typing-animation.tsx",
         type: "registry:ui",
         target: "components/magicui/typing-animation.tsx",
       },
@@ -843,7 +843,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/sparkles-text.tsx",
+        path: "registry/magicui/sparkles-text.tsx",
         type: "registry:ui",
         target: "components/magicui/sparkles-text.tsx",
       },
@@ -857,7 +857,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/flip-text.tsx",
+        path: "registry/magicui/flip-text.tsx",
         type: "registry:ui",
         target: "components/magicui/flip-text.tsx",
       },
@@ -871,7 +871,7 @@ export const ui: Registry["items"] = [
     dependencies: [],
     files: [
       {
-        path: "magicui/icon-cloud.tsx",
+        path: "registry/magicui/icon-cloud.tsx",
         type: "registry:ui",
         target: "components/magicui/icon-cloud.tsx",
       },
@@ -886,7 +886,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/text-animate.tsx",
+        path: "registry/magicui/text-animate.tsx",
         type: "registry:ui",
         target: "components/magicui/text-animate.tsx",
       },
@@ -900,7 +900,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/scroll-based-velocity.tsx",
+        path: "registry/magicui/scroll-based-velocity.tsx",
         type: "registry:ui",
         target: "components/magicui/scroll-based-velocity.tsx",
       },
@@ -915,7 +915,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/scratch-to-reveal.tsx",
+        path: "registry/magicui/scratch-to-reveal.tsx",
         type: "registry:ui",
         target: "components/magicui/scratch-to-reveal.tsx",
       },
@@ -930,7 +930,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/shiny-button.tsx",
+        path: "registry/magicui/shiny-button.tsx",
         type: "registry:ui",
         target: "components/magicui/shiny-button.tsx",
       },
@@ -944,7 +944,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/box-reveal.tsx",
+        path: "registry/magicui/box-reveal.tsx",
         type: "registry:ui",
         target: "components/magicui/box-reveal.tsx",
       },
@@ -957,7 +957,7 @@ export const ui: Registry["items"] = [
     description: "Shine border is an animated background border effect.",
     files: [
       {
-        path: "magicui/shine-border.tsx",
+        path: "registry/magicui/shine-border.tsx",
         type: "registry:ui",
         target: "components/magicui/shine-border.tsx",
       },
@@ -995,7 +995,7 @@ export const ui: Registry["items"] = [
       "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
     files: [
       {
-        path: "magicui/animated-circular-progress-bar.tsx",
+        path: "registry/magicui/animated-circular-progress-bar.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-circular-progress-bar.tsx",
       },
@@ -1011,7 +1011,7 @@ export const ui: Registry["items"] = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "magicui/confetti.tsx",
+        path: "registry/magicui/confetti.tsx",
         type: "registry:ui",
         target: "components/magicui/confetti.tsx",
       },
@@ -1026,7 +1026,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/animated-subscribe-button.tsx",
+        path: "registry/magicui/animated-subscribe-button.tsx",
         type: "registry:ui",
         target: "components/magicui/animated-subscribe-button.tsx",
       },
@@ -1039,7 +1039,7 @@ export const ui: Registry["items"] = [
     description: "Cool mode effect for buttons, links, and other DOMs",
     files: [
       {
-        path: "magicui/cool-mode.tsx",
+        path: "registry/magicui/cool-mode.tsx",
         type: "registry:ui",
         target: "components/magicui/cool-mode.tsx",
       },
@@ -1053,7 +1053,7 @@ export const ui: Registry["items"] = [
       "An animated pulsating button useful for capturing attention of users.",
     files: [
       {
-        path: "magicui/pulsating-button.tsx",
+        path: "registry/magicui/pulsating-button.tsx",
         type: "registry:ui",
         target: "components/magicui/pulsating-button.tsx",
       },
@@ -1083,7 +1083,7 @@ export const ui: Registry["items"] = [
     description: "An animated button with ripple useful for user engagement.",
     files: [
       {
-        path: "magicui/ripple-button.tsx",
+        path: "registry/magicui/ripple-button.tsx",
         type: "registry:ui",
         target: "components/magicui/ripple-button.tsx",
       },
@@ -1119,7 +1119,7 @@ export const ui: Registry["items"] = [
       "A component used to showcase the folder and file structure of a directory.",
     files: [
       {
-        path: "magicui/file-tree.tsx",
+        path: "registry/magicui/file-tree.tsx",
         type: "registry:ui",
         target: "components/magicui/file-tree.tsx",
       },
@@ -1134,7 +1134,7 @@ export const ui: Registry["items"] = [
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/blur-fade.tsx",
+        path: "registry/magicui/blur-fade.tsx",
         type: "registry:ui",
         target: "components/magicui/blur-fade.tsx",
       },
@@ -1147,7 +1147,7 @@ export const ui: Registry["items"] = [
     description: "A safari browser mockup to showcase your website.",
     files: [
       {
-        path: "magicui/safari.tsx",
+        path: "registry/magicui/safari.tsx",
         type: "registry:ui",
         target: "components/magicui/safari.tsx",
       },
@@ -1160,7 +1160,7 @@ export const ui: Registry["items"] = [
     description: "A mockup of the iPhone 15 Pro",
     files: [
       {
-        path: "magicui/iphone-15-pro.tsx",
+        path: "registry/magicui/iphone-15-pro.tsx",
         type: "registry:ui",
         target: "components/magicui/iphone-15-pro.tsx",
       },
@@ -1173,7 +1173,7 @@ export const ui: Registry["items"] = [
     description: "An animated button with a rainbow effect.",
     files: [
       {
-        path: "magicui/rainbow-button.tsx",
+        path: "registry/magicui/rainbow-button.tsx",
         type: "registry:ui",
         target: "components/magicui/rainbow-button.tsx",
       },
@@ -1224,7 +1224,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     files: [
       {
-        path: "magicui/interactive-hover-button.tsx",
+        path: "registry/magicui/interactive-hover-button.tsx",
         type: "registry:ui",
         target: "components/magicui/interactive-hover-button.tsx",
       },
@@ -1237,7 +1237,7 @@ export const ui: Registry["items"] = [
     description: "A terminal component",
     files: [
       {
-        path: "magicui/terminal.tsx",
+        path: "registry/magicui/terminal.tsx",
         type: "registry:ui",
         target: "components/magicui/terminal.tsx",
       },
