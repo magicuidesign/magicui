@@ -10,9 +10,15 @@
   "files": [
     {
       "path": "registry/example/scroll-progress-demo.tsx",
-      "content": "import { ScrollProgress } from \"@/registry/magicui/scroll-progress\";\n\nexport default function ScrollProgressDemo() {\n  return (\n    <div className=\"z-10 rounded-lg border border-gray-200 bg-white p-4\">\n      <ScrollProgress className=\"top-[65px]\" />\n      <h2 className=\"pb-4 font-bold\">\n        Note: The scroll progress is shown below the navbar of the page.\n      </h2>\n      <p className=\"pb-4\">\n        Magic UI is a collection of re-usable components that you can copy and\n        paste into your web apps. It primarily features components, blocks, and\n        templates geared towards creating landing pages and user-facing\n        marketing materials.\n      </p>\n    </div>\n  );\n}\n",
+      "content": "import { ScrollProgress } from \"@/components/magicui/scroll-progress\";\n\nexport default function ScrollProgressDemo() {\n  return (\n    <div className=\"z-10 rounded-lg border border-gray-200 bg-white p-4\">\n      <ScrollProgress className=\"top-[65px]\" />\n      <h2 className=\"pb-4 font-bold\">\n        Note: The scroll progress is shown below the navbar of the page.\n      </h2>\n      <p className=\"pb-4\">\n        Magic UI is a collection of re-usable components that you can copy and\n        paste into your web apps. It primarily features components, blocks, and\n        templates geared towards creating landing pages and user-facing\n        marketing materials.\n      </p>\n    </div>\n  );\n}\n",
       "type": "registry:example",
-      "target": ""
+      "target": "components/scroll-progress-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/scroll-progress.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion, MotionProps, useScroll, useSpring } from \"motion/react\";\nimport React from \"react\";\ninterface ScrollProgressProps\n  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {}\n\nexport const ScrollProgress = React.forwardRef<\n  HTMLDivElement,\n  ScrollProgressProps\n>(({ className, ...props }, ref) => {\n  const { scrollYProgress } = useScroll();\n\n  const scaleX = useSpring(scrollYProgress, {\n    stiffness: 200,\n    damping: 50,\n    restDelta: 0.001,\n  });\n\n  return (\n    <motion.div\n      ref={ref}\n      className={cn(\n        \"fixed inset-x-0 top-0 z-[1000] h-1 origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]\",\n        className,\n      )}\n      style={{\n        scaleX,\n      }}\n      {...props}\n    />\n  );\n});\n\nScrollProgress.displayName = \"ScrollProgress\";\n",
+      "type": "registry:ui",
+      "target": "components/magicui/scroll-progress.tsx"
     }
   ]
 }

@@ -1,14 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "interactive-grid-pattern",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Interactive Grid Pattern",
   "description": "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
   "files": [
     {
       "path": "registry/magicui/interactive-grid-pattern.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport React, { useState } from \"react\";\n\n/**\n * InteractiveGridPattern is a component that renders a grid pattern with interactive squares.\n *\n * @param width - The width of each square.\n * @param height - The height of each square.\n * @param squares - The number of squares in the grid. The first element is the number of horizontal squares, and the second element is the number of vertical squares.\n * @param className - The class name of the grid.\n * @param squaresClassName - The class name of the squares.\n */\ninterface InteractiveGridPatternProps extends React.SVGProps<SVGSVGElement> {\n  width?: number;\n  height?: number;\n  squares?: [number, number]; // [horizontal, vertical]\n  className?: string;\n  squaresClassName?: string;\n}\n\n/**\n * The InteractiveGridPattern component.\n *\n * @see InteractiveGridPatternProps for the props interface.\n * @returns A React component.\n */\nexport function InteractiveGridPattern({\n  width = 40,\n  height = 40,\n  squares = [24, 24],\n  className,\n  squaresClassName,\n  ...props\n}: InteractiveGridPatternProps) {\n  const [horizontal, vertical] = squares;\n  const [hoveredSquare, setHoveredSquare] = useState<number | null>(null);\n\n  return (\n    <svg\n      width={width * horizontal}\n      height={height * vertical}\n      className={cn(\n        \"absolute inset-0 h-full w-full border border-gray-400/30\",\n        className,\n      )}\n      {...props}\n    >\n      {Array.from({ length: horizontal * vertical }).map((_, index) => {\n        const x = (index % horizontal) * width;\n        const y = Math.floor(index / horizontal) * height;\n        return (\n          <rect\n            key={index}\n            x={x}\n            y={y}\n            width={width}\n            height={height}\n            className={cn(\n              \"stroke-gray-400/30 transition-all duration-100 ease-in-out [&:not(:hover)]:duration-1000\",\n              hoveredSquare === index ? \"fill-gray-300/30\" : \"fill-transparent\",\n              squaresClassName,\n            )}\n            onMouseEnter={() => setHoveredSquare(index)}\n            onMouseLeave={() => setHoveredSquare(null)}\n          />\n        );\n      })}\n    </svg>\n  );\n}\n",
-      "type": "registry:component"
+      "type": "registry:ui",
+      "target": "components/magicui/interactive-grid-pattern.tsx"
     }
   ]
 }

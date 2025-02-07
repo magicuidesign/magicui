@@ -13,8 +13,15 @@
   "files": [
     {
       "path": "registry/example/animated-shiny-text-demo.tsx",
-      "content": "import { ArrowRightIcon } from \"@radix-ui/react-icons\";\n\nimport { cn } from \"@/lib/utils\";\nimport { AnimatedShinyText } from \"@/registry/magicui/animated-shiny-text\";\n\nexport default function AnimatedShinyTextDemo() {\n  return (\n    <div className=\"z-10 flex min-h-64 items-center justify-center\">\n      <div\n        className={cn(\n          \"group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800\",\n        )}\n      >\n        <AnimatedShinyText className=\"inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400\">\n          <span>✨ Introducing Magic UI</span>\n          <ArrowRightIcon className=\"ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5\" />\n        </AnimatedShinyText>\n      </div>\n    </div>\n  );\n}\n",
-      "type": "registry:example"
+      "content": "import { ArrowRightIcon } from \"@radix-ui/react-icons\";\n\nimport { cn } from \"@/lib/utils\";\nimport { AnimatedShinyText } from \"@/components/magicui/animated-shiny-text\";\n\nexport default function AnimatedShinyTextDemo() {\n  return (\n    <div className=\"z-10 flex min-h-64 items-center justify-center\">\n      <div\n        className={cn(\n          \"group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800\",\n        )}\n      >\n        <AnimatedShinyText className=\"inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400\">\n          <span>✨ Introducing Magic UI</span>\n          <ArrowRightIcon className=\"ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5\" />\n        </AnimatedShinyText>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/animated-shiny-text-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/animated-shiny-text.tsx",
+      "content": "import { ComponentPropsWithoutRef, CSSProperties, FC } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface AnimatedShinyTextProps\n  extends ComponentPropsWithoutRef<\"span\"> {\n  shimmerWidth?: number;\n}\n\nexport const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({\n  children,\n  className,\n  shimmerWidth = 100,\n  ...props\n}) => {\n  return (\n    <span\n      style={\n        {\n          \"--shiny-width\": `${shimmerWidth}px`,\n        } as CSSProperties\n      }\n      className={cn(\n        \"mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70\",\n\n        // Shine effect\n        \"animate-shiny-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shiny-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]\",\n\n        // Shine gradient\n        \"bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80\",\n\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/magicui/animated-shiny-text.tsx"
     }
   ]
 }

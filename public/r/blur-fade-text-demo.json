@@ -10,9 +10,15 @@
   "files": [
     {
       "path": "registry/example/blur-fade-text-demo.tsx",
-      "content": "import { BlurFade } from \"@/registry/magicui/blur-fade\";\n\nexport default function BlurFadeTextDemo() {\n  return (\n    <section id=\"header\">\n      <BlurFade delay={0.25} inView>\n        <h2 className=\"text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none\">\n          Hello World 👋\n        </h2>\n      </BlurFade>\n      <BlurFade delay={0.25 * 2} inView>\n        <span className=\"text-pretty text-xl tracking-tighter sm:text-3xl xl:text-4xl/none\">\n          Nice to meet you\n        </span>\n      </BlurFade>\n    </section>\n  );\n}\n",
+      "content": "import { BlurFade } from \"@/components/magicui/blur-fade\";\n\nexport default function BlurFadeTextDemo() {\n  return (\n    <section id=\"header\">\n      <BlurFade delay={0.25} inView>\n        <h2 className=\"text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none\">\n          Hello World 👋\n        </h2>\n      </BlurFade>\n      <BlurFade delay={0.25 * 2} inView>\n        <span className=\"text-pretty text-xl tracking-tighter sm:text-3xl xl:text-4xl/none\">\n          Nice to meet you\n        </span>\n      </BlurFade>\n    </section>\n  );\n}\n",
       "type": "registry:example",
-      "target": ""
+      "target": "components/blur-fade-text-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/blur-fade.tsx",
+      "content": "\"use client\";\n\nimport {\n  AnimatePresence,\n  motion,\n  useInView,\n  UseInViewOptions,\n  Variants,\n} from \"motion/react\";\nimport { useRef } from \"react\";\n\ntype MarginType = UseInViewOptions[\"margin\"];\n\ninterface BlurFadeProps {\n  children: React.ReactNode;\n  className?: string;\n  variant?: {\n    hidden: { y: number };\n    visible: { y: number };\n  };\n  duration?: number;\n  delay?: number;\n  offset?: number;\n  direction?: \"up\" | \"down\" | \"left\" | \"right\";\n  inView?: boolean;\n  inViewMargin?: MarginType;\n  blur?: string;\n}\n\nexport function BlurFade({\n  children,\n  className,\n  variant,\n  duration = 0.4,\n  delay = 0,\n  offset = 6,\n  direction = \"down\",\n  inView = false,\n  inViewMargin = \"-50px\",\n  blur = \"6px\",\n}: BlurFadeProps) {\n  const ref = useRef(null);\n  const inViewResult = useInView(ref, { once: true, margin: inViewMargin });\n  const isInView = !inView || inViewResult;\n  const defaultVariants: Variants = {\n    hidden: {\n      [direction === \"left\" || direction === \"right\" ? \"x\" : \"y\"]:\n        direction === \"right\" || direction === \"down\" ? -offset : offset,\n      opacity: 0,\n      filter: `blur(${blur})`,\n    },\n    visible: {\n      [direction === \"left\" || direction === \"right\" ? \"x\" : \"y\"]: 0,\n      opacity: 1,\n      filter: `blur(0px)`,\n    },\n  };\n  const combinedVariants = variant || defaultVariants;\n  return (\n    <AnimatePresence>\n      <motion.div\n        ref={ref}\n        initial=\"hidden\"\n        animate={isInView ? \"visible\" : \"hidden\"}\n        exit=\"hidden\"\n        variants={combinedVariants}\n        transition={{\n          delay: 0.04 + delay,\n          duration,\n          ease: \"easeOut\",\n        }}\n        className={className}\n      >\n        {children}\n      </motion.div>\n    </AnimatePresence>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/blur-fade.tsx"
     }
   ]
 }

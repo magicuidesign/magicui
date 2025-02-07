@@ -10,9 +10,15 @@
   "files": [
     {
       "path": "registry/example/dot-pattern-demo.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { DotPattern } from \"@/registry/magicui/dot-pattern\";\n\nexport default function DotPatternDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white\">\n        Dot Pattern\n      </p>\n      <DotPattern\n        className={cn(\n          \"[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]\",\n        )}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { DotPattern } from \"@/components/magicui/dot-pattern\";\n\nexport default function DotPatternDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white\">\n        Dot Pattern\n      </p>\n      <DotPattern\n        className={cn(\n          \"[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]\",\n        )}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
-      "target": ""
+      "target": "components/dot-pattern-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/dot-pattern.tsx",
+      "content": "import { useId } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface DotPatternProps extends React.SVGProps<SVGSVGElement> {\n  width?: number;\n  height?: number;\n  x?: number;\n  y?: number;\n  cx?: number;\n  cy?: number;\n  cr?: number;\n  className?: string;\n  [key: string]: unknown;\n}\nexport function DotPattern({\n  width = 16,\n  height = 16,\n  x = 0,\n  y = 0,\n  cx = 1,\n  cy = 1,\n  cr = 1,\n  className,\n  ...props\n}: DotPatternProps) {\n  const id = useId();\n\n  return (\n    <svg\n      aria-hidden=\"true\"\n      className={cn(\n        \"pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80\",\n        className,\n      )}\n      {...props}\n    >\n      <defs>\n        <pattern\n          id={id}\n          width={width}\n          height={height}\n          patternUnits=\"userSpaceOnUse\"\n          patternContentUnits=\"userSpaceOnUse\"\n          x={x}\n          y={y}\n        >\n          <circle id=\"pattern-circle\" cx={cx} cy={cy} r={cr} />\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" strokeWidth={0} fill={`url(#${id})`} />\n    </svg>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/dot-pattern.tsx"
     }
   ]
 }

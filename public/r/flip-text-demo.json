@@ -10,9 +10,15 @@
   "files": [
     {
       "path": "registry/example/flip-text-demo.tsx",
-      "content": "import { FlipText } from \"@/registry/magicui/flip-text\";\n\nexport default function FlipTextDemo() {\n  return (\n    <FlipText\n      className=\"text-4xl font-bold -tracking-widest text-black dark:text-white md:text-7xl md:leading-[5rem]\"\n      word=\"Flip Text\"\n    />\n  );\n}\n",
+      "content": "import { FlipText } from \"@/components/magicui/flip-text\";\n\nexport default function FlipTextDemo() {\n  return (\n    <FlipText\n      className=\"text-4xl font-bold -tracking-widest text-black dark:text-white md:text-7xl md:leading-[5rem]\"\n      word=\"Flip Text\"\n    />\n  );\n}\n",
       "type": "registry:example",
-      "target": ""
+      "target": "components/flip-text-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/flip-text.tsx",
+      "content": "\"use client\";\n\nimport { AnimatePresence, motion, Variants } from \"motion/react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface FlipTextProps {\n  word: string;\n  duration?: number;\n  delayMultiple?: number;\n  framerProps?: Variants;\n  className?: string;\n}\n\nexport function FlipText({\n  word,\n  duration = 0.5,\n  delayMultiple = 0.08,\n  framerProps = {\n    hidden: { rotateX: -90, opacity: 0 },\n    visible: { rotateX: 0, opacity: 1 },\n  },\n  className,\n}: FlipTextProps) {\n  return (\n    <div className=\"flex justify-center space-x-2\">\n      <AnimatePresence mode=\"wait\">\n        {word.split(\"\").map((char, i) => (\n          <motion.span\n            key={i}\n            initial=\"hidden\"\n            animate=\"visible\"\n            exit=\"hidden\"\n            variants={framerProps}\n            transition={{ duration, delay: i * delayMultiple }}\n            className={cn(\"origin-center drop-shadow-sm\", className)}\n          >\n            {char}\n          </motion.span>\n        ))}\n      </AnimatePresence>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/flip-text.tsx"
     }
   ]
 }
