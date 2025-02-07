@@ -1,0 +1,66 @@
+---
+title: Terminal
+date: 2025-01-16
+description: An implementation of the MacOS terminal. Useful for showcasing a command line interface.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="terminal-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/terminal"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="terminal" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+### Terminal
+
+| Prop        | Type        | Default | Description                              |
+| ----------- | ----------- | ------- | ---------------------------------------- |
+| `children`  | `ReactNode` | `-`     | Content to be typed out in the terminal. |
+| `className` | `string`    | `-`     | Custom CSS class for styling.            |
+
+### AnimatedSpan
+
+| Prop        | Type        | Default | Description                                        |
+| ----------- | ----------- | ------- | -------------------------------------------------- |
+| `children`  | `ReactNode` | `-`     | Content to be animated.                            |
+| `delay`     | `number`    | `0`     | Delay in milliseconds before the animation starts. |
+| `className` | `string`    | `-`     | Custom CSS class for styling.                      |
+
+### TypingAnimation
+
+| Prop        | Type                | Default  | Description                                        |
+| ----------- | ------------------- | -------- | -------------------------------------------------- |
+| `children`  | `ReactNode`         | `-`      | Content to be animated.                            |
+| `delay`     | `number`            | `0`      | Delay in milliseconds before the animation starts. |
+| `className` | `string`            | `-`      | Custom CSS class for styling.                      |
+| `duration`  | `number`            | `100`    | Duration in milliseconds for each character typed. |
+| `as`        | `React.ElementType` | `"span"` | The component type to render.                      |

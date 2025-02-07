@@ -1,5 +1,5 @@
-import { Marquee } from "@/registry/default/magicui/marquee";
-import { TweetCard } from "@/registry/default/magicui/tweet-card";
+import { Marquee } from "@/registry/magicui/marquee";
+import { TweetCard } from "@/registry/magicui/tweet-card";
 
 const tweets = [
   "https://x.com/chronark_/status/1754781648262967323",

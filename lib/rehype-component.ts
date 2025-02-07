@@ -5,8 +5,16 @@ import { visit } from "unist-util-visit";
 
 import { UnistNode, UnistTree } from "@/types/unist";
 
-import { Index } from "../__registry__";
-import { styles } from "../registry/registry-styles";
+import Registry from "../registry.json";
+
+export const styles = [
+  {
+    name: "default",
+    label: "Default",
+  },
+] as const;
+
+export type Style = (typeof styles)[number];
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
@@ -24,70 +32,73 @@ export function rehypeComponent() {
         }
 
         try {
-          for (const style of styles) {
-            let src: string;
+          let src: string;
 
-            if (srcPath) {
-              src = srcPath as string;
-            } else {
-              const component = Index[style.name][name];
-              src = fileName
-                ? component.files.find((file: string) => {
-                    return (
-                      file.endsWith(`${fileName}.tsx`) ||
-                      file.endsWith(`${fileName}.ts`)
-                    );
-                  }) || component.files[0]
-                : component.files[0];
+          if (srcPath) {
+            src = srcPath as string;
+          } else {
+            const component = Registry.items.find((item) => item.name === name);
+
+            if (!component) {
+              return null;
             }
 
-            // Read the source file.
-            const filePath = path.join(process.cwd(), src);
-            let source = fs.readFileSync(filePath, "utf8");
-
-            // Replace imports.
-            // TODO: Use @swc/core and a visitor to replace this.
-            // For now a simple regex should do.
-            source = source.replaceAll(
-              `@/registry/${style.name}/`,
-              "@/components/",
-            );
-            source = source.replaceAll("export default", "export");
-
-            // Add code as children so that rehype can take over at build time.
-            node.children?.push(
-              u("element", {
-                tagName: "pre",
-                properties: {
-                  __src__: src,
-                },
-                attributes: [
-                  {
-                    name: "styleName",
-                    type: "mdxJsxAttribute",
-                    value: style.name,
-                  },
-                ],
-                children: [
-                  u("element", {
-                    tagName: "code",
-                    properties: {
-                      className: ["language-tsx"],
-                    },
-                    data: {
-                      meta: `event="copy_source_code"`,
-                    },
-                    children: [
-                      {
-                        type: "text",
-                        value: source,
-                      },
-                    ],
-                  }),
-                ],
-              }),
-            );
+            src = fileName
+              ? component.files.find((file) => {
+                  return (
+                    file.path.endsWith(`${fileName}.tsx`) ||
+                    file.path.endsWith(`${fileName}.ts`)
+                  );
+                })?.path || component.files[0].path
+              : component.files[0].path;
           }
+
+          // Read the source file.
+          const filePath = path.join(process.cwd(), src);
+          let source = fs.readFileSync(filePath, "utf8");
+
+          // Replace imports.
+          // TODO: Use @swc/core and a visitor to replace this.
+          // For now a simple regex should do.
+          // source = source.replaceAll(
+          //   `@/registry/${style.name}/`,
+          //   "@/components/",
+          // );
+          source = source.replaceAll("export default", "export");
+
+          // Add code as children so that rehype can take over at build time.
+          node.children?.push(
+            u("element", {
+              tagName: "pre",
+              properties: {
+                __src__: src,
+              },
+              // attributes: [
+              //   {
+              //     name: "styleName",
+              //     type: "mdxJsxAttribute",
+              //     value: style.name,
+              //   },
+              // ],
+              children: [
+                u("element", {
+                  tagName: "code",
+                  properties: {
+                    className: ["language-tsx"],
+                  },
+                  data: {
+                    meta: `event="copy_source_code"`,
+                  },
+                  children: [
+                    {
+                      type: "text",
+                      value: source,
+                    },
+                  ],
+                }),
+              ],
+            }),
+          );
         } catch (error) {
           console.error(error);
         }
@@ -101,50 +112,53 @@ export function rehypeComponent() {
         }
 
         try {
-          for (const style of styles) {
-            const component = Index[style.name][name];
-            const src = component.files[0];
+          const component = Registry.items.find((item) => item.name === name);
 
-            // Read the source file.
-            const filePath = path.join(process.cwd(), src);
-            let source = fs.readFileSync(filePath, "utf8");
-
-            // Replace imports.
-            // TODO: Use @swc/core and a visitor to replace this.
-            // For now a simple regex should do.
-            source = source.replaceAll(
-              `@/registry/${style.name}/`,
-              "@/components/",
-            );
-            source = source.replaceAll("export default", "export");
-
-            // Add code as children so that rehype can take over at build time.
-            node.children?.push(
-              u("element", {
-                tagName: "pre",
-                properties: {
-                  __src__: src,
-                },
-                children: [
-                  u("element", {
-                    tagName: "code",
-                    properties: {
-                      className: ["language-tsx"],
-                    },
-                    data: {
-                      meta: `event="copy_usage_code"`,
-                    },
-                    children: [
-                      {
-                        type: "text",
-                        value: source,
-                      },
-                    ],
-                  }),
-                ],
-              }),
-            );
+          if (!component) {
+            return null;
           }
+
+          const src = component.files[0].path;
+
+          // Read the source file.
+          const filePath = path.join(process.cwd(), src);
+          let source = fs.readFileSync(filePath, "utf8");
+
+          // Replace imports.
+          // TODO: Use @swc/core and a visitor to replace this.
+          // For now a simple regex should do.
+          // source = source.replaceAll(
+          //   `@/registry/${style.name}/`,
+          //   "@/components/",
+          // );
+          source = source.replaceAll("export default", "export");
+
+          // Add code as children so that rehype can take over at build time.
+          node.children?.push(
+            u("element", {
+              tagName: "pre",
+              properties: {
+                __src__: src,
+              },
+              children: [
+                u("element", {
+                  tagName: "code",
+                  properties: {
+                    className: ["language-tsx"],
+                  },
+                  data: {
+                    meta: `event="copy_usage_code"`,
+                  },
+                  children: [
+                    {
+                      type: "text",
+                      value: source,
+                    },
+                  ],
+                }),
+              ],
+            }),
+          );
         } catch (error) {
           console.error(error);
         }
