@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "client-tweet-card",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Client Tweet Card",
   "description": "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
   "dependencies": [
@@ -10,9 +10,9 @@
   "files": [
     {
       "path": "registry/magicui/client-tweet-card.tsx",
-      "content": "\"use client\";\n\nimport { TweetProps, useTweet } from \"react-tweet\";\n\nimport {\n  MagicTweet,\n  TweetNotFound,\n  TweetSkeleton,\n} from \"@/registry/magicui/tweet-card\";\n\nexport const ClientTweetCard = ({\n  id,\n  apiUrl,\n  fallback = <TweetSkeleton />,\n  components,\n  fetchOptions,\n  onError,\n  ...props\n}: TweetProps & { className?: string }) => {\n  const { data, error, isLoading } = useTweet(id, apiUrl, fetchOptions);\n\n  if (isLoading) return fallback;\n  if (error || !data) {\n    const NotFound = components?.TweetNotFound || TweetNotFound;\n    return <NotFound error={onError ? onError(error) : error} />;\n  }\n\n  return <MagicTweet tweet={data} components={components} {...props} />;\n};\n",
-      "type": "registry:component",
-      "target": ""
+      "content": "\"use client\";\n\nimport { TweetProps, useTweet } from \"react-tweet\";\n\nimport {\n  MagicTweet,\n  TweetNotFound,\n  TweetSkeleton,\n} from \"@/components/magicui/tweet-card\";\n\nexport const ClientTweetCard = ({\n  id,\n  apiUrl,\n  fallback = <TweetSkeleton />,\n  components,\n  fetchOptions,\n  onError,\n  ...props\n}: TweetProps & { className?: string }) => {\n  const { data, error, isLoading } = useTweet(id, apiUrl, fetchOptions);\n\n  if (isLoading) return fallback;\n  if (error || !data) {\n    const NotFound = components?.TweetNotFound || TweetNotFound;\n    return <NotFound error={onError ? onError(error) : error} />;\n  }\n\n  return <MagicTweet tweet={data} components={components} {...props} />;\n};\n",
+      "type": "registry:ui",
+      "target": "components/magicui/client-tweet-card.tsx"
     }
   ]
 }

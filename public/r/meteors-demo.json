@@ -10,9 +10,15 @@
   "files": [
     {
       "path": "registry/example/meteors-demo.tsx",
-      "content": "import { Meteors } from \"@/registry/magicui/meteors\";\n\nexport default function MeteorDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <Meteors number={30} />\n      <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n        Meteors\n      </span>\n    </div>\n  );\n}\n",
+      "content": "import { Meteors } from \"@/components/magicui/meteors\";\n\nexport default function MeteorDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <Meteors number={30} />\n      <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n        Meteors\n      </span>\n    </div>\n  );\n}\n",
       "type": "registry:example",
-      "target": ""
+      "target": "components/meteors-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/meteors.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface MeteorsProps extends React.HTMLAttributes<HTMLSpanElement> {\n  number?: number;\n}\nexport const Meteors = ({ number = 20, ...props }: MeteorsProps) => {\n  const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>(\n    [],\n  );\n\n  useEffect(() => {\n    const styles = [...new Array(number)].map(() => ({\n      top: -5,\n      left: Math.floor(Math.random() * window.innerWidth) + \"px\",\n      animationDelay: Math.random() * 1 + 0.2 + \"s\",\n      animationDuration: Math.floor(Math.random() * 8 + 2) + \"s\",\n    }));\n    setMeteorStyles(styles);\n  }, [number]);\n\n  return (\n    <>\n      {[...meteorStyles].map((style, idx) => (\n        // Meteor Head\n        <span\n          key={idx}\n          className={cn(\n            \"pointer-events-none absolute left-1/2 top-1/2 size-0.5 rotate-[215deg] animate-meteor rounded-full bg-slate-500 shadow-[0_0_0_1px_#ffffff10]\",\n          )}\n          style={style}\n          {...props}\n        >\n          {/* Meteor Tail */}\n          <div className=\"pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-slate-500 to-transparent\" />\n        </span>\n      ))}\n    </>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/magicui/meteors.tsx"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "word-rotate",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Word Rotate",
   "description": "A vertical rotation of words",
   "dependencies": [
@@ -11,8 +11,8 @@
     {
       "path": "registry/magicui/word-rotate.tsx",
       "content": "\"use client\";\n\nimport { AnimatePresence, motion, MotionProps } from \"motion/react\";\nimport { useEffect, useState } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface WordRotateProps {\n  words: string[];\n  duration?: number;\n  motionProps?: MotionProps;\n  className?: string;\n}\n\nexport function WordRotate({\n  words,\n  duration = 2500,\n  motionProps = {\n    initial: { opacity: 0, y: -50 },\n    animate: { opacity: 1, y: 0 },\n    exit: { opacity: 0, y: 50 },\n    transition: { duration: 0.25, ease: \"easeOut\" },\n  },\n  className,\n}: WordRotateProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setIndex((prevIndex) => (prevIndex + 1) % words.length);\n    }, duration);\n\n    // Clean up interval on unmount\n    return () => clearInterval(interval);\n  }, [words, duration]);\n\n  return (\n    <div className=\"overflow-hidden py-2\">\n      <AnimatePresence mode=\"wait\">\n        <motion.h1\n          key={words[index]}\n          className={cn(className)}\n          {...motionProps}\n        >\n          {words[index]}\n        </motion.h1>\n      </AnimatePresence>\n    </div>\n  );\n}\n",
-      "type": "registry:component",
-      "target": ""
+      "type": "registry:ui",
+      "target": "components/magicui/word-rotate.tsx"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "avatar-circles",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Avatar Circles",
   "description": "Overlapping circles of avatars.",
   "files": [
     {
       "path": "registry/magicui/avatar-circles.tsx",
       "content": "/* eslint-disable @next/next/no-img-element */\n\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Avatar {\n  imageUrl: string;\n  profileUrl: string;\n}\ninterface AvatarCirclesProps {\n  className?: string;\n  numPeople?: number;\n  avatarUrls: Avatar[];\n}\n\nexport const AvatarCircles = ({\n  numPeople,\n  className,\n  avatarUrls,\n}: AvatarCirclesProps) => {\n  return (\n    <div className={cn(\"z-10 flex -space-x-4 rtl:space-x-reverse\", className)}>\n      {avatarUrls.map((url, index) => (\n        <a\n          key={index}\n          href={url.profileUrl}\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <img\n            key={index}\n            className=\"h-10 w-10 rounded-full border-2 border-white dark:border-gray-800\"\n            src={url.imageUrl}\n            width={40}\n            height={40}\n            alt={`Avatar ${index + 1}`}\n          />\n        </a>\n      ))}\n      {(numPeople ?? 0) > 0 && (\n        <a\n          className=\"flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-black text-center text-xs font-medium text-white hover:bg-gray-600 dark:border-gray-800 dark:bg-white dark:text-black\"\n          href=\"\"\n        >\n          +{numPeople}\n        </a>\n      )}\n    </div>\n  );\n};\n",
-      "type": "registry:component",
-      "target": ""
+      "type": "registry:ui",
+      "target": "components/magicui/avatar-circles.tsx"
     }
   ]
 }

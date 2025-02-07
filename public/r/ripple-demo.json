@@ -10,9 +10,15 @@
   "files": [
     {
       "path": "registry/example/ripple-demo.tsx",
-      "content": "import { Ripple } from \"@/registry/magicui/ripple\";\n\nexport default function RippleDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-white\">\n        Ripple\n      </p>\n      <Ripple />\n    </div>\n  );\n}\n",
+      "content": "import { Ripple } from \"@/components/magicui/ripple\";\n\nexport default function RippleDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-white\">\n        Ripple\n      </p>\n      <Ripple />\n    </div>\n  );\n}\n",
       "type": "registry:example",
-      "target": ""
+      "target": "components/ripple-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/ripple.tsx",
+      "content": "import React, { ComponentPropsWithoutRef, CSSProperties } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface RippleProps extends ComponentPropsWithoutRef<\"div\"> {\n  mainCircleSize?: number;\n  mainCircleOpacity?: number;\n  numCircles?: number;\n}\n\nexport const Ripple = React.memo(function Ripple({\n  mainCircleSize = 210,\n  mainCircleOpacity = 0.24,\n  numCircles = 8,\n  className,\n  ...props\n}: RippleProps) {\n  return (\n    <div\n      className={cn(\n        \"pointer-events-none absolute inset-0 select-none [mask-image:linear-gradient(to_bottom,white,transparent)]\",\n        className,\n      )}\n      {...props}\n    >\n      {Array.from({ length: numCircles }, (_, i) => {\n        const size = mainCircleSize + i * 70;\n        const opacity = mainCircleOpacity - i * 0.03;\n        const animationDelay = `${i * 0.06}s`;\n        const borderStyle = i === numCircles - 1 ? \"dashed\" : \"solid\";\n        const borderOpacity = 5 + i * 5;\n\n        return (\n          <div\n            key={i}\n            className={`[--i: absolute animate-ripple rounded-full border bg-foreground/25 shadow-xl${i}]`}\n            style={\n              {\n                width: `${size}px`,\n                height: `${size}px`,\n                opacity,\n                animationDelay,\n                borderStyle,\n                borderWidth: \"1px\",\n                borderColor: `hsl(var(--foreground), ${borderOpacity / 100})`,\n                top: \"50%\",\n                left: \"50%\",\n                transform: \"translate(-50%, -50%) scale(1)\",\n              } as CSSProperties\n            }\n          />\n        );\n      })}\n    </div>\n  );\n});\n\nRipple.displayName = \"Ripple\";\n",
+      "type": "registry:ui",
+      "target": "components/magicui/ripple.tsx"
     }
   ]
 }
