@@ -413,6 +413,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Spinning Text",
+          href: `/docs/components/spinning-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
