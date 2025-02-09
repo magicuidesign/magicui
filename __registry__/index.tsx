@@ -984,6 +984,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "spinning-text": {
+    name: "spinning-text",
+    description: "A text that spins around the center of the container.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/spinning-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/spinning-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "flip-text": {
     name: "flip-text",
     description: "Text flipping character animation",
@@ -3393,6 +3416,35 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/sparkles-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "spinning-text-demo": {
+    name: "spinning-text-demo",
+    description:
+      "Example showing a text that spins around the center of the container.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo.tsx",
+        type: "registry:example",
+        target: "components/spinning-text-demo.tsx",
+      },
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/spinning-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/spinning-text-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
