@@ -58,7 +58,7 @@ export function CodeBlockCommand({
   }
 
   return (
-    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-xl bg-zinc-950 dark:bg-zinc-900">
+    <div className="relative mt-6 max-h-[650px] overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-950 dark:bg-zinc-900">
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
