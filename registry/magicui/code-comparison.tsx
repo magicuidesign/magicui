@@ -77,7 +77,7 @@ export function CodeComparison({
   };
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <div className="relative w-full overflow-hidden rounded-xl border border-border">
+      <div className="relative w-full overflow-hidden rounded-md border border-border">
         <div className="relative grid md:grid-cols-2 md:divide-x md:divide-border">
           <div>
             <div className="flex items-center bg-accent p-2 text-sm text-foreground">

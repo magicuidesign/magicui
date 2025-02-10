@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/interactive-grid-pattern-demo.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { InteractiveGridPattern } from \"@/components/magicui/interactive-grid-pattern\";\n\nexport default function InteractiveGridPatternDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <p className=\"z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white\">\n        Interactive Grid Pattern\n      </p>\n      <InteractiveGridPattern\n        className={cn(\n          \"[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]\",\n          \"inset-x-0 inset-y-[-30%] h-[200%] skew-y-12\",\n        )}\n      />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { InteractiveGridPattern } from \"@/components/magicui/interactive-grid-pattern\";\n\nexport default function InteractiveGridPatternDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background\">\n      <InteractiveGridPattern\n        className={cn(\n          \"[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]\",\n          \"inset-x-0 inset-y-[-30%] h-[200%] skew-y-12\",\n        )}\n      />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/interactive-grid-pattern-demo.tsx"
     },

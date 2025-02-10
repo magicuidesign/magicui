@@ -90,7 +90,7 @@ export default function AnimatedListDemo({
   return (
     <div
       className={cn(
-        "relative flex h-[500px] w-full flex-col overflow-hidden rounded-lg border bg-background p-6 md:shadow-xl",
+        "relative flex h-[500px] w-full flex-col overflow-hidden p-2",
         className,
       )}
     >
@@ -99,6 +99,8 @@ export default function AnimatedListDemo({
           <Notification {...item} key={idx} />
         ))}
       </AnimatedList>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
     </div>
   );
 }

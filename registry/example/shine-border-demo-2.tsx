@@ -8,10 +8,8 @@ export default function ShineBorderDemo() {
   const theme = useTheme();
   return (
     <ShineBorder
-      className="text-center text-2xl font-bold capitalize"
+      className="relative size-48 rounded-lg"
       color={theme.theme === "dark" ? "white" : "black"}
-    >
-      Shine Border
-    </ShineBorder>
+    />
   );
 }
