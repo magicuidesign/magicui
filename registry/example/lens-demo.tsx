@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+"use client";
 import {
   Card,
   CardContent,
@@ -14,15 +15,19 @@ import { Button } from "@/components/ui/button";
 export default function LensDemo() {
   return (
     <div className="relative justify-center">
-      <Card className="max-w-md">
+      <Card className="max-w-md shadow-none">
         <CardHeader>
-          <Lens>
+          <Lens
+            zoomFactor={2}
+            lensSize={150}
+            isStatic={false}
+            ariaLabel="Zoom Area"
+          >
             <img
               src="https://images.unsplash.com/photo-1736606355698-5efdb410fe93?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="image placeholder"
               width={500}
               height={500}
-              className="rounded-2xl"
             />
           </Lens>
         </CardHeader>

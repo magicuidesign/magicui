@@ -46,15 +46,20 @@ npx shadcn@latest add "https://magicui.design/r/lens"
 
 <ComponentPreview name="lens-demo-2" />
 
+### Lens with a Default Position
+
+<ComponentPreview name="lens-demo-3" />
+
 ## Props
 
-| Property      | Type                          | Default | Description                                            |
-| ------------- | ----------------------------- | ------- | ------------------------------------------------------ |
-| `children`    | `React.ReactNode`             | -       | The content that will be magnified by the lens         |
-| `zoomFactor`  | `number`                      | 1.5     | The magnification factor of the lens                   |
-| `lensSize`    | `number`                      | 170     | The size of the lens in pixels (work as a diameter)    |
-| `position`    | `{ x: number, y: number }`    | -       | The static position of the lens                        |
-| `isStatic`    | `boolean`                     | false   | Determines if the lens will remain in a fixed position |
-| `isFocusing`  | `() => void`                  | -       | Callback called when the lens is focusing              |
-| `hovering`    | `boolean`                     | -       | External control of hover state                        |
-| `setHovering` | `(hovering: boolean) => void` | -       | External control of hover state setter                 |
+| Property            | Type              | Default | Description                                                |
+| ------------------- | ----------------- | ------- | ---------------------------------------------------------- |
+| `children`          | `React.ReactNode` | -       | The content that will be magnified by the lens             |
+| `zoomFactor`        | `number`          | 1.5     | The magnification factor of the lens                       |
+| `lensSize`          | `number`          | 170     | The size of the lens in pixels (works as a diameter)       |
+| `position`          | `Position`        | -       | The current position of the lens                           |
+| `defaultPosition`   | `Position`        | -       | The initial position of the lens                           |
+| `isStatic`          | `boolean`         | false   | Determines if the lens will remain in a fixed position     |
+| `animationDuration` | `number`          | 0.1     | Duration of the animation when the lens moves (in seconds) |
+| `lensColor`         | `string`          | -       | The color of the lens (CSS color value)                    |
+| `ariaLabel`         | `string`          | -       | Accessibility label for the lens component                 |
