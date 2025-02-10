@@ -162,8 +162,16 @@ export const ui: Registry["items"] = [
   {
     name: "lens",
     type: "registry:ui",
+    title: "Lens",
+    description: "A lens effect component",
     dependencies: ["motion"],
-    files: ["magicui/lens.tsx"],
+    files: [
+      {
+        path: "registry/magicui/lens.tsx",
+        type: "registry:ui",
+        target: "components/magicui/lens.tsx",
+      },
+    ],
   },
   {
     name: "neon-gradient-card",
