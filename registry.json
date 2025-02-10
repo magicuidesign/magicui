@@ -1576,7 +1576,9 @@
       "title": "Lens Demo",
       "description": "Example showing a lens effect component",
       "registryDependencies": [
-        "lens"
+        "button",
+        "card",
+        "https://magicui.design/r/lens"
       ],
       "files": [
         {
@@ -1597,7 +1599,9 @@
       "title": "Lens Demo 2",
       "description": "Second example showing a lens effect component",
       "registryDependencies": [
-        "lens"
+        "button",
+        "card",
+        "https://magicui.design/r/lens"
       ],
       "files": [
         {
@@ -1618,7 +1622,9 @@
       "title": "Lens Demo 3",
       "description": "Third example showing a lens effect component",
       "registryDependencies": [
-        "lens"
+        "button",
+        "card",
+        "https://magicui.design/r/lens"
       ],
       "files": [
         {

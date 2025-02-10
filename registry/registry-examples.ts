@@ -179,7 +179,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Lens Demo",
     description: "Example showing a lens effect component",
-    registryDependencies: ["lens"],
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
     files: [
       {
         path: "registry/example/lens-demo.tsx",
@@ -198,7 +198,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Lens Demo 2",
     description: "Second example showing a lens effect component",
-    registryDependencies: ["lens"],
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
     files: [
       {
         path: "registry/example/lens-demo-2.tsx",
@@ -217,7 +217,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Lens Demo 3",
     description: "Third example showing a lens effect component",
-    registryDependencies: ["lens"],
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
     files: [
       {
         path: "registry/example/lens-demo-3.tsx",

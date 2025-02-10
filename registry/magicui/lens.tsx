@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useCallback, useRef, useState, useMemo } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionTemplate } from "motion/react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 
 interface Position {
   /** The x coordinate of the lens */
@@ -24,48 +24,33 @@ interface LensProps {
   /** Whether the lens is static */
   isStatic?: boolean;
   /** The duration of the animation */
-  animationDuration?: number;
+  duration?: number;
   /** The color of the lens */
   lensColor?: string;
   /** The aria label of the lens */
   ariaLabel?: string;
 }
 
-const createLensStyles = (
-  x: number,
-  y: number,
-  size: number,
-  color: string,
-) => ({
-  maskImage: `radial-gradient(circle ${size / 2}px at ${x}px ${y}px, ${color} 100%, transparent 100%)`,
-  WebkitMaskImage: `radial-gradient(circle ${size / 2}px at ${x}px ${y}px, ${color} 100%, transparent 100%)`,
-  transformOrigin: `${x}px ${y}px`,
-});
-
-const createZoomStyles = (x: number, y: number, factor: number) => ({
-  transform: `scale(${factor})`,
-  transformOrigin: `${x}px ${y}px`,
-});
-
 export function Lens({
   children,
-  zoomFactor = 1.5,
+  zoomFactor = 1.3,
   lensSize = 170,
   isStatic = false,
   position = { x: 0, y: 0 },
   defaultPosition,
-  animationDuration = 0.3,
+  duration = 0.1,
   lensColor = "black",
   ariaLabel = "Zoom Area",
 }: LensProps) {
-  const validatedZoomFactor = zoomFactor < 1 ? 1 : zoomFactor;
-  const validatedLensSize = lensSize < 0 ? 170 : lensSize;
+  if (zoomFactor < 1) {
+    throw new Error("zoomFactor must be greater than 1");
+  }
+  if (lensSize < 0) {
+    throw new Error("lensSize must be greater than 0");
+  }
 
   const [isHovering, setIsHovering] = useState(false);
-  const [mousePosition, setMousePosition] = useState<Position>({
-    x: 100,
-    y: 100,
-  });
+  const [mousePosition, setMousePosition] = useState<Position>(position);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentPosition = useMemo(() => {
@@ -86,36 +71,37 @@ export function Lens({
     if (e.key === "Escape") setIsHovering(false);
   }, []);
 
+  const maskImage = useMotionTemplate`radial-gradient(circle ${lensSize / 2}px at ${currentPosition.x}px ${currentPosition.y}px, ${lensColor} 100%, transparent 100%)`;
+
   const LensContent = useMemo(() => {
     const { x, y } = currentPosition;
+
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.58 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: animationDuration, ease: "easeOut" }}
+        transition={{ duration }}
         className="absolute inset-0 overflow-hidden"
         style={{
-          ...createLensStyles(x, y, validatedLensSize, lensColor),
+          maskImage,
+          WebkitMaskImage: maskImage,
+          transformOrigin: `${x}px ${y}px`,
           zIndex: 50,
         }}
       >
         <div
           className="absolute inset-0"
-          style={createZoomStyles(x, y, validatedZoomFactor)}
+          style={{
+            transform: `scale(${zoomFactor})`,
+            transformOrigin: `${x}px ${y}px`,
+          }}
         >
           {children}
         </div>
       </motion.div>
     );
-  }, [
-    currentPosition,
-    validatedLensSize,
-    lensColor,
-    validatedZoomFactor,
-    children,
-    animationDuration,
-  ]);
+  }, [currentPosition, lensSize, lensColor, zoomFactor, children, duration]);
 
   return (
     <div
@@ -131,10 +117,10 @@ export function Lens({
     >
       {children}
       {isStatic || defaultPosition ? (
-        <div>{LensContent}</div>
+        LensContent
       ) : (
-        <AnimatePresence>
-          {isHovering && <div>{LensContent}</div>}
+        <AnimatePresence mode="popLayout">
+          {isHovering && LensContent}
         </AnimatePresence>
       )}
     </div>

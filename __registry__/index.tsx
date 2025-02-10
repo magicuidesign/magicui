@@ -1739,7 +1739,7 @@ export const Index: Record<string, any> = {
     name: "lens-demo",
     description: "Example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["lens"],
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
     files: [
       {
         path: "registry/example/lens-demo.tsx",
@@ -1767,7 +1767,7 @@ export const Index: Record<string, any> = {
     name: "lens-demo-2",
     description: "Second example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["lens"],
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
     files: [
       {
         path: "registry/example/lens-demo-2.tsx",
@@ -1795,7 +1795,7 @@ export const Index: Record<string, any> = {
     name: "lens-demo-3",
     description: "Third example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["lens"],
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
     files: [
       {
         path: "registry/example/lens-demo-3.tsx",
