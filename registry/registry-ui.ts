@@ -163,7 +163,8 @@ export const ui: Registry["items"] = [
     name: "lens",
     type: "registry:ui",
     title: "Lens",
-    description: "A lens effect component",
+    description:
+      "A interactive component that enables zooming into images, videos and other elements.",
     dependencies: ["motion"],
     files: [
       {

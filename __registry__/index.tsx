@@ -179,7 +179,8 @@ export const Index: Record<string, any> = {
   },
   lens: {
     name: "lens",
-    description: "A lens effect component",
+    description:
+      "A interactive component that enables zooming into images, videos and other elements.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
