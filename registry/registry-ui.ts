@@ -160,6 +160,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "lens",
+    type: "registry:ui",
+    title: "Lens",
+    description:
+      "A interactive component that enables zooming into images, videos and other elements.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/lens.tsx",
+        type: "registry:ui",
+        target: "components/magicui/lens.tsx",
+      },
+    ],
+  },
+  {
     name: "neon-gradient-card",
     type: "registry:ui",
     title: "Neon Gradient Card",

@@ -175,6 +175,58 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "lens-demo",
+    type: "registry:example",
+    title: "Lens Demo",
+    description: "Example showing a lens effect component",
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo.tsx",
+        type: "registry:example",
+        target: "components/lens-demo.tsx",
+      },
+      {
+        path: "registry/magicui/lens.tsx",
+        type: "registry:ui",
+        target: "components/magicui/lens.tsx",
+      },
+    ],
+  },
+  {
+    name: "lens-demo-2",
+    type: "registry:example",
+    title: "Lens Demo 2",
+    description: "Second example showing a lens effect component",
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo-2.tsx",
+        type: "registry:example",
+        target: "components/lens-demo-2.tsx",
+      },
+      {
+        path: "registry/magicui/lens.tsx",
+        type: "registry:ui",
+        target: "components/magicui/lens.tsx",
+      },
+    ],
+  },
+  {
+    name: "lens-demo-3",
+    type: "registry:example",
+    title: "Lens Demo 3",
+    description: "Third example showing a lens effect component",
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo-3.tsx",
+        type: "registry:example",
+        target: "components/lens-demo-3.tsx",
+      },
+    ],
+  },
+  {
     name: "neon-gradient-card-demo",
     type: "registry:example",
     title: "Neon Gradient Card Demo",

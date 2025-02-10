@@ -303,6 +303,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Lens",
+          href: `/docs/components/lens`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
