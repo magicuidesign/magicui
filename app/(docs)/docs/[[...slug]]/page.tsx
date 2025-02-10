@@ -88,12 +88,8 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw);
 
   return (
-    <main
-      className={cn("relative py-6 lg:gap-10 lg:py-8 xl:grid ", {
-        "xl:grid-cols-[1fr_300px]": doc.toc,
-      })}
-    >
-      <div className="mx-auto w-full min-w-0">
+    <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]">
+      <div className="mx-auto w-full min-w-0 max-w-3xl py-6 lg:py-8">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="size-4" />
@@ -141,15 +137,13 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocPager doc={doc} />
       </div>
       {doc.toc && (
-        <div className="hidden text-sm xl:block">
-          <div className="sticky top-16 -mt-10 pt-4">
-            <ScrollArea className="pb-10">
-              <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
-                <TableOfContents toc={toc} />
-                <Contribute doc={doc} />
-              </div>
-            </ScrollArea>
-          </div>
+        <div className="hidden border-l border-border py-6 pl-6 text-sm lg:py-8 xl:block">
+          <ScrollArea className="pb-10">
+            <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
+              <TableOfContents toc={toc} />
+              <Contribute doc={doc} />
+            </div>
+          </ScrollArea>
         </div>
       )}
     </main>

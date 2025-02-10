@@ -13,6 +13,7 @@ import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
 const prettyCodeOptions: Options = {
   theme: "github-dark",
+  keepBackground: false,
   getHighlighter: (options) =>
     createHighlighter({
       ...options,

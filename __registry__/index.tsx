@@ -3091,7 +3091,7 @@ export const Index: Record<string, any> = {
     name: "dock-demo",
     description: "Example showing a MacOS-style dock implementation.",
     type: "registry:example",
-    registryDependencies: ["https://magicui.design/r/dock"],
+    registryDependencies: ["button", "https://magicui.design/r/dock"],
     files: [
       {
         path: "registry/example/dock-demo.tsx",
@@ -3102,6 +3102,11 @@ export const Index: Record<string, any> = {
         path: "registry/magicui/dock.tsx",
         type: "registry:ui",
         target: "components/magicui/dock.tsx",
+      },
+      {
+        path: "registry/magicui/mode-toggle.tsx",
+        type: "registry:ui",
+        target: "components/magicui/mode-toggle.tsx",
       },
     ],
     component: React.lazy(async () => {

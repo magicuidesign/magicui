@@ -2,7 +2,7 @@ import { File, Folder, Tree } from "@/registry/magicui/file-tree";
 
 export default function FileTreeDemo() {
   return (
-    <div className="relative flex h-[300px] w-1/2 flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <div className="relative flex h-[300px] w-1/2 flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
       <Tree
         className="overflow-hidden rounded-md bg-background p-2"
         initialSelectedId="7"

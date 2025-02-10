@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/retro-grid-demo.tsx",
-      "content": "\"use client\";\n\nimport { RetroGrid } from \"@/components/magicui/retro-grid\";\n\nexport default function RetroGridDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <span className=\"pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent\">\n        Retro Grid\n      </span>\n\n      <RetroGrid />\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { RetroGrid } from \"@/components/magicui/retro-grid\";\n\nexport default function RetroGridDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background\">\n      <span className=\"pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent\">\n        Retro Grid\n      </span>\n\n      <RetroGrid />\n    </div>\n  );\n}\n",
       "type": "registry:example",
       "target": "components/retro-grid-demo.tsx"
     },

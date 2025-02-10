@@ -1091,7 +1091,8 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dock Demo",
     description: "Example showing a MacOS-style dock implementation.",
-    registryDependencies: ["https://magicui.design/r/dock"],
+    dependencies: ["next-themes"],
+    registryDependencies: ["button", "https://magicui.design/r/dock"],
     files: [
       {
         path: "registry/example/dock-demo.tsx",
@@ -1102,6 +1103,11 @@ export const examples: Registry["items"] = [
         path: "registry/magicui/dock.tsx",
         type: "registry:ui",
         target: "components/magicui/dock.tsx",
+      },
+      {
+        path: "registry/magicui/mode-toggle.tsx",
+        type: "registry:ui",
+        target: "components/magicui/mode-toggle.tsx",
       },
     ],
   },

@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import React, {
   ComponentPropsWithoutRef,
@@ -39,7 +40,7 @@ export const AnimatedList = React.memo(
     useEffect(() => {
       if (index < childrenArray.length - 1) {
         const timeout = setTimeout(() => {
-          setIndex((prevIndex) => prevIndex + 1);
+          setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length);
         }, delay);
 
         return () => clearTimeout(timeout);
@@ -53,7 +54,7 @@ export const AnimatedList = React.memo(
 
     return (
       <div
-        className={`flex flex-col items-center gap-4 ${className}`}
+        className={cn(`flex flex-col items-center gap-4`, className)}
         {...props}
       >
         <AnimatePresence>

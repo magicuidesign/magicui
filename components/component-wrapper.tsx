@@ -20,19 +20,19 @@ export const ComponentWrapper = ({
   return (
     <div
       className={cn(
-        "max-w-screen relative flex flex-col items-center justify-center rounded-xl bg-background p-0 md:border md:p-16",
+        "max-w-screen relative rounded-xl border bg-background",
         className,
       )}
       key={key}
     >
-      <div
+      {/* <div
         className={cn(
           `absolute inset-0 size-full`,
           `bg-[radial-gradient(#00000022_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)]`,
           "lab-bg pointer-events-none [background-size:16px_16px]",
         )}
-      />
-      <div className="absolute right-2 top-2 z-10 flex items-center justify-between gap-2">
+      /> */}
+      <div className="flex items-center justify-end gap-2 p-4">
         <OpenInV0Button url={`https://magicui.design/r/${name}.json`} />
         <Button
           onClick={() => setKey((prev) => prev + 1)}
@@ -42,7 +42,10 @@ export const ComponentWrapper = ({
           <RotateCcw aria-label="restart-btn" size={16} />
         </Button>
       </div>
-      {children}
+
+      <div className="flex min-h-[350px] w-full items-center justify-center p-10">
+        {children}
+      </div>
     </div>
   );
 };

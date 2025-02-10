@@ -5,5 +5,5 @@ import { ClientTweetCard } from "@/registry/magicui/client-tweet-card";
  * <ClientTweetCard /> (Client Side Only)
  */
 export default function TweetDemo() {
-  return <ClientTweetCard id="1668408059125702661" className="shadow-2xl" />;
+  return <ClientTweetCard id="1668408059125702661" />;
 }

@@ -10,7 +10,7 @@ interface ShineBorderProps {
   duration?: number;
   color?: TColorProp;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 /**
@@ -39,7 +39,7 @@ export function ShineBorder({
         } as React.CSSProperties
       }
       className={cn(
-        "relative min-h-[60px] w-fit min-w-[300px] place-items-center rounded-[--border-radius] bg-white p-3 text-black dark:bg-black dark:text-white",
+        "relative min-h-[60px] w-fit min-w-[300px] place-items-center rounded-[--border-radius] p-3 bg-background border",
         className,
       )}
     >
