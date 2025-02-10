@@ -4,7 +4,7 @@ import { motion, Transition, Variants } from "motion/react";
 import React, { CSSProperties } from "react";
 
 type SpinningTextProps = {
-  children: string;
+  children: string | string[];
   style?: CSSProperties;
   duration?: number;
   className?: string;
@@ -38,13 +38,24 @@ export function SpinningText({
   style,
   className,
   reverse = false,
-  fontSize = 1,
   radius = 5,
   transition,
   variants,
 }: SpinningTextProps) {
+  if (typeof children !== "string" && !Array.isArray(children)) {
+    throw new Error("children must be a string or an array of strings");
+  }
+
+  if (Array.isArray(children)) {
+    // Validate all elements are strings
+    if (!children.every((child) => typeof child === "string")) {
+      throw new Error("all elements in children array must be strings");
+    }
+    children = children.join("");
+  }
+
   const letters = children.split("");
-  const totalLetters = letters.length;
+  letters.push(" ");
 
   const finalTransition = {
     ...BASE_TRANSITION,
@@ -82,10 +93,8 @@ export function SpinningText({
           style={
             {
               "--index": index,
-              "--total": totalLetters,
-              "--font-size": fontSize,
+              "--total": letters.length,
               "--radius": radius,
-              fontSize: `calc(var(--font-size, 2) * 1rem)`,
               transform: `
                   translate(-50%, -50%)
                   rotate(calc(360deg / var(--total) * var(--index)))

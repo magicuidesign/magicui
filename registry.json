@@ -971,7 +971,7 @@
       "name": "spinning-text",
       "type": "registry:ui",
       "title": "Spinning Text",
-      "description": "A text that spins around the center of the container.",
+      "description": "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
       "dependencies": [
         "motion"
       ],
@@ -2848,7 +2848,7 @@
       "name": "spinning-text-demo",
       "type": "registry:example",
       "title": "Spinning Text Demo",
-      "description": "Example showing a text that spins around the center of the container.",
+      "description": "Example showing spinning text animation.",
       "registryDependencies": [
         "https://magicui.design/r/spinning-text"
       ],
@@ -2857,6 +2857,27 @@
           "path": "registry/example/spinning-text-demo.tsx",
           "type": "registry:example",
           "target": "components/spinning-text-demo.tsx"
+        },
+        {
+          "path": "registry/magicui/spinning-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/spinning-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spinning-text-demo-2",
+      "type": "registry:example",
+      "title": "Spinning Text Demo 2",
+      "description": "Example showing spinning text animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/spinning-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/spinning-text-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/spinning-text-demo-2.tsx"
         },
         {
           "path": "registry/magicui/spinning-text.tsx",

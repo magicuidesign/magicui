@@ -868,7 +868,8 @@ export const ui: Registry["items"] = [
     name: "spinning-text",
     type: "registry:ui",
     title: "Spinning Text",
-    description: "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+    description:
+      "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
     dependencies: ["motion"],
     files: [
       {

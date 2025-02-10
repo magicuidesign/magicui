@@ -986,7 +986,8 @@ export const Index: Record<string, any> = {
   },
   "spinning-text": {
     name: "spinning-text",
-    description: "A text that spins around the center of the container.",
+    description:
+      "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -3427,8 +3428,7 @@ export const Index: Record<string, any> = {
   },
   "spinning-text-demo": {
     name: "spinning-text-demo",
-    description:
-      "Example showing a text that spins around the center of the container.",
+    description: "Example showing spinning text animation.",
     type: "registry:example",
     registryDependencies: ["https://magicui.design/r/spinning-text"],
     files: [
@@ -3445,6 +3445,34 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/spinning-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "spinning-text-demo-2": {
+    name: "spinning-text-demo-2",
+    description: "Example showing spinning text animation.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo-2.tsx",
+        type: "registry:example",
+        target: "components/spinning-text-demo-2.tsx",
+      },
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/spinning-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/spinning-text-demo-2.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
