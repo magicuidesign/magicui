@@ -133,7 +133,7 @@ const components = {
     />
   ),
   table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-y-auto rounded-lg border border-border">
+    <div className="my-6 w-full overflow-y-auto rounded-lg border dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
       <table
         className={cn("my-0 w-full overflow-hidden", className)}
         {...props}
@@ -144,27 +144,15 @@ const components = {
     className,
     ...props
   }: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <thead
-      className={cn(
-        "border-b last:border-b-0 odd:bg-background even:bg-background/50",
-        className,
-      )}
-      {...props}
-    />
+    <thead className={cn("border-b last:border-b-0", className)} {...props} />
   ),
   tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr
-      className={cn(
-        "border-b last:border-b-0 odd:bg-background even:bg-background/50",
-        className,
-      )}
-      {...props}
-    />
+    <tr className={cn("border-b last:border-b-0", className)} {...props} />
   ),
   th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <th
       className={cn(
-        "text-balance border-r border-border bg-neutral-50 px-6 py-3 text-left font-mono text-sm font-semibold tracking-tight text-secondary-foreground last:border-r-0 dark:bg-neutral-950",
+        "text-balance border-r px-6 py-3 text-left font-mono text-sm font-semibold tracking-tight last:border-r-0",
         className,
       )}
       {...props}
@@ -173,7 +161,7 @@ const components = {
   td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
     <td
       className={cn(
-        "border-r border-border px-6 py-4 text-sm text-secondary-foreground last:border-r-0 [&[align=center]]:text-center [&[align=right]]:text-right",
+        "border-r px-6 py-3 text-sm last:border-r-0 [&[align=center]]:text-center [&[align=right]]:text-right",
         className,
       )}
       {...props}
@@ -293,7 +281,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm dark:bg-zinc-800 dark:text-zinc-50",
         className,
       )}
       {...props}
