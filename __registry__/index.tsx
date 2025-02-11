@@ -870,7 +870,7 @@ export const Index: Record<string, any> = {
   dock: {
     name: "dock",
     description:
-      "An implementation of the MacOS dock using react + tailwindcss + framer motion",
+      "An implementation of the MacOS dock using react + tailwindcss + motion",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [

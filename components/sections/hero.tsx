@@ -55,9 +55,9 @@ export default async function Hero() {
               </div>
 
               <p className="max-w-xl text-balance text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg ">
-                50+ free and open-source animated components built with{" "}
-                <b>React</b>, <b>Typescript</b>, <b>Tailwind CSS</b>, and{" "}
-                <b>Framer Motion</b>
+                150+ free and open-source animated components and effects built
+                with <b>React</b>, <b>Typescript</b>, <b>Tailwind CSS</b>, and{" "}
+                <b>Motion</b>
                 .
                 <br />
                 Perfect companion for <b>shadcn/ui</b>.
@@ -103,7 +103,7 @@ export default async function Hero() {
                 "react",
                 "typescript",
                 "tailwindcss",
-                "framermotion",
+                "motion",
                 "shadcn",
               ]}
             />

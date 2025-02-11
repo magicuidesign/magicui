@@ -779,7 +779,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Dock",
     description:
-      "An implementation of the MacOS dock using react + tailwindcss + framer motion",
+      "An implementation of the MacOS dock using react + tailwindcss + motion",
     dependencies: ["motion"],
     files: [
       {

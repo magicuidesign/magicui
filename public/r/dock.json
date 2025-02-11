@@ -3,7 +3,7 @@
   "name": "dock",
   "type": "registry:ui",
   "title": "Dock",
-  "description": "An implementation of the MacOS dock using react + tailwindcss + framer motion",
+  "description": "An implementation of the MacOS dock using react + tailwindcss + motion",
   "dependencies": [
     "motion"
   ],

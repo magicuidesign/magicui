@@ -13,7 +13,7 @@ export default function PromoSection() {
       </h2>
       <p className="text-balance text-center">
         30+ beautiful sections and templates built with React, Typescript,
-        Tailwind CSS, and Framer Motion.
+        Tailwind CSS, and Motion.
       </p>
       <Button variant="default" asChild className="w-full">
         <Link href="https://pro.magicui.design">
