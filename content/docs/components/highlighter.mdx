@@ -1,0 +1,50 @@
+---
+title: Highlighter
+date: 2025-02-11
+description: A text highlighter that mimics the effect of a human-drawn marker stroke.
+author: pratiyank
+published: true
+---
+
+<ComponentPreview name="highlighter-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/highlighter"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="highlighter" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop     | Type                    | Default       | Description                |
+| -------- | ----------------------- | ------------- | -------------------------- |
+| `color`  | `String`                | `"pink"`      | The color of the highlight |
+| `action` | "highlight" or "circle" | `"highlight"` | Action of the highlighter  |
+
+## Credits
+
+- Credit to [@pratiyank](https://github.com/Pratiyankkumar) for this component!

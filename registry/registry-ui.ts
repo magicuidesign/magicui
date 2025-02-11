@@ -1244,4 +1244,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "highlighter",
+    type: "registry:ui",
+    title: "Highlighter",
+    description:
+      "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+    files: [
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "components/magicui/highlighter.tsx",
+      },
+    ],
+    dependencies: ["rough-notation"],
+  },
 ];

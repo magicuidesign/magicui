@@ -1780,4 +1780,24 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "highlighter-demo",
+    type: "registry:example",
+    title: "Highlighter Demo",
+    description: "Example showing the demo of a Highlighter",
+    registryDependencies: ["https://magicui.design/r/highlighter"],
+    files: [
+      {
+        path: "registry/example/highlighter-demo.tsx",
+        type: "registry:example",
+        target: "components/highlighter-demo.tsx",
+      },
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "components/magicui/highlighter.tsx",
+      },
+    ],
+    dependencies: ["rough-notation"],
+  },
 ];

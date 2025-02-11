@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlighter",
+  "type": "registry:ui",
+  "title": "Highlighter",
+  "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+  "dependencies": [
+    "rough-notation"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/highlighter.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef } from \"react\";\nimport { annotate } from \"rough-notation\";\nimport type { RoughAnnotation } from \"rough-notation/lib/model\";\nimport type React from \"react\";\n\ninterface HighlighterProps {\n  children: React.ReactNode;\n  action?: \"highlight\" | \"circle\";\n  color?: string;\n}\n\nexport default function Highlighter({\n  children,\n  action = \"highlight\",\n  color = \"#ffd1dc\", // Default pink color\n}: HighlighterProps) {\n  const elementRef = useRef<HTMLSpanElement>(null);\n  const annotationRef = useRef<RoughAnnotation | null>(null);\n\n  useEffect(() => {\n    if (elementRef.current) {\n      const annotation = annotate(elementRef.current, {\n        type: action === \"circle\" ? \"circle\" : \"highlight\",\n        color: color,\n        multiline: true,\n        padding: action === \"circle\" ? 8 : 2,\n        iterations: 2, // More iterations for a natural effect\n        animationDuration: 500,\n      });\n\n      annotationRef.current = annotation;\n      annotation.show();\n    }\n\n    return () => {\n      annotationRef.current?.remove();\n    };\n  }, [action, color, elementRef.current]); // Added elementRef.current dependency\n\n  return (\n    <span ref={elementRef} className=\"relative inline-block bg-transparent\">\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/highlighter.tsx"
+    }
+  ]
+}
