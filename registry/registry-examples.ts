@@ -1302,6 +1302,44 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "spinning-text-demo",
+    type: "registry:example",
+    title: "Spinning Text Demo",
+    description: "Example showing spinning text animation.",
+    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo.tsx",
+        type: "registry:example",
+        target: "components/spinning-text-demo.tsx",
+      },
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/spinning-text.tsx",
+      },
+    ],
+  },
+  {
+    name: "spinning-text-demo-2",
+    type: "registry:example",
+    title: "Spinning Text Demo 2",
+    description: "Example showing spinning text animation.",
+    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo-2.tsx",
+        type: "registry:example",
+        target: "components/spinning-text-demo-2.tsx",
+      },
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/spinning-text.tsx",
+      },
+    ],
+  },
+  {
     name: "icon-cloud-demo",
     type: "registry:example",
     title: "Icon Cloud Demo",

@@ -865,6 +865,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "spinning-text",
+    type: "registry:ui",
+    title: "Spinning Text",
+    description:
+      "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/spinning-text.tsx",
+      },
+    ],
+  },
+  {
     name: "flip-text",
     type: "registry:ui",
     title: "Flip Text",
