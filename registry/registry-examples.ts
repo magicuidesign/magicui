@@ -932,6 +932,73 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "border-beam-demo-2",
+    type: "registry:example",
+    title: "Border Beam Demo",
+    description: "Example showing an animated border beam effect.",
+    registryDependencies: [
+      "button",
+      "card",
+      "https://magicui.design/r/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-2.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-2.tsx",
+      },
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "components/magicui/border-beam.tsx",
+      },
+    ],
+  },
+  {
+    name: "border-beam-demo-3",
+    type: "registry:example",
+    title: "Border Beam Demo 3",
+    description: "Example showing an animated border beam effect.",
+    registryDependencies: [
+      "button",
+      "card",
+      "input",
+      "label",
+      "https://magicui.design/r/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-3.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-3.tsx",
+      },
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "components/magicui/border-beam.tsx",
+      },
+    ],
+  },
+  {
+    name: "border-beam-demo-4",
+    type: "registry:example",
+    title: "Border Beam Demo 4",
+    description: "Example showing an animated border beam effect.",
+    registryDependencies: ["button", "https://magicui.design/r/border-beam"],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-4.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-4.tsx",
+      },
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "components/magicui/border-beam.tsx",
+      },
+    ],
+  },
+  {
     name: "animated-beam-demo",
     type: "registry:example",
     title: "Animated Beam Demo",

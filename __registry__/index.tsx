@@ -2877,6 +2877,100 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "border-beam-demo-2": {
+    name: "border-beam-demo-2",
+    description: "Example showing an animated border beam effect.",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "https://magicui.design/r/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-2.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-2.tsx",
+      },
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "components/magicui/border-beam.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/border-beam-demo-2.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "border-beam-demo-3": {
+    name: "border-beam-demo-3",
+    description: "Example showing an animated border beam effect.",
+    type: "registry:example",
+    registryDependencies: [
+      "button",
+      "card",
+      "input",
+      "label",
+      "https://magicui.design/r/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-3.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-3.tsx",
+      },
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "components/magicui/border-beam.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/border-beam-demo-3.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "border-beam-demo-4": {
+    name: "border-beam-demo-4",
+    description: "Example showing an animated border beam effect.",
+    type: "registry:example",
+    registryDependencies: ["button", "https://magicui.design/r/border-beam"],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-4.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-4.tsx",
+      },
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "components/magicui/border-beam.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/border-beam-demo-4.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "animated-beam-demo": {
     name: "animated-beam-demo",
     description: "Example showing an animated beam of light effect.",

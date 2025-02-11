@@ -1,10 +1,21 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "border-beam",
-  "type": "registry:ui",
-  "title": "Border Beam",
-  "description": "An animated beam of light which travels along the border of its container.",
+  "name": "border-beam-demo-2",
+  "type": "registry:example",
+  "title": "Border Beam Demo",
+  "description": "Example showing an animated border beam effect.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "https://magicui.design/r/border-beam"
+  ],
   "files": [
+    {
+      "path": "registry/example/border-beam-demo-2.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { BorderBeam } from \"@/components/magicui/border-beam\";\nimport { Play, SkipBack, SkipForward } from \"lucide-react\";\n\nexport default function MusicPlayer() {\n  return (\n    <Card className=\"relative w-[350px]\">\n      <CardHeader>\n        <CardTitle>Now Playing</CardTitle>\n        <CardDescription>Stairway to Heaven - Led Zeppelin</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"flex flex-col items-center gap-4\">\n          <div className=\"h-48 w-48 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500\" />\n          <div className=\"h-1 w-full rounded-full bg-secondary\">\n            <div className=\"h-full w-1/3 rounded-full bg-primary\" />\n          </div>\n          <div className=\"flex w-full justify-between text-sm text-muted-foreground\">\n            <span>2:45</span>\n            <span>8:02</span>\n          </div>\n        </div>\n      </CardContent>\n      <CardFooter className=\"flex justify-center gap-4\">\n        <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n          <SkipBack className=\"size-4\" />\n        </Button>\n        <Button size=\"icon\" className=\"rounded-full\">\n          <Play className=\"size-4\" />\n        </Button>\n        <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n          <SkipForward className=\"size-4\" />\n        </Button>\n      </CardFooter>\n      <BorderBeam\n        duration={6}\n        size={400}\n        className=\"from-transparent via-red-500 to-transparent\"\n      />\n      <BorderBeam\n        duration={6}\n        delay={3}\n        size={400}\n        className=\"from-transparent via-blue-500 to-transparent\"\n      />\n    </Card>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/border-beam-demo-2.tsx"
+    },
     {
       "path": "registry/magicui/border-beam.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion, MotionStyle, Transition } from \"motion/react\";\n\ninterface BorderBeamProps {\n  /**\n   * The size of the border beam.\n   */\n  size?: number;\n  /**\n   * The duration of the border beam.\n   */\n  duration?: number;\n  /**\n   * The delay of the border beam.\n   */\n  delay?: number;\n  /**\n   * The color of the border beam from.\n   */\n  colorFrom?: string;\n  /**\n   * The color of the border beam to.\n   */\n  colorTo?: string;\n  /**\n   * The motion transition of the border beam.\n   */\n  transition?: Transition;\n  /**\n   * The class name of the border beam.\n   */\n  className?: string;\n  /**\n   * The style of the border beam.\n   */\n  style?: React.CSSProperties;\n  /**\n   * Whether to reverse the animation direction.\n   */\n  reverse?: boolean;\n  /**\n   * The initial offset position (0-100).\n   */\n  initialOffset?: number;\n}\n\nexport const BorderBeam = ({\n  className,\n  size = 50,\n  delay = 0,\n  duration = 6,\n  colorFrom = \"#ffaa40\",\n  colorTo = \"#9c40ff\",\n  transition,\n  style,\n  reverse = false,\n  initialOffset = 0,\n}: BorderBeamProps) => {\n  return (\n    <div className=\"pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]\">\n      <motion.div\n        className={cn(\n          \"absolute aspect-square\",\n          \"bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent\",\n          className,\n        )}\n        style={\n          {\n            width: size,\n            offsetPath: `rect(0 auto auto 0 round ${size}px)`,\n            \"--color-from\": colorFrom,\n            \"--color-to\": colorTo,\n            ...style,\n          } as MotionStyle\n        }\n        initial={{ offsetDistance: `${initialOffset}%` }}\n        animate={{\n          offsetDistance: reverse\n            ? [`${100 - initialOffset}%`, `${-initialOffset}%`]\n            : [`${initialOffset}%`, `${100 + initialOffset}%`],\n        }}\n        transition={{\n          repeat: Infinity,\n          ease: \"linear\",\n          duration,\n          delay: -delay,\n          ...transition,\n        }}\n      />\n    </div>\n  );\n};\n",

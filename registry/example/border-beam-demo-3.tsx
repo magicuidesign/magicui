@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BorderBeam } from "@/registry/magicui/border-beam";
 
-export default function Component() {
+export default function LoginForm() {
   return (
     <Card className="relative w-[350px]">
       <CardHeader>
@@ -42,7 +42,12 @@ export default function Component() {
         <Button variant="outline">Register</Button>
         <Button>Login</Button>
       </CardFooter>
-      <BorderBeam duration={8} size={100} />
+      <BorderBeam
+        duration={4}
+        size={300}
+        reverse
+        className="from-transparent via-green-500 to-transparent"
+      />
     </Card>
   );
 }

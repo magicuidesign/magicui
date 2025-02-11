@@ -660,25 +660,6 @@ export const ui: Registry["items"] = [
         target: "components/magicui/border-beam.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              "border-beam":
-                "border-beam calc(var(--duration)*1s) infinite linear",
-            },
-            keyframes: {
-              "border-beam": {
-                "100%": {
-                  "offset-distance": "100%",
-                },
-              },
-            },
-          },
-        },
-      },
-    },
   },
   {
     name: "animated-beam",
