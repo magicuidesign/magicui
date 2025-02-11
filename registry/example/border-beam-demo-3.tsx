@@ -48,26 +48,6 @@ export default function LoginForm() {
         reverse
         className="from-transparent via-green-500 to-transparent"
       />
-      {/* <BorderBeam
-        duration={8}
-        size={250}
-        className="from-transparent via-cyan-500 to-transparent"
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
-        }}
-      />
-      <BorderBeam
-        duration={8}
-        size={250}
-        delay={4}
-        className="from-transparent via-green-500 to-transparent"
-        transition={{
-          type: "inertia",
-          mass: 1,
-        }}
-      /> */}
     </Card>
   );
 }
