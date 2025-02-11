@@ -33,37 +33,25 @@ npx shadcn@latest add "https://magicui.design/r/border-beam"
 
 <ComponentSource name="border-beam" />
 
-<Step>Update the import paths to match your project setup.</Step>
-
-<Step>Update `tailwind.config.js`</Step>
-
-Add the following animations to your `tailwind.config.js` file:
-
-```js title="tailwind.config.js" {5-14}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
-      },
-      keyframes: {
-        "border-beam": {
-          "100%": {
-            "offset-distance": "100%",
-          },
-        },
-      },
-    },
-  },
-};
-```
-
 </Steps>
 
 </TabsContent>
 
 </Tabs>
+
+## Examples
+
+### 2 Border Beams
+
+<ComponentPreview name="border-beam-demo-2" />
+
+### Reverse
+
+<ComponentPreview name="border-beam-demo-3" />
+
+### Spring Animation
+
+<ComponentPreview name="border-beam-demo-4" />
 
 ## Usage
 
@@ -85,18 +73,15 @@ export default async function App() {
 
 ### Border Beam
 
-| Prop          | Type     | Default   | Description                            |
-| ------------- | -------- | --------- | -------------------------------------- |
-| `className`   | `string` | `-`       | Custom class to apply to the component |
-| `size`        | `number` | `300`     | Size of the beam                       |
-| `duration`    | `number` | `15`      | Duration of the animation              |
-| `anchor`      | `number` | `90`      | Anchor point of the beam               |
-| `borderWidth` | `number` | `1.5`     | Width of the beam                      |
-| `colorFrom`   | `string` | `#ffaa40` | Start color of the beam                |
-| `colorTo`     | `string` | `#9c40ff` | End color of the beam                  |
-| `delay`       | `number` | `0`       | Delay before the animation starts      |
-
-## Credits
-
-- Credit to [@linear](https://linear.app/) where I first saw this effect.
-- Credit to [@jh3yy](https://twitter.com/jh3yy) for sharing his implementation of this effect.
+| Prop            | Type                  | Default   | Description                            |
+| --------------- | --------------------- | --------- | -------------------------------------- |
+| `className`     | `string`              | `-`       | Custom class to apply to the component |
+| `size`          | `number`              | `50`      | Size of the beam                       |
+| `duration`      | `number`              | `6`       | Duration of the animation in seconds   |
+| `delay`         | `number`              | `0`       | Delay before the animation starts      |
+| `colorFrom`     | `string`              | `#ffaa40` | Start color of the beam gradient       |
+| `colorTo`       | `string`              | `#9c40ff` | End color of the beam gradient         |
+| `transition`    | `Transition`          | `-`       | Custom motion transition configuration |
+| `style`         | `React.CSSProperties` | `-`       | Custom CSS styles to apply             |
+| `reverse`       | `boolean`             | `false`   | Whether to reverse animation direction |
+| `initialOffset` | `number`              | `0`       | Initial offset position (0-100)        |

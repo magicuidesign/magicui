@@ -79,7 +79,6 @@ module.exports = {
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
         rippling: "rippling var(--duration, 0.6s) ease-out",
         line: "line 2s linear infinite",
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         orbit: "orbit calc(var(--duration)*1s) linear infinite",
         "background-position-spin":
           "background-position-spin 3000ms infinite alternate",
@@ -168,11 +167,6 @@ module.exports = {
         line: {
           "0%": { "mask-position-x": "0%" },
           "100%": { "mask-position-x": "100%" },
-        },
-        "border-beam": {
-          "100%": {
-            "offset-distance": "100%",
-          },
         },
         "shiny-text": {
           "0%, 90%, 100%": {
