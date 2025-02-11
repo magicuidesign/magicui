@@ -175,6 +175,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "pointer",
+    type: "registry:ui",
+    title: "Pointer",
+    description: "A component that displays a pointer when hovering over an element",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/pointer.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pointer.tsx",
+      },
+    ]
+  },
+  {
     name: "neon-gradient-card",
     type: "registry:ui",
     title: "Neon Gradient Card",

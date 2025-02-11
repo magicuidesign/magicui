@@ -227,6 +227,23 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "pointer-demo-1",
+    type: "registry:example",
+    title: "Pointer Demo 1",
+    description: "Example showing a pointer effect component",
+    registryDependencies: [
+      "https://magicui.design/r/dot-pattern",
+      "https://magicui.design/r/pointer",
+    ],
+    files: [
+      {
+        path: "registry/example/pointer-demo-1.tsx",
+        type: "registry:example",
+        target: "components/pointer-demo-1.tsx",
+      },
+    ],
+  },
+  {
     name: "neon-gradient-card-demo",
     type: "registry:example",
     title: "Neon Gradient Card Demo",
