@@ -49,11 +49,14 @@ module.exports = {
       },
       keyframes: {
         meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
-          "70%": { opacity: 1 },
+          "0%": {
+            transform: "rotate(var(--angle)) translateX(0)",
+            opacity: "1",
+          },
+          "70%": { opacity: "1" },
           "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
-            opacity: 0,
+            transform: "rotate(var(--angle)) translateX(-500px)",
+            opacity: "0",
           },
         },
       },
@@ -72,6 +75,12 @@ module.exports = {
 
 ### Meteors
 
-| Prop     | Type     | Default | Description       |
-| -------- | -------- | ------- | ----------------- |
-| `number` | `number` | `20`    | Number of meteors |
+| Prop          | Type     | Default | Description                                             |
+| ------------- | -------- | ------- | ------------------------------------------------------- |
+| `number`      | `number` | `20`    | Number of meteors                                       |
+| `minDelay`    | `number` | `0.2`   | Minimum delay in seconds before meteor animation starts |
+| `maxDelay`    | `number` | `1.2`   | Maximum delay in seconds before meteor animation starts |
+| `minDuration` | `number` | `2`     | Minimum duration in seconds for meteor animation        |
+| `maxDuration` | `number` | `10`    | Maximum duration in seconds for meteor animation        |
+| `angle`       | `number` | `215`   | Angle in degrees for meteor trajectory                  |
+| `className`   | `string` | -       | Optional additional CSS classes                         |
