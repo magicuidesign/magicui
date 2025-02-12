@@ -186,7 +186,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
         loop
         muted
         playsInline
-        className="rounded-xl border shadow-sm"
+        className="rounded-xl border shadow-xs"
       >
         <source src={tweet.video.variants[0].src} type="video/mp4" />
         Your browser does not support the video tag.
@@ -201,7 +201,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
             src={photo.url}
             title={"Photo by " + tweet.user.name}
             alt={tweet.text}
-            className="h-64 w-5/6 shrink-0 snap-center snap-always rounded-xl border object-cover shadow-sm"
+            className="h-64 w-5/6 shrink-0 snap-center snap-always rounded-xl border object-cover shadow-xs"
           />
         ))}
         <div className="shrink-0 snap-center sm:w-2" />
@@ -214,7 +214,7 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => (
         <img
           // @ts-ignore
           src={tweet.card.binding_values.thumbnail_image_large.image_value.url}
-          className="h-64 rounded-xl border object-cover shadow-sm"
+          className="h-64 rounded-xl border object-cover shadow-xs"
           alt={tweet.text}
         />
       )}

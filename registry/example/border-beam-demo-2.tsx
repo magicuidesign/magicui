@@ -19,7 +19,7 @@ export default function MusicPlayer() {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col items-center gap-4">
-          <div className="h-48 w-48 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500" />
+          <div className="h-48 w-48 rounded-lg bg-linear-to-br from-purple-500 to-pink-500" />
           <div className="h-1 w-full rounded-full bg-secondary">
             <div className="h-full w-1/3 rounded-full bg-primary" />
           </div>

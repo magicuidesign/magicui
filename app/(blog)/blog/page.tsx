@@ -48,7 +48,7 @@ export default function BlogPage() {
                 href={`/blog/${featuredPosts[0]._meta.path}`}
                 className="group relative"
               >
-                <div className="aspect-[16/10] overflow-hidden rounded-xl border border-border">
+                <div className="aspect-16/10 overflow-hidden rounded-xl border border-border">
                   <img
                     src={featuredPosts[0].image}
                     alt={featuredPosts[0].title}
@@ -103,7 +103,7 @@ export default function BlogPage() {
             placeholder="Search blogs..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-lg border border-border px-4 py-2 focus:border-primary focus:outline-none"
+            className="w-full rounded-lg border border-border px-4 py-2 focus:border-primary focus:outline-hidden"
           />
         </div>
 
@@ -114,7 +114,7 @@ export default function BlogPage() {
             onClick={() => setSelectedTag(null)}
             className={`rounded-full border border-border px-3 py-1 text-sm transition-colors ${
               selectedTag === null
-                ? "bg-primary text-primary-foreground shadow-sm"
+                ? "bg-primary text-primary-foreground shadow-xs"
                 : "bg-muted text-muted-foreground hover:bg-muted/80"
             }`}
           >
@@ -127,7 +127,7 @@ export default function BlogPage() {
               onClick={() => tag && setSelectedTag(tag)}
               className={`rounded-full border border-border px-3 py-1 text-sm transition-colors ${
                 selectedTag === tag
-                  ? "bg-primary text-primary-foreground shadow-sm"
+                  ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
