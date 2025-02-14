@@ -201,6 +201,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  pointer: {
+    name: "pointer",
+    description:
+      "A component that displays a pointer when hovering over an element",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/pointer.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pointer.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/pointer.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "neon-gradient-card": {
     name: "neon-gradient-card",
     description: "A beautiful neon card effect",
@@ -1775,6 +1799,32 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/lens-demo-3.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pointer-demo-1": {
+    name: "pointer-demo-1",
+    description: "Example showing a pointer effect component",
+    type: "registry:example",
+    registryDependencies: [
+      "https://magicui.design/r/dot-pattern",
+      "https://magicui.design/r/pointer",
+    ],
+    files: [
+      {
+        path: "registry/example/pointer-demo-1.tsx",
+        type: "registry:example",
+        target: "components/pointer-demo-1.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pointer-demo-1.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

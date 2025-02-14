@@ -249,6 +249,22 @@
       ]
     },
     {
+      "name": "pointer",
+      "type": "registry:ui",
+      "title": "Pointer",
+      "description": "A component that displays a pointer when hovering over an element",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/pointer.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/pointer.tsx"
+        }
+      ]
+    },
+    {
       "name": "neon-gradient-card",
       "type": "registry:ui",
       "title": "Neon Gradient Card",
@@ -1574,6 +1590,23 @@
           "path": "registry/example/lens-demo-3.tsx",
           "type": "registry:example",
           "target": "components/lens-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pointer-demo-1",
+      "type": "registry:example",
+      "title": "Pointer Demo 1",
+      "description": "Example showing a pointer effect component",
+      "registryDependencies": [
+        "https://magicui.design/r/dot-pattern",
+        "https://magicui.design/r/pointer"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pointer-demo-1.tsx",
+          "type": "registry:example",
+          "target": "components/pointer-demo-1.tsx"
         }
       ]
     },

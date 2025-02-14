@@ -55,14 +55,14 @@ npx shadcn@latest add "https://magicui.design/r/border-beam"
 
 ## Usage
 
-Just place the border beam component inside a div with relative positioning, width, and height. You will notice the beam automatically moves around the perimeter of it's container.
+Just place the border beam component inside a div with `relative` positioning, and `overflow-hidden`. You will notice the beam automatically moves around the perimeter of it's container.
 
 ```tsx
 import { BorderBeam } from "@/components/magicui/border-beam.tsx";
 
 export default async function App() {
   return (
-    <div className="relative h-[200px] w-[200px] rounded-xl">
+    <div className="relative overflow-hidden">
       <BorderBeam />
     </div>
   );
