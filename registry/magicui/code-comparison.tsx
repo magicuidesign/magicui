@@ -11,6 +11,9 @@ interface CodeComparisonProps {
   filename: string;
   lightTheme: string;
   darkTheme: string;
+  beforeHighlightRange?: { start: number; end: number };
+  afterHighlightRange?: { start: number; end: number };
+  highlightColor?: string;
 }
 
 export function CodeComparison({
@@ -20,6 +23,9 @@ export function CodeComparison({
   filename,
   lightTheme,
   darkTheme,
+  beforeHighlightRange,
+  afterHighlightRange,
+  highlightColor = "#ff3333",
 }: CodeComparisonProps) {
   const { theme, systemTheme } = useTheme();
   const [highlightedBefore, setHighlightedBefore] = useState("");
@@ -32,13 +38,53 @@ export function CodeComparison({
     async function highlightCode() {
       try {
         const { codeToHtml } = await import("shiki");
+        const { transformerNotationHighlight } = await import(
+          "@shikijs/transformers"
+        );
+
         const before = await codeToHtml(beforeCode, {
           lang: language,
           theme: selectedTheme,
+          transformers: [
+            transformerNotationHighlight(),
+            {
+              name: "line-highlight",
+              line(node, line) {
+                if (
+                  beforeHighlightRange &&
+                  line >= beforeHighlightRange.start &&
+                  line <= beforeHighlightRange.end
+                ) {
+                  node.properties.class =
+                    (node.properties.class || "") + " highlighted";
+                  node.properties.style = `background-color: ${highlightColor};`;
+                }
+                return node;
+              },
+            },
+          ],
         });
         const after = await codeToHtml(afterCode, {
           lang: language,
           theme: selectedTheme,
+          transformers: [
+            transformerNotationHighlight(),
+            {
+              name: "line-highlight",
+              line(node, line) {
+                if (
+                  afterHighlightRange &&
+                  line >= afterHighlightRange.start &&
+                  line <= afterHighlightRange.end
+                ) {
+                  node.properties.class =
+                    (node.properties.class || "") + " highlighted";
+                  node.properties.style = `background-color: ${highlightColor};`;
+                }
+                return node;
+              },
+            },
+          ],
         });
         setHighlightedBefore(before);
         setHighlightedAfter(after);
@@ -57,13 +103,16 @@ export function CodeComparison({
     language,
     lightTheme,
     darkTheme,
+    beforeHighlightRange,
+    afterHighlightRange,
+    highlightColor,
   ]);
 
   const renderCode = (code: string, highlighted: string) => {
     if (highlighted) {
       return (
         <div
-          className="h-full overflow-auto bg-background font-mono text-xs [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all"
+          className="h-full w-full overflow-auto bg-background font-mono text-xs [&>.shiki]:bg-red-500 [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4"
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );

@@ -88,6 +88,7 @@
     "@content-collections/mdx": "^0.1.5",
     "@content-collections/next": "^0.2.2",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@shikijs/transformers": "^2.3.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.22",
