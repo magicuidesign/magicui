@@ -14,11 +14,6 @@ export const examples: Registry["items"] = [
         type: "registry:example",
         target: "components/magic-card-demo.tsx",
       },
-      {
-        path: "registry/magicui/magic-card.tsx",
-        type: "registry:ui",
-        target: "components/magicui/magic-card.tsx",
-      },
     ],
   },
   {
