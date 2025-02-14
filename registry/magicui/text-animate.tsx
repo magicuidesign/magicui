@@ -365,6 +365,7 @@ export function TextAnimate({
         animate={startOnView ? undefined : "show"}
         exit="exit"
         className={cn("whitespace-pre-wrap", className)}
+        viewport={{ once }}
         {...props}
       >
         {segments.map((segment, i) => (
