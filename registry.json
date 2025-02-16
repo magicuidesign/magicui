@@ -249,22 +249,6 @@
       ]
     },
     {
-      "name": "pointer",
-      "type": "registry:ui",
-      "title": "Pointer",
-      "description": "A component that displays a pointer when hovering over an element",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/pointer.tsx",
-          "type": "registry:ui",
-          "target": "components/magicui/pointer.tsx"
-        }
-      ]
-    },
-    {
       "name": "neon-gradient-card",
       "type": "registry:ui",
       "title": "Neon Gradient Card",
@@ -1396,6 +1380,21 @@
       ]
     },
     {
+      "name": "slide-in-text",
+      "type": "registry:ui",
+      "description": "Slides in each letter of word",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/slide-in-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/slide-in-text.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -1590,23 +1589,6 @@
           "path": "registry/example/lens-demo-3.tsx",
           "type": "registry:example",
           "target": "components/lens-demo-3.tsx"
-        }
-      ]
-    },
-    {
-      "name": "pointer-demo-1",
-      "type": "registry:example",
-      "title": "Pointer Demo 1",
-      "description": "Example showing a pointer effect component",
-      "registryDependencies": [
-        "https://magicui.design/r/dot-pattern",
-        "https://magicui.design/r/pointer"
-      ],
-      "files": [
-        {
-          "path": "registry/example/pointer-demo-1.tsx",
-          "type": "registry:example",
-          "target": "components/pointer-demo-1.tsx"
         }
       ]
     },
@@ -3233,6 +3215,22 @@
           "path": "registry/example/terminal-demo.tsx",
           "type": "registry:example",
           "target": "components/terminal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slide-in-text-demo",
+      "type": "registry:example",
+      "title": "Slide in text demo",
+      "description": "Example showing a slides in each letter of word",
+      "registryDependencies": [
+        "https://magicui.design/r/slide-in-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/slide-in-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/slide-in-text-demo.tsx"
         }
       ]
     },

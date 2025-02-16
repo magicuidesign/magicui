@@ -419,6 +419,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Slide in Text",
+          href: `/docs/components/slide-in-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

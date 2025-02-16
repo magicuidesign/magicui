@@ -1,0 +1,49 @@
+---
+title: Slide In Text
+date: 2025-02-16
+description: Slides in each letter of word
+author: abin-karukappallil
+published: true
+---
+
+<ComponentPreview name="slide-in-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/slide-in-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="slide-in-text" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type     | Default | Description                                          |
+| ----------- | -------- | ------- | ---------------------------------------------------- |
+| `text`      | `String` | `-`     | The text need add slide animation                    |
+| `className` | `String` | `-`     | The class name to be applied to text                 |
+| `delay`     | `number` | `0`     | To add initial delay before the animation            |
+| `duration`  | `number` | `0.5`   | Controls how long each child animation lasts         |
+| `children`  | `number` | `0.1`   | Adds delay between the start of each child animation |

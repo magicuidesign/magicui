@@ -1597,4 +1597,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "slide-in-text-demo",
+    type: "registry:example",
+    title: "Slide in text demo",
+    description: "Example showing a slides in each letter of word",
+    registryDependencies: ["https://magicui.design/r/slide-in-text"],
+    files: [
+      {
+        path: "registry/example/slide-in-text-demo.tsx",
+        type: "registry:example",
+        target: "components/slide-in-text-demo.tsx",
+      },
+    ],
+  },
 ];

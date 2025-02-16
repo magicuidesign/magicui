@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-in-text-demo",
+  "type": "registry:example",
+  "title": "Slide in text demo",
+  "description": "Example showing a slides in each letter of word",
+  "registryDependencies": [
+    "https://magicui.design/r/slide-in-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/slide-in-text-demo.tsx",
+      "content": "import SlideInText from \"@/components/magicui/slide-in-text\";\n\nexport default function SlideInTextDemo() {\n  return (\n    <div className=\"relative justify-center\">\n      <SlideInText\n        text=\"Magic UI: UI library for Design Engineers \"\n        className=\"text-blue-600 font-bold text-4xl mb-8\"\n        delay={0.5}\n        duration={1}\n        children={0.1}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/slide-in-text-demo.tsx"
+    }
+  ]
+}

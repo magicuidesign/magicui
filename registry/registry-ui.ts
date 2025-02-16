@@ -1254,4 +1254,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "slide-in-text",
+    description: "Slides in each letter of word",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/slide-in-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/slide-in-text.tsx",
+      },
+    ],
+  },
 ];

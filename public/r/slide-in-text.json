@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-in-text",
+  "type": "registry:ui",
+  "description": "Slides in each letter of word",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/slide-in-text.tsx",
+      "content": "\"use client\";\n\nimport type React from \"react\";\nimport { motion } from \"motion/react\";\n\ninterface SlideInTextProps {\n  text: string;\n  className?: string;\n  delay?: number;\n  duration?: number;\n  children?: number;\n}\n\nexport const SlideInText: React.FC<SlideInTextProps> = ({\n  text,\n  className = \"\",\n  delay = 0,\n  duration = 0.5,\n  children = 0.1,\n}) => {\n  const letters = Array.from(text);\n\n  const container = {\n    hidden: { opacity: 0 },\n    visible: (i = 1) => ({\n      opacity: 1,\n      transition: { staggerChildren: children, delayChildren: i * delay },\n    }),\n  };\n\n  const child = {\n    visible: {\n      opacity: 1,\n      x: 0,\n      transition: {\n        type: \"spring\",\n        damping: 12,\n        stiffness: 100,\n      },\n    },\n    hidden: {\n      opacity: 0,\n      x: \"-100vw\",\n      transition: {\n        type: \"spring\",\n        damping: 12,\n        stiffness: 100,\n      },\n    },\n  };\n\n  return (\n    <motion.div\n      className={`flex overflow-hidden ${className}`}\n      variants={container}\n      initial=\"hidden\"\n      animate=\"visible\"\n    >\n      {letters.map((letter, index) => (\n        <motion.span\n          key={index}\n          variants={child}\n          transition={{ duration: duration }}\n        >\n          {letter === \" \" ? \"\\u00A0\" : letter}\n        </motion.span>\n      ))}\n    </motion.div>\n  );\n};\n\nexport default SlideInText;\n",
+      "type": "registry:ui",
+      "target": "components/magicui/slide-in-text.tsx"
+    }
+  ]
+}
