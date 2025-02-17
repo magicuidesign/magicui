@@ -1690,6 +1690,20 @@
       ]
     },
     {
+      "name": "dot-pattern-with-glow-effect",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dot-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dot-pattern-with-glow-effect.tsx",
+          "type": "registry:example",
+          "target": ""
+        }
+      ]
+    },
+    {
       "name": "flickering-grid-demo",
       "type": "registry:example",
       "title": "Flickering Grid Demo",

@@ -1951,6 +1951,31 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "dot-pattern-with-glow-effect": {
+    name: "dot-pattern-with-glow-effect",
+    description: "",
+    type: "registry:example",
+    registryDependencies: ["dot-pattern"],
+    files: [
+      {
+        path: "registry/example/dot-pattern-with-glow-effect.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/dot-pattern-with-glow-effect.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "flickering-grid-demo": {
     name: "flickering-grid-demo",
     description: "Example showing a flickering grid background.",
