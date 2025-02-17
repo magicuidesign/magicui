@@ -291,9 +291,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/dot-pattern"],
     files: [
       {
-        path: "example/dot-pattern-with-glow-effect.tsx",
+        path: "registry/example/dot-pattern-with-glow-effect.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/dot-pattern-with-glow-effect.tsx",
       },
     ],
   },

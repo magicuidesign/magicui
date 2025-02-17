@@ -1724,14 +1724,16 @@
     {
       "name": "dot-pattern-with-glow-effect",
       "type": "registry:example",
+      "title": "Dot Pattern with glow effect",
+      "description": "Example showing a dot pattern with glow effect",
       "registryDependencies": [
-        "dot-pattern"
+        "https://magicui.design/r/dot-pattern"
       ],
       "files": [
         {
           "path": "registry/example/dot-pattern-with-glow-effect.tsx",
           "type": "registry:example",
-          "target": ""
+          "target": "components/dot-pattern-with-glow-effect.tsx"
         }
       ]
     },

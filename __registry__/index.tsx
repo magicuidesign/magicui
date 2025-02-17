@@ -2000,14 +2000,14 @@ export const Index: Record<string, any> = {
   },
   "dot-pattern-with-glow-effect": {
     name: "dot-pattern-with-glow-effect",
-    description: "",
+    description: "Example showing a dot pattern with glow effect",
     type: "registry:example",
-    registryDependencies: ["dot-pattern"],
+    registryDependencies: ["https://magicui.design/r/dot-pattern"],
     files: [
       {
         path: "registry/example/dot-pattern-with-glow-effect.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/dot-pattern-with-glow-effect.tsx",
       },
     ],
     component: React.lazy(async () => {
