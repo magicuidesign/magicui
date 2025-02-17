@@ -1,18 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-
-import { AnimatePresence, motion, useMotionValue } from "motion/react";
-
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion, useMotionValue } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
 
 /**
  * @property {React.ReactNode} children - The child elements to be wrapped
- * @property {string} [className] - Optional CSS classes to be applied to the wrapper
  */
-interface PointerWrapperProps {
-  children: React.ReactNode;
-  className?: string;
+interface PointerWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
 }
 
 /**
@@ -22,7 +18,11 @@ interface PointerWrapperProps {
  * @component
  * @param {PointerWrapperProps} props - The component props
  */
-export function PointerWrapper({ children, className }: PointerWrapperProps) {
+export function PointerWrapper({
+  children,
+  className,
+  ...props
+}: PointerWrapperProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -31,18 +31,27 @@ export function PointerWrapper({ children, className }: PointerWrapperProps) {
   const [isInside, setIsInside] = useState<boolean>(false);
 
   useEffect(() => {
-    if (ref.current) {
-      setRect(ref.current.getBoundingClientRect());
+    function updateRect() {
+      if (ref.current) {
+        setRect(ref.current.getBoundingClientRect());
+      }
     }
+
+    // Initial rect calculation
+    updateRect();
+
+    // Update rect on window resize
+    window.addEventListener("resize", updateRect);
+
+    return () => {
+      window.removeEventListener("resize", updateRect);
+    };
   }, []);
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     if (rect) {
-      const scrollX = window.scrollX;
-      const scrollY = window.scrollY;
-
-      x.set(e.clientX - rect.left + scrollX);
-      y.set(e.clientY - rect.top + scrollY);
+      x.set(e.clientX - rect.left);
+      y.set(e.clientY - rect.top);
     }
   }
 
@@ -51,19 +60,20 @@ export function PointerWrapper({ children, className }: PointerWrapperProps) {
   }
 
   function handleMouseEnter() {
-    setIsInside(true);
+    if (ref.current) {
+      setRect(ref.current.getBoundingClientRect());
+      setIsInside(true);
+    }
   }
 
   return (
     <div
-      className={cn("relative", className)}
       ref={ref}
-      style={{
-        cursor: "none",
-      }}
+      className={cn("relative cursor-none", className)}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
+      {...props}
     >
       <AnimatePresence>{isInside && <Pointer x={x} y={y} />}</AnimatePresence>
       {children}
@@ -91,11 +101,10 @@ interface PointerProps {
 function Pointer({ x, y }: PointerProps): JSX.Element {
   return (
     <motion.div
-      className="h-4 w-4 rounded-full absolute z-50"
+      className="pointer-events-none absolute z-50 h-4 w-4 rounded-full"
       style={{
         top: y,
         left: x,
-        pointerEvents: "none",
       }}
       initial={{
         scale: 1,
@@ -115,7 +124,7 @@ function Pointer({ x, y }: PointerProps): JSX.Element {
         fill="currentColor"
         strokeWidth="1"
         viewBox="0 0 16 16"
-        className="h-6 w-6 text-black transform -rotate-[70deg] -translate-x-[12px] -translate-y-[10px] stroke-white"
+        className="h-6 w-6 translate-x-[-12px] translate-y-[-10px] rotate-[-70deg] stroke-white text-black"
         height="1em"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"
