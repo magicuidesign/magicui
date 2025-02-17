@@ -57,7 +57,7 @@ export function CodeComparison({
                 ) {
                   node.properties.class =
                     (node.properties.class || "") + " highlighted";
-                  node.properties.style = `background-color: ${highlightColor};`;
+                  node.properties.style = `background-color: ${highlightColor};display: inline-block; width: 100%;`;
                 }
                 return node;
               },
@@ -79,7 +79,7 @@ export function CodeComparison({
                 ) {
                   node.properties.class =
                     (node.properties.class || "") + " highlighted";
-                  node.properties.style = `background-color: ${highlightColor};`;
+                  node.properties.style = `background-color: ${highlightColor};display: inline-block; width: 100%;`;
                 }
                 return node;
               },
@@ -112,7 +112,7 @@ export function CodeComparison({
     if (highlighted) {
       return (
         <div
-          className="h-full w-full overflow-auto bg-background font-mono text-xs [&>.shiki]:bg-red-500 [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4"
+          className="h-full w-full overflow-auto bg-background font-mono text-xs [&>.shiki]:bg-red-500 [&>pre>code]:!inline-block [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4"
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );
