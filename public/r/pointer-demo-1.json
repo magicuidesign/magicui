@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pointer-demo-1",
+  "type": "registry:example",
+  "title": "Pointer Demo 1",
+  "description": "Example showing a pointer effect component",
+  "registryDependencies": [
+    "https://magicui.design/r/pointer"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pointer-demo-1.tsx",
+      "content": "\"use client\";\n\nimport { PointerWrapper } from \"@/components/magicui/pointer\";\n\nexport default function PointerDemo1() {\n  return (\n    <PointerWrapper>\n      <div className=\"relative flex size-[500px] items-center justify-center overflow-hidden rounded-lg border bg-background\">\n        <span className=\"pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10\">\n          Pointer\n        </span>\n      </div>\n    </PointerWrapper>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pointer-demo-1.tsx"
+    }
+  ]
+}
