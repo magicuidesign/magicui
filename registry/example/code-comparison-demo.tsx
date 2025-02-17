@@ -23,30 +23,30 @@ export const middleware = async (req: NextRequest) => {
     }
 
     const slug = req.nextUrl.query.slug;
-    team = await getTeamBySlug(slug);
+    team = await getTeamBySlug(slug); // [!code highlight]
 
     if(!team) {
       return NextResponse.redirect('/');
     }
   }
 
-  return NextResponse.next();
+  return NextResponse.next(); // [!code highlight]
 }
 
 export const config = {
-  matcher: ['/((?!_next/|_static|_vercel|[\\w-]+\\.\\w+).*)'],
+  matcher: ['/((?!_next/|_static|_vercel|[\\w-]+\\.\\w+).*)'], // [!code highlight]
 };`;
 
 const afterCode = `import { createMiddleware, type MiddlewareFunctionProps } from '@app/(auth)/auth/_middleware';
-import { auth } from '@app/(auth)/auth/_middleware';
-import { team } from '@app/(team)/team/_middleware';
+import { auth } from '@app/(auth)/auth/_middleware'; // [!code --]
+import { team } from '@app/(team)/team/_middleware'; // [!code ++]
 
 const middlewares = {
   '/auth{/:path?}': auth,
   '/team{/:slug?}': [ auth, team ],
 };
 
-export const middleware = createMiddleware(middlewares);
+export const middleware = createMiddleware(middlewares); // [!code focus]
 
 export const config = {
   matcher: ['/((?!_next/|_static|_vercel|[\\w-]+\\.\\w+).*)'],
@@ -63,7 +63,7 @@ export default function CodeComparisonDemo() {
       darkTheme="github-dark"
       beforeHighlightRange={{ start: 1, end: 3 }}
       afterHighlightRange={{ start: 4, end: 10 }}
-      highlightColor="rgba(255, 51, 51, 0.2)"
+      highlightColor="green"
     />
   );
 }
