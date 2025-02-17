@@ -30,7 +30,7 @@ export default function CTASection() {
               <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
             </a>
           </div>
-          <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-b from-transparent to-white to-70% dark:to-black" />
+          <div className="absolute inset-x-0 bottom-0 h-full bg-linear-to-b from-transparent to-white to-70% dark:to-black" />
         </div>
       </div>
     </section>

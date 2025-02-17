@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.cjs';
+
+@utility step {
+  counter-increment: step;
+
+  &:before {
+    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
+    @apply ml-[-50px] mt-[-4px];
+    content: counter(step);
+  }
+}
 
 @layer base {
   :root {
@@ -98,18 +108,6 @@
   }
 }
 
-@layer utilities {
-  .step {
-    counter-increment: step;
-  }
-
-  .step:before {
-    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
-    @apply ml-[-50px] mt-[-4px];
-    content: counter(step);
-  }
-}
-
 @media (max-width: 640px) {
   .container {
     @apply px-4;
@@ -118,30 +116,22 @@
 
 .lab-bg {
   --mask-offset: 100px;
-  -webkit-mask: linear-gradient(
-      to bottom,
+  -webkit-mask: linear-gradient(to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    ),
-    linear-gradient(
-      to right,
+      transparent),
+    linear-gradient(to right,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    );
-  mask: linear-gradient(
-      to bottom,
+      transparent);
+  mask: linear-gradient(to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    ),
-    linear-gradient(
-      to right,
+      transparent),
+    linear-gradient(to right,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    );
+      transparent);
   /* -webkit-mask: radial-gradient(circle at 50% 50%,transparent 0,#fff calc(100% - var(--mask-offset)),transparent 100%); */
   -webkit-mask-composite: source-in, xor;
   mask-composite: intersect;

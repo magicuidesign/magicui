@@ -1,7 +1,6 @@
-module.exports = {
+export default {
   plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
+    "@tailwindcss/postcss": {},
     ...(process.env.NODE_ENV === "production" ? { cssnano: {} } : {}),
   },
 };

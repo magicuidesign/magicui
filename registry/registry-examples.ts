@@ -1433,7 +1433,7 @@ export const examples: Registry["items"] = [
     name: "blur-fade-demo",
     type: "registry:example",
     title: "Blur Fade Demo",
-    description: "Example showing blur fade in and out animations.",
+    description: "Example showing blur-sm fade in and out animations.",
     registryDependencies: ["https://magicui.design/r/blur-fade"],
     files: [
       {
@@ -1447,7 +1447,7 @@ export const examples: Registry["items"] = [
     name: "blur-fade-text-demo",
     type: "registry:example",
     title: "Blur Fade Text Demo",
-    description: "Example showing blur fade animations with text.",
+    description: "Example showing blur-sm fade animations with text.",
     registryDependencies: ["https://magicui.design/r/blur-fade"],
     files: [
       {

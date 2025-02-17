@@ -63,7 +63,7 @@ export function CodeComparison({
     if (highlighted) {
       return (
         <div
-          className="h-full overflow-auto bg-background font-mono text-xs [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4 [&_code]:break-all"
+          className="h-full overflow-auto bg-background font-mono text-xs [&>pre]:h-full [&>pre]:bg-transparent! [&>pre]:p-4 [&_code]:break-all"
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );
