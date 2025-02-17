@@ -1,8 +1,13 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import {
+  transformerNotationDiff,
+  transformerNotationFocus,
+} from "@shikijs/transformers";
 import { FileIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
 interface CodeComparisonProps {
   beforeCode: string;
@@ -47,21 +52,8 @@ export function CodeComparison({
           theme: selectedTheme,
           transformers: [
             transformerNotationHighlight(),
-            {
-              name: "line-highlight",
-              line(node, line) {
-                if (
-                  beforeHighlightRange &&
-                  line >= beforeHighlightRange.start &&
-                  line <= beforeHighlightRange.end
-                ) {
-                  node.properties.class =
-                    (node.properties.class || "") + " highlighted";
-                  node.properties.style = `background-color: ${highlightColor};display: inline-block; width: 100%;`;
-                }
-                return node;
-              },
-            },
+            transformerNotationDiff(),
+            transformerNotationFocus(),
           ],
         });
         const after = await codeToHtml(afterCode, {
@@ -69,21 +61,8 @@ export function CodeComparison({
           theme: selectedTheme,
           transformers: [
             transformerNotationHighlight(),
-            {
-              name: "line-highlight",
-              line(node, line) {
-                if (
-                  afterHighlightRange &&
-                  line >= afterHighlightRange.start &&
-                  line <= afterHighlightRange.end
-                ) {
-                  node.properties.class =
-                    (node.properties.class || "") + " highlighted";
-                  node.properties.style = `background-color: ${highlightColor};display: inline-block; width: 100%;`;
-                }
-                return node;
-              },
-            },
+            transformerNotationDiff(),
+            transformerNotationFocus(),
           ],
         });
         setHighlightedBefore(before);
@@ -112,7 +91,17 @@ export function CodeComparison({
     if (highlighted) {
       return (
         <div
-          className="h-full w-full overflow-auto bg-background font-mono text-xs [&>.shiki]:bg-red-500 [&>pre>code]:!inline-block [&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4"
+          style={
+            {
+              "--highlight-color": highlightColor,
+            } as React.CSSProperties
+          }
+          className={cn(
+            "h-full w-full overflow-auto bg-background font-mono text-xs",
+            "[&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4",
+            "[&>pre>code]:!inline-block [&>pre>code]:w-full",
+            "[&>pre>code>.highlighted]:inline-block [&>pre>code>.highlighted]:w-full [&>pre>code>.highlighted]:!bg-[var(--highlight-color)]",
+          )}
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       );
