@@ -1,9 +1,9 @@
-import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 type TechComponentType = {
   name: string;
@@ -59,7 +59,6 @@ const techComponents: TechComponents = {
       </svg>
     ),
   },
-
   tailwindcss: {
     name: "Tailwind CSS",
     icon: (
@@ -76,14 +75,14 @@ const techComponents: TechComponents = {
       </svg>
     ),
   },
-  framermotion: {
-    name: "Framer Motion",
+  motion: {
+    name: "Motion",
     icon: (
       <svg
         role="img"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="Framer Motion"
+        aria-label="Motion"
         className="size-8"
         fill="none"
         stroke="currentColor"
@@ -91,7 +90,7 @@ const techComponents: TechComponents = {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <title>Framer Motion</title>
+        <title>Motion</title>
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M12 12l-8 -8v16l16 -16v16l-4 -4" />
         <path d="M20 12l-8 8l-4 -4" />

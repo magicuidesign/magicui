@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam-demo-4",
+  "type": "registry:example",
+  "title": "Border Beam Demo 4",
+  "description": "Example showing an animated border beam effect.",
+  "registryDependencies": [
+    "button",
+    "https://magicui.design/r/border-beam"
+  ],
+  "files": [
+    {
+      "path": "registry/example/border-beam-demo-4.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport { BorderBeam } from \"@/components/magicui/border-beam\";\n\nexport default function Component() {\n  return (\n    <Button className=\"relative overflow-hidden\" size=\"lg\" variant=\"outline\">\n      Buy Now\n      <BorderBeam\n        size={40}\n        initialOffset={20}\n        className=\"from-transparent via-yellow-500 to-transparent\"\n        transition={{\n          type: \"spring\",\n          stiffness: 60,\n          damping: 20,\n        }}\n      />\n    </Button>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/border-beam-demo-4.tsx"
+    }
+  ]
+}

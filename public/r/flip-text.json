@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "flip-text",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Flip Text",
   "description": "Text flipping character animation",
   "dependencies": [
@@ -11,8 +11,8 @@
     {
       "path": "registry/magicui/flip-text.tsx",
       "content": "\"use client\";\n\nimport { AnimatePresence, motion, Variants } from \"motion/react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface FlipTextProps {\n  word: string;\n  duration?: number;\n  delayMultiple?: number;\n  framerProps?: Variants;\n  className?: string;\n}\n\nexport function FlipText({\n  word,\n  duration = 0.5,\n  delayMultiple = 0.08,\n  framerProps = {\n    hidden: { rotateX: -90, opacity: 0 },\n    visible: { rotateX: 0, opacity: 1 },\n  },\n  className,\n}: FlipTextProps) {\n  return (\n    <div className=\"flex justify-center space-x-2\">\n      <AnimatePresence mode=\"wait\">\n        {word.split(\"\").map((char, i) => (\n          <motion.span\n            key={i}\n            initial=\"hidden\"\n            animate=\"visible\"\n            exit=\"hidden\"\n            variants={framerProps}\n            transition={{ duration, delay: i * delayMultiple }}\n            className={cn(\"origin-center drop-shadow-sm\", className)}\n          >\n            {char}\n          </motion.span>\n        ))}\n      </AnimatePresence>\n    </div>\n  );\n}\n",
-      "type": "registry:component",
-      "target": ""
+      "type": "registry:ui",
+      "target": "components/magicui/flip-text.tsx"
     }
   ]
 }

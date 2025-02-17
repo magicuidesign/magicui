@@ -39,7 +39,7 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-40 w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "relative h-full w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
@@ -62,7 +62,7 @@ const ReviewCard = ({
 
 export default function MarqueeDemoVertical() {
   return (
-    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden">
       <Marquee pauseOnHover vertical className="[--duration:20s]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
@@ -73,8 +73,8 @@ export default function MarqueeDemoVertical() {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
     </div>
   );
 }

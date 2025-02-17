@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinning-text-demo-2",
+  "type": "registry:example",
+  "title": "Spinning Text Demo 2",
+  "description": "Example showing spinning text animation.",
+  "registryDependencies": [
+    "https://magicui.design/r/spinning-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/spinning-text-demo-2.tsx",
+      "content": "import { SpinningText } from \"@/components/magicui/spinning-text\";\n\nexport default function SpinningTextBasic() {\n  return (\n    <SpinningText reverse className=\"text-4xl\" duration={4} radius={6}>\n      learn more • earn more • grow more •\n    </SpinningText>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/spinning-text-demo-2.tsx"
+    }
+  ]
+}

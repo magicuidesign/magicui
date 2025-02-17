@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-shiny-text",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Animated Shiny Text",
   "description": "A light glare effect which pans across text making it appear as if it is shimmering.",
   "files": [
     {
       "path": "registry/magicui/animated-shiny-text.tsx",
       "content": "import { ComponentPropsWithoutRef, CSSProperties, FC } from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface AnimatedShinyTextProps\n  extends ComponentPropsWithoutRef<\"span\"> {\n  shimmerWidth?: number;\n}\n\nexport const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({\n  children,\n  className,\n  shimmerWidth = 100,\n  ...props\n}) => {\n  return (\n    <span\n      style={\n        {\n          \"--shiny-width\": `${shimmerWidth}px`,\n        } as CSSProperties\n      }\n      className={cn(\n        \"mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70\",\n\n        // Shine effect\n        \"animate-shiny-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shiny-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]\",\n\n        // Shine gradient\n        \"bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80\",\n\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  );\n};\n",
-      "type": "registry:component",
-      "target": ""
+      "type": "registry:ui",
+      "target": "components/magicui/animated-shiny-text.tsx"
     }
   ],
   "tailwind": {

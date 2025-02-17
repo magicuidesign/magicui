@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "line-shadow-text",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Line Shadow Text",
   "description": "A text component with a moving line shadow.",
   "dependencies": [
@@ -11,8 +11,8 @@
     {
       "path": "registry/magicui/line-shadow-text.tsx",
       "content": "import { cn } from \"@/lib/utils\";\nimport { motion, MotionProps } from \"motion/react\";\n\ninterface LineShadowTextProps\n  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,\n    MotionProps {\n  shadowColor?: string;\n  as?: React.ElementType;\n}\n\nexport function LineShadowText({\n  children,\n  shadowColor = \"black\",\n  className,\n  as: Component = \"span\",\n  ...props\n}: LineShadowTextProps) {\n  const MotionComponent = motion.create(Component);\n  const content = typeof children === \"string\" ? children : null;\n\n  if (!content) {\n    throw new Error(\"LineShadowText only accepts string content\");\n  }\n\n  return (\n    <MotionComponent\n      style={{ \"--shadow-color\": shadowColor } as React.CSSProperties}\n      className={cn(\n        \"relative z-0 inline-flex\",\n        \"after:absolute after:left-[0.04em] after:top-[0.04em] after:content-[attr(data-text)]\",\n        \"after:bg-[linear-gradient(45deg,transparent_45%,var(--shadow-color)_45%,var(--shadow-color)_55%,transparent_0)]\",\n        \"after:-z-10 after:bg-[length:0.06em_0.06em] after:bg-clip-text after:text-transparent\",\n        \"after:animate-line-shadow\",\n        className,\n      )}\n      data-text={content}\n      {...props}\n    >\n      {content}\n    </MotionComponent>\n  );\n}\n",
-      "type": "registry:component",
-      "target": ""
+      "type": "registry:ui",
+      "target": "components/magicui/line-shadow-text.tsx"
     }
   ]
 }

@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ripple-button",
-  "type": "registry:component",
+  "type": "registry:ui",
   "title": "Ripple Button",
   "description": "An animated button with ripple useful for user engagement.",
   "files": [
     {
       "path": "registry/magicui/ripple-button.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport React, { MouseEvent, useEffect, useState } from \"react\";\n\ninterface RippleButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  rippleColor?: string;\n  duration?: string;\n}\n\nexport const RippleButton = React.forwardRef<\n  HTMLButtonElement,\n  RippleButtonProps\n>(\n  (\n    {\n      className,\n      children,\n      rippleColor = \"#ffffff\",\n      duration = \"600ms\",\n      onClick,\n      ...props\n    },\n    ref,\n  ) => {\n    const [buttonRipples, setButtonRipples] = useState<\n      Array<{ x: number; y: number; size: number; key: number }>\n    >([]);\n\n    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {\n      createRipple(event);\n      onClick?.(event);\n    };\n\n    const createRipple = (event: MouseEvent<HTMLButtonElement>) => {\n      const button = event.currentTarget;\n      const rect = button.getBoundingClientRect();\n      const size = Math.max(rect.width, rect.height);\n      const x = event.clientX - rect.left - size / 2;\n      const y = event.clientY - rect.top - size / 2;\n\n      const newRipple = { x, y, size, key: Date.now() };\n      setButtonRipples((prevRipples) => [...prevRipples, newRipple]);\n    };\n\n    useEffect(() => {\n      if (buttonRipples.length > 0) {\n        const lastRipple = buttonRipples[buttonRipples.length - 1];\n        const timeout = setTimeout(() => {\n          setButtonRipples((prevRipples) =>\n            prevRipples.filter((ripple) => ripple.key !== lastRipple.key),\n          );\n        }, parseInt(duration));\n        return () => clearTimeout(timeout);\n      }\n    }, [buttonRipples, duration]);\n\n    return (\n      <button\n        className={cn(\n          \"relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 bg-background px-4 py-2 text-center text-primary\",\n          className,\n        )}\n        onClick={handleClick}\n        ref={ref}\n        {...props}\n      >\n        <div className=\"relative z-10\">{children}</div>\n        <span className=\"pointer-events-none absolute inset-0\">\n          {buttonRipples.map((ripple) => (\n            <span\n              className=\"absolute animate-rippling rounded-full bg-background opacity-30\"\n              key={ripple.key}\n              style={{\n                width: `${ripple.size}px`,\n                height: `${ripple.size}px`,\n                top: `${ripple.y}px`,\n                left: `${ripple.x}px`,\n                backgroundColor: rippleColor,\n                transform: `scale(0)`,\n              }}\n            />\n          ))}\n        </span>\n      </button>\n    );\n  },\n);\n\nRippleButton.displayName = \"RippleButton\";\n",
-      "type": "registry:component",
-      "target": ""
+      "type": "registry:ui",
+      "target": "components/magicui/ripple-button.tsx"
     }
   ],
   "tailwind": {

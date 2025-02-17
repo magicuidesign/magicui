@@ -10,9 +10,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/magic-card"],
     files: [
       {
-        path: "example/magic-card-demo.tsx",
+        path: "registry/example/magic-card-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/magic-card-demo.tsx",
       },
     ],
   },
@@ -24,9 +24,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/android"],
     files: [
       {
-        path: "example/android-demo.tsx",
+        path: "registry/example/android-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/android-demo.tsx",
       },
     ],
   },
@@ -38,9 +38,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/android"],
     files: [
       {
-        path: "example/android-demo-2.tsx",
+        path: "registry/example/android-demo-2.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/android-demo-2.tsx",
       },
     ],
   },
@@ -52,9 +52,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/android"],
     files: [
       {
-        path: "example/android-demo-3.tsx",
+        path: "registry/example/android-demo-3.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/android-demo-3.tsx",
       },
     ],
   },
@@ -67,9 +67,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/warp-background"],
     files: [
       {
-        path: "example/warp-background-demo.tsx",
+        path: "registry/example/warp-background-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/warp-background-demo.tsx",
       },
     ],
   },
@@ -81,9 +81,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/line-shadow-text"],
     files: [
       {
-        path: "example/line-shadow-text-demo.tsx",
+        path: "registry/example/line-shadow-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/line-shadow-text-demo.tsx",
       },
     ],
   },
@@ -95,9 +95,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/aurora-text"],
     files: [
       {
-        path: "example/aurora-text-demo.tsx",
+        path: "registry/example/aurora-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/aurora-text-demo.tsx",
       },
     ],
   },
@@ -109,9 +109,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/morphing-text"],
     files: [
       {
-        path: "example/morphing-text-demo.tsx",
+        path: "registry/example/morphing-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/morphing-text-demo.tsx",
       },
     ],
   },
@@ -123,9 +123,51 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/scroll-progress"],
     files: [
       {
-        path: "example/scroll-progress-demo.tsx",
+        path: "registry/example/scroll-progress-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/scroll-progress-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "lens-demo",
+    type: "registry:example",
+    title: "Lens Demo",
+    description: "Example showing a lens effect component",
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo.tsx",
+        type: "registry:example",
+        target: "components/lens-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "lens-demo-2",
+    type: "registry:example",
+    title: "Lens Demo 2",
+    description: "Second example showing a lens effect component",
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo-2.tsx",
+        type: "registry:example",
+        target: "components/lens-demo-2.tsx",
+      },
+    ],
+  },
+  {
+    name: "lens-demo-3",
+    type: "registry:example",
+    title: "Lens Demo 3",
+    description: "Third example showing a lens effect component",
+    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo-3.tsx",
+        type: "registry:example",
+        target: "components/lens-demo-3.tsx",
       },
     ],
   },
@@ -137,9 +179,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/neon-gradient-card"],
     files: [
       {
-        path: "example/neon-gradient-card-demo.tsx",
+        path: "registry/example/neon-gradient-card-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/neon-gradient-card-demo.tsx",
       },
     ],
   },
@@ -151,9 +193,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/meteors"],
     files: [
       {
-        path: "example/meteors-demo.tsx",
+        path: "registry/example/meteors-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/meteors-demo.tsx",
       },
     ],
   },
@@ -165,9 +207,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/grid-pattern"],
     files: [
       {
-        path: "example/grid-pattern-demo.tsx",
+        path: "registry/example/grid-pattern-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/grid-pattern-demo.tsx",
       },
     ],
   },
@@ -179,8 +221,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/grid-pattern"],
     files: [
       {
-        path: "example/grid-pattern-linear-gradient.tsx",
+        path: "registry/example/grid-pattern-linear-gradient.tsx",
         type: "registry:example",
+        target: "components/grid-pattern-linear-gradient.tsx",
       },
     ],
   },
@@ -192,9 +235,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/grid-pattern"],
     files: [
       {
-        path: "example/grid-pattern-dashed.tsx",
+        path: "registry/example/grid-pattern-dashed.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/grid-pattern-dashed.tsx",
       },
     ],
   },
@@ -206,9 +249,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/dot-pattern"],
     files: [
       {
-        path: "example/dot-pattern-demo.tsx",
+        path: "registry/example/dot-pattern-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/dot-pattern-demo.tsx",
       },
     ],
   },
@@ -220,8 +263,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/dot-pattern"],
     files: [
       {
-        path: "example/dot-pattern-linear-gradient.tsx",
+        path: "registry/example/dot-pattern-linear-gradient.tsx",
         type: "registry:example",
+        target: "components/dot-pattern-linear-gradient.tsx",
       },
     ],
   },
@@ -247,9 +291,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/flickering-grid"],
     files: [
       {
-        path: "example/flickering-grid-demo.tsx",
+        path: "registry/example/flickering-grid-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/flickering-grid-demo.tsx",
       },
     ],
   },
@@ -262,8 +306,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/flickering-grid"],
     files: [
       {
-        path: "example/flickering-grid-rounded-demo.tsx",
+        path: "registry/example/flickering-grid-rounded-demo.tsx",
         type: "registry:example",
+        target: "components/flickering-grid-rounded-demo.tsx",
       },
     ],
   },
@@ -275,9 +320,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/hero-video-dialog"],
     files: [
       {
-        path: "example/hero-video-dialog-demo.tsx",
+        path: "registry/example/hero-video-dialog-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/hero-video-dialog-demo.tsx",
       },
     ],
   },
@@ -290,8 +335,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/hero-video-dialog"],
     files: [
       {
-        path: "example/hero-video-dialog-demo-top-in-bottom-out.tsx",
+        path: "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
         type: "registry:example",
+        target: "components/hero-video-dialog-demo-top-in-bottom-out.tsx",
       },
     ],
   },
@@ -304,9 +350,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/code-comparison"],
     files: [
       {
-        path: "example/code-comparison-demo.tsx",
+        path: "registry/example/code-comparison-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/code-comparison-demo.tsx",
       },
     ],
   },
@@ -318,9 +364,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/script-copy-btn"],
     files: [
       {
-        path: "example/script-copy-btn-demo.tsx",
+        path: "registry/example/script-copy-btn-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/script-copy-btn-demo.tsx",
       },
     ],
   },
@@ -332,9 +378,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/marquee"],
     files: [
       {
-        path: "example/marquee-demo.tsx",
+        path: "registry/example/marquee-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/marquee-demo.tsx",
       },
     ],
   },
@@ -346,9 +392,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/marquee"],
     files: [
       {
-        path: "example/marquee-demo-vertical.tsx",
+        path: "registry/example/marquee-demo-vertical.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/marquee-demo-vertical.tsx",
       },
     ],
   },
@@ -360,9 +406,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/marquee"],
     files: [
       {
-        path: "example/marquee-logos.tsx",
+        path: "registry/example/marquee-logos.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/marquee-logos.tsx",
       },
     ],
   },
@@ -373,7 +419,11 @@ export const examples: Registry["items"] = [
     description: "Example showing a 3D infinite scrolling component.",
     registryDependencies: ["https://magicui.design/r/marquee"],
     files: [
-      { path: "example/marquee-3d.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/marquee-3d.tsx",
+        type: "registry:example",
+        target: "components/marquee-3d.tsx",
+      },
     ],
   },
   {
@@ -383,7 +433,11 @@ export const examples: Registry["items"] = [
     description: "Example showing an autorotating, interactive WebGL globe.",
     registryDependencies: ["https://magicui.design/r/globe"],
     files: [
-      { path: "example/globe-demo.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/globe-demo.tsx",
+        type: "registry:example",
+        target: "components/globe-demo.tsx",
+      },
     ],
   },
   {
@@ -394,9 +448,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/tweet-card"],
     files: [
       {
-        path: "example/tweet-card-demo.tsx",
+        path: "registry/example/tweet-card-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/tweet-card-demo.tsx",
       },
     ],
   },
@@ -408,9 +462,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/tweet-card"],
     files: [
       {
-        path: "example/tweet-card-images.tsx",
+        path: "registry/example/tweet-card-images.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/tweet-card-images.tsx",
       },
     ],
   },
@@ -422,9 +476,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/tweet-card"],
     files: [
       {
-        path: "example/tweet-card-meta-preview.tsx",
+        path: "registry/example/tweet-card-meta-preview.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/tweet-card-meta-preview.tsx",
       },
     ],
   },
@@ -436,9 +490,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/shimmer-button"],
     files: [
       {
-        path: "example/shimmer-button-demo.tsx",
+        path: "registry/example/shimmer-button-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/shimmer-button-demo.tsx",
       },
     ],
   },
@@ -457,7 +511,11 @@ export const examples: Registry["items"] = [
     ],
     dependencies: ["@radix-ui/react-icons"],
     files: [
-      { path: "example/bento-demo.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/bento-demo.tsx",
+        type: "registry:example",
+        target: "components/bento-demo.tsx",
+      },
     ],
   },
   {
@@ -469,9 +527,9 @@ export const examples: Registry["items"] = [
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
-        path: "example/bento-demo-vertical.tsx",
+        path: "registry/example/bento-demo-vertical.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/bento-demo-vertical.tsx",
       },
     ],
   },
@@ -483,9 +541,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/number-ticker"],
     files: [
       {
-        path: "example/number-ticker-demo.tsx",
+        path: "registry/example/number-ticker-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/number-ticker-demo.tsx",
       },
     ],
   },
@@ -497,8 +555,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/number-ticker"],
     files: [
       {
-        path: "example/number-ticker-decimal-demo.tsx",
+        path: "registry/example/number-ticker-decimal-demo.tsx",
         type: "registry:example",
+        target: "components/number-ticker-decimal-demo.tsx",
       },
     ],
   },
@@ -509,7 +568,11 @@ export const examples: Registry["items"] = [
     description: "Example showing an animated ripple effect.",
     registryDependencies: ["https://magicui.design/r/ripple"],
     files: [
-      { path: "example/ripple-demo.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/ripple-demo.tsx",
+        type: "registry:example",
+        target: "components/ripple-demo.tsx",
+      },
     ],
   },
   {
@@ -520,9 +583,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/retro-grid"],
     files: [
       {
-        path: "example/retro-grid-demo.tsx",
+        path: "registry/example/retro-grid-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/retro-grid-demo.tsx",
       },
     ],
   },
@@ -534,9 +597,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/animated-list"],
     files: [
       {
-        path: "example/animated-list-demo.tsx",
+        path: "registry/example/animated-list-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/animated-list-demo.tsx",
       },
     ],
   },
@@ -549,8 +612,9 @@ export const examples: Registry["items"] = [
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
-        path: "example/animated-shiny-text-demo.tsx",
+        path: "registry/example/animated-shiny-text-demo.tsx",
         type: "registry:example",
+        target: "components/animated-shiny-text-demo.tsx",
       },
     ],
   },
@@ -563,9 +627,9 @@ export const examples: Registry["items"] = [
     dependencies: ["next-themes"],
     files: [
       {
-        path: "example/particles-demo.tsx",
+        path: "registry/example/particles-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/particles-demo.tsx",
       },
     ],
   },
@@ -577,8 +641,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/animated-grid-pattern"],
     files: [
       {
-        path: "example/animated-grid-pattern-demo.tsx",
+        path: "registry/example/animated-grid-pattern-demo.tsx",
         type: "registry:example",
+        target: "components/animated-grid-pattern-demo.tsx",
       },
     ],
   },
@@ -590,8 +655,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/interactive-grid-pattern"],
     files: [
       {
-        path: "example/interactive-grid-pattern-demo.tsx",
+        path: "registry/example/interactive-grid-pattern-demo.tsx",
         type: "registry:example",
+        target: "components/interactive-grid-pattern-demo.tsx",
       },
     ],
   },
@@ -604,8 +670,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/interactive-grid-pattern"],
     files: [
       {
-        path: "example/interactive-grid-pattern-demo-2.tsx",
+        path: "registry/example/interactive-grid-pattern-demo-2.tsx",
         type: "registry:example",
+        target: "components/interactive-grid-pattern-demo-2.tsx",
       },
     ],
   },
@@ -617,9 +684,61 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/border-beam"],
     files: [
       {
-        path: "example/border-beam-demo.tsx",
+        path: "registry/example/border-beam-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/border-beam-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "border-beam-demo-2",
+    type: "registry:example",
+    title: "Border Beam Demo",
+    description: "Example showing an animated border beam effect.",
+    registryDependencies: [
+      "button",
+      "card",
+      "https://magicui.design/r/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-2.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-2.tsx",
+      },
+    ],
+  },
+  {
+    name: "border-beam-demo-3",
+    type: "registry:example",
+    title: "Border Beam Demo 3",
+    description: "Example showing an animated border beam effect.",
+    registryDependencies: [
+      "button",
+      "card",
+      "input",
+      "label",
+      "https://magicui.design/r/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-3.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-3.tsx",
+      },
+    ],
+  },
+  {
+    name: "border-beam-demo-4",
+    type: "registry:example",
+    title: "Border Beam Demo 4",
+    description: "Example showing an animated border beam effect.",
+    registryDependencies: ["button", "https://magicui.design/r/border-beam"],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-4.tsx",
+        type: "registry:example",
+        target: "components/border-beam-demo-4.tsx",
       },
     ],
   },
@@ -632,9 +751,9 @@ export const examples: Registry["items"] = [
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
-        path: "example/animated-beam-demo.tsx",
+        path: "registry/example/animated-beam-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/animated-beam-demo.tsx",
       },
     ],
   },
@@ -646,8 +765,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/animated-beam"],
     files: [
       {
-        path: "example/animated-beam-unidirectional.tsx",
+        path: "registry/example/animated-beam-unidirectional.tsx",
         type: "registry:example",
+        target: "components/animated-beam-unidirectional.tsx",
       },
     ],
   },
@@ -659,8 +779,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/animated-beam"],
     files: [
       {
-        path: "example/animated-beam-bidirectional.tsx",
+        path: "registry/example/animated-beam-bidirectional.tsx",
         type: "registry:example",
+        target: "components/animated-beam-bidirectional.tsx",
       },
     ],
   },
@@ -672,8 +793,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/animated-beam"],
     files: [
       {
-        path: "example/animated-beam-multiple-inputs.tsx",
+        path: "registry/example/animated-beam-multiple-inputs.tsx",
         type: "registry:example",
+        target: "components/animated-beam-multiple-inputs.tsx",
       },
     ],
   },
@@ -685,8 +807,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/animated-beam"],
     files: [
       {
-        path: "example/animated-beam-multiple-outputs.tsx",
+        path: "registry/example/animated-beam-multiple-outputs.tsx",
         type: "registry:example",
+        target: "components/animated-beam-multiple-outputs.tsx",
       },
     ],
   },
@@ -698,9 +821,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-reveal"],
     files: [
       {
-        path: "example/text-reveal-demo.tsx",
+        path: "registry/example/text-reveal-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-reveal-demo.tsx",
       },
     ],
   },
@@ -713,8 +836,9 @@ export const examples: Registry["items"] = [
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "example/animated-gradient-text-demo.tsx",
+        path: "registry/example/animated-gradient-text-demo.tsx",
         type: "registry:example",
+        target: "components/animated-gradient-text-demo.tsx",
       },
     ],
   },
@@ -727,9 +851,9 @@ export const examples: Registry["items"] = [
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
-        path: "example/orbiting-circles-demo.tsx",
+        path: "registry/example/orbiting-circles-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/orbiting-circles-demo.tsx",
       },
     ],
   },
@@ -738,9 +862,19 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dock Demo",
     description: "Example showing a MacOS-style dock implementation.",
-    registryDependencies: ["https://magicui.design/r/dock"],
+    dependencies: ["next-themes"],
+    registryDependencies: ["button", "https://magicui.design/r/dock"],
     files: [
-      { path: "example/dock-demo.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/dock-demo.tsx",
+        type: "registry:example",
+        target: "components/dock-demo.tsx",
+      },
+      {
+        path: "registry/magicui/mode-toggle.tsx",
+        type: "registry:ui",
+        target: "components/magicui/mode-toggle.tsx",
+      },
     ],
   },
   {
@@ -750,7 +884,11 @@ export const examples: Registry["items"] = [
     description: "Second example showing a MacOS-style dock implementation.",
     registryDependencies: ["https://magicui.design/r/dock"],
     files: [
-      { path: "example/dock-demo-2.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/dock-demo-2.tsx",
+        type: "registry:example",
+        target: "components/dock-demo-2.tsx",
+      },
     ],
   },
   {
@@ -760,7 +898,11 @@ export const examples: Registry["items"] = [
     description: "Third example showing a MacOS-style dock implementation.",
     registryDependencies: ["https://magicui.design/r/dock"],
     files: [
-      { path: "example/dock-demo-3.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/dock-demo-3.tsx",
+        type: "registry:example",
+        target: "components/dock-demo-3.tsx",
+      },
     ],
   },
   {
@@ -771,9 +913,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/word-rotate"],
     files: [
       {
-        path: "example/word-rotate-demo.tsx",
+        path: "registry/example/word-rotate-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/word-rotate-demo.tsx",
       },
     ],
   },
@@ -785,9 +927,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/hyper-text"],
     files: [
       {
-        path: "example/hyper-text-demo.tsx",
+        path: "registry/example/hyper-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/hyper-text-demo.tsx",
       },
     ],
   },
@@ -799,9 +941,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/avatar-circles"],
     files: [
       {
-        path: "example/avatar-circles-demo.tsx",
+        path: "registry/example/avatar-circles-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/avatar-circles-demo.tsx",
       },
     ],
   },
@@ -813,9 +955,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/typing-animation"],
     files: [
       {
-        path: "example/typing-animation-demo.tsx",
+        path: "registry/example/typing-animation-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/typing-animation-demo.tsx",
       },
     ],
   },
@@ -827,8 +969,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/scroll-based-velocity"],
     files: [
       {
-        path: "example/scroll-based-velocity-demo.tsx",
+        path: "registry/example/scroll-based-velocity-demo.tsx",
         type: "registry:example",
+        target: "components/scroll-based-velocity-demo.tsx",
       },
     ],
   },
@@ -840,9 +983,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/scratch-to-reveal"],
     files: [
       {
-        path: "example/scratch-to-reveal-demo.tsx",
+        path: "registry/example/scratch-to-reveal-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/scratch-to-reveal-demo.tsx",
       },
     ],
   },
@@ -854,9 +997,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/flip-text"],
     files: [
       {
-        path: "example/flip-text-demo.tsx",
+        path: "registry/example/flip-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/flip-text-demo.tsx",
       },
     ],
   },
@@ -868,9 +1011,37 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/sparkles-text"],
     files: [
       {
-        path: "example/sparkles-text-demo.tsx",
+        path: "registry/example/sparkles-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/sparkles-text-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "spinning-text-demo",
+    type: "registry:example",
+    title: "Spinning Text Demo",
+    description: "Example showing spinning text animation.",
+    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo.tsx",
+        type: "registry:example",
+        target: "components/spinning-text-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "spinning-text-demo-2",
+    type: "registry:example",
+    title: "Spinning Text Demo 2",
+    description: "Example showing spinning text animation.",
+    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo-2.tsx",
+        type: "registry:example",
+        target: "components/spinning-text-demo-2.tsx",
       },
     ],
   },
@@ -882,9 +1053,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/icon-cloud"],
     files: [
       {
-        path: "example/icon-cloud-demo.tsx",
+        path: "registry/example/icon-cloud-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/icon-cloud-demo.tsx",
       },
     ],
   },
@@ -896,9 +1067,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/icon-cloud"],
     files: [
       {
-        path: "example/icon-cloud-demo-2.tsx",
+        path: "registry/example/icon-cloud-demo-2.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/icon-cloud-demo-2.tsx",
       },
     ],
   },
@@ -910,9 +1081,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/icon-cloud"],
     files: [
       {
-        path: "example/icon-cloud-demo-3.tsx",
+        path: "registry/example/icon-cloud-demo-3.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/icon-cloud-demo-3.tsx",
       },
     ],
   },
@@ -924,9 +1095,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-animate"],
     files: [
       {
-        path: "example/text-animate-demo.tsx",
+        path: "registry/example/text-animate-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-animate-demo.tsx",
       },
     ],
   },
@@ -938,9 +1109,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-animate"],
     files: [
       {
-        path: "example/text-animate-demo-2.tsx",
+        path: "registry/example/text-animate-demo-2.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-animate-demo-2.tsx",
       },
     ],
   },
@@ -952,9 +1123,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-animate"],
     files: [
       {
-        path: "example/text-animate-demo-3.tsx",
+        path: "registry/example/text-animate-demo-3.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-animate-demo-3.tsx",
       },
     ],
   },
@@ -966,9 +1137,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-animate"],
     files: [
       {
-        path: "example/text-animate-demo-4.tsx",
+        path: "registry/example/text-animate-demo-4.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-animate-demo-4.tsx",
       },
     ],
   },
@@ -980,9 +1151,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-animate"],
     files: [
       {
-        path: "example/text-animate-demo-5.tsx",
+        path: "registry/example/text-animate-demo-5.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-animate-demo-5.tsx",
       },
     ],
   },
@@ -994,9 +1165,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/text-animate"],
     files: [
       {
-        path: "example/text-animate-demo-6.tsx",
+        path: "registry/example/text-animate-demo-6.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/text-animate-demo-6.tsx",
       },
     ],
   },
@@ -1008,9 +1179,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/shiny-button"],
     files: [
       {
-        path: "example/shiny-button-demo.tsx",
+        path: "registry/example/shiny-button-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/shiny-button-demo.tsx",
       },
     ],
   },
@@ -1022,9 +1193,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/box-reveal"],
     files: [
       {
-        path: "example/box-reveal-demo.tsx",
+        path: "registry/example/box-reveal-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/box-reveal-demo.tsx",
       },
     ],
   },
@@ -1038,8 +1209,9 @@ export const examples: Registry["items"] = [
     ],
     files: [
       {
-        path: "example/animated-circular-progress-bar-demo.tsx",
+        path: "registry/example/animated-circular-progress-bar-demo.tsx",
         type: "registry:example",
+        target: "components/animated-circular-progress-bar-demo.tsx",
       },
     ],
   },
@@ -1051,9 +1223,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/shine-border"],
     files: [
       {
-        path: "example/shine-border-demo.tsx",
+        path: "registry/example/shine-border-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/shine-border-demo.tsx",
       },
     ],
   },
@@ -1065,9 +1237,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/shine-border"],
     files: [
       {
-        path: "example/shine-border-demo-2.tsx",
+        path: "registry/example/shine-border-demo-2.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/shine-border-demo-2.tsx",
       },
     ],
   },
@@ -1079,9 +1251,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-demo.tsx",
+        path: "registry/example/confetti-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-demo.tsx",
       },
     ],
   },
@@ -1093,9 +1265,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-basic-cannon.tsx",
+        path: "registry/example/confetti-basic-cannon.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-basic-cannon.tsx",
       },
     ],
   },
@@ -1107,8 +1279,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-random-direction.tsx",
+        path: "registry/example/confetti-random-direction.tsx",
         type: "registry:example",
+        target: "components/confetti-random-direction.tsx",
       },
     ],
   },
@@ -1120,9 +1293,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-fireworks.tsx",
+        path: "registry/example/confetti-fireworks.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-fireworks.tsx",
       },
     ],
   },
@@ -1134,9 +1307,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-stars.tsx",
+        path: "registry/example/confetti-stars.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-stars.tsx",
       },
     ],
   },
@@ -1148,9 +1321,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-side-cannons.tsx",
+        path: "registry/example/confetti-side-cannons.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-side-cannons.tsx",
       },
     ],
   },
@@ -1162,9 +1335,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-custom-shapes.tsx",
+        path: "registry/example/confetti-custom-shapes.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-custom-shapes.tsx",
       },
     ],
   },
@@ -1176,9 +1349,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/confetti"],
     files: [
       {
-        path: "example/confetti-emoji.tsx",
+        path: "registry/example/confetti-emoji.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/confetti-emoji.tsx",
       },
     ],
   },
@@ -1193,8 +1366,9 @@ export const examples: Registry["items"] = [
     ],
     files: [
       {
-        path: "example/animated-subscribe-button-demo.tsx",
+        path: "registry/example/animated-subscribe-button-demo.tsx",
         type: "registry:example",
+        target: "components/animated-subscribe-button-demo.tsx",
       },
     ],
   },
@@ -1206,9 +1380,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/cool-mode"],
     files: [
       {
-        path: "example/cool-mode-demo.tsx",
+        path: "registry/example/cool-mode-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/cool-mode-demo.tsx",
       },
     ],
   },
@@ -1220,9 +1394,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/cool-mode"],
     files: [
       {
-        path: "example/cool-mode-custom.tsx",
+        path: "registry/example/cool-mode-custom.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/cool-mode-custom.tsx",
       },
     ],
   },
@@ -1234,9 +1408,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/pulsating-button"],
     files: [
       {
-        path: "example/pulsating-button-demo.tsx",
+        path: "registry/example/pulsating-button-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/pulsating-button-demo.tsx",
       },
     ],
   },
@@ -1248,9 +1422,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/ripple-button"],
     files: [
       {
-        path: "example/ripple-button-demo.tsx",
+        path: "registry/example/ripple-button-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/ripple-button-demo.tsx",
       },
     ],
   },
@@ -1263,9 +1437,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/file-tree"],
     files: [
       {
-        path: "example/file-tree-demo.tsx",
+        path: "registry/example/file-tree-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/file-tree-demo.tsx",
       },
     ],
   },
@@ -1277,9 +1451,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/blur-fade"],
     files: [
       {
-        path: "example/blur-fade-demo.tsx",
+        path: "registry/example/blur-fade-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/blur-fade-demo.tsx",
       },
     ],
   },
@@ -1291,9 +1465,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/blur-fade"],
     files: [
       {
-        path: "example/blur-fade-text-demo.tsx",
+        path: "registry/example/blur-fade-text-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/blur-fade-text-demo.tsx",
       },
     ],
   },
@@ -1304,7 +1478,11 @@ export const examples: Registry["items"] = [
     description: "Example showing a Safari browser mockup.",
     registryDependencies: ["https://magicui.design/r/safari"],
     files: [
-      { path: "example/safari-demo.tsx", type: "registry:example", target: "" },
+      {
+        path: "registry/example/safari-demo.tsx",
+        type: "registry:example",
+        target: "components/safari-demo.tsx",
+      },
     ],
   },
   {
@@ -1315,9 +1493,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/safari"],
     files: [
       {
-        path: "example/safari-demo-2.tsx",
+        path: "registry/example/safari-demo-2.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/safari-demo-2.tsx",
       },
     ],
   },
@@ -1329,9 +1507,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/safari"],
     files: [
       {
-        path: "example/safari-demo-3.tsx",
+        path: "registry/example/safari-demo-3.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/safari-demo-3.tsx",
       },
     ],
   },
@@ -1343,9 +1521,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/safari"],
     files: [
       {
-        path: "example/safari-demo-4.tsx",
+        path: "registry/example/safari-demo-4.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/safari-demo-4.tsx",
       },
     ],
   },
@@ -1357,9 +1535,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/iphone-15-pro"],
     files: [
       {
-        path: "example/iphone-15-pro-demo.tsx",
+        path: "registry/example/iphone-15-pro-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/iphone-15-pro-demo.tsx",
       },
     ],
   },
@@ -1371,9 +1549,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/iphone-15-pro"],
     files: [
       {
-        path: "example/iphone-15-pro-demo-2.tsx",
+        path: "registry/example/iphone-15-pro-demo-2.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/iphone-15-pro-demo-2.tsx",
       },
     ],
   },
@@ -1385,9 +1563,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/iphone-15-pro"],
     files: [
       {
-        path: "example/iphone-15-pro-demo-3.tsx",
+        path: "registry/example/iphone-15-pro-demo-3.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/iphone-15-pro-demo-3.tsx",
       },
     ],
   },
@@ -1399,9 +1577,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/rainbow-button"],
     files: [
       {
-        path: "example/rainbow-button-demo.tsx",
+        path: "registry/example/rainbow-button-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/rainbow-button-demo.tsx",
       },
     ],
   },
@@ -1413,8 +1591,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/interactive-hover-button"],
     files: [
       {
-        path: "example/interactive-hover-button-demo.tsx",
+        path: "registry/example/interactive-hover-button-demo.tsx",
         type: "registry:example",
+        target: "components/interactive-hover-button-demo.tsx",
       },
     ],
   },
@@ -1426,9 +1605,9 @@ export const examples: Registry["items"] = [
     registryDependencies: ["https://magicui.design/r/terminal"],
     files: [
       {
-        path: "example/terminal-demo.tsx",
+        path: "registry/example/terminal-demo.tsx",
         type: "registry:example",
-        target: "",
+        target: "components/terminal-demo.tsx",
       },
     ],
   },

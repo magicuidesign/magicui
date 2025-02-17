@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lens-demo-2",
+  "type": "registry:example",
+  "title": "Lens Demo 2",
+  "description": "Second example showing a lens effect component",
+  "registryDependencies": [
+    "button",
+    "card",
+    "https://magicui.design/r/lens"
+  ],
+  "files": [
+    {
+      "path": "registry/example/lens-demo-2.tsx",
+      "content": "/* eslint-disable @next/next/no-img-element */\n\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Lens } from \"@/components/magicui/lens\";\n\nexport default function LensDemo() {\n  return (\n    <Card className=\"relative max-w-md shadow-none\">\n      <CardHeader>\n        <Lens isStatic position={{ x: 260, y: 150 }}>\n          <img\n            src=\"https://images.unsplash.com/photo-1736606355698-5efdb410fe93?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"\n            alt=\"image placeholder\"\n            width={500}\n            height={500}\n          />\n        </Lens>\n      </CardHeader>\n      <CardContent>\n        <CardTitle className=\"text-2xl\">Your next camp</CardTitle>\n        <CardDescription>\n          See our latest and best camp destinations all across the five\n          continents of the globe.\n        </CardDescription>\n      </CardContent>\n      <CardFooter className=\"space-x-4\">\n        <Button>Let&apos;s go</Button>\n        <Button variant=\"secondary\">Another time</Button>\n      </CardFooter>\n    </Card>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/lens-demo-2.tsx"
+    }
+  ]
+}

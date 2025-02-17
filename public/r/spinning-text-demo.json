@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinning-text-demo",
+  "type": "registry:example",
+  "title": "Spinning Text Demo",
+  "description": "Example showing spinning text animation.",
+  "registryDependencies": [
+    "https://magicui.design/r/spinning-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/spinning-text-demo.tsx",
+      "content": "import { SpinningText } from \"@/components/magicui/spinning-text\";\n\nexport default function SpinningTextBasic() {\n  return <SpinningText>learn more • earn more • grow more •</SpinningText>;\n}\n",
+      "type": "registry:example",
+      "target": "components/spinning-text-demo.tsx"
+    }
+  ]
+}

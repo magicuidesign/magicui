@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinning-text",
+  "type": "registry:ui",
+  "title": "Spinning Text",
+  "description": "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/spinning-text.tsx",
+      "content": "\"use client\";\nimport { cn } from \"@/lib/utils\";\nimport { motion, Transition, Variants } from \"motion/react\";\nimport React, { CSSProperties } from \"react\";\n\ntype SpinningTextProps = {\n  children: string | string[];\n  style?: CSSProperties;\n  duration?: number;\n  className?: string;\n  reverse?: boolean;\n  fontSize?: number;\n  radius?: number;\n  transition?: Transition;\n  variants?: {\n    container?: Variants;\n    item?: Variants;\n  };\n};\n\nconst BASE_TRANSITION = {\n  repeat: Infinity,\n  ease: \"linear\",\n};\n\nconst BASE_ITEM_VARIANTS = {\n  hidden: {\n    opacity: 1,\n  },\n  visible: {\n    opacity: 1,\n  },\n};\n\nexport function SpinningText({\n  children,\n  duration = 10,\n  style,\n  className,\n  reverse = false,\n  radius = 5,\n  transition,\n  variants,\n}: SpinningTextProps) {\n  if (typeof children !== \"string\" && !Array.isArray(children)) {\n    throw new Error(\"children must be a string or an array of strings\");\n  }\n\n  if (Array.isArray(children)) {\n    // Validate all elements are strings\n    if (!children.every((child) => typeof child === \"string\")) {\n      throw new Error(\"all elements in children array must be strings\");\n    }\n    children = children.join(\"\");\n  }\n\n  const letters = children.split(\"\");\n  letters.push(\" \");\n\n  const finalTransition = {\n    ...BASE_TRANSITION,\n    ...transition,\n    duration: (transition as { duration?: number })?.duration ?? duration,\n  };\n\n  const containerVariants = {\n    visible: { rotate: reverse ? -360 : 360 },\n    ...variants?.container,\n  };\n\n  const itemVariants = {\n    ...BASE_ITEM_VARIANTS,\n    ...variants?.item,\n  };\n\n  return (\n    <motion.div\n      className={cn(\"relative\", className)}\n      style={{\n        ...style,\n      }}\n      initial=\"hidden\"\n      animate=\"visible\"\n      variants={containerVariants}\n      transition={finalTransition}\n    >\n      {letters.map((letter, index) => (\n        <motion.span\n          aria-hidden=\"true\"\n          key={`${index}-${letter}`}\n          variants={itemVariants}\n          className=\"absolute left-1/2 top-1/2 inline-block\"\n          style={\n            {\n              \"--index\": index,\n              \"--total\": letters.length,\n              \"--radius\": radius,\n              transform: `\n                  translate(-50%, -50%)\n                  rotate(calc(360deg / var(--total) * var(--index)))\n                  translateY(calc(var(--radius, 5) * -1ch))\n                `,\n              transformOrigin: \"center\",\n            } as React.CSSProperties\n          }\n        >\n          {letter}\n        </motion.span>\n      ))}\n      <span className=\"sr-only\">{children}</span>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/spinning-text.tsx"
+    }
+  ]
+}

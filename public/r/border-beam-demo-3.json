@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam-demo-3",
+  "type": "registry:example",
+  "title": "Border Beam Demo 3",
+  "description": "Example showing an animated border beam effect.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "input",
+    "label",
+    "https://magicui.design/r/border-beam"
+  ],
+  "files": [
+    {
+      "path": "registry/example/border-beam-demo-3.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { BorderBeam } from \"@/components/magicui/border-beam\";\n\nexport default function LoginForm() {\n  return (\n    <Card className=\"relative w-[350px] overflow-hidden\">\n      <CardHeader>\n        <CardTitle>Login</CardTitle>\n        <CardDescription>\n          Enter your credentials to access your account.\n        </CardDescription>\n      </CardHeader>\n      <CardContent>\n        <form>\n          <div className=\"grid w-full items-center gap-4\">\n            <div className=\"flex flex-col space-y-1.5\">\n              <Label htmlFor=\"email\">Email</Label>\n              <Input id=\"email\" type=\"email\" placeholder=\"Enter your email\" />\n            </div>\n            <div className=\"flex flex-col space-y-1.5\">\n              <Label htmlFor=\"password\">Password</Label>\n              <Input\n                id=\"password\"\n                type=\"password\"\n                placeholder=\"Enter your password\"\n              />\n            </div>\n          </div>\n        </form>\n      </CardContent>\n      <CardFooter className=\"flex justify-between\">\n        <Button variant=\"outline\">Register</Button>\n        <Button>Login</Button>\n      </CardFooter>\n      <BorderBeam\n        duration={4}\n        size={300}\n        reverse\n        className=\"from-transparent via-green-500 to-transparent\"\n      />\n    </Card>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/border-beam-demo-3.tsx"
+    }
+  ]
+}

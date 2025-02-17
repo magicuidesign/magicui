@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam-demo-2",
+  "type": "registry:example",
+  "title": "Border Beam Demo",
+  "description": "Example showing an animated border beam effect.",
+  "registryDependencies": [
+    "button",
+    "card",
+    "https://magicui.design/r/border-beam"
+  ],
+  "files": [
+    {
+      "path": "registry/example/border-beam-demo-2.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport { BorderBeam } from \"@/components/magicui/border-beam\";\nimport { Play, SkipBack, SkipForward } from \"lucide-react\";\n\nexport default function MusicPlayer() {\n  return (\n    <Card className=\"relative w-[350px] overflow-hidden\">\n      <CardHeader>\n        <CardTitle>Now Playing</CardTitle>\n        <CardDescription>Stairway to Heaven - Led Zeppelin</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"flex flex-col items-center gap-4\">\n          <div className=\"h-48 w-48 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500\" />\n          <div className=\"h-1 w-full rounded-full bg-secondary\">\n            <div className=\"h-full w-1/3 rounded-full bg-primary\" />\n          </div>\n          <div className=\"flex w-full justify-between text-sm text-muted-foreground\">\n            <span>2:45</span>\n            <span>8:02</span>\n          </div>\n        </div>\n      </CardContent>\n      <CardFooter className=\"flex justify-center gap-4\">\n        <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n          <SkipBack className=\"size-4\" />\n        </Button>\n        <Button size=\"icon\" className=\"rounded-full\">\n          <Play className=\"size-4\" />\n        </Button>\n        <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n          <SkipForward className=\"size-4\" />\n        </Button>\n      </CardFooter>\n      <BorderBeam\n        duration={6}\n        size={400}\n        className=\"from-transparent via-red-500 to-transparent\"\n      />\n      <BorderBeam\n        duration={6}\n        delay={3}\n        size={400}\n        className=\"from-transparent via-blue-500 to-transparent\"\n      />\n    </Card>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/border-beam-demo-2.tsx"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
-import { Metadata } from "next";
 import { env } from "@/env.mjs";
 import clsx, { ClassValue } from "clsx";
+import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -56,7 +56,7 @@ export function absoluteUrl(path: string) {
 
 export function constructMetadata({
   title = "Magic UI - Modern React + Tailwind CSS components & Templates",
-  description = "Magic UI is a curated collection of the best landing page components built using React + Tailwind CSS + Framer Motion",
+  description = "Magic UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
   image = absoluteUrl("/og"),
   ...props
 }: {
@@ -71,7 +71,7 @@ export function constructMetadata({
     keywords: [
       "React",
       "Tailwind CSS",
-      "Framer Motion",
+      "Motion",
       "Landing Page",
       "Components",
       "Next.js",
