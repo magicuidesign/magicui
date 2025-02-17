@@ -231,10 +231,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Pointer Demo 1",
     description: "Example showing a pointer effect component",
-    registryDependencies: [
-      "https://magicui.design/r/dot-pattern",
-      "https://magicui.design/r/pointer",
-    ],
+    registryDependencies: ["https://magicui.design/r/pointer"],
     files: [
       {
         path: "registry/example/pointer-demo-1.tsx",

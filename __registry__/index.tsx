@@ -1867,10 +1867,7 @@ export const Index: Record<string, any> = {
     name: "pointer-demo-1",
     description: "Example showing a pointer effect component",
     type: "registry:example",
-    registryDependencies: [
-      "https://magicui.design/r/dot-pattern",
-      "https://magicui.design/r/pointer",
-    ],
+    registryDependencies: ["https://magicui.design/r/pointer"],
     files: [
       {
         path: "registry/example/pointer-demo-1.tsx",
