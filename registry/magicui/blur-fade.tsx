@@ -6,12 +6,13 @@ import {
   useInView,
   UseInViewOptions,
   Variants,
+  MotionProps,
 } from "motion/react";
 import { useRef } from "react";
 
 type MarginType = UseInViewOptions["margin"];
 
-interface BlurFadeProps {
+interface BlurFadeProps extends MotionProps {
   children: React.ReactNode;
   className?: string;
   variant?: {
@@ -38,6 +39,7 @@ export function BlurFade({
   inView = false,
   inViewMargin = "-50px",
   blur = "6px",
+  ...props
 }: BlurFadeProps) {
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
@@ -70,6 +72,7 @@ export function BlurFade({
           ease: "easeOut",
         }}
         className={className}
+        {...props}
       >
         {children}
       </motion.div>
