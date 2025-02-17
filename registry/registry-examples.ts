@@ -228,8 +228,16 @@ export const examples: Registry["items"] = [
   {
     name: "dot-pattern-with-glow-effect",
     type: "registry:example",
-    registryDependencies: ["dot-pattern"],
-    files: ["example/dot-pattern-with-glow-effect.tsx"],
+    title: "Dot Pattern with glow effect",
+    description: "Example showing a dot pattern with glow effect",
+    registryDependencies: ["https://magicui.design/r/dot-pattern"],
+    files: [
+      {
+        path: "example/dot-pattern-with-glow-effect.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
   },
   {
     name: "flickering-grid-demo",

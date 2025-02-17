@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useId, useRef, useEffect, useState } from "react";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import React, { useEffect, useId, useRef, useState } from "react";
 
 /**
  *  DotPattern Component Props
