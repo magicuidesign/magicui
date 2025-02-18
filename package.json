@@ -10,7 +10,7 @@
     "build:cli": "pnpm prefix:cli build",
     "release:cli": "pnpm prefix:cli release",
     "preinstall": "npx only-allow pnpm",
-    "dev": "concurrently \"content-collections watch\" \"next dev\"",
+    "dev": "next dev",
     "prebuild": "pnpm build:docs && pnpm build:registry",
     "build": "next build",
     "build:registry": "npx tsx ./scripts/build-registry.mts",
