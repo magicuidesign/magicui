@@ -2,7 +2,6 @@ import { Mdx } from "@/components/mdx-components";
 import { DocPager } from "@/components/pager";
 import { badgeVariants } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 
@@ -56,7 +55,6 @@ export async function generateMetadata({
           url: doc.image,
           width: 1200,
           height: 630,
-          alt: siteConfig.name,
         },
       ],
     },
