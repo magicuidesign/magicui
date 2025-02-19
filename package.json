@@ -123,5 +123,10 @@
   "engines": {
     "node": ">=20.6.1",
     "pnpm": ">=9"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
