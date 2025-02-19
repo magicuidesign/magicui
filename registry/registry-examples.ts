@@ -1186,6 +1186,48 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "text-animate-demo-7",
+    type: "registry:example",
+    title: "Text Animate Demo 7",
+    description: "Seventh example showing various text animations.",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-7.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-7.tsx",
+      },
+    ],
+  },
+  {
+    name: "text-animate-demo-8",
+    type: "registry:example",
+    title: "Text Animate Demo 8",
+    description: "Eighth example showing various text animations.",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-8.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-8.tsx",
+      },
+    ],
+  },
+  {
+    name: "text-animate-demo-9",
+    type: "registry:example",
+    title: "Text Animate Demo 9",
+    description: "Ninth example showing various text animations.",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-9.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-9.tsx",
+      },
+    ],
+  },
+  {
     name: "shiny-button-demo",
     type: "registry:example",
     title: "Shiny Button Demo",
