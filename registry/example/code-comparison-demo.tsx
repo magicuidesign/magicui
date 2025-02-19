@@ -38,8 +38,9 @@ export const config = {
 };`;
 
 const afterCode = `import { createMiddleware, type MiddlewareFunctionProps } from '@app/(auth)/auth/_middleware';
-import { auth } from '@app/(auth)/auth/_middleware'; // [!code --]
-import { team } from '@app/(team)/team/_middleware'; // [!code ++]
+import { auth } from '@/app/(auth)/auth/_middleware'; // [!code --]
+import { auth } from '@/app/(auth)/auth/_middleware'; // [!code ++]
+import { team } from '@/app/(team)/team/_middleware';
 
 const middlewares = {
   '/auth{/:path?}': auth,

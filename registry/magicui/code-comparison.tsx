@@ -48,7 +48,7 @@ export function CodeComparison({
         "Has focused elements - Before:",
         hasBeforeFocus,
         "After:",
-        hasAfterFocus,
+        hasAfterFocus
       );
       setHasLeftFocus(hasBeforeFocus);
       setHasRightFocus(hasAfterFocus);
@@ -126,7 +126,7 @@ export function CodeComparison({
             "group-hover/right:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/right:[&>pre>code>:not(.focused)]:!blur-none",
             "[&>pre>code>.add]:bg-[rgba(16,185,129,.16)] [&>pre>code>.remove]:bg-[rgba(244,63,94,.16)]",
             "group-hover/left:[&>pre>code>:not(.focused)]:transition-all group-hover/left:[&>pre>code>:not(.focused)]:duration-300",
-            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300",
+            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300"
           )}
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
@@ -142,34 +142,34 @@ export function CodeComparison({
   return (
     <div className="mx-auto w-full max-w-5xl">
       <div className="group relative w-full overflow-hidden rounded-md border border-border">
-        <div className="relative grid md:grid-cols-2 md:divide-x md:divide-primary/20">
+        <div className="relative grid md:grid-cols-2">
           <div
             className={cn(
-              "leftside group/left",
+              "leftside group/left border-primary/20 md:border-r",
               hasLeftFocus &&
                 "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
-              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
             )}
           >
-            <div className="flex items-center bg-accent p-2 text-sm text-foreground">
+            <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               {filename}
-              <span className="ml-auto">before</span>
+              <span className="ml-auto hidden md:block">before</span>
             </div>
             {renderCode(beforeCode, highlightedBefore)}
           </div>
           <div
             className={cn(
-              "rightside group/right",
+              "rightside group/right border-t border-primary/20 md:border-t-0",
               hasRightFocus &&
                 "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
-              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
             )}
           >
-            <div className="flex items-center bg-accent p-2 text-sm text-foreground">
+            <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               {filename}
-              <span className="ml-auto">after</span>
+              <span className="ml-auto hidden md:block">after</span>
             </div>
             {renderCode(afterCode, highlightedAfter)}
           </div>
