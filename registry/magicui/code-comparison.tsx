@@ -7,7 +7,7 @@ import {
 } from "@shikijs/transformers";
 import { FileIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface CodeComparisonProps {
   beforeCode: string;
@@ -36,6 +36,25 @@ export function CodeComparison({
   const [highlightedBefore, setHighlightedBefore] = useState("");
   const [highlightedAfter, setHighlightedAfter] = useState("");
 
+  const [hasLeftFocus, setHasLeftFocus] = useState(false);
+  const [hasRightFocus, setHasRightFocus] = useState(false);
+
+  useEffect(() => {
+    // Check if highlighted code contains any focused elements after it's set
+    if (highlightedBefore || highlightedAfter) {
+      const hasBeforeFocus = highlightedBefore.includes('class="line focused"');
+      const hasAfterFocus = highlightedAfter.includes('class="line focused"');
+      console.log(
+        "Has focused elements - Before:",
+        hasBeforeFocus,
+        "After:",
+        hasAfterFocus,
+      );
+      setHasLeftFocus(hasBeforeFocus);
+      setHasRightFocus(hasAfterFocus);
+    }
+  }, [highlightedBefore, highlightedAfter]);
+
   useEffect(() => {
     const currentTheme = theme === "system" ? systemTheme : theme;
     const selectedTheme = currentTheme === "dark" ? darkTheme : lightTheme;
@@ -51,18 +70,18 @@ export function CodeComparison({
           lang: language,
           theme: selectedTheme,
           transformers: [
-            transformerNotationHighlight(),
-            transformerNotationDiff(),
-            transformerNotationFocus(),
+            transformerNotationHighlight({ matchAlgorithm: "v3" }),
+            transformerNotationDiff({ matchAlgorithm: "v3" }),
+            transformerNotationFocus({ matchAlgorithm: "v3" }),
           ],
         });
         const after = await codeToHtml(afterCode, {
           lang: language,
           theme: selectedTheme,
           transformers: [
-            transformerNotationHighlight(),
-            transformerNotationDiff(),
-            transformerNotationFocus(),
+            transformerNotationHighlight({ matchAlgorithm: "v3" }),
+            transformerNotationDiff({ matchAlgorithm: "v3" }),
+            transformerNotationFocus({ matchAlgorithm: "v3" }),
           ],
         });
         setHighlightedBefore(before);
@@ -96,11 +115,18 @@ export function CodeComparison({
               "--highlight-color": highlightColor,
             } as React.CSSProperties
           }
+          /* [&>pre]:!w-full  [&>pre]:p-4 */
           className={cn(
             "h-full w-full overflow-auto bg-background font-mono text-xs",
-            "[&>pre]:h-full [&>pre]:!bg-transparent [&>pre]:p-4",
-            "[&>pre>code]:!inline-block [&>pre>code]:w-full",
+            "[&>pre]:h-full [&>pre]:!w-screen [&>pre]:py-2",
+            "[&>pre>code]:!inline-block [&>pre>code]:!w-full",
+            "[&>pre>code>span]:!inline-block [&>pre>code>span]:w-full [&>pre>code>span]:px-4 [&>pre>code>span]:py-0.5",
             "[&>pre>code>.highlighted]:inline-block [&>pre>code>.highlighted]:w-full [&>pre>code>.highlighted]:!bg-[var(--highlight-color)]",
+            "group-hover/left:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/left:[&>pre>code>:not(.focused)]:!blur-none",
+            "group-hover/right:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/right:[&>pre>code>:not(.focused)]:!blur-none",
+            "[&>pre>code>.add]:bg-[rgba(16,185,129,.16)] [&>pre>code>.remove]:bg-[rgba(244,63,94,.16)]",
+            "group-hover/left:[&>pre>code>:not(.focused)]:transition-all group-hover/left:[&>pre>code>:not(.focused)]:duration-300",
+            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300",
           )}
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
@@ -115,9 +141,16 @@ export function CodeComparison({
   };
   return (
     <div className="mx-auto w-full max-w-5xl">
-      <div className="relative w-full overflow-hidden rounded-md border border-border">
-        <div className="relative grid md:grid-cols-2 md:divide-x md:divide-border">
-          <div>
+      <div className="group relative w-full overflow-hidden rounded-md border border-border">
+        <div className="relative grid md:grid-cols-2 md:divide-x md:divide-primary/20">
+          <div
+            className={cn(
+              "leftside group/left",
+              hasLeftFocus &&
+                "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
+            )}
+          >
             <div className="flex items-center bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               {filename}
@@ -125,7 +158,14 @@ export function CodeComparison({
             </div>
             {renderCode(beforeCode, highlightedBefore)}
           </div>
-          <div>
+          <div
+            className={cn(
+              "rightside group/right",
+              hasRightFocus &&
+                "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
+            )}
+          >
             <div className="flex items-center bg-accent p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               {filename}
@@ -134,7 +174,7 @@ export function CodeComparison({
             {renderCode(afterCode, highlightedAfter)}
           </div>
         </div>
-        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md bg-accent text-xs text-foreground">
+        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-primary/20 bg-accent text-xs text-foreground">
           VS
         </div>
       </div>

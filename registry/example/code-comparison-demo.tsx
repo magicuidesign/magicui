@@ -5,7 +5,7 @@ const beforeCode = `import { NextRequest } from 'next/server';
 export const middleware = async (req: NextRequest) => {
   let user = undefined;
   let team = undefined;
-  const token = req.headers.get('token');
+  const token = req.headers.get('token'); 
 
   if(req.nextUrl.pathname.startsWith('/auth')) {
     user = await getUserByToken(token);
@@ -25,10 +25,10 @@ export const middleware = async (req: NextRequest) => {
     const slug = req.nextUrl.query.slug;
     team = await getTeamBySlug(slug); // [!code highlight]
 
-    if(!team) {
-      return NextResponse.redirect('/');
-    }
-  }
+    if(!team) { // [!code highlight]
+      return NextResponse.redirect('/'); // [!code highlight]
+    } // [!code highlight]
+  } // [!code highlight]
 
   return NextResponse.next(); // [!code highlight]
 }
@@ -63,7 +63,7 @@ export default function CodeComparisonDemo() {
       darkTheme="github-dark"
       beforeHighlightRange={{ start: 1, end: 3 }}
       afterHighlightRange={{ start: 4, end: 10 }}
-      highlightColor="green"
+      highlightColor="rgba(101, 117, 133, 0.16)"
     />
   );
 }
