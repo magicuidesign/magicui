@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-animate-demo-9",
+  "type": "registry:example",
+  "title": "Text Animate Demo 9",
+  "description": "Ninth example showing various text animations.",
+  "registryDependencies": [
+    "https://magicui.design/r/text-animate"
+  ],
+  "files": [
+    {
+      "path": "registry/example/text-animate-demo-9.tsx",
+      "content": "import { TextAnimate } from \"@/components/magicui/text-animate\";\r\n\r\nexport default function TextAnimateDemo8() {\r\n  return (\r\n    <TextAnimate\r\n      variants={{\r\n        hidden: {\r\n          opacity: 0,\r\n          y: 20,\r\n        },\r\n        show: (i) => ({\r\n          opacity: 1,\r\n          y: 0,\r\n          transition: {\r\n            delay: i * 0.1,\r\n            duration: 0.6,\r\n            y: {\r\n              type: \"spring\",\r\n              damping: 5,\r\n              stiffness: 100,\r\n            },\r\n          },\r\n        }),\r\n        exit: (i) => ({\r\n          opacity: 0,\r\n          y: 20,\r\n          transition: {\r\n            delay: i * 0.1,\r\n          },\r\n        }),\r\n      }}\r\n      by=\"character\"\r\n    >\r\n      Wavy Motion!\r\n    </TextAnimate>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/text-animate-demo-9.tsx"
+    }
+  ]
+}

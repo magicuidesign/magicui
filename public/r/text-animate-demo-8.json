@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-animate-demo-8",
+  "type": "registry:example",
+  "title": "Text Animate Demo 8",
+  "description": "Eighth example showing various text animations.",
+  "registryDependencies": [
+    "https://magicui.design/r/text-animate"
+  ],
+  "files": [
+    {
+      "path": "registry/example/text-animate-demo-8.tsx",
+      "content": "import { TextAnimate } from \"@/components/magicui/text-animate\";\r\n\r\nexport default function TextAnimateDemo8() {\r\n  return (\r\n    <TextAnimate animation=\"blurInUp\" by=\"character\" duration={5}>\r\n      Blur in by character\r\n    </TextAnimate>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/text-animate-demo-8.tsx"
+    }
+  ]
+}

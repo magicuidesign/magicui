@@ -3480,6 +3480,75 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "text-animate-demo-7": {
+    name: "text-animate-demo-7",
+    description: "Seventh example showing various text animations.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-7.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-7.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-animate-demo-7.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "text-animate-demo-8": {
+    name: "text-animate-demo-8",
+    description: "Eighth example showing various text animations.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-8.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-8.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-animate-demo-8.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "text-animate-demo-9": {
+    name: "text-animate-demo-9",
+    description: "Ninth example showing various text animations.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-9.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-9.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-animate-demo-9.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "shiny-button-demo": {
     name: "shiny-button-demo",
     description: "Example showing a shiny button with dynamic styles.",

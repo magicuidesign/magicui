@@ -76,6 +76,7 @@ const defaultContainerVariants = {
   show: {
     opacity: 1,
     transition: {
+      delayChildren: 0,
       staggerChildren: 0.05,
     },
   },
@@ -106,14 +107,13 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, y: 20 },
-      show: (delay: number) => ({
+      show: {
         opacity: 1,
         y: 0,
         transition: {
-          delay,
           duration: 0.3,
         },
-      }),
+      },
       exit: {
         opacity: 0,
         y: 20,
@@ -125,14 +125,13 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)" },
-      show: (i: number) => ({
+      show: {
         opacity: 1,
         filter: "blur(0px)",
         transition: {
-          delay: i * 0.1,
           duration: 0.3,
         },
-      }),
+      },
       exit: {
         opacity: 0,
         filter: "blur(10px)",
@@ -144,7 +143,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
-      show: (delay: number) => ({
+      show: {
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
@@ -153,7 +152,7 @@ const defaultItemAnimationVariants: Record<
           opacity: { duration: 0.4 },
           filter: { duration: 0.3 },
         },
-      }),
+      },
       exit: {
         opacity: 0,
         filter: "blur(10px)",
@@ -170,7 +169,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)", y: -20 },
-      show: (delay: number) => ({
+      show: {
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
@@ -179,21 +178,20 @@ const defaultItemAnimationVariants: Record<
           opacity: { duration: 0.4 },
           filter: { duration: 0.3 },
         },
-      }),
+      },
     },
   },
   slideUp: {
     container: defaultContainerVariants,
     item: {
       hidden: { y: 20, opacity: 0 },
-      show: (delay: number) => ({
+      show: {
         y: 0,
         opacity: 1,
         transition: {
-          delay,
           duration: 0.3,
         },
-      }),
+      },
       exit: {
         y: -20,
         opacity: 0,
@@ -278,11 +276,10 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { scale: 1.5, opacity: 0 },
-      show: (delay: number) => ({
+      show: {
         scale: 1,
         opacity: 1,
         transition: {
-          delay,
           duration: 0.3,
           scale: {
             type: "spring",
@@ -290,7 +287,7 @@ const defaultItemAnimationVariants: Record<
             stiffness: 300,
           },
         },
-      }),
+      },
       exit: {
         scale: 1.5,
         opacity: 0,
@@ -316,29 +313,6 @@ export function TextAnimate({
 }: TextAnimateProps) {
   const MotionComponent = motion.create(Component);
 
-  // Use provided variants or default variants based on animation type
-  const finalVariants = animation
-    ? {
-        container: {
-          ...defaultItemAnimationVariants[animation].container,
-          show: {
-            ...defaultItemAnimationVariants[animation].container.show,
-            transition: {
-              staggerChildren: staggerTimings[by],
-            },
-          },
-          exit: {
-            ...defaultItemAnimationVariants[animation].container.exit,
-            transition: {
-              staggerChildren: staggerTimings[by],
-              staggerDirection: -1,
-            },
-          },
-        },
-        item: defaultItemAnimationVariants[animation].item,
-      }
-    : { container: defaultContainerVariants, item: defaultItemVariants };
-
   let segments: string[] = [];
   switch (by) {
     case "word":
@@ -355,6 +329,43 @@ export function TextAnimate({
       segments = [children];
       break;
   }
+
+  const showVariant = defaultItemAnimationVariants[animation].item.show;
+
+  const finalVariants = animation
+    ? {
+        container: {
+          ...defaultItemAnimationVariants[animation].container,
+          show: {
+            ...defaultItemAnimationVariants[animation].container.show,
+            transition: {
+              delayChildren: delay,
+              staggerChildren: duration / segments.length,
+            },
+          },
+          exit: {
+            ...defaultItemAnimationVariants[animation].container.exit,
+            transition: {
+              staggerChildren: duration / segments.length,
+              staggerDirection: -1,
+            },
+          },
+        },
+
+        item: {
+          ...defaultItemAnimationVariants[animation].item,
+          show: {
+            ...defaultItemAnimationVariants[animation].item.show,
+            transition: {
+              ...((typeof showVariant !== "function" &&
+                showVariant.transition) ||
+                {}),
+              ...(segments.length <= 1 && { duration: duration }),
+            },
+          },
+        },
+      }
+    : { container: defaultContainerVariants, item: defaultItemVariants };
 
   return (
     <AnimatePresence mode="popLayout">
@@ -375,6 +386,7 @@ export function TextAnimate({
             custom={i * staggerTimings[by]}
             className={cn(
               by === "line" ? "block" : "inline-block whitespace-pre",
+              by === "character" && "",
               segmentClassName,
             )}
           >
