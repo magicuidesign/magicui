@@ -2,6 +2,7 @@ import ComponentDemos from "@/components/sections/component-demos";
 import Hero from "@/components/sections/hero";
 import Showcase from "@/components/sections/showcase";
 import Testimonials from "@/components/sections/testimonials";
+import VideoTestimonials from "@/components/sections/video-testimonials";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Showcase />
       <ComponentDemos />
       <Testimonials />
+      <VideoTestimonials />
     </>
   );
 }
