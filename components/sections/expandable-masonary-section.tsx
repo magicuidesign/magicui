@@ -1,9 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Masonry } from "masonic";
 import { AnimatePresence, motion } from "motion/react";
+import dynamic from "next/dynamic";
 import { useRef, useState } from "react";
+
+const Masonry = dynamic(() => import("masonic").then((mod) => mod.Masonry), {
+  ssr: false,
+});
 
 interface ExpandableMasonarySectionProps {
   children: React.ReactNode[];
@@ -33,7 +37,7 @@ export function ExpandableMasonarySection({
           items={children}
           columnGutter={16}
           columnWidth={300}
-          render={({ data }) => data}
+          render={({ data }) => <>{data}</>}
         />
         <AnimatePresence>
           {!expanded && (
