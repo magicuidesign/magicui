@@ -1396,6 +1396,19 @@
       ]
     },
     {
+      "name": "glow",
+      "type": "registry:ui",
+      "title": "Glow",
+      "description": "A beautiful glow effect that appears when hovering over elements",
+      "files": [
+        {
+          "path": "registry/magicui/glow.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/glow.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3248,6 +3261,21 @@
           "path": "registry/example/terminal-demo.tsx",
           "type": "registry:example",
           "target": "components/terminal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glow-demo",
+      "type": "registry:example",
+      "title": "Glow Demo",
+      "description": "Example showing a beautiful glow effect that appears when hovering over elements.",
+      "registryDependencies": [
+        "https://magicui.design/r/glow"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glow-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

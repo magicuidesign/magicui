@@ -231,6 +231,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Glow",
+          href: `/docs/components/glow`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
