@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useMotionValue } from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 /**
  * @property {React.ReactNode} children - The child elements to be wrapped
@@ -26,33 +26,11 @@ export function PointerWrapper({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const ref = useRef<HTMLDivElement>(null);
-  const [rect, setRect] = useState<DOMRect | null>(null);
   const [isInside, setIsInside] = useState<boolean>(false);
 
-  useEffect(() => {
-    function updateRect() {
-      if (ref.current) {
-        setRect(ref.current.getBoundingClientRect());
-      }
-    }
-
-    // Initial rect calculation
-    updateRect();
-
-    // Update rect on window resize
-    window.addEventListener("resize", updateRect);
-
-    return () => {
-      window.removeEventListener("resize", updateRect);
-    };
-  }, []);
-
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    if (rect) {
-      x.set(e.clientX - rect.left);
-      y.set(e.clientY - rect.top);
-    }
+    x.set(e.clientX);
+    y.set(e.clientY);
   }
 
   function handleMouseLeave() {
@@ -60,15 +38,11 @@ export function PointerWrapper({
   }
 
   function handleMouseEnter() {
-    if (ref.current) {
-      setRect(ref.current.getBoundingClientRect());
-      setIsInside(true);
-    }
+    setIsInside(true);
   }
 
   return (
     <div
-      ref={ref}
       className={cn("relative cursor-none", className)}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
@@ -101,7 +75,7 @@ interface PointerProps {
 function Pointer({ x, y }: PointerProps): JSX.Element {
   return (
     <motion.div
-      className="pointer-events-none absolute z-50 h-4 w-4 rounded-full"
+      className="pointer-events-none fixed z-50 h-4 w-4 rounded-full"
       style={{
         top: y,
         left: x,
