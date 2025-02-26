@@ -743,7 +743,7 @@ export const ui: Registry["items"] = [
             keyframes: {
               gradient: {
                 to: {
-                  backgroundPosition: "var(--bg-size) 0",
+                  backgroundPosition: "var(--bg-size, 300%) 0",
                 },
               },
             },

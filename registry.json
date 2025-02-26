@@ -845,7 +845,7 @@
               "keyframes": {
                 "gradient": {
                   "to": {
-                    "backgroundPosition": "var(--bg-size) 0"
+                    "backgroundPosition": "var(--bg-size, 300%) 0"
                   }
                 }
               }
@@ -2372,6 +2372,22 @@
           "path": "registry/example/animated-gradient-text-demo.tsx",
           "type": "registry:example",
           "target": "components/animated-gradient-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-gradient-text-demo-2",
+      "type": "registry:example",
+      "title": "Animated Gradient Text Demo 2",
+      "description": "Second example showing text with animated gradient backgrounds.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-gradient-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-gradient-text-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/animated-gradient-text-demo-2.tsx"
         }
       ]
     },
