@@ -102,7 +102,7 @@ module.exports = {
         },
         gradient: {
           to: {
-            backgroundPosition: "var(--bg-size) 0",
+            backgroundPosition: "var(--bg-size, 300%) 0",
           },
         },
         meteor: {

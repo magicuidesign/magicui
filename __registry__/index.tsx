@@ -2944,6 +2944,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-gradient-text-demo-2": {
+    name: "animated-gradient-text-demo-2",
+    description:
+      "Second example showing text with animated gradient backgrounds.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/animated-gradient-text"],
+    files: [
+      {
+        path: "registry/example/animated-gradient-text-demo-2.tsx",
+        type: "registry:example",
+        target: "components/animated-gradient-text-demo-2.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-gradient-text-demo-2.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "orbiting-circles-demo": {
     name: "orbiting-circles-demo",
     description: "Example showing circles moving in orbital paths.",

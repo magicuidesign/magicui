@@ -857,6 +857,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "animated-gradient-text-demo-2",
+    type: "registry:example",
+    title: "Animated Gradient Text Demo 2",
+    description:
+      "Second example showing text with animated gradient backgrounds.",
+    registryDependencies: ["https://magicui.design/r/animated-gradient-text"],
+    files: [
+      {
+        path: "registry/example/animated-gradient-text-demo-2.tsx",
+        type: "registry:example",
+        target: "components/animated-gradient-text-demo-2.tsx",
+      },
+    ],
+  },
+  {
     name: "orbiting-circles-demo",
     type: "registry:example",
     title: "Orbiting Circles Demo",
