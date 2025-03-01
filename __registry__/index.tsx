@@ -1530,6 +1530,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "blob-background": {
+    name: "blob-background",
+    description: "A good-looking animated blob background.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/blob-background.tsx",
+        type: "registry:ui",
+        target: "components/magicui/blob-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/blob-background.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4224,6 +4247,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "blob-background-demo": {
+    name: "blob-background-demo",
+    description: "Example showing an animated blob background.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/blob-background"],
+    files: [
+      {
+        path: "registry/example/blob-background-demo.tsx",
+        type: "registry:example",
+        target: "components/blob-background-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/blob-background-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

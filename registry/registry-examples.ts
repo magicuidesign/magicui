@@ -1640,4 +1640,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "blob-background-demo",
+    type: "registry:example",
+    title: "Blob Background Demo",
+    description: "Example showing an animated blob background.",
+    registryDependencies: ["https://magicui.design/r/blob-background"],
+    files: [
+      {
+        path: "registry/example/blob-background-demo.tsx",
+        type: "registry:example",
+        target: "components/blob-background-demo.tsx",
+      },
+    ],
+  },
 ];
