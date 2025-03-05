@@ -62,8 +62,6 @@ export default function CodeComparisonDemo() {
       filename="middleware.ts"
       lightTheme="github-light"
       darkTheme="github-dark"
-      beforeHighlightRange={{ start: 1, end: 3 }}
-      afterHighlightRange={{ start: 4, end: 10 }}
       highlightColor="rgba(101, 117, 133, 0.16)"
     />
   );
