@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-ticker-demo-2",
+  "type": "registry:example",
+  "title": "Number Ticker Demo 2",
+  "description": "Example showing animated counting numbers.",
+  "registryDependencies": [
+    "https://magicui.design/r/number-ticker"
+  ],
+  "files": [
+    {
+      "path": "registry/example/number-ticker-demo-2.tsx",
+      "content": "import { NumberTicker } from \"@/components/magicui/number-ticker\";\r\n\r\nexport default function NumberTickerDemo() {\r\n  return (\r\n    <NumberTicker\r\n      value={100}\r\n      startValue={80}\r\n      className=\"whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white\"\r\n    />\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/number-ticker-demo-2.tsx"
+    }
+  ]
+}

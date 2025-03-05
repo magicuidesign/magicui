@@ -562,6 +562,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "number-ticker-demo-2",
+    type: "registry:example",
+    title: "Number Ticker Demo 2",
+    description: "Example showing animated counting numbers.",
+    registryDependencies: ["https://magicui.design/r/number-ticker"],
+    files: [
+      {
+        path: "registry/example/number-ticker-demo-2.tsx",
+        type: "registry:example",
+        target: "components/number-ticker-demo-2.tsx",
+      },
+    ],
+  },
+  {
     name: "number-ticker-decimal-demo",
     type: "registry:example",
     title: "Number Ticker Decimal Demo",
