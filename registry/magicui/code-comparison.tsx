@@ -7,7 +7,7 @@ import {
 } from "@shikijs/transformers";
 import { FileIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 interface CodeComparisonProps {
   beforeCode: string;
@@ -16,8 +16,6 @@ interface CodeComparisonProps {
   filename: string;
   lightTheme: string;
   darkTheme: string;
-  beforeHighlightRange?: { start: number; end: number };
-  afterHighlightRange?: { start: number; end: number };
   highlightColor?: string;
 }
 
@@ -28,37 +26,27 @@ export function CodeComparison({
   filename,
   lightTheme,
   darkTheme,
-  beforeHighlightRange,
-  afterHighlightRange,
   highlightColor = "#ff3333",
 }: CodeComparisonProps) {
   const { theme, systemTheme } = useTheme();
   const [highlightedBefore, setHighlightedBefore] = useState("");
   const [highlightedAfter, setHighlightedAfter] = useState("");
-
   const [hasLeftFocus, setHasLeftFocus] = useState(false);
   const [hasRightFocus, setHasRightFocus] = useState(false);
 
+  const selectedTheme = useMemo(() => {
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    return currentTheme === "dark" ? darkTheme : lightTheme;
+  }, [theme, systemTheme, darkTheme, lightTheme]);
+
   useEffect(() => {
-    // Check if highlighted code contains any focused elements after it's set
     if (highlightedBefore || highlightedAfter) {
-      const hasBeforeFocus = highlightedBefore.includes('class="line focused"');
-      const hasAfterFocus = highlightedAfter.includes('class="line focused"');
-      console.log(
-        "Has focused elements - Before:",
-        hasBeforeFocus,
-        "After:",
-        hasAfterFocus
-      );
-      setHasLeftFocus(hasBeforeFocus);
-      setHasRightFocus(hasAfterFocus);
+      setHasLeftFocus(highlightedBefore.includes('class="line focused"'));
+      setHasRightFocus(highlightedAfter.includes('class="line focused"'));
     }
   }, [highlightedBefore, highlightedAfter]);
 
   useEffect(() => {
-    const currentTheme = theme === "system" ? systemTheme : theme;
-    const selectedTheme = currentTheme === "dark" ? darkTheme : lightTheme;
-
     async function highlightCode() {
       try {
         const { codeToHtml } = await import("shiki");
@@ -93,29 +81,13 @@ export function CodeComparison({
       }
     }
     highlightCode();
-  }, [
-    theme,
-    systemTheme,
-    beforeCode,
-    afterCode,
-    language,
-    lightTheme,
-    darkTheme,
-    beforeHighlightRange,
-    afterHighlightRange,
-    highlightColor,
-  ]);
+  }, [beforeCode, afterCode, language, selectedTheme]);
 
   const renderCode = (code: string, highlighted: string) => {
     if (highlighted) {
       return (
         <div
-          style={
-            {
-              "--highlight-color": highlightColor,
-            } as React.CSSProperties
-          }
-          /* [&>pre]:!w-full  [&>pre]:p-4 */
+          style={{ "--highlight-color": highlightColor } as React.CSSProperties}
           className={cn(
             "h-full w-full overflow-auto bg-background font-mono text-xs",
             "[&>pre]:h-full [&>pre]:!w-screen [&>pre]:py-2",
@@ -126,7 +98,7 @@ export function CodeComparison({
             "group-hover/right:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/right:[&>pre>code>:not(.focused)]:!blur-none",
             "[&>pre>code>.add]:bg-[rgba(16,185,129,.16)] [&>pre>code>.remove]:bg-[rgba(244,63,94,.16)]",
             "group-hover/left:[&>pre>code>:not(.focused)]:transition-all group-hover/left:[&>pre>code>:not(.focused)]:duration-300",
-            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300"
+            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300",
           )}
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
@@ -139,6 +111,7 @@ export function CodeComparison({
       );
     }
   };
+
   return (
     <div className="mx-auto w-full max-w-5xl">
       <div className="group relative w-full overflow-hidden rounded-md border border-border">
@@ -148,7 +121,7 @@ export function CodeComparison({
               "leftside group/left border-primary/20 md:border-r",
               hasLeftFocus &&
                 "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
-              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
             )}
           >
             <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">
@@ -163,7 +136,7 @@ export function CodeComparison({
               "rightside group/right border-t border-primary/20 md:border-t-0",
               hasRightFocus &&
                 "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
-              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
             )}
           >
             <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">
@@ -174,7 +147,7 @@ export function CodeComparison({
             {renderCode(afterCode, highlightedAfter)}
           </div>
         </div>
-        <div className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-primary/20 bg-accent text-xs text-foreground">
+        <div className="absolute left-1/2 top-1/2 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-primary/20 bg-accent text-xs text-foreground md:flex">
           VS
         </div>
       </div>
