@@ -93,7 +93,7 @@ const pages = defineCollection({
 
 const documents = defineCollection({
   name: "Doc",
-  directory: "content",
+  directory: "content/docs",
   include: "**/*.mdx",
   schema: (z) => ({
     title: z.string(),
