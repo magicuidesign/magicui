@@ -1,26 +1,55 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import React, { useEffect, useRef } from "react";
 
-interface GradientMaskedTextProps {
+interface AuroraTextProps {
   children: React.ReactNode;
   className?: string;
   colors?: string[];
   speed?: number; // 1 is default speed, 2 is twice as fast, 0.5 is half speed
 }
 
-export function GradientMaskedText({
+export function AuroraText({
   children,
   className = "",
   colors = ["#FF0080", "#7928CA", "#0070F3", "#38bdf8", "#a855f7", "#2dd4bf"],
   speed = 1,
-}: GradientMaskedTextProps) {
+}: AuroraTextProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const textRef = useRef<SVGTextElement>(null);
   const containerRef = useRef<HTMLSpanElement>(null);
   const [fontSize, setFontSize] = React.useState(0);
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
   const [isReady, setIsReady] = React.useState(false);
+  const [textStyle, setTextStyle] = React.useState<
+    Partial<CSSStyleDeclaration>
+  >({});
+
+  // Updated effect to compute all text styles from parent
+  useEffect(() => {
+    if (containerRef.current) {
+      const computedStyle = window.getComputedStyle(containerRef.current);
+
+      // Extract text-related styles
+      const relevantStyles = {
+        fontSize: computedStyle.fontSize,
+        fontFamily: computedStyle.fontFamily,
+        fontWeight: computedStyle.fontWeight,
+        fontStyle: computedStyle.fontStyle,
+        letterSpacing: computedStyle.letterSpacing,
+        lineHeight: computedStyle.lineHeight,
+        textTransform: computedStyle.textTransform,
+        fontVariant: computedStyle.fontVariant,
+        fontStretch: computedStyle.fontStretch,
+        fontFeatureSettings: computedStyle.fontFeatureSettings,
+      };
+
+      requestAnimationFrame(() => {
+        setTextStyle(relevantStyles);
+      });
+    }
+  }, [className]);
 
   // Updated effect to compute font size from both inline and class styles
   useEffect(() => {
@@ -72,7 +101,7 @@ export function GradientMaskedText({
     canvas.height = dimensions.height;
 
     let time = 0;
-    const baseSpeed = 0.01; // Original speed as base unit
+    const baseSpeed = 0.008; // Original speed as base unit
 
     function animate() {
       if (!ctx || !canvas) return;
@@ -158,7 +187,7 @@ export function GradientMaskedText({
                 dominantBaseline="middle"
                 textAnchor="middle"
                 fill="white"
-                style={{ fontSize }}
+                style={textStyle as CSSProperties}
               >
                 {children}
               </text>
