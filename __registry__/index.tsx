@@ -2453,6 +2453,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "number-ticker-demo-2": {
+    name: "number-ticker-demo-2",
+    description: "Example showing animated counting numbers.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/number-ticker"],
+    files: [
+      {
+        path: "registry/example/number-ticker-demo-2.tsx",
+        type: "registry:example",
+        target: "components/number-ticker-demo-2.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/number-ticker-demo-2.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "number-ticker-decimal-demo": {
     name: "number-ticker-decimal-demo",
     description: "Example showing animated counting decimal numbers.",
