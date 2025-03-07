@@ -330,47 +330,55 @@ export function TextAnimate({
       break;
   }
 
-  const showVariant = defaultItemAnimationVariants[animation].item.show;
-
-  const finalVariants = animation
+  const finalVariants = variants
     ? {
         container: {
-          ...defaultItemAnimationVariants[animation].container,
+          hidden: { opacity: 0 },
           show: {
-            ...defaultItemAnimationVariants[animation].container.show,
+            opacity: 1,
             transition: {
+              opacity: { duration: 0.01, delay },
               delayChildren: delay,
               staggerChildren: duration / segments.length,
             },
           },
           exit: {
-            ...defaultItemAnimationVariants[animation].container.exit,
+            opacity: 0,
             transition: {
               staggerChildren: duration / segments.length,
               staggerDirection: -1,
             },
           },
         },
-
-        item: {
-          ...defaultItemAnimationVariants[animation].item,
-          show: {
-            ...defaultItemAnimationVariants[animation].item.show,
-            transition: {
-              ...((typeof showVariant !== "function" &&
-                showVariant.transition) ||
-                {}),
-              ...(segments.length <= 1 && { duration: duration }),
+        item: variants,
+      }
+    : animation
+      ? {
+          container: {
+            ...defaultItemAnimationVariants[animation].container,
+            show: {
+              ...defaultItemAnimationVariants[animation].container.show,
+              transition: {
+                delayChildren: delay,
+                staggerChildren: duration / segments.length,
+              },
+            },
+            exit: {
+              ...defaultItemAnimationVariants[animation].container.exit,
+              transition: {
+                staggerChildren: duration / segments.length,
+                staggerDirection: -1,
+              },
             },
           },
-        },
-      }
-    : { container: defaultContainerVariants, item: defaultItemVariants };
+          item: defaultItemAnimationVariants[animation].item,
+        }
+      : { container: defaultContainerVariants, item: defaultItemVariants };
 
   return (
     <AnimatePresence mode="popLayout">
       <MotionComponent
-        variants={finalVariants.container}
+        variants={finalVariants.container as Variants}
         initial="hidden"
         whileInView={startOnView ? "show" : undefined}
         animate={startOnView ? undefined : "show"}
