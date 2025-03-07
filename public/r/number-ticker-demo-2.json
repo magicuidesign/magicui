@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/number-ticker-demo-2.tsx",
-      "content": "import { NumberTicker } from \"@/components/magicui/number-ticker\";\r\n\r\nexport default function NumberTickerDemo() {\r\n  return (\r\n    <NumberTicker\r\n      value={100}\r\n      startValue={80}\r\n      className=\"whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white\"\r\n    />\r\n  );\r\n}\r\n",
+      "content": "import { NumberTicker } from \"@/components/magicui/number-ticker\";\n\nexport default function NumberTickerDemo() {\n  return (\n    <NumberTicker\n      value={100}\n      startValue={80}\n      className=\"whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white\"\n    />\n  );\n}\n",
       "type": "registry:example",
       "target": "components/number-ticker-demo-2.tsx"
     }
