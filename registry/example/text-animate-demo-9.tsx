@@ -50,7 +50,6 @@ export default function TextAnimateDemo8() {
         }),
       }}
       by="character"
-      delay={2}
     >
       Wavy Motion!
     </TextAnimate>
