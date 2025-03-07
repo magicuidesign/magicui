@@ -5,42 +5,59 @@ import React, { useEffect, useRef } from "react";
 interface GradientMaskedTextProps {
   children: React.ReactNode;
   className?: string;
+  colors?: string[];
+  speed?: number; // 1 is default speed, 2 is twice as fast, 0.5 is half speed
 }
 
 export function GradientMaskedText({
   children,
   className = "",
+  colors = ["#FF0080", "#7928CA", "#0070F3", "#38bdf8", "#a855f7", "#2dd4bf"],
+  speed = 1,
 }: GradientMaskedTextProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const textRef = useRef<SVGTextElement>(null);
   const containerRef = useRef<HTMLSpanElement>(null);
   const [fontSize, setFontSize] = React.useState(0);
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
+  const [isReady, setIsReady] = React.useState(false);
 
   // Updated effect to compute font size from both inline and class styles
   useEffect(() => {
-    if (containerRef.current) {
-      // Get all styles, including those from classes
-      const computedStyle = window.getComputedStyle(containerRef.current);
-      const computedFontSize = parseFloat(computedStyle.fontSize);
+    const updateFontSize = () => {
+      if (containerRef.current) {
+        const computedStyle = window.getComputedStyle(containerRef.current);
+        const computedFontSize = parseFloat(computedStyle.fontSize);
 
-      // Set the fontSize after all styles are applied
-      // Using requestAnimationFrame to ensure styles are fully loaded
-      requestAnimationFrame(() => {
-        setFontSize(computedFontSize);
-      });
-    }
-  }, [className]); // Add className as dependency to re-run when classes change
+        requestAnimationFrame(() => {
+          setFontSize(computedFontSize);
+        });
+      }
+    };
 
-  // Update dependency array to use inferred fontSize
+    updateFontSize();
+    window.addEventListener("resize", updateFontSize);
+
+    return () => window.removeEventListener("resize", updateFontSize);
+  }, [className]);
+
+  // Update effect to set ready state after dimensions are computed
   useEffect(() => {
-    if (textRef.current) {
-      const bbox = textRef.current.getBBox();
-      setDimensions({
-        width: bbox.width,
-        height: bbox.height,
-      });
-    }
+    const updateDimensions = () => {
+      if (textRef.current) {
+        const bbox = textRef.current.getBBox();
+        setDimensions({
+          width: bbox.width,
+          height: bbox.height,
+        });
+        setIsReady(true);
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+
+    return () => window.removeEventListener("resize", updateDimensions);
   }, [children, fontSize]);
 
   useEffect(() => {
@@ -55,20 +72,13 @@ export function GradientMaskedText({
     canvas.height = dimensions.height;
 
     let time = 0;
-    const colors = [
-      "#FF0080",
-      "#7928CA",
-      "#0070F3",
-      "#22c55e",
-      "#ff4d4d",
-      "#f97316",
-    ];
+    const baseSpeed = 0.01; // Original speed as base unit
 
     function animate() {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      time += 0.003;
+      time += baseSpeed * speed;
 
       colors.forEach((color, i) => {
         const x =
@@ -103,18 +113,36 @@ export function GradientMaskedText({
     }
 
     animate();
-  }, [dimensions]);
+  }, [dimensions, colors, speed]);
 
   return (
     <span
       ref={containerRef}
-      className={`inline-block align-middle ${className}`}
+      className={`relative inline-block align-middle ${className}`}
       style={{
-        width: dimensions.width,
-        height: dimensions.height,
+        width: dimensions.width || "auto",
+        height: dimensions.height || "auto",
       }}
     >
-      <div className="relative">
+      <span
+        style={{
+          opacity: isReady ? 0 : 1,
+          transition: "opacity 0.2s ease-in",
+          position: isReady ? "absolute" : "relative",
+          display: "inline-block",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {children}
+      </span>
+
+      <div
+        className="absolute inset-0"
+        style={{
+          opacity: isReady ? 1 : 0,
+          transition: "opacity 0.2s ease-in",
+        }}
+      >
         <svg
           width={dimensions.width}
           height={dimensions.height}
