@@ -140,7 +140,6 @@ export function AuroraText({
 
       requestAnimationFrame(animate);
     }
-
     animate();
   }, [dimensions, colors, speed]);
 
@@ -153,6 +152,10 @@ export function AuroraText({
         height: dimensions.height || "auto",
       }}
     >
+      {/* Hidden text for SEO */}
+      <span className="sr-only">{children}</span>
+
+      {/* Visual placeholder while canvas loads */}
       <span
         style={{
           opacity: isReady ? 0 : 1,
@@ -161,6 +164,7 @@ export function AuroraText({
           display: "inline-block",
           whiteSpace: "nowrap",
         }}
+        aria-hidden="true"
       >
         {children}
       </span>
@@ -171,6 +175,7 @@ export function AuroraText({
           opacity: isReady ? 1 : 0,
           transition: "opacity 0.2s ease-in",
         }}
+        aria-hidden="true"
       >
         <svg
           width={dimensions.width}
