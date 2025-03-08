@@ -1,0 +1,48 @@
+---
+title: ScrollBlur
+date: 2024-06-01
+description: A component that adds a blur effect to the bottom of the page as you scroll
+author: magicui
+published: true
+---
+
+<ComponentPreview name="scroll-blur-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/scroll-blur"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scroll-blur" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type        | Default                 | Description                                |
+| -------------- | ----------- | ----------------------- | ------------------------------------------ |
+| `blurHeight`   | `number`    | `30`                    | Height of the blur effect in pixels        |
+| `blurStrength` | `number`    | `8`                     | Strength of the blur effect (1-20)         |
+| `blurColor`    | `string`    | `rgba(26, 26, 26, 0.8)` | Color of the blur gradient                 |
+| `children`     | `ReactNode` | Optional                | The content to be wrapped by the component |

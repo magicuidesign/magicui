@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-blur-demo",
+  "type": "registry:example",
+  "title": "Scroll Blur Demo",
+  "description": "Example showing a scroll blur effect.",
+  "registryDependencies": [
+    "https://magicui.design/r/scroll-blur"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scroll-blur-demo.tsx",
+      "content": "'use client';\n\nimport ScrollBlur from \"@/components/magicui/scroll-blur\";\n\nexport default function ScrollblurDemo() {\n  return (\n    <div className=\"z-10 rounded-lg p-4\">\n      <ScrollBlur blurHeight={40} blurStrength={10} blurColor=\"rgba(169, 124, 248, 0.8)\" />\n      <h2 className=\"pb-4 font-bold\">\n        Note: The scroll blur effect is shown at the bottom of the page as you scroll.\n      </h2>\n    </div>\n  );\n} ",
+      "type": "registry:example",
+      "target": "components/scroll-blur-demo.tsx"
+    }
+  ]
+}
