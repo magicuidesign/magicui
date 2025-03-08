@@ -1289,6 +1289,19 @@
       ]
     },
     {
+      "name": "scroll-blur",
+      "type": "registry:ui",
+      "title": "Scroll Blur",
+      "description": "A scroll blur effect component.",
+      "files": [
+        {
+          "path": "registry/magicui/scroll-blur.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/scroll-blur.tsx"
+        }
+      ]
+    },
+    {
       "name": "safari",
       "type": "registry:ui",
       "title": "Safari",
@@ -3168,6 +3181,22 @@
           "path": "registry/example/blur-fade-text-demo.tsx",
           "type": "registry:example",
           "target": "components/blur-fade-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-blur-demo",
+      "type": "registry:example",
+      "title": "Scroll Blur Demo",
+      "description": "Example showing a scroll blur effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/scroll-blur"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-blur-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-blur-demo.tsx"
         }
       ]
     },

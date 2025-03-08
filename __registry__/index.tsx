@@ -1413,6 +1413,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-blur": {
+    name: "scroll-blur",
+    description: "A scroll blur effect component.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/scroll-blur.tsx",
+        type: "registry:ui",
+        target: "components/magicui/scroll-blur.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/scroll-blur.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   safari: {
     name: "safari",
     description: "A safari browser mockup to showcase your website.",
@@ -4084,6 +4107,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/blur-fade-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "scroll-blur-demo": {
+    name: "scroll-blur-demo",
+    description: "Example showing a scroll blur effect.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/scroll-blur"],
+    files: [
+      {
+        path: "registry/example/scroll-blur-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-blur-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-blur-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

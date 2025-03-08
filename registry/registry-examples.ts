@@ -1557,6 +1557,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-blur-demo",
+    type: "registry:example",
+    title: "Scroll Blur Demo",
+    description: "Example showing a scroll blur effect.",
+    registryDependencies: ["https://magicui.design/r/scroll-blur"],
+    files: [
+      {
+        path: "registry/example/scroll-blur-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-blur-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "safari-demo",
     type: "registry:example",
     title: "Safari Demo",

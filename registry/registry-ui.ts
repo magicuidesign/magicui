@@ -1167,6 +1167,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-blur",
+    type: "registry:ui",
+    title: "Scroll Blur",
+    description: "A scroll blur effect component.",
+    files: [
+      {
+        path: "registry/magicui/scroll-blur.tsx",
+        type: "registry:ui",
+        target: "components/magicui/scroll-blur.tsx",
+      },
+    ],
+  },
+  {
     name: "safari",
     type: "registry:ui",
     title: "Safari",
