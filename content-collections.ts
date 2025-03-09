@@ -90,6 +90,7 @@ const pages = defineCollection({
     };
   },
 });
+
 const documents = defineCollection({
   name: "Doc",
   directory: "content/docs",
