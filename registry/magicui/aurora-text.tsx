@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useId, useRef } from "react";
 
 interface AuroraTextProps {
   children: React.ReactNode;
@@ -25,6 +25,7 @@ export function AuroraText({
   const [textStyle, setTextStyle] = React.useState<
     Partial<CSSStyleDeclaration>
   >({});
+  const maskId = useId();
 
   // Updated effect to compute all text styles from parent
   useEffect(() => {
@@ -183,28 +184,26 @@ export function AuroraText({
           className="absolute inset-0"
         >
           <defs>
-            <mask id={`text-mask-${children}`}>
-              <rect width="100%" height="100%" fill="black" />
+            <clipPath id={maskId}>
               <text
                 ref={textRef}
                 x="50%"
                 y="50%"
                 dominantBaseline="middle"
                 textAnchor="middle"
-                fill="white"
                 style={textStyle as CSSProperties}
               >
                 {children}
               </text>
-            </mask>
+            </clipPath>
           </defs>
         </svg>
 
         <canvas
           ref={canvasRef}
           style={{
-            maskImage: `url(#text-mask-${children})`,
-            WebkitMaskImage: `url(#text-mask-${children})`,
+            clipPath: `url(#${maskId})`,
+            WebkitClipPath: `url(#${maskId})`,
           }}
           className="h-full w-full"
         />
