@@ -2,7 +2,7 @@
 
 import { TextAnimate } from "@/registry/magicui/text-animate";
 
-export default function TextAnimateDemo8() {
+export default function TextAnimateDemo9() {
   return (
     <TextAnimate
       variants={{
