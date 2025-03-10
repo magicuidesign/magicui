@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blob-background-demo",
+  "type": "registry:example",
+  "title": "Blob Background Demo",
+  "description": "Example showing an animated blob background.",
+  "registryDependencies": [
+    "https://magicui.design/r/blob-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/blob-background-demo.tsx",
+      "content": "import { BlobBackground } from \"@/components/magicui/blob-background\"\r\n\r\nexport default function BlobBackgroundDemo() {\r\n    return (\r\n        <BlobBackground\r\n            blobCount={8}\r\n            blobSize={250}\r\n            range={150}\r\n            speed={3000}\r\n            blur={60}\r\n        />\r\n    )\r\n}",
+      "type": "registry:example",
+      "target": "components/blob-background-demo.tsx"
+    }
+  ]
+}
