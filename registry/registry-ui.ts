@@ -1207,4 +1207,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "glow",
+    type: "registry:ui",
+    title: "Glow",
+    description:
+      "A beautiful glow effect that appears when hovering over elements",
+    files: [
+      {
+        path: "registry/magicui/glow.tsx",
+        type: "registry:ui",
+        target: "components/magicui/glow.tsx",
+      },
+    ],
+  },
 ];
