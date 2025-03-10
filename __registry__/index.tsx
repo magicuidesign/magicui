@@ -201,6 +201,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  pointer: {
+    name: "pointer",
+    description:
+      "A component that displays a pointer when hovering over an element",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/pointer.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pointer.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/pointer.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "neon-gradient-card": {
     name: "neon-gradient-card",
     description: "A beautiful neon card effect",
@@ -1542,11 +1566,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/magic-card-demo.tsx",
       },
-      {
-        path: "registry/magicui/magic-card.tsx",
-        type: "registry:ui",
-        target: "components/magicui/magic-card.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/magic-card-demo.tsx");
@@ -1569,11 +1588,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/android-demo.tsx",
         type: "registry:example",
         target: "components/android-demo.tsx",
-      },
-      {
-        path: "registry/magicui/android.tsx",
-        type: "registry:ui",
-        target: "components/magicui/android.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1598,11 +1612,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/android-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/android.tsx",
-        type: "registry:ui",
-        target: "components/magicui/android.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/android-demo-2.tsx");
@@ -1625,11 +1634,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/android-demo-3.tsx",
         type: "registry:example",
         target: "components/android-demo-3.tsx",
-      },
-      {
-        path: "registry/magicui/android.tsx",
-        type: "registry:ui",
-        target: "components/magicui/android.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1655,11 +1659,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/warp-background-demo.tsx",
       },
-      {
-        path: "registry/magicui/warp-background.tsx",
-        type: "registry:ui",
-        target: "components/magicui/warp-background.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/warp-background-demo.tsx");
@@ -1682,11 +1681,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/line-shadow-text-demo.tsx",
         type: "registry:example",
         target: "components/line-shadow-text-demo.tsx",
-      },
-      {
-        path: "registry/magicui/line-shadow-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/line-shadow-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1711,11 +1705,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/aurora-text-demo.tsx",
       },
-      {
-        path: "registry/magicui/aurora-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/aurora-text.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/aurora-text-demo.tsx");
@@ -1738,11 +1727,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/morphing-text-demo.tsx",
         type: "registry:example",
         target: "components/morphing-text-demo.tsx",
-      },
-      {
-        path: "registry/magicui/morphing-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/morphing-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1767,11 +1751,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/scroll-progress-demo.tsx",
       },
-      {
-        path: "registry/magicui/scroll-progress.tsx",
-        type: "registry:ui",
-        target: "components/magicui/scroll-progress.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/scroll-progress-demo.tsx");
@@ -1795,11 +1774,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/lens-demo.tsx",
       },
-      {
-        path: "registry/magicui/lens.tsx",
-        type: "registry:ui",
-        target: "components/magicui/lens.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/lens-demo.tsx");
@@ -1822,11 +1796,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/lens-demo-2.tsx",
         type: "registry:example",
         target: "components/lens-demo-2.tsx",
-      },
-      {
-        path: "registry/magicui/lens.tsx",
-        type: "registry:ui",
-        target: "components/magicui/lens.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1863,6 +1832,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "pointer-demo-1": {
+    name: "pointer-demo-1",
+    description: "Example showing a pointer effect component",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/pointer"],
+    files: [
+      {
+        path: "registry/example/pointer-demo-1.tsx",
+        type: "registry:example",
+        target: "components/pointer-demo-1.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pointer-demo-1.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "neon-gradient-card-demo": {
     name: "neon-gradient-card-demo",
     description: "Example showing a beautiful neon card effect.",
@@ -1873,11 +1865,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/neon-gradient-card-demo.tsx",
         type: "registry:example",
         target: "components/neon-gradient-card-demo.tsx",
-      },
-      {
-        path: "registry/magicui/neon-gradient-card.tsx",
-        type: "registry:ui",
-        target: "components/magicui/neon-gradient-card.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1904,11 +1891,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/meteors-demo.tsx",
       },
-      {
-        path: "registry/magicui/meteors.tsx",
-        type: "registry:ui",
-        target: "components/magicui/meteors.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/meteors-demo.tsx");
@@ -1932,11 +1914,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/grid-pattern-demo.tsx",
       },
-      {
-        path: "registry/magicui/grid-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/grid-pattern.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-pattern-demo.tsx");
@@ -1959,11 +1936,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/grid-pattern-linear-gradient.tsx",
         type: "registry:example",
         target: "components/grid-pattern-linear-gradient.tsx",
-      },
-      {
-        path: "registry/magicui/grid-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/grid-pattern.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -1990,11 +1962,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/grid-pattern-dashed.tsx",
       },
-      {
-        path: "registry/magicui/grid-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/grid-pattern.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-pattern-dashed.tsx");
@@ -2017,11 +1984,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/dot-pattern-demo.tsx",
         type: "registry:example",
         target: "components/dot-pattern-demo.tsx",
-      },
-      {
-        path: "registry/magicui/dot-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/dot-pattern.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2046,15 +2008,35 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/dot-pattern-linear-gradient.tsx",
       },
-      {
-        path: "registry/magicui/dot-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/dot-pattern.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/dot-pattern-linear-gradient.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "dot-pattern-with-glow-effect": {
+    name: "dot-pattern-with-glow-effect",
+    description: "Example showing a dot pattern with glow effect",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/dot-pattern"],
+    files: [
+      {
+        path: "registry/example/dot-pattern-with-glow-effect.tsx",
+        type: "registry:example",
+        target: "components/dot-pattern-with-glow-effect.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/dot-pattern-with-glow-effect.tsx"
       );
       const exportName =
         Object.keys(mod).find(
@@ -2075,11 +2057,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/flickering-grid-demo.tsx",
         type: "registry:example",
         target: "components/flickering-grid-demo.tsx",
-      },
-      {
-        path: "registry/magicui/flickering-grid.tsx",
-        type: "registry:ui",
-        target: "components/magicui/flickering-grid.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2104,11 +2081,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/flickering-grid-rounded-demo.tsx",
         type: "registry:example",
         target: "components/flickering-grid-rounded-demo.tsx",
-      },
-      {
-        path: "registry/magicui/flickering-grid.tsx",
-        type: "registry:ui",
-        target: "components/magicui/flickering-grid.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2135,11 +2107,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/hero-video-dialog-demo.tsx",
       },
-      {
-        path: "registry/magicui/hero-video-dialog.tsx",
-        type: "registry:ui",
-        target: "components/magicui/hero-video-dialog.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hero-video-dialog-demo.tsx");
@@ -2163,11 +2130,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
         type: "registry:example",
         target: "components/hero-video-dialog-demo-top-in-bottom-out.tsx",
-      },
-      {
-        path: "registry/magicui/hero-video-dialog.tsx",
-        type: "registry:ui",
-        target: "components/magicui/hero-video-dialog.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2195,11 +2157,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/code-comparison-demo.tsx",
       },
-      {
-        path: "registry/magicui/code-comparison.tsx",
-        type: "registry:ui",
-        target: "components/magicui/code-comparison.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/code-comparison-demo.tsx");
@@ -2222,11 +2179,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/script-copy-btn-demo.tsx",
         type: "registry:example",
         target: "components/script-copy-btn-demo.tsx",
-      },
-      {
-        path: "registry/magicui/script-copy-btn.tsx",
-        type: "registry:ui",
-        target: "components/magicui/script-copy-btn.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2251,11 +2203,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/marquee-demo.tsx",
       },
-      {
-        path: "registry/magicui/marquee.tsx",
-        type: "registry:ui",
-        target: "components/magicui/marquee.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/marquee-demo.tsx");
@@ -2278,11 +2225,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/marquee-demo-vertical.tsx",
         type: "registry:example",
         target: "components/marquee-demo-vertical.tsx",
-      },
-      {
-        path: "registry/magicui/marquee.tsx",
-        type: "registry:ui",
-        target: "components/magicui/marquee.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2307,11 +2249,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/marquee-logos.tsx",
       },
-      {
-        path: "registry/magicui/marquee.tsx",
-        type: "registry:ui",
-        target: "components/magicui/marquee.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/marquee-logos.tsx");
@@ -2334,11 +2271,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/marquee-3d.tsx",
         type: "registry:example",
         target: "components/marquee-3d.tsx",
-      },
-      {
-        path: "registry/magicui/marquee.tsx",
-        type: "registry:ui",
-        target: "components/magicui/marquee.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2363,11 +2295,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/globe-demo.tsx",
       },
-      {
-        path: "registry/magicui/globe.tsx",
-        type: "registry:ui",
-        target: "components/magicui/globe.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/globe-demo.tsx");
@@ -2390,11 +2317,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/tweet-card-demo.tsx",
         type: "registry:example",
         target: "components/tweet-card-demo.tsx",
-      },
-      {
-        path: "registry/magicui/tweet-card.tsx",
-        type: "registry:ui",
-        target: "components/magicui/tweet-card.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2419,11 +2341,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/tweet-card-images.tsx",
       },
-      {
-        path: "registry/magicui/tweet-card.tsx",
-        type: "registry:ui",
-        target: "components/magicui/tweet-card.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tweet-card-images.tsx");
@@ -2446,11 +2363,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/tweet-card-meta-preview.tsx",
         type: "registry:example",
         target: "components/tweet-card-meta-preview.tsx",
-      },
-      {
-        path: "registry/magicui/tweet-card.tsx",
-        type: "registry:ui",
-        target: "components/magicui/tweet-card.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2476,11 +2388,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/shimmer-button-demo.tsx",
         type: "registry:example",
         target: "components/shimmer-button-demo.tsx",
-      },
-      {
-        path: "registry/magicui/shimmer-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/shimmer-button.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2512,36 +2419,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/bento-demo.tsx",
       },
-      {
-        path: "registry/magicui/bento-grid.tsx",
-        type: "registry:ui",
-        target: "components/magicui/bento-grid.tsx",
-      },
-      {
-        path: "registry/magicui/marquee.tsx",
-        type: "registry:ui",
-        target: "components/magicui/marquee.tsx",
-      },
-      {
-        path: "registry/magicui/animated-list.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-list.tsx",
-      },
-      {
-        path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
-      },
-      {
-        path: "registry/example/animated-list-demo.tsx",
-        type: "registry:example",
-        target: "components/animated-list-demo.tsx",
-      },
-      {
-        path: "registry/example/animated-beam-multiple-outputs.tsx",
-        type: "registry:example",
-        target: "components/animated-beam-multiple-outputs.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/bento-demo.tsx");
@@ -2564,11 +2441,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/bento-demo-vertical.tsx",
         type: "registry:example",
         target: "components/bento-demo-vertical.tsx",
-      },
-      {
-        path: "registry/magicui/bento-grid.tsx",
-        type: "registry:ui",
-        target: "components/magicui/bento-grid.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2593,14 +2465,32 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/number-ticker-demo.tsx",
       },
-      {
-        path: "registry/magicui/number-ticker.tsx",
-        type: "registry:ui",
-        target: "components/magicui/number-ticker.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/number-ticker-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "number-ticker-demo-2": {
+    name: "number-ticker-demo-2",
+    description: "Example showing animated counting numbers.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/number-ticker"],
+    files: [
+      {
+        path: "registry/example/number-ticker-demo-2.tsx",
+        type: "registry:example",
+        target: "components/number-ticker-demo-2.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/number-ticker-demo-2.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -2620,11 +2510,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/number-ticker-decimal-demo.tsx",
         type: "registry:example",
         target: "components/number-ticker-decimal-demo.tsx",
-      },
-      {
-        path: "registry/magicui/number-ticker.tsx",
-        type: "registry:ui",
-        target: "components/magicui/number-ticker.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2651,11 +2536,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/ripple-demo.tsx",
       },
-      {
-        path: "registry/magicui/ripple.tsx",
-        type: "registry:ui",
-        target: "components/magicui/ripple.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/ripple-demo.tsx");
@@ -2678,11 +2558,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/retro-grid-demo.tsx",
         type: "registry:example",
         target: "components/retro-grid-demo.tsx",
-      },
-      {
-        path: "registry/magicui/retro-grid.tsx",
-        type: "registry:ui",
-        target: "components/magicui/retro-grid.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2707,11 +2582,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-list-demo.tsx",
       },
-      {
-        path: "registry/magicui/animated-list.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-list.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/animated-list-demo.tsx");
@@ -2734,11 +2604,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/animated-shiny-text-demo.tsx",
         type: "registry:example",
         target: "components/animated-shiny-text-demo.tsx",
-      },
-      {
-        path: "registry/magicui/animated-shiny-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-shiny-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2765,11 +2630,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/particles-demo.tsx",
       },
-      {
-        path: "registry/magicui/particles.tsx",
-        type: "registry:ui",
-        target: "components/magicui/particles.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/particles-demo.tsx");
@@ -2792,11 +2652,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/animated-grid-pattern-demo.tsx",
         type: "registry:example",
         target: "components/animated-grid-pattern-demo.tsx",
-      },
-      {
-        path: "registry/magicui/animated-grid-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-grid-pattern.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2822,11 +2677,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/interactive-grid-pattern-demo.tsx",
         type: "registry:example",
         target: "components/interactive-grid-pattern-demo.tsx",
-      },
-      {
-        path: "registry/magicui/interactive-grid-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/interactive-grid-pattern.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2854,11 +2704,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/interactive-grid-pattern-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/interactive-grid-pattern.tsx",
-        type: "registry:ui",
-        target: "components/magicui/interactive-grid-pattern.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
@@ -2883,11 +2728,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/border-beam-demo.tsx",
         type: "registry:example",
         target: "components/border-beam-demo.tsx",
-      },
-      {
-        path: "registry/magicui/border-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/border-beam.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2915,11 +2755,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/border-beam-demo-2.tsx",
         type: "registry:example",
         target: "components/border-beam-demo-2.tsx",
-      },
-      {
-        path: "registry/magicui/border-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/border-beam.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -2950,11 +2785,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/border-beam-demo-3.tsx",
       },
-      {
-        path: "registry/magicui/border-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/border-beam.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-beam-demo-3.tsx");
@@ -2977,11 +2807,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/border-beam-demo-4.tsx",
         type: "registry:example",
         target: "components/border-beam-demo-4.tsx",
-      },
-      {
-        path: "registry/magicui/border-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/border-beam.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3006,11 +2831,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-beam-demo.tsx",
       },
-      {
-        path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/animated-beam-demo.tsx");
@@ -3033,11 +2853,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/animated-beam-unidirectional.tsx",
         type: "registry:example",
         target: "components/animated-beam-unidirectional.tsx",
-      },
-      {
-        path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3064,11 +2879,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-beam-bidirectional.tsx",
       },
-      {
-        path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
@@ -3093,11 +2903,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/animated-beam-multiple-inputs.tsx",
         type: "registry:example",
         target: "components/animated-beam-multiple-inputs.tsx",
-      },
-      {
-        path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3124,11 +2929,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-beam-multiple-outputs.tsx",
       },
-      {
-        path: "registry/magicui/animated-beam.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
@@ -3154,11 +2954,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/text-reveal-demo.tsx",
       },
-      {
-        path: "registry/magicui/text-reveal.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-reveal.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-reveal-demo.tsx");
@@ -3182,15 +2977,36 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-gradient-text-demo.tsx",
       },
-      {
-        path: "registry/magicui/animated-gradient-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-gradient-text.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/animated-gradient-text-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-gradient-text-demo-2": {
+    name: "animated-gradient-text-demo-2",
+    description:
+      "Second example showing text with animated gradient backgrounds.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/animated-gradient-text"],
+    files: [
+      {
+        path: "registry/example/animated-gradient-text-demo-2.tsx",
+        type: "registry:example",
+        target: "components/animated-gradient-text-demo-2.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-gradient-text-demo-2.tsx"
       );
       const exportName =
         Object.keys(mod).find(
@@ -3211,11 +3027,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/orbiting-circles-demo.tsx",
         type: "registry:example",
         target: "components/orbiting-circles-demo.tsx",
-      },
-      {
-        path: "registry/magicui/orbiting-circles.tsx",
-        type: "registry:ui",
-        target: "components/magicui/orbiting-circles.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3239,11 +3050,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/dock-demo.tsx",
         type: "registry:example",
         target: "components/dock-demo.tsx",
-      },
-      {
-        path: "registry/magicui/dock.tsx",
-        type: "registry:ui",
-        target: "components/magicui/dock.tsx",
       },
       {
         path: "registry/magicui/mode-toggle.tsx",
@@ -3273,11 +3079,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/dock-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/dock.tsx",
-        type: "registry:ui",
-        target: "components/magicui/dock.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dock-demo-2.tsx");
@@ -3300,11 +3101,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/dock-demo-3.tsx",
         type: "registry:example",
         target: "components/dock-demo-3.tsx",
-      },
-      {
-        path: "registry/magicui/dock.tsx",
-        type: "registry:ui",
-        target: "components/magicui/dock.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3329,11 +3125,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/word-rotate-demo.tsx",
       },
-      {
-        path: "registry/magicui/word-rotate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/word-rotate.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/word-rotate-demo.tsx");
@@ -3356,11 +3147,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/hyper-text-demo.tsx",
         type: "registry:example",
         target: "components/hyper-text-demo.tsx",
-      },
-      {
-        path: "registry/magicui/hyper-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/hyper-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3385,11 +3171,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/avatar-circles-demo.tsx",
       },
-      {
-        path: "registry/magicui/avatar-circles.tsx",
-        type: "registry:ui",
-        target: "components/magicui/avatar-circles.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/avatar-circles-demo.tsx");
@@ -3413,11 +3194,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/typing-animation-demo.tsx",
       },
-      {
-        path: "registry/magicui/typing-animation.tsx",
-        type: "registry:ui",
-        target: "components/magicui/typing-animation.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/typing-animation-demo.tsx");
@@ -3440,11 +3216,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/scroll-based-velocity-demo.tsx",
         type: "registry:example",
         target: "components/scroll-based-velocity-demo.tsx",
-      },
-      {
-        path: "registry/magicui/scroll-based-velocity.tsx",
-        type: "registry:ui",
-        target: "components/magicui/scroll-based-velocity.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3471,11 +3242,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/scratch-to-reveal-demo.tsx",
       },
-      {
-        path: "registry/magicui/scratch-to-reveal.tsx",
-        type: "registry:ui",
-        target: "components/magicui/scratch-to-reveal.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/scratch-to-reveal-demo.tsx");
@@ -3498,11 +3264,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/flip-text-demo.tsx",
         type: "registry:example",
         target: "components/flip-text-demo.tsx",
-      },
-      {
-        path: "registry/magicui/flip-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/flip-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3527,11 +3288,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/sparkles-text-demo.tsx",
       },
-      {
-        path: "registry/magicui/sparkles-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/sparkles-text.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/sparkles-text-demo.tsx");
@@ -3554,11 +3310,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/spinning-text-demo.tsx",
         type: "registry:example",
         target: "components/spinning-text-demo.tsx",
-      },
-      {
-        path: "registry/magicui/spinning-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/spinning-text.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3583,11 +3334,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/spinning-text-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/spinning-text.tsx",
-        type: "registry:ui",
-        target: "components/magicui/spinning-text.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/spinning-text-demo-2.tsx");
@@ -3610,11 +3356,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/icon-cloud-demo.tsx",
         type: "registry:example",
         target: "components/icon-cloud-demo.tsx",
-      },
-      {
-        path: "registry/magicui/icon-cloud.tsx",
-        type: "registry:ui",
-        target: "components/magicui/icon-cloud.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3639,11 +3380,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/icon-cloud-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/icon-cloud.tsx",
-        type: "registry:ui",
-        target: "components/magicui/icon-cloud.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/icon-cloud-demo-2.tsx");
@@ -3666,11 +3402,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/icon-cloud-demo-3.tsx",
         type: "registry:example",
         target: "components/icon-cloud-demo-3.tsx",
-      },
-      {
-        path: "registry/magicui/icon-cloud.tsx",
-        type: "registry:ui",
-        target: "components/magicui/icon-cloud.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3695,11 +3426,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/text-animate-demo.tsx",
       },
-      {
-        path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo.tsx");
@@ -3722,11 +3448,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/text-animate-demo-2.tsx",
         type: "registry:example",
         target: "components/text-animate-demo-2.tsx",
-      },
-      {
-        path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3751,11 +3472,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/text-animate-demo-3.tsx",
       },
-      {
-        path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-3.tsx");
@@ -3778,11 +3494,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/text-animate-demo-4.tsx",
         type: "registry:example",
         target: "components/text-animate-demo-4.tsx",
-      },
-      {
-        path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3807,11 +3518,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/text-animate-demo-5.tsx",
       },
-      {
-        path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-5.tsx");
@@ -3835,14 +3541,78 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/text-animate-demo-6.tsx",
       },
-      {
-        path: "registry/magicui/text-animate.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-6.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "text-animate-demo-7": {
+    name: "text-animate-demo-7",
+    description: "Seventh example showing various text animations.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-7.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-7.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-animate-demo-7.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "text-animate-demo-8": {
+    name: "text-animate-demo-8",
+    description: "Eighth example showing various text animations.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-8.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-8.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-animate-demo-8.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "text-animate-demo-9": {
+    name: "text-animate-demo-9",
+    description: "Ninth example showing various text animations.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-animate"],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-9.tsx",
+        type: "registry:example",
+        target: "components/text-animate-demo-9.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-animate-demo-9.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
@@ -3862,11 +3632,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/shiny-button-demo.tsx",
         type: "registry:example",
         target: "components/shiny-button-demo.tsx",
-      },
-      {
-        path: "registry/magicui/shiny-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/shiny-button.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3890,11 +3655,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/box-reveal-demo.tsx",
         type: "registry:example",
         target: "components/box-reveal-demo.tsx",
-      },
-      {
-        path: "registry/magicui/box-reveal.tsx",
-        type: "registry:ui",
-        target: "components/magicui/box-reveal.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -3921,11 +3681,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-circular-progress-bar-demo.tsx",
       },
-      {
-        path: "registry/magicui/animated-circular-progress-bar.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-circular-progress-bar.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
@@ -3951,11 +3706,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/shine-border-demo.tsx",
       },
-      {
-        path: "registry/magicui/shine-border.tsx",
-        type: "registry:ui",
-        target: "components/magicui/shine-border.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shine-border-demo.tsx");
@@ -3978,11 +3728,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/shine-border-demo-2.tsx",
         type: "registry:example",
         target: "components/shine-border-demo-2.tsx",
-      },
-      {
-        path: "registry/magicui/shine-border.tsx",
-        type: "registry:ui",
-        target: "components/magicui/shine-border.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4007,11 +3752,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/confetti-demo.tsx",
       },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-demo.tsx");
@@ -4035,11 +3775,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/confetti-basic-cannon.tsx",
       },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-basic-cannon.tsx");
@@ -4062,11 +3797,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/confetti-random-direction.tsx",
         type: "registry:example",
         target: "components/confetti-random-direction.tsx",
-      },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4093,11 +3823,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/confetti-fireworks.tsx",
       },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-fireworks.tsx");
@@ -4120,11 +3845,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/confetti-stars.tsx",
         type: "registry:example",
         target: "components/confetti-stars.tsx",
-      },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4149,11 +3869,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/confetti-side-cannons.tsx",
       },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-side-cannons.tsx");
@@ -4177,11 +3892,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/confetti-custom-shapes.tsx",
       },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-custom-shapes.tsx");
@@ -4204,11 +3914,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/confetti-emoji.tsx",
         type: "registry:example",
         target: "components/confetti-emoji.tsx",
-      },
-      {
-        path: "registry/magicui/confetti.tsx",
-        type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4236,11 +3941,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/animated-subscribe-button-demo.tsx",
       },
-      {
-        path: "registry/magicui/animated-subscribe-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/animated-subscribe-button.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import(
@@ -4266,11 +3966,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/cool-mode-demo.tsx",
       },
-      {
-        path: "registry/magicui/cool-mode.tsx",
-        type: "registry:ui",
-        target: "components/magicui/cool-mode.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/cool-mode-demo.tsx");
@@ -4293,11 +3988,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/cool-mode-custom.tsx",
         type: "registry:example",
         target: "components/cool-mode-custom.tsx",
-      },
-      {
-        path: "registry/magicui/cool-mode.tsx",
-        type: "registry:ui",
-        target: "components/magicui/cool-mode.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4322,11 +4012,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/pulsating-button-demo.tsx",
       },
-      {
-        path: "registry/magicui/pulsating-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/pulsating-button.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pulsating-button-demo.tsx");
@@ -4349,11 +4034,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/ripple-button-demo.tsx",
         type: "registry:example",
         target: "components/ripple-button-demo.tsx",
-      },
-      {
-        path: "registry/magicui/ripple-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/ripple-button.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4379,11 +4059,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/file-tree-demo.tsx",
       },
-      {
-        path: "registry/magicui/file-tree.tsx",
-        type: "registry:ui",
-        target: "components/magicui/file-tree.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/file-tree-demo.tsx");
@@ -4406,11 +4081,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/blur-fade-demo.tsx",
         type: "registry:example",
         target: "components/blur-fade-demo.tsx",
-      },
-      {
-        path: "registry/magicui/blur-fade.tsx",
-        type: "registry:ui",
-        target: "components/magicui/blur-fade.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4435,11 +4105,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/blur-fade-text-demo.tsx",
       },
-      {
-        path: "registry/magicui/blur-fade.tsx",
-        type: "registry:ui",
-        target: "components/magicui/blur-fade.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/blur-fade-text-demo.tsx");
@@ -4462,11 +4127,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/safari-demo.tsx",
         type: "registry:example",
         target: "components/safari-demo.tsx",
-      },
-      {
-        path: "registry/magicui/safari.tsx",
-        type: "registry:ui",
-        target: "components/magicui/safari.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4491,11 +4151,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/safari-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/safari.tsx",
-        type: "registry:ui",
-        target: "components/magicui/safari.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/safari-demo-2.tsx");
@@ -4518,11 +4173,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/safari-demo-3.tsx",
         type: "registry:example",
         target: "components/safari-demo-3.tsx",
-      },
-      {
-        path: "registry/magicui/safari.tsx",
-        type: "registry:ui",
-        target: "components/magicui/safari.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4547,11 +4197,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/safari-demo-4.tsx",
       },
-      {
-        path: "registry/magicui/safari.tsx",
-        type: "registry:ui",
-        target: "components/magicui/safari.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/safari-demo-4.tsx");
@@ -4574,11 +4219,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/iphone-15-pro-demo.tsx",
         type: "registry:example",
         target: "components/iphone-15-pro-demo.tsx",
-      },
-      {
-        path: "registry/magicui/iphone-15-pro.tsx",
-        type: "registry:ui",
-        target: "components/magicui/iphone-15-pro.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4603,11 +4243,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/iphone-15-pro-demo-2.tsx",
       },
-      {
-        path: "registry/magicui/iphone-15-pro.tsx",
-        type: "registry:ui",
-        target: "components/magicui/iphone-15-pro.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/iphone-15-pro-demo-2.tsx");
@@ -4630,11 +4265,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/iphone-15-pro-demo-3.tsx",
         type: "registry:example",
         target: "components/iphone-15-pro-demo-3.tsx",
-      },
-      {
-        path: "registry/magicui/iphone-15-pro.tsx",
-        type: "registry:ui",
-        target: "components/magicui/iphone-15-pro.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4659,11 +4289,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "components/rainbow-button-demo.tsx",
       },
-      {
-        path: "registry/magicui/rainbow-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/rainbow-button.tsx",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/rainbow-button-demo.tsx");
@@ -4686,11 +4311,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/interactive-hover-button-demo.tsx",
         type: "registry:example",
         target: "components/interactive-hover-button-demo.tsx",
-      },
-      {
-        path: "registry/magicui/interactive-hover-button.tsx",
-        type: "registry:ui",
-        target: "components/magicui/interactive-hover-button.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4716,11 +4336,6 @@ export const Index: Record<string, any> = {
         path: "registry/example/terminal-demo.tsx",
         type: "registry:example",
         target: "components/terminal-demo.tsx",
-      },
-      {
-        path: "registry/magicui/terminal.tsx",
-        type: "registry:ui",
-        target: "components/magicui/terminal.tsx",
       },
     ],
     component: React.lazy(async () => {

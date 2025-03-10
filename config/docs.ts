@@ -225,6 +225,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Pointer",
+          href: `/docs/components/pointer`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

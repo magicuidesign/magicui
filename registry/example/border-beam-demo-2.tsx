@@ -12,7 +12,7 @@ import { Play, SkipBack, SkipForward } from "lucide-react";
 
 export default function MusicPlayer() {
   return (
-    <Card className="relative w-[350px]">
+    <Card className="relative w-[350px] overflow-hidden">
       <CardHeader>
         <CardTitle>Now Playing</CardTitle>
         <CardDescription>Stairway to Heaven - Led Zeppelin</CardDescription>

@@ -1,155 +1,103 @@
 import { ImageResponse } from "next/og";
 
-import { capitalize } from "@/lib/utils";
+import { Icons } from "@/components/icons";
 
-export const runtime = "edge";
+async function loadAssets(): Promise<
+  { name: string; data: Buffer; weight: 400 | 600; style: "normal" }[]
+> {
+  const [
+    { base64Font: normal },
+    { base64Font: mono },
+    { base64Font: semibold },
+  ] = await Promise.all([
+    import("./geist-regular-otf.json").then((mod) => mod.default || mod),
+    import("./geistmono-regular-otf.json").then((mod) => mod.default || mod),
+    import("./geist-semibold-otf.json").then((mod) => mod.default || mod),
+  ]);
 
-const inter600 = fetch(
-  new URL(`../../assets/fonts/Inter-SemiBold.ttf`, import.meta.url),
-).then((res) => res.arrayBuffer());
-
-const inter700 = fetch(
-  new URL(`../../assets/fonts/Inter-Bold.ttf`, import.meta.url),
-).then((res) => res.arrayBuffer());
-
-const image = fetch(
-  new URL("../../assets/images/og-bg-2.jpg", import.meta.url),
-).then((res) => res.arrayBuffer());
-
-const logo = fetch(new URL("../../app/icon.png", import.meta.url)).then((res) =>
-  res.arrayBuffer(),
-);
-
-export async function GET(req: Request) {
-  const imageData = await image;
-  const logoData = await logo;
-
-  const url = new URL(req.url);
-  const params = Object.fromEntries(url.searchParams);
-  const title = capitalize(
-    (params.title || "Magic UI")
-      .replace(/-/g, " ")
-      .split(" ")
-      .slice(0, 3)
-      .join(" ")
-      .substring(0, 20),
-  );
-
-  try {
-    return new ImageResponse(
-      (
-        <div tw="flex justify-center flex-col relative w-full h-full items-center bg-white">
-          <img
-            tw="absolute inset-0 w-full h-full"
-            alt={title}
-            // @ts-ignore
-            src={imageData}
-          />
-
-          {/* Lighting Effects */}
-          {/* <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              backgroundImage:
-                "radial-gradient(circle at 0% 15%, #FFBD7A22, rgba(0,0,0,0) 40%), radial-gradient(circle at 100% 85%, #9E7AFF22,rgba(0,0,0,0) 40%)",
-            }}
-          ></div> */}
-
-          <h1 tw="absolute inset-0 flex justify-center items-center mb-57 flex-row">
-            <img
-              tw="h-10 w-10"
-              alt={title}
-              // @ts-ignore
-              src={logoData}
-            />
-            <span
-              tw="ml-3"
-              style={{
-                background:
-                  // "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
-                  "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 1) 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                fontSize: 35,
-                letterSpacing: "-1.5px",
-                ...font("Inter 700"),
-              }}
-            >
-              Magic UI
-            </span>
-          </h1>
-
-          {title && (
-            <p
-              style={{
-                position: "absolute",
-                whiteSpace: "pre-wrap",
-                // background:
-                //   "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
-                // background:
-                //   "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 0.6) 100%)",
-                background:
-                  "linear-gradient(315deg,#9E7AFF 0%,#FE8BBB 33.33%,#FFBD7A 66.67%,#F8EAC3 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                textAlign: "center",
-                fontSize: 100,
-                letterSpacing: "-10px",
-                color: "transparent",
-                WebkitTextFillColor: "transparent",
-                ...font("Inter 600"),
-              }}
-            >
-              {title}
-            </p>
-          )}
-
-          <h1 tw="absolute inset-0 flex justify-center items-center mt-57 flex-col">
-            <span
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(156, 163, 175, 1) 100%)",
-                // "linear-gradient(180deg,rgba(240,238,249,.8) 0%,#E2E8FF 100%)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                fontSize: 25,
-                letterSpacing: "-1.5px",
-                ...font("Inter 700"),
-              }}
-            >
-              Create magical landing pages in minutes.
-            </span>
-          </h1>
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-        fonts: [
-          {
-            name: "Inter 600",
-            data: await inter600,
-          },
-          {
-            name: "Inter 700",
-            data: await inter700,
-          },
-        ],
-      },
-    );
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
-  }
+  return [
+    {
+      name: "Geist",
+      data: Buffer.from(normal, "base64"),
+      weight: 400 as const,
+      style: "normal" as const,
+    },
+    {
+      name: "Geist Mono",
+      data: Buffer.from(mono, "base64"),
+      weight: 400 as const,
+      style: "normal" as const,
+    },
+    {
+      name: "Geist",
+      data: Buffer.from(semibold, "base64"),
+      weight: 600 as const,
+      style: "normal" as const,
+    },
+  ];
 }
 
-function font(fontFamily: string) {
-  return { fontFamily };
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const title = searchParams.get("title");
+  const description = searchParams.get("description");
+
+  const [fonts] = await Promise.all([loadAssets()]);
+
+  return new ImageResponse(
+    (
+      <div
+        tw="flex h-full w-full bg-white text-black"
+        style={{ fontFamily: "Geist Sans" }}
+      >
+        <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 left-16 w-[1px]" />
+        <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 right-16 w-[1px]" />
+        <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] top-16" />
+        <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
+        {(title || description) && (
+          <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
+            <Icons.logo width={48} height={48} />
+            <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+              Magic UI
+            </div>
+          </div>
+        )}
+        <div tw="flex flex-col absolute justify-center items-center inset-0 p-24 w-full h-full">
+          {title || description ? (
+            <div tw="flex flex-col items-center justify-center text-center w-full h-full">
+              <div tw="tracking-tight flex flex-col justify-center text-black text-balance font-semibold text-[80px]">
+                {title}
+              </div>
+              <div tw="text-[40px] text-gray-600 mt-6 text-balance font-normal">
+                {description}
+              </div>
+            </div>
+          ) : (
+            <div tw="flex flex-col items-center justify-center text-center w-full h-full">
+              <div tw="flex flex-row items-center justify-center space-x-4">
+                <Icons.logo width={48} height={48} />
+                <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+                  Magic UI
+                </div>
+              </div>
+              <div tw="text-black flex text-[80px] font-semibold tracking-tight">
+                Modern Next.js Templates
+              </div>
+              <div tw="text-gray-600 text-2xl flex">
+                <p>
+                  Built with React, Typescript, shadcn/ui, Tailwind CSS, and
+                  Motion.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    ),
+    {
+      width: 1200,
+      height: 628,
+      fonts,
+    },
+  );
 }

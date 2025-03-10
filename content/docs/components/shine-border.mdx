@@ -76,18 +76,24 @@ module.exports = {
 
 <ComponentPreview name="shine-border-demo-2" />
 
+## Usage
+
+```tsx
+import { ShineBorder } from "@/registry/magicui/shine-border";
+```
+
+```tsx
+<div className="relative overflow-hidden">
+  <ShineBorder />
+</div>
+```
+
 ## Props
 
-| Prop           | Type        | Default   | Description                                                         |
-| -------------- | ----------- | --------- | ------------------------------------------------------------------- |
-| `className`    | `string`    | `-`       | The class name to be applied to the component.                      |
-| `duration`     | `number`    | `14`      | Defines the animation duration to be applied on the shining border. |
-| `color`        | `string`    | `#FFFFFF` | Defines the color of the border.                                    |
-| `borderRadius` | `number`    | `8`       | Defines the radius of the border.                                   |
-| `borderWidth`  | `number`    | `1`       | Defines the width of the border.                                    |
-| `children`     | `ReactNode` | `{}`      | Contains react node elements.                                       |
-
-## Credits
-
-- Credits to [Matthew Goshman](https://codepen.io/matthewgoshman/pen/bGMpKZy) for this fantastic component.
-- Credits to [Anu Adebayo](https://twitter.com/unnamedcodes) for improving and customizing the component.
+| Prop          | Type                  | Default     | Description                                                         |
+| ------------- | --------------------- | ----------- | ------------------------------------------------------------------- |
+| `className`   | `string`              | `-`         | The class name to be applied to the component.                      |
+| `duration`    | `number`              | `14`        | Defines the animation duration to be applied on the shining border. |
+| `shineColor`  | `string \| string[]`  | `"#000000"` | Color of the border, can be a single color or an array of colors.   |
+| `borderWidth` | `number`              | `1`         | Width of the border in pixels.                                      |
+| `style`       | `React.CSSProperties` | `-`         | Additional styles to be applied to the component.                   |

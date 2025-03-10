@@ -93,7 +93,7 @@ const pages = defineCollection({
 
 const documents = defineCollection({
   name: "Doc",
-  directory: "content",
+  directory: "content/docs",
   include: "**/*.mdx",
   schema: (z) => ({
     title: z.string(),
@@ -184,9 +184,9 @@ const documents = defineCollection({
     });
     return {
       ...document,
-      image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(document.title)}`,
-      slug: `/${document._meta.path}`,
-      slugAsParams: document._meta.path.split("/").slice(1).join("/"),
+      image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(document.title)}&description=${encodeURI(document.description)}`,
+      slug: `/docs/${document._meta.path}`,
+      slugAsParams: document._meta.path,
       body: {
         raw: document.content,
         code: body,

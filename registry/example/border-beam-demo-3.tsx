@@ -13,7 +13,7 @@ import { BorderBeam } from "@/registry/magicui/border-beam";
 
 export default function LoginForm() {
   return (
-    <Card className="relative w-[350px]">
+    <Card className="relative w-[350px] overflow-hidden">
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>

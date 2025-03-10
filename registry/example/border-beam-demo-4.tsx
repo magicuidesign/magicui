@@ -3,7 +3,7 @@ import { BorderBeam } from "@/registry/magicui/border-beam";
 
 export default function Component() {
   return (
-    <Button className="relative" size="lg" variant="outline">
+    <Button className="relative overflow-hidden" size="lg" variant="outline">
       Buy Now
       <BorderBeam
         size={40}
