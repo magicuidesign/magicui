@@ -102,6 +102,11 @@ export function MobileNav() {
                           {item.label}
                         </span>
                       )}
+                      {item.paid && (
+                        <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                          Pro
+                        </span>
+                      )}
                     </MobileLink>
                   ) : (
                     <span
