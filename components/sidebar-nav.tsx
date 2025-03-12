@@ -55,7 +55,7 @@ export function DocsSidebarNavItems({
             href={item.href}
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
-              "group relative flex h-8 w-full items-center rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
+              "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href &&
                 "bg-accent font-medium text-accent-foreground",
@@ -78,19 +78,21 @@ export function DocsSidebarNavItems({
               />
             )}
             <span className="relative z-10 shrink-0">{item.title}</span>
-            {item.label && (
-              <span className="relative z-10 ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                {item.label}
-              </span>
-            )}
-            {item.paid && (
-              <span className="relative z-10 ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                Pro
-              </span>
-            )}
-            {item.external && (
-              <ExternalLinkIcon className="relative z-10 ml-2 size-4" />
-            )}
+            <div>
+                {item.label && (
+                  <span className="relative z-10 ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                    {item.label}
+                  </span>
+                )}
+                {item.paid && (
+                  <span className="relative z-10 ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                    Pro
+                  </span>
+                )}
+                {item.external && (
+                  <ExternalLinkIcon className="relative z-10 ml-2 size-4" />
+                )}
+            </div>
           </Link>
         ) : (
           <span

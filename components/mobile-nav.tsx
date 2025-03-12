@@ -92,21 +92,23 @@ export function MobileNav() {
                       href={item.href}
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
-                        "text-muted-foreground",
+                        "flex justify-between text-muted-foreground",
                         item.disabled && "cursor-not-allowed opacity-60",
                       )}
                     >
                       {item.title}
-                      {item.label && (
-                        <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                          {item.label}
-                        </span>
-                      )}
-                      {item.paid && (
-                        <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                          Pro
-                        </span>
-                      )}
+                      <div>
+                        {item.label && (
+                          <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                            {item.label}
+                          </span>
+                        )}
+                        {item.paid && (
+                          <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                            Pro
+                          </span>
+                        )}
+                      </div>
                     </MobileLink>
                   ) : (
                     <span
