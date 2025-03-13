@@ -483,6 +483,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Blob Background",
+          href: `/docs/components/blob-background`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Flickering Grid",
           href: `/docs/components/flickering-grid`,
           items: [],
