@@ -92,28 +92,36 @@ export function HyperText({
   useEffect(() => {
     if (!isAnimating) return;
 
-    const intervalDuration = duration / (children.length * 10);
     const maxIterations = children.length;
+    const startTime = performance.now();
+    let animationFrameId: number;
 
-    const interval = setInterval(() => {
-      if (iterationCount.current < maxIterations) {
-        setDisplayText((currentText) =>
-          currentText.map((letter, index) =>
-            letter === " "
-              ? letter
-              : index <= iterationCount.current
-                ? children[index]
-                : characterSet[getRandomInt(characterSet.length)],
-          ),
-        );
-        iterationCount.current = iterationCount.current + 0.1;
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      iterationCount.current = progress * maxIterations;
+
+      setDisplayText((currentText) =>
+        currentText.map((letter, index) =>
+          letter === " "
+            ? letter
+            : index <= iterationCount.current
+              ? children[index]
+              : characterSet[getRandomInt(characterSet.length)],
+        ),
+      );
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
       } else {
         setIsAnimating(false);
-        clearInterval(interval);
       }
-    }, intervalDuration);
+    };
 
-    return () => clearInterval(interval);
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, [children, duration, isAnimating, characterSet]);
 
   return (
