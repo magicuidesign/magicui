@@ -1530,6 +1530,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  glow: {
+    name: "glow",
+    description:
+      "A beautiful glow effect that appears when hovering over elements",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/glow.tsx",
+        type: "registry:ui",
+        target: "components/magicui/glow.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/glow.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4316,6 +4340,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "glow-demo": {
+    name: "glow-demo",
+    description:
+      "Example showing a beautiful glow effect that appears when hovering over elements.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/glow"],
+    files: [
+      {
+        path: "registry/example/glow-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glow-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

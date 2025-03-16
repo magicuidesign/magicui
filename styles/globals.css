@@ -159,3 +159,7 @@
   -webkit-mask-composite: source-in, xor;
   mask-composite: intersect;
 }
+
+@theme inline {
+  --radius-inherit: inherit;
+}
