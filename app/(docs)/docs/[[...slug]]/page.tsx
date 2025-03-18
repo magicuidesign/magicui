@@ -1,7 +1,6 @@
 import { Mdx } from "@/components/mdx-components";
 import { DocPager } from "@/components/pager";
 import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 
@@ -110,8 +109,10 @@ export default async function DocPage({ params }: DocPageProps) {
                 href={doc.links.doc}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
+                className={cn(
+                  badgeVariants({ variant: "secondary" }),
+                  "gap-1"
+                )}>
                 Docs
                 <ExternalLinkIcon className="size-3" />
               </Link>
@@ -121,8 +122,10 @@ export default async function DocPage({ params }: DocPageProps) {
                 href={doc.links.api}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
+                className={cn(
+                  badgeVariants({ variant: "secondary" }),
+                  "gap-1"
+                )}>
                 API Reference
                 <ExternalLinkIcon className="size-3" />
               </Link>
@@ -136,12 +139,11 @@ export default async function DocPage({ params }: DocPageProps) {
       </div>
       {doc.toc && (
         <div className="hidden border-l border-border py-6 pl-6 text-sm lg:py-8 xl:block">
-          <ScrollArea className="pb-10">
-            <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
-              <TableOfContents toc={toc} />
-              <Contribute doc={doc} />
-            </div>
-          </ScrollArea>
+          <div className="pb-10" />
+          <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
+            <TableOfContents toc={toc} />
+            <Contribute doc={doc} />
+          </div>
         </div>
       )}
     </main>
