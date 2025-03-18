@@ -109,10 +109,8 @@ export default async function DocPage({ params }: DocPageProps) {
                 href={doc.links.doc}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(
-                  badgeVariants({ variant: "secondary" }),
-                  "gap-1"
-                )}>
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
+              >
                 Docs
                 <ExternalLinkIcon className="size-3" />
               </Link>
@@ -122,10 +120,8 @@ export default async function DocPage({ params }: DocPageProps) {
                 href={doc.links.api}
                 target="_blank"
                 rel="noreferrer"
-                className={cn(
-                  badgeVariants({ variant: "secondary" }),
-                  "gap-1"
-                )}>
+                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
+              >
                 API Reference
                 <ExternalLinkIcon className="size-3" />
               </Link>
