@@ -186,6 +186,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "smooth-cursor-demo",
+    description: "Basic smooth cursor example",
+    type: "registry:example",
+    files: [
+      {
+        path: "registry/example/smooth-cursor-demo.tsx",
+        type: "registry:example",
+        target: "components/smooth-cursor-demo.tsx",
+      },
+    ],
+    dependencies: ["smooth-cursor"],
+  },
+  {
     name: "neon-gradient-card-demo",
     type: "registry:example",
     title: "Neon Gradient Card Demo",
