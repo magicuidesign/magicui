@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Text Animate",
   "description": "A text animation component that animates text using a variety of different animations.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/magicui/text-animate.tsx",
