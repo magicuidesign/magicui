@@ -34,4 +34,5 @@ export const AuroraText = memo(
     );
   },
 );
+
 AuroraText.displayName = "AuroraText";
