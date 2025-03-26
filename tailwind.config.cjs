@@ -86,8 +86,20 @@ module.exports = {
         pulse: "pulse var(--duration) ease-out infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         "line-shadow": "line-shadow 15s linear infinite",
+        aurora: "aurora 8s linear infinite alternate",
       },
       keyframes: {
+        aurora: {
+          "0%": {
+            backgroundPosition: "0% 50%",
+          },
+          "50%": {
+            backgroundPosition: "100% 50%",
+          },
+          "100%": {
+            backgroundPosition: "0% 50%",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
