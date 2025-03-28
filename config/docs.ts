@@ -334,6 +334,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Scroll Blur",
+          href: `/docs/components/scroll-blur`,
+          items: [],
+          label: "",
+        },
       ],
     },
     {
