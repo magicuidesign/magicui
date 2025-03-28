@@ -134,9 +134,8 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocPager doc={doc} />
       </div>
       {doc.toc && (
-        <div className="hidden border-l border-border py-6 pl-6 text-sm lg:py-8 xl:block">
-          <div className="pb-10" />
-          <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
+        <div className="hidden border-l border-border py-6 pl-6 text-sm xl:block">
+          <div className="sticky top-[90px] h-[calc(100vh-3.5rem)] space-y-4">
             <TableOfContents toc={toc} />
             <Contribute doc={doc} />
           </div>
