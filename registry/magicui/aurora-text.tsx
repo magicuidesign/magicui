@@ -27,48 +27,50 @@ export function AuroraText({
   >({});
   const maskId = useId();
 
-  // Updated effect to compute all text styles from parent
+  // This effect will compute and update text styles whenever the viewport changes
   useEffect(() => {
-    if (containerRef.current) {
-      const computedStyle = window.getComputedStyle(containerRef.current);
-
-      // Extract text-related styles
-      const relevantStyles = {
-        fontSize: computedStyle.fontSize,
-        fontFamily: computedStyle.fontFamily,
-        fontWeight: computedStyle.fontWeight,
-        fontStyle: computedStyle.fontStyle,
-        letterSpacing: computedStyle.letterSpacing,
-        lineHeight: computedStyle.lineHeight,
-        textTransform: computedStyle.textTransform,
-        fontVariant: computedStyle.fontVariant,
-        fontStretch: computedStyle.fontStretch,
-        fontFeatureSettings: computedStyle.fontFeatureSettings,
-      };
-
-      requestAnimationFrame(() => {
-        setTextStyle(relevantStyles);
-      });
-    }
-  }, [className]);
-
-  // Updated effect to compute font size from both inline and class styles
-  useEffect(() => {
-    const updateFontSize = () => {
+    const updateStyles = () => {
       if (containerRef.current) {
         const computedStyle = window.getComputedStyle(containerRef.current);
-        const computedFontSize = parseFloat(computedStyle.fontSize);
 
-        requestAnimationFrame(() => {
-          setFontSize(computedFontSize);
-        });
+        // Extract text-related styles
+        const relevantStyles = {
+          fontSize: computedStyle.fontSize,
+          fontFamily: computedStyle.fontFamily,
+          fontWeight: computedStyle.fontWeight,
+          fontStyle: computedStyle.fontStyle,
+          letterSpacing: computedStyle.letterSpacing,
+          lineHeight: computedStyle.lineHeight,
+          textTransform: computedStyle.textTransform,
+          fontVariant: computedStyle.fontVariant,
+          fontStretch: computedStyle.fontStretch,
+          fontFeatureSettings: computedStyle.fontFeatureSettings,
+        };
+
+        setTextStyle(relevantStyles);
+        setFontSize(parseFloat(computedStyle.fontSize));
       }
     };
 
-    updateFontSize();
-    window.addEventListener("resize", updateFontSize);
+    // Run initially
+    updateStyles();
+    
+    // Set up resize observer to detect layout changes and container size changes
+    const resizeObserver = new ResizeObserver(() => {
+      updateStyles();
+    });
+    
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+    
+    // Also listen for window resize events in case CSS media queries affect the font size
+    window.addEventListener("resize", updateStyles);
 
-    return () => window.removeEventListener("resize", updateFontSize);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateStyles);
+    };
   }, [className]);
 
   // Update effect to set ready state after dimensions are computed
@@ -84,11 +86,11 @@ export function AuroraText({
       }
     };
 
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
+    // Small delay to ensure text has rendered with the correct font size
+    const timeoutId = setTimeout(updateDimensions, 10);
 
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, [children, fontSize]);
+    return () => clearTimeout(timeoutId);
+  }, [children, fontSize, textStyle]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
