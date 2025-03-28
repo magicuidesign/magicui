@@ -1,7 +1,6 @@
 import { Mdx } from "@/components/mdx-components";
 import { DocPager } from "@/components/pager";
 import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 
@@ -135,13 +134,11 @@ export default async function DocPage({ params }: DocPageProps) {
         <DocPager doc={doc} />
       </div>
       {doc.toc && (
-        <div className="hidden border-l border-border py-6 pl-6 text-sm lg:py-8 xl:block">
-          <ScrollArea className="pb-10">
-            <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
-              <TableOfContents toc={toc} />
-              <Contribute doc={doc} />
-            </div>
-          </ScrollArea>
+        <div className="hidden border-l border-border py-6 pl-6 text-sm xl:block">
+          <div className="sticky top-[90px] h-[calc(100vh-3.5rem)] space-y-4">
+            <TableOfContents toc={toc} />
+            <Contribute doc={doc} />
+          </div>
         </div>
       )}
     </main>
