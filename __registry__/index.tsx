@@ -1530,6 +1530,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "arc-timeline": {
+    name: "arc-timeline",
+    description: "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/arc-timeline.tsx",
+        type: "registry:ui",
+        target: "components/magicui/arc-timeline.tsx"
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/arc-timeline.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4316,6 +4339,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "arc-timeline-demo": {
+    name: "arc-timeline-demo",
+    description: "Example showing an arc timeline component.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/arc-timeline"],
+    files: [
+      {
+        path: "registry/example/arc-timeline-demo.tsx",
+        type: "registry:example",
+        target: "components/arc-timeline-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/arc-timeline-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

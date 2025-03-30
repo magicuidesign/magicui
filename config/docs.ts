@@ -240,6 +240,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Arc Timeline",
+          href: `/docs/components/arc-timeline`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
