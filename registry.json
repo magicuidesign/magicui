@@ -1329,6 +1329,19 @@
       ]
     },
     {
+      "name": "arc-timeline",
+      "type": "registry:ui",
+      "title": "Arc Timeline",
+      "description": "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
+      "files": [
+        {
+          "path": "registry/magicui/arc-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/arc-timeline.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3380,6 +3393,27 @@
           "path": "registry/magicui/highlighter.tsx",
           "type": "registry:ui",
           "target": "components/magicui/highlighter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-timeline-demo",
+      "type": "registry:example",
+      "title": "Arc Timeline Demo",
+      "description": "Example showing an arc timeline component.",
+      "registryDependencies": [
+        "https://magicui.design/r/arc-timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/example/arc-timeline-demo.tsx",
+          "type": "registry:example",
+          "target": "components/arc-timeline-demo.tsx"
+        },
+        {
+          "path": "registry/magicui/arc-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/arc-timeline.tsx"
         }
       ]
     },
