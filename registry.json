@@ -1218,6 +1218,19 @@
       ]
     },
     {
+      "name": "progressive-blur",
+      "type": "registry:ui",
+      "title": "Progressive Blur",
+      "description": "A component that creates a progressive blur effect for scrollable content.",
+      "files": [
+        {
+          "path": "registry/magicui/progressive-blur.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/progressive-blur.tsx"
+        }
+      ]
+    },
+    {
       "name": "safari",
       "type": "registry:ui",
       "title": "Safari",
@@ -3097,6 +3110,22 @@
           "path": "registry/example/blur-fade-text-demo.tsx",
           "type": "registry:example",
           "target": "components/blur-fade-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-blur-demo",
+      "type": "registry:example",
+      "title": "Progressive Blur Demo",
+      "description": "Example showing progressive blur effect for scrollable content.",
+      "registryDependencies": [
+        "https://magicui.design/r/progressive-blur"
+      ],
+      "files": [
+        {
+          "path": "registry/example/progressive-blur-demo.tsx",
+          "type": "registry:example",
+          "target": "components/progressive-blur-demo.tsx"
         }
       ]
     },

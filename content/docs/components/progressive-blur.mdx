@@ -1,0 +1,66 @@
+---
+title: Progressive Blur
+date: 2024-06-01
+description: A component that creates a progressive blur effect for scrollable content
+author: magicui
+published: true
+---
+
+<ComponentPreview name="progressive-blur-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/progressive-blur"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="progressive-blur" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+
+export default function MyComponent() {
+  return (
+    <div className="relative h-[400px] overflow-auto">
+      {/* Your scrollable content */}
+      <div className="space-y-4">{/* Items, text, etc. */}</div>
+
+      <ProgressiveBlur />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop         | Type                          | Default                         | Description                                     |
+| ------------ | ----------------------------- | ------------------------------- | ----------------------------------------------- |
+| `className`  | `string`                      | `undefined`                     | Optional CSS class to apply to the component    |
+| `height`     | `string`                      | `"65%"`                         | Height of the blur gradient                     |
+| `position`   | `"top" \| "bottom" \| "both"` | `"bottom"`                      | Position of the blur effect                     |
+| `blurLevels` | `number[]`                    | `[0.5, 1, 2, 4, 8, 16, 32, 64]` | Blur levels for each gradient layer             |
+| `children`   | `React.ReactNode`             | `undefined`                     | Optional content to render inside the component |
