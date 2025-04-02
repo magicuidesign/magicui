@@ -1,6 +1,8 @@
 import { SVGProps } from "react";
 
-export interface AndroidProps extends SVGProps<SVGSVGElement> {
+type AndroidSVGProps = Omit<SVGProps<SVGSVGElement>, "key">;
+
+export interface AndroidProps extends AndroidSVGProps {
   width?: number;
   height?: number;
   src?: string;
@@ -21,6 +23,7 @@ export default function Android({
       viewBox={`0 0 ${width} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="v4 class"
       {...props}
     >
       <path
@@ -63,7 +66,7 @@ export default function Android({
           href={src}
           width="360"
           height="800"
-          className="size-full object-cover"
+          className="size-full object-contain"
           preserveAspectRatio="xMidYMid slice"
           clipPath="url(#clip0_514_20855)"
         />
@@ -76,7 +79,7 @@ export default function Android({
           preserveAspectRatio="xMidYMid slice"
         >
           <video
-            className="size-full object-cover"
+            className="size-full object-contain"
             src={videoSrc}
             autoPlay
             loop
