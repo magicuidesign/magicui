@@ -50,7 +50,7 @@ export function MainNav() {
             <span className="hidden font-bold md:inline-block">
               {siteConfig.name}
             </span>
-            <Badge variant="secondary">Beta</Badge>
+            <Badge variant="secondary">V3</Badge>
           </Link>
         </ContextMenuTrigger>
         <ContextMenuContent>
