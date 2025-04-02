@@ -1,0 +1,70 @@
+{
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "tw-animate-css",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "android",
+      "type": "registry:ui",
+      "title": "Android",
+      "description": "A mockup of an Android device.",
+      "files": [
+        {
+          "path": "apps/v4/registry/magicui-v4/android.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/android.tsx"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "android-demo",
+      "type": "registry:example",
+      "title": "Android Demo",
+      "description": "Example showing a mockup of an Android device.",
+      "registryDependencies": ["https://magicui.design/r/android"],
+      "files": [
+        {
+          "path": "apps/v4/registry/example-v4/android-demo.tsx",
+          "type": "registry:example",
+          "target": "components/android-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "android-demo-2",
+      "type": "registry:example",
+      "title": "Android Demo 2",
+      "description": "Example showing a mockup of an Android device.",
+      "registryDependencies": ["https://magicui.design/r/android"],
+      "files": [
+        {
+          "path": "apps/v4/registry/example-v4/android-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/android-demo-2.tsx"
+        }
+      ]
+    }
+  ]
+}

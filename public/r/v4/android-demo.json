@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "android-demo",
+  "type": "registry:example",
+  "title": "Android Demo",
+  "description": "Example showing a mockup of an Android device.",
+  "registryDependencies": [
+    "https://magicui.design/r/android"
+  ],
+  "files": [
+    {
+      "path": "registry/example-v4/android-demo.tsx",
+      "content": "import Android from \"../magicui-v4/android\";\n\nexport default function AndroidDemo() {\n  return (\n    <div className=\"relative v4\">\n      <Android className=\"size-full\" />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/android-demo.tsx"
+    }
+  ]
+}

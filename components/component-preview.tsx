@@ -1,4 +1,4 @@
-import { Index } from "@/__registry__";
+import { Index } from "@/apps/v4/__registry__";
 import { ComponentWrapper } from "@/components/component-wrapper";
 import { Icons } from "@/components/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -20,7 +20,9 @@ export function ComponentPreview({
   ...props
 }: ComponentPreviewProps) {
   const Codes = React.Children.toArray(children) as React.ReactElement[];
+
   const Code = Codes[0];
+  console.log("codes", Codes[0].props);
 
   const Preview = React.useMemo(() => {
     const Component = Index[name]?.component;
@@ -45,7 +47,7 @@ export function ComponentPreview({
     <div
       className={cn(
         "relative my-4 flex flex-col space-y-2 lg:max-w-[120ch]",
-        className,
+        className
       )}
       {...props}
     >
