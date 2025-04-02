@@ -104,7 +104,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
           transform: `translateX(-50%) rotate(${circleContainerRotateDeg}deg)`,
           width: `${circleWidth}px`,
         }}
-        className="absolute left-1/2 top-28 aspect-square w-[5000px] origin-center rounded-full transition-all duration-500 ease-in-out"
+        className="absolute left-1/2 top-28 aspect-square origin-center rounded-full transition-all duration-500 ease-in-out"
       >
         {data.map((line, lineIndex) => {
           return (
