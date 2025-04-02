@@ -1140,6 +1140,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "progressive-blur",
+    type: "registry:ui",
+    title: "Progressive Blur",
+    description:
+      "A component that creates a progressive blur effect for scrollable content.",
+    files: [
+      {
+        path: "registry/magicui/progressive-blur.tsx",
+        type: "registry:ui",
+        target: "components/magicui/progressive-blur.tsx",
+      },
+    ],
+  },
+  {
     name: "safari",
     type: "registry:ui",
     title: "Safari",
