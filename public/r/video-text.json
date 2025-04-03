@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-text",
+  "type": "registry:ui",
+  "title": "Video Text",
+  "description": "A component that displays text with a video playing in the background.",
+  "files": [
+    {
+      "path": "registry/magicui/video-text.tsx",
+      "content": "\"use client\";\n\nimport React, { FC } from \"react\";\n\nexport interface VideoSource {\n  src: string;\n  type: string;\n}\n\nexport interface VideoTextProps {\n  /**\n   * The text to display (will have the video \"inside\" it)\n   */\n  text: string;\n  /**\n   * Array of video sources\n   */\n  sources: VideoSource[];\n  /**\n   * Additional className for the container\n   */\n  className?: string;\n  /**\n   * Whether to autoplay the video\n   */\n  autoPlay?: boolean;\n  /**\n   * Whether to mute the video\n   */\n  muted?: boolean;\n  /**\n   * Whether to loop the video\n   */\n  loop?: boolean;\n  /**\n   * Whether to preload the video\n   */\n  preload?: \"auto\" | \"metadata\" | \"none\";\n}\n\nconst VideoText: FC<VideoTextProps> = ({\n  text,\n  sources,\n  className = \"\",\n  autoPlay = true,\n  muted = true,\n  loop = true,\n  preload = \"auto\",\n}) => {\n  return (\n    <div className={`relative w-full h-full ${className}`}>\n      {/* Create a container that masks the video to only show within text */}\n      <div\n        className=\"absolute inset-0 flex items-center justify-center\"\n        style={{\n          maskImage: `url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='120' font-weight='bold' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif'>${text}</text></svg>\")`,\n          WebkitMaskImage: `url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='120' font-weight='bold' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif'>${text}</text></svg>\")`,\n          maskSize: \"contain\",\n          WebkitMaskSize: \"contain\",\n          maskRepeat: \"no-repeat\",\n          WebkitMaskRepeat: \"no-repeat\",\n          maskPosition: \"center\",\n          WebkitMaskPosition: \"center\",\n        }}\n      >\n        <video\n          className=\"w-full h-full object-cover\"\n          autoPlay={autoPlay}\n          muted={muted}\n          loop={loop}\n          preload={preload}\n        >\n          {sources.map((source, i) => (\n            <source key={i} src={source.src} type={source.type} />\n          ))}\n          Your browser does not support the video tag.\n        </video>\n      </div>\n\n      {/* Add a backup text element that's transparent but visible for SEO/accessibility */}\n      <h1 className=\"sr-only\">{text}</h1>\n    </div>\n  );\n};\n\nexport default VideoText;\n",
+      "type": "registry:ui",
+      "target": "components/magicui/video-text.tsx"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+---
+title: Video Text
+date: 2024-06-01
+description: A simple component that displays text with a video background.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="video-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/video-text"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="video-text" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import VideoText from "@/components/magicui/video-text";
+
+export default function VideoTextExample() {
+  return (
+    <div className="h-[400px] w-full bg-black">
+      <VideoText
+        text="your-text-here"
+        sources={[
+          {
+            src: "path/to/video.webm",
+            type: "video/webm",
+          },
+          {
+            src: "path/to/video.mp4",
+            type: "video/mp4",
+          },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type                             | Default  | Description                                                                                                                    |
+| ----------- | -------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `text`      | `string`                         | Required | The text to display over the video                                                                                             |
+| `sources`   | `{ src: string, type: string}[]` | Required | Array of video sources with type. Multiple sources improve browser compatibility. The `src` can be a URL or a local file path. |
+| `autoPlay`  | `boolean`                        | `true`   | Whether to autoplay the video                                                                                                  |
+| `muted`     | `boolean`                        | `true`   | Whether to mute the video                                                                                                      |
+| `loop`      | `boolean`                        | `true`   | Whether to loop the video                                                                                                      |
+| `preload`   | `'auto' \| 'metadata' \| 'none'` | `"auto"` | Video preload behavior                                                                                                         |
+| `className` | `string`                         | `""`     | Additional className for the container                                                                                         |
+
+## Types
+
+```ts
+interface VideoSource {
+  src: string; // URL or local file path
+  type: string; // MIME type like "video/webm" or "video/mp4"
+}
+```
