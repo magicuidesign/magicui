@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-text-demo",
+  "type": "registry:example",
+  "title": "Video Text Demo",
+  "description": "Example showing text with a video background.",
+  "registryDependencies": [
+    "https://magicui.design/r/video-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/video-text-demo.tsx",
+      "content": "import VideoText from \"@/components/magicui/video-text\";\n\nexport default function VideoTextDemo() {\n  return (\n    <div className=\"relative h-[400px] w-full justify-center rounded-md bg-black dark:bg-black\">\n      <VideoText\n        text=\"MAGIC\"\n        sources={[\n          {\n            src: \"https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ocean-small.webm\",\n            type: \"video/webm\",\n          },\n          {\n            src: \"http://thenewcode.com/assets/videos/ocean-small.mp4\",\n            type: \"video/mp4\",\n          },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/video-text-demo.tsx"
+    }
+  ]
+}
