@@ -122,31 +122,38 @@ async function buildRegistryJsonFile() {
 }
 
 async function buildRegistry() {
-  return new Promise((resolve, reject) => {
-    console.log("📦 Starting shadcn build process...");
-    const command = `pnpm dlx shadcn build registry.json --output public/r`;
-    console.log(`🔧 Executing command: ${command}`);
+  return new Promise(async (resolve, reject) => {
+    console.log("📦 Starting component file generation...");
 
-    const process = exec(command);
+    // First write our own JSON files with preserved CSS
+    for (const item of registry.items) {
+      const componentJson = {
+        $schema: "https://ui.shadcn.com/schema/registry-item.json",
+        name: item.name,
+        type: item.type,
+        title: item.title,
+        description: item.description,
+        dependencies: item.dependencies || [],
+        registryDependencies: item.registryDependencies || [],
+        files: item.files,
+        cssVars: item.cssVars || {},
+        css: item.css || {},
+        meta: item.meta || {},
+      };
 
-    // Add stdout listener
-    process.stdout?.on("data", (data) => {
-      console.log(`stdout: ${data}`);
-    });
+      const outputPath = path.join(
+        process.cwd(),
+        "public/r",
+        `${item.name}.json`
+      );
+      await fs.mkdir(path.dirname(outputPath), { recursive: true });
+      await fs.writeFile(outputPath, JSON.stringify(componentJson, null, 2));
+    }
 
-    // Add stderr listener
-    process.stderr?.on("data", (data) => {
-      console.error(`stderr: ${data}`);
-    });
+    console.log("✅ Component files generated with preserved CSS");
 
-    process.on("exit", (code) => {
-      console.log(`🏁 Build process exited with code: ${code}`);
-      if (code === 0) {
-        resolve(undefined);
-      } else {
-        reject(new Error(`Build process failed with code ${code}`));
-      }
-    });
+    // Skip the shadcn build since it's overwriting our CSS
+    resolve(undefined);
   });
 }
 
