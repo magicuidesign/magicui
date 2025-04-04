@@ -4,8 +4,6 @@ import { badgeVariants } from "@/components/ui/badge";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
 
-import "@/styles/mdx.css";
-
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 import { allDocs } from "content-collections";
 import type { Metadata } from "next";
