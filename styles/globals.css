@@ -36,6 +36,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --color-1: 0 100% 63%;
+  --color-2: 270 100% 63%;
+  --color-3: 210 100% 63%;
+  --color-4: 195 100% 63%;
+  --color-5: 90 100% 63%;
 }
 
 .dark {
@@ -73,6 +79,8 @@
 }
 
 @theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -110,28 +118,30 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* Added Animation Variables */
-  --animate-aurora: aurora 10s ease infinite; /* Example duration/timing */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-background-position-spin: background-position-spin 3s linear
-    infinite alternate; /* Example duration/timing */
-  --animate-gradient: gradient 5s linear infinite; /* Example duration/timing */
-  --animate-meteor: meteor 1.5s ease-in infinite; /* Example duration/timing */
-  --animate-grid: grid 15s linear infinite; /* Example duration/timing */
-  --animate-marquee: marquee var(--duration, 30s) linear infinite; /* Use var(--duration) if defined elsewhere, else default */
-  --animate-marquee-vertical: marquee-vertical var(--duration, 30s) linear
-    infinite; /* Use var(--duration) if defined elsewhere, else default */
-  --animate-spin-around: spin-around 1.5s linear infinite; /* Example duration/timing */
-  --animate-ripple: ripple 1s ease-in-out infinite; /* Example duration/timing */
-  --animate-rippling: rippling 1s ease-out infinite; /* Example duration/timing */
-  --animate-shimmer-slide: shimmer-slide 2s linear infinite; /* Example duration/timing */
-  --animate-line: line 1s linear infinite; /* Example duration/timing */
-  --animate-shiny-text: shiny-text 3s linear infinite; /* Example duration/timing */
-  --animate-orbit: orbit calc(var(--duration, 20) * 1s) linear infinite; /* Use var(--duration) if defined elsewhere, else default */
-  --animate-shine: shine 3s ease-in-out infinite; /* Example duration/timing */
-  --animate-pulse: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; /* Example duration/timing */
-  --animate-rainbow: rainbow 4s linear infinite; /* Example duration/timing */
-  --animate-line-shadow: line-shadow 2s linear infinite; /* Example duration/timing */
+  --animate-accordion-down: "accordion-down 0.2s ease-out";
+  --animate-accordion-up: "accordion-up 0.2s ease-out";
+  --animate-gradient: gradient 8s linear infinite;
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-grid: grid 15s linear infinite;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  --animate-shiny-text: shiny-text 8s infinite;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
+    alternate;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
+    infinite;
+  --animate-rippling: rippling var(--duration, 0.6s) ease-out;
+  --animate-line: line 2s linear infinite;
+  --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+  --animate-background-position-spin: background-position-spin 3000ms infinite
+    alternate;
+  --animate-shine: shine var(--duration) infinite linear;
+  --animate-pulse: pulse var(--duration) ease-out infinite;
+  --animate-rainbow: "rainbow var(--speed, 2s) infinite linear";
+  --animate-line-shadow: line-shadow 15s linear infinite;
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+
   /* End Animation Variables */
 
   /* Added Keyframes */
@@ -402,7 +412,8 @@
 
 .lab-bg {
   --mask-offset: 100px;
-  -webkit-mask: linear-gradient(
+  -webkit-mask:
+    linear-gradient(
       to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
@@ -414,7 +425,8 @@
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
       transparent
     );
-  mask: linear-gradient(
+  mask:
+    linear-gradient(
       to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
@@ -429,7 +441,6 @@
   -webkit-mask-composite: source-in, xor;
   mask-composite: intersect;
 }
-
 
 [data-theme="light"] {
   display: block;
