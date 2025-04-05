@@ -69,38 +69,32 @@ export const ui: Registry["items"] = [
         target: "components/magicui/aurora-text.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            keyframes: {
-              aurora: {
-                "0%": {
-                  backgroundPosition: "0% 50%",
-                  transform: "rotate(-5deg) scale(0.9)",
-                },
-                "25%": {
-                  backgroundPosition: "50% 100%",
-                  transform: "rotate(5deg) scale(1.1)",
-                },
-                "50%": {
-                  backgroundPosition: "100% 50%",
-                  transform: "rotate(-3deg) scale(0.95)",
-                },
-                "75%": {
-                  backgroundPosition: "50% 0%",
-                  transform: "rotate(3deg) scale(1.05)",
-                },
-                "100%": {
-                  backgroundPosition: "0% 50%",
-                  transform: "rotate(-5deg) scale(0.9)",
-                },
-              },
-            },
-            animation: {
-              aurora: "aurora 8s ease-in-out infinite alternate",
-            },
-          },
+    cssVars: {
+      theme: {
+        aurora: "aurora 8s ease-in-out infinite alternate",
+      },
+    },
+    css: {
+      "@keyframes aurora": {
+        "0%": {
+          backgroundPosition: "0% 50%",
+          transform: "rotate(-5deg) scale(0.9)",
+        },
+        "25%": {
+          backgroundPosition: "50% 100%",
+          transform: "rotate(5deg) scale(1.1)",
+        },
+        "50%": {
+          backgroundPosition: "100% 50%",
+          transform: "rotate(-3deg) scale(0.95)",
+        },
+        "75%": {
+          backgroundPosition: "50% 0%",
+          transform: "rotate(3deg) scale(1.05)",
+        },
+        "100%": {
+          backgroundPosition: "0% 50%",
+          transform: "rotate(-5deg) scale(0.9)",
         },
       },
     },
@@ -174,22 +168,16 @@ export const ui: Registry["items"] = [
         target: "components/magicui/neon-gradient-card.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              "background-position-spin":
-                "background-position-spin 3000ms infinite alternate",
-            },
-            keyframes: {
-              "background-position-spin": {
-                "0%": { backgroundPosition: "top center" },
-                "100%": { backgroundPosition: "bottom center" },
-              },
-            },
-          },
-        },
+    cssVars: {
+      theme: {
+        "background-position-spin":
+          "background-position-spin 3000ms infinite alternate",
+      },
+    },
+    css: {
+      "@keyframes background-position-spin": {
+        "0%": { backgroundPosition: "top center" },
+        "100%": { backgroundPosition: "bottom center" },
       },
     },
   },
@@ -205,27 +193,21 @@ export const ui: Registry["items"] = [
         target: "components/magicui/meteors.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              meteor: "meteor 5s linear infinite",
-            },
-            keyframes: {
-              meteor: {
-                "0%": {
-                  transform: "rotate(var(--angle)) translateX(0)",
-                  opacity: "1",
-                },
-                "70%": { opacity: "1" },
-                "100%": {
-                  transform: "rotate(var(--angle)) translateX(-500px)",
-                  opacity: "0",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        meteor: "meteor 5s linear infinite",
+      },
+    },
+    css: {
+      "@keyframes meteor": {
+        "0%": {
+          transform: "rotate(var(--angle)) translateX(0)",
+          opacity: "1",
+        },
+        "70%": { opacity: "1" },
+        "100%": {
+          transform: "rotate(var(--angle)) translateX(-500px)",
+          opacity: "0",
         },
       },
     },
@@ -342,26 +324,27 @@ export const ui: Registry["items"] = [
         target: "components/magicui/marquee.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            keyframes: {
-              marquee: {
-                from: { transform: "translateX(0)" },
-                to: { transform: "translateX(calc(-100% - var(--gap)))" },
-              },
-              "marquee-vertical": {
-                from: { transform: "translateY(0)" },
-                to: { transform: "translateY(calc(-100% - var(--gap)))" },
-              },
-            },
-            animation: {
-              marquee: "marquee var(--duration) infinite linear",
-              "marquee-vertical":
-                "marquee-vertical var(--duration) linear infinite",
-            },
-          },
+    cssVars: {
+      theme: {
+        marquee: "marquee var(--duration) infinite linear",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+      },
+    },
+    css: {
+      "@keyframes marquee": {
+        from: {
+          transform: "translateX(0)",
+        },
+        to: {
+          transform: "translateX(calc(-100% - var(--gap)))",
+        },
+      },
+      "@keyframes marquee-vertical": {
+        from: {
+          transform: "translateY(0)",
+        },
+        to: {
+          transform: "translateY(calc(-100% - var(--gap)))",
         },
       },
     },
@@ -394,38 +377,31 @@ export const ui: Registry["items"] = [
         target: "components/magicui/shimmer-button.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              "shimmer-slide":
-                "shimmer-slide var(--speed) ease-in-out infinite alternate",
-              "spin-around":
-                "spin-around calc(var(--speed) * 2) infinite linear",
-            },
-            keyframes: {
-              "shimmer-slide": {
-                to: {
-                  transform: "translate(calc(100cqw - 100%), 0)",
-                },
-              },
-              "spin-around": {
-                "0%": {
-                  transform: "translateZ(0) rotate(0)",
-                },
-                "15%, 35%": {
-                  transform: "translateZ(0) rotate(90deg)",
-                },
-                "65%, 85%": {
-                  transform: "translateZ(0) rotate(270deg)",
-                },
-                "100%": {
-                  transform: "translateZ(0) rotate(360deg)",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        "shimmer-slide":
+          "shimmer-slide var(--speed) ease-in-out infinite alternate",
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+      },
+    },
+    css: {
+      "@keyframes shimmer-slide": {
+        to: {
+          transform: "translate(calc(100cqw - 100%), 0)",
+        },
+      },
+      "@keyframes spin-around": {
+        "0%": {
+          transform: "translateZ(0) rotate(0)",
+        },
+        "15%, 35%": {
+          transform: "translateZ(0) rotate(90deg)",
+        },
+        "65%, 85%": {
+          transform: "translateZ(0) rotate(270deg)",
+        },
+        "100%": {
+          transform: "translateZ(0) rotate(360deg)",
         },
       },
     },
@@ -517,25 +493,18 @@ export const ui: Registry["items"] = [
         target: "components/magicui/ripple.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              ripple:
-                "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
-            },
-            keyframes: {
-              ripple: {
-                "0%, 100%": {
-                  transform: "translate(-50%, -50%) scale(1)",
-                },
-                "50%": {
-                  transform: "translate(-50%, -50%) scale(0.9)",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+      },
+    },
+    css: {
+      "@keyframes ripple": {
+        "0%, 100%": {
+          transform: "translate(-50%, -50%) scale(1)",
+        },
+        "50%": {
+          transform: "translate(-50%, -50%) scale(0.9)",
         },
       },
     },
@@ -552,21 +521,15 @@ export const ui: Registry["items"] = [
         target: "components/magicui/retro-grid.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              grid: "grid 15s linear infinite",
-            },
-            keyframes: {
-              grid: {
-                "0%": { transform: "translateY(-50%)" },
-                "100%": { transform: "translateY(0)" },
-              },
-            },
-          },
-        },
+    cssVars: {
+      theme: {
+        grid: "grid 15s linear infinite",
+      },
+    },
+    css: {
+      "@keyframes grid": {
+        "0%": { transform: "translateY(-50%)" },
+        "100%": { transform: "translateY(0)" },
       },
     },
   },
@@ -598,24 +561,19 @@ export const ui: Registry["items"] = [
         target: "components/magicui/animated-shiny-text.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              "shiny-text": "shiny-text 8s infinite",
-            },
-            keyframes: {
-              "shiny-text": {
-                "0%, 90%, 100%": {
-                  "background-position": "calc(-100% - var(--shiny-width)) 0",
-                },
-                "30%, 60%": {
-                  "background-position": "calc(100% + var(--shiny-width)) 0",
-                },
-              },
-            },
-          },
+
+    cssVars: {
+      theme: {
+        "shiny-text": "shiny-text 8s infinite",
+      },
+    },
+    css: {
+      "@keyframes shiny-text": {
+        "0%, 90%, 100%": {
+          "background-position": "calc(-100% - var(--shiny-width)) 0",
+        },
+        "30%, 60%": {
+          "background-position": "calc(100% + var(--shiny-width)) 0",
         },
       },
     },
@@ -654,7 +612,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Animated Beam",
     description:
-      'An animated beam of light which travels along a path. Useful for showcasing the "integration" features of a website.',
+      "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
     dependencies: ["motion"],
     files: [
       {
@@ -706,21 +664,15 @@ export const ui: Registry["items"] = [
         target: "components/magicui/animated-gradient-text.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              gradient: "gradient 8s linear infinite",
-            },
-            keyframes: {
-              gradient: {
-                to: {
-                  backgroundPosition: "var(--bg-size, 300%) 0",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        gradient: "gradient 8s linear infinite",
+      },
+    },
+    css: {
+      "@keyframes gradient": {
+        to: {
+          backgroundPosition: "var(--bg-size, 300%) 0",
         },
       },
     },
@@ -738,26 +690,20 @@ export const ui: Registry["items"] = [
         target: "components/magicui/orbiting-circles.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              orbit: "orbit calc(var(--duration)*1s) linear infinite",
-            },
-            keyframes: {
-              orbit: {
-                "0%": {
-                  transform:
-                    "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))",
-                },
-                "100%": {
-                  transform:
-                    "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        orbit: "orbit calc(var(--duration)*1s) linear infinite",
+      },
+    },
+    css: {
+      "@keyframes orbit": {
+        "0%": {
+          transform:
+            "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))",
+        },
+        "100%": {
+          transform:
+            "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))",
         },
       },
     },
@@ -961,27 +907,21 @@ export const ui: Registry["items"] = [
         target: "components/magicui/shine-border.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              shine: "shine var(--duration) infinite linear",
-            },
-            keyframes: {
-              shine: {
-                "0%": {
-                  "background-position": "0% 0%",
-                },
-                "50%": {
-                  "background-position": "100% 100%",
-                },
-                to: {
-                  "background-position": "0% 0%",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        shine: "shine var(--duration) infinite linear",
+      },
+    },
+    css: {
+      "@keyframes shine": {
+        "0%": {
+          "background-position": "0% 0%",
+        },
+        "50%": {
+          "background-position": "100% 100%",
+        },
+        to: {
+          "background-position": "0% 0%",
         },
       },
     },
@@ -1057,21 +997,15 @@ export const ui: Registry["items"] = [
         target: "components/magicui/pulsating-button.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              pulse: "pulse var(--duration) ease-out infinite",
-            },
-            keyframes: {
-              pulse: {
-                "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
-                "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
-              },
-            },
-          },
-        },
+    cssVars: {
+      theme: {
+        pulse: "pulse var(--duration) ease-out infinite",
+      },
+    },
+    css: {
+      "@keyframes pulse": {
+        "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
+        "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
       },
     },
   },
@@ -1087,25 +1021,19 @@ export const ui: Registry["items"] = [
         target: "components/magicui/ripple-button.tsx",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            animation: {
-              rippling: "rippling var(--duration) ease-out",
-            },
-            keyframes: {
-              rippling: {
-                "0%": {
-                  opacity: "1",
-                },
-                "100%": {
-                  transform: "scale(2)",
-                  opacity: "0",
-                },
-              },
-            },
-          },
+    cssVars: {
+      theme: {
+        rippling: "rippling var(--duration) ease-out",
+      },
+    },
+    css: {
+      "@keyframes rippling": {
+        "0%": {
+          opacity: "1",
+        },
+        "100%": {
+          transform: "scale(2)",
+          opacity: "0",
         },
       },
     },
@@ -1192,29 +1120,15 @@ export const ui: Registry["items"] = [
         "--color-4": "195 100% 63%",
         "--color-5": "90 100% 63%",
       },
+      theme: {
+        rainbow: "rainbow var(--speed, 2s) infinite linear",
+      },
     },
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            colors: {
-              "color-1": "hsl(var(--color-1))",
-              "color-2": "hsl(var(--color-2))",
-              "color-3": "hsl(var(--color-3))",
-              "color-4": "hsl(var(--color-4))",
-              "color-5": "hsl(var(--color-5))",
-            },
-            animation: {
-              rainbow: "rainbow var(--speed, 2s) infinite linear",
-            },
-            keyframes: {
-              rainbow: {
-                "0%": { "background-position": "0%" },
-                "100%": { "background-position": "200%" },
-              },
-            },
-          },
-        },
+
+    css: {
+      "@keyframes rainbow": {
+        "0%": { "background-position": "0%" },
+        "100%": { "background-position": "200%" },
       },
     },
   },
