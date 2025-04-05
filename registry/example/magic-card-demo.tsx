@@ -17,15 +17,18 @@ import { useTheme } from "next-themes";
 export default function MagicCardDemo() {
   const { theme } = useTheme();
   return (
-    <Card>
-      <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}>
-        <CardHeader>
+    <Card className="p-0 max-w-sm w-full">
+      <MagicCard
+        gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+        className="p-0"
+      >
+        <CardHeader className="border-b border-border p-4 [.border-b]:pb-4">
           <CardTitle>Login</CardTitle>
           <CardDescription>
             Enter your credentials to access your account
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-4">
           <form>
             <div className="grid gap-4">
               <div className="grid gap-2">
@@ -39,7 +42,7 @@ export default function MagicCardDemo() {
             </div>
           </form>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="p-4 border-t border-border [.border-t]:pt-4">
           <Button className="w-full">Sign In</Button>
         </CardFooter>
       </MagicCard>
