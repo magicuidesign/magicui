@@ -1325,6 +1325,19 @@
       ]
     },
     {
+      "name": "scroll-based-velocity-images",
+      "type": "registry:ui",
+      "title": "Scroll Images Velocity",
+      "description": "A component that displays a list of images with a scroll based velocity effect.",
+      "files": [
+        {
+          "path": "registry/magicui/scroll-based-velocity-images.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/scroll-based-velocity-images.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3257,6 +3270,22 @@
           "path": "registry/example/terminal-demo.tsx",
           "type": "registry:example",
           "target": "components/terminal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-based-velocity-images-demo",
+      "type": "registry:example",
+      "title": "Scroll Velocity Images Demo",
+      "description": "Example showing a list of images with a scroll based velocity effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/scroll-based-velocity-images"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-based-velocity-images-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-based-velocity-images-demo.tsx"
         }
       ]
     },

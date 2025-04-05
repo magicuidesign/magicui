@@ -239,6 +239,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Scroll Velocity Images",
+          href: `/docs/components/scroll-based-velocity-images`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
