@@ -1242,4 +1242,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scroll-based-velocity-images",
+    type: "registry:ui",
+    title: "Scroll Images Velocity",
+    description:
+      "A component that displays a list of images with a scroll based velocity effect.",
+    files: [
+      {
+        path: "registry/magicui/scroll-based-velocity-images.tsx",
+        type: "registry:ui",
+        target: "components/magicui/scroll-based-velocity-images.tsx",
+      },
+    ],
+  },
 ];

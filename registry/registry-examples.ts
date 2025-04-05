@@ -1696,4 +1696,21 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "scroll-based-velocity-images-demo",
+    type: "registry:example",
+    title: "Scroll Velocity Images Demo",
+    description:
+      "Example showing a list of images with a scroll based velocity effect.",
+    registryDependencies: [
+      "https://magicui.design/r/scroll-based-velocity-images",
+    ],
+    files: [
+      {
+        path: "registry/example/scroll-based-velocity-images-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-based-velocity-images-demo.tsx",
+      },
+    ],
+  },
 ];
