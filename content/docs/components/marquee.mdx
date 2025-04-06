@@ -20,7 +20,7 @@ video: https://cdn.magicui.design/marquee.mp4
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://magicui.design/r/marquee"
+npx shadcn@canary add "https://magicui.design/r/marquee"
 ```
 
 </TabsContent>
@@ -35,32 +35,42 @@ npx shadcn@latest add "https://magicui.design/r/marquee"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+If your component is in the `components/ui` directory, the import path should be:
 
-Add the following animations to your `tailwind.config.js` file:
+```tsx
+import { Marquee } from "@/components/ui/marquee";
+```
 
-```js title="tailwind.config.js" {5-18}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        marquee: "marquee var(--duration) linear infinite",
-        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-      },
-      keyframes: {
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - var(--gap)))" },
-        },
-        "marquee-vertical": {
-          from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-100% - var(--gap)))" },
-        },
-      },
-    },
-  },
-};
+If your component is in the `components/magicui` directory, the import path should be:
+
+```tsx
+import { Marquee } from "@/components/magicui/marquee";
+```
+
+<Step>Add the required CSS animations</Step>
+
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+
+```css
+--animate-marquee: marquee var(--duration) infinite linear;
+--animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
 ```
 
 </Steps>

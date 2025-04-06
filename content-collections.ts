@@ -112,7 +112,9 @@ const documents = defineCollection({
     image: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const slugAsParams = document._meta.path.replace(/\\/g, "/");
+    const slugAsParams = document._meta.path
+      .replace(/\\/g, "/")
+      .replace(/\/index$/, "");
     const body = await compileMDX(context, document, {
       remarkPlugins: [codeImport, remarkGfm],
       rehypePlugins: [

@@ -391,14 +391,18 @@
 }
 
 @layer utilities {
-  .step {
-    counter-increment: step;
+  .steps {
+    counter-reset: steps;
   }
 
-  .step:before {
+  .steps > h3 {
+    counter-increment: steps;
+  }
+
+  .steps > h3:before {
     @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
     @apply ml-[-50px] mt-[-4px];
-    content: counter(step);
+    content: counter(steps);
   }
 }
 
@@ -459,7 +463,7 @@
 }
 
 [data-rehype-pretty-code-figure] {
-  @apply relative text-white;
+  @apply relative text-white w-full;
 }
 
 [data-rehype-pretty-code-figure] code {
