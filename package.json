@@ -15,6 +15,7 @@
     "build": "next build",
     "build:registry": "npx tsx ./scripts/build-registry.mts",
     "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
+    "shadcn:build": "shadcn build",
     "build:docs": "content-collections build",
     "typecheck": "pnpm build:docs && tsc --noEmit",
     "start": "next start",

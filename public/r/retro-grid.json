@@ -12,5 +12,19 @@
       "target": "components/magicui/retro-grid.tsx"
     }
   ],
-  "cssVars": {}
+  "cssVars": {
+    "theme": {
+      "grid": "grid 15s linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes grid": {
+      "0%": {
+        "transform": "translateY(-50%)"
+      },
+      "100%": {
+        "transform": "translateY(0)"
+      }
+    }
+  }
 }

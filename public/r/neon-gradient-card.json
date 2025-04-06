@@ -12,5 +12,19 @@
       "target": "components/magicui/neon-gradient-card.tsx"
     }
   ],
-  "cssVars": {}
+  "cssVars": {
+    "theme": {
+      "background-position-spin": "background-position-spin 3000ms infinite alternate"
+    }
+  },
+  "css": {
+    "@keyframes background-position-spin": {
+      "0%": {
+        "backgroundPosition": "top center"
+      },
+      "100%": {
+        "backgroundPosition": "bottom center"
+      }
+    }
+  }
 }

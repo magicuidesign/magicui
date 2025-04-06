@@ -12,5 +12,16 @@
       "target": "components/magicui/animated-gradient-text.tsx"
     }
   ],
-  "cssVars": {}
+  "cssVars": {
+    "theme": {
+      "gradient": "gradient 8s linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes gradient": {
+      "to": {
+        "backgroundPosition": "var(--bg-size, 300%) 0"
+      }
+    }
+  }
 }

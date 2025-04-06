@@ -12,5 +12,19 @@
       "target": "components/magicui/pulsating-button.tsx"
     }
   ],
-  "cssVars": {}
+  "cssVars": {
+    "theme": {
+      "pulse": "pulse var(--duration) ease-out infinite"
+    }
+  },
+  "css": {
+    "@keyframes pulse": {
+      "0%, 100%": {
+        "boxShadow": "0 0 0 0 var(--pulse-color)"
+      },
+      "50%": {
+        "boxShadow": "0 0 0 8px var(--pulse-color)"
+      }
+    }
+  }
 }

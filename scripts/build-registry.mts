@@ -122,38 +122,16 @@ async function buildRegistryJsonFile() {
 }
 
 async function buildRegistry() {
-  return new Promise(async (resolve, reject) => {
-    console.log("📦 Starting component file generation...");
+  return new Promise((resolve, reject) => {
+    const process = exec(`pnpm shadcn:build`);
 
-    // First write our own JSON files with preserved CSS
-    for (const item of registry.items) {
-      const componentJson = {
-        $schema: "https://ui.shadcn.com/schema/registry-item.json",
-        name: item.name,
-        type: item.type,
-        title: item.title,
-        description: item.description,
-        dependencies: item.dependencies || [],
-        registryDependencies: item.registryDependencies || [],
-        files: item.files,
-        cssVars: item.cssVars || {},
-        css: item.css || {},
-        meta: item.meta || {},
-      };
-
-      const outputPath = path.join(
-        process.cwd(),
-        "public/r",
-        `${item.name}.json`
-      );
-      await fs.mkdir(path.dirname(outputPath), { recursive: true });
-      await fs.writeFile(outputPath, JSON.stringify(componentJson, null, 2));
-    }
-
-    console.log("✅ Component files generated with preserved CSS");
-
-    // Skip the shadcn build since it's overwriting our CSS
-    resolve(undefined);
+    process.on("exit", (code) => {
+      if (code === 0) {
+        resolve(undefined);
+      } else {
+        reject(new Error(`Process exited with code ${code}`));
+      }
+    });
   });
 }
 
