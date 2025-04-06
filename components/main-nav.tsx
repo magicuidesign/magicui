@@ -15,6 +15,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
+import { VersionSelect } from "@/components/version-select";
 
 function copyLogoAsSVG(path: string) {
   fetch(path)
@@ -70,6 +71,9 @@ export function MainNav() {
           </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
+      <div className="mr-4">
+        <VersionSelect />
+      </div>
       <nav className="hidden items-center space-x-6 text-sm font-medium xl:flex">
         {docsConfig.mainNav.map((item) => (
           <Link
@@ -82,7 +86,7 @@ export function MainNav() {
               "flex items-center justify-center transition-colors hover:text-foreground/80",
               pathname?.startsWith(item.href!)
                 ? "text-foreground"
-                : "text-foreground/60",
+                : "text-foreground/60"
             )}
           >
             <span className="shrink-0">{item.title}</span>
