@@ -59,18 +59,18 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent side="left" className="space-y-0 gap-0">
         <Link
           href="/"
           onClick={() => {
             setIsOpen(false);
           }}
-          className="flex items-center"
+          className="flex items-center h-16 px-4 border-b border-border"
         >
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
-        <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
+        <ScrollArea className="h-[calc(100vh-4rem)] p-4">
           <div className="flex flex-col space-y-1.5">
             {docsConfig.mainNav?.map(
               (item) =>
@@ -78,7 +78,7 @@ export function MobileNav() {
                   <MobileLink key={item.href} href={item.href}>
                     {item.title}
                   </MobileLink>
-                ),
+                )
             )}
           </div>
           <div className="flex flex-col gap-y-2">
@@ -93,7 +93,7 @@ export function MobileNav() {
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
                         "flex justify-between text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -115,7 +115,7 @@ export function MobileNav() {
                       key={index}
                       className={cn(
                         "text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-60",
+                        item.disabled && "cursor-not-allowed opacity-60"
                       )}
                     >
                       {item.title}
@@ -125,7 +125,7 @@ export function MobileNav() {
                         </span>
                       )}
                     </span>
-                  ),
+                  )
                 )}
               </div>
             ))}
@@ -165,7 +165,7 @@ function MobileLink({
           "p-1 pl-2.5 text-[15px]",
           isActive
             ? "rounded-r-md border-l-2 border-primary/70 bg-secondary font-medium text-primary"
-            : "",
+            : ""
         )}
         {...props}
       >
