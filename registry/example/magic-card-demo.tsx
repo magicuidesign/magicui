@@ -17,7 +17,7 @@ import { useTheme } from "next-themes";
 export default function MagicCardDemo() {
   const { theme } = useTheme();
   return (
-    <Card className="p-0 max-w-sm w-full">
+    <Card className="p-0 max-w-sm w-full shadow-none border-none">
       <MagicCard
         gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
         className="p-0"
