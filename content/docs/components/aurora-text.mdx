@@ -34,6 +34,47 @@ npx shadcn@latest add "https://v3.magicui.design/r/aurora-text"
 
 <Step>Update the import paths to match your project setup.</Step>
 
+<Step>Update `tailwind.config.js`</Step>
+
+Add the following animations to your `tailwind.config.js` file:
+
+```js title="tailwind.config.js" {5-31}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      animation: {
+        aurora: "aurora 8s ease-in-out infinite alternate",
+      },
+      keyframes: {
+        aurora: {
+          "0%": {
+            backgroundPosition: "0% 50%",
+            transform: "rotate(-5deg) scale(0.9)",
+          },
+          "25%": {
+            backgroundPosition: "50% 100%",
+            transform: "rotate(5deg) scale(1.1)",
+          },
+          "50%": {
+            backgroundPosition: "100% 50%",
+            transform: "rotate(-3deg) scale(0.95)",
+          },
+          "75%": {
+            backgroundPosition: "50% 0%",
+            transform: "rotate(3deg) scale(1.05)",
+          },
+          "100%": {
+            backgroundPosition: "0% 50%",
+            transform: "rotate(-5deg) scale(0.9)",
+          },
+        },
+      },
+    },
+  },
+};
+```
+
 </Steps>
 
 </TabsContent>

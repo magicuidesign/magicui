@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -58,42 +57,31 @@ export function DocsSidebarNavItems({
             href={item.href}
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
-              "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
+              "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
+              "transition-all duration-200 ease-in-out",
+              "hover:text-accent-foreground hover:translate-x-1",
               item.disabled && "cursor-not-allowed opacity-60",
-              pathname === item.href &&
-                "bg-accent font-medium text-accent-foreground",
+              pathname === item.href && [
+                "bg-accent font-medium text-accent-foreground translate-x-1",
+              ]
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
-            {pathname === item.href && (
-              <motion.div
-                layoutId="sidebar-nav-active"
-                className="absolute inset-0 rounded-lg bg-accent text-accent-foreground"
-                initial={false}
-                transition={{
-                  type: "spring",
-                  stiffness: 350,
-                  damping: 30,
-                  mass: 1,
-                  velocity: 200,
-                }}
-              />
-            )}
-            <span className="relative z-10 shrink-0">{item.title}</span>
+            <span className="relative shrink-0">{item.title}</span>
             <div>
               {item.label && (
-                <span className="relative z-10 ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                <span className="relative ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline">
                   {item.label}
                 </span>
               )}
               {item.paid && (
-                <span className="relative z-10 ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                <span className="relative ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline">
                   Pro
                 </span>
               )}
               {item.external && (
-                <ExternalLinkIcon className="relative z-10 ml-2 size-4" />
+                <ExternalLinkIcon className="relative ml-2 size-4" />
               )}
             </div>
           </Link>
@@ -102,7 +90,7 @@ export function DocsSidebarNavItems({
             key={index}
             className={cn(
               "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground",
-              item.disabled && "cursor-not-allowed opacity-60",
+              item.disabled && "cursor-not-allowed opacity-60"
             )}
           >
             {item.title}
@@ -117,7 +105,7 @@ export function DocsSidebarNavItems({
               </span>
             )}
           </span>
-        ),
+        )
       )}
     </div>
   ) : null;
