@@ -18,6 +18,9 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
 
   return items.length ? (
     <div className="flex flex-col gap-6">
+      <p className="rounded-md px-2 py-1 text-sm font-medium underline underline-offset-4">
+        Tailwind v3
+      </p>
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
@@ -58,7 +61,7 @@ export function DocsSidebarNavItems({
               "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href &&
-                "bg-accent font-medium text-accent-foreground",
+                "bg-accent font-medium text-accent-foreground"
             )}
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
@@ -99,7 +102,7 @@ export function DocsSidebarNavItems({
             key={index}
             className={cn(
               "flex w-full cursor-not-allowed items-center rounded-md p-2 text-muted-foreground",
-              item.disabled && "cursor-not-allowed opacity-60",
+              item.disabled && "cursor-not-allowed opacity-60"
             )}
           >
             {item.title}
@@ -114,7 +117,7 @@ export function DocsSidebarNavItems({
               </span>
             )}
           </span>
-        ),
+        )
       )}
     </div>
   ) : null;
