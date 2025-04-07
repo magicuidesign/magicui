@@ -22,7 +22,7 @@ export type TransformOpts = {
 export type Transformer<Output = SourceFile> = (
   opts: TransformOpts & {
     sourceFile: SourceFile;
-  }
+  },
 ) => Promise<Output>;
 
 const transformers: Transformer[] = [

@@ -28,7 +28,7 @@ export default function CommitList({
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ repo, owner }),
-          }
+          },
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

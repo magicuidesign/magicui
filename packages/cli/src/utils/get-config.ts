@@ -74,12 +74,12 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
     throw new Error(
       `Failed to load ${config.tsx ? "tsconfig" : "jsconfig"}.json. ${
         tsConfig.message ?? ""
-      }`.trim()
+      }`.trim(),
     );
   }
   const components = await resolveImport(
     config.aliases["components"],
-    tsConfig
+    tsConfig,
   );
   const ui = `${components}/ui`;
   const magicui = `${components}/magicui`;

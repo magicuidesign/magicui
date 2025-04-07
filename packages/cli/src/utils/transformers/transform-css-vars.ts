@@ -35,7 +35,7 @@ export const transformCssVars: Transformer = async ({
     if (value) {
       const valueWithColorMapping = applyColorMapping(
         value.replace(/"/g, ""),
-        baseColor.inlineColors
+        baseColor.inlineColors,
       );
       node.replaceWithText(`"${valueWithColorMapping.trim()}"`);
     }
@@ -137,7 +137,7 @@ const PREFIXES = ["bg-", "text-", "border-", "ring-offset-", "ring-"];
 
 export function applyColorMapping(
   input: string,
-  mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"]
+  mapping: z.infer<typeof registryBaseColorSchema>["inlineColors"],
 ) {
   // Handle border classes.
   if (input.includes(" border ")) {
@@ -163,13 +163,13 @@ export function applyColorMapping(
       lightMode.add(
         [variant, `${prefix}${mapping.light[needle]}`]
           .filter(Boolean)
-          .join(":") + (modifier ? `/${modifier}` : "")
+          .join(":") + (modifier ? `/${modifier}` : ""),
       );
 
       darkMode.add(
         ["dark", variant, `${prefix}${mapping.dark[needle]}`]
           .filter(Boolean)
-          .join(":") + (modifier ? `/${modifier}` : "")
+          .join(":") + (modifier ? `/${modifier}` : ""),
       );
       continue;
     }

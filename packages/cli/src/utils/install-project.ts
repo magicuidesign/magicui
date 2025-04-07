@@ -17,14 +17,14 @@ export const getAllProjectTemplates = async () => {
   return z
     .array(projectTemplatesSchema)
     .parse(
-      await fetch(`${baseUrl}/registry/templates.json`).then((e) => e.json())
+      await fetch(`${baseUrl}/registry/templates.json`).then((e) => e.json()),
     );
 };
 
 export const getProjectLink = async (
   repo: string,
   owner: string,
-  env: string
+  env: string,
 ) => {
   const project = await fetch(`${baseUrl}/api/repo/download`, {
     method: "POST",
@@ -45,7 +45,7 @@ export const getProjectLink = async (
 
 export const getDataAndWrite = async (
   link: string,
-  pathWithExtension: string
+  pathWithExtension: string,
 ) => {
   const response = await fetch(link);
   if (response.ok && response.body) {

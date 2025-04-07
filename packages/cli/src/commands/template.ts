@@ -30,7 +30,7 @@ export const project = new Command()
   .action(async (opts) => {
     console.log(
       MAGICUI_PRO_ENV ? ASCII_PRO : ASCII_TEXT,
-      ColorFullText(!MAGICUI_PRO_ENV ? authMessage : hasPro)
+      ColorFullText(!MAGICUI_PRO_ENV ? authMessage : hasPro),
     );
 
     const options = optionSchema.parse(opts);

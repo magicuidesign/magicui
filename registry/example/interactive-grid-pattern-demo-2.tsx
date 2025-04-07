@@ -8,7 +8,7 @@ export default function InteractiveGridPatternDemo() {
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
       <InteractiveGridPattern
         className={cn(
-          "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]"
+          "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
         )}
         width={20}
         height={20}

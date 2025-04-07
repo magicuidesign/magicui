@@ -12,7 +12,7 @@ export default async function Hero() {
   const post = allDocs
     .filter(
       (post) =>
-        post.date && post.date <= new Date().toISOString() && post.published
+        post.date && post.date <= new Date().toISOString() && post.published,
     )
     .sort((a, b) => {
       if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
@@ -34,7 +34,7 @@ export default async function Hero() {
                     variant: "outline",
                     size: "sm",
                   }),
-                  "rounded-full"
+                  "rounded-full",
                 )}
               >
                 🎉 <Separator className="mx-2 h-4" orientation="vertical" />
@@ -47,7 +47,7 @@ export default async function Hero() {
                     "text-black dark:text-white",
                     "relative mx-0 max-w-[43.5rem]  pt-5  md:mx-auto md:px-4 md:py-2",
                     "text-balance text-left font-semibold tracking-tighter md:text-center",
-                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl"
+                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl",
                   )}
                 >
                   UI library for Design Engineers
@@ -72,7 +72,7 @@ export default async function Hero() {
                         variant: "rainbow",
                         size: "lg",
                       }),
-                      "w-full gap-2"
+                      "w-full gap-2",
                     )}
                   >
                     Browse Components
@@ -85,7 +85,7 @@ export default async function Hero() {
                         size: "lg",
                         variant: "rainbow-outline",
                       }),
-                      "w-full gap-2"
+                      "w-full gap-2",
                     )}
                   >
                     Browse Templates

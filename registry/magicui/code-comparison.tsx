@@ -98,7 +98,7 @@ export function CodeComparison({
             "group-hover/right:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/right:[&>pre>code>:not(.focused)]:!blur-none",
             "[&>pre>code>.add]:bg-[rgba(16,185,129,.16)] [&>pre>code>.remove]:bg-[rgba(244,63,94,.16)]",
             "group-hover/left:[&>pre>code>:not(.focused)]:transition-all group-hover/left:[&>pre>code>:not(.focused)]:duration-300",
-            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300"
+            "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300",
           )}
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
@@ -121,7 +121,7 @@ export function CodeComparison({
               "leftside group/left border-primary/20 md:border-r",
               hasLeftFocus &&
                 "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
-              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
             )}
           >
             <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">
@@ -136,7 +136,7 @@ export function CodeComparison({
               "rightside group/right border-t border-primary/20 md:border-t-0",
               hasRightFocus &&
                 "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
-              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
+              "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
             )}
           >
             <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">

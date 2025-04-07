@@ -124,7 +124,7 @@ export async function getProjectType(cwd: string): Promise<ProjectType | null> {
 
   const isUsingSrcDir = await fs.pathExists(path.resolve(cwd, "src"));
   const isUsingAppDir = await fs.pathExists(
-    path.resolve(cwd, `${isUsingSrcDir ? "src/" : ""}app`)
+    path.resolve(cwd, `${isUsingSrcDir ? "src/" : ""}app`),
   );
 
   if (isUsingAppDir) {
@@ -188,7 +188,7 @@ export async function preFlight(cwd: string) {
 
   if (!tailwindConfig.length) {
     throw new Error(
-      "Tailwind CSS is not installed. Visit https://tailwindcss.com/docs/installation to get started."
+      "Tailwind CSS is not installed. Visit https://tailwindcss.com/docs/installation to get started.",
     );
   }
 

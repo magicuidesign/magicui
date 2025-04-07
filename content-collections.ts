@@ -188,7 +188,7 @@ const documents = defineCollection({
     return {
       ...document,
       image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(
-        document.title
+        document.title,
       )}&description=${encodeURI(document.description)}`,
       slug: `/docs/${slugAsParams}`,
       slugAsParams: slugAsParams,

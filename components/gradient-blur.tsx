@@ -33,7 +33,7 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
               rgba(0, 0, 0, 0) ${endPercent + (endPercent - midPercent)}%
             )`,
           }}
-        />
+        />,
       );
     }
     return layers;

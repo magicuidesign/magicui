@@ -18,7 +18,7 @@ export default function BlogPage() {
 
   // Get unique tags and filter out undefined
   const tags = Array.from(
-    new Set(allBlogs.map((blog) => blog.tag).filter(Boolean))
+    new Set(allBlogs.map((blog) => blog.tag).filter(Boolean)),
   ).sort();
 
   // Get featured posts

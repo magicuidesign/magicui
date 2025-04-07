@@ -54,7 +54,7 @@ export const init = new Command()
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
-    process.cwd()
+    process.cwd(),
   )
   .action(async (opts) => {
     try {
@@ -74,7 +74,7 @@ export const init = new Command()
         const config = await promptForMinimalConfig(
           cwd,
           projectConfig,
-          opts.defaults
+          opts.defaults,
         );
         await runInit(cwd, config);
       } else {
@@ -96,8 +96,8 @@ export const init = new Command()
       logger.info("");
       logger.info(
         `${chalk.green(
-          "Success!"
-        )} Project initialization completed. You may now add both shadcn-ui and magic-ui components.`
+          "Success!",
+        )} Project initialization completed. You may now add both shadcn-ui and magic-ui components.`,
       );
       logger.info("");
     } catch (error) {
@@ -108,7 +108,7 @@ export const init = new Command()
 export async function promptForConfig(
   cwd: string,
   defaultConfig: Config | null = null,
-  skip = false
+  skip = false,
 ) {
   const highlight = (text: string) => chalk.cyan(text);
 
@@ -120,7 +120,7 @@ export async function promptForConfig(
       type: "toggle",
       name: "typescript",
       message: `Would you like to use ${highlight(
-        "TypeScript"
+        "TypeScript",
       )} (recommended)?`,
       initial: defaultConfig?.tsx ?? true,
       active: "yes",
@@ -139,7 +139,7 @@ export async function promptForConfig(
       type: "select",
       name: "tailwindBaseColor",
       message: `Which color would you like to use as ${highlight(
-        "base color"
+        "base color",
       )}?`,
       choices: baseColors.map((color) => ({
         title: color.label,
@@ -156,7 +156,7 @@ export async function promptForConfig(
       type: "toggle",
       name: "tailwindCssVariables",
       message: `Would you like to use ${highlight(
-        "CSS variables"
+        "CSS variables",
       )} for colors?`,
       initial: defaultConfig?.tailwind.cssVariables ?? true,
       active: "yes",
@@ -166,7 +166,7 @@ export async function promptForConfig(
       type: "text",
       name: "tailwindPrefix",
       message: `Are you using a custom ${highlight(
-        "tailwind prefix eg. tw-"
+        "tailwind prefix eg. tw-",
       )}? (Leave blank if not)`,
       initial: "",
     },
@@ -223,7 +223,7 @@ export async function promptForConfig(
       type: "confirm",
       name: "proceed",
       message: `Write configuration to ${highlight(
-        "components.json"
+        "components.json",
       )}. Proceed?`,
       initial: true,
     });
@@ -246,7 +246,7 @@ export async function promptForConfig(
 export async function promptForMinimalConfig(
   cwd: string,
   defaultConfig: Config,
-  defaults = false
+  defaults = false,
 ) {
   const highlight = (text: string) => chalk.cyan(text);
   let style = defaultConfig.style;
@@ -271,7 +271,7 @@ export async function promptForMinimalConfig(
         type: "select",
         name: "tailwindBaseColor",
         message: `Which color would you like to use as ${highlight(
-          "base color"
+          "base color",
         )}?`,
         choices: baseColors.map((color) => ({
           title: color.label,
@@ -282,7 +282,7 @@ export async function promptForMinimalConfig(
         type: "toggle",
         name: "tailwindCssVariables",
         message: `Would you like to use ${highlight(
-          "CSS variables"
+          "CSS variables",
         )} for colors?`,
         initial: defaultConfig?.tailwind.cssVariables,
         active: "yes",
@@ -347,7 +347,7 @@ export async function runInit(cwd: string, config: Config) {
   const extension = config.tsx ? "ts" : "js";
 
   const tailwindConfigExtension = path.extname(
-    config.resolvedPaths.tailwindConfig
+    config.resolvedPaths.tailwindConfig,
   );
 
   let tailwindConfigTemplate: string;
@@ -368,7 +368,7 @@ export async function runInit(cwd: string, config: Config) {
       extension,
       prefix: config.tailwind.prefix,
     }),
-    "utf8"
+    "utf8",
   );
 
   // Write css file.
@@ -381,7 +381,7 @@ export async function runInit(cwd: string, config: Config) {
           ? applyPrefixesCss(baseColor.cssVarsTemplate, config.tailwind.prefix)
           : baseColor.cssVarsTemplate
         : baseColor.inlineColorsTemplate,
-      "utf8"
+      "utf8",
     );
   }
 
@@ -389,7 +389,7 @@ export async function runInit(cwd: string, config: Config) {
   await fs.writeFile(
     `${config.resolvedPaths.utils}.${extension}`,
     extension === "ts" ? templates.UTILS : templates.UTILS_JS,
-    "utf8"
+    "utf8",
   );
 
   spinner?.succeed();
@@ -409,7 +409,7 @@ export async function runInit(cwd: string, config: Config) {
     [packageManager === "npm" ? "install" : "add", ...deps],
     {
       cwd,
-    }
+    },
   );
   dependenciesSpinner?.succeed();
 }

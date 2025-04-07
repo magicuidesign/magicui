@@ -21,7 +21,7 @@ export const ComponentWrapper = ({
     <div
       className={cn(
         "max-w-screen relative rounded-xl border bg-background",
-        className
+        className,
       )}
       key={key}
     >
