@@ -1,7 +1,7 @@
 import { detect } from "@antfu/ni";
 
 export async function getPackageManager(
-  targetDir: string,
+  targetDir: string
 ): Promise<"yarn" | "pnpm" | "bun" | "npm"> {
   const packageManager = await detect({ programmatic: true, cwd: targetDir });
 

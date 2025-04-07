@@ -54,7 +54,7 @@ export function RetroGrid({
       className={cn(
         "pointer-events-none absolute size-full overflow-hidden [perspective:200px]",
         `opacity-[var(--opacity)]`,
-        className,
+        className
       )}
       style={gridStyles}
       {...props}

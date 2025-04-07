@@ -23,8 +23,8 @@ export const transformTwPrefixes: Transformer = async ({
           defaultClassNames.replaceWithText(
             `"${applyPrefix(
               defaultClassNames.getText()?.replace(/"/g, ""),
-              config.tailwind.prefix,
-            )}"`,
+              config.tailwind.prefix
+            )}"`
           );
         }
       }
@@ -41,14 +41,14 @@ export const transformTwPrefixes: Transformer = async ({
               .getDescendantsOfKind(SyntaxKind.PropertyAssignment)
               .forEach((node) => {
                 const classNames = node.getInitializerIfKind(
-                  SyntaxKind.StringLiteral,
+                  SyntaxKind.StringLiteral
                 );
                 if (classNames) {
                   classNames?.replaceWithText(
                     `"${applyPrefix(
                       classNames.getText()?.replace(/"/g, ""),
-                      config.tailwind.prefix,
-                    )}"`,
+                      config.tailwind.prefix
+                    )}"`
                   );
                 }
               });
@@ -66,8 +66,8 @@ export const transformTwPrefixes: Transformer = async ({
           value.replaceWithText(
             `"${applyPrefix(
               value.getText()?.replace(/"/g, ""),
-              config.tailwind.prefix,
-            )}"`,
+              config.tailwind.prefix
+            )}"`
           );
         }
       }
@@ -92,8 +92,8 @@ export const transformTwPrefixes: Transformer = async ({
                   node.replaceWithText(
                     `"${applyPrefix(
                       node.getText()?.replace(/"/g, ""),
-                      config.tailwind.prefix,
-                    )}"`,
+                      config.tailwind.prefix
+                    )}"`
                   );
                 });
             }
@@ -102,8 +102,8 @@ export const transformTwPrefixes: Transformer = async ({
               node.replaceWithText(
                 `"${applyPrefix(
                   node.getText()?.replace(/"/g, ""),
-                  config.tailwind.prefix,
-                )}"`,
+                  config.tailwind.prefix
+                )}"`
               );
             }
           });
@@ -119,7 +119,7 @@ export const transformTwPrefixes: Transformer = async ({
           .forEach((node) => {
             if (node.getInitializer()?.isKind(SyntaxKind.CallExpression)) {
               const callExpression = node.getInitializerIfKind(
-                SyntaxKind.CallExpression,
+                SyntaxKind.CallExpression
               );
               if (callExpression) {
                 // Loop through the arguments.
@@ -131,8 +131,8 @@ export const transformTwPrefixes: Transformer = async ({
                         node.replaceWithText(
                           `"${applyPrefix(
                             node.getText()?.replace(/"/g, ""),
-                            config.tailwind.prefix,
-                          )}"`,
+                            config.tailwind.prefix
+                          )}"`
                         );
                       });
                   }
@@ -141,8 +141,8 @@ export const transformTwPrefixes: Transformer = async ({
                     arg.replaceWithText(
                       `"${applyPrefix(
                         arg.getText()?.replace(/"/g, ""),
-                        config.tailwind.prefix,
-                      )}"`,
+                        config.tailwind.prefix
+                      )}"`
                     );
                   }
                 });
@@ -156,8 +156,8 @@ export const transformTwPrefixes: Transformer = async ({
                   classNames.replaceWithText(
                     `"${applyPrefix(
                       classNames.getText()?.replace(/"/g, ""),
-                      config.tailwind.prefix,
-                    )}"`,
+                      config.tailwind.prefix
+                    )}"`
                   );
                 }
               }

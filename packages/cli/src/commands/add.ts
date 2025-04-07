@@ -54,13 +54,13 @@ export const add = new Command()
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
-    process.cwd(),
+    process.cwd()
   )
   .option("-a, --all", "add all available components", false)
   .option(
     "-m, --pro",
     "include pro magic-ui blocks & components (make sure to add your secret .env)",
-    false,
+    false
   )
   .addHelpText("after", ColorFullText(MAGICUI_PRO_ENV ? hasPro : tryPro))
   .option("-e, --example", "include available examples & demos", false)
@@ -69,7 +69,7 @@ export const add = new Command()
   .action(async (components, opts) => {
     console.log(
       MAGICUI_PRO_ENV ? ASCII_PRO : ASCII_TEXT,
-      ColorFullText(!MAGICUI_PRO_ENV ? tryPro : hasPro),
+      ColorFullText(!MAGICUI_PRO_ENV ? tryPro : hasPro)
     );
     try {
       const options = addOptionsSchema.parse({
@@ -88,8 +88,8 @@ export const add = new Command()
       if (!config) {
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
-            `init`,
-          )} to create a components.json file.`,
+            `init`
+          )} to create a components.json file.`
         );
         process.exit(1);
       }
@@ -106,7 +106,7 @@ export const add = new Command()
 
       let selectedComponents = options.all
         ? (options.shadcn ? shadcnRegistryIndex : registryIndex).map(
-            (entry) => entry.name,
+            (entry) => entry.name
           )
         : options.components;
 
@@ -151,7 +151,7 @@ export const add = new Command()
         shadcnRegistryIndex,
         registryIndex,
         selectedComponents,
-        options.shadcn,
+        options.shadcn
       );
 
       const magicuiPayload = await fetchTree(magicuiTree, MAGICUI_PRO_ENV);
@@ -189,7 +189,7 @@ export const add = new Command()
         const targetDir = await getItemTargetPath(
           config,
           item,
-          options.path ? path.resolve(cwd, options.path) : undefined,
+          options.path ? path.resolve(cwd, options.path) : undefined
         );
 
         if (!targetDir) {
@@ -201,7 +201,7 @@ export const add = new Command()
         }
 
         const existingComponent = item.files.filter((file) =>
-          existsSync(path.resolve(targetDir, file.name)),
+          existsSync(path.resolve(targetDir, file.name))
         );
 
         if (existingComponent.length && !options.overwrite) {
@@ -217,8 +217,8 @@ export const add = new Command()
             if (!overwrite) {
               logger.info(
                 `Skipped ${item.name}. To overwrite, run with the ${chalk.green(
-                  "--overwrite",
-                )} flag.`,
+                  "--overwrite"
+                )} flag.`
               );
               continue;
             }
@@ -261,13 +261,13 @@ export const add = new Command()
               ],
               {
                 cwd,
-              },
+              }
             );
           } catch (error) {
             logger.warn(
               `\nFailed to install dependencies for ${
                 item.name
-              }.\n\t-${item.dependencies.join("\n\t- ")}\n\nReason: ${error}`,
+              }.\n\t-${item.dependencies.join("\n\t- ")}\n\nReason: ${error}`
             );
           }
         }
@@ -284,15 +284,13 @@ export const add = new Command()
               ],
               {
                 cwd,
-              },
+              }
             );
           } catch (error) {
             logger.warn(
               `\nFailed to install devDependencies for ${
                 item.name
-              }.\n\t-${item.devDependencies.join(
-                "\n\t- ",
-              )}\n\nReason: ${error}`,
+              }.\n\t-${item.devDependencies.join("\n\t- ")}\n\nReason: ${error}`
             );
           }
         }

@@ -27,7 +27,7 @@ export const ShimmerButton = React.forwardRef<
       children,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <button
@@ -44,7 +44,7 @@ export const ShimmerButton = React.forwardRef<
         className={cn(
           "group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap border border-white/10 px-6 py-3 text-white [background:var(--bg)] [border-radius:var(--radius)] dark:text-black",
           "transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px",
-          className,
+          className
         )}
         ref={ref}
         {...props}
@@ -53,7 +53,7 @@ export const ShimmerButton = React.forwardRef<
         <div
           className={cn(
             "-z-30 blur-[2px]",
-            "absolute inset-0 overflow-visible [container-type:size]",
+            "absolute inset-0 overflow-visible [container-type:size]"
           )}
         >
           {/* spark */}
@@ -78,19 +78,19 @@ export const ShimmerButton = React.forwardRef<
             "group-hover:shadow-[inset_0_-6px_10px_#ffffff3f]",
 
             // on click
-            "group-active:shadow-[inset_0_-10px_10px_#ffffff3f]",
+            "group-active:shadow-[inset_0_-10px_10px_#ffffff3f]"
           )}
         />
 
         {/* backdrop */}
         <div
           className={cn(
-            "absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]",
+            "absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]"
           )}
         />
       </button>
     );
-  },
+  }
 );
 
 ShimmerButton.displayName = "ShimmerButton";

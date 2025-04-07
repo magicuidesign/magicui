@@ -23,7 +23,7 @@ export default function CTASection() {
                   size: "lg",
                   variant: "outline",
                 }),
-                "group mt-4 rounded-[2rem] px-6",
+                "group mt-4 rounded-[2rem] px-6"
               )}
             >
               Get Magic UI Pro

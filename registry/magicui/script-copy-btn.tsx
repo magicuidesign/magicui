@@ -63,7 +63,7 @@ export function ScriptCopyBtn({
     <div
       className={cn(
         "mx-auto flex max-w-md items-center justify-center",
-        className,
+        className
       )}
     >
       <div className="w-full space-y-2">

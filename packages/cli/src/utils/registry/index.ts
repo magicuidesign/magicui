@@ -86,7 +86,7 @@ export async function getRegistryBaseColor(baseColor: string) {
   try {
     const [result] = await fetchRegistry(
       [`colors/${baseColor}.json`],
-      shadcnBaseUrl,
+      shadcnBaseUrl
     );
 
     return registryBaseColorSchema.parse(result);
@@ -99,7 +99,7 @@ export async function resolveTreeWithShadcn(
   shadcnIndex: theTree,
   index: theTree,
   names: string[],
-  calledByShadcn = false,
+  calledByShadcn = false
 ): Promise<{ shadcnTree: theTree; magicuiTree: theTree }> {
   const shadcnTree: theTree = [];
   const magicuiTree: theTree = [];
@@ -123,7 +123,7 @@ export async function resolveTreeWithShadcn(
               shadcnIndex,
               index,
               shadcnEntry.registryDependencies,
-              true,
+              true
             );
           shadcnTree.push(...shadcnTreeDependencies);
         }
@@ -139,7 +139,7 @@ export async function resolveTreeWithShadcn(
           shadcnIndex,
           index,
           entry.registryDependencies,
-          false,
+          false
         );
         shadcnTree.push(...shadcnTreeDependencies);
         magicuiTree.push(...magicuiTreeDependencies);
@@ -159,7 +159,7 @@ export async function resolveTreeWithShadcn(
             shadcnIndex,
             index,
             entry.registryDependencies,
-            true,
+            true
           );
         shadcnTree.push(...shadcnTreeDependencies);
       }
@@ -169,11 +169,11 @@ export async function resolveTreeWithShadcn(
   return {
     shadcnTree: shadcnTree.filter(
       (component, index, self) =>
-        self.findIndex((c) => c.name === component.name) === index,
+        self.findIndex((c) => c.name === component.name) === index
     ),
     magicuiTree: magicuiTree.filter(
       (component, index, self) =>
-        self.findIndex((c) => c.name === component.name) === index,
+        self.findIndex((c) => c.name === component.name) === index
     ),
   };
 }
@@ -198,7 +198,7 @@ export async function resolveTree(index: theTree, names: string[]) {
 
   return tree.filter(
     (component, index, self) =>
-      self.findIndex((c) => c.name === component.name) === index,
+      self.findIndex((c) => c.name === component.name) === index
   );
 }
 
@@ -239,7 +239,7 @@ export async function fetchTreeFromShadcn(style: string, tree: theTree) {
 export async function getItemTargetPath(
   config: Config,
   item: Pick<z.infer<typeof registryItemWithContentSchema>, "type">,
-  override?: string,
+  override?: string
 ) {
   if (override) {
     return override;
@@ -252,14 +252,14 @@ export async function getItemTargetPath(
 
   return path.join(
     config.resolvedPaths[parent as keyof typeof config.resolvedPaths],
-    type,
+    type
   );
 }
 
 async function fetchRegistry(
   paths: string[],
   fetchBaseUrl = baseUrl,
-  env?: string,
+  env?: string
 ) {
   try {
     const results = await Promise.all(
@@ -274,7 +274,7 @@ async function fetchRegistry(
             : {},
         });
         return await response.json();
-      }),
+      })
     );
     return results;
   } catch (error) {

@@ -180,7 +180,7 @@ export default function BlogPage({ params }: { params: { slug: string[] } }) {
 
   const postSlug = Array.isArray(slug) ? slug[0] : slug;
   const currentIndex = allBlogs.findIndex(
-    (post) => post._meta.path === postSlug,
+    (post) => post._meta.path === postSlug
   );
   const post = allBlogs[currentIndex];
 

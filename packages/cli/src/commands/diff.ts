@@ -33,7 +33,7 @@ export const diff = new Command()
   .option(
     "-c, --cwd <cwd>",
     "the working directory. defaults to the current directory.",
-    process.cwd(),
+    process.cwd()
   )
   .action(async (name, opts) => {
     try {
@@ -53,8 +53,8 @@ export const diff = new Command()
       if (!config) {
         logger.warn(
           `Configuration is missing. Please run ${chalk.green(
-            `init`,
-          )} to create a components.json file.`,
+            `init`
+          )} to create a components.json file.`
         );
         process.exit(1);
       }
@@ -142,23 +142,23 @@ export const diff = new Command()
 
         logger.break();
         logger.info(
-          `Run ${chalk.green(`diff <component>`)} to see the changes.`,
+          `Run ${chalk.green(`diff <component>`)} to see the changes.`
         );
         process.exit(0);
       }
 
       // Show diff for a single component.
       const component = registryIndex.find(
-        (item) => item.name === options.component,
+        (item) => item.name === options.component
       );
 
       const shadcnComponent = shadcnRegistryIndex.find(
-        (item) => item.name === options.component,
+        (item) => item.name === options.component
       );
 
       if (!component && !shadcnComponent) {
         logger.error(
-          `The component ${chalk.green(options.component)} does not exist.`,
+          `The component ${chalk.green(options.component)} does not exist.`
         );
         process.exit(1);
       }
@@ -199,7 +199,7 @@ export const diff = new Command()
 async function diffComponent(
   component: z.infer<typeof registryIndexSchema>[number],
   config: Config,
-  shadcn = false,
+  shadcn = false
 ) {
   const payload = await (shadcn
     ? fetchTreeFromShadcn(config.style, [component])

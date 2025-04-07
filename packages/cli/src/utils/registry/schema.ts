@@ -23,7 +23,7 @@ export const registryItemWithContentSchema = registryItemSchema.extend({
     z.object({
       name: z.string(),
       content: z.string(),
-    }),
+    })
   ),
 });
 
@@ -33,7 +33,7 @@ export const stylesSchema = z.array(
   z.object({
     name: z.string(),
     label: z.string(),
-  }),
+  })
 );
 
 export const registryBaseColorSchema = z.object({
