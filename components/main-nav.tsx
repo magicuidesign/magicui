@@ -84,7 +84,7 @@ export function MainNav() {
               "flex items-center justify-center transition-colors hover:text-foreground/80",
               pathname?.startsWith(item.href!)
                 ? "text-foreground"
-                : "text-foreground/60"
+                : "text-foreground/60",
             )}
           >
             <span className="shrink-0">{item.title}</span>

@@ -50,7 +50,7 @@ export function VersionSelect() {
           onClick={() => handleVersionChange("v3")}
           className={cn(
             "flex justify-between",
-            version === "v3" && "bg-muted text-primary"
+            version === "v3" && "bg-muted text-primary",
           )}
         >
           Tailwind v3
@@ -60,7 +60,7 @@ export function VersionSelect() {
           onClick={() => handleVersionChange("v4")}
           className={cn(
             "flex justify-between",
-            version === "v4" && "bg-muted text-primary"
+            version === "v4" && "bg-muted text-primary",
           )}
         >
           Tailwind v4
