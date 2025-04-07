@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/registry/magicui/marquee";
 
@@ -39,7 +40,7 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles

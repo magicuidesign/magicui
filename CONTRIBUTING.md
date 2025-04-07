@@ -183,6 +183,7 @@ export const ui: Registry = [
     title: "Example Component",
     description:
       "A versatile component that can be used to display various types of content such as text, images, or videos.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/magicui/example-component.tsx",

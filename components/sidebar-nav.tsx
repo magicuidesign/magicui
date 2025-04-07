@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -18,6 +17,9 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
 
   return items.length ? (
     <div className="flex flex-col gap-6">
+      <p className="rounded-md px-2 py-1 text-sm font-medium underline underline-offset-4">
+        Tailwind v4
+      </p>
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
@@ -55,7 +57,8 @@ export function DocsSidebarNavItems({
             href={item.href}
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
-              "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground underline-offset-2 hover:bg-accent hover:text-accent-foreground",
+              "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
+              "transition-transform duration-200 hover:translate-x-1 hover:text-accent-foreground",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href &&
                 "bg-accent font-medium text-accent-foreground",
@@ -63,35 +66,19 @@ export function DocsSidebarNavItems({
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
-            {pathname === item.href && (
-              <motion.div
-                layoutId="sidebar-nav-active"
-                className="absolute inset-0 rounded-lg bg-accent text-accent-foreground"
-                initial={false}
-                transition={{
-                  type: "spring",
-                  stiffness: 350,
-                  damping: 30,
-                  mass: 1,
-                  velocity: 200,
-                }}
-              />
-            )}
-            <span className="relative z-10 shrink-0">{item.title}</span>
+            <span className="relative shrink-0">{item.title}</span>
             <div>
               {item.label && (
-                <span className="relative z-10 ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline">
                   {item.label}
                 </span>
               )}
               {item.paid && (
-                <span className="relative z-10 ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline">
                   Pro
                 </span>
               )}
-              {item.external && (
-                <ExternalLinkIcon className="relative z-10 ml-2 size-4" />
-              )}
+              {item.external && <ExternalLinkIcon className="ml-2 size-4" />}
             </div>
           </Link>
         ) : (
