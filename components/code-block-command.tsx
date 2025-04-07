@@ -58,7 +58,7 @@ export function CodeBlockCommand({
   }
 
   return (
-    <div className="relative w-full mt-6 max-h-[650px] overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 dark:bg-zinc-900">
+    <div className="relative mt-6 max-h-[650px] w-full overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 dark:bg-zinc-900">
       <Tabs
         defaultValue={packageManager}
         onValueChange={(value) => {
@@ -69,7 +69,7 @@ export function CodeBlockCommand({
           });
         }}
       >
-        <div className="flex items-start justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5 w-full">
+        <div className="flex w-full items-start justify-between border-b border-zinc-800 bg-zinc-900 px-3 pt-2.5">
           <TabsList className="h-7 translate-y-[2px] gap-3 bg-transparent p-0 pl-1">
             {Object.entries(tabs).map(([key, value]) => {
               return (
@@ -87,7 +87,7 @@ export function CodeBlockCommand({
         {Object.entries(tabs).map(([key, value]) => {
           return (
             <TabsContent key={key} value={key} className="mt-0">
-              <pre className="px-4 py-5 overflow-x-auto">
+              <pre className="overflow-x-auto px-4 py-5">
                 <code
                   className="relative font-mono text-sm leading-none"
                   data-language="bash"
