@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "rippling": "rippling var(--duration) ease-out"
+      "animate-rippling": "rippling var(--duration) ease-out"
     }
   },
   "css": {

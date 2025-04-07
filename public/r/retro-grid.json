@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "grid": "grid 15s linear infinite"
+      "animate-grid": "grid 15s linear infinite"
     }
   },
   "css": {

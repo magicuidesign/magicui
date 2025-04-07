@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "gradient": "gradient 8s linear infinite"
+      "animate-gradient": "gradient 8s linear infinite"
     }
   },
   "css": {

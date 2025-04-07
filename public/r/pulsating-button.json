@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "pulse": "pulse var(--duration) ease-out infinite"
+      "animate-pulse": "pulse var(--duration) ease-out infinite"
     }
   },
   "css": {

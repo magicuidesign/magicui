@@ -14,8 +14,8 @@
   ],
   "cssVars": {
     "theme": {
-      "marquee": "marquee var(--duration) infinite linear",
-      "marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+      "animate-marquee": "marquee var(--duration) infinite linear",
+      "animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
     }
   },
   "css": {

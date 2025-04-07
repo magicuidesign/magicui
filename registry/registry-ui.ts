@@ -71,7 +71,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        aurora: "aurora 8s ease-in-out infinite alternate",
+        "animate-aurora": "aurora 8s ease-in-out infinite alternate",
       },
     },
     css: {
@@ -170,7 +170,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        "background-position-spin":
+        "animate-background-position-spin":
           "background-position-spin 3000ms infinite alternate",
       },
     },
@@ -195,7 +195,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        meteor: "meteor 5s linear infinite",
+        "animate-meteor": "meteor 5s linear infinite",
       },
     },
     css: {
@@ -326,8 +326,9 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        marquee: "marquee var(--duration) infinite linear",
-        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "animate-marquee": "marquee var(--duration) infinite linear",
+        "animate-marquee-vertical":
+          "marquee-vertical var(--duration) linear infinite",
       },
     },
     css: {
@@ -379,9 +380,10 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        "shimmer-slide":
+        "animate-shimmer-slide":
           "shimmer-slide var(--speed) ease-in-out infinite alternate",
-        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+        "animate-spin-around":
+          "spin-around calc(var(--speed) * 2) infinite linear",
       },
     },
     css: {
@@ -495,7 +497,8 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+        "animate-ripple":
+          "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
       },
     },
     css: {
@@ -523,7 +526,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        grid: "grid 15s linear infinite",
+        "animate-grid": "grid 15s linear infinite",
       },
     },
     css: {
@@ -564,7 +567,7 @@ export const ui: Registry["items"] = [
 
     cssVars: {
       theme: {
-        "shiny-text": "shiny-text 8s infinite",
+        "animate-shiny-text": "shiny-text 8s infinite",
       },
     },
     css: {
@@ -666,7 +669,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        gradient: "gradient 8s linear infinite",
+        "animate-gradient": "gradient 8s linear infinite",
       },
     },
     css: {
@@ -692,7 +695,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        orbit: "orbit calc(var(--duration)*1s) linear infinite",
+        "animate-orbit": "orbit calc(var(--duration)*1s) linear infinite",
       },
     },
     css: {
@@ -909,7 +912,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        shine: "shine var(--duration) infinite linear",
+        "animate-shine": "shine var(--duration) infinite linear",
       },
     },
     css: {
@@ -999,7 +1002,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        pulse: "pulse var(--duration) ease-out infinite",
+        "animate-pulse": "pulse var(--duration) ease-out infinite",
       },
     },
     css: {
@@ -1023,7 +1026,7 @@ export const ui: Registry["items"] = [
     ],
     cssVars: {
       theme: {
-        rippling: "rippling var(--duration) ease-out",
+        "animate-rippling": "rippling var(--duration) ease-out",
       },
     },
     css: {

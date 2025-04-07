@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "orbit": "orbit calc(var(--duration)*1s) linear infinite"
+      "animate-orbit": "orbit calc(var(--duration)*1s) linear infinite"
     }
   },
   "css": {

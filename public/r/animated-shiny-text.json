@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "shiny-text": "shiny-text 8s infinite"
+      "animate-shiny-text": "shiny-text 8s infinite"
     }
   },
   "css": {

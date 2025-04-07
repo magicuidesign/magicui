@@ -19,7 +19,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://magicui.design/r/neon-gradient-card"
+npx shadcn@canary add "https://magicui.design/r/neon-gradient-card"
 ```
 
 </TabsContent>
@@ -34,28 +34,22 @@ npx shadcn@latest add "https://magicui.design/r/neon-gradient-card"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
 
-```js title="tailwind.config.js" {5-14}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        "background-position-spin":
-          "background-position-spin 3000ms infinite alternate",
-      },
-      keyframes: {
-        "background-position-spin": {
-          "0%": { backgroundPosition: "top center" },
-          "100%": { backgroundPosition: "bottom center" },
-        },
-      },
-    },
-  },
-};
+```css
+--animate-background-position-spin: background-position-spin 3000ms infinite
+  alternate;
+
+@keyframes background-position-spin {
+  0% {
+    background-position: top center;
+  }
+  100% {
+    background-position: bottom center;
+  }
+}
 ```
 
 </Steps>

@@ -35,31 +35,23 @@ npx shadcn@latest add "https://magicui.design/r/ripple"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
 
-```js title="tailwind.config.js" {5-17}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
-      },
-      keyframes: {
-        ripple: {
-          "0%, 100%": {
-            transform: "translate(-50%, -50%) scale(1)",
-          },
-          "50%": {
-            transform: "translate(-50%, -50%) scale(0.9)",
-          },
-        },
-      },
-    },
-  },
-};
+```css
+--animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
+  infinite;
+
+@keyframes ripple {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
 ```
 
 </Steps>

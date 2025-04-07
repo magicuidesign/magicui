@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "meteor": "meteor 5s linear infinite"
+      "animate-meteor": "meteor 5s linear infinite"
     }
   },
   "css": {

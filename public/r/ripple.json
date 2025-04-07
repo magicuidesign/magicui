@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "ripple": "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite"
+      "animate-ripple": "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite"
     }
   },
   "css": {

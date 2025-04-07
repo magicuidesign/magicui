@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "aurora": "aurora 8s ease-in-out infinite alternate"
+      "animate-aurora": "aurora 8s ease-in-out infinite alternate"
     }
   },
   "css": {

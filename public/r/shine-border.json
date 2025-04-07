@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "shine": "shine var(--duration) infinite linear"
+      "animate-shine": "shine var(--duration) infinite linear"
     }
   },
   "css": {

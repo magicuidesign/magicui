@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "background-position-spin": "background-position-spin 3000ms infinite alternate"
+      "animate-background-position-spin": "background-position-spin 3000ms infinite alternate"
     }
   },
   "css": {
