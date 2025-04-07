@@ -39,7 +39,7 @@ npx shadcn@canary add "https://magicui.design/r/marquee"
 
 Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
 
-```css
+```css title="app/globals.css" {1-2,4-19}
 --animate-marquee: marquee var(--duration) infinite linear;
 --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 

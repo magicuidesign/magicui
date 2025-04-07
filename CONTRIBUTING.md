@@ -142,7 +142,7 @@ npx shadcn@canary add "https://magicui.design/r/example-component"
 
 <Step>Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar)</Step>
 
-```css
+```css title="app/globals.css" {1-2,4-18}
 --animate-example: example var(--duration) infinite linear;
 
 @keyframes example {
