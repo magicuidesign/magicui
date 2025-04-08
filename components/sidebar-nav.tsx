@@ -17,9 +17,6 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
 
   return items.length ? (
     <div className="flex flex-col gap-6">
-      <p className="rounded-md px-2 py-1 text-sm font-medium underline underline-offset-4">
-        Tailwind v4
-      </p>
       {items.map((item, index) => (
         <div key={index} className="flex flex-col gap-1">
           <h4 className="rounded-md px-2 py-1 text-sm font-semibold">
@@ -58,7 +55,7 @@ export function DocsSidebarNavItems({
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
               "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
-              "transition-transform duration-200 hover:translate-x-1 hover:text-accent-foreground",
+              "transition-transform duration-200 hover:translate-x-px hover:text-accent-foreground",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href &&
                 "bg-accent font-medium text-accent-foreground",
