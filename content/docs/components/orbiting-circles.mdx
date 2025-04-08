@@ -20,7 +20,7 @@ video: https://cdn.magicui.design/orbiting-circles.mp4
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://magicui.design/r/orbiting-circles"
+npx shadcn@canary add "https://magicui.design/r/orbiting-circles"
 ```
 
 </TabsContent>
@@ -35,33 +35,24 @@ npx shadcn@latest add "https://magicui.design/r/orbiting-circles"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
 
-```js title="tailwind.config.js" {5-19}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        orbit: "orbit calc(var(--duration)*1s) linear infinite",
-      },
-      keyframes: {
-        orbit: {
-          "0%": {
-            transform:
-              "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))",
-          },
-          "100%": {
-            transform:
-              "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))",
-          },
-        },
-      },
-    },
-  },
-};
+```css
+--animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+
+@keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg))
+      translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg))
+      translateY(calc(var(--radius) * 1px))
+      rotate(calc((var(--angle) * -1deg) - 360deg));
+  }
+}
 ```
 
 </Steps>

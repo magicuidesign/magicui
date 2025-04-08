@@ -3,20 +3,12 @@
   "root": true,
   "extends": [
     "next/core-web-vitals",
-    "prettier",
-    "plugin:tailwindcss/recommended"
+    "prettier"
   ],
-  "plugins": ["tailwindcss"],
   "rules": {
-    "@next/next/no-html-link-for-pages": "off",
-    "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error"
+    "@next/next/no-html-link-for-pages": "off"
   },
   "settings": {
-    "tailwindcss": {
-      "callees": ["cn", "cva"],
-      "config": "tailwind.config.cjs"
-    },
     "next": {
       "rootDir": ["app/*/"]
     }

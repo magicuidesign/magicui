@@ -12,24 +12,18 @@
       "target": "components/magicui/retro-grid.tsx"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "animation": {
-            "grid": "grid 15s linear infinite"
-          },
-          "keyframes": {
-            "grid": {
-              "0%": {
-                "transform": "translateY(-50%)"
-              },
-              "100%": {
-                "transform": "translateY(0)"
-              }
-            }
-          }
-        }
+  "cssVars": {
+    "theme": {
+      "animate-grid": "grid 15s linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes grid": {
+      "0%": {
+        "transform": "translateY(-50%)"
+      },
+      "100%": {
+        "transform": "translateY(0)"
       }
     }
   }

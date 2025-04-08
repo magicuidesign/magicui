@@ -13,7 +13,7 @@ import { ShineBorder } from "@/registry/magicui/shine-border";
 
 export default function ShineBorderDemo() {
   return (
-    <Card className="relative overflow-hidden">
+    <Card className="relative overflow-hidden max-w-[350px] w-full">
       <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
       <CardHeader>
         <CardTitle>Login</CardTitle>

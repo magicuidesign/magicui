@@ -18,9 +18,9 @@ video: https://cdn.magicui.design/shimmer-button.mp4
   <TabsTrigger value="manual">Manual</TabsTrigger>
 </TabsList>
 <TabsContent value="cli">
-
+  
 ```bash
-npx shadcn@latest add "https://magicui.design/r/shimmer-button"
+npx shadcn@canary add "https://magicui.design/r/shimmer-button"
 ```
 
 </TabsContent>
@@ -35,44 +35,36 @@ npx shadcn@latest add "https://magicui.design/r/shimmer-button"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
 
-```js title="tailwind.config.js" {5-30}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        "shimmer-slide":
-          "shimmer-slide var(--speed) ease-in-out infinite alternate",
-        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
-      },
-      keyframes: {
-        "spin-around": {
-          "0%": {
-            transform: "translateZ(0) rotate(0)",
-          },
-          "15%, 35%": {
-            transform: "translateZ(0) rotate(90deg)",
-          },
-          "65%, 85%": {
-            transform: "translateZ(0) rotate(270deg)",
-          },
-          "100%": {
-            transform: "translateZ(0) rotate(360deg)",
-          },
-        },
-        "shimmer-slide": {
-          to: {
-            transform: "translate(calc(100cqw - 100%), 0)",
-          },
-        },
-      },
-    },
-  },
-};
+```css
+--animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
+  alternate;
+--animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+  }
+}
+@keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+  15%,
+  35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+  65%,
+  85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
 ```
 
 </Steps>

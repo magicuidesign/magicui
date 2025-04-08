@@ -73,9 +73,10 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "CLI",
-          href: "/docs/cli",
+          title: "Tailwind v4",
+          href: "/docs/tailwind-v4",
           items: [],
+          label: "New",
         },
       ],
     },
