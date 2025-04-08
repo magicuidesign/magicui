@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +7,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ChevronDownIcon, CheckIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import * as React from "react";
 
 const DOMAINS = {
   v3: "https://v3.magicui.design",
@@ -39,7 +39,7 @@ export function VersionSelect() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex h-7 w-14 cursor-pointer items-center justify-between rounded-full bg-muted py-1 pl-2 pr-0.5 text-sm font-medium text-muted-foreground">
+      <DropdownMenuTrigger className="flex h-7 w-14 cursor-pointer items-center justify-between rounded-full border border-muted-foreground/20 bg-muted py-1 pl-2 pr-0.5 text-sm font-medium text-muted-foreground">
         {version}
         <div className="flex size-5 items-center justify-center rounded-full border border-muted-foreground/20">
           <ChevronDownIcon className="size-4 opacity-50" />
