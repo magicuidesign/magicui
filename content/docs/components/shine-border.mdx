@@ -36,20 +36,22 @@ npx shadcn@canary add "https://magicui.design/r/shine-border"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-shine: shine var(--duration) infinite linear;
+```css title="app/globals.css" {2, 4-14}
+@theme inline {
+  --animate-shine: shine var(--duration) infinite linear;
 
-@keyframes shine {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  to {
-    background-position: 0% 0%;
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
   }
 }
 ```

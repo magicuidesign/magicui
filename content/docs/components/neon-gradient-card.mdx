@@ -36,18 +36,20 @@ npx shadcn@canary add "https://magicui.design/r/neon-gradient-card"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file .
 
-```css
---animate-background-position-spin: background-position-spin 3000ms infinite
-  alternate;
+```css title="app/globals.css" {2-3, 5-12}
+@theme inline {
+  --animate-background-position-spin: background-position-spin 3000ms infinite
+    alternate;
 
-@keyframes background-position-spin {
-  0% {
-    background-position: top center;
-  }
-  100% {
-    background-position: bottom center;
+  @keyframes background-position-spin {
+    0% {
+      background-position: top center;
+    }
+    100% {
+      background-position: bottom center;
+    }
   }
 }
 ```
@@ -57,6 +59,18 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
+```
+
+```tsx
+<NeonGradientCard>
+  <div>Hello</div>
+</NeonGradientCard>
+```
 
 ## Props
 

@@ -36,18 +36,20 @@ npx shadcn@canary add "https://magicui.design/r/ripple-button"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-rippling: rippling var(--duration) ease-out;
+```css title="app/globals.css" {2, 4-12}
+@theme inline {
+  --animate-rippling: rippling var(--duration) ease-out;
 
-@keyframes rippling {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
+  @keyframes rippling {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
   }
 }
 ```
@@ -57,6 +59,16 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { RippleButton } from "@/components/magicui/ripple-button";
+```
+
+```tsx
+<RippleButton rippleColor="#ADD8E6">{children}</RippleButton>
+```
 
 ## Props
 

@@ -38,6 +38,26 @@ npx shadcn@canary add "https://magicui.design/r/terminal"
 
 </Tabs>
 
+## Usage
+
+```tsx
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/magicui/terminal";
+```
+
+```tsx
+<div className="relative overflow-hidden">
+  <Terminal>
+    <TypingAnimation>
+      <AnimatedSpan>Hello, world!</AnimatedSpan>
+    </TypingAnimation>
+  </Terminal>
+</div>
+```
+
 ## Props
 
 ### Terminal

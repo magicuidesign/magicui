@@ -37,22 +37,24 @@ npx shadcn@canary add "https://magicui.design/r/meteors"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-meteor: meteor 5s linear infinite;
+```css title="app/globals.css" {2, 4-15}
+@theme inline {
+  --animate-meteor: meteor 5s linear infinite;
 
-@keyframes meteor {
-  0% {
-    transform: rotate(var(--angle)) translateX(0);
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(var(--angle)) translateX(-500px);
-    opacity: 0;
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
   }
 }
 ```
@@ -62,6 +64,16 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { Meteors } from "@/components/magicui/meteors";
+```
+
+```tsx
+<Meteors number={20} />
+```
 
 ## Props
 

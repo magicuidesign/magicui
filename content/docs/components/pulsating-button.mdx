@@ -36,18 +36,20 @@ npx shadcn@canary add "https://magicui.design/r/pulsating-button"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-pulse: pulse var(--duration) ease-out infinite;
+```css title="app/globals.css" {2, 4-12}
+@theme inline {
+  --animate-pulse: pulse var(--duration) ease-out infinite;
 
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 var(--pulse-color);
-  }
-  50% {
-    box-shadow: 0 0 0 8px var(--pulse-color);
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 var(--pulse-color);
+    }
+    50% {
+      box-shadow: 0 0 0 8px var(--pulse-color);
+    }
   }
 }
 ```
@@ -57,6 +59,16 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { PulsatingButton } from "@/components/magicui/pulsating-button";
+```
+
+```tsx
+<PulsatingButton>{children}</PulsatingButton>
+```
 
 ## Props
 

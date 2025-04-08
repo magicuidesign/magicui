@@ -36,31 +36,33 @@ npx shadcn@canary add "https://magicui.design/r/aurora-text"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-aurora: aurora 8s ease-in-out infinite alternate;
+```css title="app/globals.css" {2, 4-25}
+@theme inline {
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
 
-@keyframes aurora {
-  0% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);
-  }
-  25% {
-    background-position: 50% 100%;
-    transform: rotate(5deg) scale(1.1);
-  }
-  50% {
-    background-position: 100% 50%;
-    transform: rotate(-3deg) scale(0.95);
-  }
-  75% {
-    background-position: 50% 0%;
-    transform: rotate(3deg) scale(1.05);
-  }
-  100% {
-    background-position: 0% 50%;
-    transform: rotate(-5deg) scale(0.9);
+  @keyframes aurora {
+    0% {
+      background-position: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
+    }
+    25% {
+      background-position: 50% 100%;
+      transform: rotate(5deg) scale(1.1);
+    }
+    50% {
+      background-position: 100% 50%;
+      transform: rotate(-3deg) scale(0.95);
+    }
+    75% {
+      background-position: 50% 0%;
+      transform: rotate(3deg) scale(1.05);
+    }
+    100% {
+      background-position: 0% 50%;
+      transform: rotate(-5deg) scale(0.9);
+    }
   }
 }
 ```
@@ -70,6 +72,20 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { AuroraText } from "@/components/magicui/aurora-text";
+```
+
+```tsx
+<div className="relative overflow-hidden">
+  <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
+    <AuroraText>{children}</AuroraText>
+  </h1>
+</div>
+```
 
 ## Props
 

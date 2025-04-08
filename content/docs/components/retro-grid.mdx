@@ -37,17 +37,19 @@ npx shadcn@canary add "https://magicui.design/r/retro-grid"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-grid: grid 15s linear infinite;
+```css title="app/globals.css" {2, 4-11}
+@theme inline {
+  --animate-grid: grid 15s linear infinite;
 
-@keyframes grid {
-  0% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: translateY(0);
+  @keyframes grid {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }
 ```
@@ -57,6 +59,18 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { RetroGrid } from "@/components/magicui/retro-grid";
+```
+
+```tsx
+<div className="relative h-screen w-screen overflow-hidden">
+  <RetroGrid />
+</div>
+```
 
 ## Props
 
