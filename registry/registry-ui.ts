@@ -658,6 +658,7 @@ export const ui: Registry["items"] = [
     title: "Border Beam",
     description:
       "An animated beam of light which travels along the border of its container.",
+    dependencies: ["motion"],
     files: [
       {
         path: "registry/magicui/border-beam.tsx",
