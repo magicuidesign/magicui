@@ -55,11 +55,10 @@ export function DocsSidebarNavItems({
             onClick={() => item.event && posthog.capture(item.event)}
             className={cn(
               "group relative flex h-8 w-full items-center justify-between rounded-lg px-2 font-normal text-foreground",
-              "transition-all duration-200 ease-in-out",
-              "hover:translate-x-px hover:text-accent-foreground",
+              "transition-transform duration-200 hover:translate-x-px hover:text-accent-foreground",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href && [
-                "translate-x-1 bg-accent font-medium text-accent-foreground",
+                "bg-accent font-medium text-accent-foreground",
               ],
             )}
             target={item.external ? "_blank" : ""}
