@@ -1,13 +1,13 @@
 "use client";
 
 import { Icons } from "@/components/icons";
-import { Badge } from "@/components/ui/badge";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import { VersionSelect } from "@/components/version-select";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -15,7 +15,6 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
-import { VersionSelect } from "@/components/version-select";
 
 function copyLogoAsSVG(path: string) {
   fetch(path)
@@ -51,7 +50,6 @@ export function MainNav() {
             <span className="hidden font-bold md:inline-block">
               {siteConfig.name}
             </span>
-            <Badge variant="secondary">Beta</Badge>
           </Link>
         </ContextMenuTrigger>
         <ContextMenuContent>
