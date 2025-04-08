@@ -16,7 +16,7 @@ description: How to install dependencies and structure your app.
 Run the `init` command to create a new Next.js project or to setup an existing one:
 
 ```bash
-npx shadcn@latest init
+npx shadcn@canary init
 ```
 
 ### Add components
@@ -24,20 +24,20 @@ npx shadcn@latest init
 You can now start adding components to your project.
 
 ```bash
-npx shadcn@latest add "https://v3.magicui.design/r/android.json"
+npx shadcn@canary add "https://magicui.design/r/globe.json"
 ```
 
 ### Import component
 
-The command above will add the `Android` component to your project. You can then import it like this:
+The command above will add the `Globe` component to your project. You can then import it like this:
 
 ```tsx {1,6} showLineNumbers
-import { Android } from "@/components/ui/android";
+import { Globe } from "@/components/ui/globe";
 
 export default function Home() {
   return (
     <div>
-      <Android />
+      <Globe />
     </div>
   );
 }
