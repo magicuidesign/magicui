@@ -123,7 +123,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@canary add "https://magicui.design/r/example-component"
+npx shadcn@latest add "https://magicui.design/r/example-component"
 ```
 
 </TabsContent>
