@@ -13,7 +13,7 @@ import { motion } from "motion/react";
 export default function PointerDemo1() {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2">
-      <Card className="col-span-1 row-span-1 overflow-hidden border-none bg-gradient-to-br from-slate-50 to-slate-100 shadow-lg transition-all hover:shadow-xl dark:from-slate-900 dark:to-slate-800">
+      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-slate-50 to-slate-100 transition-all dark:from-slate-900 dark:to-slate-800 shadow-none">
         <CardHeader className="relative pb-2">
           <CardTitle className="text-xl font-bold">Animated Pointer</CardTitle>
           <CardDescription className="text-sm text-slate-600 dark:text-slate-400">
@@ -60,7 +60,7 @@ export default function PointerDemo1() {
         </Pointer>
       </Card>
 
-      <Card className="col-span-1 row-span-1 overflow-hidden border-none bg-gradient-to-br from-blue-50 to-blue-100 shadow-lg transition-all hover:shadow-xl dark:from-blue-900 dark:to-blue-800">
+      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-blue-50 to-blue-100 transition-all dark:from-blue-900 dark:to-blue-800 shadow-none">
         <CardHeader className="relative pb-2">
           <CardTitle className="text-xl font-bold">Colored Pointer</CardTitle>
           <CardDescription className="text-sm text-blue-700 dark:text-blue-300">
@@ -75,7 +75,7 @@ export default function PointerDemo1() {
         <Pointer className="fill-blue-500" />
       </Card>
 
-      <Card className="col-span-1 row-span-1 overflow-hidden border-none bg-gradient-to-br from-purple-50 to-purple-100 shadow-lg transition-all hover:shadow-xl dark:from-purple-900 dark:to-purple-800">
+      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-purple-50 to-purple-100 transition-all dark:from-purple-900 dark:to-purple-800 shadow-none">
         <CardHeader className="relative pb-2">
           <CardTitle className="text-xl font-bold">Custom Shape</CardTitle>
           <CardDescription className="text-sm text-purple-700 dark:text-purple-300">
@@ -101,7 +101,7 @@ export default function PointerDemo1() {
         </Pointer>
       </Card>
 
-      <Card className="col-span-1 row-span-1 overflow-hidden border-none bg-gradient-to-br from-green-50 to-green-100 shadow-lg transition-all hover:shadow-xl dark:from-green-900 dark:to-green-800">
+      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-green-50 to-green-100 transition-all dark:from-green-900 dark:to-green-800 shadow-none">
         <CardHeader className="relative pb-2">
           <CardTitle className="text-xl font-bold">Emoji Pointer</CardTitle>
           <CardDescription className="text-sm text-green-700 dark:text-green-300">
