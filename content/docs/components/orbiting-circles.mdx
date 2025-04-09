@@ -70,8 +70,18 @@ import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 ```
 
 ```tsx
-<div className="relative overflow-hidden">
-  <OrbitingCircles></OrbitingCircles>
+<div className="relative overflow-hidden h-[300px]">
+  <OrbitingCircles>
+    <Icon name="home" />
+    <Icon name="settings" />
+    <Icon name="search" />
+  </OrbitingCircles>
+  <OrbitingCircles>
+    <Icon name="whatsapp" />
+    <Icon name="notion" />
+    <Icon name="openai" />
+    <Icon name="googleDrive" />
+  </OrbitingCircles>
 </div>
 ```
 

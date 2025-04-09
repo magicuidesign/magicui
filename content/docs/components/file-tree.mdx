@@ -47,15 +47,18 @@ import { File, Folder, Tree } from "@/components/magicui/file-tree";
 ```
 
 ```tsx
-<div className="relative overflow-hidden">
-  <Tree>
+<Tree>
+  <Folder>
     <Folder>
       <File>
-        <FileIcon />
+        <p>layout.tsx</p>
+      </File>
+      <File>
+        <p>page.tsx</p>
       </File>
     </Folder>
-  </Tree>
-</div>
+  </Folder>
+</Tree>
 ```
 
 ## Props
