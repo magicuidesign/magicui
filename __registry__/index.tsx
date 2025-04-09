@@ -775,7 +775,7 @@ export const Index: Record<string, any> = {
   "animated-beam": {
     name: "animated-beam",
     description:
-      'An animated beam of light which travels along a path. Useful for showcasing the "integration" features of a website.',
+      "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [

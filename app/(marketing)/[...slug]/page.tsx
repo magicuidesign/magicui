@@ -4,8 +4,6 @@ import { Mdx } from "@/components/mdx-components";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
 
-import "@/styles/mdx.css";
-
 import { allPages } from "content-collections";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";

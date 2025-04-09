@@ -19,7 +19,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://magicui.design/r/code-comparison"
+npx shadcn@canary add "https://magicui.design/r/code-comparison"
 ```
 
 </TabsContent>
@@ -40,12 +40,13 @@ npx shadcn@latest add "https://magicui.design/r/code-comparison"
 
 ## Props
 
-| Prop         | Type     | Default        | Description                                            |
-| ------------ | -------- | -------------- | ------------------------------------------------------ |
-| `className`  | `string` | `-`            | The class name to be applied to the component          |
-| `beforeCode` | `string` | `-`            | The code snippet to display in the "before" section    |
-| `afterCode`  | `string` | `-`            | The code snippet to display in the "after" section     |
-| `language`   | `string` | `-`            | The language of the code snippets (e.g., "typescript") |
-| `filename`   | `string` | `-`            | The filename to display for the code snippets          |
-| `lightTheme` | `string` | `github-light` | The theme to use for light mode                        |
-| `darkTheme`  | `string` | `github-dark`  | The theme to use for dark mode                         |
+| Prop             | Type     | Default                     | Description                                            |
+| ---------------- | -------- | --------------------------- | ------------------------------------------------------ |
+| `className`      | `string` | `-`                         | The class name to be applied to the component          |
+| `beforeCode`     | `string` | `-`                         | The code snippet to display in the "before" section    |
+| `afterCode`      | `string` | `-`                         | The code snippet to display in the "after" section     |
+| `language`       | `string` | `-`                         | The language of the code snippets (e.g., "typescript") |
+| `filename`       | `string` | `-`                         | The filename to display for the code snippets          |
+| `lightTheme`     | `string` | `github-light`              | The theme to use for light mode                        |
+| `darkTheme`      | `string` | `github-dark`               | The theme to use for dark mode                         |
+| `highlightColor` | `string` | `rgba(101, 117, 133, 0.16)` | The color to use for highlighting the code snippets    |

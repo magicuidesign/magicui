@@ -59,18 +59,18 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent side="left" className="space-y-0 gap-0">
         <Link
           href="/"
           onClick={() => {
             setIsOpen(false);
           }}
-          className="flex items-center"
+          className="flex items-center h-16 px-4 border-b border-border"
         >
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
-        <ScrollArea className="my-4 h-[calc(100vh-6rem)]">
+        <ScrollArea className="h-[calc(100vh-4rem)] p-4">
           <div className="flex flex-col space-y-1.5">
             {docsConfig.mainNav?.map(
               (item) =>
@@ -92,21 +92,23 @@ export function MobileNav() {
                       href={item.href}
                       onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
-                        "text-muted-foreground",
+                        "flex justify-between text-muted-foreground",
                         item.disabled && "cursor-not-allowed opacity-60",
                       )}
                     >
                       {item.title}
-                      {item.label && (
-                        <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                          {item.label}
-                        </span>
-                      )}
-                      {item.paid && (
-                        <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                          Pro
-                        </span>
-                      )}
+                      <div>
+                        {item.label && (
+                          <span className="ml-2 rounded-md bg-[#FFBD7A] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                            {item.label}
+                          </span>
+                        )}
+                        {item.paid && (
+                          <span className="ml-2 rounded-md bg-[#4ade80] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                            Pro
+                          </span>
+                        )}
+                      </div>
                     </MobileLink>
                   ) : (
                     <span

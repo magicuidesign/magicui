@@ -12,24 +12,19 @@ import { ui } from "../registry/registry-ui";
 const DEPRECATED_ITEMS = ["toast"];
 
 const registry = {
-  name: "Magic UI",
-  homepage: "https://magicui.design",
+  name: "shadcn/ui",
+  homepage: "https://ui.shadcn.com",
   items: z.array(registryItemSchema).parse(
     [
       {
         name: "index",
         type: "registry:style",
         dependencies: [
-          "tailwindcss-animate",
+          "tw-animate-css",
           "class-variance-authority",
           "lucide-react",
         ],
         registryDependencies: ["utils"],
-        tailwind: {
-          config: {
-            plugins: [`require("tailwindcss-animate")`],
-          },
-        },
         cssVars: {},
         files: [],
       },
@@ -38,7 +33,7 @@ const registry = {
       ...lib,
     ].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name);
-    }),
+    })
   ),
 } satisfies Registry;
 
@@ -63,8 +58,8 @@ export const Index: Record<string, any> = {`;
 
     index += `
   "${item.name}": {
-    name: ${JSON.stringify(item.name)},
-    description: ${JSON.stringify(item.description ?? "")},
+    name: "${item.name}",
+    description: "${item.description ?? ""}",
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: [${item.files?.map((file) => {
@@ -122,16 +117,13 @@ async function buildRegistryJsonFile() {
   rimraf.sync(path.join(process.cwd(), `registry.json`));
   await fs.writeFile(
     path.join(process.cwd(), `registry.json`),
-    JSON.stringify(fixedRegistry, null, 2),
+    JSON.stringify(fixedRegistry, null, 2)
   );
 }
 
 async function buildRegistry() {
-  // 1. Build the registry
-  await new Promise((resolve, reject) => {
-    const process = exec(
-      `pnpm dlx shadcn build registry.json --output ./public/r/`,
-    );
+  return new Promise((resolve, reject) => {
+    const process = exec(`pnpm shadcn:build`);
 
     process.on("exit", (code) => {
       if (code === 0) {
@@ -141,49 +133,25 @@ async function buildRegistry() {
       }
     });
   });
-
-  // 2. Replace `@/registry/magicui/` with `@/components/magicui/` in all files
-  const files = await fs.readdir(path.join(process.cwd(), "public/r"));
-
-  await Promise.all(
-    files.map(async (file) => {
-      const content = await fs.readFile(
-        path.join(process.cwd(), "public/r", file),
-        "utf-8",
-      );
-
-      const registryItem = JSON.parse(content);
-
-      // Replace `@/registry/magicui/` in files
-      registryItem.files = registryItem.files?.map((file) => {
-        if (file.content?.includes("@/registry/magicui")) {
-          file.content = file.content?.replaceAll(
-            "@/registry/magicui",
-            "@/components/magicui",
-          );
-        }
-        return file;
-      });
-
-      // Write the file back
-      await fs.writeFile(
-        path.join(process.cwd(), "public/r", file),
-        JSON.stringify(registryItem, null, 2),
-      );
-    }),
-  );
 }
 
 try {
   console.log("🗂️ Building registry/__index__.tsx...");
   await buildRegistryIndex();
+  console.log("✅ Registry index built successfully");
 
   console.log("💅 Building registry.json...");
   await buildRegistryJsonFile();
+  console.log("✅ Registry JSON file built successfully");
 
   console.log("🏗️ Building registry...");
   await buildRegistry();
+  console.log("✅ Registry build completed");
 } catch (error) {
+  console.error("❌ Build failed with error:");
   console.error(error);
+  if (error instanceof Error) {
+    console.error("Error stack:", error.stack);
+  }
   process.exit(1);
 }

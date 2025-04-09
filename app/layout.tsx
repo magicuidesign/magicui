@@ -8,7 +8,6 @@ import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { Provider as JotaiProvider } from "jotai";
 
 import "@/styles/globals.css";
-import "@/styles/mdx.css";
 
 import type { Viewport } from "next";
 import { Metadata } from "next";
