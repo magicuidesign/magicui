@@ -37,19 +37,21 @@ npx shadcn@canary add "https://magicui.design/r/ripple"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
-  infinite;
+```css title="app/globals.css" {2-3, 5-13}
+@theme inline {
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
+    infinite;
 
-@keyframes ripple {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(0.9);
+  @keyframes ripple {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
   }
 }
 ```
@@ -59,6 +61,18 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { Ripple } from "@/components/magicui/ripple";
+```
+
+```tsx
+<div className="relative h-[500px] w-full overflow-hidden">
+  <Ripple />
+</div>
+```
 
 ## Props
 

@@ -36,17 +36,19 @@ npx shadcn@canary add "https://magicui.design/r/line-shadow-text"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-line-shadow: line-shadow 15s linear infinite;
+```css title="app/globals.css" {2, 5-12}
+@theme inline {
+  --animate-line-shadow: line-shadow 15s linear infinite;
 
-@keyframes line-shadow {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 100% -100%;
+  @keyframes line-shadow {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% -100%;
+    }
   }
 }
 ```
@@ -56,6 +58,16 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { LineShadowText } from "@/components/magicui/line-shadow-text";
+```
+
+```tsx
+<LineShadowText>Magic UI</LineShadowText>
+```
 
 ## Props
 

@@ -38,7 +38,7 @@ npx shadcn@canary add "https://magicui.design/r/rainbow-button"
 
 Add the following to your `globals.css` file:
 
-```css
+```css title="app/globals.css" {2-6}
 :root {
   --color-1: 0 100% 63%;
   --color-2: 270 100% 63%;
@@ -50,17 +50,19 @@ Add the following to your `globals.css` file:
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+```css title="app/globals.css" {2, 4-11}
+@theme inline {
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
 
-@keyframes rainbow {
-  0% {
-    background-position: 0%;
-  }
-  100% {
-    background-position: 200%;
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
   }
 }
 ```
@@ -70,6 +72,16 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { RainbowButton } from "@/components/magicui/rainbow-button";
+```
+
+```tsx
+<RainbowButton>Rainbow Button</RainbowButton>
+```
 
 ## Props
 

@@ -37,20 +37,22 @@ npx shadcn@canary add "https://magicui.design/r/animated-shiny-text"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-shiny-text: shiny-text 8s infinite;
+```css title="app/globals.css" {2, 4-14}
+@theme inline {
+  --animate-shiny-text: shiny-text 8s infinite;
 
-@keyframes shiny-text {
-  0%,
-  90%,
-  100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
-  }
-  30%,
-  60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
+  @keyframes shiny-text {
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
   }
 }
 ```
@@ -60,6 +62,16 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
+```
+
+```tsx
+<AnimatedShinyText>Animated Shiny Text</AnimatedShinyText>
+```
 
 ## Props
 

@@ -37,20 +37,22 @@ npx shadcn@canary add "https://magicui.design/r/orbiting-circles"
 
 <Step>Add the required CSS animations</Step>
 
-Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
+Add the following animations to your global CSS file.
 
-```css
---animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
+```css title="app/globals.css" {2, 4-14}
+@theme inline {
+  --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
 
-@keyframes orbit {
-  0% {
-    transform: rotate(calc(var(--angle) * 1deg))
-      translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
-  }
-  100% {
-    transform: rotate(calc(var(--angle) * 1deg + 360deg))
-      translateY(calc(var(--radius) * 1px))
-      rotate(calc((var(--angle) * -1deg) - 360deg));
+  @keyframes orbit {
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
   }
 }
 ```
@@ -60,6 +62,29 @@ Add the following animations to your global CSS file inside the `@theme inline` 
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import { File, Settings, Search } from "lucide-react";
+```
+
+```tsx
+<div className="relative overflow-hidden h-[500px] w-full">
+  <OrbitingCircles>
+    <File />
+    <Settings />
+    <File />
+  </OrbitingCircles>
+  <OrbitingCircles radius={100} reverse>
+    <File />
+    <Settings />
+    <File />
+    <Search />
+  </OrbitingCircles>
+</div>
+```
 
 ## Props
 
