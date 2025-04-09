@@ -67,20 +67,21 @@ Add the following animations to your global CSS file.
 
 ```tsx
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import { File, Settings, Search } from "lucide-react";
 ```
 
 ```tsx
-<div className="relative overflow-hidden h-[300px]">
+<div className="relative overflow-hidden h-[500px] w-full">
   <OrbitingCircles>
-    <Icon name="home" />
-    <Icon name="settings" />
-    <Icon name="search" />
+    <File />
+    <Settings />
+    <File />
   </OrbitingCircles>
-  <OrbitingCircles>
-    <Icon name="whatsapp" />
-    <Icon name="notion" />
-    <Icon name="openai" />
-    <Icon name="googleDrive" />
+  <OrbitingCircles radius={100} reverse>
+    <File />
+    <Settings />
+    <File />
+    <Search />
   </OrbitingCircles>
 </div>
 ```
