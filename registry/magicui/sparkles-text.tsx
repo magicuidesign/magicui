@@ -58,11 +58,11 @@ interface SparklesTextProps {
 
   /**
    * @required
-   * @type string
+   * @type ReactNode
    * @description
-   * The text to be displayed
+   * The content to be displayed
    * */
-  text: string;
+  children: React.ReactNode;
 
   /**
    * @default 10
@@ -85,7 +85,7 @@ interface SparklesTextProps {
 }
 
 export const SparklesText: React.FC<SparklesTextProps> = ({
-  text,
+  children,
   colors = { first: "#9E7AFF", second: "#FE8BBB" },
   className,
   sparklesCount = 10,
@@ -143,7 +143,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <strong>{text}</strong>
+        <strong>{children}</strong>
       </span>
     </div>
   );
