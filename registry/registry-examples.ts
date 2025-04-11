@@ -1696,4 +1696,23 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "arc-timeline-demo",
+    type: "registry:example",
+    title: "Arc Timeline Demo",
+    description: "Example showing an arc timeline component.",
+    registryDependencies: ["https://magicui.design/r/arc-timeline"],
+    files: [
+      {
+        path: "registry/example/arc-timeline-demo.tsx",
+        type: "registry:example",
+        target: "components/arc-timeline-demo.tsx",
+      },
+      {
+        path: "registry/magicui/arc-timeline.tsx",
+        type: "registry:ui",
+        target: "components/magicui/arc-timeline.tsx",
+      },
+    ],
+  },
 ];
