@@ -157,6 +157,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "smooth-cursor",
+    description:
+      "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
+    type: "registry:ui",
+    files: [
+      {
+        path: "registry/magicui/smooth-cursor.tsx",
+        type: "registry:ui",
+      },
+    ],
+    dependencies: ["framer-motion"],
+  },
+  {
     name: "neon-gradient-card",
     type: "registry:ui",
     title: "Neon Gradient Card",

@@ -240,6 +240,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Smooth Cursor",
+          href: `/docs/components/smooth-cursor`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
