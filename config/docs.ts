@@ -341,6 +341,12 @@ export const docsConfig: DocsConfig = {
       title: "Text Animations",
       items: [
         {
+          title: "Video Text",
+          href: `/docs/components/video-text`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Text Animate",
           href: `/docs/components/text-animate`,
           items: [],

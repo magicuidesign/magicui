@@ -1160,4 +1160,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "video-text",
+    type: "registry:ui",
+    title: "Video Text",
+    description:
+      "A component that displays text with a video playing in the background.",
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/video-text.tsx",
+      },
+    ],
+  },
 ];

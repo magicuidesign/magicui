@@ -1228,6 +1228,19 @@
       ]
     },
     {
+      "name": "video-text",
+      "type": "registry:ui",
+      "title": "Video Text",
+      "description": "A component that displays text with a video playing in the background.",
+      "files": [
+        {
+          "path": "registry/magicui/video-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/video-text.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3160,6 +3173,22 @@
           "path": "registry/example/terminal-demo.tsx",
           "type": "registry:example",
           "target": "components/terminal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-text-demo",
+      "type": "registry:example",
+      "title": "Video Text Demo",
+      "description": "Example showing text with a video background.",
+      "registryDependencies": [
+        "https://magicui.design/r/video-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/video-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/video-text-demo.tsx"
         }
       ]
     },

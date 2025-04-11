@@ -1696,4 +1696,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "video-text-demo",
+    type: "registry:example",
+    title: "Video Text Demo",
+    description: "Example showing text with a video background.",
+    registryDependencies: ["https://magicui.design/r/video-text"],
+    files: [
+      {
+        path: "registry/example/video-text-demo.tsx",
+        type: "registry:example",
+        target: "components/video-text-demo.tsx",
+      },
+    ],
+  },
 ];
