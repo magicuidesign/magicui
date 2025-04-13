@@ -33,7 +33,7 @@ const registry = {
       ...lib,
     ].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name);
-    })
+    }),
   ),
 } satisfies Registry;
 
@@ -113,11 +113,16 @@ async function buildRegistryJsonFile() {
     }),
   };
 
-  // 2. Write the content of the registry to `registry.json`
+  // 2. Write the content of the registry to `registry.json` and public folder
   rimraf.sync(path.join(process.cwd(), `registry.json`));
+  rimraf.sync(path.join(process.cwd(), `public/registry.json`));
+
+  const registryJson = JSON.stringify(fixedRegistry, null, 2);
+
+  await fs.writeFile(path.join(process.cwd(), `registry.json`), registryJson);
   await fs.writeFile(
-    path.join(process.cwd(), `registry.json`),
-    JSON.stringify(fixedRegistry, null, 2)
+    path.join(process.cwd(), `public/registry.json`),
+    registryJson,
   );
 }
 
