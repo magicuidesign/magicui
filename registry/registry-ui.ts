@@ -1160,4 +1160,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "blob-background",
+    type: "registry:ui",
+    title: "Blob Background",
+    description: "A good-looking animated blob background.",
+    files: [
+      {
+        path: "registry/magicui/blob-background.tsx",
+        type: "registry:ui",
+        target: "components/magicui/blob-background.tsx",
+      },
+    ],
+  },
 ];

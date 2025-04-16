@@ -1228,6 +1228,19 @@
       ]
     },
     {
+      "name": "blob-background",
+      "type": "registry:ui",
+      "title": "Blob Background",
+      "description": "A good-looking animated blob background.",
+      "files": [
+        {
+          "path": "registry/magicui/blob-background.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/blob-background.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3160,6 +3173,22 @@
           "path": "registry/example/terminal-demo.tsx",
           "type": "registry:example",
           "target": "components/terminal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blob-background-demo",
+      "type": "registry:example",
+      "title": "Blob Background Demo",
+      "description": "Example showing an animated blob background.",
+      "registryDependencies": [
+        "https://magicui.design/r/blob-background"
+      ],
+      "files": [
+        {
+          "path": "registry/example/blob-background-demo.tsx",
+          "type": "registry:example",
+          "target": "components/blob-background-demo.tsx"
         }
       ]
     },

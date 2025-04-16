@@ -1,0 +1,51 @@
+---
+title: Blob Background
+date: 2025-03-01
+description: A good-looking animated blob background.
+author: KneesDev
+published: true
+---
+
+<ComponentPreview name="blob-background-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/blob-background"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="blob-background" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type     | Default | Description                                 |
+| ----------- | -------- | ------- | ------------------------------------------- |
+| `blobCount` | `number` | `8`     | Number of blobs to render                   |
+| `blobSize`  | `number` | `250`   | Base size of the blobs (will vary slightly) |
+| `range`     | `number` | `150`   | How far blobs can move from center          |
+| `speed`     | `number` | `5000`  | How fast the colors change (ms)             |
+| `blur`      | `number` | `60`    | Blur amount for the blobs                   |
