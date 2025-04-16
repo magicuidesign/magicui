@@ -183,7 +183,10 @@ const components = {
     />
   ),
   Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
-    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+    <Tabs
+      className={cn("relative mt-6 w-full overflow-x-auto", className)}
+      {...props}
+    />
   ),
   TabsList: ({
     className,
