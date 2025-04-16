@@ -78,6 +78,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "MCP",
+          href: "/docs/mcp",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
