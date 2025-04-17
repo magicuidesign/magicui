@@ -1473,8 +1473,8 @@
       "name": "smooth-cursor-demo",
       "type": "registry:example",
       "description": "Basic smooth cursor example",
-      "dependencies": [
-        "smooth-cursor"
+      "registryDependencies": [
+        "https://magicui.design/r/smooth-cursor"
       ],
       "files": [
         {

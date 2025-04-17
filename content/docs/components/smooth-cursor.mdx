@@ -1,16 +1,12 @@
 ---
 title: Smooth Cursor
-date: 2024-03-19
+date: 2024-04-17
 description: A customizable, physics-based smooth cursor animation component for React applications.
 author: magicui
 published: true
 ---
 
 <ComponentPreview name="smooth-cursor-demo" />
-
-## Overview
-
-The `SmoothCursor` component provides a physics-based cursor animation that brings a polished and interactive feel to your application. Features include spring animations, velocity tracking, and rotation effects to create engaging cursor experiences.
 
 ## Features
 
@@ -65,47 +61,14 @@ export default function Page() {
 
 </Tabs>
 
-## Next.js Integration
-
-### App Router (Next.js 13+)
+## Usage
 
 ```tsx
-"use client";
-
-// app/layout.tsx
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>
-        <SmoothCursor />
-        {children}
-      </body>
-    </html>
-  );
-}
 ```
 
-### Pages Router
-
 ```tsx
-// pages/_app.tsx
-import type { AppProps } from "next/app";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
-
-export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <SmoothCursor />
-      <Component {...pageProps} />
-    </>
-  );
-}
+<SmoothCursor />
 ```
 
 ## Props
@@ -136,15 +99,6 @@ const defaultSpringConfig = {
   restDelta: 0.001,
 };
 ```
-
-## Performance Considerations
-
-The component is optimized for performance by:
-
-- Using `requestAnimationFrame` for smooth animations
-- Implementing throttling for mouse movement events
-- Using hardware-accelerated transforms
-- Optimizing re-renders with React's lifecycle methods
 
 ## Browser Support
 

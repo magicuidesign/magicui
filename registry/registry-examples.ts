@@ -189,6 +189,7 @@ export const examples: Registry["items"] = [
     name: "smooth-cursor-demo",
     description: "Basic smooth cursor example",
     type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/smooth-cursor"],
     files: [
       {
         path: "registry/example/smooth-cursor-demo.tsx",
@@ -196,7 +197,6 @@ export const examples: Registry["items"] = [
         target: "components/smooth-cursor-demo.tsx",
       },
     ],
-    dependencies: ["smooth-cursor"],
   },
   {
     name: "neon-gradient-card-demo",
