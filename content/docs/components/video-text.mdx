@@ -1,7 +1,7 @@
 ---
 title: Video Text
-date: 2024-06-01
-description: A simple component that displays text with a video background.
+date: 2025-04-16
+description: A text component with a video background.
 author: magicui
 published: true
 ---
@@ -41,46 +41,28 @@ npx shadcn@latest add "https://magicui.design/r/video-text"
 ## Usage
 
 ```tsx
-import VideoText from "@/components/magicui/video-text";
+import { VideoText } from "@/registry/magicui/video-text";
+```
 
-export default function VideoTextExample() {
-  return (
-    <div className="h-[400px] w-full bg-black">
-      <VideoText
-        text="your-text-here"
-        sources={[
-          {
-            src: "path/to/video.webm",
-            type: "video/webm",
-          },
-          {
-            src: "path/to/video.mp4",
-            type: "video/mp4",
-          },
-        ]}
-      />
-    </div>
-  );
-}
+```tsx
+<div className="relative h-[500px] w-full overflow-hidden">
+  <VideoText src="https://cdn.magicui.design/ocean-small.webm">OCEAN</VideoText>
+</div>
 ```
 
 ## Props
 
-| Prop        | Type                             | Default  | Description                                                                                                                    |
-| ----------- | -------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `text`      | `string`                         | Required | The text to display over the video                                                                                             |
-| `sources`   | `{ src: string, type: string}[]` | Required | Array of video sources with type. Multiple sources improve browser compatibility. The `src` can be a URL or a local file path. |
-| `autoPlay`  | `boolean`                        | `true`   | Whether to autoplay the video                                                                                                  |
-| `muted`     | `boolean`                        | `true`   | Whether to mute the video                                                                                                      |
-| `loop`      | `boolean`                        | `true`   | Whether to loop the video                                                                                                      |
-| `preload`   | `'auto' \| 'metadata' \| 'none'` | `"auto"` | Video preload behavior                                                                                                         |
-| `className` | `string`                         | `""`     | Additional className for the container                                                                                         |
-
-## Types
-
-```ts
-interface VideoSource {
-  src: string; // URL or local file path
-  type: string; // MIME type like "video/webm" or "video/mp4"
-}
-```
+| Prop               | Type                             | Default        | Description                                              |
+| ------------------ | -------------------------------- | -------------- | -------------------------------------------------------- |
+| `src`              | `string`                         | Required       | The video source URL                                     |
+| `children`         | `ReactNode`                      | Required       | The content to display (will have the video "inside" it) |
+| `className`        | `string`                         | `""`           | Additional className for the container                   |
+| `autoPlay`         | `boolean`                        | `true`         | Whether to autoplay the video                            |
+| `muted`            | `boolean`                        | `true`         | Whether to mute the video                                |
+| `loop`             | `boolean`                        | `true`         | Whether to loop the video                                |
+| `preload`          | `"auto" \| "metadata" \| "none"` | `"auto"`       | Whether to preload the video                             |
+| `fontSize`         | `string \| number`               | `"120"`        | Font size for the text mask                              |
+| `fontWeight`       | `string \| number`               | `"bold"`       | Font weight for the text mask                            |
+| `textAnchor`       | `string`                         | `"middle"`     | Text anchor for the text mask                            |
+| `dominantBaseline` | `string`                         | `"middle"`     | Dominant baseline for the text mask                      |
+| `fontFamily`       | `string`                         | `"sans-serif"` | Font family for the text mask                            |

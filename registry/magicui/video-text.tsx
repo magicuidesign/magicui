@@ -1,21 +1,13 @@
 "use client";
 
-import React, { FC } from "react";
-
-export interface VideoSource {
-  src: string;
-  type: string;
-}
+import { cn } from "@/lib/utils";
+import React, { ReactNode } from "react";
 
 export interface VideoTextProps {
   /**
-   * The text to display (will have the video "inside" it)
+   * The video source URL
    */
-  text: string;
-  /**
-   * Array of video sources
-   */
-  sources: VideoSource[];
+  src: string;
   /**
    * Additional className for the container
    */
@@ -36,25 +28,64 @@ export interface VideoTextProps {
    * Whether to preload the video
    */
   preload?: "auto" | "metadata" | "none";
+  /**
+   * The content to display (will have the video "inside" it)
+   */
+  children: ReactNode;
+  /**
+   * Font size for the text mask
+   * @default "120"
+   */
+  fontSize?: string | number;
+  /**
+   * Font weight for the text mask
+   * @default "bold"
+   */
+  fontWeight?: string | number;
+  /**
+   * Text anchor for the text mask
+   * @default "middle"
+   */
+  textAnchor?: string;
+  /**
+   * Dominant baseline for the text mask
+   * @default "middle"
+   */
+  dominantBaseline?: string;
+  /**
+   * Font family for the text mask
+   * @default "sans-serif"
+   */
+  fontFamily?: string;
 }
 
-const VideoText: FC<VideoTextProps> = ({
-  text,
-  sources,
+export function VideoText({
+  src,
+  children,
   className = "",
   autoPlay = true,
   muted = true,
   loop = true,
   preload = "auto",
-}) => {
+  fontSize = 120,
+  fontWeight = "bold",
+  textAnchor = "middle",
+  dominantBaseline = "middle",
+  fontFamily = "sans-serif",
+}: VideoTextProps) {
+  const content = React.Children.toArray(children).join("");
+
+  const svgMask = `<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='${fontSize}' font-weight='${fontWeight}' text-anchor='${textAnchor}' dominant-baseline='${dominantBaseline}' font-family='${fontFamily}'>${content}</text></svg>`;
+  const dataUrlMask = `url("data:image/svg+xml,${encodeURIComponent(svgMask)}")`;
+
   return (
-    <div className={`relative w-full h-full ${className}`}>
+    <div className={cn(`relative w-full h-full`, className)}>
       {/* Create a container that masks the video to only show within text */}
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={{
-          maskImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='120' font-weight='bold' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif'>${text}</text></svg>")`,
-          WebkitMaskImage: `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='120' font-weight='bold' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif'>${text}</text></svg>")`,
+          maskImage: dataUrlMask,
+          WebkitMaskImage: dataUrlMask,
           maskSize: "contain",
           WebkitMaskSize: "contain",
           maskRepeat: "no-repeat",
@@ -70,17 +101,13 @@ const VideoText: FC<VideoTextProps> = ({
           loop={loop}
           preload={preload}
         >
-          {sources.map((source, i) => (
-            <source key={i} src={source.src} type={source.type} />
-          ))}
+          <source src={src} />
           Your browser does not support the video tag.
         </video>
       </div>
 
       {/* Add a backup text element that's transparent but visible for SEO/accessibility */}
-      <h1 className="sr-only">{text}</h1>
+      <h1 className="sr-only">{content}</h1>
     </div>
   );
-};
-
-export default VideoText;
+}
