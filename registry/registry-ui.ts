@@ -157,6 +157,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "progressive-blur",
+    type: "registry:ui",
+    title: "Progressive Blur",
+    description:
+      "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
+    files: [
+      {
+        path: "registry/magicui/progressive-blur.tsx",
+        type: "registry:ui",
+        target: "components/magicui/progressive-blur.tsx",
+      },
+    ],
+  },
+  {
     name: "neon-gradient-card",
     type: "registry:ui",
     title: "Neon Gradient Card",

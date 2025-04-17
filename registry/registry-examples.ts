@@ -186,6 +186,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "progressive-blur-demo",
+    type: "registry:example",
+    title: "Progressive Blur Demo",
+    description:
+      "Example showing progressive blur effect for scrollable content.",
+    registryDependencies: ["https://magicui.design/r/progressive-blur"],
+    files: [
+      {
+        path: "registry/example/progressive-blur-demo.tsx",
+        type: "registry:example",
+        target: "components/progressive-blur-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "neon-gradient-card-demo",
     type: "registry:example",
     title: "Neon Gradient Card Demo",
