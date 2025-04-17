@@ -32,8 +32,12 @@ export function ProgressiveBlur({
       {children}
       <div
         className={cn(
-          "gradient-blur pointer-events-none absolute z-10",
-          getPositionClasses(),
+          "gradient-blur pointer-events-none absolute z-10 inset-x-0",
+          position === "top"
+            ? "top-0"
+            : position === "bottom"
+              ? "bottom-0"
+              : "inset-y-0",
         )}
         style={{
           height: position === "both" ? "100%" : height,

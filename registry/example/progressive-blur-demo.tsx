@@ -25,7 +25,7 @@ export default function ProgressiveBlurDemo() {
       </div>
 
       {/* Apply the progressive blur effect */}
-      <ProgressiveBlur height="50%" position="bottom" />
+      <ProgressiveBlur height="60%" position="bottom" />
     </div>
   );
 }
