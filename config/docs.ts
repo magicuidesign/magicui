@@ -73,9 +73,16 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "CLI",
-          href: "/docs/cli",
+          title: "Tailwind v4",
+          href: "/docs/tailwind-v4",
           items: [],
+          label: "New",
+        },
+        {
+          title: "MCP",
+          href: "/docs/mcp",
+          items: [],
+          label: "New",
         },
       ],
     },
@@ -362,6 +369,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/aurora-text`,
           items: [],
           label: "",
+        },
+        {
+          title: "Video Text",
+          href: `/docs/components/video-text`,
+          items: [],
+          label: "New",
         },
         {
           title: "Number Ticker",

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-text-demo",
+  "type": "registry:example",
+  "title": "Video Text Demo",
+  "description": "Example showing text with a video background.",
+  "registryDependencies": [
+    "https://magicui.design/r/video-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/video-text-demo.tsx",
+      "content": "import { VideoText } from \"@/registry/magicui/video-text\";\n\nexport default function VideoTextDemo() {\n  return (\n    <div className=\"relative h-[200px] w-full overflow-hidden\">\n      <VideoText src=\"https://cdn.magicui.design/ocean-small.webm\">\n        OCEAN\n      </VideoText>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/video-text-demo.tsx"
+    }
+  ]
+}

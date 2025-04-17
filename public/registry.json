@@ -1,0 +1,3211 @@
+{
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
+  "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "tw-animate-css",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [],
+      "cssVars": {}
+    },
+    {
+      "name": "magic-card",
+      "type": "registry:ui",
+      "title": "Magic Card",
+      "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/magic-card.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/magic-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "android",
+      "type": "registry:ui",
+      "title": "Android",
+      "description": "A mockup of an Android device.",
+      "files": [
+        {
+          "path": "registry/magicui/android.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/android.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-background",
+      "type": "registry:ui",
+      "title": "Warp Background",
+      "description": "A card with a time warping background effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/warp-background.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/warp-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "line-shadow-text",
+      "type": "registry:ui",
+      "title": "Line Shadow Text",
+      "description": "A text component with a moving line shadow.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/line-shadow-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/line-shadow-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aurora-text",
+      "type": "registry:ui",
+      "title": "Aurora Text",
+      "description": "A beautiful aurora text effect",
+      "files": [
+        {
+          "path": "registry/magicui/aurora-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/aurora-text.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-aurora": "aurora 8s ease-in-out infinite alternate"
+        }
+      },
+      "css": {
+        "@keyframes aurora": {
+          "0%": {
+            "backgroundPosition": "0% 50%",
+            "transform": "rotate(-5deg) scale(0.9)"
+          },
+          "25%": {
+            "backgroundPosition": "50% 100%",
+            "transform": "rotate(5deg) scale(1.1)"
+          },
+          "50%": {
+            "backgroundPosition": "100% 50%",
+            "transform": "rotate(-3deg) scale(0.95)"
+          },
+          "75%": {
+            "backgroundPosition": "50% 0%",
+            "transform": "rotate(3deg) scale(1.05)"
+          },
+          "100%": {
+            "backgroundPosition": "0% 50%",
+            "transform": "rotate(-5deg) scale(0.9)"
+          }
+        }
+      }
+    },
+    {
+      "name": "morphing-text",
+      "type": "registry:ui",
+      "title": "Morphing Text",
+      "description": "A dynamic text morphing component for Magic UI.",
+      "files": [
+        {
+          "path": "registry/magicui/morphing-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/morphing-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "Animated Scroll Progress for your pages",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/scroll-progress.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/scroll-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lens",
+      "type": "registry:ui",
+      "title": "Lens",
+      "description": "A interactive component that enables zooming into images, videos and other elements.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/lens.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/lens.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pointer",
+      "type": "registry:ui",
+      "title": "Pointer",
+      "description": "A component that displays a pointer when hovering over an element",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/pointer.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/pointer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neon-gradient-card",
+      "type": "registry:ui",
+      "title": "Neon Gradient Card",
+      "description": "A beautiful neon card effect",
+      "files": [
+        {
+          "path": "registry/magicui/neon-gradient-card.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/neon-gradient-card.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-background-position-spin": "background-position-spin 3000ms infinite alternate"
+        }
+      },
+      "css": {
+        "@keyframes background-position-spin": {
+          "0%": {
+            "backgroundPosition": "top center"
+          },
+          "100%": {
+            "backgroundPosition": "bottom center"
+          }
+        }
+      }
+    },
+    {
+      "name": "meteors",
+      "type": "registry:ui",
+      "title": "Meteors",
+      "description": "A meteor shower effect.",
+      "files": [
+        {
+          "path": "registry/magicui/meteors.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/meteors.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-meteor": "meteor 5s linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes meteor": {
+          "0%": {
+            "transform": "rotate(var(--angle)) translateX(0)",
+            "opacity": "1"
+          },
+          "70%": {
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "rotate(var(--angle)) translateX(-500px)",
+            "opacity": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "grid-pattern",
+      "type": "registry:ui",
+      "title": "Grid Pattern",
+      "description": "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "files": [
+        {
+          "path": "registry/magicui/grid-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/grid-pattern.tsx"
+        }
+      ]
+    },
+    {
+      "name": "interactive-grid-pattern",
+      "type": "registry:ui",
+      "title": "Interactive Grid Pattern",
+      "description": "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "files": [
+        {
+          "path": "registry/magicui/interactive-grid-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/interactive-grid-pattern.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-pattern",
+      "type": "registry:ui",
+      "title": "Dot Pattern",
+      "description": "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "files": [
+        {
+          "path": "registry/magicui/dot-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/dot-pattern.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flickering-grid",
+      "type": "registry:ui",
+      "title": "Flickering Grid",
+      "description": "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
+      "files": [
+        {
+          "path": "registry/magicui/flickering-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/flickering-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-video-dialog",
+      "type": "registry:ui",
+      "title": "Hero Video Dialog",
+      "description": "A hero video dialog component.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/hero-video-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/hero-video-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-comparison",
+      "type": "registry:ui",
+      "title": "Code Comparison",
+      "description": "A component which compares two code snippets.",
+      "dependencies": [
+        "shiki",
+        "next-themes"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/code-comparison.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/code-comparison.tsx"
+        }
+      ]
+    },
+    {
+      "name": "script-copy-btn",
+      "type": "registry:ui",
+      "title": "Script Copy Button",
+      "description": "Copy code to clipboard",
+      "dependencies": [
+        "motion",
+        "shiki",
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/script-copy-btn.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/script-copy-btn.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "An infinite scrolling component that can be used to display text, images, or videos.",
+      "files": [
+        {
+          "path": "registry/magicui/marquee.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/marquee.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-marquee": "marquee var(--duration) infinite linear",
+          "animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes marquee": {
+          "from": {
+            "transform": "translateX(0)"
+          },
+          "to": {
+            "transform": "translateX(calc(-100% - var(--gap)))"
+          }
+        },
+        "@keyframes marquee-vertical": {
+          "from": {
+            "transform": "translateY(0)"
+          },
+          "to": {
+            "transform": "translateY(calc(-100% - var(--gap)))"
+          }
+        }
+      }
+    },
+    {
+      "name": "globe",
+      "type": "registry:ui",
+      "title": "Globe",
+      "description": "An autorotating, interactive, and highly performant globe made using WebGL.",
+      "dependencies": [
+        "cobe",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/globe.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/globe.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "title": "Shimmer Button",
+      "description": "A button with a shimmering light which travels around the perimeter.",
+      "files": [
+        {
+          "path": "registry/magicui/shimmer-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/shimmer-button.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
+          "animate-spin-around": "spin-around calc(var(--speed) * 2) infinite linear"
+        }
+      },
+      "css": {
+        "@keyframes shimmer-slide": {
+          "to": {
+            "transform": "translate(calc(100cqw - 100%), 0)"
+          }
+        },
+        "@keyframes spin-around": {
+          "0%": {
+            "transform": "translateZ(0) rotate(0)"
+          },
+          "15%, 35%": {
+            "transform": "translateZ(0) rotate(90deg)"
+          },
+          "65%, 85%": {
+            "transform": "translateZ(0) rotate(270deg)"
+          },
+          "100%": {
+            "transform": "translateZ(0) rotate(360deg)"
+          }
+        }
+      }
+    },
+    {
+      "name": "tweet-card",
+      "type": "registry:ui",
+      "title": "Tweet Card",
+      "description": "A card that displays a tweet with the author's name, handle, and profile picture.",
+      "dependencies": [
+        "react-tweet"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/tweet-card.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/tweet-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "client-tweet-card",
+      "type": "registry:ui",
+      "title": "Client Tweet Card",
+      "description": "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
+      "dependencies": [
+        "react-tweet"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/client-tweet-card.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/client-tweet-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:ui",
+      "title": "Bento Grid",
+      "description": "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/bento-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/bento-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particles",
+      "type": "registry:ui",
+      "title": "Particles",
+      "description": "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
+      "files": [
+        {
+          "path": "registry/magicui/particles.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/particles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "title": "Number Ticker",
+      "description": "Animate numbers to count up or down to a target number",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/number-ticker.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/number-ticker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple",
+      "type": "registry:ui",
+      "title": "Ripple",
+      "description": "An animated ripple effect typically used behind elements to emphasize them.",
+      "files": [
+        {
+          "path": "registry/magicui/ripple.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/ripple.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-ripple": "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite"
+        }
+      },
+      "css": {
+        "@keyframes ripple": {
+          "0%, 100%": {
+            "transform": "translate(-50%, -50%) scale(1)"
+          },
+          "50%": {
+            "transform": "translate(-50%, -50%) scale(0.9)"
+          }
+        }
+      }
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:ui",
+      "title": "Retro Grid",
+      "description": "An animated scrolling retro grid effect",
+      "files": [
+        {
+          "path": "registry/magicui/retro-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/retro-grid.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-grid": "grid 15s linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes grid": {
+          "0%": {
+            "transform": "translateY(-50%)"
+          },
+          "100%": {
+            "transform": "translateY(0)"
+          }
+        }
+      }
+    },
+    {
+      "name": "animated-list",
+      "type": "registry:ui",
+      "title": "Animated List",
+      "description": "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/animated-list.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-shiny-text",
+      "type": "registry:ui",
+      "title": "Animated Shiny Text",
+      "description": "A light glare effect which pans across text making it appear as if it is shimmering.",
+      "files": [
+        {
+          "path": "registry/magicui/animated-shiny-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-shiny-text.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-shiny-text": "shiny-text 8s infinite"
+        }
+      },
+      "css": {
+        "@keyframes shiny-text": {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shiny-width)) 0"
+          },
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shiny-width)) 0"
+          }
+        }
+      }
+    },
+    {
+      "name": "animated-grid-pattern",
+      "type": "registry:ui",
+      "title": "Animated Grid Pattern",
+      "description": "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/animated-grid-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-grid-pattern.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "An animated beam of light which travels along the border of its container.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/border-beam.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/border-beam.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam",
+      "type": "registry:ui",
+      "title": "Animated Beam",
+      "description": "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/animated-beam.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-beam.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "title": "Text Reveal",
+      "description": "Fade in text as you scroll down the page.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/text-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/text-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hyper-text",
+      "type": "registry:ui",
+      "title": "Hyper Text",
+      "description": "A text animation that scrambles letters before revealing the final text.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/hyper-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/hyper-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-gradient-text",
+      "type": "registry:ui",
+      "title": "Animated Gradient Text",
+      "description": "An animated gradient background which transitions between colors for text.",
+      "files": [
+        {
+          "path": "registry/magicui/animated-gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-gradient-text.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-gradient": "gradient 8s linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes gradient": {
+          "to": {
+            "backgroundPosition": "var(--bg-size, 300%) 0"
+          }
+        }
+      }
+    },
+    {
+      "name": "orbiting-circles",
+      "type": "registry:ui",
+      "title": "Orbiting Circles",
+      "description": "A collection of circles which move in orbit along a circular path",
+      "files": [
+        {
+          "path": "registry/magicui/orbiting-circles.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/orbiting-circles.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-orbit": "orbit calc(var(--duration)*1s) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes orbit": {
+          "0%": {
+            "transform": "rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))"
+          },
+          "100%": {
+            "transform": "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))"
+          }
+        }
+      }
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Dock",
+      "description": "An implementation of the MacOS dock using react + tailwindcss + motion",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/dock.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "A vertical rotation of words",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/word-rotate.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/word-rotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-circles",
+      "type": "registry:ui",
+      "title": "Avatar Circles",
+      "description": "Overlapping circles of avatars.",
+      "files": [
+        {
+          "path": "registry/magicui/avatar-circles.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/avatar-circles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typing-animation",
+      "type": "registry:ui",
+      "title": "Typing Animation",
+      "description": "Characters appearing in typed animation",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/typing-animation.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/typing-animation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sparkles-text",
+      "type": "registry:ui",
+      "title": "Sparkles Text",
+      "description": "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/sparkles-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/sparkles-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spinning-text",
+      "type": "registry:ui",
+      "title": "Spinning Text",
+      "description": "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/spinning-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/spinning-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-text",
+      "type": "registry:ui",
+      "title": "Flip Text",
+      "description": "Text flipping character animation",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/flip-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/flip-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-cloud",
+      "type": "registry:ui",
+      "title": "Icon Cloud",
+      "description": "An interactive 3D tag cloud component",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/icon-cloud.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/icon-cloud.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate",
+      "type": "registry:ui",
+      "title": "Text Animate",
+      "description": "A text animation component that animates text using a variety of different animations.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/text-animate.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/text-animate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-based-velocity",
+      "type": "registry:ui",
+      "title": "Scroll Based Velocity",
+      "description": "Scrolling text whose speed changes based on scroll speed",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/scroll-based-velocity.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/scroll-based-velocity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scratch-to-reveal",
+      "type": "registry:ui",
+      "title": "Scratch To Reveal",
+      "description": "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/scratch-to-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/scratch-to-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shiny-button",
+      "type": "registry:ui",
+      "title": "Shiny Button",
+      "description": "A shiny button component with dynamic styles in the dark mode or light mode.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/shiny-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/shiny-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "box-reveal",
+      "type": "registry:ui",
+      "title": "Box Reveal Animation",
+      "description": "Sliding box animation that reveals text behind it.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/box-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/box-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shine-border",
+      "type": "registry:ui",
+      "title": "Shine Border",
+      "description": "Shine border is an animated background border effect.",
+      "files": [
+        {
+          "path": "registry/magicui/shine-border.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/shine-border.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-shine": "shine var(--duration) infinite linear"
+        }
+      },
+      "css": {
+        "@keyframes shine": {
+          "0%": {
+            "background-position": "0% 0%"
+          },
+          "50%": {
+            "background-position": "100% 100%"
+          },
+          "to": {
+            "background-position": "0% 0%"
+          }
+        }
+      }
+    },
+    {
+      "name": "animated-circular-progress-bar",
+      "type": "registry:ui",
+      "title": "Animated Circular Progress Bar",
+      "description": "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
+      "files": [
+        {
+          "path": "registry/magicui/animated-circular-progress-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-circular-progress-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti",
+      "type": "registry:ui",
+      "title": "Confetti",
+      "description": "Confetti animations are best used to delight your users when something special happens",
+      "dependencies": [
+        "canvas-confetti",
+        "@types/canvas-confetti"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/confetti.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/confetti.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-subscribe-button",
+      "type": "registry:ui",
+      "title": "Animated Subscribe Button",
+      "description": "An animated subscribe button useful for showing a micro animation from intial to final result.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/animated-subscribe-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-subscribe-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cool-mode",
+      "type": "registry:ui",
+      "title": "Cool Mode",
+      "description": "Cool mode effect for buttons, links, and other DOMs",
+      "files": [
+        {
+          "path": "registry/magicui/cool-mode.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/cool-mode.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsating-button",
+      "type": "registry:ui",
+      "title": "Pulsating Button",
+      "description": "An animated pulsating button useful for capturing attention of users.",
+      "files": [
+        {
+          "path": "registry/magicui/pulsating-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/pulsating-button.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-pulse": "pulse var(--duration) ease-out infinite"
+        }
+      },
+      "css": {
+        "@keyframes pulse": {
+          "0%, 100%": {
+            "boxShadow": "0 0 0 0 var(--pulse-color)"
+          },
+          "50%": {
+            "boxShadow": "0 0 0 8px var(--pulse-color)"
+          }
+        }
+      }
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "An animated button with ripple useful for user engagement.",
+      "files": [
+        {
+          "path": "registry/magicui/ripple-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/ripple-button.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-rippling": "rippling var(--duration) ease-out"
+        }
+      },
+      "css": {
+        "@keyframes rippling": {
+          "0%": {
+            "opacity": "1"
+          },
+          "100%": {
+            "transform": "scale(2)",
+            "opacity": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "file-tree",
+      "type": "registry:ui",
+      "title": "File Tree",
+      "description": "A component used to showcase the folder and file structure of a directory.",
+      "files": [
+        {
+          "path": "registry/magicui/file-tree.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/file-tree.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-fade",
+      "type": "registry:ui",
+      "title": "Blur Fade",
+      "description": "Blur fade in and out animation. Used to smoothly fade in and out content.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/blur-fade.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/blur-fade.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safari",
+      "type": "registry:ui",
+      "title": "Safari",
+      "description": "A safari browser mockup to showcase your website.",
+      "files": [
+        {
+          "path": "registry/magicui/safari.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/safari.tsx"
+        }
+      ]
+    },
+    {
+      "name": "iphone-15-pro",
+      "type": "registry:ui",
+      "title": "iPhone 15 Pro",
+      "description": "A mockup of the iPhone 15 Pro",
+      "files": [
+        {
+          "path": "registry/magicui/iphone-15-pro.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/iphone-15-pro.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rainbow-button",
+      "type": "registry:ui",
+      "title": "Rainbow Button",
+      "description": "An animated button with a rainbow effect.",
+      "files": [
+        {
+          "path": "registry/magicui/rainbow-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/rainbow-button.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "rainbow": "rainbow var(--speed, 2s) infinite linear"
+        },
+        "light": {
+          "--color-1": "0 100% 63%",
+          "--color-2": "270 100% 63%",
+          "--color-3": "210 100% 63%",
+          "--color-4": "195 100% 63%",
+          "--color-5": "90 100% 63%"
+        },
+        "dark": {
+          "--color-1": "0 100% 63%",
+          "--color-2": "270 100% 63%",
+          "--color-3": "210 100% 63%",
+          "--color-4": "195 100% 63%",
+          "--color-5": "90 100% 63%"
+        }
+      },
+      "css": {
+        "@keyframes rainbow": {
+          "0%": {
+            "background-position": "0%"
+          },
+          "100%": {
+            "background-position": "200%"
+          }
+        }
+      }
+    },
+    {
+      "name": "interactive-hover-button",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/magicui/interactive-hover-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/interactive-hover-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Terminal",
+      "description": "A terminal component",
+      "files": [
+        {
+          "path": "registry/magicui/terminal.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/terminal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-text",
+      "type": "registry:ui",
+      "title": "Video Text",
+      "description": "A component that displays text with a video playing in the background.",
+      "files": [
+        {
+          "path": "registry/magicui/video-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/video-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magic-card-demo",
+      "type": "registry:example",
+      "title": "Magic Card Demo",
+      "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
+      "registryDependencies": [
+        "https://magicui.design/r/magic-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/magic-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/magic-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "android-demo",
+      "type": "registry:example",
+      "title": "Android Demo",
+      "description": "Example showing a mockup of an Android device.",
+      "registryDependencies": [
+        "https://magicui.design/r/android"
+      ],
+      "files": [
+        {
+          "path": "registry/example/android-demo.tsx",
+          "type": "registry:example",
+          "target": "components/android-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "android-demo-2",
+      "type": "registry:example",
+      "title": "Android Demo 2",
+      "description": "Second example showing a mockup of an Android device.",
+      "registryDependencies": [
+        "https://magicui.design/r/android"
+      ],
+      "files": [
+        {
+          "path": "registry/example/android-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/android-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "android-demo-3",
+      "type": "registry:example",
+      "title": "Android Demo 3",
+      "description": "Third example showing a mockup of an Android device.",
+      "registryDependencies": [
+        "https://magicui.design/r/android"
+      ],
+      "files": [
+        {
+          "path": "registry/example/android-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/android-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-background-demo",
+      "type": "registry:example",
+      "title": "Warp Background Demo",
+      "description": "Example showing a card with a time warping background effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/warp-background"
+      ],
+      "files": [
+        {
+          "path": "registry/example/warp-background-demo.tsx",
+          "type": "registry:example",
+          "target": "components/warp-background-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "line-shadow-text-demo",
+      "type": "registry:example",
+      "title": "Line Shadow Text Demo",
+      "description": "Example showing a text component with a moving line shadow.",
+      "registryDependencies": [
+        "https://magicui.design/r/line-shadow-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/line-shadow-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/line-shadow-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aurora-text-demo",
+      "type": "registry:example",
+      "title": "Aurora Text Demo",
+      "description": "Example showing a beautiful aurora text effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/aurora-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/aurora-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/aurora-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-text-demo",
+      "type": "registry:example",
+      "title": "Morphing Text Demo",
+      "description": "Example showing a dynamic text morphing component.",
+      "registryDependencies": [
+        "https://magicui.design/r/morphing-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/morphing-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/morphing-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress-demo",
+      "type": "registry:example",
+      "title": "Scroll Progress Demo",
+      "description": "Example showing animated scroll progress for your pages.",
+      "registryDependencies": [
+        "https://magicui.design/r/scroll-progress"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-progress-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-progress-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lens-demo",
+      "type": "registry:example",
+      "title": "Lens Demo",
+      "description": "Example showing a lens effect component",
+      "registryDependencies": [
+        "button",
+        "card",
+        "https://magicui.design/r/lens"
+      ],
+      "files": [
+        {
+          "path": "registry/example/lens-demo.tsx",
+          "type": "registry:example",
+          "target": "components/lens-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lens-demo-2",
+      "type": "registry:example",
+      "title": "Lens Demo 2",
+      "description": "Second example showing a lens effect component",
+      "registryDependencies": [
+        "button",
+        "card",
+        "https://magicui.design/r/lens"
+      ],
+      "files": [
+        {
+          "path": "registry/example/lens-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/lens-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lens-demo-3",
+      "type": "registry:example",
+      "title": "Lens Demo 3",
+      "description": "Third example showing a lens effect component",
+      "registryDependencies": [
+        "button",
+        "card",
+        "https://magicui.design/r/lens"
+      ],
+      "files": [
+        {
+          "path": "registry/example/lens-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/lens-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pointer-demo-1",
+      "type": "registry:example",
+      "title": "Pointer Demo 1",
+      "description": "Example showing a pointer effect component",
+      "registryDependencies": [
+        "https://magicui.design/r/pointer"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pointer-demo-1.tsx",
+          "type": "registry:example",
+          "target": "components/pointer-demo-1.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neon-gradient-card-demo",
+      "type": "registry:example",
+      "title": "Neon Gradient Card Demo",
+      "description": "Example showing a beautiful neon card effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/neon-gradient-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/neon-gradient-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/neon-gradient-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "meteors-demo",
+      "type": "registry:example",
+      "title": "Meteors Demo",
+      "description": "Example showing a meteor shower effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/meteors"
+      ],
+      "files": [
+        {
+          "path": "registry/example/meteors-demo.tsx",
+          "type": "registry:example",
+          "target": "components/meteors-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-pattern-demo",
+      "type": "registry:example",
+      "title": "Grid Pattern Demo",
+      "description": "Example showing a background grid pattern made with SVGs.",
+      "registryDependencies": [
+        "https://magicui.design/r/grid-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grid-pattern-demo.tsx",
+          "type": "registry:example",
+          "target": "components/grid-pattern-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-pattern-linear-gradient",
+      "type": "registry:example",
+      "title": "Grid Pattern Linear Gradient",
+      "description": "Example showing a grid pattern with linear gradient effects.",
+      "registryDependencies": [
+        "https://magicui.design/r/grid-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grid-pattern-linear-gradient.tsx",
+          "type": "registry:example",
+          "target": "components/grid-pattern-linear-gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-pattern-dashed",
+      "type": "registry:example",
+      "title": "Grid Pattern Dashed",
+      "description": "Example showing a dashed grid pattern.",
+      "registryDependencies": [
+        "https://magicui.design/r/grid-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grid-pattern-dashed.tsx",
+          "type": "registry:example",
+          "target": "components/grid-pattern-dashed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-pattern-demo",
+      "type": "registry:example",
+      "title": "Dot Pattern Demo",
+      "description": "Example showing a background dot pattern made with SVGs.",
+      "registryDependencies": [
+        "https://magicui.design/r/dot-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dot-pattern-demo.tsx",
+          "type": "registry:example",
+          "target": "components/dot-pattern-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-pattern-linear-gradient",
+      "type": "registry:example",
+      "title": "Dot Pattern Linear Gradient",
+      "description": "Example showing a dot pattern with linear gradient effects.",
+      "registryDependencies": [
+        "https://magicui.design/r/dot-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dot-pattern-linear-gradient.tsx",
+          "type": "registry:example",
+          "target": "components/dot-pattern-linear-gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-pattern-with-glow-effect",
+      "type": "registry:example",
+      "title": "Dot Pattern with glow effect",
+      "description": "Example showing a dot pattern with glow effect",
+      "registryDependencies": [
+        "https://magicui.design/r/dot-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dot-pattern-with-glow-effect.tsx",
+          "type": "registry:example",
+          "target": "components/dot-pattern-with-glow-effect.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flickering-grid-demo",
+      "type": "registry:example",
+      "title": "Flickering Grid Demo",
+      "description": "Example showing a flickering grid background.",
+      "registryDependencies": [
+        "https://magicui.design/r/flickering-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/example/flickering-grid-demo.tsx",
+          "type": "registry:example",
+          "target": "components/flickering-grid-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flickering-grid-rounded-demo",
+      "type": "registry:example",
+      "title": "Flickering Grid Rounded Demo",
+      "description": "Example showing a flickering grid background with rounded corners.",
+      "registryDependencies": [
+        "https://magicui.design/r/flickering-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/example/flickering-grid-rounded-demo.tsx",
+          "type": "registry:example",
+          "target": "components/flickering-grid-rounded-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-video-dialog-demo",
+      "type": "registry:example",
+      "title": "Hero Video Dialog Demo",
+      "description": "Example showing a hero video dialog component.",
+      "registryDependencies": [
+        "https://magicui.design/r/hero-video-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hero-video-dialog-demo.tsx",
+          "type": "registry:example",
+          "target": "components/hero-video-dialog-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-video-dialog-demo-top-in-bottom-out",
+      "type": "registry:example",
+      "title": "Hero Video Dialog Top In Bottom Out Demo",
+      "description": "Example showing a hero video dialog with top-in bottom-out animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/hero-video-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
+          "type": "registry:example",
+          "target": "components/hero-video-dialog-demo-top-in-bottom-out.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-comparison-demo",
+      "type": "registry:example",
+      "title": "Code Comparison Demo",
+      "description": "Example showing a component which compares two code snippets.",
+      "registryDependencies": [
+        "https://magicui.design/r/code-comparison"
+      ],
+      "files": [
+        {
+          "path": "registry/example/code-comparison-demo.tsx",
+          "type": "registry:example",
+          "target": "components/code-comparison-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "script-copy-btn-demo",
+      "type": "registry:example",
+      "title": "Script Copy Button Demo",
+      "description": "Example showing how to copy code to clipboard.",
+      "registryDependencies": [
+        "https://magicui.design/r/script-copy-btn"
+      ],
+      "files": [
+        {
+          "path": "registry/example/script-copy-btn-demo.tsx",
+          "type": "registry:example",
+          "target": "components/script-copy-btn-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee-demo",
+      "type": "registry:example",
+      "title": "Marquee Demo",
+      "description": "Example showing an infinite scrolling component.",
+      "registryDependencies": [
+        "https://magicui.design/r/marquee"
+      ],
+      "files": [
+        {
+          "path": "registry/example/marquee-demo.tsx",
+          "type": "registry:example",
+          "target": "components/marquee-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee-demo-vertical",
+      "type": "registry:example",
+      "title": "Marquee Vertical Demo",
+      "description": "Example showing a vertical infinite scrolling component.",
+      "registryDependencies": [
+        "https://magicui.design/r/marquee"
+      ],
+      "files": [
+        {
+          "path": "registry/example/marquee-demo-vertical.tsx",
+          "type": "registry:example",
+          "target": "components/marquee-demo-vertical.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee-logos",
+      "type": "registry:example",
+      "title": "Marquee Logos",
+      "description": "Example showing an infinite scrolling logo carousel.",
+      "registryDependencies": [
+        "https://magicui.design/r/marquee"
+      ],
+      "files": [
+        {
+          "path": "registry/example/marquee-logos.tsx",
+          "type": "registry:example",
+          "target": "components/marquee-logos.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee-3d",
+      "type": "registry:example",
+      "title": "Marquee 3D",
+      "description": "Example showing a 3D infinite scrolling component.",
+      "registryDependencies": [
+        "https://magicui.design/r/marquee"
+      ],
+      "files": [
+        {
+          "path": "registry/example/marquee-3d.tsx",
+          "type": "registry:example",
+          "target": "components/marquee-3d.tsx"
+        }
+      ]
+    },
+    {
+      "name": "globe-demo",
+      "type": "registry:example",
+      "title": "Globe Demo",
+      "description": "Example showing an autorotating, interactive WebGL globe.",
+      "registryDependencies": [
+        "https://magicui.design/r/globe"
+      ],
+      "files": [
+        {
+          "path": "registry/example/globe-demo.tsx",
+          "type": "registry:example",
+          "target": "components/globe-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tweet-card-demo",
+      "type": "registry:example",
+      "title": "Tweet Card Demo",
+      "description": "Example showing a tweet card with author info.",
+      "registryDependencies": [
+        "https://magicui.design/r/tweet-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tweet-card-demo.tsx",
+          "type": "registry:example",
+          "target": "components/tweet-card-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tweet-card-images",
+      "type": "registry:example",
+      "title": "Tweet Card Images",
+      "description": "Example showing a tweet card with images.",
+      "registryDependencies": [
+        "https://magicui.design/r/tweet-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tweet-card-images.tsx",
+          "type": "registry:example",
+          "target": "components/tweet-card-images.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tweet-card-meta-preview",
+      "type": "registry:example",
+      "title": "Tweet Card Meta Preview",
+      "description": "Example showing a tweet card with meta preview.",
+      "registryDependencies": [
+        "https://magicui.design/r/tweet-card"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tweet-card-meta-preview.tsx",
+          "type": "registry:example",
+          "target": "components/tweet-card-meta-preview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button-demo",
+      "type": "registry:example",
+      "title": "Shimmer Button Demo",
+      "description": "Example showing a button with a shimmering light effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/shimmer-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/shimmer-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/shimmer-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bento-demo",
+      "type": "registry:example",
+      "title": "Bento Demo",
+      "description": "Example showing a bento grid layout for showcasing features.",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "https://magicui.design/r/marquee",
+        "https://magicui.design/r/bento-grid",
+        "https://magicui.design/r/animated-list-demo",
+        "https://magicui.design/r/animated-beam-multiple-outputs"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bento-demo.tsx",
+          "type": "registry:example",
+          "target": "components/bento-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bento-demo-vertical",
+      "type": "registry:example",
+      "title": "Bento Vertical Demo",
+      "description": "Example showing a vertical bento grid layout.",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/bento-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bento-demo-vertical.tsx",
+          "type": "registry:example",
+          "target": "components/bento-demo-vertical.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker-demo",
+      "type": "registry:example",
+      "title": "Number Ticker Demo",
+      "description": "Example showing animated counting numbers.",
+      "registryDependencies": [
+        "https://magicui.design/r/number-ticker"
+      ],
+      "files": [
+        {
+          "path": "registry/example/number-ticker-demo.tsx",
+          "type": "registry:example",
+          "target": "components/number-ticker-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker-demo-2",
+      "type": "registry:example",
+      "title": "Number Ticker Demo 2",
+      "description": "Example showing animated counting numbers.",
+      "registryDependencies": [
+        "https://magicui.design/r/number-ticker"
+      ],
+      "files": [
+        {
+          "path": "registry/example/number-ticker-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/number-ticker-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker-decimal-demo",
+      "type": "registry:example",
+      "title": "Number Ticker Decimal Demo",
+      "description": "Example showing animated counting decimal numbers.",
+      "registryDependencies": [
+        "https://magicui.design/r/number-ticker"
+      ],
+      "files": [
+        {
+          "path": "registry/example/number-ticker-decimal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/number-ticker-decimal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-demo",
+      "type": "registry:example",
+      "title": "Ripple Demo",
+      "description": "Example showing an animated ripple effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/ripple"
+      ],
+      "files": [
+        {
+          "path": "registry/example/ripple-demo.tsx",
+          "type": "registry:example",
+          "target": "components/ripple-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "retro-grid-demo",
+      "type": "registry:example",
+      "title": "Retro Grid Demo",
+      "description": "Example showing an animated scrolling retro grid effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/retro-grid"
+      ],
+      "files": [
+        {
+          "path": "registry/example/retro-grid-demo.tsx",
+          "type": "registry:example",
+          "target": "components/retro-grid-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-list-demo",
+      "type": "registry:example",
+      "title": "Animated List Demo",
+      "description": "Example showing a list with sequenced item animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-list"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-list-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-list-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-shiny-text-demo",
+      "type": "registry:example",
+      "title": "Animated Shiny Text Demo",
+      "description": "Example showing text with a shimmering light effect.",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/animated-shiny-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-shiny-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-shiny-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particles-demo",
+      "type": "registry:example",
+      "title": "Particles Demo",
+      "description": "Example showing interactive particle effects.",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/particles"
+      ],
+      "files": [
+        {
+          "path": "registry/example/particles-demo.tsx",
+          "type": "registry:example",
+          "target": "components/particles-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-grid-pattern-demo",
+      "type": "registry:example",
+      "title": "Animated Grid Pattern Demo",
+      "description": "Example showing an animated grid pattern background.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-grid-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-grid-pattern-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-grid-pattern-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "interactive-grid-pattern-demo",
+      "type": "registry:example",
+      "title": "Interactive Grid Pattern Demo",
+      "description": "Example showing an interactive grid pattern background.",
+      "registryDependencies": [
+        "https://magicui.design/r/interactive-grid-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/interactive-grid-pattern-demo.tsx",
+          "type": "registry:example",
+          "target": "components/interactive-grid-pattern-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "interactive-grid-pattern-demo-2",
+      "type": "registry:example",
+      "title": "Interactive Grid Pattern Demo 2",
+      "description": "Second example showing an interactive grid pattern background.",
+      "registryDependencies": [
+        "https://magicui.design/r/interactive-grid-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/interactive-grid-pattern-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/interactive-grid-pattern-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-demo",
+      "type": "registry:example",
+      "title": "Border Beam Demo",
+      "description": "Example showing an animated border beam effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/border-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/border-beam-demo.tsx",
+          "type": "registry:example",
+          "target": "components/border-beam-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-demo-2",
+      "type": "registry:example",
+      "title": "Border Beam Demo",
+      "description": "Example showing an animated border beam effect.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "https://magicui.design/r/border-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/border-beam-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/border-beam-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-demo-3",
+      "type": "registry:example",
+      "title": "Border Beam Demo 3",
+      "description": "Example showing an animated border beam effect.",
+      "registryDependencies": [
+        "button",
+        "card",
+        "input",
+        "label",
+        "https://magicui.design/r/border-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/border-beam-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/border-beam-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-demo-4",
+      "type": "registry:example",
+      "title": "Border Beam Demo 4",
+      "description": "Example showing an animated border beam effect.",
+      "registryDependencies": [
+        "button",
+        "https://magicui.design/r/border-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/border-beam-demo-4.tsx",
+          "type": "registry:example",
+          "target": "components/border-beam-demo-4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam-demo",
+      "type": "registry:example",
+      "title": "Animated Beam Demo",
+      "description": "Example showing an animated beam of light effect.",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/animated-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-beam-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-beam-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam-unidirectional",
+      "type": "registry:example",
+      "title": "Animated Beam Unidirectional",
+      "description": "Example showing a unidirectional animated beam effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-beam-unidirectional.tsx",
+          "type": "registry:example",
+          "target": "components/animated-beam-unidirectional.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam-bidirectional",
+      "type": "registry:example",
+      "title": "Animated Beam Bidirectional",
+      "description": "Example showing a bidirectional animated beam effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-beam-bidirectional.tsx",
+          "type": "registry:example",
+          "target": "components/animated-beam-bidirectional.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam-multiple-inputs",
+      "type": "registry:example",
+      "title": "Animated Beam Multiple Inputs",
+      "description": "Example showing animated beams with multiple input points.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-beam-multiple-inputs.tsx",
+          "type": "registry:example",
+          "target": "components/animated-beam-multiple-inputs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam-multiple-outputs",
+      "type": "registry:example",
+      "title": "Animated Beam Multiple Outputs",
+      "description": "Example showing animated beams with multiple output points.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-beam-multiple-outputs.tsx",
+          "type": "registry:example",
+          "target": "components/animated-beam-multiple-outputs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal-demo",
+      "type": "registry:example",
+      "title": "Text Reveal Demo",
+      "description": "Example showing text that fades in on scroll.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-reveal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/text-reveal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-gradient-text-demo",
+      "type": "registry:example",
+      "title": "Animated Gradient Text Demo",
+      "description": "Example showing text with animated gradient backgrounds.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/animated-gradient-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-gradient-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-gradient-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-gradient-text-demo-2",
+      "type": "registry:example",
+      "title": "Animated Gradient Text Demo 2",
+      "description": "Second example showing text with animated gradient backgrounds.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-gradient-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-gradient-text-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/animated-gradient-text-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbiting-circles-demo",
+      "type": "registry:example",
+      "title": "Orbiting Circles Demo",
+      "description": "Example showing circles moving in orbital paths.",
+      "dependencies": [
+        "@radix-ui/react-icons"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/orbiting-circles"
+      ],
+      "files": [
+        {
+          "path": "registry/example/orbiting-circles-demo.tsx",
+          "type": "registry:example",
+          "target": "components/orbiting-circles-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-demo",
+      "type": "registry:example",
+      "title": "Dock Demo",
+      "description": "Example showing a MacOS-style dock implementation.",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://magicui.design/r/dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dock-demo.tsx",
+          "type": "registry:example",
+          "target": "components/dock-demo.tsx"
+        },
+        {
+          "path": "registry/magicui/mode-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/mode-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-demo-2",
+      "type": "registry:example",
+      "title": "Dock Demo 2",
+      "description": "Second example showing a MacOS-style dock implementation.",
+      "registryDependencies": [
+        "https://magicui.design/r/dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dock-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/dock-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-demo-3",
+      "type": "registry:example",
+      "title": "Dock Demo 3",
+      "description": "Third example showing a MacOS-style dock implementation.",
+      "registryDependencies": [
+        "https://magicui.design/r/dock"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dock-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/dock-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "word-rotate-demo",
+      "type": "registry:example",
+      "title": "Word Rotate Demo",
+      "description": "Example showing vertical word rotation animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/word-rotate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/word-rotate-demo.tsx",
+          "type": "registry:example",
+          "target": "components/word-rotate-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hyper-text-demo",
+      "type": "registry:example",
+      "title": "Hyper Text Demo",
+      "description": "Example showing text with scrambling letter animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/hyper-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hyper-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/hyper-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-circles-demo",
+      "type": "registry:example",
+      "title": "Avatar Circles Demo",
+      "description": "Example showing overlapping avatar circles.",
+      "registryDependencies": [
+        "https://magicui.design/r/avatar-circles"
+      ],
+      "files": [
+        {
+          "path": "registry/example/avatar-circles-demo.tsx",
+          "type": "registry:example",
+          "target": "components/avatar-circles-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typing-animation-demo",
+      "type": "registry:example",
+      "title": "Typing Animation Demo",
+      "description": "Example showing typed character animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/typing-animation"
+      ],
+      "files": [
+        {
+          "path": "registry/example/typing-animation-demo.tsx",
+          "type": "registry:example",
+          "target": "components/typing-animation-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-based-velocity-demo",
+      "type": "registry:example",
+      "title": "Scroll Based Velocity Demo",
+      "description": "Example showing text speed changes based on scroll velocity.",
+      "registryDependencies": [
+        "https://magicui.design/r/scroll-based-velocity"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-based-velocity-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-based-velocity-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scratch-to-reveal-demo",
+      "type": "registry:example",
+      "title": "Scratch To Reveal Demo",
+      "description": "Example showing an interactive scratch-off reveal effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/scratch-to-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scratch-to-reveal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scratch-to-reveal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-text-demo",
+      "type": "registry:example",
+      "title": "Flip Text Demo",
+      "description": "Example showing text with character flip animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/flip-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/flip-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/flip-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sparkles-text-demo",
+      "type": "registry:example",
+      "title": "Sparkles Text Demo",
+      "description": "Example showing text with animated sparkle effects.",
+      "registryDependencies": [
+        "https://magicui.design/r/sparkles-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/sparkles-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/sparkles-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spinning-text-demo",
+      "type": "registry:example",
+      "title": "Spinning Text Demo",
+      "description": "Example showing spinning text animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/spinning-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/spinning-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/spinning-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spinning-text-demo-2",
+      "type": "registry:example",
+      "title": "Spinning Text Demo 2",
+      "description": "Example showing spinning text animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/spinning-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/spinning-text-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/spinning-text-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-cloud-demo",
+      "type": "registry:example",
+      "title": "Icon Cloud Demo",
+      "description": "Example showing an interactive 3D icon cloud.",
+      "registryDependencies": [
+        "https://magicui.design/r/icon-cloud"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-cloud-demo.tsx",
+          "type": "registry:example",
+          "target": "components/icon-cloud-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-cloud-demo-2",
+      "type": "registry:example",
+      "title": "Icon Cloud Demo 2",
+      "description": "Second example showing an interactive 3D icon cloud.",
+      "registryDependencies": [
+        "https://magicui.design/r/icon-cloud"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-cloud-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/icon-cloud-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-cloud-demo-3",
+      "type": "registry:example",
+      "title": "Icon Cloud Demo 3",
+      "description": "Third example showing an interactive 3D icon cloud.",
+      "registryDependencies": [
+        "https://magicui.design/r/icon-cloud"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-cloud-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/icon-cloud-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo",
+      "type": "registry:example",
+      "title": "Text Animate Demo",
+      "description": "Example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-2",
+      "type": "registry:example",
+      "title": "Text Animate Demo 2",
+      "description": "Second example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-3",
+      "type": "registry:example",
+      "title": "Text Animate Demo 3",
+      "description": "Third example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-4",
+      "type": "registry:example",
+      "title": "Text Animate Demo 4",
+      "description": "Fourth example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-4.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-5",
+      "type": "registry:example",
+      "title": "Text Animate Demo 5",
+      "description": "Fifth example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-5.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-5.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-6",
+      "type": "registry:example",
+      "title": "Text Animate Demo 6",
+      "description": "Sixth example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-6.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-6.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-7",
+      "type": "registry:example",
+      "title": "Text Animate Demo 7",
+      "description": "Seventh example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-7.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-7.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-8",
+      "type": "registry:example",
+      "title": "Text Animate Demo 8",
+      "description": "Eighth example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-8.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-8.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-animate-demo-9",
+      "type": "registry:example",
+      "title": "Text Animate Demo 9",
+      "description": "Ninth example showing various text animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-animate"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-animate-demo-9.tsx",
+          "type": "registry:example",
+          "target": "components/text-animate-demo-9.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shiny-button-demo",
+      "type": "registry:example",
+      "title": "Shiny Button Demo",
+      "description": "Example showing a shiny button with dynamic styles.",
+      "registryDependencies": [
+        "https://magicui.design/r/shiny-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/shiny-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/shiny-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "box-reveal-demo",
+      "type": "registry:example",
+      "title": "Box Reveal Demo",
+      "description": "Example showing a sliding box text reveal animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/box-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/box-reveal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/box-reveal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-circular-progress-bar-demo",
+      "type": "registry:example",
+      "title": "Animated Circular Progress Bar Demo",
+      "description": "Example showing an animated circular progress gauge.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-circular-progress-bar"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-circular-progress-bar-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-circular-progress-bar-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shine-border-demo",
+      "type": "registry:example",
+      "title": "Shine Border Demo",
+      "description": "Example showing an animated shining border effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/shine-border"
+      ],
+      "files": [
+        {
+          "path": "registry/example/shine-border-demo.tsx",
+          "type": "registry:example",
+          "target": "components/shine-border-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shine-border-demo-2",
+      "type": "registry:example",
+      "title": "Shine Border Demo 2",
+      "description": "Second example showing an animated shining border effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/shine-border"
+      ],
+      "files": [
+        {
+          "path": "registry/example/shine-border-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/shine-border-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-demo",
+      "type": "registry:example",
+      "title": "Confetti Demo",
+      "description": "Example showing confetti animations for celebrations.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-demo.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-basic-cannon",
+      "type": "registry:example",
+      "title": "Confetti Basic Cannon",
+      "description": "Example showing basic confetti cannon animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-basic-cannon.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-basic-cannon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-random-direction",
+      "type": "registry:example",
+      "title": "Confetti Random Direction",
+      "description": "Example showing confetti with random directions.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-random-direction.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-random-direction.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-fireworks",
+      "type": "registry:example",
+      "title": "Confetti Fireworks",
+      "description": "Example showing fireworks-style confetti animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-fireworks.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-fireworks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-stars",
+      "type": "registry:example",
+      "title": "Confetti Stars",
+      "description": "Example showing star-shaped confetti animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-stars.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-side-cannons",
+      "type": "registry:example",
+      "title": "Confetti Side Cannons",
+      "description": "Example showing side-mounted confetti cannons.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-side-cannons.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-side-cannons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-custom-shapes",
+      "type": "registry:example",
+      "title": "Confetti Custom Shapes",
+      "description": "Example showing confetti with custom shape particles.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-custom-shapes.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-custom-shapes.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-emoji",
+      "type": "registry:example",
+      "title": "Confetti Emoji",
+      "description": "Example showing confetti with emoji particles.",
+      "registryDependencies": [
+        "https://magicui.design/r/confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/example/confetti-emoji.tsx",
+          "type": "registry:example",
+          "target": "components/confetti-emoji.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-subscribe-button-demo",
+      "type": "registry:example",
+      "title": "Animated Subscribe Button Demo",
+      "description": "Example showing an animated subscribe button with micro animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-subscribe-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-subscribe-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-subscribe-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cool-mode-demo",
+      "type": "registry:example",
+      "title": "Cool Mode Demo",
+      "description": "Example showing cool mode effect for buttons and links.",
+      "registryDependencies": [
+        "https://magicui.design/r/cool-mode"
+      ],
+      "files": [
+        {
+          "path": "registry/example/cool-mode-demo.tsx",
+          "type": "registry:example",
+          "target": "components/cool-mode-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cool-mode-custom",
+      "type": "registry:example",
+      "title": "Cool Mode Custom",
+      "description": "Example showing customized cool mode effects.",
+      "registryDependencies": [
+        "https://magicui.design/r/cool-mode"
+      ],
+      "files": [
+        {
+          "path": "registry/example/cool-mode-custom.tsx",
+          "type": "registry:example",
+          "target": "components/cool-mode-custom.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsating-button-demo",
+      "type": "registry:example",
+      "title": "Pulsating Button Demo",
+      "description": "Example showing an animated pulsating button.",
+      "registryDependencies": [
+        "https://magicui.design/r/pulsating-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pulsating-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/pulsating-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button-demo",
+      "type": "registry:example",
+      "title": "Ripple Button Demo",
+      "description": "Example showing an animated button with ripple effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/ripple-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/ripple-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/ripple-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-tree-demo",
+      "type": "registry:example",
+      "title": "File Tree Demo",
+      "description": "Example showing a component that displays folder and file structure.",
+      "registryDependencies": [
+        "https://magicui.design/r/file-tree"
+      ],
+      "files": [
+        {
+          "path": "registry/example/file-tree-demo.tsx",
+          "type": "registry:example",
+          "target": "components/file-tree-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-fade-demo",
+      "type": "registry:example",
+      "title": "Blur Fade Demo",
+      "description": "Example showing blur fade in and out animations.",
+      "registryDependencies": [
+        "https://magicui.design/r/blur-fade"
+      ],
+      "files": [
+        {
+          "path": "registry/example/blur-fade-demo.tsx",
+          "type": "registry:example",
+          "target": "components/blur-fade-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-fade-text-demo",
+      "type": "registry:example",
+      "title": "Blur Fade Text Demo",
+      "description": "Example showing blur fade animations with text.",
+      "registryDependencies": [
+        "https://magicui.design/r/blur-fade"
+      ],
+      "files": [
+        {
+          "path": "registry/example/blur-fade-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/blur-fade-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safari-demo",
+      "type": "registry:example",
+      "title": "Safari Demo",
+      "description": "Example showing a Safari browser mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/safari"
+      ],
+      "files": [
+        {
+          "path": "registry/example/safari-demo.tsx",
+          "type": "registry:example",
+          "target": "components/safari-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safari-demo-2",
+      "type": "registry:example",
+      "title": "Safari Demo 2",
+      "description": "Second example showing a Safari browser mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/safari"
+      ],
+      "files": [
+        {
+          "path": "registry/example/safari-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/safari-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safari-demo-3",
+      "type": "registry:example",
+      "title": "Safari Demo 3",
+      "description": "Third example showing a Safari browser mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/safari"
+      ],
+      "files": [
+        {
+          "path": "registry/example/safari-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/safari-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safari-demo-4",
+      "type": "registry:example",
+      "title": "Safari Demo 4",
+      "description": "Fourth example showing a Safari browser mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/safari"
+      ],
+      "files": [
+        {
+          "path": "registry/example/safari-demo-4.tsx",
+          "type": "registry:example",
+          "target": "components/safari-demo-4.tsx"
+        }
+      ]
+    },
+    {
+      "name": "iphone-15-pro-demo",
+      "type": "registry:example",
+      "title": "iPhone 15 Pro Demo",
+      "description": "Example showing an iPhone 15 Pro mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/iphone-15-pro"
+      ],
+      "files": [
+        {
+          "path": "registry/example/iphone-15-pro-demo.tsx",
+          "type": "registry:example",
+          "target": "components/iphone-15-pro-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "iphone-15-pro-demo-2",
+      "type": "registry:example",
+      "title": "iPhone 15 Pro Demo 2",
+      "description": "Second example showing an iPhone 15 Pro mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/iphone-15-pro"
+      ],
+      "files": [
+        {
+          "path": "registry/example/iphone-15-pro-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/iphone-15-pro-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "iphone-15-pro-demo-3",
+      "type": "registry:example",
+      "title": "iPhone 15 Pro Demo 3",
+      "description": "Third example showing an iPhone 15 Pro mockup.",
+      "registryDependencies": [
+        "https://magicui.design/r/iphone-15-pro"
+      ],
+      "files": [
+        {
+          "path": "registry/example/iphone-15-pro-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/iphone-15-pro-demo-3.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rainbow-button-demo",
+      "type": "registry:example",
+      "title": "Rainbow Button Demo",
+      "description": "Example showing an animated button with rainbow effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/rainbow-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/rainbow-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/rainbow-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "interactive-hover-button-demo",
+      "type": "registry:example",
+      "title": "Interactive Hover Button Demo",
+      "description": "Example showing an interactive button with hover effects.",
+      "registryDependencies": [
+        "https://magicui.design/r/interactive-hover-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/interactive-hover-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/interactive-hover-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal-demo",
+      "type": "registry:example",
+      "title": "Terminal Demo",
+      "description": "Example showing a terminal with animated text.",
+      "registryDependencies": [
+        "https://magicui.design/r/terminal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/terminal-demo.tsx",
+          "type": "registry:example",
+          "target": "components/terminal-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-text-demo",
+      "type": "registry:example",
+      "title": "Video Text Demo",
+      "description": "Example showing text with a video background.",
+      "registryDependencies": [
+        "https://magicui.design/r/video-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/video-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/video-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

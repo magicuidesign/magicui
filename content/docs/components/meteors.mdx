@@ -35,34 +35,28 @@ npx shadcn@latest add "https://magicui.design/r/meteors"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file.
 
-```js title="tailwind.config.js" {5-17}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        meteor: "meteor 5s linear infinite",
-      },
-      keyframes: {
-        meteor: {
-          "0%": {
-            transform: "rotate(var(--angle)) translateX(0)",
-            opacity: "1",
-          },
-          "70%": { opacity: "1" },
-          "100%": {
-            transform: "rotate(var(--angle)) translateX(-500px)",
-            opacity: "0",
-          },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {2, 4-15}
+@theme inline {
+  --animate-meteor: meteor 5s linear infinite;
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
+  }
+}
 ```
 
 </Steps>
@@ -70,6 +64,18 @@ module.exports = {
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { Meteors } from "@/components/magicui/meteors";
+```
+
+```tsx
+<div className="relative overflow-hidden h-[500px] w-full max-w-[350px]">
+  <Meteors />
+</div>
+```
 
 ## Props
 

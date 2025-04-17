@@ -290,9 +290,7 @@ export const add = new Command()
             logger.warn(
               `\nFailed to install devDependencies for ${
                 item.name
-              }.\n\t-${item.devDependencies.join(
-                "\n\t- ",
-              )}\n\nReason: ${error}`,
+              }.\n\t-${item.devDependencies.join("\n\t- ")}\n\nReason: ${error}`,
             );
           }
         }

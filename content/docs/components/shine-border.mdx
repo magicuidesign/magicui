@@ -34,34 +34,26 @@ npx shadcn@latest add "https://magicui.design/r/shine-border"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file.
 
-```js title="tailwind.config.js" {5-14}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        shine: "shine var(--duration) infinite linear",
-      },
-      keyframes: {
-        shine: {
-          "0%": {
-            "background-position": "0% 0%",
-          },
-          "50%": {
-            "background-position": "100% 100%",
-          },
-          to: {
-            "background-position": "0% 0%",
-          },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {2, 4-14}
+@theme inline {
+  --animate-shine: shine var(--duration) infinite linear;
+
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
+}
 ```
 
 </Steps>
@@ -83,7 +75,7 @@ import { ShineBorder } from "@/registry/magicui/shine-border";
 ```
 
 ```tsx
-<div className="relative overflow-hidden">
+<div className="relative h-[500px] w-full overflow-hidden">
   <ShineBorder />
 </div>
 ```

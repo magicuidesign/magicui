@@ -1,13 +1,13 @@
 "use client";
 
 import { Icons } from "@/components/icons";
-import { Badge } from "@/components/ui/badge";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import { VersionSelect } from "@/components/version-select";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -50,7 +50,6 @@ export function MainNav() {
             <span className="hidden font-bold md:inline-block">
               {siteConfig.name}
             </span>
-            <Badge variant="secondary">Beta</Badge>
           </Link>
         </ContextMenuTrigger>
         <ContextMenuContent>
@@ -70,6 +69,9 @@ export function MainNav() {
           </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
+      <div className="mr-4">
+        <VersionSelect />
+      </div>
       <nav className="hidden items-center space-x-6 text-sm font-medium xl:flex">
         {docsConfig.mainNav.map((item) => (
           <Link

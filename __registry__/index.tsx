@@ -561,7 +561,7 @@ export const Index: Record<string, any> = {
   },
   "animated-beam": {
     name: "animated-beam",
-    description: "An animated beam of light which travels along a path. Useful for showcasing the \"integration\" features of a website.",
+    description: "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -1117,6 +1117,30 @@ export const Index: Record<string, any> = {
       const mod = await import("@/registry/magicui/terminal.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "video-text": {
+    name: "video-text",
+    description:
+      "A component that displays text with a video playing in the background.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/video-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/video-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
     }),
     meta: undefined,
   },

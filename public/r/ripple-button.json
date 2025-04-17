@@ -12,25 +12,19 @@
       "target": "components/magicui/ripple-button.tsx"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "animation": {
-            "rippling": "rippling var(--duration) ease-out"
-          },
-          "keyframes": {
-            "rippling": {
-              "0%": {
-                "opacity": "1"
-              },
-              "100%": {
-                "transform": "scale(2)",
-                "opacity": "0"
-              }
-            }
-          }
-        }
+  "cssVars": {
+    "theme": {
+      "animate-rippling": "rippling var(--duration) ease-out"
+    }
+  },
+  "css": {
+    "@keyframes rippling": {
+      "0%": {
+        "opacity": "1"
+      },
+      "100%": {
+        "transform": "scale(2)",
+        "opacity": "0"
       }
     }
   }

@@ -136,6 +136,25 @@ npx shadcn@latest add "https://magicui.design/r/example-component"
 
 <ComponentSource name="example-component" />
 
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+<Step>Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar)</Step>
+
+```css title="app/globals.css" {1-2,4-18}
+--animate-example: example var(--duration) infinite linear;
+
+@keyframes example {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+```
+
 </Steps>
 
 </TabsContent>
@@ -160,11 +179,35 @@ export const ui: Registry = [
   // ... existing components ...
   {
     name: "example-component",
-    description: "A component that does something",
     type: "registry:ui",
+    title: "Example Component",
+    description:
+      "A versatile component that can be used to display various types of content such as text, images, or videos.",
     dependencies: ["motion"],
-    files: [{ path: "magicui/example-component.tsx", type: "registry:ui" }],
-    // Add any dependencies or tailwind configurations if needed
+    files: [
+      {
+        path: "registry/magicui/example-component.tsx",
+        type: "registry:ui",
+        target: "components/magicui/example-component.tsx",
+      },
+    ],
+    // Add CSS variables for the component
+    cssVars: {
+      theme: {
+        "animate-example": "example var(--duration) infinite linear",
+      },
+    },
+    // Add CSS keyframes for the component
+    css: {
+      "@keyframes example": {
+        from: {
+          transform: "translateX(0)",
+        },
+        to: {
+          transform: "translateX(calc(-100% - var(--gap)))",
+        },
+      },
+    },
   },
 ];
 ```

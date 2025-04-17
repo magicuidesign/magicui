@@ -35,32 +35,30 @@ npx shadcn@latest add "https://magicui.design/r/marquee"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file inside the `@theme inline` block (e.g., `app/globals.css` or similar):
 
-```js title="tailwind.config.js" {5-18}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        marquee: "marquee var(--duration) linear infinite",
-        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-      },
-      keyframes: {
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - var(--gap)))" },
-        },
-        "marquee-vertical": {
-          from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-100% - var(--gap)))" },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {1-2,4-19}
+--animate-marquee: marquee var(--duration) infinite linear;
+--animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
 ```
 
 </Steps>
@@ -78,6 +76,21 @@ module.exports = {
 ### 3D
 
 <ComponentPreview name="marquee-3d" />
+
+## Usage
+
+```tsx
+import { Marquee } from "@/components/magicui/marquee.tsx";
+```
+
+```tsx
+<Marquee>
+  <span>Next.js</span>
+  <span>React</span>
+  <span>TypeScript</span>
+  <span>Tailwind CSS</span>
+</Marquee>
+```
 
 ## Props
 

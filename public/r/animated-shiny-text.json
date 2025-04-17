@@ -12,24 +12,18 @@
       "target": "components/magicui/animated-shiny-text.tsx"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "animation": {
-            "shiny-text": "shiny-text 8s infinite"
-          },
-          "keyframes": {
-            "shiny-text": {
-              "0%, 90%, 100%": {
-                "background-position": "calc(-100% - var(--shiny-width)) 0"
-              },
-              "30%, 60%": {
-                "background-position": "calc(100% + var(--shiny-width)) 0"
-              }
-            }
-          }
-        }
+  "cssVars": {
+    "theme": {
+      "animate-shiny-text": "shiny-text 8s infinite"
+    }
+  },
+  "css": {
+    "@keyframes shiny-text": {
+      "0%, 90%, 100%": {
+        "background-position": "calc(-100% - var(--shiny-width)) 0"
+      },
+      "30%, 60%": {
+        "background-position": "calc(100% + var(--shiny-width)) 0"
       }
     }
   }

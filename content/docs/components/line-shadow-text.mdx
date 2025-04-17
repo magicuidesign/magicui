@@ -34,27 +34,23 @@ npx shadcn@latest add "https://magicui.design/r/line-shadow-text"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file.
 
-```js title="tailwind.config.js" {5-13}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        "line-shadow": "line-shadow 15s linear infinite",
-      },
-      keyframes: {
-        "line-shadow": {
-          "0%": { "background-position": "0 0" },
-          "100%": { "background-position": "100% -100%" },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {2, 5-12}
+@theme inline {
+  --animate-line-shadow: line-shadow 15s linear infinite;
+
+  @keyframes line-shadow {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% -100%;
+    }
+  }
+}
 ```
 
 </Steps>
@@ -62,6 +58,16 @@ module.exports = {
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { LineShadowText } from "@/components/magicui/line-shadow-text";
+```
+
+```tsx
+<LineShadowText>Magic UI</LineShadowText>
+```
 
 ## Props
 

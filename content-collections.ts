@@ -112,6 +112,9 @@ const documents = defineCollection({
     image: z.string().optional(),
   }),
   transform: async (document, context) => {
+    const slugAsParams = document._meta.path
+      .replace(/\\/g, "/")
+      .replace(/\/index$/, "");
     const body = await compileMDX(context, document, {
       remarkPlugins: [codeImport, remarkGfm],
       rehypePlugins: [
@@ -184,9 +187,11 @@ const documents = defineCollection({
     });
     return {
       ...document,
-      image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(document.title)}&description=${encodeURI(document.description)}`,
-      slug: `/docs/${document._meta.path}`,
-      slugAsParams: document._meta.path,
+      image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(
+        document.title,
+      )}&description=${encodeURI(document.description)}`,
+      slug: `/docs/${slugAsParams}`,
+      slugAsParams: slugAsParams,
       body: {
         raw: document.content,
         code: body,

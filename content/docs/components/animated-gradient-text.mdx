@@ -35,28 +35,20 @@ npx shadcn@latest add "https://magicui.design/r/animated-gradient-text"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file.
 
-```js title="tailwind.config.js" {5-14}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        gradient: "gradient 8s linear infinite",
-      },
-      keyframes: {
-        gradient: {
-          to: {
-            backgroundPosition: "var(--bg-size) 0",
-          },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {2, 4-8}
+@theme inline {
+  --animate-gradient: gradient 8s linear infinite;
+
+  @keyframes gradient {
+    to {
+      background-position: var(--bg-size, 300%) 0;
+    }
+  }
+}
 ```
 
 </Steps>
@@ -70,6 +62,16 @@ module.exports = {
 ### Custom Speed
 
 <ComponentPreview name="animated-gradient-text-demo-2" />
+
+### Usage
+
+```tsx
+import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
+```
+
+```tsx
+<AnimatedGradientText>Animated Gradient Text</AnimatedGradientText>
+```
 
 ## Props
 

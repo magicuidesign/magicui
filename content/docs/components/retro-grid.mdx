@@ -35,27 +35,23 @@ npx shadcn@latest add "https://magicui.design/r/retro-grid"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file.
 
-```js title="tailwind.config.js" {5-13}
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        grid: "grid 15s linear infinite",
-      },
-      keyframes: {
-        grid: {
-          "0%": { transform: "translateY(-50%)" },
-          "100%": { transform: "translateY(0)" },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {2, 4-11}
+@theme inline {
+  --animate-grid: grid 15s linear infinite;
+
+  @keyframes grid {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
 ```
 
 </Steps>
@@ -63,6 +59,18 @@ module.exports = {
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { RetroGrid } from "@/components/magicui/retro-grid";
+```
+
+```tsx
+<div className="relative h-[500px] w-full overflow-hidden">
+  <RetroGrid />
+</div>
+```
 
 ## Props
 

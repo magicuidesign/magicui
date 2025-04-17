@@ -8,7 +8,7 @@ import { useEffect } from "react";
 if (typeof window !== "undefined") {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_API_KEY!, {
     api_host: "https://app.posthog.com",
-    capture_pageview: false,
+    capture_pageview: true,
     session_recording: {
       maskAllInputs: false,
     },

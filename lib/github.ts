@@ -43,5 +43,7 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
 }
 
 export function getGithubFileUrl(slug: string) {
-  return `https://github.com/magicuidesign/magicui/blob/main/content${slug === "/docs" ? "/docs/index" : slug}.mdx`;
+  return `https://github.com/magicuidesign/magicui/blob/main/content${
+    slug === "/docs" ? "/docs/index" : slug
+  }.mdx`;
 }

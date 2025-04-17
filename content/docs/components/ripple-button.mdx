@@ -34,33 +34,24 @@ npx shadcn@latest add "https://magicui.design/r/ripple-button"
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Update `tailwind.config.js`</Step>
+<Step>Add the required CSS animations</Step>
 
-Add the following animations to your `tailwind.config.js` file:
+Add the following animations to your global CSS file.
 
-```js title="tailwind.config.js" {5-20}
-/** @type {import('tailwindcss').Config} */
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      animation: {
-        rippling: "rippling var(--duration) ease-out",
-      },
-      keyframes: {
-        rippling: {
-          "0%": {
-            opacity: "1",
-          },
-          "100%": {
-            transform: "scale(2)",
-            opacity: "0",
-          },
-        },
-      },
-    },
-  },
-};
+```css title="app/globals.css" {2, 4-12}
+@theme inline {
+  --animate-rippling: rippling var(--duration) ease-out;
+
+  @keyframes rippling {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+}
 ```
 
 </Steps>
@@ -68,6 +59,16 @@ module.exports = {
 </TabsContent>
 
 </Tabs>
+
+## Usage
+
+```tsx
+import { RippleButton } from "@/components/magicui/ripple-button";
+```
+
+```tsx
+<RippleButton>Ripple Button</RippleButton>
+```
 
 ## Props
 
