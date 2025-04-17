@@ -1,0 +1,121 @@
+---
+title: Smooth Cursor
+date: 2024-04-17
+description: A customizable, physics-based smooth cursor animation component for React applications.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="smooth-cursor-demo" />
+
+## Features
+
+- 🎯 Smooth physics-based cursor animations
+- 🔄 Rotation effects based on movement direction
+- ⚡ Performance optimized with RAF
+- 🎨 Fully customizable cursor design
+- 📦 Lightweight and easy to implement
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/smooth-cursor"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="smooth-cursor" />
+
+<Step>Add the component to your page or layout.</Step>
+
+```tsx
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
+
+export default function Page() {
+  return (
+    <>
+      <SmoothCursor />
+      {/* Your page content */}
+    </>
+  );
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
+```
+
+```tsx
+<SmoothCursor />
+```
+
+## Props
+
+| Prop           | Type           | Default                | Description                                            |
+| -------------- | -------------- | ---------------------- | ------------------------------------------------------ |
+| `cursor`       | `JSX.Element`  | `<DefaultCursorSVG />` | Custom cursor component to replace the default cursor  |
+| `springConfig` | `SpringConfig` | See below              | Configuration object for the spring animation behavior |
+
+### SpringConfig Type
+
+```typescript
+interface SpringConfig {
+  damping: number; // Controls how quickly the animation settles
+  stiffness: number; // Controls the spring stiffness
+  mass: number; // Controls the virtual mass of the animated object
+  restDelta: number; // Controls the threshold at which animation is considered complete
+}
+```
+
+### Default Spring Configuration
+
+```typescript
+const defaultSpringConfig = {
+  damping: 45,
+  stiffness: 400,
+  mass: 1,
+  restDelta: 0.001,
+};
+```
+
+## Browser Support
+
+Compatible with all modern browsers that support:
+
+- `requestAnimationFrame`
+- CSS transforms
+- Pointer events
+
+## Accessibility
+
+When using this component, consider that:
+
+- Users navigating via keyboard will not see the custom cursor
+- You may want to provide alternative visual cues for interactive elements
+- Some users may have motion sensitivity, so consider providing a way to disable the animation
+
+## Credits
+
+- Credit to [@Code_Parth](https://twitter.com/Code_Parth) for the original concept and implementation
