@@ -1,0 +1,39 @@
+---
+title: Scroll Velocity Images
+date: 2025-04-05
+description: A component that displays images scrolling with velocity that changes based on scroll speed.
+author: nilesh0700
+published: true
+---
+
+<ComponentPreview name="scroll-based-velocity-images-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+    ```bash
+    npx shadcn@latest add "https://magicui.design/r/scroll-based-velocity-images"
+    ```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="scroll-based-velocity-images" />
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Props
+
+| Prop            | Type                                                               | Default | Description                                                     |
+| --------------- | ------------------------------------------------------------------ | ------- | --------------------------------------------------------------- |
+| defaultVelocity | `number`                                                           | `5`     | The base speed of animation in pixels per second                |
+| numRows         | `number`                                                           | `2`     | The number of rows of images to display                         |
+| images          | `Array<{src: string, alt: string, width: number, height: number}>` | `[]`    | Array of image objects with source, alt text, width, and height |
