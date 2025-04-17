@@ -17,7 +17,7 @@ export default function ProgressiveBlurDemo() {
             </div>
           ))}
         </div>
-        <ProgressiveBlur position="bottom" height="10%" />
+        <ProgressiveBlur position="bottom" height="40%" />
       </ScrollArea>
     </div>
   );
