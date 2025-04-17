@@ -54,3 +54,15 @@ import { ProgressiveBlur } from "@/components/magicui/progressive-blur";
   <ProgressiveBlur height="50%" position="bottom" />
 </div>
 ```
+
+## Props
+
+### ProgressiveBlur
+
+| Prop         | Type                          | Default                         | Description                                           |
+| ------------ | ----------------------------- | ------------------------------- | ----------------------------------------------------- |
+| `className`  | `string`                      | `-`                             | Additional classes to apply to the blur container.    |
+| `height`     | `string`                      | `"30%"`                         | Height of the blur effect container.                  |
+| `position`   | `"top" \| "bottom" \| "both"` | `"bottom"`                      | Position of the blur effect.                          |
+| `blurLevels` | `number[]`                    | `[0.5, 1, 2, 4, 8, 16, 32, 64]` | Array of blur values (in px) for progressive effect.  |
+| `children`   | `React.ReactNode`             | `-`                             | Optional content to render within the blur container. |
