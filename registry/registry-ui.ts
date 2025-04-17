@@ -356,7 +356,7 @@ export const ui: Registry["items"] = [
     title: "Globe",
     description:
       "An autorotating, interactive, and highly performant globe made using WebGL.",
-    dependencies: ["cobe"],
+    dependencies: ["cobe", "motion"],
     files: [
       {
         path: "registry/magicui/globe.tsx",

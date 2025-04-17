@@ -390,7 +390,8 @@
       "title": "Globe",
       "description": "An autorotating, interactive, and highly performant globe made using WebGL.",
       "dependencies": [
-        "cobe"
+        "cobe",
+        "motion"
       ],
       "files": [
         {
