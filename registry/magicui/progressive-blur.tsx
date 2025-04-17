@@ -21,22 +21,19 @@ export function ProgressiveBlur({
   // Create array with length equal to blurLevels.length - 2 (for before/after pseudo elements)
   const divElements = Array(blurLevels.length - 2).fill(null);
 
-  const positionStyles = {
-    top: { top: 0, bottom: "auto" },
-    bottom: { top: "auto", bottom: 0 },
-    both: { top: 0, bottom: 0, height: "100%" },
+  const getPositionClasses = () => {
+    if (position === "top") return "inset-x-0 top-0";
+    if (position === "bottom") return "inset-x-0 bottom-0";
+    return "inset-x-0 inset-y-0"; // for "both"
   };
 
   return (
     <div className={cn("relative", className)}>
       {children}
       <div
-        className="gradient-blur pointer-events-none fixed z-10"
+        className={cn("gradient-blur pointer-events-none absolute z-10", getPositionClasses())}
         style={{
-          ...positionStyles[position],
           height: position === "both" ? "100%" : height,
-          left: 0,
-          right: 0,
         }}
       >
         {/* First blur layer (pseudo element) */}
