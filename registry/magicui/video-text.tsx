@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { ReactNode } from "react";
+import React, { ElementType, ReactNode, useEffect, useState } from "react";
 
 export interface VideoTextProps {
   /**
@@ -33,8 +33,8 @@ export interface VideoTextProps {
    */
   children: ReactNode;
   /**
-   * Font size for the text mask
-   * @default "120"
+   * Font size for the text mask (in viewport width units)
+   * @default 10
    */
   fontSize?: string | number;
   /**
@@ -57,6 +57,11 @@ export interface VideoTextProps {
    * @default "sans-serif"
    */
   fontFamily?: string;
+  /**
+   * The element type to render for the text
+   * @default "div"
+   */
+  as?: ElementType;
 }
 
 export function VideoText({
@@ -67,19 +72,33 @@ export function VideoText({
   muted = true,
   loop = true,
   preload = "auto",
-  fontSize = 120,
+  fontSize = 20,
   fontWeight = "bold",
   textAnchor = "middle",
   dominantBaseline = "middle",
   fontFamily = "sans-serif",
+  as: Component = "div",
 }: VideoTextProps) {
+  const [svgMask, setSvgMask] = useState("");
   const content = React.Children.toArray(children).join("");
 
-  const svgMask = `<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='${fontSize}' font-weight='${fontWeight}' text-anchor='${textAnchor}' dominant-baseline='${dominantBaseline}' font-family='${fontFamily}'>${content}</text></svg>`;
+  useEffect(() => {
+    const updateSvgMask = () => {
+      const responsiveFontSize =
+        typeof fontSize === "number" ? `${fontSize}vw` : fontSize;
+      const newSvgMask = `<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='50%' font-size='${responsiveFontSize}' font-weight='${fontWeight}' text-anchor='${textAnchor}' dominant-baseline='${dominantBaseline}' font-family='${fontFamily}'>${content}</text></svg>`;
+      setSvgMask(newSvgMask);
+    };
+
+    updateSvgMask();
+    window.addEventListener("resize", updateSvgMask);
+    return () => window.removeEventListener("resize", updateSvgMask);
+  }, [content, fontSize, fontWeight, textAnchor, dominantBaseline, fontFamily]);
+
   const dataUrlMask = `url("data:image/svg+xml,${encodeURIComponent(svgMask)}")`;
 
   return (
-    <div className={cn(`relative w-full h-full`, className)}>
+    <Component className={cn(`relative size-full`, className)}>
       {/* Create a container that masks the video to only show within text */}
       <div
         className="absolute inset-0 flex items-center justify-center"
@@ -106,8 +125,8 @@ export function VideoText({
         </video>
       </div>
 
-      {/* Add a backup text element that's transparent but visible for SEO/accessibility */}
-      <h1 className="sr-only">{content}</h1>
-    </div>
+      {/* Add a backup text element for SEO/accessibility */}
+      <span className="sr-only">{content}</span>
+    </Component>
   );
 }
