@@ -186,6 +186,7 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+<<<<<<< HEAD
     name: "smooth-cursor-demo",
     description: "Basic smooth cursor example",
     type: "registry:example",
@@ -195,6 +196,19 @@ export const examples: Registry["items"] = [
         path: "registry/example/smooth-cursor-demo.tsx",
         type: "registry:example",
         target: "components/smooth-cursor-demo.tsx",
+=======
+    name: "progressive-blur-demo",
+    type: "registry:example",
+    title: "Progressive Blur Demo",
+    description:
+      "Example showing progressive blur effect for scrollable content.",
+    registryDependencies: ["https://magicui.design/r/progressive-blur"],
+    files: [
+      {
+        path: "registry/example/progressive-blur-demo.tsx",
+        type: "registry:example",
+        target: "components/progressive-blur-demo.tsx",
+>>>>>>> 747407d (feat: add prog blur)
       },
     ],
   },
