@@ -1,7 +1,7 @@
 ---
 title: Theme Toggler
 date: 2025-0-17
-description:An Animated theme toggler component, fully customizable using Tailwind CSS.
+description: An Animated theme toggler component, fully customizable using Tailwind CSS.
 author: Nazam Kalsi
 published: true
 ---
@@ -36,13 +36,14 @@ npx shadcn@latest add "https://magicui.design/r/animated-theme-toggler"
 
 <Step>Add the required CSS into your index.css</Step>
 
-  ```css title="./index.css"
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-      animation: none;
-      mix-blend-mode: normal;
-      }
-  ```
+```css title="./index.css"
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+```
+
 </Steps>
 
 </TabsContent>
@@ -52,19 +53,18 @@ npx shadcn@latest add "https://magicui.design/r/animated-theme-toggler"
 ## Usage
 
 ```tsx
-import  ThemeToggler  from "@/components/magicui/animated-theme-toggler";
+import ThemeToggler from "@/components/magicui/animated-theme-toggler";
 ```
 
 ```tsx
-  <ThemeToggler />
-  ```
+<ThemeToggler />
+```
 
 ## Props
 
-| Prop        | Type     | Default | Description                     |
-| ----------- | -------- | ------- | ------------------------------- |
-| `className` | `String` | " "     | Additional classes to be added to the component  |
-
+| Prop        | Type     | Default | Description                                     |
+| ----------- | -------- | ------- | ----------------------------------------------- |
+| `className` | `String` | " "     | Additional classes to be added to the component |
 
 ## Credits
 
