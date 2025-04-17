@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-theme-toggler",
+  "type": "registry:ui",
+  "title": "Theme Toggler",
+  "description": "A component for theme changing animation.",
+  "files": [
+    {
+      "path": "registry/magicui/animated-theme-toggler.tsx",
+      "content": "\"use client\";\n\nimport { Moon, SunDim } from \"lucide-react\";\nimport { useState, useRef } from \"react\";\nimport { flushSync } from \"react-dom\";\nimport { cn } from \"@/lib/utils\";\n\ntype props = {\n  className?: string;\n};\n\nconst ThemeToggler = ({ className }: props) => {\n  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);\n  const buttonRef = useRef<HTMLButtonElement | null>(null);\n  const changeTheme = async () => {\n    if (!buttonRef.current) return;\n\n    await document.startViewTransition(() => {\n      flushSync(() => {\n        const dark = document.documentElement.classList.toggle(\"dark\");\n        setIsDarkMode(dark);\n      });\n    }).ready;\n\n    const { top, left, width, height } =\n      buttonRef.current.getBoundingClientRect();\n    const y = top + height / 2;\n    const x = left + width / 2;\n\n    const right = window.innerWidth - left;\n    const bottom = window.innerHeight - top;\n    const maxRad = Math.hypot(Math.max(left, right), Math.max(top, bottom));\n\n    document.documentElement.animate(\n      {\n        clipPath: [\n          `circle(0px at ${x}px ${y}px)`,\n          `circle(${maxRad}px at ${x}px ${y}px)`,\n        ],\n      },\n      {\n        duration: 700,\n        easing: \"ease-in-out\",\n        pseudoElement: \"::view-transition-new(root)\",\n      },\n    );\n  };\n  return (\n    <button ref={buttonRef} onClick={changeTheme} className={cn(className)}>\n      {isDarkMode ? <SunDim /> : <Moon />}\n    </button>\n  );\n};\nexport default ThemeToggler;\n",
+      "type": "registry:ui",
+      "target": "components/magicui/animated-theme-toggler.tsx"
+    }
+  ],
+  "css": {
+    "::view-transition-old(root), ::view-transition-new(root)": {
+      "animation": "none",
+      "mix-blend-mode": "normal"
+    }
+  }
+}
