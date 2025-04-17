@@ -1530,6 +1530,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-theme-toggler": {
+    name: "animated-theme-toggler",
+    description: "A component for theme changing animation.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/animated-theme-toggler.tsx",
+        type: "registry:ui",
+        target: "components/magicui/animated-theme-toggler.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/animated-theme-toggler.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4316,6 +4339,31 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-demo": {
+    name: "animated-theme-toggler-demo",
+    description: "Example showing animation while changing the theme.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/animated-theme-toggler"],
+    files: [
+      {
+        path: "registry/example/animated-theme-toggler-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-theme-toggler-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

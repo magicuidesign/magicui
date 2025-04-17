@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-toggler-demo",
+  "type": "registry:example",
+  "description": "Example showing animation in changing the theme.",
+  "registryDependencies": [
+    "animated-theme-toggler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-theme-toggler-demo.tsx",
+      "content": "import ThemeToggler from '@/registry/magicui/animated-theme-toggler';\r\n\r\nfunction AnimatedThemeTogglerDemo() {\r\n  return (\r\n    <div className='flex justify-center items-center'>\r\n        <ThemeToggler/>\r\n    </div>\r\n  )\r\n}\r\nexport default AnimatedThemeTogglerDemo;",
+      "type": "registry:example"
+    }
+  ]
+}

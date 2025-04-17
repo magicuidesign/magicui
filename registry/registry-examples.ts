@@ -1696,4 +1696,16 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "animated-theme-toggler-demo",
+    description: "Example showing animation while changing the theme.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/animated-theme-toggler"],
+    files: [
+      {
+        path: "registry/example/animated-theme-toggler-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

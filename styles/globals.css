@@ -521,3 +521,9 @@
 .steps > h3 {
   @apply mt-8 mb-4 text-base font-semibold;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
