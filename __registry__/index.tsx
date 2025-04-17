@@ -1530,6 +1530,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "video-text": {
+    name: "video-text",
+    description:
+      "A component that displays text with a video playing in the background.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/video-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/video-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4316,6 +4340,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "video-text-demo": {
+    name: "video-text-demo",
+    description: "Example showing text with a video background.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/video-text"],
+    files: [
+      {
+        path: "registry/example/video-text-demo.tsx",
+        type: "registry:example",
+        target: "components/video-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/video-text-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

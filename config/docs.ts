@@ -365,6 +365,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Video Text",
+          href: `/docs/components/video-text`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Number Ticker",
           href: `/docs/components/number-ticker`,
           items: [],
