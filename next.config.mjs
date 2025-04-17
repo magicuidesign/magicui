@@ -20,17 +20,12 @@ const nextConfig = {
       },
       {
         source: "/components",
-        destination: "/docs/components/marquee",
+        destination: "/docs/components",
         permanent: true,
       },
       {
         source: "/components/:path*",
         destination: "/docs/components/:path*",
-        permanent: true,
-      },
-      {
-        source: "/docs/components",
-        destination: "/docs/components/marquee",
         permanent: true,
       },
       {
