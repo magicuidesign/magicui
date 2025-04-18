@@ -137,6 +137,9 @@ importers:
       octokit:
         specifier: ^4.0.2
         version: 4.1.2
+      pnpm:
+        specifier: ^10.8.1
+        version: 10.8.1
       postcss:
         specifier: 8.4.39
         version: 8.4.39
@@ -4418,6 +4421,11 @@ packages:
   pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
+
+  pnpm@10.8.1:
+    resolution: {integrity: sha512-xQCIupmMZ7jKjJnfil4C/Sri4rKaryOP6qnhJCSNP0j5+22yQklJ/5Ac/7teDwzBrWrttgLNKUUHUdEcNQI2dw==}
+    engines: {node: '>=18.12'}
+    hasBin: true
 
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
@@ -10423,6 +10431,8 @@ snapshots:
   pify@3.0.0: {}
 
   pluralize@8.0.0: {}
+
+  pnpm@10.8.1: {}
 
   possible-typed-array-names@1.1.0: {}
 

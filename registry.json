@@ -1242,6 +1242,19 @@
       ]
     },
     {
+      "name": "glassmorphism-button",
+      "type": "registry:ui",
+      "title": "Glassmorphism Button",
+      "description": "A glowing button component with glassmorphism effect.",
+      "files": [
+        {
+          "path": "registry/magicui/glassmorphism-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/glassmorphism-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3190,6 +3203,22 @@
           "path": "registry/example/video-text-demo.tsx",
           "type": "registry:example",
           "target": "components/video-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glassmorphism-button-demo",
+      "type": "registry:example",
+      "title": "Glassmorphism Button Demo",
+      "description": "Example showing a glowing button with glassmorphism effect.",
+      "registryDependencies": [
+        "glassmorphism-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glassmorphism-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/glassmorphism-button-demo.tsx"
         }
       ]
     },

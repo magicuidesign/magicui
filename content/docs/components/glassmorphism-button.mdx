@@ -1,0 +1,62 @@
+---
+title: Glassmorphism Button
+date: 2025-04-19
+description: A glowing button component with glassmorphism effect.
+author: syeda-hoorain-ali
+published: true
+---
+
+<ComponentPreview name="glassmorphism-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/glassmorphism-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glassmorphism-button" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { GlassmorphismButton } from "@/components/magicui/glassmorphism-button";
+```
+
+```tsx
+<GlassmorphismButton>Glassmorphism Button</GlassmorphismButton>
+```
+
+## Props
+
+| Prop        | Type                    | Default   | Description                                         |
+| ----------- | ----------------------- | --------- | --------------------------------------------------- |
+| `variant`   | `'circle' \| 'diamond'` | `diamond` | The visual style variant of the button.             |
+| `color`     | `string`                | `purple`  | The color of the button.                            |
+| `className` | `string`                | `-`       | Additional CSS classes to be applied to the button. |
+| `children`  | `React.ReactNode`       | `-`       | The content to be displayed inside the button.      |
+
+## Credits
+
+- Credit to [@syeda-hoorain-ali](https://github.com/syeda-hoorain-ali)

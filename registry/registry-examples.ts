@@ -1710,4 +1710,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "glassmorphism-button-demo",
+    type: "registry:example",
+    title: "Glassmorphism Button Demo",
+    description: "Example showing a glowing button with glassmorphism effect.",
+    registryDependencies: ["glassmorphism-button"],
+    files: [
+      {
+        path: "registry/example/glassmorphism-button-demo.tsx",
+        type: "registry:example",
+        target: "components/glassmorphism-button-demo.tsx",
+      },
+    ],
+  },
 ];

@@ -1554,6 +1554,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "glassmorphism-button": {
+    name: "glassmorphism-button",
+    description: "A glowing button component with glassmorphism effect.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/glassmorphism-button.tsx",
+        type: "registry:ui",
+        target: "components/magicui/glassmorphism-button.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/glassmorphism-button.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4363,6 +4386,31 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/video-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "glassmorphism-button-demo": {
+    name: "glassmorphism-button-demo",
+    description: "Example showing a glowing button with glassmorphism effect.",
+    type: "registry:example",
+    registryDependencies: ["glassmorphism-button"],
+    files: [
+      {
+        path: "registry/example/glassmorphism-button-demo.tsx",
+        type: "registry:example",
+        target: "components/glassmorphism-button-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/glassmorphism-button-demo.tsx"
+      );
       const exportName =
         Object.keys(mod).find(
           (key) =>

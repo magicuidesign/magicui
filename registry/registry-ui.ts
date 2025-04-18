@@ -1174,4 +1174,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "glassmorphism-button",
+    type: "registry:ui",
+    title: "Glassmorphism Button",
+    description: "A glowing button component with glassmorphism effect.",
+    files: [
+      {
+        path: "registry/magicui/glassmorphism-button.tsx",
+        type: "registry:ui",
+        target: "components/magicui/glassmorphism-button.tsx",
+      },
+    ],
+  },
 ];
