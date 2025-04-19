@@ -1723,4 +1723,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "text-wave-demo",
+    description: "Example showing text with a wave animation.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-wave"],
+    title: "Wave Text Demo",
+    files: [
+      {
+        path: "registry/example/text-wave-demo.tsx",
+        type: "registry:example",
+        target: "components/text-wave-demo.tsx",
+      },
+    ],
+  },
 ];

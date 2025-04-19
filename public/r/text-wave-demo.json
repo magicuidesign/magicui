@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-wave-demo",
+  "type": "registry:example",
+  "title": "Wave Text Demo",
+  "description": "Example showing text with a wave animation.",
+  "registryDependencies": [
+    "https://magicui.design/r/text-wave"
+  ],
+  "files": [
+    {
+      "path": "registry/example/text-wave-demo.tsx",
+      "content": "import {TextWave} from \"@/registry/magicui/text-wave\";\r\n\r\nexport default function TextwaveDemo() {\r\n    return <TextWave text=\"Text Wave\" />\r\n}",
+      "type": "registry:example",
+      "target": "components/text-wave-demo.tsx"
+    }
+  ]
+}
