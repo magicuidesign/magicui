@@ -252,6 +252,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Tilt Container",
+          href: `/docs/components/tilt-container`,
+          items: [],
+          label: "New",
+        }
       ],
     },
     {

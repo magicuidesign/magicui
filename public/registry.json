@@ -1272,6 +1272,22 @@
       ]
     },
     {
+      "name": "tilt-container",
+      "type": "registry:ui",
+      "title": "Tilt Container",
+      "description": "A component that animates a container with a tilt animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/tilt-container.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/tilt-container.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3251,6 +3267,22 @@
           "path": "registry/example/text-wave-demo.tsx",
           "type": "registry:example",
           "target": "components/text-wave-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilt-container-demo",
+      "type": "registry:example",
+      "title": "Tilt Container Demo",
+      "description": "Example showing a container with a 3d tilt animation",
+      "registryDependencies": [
+        "https://magicui.design/r/tilt-container"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tilt-container-demo.tsx",
+          "type": "registry:example",
+          "target": "components/tilt-container-demo.tsx"
         }
       ]
     },

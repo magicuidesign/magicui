@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/text-wave-demo.tsx",
-      "content": "import {TextWave} from \"@/registry/magicui/text-wave\";\r\n\r\nexport default function TextwaveDemo() {\r\n    return <TextWave text=\"Text Wave\" />\r\n}",
+      "content": "import { TextWave } from \"@/registry/magicui/text-wave\";\n\nexport default function TextwaveDemo() {\n  return <TextWave text=\"Text Wave\" />;\n}\n",
       "type": "registry:example",
       "target": "components/text-wave-demo.tsx"
     }

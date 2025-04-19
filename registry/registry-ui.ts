@@ -1202,4 +1202,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "tilt-container",
+    type: "registry:ui",
+    title: "Tilt Container",
+    description:
+      "A component that animates a container with a tilt animation.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/tilt-container.tsx",
+        type: "registry:ui",
+        target: "components/magicui/tilt-container.tsx",
+      },
+    ],
+  }
 ];
