@@ -1188,21 +1188,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "text-wave",
-    type: "registry:ui",
-    title: "Text Wave",
-    description:
-      "A text component that animates letters in a wave-like motion.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "registry/magicui/text-wave.tsx",
-        type: "registry:ui",
-        target: "components/magicui/text-wave.tsx",
-      },
-    ],
-  },
-  {
     name: "tilt-container",
     type: "registry:ui",
     title: "Tilt Container",

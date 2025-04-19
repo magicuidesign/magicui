@@ -1256,22 +1256,6 @@
       ]
     },
     {
-      "name": "text-wave",
-      "type": "registry:ui",
-      "title": "Text Wave",
-      "description": "A text component that animates letters in a wave-like motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/text-wave.tsx",
-          "type": "registry:ui",
-          "target": "components/magicui/text-wave.tsx"
-        }
-      ]
-    },
-    {
       "name": "tilt-container",
       "type": "registry:ui",
       "title": "Tilt Container",
@@ -3255,26 +3239,10 @@
       ]
     },
     {
-      "name": "text-wave-demo",
-      "type": "registry:example",
-      "title": "Wave Text Demo",
-      "description": "Example showing text with a wave animation.",
-      "registryDependencies": [
-        "https://magicui.design/r/text-wave"
-      ],
-      "files": [
-        {
-          "path": "registry/example/text-wave-demo.tsx",
-          "type": "registry:example",
-          "target": "components/text-wave-demo.tsx"
-        }
-      ]
-    },
-    {
       "name": "tilt-container-demo",
       "type": "registry:example",
       "title": "Tilt Container Demo",
-      "description": "Example showing a container with a 3d tilt animation",
+      "description": "Example showing a card with a tilt effect.",
       "registryDependencies": [
         "https://magicui.design/r/tilt-container"
       ],

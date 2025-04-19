@@ -1724,25 +1724,11 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "text-wave-demo",
-    description: "Example showing text with a wave animation.",
-    type: "registry:example",
-    registryDependencies: ["https://magicui.design/r/text-wave"],
-    title: "Wave Text Demo",
-    files: [
-      {
-        path: "registry/example/text-wave-demo.tsx",
-        type: "registry:example",
-        target: "components/text-wave-demo.tsx",
-      },
-    ],
-  },
-  {
     name: "tilt-container-demo",
-    description: "Example showing a container with a 3d tilt animation",
     type: "registry:example",
-    registryDependencies: ["https://magicui.design/r/tilt-container"],
     title: "Tilt Container Demo",
+    description: "Example showing a card with a tilt effect.",
+    registryDependencies: ["https://magicui.design/r/tilt-container"],
     files: [
       {
         path: "registry/example/tilt-container-demo.tsx",
@@ -1750,5 +1736,5 @@ export const examples: Registry["items"] = [
         target: "components/tilt-container-demo.tsx",
       },
     ],
-  }
+  },
 ];

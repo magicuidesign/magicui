@@ -3,14 +3,14 @@
   "name": "tilt-container-demo",
   "type": "registry:example",
   "title": "Tilt Container Demo",
-  "description": "Example showing a container with a 3d tilt animation",
+  "description": "Example showing a card with a tilt effect.",
   "registryDependencies": [
     "https://magicui.design/r/tilt-container"
   ],
   "files": [
     {
       "path": "registry/example/tilt-container-demo.tsx",
-      "content": "import { Tilt } from \"../magicui/tilt-container\";\r\n\r\nconst TiltContainerDemo = () => {\r\n  return (\r\n    <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} glareOpacity={0.3}>\r\n      <img\r\n        src=\"/placeholder.svg?height=300&width=400\"\r\n        alt=\"Example\"\r\n        className=\"rounded-lg max-w-sm  h-full object-cover\"\r\n      />\r\n    </Tilt>\r\n  );\r\n};\r\n\r\nexport default TiltContainerDemo;\r\n",
+      "content": "import { Tilt } from \"../magicui/tilt-container\";\n\nconst TiltContainerDemo = () => {\n  return (\n    <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} glareOpacity={0.3}>\n      <div className=\"border border-gray-200 rounded-lg w-[400] p-6 bg-white shadow-xl dark:bg-gray-800\">\n        <span className=\"pointer-events-none z-10 text-black text-center text-6xl font-semibold tracking-tight dark:text-white\">\n          Tilt Container\n        </span>\n      </div>\n    </Tilt>\n  );\n};\n\nexport default TiltContainerDemo;\n",
       "type": "registry:example",
       "target": "components/tilt-container-demo.tsx"
     }
