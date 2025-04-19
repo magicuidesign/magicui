@@ -252,12 +252,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
-        {
-          title: "Tilt Container",
-          href: `/docs/components/tilt-container`,
-          items: [],
-          label: "New",
-        }
       ],
     },
     {
@@ -306,6 +300,12 @@ export const docsConfig: DocsConfig = {
           title: "Magic Card",
           href: `/docs/components/magic-card`,
           items: [],
+        },
+        {
+          title: "Tilt",
+          href: `/docs/components/tilt`,
+          items: [],
+          label: "New",
         },
         {
           title: "Meteors",

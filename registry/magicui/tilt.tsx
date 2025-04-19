@@ -1,10 +1,10 @@
 "use client";
 
-import type React from "react";
-import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
-interface TiltProps {
+export interface TiltProps {
   children: React.ReactNode;
   perspective?: number;
   tiltMaxAngleX?: number;
@@ -22,12 +22,12 @@ export function Tilt({
   perspective = 1000,
   tiltMaxAngleX = 20,
   tiltMaxAngleY = 20,
-  scale = 1.05,
-  speed = 500,
+  scale = 1.01,
+  speed = 200,
   className = "",
   glareOpacity = 0.2,
   disabled = false,
-  rotationStrength = 1,
+  rotationStrength = 0.3,
 }: TiltProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -98,14 +98,13 @@ export function Tilt({
   return (
     <motion.div
       ref={containerRef}
-      className={`${className}`}
+      className={`relative ${className}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
         perspective: perspective,
         transformStyle: "preserve-3d",
-        position: "relative",
       }}
     >
       <motion.div

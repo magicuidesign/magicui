@@ -1256,18 +1256,18 @@
       ]
     },
     {
-      "name": "tilt-container",
+      "name": "tilt",
       "type": "registry:ui",
-      "title": "Tilt Container",
-      "description": "A component that animates a container with a tilt animation.",
+      "title": "Tilt",
+      "description": "A react component that applies a 3D tilt and parallax effect to its content.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "registry/magicui/tilt-container.tsx",
+          "path": "registry/magicui/tilt.tsx",
           "type": "registry:ui",
-          "target": "components/magicui/tilt-container.tsx"
+          "target": "components/magicui/tilt.tsx"
         }
       ]
     },
@@ -3239,18 +3239,18 @@
       ]
     },
     {
-      "name": "tilt-container-demo",
+      "name": "tilt-demo",
       "type": "registry:example",
-      "title": "Tilt Container Demo",
+      "title": "Tilt Demo",
       "description": "Example showing a card with a tilt effect.",
       "registryDependencies": [
-        "https://magicui.design/r/tilt-container"
+        "https://magicui.design/r/tilt"
       ],
       "files": [
         {
-          "path": "registry/example/tilt-container-demo.tsx",
+          "path": "registry/example/tilt-demo.tsx",
           "type": "registry:example",
-          "target": "components/tilt-container-demo.tsx"
+          "target": "components/tilt-demo.tsx"
         }
       ]
     },

@@ -1,12 +1,12 @@
 ---
-title: Tilt Container
+title: Tilt
 date: 2025-04-19
-description: A container component that animates its content with a tilt effect.
+description: A react component that applies a 3D tilt and parallax effect to its content.
 author: magicui
 published: true
 ---
 
-<ComponentPreview name="tilt-container-demo" />
+<ComponentPreview name="tilt-demo" />
 
 ## Installation
 
@@ -19,7 +19,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://magicui.design/r/tilt-container"
+npx shadcn@latest add "https://magicui.design/r/tilt"
 ```
 
 </TabsContent>
@@ -30,7 +30,7 @@ npx shadcn@latest add "https://magicui.design/r/tilt-container"
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="tilt-container" />
+<ComponentSource name="tilt" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -54,11 +54,11 @@ npm install motion
 | `perspective`      | `number?`         | `1000`   | The CSS perspective value to simulate 3D depth.                    |
 | `tiltMaxAngleX`    | `number?`         | `20`     | The maximum rotation angle on the X-axis.                          |
 | `tiltMaxAngleY`    | `number?`         | `20`     | The maximum rotation angle on the Y-axis.                          |
-| `scale`            | `number?`         | `1.05`   | The scale applied when the container is hovered.                   |
-| `speed`            | `number?`         | `500`    | The speed of the spring animation (affects stiffness).             |
+| `scale`            | `number?`         | `1.01`   | The scale applied when the container is hovered.                   |
+| `speed`            | `number?`         | `200`    | The speed of the spring animation (affects stiffness).             |
 | `className`        | `string?`         | `""`     | Additional classes for the container.                              |
 | `glareOpacity`     | `number?`         | `0.2`    | The opacity of the glare effect when hovered (set `0` to disable). |
-| `rotationStrength` | `number?`         | `1`      | The strength for the rotation.                                     |
+| `rotationStrength` | `number?`         | `0.3`    | The strength for the rotation.                                     |
 | `disabled`         | `boolean?`        | `false`  | Disables the tilt and hover effects.                               |
 
 ## Credits
