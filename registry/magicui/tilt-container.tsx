@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useRef, useState, useEffect } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
+import type React from "react";
+import { useRef, useState, useEffect } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 interface TiltProps {
-  children: React.ReactNode
-  perspective?: number
-  tiltMaxAngleX?: number
-  tiltMaxAngleY?: number
-  scale?: number
-  speed?: number
-  className?: string
-  glareOpacity?: number
-  disabled?: boolean
+  children: React.ReactNode;
+  perspective?: number;
+  tiltMaxAngleX?: number;
+  tiltMaxAngleY?: number;
+  scale?: number;
+  speed?: number;
+  className?: string;
+  glareOpacity?: number;
+  disabled?: boolean;
+  rotationStrength?: number;
 }
 
 export function Tilt({
@@ -26,68 +27,73 @@ export function Tilt({
   className = "",
   glareOpacity = 0.2,
   disabled = false,
+  rotationStrength = 1,
 }: TiltProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 15, stiffness: speed }
-  const rotateX = useSpring(useMotionValue(0), springConfig)
-  const rotateY = useSpring(useMotionValue(0), springConfig)
-  const scaleValue = useSpring(1, springConfig)
+  const springConfig = { damping: 15, stiffness: speed };
+  const rotateX = useSpring(useMotionValue(0), springConfig);
+  const rotateY = useSpring(useMotionValue(0), springConfig);
+  const scaleValue = useSpring(1, springConfig);
 
-  const tiltXInput = disabled ? [0, 0] : [-0.5, 0.5]
-  const tiltYInput = disabled ? [0, 0] : [-0.5, 0.5]
-  const tiltXOutput = disabled ? [0, 0] : [tiltMaxAngleX, -tiltMaxAngleX]
-  const tiltYOutput = disabled ? [0, 0] : [-tiltMaxAngleY, tiltMaxAngleY]
+  const tiltXInput = disabled ? [0, 0] : [-0.5, 0.5];
+  const tiltYInput = disabled ? [0, 0] : [-0.5, 0.5];
+  const tiltXOutput = disabled
+    ? [0, 0]
+    : [tiltMaxAngleX * rotationStrength, -tiltMaxAngleX * rotationStrength];
+  const tiltYOutput = disabled
+    ? [0, 0]
+    : [-tiltMaxAngleY * rotationStrength, tiltMaxAngleY * rotationStrength];
 
-  const tiltX = useTransform(mouseY, tiltXInput, tiltXOutput)
-  const tiltY = useTransform(mouseX, tiltYInput, tiltYOutput)
+  const tiltX = useTransform(mouseY, tiltXInput, tiltXOutput);
+  const tiltY = useTransform(mouseX, tiltYInput, tiltYOutput);
 
-  const glareX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"])
-  const glareY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"])
+  const glareX = useTransform(mouseX, [-0.5, 0.5], ["0%", "100%"]);
+  const glareY = useTransform(mouseY, [-0.5, 0.5], ["0%", "100%"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || disabled) return
+    if (!containerRef.current || disabled) return;
 
-    const rect = containerRef.current.getBoundingClientRect()
+    const rect = containerRef.current.getBoundingClientRect();
 
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    const posX = (e.clientX - centerX) / rect.width
-    const posY = (e.clientY - centerY) / rect.height
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const posX = (e.clientX - centerX) / rect.width;
+    const posY = (e.clientY - centerY) / rect.height;
 
-    mouseX.set(posX)
-    mouseY.set(posY)
-  }
+    mouseX.set(posX);
+    mouseY.set(posY);
+  };
 
   useEffect(() => {
-    if (disabled) return
+    if (disabled) return;
 
-    const unsubscribeX = tiltX.onChange((v) => rotateX.set(v))
-    const unsubscribeY = tiltY.onChange((v) => rotateY.set(v))
+    const unsubscribeX = tiltX.onChange((v) => rotateX.set(v));
+    const unsubscribeY = tiltY.onChange((v) => rotateY.set(v));
 
     return () => {
-      unsubscribeX()
-      unsubscribeY()
-    }
-  }, [tiltX, tiltY, rotateX, rotateY, disabled])
+      unsubscribeX();
+      unsubscribeY();
+    };
+  }, [tiltX, tiltY, rotateX, rotateY, disabled]);
 
   const handleMouseEnter = () => {
-    if (disabled) return
-    setIsHovered(true)
-    scaleValue.set(scale)
-  }
+    if (disabled) return;
+    setIsHovered(true);
+    scaleValue.set(scale);
+  };
 
   const handleMouseLeave = () => {
-    if (disabled) return
-    setIsHovered(false)
-    mouseX.set(0)
-    mouseY.set(0)
-    scaleValue.set(1)
-  }
+    if (disabled) return;
+    setIsHovered(false);
+    mouseX.set(0);
+    mouseY.set(0);
+    scaleValue.set(1);
+  };
 
   return (
     <motion.div
@@ -99,6 +105,7 @@ export function Tilt({
       style={{
         perspective: perspective,
         transformStyle: "preserve-3d",
+        position: "relative",
       }}
     >
       <motion.div
@@ -109,7 +116,23 @@ export function Tilt({
           transformStyle: "preserve-3d",
         }}
       >
-        <div style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }}>{children}</div>
+        <motion.div
+          style={{
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: scaleValue,
+            transformStyle: "preserve-3d",
+          }}
+        >
+          <div
+            style={{
+              transform: "translateZ(40px)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {children}
+          </div>
+        </motion.div>
 
         {isHovered && glareOpacity > 0 && (
           <div
@@ -136,5 +159,5 @@ export function Tilt({
         )}
       </motion.div>
     </motion.div>
-  )
+  );
 }

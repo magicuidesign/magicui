@@ -1,0 +1,66 @@
+---
+title: Tilt Container
+date: 2025-04-19
+description: A container component that animates its content with a tilt effect.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="tilt-container-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/tilt-container"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tilt-container" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop               | Type              | Default  | Description                                                        |
+| ------------------ | ----------------- | -------- | ------------------------------------------------------------------ |
+| `children`         | `React.ReactNode` | Required | The content to be displayed inside the container.                  |
+| `perspective`      | `number?`         | `1000`   | The CSS perspective value to simulate 3D depth.                    |
+| `tiltMaxAngleX`    | `number?`         | `20`     | The maximum rotation angle on the X-axis.                          |
+| `tiltMaxAngleY`    | `number?`         | `20`     | The maximum rotation angle on the Y-axis.                          |
+| `scale`            | `number?`         | `1.05`   | The scale applied when the container is hovered.                   |
+| `speed`            | `number?`         | `500`    | The speed of the spring animation (affects stiffness).             |
+| `className`        | `string?`         | `""`     | Additional classes for the container.                              |
+| `glareOpacity`     | `number?`         | `0.2`    | The opacity of the glare effect when hovered (set `0` to disable). |
+| `rotationStrength` | `number?`         | `1`      | The strength for the rotation.                                     |
+| `disabled`         | `boolean?`        | `false`  | Disables the tilt and hover effects.                               |
+
+## Credits
+
+- Credit to [@cvs0](https://github.com/cvs0)
