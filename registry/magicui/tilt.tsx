@@ -115,23 +115,14 @@ export function Tilt({
           transformStyle: "preserve-3d",
         }}
       >
-        <motion.div
+        <div
           style={{
-            rotateX: rotateX,
-            rotateY: rotateY,
-            scale: scaleValue,
+            transform: "translateZ(40px)",
             transformStyle: "preserve-3d",
           }}
         >
-          <div
-            style={{
-              transform: "translateZ(40px)",
-              transformStyle: "preserve-3d",
-            }}
-          >
-            {children}
-          </div>
-        </motion.div>
+          {children}
+        </div>
 
         {isHovered && glareOpacity > 0 && (
           <div
