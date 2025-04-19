@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-demo",
+  "type": "registry:example",
+  "title": "Glow Demo",
+  "description": "Example showing a beautiful glow effect that appears when hovering over elements.",
+  "registryDependencies": [
+    "glow"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glow-demo.tsx",
+      "content": "import { Card } from \"@/components/ui/card\";\nimport { GlowArea, Glow } from \"@/registry/magicui/glow\";\n\nexport default function GlowDemo() {\n  return (\n    <GlowArea\n      size={200}\n      className=\"w-full h-full min-h-72 grid grid-cols-2 gap-4\"\n    >\n      <Glow\n        color=\"#db2777\"\n        // className=\"border border-muted rounded-lg flex items-center justify-center shadow-lg\"\n      >\n        <Card>\n\n          <span className=\"text-2xl font-semi-bold\">Hover</span>\n        </Card>\n      </Glow>\n\n      <Glow className=\"border border-muted rounded-lg flex items-center justify-center shadow-lg\">\n        <span className=\"text-2xl font-semi-bold\">Me</span>\n      </Glow>\n    </GlowArea>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glow-demo.tsx"
+    }
+  ]
+}

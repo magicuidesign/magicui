@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow",
+  "type": "registry:ui",
+  "title": "Glow",
+  "description": "A beautiful glow effect that appears when hovering over elements",
+  "files": [
+    {
+      "path": "registry/magicui/glow.tsx",
+      "content": "\"use client\";\n\nimport {\n  ComponentPropsWithoutRef,\n  CSSProperties,\n  MouseEvent,\n  useEffect,\n  useRef,\n} from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface GlowAreaProps extends ComponentPropsWithoutRef<\"div\"> {\n  /**\n   * @default 50\n   * @type number\n   * @description\n   * The size of the glow area\n   * */\n  size?: number;\n}\n\nexport const GlowArea: React.FC<GlowAreaProps> = (props) => {\n  const { className, size = 50, ...rest } = props;\n  const element = useRef<HTMLDivElement | null>(null);\n  const latestCoords = useRef<{ x: number; y: number } | null>(null);\n  const frameId = useRef<number | null>(null);\n\n  const animateGlow = () => {\n    if (latestCoords.current && element.current) {\n      element.current.style.setProperty(\n        \"--glow-x\",\n        `${latestCoords.current.x}px`,\n      );\n      element.current.style.setProperty(\n        \"--glow-y\",\n        `${latestCoords.current.y}px`,\n      );\n\n      frameId.current = null;\n    }\n  };\n\n  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {\n    const bounds = e.currentTarget.getBoundingClientRect();\n    latestCoords.current = {\n      x: e.clientX - bounds.left,\n      y: e.clientY - bounds.top,\n    };\n    console.log(latestCoords.current);\n\n    if (!frameId.current) {\n      frameId.current = requestAnimationFrame(() => animateGlow());\n    }\n  };\n\n  const handleMouseLeave = (e: MouseEvent<HTMLDivElement>) => {\n    e.currentTarget.style.removeProperty(\"--glow-x\");\n    e.currentTarget.style.removeProperty(\"--glow-y\");\n  };\n\n  return (\n    <div\n      className={cn(\"relative\", className)}\n      ref={element}\n      onMouseLeave={handleMouseLeave}\n      onMouseMove={handleMouseMove}\n      style={\n        {\n          \"--glow-size\": `${size}px`,\n        } as CSSProperties\n      }\n      {...rest}\n    />\n  );\n};\n\nGlowArea.displayName = \"GlowArea\";\n\ninterface GlowProps extends ComponentPropsWithoutRef<\"div\"> {\n  /**\n   * @default \"purple\"\n   * @type string\n   * @description\n   * The color of the glow\n   * */\n  color?: string;\n}\n\nexport const Glow: React.FC<GlowProps> = (props) => {\n  const { className, color = \"purple\", children, ...rest } = props;\n\n  const element = useRef<HTMLDivElement | null>(null);\n\n  useEffect(() => {\n    element.current?.style.setProperty(\n      \"--glow-top\",\n      `${element.current.offsetTop}px`,\n    );\n    element.current?.style.setProperty(\n      \"--glow-left\",\n      `${element.current.offsetLeft}px`,\n    );\n  }, []);\n\n  return (\n    <div ref={element} className={cn(className, \"relative\")}>\n      <div\n        style={{\n          backgroundImage: `radial-gradient(\n            var(--glow-size) var(--glow-size) at \n            calc(var(--glow-x, -99999px) - var(--glow-left, 0px)) \n            calc(var(--glow-y, -99999px) - var(--glow-top, 0px)),\n            ${color} 0%,\n            transparent 100%\n          )`,\n        }}\n        className={cn(\n          className,\n          \"absolute pointer-events-none inset-0 transition-all mix-blend-multiply dark:mix-blend-lighten after:content-[''] after:absolute after:bg-background/80 after:inset-[0.1rem] after:rounded-[inherit]\",\n        )}\n      ></div>\n      {children}\n    </div>\n  );\n};\n\nGlow.displayName = \"Glow\";\n",
+      "type": "registry:ui",
+      "target": "components/magicui/glow.tsx"
+    }
+  ],
+  "css": {
+    "@theme inline": {
+      "--radius-inherit": "inherit"
+    }
+  }
+}
