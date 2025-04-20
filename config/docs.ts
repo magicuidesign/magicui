@@ -452,6 +452,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Wave Text",
+          href: `/docs/components/text-wave`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

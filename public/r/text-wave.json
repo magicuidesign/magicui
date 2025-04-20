@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-wave",
+  "type": "registry:ui",
+  "title": "Text Wave",
+  "description": "A text component that animates letters in a wave-like motion.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/text-wave.tsx",
+      "content": "\"use client\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\nimport { motion } from \"motion/react\";\r\nimport React from \"react\";\r\n\r\ninterface TextWaveProps {\r\n  text: string;\r\n  waveFrequency?: number;\r\n  waveAmplitude?: number;\r\n  color?: string;\r\n  className?: string;\r\n}\r\n\r\nexport const TextWave = ({\r\n  text,\r\n  waveFrequency = 0.5,\r\n  waveAmplitude = 20,\r\n  color = \"currentColor\",\r\n  className,\r\n}: TextWaveProps) => {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative mx-auto h-16 w-full max-w-screen-md text-center font-sans text-[40pt] font-bold leading-none [filter:url(#threshold)_blur(0.6px)] md:h-24 lg:text-[6rem]\",\r\n        className\r\n      )}\r\n    >\r\n      {text.split(\"\").map((char, i) => (\r\n        <motion.span\r\n          key={i}\r\n          animate={{\r\n            y: [0, -waveAmplitude, 0],\r\n          }}\r\n          transition={{\r\n            duration: 1.2,\r\n            repeat: Infinity,\r\n            repeatType: \"mirror\",\r\n            delay: i * waveFrequency * 0.08,\r\n            ease: [0.65, 0, 0.35, 1],\r\n          }}\r\n          className=\"inline-block\"\r\n          style={{ color }}\r\n        >\r\n          {char === \" \" ? \"\\u00A0\" : char}\r\n        </motion.span>\r\n      ))}\r\n    </div>\r\n  );\r\n};\r\n",
+      "type": "registry:ui",
+      "target": "components/magicui/text-wave.tsx"
+    }
+  ]
+}

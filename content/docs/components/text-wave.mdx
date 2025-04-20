@@ -1,0 +1,61 @@
+---
+title: Text Wave
+date: 2025-04-18
+description: A text component that animates letters in a wave-like motion.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="text-wave-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/text-wave"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="text-wave" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required dependencies</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop            | Type      | Default        | Description                                           |
+| --------------- | --------- | -------------- | ----------------------------------------------------- |
+| `text`          | `string`  | `""`           | The text to animate                                   |
+| `waveFrequency` | `number?` | `0.5`          | The frequency of the wave animation (lower is slower) |
+| `waveAmplitude` | `number?` | `20`           | The height of the wave in pixels                      |
+| `color`         | `string?` | `currentColor` | The color of the text                                 |
+| `className`     | `string?` | `""`           | Additional classes for the container                  |
+
+## Credits
+
+- Credit to [@cvs0](https://github.com/cvs0)

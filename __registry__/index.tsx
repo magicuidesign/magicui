@@ -1578,6 +1578,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "text-wave": {
+    name: "text-wave",
+    description:
+      "A text component that animates letters in a wave-like motion.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/text-wave.tsx",
+        type: "registry:ui",
+        target: "components/magicui/text-wave.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/text-wave.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4410,6 +4434,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/video-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "text-wave-demo": {
+    name: "text-wave-demo",
+    description: "Example showing text with a wave animation.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/text-wave"],
+    files: [
+      {
+        path: "registry/example/text-wave-demo.tsx",
+        type: "registry:example",
+        target: "components/text-wave-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-wave-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

@@ -1256,6 +1256,22 @@
       ]
     },
     {
+      "name": "text-wave",
+      "type": "registry:ui",
+      "title": "Text Wave",
+      "description": "A text component that animates letters in a wave-like motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/text-wave.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/text-wave.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3219,6 +3235,22 @@
           "path": "registry/example/video-text-demo.tsx",
           "type": "registry:example",
           "target": "components/video-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-wave-demo",
+      "type": "registry:example",
+      "title": "Wave Text Demo",
+      "description": "Example showing text with a wave animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/text-wave"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-wave-demo.tsx",
+          "type": "registry:example",
+          "target": "components/text-wave-demo.tsx"
         }
       ]
     },
