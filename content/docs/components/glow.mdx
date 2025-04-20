@@ -1,0 +1,77 @@
+---
+title: Glow Component
+date: 2025-04-20
+description: A beautiful glow effect that appears on hover interactions
+author: Syeda Hoorain Ali
+published: true
+---
+
+<ComponentPreview name="glow-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/glow"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glow" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Update `global.css`</Step>
+
+Add the following lines to your `global.css` file:
+
+```css title="app/global.css" {5-7}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme inline {
+  --radius-inherit: inherit;
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+### GlowArea
+
+| Prop        | Type        | Default | Description                                   |
+| ----------- | ----------- | ------- | --------------------------------------------- |
+| `className` | `string`    | `-`     | The class name to be applied to the component |
+| `children`  | `ReactNode` | `-`     | Children elements                             |
+| `size`      | `number`    | `50`    | The size of the glow area                     |
+
+### Glow
+
+| Prop        | Type        | Default  | Description                                   |
+| ----------- | ----------- | -------- | --------------------------------------------- |
+| `className` | `string`    | `-`      | The class name to be applied to the component |
+| `children`  | `ReactNode` | `-`      | Children elements                             |
+| `color`     | `string`    | `purple` | The color of the glow                         |
+
+## Credits
+
+- Credit to [@Syeda Hoorain Ali](https://github.com/syeda-hoorain-ali/)

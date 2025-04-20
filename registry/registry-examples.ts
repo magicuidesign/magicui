@@ -1710,4 +1710,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "glow-demo",
+    type: "registry:example",
+    title: "Glow Demo",
+    description:
+      "Example showing a beautiful glow effect that appears when hovering over elements.",
+    registryDependencies: ["https://magicui.design/r/glow"],
+    files: [
+      {
+        path: "registry/example/glow-demo.tsx",
+        type: "registry:example",
+        // target: "components/glow-demo.tsx",
+      },
+    ],
+  },
 ];
