@@ -1256,6 +1256,22 @@
       ]
     },
     {
+      "name": "tilt",
+      "type": "registry:ui",
+      "title": "Tilt",
+      "description": "A react component that applies a 3D tilt and parallax effect to its content.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/tilt.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/tilt.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3219,6 +3235,22 @@
           "path": "registry/example/video-text-demo.tsx",
           "type": "registry:example",
           "target": "components/video-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilt-demo",
+      "type": "registry:example",
+      "title": "Tilt Demo",
+      "description": "Example showing a card with a tilt effect.",
+      "registryDependencies": [
+        "https://magicui.design/r/tilt"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tilt-demo.tsx",
+          "type": "registry:example",
+          "target": "components/tilt-demo.tsx"
         }
       ]
     },

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-demo",
+  "type": "registry:example",
+  "title": "Tilt Demo",
+  "description": "Example showing a card with a tilt effect.",
+  "registryDependencies": [
+    "https://magicui.design/r/tilt"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tilt-demo.tsx",
+      "content": "import { Tilt } from \"@/registry/magicui/tilt\";\n\nexport default function TiltDemo() {\n  return (\n    <Tilt>\n      <div className=\"border flex rounded-lg w-full h-[200px] p-6 bg-background shadow-xl justify-center items-center\">\n        <span className=\"pointer-events-none z-10 text-black text-center text-6xl font-semibold tracking-tight dark:text-white\">\n          Hover Tilt\n        </span>\n      </div>\n    </Tilt>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/tilt-demo.tsx"
+    }
+  ]
+}

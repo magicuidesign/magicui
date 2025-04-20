@@ -302,6 +302,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Tilt",
+          href: `/docs/components/tilt`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Meteors",
           href: `/docs/components/meteors`,
           items: [],

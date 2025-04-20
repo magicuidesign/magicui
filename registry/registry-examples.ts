@@ -1723,4 +1723,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "tilt-demo",
+    type: "registry:example",
+    title: "Tilt Demo",
+    description: "Example showing a card with a tilt effect.",
+    registryDependencies: ["https://magicui.design/r/tilt"],
+    files: [
+      {
+        path: "registry/example/tilt-demo.tsx",
+        type: "registry:example",
+        target: "components/tilt-demo.tsx",
+      },
+    ],
+  },
 ];
