@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glassmorphism-button-demo",
+  "type": "registry:example",
+  "title": "Glassmorphism Button Demo",
+  "description": "Example showing a glowing button with glassmorphism effect.",
+  "registryDependencies": [
+    "glassmorphism-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glassmorphism-button-demo.tsx",
+      "content": "import { GlassmorphismButton } from \"@/registry/magicui/glassmorphism-button\";\n\nexport default function GlassmorphismButtonDemo() {\n  return (\n    <div className=\"flex gap-4\">\n      <GlassmorphismButton variant=\"circle\">Read more</GlassmorphismButton>\n      <GlassmorphismButton variant=\"diamond\" color=\"#FD94B3\">\n        Hover me\n      </GlassmorphismButton>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/glassmorphism-button-demo.tsx"
+    }
+  ]
+}
