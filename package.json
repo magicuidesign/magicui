@@ -46,7 +46,7 @@
     "@radix-ui/react-toast": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@t3-oss/env-nextjs": "^0.7.1",
-    "@tailwindcss/postcss": "^4.1.2",
+    "@tailwindcss/postcss": "^4.1.4",
     "@types/lodash.template": "^4.5.3",
     "autoprefixer": "10.4.14",
     "canvas-confetti": "^1.9.3",
@@ -79,7 +79,7 @@
     "shadcn": "2.4.0-canary.20",
     "sonner": "^1.5.0",
     "tailwind-merge": "^3.1.0",
-    "tailwindcss": "^4.1.2",
+    "tailwindcss": "^4.1.4",
     "ts-morph": "^23.0.0",
     "tw-animate-css": "^1.2.5",
     "zod": "^3.23.8"
