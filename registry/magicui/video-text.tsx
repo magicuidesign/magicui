@@ -119,6 +119,7 @@ export function VideoText({
           muted={muted}
           loop={loop}
           preload={preload}
+          playsInline
         >
           <source src={src} />
           Your browser does not support the video tag.
