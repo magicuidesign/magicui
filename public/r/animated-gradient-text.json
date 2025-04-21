@@ -20,7 +20,7 @@
   "css": {
     "@keyframes gradient": {
       "to": {
-        "backgroundPosition": "var(--bg-size, 300%) 0"
+        "background-Position": "var(--bg-size, 300%) 0"
       }
     }
   }
