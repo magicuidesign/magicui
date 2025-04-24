@@ -56,6 +56,21 @@ export const ui: Registry["items"] = [
         target: "components/magicui/line-shadow-text.tsx",
       },
     ],
+    cssVars: {
+      theme: {
+        "animate-line-shadow": "line-shadow 15s linear infinite",
+      },
+    },
+    css: {
+      "@keyframes line-shadow": {
+        "0%": {
+          "background-position": "0 0",
+        },
+        "100%": {
+          "background-position": "100% -100%",
+        },
+      },
+    },
   },
   {
     name: "aurora-text",
