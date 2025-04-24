@@ -21,7 +21,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\"",
+    "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\""
   },
   "dependencies": {
