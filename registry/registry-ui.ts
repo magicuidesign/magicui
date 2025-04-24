@@ -77,23 +77,23 @@ export const ui: Registry["items"] = [
     css: {
       "@keyframes aurora": {
         "0%": {
-          backgroundPosition: "0% 50%",
+          "background-position": "0% 50%",
           transform: "rotate(-5deg) scale(0.9)",
         },
         "25%": {
-          backgroundPosition: "50% 100%",
+          "background-position": "50% 100%",
           transform: "rotate(5deg) scale(1.1)",
         },
         "50%": {
-          backgroundPosition: "100% 50%",
+          "background-position": "100% 50%",
           transform: "rotate(-3deg) scale(0.95)",
         },
         "75%": {
-          backgroundPosition: "50% 0%",
+          "background-position": "50% 0%",
           transform: "rotate(3deg) scale(1.05)",
         },
         "100%": {
-          backgroundPosition: "0% 50%",
+          "background-position": "0% 50%",
           transform: "rotate(-5deg) scale(0.9)",
         },
       },
@@ -189,8 +189,8 @@ export const ui: Registry["items"] = [
     },
     css: {
       "@keyframes background-position-spin": {
-        "0%": { backgroundPosition: "top center" },
-        "100%": { backgroundPosition: "bottom center" },
+        "0%": { "background-position": "top center" },
+        "100%": { "background-position": "bottom center" },
       },
     },
   },
@@ -689,7 +689,7 @@ export const ui: Registry["items"] = [
     css: {
       "@keyframes gradient": {
         to: {
-          backgroundPosition: "var(--bg-size, 300%) 0",
+          "background-position": "var(--bg-size, 300%) 0",
         },
       },
     },

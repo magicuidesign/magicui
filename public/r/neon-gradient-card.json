@@ -20,10 +20,10 @@
   "css": {
     "@keyframes background-position-spin": {
       "0%": {
-        "backgroundPosition": "top center"
+        "background-position": "top center"
       },
       "100%": {
-        "backgroundPosition": "bottom center"
+        "background-position": "bottom center"
       }
     }
   }
