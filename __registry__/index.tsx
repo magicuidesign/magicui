@@ -4191,6 +4191,34 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-subscribe-button-controlled-demo": {
+    name: "animated-subscribe-button-controlled-demo",
+    description:
+      "Controlled example showing async behavior for AnimatedSubscribeButton.",
+    type: "registry:example",
+    registryDependencies: [
+      "https://magicui.design/r/animated-subscribe-button",
+    ],
+    files: [
+      {
+        path: "registry/example/animated-subscribe-button-controlled-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-subscribe-button-controlled-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-subscribe-button-controlled-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "cool-mode-demo": {
     name: "cool-mode-demo",
     description: "Example showing cool mode effect for buttons and links.",

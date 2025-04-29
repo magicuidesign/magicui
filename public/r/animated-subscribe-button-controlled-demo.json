@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-subscribe-button-controlled-demo",
+  "type": "registry:example",
+  "title": "Animated Subscribe Button (Controlled)",
+  "description": "Controlled example showing async behavior for AnimatedSubscribeButton.",
+  "registryDependencies": [
+    "https://magicui.design/r/animated-subscribe-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-subscribe-button-controlled-demo.tsx",
+      "content": "\"use client\";\r\n\r\nimport { AnimatedSubscribeButton } from \"@/registry/magicui/animated-subscribe-button\";\r\nimport { CheckIcon, ChevronRightIcon } from \"lucide-react\";\r\nimport { useState } from \"react\";\r\n\r\nexport default function AnimatedSubscribeButtonControlledDemo() {\r\n  const [subscribed, setSubscribed] = useState(false);\r\n  const [loading, setLoading] = useState(false);\r\n\r\n  async function handleClick() {\r\n    setLoading(true);\r\n    await new Promise((res) => setTimeout(res, 1500));\r\n    setSubscribed(true);\r\n    setTimeout(() => setSubscribed(false), 3000);\r\n    setLoading(false);\r\n  }\r\n\r\n  return (\r\n    <AnimatedSubscribeButton\r\n      className=\"w-36\"\r\n      subscribeStatus={subscribed}\r\n      onClick={() => !loading && handleClick()}\r\n    >\r\n      <span className=\"group inline-flex items-center\">\r\n        {loading ? \"Sending...\" : (\r\n          <>\r\n            Follow\r\n            <ChevronRightIcon className=\"ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1\" />\r\n          </>\r\n        )}\r\n      </span>\r\n      <span className=\"group inline-flex items-center\">\r\n        <CheckIcon className=\"mr-2 size-4\" />\r\n        Subscribed\r\n      </span>\r\n    </AnimatedSubscribeButton>\r\n  );\r\n}\r\n",
+      "type": "registry:example",
+      "target": "components/animated-subscribe-button-controlled-demo.tsx"
+    }
+  ]
+}

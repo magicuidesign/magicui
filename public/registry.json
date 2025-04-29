@@ -3075,6 +3075,22 @@
       ]
     },
     {
+      "name": "animated-subscribe-button-controlled-demo",
+      "type": "registry:example",
+      "title": "Animated Subscribe Button (Controlled)",
+      "description": "Controlled example showing async behavior for AnimatedSubscribeButton.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-subscribe-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-subscribe-button-controlled-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-subscribe-button-controlled-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "cool-mode-demo",
       "type": "registry:example",
       "title": "Cool Mode Demo",
