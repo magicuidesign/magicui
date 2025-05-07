@@ -40,8 +40,8 @@ export const ShinyButton = React.forwardRef<
     <motion.button
       ref={ref}
       className={cn(
-        "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,var(--primary)/10%_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_var(--primary)/10%]",
-        className,
+        "relative cursor-pointer rounded-lg px-6 py-2 font-medium backdrop-blur-xl border transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,var(--primary)/10%_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_var(--primary)/10%]",
+        className
       )}
       {...animationProps}
       {...props}
@@ -64,7 +64,7 @@ export const ShinyButton = React.forwardRef<
             "linear-gradient(-75deg,var(--primary)/10% calc(var(--x)+20%),var(--primary)/50% calc(var(--x)+25%),var(--primary)/10% calc(var(--x)+100%))",
         }}
         className="absolute inset-0 z-10 block rounded-[inherit] p-px"
-      ></span>
+      />
     </motion.button>
   );
 });
