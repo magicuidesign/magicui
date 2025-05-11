@@ -3,7 +3,9 @@ import FlipButton from "../magicui/flip-button";
 export default function FlipButtonVariations() {
   return (
     <div className="flex flex-col items-center justify-center space-y-7">
-      <FlipButton fromTop>Browse</FlipButton>
+      <FlipButton fromTop className="text-white">
+        Browse
+      </FlipButton>
       <FlipButton
         flipBgColor="pink"
         className="bg-linear-to-r from-purple-500 via-indigo-500 to-blue-500"

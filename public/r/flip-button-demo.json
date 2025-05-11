@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/flip-button-demo.tsx",
-      "content": "import  FlipButton  from \"@/registry/magicui/flip-button\"\r\n\r\nexport default function FlipButtonDemo() {\r\n    return (\r\n        <FlipButton>\r\n            Get One\r\n        </FlipButton>\r\n    )\r\n}",
+      "content": "import FlipButton from \"@/registry/magicui/flip-button\";\n\nexport default function FlipButtonDemo() {\n  return <FlipButton className=\"text-white\">Get One</FlipButton>;\n}\n",
       "type": "registry:example",
       "target": "components/flip-button-demo.tsx"
     }
