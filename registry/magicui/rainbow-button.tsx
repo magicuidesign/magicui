@@ -13,7 +13,7 @@ const rainbowButtonVariants = cva(
     "rounded-sm outline-none focus-visible:ring-[3px] aria-invalid:border-destructive",
     "text-sm font-medium whitespace-nowrap",
     "disabled:pointer-events-none disabled:opacity-50",
-    "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0"
+    "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
   ),
   {
     variants: {
@@ -34,7 +34,7 @@ const rainbowButtonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 interface RainbowButtonProps
@@ -54,7 +54,7 @@ const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 RainbowButton.displayName = "RainbowButton";
