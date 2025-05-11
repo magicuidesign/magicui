@@ -1578,6 +1578,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "flip-button": {
+    name: "flip-button",
+    description:
+      "A stylish, animated button that flips to reveal content on hover.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/flip-button.tsx",
+        type: "registry:ui",
+        target: "components/magicui/flip-button.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/flip-button.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4410,6 +4434,54 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/video-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "flip-button-demo": {
+    name: "flip-button-demo",
+    description:
+      "A stylish, animated button that flips to reveal content on hover.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/flip-button"],
+    files: [
+      {
+        path: "registry/example/flip-button-demo.tsx",
+        type: "registry:example",
+        target: "components/flip-button-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/flip-button-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "flip-button-variations": {
+    name: "flip-button-variations",
+    description:
+      "A stylish, animated button that flips to reveal content on hover.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/flip-button"],
+    files: [
+      {
+        path: "registry/example/flip-button-fromtop.tsx",
+        type: "registry:example",
+        target: "components/flip-button-fromtop.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/flip-button-fromtop.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

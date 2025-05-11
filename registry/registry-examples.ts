@@ -1723,4 +1723,34 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "flip-button-demo",
+    type: "registry:example",
+    title: "Flip Button Demo",
+    description:
+      "A stylish, animated button that flips to reveal content on hover.",
+    registryDependencies: ["https://magicui.design/r/flip-button"],
+    files: [
+      {
+        path: "registry/example/flip-button-demo.tsx",
+        type: "registry:example",
+        target: "components/flip-button-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "flip-button-variations",
+    type: "registry:example",
+    title: "Flip Button Variations",
+    description:
+      "A stylish, animated button that flips to reveal content on hover.",
+    registryDependencies: ["https://magicui.design/r/flip-button"],
+    files: [
+      {
+        path: "registry/example/flip-button-fromtop.tsx",
+        type: "registry:example",
+        target: "components/flip-button-fromtop.tsx",
+      },
+    ],
+  },
 ];

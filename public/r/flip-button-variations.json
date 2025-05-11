@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button-variations",
+  "type": "registry:example",
+  "title": "Flip Button Variations",
+  "description": "A stylish, animated button that flips to reveal content on hover.",
+  "registryDependencies": [
+    "https://magicui.design/r/flip-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/flip-button-fromtop.tsx",
+      "content": "import FlipButton from \"../magicui/flip-button\";\r\n\r\nexport default function FlipButtonVariations() {\r\n    return (\r\n        <div className=\"flex flex-col items-center justify-center space-y-7\">\r\n            <FlipButton fromTop>\r\n                Browse\r\n            </FlipButton>\r\n            <FlipButton flipBgColor=\"pink\" className=\"bg-linear-to-r from-purple-500 via-indigo-500 to-blue-500\" flipTextColor=\"black\">\r\n                Get one\r\n            </FlipButton>\r\n            <FlipButton flippedText=\"Browse Products\" className=\"text-white  bg-[linear-gradient(60deg,_rgb(247,_149,_51),_rgb(243,_112,_85),_rgb(239,_78,_123),_rgb(161,_102,_171),_rgb(80,_115,_184),_rgb(16,_152,_173),_rgb(7,_179,_155),_rgb(111,_186,_130))]\">\r\n                See More\r\n            </FlipButton>\r\n        </div>\r\n    )\r\n}",
+      "type": "registry:example",
+      "target": "components/flip-button-fromtop.tsx"
+    }
+  ]
+}

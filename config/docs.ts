@@ -498,6 +498,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Flip Button",
+          href: "/docs/components/flip-button",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

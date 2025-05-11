@@ -1,0 +1,72 @@
+---
+title: Flip Button
+date: 2025-05-11
+description: The FlipButton is a stylish, animated button that creates a smooth flip effect on hover. It is highly customizable, allowing control over the flip direction, background color, text color, and custom flip text.
+author: riteshbhoskar
+published: true
+---
+
+<ComponentPreview name="flip-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/flip-button"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="flip-button" />
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### These are some variations of this button
+
+1. **Flip Direction:** Change the direction of the flip (from top to bottom or vice versa).
+2. **Background Color on Flip:** Customize the background color when the button flips.
+3. **Flip Text on Hover:** Display different text when the button is flipped.
+
+Explore these variations below and feel free to customize them according to your needs.
+
+<ComponentPreview name="flip-button-variations" />
+
+## Usage
+
+```tsx
+import { FlipButton } from "@/components/magicui/flip-button";
+```
+
+```tsx
+<FlipButton>Your Button</FlipButton>
+```
+
+## Props
+
+| Prop            | Type              | Default | Description                                                                                      |
+| --------------- | ----------------- | ------- | ------------------------------------------------------------------------------------------------ |
+| `fromTop`       | `boolean`         | `false` | Controls the flip direction. If true, the button flips from top to bottom.                       |
+| `flippedText`   | `string`          | `-`     | The text displayed after the button flips. If not provided, it defaults to the same as children. |
+| `flipBgColor`   | `string`          | `white` | The background color of the flipped side of the button.                                          |
+| `flipTextColor` | `string`          | `black` | The color of the text displayed on the flipped side of the button.                               |
+| `children`      | `React.ReactNode` | `-`     | The content to be displayed inside the button before flipping.                                   |
+| `className`     | `string`          | `-`     | Additional CSS classes to customize the button’s appearance.                                     |

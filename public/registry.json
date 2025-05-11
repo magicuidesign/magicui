@@ -1271,6 +1271,19 @@
       ]
     },
     {
+      "name": "flip-button",
+      "type": "registry:ui",
+      "title": "Flip Button",
+      "description": "A stylish, animated button that flips to reveal content on hover.",
+      "files": [
+        {
+          "path": "registry/magicui/flip-button.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/flip-button.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3234,6 +3247,38 @@
           "path": "registry/example/video-text-demo.tsx",
           "type": "registry:example",
           "target": "components/video-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-button-demo",
+      "type": "registry:example",
+      "title": "Flip Button Demo",
+      "description": "A stylish, animated button that flips to reveal content on hover.",
+      "registryDependencies": [
+        "https://magicui.design/r/flip-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/flip-button-demo.tsx",
+          "type": "registry:example",
+          "target": "components/flip-button-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-button-variations",
+      "type": "registry:example",
+      "title": "Flip Button Variations",
+      "description": "A stylish, animated button that flips to reveal content on hover.",
+      "registryDependencies": [
+        "https://magicui.design/r/flip-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/flip-button-fromtop.tsx",
+          "type": "registry:example",
+          "target": "components/flip-button-fromtop.tsx"
         }
       ]
     },

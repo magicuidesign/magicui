@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-button-demo",
+  "type": "registry:example",
+  "title": "Flip Button Demo",
+  "description": "A stylish, animated button that flips to reveal content on hover.",
+  "registryDependencies": [
+    "https://magicui.design/r/flip-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/flip-button-demo.tsx",
+      "content": "import  FlipButton  from \"@/registry/magicui/flip-button\"\r\n\r\nexport default function FlipButtonDemo() {\r\n    return (\r\n        <FlipButton>\r\n            Get One\r\n        </FlipButton>\r\n    )\r\n}",
+      "type": "registry:example",
+      "target": "components/flip-button-demo.tsx"
+    }
+  ]
+}

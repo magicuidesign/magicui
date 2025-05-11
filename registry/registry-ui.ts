@@ -1202,4 +1202,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "flip-button",
+    type: "registry:ui",
+    title: "Flip Button",
+    description:
+      "A stylish, animated button that flips to reveal content on hover.",
+    files: [
+      {
+        path: "registry/magicui/flip-button.tsx",
+        type: "registry:ui",
+        target: "components/magicui/flip-button.tsx",
+      },
+    ],
+  },
 ];
