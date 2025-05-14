@@ -37,11 +37,11 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --color-1: 0 100% 63%;
-  --color-2: 270 100% 63%;
-  --color-3: 210 100% 63%;
-  --color-4: 195 100% 63%;
-  --color-5: 90 100% 63%;
+  --color-1: oklch(66.2% 0.225 25.9);
+  --color-2: oklch(60.4% 0.26 302);
+  --color-3: oklch(69.6% 0.165 251);
+  --color-4: oklch(80.2% 0.134 225);
+  --color-5: oklch(90.7% 0.231 133);
 }
 
 .dark {
@@ -118,8 +118,8 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* Added Animation Variables */
-  --animate-accordion-down: "accordion-down 0.2s ease-out";
-  --animate-accordion-up: "accordion-up 0.2s ease-out";
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-gradient: gradient 8s linear infinite;
   --animate-meteor: meteor 5s linear infinite;
   --animate-grid: grid 15s linear infinite;
@@ -138,7 +138,7 @@
     alternate;
   --animate-shine: shine var(--duration) infinite linear;
   --animate-pulse: pulse var(--duration) ease-out infinite;
-  --animate-rainbow: "rainbow var(--speed, 2s) infinite linear";
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
   --animate-line-shadow: line-shadow 15s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
 
