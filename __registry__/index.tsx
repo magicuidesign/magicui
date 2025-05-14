@@ -4348,6 +4348,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "rainbow-button-demo-2": {
+    name: "rainbow-button-demo-2",
+    description: "Example showing an animated button with rainbow effect.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/rainbow-button"],
+    files: [
+      {
+        path: "registry/example/rainbow-button-demo-2.tsx",
+        type: "registry:example",
+        target: "components/rainbow-button-demo-2.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/rainbow-button-demo-2.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "interactive-hover-button-demo": {
     name: "interactive-hover-button-demo",
     description: "Example showing an interactive button with hover effects.",
