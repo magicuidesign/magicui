@@ -14,7 +14,7 @@
   ],
   "cssVars": {
     "theme": {
-      "rainbow": "rainbow var(--speed, 2s) infinite linear"
+      "animate-rainbow": "rainbow var(--speed, 2s) infinite linear"
     },
     "light": {
       "color-1": "oklch(66.2% 0.225 25.9)",
