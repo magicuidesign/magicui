@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, MotionProps, Variants } from "motion/react";
-import { ElementType } from "react";
+import { ElementType, memo } from "react";
 
 type AnimationType = "text" | "word" | "character" | "line";
 type AnimationVariant =
@@ -297,7 +297,7 @@ const defaultItemAnimationVariants: Record<
   },
 };
 
-export function TextAnimate({
+const TextAnimateBase = ({
   children,
   delay = 0,
   duration = 0.3,
@@ -310,7 +310,7 @@ export function TextAnimate({
   by = "word",
   animation = "fadeIn",
   ...props
-}: TextAnimateProps) {
+}: TextAnimateProps) => {
   const MotionComponent = motion.create(Component);
 
   let segments: string[] = [];
@@ -404,4 +404,7 @@ export function TextAnimate({
       </MotionComponent>
     </AnimatePresence>
   );
-}
+};
+
+// Export the memoized version
+export const TextAnimate = memo(TextAnimateBase);
