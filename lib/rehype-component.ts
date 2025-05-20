@@ -12,6 +12,10 @@ export const styles = [
     name: "default",
     label: "Default",
   },
+  /*   {
+    name: "magicui",
+    label: "MagicUI",
+  } */
 ] as const;
 
 export type Style = (typeof styles)[number];
@@ -57,13 +61,27 @@ export function rehypeComponent() {
           const filePath = path.join(process.cwd(), src);
           let source = fs.readFileSync(filePath, "utf8");
 
-          // Replace imports.
-          // TODO: Use @swc/core and a visitor to replace this.
-          // For now a simple regex should do.
-          // source = source.replaceAll(
-          //   `@/registry/${style.name}/`,
-          //   "@/components/",
-          // );
+          // Replace registry paths with style-specific replacement
+          /*    styles.forEach((style) => {
+            source = source.replaceAll(
+              `@/registry/${style.name}/`,
+              "@/components/magicui/"
+            );
+          }); */
+
+          // Replace all registry paths with components path using regex
+          /*  source = source.replace(
+            /@\/registry\/[^/]+\//g,
+            "@/components/magicui/"
+          ); */
+
+          // Handle direct magicui imports
+          source = source.replaceAll(
+            "@/registry/magicui/",
+            "@/components/magicui/"
+          );
+
+          // Replace default exports
           source = source.replaceAll("export default", "export");
 
           // Add code as children so that rehype can take over at build time.
@@ -97,7 +115,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            }),
+            })
           );
         } catch (error) {
           console.error(error);
@@ -124,13 +142,27 @@ export function rehypeComponent() {
           const filePath = path.join(process.cwd(), src);
           let source = fs.readFileSync(filePath, "utf8");
 
-          // Replace imports.
-          // TODO: Use @swc/core and a visitor to replace this.
-          // For now a simple regex should do.
-          // source = source.replaceAll(
-          //   `@/registry/${style.name}/`,
-          //   "@/components/",
-          // );
+          // Replace registry paths with style-specific replacement
+          /*   styles.forEach((style) => {
+            source = source.replaceAll(
+              `@/registry/${style.name}/`,
+              "@/components/magicui/"
+            );
+          }); */
+
+          // Replace all registry paths with components path using regex
+          /*   source = source.replace(
+            /@\/registry\/[^/]+\//g,
+            "@/components/magicui/"
+          ); */
+
+          // Handle direct magicui imports
+          source = source.replaceAll(
+            "@/registry/magicui/",
+            "@/components/magicui/"
+          );
+
+          // Replace default exports
           source = source.replaceAll("export default", "export");
 
           // Add code as children so that rehype can take over at build time.
@@ -157,7 +189,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            }),
+            })
           );
         } catch (error) {
           console.error(error);
