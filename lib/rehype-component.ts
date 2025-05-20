@@ -78,7 +78,7 @@ export function rehypeComponent() {
           // Handle direct magicui imports
           source = source.replaceAll(
             "@/registry/magicui/",
-            "@/components/magicui/"
+            "@/components/magicui/",
           );
 
           // Replace default exports
@@ -115,7 +115,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            })
+            }),
           );
         } catch (error) {
           console.error(error);
@@ -159,7 +159,7 @@ export function rehypeComponent() {
           // Handle direct magicui imports
           source = source.replaceAll(
             "@/registry/magicui/",
-            "@/components/magicui/"
+            "@/components/magicui/",
           );
 
           // Replace default exports
@@ -189,7 +189,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            })
+            }),
           );
         } catch (error) {
           console.error(error);
