@@ -54,5 +54,5 @@ export function ProductHuntCTA() {
 }
 
 export function SidebarCTA() {
-  return <ProductHuntCTA />;
+  return null;
 }

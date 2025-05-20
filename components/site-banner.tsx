@@ -53,5 +53,5 @@ export function ProductHuntBanner() {
 }
 
 export function SiteBanner() {
-  return <ProductHuntBanner />;
+  return <ProBanner />;
 }
