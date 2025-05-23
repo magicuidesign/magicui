@@ -2,9 +2,7 @@ import fs from "fs";
 import path from "path";
 import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
-
 import { UnistNode, UnistTree } from "@/types/unist";
-
 import Registry from "../registry.json";
 
 export const styles = [
@@ -12,10 +10,6 @@ export const styles = [
     name: "default",
     label: "Default",
   },
-  /*   {
-    name: "magicui",
-    label: "MagicUI",
-  } */
 ] as const;
 
 export type Style = (typeof styles)[number];
@@ -61,24 +55,10 @@ export function rehypeComponent() {
           const filePath = path.join(process.cwd(), src);
           let source = fs.readFileSync(filePath, "utf8");
 
-          // Replace registry paths with style-specific replacement
-          /*    styles.forEach((style) => {
-            source = source.replaceAll(
-              `@/registry/${style.name}/`,
-              "@/components/magicui/"
-            );
-          }); */
-
-          // Replace all registry paths with components path using regex
-          /*  source = source.replace(
-            /@\/registry\/[^/]+\//g,
-            "@/components/magicui/"
-          ); */
-
           // Handle direct magicui imports
           source = source.replaceAll(
             "@/registry/magicui/",
-            "@/components/magicui/",
+            "@/components/magicui/"
           );
 
           // Replace default exports
@@ -91,13 +71,6 @@ export function rehypeComponent() {
               properties: {
                 __src__: src,
               },
-              // attributes: [
-              //   {
-              //     name: "styleName",
-              //     type: "mdxJsxAttribute",
-              //     value: style.name,
-              //   },
-              // ],
               children: [
                 u("element", {
                   tagName: "code",
@@ -115,7 +88,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            }),
+            })
           );
         } catch (error) {
           console.error(error);
@@ -142,24 +115,10 @@ export function rehypeComponent() {
           const filePath = path.join(process.cwd(), src);
           let source = fs.readFileSync(filePath, "utf8");
 
-          // Replace registry paths with style-specific replacement
-          /*   styles.forEach((style) => {
-            source = source.replaceAll(
-              `@/registry/${style.name}/`,
-              "@/components/magicui/"
-            );
-          }); */
-
-          // Replace all registry paths with components path using regex
-          /*   source = source.replace(
-            /@\/registry\/[^/]+\//g,
-            "@/components/magicui/"
-          ); */
-
           // Handle direct magicui imports
           source = source.replaceAll(
             "@/registry/magicui/",
-            "@/components/magicui/",
+            "@/components/magicui/"
           );
 
           // Replace default exports
@@ -189,7 +148,7 @@ export function rehypeComponent() {
                   ],
                 }),
               ],
-            }),
+            })
           );
         } catch (error) {
           console.error(error);
