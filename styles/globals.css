@@ -359,6 +359,13 @@
   }
 }
 
+/* Support for Dynamic Height */
+@supports (height: 100dvh) {
+  .dynamic-h-dvh {
+    height: 100dvh;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

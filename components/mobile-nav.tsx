@@ -70,7 +70,7 @@ export function MobileNav() {
           <Icons.logo className="mr-2 size-4" />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
-        <ScrollArea className="h-[calc(100vh-4rem)] p-4">
+        <ScrollArea className="h-full dynamic-h-dvh px-4 py-8">
           <div className="flex flex-col space-y-1.5">
             {docsConfig.mainNav?.map(
               (item) =>
