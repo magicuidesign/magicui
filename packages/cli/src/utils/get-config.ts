@@ -37,6 +37,7 @@ export const rawConfigSchema = z
       utils: z.string(),
       ui: z.string().optional(),
       magicui: z.string().optional(),
+      icons: z.string().optional(),
     }),
   })
   .strict();
@@ -47,6 +48,7 @@ export const configSchema = rawConfigSchema.extend({
   resolvedPaths: z.object({
     tailwindConfig: z.string(),
     tailwindCss: z.string(),
+    icons: z.string(),
     utils: z.string(),
     components: z.string(),
     ui: z.string(),
@@ -83,10 +85,12 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
   );
   const ui = `${components}/ui`;
   const magicui = `${components}/magicui`;
+  const icons = `${components}/icons`;
 
   const newAliases = {
     ui: `${config.aliases.components}/ui`,
     magicui: `${config.aliases.components}/magicui`,
+    icons: `${config.aliases.components}/icons`,
   };
 
   const newConfig = {
@@ -107,6 +111,7 @@ export async function resolveConfigPaths(cwd: string, config: RawConfig) {
       //   ? await resolveImport(config.aliases["magicui"], tsConfig)
       //   : config.aliases["ui"] ? await resolveImport(config.aliases["ui"], tsConfig)
       //     : await resolveImport(config.aliases["components"], tsConfig)
+      icons
     },
   };
   return configSchema.parse(newConfig);
