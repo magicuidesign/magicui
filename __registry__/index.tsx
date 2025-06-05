@@ -1578,6 +1578,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "pixel-image": {
+    name: "pixel-image",
+    description:
+      "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/pixel-image.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pixel-image.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/pixel-image.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4433,6 +4457,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/video-text-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pixel-image-demo": {
+    name: "pixel-image-demo",
+    description: "Example showing a pixelated image effect.",
+    type: "registry:example",
+    registryDependencies: ["pixel-image"],
+    files: [
+      {
+        path: "registry/example/pixel-image-demo.tsx",
+        type: "registry:example",
+        target: "components/pixel-image-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pixel-image-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
