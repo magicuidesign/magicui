@@ -1737,4 +1737,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "pixel-image-demo",
+    type: "registry:example",
+    title: "Pixel Image Demo",
+    description: "Example showing a pixelated image effect.",
+    registryDependencies: ["pixel-image"],
+    files: [
+      {
+        path: "registry/example/pixel-image-demo.tsx",
+        type: "registry:example",
+        target: "components/pixel-image-demo.tsx",
+      },
+    ],
+  },
 ];
