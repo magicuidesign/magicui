@@ -1153,7 +1153,7 @@ export const ui: Registry["items"] = [
         "color-5": "oklch(90.7% 0.231 133)",
       },
       theme: {
-        rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "animate-rainbow": "rainbow var(--speed, 2s) infinite linear",
       },
     },
 

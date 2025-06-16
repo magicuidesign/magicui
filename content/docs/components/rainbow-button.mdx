@@ -73,6 +73,12 @@ Add the following animations to your global CSS file.
 
 </Tabs>
 
+## Examples
+
+### Outline Variant
+
+<ComponentPreview name="rainbow-button-demo-2" />
+
 ## Usage
 
 ```tsx
@@ -85,7 +91,9 @@ import { RainbowButton } from "@/components/magicui/rainbow-button";
 
 ## Props
 
-| Prop        | Type              | Default | Description                                         |
-| ----------- | ----------------- | ------- | --------------------------------------------------- |
-| `children`  | `React.ReactNode` | `-`     | The content to be displayed inside the button.      |
-| `className` | `string`          | `-`     | Additional CSS classes to be applied to the button. |
+| Prop        | Type                                  | Default     | Description                                         |
+| ----------- | ------------------------------------- | ----------- | --------------------------------------------------- |
+| `children`  | `React.ReactNode`                     | `-`         | The content to be displayed inside the button.      |
+| `className` | `string`                              | `-`         | Additional CSS classes to be applied to the button. |
+| `variant`   | `"default" \| "outline"`              | `"default"` | The variant of the button.                          |
+| `size`      | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | The size of the button.                             |
