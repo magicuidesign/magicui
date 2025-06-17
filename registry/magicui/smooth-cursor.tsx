@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useSpring } from "motion/react";
-import { FC, JSX, useEffect, useRef, useState } from "react";
+import { motion, useSpring, useMotionValue } from "motion/react";
+import { FC, JSX, useEffect, useRef, useCallback } from "react";
 
 interface Position {
   x: number;
@@ -82,124 +82,146 @@ const DefaultCursorSVG: FC = () => {
 
 export function SmoothCursor({
   cursor = <DefaultCursorSVG />,
-  springConfig = {
-    damping: 45,
-    stiffness: 400,
-    mass: 1,
-    restDelta: 0.001,
-  },
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false);
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
   const velocity = useRef<Position>({ x: 0, y: 0 });
   const lastUpdateTime = useRef(Date.now());
   const previousAngle = useRef(0);
   const accumulatedRotation = useRef(0);
+  const rafId = useRef<number>(0);
+  const timeoutId = useRef<any | undefined>(undefined);
 
-  const cursorX = useSpring(0, springConfig);
-  const cursorY = useSpring(0, springConfig);
-  const rotation = useSpring(0, {
-    ...springConfig,
-    damping: 60,
+  // Use motion values for better performance
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const rotation = useMotionValue(0);
+  const scale = useMotionValue(1);
+
+  // Optimized spring configurations
+  const smoothX = useSpring(cursorX, {
+    damping: 25,
+    stiffness: 200,
+    mass: 0.8,
+  });
+  const smoothY = useSpring(cursorY, {
+    damping: 25,
+    stiffness: 200,
+    mass: 0.8,
+  });
+  const smoothRotation = useSpring(rotation, {
+    damping: 30,
+    stiffness: 150,
+    mass: 0.6,
+  });
+  const smoothScale = useSpring(scale, {
+    damping: 20,
     stiffness: 300,
-  });
-  const scale = useSpring(1, {
-    ...springConfig,
-    stiffness: 500,
-    damping: 35,
+    mass: 0.5,
   });
 
-  useEffect(() => {
-    const updateVelocity = (currentPos: Position) => {
-      const currentTime = Date.now();
-      const deltaTime = currentTime - lastUpdateTime.current;
+  const updateVelocity = useCallback((currentPos: Position) => {
+    const currentTime = performance.now();
+    const deltaTime = currentTime - lastUpdateTime.current;
 
-      if (deltaTime > 0) {
-        velocity.current = {
-          x: (currentPos.x - lastMousePos.current.x) / deltaTime,
-          y: (currentPos.y - lastMousePos.current.y) / deltaTime,
-        };
-      }
-
+    if (deltaTime > 16) {
+      // Throttle to ~60fps
+      velocity.current = {
+        x: (currentPos.x - lastMousePos.current.x) / deltaTime,
+        y: (currentPos.y - lastMousePos.current.y) / deltaTime,
+      };
       lastUpdateTime.current = currentTime;
       lastMousePos.current = currentPos;
-    };
+    }
+  }, []);
 
-    const smoothMouseMove = (e: MouseEvent) => {
+  const smoothMouseMove = useCallback(
+    (e: MouseEvent) => {
       const currentPos = { x: e.clientX, y: e.clientY };
       updateVelocity(currentPos);
 
-      const speed = Math.sqrt(
-        Math.pow(velocity.current.x, 2) + Math.pow(velocity.current.y, 2),
-      );
-
+      // Update cursor position immediately for responsiveness
       cursorX.set(currentPos.x);
       cursorY.set(currentPos.y);
 
-      if (speed > 0.1) {
-        const currentAngle =
-          Math.atan2(velocity.current.y, velocity.current.x) * (180 / Math.PI) +
-          90;
+      // Calculate speed with optimized math
+      const speedSquared = velocity.current.x ** 2 + velocity.current.y ** 2;
 
+      if (speedSquared > 0.01) {
+        // Reduced threshold for smoother rotation
+        const currentAngle =
+          Math.atan2(velocity.current.y, velocity.current.x) * 57.2958 + 90; // 180/PI ≈ 57.2958
+
+        // Smooth angle interpolation
         let angleDiff = currentAngle - previousAngle.current;
         if (angleDiff > 180) angleDiff -= 360;
         if (angleDiff < -180) angleDiff += 360;
-        accumulatedRotation.current += angleDiff;
+
+        // Dampen rotation for smoother movement
+        accumulatedRotation.current += angleDiff * 0.8;
         rotation.set(accumulatedRotation.current);
         previousAngle.current = currentAngle;
 
-        scale.set(0.95);
-        setIsMoving(true);
+        // Smooth scale animation
+        scale.set(0.92);
 
-        const timeout = setTimeout(() => {
+        // Clear existing timeout
+        if (timeoutId.current) clearTimeout(timeoutId.current);
+
+        timeoutId.current = setTimeout(() => {
           scale.set(1);
-          setIsMoving(false);
-        }, 150);
-
-        return () => clearTimeout(timeout);
+        }, 100);
       }
-    };
+    },
+    [updateVelocity]
+  );
 
-    let rafId: number;
-    const throttledMouseMove = (e: MouseEvent) => {
-      if (rafId) return;
+  const throttledMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (rafId.current) return;
 
-      rafId = requestAnimationFrame(() => {
+      rafId.current = requestAnimationFrame(() => {
         smoothMouseMove(e);
-        rafId = 0;
+        rafId.current = 0;
       });
-    };
+    },
+    [smoothMouseMove]
+  );
 
+  useEffect(() => {
     document.body.style.cursor = "none";
-    window.addEventListener("mousemove", throttledMouseMove);
+    window.addEventListener("mousemove", throttledMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", throttledMouseMove);
       document.body.style.cursor = "auto";
-      if (rafId) cancelAnimationFrame(rafId);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+      if (timeoutId.current) clearTimeout(timeoutId.current);
     };
-  }, [cursorX, cursorY, rotation, scale]);
+  }, [throttledMouseMove]);
 
   return (
     <motion.div
       style={{
         position: "fixed",
-        left: cursorX,
-        top: cursorY,
-        translateX: "-50%",
-        translateY: "-50%",
-        rotate: rotation,
-        scale: scale,
+        left: smoothX,
+        top: smoothY,
+        x: "-50%",
+        y: "-50%",
+        rotate: smoothRotation,
+        scale: smoothScale,
         zIndex: 100,
         pointerEvents: "none",
         willChange: "transform",
+        backfaceVisibility: "hidden",
+        perspective: 1000,
       }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
       transition={{
         type: "spring",
-        stiffness: 400,
-        damping: 30,
+        stiffness: 300,
+        damping: 25,
+        duration: 0.3,
       }}
     >
       {cursor}
