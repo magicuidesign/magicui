@@ -49,6 +49,7 @@ export default function MusicPlayer() {
         duration={6}
         delay={3}
         size={400}
+        borderWidth={2}
         className="from-transparent via-blue-500 to-transparent"
       />
     </Card>

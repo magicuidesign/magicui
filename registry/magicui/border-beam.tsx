@@ -44,6 +44,10 @@ interface BorderBeamProps {
    * The initial offset position (0-100).
    */
   initialOffset?: number;
+  /**
+   * The border width of the beam.
+   */
+  borderWidth?: number;
 }
 
 export const BorderBeam = ({
@@ -57,9 +61,15 @@ export const BorderBeam = ({
   style,
   reverse = false,
   initialOffset = 0,
+  borderWidth = 1,
 }: BorderBeamProps) => {
   return (
-    <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]">
+    <div
+      className="pointer-events-none absolute inset-0 rounded-[inherit] border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)] border-(length:--border-beam-width)"
+      style={{
+        "--border-beam-width": `${borderWidth}px`,
+      } as React.CSSProperties}
+    >
       <motion.div
         className={cn(
           "absolute aspect-square",
