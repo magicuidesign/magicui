@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pixel-image-demo",
+  "type": "registry:example",
+  "title": "Pixel Image Demo",
+  "description": "Example showing a pixelated image effect.",
+  "registryDependencies": [
+    "pixel-image"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pixel-image-demo.tsx",
+      "content": "import PixelImage from \"@/registry/magicui/pixel-image\";\n\nexport default function Home() {\n  return (\n    <div>\n      <PixelImage\n        src=\"/pixel-image-demo.jpg\"\n        customGrid={{ rows: 4, cols: 6 }}\n        grayscaleAnimation={true}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/pixel-image-demo.tsx"
+    }
+  ]
+}

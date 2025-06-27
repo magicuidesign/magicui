@@ -1271,6 +1271,19 @@
       ]
     },
     {
+      "name": "pixel-image",
+      "type": "registry:ui",
+      "title": "Pixel Image",
+      "description": "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+      "files": [
+        {
+          "path": "registry/magicui/pixel-image.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/pixel-image.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3250,6 +3263,22 @@
           "path": "registry/example/video-text-demo.tsx",
           "type": "registry:example",
           "target": "components/video-text-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pixel-image-demo",
+      "type": "registry:example",
+      "title": "Pixel Image Demo",
+      "description": "Example showing a pixelated image effect.",
+      "registryDependencies": [
+        "pixel-image"
+      ],
+      "files": [
+        {
+          "path": "registry/example/pixel-image-demo.tsx",
+          "type": "registry:example",
+          "target": "components/pixel-image-demo.tsx"
         }
       ]
     },
