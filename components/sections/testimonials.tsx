@@ -71,9 +71,9 @@ export default function Testimonials() {
               id={id}
               className="break-inside-avoid overflow-hidden rounded-lg bg-secondary shadow-sm"
             />
-            <span className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/20 p-4 text-lg font-bold text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+            <span className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 p-4 m-2 text-lg font-bold text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
               <span className="flex translate-y-[14px] items-center gap-2 transition-transform duration-300 ease-in-out group-hover:translate-y-0">
-                View Tweet
+                <span className="sr-only">View Tweet</span>
                 <ArrowUpRight className="h-6 w-6" />
               </span>
             </span>
