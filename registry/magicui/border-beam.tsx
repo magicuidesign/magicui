@@ -64,10 +64,12 @@ export const BorderBeam = ({
   borderWidth = 1,
 }: BorderBeamProps) => {
   return (
-    <div className="pointer-events-none absolute inset-0 rounded-[inherit] border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]" 
-         style={{
-          borderWidth: `${borderWidth}px`,
-        }}>
+    <div
+      className="pointer-events-none absolute inset-0 rounded-[inherit] border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)] border-(length:--border-beam-width)"
+      style={{
+        "--border-beam-width": `${borderWidth}px`,
+      } as React.CSSProperties}
+    >
       <motion.div
         className={cn(
           "absolute aspect-square",
