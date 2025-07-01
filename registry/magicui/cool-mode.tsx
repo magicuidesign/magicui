@@ -99,8 +99,12 @@ const applyParticleEffect = (
       circleSVG.setAttribute("height", size.toString());
 
       particle.appendChild(circleSVG);
-    } else {
+    } else if (particleType.startsWith("http") || particleType.startsWith("/")) {
+      // Handle URL-based images
       particle.innerHTML = `<img src="${particleType}" width="${size}" height="${size}" style="border-radius: 50%">`;
+    } else {
+      // Handle emoji or text characters
+      particle.innerHTML = `<div style="font-size: ${size}px; line-height: 1; text-align: center; width: ${size}px; height: ${size}px;">${particleType}</div>`;
     }
 
     particle.style.position = "absolute";
