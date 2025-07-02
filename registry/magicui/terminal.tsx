@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion, MotionProps } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { useInView } from "@/hooks/use-in-view";
 
 interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode;
@@ -15,17 +16,22 @@ export const AnimatedSpan = ({
   delay = 0,
   className,
   ...props
-}: AnimatedSpanProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: -5 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3, delay: delay / 1000 }}
-    className={cn("grid text-sm font-normal tracking-tight", className)}
-    {...props}
-  >
-    {children}
-  </motion.div>
-);
+}: AnimatedSpanProps) => {
+  const [ref, inView] = useInView<HTMLDivElement>();
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: -5 }}
+      animate={inView ? { opacity: 1, y: 0 } : false}
+      transition={{ duration: 0.3, delay: delay / 1000 }}
+      className={cn("grid text-sm font-normal tracking-tight", className)}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 interface TypingAnimationProps extends MotionProps {
   children: string;
@@ -53,14 +59,15 @@ export const TypingAnimation = ({
 
   const [displayedText, setDisplayedText] = useState<string>("");
   const [started, setStarted] = useState(false);
-  const elementRef = useRef<HTMLElement | null>(null);
+  const [ref, inView] = useInView<HTMLElement>();
 
   useEffect(() => {
+    if (!inView) return;
     const startTimeout = setTimeout(() => {
       setStarted(true);
     }, delay);
     return () => clearTimeout(startTimeout);
-  }, [delay]);
+  }, [delay, inView]);
 
   useEffect(() => {
     if (!started) return;
@@ -82,7 +89,7 @@ export const TypingAnimation = ({
 
   return (
     <MotionComponent
-      ref={elementRef}
+      ref={ref}
       className={cn("text-sm font-normal tracking-tight", className)}
       {...props}
     >
