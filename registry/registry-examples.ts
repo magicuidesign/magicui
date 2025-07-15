@@ -1117,6 +1117,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "comic-text-demo",
+    type: "registry:example",
+    title: "Comic Text Demo",
+    description: "Example showing comic text animation.",
+    registryDependencies: ["https://magicui.design/r/comic-text"],
+    files: [
+      {
+        path: "registry/example/comic-text-demo.tsx",
+        type: "registry:example",
+        target: "components/comic-text-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "icon-cloud-demo",
     type: "registry:example",
     title: "Icon Cloud Demo",

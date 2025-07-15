@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comic-text-demo",
+  "type": "registry:example",
+  "title": "Comic Text Demo",
+  "description": "Example showing comic text animation.",
+  "registryDependencies": [
+    "https://magicui.design/r/comic-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/comic-text-demo.tsx",
+      "content": "import { ComicText } from \"@/registry/magicui/comic-text\";\n\nexport default function ComicTextDemo() {\n  return (\n      <div className=\"space-y-8 text-center\">\n        <ComicText fontSize={5}> \n            BOOM!\n        </ComicText>\n      </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/comic-text-demo.tsx"
+    }
+  ]
+}
