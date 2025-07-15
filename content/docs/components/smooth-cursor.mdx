@@ -71,6 +71,34 @@ import { SmoothCursor } from "@/components/ui/smooth-cursor";
 <SmoothCursor />
 ```
 
+## Hiding Default Browser Cursor
+To prevent the default browser cursor from overlapping with the custom cursor, add the following CSS globally:
+
+```css
+* {
+  cursor: none !important;
+}
+```
+
+### Optional: Keep text cursor for inputs
+
+```css
+input,
+textarea,
+select {
+  cursor: text !important;
+}
+```
+
+💡 If you're using Tailwind CSS, you can add cursor-none to your layout wrapper:
+
+```tsx
+<div className="cursor-none">
+  <SmoothCursor />
+  {/* your app */}
+</div>
+```
+
 ## Props
 
 | Prop           | Type           | Default                | Description                                            |
