@@ -1,6 +1,5 @@
 import { Callout } from "@/components/callout";
 import { CodeBlockCommand } from "@/components/code-block-command";
-import RepoDownload from "@/components/repo-download";
 import TechStack from "@/components/tech-stack";
 import TemplatePreview from "@/components/template-preview";
 import {
@@ -16,9 +15,10 @@ import { TweetCard } from "@/registry/magicui/tweet-card";
 import { useMDXComponent } from "@content-collections/mdx/react";
 import Image from "next/image";
 import Link from "next/link";
-import { ComponentPreview } from "./component-preview";
-import { ComponentSource } from "./component-source";
-import { CopyButton } from "./copy-button";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import { CopyButton } from "@/components/copy-button";
+import { TemplateOpen } from "@/components/template-open";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -45,7 +45,7 @@ const components = {
   AccordionTrigger,
   Callout,
   TechStack,
-  RepoDownload,
+  TemplateOpen,
   TemplatePreview,
   Image,
   Tweet: ({ id }: { id: string }) => <TweetCard id={id} className="mx-auto" />,
