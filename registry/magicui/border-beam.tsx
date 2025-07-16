@@ -66,9 +66,11 @@ export const BorderBeam = ({
   return (
     <div
       className="pointer-events-none absolute inset-0 rounded-[inherit] border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)] border-(length:--border-beam-width)"
-      style={{
-        "--border-beam-width": `${borderWidth}px`,
-      } as React.CSSProperties}
+      style={
+        {
+          "--border-beam-width": `${borderWidth}px`,
+        } as React.CSSProperties
+      }
     >
       <motion.div
         className={cn(
