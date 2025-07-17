@@ -1,6 +1,7 @@
 "use client";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 
 type Grid = {
   rows: number;
@@ -42,23 +43,22 @@ const PixelImage = ({
   const MIN_GRID = 1;
   const MAX_GRID = 16;
 
-  const isValidGrid = (grid?: Grid) => {
-    if (!grid) return false;
-    const { rows, cols } = grid;
-    return (
-      Number.isInteger(rows) &&
-      Number.isInteger(cols) &&
-      rows >= MIN_GRID &&
-      cols >= MIN_GRID &&
-      rows <= MAX_GRID &&
-      cols <= MAX_GRID
-    );
-  };
+  const { rows, cols } = useMemo(() => {
+    const isValidGrid = (grid?: Grid) => {
+      if (!grid) return false;
+      const { rows, cols } = grid;
+      return (
+        Number.isInteger(rows) &&
+        Number.isInteger(cols) &&
+        rows >= MIN_GRID &&
+        cols >= MIN_GRID &&
+        rows <= MAX_GRID &&
+        cols <= MAX_GRID
+      );
+    };
 
-  const { rows, cols } = isValidGrid(customGrid)
-    ? customGrid!
-    : DEFAULT_GRIDS[grid];
-  const total = rows * cols;
+    return isValidGrid(customGrid) ? customGrid! : DEFAULT_GRIDS[grid];
+  }, [customGrid, grid]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -68,32 +68,36 @@ const PixelImage = ({
     return () => clearTimeout(colorTimeout);
   }, [colorRevealDelay]);
 
-  const pieces = Array.from({ length: total }, (_, index) => {
-    const row = Math.floor(index / cols);
-    const col = index % cols;
+  const pieces = useMemo(() => {
+    const total = rows * cols;
+    return Array.from({ length: total }, (_, index) => {
+      const row = Math.floor(index / cols);
+      const col = index % cols;
 
-    const clipPath = `polygon(
-      ${col * (100 / cols)}% ${row * (100 / rows)}%,
-      ${(col + 1) * (100 / cols)}% ${row * (100 / rows)}%,
-      ${(col + 1) * (100 / cols)}% ${(row + 1) * (100 / rows)}%,
-      ${col * (100 / cols)}% ${(row + 1) * (100 / rows)}%
-    )`;
+      const clipPath = `polygon(
+        ${col * (100 / cols)}% ${row * (100 / rows)}%,
+        ${(col + 1) * (100 / cols)}% ${row * (100 / rows)}%,
+        ${(col + 1) * (100 / cols)}% ${(row + 1) * (100 / rows)}%,
+        ${col * (100 / cols)}% ${(row + 1) * (100 / rows)}%
+      )`;
 
-    const delay = Math.random() * maxAnimationDelay;
-    return {
-      clipPath,
-      delay,
-    };
-  });
+      const delay = Math.random() * maxAnimationDelay;
+      return {
+        clipPath,
+        delay,
+      };
+    });
+  }, [rows, cols, maxAnimationDelay]);
 
   return (
-    <div className="w-72 h-72 md:w-96 md:h-96 relative select-none">
+    <div className="relative h-72 w-72 select-none md:h-96 md:w-96">
       {pieces.map((piece, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all ease-out ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
+          className={cn(
+            "absolute inset-0 transition-all ease-out",
+            isVisible ? "opacity-100" : "opacity-0",
+          )}
           style={{
             clipPath: piece.clipPath,
             transitionDelay: `${piece.delay}ms`,
@@ -104,15 +108,14 @@ const PixelImage = ({
             src={src}
             fill
             alt={`Pixel image piece ${index + 1}`}
-            className={`object-cover rounded-[2.5rem] transition-all z-1 ${grayscaleAnimation ? `duration-[${pixelFadeInDuration}ms]` : ""} ${
-              grayscaleAnimation
-                ? showColor
-                  ? "grayscale-0"
-                  : "grayscale"
-                : ""
-            }`}
+            className={cn(
+              "z-1 object-cover rounded-[2.5rem]",
+              grayscaleAnimation && (showColor ? "grayscale-0" : "grayscale"),
+            )}
             style={{
-              transition: `filter ${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+              transition: grayscaleAnimation
+                ? `filter ${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
+                : "none",
             }}
             draggable={false}
           />
@@ -122,4 +125,4 @@ const PixelImage = ({
   );
 };
 
-export default PixelImage;
+export default memo(PixelImage);
