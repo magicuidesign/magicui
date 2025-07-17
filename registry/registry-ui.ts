@@ -1202,4 +1202,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "pixel-image",
+    type: "registry:ui",
+    title: "Pixel Image",
+    description:
+      "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+    files: [
+      {
+        path: "registry/magicui/pixel-image.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pixel-image.tsx",
+      },
+    ],
+  },
 ];
