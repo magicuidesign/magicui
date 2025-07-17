@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 
 interface AnimatedCircularProgressBarProps {
-  max: number;
-  value: number;
-  min: number;
+  max?: number;
+  min?: number;
+  value?: number;
   gaugePrimaryColor: string;
   gaugeSecondaryColor: string;
   className?: string;
