@@ -1,7 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { useTheme } from "next-themes";
 import { CSSProperties } from "react";
 
 type ComicTextProps = {
@@ -17,8 +16,6 @@ export function ComicText({
   style,
   fontSize = 5,
 }: ComicTextProps) {
-  const { resolvedTheme } = useTheme();
-
   if (typeof children !== "string") {
     throw new Error("children must be a string");
   }
