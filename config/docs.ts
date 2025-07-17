@@ -506,6 +506,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Glassmorphism Button",
+          href: `/docs/components/glassmorphism-button`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
