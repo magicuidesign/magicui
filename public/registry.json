@@ -210,6 +210,19 @@
       ]
     },
     {
+      "name": "progressive-blur",
+      "type": "registry:ui",
+      "title": "Progressive Blur",
+      "description": "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
+      "files": [
+        {
+          "path": "registry/magicui/progressive-blur.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/progressive-blur.tsx"
+        }
+      ]
+    },
+    {
       "name": "neon-gradient-card",
       "type": "registry:ui",
       "title": "Neon Gradient Card",
@@ -1509,6 +1522,22 @@
           "path": "registry/example/smooth-cursor-demo.tsx",
           "type": "registry:example",
           "target": "components/smooth-cursor-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-blur-demo",
+      "type": "registry:example",
+      "title": "Progressive Blur Demo",
+      "description": "Example showing progressive blur effect for scrollable content.",
+      "registryDependencies": [
+        "https://magicui.design/r/progressive-blur"
+      ],
+      "files": [
+        {
+          "path": "registry/example/progressive-blur-demo.tsx",
+          "type": "registry:example",
+          "target": "components/progressive-blur-demo.tsx"
         }
       ]
     },

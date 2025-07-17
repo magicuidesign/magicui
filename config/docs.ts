@@ -260,6 +260,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Progressive Blur",
+          href: `/docs/components/progressive-blur`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

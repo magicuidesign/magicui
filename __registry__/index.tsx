@@ -249,6 +249,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "progressive-blur": {
+    name: "progressive-blur",
+    description:
+      "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/progressive-blur.tsx",
+        type: "registry:ui",
+        target: "components/magicui/progressive-blur.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/progressive-blur.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "neon-gradient-card": {
     name: "neon-gradient-card",
     description: "A beautiful neon card effect",
@@ -1917,6 +1941,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/smooth-cursor-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "progressive-blur-demo": {
+    name: "progressive-blur-demo",
+    description:
+      "Example showing progressive blur effect for scrollable content.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/progressive-blur"],
+    files: [
+      {
+        path: "registry/example/progressive-blur-demo.tsx",
+        type: "registry:example",
+        target: "components/progressive-blur-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/progressive-blur-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
