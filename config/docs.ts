@@ -472,6 +472,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Comic Text",
+          href: `/docs/components/comic-text`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

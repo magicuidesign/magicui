@@ -906,6 +906,22 @@
       ]
     },
     {
+      "name": "comic-text",
+      "type": "registry:ui",
+      "title": "Comic Text",
+      "description": "Comic text animation",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/comic-text.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/comic-text.tsx"
+        }
+      ]
+    },
+    {
       "name": "icon-cloud",
       "type": "registry:ui",
       "title": "Icon Cloud",
@@ -2572,6 +2588,22 @@
           "path": "registry/example/spinning-text-demo-2.tsx",
           "type": "registry:example",
           "target": "components/spinning-text-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comic-text-demo",
+      "type": "registry:example",
+      "title": "Comic Text Demo",
+      "description": "Example showing comic text animation.",
+      "registryDependencies": [
+        "https://magicui.design/r/comic-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/comic-text-demo.tsx",
+          "type": "registry:example",
+          "target": "components/comic-text-demo.tsx"
         }
       ]
     },

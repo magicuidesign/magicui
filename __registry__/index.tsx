@@ -1103,6 +1103,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "comic-text": {
+    name: "comic-text",
+    description: "Comic text animation",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/comic-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/comic-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/comic-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "icon-cloud": {
     name: "icon-cloud",
     description: "An interactive 3D tag cloud component",
@@ -3456,6 +3479,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/spinning-text-demo-2.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "comic-text-demo": {
+    name: "comic-text-demo",
+    description: "Example showing comic text animation.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/comic-text"],
+    files: [
+      {
+        path: "registry/example/comic-text-demo.tsx",
+        type: "registry:example",
+        target: "components/comic-text-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/comic-text-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

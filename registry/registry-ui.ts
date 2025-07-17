@@ -855,6 +855,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "comic-text",
+    type: "registry:ui",
+    title: "Comic Text",
+    description: "Comic text animation",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/comic-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/comic-text.tsx",
+      },
+    ],
+  },
+  {
     name: "icon-cloud",
     type: "registry:ui",
     title: "Icon Cloud",
