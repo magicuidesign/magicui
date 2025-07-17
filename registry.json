@@ -196,7 +196,6 @@
       ]
     },
     {
-<<<<<<< HEAD
       "name": "smooth-cursor",
       "type": "registry:ui",
       "description": "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
@@ -207,7 +206,10 @@
         {
           "path": "registry/magicui/smooth-cursor.tsx",
           "type": "registry:ui"
-=======
+        }
+      ]
+    },
+    {
       "name": "progressive-blur",
       "type": "registry:ui",
       "title": "Progressive Blur",
@@ -217,7 +219,6 @@
           "path": "registry/magicui/progressive-blur.tsx",
           "type": "registry:ui",
           "target": "components/magicui/progressive-blur.tsx"
->>>>>>> 747407d (feat: add prog blur)
         }
       ]
     },
@@ -1510,7 +1511,6 @@
       ]
     },
     {
-<<<<<<< HEAD
       "name": "smooth-cursor-demo",
       "type": "registry:example",
       "description": "Basic smooth cursor example",
@@ -1522,7 +1522,10 @@
           "path": "registry/example/smooth-cursor-demo.tsx",
           "type": "registry:example",
           "target": "components/smooth-cursor-demo.tsx"
-=======
+        }
+      ]
+    },
+    {
       "name": "progressive-blur-demo",
       "type": "registry:example",
       "title": "Progressive Blur Demo",
@@ -1535,7 +1538,6 @@
           "path": "registry/example/progressive-blur-demo.tsx",
           "type": "registry:example",
           "target": "components/progressive-blur-demo.tsx"
->>>>>>> 747407d (feat: add prog blur)
         }
       ]
     },

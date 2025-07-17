@@ -255,17 +255,16 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-<<<<<<< HEAD
           title: "Smooth Cursor",
           href: `/docs/components/smooth-cursor`,
           items: [],
           label: "",
-=======
+        },
+        {
           title: "Progressive Blur",
           href: `/docs/components/progressive-blur`,
           items: [],
           label: "New",
->>>>>>> 747407d (feat: add prog blur)
         },
       ],
     },
