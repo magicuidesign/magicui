@@ -19,25 +19,35 @@ export default function VideoTestimonials() {
       <h2 className="mb-8 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
         Featured on YouTube
       </h2>
-      <div className="grid auto-rows-[420px] grid-cols-1 gap-4 md:auto-rows-[400px] md:grid-cols-3 md:grid-rows-3">
+      <div className="grid auto-rows-[300px] grid-cols-1 gap-6 md:auto-rows-[350px] md:grid-cols-4 lg:grid-cols-6">
         {videoUrls.map((url, index) => (
           <motion.div
             key={index}
-            className={`relative h-full overflow-hidden rounded-xl border bg-secondary shadow-sm ${
-              index === 0 ? "h-[600px] md:col-span-2 md:row-span-2" : ""
-            } ${index === 3 ? "md:col-span-2" : ""}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            className={`group relative overflow-hidden rounded-xl border bg-card shadow-lg hover:shadow-xl transition-all duration-300 ${
+              index === 0
+                ? "md:col-span-2 md:row-span-2 lg:col-span-3 lg:row-span-2"
+                : index % 2 === 1
+                  ? "md:col-span-2 lg:col-span-3"
+                  : "md:col-span-2 lg:col-span-3"
+            }`}
+            whileHover={{ scale: 1.02 }}
           >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
             <iframe
               src={url}
-              title={`YouTube video player ${index + 1}`}
+              title={`YouTube testimonial ${index + 1}`}
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              className="h-full w-full object-cover"
+              className="h-full w-full rounded-xl"
+              loading="lazy"
             ></iframe>
+            <div className="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center gap-2 text-white text-sm font-medium">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                Watch on YouTube
+              </div>
+            </div>
           </motion.div>
         ))}
       </div>
