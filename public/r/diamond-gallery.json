@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "diamond-gallery",
+  "type": "registry:ui",
+  "title": "Diamond Gallery",
+  "description": "A component that displays an image with a diamond gallery effect.",
+  "files": [
+    {
+      "path": "registry/magicui/diamond-gallery.tsx",
+      "content": "'use client'\r\nimport { useState } from 'react'\r\n\r\ninterface ImageItem {\r\n    image: string\r\n    isLink?: boolean\r\n    href?: string\r\n    target?: string\r\n    rel?: string\r\n}\r\n\r\ninterface DiamondGalleryProps {\r\n    images: ImageItem[]\r\n}\r\n\r\nconst DiamondGallery = ({ images }: DiamondGalleryProps) => {\r\n    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)\r\n\r\n    const positions = [\r\n        'top-0 left-1/2 transform -translate-x-1/2 -translate-y-[5%]',\r\n        'left-0 top-1/2 transform -translate-y-1/2 -translate-x-[5%]',\r\n        'right-0 top-1/2 transform -translate-y-1/2 translate-x-[5%]',\r\n        'bottom-0 left-1/2 transform -translate-x-1/2 translate-y-[5%]'\r\n    ]\r\n\r\n    return (\r\n        <div className='relative aspect-square h-full'>\r\n            {images.slice(0, 4).map((img: ImageItem, idx: number) => {\r\n                const imageElement = (\r\n                    <img\r\n                        src={img.image}\r\n                        alt={`Imagen de galería ${idx + 1}`}\r\n                        className='size-full object-cover -rotate-45 scale-150'\r\n                        onMouseEnter={() => setHoveredIndex(idx)}\r\n                        onMouseLeave={() => setHoveredIndex(null)}\r\n                    />\r\n                )\r\n\r\n                return (\r\n                    <div\r\n                        className={`absolute w-1/2 h-1/2 rotate-45 rounded-lg transition-all duration-500 overflow-hidden \r\n              ${positions[idx]}\r\n              ${hoveredIndex === idx ? 'scale-100 z-1' : 'scale-75 z-0'}\r\n              ${hoveredIndex !== null && hoveredIndex !== idx\r\n                                ? 'filter blur-sm grayscale'\r\n                                : ''\r\n                            }`}\r\n                        key={idx}\r\n                    >\r\n                        {img.isLink ? (\r\n                            <a\r\n                                href={img.href}\r\n                                target={img.target}\r\n                                rel={img.rel}\r\n                                className='block size-full'\r\n                            >\r\n                                {imageElement}\r\n                            </a>\r\n                        ) : (\r\n                            imageElement\r\n                        )}\r\n                    </div>\r\n                )\r\n            })}\r\n        </div>\r\n    )\r\n}\r\n\r\nexport default DiamondGallery;\r\n",
+      "type": "registry:ui",
+      "target": "components/magicui/diamond-gallery.tsx"
+    }
+  ]
+}

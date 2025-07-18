@@ -1649,6 +1649,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "diamond-gallery": {
+    name: "diamond-gallery",
+    description:
+      "A component that displays an image with a diamond gallery effect.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/diamond-gallery.tsx",
+        type: "registry:ui",
+        target: "components/magicui/diamond-gallery.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/diamond-gallery.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4583,6 +4607,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "diamond-gallery-demo": {
+    name: "diamond-gallery-demo",
+    description: "Example showing a diamond gallery effect.",
+    type: "registry:example",
+    registryDependencies: ["diamond-gallery"],
+    files: [
+      {
+        path: "registry/example/diamond-gallery-demo.tsx",
+        type: "registry:example",
+        target: "components/diamond-gallery-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/diamond-gallery-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   utils: {
     name: "utils",
     description: "",
@@ -4596,7 +4643,7 @@ export const Index: Record<string, any> = {
       },
     ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/lib/utils.ts");
+      const mod = await import("@/registry/lib/utils");
       const exportName =
         Object.keys(mod).find(
           (key) =>

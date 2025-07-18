@@ -1780,4 +1780,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "diamond-gallery-demo",
+    type: "registry:example",
+    title: "Diamond Gallery Demo",
+    description: "Example showing a diamond gallery effect.",
+    registryDependencies: ["diamond-gallery"],
+    files: [
+      {
+        path: "registry/example/diamond-gallery-demo.tsx",
+        type: "registry:example",
+        target: "components/diamond-gallery-demo.tsx",
+      },
+    ],
+  },
 ];

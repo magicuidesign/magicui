@@ -1313,6 +1313,19 @@
       ]
     },
     {
+      "name": "diamond-gallery",
+      "type": "registry:ui",
+      "title": "Diamond Gallery",
+      "description": "A component that displays an image with a diamond gallery effect.",
+      "files": [
+        {
+          "path": "registry/magicui/diamond-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/diamond-gallery.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3340,6 +3353,22 @@
           "path": "registry/example/pixel-image-demo.tsx",
           "type": "registry:example",
           "target": "components/pixel-image-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diamond-gallery-demo",
+      "type": "registry:example",
+      "title": "Diamond Gallery Demo",
+      "description": "Example showing a diamond gallery effect.",
+      "registryDependencies": [
+        "diamond-gallery"
+      ],
+      "files": [
+        {
+          "path": "registry/example/diamond-gallery-demo.tsx",
+          "type": "registry:example",
+          "target": "components/diamond-gallery-demo.tsx"
         }
       ]
     },
