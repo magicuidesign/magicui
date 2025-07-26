@@ -1649,6 +1649,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "testimonial-wall": {
+    name: "testimonial-wall",
+    description:
+      "A component that displays testimonials in infinitely scrolling columns, creating a dynamic 'wall of love'.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/testimonial-wall.tsx",
+        type: "registry:ui",
+        target: "components/magicui/testimonial-wall.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/testimonial-wall.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4574,6 +4598,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pixel-image-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "testimonial-wall-demo": {
+    name: "testimonial-wall-demo",
+    description: "Example showing a testimonial wall.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/testimonial-wall"],
+    files: [
+      {
+        path: "registry/example/testimonial-wall-demo.tsx",
+        type: "registry:example",
+        target: "components/testimonial-wall-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/testimonial-wall-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

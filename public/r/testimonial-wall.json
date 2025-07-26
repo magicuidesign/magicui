@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-wall",
+  "type": "registry:ui",
+  "title": "Testimonial Wall",
+  "description": "A component that displays testimonials in infinitely scrolling columns, creating a dynamic 'wall of love'.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/testimonial-wall.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion } from \"motion/react\";\nimport React from \"react\";\n\ninterface Testimonial {\n  text: string;\n  image: string;\n  name: string;\n  role: string;\n}\n\ninterface TestimonialWallProps {\n  testimonials: Testimonial[];\n  className?: string;\n  direction?: \"up\" | \"down\";\n  duration?: number;\n  gap?: string;\n}\n\nexport const TestimonialWall = ({\n  testimonials,\n  className,\n  direction = \"up\",\n  duration = 20,\n  gap = \"1.5rem\",\n}: TestimonialWallProps) => {\n  const animationVariants = {\n    up: { translateY: \"-50%\" },\n    down: { translateY: \"0%\" },\n  };\n\n  const initialVariants = {\n    up: { translateY: \"0%\" },\n    down: { translateY: \"-50%\" },\n  };\n\n  return (\n    <div\n      className={cn(\"w-full overflow-hidden bg-background\", className)}\n      style={\n        {\n          \"--gap\": gap,\n          \"--duration\": `${duration}s`,\n        } as React.CSSProperties\n      }\n    >\n      <motion.div\n        className=\"flex flex-col gap-[var(--gap)]\"\n        initial={initialVariants[direction]}\n        animate={animationVariants[direction]}\n        transition={{\n          duration: duration,\n          repeat: Infinity,\n          ease: \"linear\",\n        }}\n      >\n        {[...testimonials, ...testimonials].map(\n          ({ text, image, name, role }, i) => (\n            <div\n              className=\"p-9 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full\"\n              key={i}\n            >\n              <div>{text}</div>\n              <div className=\"flex items-center gap-2 mt-5\">\n                <img\n                  width={40}\n                  height={40}\n                  src={image}\n                  alt={name}\n                  className=\"h-10 w-10 rounded-full\"\n                />\n                <div className=\"flex flex-col\">\n                  <div className=\"font-medium tracking-tight leading-5\">\n                    {name}\n                  </div>\n                  <div className=\"leading-5 opacity-60 tracking-tight\">\n                    {role}\n                  </div>\n                </div>\n              </div>\n            </div>\n          )\n        )}\n      </motion.div>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": "components/magicui/testimonial-wall.tsx"
+    }
+  ]
+}

@@ -1313,6 +1313,22 @@
       ]
     },
     {
+      "name": "testimonial-wall",
+      "type": "registry:ui",
+      "title": "Testimonial Wall",
+      "description": "A component that displays testimonials in infinitely scrolling columns, creating a dynamic 'wall of love'.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/testimonial-wall.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/testimonial-wall.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3340,6 +3356,22 @@
           "path": "registry/example/pixel-image-demo.tsx",
           "type": "registry:example",
           "target": "components/pixel-image-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-wall-demo",
+      "type": "registry:example",
+      "title": "Testimonial Wall Demo",
+      "description": "Example showing a testimonial wall.",
+      "registryDependencies": [
+        "https://magicui.design/r/testimonial-wall"
+      ],
+      "files": [
+        {
+          "path": "registry/example/testimonial-wall-demo.tsx",
+          "type": "registry:example",
+          "target": "components/testimonial-wall-demo.tsx"
         }
       ]
     },

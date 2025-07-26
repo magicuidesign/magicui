@@ -1780,4 +1780,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "testimonial-wall-demo",
+    type: "registry:example",
+    title: "Testimonial Wall Demo",
+    description: "Example showing a testimonial wall.",
+    registryDependencies: ["https://magicui.design/r/testimonial-wall"],
+    files: [
+      {
+        path: "registry/example/testimonial-wall-demo.tsx",
+        type: "registry:example",
+        target: "components/testimonial-wall-demo.tsx",
+      },
+    ],
+  },
 ];

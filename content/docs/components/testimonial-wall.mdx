@@ -1,0 +1,79 @@
+---
+title: Testimonial Wall
+date: 2025-07-26
+description: A component that displays testimonials in infinitely scrolling columns, creating a dynamic 'wall of love'.
+author: aayushbharti
+published: true
+---
+
+<ComponentPreview name="testimonial-wall-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx magic-ui-cli@latest add testimonial-wall
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="testimonial-wall" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { TestimonialWall } from "@/components/magicui/testimonial-wall";
+```
+
+```tsx
+const testimonials = [
+  {
+    text: "This component is fantastic for showcasing customer feedback.",
+    image: "/path/to/avatar.jpg",
+    name: "Jane Doe",
+    role: "Marketing Manager",
+  },
+  // ... more testimonials
+];
+
+export function Page() {
+  return <TestimonialWall testimonials={testimonials} />;
+}
+```
+
+## Props
+
+The `Props` table is updated to match your final component.
+
+| Prop           | Type                                                             | Default    | Description                                                |
+| -------------- | ---------------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
+| `testimonials` | `{ text: string; image: string; name: string; role: string; }[]` | `[]`       | An array of testimonial objects to display.                |
+| `className`    | `string`                                                         | `-`        | Additional class names to style the component's container. |
+| `direction`    | `'up' \| 'down'`                                                 | `'up'`     | The direction of the scroll.                               |
+| `duration`     | `number`                                                         | `20`       | The duration of one full scrolling animation in seconds.   |
+| `gap`          | `string`                                                         | `'1.5rem'` | The gap between items (e.g., '1.5rem', '24px').            |
+
+## Credits
+
+- Credit to [@AayushBharti](https://github.com/AayushBharti) for the component.

@@ -266,6 +266,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Testimonial Wall",
+          href: `/docs/components/testimonial-wall`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
