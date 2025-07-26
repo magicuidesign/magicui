@@ -1244,4 +1244,19 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "testimonial-wall",
+    type: "registry:ui",
+    title: "Testimonial Wall",
+    description:
+      "A component that displays testimonials in infinitely scrolling columns, creating a dynamic 'wall of love'.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/testimonial-wall.tsx",
+        type: "registry:ui",
+        target: "components/magicui/testimonial-wall.tsx",
+      },
+    ],
+  },
 ];
