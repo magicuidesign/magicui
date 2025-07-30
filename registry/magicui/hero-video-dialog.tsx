@@ -80,8 +80,10 @@ export default function HeroVideoDialog({
 
   return (
     <div className={cn("relative", className)}>
-      <div
-        className="group relative cursor-pointer"
+      <button
+        type="button"
+        aria-label="Play video"
+        className="group relative cursor-pointer border-0 bg-transparent p-0"
         onClick={() => setIsVideoOpen(true)}
       >
         <img
@@ -106,12 +108,19 @@ export default function HeroVideoDialog({
             </div>
           </div>
         </div>
-      </div>
+      </button>
       <AnimatePresence>
         {isVideoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+                setIsVideoOpen(false);
+              }
+            }}
             onClick={() => setIsVideoOpen(false)}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md"
@@ -127,6 +136,7 @@ export default function HeroVideoDialog({
               <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
                 <iframe
                   src={videoSrc}
+                  title="Hero Video player"
                   className="size-full rounded-2xl"
                   allowFullScreen
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
