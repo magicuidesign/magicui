@@ -132,7 +132,7 @@ export default function DockDemo() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
+                      "size-12 rounded-full ",
                     )}
                   >
                     <social.icon className="size-4" />
@@ -148,7 +148,7 @@ export default function DockDemo() {
           <DockIcon>
             <Tooltip>
               <TooltipTrigger asChild>
-                <ModeToggle className="rounded-full" />
+                <ModeToggle className="size-12 rounded-full" />
               </TooltipTrigger>
               <TooltipContent>
                 <p>Theme</p>
