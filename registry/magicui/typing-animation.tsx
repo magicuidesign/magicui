@@ -60,10 +60,11 @@ export function TypingAnimation({
   useEffect(() => {
     if (!started) return;
 
+    const graphemes = Array.from(children);
     let i = 0;
     const typingEffect = setInterval(() => {
-      if (i < children.length) {
-        setDisplayedText(children.substring(0, i + 1));
+      if (i < graphemes.length) {
+        setDisplayedText(graphemes.slice(0, i + 1).join(""));
         i++;
       } else {
         clearInterval(typingEffect);
