@@ -356,6 +356,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Diamond Gallery",
+          href: "/docs/components/diamond-gallery",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

@@ -1,0 +1,105 @@
+---
+title: Diamond Gallery
+date: 2025-07-18
+description: A dynamic image gallery component that arranges four images in a diamond pattern with interactive hover effects, blur transitions, and optional link functionality.
+author: chinmaysawant
+published: true
+---
+
+<ComponentPreview name="diamond-gallery-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/diamond-gallery"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="diamond-gallery" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { DiamondGallery } from "@/components/magicui/diamond-gallery";
+```
+
+```tsx
+<div className="w-96 h-96 mx-auto aspect-square">
+    <DiamondGallery
+    images={[
+        {
+        image: "/diamond-gallery-demo.jpg",
+        isLink: true,
+        href: "https://example.com",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        },
+        {
+        image: "/diamond-gallery-demo.jpg",
+        isLink: false,
+        },
+        {
+        image: "/diamond-gallery-demo.jpg",
+        isLink: false,
+        },
+        {
+        image: "/diamond-gallery-demo.jpg",
+        isLink: false,
+        },
+    ]}
+    />
+</div>
+```
+
+## Features
+
+- Displays up to 4 images in a diamond-shaped layout
+- Hover effects with smooth transitions
+- Optional link functionality for each image
+- Responsive design that maintains aspect ratio
+- Interactive blur and grayscale effects on non-hovered images
+
+## Props
+
+### ImageItem
+
+| Prop     | Type      | Default | Description                                   |
+| -------- | --------- | ------- | --------------------------------------------- |
+| `image`  | `string`  | -       | URL of the image to display                   |
+| `isLink` | `boolean` | `false` | Whether the image should be wrapped in a link |
+| `href`   | `string`  | -       | URL for the link (required if isLink is true) |
+| `target` | `string`  | -       | Target attribute for the link                 |
+| `rel`    | `string`  | -       | Rel attribute for the link                    |
+
+### DiamondGalleryProps
+
+| Prop     | Type          | Default | Description                        |
+| -------- | ------------- | ------- | ---------------------------------- |
+| `images` | `ImageItem[]` | -       | Array of images to display (max 4) |
+
+## Credits
+
+- Created by [Chinmay Sawant](https://github.com/chinmaynoob)

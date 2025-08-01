@@ -1244,4 +1244,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "diamond-gallery",
+    type: "registry:ui",
+    title: "Diamond Gallery",
+    description:
+      "A component that displays an image with a diamond gallery effect.",
+    files: [
+      {
+        path: "registry/magicui/diamond-gallery.tsx",
+        type: "registry:ui",
+        target: "components/magicui/diamond-gallery.tsx",
+      },
+    ],
+  },
 ];

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "diamond-gallery-demo",
+  "type": "registry:example",
+  "title": "Diamond Gallery Demo",
+  "description": "Example showing a diamond gallery effect.",
+  "registryDependencies": [
+    "diamond-gallery"
+  ],
+  "files": [
+    {
+      "path": "registry/example/diamond-gallery-demo.tsx",
+      "content": "import DiamondGallery from \"@/registry/magicui/diamond-gallery\";\r\n\r\nexport default function DiamondGalleryDemo() {\r\n    return (\r\n        <div>\r\n            <DiamondGallery\r\n                images={[\r\n                    {\r\n                        image: '/pixel-image-demo.jpg',\r\n                        isLink: true,\r\n                        href: '/',\r\n                        target: '_blank',\r\n                        rel: 'noopener noreferrer'\r\n                    },\r\n                    {\r\n                        image: '/pixel-image-demo.jpg',\r\n                        isLink: false\r\n                    },\r\n                    {\r\n                        image: '/pixel-image-demo.jpg',\r\n                        isLink: false\r\n                    },\r\n                    {\r\n                        image: '/pixel-image-demo.jpg',\r\n                        isLink: true,\r\n                        href: '/',\r\n                        target: '',\r\n                        rel: ''\r\n                    }\r\n                ]}\r\n            />\r\n        </div>\r\n    )\r\n}",
+      "type": "registry:example",
+      "target": "components/diamond-gallery-demo.tsx"
+    }
+  ]
+}
