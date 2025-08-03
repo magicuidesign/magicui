@@ -45,7 +45,9 @@ export function Pointer({
           y.set(e.clientY);
         };
 
-        const handleMouseEnter = () => {
+        const handleMouseEnter = (e: MouseEvent) => {
+          x.set(e.clientX);
+          y.set(e.clientY);
           setIsActive(true);
         };
 
