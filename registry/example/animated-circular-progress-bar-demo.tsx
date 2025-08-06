@@ -21,8 +21,6 @@ export default function AnimatedCircularProgressBarDemo() {
 
   return (
     <AnimatedCircularProgressBar
-      max={100}
-      min={0}
       value={value}
       gaugePrimaryColor="rgb(79 70 229)"
       gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
