@@ -8,6 +8,8 @@ published: true
 
 <ComponentPreview name="scroll-based-velocity-demo" />
 
+<ComponentPreview name="scroll-based-velocity-images-demo" />
+
 ## Installation
 
 <Tabs defaultValue="cli">
@@ -49,18 +51,42 @@ npm install motion
 ## Usage
 
 ```tsx
-import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/magicui/scroll-based-velocity";
 ```
 
 ```tsx
-<VelocityScroll>Scroll Based Velocity</VelocityScroll>
+<ScrollVelocityContainer className="text-4xl md:text-7xl font-bold">
+  <ScrollVelocityRow baseVelocity={20} direction={1}>
+    Velocity Scroll
+  </ScrollVelocityRow>
+  <ScrollVelocityRow baseVelocity={20} direction={-1}>
+    Velocity Scroll
+  </ScrollVelocityRow>
+</ScrollVelocityContainer>
 ```
 
 ## Props
 
-| Prop              | Type        | Default | Description                                   |
-| ----------------- | ----------- | ------- | --------------------------------------------- |
-| `className`       | `string`    | `-`     | The class name to be applied to the component |
-| `children`        | `ReactNode` | `-`     | Content to be animated                        |
-| `defaultVelocity` | `number`    | `5`     | Base scroll velocity of text                  |
-| `numRows`         | `number`    | `2`     | Number of rows to be animated                 |
+### ScrollVelocityContainer
+
+| Prop        | Type        | Default | Description                                   |
+| ----------- | ----------- | ------- | --------------------------------------------- |
+| `className` | `string`    | `-`     | The class name to be applied to the component |
+| `children`  | `ReactNode` | `-`     | Content to be animated                        |
+
+### ScrollVelocityRow
+
+| Prop           | Type        | Default | Description                                        |
+| -------------- | ----------- | ------- | -------------------------------------------------- |
+| `className`    | `string`    | `-`     | The class name to be applied to the row container  |
+| `children`     | `ReactNode` | `-`     | Content to be duplicated and scrolled              |
+| `baseVelocity` | `number`    | `5`     | Base scroll velocity percentage of content width   |
+| `direction`    | `1 \| -1`   | `1`     | Scroll direction (1 = left-to-right, -1 = reverse) |
+
+## Performance
+
+- Pauses updates when offscreen and when the tab is hidden.
+- Respects user preference for reduced motion.

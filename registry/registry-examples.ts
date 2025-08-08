@@ -1047,6 +1047,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scroll-based-velocity-images-demo",
+    type: "registry:example",
+    title: "Scroll Based Velocity Images",
+    description:
+      "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
+    registryDependencies: ["https://magicui.design/r/scroll-based-velocity"],
+    files: [
+      {
+        path: "registry/example/scroll-based-velocity-images-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-based-velocity-images-demo.tsx",
+      },
+    ],
+  },
+  {
     name: "scratch-to-reveal-demo",
     type: "registry:example",
     title: "Scratch To Reveal Demo",
