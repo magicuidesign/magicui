@@ -26,7 +26,7 @@ interface HighlighterProps {
   multiline?: boolean;
 }
 
-export default function Highlighter({
+export function Highlighter({
   children,
   action = "highlight",
   color = "#ffd1dc", // Default pink color

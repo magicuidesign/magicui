@@ -1313,6 +1313,22 @@
       ]
     },
     {
+      "name": "highlighter",
+      "type": "registry:ui",
+      "title": "Highlighter",
+      "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+      "dependencies": [
+        "rough-notation"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/highlighter.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/highlighter.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3340,6 +3356,30 @@
           "path": "registry/example/pixel-image-demo.tsx",
           "type": "registry:example",
           "target": "components/pixel-image-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "highlighter-demo",
+      "type": "registry:example",
+      "title": "Highlighter Demo",
+      "description": "Example showing the demo of a Highlighter",
+      "dependencies": [
+        "rough-notation"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/highlighter"
+      ],
+      "files": [
+        {
+          "path": "registry/example/highlighter-demo.tsx",
+          "type": "registry:example",
+          "target": "components/highlighter-demo.tsx"
+        },
+        {
+          "path": "registry/magicui/highlighter.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/highlighter.tsx"
         }
       ]
     },

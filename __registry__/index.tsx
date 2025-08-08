@@ -1601,6 +1601,54 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "video-text": {
+    name: "video-text",
+    description:
+      "A component that displays text with a video playing in the background.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "components/magicui/video-text.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/video-text.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "pixel-image": {
+    name: "pixel-image",
+    description:
+      "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/pixel-image.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pixel-image.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/pixel-image.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   highlighter: {
     name: "highlighter",
     description:
