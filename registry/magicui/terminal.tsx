@@ -1,56 +1,76 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, MotionProps } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { motion, MotionProps, useInView } from "motion/react";
+import {
+  Children,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
+interface SequenceContextValue {
+  completeItem: (index: number) => void;
+  activeIndex: number;
+  sequenceStarted: boolean;
+}
+
+const SequenceContext = createContext<SequenceContextValue | null>(null);
+
+const useSequence = () => useContext(SequenceContext);
+
+const ItemIndexContext = createContext<number | null>(null);
+const useItemIndex = () => useContext(ItemIndexContext);
 
 interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode;
   delay?: number;
   className?: string;
-  isView?: boolean; // Prop to control animation trigger on visibility
+  startOnView?: boolean;
 }
 
 export const AnimatedSpan = ({
   children,
   delay = 0,
   className,
-  isView = false, // Default: animation waits for visibility
+  startOnView = false,
   ...props
 }: AnimatedSpanProps) => {
-  const [isVisible, setIsVisible] = useState(!isView); // Start with false if isView=false
   const elementRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(elementRef as React.RefObject<Element>, {
+    amount: 0.3,
+    once: true,
+  });
 
+  const sequence = useSequence();
+  const itemIndex = useItemIndex();
+  const [hasStarted, setHasStarted] = useState(false);
   useEffect(() => {
-    if (!isView) {
-      // Use IntersectionObserver to trigger animation when component is visible
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.disconnect(); // Disconnect observer after triggering
-          }
-        },
-        { threshold: 0.1 } // Trigger when 10% of the component is visible
-      );
-
-      if (elementRef.current) {
-        observer.observe(elementRef.current);
-      }
-
-      return () => {
-        observer.disconnect();
-      };
+    if (!sequence || itemIndex === null) return;
+    if (!sequence.sequenceStarted) return;
+    if (hasStarted) return;
+    if (sequence.activeIndex === itemIndex) {
+      setHasStarted(true);
     }
-  }, [isView]);
+  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex]);
+
+  const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true;
 
   return (
     <motion.div
       ref={elementRef}
       initial={{ opacity: 0, y: -5 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
-      transition={{ duration: 0.3, delay: delay / 1000 }}
+      animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
+      transition={{ duration: 0.3, delay: sequence ? 0 : delay / 1000 }}
       className={cn("grid text-sm font-normal tracking-tight", className)}
+      onAnimationComplete={() => {
+        if (!sequence) return;
+        if (itemIndex === null) return;
+        sequence.completeItem(itemIndex);
+      }}
       {...props}
     >
       {children}
@@ -64,7 +84,7 @@ interface TypingAnimationProps extends MotionProps {
   duration?: number;
   delay?: number;
   as?: React.ElementType;
-  isView?: boolean; // Prop to control animation trigger on visibility
+  startOnView?: boolean;
 }
 
 export const TypingAnimation = ({
@@ -73,58 +93,64 @@ export const TypingAnimation = ({
   duration = 60,
   delay = 0,
   as: Component = "span",
-  isView = false, // Default: animation waits for visibility
+  startOnView = true,
   ...props
 }: TypingAnimationProps) => {
   if (typeof children !== "string") {
     throw new Error("TypingAnimation: children must be a string. Received:");
   }
 
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  });
+  const MotionComponent = useMemo(
+    () =>
+      motion.create(Component, {
+        forwardMotionProps: true,
+      }),
+    [Component],
+  );
 
   const [displayedText, setDisplayedText] = useState<string>("");
   const [started, setStarted] = useState(false);
   const elementRef = useRef<HTMLElement | null>(null);
+  const isInView = useInView(elementRef as React.RefObject<Element>, {
+    amount: 0.3,
+    once: true,
+  });
+
+  const sequence = useSequence();
+  const itemIndex = useItemIndex();
 
   useEffect(() => {
-    if (!isView) {
-      // Use IntersectionObserver to start typing animation when component is visible
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            // Start animation with specified delay after visibility
-            const startTimeout = setTimeout(() => {
-              setStarted(true);
-            }, delay);
-            observer.disconnect(); // Disconnect observer after triggering
-            return () => clearTimeout(startTimeout);
-          }
-        },
-        { threshold: 0.1 } // Trigger when 10% of the component is visible
-      );
-
-      if (elementRef.current) {
-        observer.observe(elementRef.current);
-      }
-
-      return () => {
-        observer.disconnect();
-      };
-    } else {
-      // Start animation with delay if isView=true
-      const startTimeout = setTimeout(() => {
+    if (sequence && itemIndex !== null) {
+      if (!sequence.sequenceStarted) return;
+      if (started) return;
+      if (sequence.activeIndex === itemIndex) {
         setStarted(true);
-      }, delay);
+      }
+      return;
+    }
+
+    if (!startOnView) {
+      const startTimeout = setTimeout(() => setStarted(true), delay);
       return () => clearTimeout(startTimeout);
     }
-  }, [delay, isView]);
+
+    if (!isInView) return;
+
+    const startTimeout = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(startTimeout);
+  }, [
+    delay,
+    startOnView,
+    isInView,
+    started,
+    sequence?.activeIndex,
+    sequence?.sequenceStarted,
+    itemIndex,
+  ]);
 
   useEffect(() => {
     if (!started) return;
 
-    // Handle typing animation
     let i = 0;
     const typingEffect = setInterval(() => {
       if (i < children.length) {
@@ -132,6 +158,9 @@ export const TypingAnimation = ({
         i++;
       } else {
         clearInterval(typingEffect);
+        if (sequence && itemIndex !== null) {
+          sequence.completeItem(itemIndex);
+        }
       }
     }, duration);
 
@@ -154,11 +183,51 @@ export const TypingAnimation = ({
 interface TerminalProps {
   children: React.ReactNode;
   className?: string;
+  sequence?: boolean;
+  startOnView?: boolean;
 }
 
-export const Terminal = ({ children, className }: TerminalProps) => {
-  return (
+export const Terminal = ({
+  children,
+  className,
+  sequence = true,
+  startOnView = true,
+}: TerminalProps) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(containerRef as React.RefObject<Element>, {
+    amount: 0.3,
+    once: true,
+  });
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sequenceHasStarted = sequence ? !startOnView || isInView : false;
+
+  const contextValue = useMemo<SequenceContextValue | null>(() => {
+    if (!sequence) return null;
+    return {
+      completeItem: (index: number) => {
+        setActiveIndex((current) =>
+          index === current ? current + 1 : current,
+        );
+      },
+      activeIndex,
+      sequenceStarted: sequenceHasStarted,
+    };
+  }, [sequence, activeIndex, sequenceHasStarted]);
+
+  const wrappedChildren = useMemo(() => {
+    if (!sequence) return children;
+    const array = Children.toArray(children);
+    return array.map((child, index) => (
+      <ItemIndexContext.Provider key={index} value={index}>
+        {child as React.ReactNode}
+      </ItemIndexContext.Provider>
+    ));
+  }, [children, sequence]);
+
+  const content = (
     <div
+      ref={containerRef}
       className={cn(
         "z-0 h-full max-h-[400px] w-full max-w-lg rounded-xl border border-border bg-background",
         className,
@@ -172,8 +241,16 @@ export const Terminal = ({ children, className }: TerminalProps) => {
         </div>
       </div>
       <pre className="p-4">
-        <code className="grid gap-y-1 overflow-auto">{children}</code>
+        <code className="grid gap-y-1 overflow-auto">{wrappedChildren}</code>
       </pre>
     </div>
+  );
+
+  if (!sequence) return content;
+
+  return (
+    <SequenceContext.Provider value={contextValue}>
+      {content}
+    </SequenceContext.Provider>
   );
 };
