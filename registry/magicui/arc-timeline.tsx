@@ -91,7 +91,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
         -1 * count * angleBetweenMinorSteps * (lineCountFillBetweenSteps + 1) -
         angleBetweenMinorSteps * boundaryPlaceholderLinesCount
       );
-    }
+    },
   );
 
   return (
@@ -149,7 +149,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                     <div
                       className={cn(
                         "absolute left-1/2 top-0 -translate-x-1/2 cursor-pointer transition-all duration-200",
-                        isActive ? "h-[120px] w-[2px]" : "h-16 w-[1.5px]"
+                        isActive ? "h-[120px] w-[2px]" : "h-16 w-[1.5px]",
                       )}
                       style={{
                         transformOrigin: `50% ${circleWidth / 2}px`,
@@ -164,7 +164,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                           "h-full w-full transition-colors duration-200",
                           isActive
                             ? "bg-[var(--step-line-active-color,#888888)] dark:bg-[var(--step-line-active-color,#9780ff)]"
-                            : "bg-[var(--step-line-inactive-color,#b1b1b1)] dark:bg-[var(--step-line-inactive-color,#737373)]"
+                            : "bg-[var(--step-line-inactive-color,#b1b1b1)] dark:bg-[var(--step-line-inactive-color,#737373)]",
                         )}
                         style={{
                           transformOrigin: "center top",
@@ -178,7 +178,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                             "absolute bottom-0 left-1/2 aspect-square -translate-x-1/2",
                             isActive
                               ? "translate-y-[calc(100%_+_14px)] scale-[1.2] text-[var(--icon-active-color,#555555)] dark:text-[var(--icon-active-color,#d4d4d4)]"
-                              : "translate-y-[calc(100%_+_4px)] scale-100 text-[var(--icon-inactive-color,#a3a3a3)] dark:text-[var(--icon-inactive-color,#a3a3a3)]"
+                              : "translate-y-[calc(100%_+_4px)] scale-100 text-[var(--icon-inactive-color,#a3a3a3)] dark:text-[var(--icon-inactive-color,#a3a3a3)]",
                           )}
                         >
                           {step.icon}
@@ -187,7 +187,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                           className={cn(
                             "absolute bottom-0 left-1/2 line-clamp-3 flex w-[240px] -translate-x-1/2 translate-y-[calc(100%_+_42px)] items-center justify-center text-center text-sm transition-opacity duration-300 ease-in",
                             "text-[var(--description-color,#555555)] dark:text-[var(--description-color,#d4d4d4)]",
-                            isActive ? "opacity-100" : "opacity-0"
+                            isActive ? "opacity-100" : "opacity-0",
                           )}
                         >
                           {step.content}
@@ -199,7 +199,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                             "absolute left-1/2 top-0 z-10 -translate-x-1/2 translate-y-[calc(-100%-24px)] whitespace-nowrap",
                             isActive
                               ? "text-[var(--time-active-color,#555555)] dark:text-[var(--time-active-color,#d4d4d4)]"
-                              : "text-[var(--time-inactive-color,#a3a3a3)] dark:text-[var(--time-inactive-color,#a3a3a3)]"
+                              : "text-[var(--time-inactive-color,#a3a3a3)] dark:text-[var(--time-inactive-color,#a3a3a3)]",
                           )}
                         >
                           {line.time}
@@ -272,7 +272,7 @@ function PlaceholderLines(props: PlaceholderLinesProps) {
       {Array(
         isLastStep || isFirstStep
           ? boundaryPlaceholderLinesCount
-          : lineCountFillBetweenSteps
+          : lineCountFillBetweenSteps,
       )
         .fill("")
         .map((_, fillIndex) => {

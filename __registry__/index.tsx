@@ -1625,16 +1625,65 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "pixel-image": {
+    name: "pixel-image",
+    description:
+      "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/pixel-image.tsx",
+        type: "registry:ui",
+        target: "components/magicui/pixel-image.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/pixel-image.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  highlighter: {
+    name: "highlighter",
+    description:
+      "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "components/magicui/highlighter.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/highlighter.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "arc-timeline": {
     name: "arc-timeline",
-    description: "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
+    description:
+      "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
       {
         path: "registry/magicui/arc-timeline.tsx",
         type: "registry:ui",
-        target: "components/magicui/arc-timeline.tsx"
+        target: "components/magicui/arc-timeline.tsx",
       },
     ],
     component: React.lazy(async () => {
@@ -4620,6 +4669,11 @@ export const Index: Record<string, any> = {
         path: "registry/example/arc-timeline-demo.tsx",
         type: "registry:example",
         target: "components/arc-timeline-demo.tsx",
+      },
+      {
+        path: "registry/magicui/arc-timeline.tsx",
+        type: "registry:ui",
+        target: "components/magicui/arc-timeline.tsx",
       },
     ],
     component: React.lazy(async () => {
