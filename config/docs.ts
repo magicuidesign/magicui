@@ -219,6 +219,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Animated Theme Toggler",
+          href: `/docs/components/animated-theme-toggler`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "File Tree",
           href: `/docs/components/file-tree`,
           items: [],
