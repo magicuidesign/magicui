@@ -9,7 +9,7 @@ type props = {
   className?: string;
 };
 
-const ThemeToggler = ({ className }: props) => {
+export const AnimatedThemeToggler = ({ className }: props) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const changeTheme = async () => {
@@ -51,4 +51,3 @@ const ThemeToggler = ({ className }: props) => {
     </button>
   );
 };
-export default ThemeToggler;

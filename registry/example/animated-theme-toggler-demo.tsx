@@ -1,9 +1,9 @@
-import ThemeToggler from "@/registry/magicui/animated-theme-toggler";
+import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
 
 function AnimatedThemeTogglerDemo() {
   return (
     <div>
-      <ThemeToggler />
+      <AnimatedThemeToggler />
     </div>
   );
 }

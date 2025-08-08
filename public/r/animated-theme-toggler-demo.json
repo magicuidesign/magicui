@@ -2,6 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-theme-toggler-demo",
   "type": "registry:example",
+  "title": "Animated Theme Toggler Demo",
   "description": "Example showing animation while changing the theme.",
   "registryDependencies": [
     "https://magicui.design/animated-theme-toggler"
@@ -9,8 +10,9 @@
   "files": [
     {
       "path": "registry/example/animated-theme-toggler-demo.tsx",
-      "content": "import ThemeToggler from \"@/registry/magicui/animated-theme-toggler\";\n\nfunction AnimatedThemeTogglerDemo() {\n  return (\n    <div>\n      <ThemeToggler />\n    </div>\n  );\n}\nexport default AnimatedThemeTogglerDemo;\n",
-      "type": "registry:example"
+      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\";\n\nfunction AnimatedThemeTogglerDemo() {\n  return (\n    <div>\n      <AnimatedThemeToggler />\n    </div>\n  );\n}\nexport default AnimatedThemeTogglerDemo;\n",
+      "type": "registry:example",
+      "target": "components/animated-theme-toggler-demo.tsx"
     }
   ]
 }
