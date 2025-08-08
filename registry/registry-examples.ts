@@ -1865,4 +1865,16 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "animated-grid-background-demo",
+    description: "Demo of the animated grid background component",
+    type: "registry:example",
+    registryDependencies: ["animated-grid-background"],
+    files: [
+      {
+        path: "registry/example/animated-grid-background-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

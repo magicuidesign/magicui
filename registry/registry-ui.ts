@@ -1293,4 +1293,19 @@ export const ui: Registry["items"] = [
       },
     },
   },
+  {
+    name: "animated-grid-background",
+    type: "registry:ui",
+    title: "Animated Grid Background",
+    description:
+      "A dynamic grid background with animated glowing cells that move vertically with beautiful trailing effects.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/animated-grid-background.tsx",
+        type: "registry:ui",
+        target: "components/magicui/animated-grid-background.tsx",
+      },
+    ],
+  },
 ];

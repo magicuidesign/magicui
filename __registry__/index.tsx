@@ -1720,6 +1720,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-grid-background": {
+    name: "animated-grid-background",
+    description:
+      "A dynamic grid background with animated glowing cells that move vertically with beautiful trailing effects.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/animated-grid-background.tsx",
+        type: "registry:ui",
+        target: "components/magicui/animated-grid-background.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/magicui/animated-grid-background.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4779,6 +4805,31 @@ export const Index: Record<string, any> = {
     component: React.lazy(async () => {
       const mod = await import(
         "@/registry/example/animated-theme-toggler-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-grid-background-demo": {
+    name: "animated-grid-background-demo",
+    description: "Demo of the animated grid background component",
+    type: "registry:example",
+    registryDependencies: ["animated-grid-background"],
+    files: [
+      {
+        path: "registry/example/animated-grid-background-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/animated-grid-background-demo.tsx"
       );
       const exportName =
         Object.keys(mod).find(
