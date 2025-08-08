@@ -264,6 +264,12 @@ export const docsConfig: DocsConfig = {
           title: "Progressive Blur",
           href: `/docs/components/progressive-blur`,
           items: [],
+          label: "",
+        },
+        {
+          title: "Arc Timeline",
+          href: `/docs/components/arc-timeline`,
+          items: [],
           label: "New",
         },
       ],
