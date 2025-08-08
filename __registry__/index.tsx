@@ -3444,6 +3444,32 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scroll-based-velocity-images-demo": {
+    name: "scroll-based-velocity-images-demo",
+    description:
+      "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/scroll-based-velocity"],
+    files: [
+      {
+        path: "registry/example/scroll-based-velocity-images-demo.tsx",
+        type: "registry:example",
+        target: "components/scroll-based-velocity-images-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import(
+        "@/registry/example/scroll-based-velocity-images-demo.tsx"
+      );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "scratch-to-reveal-demo": {
     name: "scratch-to-reveal-demo",
     description: "Example showing an interactive scratch-off reveal effect.",
