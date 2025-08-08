@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-grid-background-demo",
+  "type": "registry:example",
+  "description": "Demo of the animated grid background component",
+  "registryDependencies": [
+    "animated-grid-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-grid-background-demo.tsx",
+      "content": "import { AnimatedGridBackground } from \"@/registry/magicui/animated-grid-background\";\n\nexport default function AnimatedGridBackgroundDemo() {\n  return (\n    <div className=\"relative h-[400px] w-full overflow-hidden rounded-lg border\">\n      <AnimatedGridBackground\n        gridSize={20}\n        gridColor=\"cyan\"\n        animatedCellsCount={12}\n        animationSpeed={6}\n        glowIntensity={0.6}\n        animationDelay={3}\n        backgroundColor=\"hsl(0 0% 3%)\"\n        className=\"h-full w-full\"\n      >\n        <div className=\"flex h-full items-center justify-center\">\n          <div className=\"text-center\">\n            <h2 className=\"text-2xl font-bold text-white mb-2\">\n              Animated Grid Background\n            </h2>\n            <p className=\"text-gray-300\">\n              Beautiful animated grid with glowing cells\n            </p>\n          </div>\n        </div>\n      </AnimatedGridBackground>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

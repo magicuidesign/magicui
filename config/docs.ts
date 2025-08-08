@@ -591,6 +591,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Animated Grid Background",
+          href: `/docs/components/animated-grid-background`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],
