@@ -354,6 +354,12 @@ export const docsConfig: DocsConfig = {
           title: "Pixel Image",
           href: "/docs/components/pixel-image",
           items: [],
+          label: "",
+        },
+        {
+          title: "Highlighter",
+          href: "/docs/components/highlighter",
+          items: [],
           label: "New",
         },
       ],

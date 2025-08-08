@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlighter-demo",
+  "type": "registry:example",
+  "title": "Highlighter Demo",
+  "description": "Example showing the demo of a Highlighter",
+  "dependencies": [
+    "rough-notation"
+  ],
+  "registryDependencies": [
+    "https://magicui.design/r/highlighter"
+  ],
+  "files": [
+    {
+      "path": "registry/example/highlighter-demo.tsx",
+      "content": "import { Highlighter } from \"@/registry/magicui/highlighter\";\n\nexport default function HighlighterDemo() {\n  return (\n    <div className=\"text-center\">\n      <p className=\"leading-relaxed\">\n        The{\" \"}\n        <Highlighter action=\"underline\" color=\"#FF9800\">\n          Magic UI Highlighter\n        </Highlighter>{\" \"}\n        makes important{\" \"}\n        <Highlighter action=\"highlight\" color=\"#87CEFA\">\n          text stand out\n        </Highlighter>{\" \"}\n        effortlessly.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/highlighter-demo.tsx"
+    },
+    {
+      "path": "registry/magicui/highlighter.tsx",
+      "content": "\"use client\";\n\nimport { useEffect, useRef } from \"react\";\nimport { annotate } from \"rough-notation\";\nimport type React from \"react\";\n\n// Define available annotation actions\ntype AnnotationAction =\n  | \"highlight\"\n  | \"underline\"\n  | \"box\"\n  | \"circle\"\n  | \"strike-through\"\n  | \"crossed-off\"\n  | \"bracket\";\n\n// Custom TypeScript interface for supported props\ninterface HighlighterProps {\n  children: React.ReactNode;\n  action?: AnnotationAction;\n  color?: string;\n  strokeWidth?: number;\n  animationDuration?: number;\n  iterations?: number;\n  padding?: number;\n  multiline?: boolean;\n}\n\nexport function Highlighter({\n  children,\n  action = \"highlight\",\n  color = \"#ffd1dc\", // Default pink color\n  strokeWidth = 1.5,\n  animationDuration = 600,\n  iterations = 2,\n  padding = 2,\n  multiline = true,\n}: HighlighterProps) {\n  const elementRef = useRef<HTMLSpanElement>(null);\n\n  useEffect(() => {\n    const element = elementRef.current;\n    if (element) {\n      const annotation = annotate(element, {\n        type: action,\n        color,\n        strokeWidth,\n        animationDuration,\n        iterations,\n        padding,\n        multiline,\n      });\n\n      annotation.show();\n\n      // Store the current element in closure for cleanup\n      return () => {\n        if (element) {\n          annotate(element, { type: action }).remove();\n        }\n      };\n    }\n  }, [\n    action,\n    color,\n    strokeWidth,\n    animationDuration,\n    iterations,\n    padding,\n    multiline,\n  ]);\n\n  return (\n    <span ref={elementRef} className=\"relative inline-block bg-transparent\">\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/highlighter.tsx"
+    }
+  ]
+}

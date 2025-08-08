@@ -1649,6 +1649,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  highlighter: {
+    name: "highlighter",
+    description:
+      "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "components/magicui/highlighter.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/highlighter.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4574,6 +4598,34 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pixel-image-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "highlighter-demo": {
+    name: "highlighter-demo",
+    description: "Example showing the demo of a Highlighter",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/highlighter"],
+    files: [
+      {
+        path: "registry/example/highlighter-demo.tsx",
+        type: "registry:example",
+        target: "components/highlighter-demo.tsx",
+      },
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "components/magicui/highlighter.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/highlighter-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
