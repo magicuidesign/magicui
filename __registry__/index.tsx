@@ -1269,7 +1269,8 @@ export const Index: Record<string, any> = {
   },
   "shine-border": {
     name: "shine-border",
-    description: "Shine border is an animated background border effect.",
+    description:
+      "Shine border is an animated background border effect. (v2 - 20205-08-11)",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [
@@ -3994,6 +3995,30 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shine-border-demo-2.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "shine-border-demo-3": {
+    name: "shine-border-demo-3",
+    description:
+      "Third example showing an animated shining border effect + Fade and delayed load features.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/shine-border"],
+    files: [
+      {
+        path: "registry/example/shine-border-demo-3.tsx",
+        type: "registry:example",
+        target: "components/shine-border-demo-3.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/shine-border-demo-3.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

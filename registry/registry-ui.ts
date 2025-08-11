@@ -959,7 +959,8 @@ export const ui: Registry["items"] = [
     name: "shine-border",
     type: "registry:ui",
     title: "Shine Border",
-    description: "Shine border is an animated background border effect.",
+    description:
+      "Shine border is an animated background border effect. (v2 - 20205-08-11)",
     files: [
       {
         path: "registry/magicui/shine-border.tsx",
