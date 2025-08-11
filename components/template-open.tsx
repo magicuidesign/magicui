@@ -21,7 +21,7 @@ export function TemplateOpen({ url, free = false }: TemplateOpenProps) {
           buttonVariants({
             variant: "default",
           }),
-          "not-prose group relative w-full gap-2",
+          "not-prose group relative w-full gap-2 shrink",
         )}
       >
         Download
@@ -38,7 +38,7 @@ export function TemplateOpen({ url, free = false }: TemplateOpenProps) {
         buttonVariants({
           variant: "default",
         }),
-        "not-prose group relative w-full gap-1",
+        "not-prose group relative w-full gap-1 shrink",
       )}
     >
       Buy Now
