@@ -1,6 +1,6 @@
 {
-  "name": "shadcn/ui",
-  "homepage": "https://ui.shadcn.com",
+  "name": "magic-ui",
+  "homepage": "https://magicui.design",
   "items": [
     {
       "name": "index",

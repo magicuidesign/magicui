@@ -12,8 +12,8 @@ import { ui } from "../registry/registry-ui";
 const DEPRECATED_ITEMS = ["toast"];
 
 const registry = {
-  name: "shadcn/ui",
-  homepage: "https://ui.shadcn.com",
+  name: "magic-ui",
+  homepage: "https://magicui.design",
   items: z.array(registryItemSchema).parse(
     [
       {
@@ -33,7 +33,7 @@ const registry = {
       ...lib,
     ].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name);
-    }),
+    })
   ),
 } satisfies Registry;
 
@@ -122,7 +122,7 @@ async function buildRegistryJsonFile() {
   await fs.writeFile(path.join(process.cwd(), `registry.json`), registryJson);
   await fs.writeFile(
     path.join(process.cwd(), `public/registry.json`),
-    registryJson,
+    registryJson
   );
 }
 
