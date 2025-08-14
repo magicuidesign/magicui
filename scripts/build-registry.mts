@@ -8,6 +8,7 @@ import { z } from "zod";
 import { examples } from "../registry/registry-examples";
 import { lib } from "../registry/registry-lib";
 import { ui } from "../registry/registry-ui";
+import { siteConfig } from "../config/site";
 
 const DEPRECATED_ITEMS = ["toast"];
 
@@ -73,15 +74,14 @@ export const Index: Record<string, any> = {`;
       target: "${file.target ?? ""}"
     }`;
     })}],
-    component: ${
-      componentPath
+    component: ${componentPath
         ? `React.lazy(async () => {
       const mod = await import("${componentPath}")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     })`
         : "null"
-    },
+      },
     meta: ${JSON.stringify(item.meta)},
   },`;
   }
@@ -126,6 +126,244 @@ async function buildRegistryJsonFile() {
   );
 }
 
+type LlmTxtEntry = {
+  title: string;
+  description: string;
+  source: string;
+  "associate-demo": string[];
+};
+
+function humanizeName(value: string): string {
+  return value
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .join(" ");
+}
+
+async function buildLlmTxtJson() {
+  const baseUrl = siteConfig.url.replace(/\/$/, "");
+  // Helper to pull meta from local registry JSON if needed
+  async function getLocalMeta(name: string): Promise<{ title?: string; description?: string }> {
+    const p = path.join(process.cwd(), "public", "r", `${name}.json`);
+    try {
+      const raw = await fs.readFile(p, "utf8");
+      const json = JSON.parse(raw) as { title?: string; description?: string };
+      return { title: json.title, description: json.description };
+    } catch {
+      return {};
+    }
+  }
+
+  // Build a map of component name -> associated demo names
+  const association = new Map<string, Set<string>>();
+  const uiNames = new Set(ui.map((u) => u.name));
+
+  // Helper to register an association safely
+  function addAssociation(componentName: string, demoName: string) {
+    if (!uiNames.has(componentName)) return;
+    if (!association.has(componentName)) association.set(componentName, new Set());
+    association.get(componentName)!.add(demoName);
+  }
+
+  // 1) Map using declared registryDependencies (robust to various formats)
+  for (const ex of examples) {
+    const deps = Array.isArray(ex.registryDependencies)
+      ? (ex.registryDependencies as string[])
+      : [];
+    for (const raw of deps) {
+      if (typeof raw !== "string") continue;
+      const s = raw.trim();
+      let name: string | null = null;
+      try {
+        // If it's a URL, extract the last segment as a candidate name
+        if (/^https?:\/\//i.test(s)) {
+          const url = new URL(s);
+          // prefer '/r/<name>' pattern; else use last path segment
+          const rMatch = url.pathname.match(/\/r\/([^/]+)(?:\.json)?$/);
+          if (rMatch) {
+            name = rMatch[1];
+          } else {
+            const segments = url.pathname.split("/").filter(Boolean);
+            name = segments[segments.length - 1] ?? null;
+          }
+        } else {
+          // Otherwise treat as a bare name
+          name = s;
+        }
+      } catch {
+        // Fallback to bare string when URL parsing fails
+        name = s;
+      }
+      if (name) addAssociation(name, ex.name);
+    }
+  }
+
+  // 2) Parse example source imports to catch implicit links (e.g., ClientTweetCard)
+  const importRegex = /@\/registry\/magicui\/([A-Za-z0-9_-]+)/g;
+  for (const ex of examples) {
+    const filePath = ex.files?.[0]?.path ? path.join(process.cwd(), ex.files[0].path) : null;
+    if (!filePath) continue;
+    try {
+      const content = await fs.readFile(filePath, "utf8");
+      let m: RegExpExecArray | null;
+      while ((m = importRegex.exec(content)) !== null) {
+        const name = m[1];
+        addAssociation(name, ex.name);
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  const output: Record<string, LlmTxtEntry> = {};
+
+  for (const item of ui) {
+    if (item.type !== "registry:ui") continue;
+    const localMeta = await getLocalMeta(item.name);
+    const title = (item as any).title ?? localMeta.title ?? humanizeName(item.name);
+    const description =
+      (item as any).description ?? localMeta.description ?? `The ${title} component.`;
+    const source = `${baseUrl}/r/${item.name}.json`;
+    const demos = Array.from(association.get(item.name) ?? []).map((demo) =>
+      `${baseUrl}/r/${demo}.json`,
+    );
+
+    output[item.name] = {
+      title,
+      description,
+      source,
+      "associate-demo": demos,
+    } satisfies LlmTxtEntry;
+  }
+
+  const outPath = path.join(process.cwd(), "public/llm-txt.json");
+  await fs.writeFile(outPath, JSON.stringify(output, null, 2));
+}
+
+type LocalRegistryFile = {
+  path: string;
+  content?: string;
+  type: string;
+  target?: string;
+};
+
+type LocalRegistryItem = {
+  name: string;
+  type: string;
+  title?: string;
+  description?: string;
+  files: LocalRegistryFile[];
+};
+
+function urlToLocalRPath(urlStr: string): string | null {
+  try {
+    const u = new URL(urlStr);
+    // expect /r/<name>.json
+    const match = u.pathname.match(/\/r\/([^/]+)\.json$/);
+    if (!match) return null;
+    const name = match[1];
+    return path.join(process.cwd(), "public", "r", `${name}.json`);
+  } catch {
+    return null;
+  }
+}
+
+async function loadLocalRegistryByUrl(urlStr: string): Promise<LocalRegistryItem | null> {
+  const p = urlToLocalRPath(urlStr);
+  if (!p) return null;
+  try {
+    const raw = await fs.readFile(p, "utf8");
+    return JSON.parse(raw) as LocalRegistryItem;
+  } catch {
+    return null;
+  }
+}
+
+async function readRegistryFilesContents(item: LocalRegistryItem): Promise<string> {
+  const pieces: string[] = [];
+  for (const f of item.files ?? []) {
+    const header = `--- file: ${f.path} ---\n`;
+    if (f.content && f.content.length > 0) {
+      pieces.push(header + f.content + (f.content.endsWith("\n") ? "" : "\n"));
+      continue;
+    }
+    // Fallback: read from local repo path if available
+    try {
+      const localPath = path.join(process.cwd(), f.path);
+      const text = await fs.readFile(localPath, "utf8");
+      pieces.push(header + text + (text.endsWith("\n") ? "" : "\n"));
+    } catch {
+      pieces.push(header + "// [content not available]\n");
+    }
+  }
+  return pieces.join("\n");
+}
+
+async function buildLlmTxtFile() {
+  const jsonPath = path.join(process.cwd(), "public", "llm-txt.json");
+  const exists = await fs
+    .access(jsonPath)
+    .then(() => true)
+    .catch(() => false);
+  if (!exists) return;
+
+  const raw = await fs.readFile(jsonPath, "utf8");
+  const map = JSON.parse(raw) as Record<
+    string,
+    { title: string; description: string; source: string; "associate-demo": string[] }
+  >;
+
+  const names = Object.keys(map).sort((a, b) => a.localeCompare(b));
+  const sections: string[] = [];
+
+  for (const name of names) {
+    const entry = map[name];
+    const srcItem = await loadLocalRegistryByUrl(entry.source);
+    if (srcItem) {
+      sections.push(
+        `===== MAIN COMPONENT: ${srcItem.name} (${srcItem.type}) =====\n` +
+        `Title: ${entry.title}\n` +
+        `Description: ${entry.description}\n\n` +
+        (await readRegistryFilesContents(srcItem)),
+      );
+    } else {
+      sections.push(
+        `===== MAIN COMPONENT: ${name} =====\n` +
+        `Title: ${entry.title}\n` +
+        `Description: ${entry.description}\n\n` +
+        `// [source ${entry.source} not available]\n`,
+      );
+    }
+
+    for (const demoUrl of entry["associate-demo"]) {
+      const demoItem = await loadLocalRegistryByUrl(demoUrl);
+      if (!demoItem) {
+        sections.push(
+          `\n===== EXAMPLE: ${demoUrl} =====\n` +
+          `// [demo not available]\n`,
+        );
+        continue;
+      }
+      const demoHeader =
+        `\n\n===== EXAMPLE: ${demoItem.name} (${demoItem.type}) =====\n` +
+        (demoItem.title ? `Title: ${demoItem.title}\n` : "") +
+        (demoItem.description ? `Description: ${demoItem.description}\n\n` : "\n");
+      sections.push(demoHeader + (await readRegistryFilesContents(demoItem)));
+    }
+  }
+
+  const outTxt = sections.join("\n\n\n");
+  // Write to project root
+  const target = path.join(process.cwd(), "llm.txt");
+  await fs.writeFile(target, outTxt, "utf8");
+  // Also write to public for sharing
+  const publicDir = path.join(process.cwd(), "public");
+  try { await fs.mkdir(publicDir, { recursive: true }); } catch { }
+  const publicTarget = path.join(publicDir, "llm.txt");
+  await fs.writeFile(publicTarget, outTxt, "utf8");
+}
+
 async function buildRegistry() {
   return new Promise((resolve, reject) => {
     const process = exec(`pnpm shadcn:build`);
@@ -148,6 +386,14 @@ try {
   console.log("💅 Building registry.json...");
   await buildRegistryJsonFile();
   console.log("✅ Registry JSON file built successfully");
+
+  console.log("🧾 Building public/llm-txt.json...");
+  await buildLlmTxtJson();
+  console.log("✅ llm-txt.json built successfully");
+
+  console.log("🧠 Building llm.txt...");
+  await buildLlmTxtFile();
+  console.log("✅ llm.txt built successfully");
 
   console.log("🏗️ Building registry...");
   await buildRegistry();
