@@ -599,6 +599,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Grid Beams",
+          href: `/docs/components/grid-beams`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],
