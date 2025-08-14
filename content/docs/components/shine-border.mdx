@@ -1,7 +1,8 @@
 ---
 title: Shine Border
-date: 2024-05-25
-description: Shine border is an animated background border effect.
+date: 2024-08-11
+description: Shine border is an animated background border effect. Updated 2025-08-11
+version: 2.0.0
 author: unnamed-lab
 published: true
 ---
@@ -68,11 +69,26 @@ Add the following animations to your global CSS file.
 
 <ComponentPreview name="shine-border-demo-2" />
 
+### Colour + Time Delay & Fade Features
+
+<ComponentPreview name="shine-border-demo-3" />
+
+### Colour + Time Delay & Fade Features
+
+<ComponentPreview name="shine-border-demo-3" />
+
 ## Usage
+
+First: Import the component onto the required page
 
 ```tsx
 import { ShineBorder } from "@/registry/magicui/shine-border";
 ```
+
+The `ShineBorder` component applies to the parent components border. <br />
+To apply it to a button, place the `<ShineBorder />` component inside the `<Button />` component.
+
+#### Exmaple 1
 
 ```tsx
 <div className="relative h-[500px] w-full overflow-hidden">
@@ -80,12 +96,36 @@ import { ShineBorder } from "@/registry/magicui/shine-border";
 </div>
 ```
 
+#### Example 2
+
+```tsx
+<Button variant="outline" className="w-full justify-center">
+  <ShineBorder
+    shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+    duration={15}
+    fadein={true}
+    fadeoutAfter={10}
+    fadeinDuration={2}
+    fadeoutDuration={2}
+    delayLoad={2}
+    fadeout={true}
+  />
+  My Button Text
+</Button>
+```
+
 ## Props
 
-| Prop          | Type                  | Default     | Description                                                         |
-| ------------- | --------------------- | ----------- | ------------------------------------------------------------------- |
-| `className`   | `string`              | `-`         | The class name to be applied to the component.                      |
-| `duration`    | `number`              | `14`        | Defines the animation duration to be applied on the shining border. |
-| `shineColor`  | `string \| string[]`  | `"#000000"` | Color of the border, can be a single color or an array of colors.   |
-| `borderWidth` | `number`              | `1`         | Width of the border in pixels.                                      |
-| `style`       | `React.CSSProperties` | `-`         | Additional styles to be applied to the component.                   |
+| Prop              | Type                  | Default     | Description                                                                                        |
+| ----------------- | --------------------- | ----------- | -------------------------------------------------------------------------------------------------- |
+| `className`       | `string`              | `-`         | The class name to be applied to the component.                                                     |
+| `borderWidth`     | `number`              | `1`         | Width of the border in pixels.                                                                     |
+| `duration`        | `number`              | `14`        | Second it takes to complete one full shine cycle. AKA: Speed of the animation (lower = faster).    |
+| `fadeout`         | `boolean`             | `false`     | Whether the animation should fade out after the fadeoutAfter duration.                             |
+| `fadeoutAfter`    | `number`              | `15`        | Duration of the shine effect in seconds after it becomes active. **Requires:** `fadeout = {true}`. |
+| `fadeoutDuration` | `number`              | `0.5`       | Duration of the fade out effect in seconds. **Requires:** `fadeout = {true}`.                      |
+| `fadein`          | `boolean`             | `false`     | Whether the animation should fade in when it starts.                                               |
+| `fadeinDuration`  | `number`              | `0.5`       | Duration of the fade in effect in seconds. **Requires:** `fadein = {true}`.                        |
+| `delayLoad`       | `number`              | `0`         | Delay in seconds before the animation starts after component mount.                                |
+| `shineColor`      | `string \| string[]`  | `"#000000"` | Color of the border, can be a single color or an array of colors.                                  |
+| `style`           | `React.CSSProperties` | `-`         | Additional styles to be applied to the component.                                                  |

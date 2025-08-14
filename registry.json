@@ -1019,7 +1019,7 @@
       "name": "shine-border",
       "type": "registry:ui",
       "title": "Shine Border",
-      "description": "Shine border is an animated background border effect.",
+      "description": "Shine border is an animated background border effect. (v2 - 20205-08-11)",
       "files": [
         {
           "path": "registry/magicui/shine-border.tsx",
@@ -2943,6 +2943,22 @@
           "path": "registry/example/shine-border-demo-2.tsx",
           "type": "registry:example",
           "target": "components/shine-border-demo-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shine-border-demo-3",
+      "type": "registry:example",
+      "title": "Shine Border Demo 3",
+      "description": "Third example showing an animated shining border effect + Fade and delayed load features.",
+      "registryDependencies": [
+        "https://magicui.design/r/shine-border"
+      ],
+      "files": [
+        {
+          "path": "registry/example/shine-border-demo-3.tsx",
+          "type": "registry:example",
+          "target": "components/shine-border-demo-3.tsx"
         }
       ]
     },

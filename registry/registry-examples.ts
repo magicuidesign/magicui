@@ -1386,6 +1386,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "shine-border-demo-3",
+    type: "registry:example",
+    title: "Shine Border Demo 3",
+    description:
+      "Third example showing an animated shining border effect + Fade and delayed load features.",
+    registryDependencies: ["https://magicui.design/r/shine-border"],
+    files: [
+      {
+        path: "registry/example/shine-border-demo-3.tsx",
+        type: "registry:example",
+        target: "components/shine-border-demo-3.tsx",
+      },
+    ],
+  },
+  {
     name: "confetti-demo",
     type: "registry:example",
     title: "Confetti Demo",

@@ -328,7 +328,7 @@ export const docsConfig: DocsConfig = {
           title: "Shine Border",
           href: `/docs/components/shine-border`,
           items: [],
-          label: "",
+          label: "Updated",
         },
         {
           title: "Magic Card",
