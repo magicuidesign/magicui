@@ -1865,4 +1865,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "grid-beams-demo",
+    description:
+      "Demo of the grid-beams component showcasing animated light rays over a grid",
+    type: "registry:example",
+    registryDependencies: ["grid-beams"],
+    files: [
+      {
+        path: "registry/example/grid-beams-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];

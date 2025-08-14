@@ -1293,4 +1293,19 @@ export const ui: Registry["items"] = [
       },
     },
   },
+  {
+    name: "grid-beams",
+    type: "registry:ui",
+    title: "Grid Beams",
+    description:
+      "A dynamic grid background with animated light beams rays and grid patterns.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "registry/magicui/grid-beams.tsx",
+        type: "registry:ui",
+        target: "components/magicui/grid-beams.tsx",
+      },
+    ],
+  },
 ];

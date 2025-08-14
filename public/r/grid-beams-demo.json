@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-beams-demo",
+  "type": "registry:example",
+  "description": "Demo of the grid-beams component showcasing animated light rays over a grid",
+  "registryDependencies": [
+    "grid-beams"
+  ],
+  "files": [
+    {
+      "path": "registry/example/grid-beams-demo.tsx",
+      "content": "import { GridBeams } from '@/registry/magicui/grid-beams'\n\nexport default function GridBeamsDemo() {\n  return (\n    <div className=\"relative h-[400px] w-full overflow-hidden rounded-lg border\">\n      <GridBeams\n        gridSize={40}\n        gridColor=\"blue\"\n        rayCount={15}\n        rayOpacity={0.35}\n        raySpeed={1}\n        rayLength=\"45vh\"\n        gridFadeStart={30}\n        gridFadeEnd={90}\n        backgroundColor=\"#020412\"\n        className=\"h-full w-full\"\n      >\n        <div className=\"flex h-full items-center justify-center\">\n          <div className=\"text-center\">\n            <h2 className=\"text-3xl font-bold text-white mb-3\">\n              Grid Beams Effect\n            </h2>\n            <p className=\"text-blue-200 text-lg\">\n              Dynamic light rays with animated grid background\n            </p>\n          </div>\n        </div>\n      </GridBeams>\n    </div>\n  )\n}",
+      "type": "registry:example"
+    }
+  ]
+}
