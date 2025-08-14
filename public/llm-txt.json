@@ -212,11 +212,7 @@
     "title": "Client Tweet Card",
     "description": "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
     "source": "https://magicui.design/r/client-tweet-card.json",
-    "associate-demo": [
-      "https://magicui.design/r/tweet-card-demo.json",
-      "https://magicui.design/r/tweet-card-images.json",
-      "https://magicui.design/r/tweet-card-meta-preview.json"
-    ]
+    "associate-demo": []
   },
   "bento-grid": {
     "title": "Bento Grid",
