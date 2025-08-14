@@ -1,0 +1,192 @@
+---
+title: Grid Beams
+date: 2024-08-08
+description: A dynamic grid background with animated light beams that create stunning visual effects with customizable rays and grid patterns.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="grid-beams-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/grid-beams"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="grid-beams" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop              | Type              | Default     | Description                                               |
+| ----------------- | ----------------- | ----------- | --------------------------------------------------------- |
+| `children`        | `React.ReactNode` | -           | Content to display over the grid beams effect             |
+| `gridSize`        | `number`          | `40`        | Size of each grid cell in pixels                          |
+| `gridColor`       | `string`          | `"blue"`    | Color theme of the grid (blue, cyan, purple, green, pink) |
+| `rayCount`        | `number`          | `15`        | Number of animated light rays                             |
+| `rayOpacity`      | `number`          | `0.35`      | Opacity of the light rays (0-1)                           |
+| `raySpeed`        | `number`          | `1`         | Speed multiplier for ray animations                       |
+| `rayLength`       | `string`          | `"45vh"`    | Length of the light rays (CSS length value)               |
+| `gridFadeStart`   | `number`          | `30`        | Start percentage for grid fade effect                     |
+| `gridFadeEnd`     | `number`          | `90`        | End percentage for grid fade effect                       |
+| `backgroundColor` | `string`          | `"#020412"` | Background color of the component                         |
+| `className`       | `string`          | -           | Additional CSS classes                                    |
+
+## Examples
+
+### Different Colors
+
+```typescript
+<GridBeams gridColor="cyan">
+  <div className="flex h-96 items-center justify-center">
+    <h2 className="text-2xl font-bold text-white">Cyan Beams</h2>
+  </div>
+</GridBeams>
+```
+
+### Purple Theme
+
+```typescript
+<GridBeams gridColor="purple">
+  <div className="flex h-96 items-center justify-center">
+    <h2 className="text-2xl font-bold text-white">Purple Beams</h2>
+  </div>
+</GridBeams>
+```
+
+### More Intense Effect
+
+```typescript
+<GridBeams
+  rayCount={25}
+  rayOpacity={0.6}
+  raySpeed={1.5}
+  gridColor="purple"
+>
+  <div className="flex h-96 items-center justify-center">
+    <div className="text-center">
+      <h2 className="text-3xl font-bold text-white mb-2">Intense Beams</h2>
+      <p className="text-purple-200">25 rays with higher opacity</p>
+    </div>
+  </div>
+</GridBeams>
+```
+
+### Subtle Background
+
+```typescript
+<GridBeams
+  rayCount={8}
+  rayOpacity={0.2}
+  raySpeed={0.7}
+  gridFadeStart={50}
+  gridFadeEnd={80}
+  gridColor="green"
+>
+  <div className="flex h-96 items-center justify-center">
+    <div className="text-center">
+      <h2 className="text-2xl font-bold text-white mb-2">Subtle Effect</h2>
+      <p className="text-green-200">Fewer rays with lower opacity</p>
+    </div>
+  </div>
+</GridBeams>
+```
+
+### Custom Ray Length
+
+```typescript
+<GridBeams
+  rayLength="60vh"
+  rayCount={12}
+  gridColor="cyan"
+>
+  <div className="flex h-96 items-center justify-center">
+    <div className="text-center">
+      <h2 className="text-2xl font-bold text-white mb-2">Longer Rays</h2>
+      <p className="text-cyan-200">Extended ray length for dramatic effect</p>
+    </div>
+  </div>
+</GridBeams>
+```
+
+### Hero Section
+
+```typescript
+<GridBeams className="min-h-screen" rayLength="60vh" rayCount={20}>
+  <div className="container mx-auto px-4 py-20">
+    <div className="flex flex-col items-center justify-center h-full text-center">
+      <h1 className="text-5xl font-bold text-white mb-6">
+        Welcome to the Future
+      </h1>
+      <p className="text-xl text-blue-200 max-w-2xl mx-auto mb-8">
+        Experience next-generation design with our animated grid beams that create
+        an immersive and dynamic background effect.
+      </p>
+      <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+        Get Started
+      </button>
+    </div>
+  </div>
+</GridBeams>
+```
+
+### Custom Grid Settings
+
+```typescript
+<GridBeams
+  gridSize={60}
+  gridFadeStart={20}
+  gridFadeEnd={95}
+  rayCount={18}
+  gridColor="pink"
+>
+  <div className="flex h-96 items-center justify-center">
+    <div className="text-center">
+      <h2 className="text-2xl font-bold text-white mb-2">Custom Grid</h2>
+      <p className="text-pink-200">Larger grid cells with custom fade</p>
+    </div>
+  </div>
+</GridBeams>
+```
+
+### Animation Speed Control
+
+```typescript
+<GridBeams
+  raySpeed={2}
+  rayCount={15}
+  rayOpacity={0.4}
+  gridColor="blue"
+>
+  <div className="flex h-96 items-center justify-center">
+    <div className="text-center">
+      <h2 className="text-2xl font-bold text-white mb-2">Fast Animation</h2>
+      <p className="text-blue-200">Double speed ray animations</p>
+    </div>
+  </div>
+</GridBeams>
+```
