@@ -1364,6 +1364,23 @@
       }
     },
     {
+      "name": "animated-tags",
+      "type": "registry:ui",
+      "title": "Animated Tags",
+      "description": "An animated component to select and deselect tags, perfect for filtering or categorization.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/animated-tags.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-tags.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3484,6 +3501,26 @@
           "path": "registry/example/animated-theme-toggler-demo.tsx",
           "type": "registry:example",
           "target": "components/animated-theme-toggler-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-tags-demo",
+      "type": "registry:example",
+      "title": "Animated Tags Demo",
+      "description": "Example showing an animated tags component.",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/animated-tags"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-tags-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-tags-demo.tsx"
         }
       ]
     },

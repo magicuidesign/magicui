@@ -1293,4 +1293,19 @@ export const ui: Registry["items"] = [
       },
     },
   },
+  {
+    name: "animated-tags",
+    type: "registry:ui",
+    title: "Animated Tags",
+    description:
+      "An animated component to select and deselect tags, perfect for filtering or categorization.",
+    dependencies: ["motion", "lucide-react"],
+    files: [
+      {
+        path: "registry/magicui/animated-tags.tsx",
+        type: "registry:ui",
+        target: "components/magicui/animated-tags.tsx",
+      },
+    ],
+  },
 ];

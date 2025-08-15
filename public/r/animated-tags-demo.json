@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tags-demo",
+  "type": "registry:example",
+  "title": "Animated Tags Demo",
+  "description": "Example showing an animated tags component.",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://magicui.design/r/animated-tags"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-tags-demo.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\n\nimport AnimatedTags from \"@/registry/magicui/animated-tags\";\n\nconst initialTags = [\n  \"python\",\n  \"javascript\",\n  \"c++\",\n  \"rust\",\n  \"golang\",\n];\n\nconst AnimatedTagsDemo = () => {\n  const [selected, setSelected] = useState<string[]>([]);\n  return (\n    <div className=\"flex min-h-[300px] w-full items-start justify-center\">\n      <AnimatedTags\n        initialTags={initialTags}\n        selectedTags={selected}\n        onChange={setSelected}\n      />\n    </div>\n  );\n};\n\nexport default AnimatedTagsDemo;\n",
+      "type": "registry:example",
+      "target": "components/animated-tags-demo.tsx"
+    }
+  ]
+}
