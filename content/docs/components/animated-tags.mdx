@@ -1,0 +1,54 @@
+---
+title: Animated Tags
+date: 2025-15-08
+description: An animated component to select and deselect tags, perfect for filtering or categorization.
+author: aayushbharti
+published: true
+---
+
+<ComponentPreview name="animated-tags-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/animated-tags"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-tags" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop           | Type                           | Default                           | Description                                                                  |
+| -------------- | ------------------------------ | --------------------------------- | ---------------------------------------------------------------------------- |
+| `initialTags`  | `string[]`                     | `["python", "javascript", "c++"]` | An array of strings for the initial available tags.                          |
+| `selectedTags` | `string[]`                     | `undefined`                       | A controlled state for the selected tags. Use this with the `onChange` prop. |
+| `onChange`     | `(selected: string[]) => void` | `undefined`                       | Callback function that fires whenever the selection of tags changes.         |
+| `className`    | `string`                       | `""`                              | Additional CSS classes to apply to the root component element.               |
+
+## Credits
+
+- Credit to [@AayushBharti](https://github.com/AayushBharti)

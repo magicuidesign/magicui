@@ -286,6 +286,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Animated Tags",
+          href: `/docs/components/animated-tags`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

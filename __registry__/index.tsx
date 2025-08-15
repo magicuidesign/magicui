@@ -1720,6 +1720,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-tags": {
+    name: "animated-tags",
+    description:
+      "An animated component to select and deselect tags, perfect for filtering or categorization.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/animated-tags.tsx",
+        type: "registry:ui",
+        target: "components/magicui/animated-tags.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/animated-tags.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4780,6 +4804,29 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/animated-theme-toggler-demo.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "animated-tags-demo": {
+    name: "animated-tags-demo",
+    description: "Example showing an animated tags component.",
+    type: "registry:example",
+    registryDependencies: ["https://magicui.design/r/animated-tags"],
+    files: [
+      {
+        path: "registry/example/animated-tags-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-tags-demo.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-tags-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>
