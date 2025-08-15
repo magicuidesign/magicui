@@ -1865,4 +1865,19 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "animated-tags-demo",
+    type: "registry:example",
+    title: "Animated Tags Demo",
+    description: "Example showing an animated tags component.",
+    registryDependencies: ["https://magicui.design/r/animated-tags"],
+    files: [
+      {
+        path: "registry/example/animated-tags-demo.tsx",
+        type: "registry:example",
+        target: "components/animated-tags-demo.tsx",
+      },
+    ],
+    dependencies: ["motion", "lucide-react"],
+  },
 ];
