@@ -8,7 +8,6 @@ import { z } from "zod";
 import { examples } from "../registry/registry-examples";
 import { lib } from "../registry/registry-lib";
 import { ui } from "../registry/registry-ui";
-import { siteConfig } from "../config/site";
 
 const DEPRECATED_ITEMS = ["toast"];
 
@@ -74,15 +73,14 @@ export const Index: Record<string, any> = {`;
       target: "${file.target ?? ""}"
     }`;
     })}],
-    component: ${
-      componentPath
+    component: ${componentPath
         ? `React.lazy(async () => {
       const mod = await import("${componentPath}")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     })`
         : "null"
-    },
+      },
     meta: ${JSON.stringify(item.meta)},
   },`;
   }
@@ -127,218 +125,106 @@ async function buildRegistryJsonFile() {
   );
 }
 
-type LlmTxtEntry = {
-  title: string;
-  description: string;
-  source: string;
-  "associate-demo": string[];
-};
 
-function humanizeName(value: string): string {
-  return value
-    .split(/[-_]+/)
+type RegistryItem = Registry["items"][number];
+
+type FileEntry = string | { path: string; type?: string; target?: string };
+
+async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
+  if (!item.files?.length) return "";
+
+  const paths = item.files
+    .map((f: FileEntry) => typeof f === "string" ? f : f?.path)
     .filter(Boolean)
-    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-    .join(" ");
-}
+    .sort() as string[];
 
-async function buildLlmTxtJson() {
-  const baseUrl = siteConfig.url.replace(/\/$/, "");
-  // Helper to pull meta from local registry JSON if needed
-  async function getLocalMeta(
-    name: string
-  ): Promise<{ title?: string; description?: string }> {
-    const p = path.join(process.cwd(), "public", "r", `${name}.json`);
-    try {
-      const raw = await fs.readFile(p, "utf8");
-      const json = JSON.parse(raw) as { title?: string; description?: string };
-      return { title: json.title, description: json.description };
-    } catch {
-      return {};
-    }
-  }
-
-  // Build a map of component name -> associated demo names (minimal reduce)
-  const uiNames = new Set(ui.map((u) => u.name));
-  const association: Record<string, Set<string>> = examples.reduce(
-    (acc, ex) => {
-      const deps = Array.isArray(ex.registryDependencies)
-        ? (ex.registryDependencies as string[])
-        : [];
-      deps.forEach((raw) => {
-        const name = raw.split("/").filter(Boolean).pop();
-        if (!uiNames.has(name ?? "")) return;
-        (acc[name ?? ""] ??= new Set()).add(ex.name);
-      });
-      return acc;
-    },
-    {} as Record<string, Set<string>>
+  // Read all files in parallel
+  const contents = await Promise.all(
+    paths.map(async (filePath) => {
+      try {
+        const content = await fs.readFile(path.join(process.cwd(), filePath), "utf8");
+        return `--- file: ${filePath} ---\n${content.endsWith("\n") ? content : content + "\n"}`;
+      } catch {
+        return null; // Skip missing files
+      }
+    })
   );
 
-  // Starting point: registry_examples (examples variable)
-  // Ending point: registry_associations (built below using association)
-
-  const output: Record<string, LlmTxtEntry> = {};
-
-  for (const item of ui) {
-    if (item.type !== "registry:ui") continue;
-    const localMeta = await getLocalMeta(item.name);
-    const title =
-      (item as any).title ?? localMeta.title ?? humanizeName(item.name);
-    const description =
-      (item as any).description ??
-      localMeta.description ??
-      `The ${title} component.`;
-    const source = `${baseUrl}/r/${item.name}.json`;
-    const demos = Array.from(association[item.name] ?? []).map(
-      (demo) => `${baseUrl}/r/${demo}.json`
-    );
-
-    output[item.name] = {
-      title,
-      description,
-      source,
-      "associate-demo": demos,
-    } satisfies LlmTxtEntry;
-  }
-
-  const outPath = path.join(process.cwd(), "public/llm-txt.json");
-  await fs.writeFile(outPath, JSON.stringify(output, null, 2));
+  // Join non-null contents with blank lines between them
+  return contents.filter(Boolean).join("\n");
 }
 
-type LocalRegistryFile = {
-  path: string;
-  content?: string;
-  type: string;
-  target?: string;
-};
 
-type LocalRegistryItem = {
-  name: string;
-  type: string;
-  title?: string;
-  description?: string;
-  files: LocalRegistryFile[];
-};
-
-function urlToLocalRPath(urlStr: string): string | null {
-  try {
-    const u = new URL(urlStr);
-    // expect /r/<name>.json
-    const match = u.pathname.match(/\/r\/([^/]+)\.json$/);
-    if (!match) return null;
-    const name = match[1];
-    return path.join(process.cwd(), "public", "r", `${name}.json`);
-  } catch {
-    return null;
-  }
-}
-
-async function loadLocalRegistryByUrl(
-  urlStr: string
-): Promise<LocalRegistryItem | null> {
-  const p = urlToLocalRPath(urlStr);
-  if (!p) return null;
-  try {
-    const raw = await fs.readFile(p, "utf8");
-    return JSON.parse(raw) as LocalRegistryItem;
-  } catch {
-    return null;
-  }
-}
-
-async function readRegistryFilesContents(
-  item: LocalRegistryItem
-): Promise<string> {
-  const pieces: string[] = [];
-  for (const f of item.files ?? []) {
-    const header = `--- file: ${f.path} ---\n`;
-    if (f.content && f.content.length > 0) {
-      pieces.push(header + f.content + (f.content.endsWith("\n") ? "" : "\n"));
-      continue;
-    }
-    // Fallback: read from local repo path if available
-    try {
-      const localPath = path.join(process.cwd(), f.path);
-      const text = await fs.readFile(localPath, "utf8");
-      pieces.push(header + text + (text.endsWith("\n") ? "" : "\n"));
-    } catch {
-      pieces.push(header + "// [content not available]\n");
-    }
-  }
-  return pieces.join("\n");
-}
-
+/**
+ * Build a single `public/llm.txt` file containing:
+ * - Each UI component (sorted by name), with title/description and source files
+ * - All related example sections (based on registryDependencies), with files
+ */
 async function buildLlmTxtFile() {
-  const jsonPath = path.join(process.cwd(), "public", "llm-txt.json");
-  const exists = await fs
-    .access(jsonPath)
-    .then(() => true)
-    .catch(() => false);
-  if (!exists) return;
-
-  const raw = await fs.readFile(jsonPath, "utf8");
-  const map = JSON.parse(raw) as Record<
-    string,
-    {
-      title: string;
-      description: string;
-      source: string;
-      "associate-demo": string[];
-    }
-  >;
-
-  const names = Object.keys(map).sort((a, b) => a.localeCompare(b));
-  const sections: string[] = [];
-
-  for (const name of names) {
-    const entry = map[name];
-    const srcItem = await loadLocalRegistryByUrl(entry.source);
-    if (srcItem) {
-      sections.push(
-        `===== MAIN COMPONENT: ${srcItem.name} (${srcItem.type}) =====\n` +
-          `Title: ${entry.title}\n` +
-          `Description: ${entry.description}\n\n` +
-          (await readRegistryFilesContents(srcItem))
-      );
-    } else {
-      sections.push(
-        `===== MAIN COMPONENT: ${name} =====\n` +
-          `Title: ${entry.title}\n` +
-          `Description: ${entry.description}\n\n` +
-          `// [source ${entry.source} not available]\n`
-      );
-    }
-
-    for (const demoUrl of entry["associate-demo"]) {
-      const demoItem = await loadLocalRegistryByUrl(demoUrl);
-      if (!demoItem) {
-        sections.push(
-          `\n===== EXAMPLE: ${demoUrl} =====\n` + `// [demo not available]\n`
-        );
-        continue;
+  // Build a map of component -> its examples
+  const componentNames = new Set(ui.map(u => u.name));
+  const examplesPerComponent = new Map<string, string[]>();
+  examples.forEach(example => {
+    const dependencies = example.registryDependencies || [];
+    dependencies.forEach(dep => {
+      const componentName = dep.split("/").pop(); // Extract component name from URL
+      if (componentName && componentNames.has(componentName)) {
+        if (!examplesPerComponent.has(componentName)) {
+          examplesPerComponent.set(componentName, []);
+        }
+        examplesPerComponent.get(componentName)!.push(example.name);
       }
-      const demoHeader =
-        `\n\n===== EXAMPLE: ${demoItem.name} (${demoItem.type}) =====\n` +
-        (demoItem.title ? `Title: ${demoItem.title}\n` : "") +
-        (demoItem.description
-          ? `Description: ${demoItem.description}\n\n`
-          : "\n");
-      sections.push(demoHeader + (await readRegistryFilesContents(demoItem)));
-    }
-  }
+    });
+  });
 
-  const outTxt = sections.join("\n\n\n");
-  // Write to project root
-  const target = path.join(process.cwd(), "llm.txt");
-  await fs.writeFile(target, outTxt, "utf8");
-  // Also write to public for sharing
-  const publicDir = path.join(process.cwd(), "public");
-  try {
-    await fs.mkdir(publicDir, { recursive: true });
-  } catch {}
-  const publicTarget = path.join(publicDir, "llm.txt");
-  await fs.writeFile(publicTarget, outTxt, "utf8");
+  // Build content for each UI component
+  const componentsContents = await Promise.all(
+    ui
+      .filter(item => item.type === "registry:ui")
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(async (component) => {
+        const item = component as unknown as RegistryItem;
+        const title = (component as any).title || component.name;
+        const description = (component as any).description || `The ${title} component.`;
+
+        // Build component section
+        let content = [
+          `===== MAIN COMPONENT: ${component.name} (${item.type}) =====`,
+          `Title: ${title}`,
+          `Description: ${description}`,
+          "",
+          await readRegistryFilesContents(item)
+        ].join("\n");
+
+        // Add related examples
+        const relatedExamples = (examplesPerComponent.get(component.name) || []).sort();
+        for (const exampleName of relatedExamples) {
+          const example = examples.find(e => e.name === exampleName) as unknown as RegistryItem;
+          if (!example) {
+            content += `\n\n===== EXAMPLE: ${exampleName} =====\n// [demo not available]\n`;
+            continue;
+          }
+
+          const exTitle = (example as any).title;
+          const exDesc = (example as any).description;
+          content += [
+            "",
+            "",
+            `===== EXAMPLE: ${example.name} (${example.type}) =====`,
+            exTitle ? `Title: ${exTitle}` : "",
+            exDesc ? `Description: ${exDesc}\n` : "",
+            await readRegistryFilesContents(example)
+          ].filter(Boolean).join("\n");
+        }
+
+        return content;
+      })
+  );
+
+  // Write the combined content
+  const outputPath = path.join(process.cwd(), "public", "llm.txt");
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+  await fs.writeFile(outputPath, componentsContents.join("\n\n\n"), "utf8");
 }
 
 async function buildRegistry() {
@@ -356,17 +242,13 @@ async function buildRegistry() {
 }
 
 try {
-  console.log("🗂️ Building registry/__index__.tsx...");
+  console.log("��️ Building registry/__index__.tsx...");
   await buildRegistryIndex();
   console.log("✅ Registry index built successfully");
 
   console.log("💅 Building registry.json...");
   await buildRegistryJsonFile();
   console.log("✅ Registry JSON file built successfully");
-
-  console.log("🧾 Building public/llm-txt.json...");
-  await buildLlmTxtJson();
-  console.log("✅ llm-txt.json built successfully");
 
   console.log("🧠 Building llm.txt...");
   await buildLlmTxtFile();
