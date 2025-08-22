@@ -5,7 +5,7 @@ export default function GridBeamsDemo() {
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
       <GridBeams
         gridSize={0}
-        gridColor="white"
+        gridColor="rgba(255, 255, 255, 0.2)"
         rayCount={20}
         rayOpacity={0.55}
         raySpeed={1.5}
