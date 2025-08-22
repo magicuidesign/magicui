@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useInView } from "motion/react";
 import { annotate } from "rough-notation";
 import type React from "react";
 
@@ -37,31 +38,16 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
-  const [isVisible, setIsVisible] = useState(!isView);
+  const isInView = useInView(elementRef, {
+    once: true,
+    margin: "-10%",
+  });
+
+  // If isView is false, always show. If isView is true, wait for inView
+  const shouldShow = !isView || isInView;
 
   useEffect(() => {
-    if (!isView) return;
-
-    const element = elementRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, [isView]);
-
-  useEffect(() => {
-    if (!isVisible) return;
+    if (!shouldShow) return;
 
     const element = elementRef.current;
     if (!element) return;
@@ -84,7 +70,7 @@ export function Highlighter({
       }
     };
   }, [
-    isVisible,
+    shouldShow,
     action,
     color,
     strokeWidth,
