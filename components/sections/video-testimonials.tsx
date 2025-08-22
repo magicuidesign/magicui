@@ -42,7 +42,6 @@ export default function VideoTestimonials() {
               className="h-full w-full rounded-xl"
               loading="lazy"
             ></iframe>
-  
           </motion.div>
         ))}
       </div>
