@@ -1,4 +1,4 @@
-===== MAIN COMPONENT: android (registry:ui) =====
+===== COMPONENT: android =====
 Title: Android
 Description: A mockup of an Android device.
 
@@ -105,9 +105,10 @@ export default function Android({
     </svg>
   );
 }
-===== EXAMPLE: android-demo (registry:example) =====
+
+
+===== EXAMPLE: android-demo =====
 Title: Android Demo
-Description: Example showing a mockup of an Android device.
 
 --- file: registry/example/android-demo.tsx ---
 import Android from "@/registry/magicui/android";
@@ -119,9 +120,10 @@ export default function AndroidDemo() {
     </div>
   );
 }
-===== EXAMPLE: android-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: android-demo-2 =====
 Title: Android Demo 2
-Description: Second example showing a mockup of an Android device.
 
 --- file: registry/example/android-demo-2.tsx ---
 import Android from "@/registry/magicui/android";
@@ -136,9 +138,10 @@ export default function AndroidDemo() {
     </div>
   );
 }
-===== EXAMPLE: android-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: android-demo-3 =====
 Title: Android Demo 3
-Description: Third example showing a mockup of an Android device.
 
 --- file: registry/example/android-demo-3.tsx ---
 import Android from "@/registry/magicui/android";
@@ -156,7 +159,7 @@ export default function AndroidDemo() {
 
 
 
-===== MAIN COMPONENT: animated-beam (registry:ui) =====
+===== COMPONENT: animated-beam =====
 Title: Animated Beam
 Description: An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.
 
@@ -349,108 +352,10 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
     </svg>
   );
 };
-===== EXAMPLE: animated-beam-bidirectional (registry:example) =====
-Title: Animated Beam Bidirectional
-Description: Example showing a bidirectional animated beam effect.
 
---- file: registry/example/animated-beam-bidirectional.tsx ---
-"use client";
 
-import React, { forwardRef, useRef } from "react";
-
-import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/registry/magicui/animated-beam";
-
-const Circle = forwardRef<
-  HTMLDivElement,
-  { className?: string; children?: React.ReactNode }
->(({ className, children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-});
-
-Circle.displayName = "Circle";
-
-export default function AnimatedBeamDemo() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const div1Ref = useRef<HTMLDivElement>(null);
-  const div2Ref = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
-      ref={containerRef}
-    >
-      <div className="flex size-full flex-col items-stretch justify-between gap-10">
-        <div className="flex flex-row justify-between">
-          <Circle ref={div1Ref}>
-            <Icons.user />
-          </Circle>
-          <Circle ref={div2Ref}>
-            <Icons.openai />
-          </Circle>
-        </div>
-      </div>
-
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div2Ref}
-        startYOffset={10}
-        endYOffset={10}
-        curvature={-20}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div2Ref}
-        startYOffset={-10}
-        endYOffset={-10}
-        curvature={20}
-        reverse
-      />
-    </div>
-  );
-}
-
-const Icons = {
-  openai: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
-    </svg>
-  ),
-  user: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#000000"
-      strokeWidth="2"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  ),
-};
-===== EXAMPLE: animated-beam-demo (registry:example) =====
+===== EXAMPLE: animated-beam-demo =====
 Title: Animated Beam Demo
-Description: Example showing an animated beam of light effect.
 
 --- file: registry/example/animated-beam-demo.tsx ---
 "use client";
@@ -950,9 +855,199 @@ const Icons = {
     </svg>
   ),
 };
-===== EXAMPLE: animated-beam-multiple-inputs (registry:example) =====
+
+
+===== EXAMPLE: animated-beam-unidirectional =====
+Title: Animated Beam Unidirectional
+
+--- file: registry/example/animated-beam-unidirectional.tsx ---
+"use client";
+
+import React, { forwardRef, useRef } from "react";
+
+import { cn } from "@/lib/utils";
+import { AnimatedBeam } from "@/registry/magicui/animated-beam";
+
+const Circle = forwardRef<
+  HTMLDivElement,
+  { className?: string; children?: React.ReactNode }
+>(({ className, children }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+
+Circle.displayName = "Circle";
+
+export default function AnimatedBeamDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const div1Ref = useRef<HTMLDivElement>(null);
+  const div2Ref = useRef<HTMLDivElement>(null);
+
+  return (
+    <div
+      className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
+      ref={containerRef}
+    >
+      <div className="flex size-full flex-col items-stretch justify-between gap-10">
+        <div className="flex flex-row justify-between">
+          <Circle ref={div1Ref}>
+            <Icons.user />
+          </Circle>
+          <Circle ref={div2Ref}>
+            <Icons.openai />
+          </Circle>
+        </div>
+      </div>
+
+      <AnimatedBeam
+        duration={3}
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div2Ref}
+      />
+    </div>
+  );
+}
+
+const Icons = {
+  openai: () => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
+    </svg>
+  ),
+  user: () => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#000000"
+      strokeWidth="2"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  ),
+};
+
+
+===== EXAMPLE: animated-beam-bidirectional =====
+Title: Animated Beam Bidirectional
+
+--- file: registry/example/animated-beam-bidirectional.tsx ---
+"use client";
+
+import React, { forwardRef, useRef } from "react";
+
+import { cn } from "@/lib/utils";
+import { AnimatedBeam } from "@/registry/magicui/animated-beam";
+
+const Circle = forwardRef<
+  HTMLDivElement,
+  { className?: string; children?: React.ReactNode }
+>(({ className, children }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+
+Circle.displayName = "Circle";
+
+export default function AnimatedBeamDemo() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const div1Ref = useRef<HTMLDivElement>(null);
+  const div2Ref = useRef<HTMLDivElement>(null);
+
+  return (
+    <div
+      className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
+      ref={containerRef}
+    >
+      <div className="flex size-full flex-col items-stretch justify-between gap-10">
+        <div className="flex flex-row justify-between">
+          <Circle ref={div1Ref}>
+            <Icons.user />
+          </Circle>
+          <Circle ref={div2Ref}>
+            <Icons.openai />
+          </Circle>
+        </div>
+      </div>
+
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div2Ref}
+        startYOffset={10}
+        endYOffset={10}
+        curvature={-20}
+      />
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={div1Ref}
+        toRef={div2Ref}
+        startYOffset={-10}
+        endYOffset={-10}
+        curvature={20}
+        reverse
+      />
+    </div>
+  );
+}
+
+const Icons = {
+  openai: () => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
+    </svg>
+  ),
+  user: () => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#000000"
+      strokeWidth="2"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  ),
+};
+
+
+===== EXAMPLE: animated-beam-multiple-inputs =====
 Title: Animated Beam Multiple Inputs
-Description: Example showing animated beams with multiple input points.
 
 --- file: registry/example/animated-beam-multiple-inputs.tsx ---
 "use client";
@@ -1462,9 +1557,10 @@ const Icons = {
     </svg>
   ),
 };
-===== EXAMPLE: animated-beam-multiple-outputs (registry:example) =====
+
+
+===== EXAMPLE: animated-beam-multiple-outputs =====
 Title: Animated Beam Multiple Outputs
-Description: Example showing animated beams with multiple output points.
 
 --- file: registry/example/animated-beam-multiple-outputs.tsx ---
 "use client";
@@ -1981,98 +2077,10 @@ const Icons = {
     </svg>
   ),
 };
-===== EXAMPLE: animated-beam-unidirectional (registry:example) =====
-Title: Animated Beam Unidirectional
-Description: Example showing a unidirectional animated beam effect.
-
---- file: registry/example/animated-beam-unidirectional.tsx ---
-"use client";
-
-import React, { forwardRef, useRef } from "react";
-
-import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/registry/magicui/animated-beam";
-
-const Circle = forwardRef<
-  HTMLDivElement,
-  { className?: string; children?: React.ReactNode }
->(({ className, children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-});
-
-Circle.displayName = "Circle";
-
-export default function AnimatedBeamDemo() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const div1Ref = useRef<HTMLDivElement>(null);
-  const div2Ref = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
-      ref={containerRef}
-    >
-      <div className="flex size-full flex-col items-stretch justify-between gap-10">
-        <div className="flex flex-row justify-between">
-          <Circle ref={div1Ref}>
-            <Icons.user />
-          </Circle>
-          <Circle ref={div2Ref}>
-            <Icons.openai />
-          </Circle>
-        </div>
-      </div>
-
-      <AnimatedBeam
-        duration={3}
-        containerRef={containerRef}
-        fromRef={div1Ref}
-        toRef={div2Ref}
-      />
-    </div>
-  );
-}
-
-const Icons = {
-  openai: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" />
-    </svg>
-  ),
-  user: () => (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#000000"
-      strokeWidth="2"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  ),
-};
 
 
 
-===== MAIN COMPONENT: animated-circular-progress-bar (registry:ui) =====
+===== COMPONENT: animated-circular-progress-bar =====
 Title: Animated Circular Progress Bar
 Description: Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.
 
@@ -2185,9 +2193,10 @@ export function AnimatedCircularProgressBar({
     </div>
   );
 }
-===== EXAMPLE: animated-circular-progress-bar-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-circular-progress-bar-demo =====
 Title: Animated Circular Progress Bar Demo
-Description: Example showing an animated circular progress gauge.
 
 --- file: registry/example/animated-circular-progress-bar-demo.tsx ---
 "use client";
@@ -2222,7 +2231,7 @@ export default function AnimatedCircularProgressBarDemo() {
 
 
 
-===== MAIN COMPONENT: animated-gradient-text (registry:ui) =====
+===== COMPONENT: animated-gradient-text =====
 Title: Animated Gradient Text
 Description: An animated gradient background which transitions between colors for text.
 
@@ -2264,9 +2273,10 @@ export function AnimatedGradientText({
     </span>
   );
 }
-===== EXAMPLE: animated-gradient-text-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-gradient-text-demo =====
 Title: Animated Gradient Text Demo
-Description: Example showing text with animated gradient backgrounds.
 
 --- file: registry/example/animated-gradient-text-demo.tsx ---
 import { cn } from "@/lib/utils";
@@ -2300,9 +2310,10 @@ export default function AnimatedGradientTextDemo() {
     </div>
   );
 }
-===== EXAMPLE: animated-gradient-text-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: animated-gradient-text-demo-2 =====
 Title: Animated Gradient Text Demo 2
-Description: Second example showing text with animated gradient backgrounds.
 
 --- file: registry/example/animated-gradient-text-demo-2.tsx ---
 import { AnimatedGradientText } from "@/registry/magicui/animated-gradient-text";
@@ -2322,7 +2333,7 @@ export default function AnimatedGradientTextDemo() {
 
 
 
-===== MAIN COMPONENT: animated-grid-pattern (registry:ui) =====
+===== COMPONENT: animated-grid-pattern =====
 Title: Animated Grid Pattern
 Description: A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 
@@ -2481,9 +2492,10 @@ export function AnimatedGridPattern({
     </svg>
   );
 }
-===== EXAMPLE: animated-grid-pattern-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-grid-pattern-demo =====
 Title: Animated Grid Pattern Demo
-Description: Example showing an animated grid pattern background.
 
 --- file: registry/example/animated-grid-pattern-demo.tsx ---
 import { cn } from "@/lib/utils";
@@ -2508,7 +2520,7 @@ export default function AnimatedGridPatternDemo() {
 
 
 
-===== MAIN COMPONENT: animated-list (registry:ui) =====
+===== COMPONENT: animated-list =====
 Title: Animated List
 Description: A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.
 
@@ -2585,9 +2597,10 @@ export const AnimatedList = React.memo(
 );
 
 AnimatedList.displayName = "AnimatedList";
-===== EXAMPLE: animated-list-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-list-demo =====
 Title: Animated List Demo
-Description: Example showing a list with sequenced item animations.
 
 --- file: registry/example/animated-list-demo.tsx ---
 "use client";
@@ -2699,7 +2712,7 @@ export default function AnimatedListDemo({
 
 
 
-===== MAIN COMPONENT: animated-shiny-text (registry:ui) =====
+===== COMPONENT: animated-shiny-text =====
 Title: Animated Shiny Text
 Description: A light glare effect which pans across text making it appear as if it is shimmering.
 
@@ -2743,9 +2756,10 @@ export const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({
     </span>
   );
 };
-===== EXAMPLE: animated-shiny-text-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-shiny-text-demo =====
 Title: Animated Shiny Text Demo
-Description: Example showing text with a shimmering light effect.
 
 --- file: registry/example/animated-shiny-text-demo.tsx ---
 import { ArrowRightIcon } from "@radix-ui/react-icons";
@@ -2772,7 +2786,7 @@ export default function AnimatedShinyTextDemo() {
 
 
 
-===== MAIN COMPONENT: animated-subscribe-button (registry:ui) =====
+===== COMPONENT: animated-subscribe-button =====
 Title: Animated Subscribe Button
 Description: An animated subscribe button useful for showing a micro animation from intial to final result.
 
@@ -2883,9 +2897,33 @@ export const AnimatedSubscribeButton = React.forwardRef<
 });
 
 AnimatedSubscribeButton.displayName = "AnimatedSubscribeButton";
-===== EXAMPLE: animated-subscribe-button-controlled-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-subscribe-button-demo =====
+Title: Animated Subscribe Button Demo
+
+--- file: registry/example/animated-subscribe-button-demo.tsx ---
+import { AnimatedSubscribeButton } from "@/registry/magicui/animated-subscribe-button";
+import { CheckIcon, ChevronRightIcon } from "lucide-react";
+
+export default function AnimatedSubscribeButtonDemo() {
+  return (
+    <AnimatedSubscribeButton className="w-36">
+      <span className="group inline-flex items-center">
+        Follow
+        <ChevronRightIcon className="ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1" />
+      </span>
+      <span className="group inline-flex items-center">
+        <CheckIcon className="mr-2 size-4" />
+        Subscribed
+      </span>
+    </AnimatedSubscribeButton>
+  );
+}
+
+
+===== EXAMPLE: animated-subscribe-button-controlled-demo =====
 Title: Animated Subscribe Button (Controlled)
-Description: Controlled example showing async behavior for AnimatedSubscribeButton.
 
 --- file: registry/example/animated-subscribe-button-controlled-demo.tsx ---
 "use client";
@@ -2929,32 +2967,10 @@ export default function AnimatedSubscribeButtonControlledDemo() {
     </AnimatedSubscribeButton>
   );
 }
-===== EXAMPLE: animated-subscribe-button-demo (registry:example) =====
-Title: Animated Subscribe Button Demo
-Description: Example showing an animated subscribe button with micro animations.
-
---- file: registry/example/animated-subscribe-button-demo.tsx ---
-import { AnimatedSubscribeButton } from "@/registry/magicui/animated-subscribe-button";
-import { CheckIcon, ChevronRightIcon } from "lucide-react";
-
-export default function AnimatedSubscribeButtonDemo() {
-  return (
-    <AnimatedSubscribeButton className="w-36">
-      <span className="group inline-flex items-center">
-        Follow
-        <ChevronRightIcon className="ml-1 size-4 transition-transform duration-300 group-hover:translate-x-1" />
-      </span>
-      <span className="group inline-flex items-center">
-        <CheckIcon className="mr-2 size-4" />
-        Subscribed
-      </span>
-    </AnimatedSubscribeButton>
-  );
-}
 
 
 
-===== MAIN COMPONENT: animated-theme-toggler (registry:ui) =====
+===== COMPONENT: animated-theme-toggler =====
 Title: Theme Toggler
 Description: A component for theme changing animation.
 
@@ -3012,9 +3028,10 @@ export const AnimatedThemeToggler = ({ className }: props) => {
     </button>
   );
 };
-===== EXAMPLE: animated-theme-toggler-demo (registry:example) =====
+
+
+===== EXAMPLE: animated-theme-toggler-demo =====
 Title: Animated Theme Toggler Demo
-Description: Example showing animation while changing the theme.
 
 --- file: registry/example/animated-theme-toggler-demo.tsx ---
 import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler";
@@ -3030,7 +3047,7 @@ export default AnimatedThemeTogglerDemo;
 
 
 
-===== MAIN COMPONENT: arc-timeline (registry:ui) =====
+===== COMPONENT: arc-timeline =====
 Title: Arc Timeline
 Description: A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.
 
@@ -3338,9 +3355,10 @@ function PlaceholderLines(props: PlaceholderLinesProps) {
     </>
   );
 }
-===== EXAMPLE: arc-timeline-demo (registry:example) =====
+
+
+===== EXAMPLE: arc-timeline-demo =====
 Title: Arc Timeline Demo
-Description: Example showing an arc timeline component.
 
 --- file: registry/example/arc-timeline-demo.tsx ---
 import { ArcTimeline, ArcTimelineItem } from "@/registry/magicui/arc-timeline";
@@ -3848,7 +3866,7 @@ function PlaceholderLines(props: PlaceholderLinesProps) {
 
 
 
-===== MAIN COMPONENT: aurora-text (registry:ui) =====
+===== COMPONENT: aurora-text =====
 Title: Aurora Text
 Description: A beautiful aurora text effect
 
@@ -3896,9 +3914,10 @@ export const AuroraText = memo(
 );
 
 AuroraText.displayName = "AuroraText";
-===== EXAMPLE: aurora-text-demo (registry:example) =====
+
+
+===== EXAMPLE: aurora-text-demo =====
 Title: Aurora Text Demo
-Description: Example showing a beautiful aurora text effect.
 
 --- file: registry/example/aurora-text-demo.tsx ---
 import { AuroraText } from "@/registry/magicui/aurora-text";
@@ -3913,7 +3932,7 @@ export default function AuroraTextDemo() {
 
 
 
-===== MAIN COMPONENT: avatar-circles (registry:ui) =====
+===== COMPONENT: avatar-circles =====
 Title: Avatar Circles
 Description: Overlapping circles of avatars.
 
@@ -3968,9 +3987,10 @@ export const AvatarCircles = ({
     </div>
   );
 };
-===== EXAMPLE: avatar-circles-demo (registry:example) =====
+
+
+===== EXAMPLE: avatar-circles-demo =====
 Title: Avatar Circles Demo
-Description: Example showing overlapping avatar circles.
 
 --- file: registry/example/avatar-circles-demo.tsx ---
 import { AvatarCircles } from "@/registry/magicui/avatar-circles";
@@ -4008,7 +4028,7 @@ export default function AvatarCirclesDemo() {
 
 
 
-===== MAIN COMPONENT: bento-grid (registry:ui) =====
+===== COMPONENT: bento-grid =====
 Title: Bento Grid
 Description: Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
 
@@ -4122,9 +4142,10 @@ const BentoCard = ({
 );
 
 export { BentoCard, BentoGrid };
-===== EXAMPLE: bento-demo (registry:example) =====
+
+
+===== EXAMPLE: bento-demo =====
 Title: Bento Demo
-Description: Example showing a bento grid layout for showcasing features.
 
 --- file: registry/example/bento-demo.tsx ---
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
@@ -4244,9 +4265,10 @@ export default function BentoDemo() {
     </BentoGrid>
   );
 }
-===== EXAMPLE: bento-demo-vertical (registry:example) =====
+
+
+===== EXAMPLE: bento-demo-vertical =====
 Title: Bento Vertical Demo
-Description: Example showing a vertical bento grid layout.
 
 --- file: registry/example/bento-demo-vertical.tsx ---
 import {
@@ -4320,7 +4342,7 @@ export default function BentoDemo() {
 
 
 
-===== MAIN COMPONENT: blur-fade (registry:ui) =====
+===== COMPONENT: blur-fade =====
 Title: Blur Fade
 Description: Blur fade in and out animation. Used to smoothly fade in and out content.
 
@@ -4406,9 +4428,10 @@ export function BlurFade({
     </AnimatePresence>
   );
 }
-===== EXAMPLE: blur-fade-demo (registry:example) =====
+
+
+===== EXAMPLE: blur-fade-demo =====
 Title: Blur Fade Demo
-Description: Example showing blur fade in and out animations.
 
 --- file: registry/example/blur-fade-demo.tsx ---
 /* eslint-disable @next/next/no-img-element */
@@ -4438,9 +4461,10 @@ export default function BlurFadeDemo() {
     </section>
   );
 }
-===== EXAMPLE: blur-fade-text-demo (registry:example) =====
+
+
+===== EXAMPLE: blur-fade-text-demo =====
 Title: Blur Fade Text Demo
-Description: Example showing blur fade animations with text.
 
 --- file: registry/example/blur-fade-text-demo.tsx ---
 import { BlurFade } from "@/registry/magicui/blur-fade";
@@ -4464,7 +4488,7 @@ export default function BlurFadeTextDemo() {
 
 
 
-===== MAIN COMPONENT: border-beam (registry:ui) =====
+===== COMPONENT: border-beam =====
 Title: Border Beam
 Description: An animated beam of light which travels along the border of its container.
 
@@ -4575,9 +4599,10 @@ export const BorderBeam = ({
     </div>
   );
 };
-===== EXAMPLE: border-beam-demo (registry:example) =====
+
+
+===== EXAMPLE: border-beam-demo =====
 Title: Border Beam Demo
-Description: Example showing an animated border beam effect.
 
 --- file: registry/example/border-beam-demo.tsx ---
 import { Button } from "@/components/ui/button";
@@ -4628,9 +4653,10 @@ export default function Component() {
     </Card>
   );
 }
-===== EXAMPLE: border-beam-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: border-beam-demo-2 =====
 Title: Border Beam Demo
-Description: Example showing an animated border beam effect.
 
 --- file: registry/example/border-beam-demo-2.tsx ---
 import { Button } from "@/components/ui/button";
@@ -4690,9 +4716,10 @@ export default function MusicPlayer() {
     </Card>
   );
 }
-===== EXAMPLE: border-beam-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: border-beam-demo-3 =====
 Title: Border Beam Demo 3
-Description: Example showing an animated border beam effect.
 
 --- file: registry/example/border-beam-demo-3.tsx ---
 import { Button } from "@/components/ui/button";
@@ -4748,9 +4775,10 @@ export default function LoginForm() {
     </Card>
   );
 }
-===== EXAMPLE: border-beam-demo-4 (registry:example) =====
+
+
+===== EXAMPLE: border-beam-demo-4 =====
 Title: Border Beam Demo 4
-Description: Example showing an animated border beam effect.
 
 --- file: registry/example/border-beam-demo-4.tsx ---
 import { Button } from "@/components/ui/button";
@@ -4776,7 +4804,7 @@ export default function Component() {
 
 
 
-===== MAIN COMPONENT: box-reveal (registry:ui) =====
+===== COMPONENT: box-reveal =====
 Title: Box Reveal Animation
 Description: Sliding box animation that reveals text behind it.
 
@@ -4850,9 +4878,10 @@ export const BoxReveal = ({
     </div>
   );
 };
-===== EXAMPLE: box-reveal-demo (registry:example) =====
+
+
+===== EXAMPLE: box-reveal-demo =====
 Title: Box Reveal Demo
-Description: Example showing a sliding box text reveal animation.
 
 --- file: registry/example/box-reveal-demo.tsx ---
 import { Button } from "@/components/ui/button";
@@ -4898,7 +4927,7 @@ export default function BoxRevealDemo() {
 
 
 
-===== MAIN COMPONENT: client-tweet-card (registry:ui) =====
+===== COMPONENT: client-tweet-card =====
 Title: Client Tweet Card
 Description: A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.
 
@@ -4935,7 +4964,7 @@ export const ClientTweetCard = ({
 
 
 
-===== MAIN COMPONENT: code-comparison (registry:ui) =====
+===== COMPONENT: code-comparison =====
 Title: Code Comparison
 Description: A component which compares two code snippets.
 
@@ -5096,9 +5125,10 @@ export function CodeComparison({
     </div>
   );
 }
-===== EXAMPLE: code-comparison-demo (registry:example) =====
+
+
+===== EXAMPLE: code-comparison-demo =====
 Title: Code Comparison Demo
-Description: Example showing a component which compares two code snippets.
 
 --- file: registry/example/code-comparison-demo.tsx ---
 import { CodeComparison } from "@/registry/magicui/code-comparison";
@@ -5172,7 +5202,7 @@ export default function CodeComparisonDemo() {
 
 
 
-===== MAIN COMPONENT: comic-text (registry:ui) =====
+===== COMPONENT: comic-text =====
 Title: Comic Text
 Description: Comic text animation
 
@@ -5236,9 +5266,10 @@ export function ComicText({
     </motion.div>
   );
 }
-===== EXAMPLE: comic-text-demo (registry:example) =====
+
+
+===== EXAMPLE: comic-text-demo =====
 Title: Comic Text Demo
-Description: Example showing comic text animation.
 
 --- file: registry/example/comic-text-demo.tsx ---
 import { ComicText } from "@/registry/magicui/comic-text";
@@ -5253,7 +5284,7 @@ export default function ComicTextDemo() {
 
 
 
-===== MAIN COMPONENT: confetti (registry:ui) =====
+===== COMPONENT: confetti =====
 Title: Confetti
 Description: Confetti animations are best used to delight your users when something special happens
 
@@ -5407,9 +5438,41 @@ const ConfettiButtonComponent = ({
 ConfettiButtonComponent.displayName = "ConfettiButton";
 
 export const ConfettiButton = ConfettiButtonComponent;
-===== EXAMPLE: confetti-basic-cannon (registry:example) =====
+
+
+===== EXAMPLE: confetti-demo =====
+Title: Confetti Demo
+
+--- file: registry/example/confetti-demo.tsx ---
+"use client";
+
+import { useRef } from "react";
+
+import { Confetti, type ConfettiRef } from "@/registry/magicui/confetti";
+
+export default function ConfettiDemo() {
+  const confettiRef = useRef<ConfettiRef>(null);
+
+  return (
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+        Confetti
+      </span>
+
+      <Confetti
+        ref={confettiRef}
+        className="absolute left-0 top-0 z-0 size-full"
+        onMouseEnter={() => {
+          confettiRef.current?.fire({});
+        }}
+      />
+    </div>
+  );
+}
+
+
+===== EXAMPLE: confetti-basic-cannon =====
 Title: Confetti Basic Cannon
-Description: Example showing basic confetti cannon animation.
 
 --- file: registry/example/confetti-basic-cannon.tsx ---
 import { ConfettiButton } from "@/registry/magicui/confetti";
@@ -5421,9 +5484,180 @@ export default function ConfettiButtonDemo() {
     </div>
   );
 }
-===== EXAMPLE: confetti-custom-shapes (registry:example) =====
+
+
+===== EXAMPLE: confetti-random-direction =====
+Title: Confetti Random Direction
+
+--- file: registry/example/confetti-random-direction.tsx ---
+import { ConfettiButton } from "@/registry/magicui/confetti";
+
+export default function ConfettiButtonDemo() {
+  return (
+    <div className="relative">
+      <ConfettiButton
+        options={{
+          get angle() {
+            return Math.random() * 360;
+          },
+        }}
+      >
+        Random Confetti 🎉
+      </ConfettiButton>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: confetti-fireworks =====
+Title: Confetti Fireworks
+
+--- file: registry/example/confetti-fireworks.tsx ---
+"use client";
+
+import confetti from "canvas-confetti";
+
+import { Button } from "@/components/ui/button";
+
+export default function ConfettiFireworks() {
+  const handleClick = () => {
+    const duration = 5 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    const randomInRange = (min: number, max: number) =>
+      Math.random() * (max - min) + min;
+
+    const interval = window.setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      });
+    }, 250);
+  };
+
+  return (
+    <div className="relative">
+      <Button onClick={handleClick}>Trigger Fireworks</Button>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: confetti-stars =====
+Title: Confetti Stars
+
+--- file: registry/example/confetti-stars.tsx ---
+"use client";
+
+import confetti from "canvas-confetti";
+
+import { Button } from "@/components/ui/button";
+
+export default function ConfettiStars() {
+  const handleClick = () => {
+    const defaults = {
+      spread: 360,
+      ticks: 50,
+      gravity: 0,
+      decay: 0.94,
+      startVelocity: 30,
+      colors: ["#FFE400", "#FFBD00", "#E89400", "#FFCA6C", "#FDFFB8"],
+    };
+
+    const shoot = () => {
+      confetti({
+        ...defaults,
+        particleCount: 40,
+        scalar: 1.2,
+        shapes: ["star"],
+      });
+
+      confetti({
+        ...defaults,
+        particleCount: 10,
+        scalar: 0.75,
+        shapes: ["circle"],
+      });
+    };
+
+    setTimeout(shoot, 0);
+    setTimeout(shoot, 100);
+    setTimeout(shoot, 200);
+  };
+
+  return (
+    <div className="relative">
+      <Button onClick={handleClick}>Trigger Stars</Button>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: confetti-side-cannons =====
+Title: Confetti Side Cannons
+
+--- file: registry/example/confetti-side-cannons.tsx ---
+"use client";
+
+import confetti from "canvas-confetti";
+
+import { Button } from "@/components/ui/button";
+
+export default function ConfettiSideCannons() {
+  const handleClick = () => {
+    const end = Date.now() + 3 * 1000; // 3 seconds
+    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+
+    const frame = () => {
+      if (Date.now() > end) return;
+
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 0, y: 0.5 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        startVelocity: 60,
+        origin: { x: 1, y: 0.5 },
+        colors: colors,
+      });
+
+      requestAnimationFrame(frame);
+    };
+
+    frame();
+  };
+
+  return (
+    <div className="relative">
+      <Button onClick={handleClick}>Trigger Side Cannons</Button>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: confetti-custom-shapes =====
 Title: Confetti Custom Shapes
-Description: Example showing confetti with custom shape particles.
 
 --- file: registry/example/confetti-custom-shapes.tsx ---
 "use client";
@@ -5488,39 +5722,10 @@ export default function ConfettiCustomShapes() {
     </div>
   );
 }
-===== EXAMPLE: confetti-demo (registry:example) =====
-Title: Confetti Demo
-Description: Example showing confetti animations for celebrations.
 
---- file: registry/example/confetti-demo.tsx ---
-"use client";
 
-import { useRef } from "react";
-
-import { Confetti, type ConfettiRef } from "@/registry/magicui/confetti";
-
-export default function ConfettiDemo() {
-  const confettiRef = useRef<ConfettiRef>(null);
-
-  return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
-      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
-        Confetti
-      </span>
-
-      <Confetti
-        ref={confettiRef}
-        className="absolute left-0 top-0 z-0 size-full"
-        onMouseEnter={() => {
-          confettiRef.current?.fire({});
-        }}
-      />
-    </div>
-  );
-}
-===== EXAMPLE: confetti-emoji (registry:example) =====
+===== EXAMPLE: confetti-emoji =====
 Title: Confetti Emoji
-Description: Example showing confetti with emoji particles.
 
 --- file: registry/example/confetti-emoji.tsx ---
 "use client";
@@ -5574,176 +5779,10 @@ export default function ConfettiEmoji() {
     </div>
   );
 }
-===== EXAMPLE: confetti-fireworks (registry:example) =====
-Title: Confetti Fireworks
-Description: Example showing fireworks-style confetti animation.
-
---- file: registry/example/confetti-fireworks.tsx ---
-"use client";
-
-import confetti from "canvas-confetti";
-
-import { Button } from "@/components/ui/button";
-
-export default function ConfettiFireworks() {
-  const handleClick = () => {
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-    const randomInRange = (min: number, max: number) =>
-      Math.random() * (max - min) + min;
-
-    const interval = window.setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
-      const particleCount = 50 * (timeLeft / duration);
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-      });
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-      });
-    }, 250);
-  };
-
-  return (
-    <div className="relative">
-      <Button onClick={handleClick}>Trigger Fireworks</Button>
-    </div>
-  );
-}
-===== EXAMPLE: confetti-random-direction (registry:example) =====
-Title: Confetti Random Direction
-Description: Example showing confetti with random directions.
-
---- file: registry/example/confetti-random-direction.tsx ---
-import { ConfettiButton } from "@/registry/magicui/confetti";
-
-export default function ConfettiButtonDemo() {
-  return (
-    <div className="relative">
-      <ConfettiButton
-        options={{
-          get angle() {
-            return Math.random() * 360;
-          },
-        }}
-      >
-        Random Confetti 🎉
-      </ConfettiButton>
-    </div>
-  );
-}
-===== EXAMPLE: confetti-side-cannons (registry:example) =====
-Title: Confetti Side Cannons
-Description: Example showing side-mounted confetti cannons.
-
---- file: registry/example/confetti-side-cannons.tsx ---
-"use client";
-
-import confetti from "canvas-confetti";
-
-import { Button } from "@/components/ui/button";
-
-export default function ConfettiSideCannons() {
-  const handleClick = () => {
-    const end = Date.now() + 3 * 1000; // 3 seconds
-    const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
-
-    const frame = () => {
-      if (Date.now() > end) return;
-
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        startVelocity: 60,
-        origin: { x: 0, y: 0.5 },
-        colors: colors,
-      });
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        startVelocity: 60,
-        origin: { x: 1, y: 0.5 },
-        colors: colors,
-      });
-
-      requestAnimationFrame(frame);
-    };
-
-    frame();
-  };
-
-  return (
-    <div className="relative">
-      <Button onClick={handleClick}>Trigger Side Cannons</Button>
-    </div>
-  );
-}
-===== EXAMPLE: confetti-stars (registry:example) =====
-Title: Confetti Stars
-Description: Example showing star-shaped confetti animation.
-
---- file: registry/example/confetti-stars.tsx ---
-"use client";
-
-import confetti from "canvas-confetti";
-
-import { Button } from "@/components/ui/button";
-
-export default function ConfettiStars() {
-  const handleClick = () => {
-    const defaults = {
-      spread: 360,
-      ticks: 50,
-      gravity: 0,
-      decay: 0.94,
-      startVelocity: 30,
-      colors: ["#FFE400", "#FFBD00", "#E89400", "#FFCA6C", "#FDFFB8"],
-    };
-
-    const shoot = () => {
-      confetti({
-        ...defaults,
-        particleCount: 40,
-        scalar: 1.2,
-        shapes: ["star"],
-      });
-
-      confetti({
-        ...defaults,
-        particleCount: 10,
-        scalar: 0.75,
-        shapes: ["circle"],
-      });
-    };
-
-    setTimeout(shoot, 0);
-    setTimeout(shoot, 100);
-    setTimeout(shoot, 200);
-  };
-
-  return (
-    <div className="relative">
-      <Button onClick={handleClick}>Trigger Stars</Button>
-    </div>
-  );
-}
 
 
 
-===== MAIN COMPONENT: cool-mode (registry:ui) =====
+===== COMPONENT: cool-mode =====
 Title: Cool Mode
 Description: Cool mode effect for buttons, links, and other DOMs
 
@@ -5997,9 +6036,28 @@ export const CoolMode: React.FC<CoolModeProps> = ({ children, options }) => {
 
   return React.cloneElement(children as React.ReactElement, { ref });
 };
-===== EXAMPLE: cool-mode-custom (registry:example) =====
+
+
+===== EXAMPLE: cool-mode-demo =====
+Title: Cool Mode Demo
+
+--- file: registry/example/cool-mode-demo.tsx ---
+import { Button } from "@/components/ui/button";
+import { CoolMode } from "@/registry/magicui/cool-mode";
+
+export default function CoolModeDemo() {
+  return (
+    <div className="relative justify-center">
+      <CoolMode>
+        <Button>Click Me!</Button>
+      </CoolMode>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: cool-mode-custom =====
 Title: Cool Mode Custom
-Description: Example showing customized cool mode effects.
 
 --- file: registry/example/cool-mode-custom.tsx ---
 import { Button } from "@/components/ui/button";
@@ -6019,27 +6077,10 @@ export default function CoolModeCustom() {
     </div>
   );
 }
-===== EXAMPLE: cool-mode-demo (registry:example) =====
-Title: Cool Mode Demo
-Description: Example showing cool mode effect for buttons and links.
-
---- file: registry/example/cool-mode-demo.tsx ---
-import { Button } from "@/components/ui/button";
-import { CoolMode } from "@/registry/magicui/cool-mode";
-
-export default function CoolModeDemo() {
-  return (
-    <div className="relative justify-center">
-      <CoolMode>
-        <Button>Click Me!</Button>
-      </CoolMode>
-    </div>
-  );
-}
 
 
 
-===== MAIN COMPONENT: dock (registry:ui) =====
+===== COMPONENT: dock =====
 Title: Dock
 Description: An implementation of the MacOS dock using react + tailwindcss + motion
 
@@ -6188,9 +6229,10 @@ const DockIcon = ({
 DockIcon.displayName = "DockIcon";
 
 export { Dock, DockIcon, dockVariants };
-===== EXAMPLE: dock-demo (registry:example) =====
+
+
+===== EXAMPLE: dock-demo =====
 Title: Dock Demo
-Description: Example showing a MacOS-style dock implementation.
 
 --- file: registry/example/dock-demo.tsx ---
 "use client";
@@ -6390,9 +6432,10 @@ export const ModeToggle = React.forwardRef<
 });
 
 ModeToggle.displayName = "ModeToggle";
-===== EXAMPLE: dock-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: dock-demo-2 =====
 Title: Dock Demo 2
-Description: Second example showing a MacOS-style dock implementation.
 
 --- file: registry/example/dock-demo-2.tsx ---
 "use client";
@@ -6536,9 +6579,10 @@ const Icons = {
     </svg>
   ),
 };
-===== EXAMPLE: dock-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: dock-demo-3 =====
 Title: Dock Demo 3
-Description: Third example showing a MacOS-style dock implementation.
 
 --- file: registry/example/dock-demo-3.tsx ---
 "use client";
@@ -6685,7 +6729,7 @@ const Icons = {
 
 
 
-===== MAIN COMPONENT: dot-pattern (registry:ui) =====
+===== COMPONENT: dot-pattern =====
 Title: Dot Pattern
 Description: A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 
@@ -6848,9 +6892,10 @@ export function DotPattern({
     </svg>
   );
 }
-===== EXAMPLE: dot-pattern-demo (registry:example) =====
+
+
+===== EXAMPLE: dot-pattern-demo =====
 Title: Dot Pattern Demo
-Description: Example showing a background dot pattern made with SVGs.
 
 --- file: registry/example/dot-pattern-demo.tsx ---
 "use client";
@@ -6869,9 +6914,10 @@ export default function DotPatternDemo() {
     </div>
   );
 }
-===== EXAMPLE: dot-pattern-linear-gradient (registry:example) =====
+
+
+===== EXAMPLE: dot-pattern-linear-gradient =====
 Title: Dot Pattern Linear Gradient
-Description: Example showing a dot pattern with linear gradient effects.
 
 --- file: registry/example/dot-pattern-linear-gradient.tsx ---
 "use client";
@@ -6895,9 +6941,10 @@ export default function DotPatternLinearGradient() {
     </div>
   );
 }
-===== EXAMPLE: dot-pattern-with-glow-effect (registry:example) =====
+
+
+===== EXAMPLE: dot-pattern-with-glow-effect =====
 Title: Dot Pattern with glow effect
-Description: Example showing a dot pattern with glow effect
 
 --- file: registry/example/dot-pattern-with-glow-effect.tsx ---
 "use client";
@@ -6920,7 +6967,7 @@ export default function DotPatternWithGlowEffectDemo() {
 
 
 
-===== MAIN COMPONENT: file-tree (registry:ui) =====
+===== COMPONENT: file-tree =====
 Title: File Tree
 Description: A component used to showcase the folder and file structure of a directory.
 
@@ -7314,9 +7361,10 @@ const CollapseButton = forwardRef<
 CollapseButton.displayName = "CollapseButton";
 
 export { CollapseButton, File, Folder, Tree, type TreeViewElement };
-===== EXAMPLE: file-tree-demo (registry:example) =====
+
+
+===== EXAMPLE: file-tree-demo =====
 Title: File Tree Demo
-Description: Example showing a component that displays folder and file structure.
 
 --- file: registry/example/file-tree-demo.tsx ---
 import { File, Folder, Tree } from "@/registry/magicui/file-tree";
@@ -7433,7 +7481,7 @@ const ELEMENTS = [
 
 
 
-===== MAIN COMPONENT: flickering-grid (registry:ui) =====
+===== COMPONENT: flickering-grid =====
 Title: Flickering Grid
 Description: A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
 
@@ -7637,9 +7685,10 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     </div>
   );
 };
-===== EXAMPLE: flickering-grid-demo (registry:example) =====
+
+
+===== EXAMPLE: flickering-grid-demo =====
 Title: Flickering Grid Demo
-Description: Example showing a flickering grid background.
 
 --- file: registry/example/flickering-grid-demo.tsx ---
 import { FlickeringGrid } from "@/registry/magicui/flickering-grid";
@@ -7660,9 +7709,10 @@ export default function FlickeringGridDemo() {
     </div>
   );
 }
-===== EXAMPLE: flickering-grid-rounded-demo (registry:example) =====
+
+
+===== EXAMPLE: flickering-grid-rounded-demo =====
 Title: Flickering Grid Rounded Demo
-Description: Example showing a flickering grid background with rounded corners.
 
 --- file: registry/example/flickering-grid-rounded-demo.tsx ---
 import { FlickeringGrid } from "@/registry/magicui/flickering-grid";
@@ -7686,7 +7736,7 @@ export default function FlickeringGridRoundedDemo() {
 
 
 
-===== MAIN COMPONENT: flip-text (registry:ui) =====
+===== COMPONENT: flip-text =====
 Title: Flip Text
 Description: Text flipping character animation
 
@@ -7755,9 +7805,10 @@ export function FlipText({
     </div>
   );
 }
-===== EXAMPLE: flip-text-demo (registry:example) =====
+
+
+===== EXAMPLE: flip-text-demo =====
 Title: Flip Text Demo
-Description: Example showing text with character flip animations.
 
 --- file: registry/example/flip-text-demo.tsx ---
 import { FlipText } from "@/registry/magicui/flip-text";
@@ -7772,7 +7823,7 @@ export default function FlipTextDemo() {
 
 
 
-===== MAIN COMPONENT: globe (registry:ui) =====
+===== COMPONENT: globe =====
 Title: Globe
 Description: An autorotating, interactive, and highly performant globe made using WebGL.
 
@@ -7905,9 +7956,10 @@ export function Globe({
     </div>
   );
 }
-===== EXAMPLE: globe-demo (registry:example) =====
+
+
+===== EXAMPLE: globe-demo =====
 Title: Globe Demo
-Description: Example showing an autorotating, interactive WebGL globe.
 
 --- file: registry/example/globe-demo.tsx ---
 import { Globe } from "@/registry/magicui/globe";
@@ -7926,7 +7978,7 @@ export default function GlobeDemo() {
 
 
 
-===== MAIN COMPONENT: grid-pattern (registry:ui) =====
+===== COMPONENT: grid-pattern =====
 Title: Grid Pattern
 Description: A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 
@@ -8001,35 +8053,10 @@ export function GridPattern({
     </svg>
   );
 }
-===== EXAMPLE: grid-pattern-dashed (registry:example) =====
-Title: Grid Pattern Dashed
-Description: Example showing a dashed grid pattern.
 
---- file: registry/example/grid-pattern-dashed.tsx ---
-"use client";
 
-import { cn } from "@/lib/utils";
-import { GridPattern } from "@/registry/magicui/grid-pattern";
-
-export default function GridPatternDashed() {
-  return (
-    <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20">
-      <GridPattern
-        width={30}
-        height={30}
-        x={-1}
-        y={-1}
-        strokeDasharray={"4 2"}
-        className={cn(
-          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
-        )}
-      />
-    </div>
-  );
-}
-===== EXAMPLE: grid-pattern-demo (registry:example) =====
+===== EXAMPLE: grid-pattern-demo =====
 Title: Grid Pattern Demo
-Description: Example showing a background grid pattern made with SVGs.
 
 --- file: registry/example/grid-pattern-demo.tsx ---
 "use client";
@@ -8063,9 +8090,10 @@ export default function GridPatternDemo() {
     </div>
   );
 }
-===== EXAMPLE: grid-pattern-linear-gradient (registry:example) =====
+
+
+===== EXAMPLE: grid-pattern-linear-gradient =====
 Title: Grid Pattern Linear Gradient
-Description: Example showing a grid pattern with linear gradient effects.
 
 --- file: registry/example/grid-pattern-linear-gradient.tsx ---
 "use client";
@@ -8090,8 +8118,35 @@ export default function GridPatternLinearGradient() {
 }
 
 
+===== EXAMPLE: grid-pattern-dashed =====
+Title: Grid Pattern Dashed
 
-===== MAIN COMPONENT: hero-video-dialog (registry:ui) =====
+--- file: registry/example/grid-pattern-dashed.tsx ---
+"use client";
+
+import { cn } from "@/lib/utils";
+import { GridPattern } from "@/registry/magicui/grid-pattern";
+
+export default function GridPatternDashed() {
+  return (
+    <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20">
+      <GridPattern
+        width={30}
+        height={30}
+        x={-1}
+        y={-1}
+        strokeDasharray={"4 2"}
+        className={cn(
+          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
+        )}
+      />
+    </div>
+  );
+}
+
+
+
+===== COMPONENT: hero-video-dialog =====
 Title: Hero Video Dialog
 Description: A hero video dialog component.
 
@@ -8247,9 +8302,10 @@ export default function HeroVideoDialog({
     </div>
   );
 }
-===== EXAMPLE: hero-video-dialog-demo (registry:example) =====
+
+
+===== EXAMPLE: hero-video-dialog-demo =====
 Title: Hero Video Dialog Demo
-Description: Example showing a hero video dialog component.
 
 --- file: registry/example/hero-video-dialog-demo.tsx ---
 import HeroVideoDialog from "@/registry/magicui/hero-video-dialog";
@@ -8274,9 +8330,10 @@ export default function HeroVideoDialogDemo() {
     </div>
   );
 }
-===== EXAMPLE: hero-video-dialog-demo-top-in-bottom-out (registry:example) =====
+
+
+===== EXAMPLE: hero-video-dialog-demo-top-in-bottom-out =====
 Title: Hero Video Dialog Top In Bottom Out Demo
-Description: Example showing a hero video dialog with top-in bottom-out animation.
 
 --- file: registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx ---
 import HeroVideoDialog from "@/registry/magicui/hero-video-dialog";
@@ -8304,7 +8361,7 @@ export default function HeroVideoDialogDemoTopInBottomOut() {
 
 
 
-===== MAIN COMPONENT: highlighter (registry:ui) =====
+===== COMPONENT: highlighter =====
 Title: Highlighter
 Description: A text highlighter that mimics the effect of a human-drawn marker stroke.
 
@@ -8387,9 +8444,10 @@ export function Highlighter({
     </span>
   );
 }
-===== EXAMPLE: highlighter-demo (registry:example) =====
+
+
+===== EXAMPLE: highlighter-demo =====
 Title: Highlighter Demo
-Description: Example showing the demo of a Highlighter
 
 --- file: registry/example/highlighter-demo.tsx ---
 import { Highlighter } from "@/registry/magicui/highlighter";
@@ -8494,7 +8552,7 @@ export function Highlighter({
 
 
 
-===== MAIN COMPONENT: hyper-text (registry:ui) =====
+===== COMPONENT: hyper-text =====
 Title: Hyper Text
 Description: A text animation that scrambles letters before revealing the final text.
 
@@ -8645,9 +8703,10 @@ export function HyperText({
     </MotionComponent>
   );
 }
-===== EXAMPLE: hyper-text-demo (registry:example) =====
+
+
+===== EXAMPLE: hyper-text-demo =====
 Title: Hyper Text Demo
-Description: Example showing text with scrambling letter animations.
 
 --- file: registry/example/hyper-text-demo.tsx ---
 import { HyperText } from "@/registry/magicui/hyper-text";
@@ -8658,7 +8717,7 @@ export default function HyperTextDemo() {
 
 
 
-===== MAIN COMPONENT: icon-cloud (registry:ui) =====
+===== COMPONENT: icon-cloud =====
 Title: Icon Cloud
 Description: An interactive 3D tag cloud component
 
@@ -8987,9 +9046,10 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     />
   );
 }
-===== EXAMPLE: icon-cloud-demo (registry:example) =====
+
+
+===== EXAMPLE: icon-cloud-demo =====
 Title: Icon Cloud Demo
-Description: Example showing an interactive 3D icon cloud.
 
 --- file: registry/example/icon-cloud-demo.tsx ---
 import { IconCloud } from "@/registry/magicui/icon-cloud";
@@ -9038,9 +9098,10 @@ export default function IconCloudDemo() {
     </div>
   );
 }
-===== EXAMPLE: icon-cloud-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: icon-cloud-demo-2 =====
 Title: Icon Cloud Demo 2
-Description: Second example showing an interactive 3D icon cloud.
 
 --- file: registry/example/icon-cloud-demo-2.tsx ---
 import { IconCloud } from "@/registry/magicui/icon-cloud";
@@ -9070,9 +9131,10 @@ export default function IconCloudDemo() {
     </div>
   );
 }
-===== EXAMPLE: icon-cloud-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: icon-cloud-demo-3 =====
 Title: Icon Cloud Demo 3
-Description: Third example showing an interactive 3D icon cloud.
 
 --- file: registry/example/icon-cloud-demo-3.tsx ---
 import { IconCloud } from "@/registry/magicui/icon-cloud";
@@ -9243,7 +9305,7 @@ export default function IconCloudDemo() {
 
 
 
-===== MAIN COMPONENT: interactive-grid-pattern (registry:ui) =====
+===== COMPONENT: interactive-grid-pattern =====
 Title: Interactive Grid Pattern
 Description: A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 
@@ -9320,9 +9382,10 @@ export function InteractiveGridPattern({
     </svg>
   );
 }
-===== EXAMPLE: interactive-grid-pattern-demo (registry:example) =====
+
+
+===== EXAMPLE: interactive-grid-pattern-demo =====
 Title: Interactive Grid Pattern Demo
-Description: Example showing an interactive grid pattern background.
 
 --- file: registry/example/interactive-grid-pattern-demo.tsx ---
 "use client";
@@ -9342,9 +9405,10 @@ export default function InteractiveGridPatternDemo() {
     </div>
   );
 }
-===== EXAMPLE: interactive-grid-pattern-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: interactive-grid-pattern-demo-2 =====
 Title: Interactive Grid Pattern Demo 2
-Description: Second example showing an interactive grid pattern background.
 
 --- file: registry/example/interactive-grid-pattern-demo-2.tsx ---
 "use client";
@@ -9370,7 +9434,7 @@ export default function InteractiveGridPatternDemo() {
 
 
 
-===== MAIN COMPONENT: interactive-hover-button (registry:ui) =====
+===== COMPONENT: interactive-hover-button =====
 Title: interactive-hover-button
 Description: The interactive-hover-button component.
 
@@ -9410,9 +9474,10 @@ export const InteractiveHoverButton = React.forwardRef<
 });
 
 InteractiveHoverButton.displayName = "InteractiveHoverButton";
-===== EXAMPLE: interactive-hover-button-demo (registry:example) =====
+
+
+===== EXAMPLE: interactive-hover-button-demo =====
 Title: Interactive Hover Button Demo
-Description: Example showing an interactive button with hover effects.
 
 --- file: registry/example/interactive-hover-button-demo.tsx ---
 import { InteractiveHoverButton } from "@/registry/magicui/interactive-hover-button";
@@ -9423,7 +9488,7 @@ export default function InteractiveHoverButtonDemo() {
 
 
 
-===== MAIN COMPONENT: iphone-15-pro (registry:ui) =====
+===== COMPONENT: iphone-15-pro =====
 Title: iPhone 15 Pro
 Description: A mockup of the iPhone 15 Pro
 
@@ -9537,9 +9602,10 @@ export default function Iphone15Pro({
     </svg>
   );
 }
-===== EXAMPLE: iphone-15-pro-demo (registry:example) =====
+
+
+===== EXAMPLE: iphone-15-pro-demo =====
 Title: iPhone 15 Pro Demo
-Description: Example showing an iPhone 15 Pro mockup.
 
 --- file: registry/example/iphone-15-pro-demo.tsx ---
 import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
@@ -9551,9 +9617,10 @@ export default function Iphone15ProDemo() {
     </div>
   );
 }
-===== EXAMPLE: iphone-15-pro-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: iphone-15-pro-demo-2 =====
 Title: iPhone 15 Pro Demo 2
-Description: Second example showing an iPhone 15 Pro mockup.
 
 --- file: registry/example/iphone-15-pro-demo-2.tsx ---
 import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
@@ -9568,9 +9635,10 @@ export default function Iphone15ProDemo() {
     </div>
   );
 }
-===== EXAMPLE: iphone-15-pro-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: iphone-15-pro-demo-3 =====
 Title: iPhone 15 Pro Demo 3
-Description: Third example showing an iPhone 15 Pro mockup.
 
 --- file: registry/example/iphone-15-pro-demo-3.tsx ---
 import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
@@ -9588,7 +9656,7 @@ export default function Iphone15ProDemo() {
 
 
 
-===== MAIN COMPONENT: lens (registry:ui) =====
+===== COMPONENT: lens =====
 Title: Lens
 Description: A interactive component that enables zooming into images, videos and other elements.
 
@@ -9725,9 +9793,10 @@ export function Lens({
     </div>
   );
 }
-===== EXAMPLE: lens-demo (registry:example) =====
+
+
+===== EXAMPLE: lens-demo =====
 Title: Lens Demo
-Description: Example showing a lens effect component
 
 --- file: registry/example/lens-demo.tsx ---
 /* eslint-disable @next/next/no-img-element */
@@ -9776,9 +9845,10 @@ export default function LensDemo() {
     </Card>
   );
 }
-===== EXAMPLE: lens-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: lens-demo-2 =====
 Title: Lens Demo 2
-Description: Second example showing a lens effect component
 
 --- file: registry/example/lens-demo-2.tsx ---
 /* eslint-disable @next/next/no-img-element */
@@ -9821,9 +9891,10 @@ export default function LensDemo() {
     </Card>
   );
 }
-===== EXAMPLE: lens-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: lens-demo-3 =====
 Title: Lens Demo 3
-Description: Third example showing a lens effect component
 
 --- file: registry/example/lens-demo-3.tsx ---
 /* eslint-disable @next/next/no-img-element */
@@ -9869,7 +9940,7 @@ export default function LensDemo() {
 
 
 
-===== MAIN COMPONENT: line-shadow-text (registry:ui) =====
+===== COMPONENT: line-shadow-text =====
 Title: Line Shadow Text
 Description: A text component with a moving line shadow.
 
@@ -9916,9 +9987,10 @@ export function LineShadowText({
     </MotionComponent>
   );
 }
-===== EXAMPLE: line-shadow-text-demo (registry:example) =====
+
+
+===== EXAMPLE: line-shadow-text-demo =====
 Title: Line Shadow Text Demo
-Description: Example showing a text component with a moving line shadow.
 
 --- file: registry/example/line-shadow-text-demo.tsx ---
 "use client";
@@ -9941,7 +10013,7 @@ export default function LineShadowTextDemo() {
 
 
 
-===== MAIN COMPONENT: magic-card (registry:ui) =====
+===== COMPONENT: magic-card =====
 Title: Magic Card
 Description: A spotlight effect that follows your mouse cursor and highlights borders on hover.
 
@@ -10054,9 +10126,10 @@ export function MagicCard({
     </div>
   );
 }
-===== EXAMPLE: magic-card-demo (registry:example) =====
+
+
+===== EXAMPLE: magic-card-demo =====
 Title: Magic Card Demo
-Description: Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.
 
 --- file: registry/example/magic-card-demo.tsx ---
 "use client";
@@ -10113,7 +10186,7 @@ export default function MagicCardDemo() {
 
 
 
-===== MAIN COMPONENT: marquee (registry:ui) =====
+===== COMPONENT: marquee =====
 Title: Marquee
 Description: An infinite scrolling component that can be used to display text, images, or videos.
 
@@ -10191,9 +10264,368 @@ export function Marquee({
     </div>
   );
 }
-===== EXAMPLE: bento-demo (registry:example) =====
+
+
+===== EXAMPLE: marquee-demo =====
+Title: Marquee Demo
+
+--- file: registry/example/marquee-demo.tsx ---
+import { cn } from "@/lib/utils";
+import { Marquee } from "@/registry/magicui/marquee";
+
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+  {
+    name: "Jane",
+    username: "@jane",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/jane",
+  },
+  {
+    name: "Jenny",
+    username: "@jenny",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/jenny",
+  },
+  {
+    name: "James",
+    username: "@james",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/james",
+  },
+];
+
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
+
+const ReviewCard = ({
+  img,
+  name,
+  username,
+  body,
+}: {
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}) => {
+  return (
+    <figure
+      className={cn(
+        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+        </div>
+      </div>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
+  );
+};
+
+export default function MarqueeDemo() {
+  return (
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover className="[--duration:20s]">
+        {firstRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <Marquee reverse pauseOnHover className="[--duration:20s]">
+        {secondRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: marquee-demo-vertical =====
+Title: Marquee Vertical Demo
+
+--- file: registry/example/marquee-demo-vertical.tsx ---
+/* eslint-disable @next/next/no-img-element */
+import { cn } from "@/lib/utils";
+import { Marquee } from "@/registry/magicui/marquee";
+
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+];
+
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
+
+const ReviewCard = ({
+  img,
+  name,
+  username,
+  body,
+}: {
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}) => {
+  return (
+    <figure
+      className={cn(
+        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+        </div>
+      </div>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
+  );
+};
+
+export default function MarqueeDemoVertical() {
+  return (
+    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover vertical className="[--duration:20s]">
+        {firstRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+        {secondRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: marquee-logos =====
+Title: Marquee Logos
+
+--- file: registry/example/marquee-logos.tsx ---
+import { cn } from "@/lib/utils";
+import { Marquee } from "@/registry/magicui/marquee";
+
+const logos = [
+  {
+    name: "Microsoft",
+    img: "https://cdn.simpleicons.org/microsoft/000/fff",
+  },
+  {
+    name: "Apple",
+    img: "https://cdn.simpleicons.org/apple/000/fff",
+  },
+  {
+    name: "Google",
+    img: "https://cdn.simpleicons.org/google/000/fff",
+  },
+  {
+    name: "Facebook",
+    img: "https://cdn.simpleicons.org/facebook/000/fff",
+  },
+  {
+    name: "LinkedIn",
+    img: "https://cdn.simpleicons.org/linkedin/000/fff",
+  },
+  {
+    name: "Twitter",
+    img: "https://cdn.simpleicons.org/twitter/000/fff",
+  },
+];
+
+const Logo = ({ name, img }: { name: string; img: string }) => {
+  return (
+    <div className={cn("size-12 cursor-pointer")}>
+      <img src={img} alt={name} />
+    </div>
+  );
+};
+
+export default function MarqueeLogos() {
+  return (
+    <div className="relative flex size-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
+      <Marquee className="[--gap:3rem]">
+        {logos.map((logo, idx) => (
+          <Logo key={idx} {...logo} />
+        ))}
+      </Marquee>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: marquee-3d =====
+Title: Marquee 3D
+
+--- file: registry/example/marquee-3d.tsx ---
+/* eslint-disable @next/next/no-img-element */
+import { cn } from "@/lib/utils";
+import { Marquee } from "@/registry/magicui/marquee";
+
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+];
+
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
+const thirdRow = reviews.slice(0, reviews.length / 2);
+const fourthRow = reviews.slice(reviews.length / 2);
+
+const ReviewCard = ({
+  img,
+  name,
+  username,
+  body,
+}: {
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}) => {
+  return (
+    <figure
+      className={cn(
+        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+        </div>
+      </div>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
+  );
+};
+
+export default function Marquee3D() {
+  return (
+    <div className="relative flex h-96 w-full flex-row items-center justify-center gap-4 overflow-hidden [perspective:300px]">
+      <div
+        className="flex flex-row items-center gap-4"
+        style={{
+          transform:
+            "translateX(-100px) translateY(0px) translateZ(-100px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)",
+        }}
+      >
+        <Marquee pauseOnHover vertical className="[--duration:20s]">
+          {firstRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <Marquee reverse pauseOnHover className="[--duration:20s]" vertical>
+          {secondRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <Marquee reverse pauseOnHover className="[--duration:20s]" vertical>
+          {thirdRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <Marquee pauseOnHover className="[--duration:20s]" vertical>
+          {fourthRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+      </div>
+
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+    </div>
+  );
+}
+
+
+===== EXAMPLE: bento-demo =====
 Title: Bento Demo
-Description: Example showing a bento grid layout for showcasing features.
 
 --- file: registry/example/bento-demo.tsx ---
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
@@ -10313,364 +10745,10 @@ export default function BentoDemo() {
     </BentoGrid>
   );
 }
-===== EXAMPLE: marquee-3d (registry:example) =====
-Title: Marquee 3D
-Description: Example showing a 3D infinite scrolling component.
-
---- file: registry/example/marquee-3d.tsx ---
-/* eslint-disable @next/next/no-img-element */
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/registry/magicui/marquee";
-
-const reviews = [
-  {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
-  },
-  {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
-  },
-];
-
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-const thirdRow = reviews.slice(0, reviews.length / 2);
-const fourthRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
-    </figure>
-  );
-};
-
-export default function Marquee3D() {
-  return (
-    <div className="relative flex h-96 w-full flex-row items-center justify-center gap-4 overflow-hidden [perspective:300px]">
-      <div
-        className="flex flex-row items-center gap-4"
-        style={{
-          transform:
-            "translateX(-100px) translateY(0px) translateZ(-100px) rotateX(20deg) rotateY(-10deg) rotateZ(20deg)",
-        }}
-      >
-        <Marquee pauseOnHover vertical className="[--duration:20s]">
-          {firstRow.map((review) => (
-            <ReviewCard key={review.username} {...review} />
-          ))}
-        </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:20s]" vertical>
-          {secondRow.map((review) => (
-            <ReviewCard key={review.username} {...review} />
-          ))}
-        </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:20s]" vertical>
-          {thirdRow.map((review) => (
-            <ReviewCard key={review.username} {...review} />
-          ))}
-        </Marquee>
-        <Marquee pauseOnHover className="[--duration:20s]" vertical>
-          {fourthRow.map((review) => (
-            <ReviewCard key={review.username} {...review} />
-          ))}
-        </Marquee>
-      </div>
-
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-    </div>
-  );
-}
-===== EXAMPLE: marquee-demo (registry:example) =====
-Title: Marquee Demo
-Description: Example showing an infinite scrolling component.
-
---- file: registry/example/marquee-demo.tsx ---
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/registry/magicui/marquee";
-
-const reviews = [
-  {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
-  },
-  {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
-  },
-  {
-    name: "Jane",
-    username: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jane",
-  },
-  {
-    name: "Jenny",
-    username: "@jenny",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jenny",
-  },
-  {
-    name: "James",
-    username: "@james",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/james",
-  },
-];
-
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
-    </figure>
-  );
-};
-
-export default function MarqueeDemo() {
-  return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:20s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-    </div>
-  );
-}
-===== EXAMPLE: marquee-demo-vertical (registry:example) =====
-Title: Marquee Vertical Demo
-Description: Example showing a vertical infinite scrolling component.
-
---- file: registry/example/marquee-demo-vertical.tsx ---
-/* eslint-disable @next/next/no-img-element */
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/registry/magicui/marquee";
-
-const reviews = [
-  {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
-  },
-  {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
-  },
-];
-
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
-    </figure>
-  );
-};
-
-export default function MarqueeDemoVertical() {
-  return (
-    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover vertical className="[--duration:20s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
-    </div>
-  );
-}
-===== EXAMPLE: marquee-logos (registry:example) =====
-Title: Marquee Logos
-Description: Example showing an infinite scrolling logo carousel.
-
---- file: registry/example/marquee-logos.tsx ---
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/registry/magicui/marquee";
-
-const logos = [
-  {
-    name: "Microsoft",
-    img: "https://cdn.simpleicons.org/microsoft/000/fff",
-  },
-  {
-    name: "Apple",
-    img: "https://cdn.simpleicons.org/apple/000/fff",
-  },
-  {
-    name: "Google",
-    img: "https://cdn.simpleicons.org/google/000/fff",
-  },
-  {
-    name: "Facebook",
-    img: "https://cdn.simpleicons.org/facebook/000/fff",
-  },
-  {
-    name: "LinkedIn",
-    img: "https://cdn.simpleicons.org/linkedin/000/fff",
-  },
-  {
-    name: "Twitter",
-    img: "https://cdn.simpleicons.org/twitter/000/fff",
-  },
-];
-
-const Logo = ({ name, img }: { name: string; img: string }) => {
-  return (
-    <div className={cn("size-12 cursor-pointer")}>
-      <img src={img} alt={name} />
-    </div>
-  );
-};
-
-export default function MarqueeLogos() {
-  return (
-    <div className="relative flex size-full flex-col items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl">
-      <Marquee className="[--gap:3rem]">
-        {logos.map((logo, idx) => (
-          <Logo key={idx} {...logo} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
-    </div>
-  );
-}
 
 
 
-===== MAIN COMPONENT: meteors (registry:ui) =====
+===== COMPONENT: meteors =====
 Title: Meteors
 Description: A meteor shower effect.
 
@@ -10735,9 +10813,10 @@ export const Meteors = ({
     </>
   );
 };
-===== EXAMPLE: meteors-demo (registry:example) =====
+
+
+===== EXAMPLE: meteors-demo =====
 Title: Meteors Demo
-Description: Example showing a meteor shower effect.
 
 --- file: registry/example/meteors-demo.tsx ---
 import { Meteors } from "@/registry/magicui/meteors";
@@ -10755,7 +10834,7 @@ export default function MeteorDemo() {
 
 
 
-===== MAIN COMPONENT: morphing-text (registry:ui) =====
+===== COMPONENT: morphing-text =====
 Title: Morphing Text
 Description: A dynamic text morphing component for Magic UI.
 
@@ -10909,9 +10988,10 @@ export const MorphingText: React.FC<MorphingTextProps> = ({
     <SvgFilters />
   </div>
 );
-===== EXAMPLE: morphing-text-demo (registry:example) =====
+
+
+===== EXAMPLE: morphing-text-demo =====
 Title: Morphing Text Demo
-Description: Example showing a dynamic text morphing component.
 
 --- file: registry/example/morphing-text-demo.tsx ---
 import { MorphingText } from "@/registry/magicui/morphing-text";
@@ -10934,7 +11014,7 @@ export default function MorphingTextDemo() {
 
 
 
-===== MAIN COMPONENT: neon-gradient-card (registry:ui) =====
+===== COMPONENT: neon-gradient-card =====
 Title: Neon Gradient Card
 Description: A beautiful neon card effect
 
@@ -11088,9 +11168,10 @@ export const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
     </div>
   );
 };
-===== EXAMPLE: neon-gradient-card-demo (registry:example) =====
+
+
+===== EXAMPLE: neon-gradient-card-demo =====
 Title: Neon Gradient Card Demo
-Description: Example showing a beautiful neon card effect.
 
 --- file: registry/example/neon-gradient-card-demo.tsx ---
 import { NeonGradientCard } from "@/registry/magicui/neon-gradient-card";
@@ -11107,7 +11188,7 @@ export default function NeonGradientCardDemo() {
 
 
 
-===== MAIN COMPONENT: number-ticker (registry:ui) =====
+===== COMPONENT: number-ticker =====
 Title: Number Ticker
 Description: Animate numbers to count up or down to a target number
 
@@ -11179,25 +11260,10 @@ export function NumberTicker({
     </span>
   );
 }
-===== EXAMPLE: number-ticker-decimal-demo (registry:example) =====
-Title: Number Ticker Decimal Demo
-Description: Example showing animated counting decimal numbers.
 
---- file: registry/example/number-ticker-decimal-demo.tsx ---
-import { NumberTicker } from "@/registry/magicui/number-ticker";
 
-export default function NumberTickerDemo() {
-  return (
-    <NumberTicker
-      value={5.67}
-      decimalPlaces={2}
-      className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
-    />
-  );
-}
-===== EXAMPLE: number-ticker-demo (registry:example) =====
+===== EXAMPLE: number-ticker-demo =====
 Title: Number Ticker Demo
-Description: Example showing animated counting numbers.
 
 --- file: registry/example/number-ticker-demo.tsx ---
 import { NumberTicker } from "@/registry/magicui/number-ticker";
@@ -11210,9 +11276,10 @@ export default function NumberTickerDemo() {
     />
   );
 }
-===== EXAMPLE: number-ticker-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: number-ticker-demo-2 =====
 Title: Number Ticker Demo 2
-Description: Example showing animated counting numbers.
 
 --- file: registry/example/number-ticker-demo-2.tsx ---
 import { NumberTicker } from "@/registry/magicui/number-ticker";
@@ -11228,8 +11295,25 @@ export default function NumberTickerDemo() {
 }
 
 
+===== EXAMPLE: number-ticker-decimal-demo =====
+Title: Number Ticker Decimal Demo
 
-===== MAIN COMPONENT: orbiting-circles (registry:ui) =====
+--- file: registry/example/number-ticker-decimal-demo.tsx ---
+import { NumberTicker } from "@/registry/magicui/number-ticker";
+
+export default function NumberTickerDemo() {
+  return (
+    <NumberTicker
+      value={5.67}
+      decimalPlaces={2}
+      className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
+    />
+  );
+}
+
+
+
+===== COMPONENT: orbiting-circles =====
 Title: Orbiting Circles
 Description: A collection of circles which move in orbit along a circular path
 
@@ -11305,9 +11389,10 @@ export function OrbitingCircles({
     </>
   );
 }
-===== EXAMPLE: orbiting-circles-demo (registry:example) =====
+
+
+===== EXAMPLE: orbiting-circles-demo =====
 Title: Orbiting Circles Demo
-Description: Example showing circles moving in orbital paths.
 
 --- file: registry/example/orbiting-circles-demo.tsx ---
 import { OrbitingCircles } from "@/registry/magicui/orbiting-circles";
@@ -11463,7 +11548,7 @@ const Icons = {
 
 
 
-===== MAIN COMPONENT: particles (registry:ui) =====
+===== COMPONENT: particles =====
 Title: Particles
 Description: Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
 
@@ -11781,9 +11866,10 @@ export const Particles: React.FC<ParticlesProps> = ({
     </div>
   );
 };
-===== EXAMPLE: particles-demo (registry:example) =====
+
+
+===== EXAMPLE: particles-demo =====
 Title: Particles Demo
-Description: Example showing interactive particle effects.
 
 --- file: registry/example/particles-demo.tsx ---
 "use client";
@@ -11819,7 +11905,7 @@ export default function ParticlesDemo() {
 
 
 
-===== MAIN COMPONENT: pixel-image (registry:ui) =====
+===== COMPONENT: pixel-image =====
 Title: Pixel Image
 Description: A component that displays an image with a pixelated effect, creating a retro aesthetic.
 
@@ -11949,9 +12035,10 @@ export const PixelImage = ({
     </div>
   );
 };
-===== EXAMPLE: pixel-image-demo (registry:example) =====
+
+
+===== EXAMPLE: pixel-image-demo =====
 Title: Pixel Image Demo
-Description: Example showing a pixelated image effect.
 
 --- file: registry/example/pixel-image-demo.tsx ---
 import { PixelImage } from "@/registry/magicui/pixel-image";
@@ -11968,7 +12055,7 @@ export default function Home() {
 
 
 
-===== MAIN COMPONENT: pointer (registry:ui) =====
+===== COMPONENT: pointer =====
 Title: Pointer
 Description: A component that displays a pointer when hovering over an element
 
@@ -12093,9 +12180,10 @@ export function Pointer({
     </>
   );
 }
-===== EXAMPLE: pointer-demo-1 (registry:example) =====
+
+
+===== EXAMPLE: pointer-demo-1 =====
 Title: Pointer Demo 1
-Description: Example showing a pointer effect component
 
 --- file: registry/example/pointer-demo-1.tsx ---
 "use client";
@@ -12223,7 +12311,7 @@ export default function PointerDemo1() {
 
 
 
-===== MAIN COMPONENT: progressive-blur (registry:ui) =====
+===== COMPONENT: progressive-blur =====
 Title: Progressive Blur
 Description: The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
 
@@ -12342,9 +12430,10 @@ export function ProgressiveBlur({
 }
 
 export default ProgressiveBlur;
-===== EXAMPLE: progressive-blur-demo (registry:example) =====
+
+
+===== EXAMPLE: progressive-blur-demo =====
 Title: Progressive Blur Demo
-Description: Example showing progressive blur effect for scrollable content.
 
 --- file: registry/example/progressive-blur-demo.tsx ---
 "use client";
@@ -12374,7 +12463,7 @@ export default function ProgressiveBlurDemo() {
 
 
 
-===== MAIN COMPONENT: pulsating-button (registry:ui) =====
+===== COMPONENT: pulsating-button =====
 Title: Pulsating Button
 Description: An animated pulsating button useful for capturing attention of users.
 
@@ -12425,9 +12514,10 @@ export const PulsatingButton = React.forwardRef<
 );
 
 PulsatingButton.displayName = "PulsatingButton";
-===== EXAMPLE: pulsating-button-demo (registry:example) =====
+
+
+===== EXAMPLE: pulsating-button-demo =====
 Title: Pulsating Button Demo
-Description: Example showing an animated pulsating button.
 
 --- file: registry/example/pulsating-button-demo.tsx ---
 import { PulsatingButton } from "@/registry/magicui/pulsating-button";
@@ -12438,7 +12528,7 @@ export default function PulsatingButtonDemo() {
 
 
 
-===== MAIN COMPONENT: rainbow-button (registry:ui) =====
+===== COMPONENT: rainbow-button =====
 Title: Rainbow Button
 Description: An animated button with a rainbow effect.
 
@@ -12505,9 +12595,10 @@ const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
 RainbowButton.displayName = "RainbowButton";
 
 export { RainbowButton, rainbowButtonVariants, type RainbowButtonProps };
-===== EXAMPLE: rainbow-button-demo (registry:example) =====
+
+
+===== EXAMPLE: rainbow-button-demo =====
 Title: Rainbow Button Demo
-Description: Example showing an animated button with rainbow effect.
 
 --- file: registry/example/rainbow-button-demo.tsx ---
 import { RainbowButton } from "@/registry/magicui/rainbow-button";
@@ -12515,9 +12606,10 @@ import { RainbowButton } from "@/registry/magicui/rainbow-button";
 export default function RainbowButtonDemo() {
   return <RainbowButton>Get Unlimited Access</RainbowButton>;
 }
-===== EXAMPLE: rainbow-button-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: rainbow-button-demo-2 =====
 Title: Rainbow Button Demo 2
-Description: Example showing an animated button with rainbow effect.
 
 --- file: registry/example/rainbow-button-demo-2.tsx ---
 import { RainbowButton } from "@/registry/magicui/rainbow-button";
@@ -12528,7 +12620,7 @@ export default function RainbowButtonDemo() {
 
 
 
-===== MAIN COMPONENT: retro-grid (registry:ui) =====
+===== COMPONENT: retro-grid =====
 Title: Retro Grid
 Description: An animated scrolling retro grid effect
 
@@ -12602,9 +12694,10 @@ export function RetroGrid({
     </div>
   );
 }
-===== EXAMPLE: retro-grid-demo (registry:example) =====
+
+
+===== EXAMPLE: retro-grid-demo =====
 Title: Retro Grid Demo
-Description: Example showing an animated scrolling retro grid effect.
 
 --- file: registry/example/retro-grid-demo.tsx ---
 "use client";
@@ -12625,7 +12718,7 @@ export default function RetroGridDemo() {
 
 
 
-===== MAIN COMPONENT: ripple (registry:ui) =====
+===== COMPONENT: ripple =====
 Title: Ripple
 Description: An animated ripple effect typically used behind elements to emphasize them.
 
@@ -12688,9 +12781,10 @@ export const Ripple = React.memo(function Ripple({
 });
 
 Ripple.displayName = "Ripple";
-===== EXAMPLE: ripple-demo (registry:example) =====
+
+
+===== EXAMPLE: ripple-demo =====
 Title: Ripple Demo
-Description: Example showing an animated ripple effect.
 
 --- file: registry/example/ripple-demo.tsx ---
 import { Ripple } from "@/registry/magicui/ripple";
@@ -12708,7 +12802,7 @@ export default function RippleDemo() {
 
 
 
-===== MAIN COMPONENT: ripple-button (registry:ui) =====
+===== COMPONENT: ripple-button =====
 Title: Ripple Button
 Description: An animated button with ripple useful for user engagement.
 
@@ -12804,9 +12898,10 @@ export const RippleButton = React.forwardRef<
 );
 
 RippleButton.displayName = "RippleButton";
-===== EXAMPLE: ripple-button-demo (registry:example) =====
+
+
+===== EXAMPLE: ripple-button-demo =====
 Title: Ripple Button Demo
-Description: Example showing an animated button with ripple effect.
 
 --- file: registry/example/ripple-button-demo.tsx ---
 import { RippleButton } from "@/registry/magicui/ripple-button";
@@ -12817,7 +12912,7 @@ export default function RippleButtonDemo() {
 
 
 
-===== MAIN COMPONENT: safari (registry:ui) =====
+===== COMPONENT: safari =====
 Title: Safari
 Description: A safari browser mockup to showcase your website.
 
@@ -13006,9 +13101,10 @@ export function Safari({
     </svg>
   );
 }
-===== EXAMPLE: safari-demo (registry:example) =====
+
+
+===== EXAMPLE: safari-demo =====
 Title: Safari Demo
-Description: Example showing a Safari browser mockup.
 
 --- file: registry/example/safari-demo.tsx ---
 import { Safari } from "@/registry/magicui/safari";
@@ -13020,9 +13116,10 @@ export default function SafariDemo() {
     </div>
   );
 }
-===== EXAMPLE: safari-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: safari-demo-2 =====
 Title: Safari Demo 2
-Description: Second example showing a Safari browser mockup.
 
 --- file: registry/example/safari-demo-2.tsx ---
 import { Safari } from "@/registry/magicui/safari";
@@ -13038,9 +13135,10 @@ export default function SafariDemo() {
     </div>
   );
 }
-===== EXAMPLE: safari-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: safari-demo-3 =====
 Title: Safari Demo 3
-Description: Third example showing a Safari browser mockup.
 
 --- file: registry/example/safari-demo-3.tsx ---
 import { Safari } from "@/registry/magicui/safari";
@@ -13056,9 +13154,10 @@ export default function SafariDemo() {
     </div>
   );
 }
-===== EXAMPLE: safari-demo-4 (registry:example) =====
+
+
+===== EXAMPLE: safari-demo-4 =====
 Title: Safari Demo 4
-Description: Fourth example showing a Safari browser mockup.
 
 --- file: registry/example/safari-demo-4.tsx ---
 import { Safari } from "@/registry/magicui/safari";
@@ -13073,7 +13172,7 @@ export default function SafariDemo() {
 
 
 
-===== MAIN COMPONENT: scratch-to-reveal (registry:ui) =====
+===== COMPONENT: scratch-to-reveal =====
 Title: Scratch To Reveal
 Description: The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.
 
@@ -13249,9 +13348,10 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
     </motion.div>
   );
 };
-===== EXAMPLE: scratch-to-reveal-demo (registry:example) =====
+
+
+===== EXAMPLE: scratch-to-reveal-demo =====
 Title: Scratch To Reveal Demo
-Description: Example showing an interactive scratch-off reveal effect.
 
 --- file: registry/example/scratch-to-reveal-demo.tsx ---
 import { ScratchToReveal } from "@/registry/magicui/scratch-to-reveal";
@@ -13272,7 +13372,7 @@ export default function ScratchToRevealDemo() {
 
 
 
-===== MAIN COMPONENT: script-copy-btn (registry:ui) =====
+===== COMPONENT: script-copy-btn =====
 Title: Script Copy Button
 Description: Copy code to clipboard
 
@@ -13424,9 +13524,10 @@ export function ScriptCopyBtn({
     </div>
   );
 }
-===== EXAMPLE: script-copy-btn-demo (registry:example) =====
+
+
+===== EXAMPLE: script-copy-btn-demo =====
 Title: Script Copy Button Demo
-Description: Example showing how to copy code to clipboard.
 
 --- file: registry/example/script-copy-btn-demo.tsx ---
 import { ScriptCopyBtn } from "@/registry/magicui/script-copy-btn";
@@ -13451,7 +13552,7 @@ export default function ScriptCopyBtnDemo() {
 
 
 
-===== MAIN COMPONENT: scroll-based-velocity (registry:ui) =====
+===== COMPONENT: scroll-based-velocity =====
 Title: Scroll Based Velocity
 Description: Scrolling text whose speed changes based on scroll speed
 
@@ -13662,9 +13763,10 @@ function ScrollVelocityRowLocal(props: ScrollVelocityRowProps) {
     <ScrollVelocityRowImpl {...props} velocityFactor={localVelocityFactor} />
   );
 }
-===== EXAMPLE: scroll-based-velocity-demo (registry:example) =====
+
+
+===== EXAMPLE: scroll-based-velocity-demo =====
 Title: Scroll Based Velocity Demo
-Description: Example showing text speed changes based on scroll velocity.
 
 --- file: registry/example/scroll-based-velocity-demo.tsx ---
 import {
@@ -13688,9 +13790,10 @@ export default function ScrollBasedVelocityDemo() {
     </div>
   );
 }
-===== EXAMPLE: scroll-based-velocity-images-demo (registry:example) =====
+
+
+===== EXAMPLE: scroll-based-velocity-images-demo =====
 Title: Scroll Based Velocity Images
-Description: Example showing Unsplash images scrolling with speed reacting to scroll velocity.
 
 --- file: registry/example/scroll-based-velocity-images-demo.tsx ---
 import {
@@ -13750,7 +13853,7 @@ export default function ScrollBasedVelocityImagesDemo() {
 
 
 
-===== MAIN COMPONENT: scroll-progress (registry:ui) =====
+===== COMPONENT: scroll-progress =====
 Title: Scroll Progress
 Description: Animated Scroll Progress for your pages
 
@@ -13785,9 +13888,10 @@ export const ScrollProgress = React.forwardRef<
 });
 
 ScrollProgress.displayName = "ScrollProgress";
-===== EXAMPLE: scroll-progress-demo (registry:example) =====
+
+
+===== EXAMPLE: scroll-progress-demo =====
 Title: Scroll Progress Demo
-Description: Example showing animated scroll progress for your pages.
 
 --- file: registry/example/scroll-progress-demo.tsx ---
 import { ScrollProgress } from "@/registry/magicui/scroll-progress";
@@ -13805,7 +13909,7 @@ export default function ScrollProgressDemo() {
 
 
 
-===== MAIN COMPONENT: shimmer-button (registry:ui) =====
+===== COMPONENT: shimmer-button =====
 Title: Shimmer Button
 Description: A button with a shimmering light which travels around the perimeter.
 
@@ -13906,9 +14010,10 @@ export const ShimmerButton = React.forwardRef<
 );
 
 ShimmerButton.displayName = "ShimmerButton";
-===== EXAMPLE: shimmer-button-demo (registry:example) =====
+
+
+===== EXAMPLE: shimmer-button-demo =====
 Title: Shimmer Button Demo
-Description: Example showing a button with a shimmering light effect.
 
 --- file: registry/example/shimmer-button-demo.tsx ---
 import { ShimmerButton } from "@/registry/magicui/shimmer-button";
@@ -13925,7 +14030,7 @@ export default function ShimmerButtonDemo() {
 
 
 
-===== MAIN COMPONENT: shine-border (registry:ui) =====
+===== COMPONENT: shine-border =====
 Title: Shine Border
 Description: Shine border is an animated background border effect.
 
@@ -13993,9 +14098,10 @@ export function ShineBorder({
     />
   );
 }
-===== EXAMPLE: shine-border-demo (registry:example) =====
+
+
+===== EXAMPLE: shine-border-demo =====
 Title: Shine Border Demo
-Description: Example showing an animated shining border effect.
 
 --- file: registry/example/shine-border-demo.tsx ---
 import { Button } from "@/components/ui/button";
@@ -14041,9 +14147,10 @@ export default function ShineBorderDemo() {
     </Card>
   );
 }
-===== EXAMPLE: shine-border-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: shine-border-demo-2 =====
 Title: Shine Border Demo 2
-Description: Second example showing an animated shining border effect.
 
 --- file: registry/example/shine-border-demo-2.tsx ---
 "use client";
@@ -14096,7 +14203,7 @@ export default function ShineBorderDemo2() {
 
 
 
-===== MAIN COMPONENT: shiny-button (registry:ui) =====
+===== COMPONENT: shiny-button =====
 Title: Shiny Button
 Description: A shiny button component with dynamic styles in the dark mode or light mode.
 
@@ -14173,9 +14280,10 @@ export const ShinyButton = React.forwardRef<
 });
 
 ShinyButton.displayName = "ShinyButton";
-===== EXAMPLE: shiny-button-demo (registry:example) =====
+
+
+===== EXAMPLE: shiny-button-demo =====
 Title: Shiny Button Demo
-Description: Example showing a shiny button with dynamic styles.
 
 --- file: registry/example/shiny-button-demo.tsx ---
 import { ShinyButton } from "@/registry/magicui/shiny-button";
@@ -14186,7 +14294,7 @@ export default function ShinyButtonDemo() {
 
 
 
-===== MAIN COMPONENT: smooth-cursor (registry:ui) =====
+===== COMPONENT: smooth-cursor =====
 Title: smooth-cursor
 Description: A customizable, physics-based smooth cursor animation component with spring animations and rotation effects
 
@@ -14399,8 +14507,10 @@ export function SmoothCursor({
     </motion.div>
   );
 }
-===== EXAMPLE: smooth-cursor-demo (registry:example) =====
-Description: Basic smooth cursor example
+
+
+===== EXAMPLE: smooth-cursor-demo =====
+Title: smooth-cursor-demo
 
 --- file: registry/example/smooth-cursor-demo.tsx ---
 import { SmoothCursor } from "@/registry/magicui/smooth-cursor";
@@ -14417,7 +14527,7 @@ export default function SmoothCursorDemo() {
 
 
 
-===== MAIN COMPONENT: sparkles-text (registry:ui) =====
+===== COMPONENT: sparkles-text =====
 Title: Sparkles Text
 Description: A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.
 
@@ -14572,9 +14682,10 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
     </div>
   );
 };
-===== EXAMPLE: sparkles-text-demo (registry:example) =====
+
+
+===== EXAMPLE: sparkles-text-demo =====
 Title: Sparkles Text Demo
-Description: Example showing text with animated sparkle effects.
 
 --- file: registry/example/sparkles-text-demo.tsx ---
 import { SparklesText } from "@/registry/magicui/sparkles-text";
@@ -14585,7 +14696,7 @@ export default function SparklesTextDemo() {
 
 
 
-===== MAIN COMPONENT: spinning-text (registry:ui) =====
+===== COMPONENT: spinning-text =====
 Title: Spinning Text
 Description: The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.
 
@@ -14703,9 +14814,10 @@ export function SpinningText({
     </motion.div>
   );
 }
-===== EXAMPLE: spinning-text-demo (registry:example) =====
+
+
+===== EXAMPLE: spinning-text-demo =====
 Title: Spinning Text Demo
-Description: Example showing spinning text animation.
 
 --- file: registry/example/spinning-text-demo.tsx ---
 import { SpinningText } from "@/registry/magicui/spinning-text";
@@ -14713,9 +14825,10 @@ import { SpinningText } from "@/registry/magicui/spinning-text";
 export default function SpinningTextBasic() {
   return <SpinningText>learn more • earn more • grow more •</SpinningText>;
 }
-===== EXAMPLE: spinning-text-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: spinning-text-demo-2 =====
 Title: Spinning Text Demo 2
-Description: Example showing spinning text animation.
 
 --- file: registry/example/spinning-text-demo-2.tsx ---
 import { SpinningText } from "@/registry/magicui/spinning-text";
@@ -14730,7 +14843,7 @@ export default function SpinningTextBasic() {
 
 
 
-===== MAIN COMPONENT: terminal (registry:ui) =====
+===== COMPONENT: terminal =====
 Title: Terminal
 Description: A terminal component
 
@@ -14991,9 +15104,10 @@ export const Terminal = ({
     </SequenceContext.Provider>
   );
 };
-===== EXAMPLE: terminal-demo (registry:example) =====
+
+
+===== EXAMPLE: terminal-demo =====
 Title: Terminal Demo
-Description: Example showing a terminal with animated text.
 
 --- file: registry/example/terminal-demo.tsx ---
 import {
@@ -15063,7 +15177,7 @@ export default function TerminalDemo() {
 
 
 
-===== MAIN COMPONENT: text-animate (registry:ui) =====
+===== COMPONENT: text-animate =====
 Title: Text Animate
 Description: A text animation component that animates text using a variety of different animations.
 
@@ -15478,9 +15592,10 @@ const TextAnimateBase = ({
 
 // Export the memoized version
 export const TextAnimate = memo(TextAnimateBase);
-===== EXAMPLE: text-animate-demo (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo =====
 Title: Text Animate Demo
-Description: Example showing various text animations.
 
 --- file: registry/example/text-animate-demo.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15492,9 +15607,10 @@ export default function TextAnimateDemo() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-2 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-2 =====
 Title: Text Animate Demo 2
-Description: Second example showing various text animations.
 
 --- file: registry/example/text-animate-demo-2.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15506,9 +15622,10 @@ export default function TextAnimateDemo2() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-3 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-3 =====
 Title: Text Animate Demo 3
-Description: Third example showing various text animations.
 
 --- file: registry/example/text-animate-demo-3.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15520,9 +15637,10 @@ export default function TextAnimateDemo3() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-4 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-4 =====
 Title: Text Animate Demo 4
-Description: Fourth example showing various text animations.
 
 --- file: registry/example/text-animate-demo-4.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15534,9 +15652,10 @@ export default function TextAnimateDemo4() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-5 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-5 =====
 Title: Text Animate Demo 5
-Description: Fifth example showing various text animations.
 
 --- file: registry/example/text-animate-demo-5.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15548,9 +15667,10 @@ export default function TextAnimateDemo5() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-6 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-6 =====
 Title: Text Animate Demo 6
-Description: Sixth example showing various text animations.
 
 --- file: registry/example/text-animate-demo-6.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15562,9 +15682,10 @@ export default function TextAnimateDemo6() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-7 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-7 =====
 Title: Text Animate Demo 7
-Description: Seventh example showing various text animations.
 
 --- file: registry/example/text-animate-demo-7.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15576,9 +15697,10 @@ export default function TextAnimateDemo7() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-8 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-8 =====
 Title: Text Animate Demo 8
-Description: Eighth example showing various text animations.
 
 --- file: registry/example/text-animate-demo-8.tsx ---
 import { TextAnimate } from "@/registry/magicui/text-animate";
@@ -15590,9 +15712,10 @@ export default function TextAnimateDemo8() {
     </TextAnimate>
   );
 }
-===== EXAMPLE: text-animate-demo-9 (registry:example) =====
+
+
+===== EXAMPLE: text-animate-demo-9 =====
 Title: Text Animate Demo 9
-Description: Ninth example showing various text animations.
 
 --- file: registry/example/text-animate-demo-9.tsx ---
 "use client";
@@ -15655,7 +15778,7 @@ export default function TextAnimateDemo9() {
 
 
 
-===== MAIN COMPONENT: text-reveal (registry:ui) =====
+===== COMPONENT: text-reveal =====
 Title: Text Reveal
 Description: Fade in text as you scroll down the page.
 
@@ -15731,9 +15854,10 @@ const Word: FC<WordProps> = ({ children, progress, range }) => {
     </span>
   );
 };
-===== EXAMPLE: text-reveal-demo (registry:example) =====
+
+
+===== EXAMPLE: text-reveal-demo =====
 Title: Text Reveal Demo
-Description: Example showing text that fades in on scroll.
 
 --- file: registry/example/text-reveal-demo.tsx ---
 import { TextReveal } from "@/registry/magicui/text-reveal";
@@ -15744,7 +15868,7 @@ export default function TextRevealDemo() {
 
 
 
-===== MAIN COMPONENT: tweet-card (registry:ui) =====
+===== COMPONENT: tweet-card =====
 Title: Tweet Card
 Description: A card that displays a tweet with the author's name, handle, and profile picture.
 
@@ -16036,9 +16160,10 @@ export const TweetCard = async ({
     </Suspense>
   );
 };
-===== EXAMPLE: tweet-card-demo (registry:example) =====
+
+
+===== EXAMPLE: tweet-card-demo =====
 Title: Tweet Card Demo
-Description: Example showing a tweet card with author info.
 
 --- file: registry/example/tweet-card-demo.tsx ---
 import { ClientTweetCard } from "@/registry/magicui/client-tweet-card";
@@ -16050,9 +16175,10 @@ import { ClientTweetCard } from "@/registry/magicui/client-tweet-card";
 export default function TweetDemo() {
   return <ClientTweetCard id="1668408059125702661" />;
 }
-===== EXAMPLE: tweet-card-images (registry:example) =====
+
+
+===== EXAMPLE: tweet-card-images =====
 Title: Tweet Card Images
-Description: Example showing a tweet card with images.
 
 --- file: registry/example/tweet-card-images.tsx ---
 import { ClientTweetCard } from "@/registry/magicui/client-tweet-card";
@@ -16060,9 +16186,10 @@ import { ClientTweetCard } from "@/registry/magicui/client-tweet-card";
 export default function TweetImages() {
   return <ClientTweetCard id="1678577280489234432" className="shadow-2xl" />;
 }
-===== EXAMPLE: tweet-card-meta-preview (registry:example) =====
+
+
+===== EXAMPLE: tweet-card-meta-preview =====
 Title: Tweet Card Meta Preview
-Description: Example showing a tweet card with meta preview.
 
 --- file: registry/example/tweet-card-meta-preview.tsx ---
 import { ClientTweetCard } from "@/registry/magicui/client-tweet-card";
@@ -16073,7 +16200,7 @@ export default function TweetMetaPreview() {
 
 
 
-===== MAIN COMPONENT: typing-animation (registry:ui) =====
+===== COMPONENT: typing-animation =====
 Title: Typing Animation
 Description: Characters appearing in typed animation
 
@@ -16163,9 +16290,10 @@ export function TypingAnimation({
     </MotionComponent>
   );
 }
-===== EXAMPLE: typing-animation-demo (registry:example) =====
+
+
+===== EXAMPLE: typing-animation-demo =====
 Title: Typing Animation Demo
-Description: Example showing typed character animations.
 
 --- file: registry/example/typing-animation-demo.tsx ---
 import { TypingAnimation } from "@/registry/magicui/typing-animation";
@@ -16178,7 +16306,7 @@ export default function TypingAnimationDemo() {
 
 
 
-===== MAIN COMPONENT: video-text (registry:ui) =====
+===== COMPONENT: video-text =====
 Title: Video Text
 Description: A component that displays text with a video playing in the background.
 
@@ -16316,9 +16444,10 @@ export function VideoText({
     </Component>
   );
 }
-===== EXAMPLE: video-text-demo (registry:example) =====
+
+
+===== EXAMPLE: video-text-demo =====
 Title: Video Text Demo
-Description: Example showing text with a video background.
 
 --- file: registry/example/video-text-demo.tsx ---
 import { VideoText } from "@/registry/magicui/video-text";
@@ -16335,7 +16464,7 @@ export default function VideoTextDemo() {
 
 
 
-===== MAIN COMPONENT: warp-background (registry:ui) =====
+===== COMPONENT: warp-background =====
 Title: Warp Background
 Description: A card with a time warping background effect.
 
@@ -16492,9 +16621,10 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
     </div>
   );
 };
-===== EXAMPLE: warp-background-demo (registry:example) =====
+
+
+===== EXAMPLE: warp-background-demo =====
 Title: Warp Background Demo
-Description: Example showing a card with a time warping background effect.
 
 --- file: registry/example/warp-background-demo.tsx ---
 import {
@@ -16524,7 +16654,7 @@ export default function ExampleComponentDemo() {
 
 
 
-===== MAIN COMPONENT: word-rotate (registry:ui) =====
+===== COMPONENT: word-rotate =====
 Title: Word Rotate
 Description: A vertical rotation of words
 
@@ -16579,9 +16709,10 @@ export function WordRotate({
     </div>
   );
 }
-===== EXAMPLE: word-rotate-demo (registry:example) =====
+
+
+===== EXAMPLE: word-rotate-demo =====
 Title: Word Rotate Demo
-Description: Example showing vertical word rotation animation.
 
 --- file: registry/example/word-rotate-demo.tsx ---
 import { WordRotate } from "@/registry/magicui/word-rotate";

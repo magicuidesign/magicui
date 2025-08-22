@@ -8,6 +8,7 @@ import { z } from "zod";
 import { examples } from "../registry/registry-examples";
 import { lib } from "../registry/registry-lib";
 import { ui } from "../registry/registry-ui";
+import { siteConfig } from "../config/site";
 
 const DEPRECATED_ITEMS = ["toast"];
 
@@ -155,76 +156,126 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
 }
 
 
-/**
- * Build a single `public/llm.txt` file containing:
- * - Each UI component (sorted by name), with title/description and source files
- * - All related example sections (based on registryDependencies), with files
- */
-async function buildLlmTxtFile() {
-  // Build a map of component -> its examples
-  const componentNames = new Set(ui.map(u => u.name));
-  const examplesPerComponent = new Map<string, string[]>();
-  examples.forEach(example => {
-    const dependencies = example.registryDependencies || [];
-    dependencies.forEach(dep => {
-      const componentName = dep.split("/").pop(); // Extract component name from URL
-      if (componentName && componentNames.has(componentName)) {
-        if (!examplesPerComponent.has(componentName)) {
-          examplesPerComponent.set(componentName, []);
+
+function getComponentExamples() {
+  const examplesByComponent = new Map<string, string[]>();
+
+  examples.forEach((example) => {
+    example.registryDependencies?.forEach((dep) => {
+      const componentName = dep.split("/").pop();
+      if (componentName) {
+        if (!examplesByComponent.has(componentName)) {
+          examplesByComponent.set(componentName, []);
         }
-        examplesPerComponent.get(componentName)!.push(example.name);
+        examplesByComponent.get(componentName)!.push(example.name);
       }
     });
   });
 
-  // Build content for each UI component
-  const componentsContents = await Promise.all(
-    ui
-      .filter(item => item.type === "registry:ui")
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map(async (component) => {
-        const item = component as unknown as RegistryItem;
-        const title = (component as any).title || component.name;
-        const description = (component as any).description || `The ${title} component.`;
+  return examplesByComponent;
+}
 
-        // Build component section
-        let content = [
-          `===== MAIN COMPONENT: ${component.name} (${item.type}) =====`,
-          `Title: ${title}`,
-          `Description: ${description}`,
-          "",
-          await readRegistryFilesContents(item)
-        ].join("\n");
+async function generateLlmsContent() {
+  const components = ui
+    .filter((item) => item.type === "registry:ui")
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((component) => {
+      const title = (component as any).title || component.name;
+      const description = (component as any).description || `The ${title} component.`;
+      return `- [${title}](${siteConfig.url}/docs/components/${component.name}): ${description}`;
+    });
 
-        // Add related examples
-        const relatedExamples = (examplesPerComponent.get(component.name) || []).sort();
-        for (const exampleName of relatedExamples) {
-          const example = examples.find(e => e.name === exampleName) as unknown as RegistryItem;
-          if (!example) {
-            content += `\n\n===== EXAMPLE: ${exampleName} =====\n// [demo not available]\n`;
-            continue;
-          }
+  const exampleSet = new Set<string>();
+  const examplesList = examples
+    .filter((example) => {
+      if (exampleSet.has(example.name)) return false;
+      exampleSet.add(example.name);
+      return true;
+    })
+    .map((example) => {
+      const title = (example as any).title || example.name;
+      const firstFile = example.files?.[0]?.path || "";
+      const url = firstFile ? `${siteConfig.links.github}/blob/main/${firstFile}` : siteConfig.links.github;
+      return `- [${title}](${url}): Example usage`;
+    });
 
-          const exTitle = (example as any).title;
-          const exDesc = (example as any).description;
+  return [
+    `# ${siteConfig.name}`,
+    "",
+    `> ${siteConfig.description}`,
+    "",
+    "This file provides LLM-friendly entry points to documentation and examples.",
+    "",
+    "## Components",
+    "",
+    ...components,
+    "",
+    "## Examples",
+    "",
+    ...examplesList,
+    "",
+    "## Optional",
+    "",
+    `- [Repository](${siteConfig.links.github}): Source code and issues`,
+    `- [Sitemap](${siteConfig.url}/sitemap.xml): Indexable pages`,
+  ].join("\n");
+}
+
+async function generateLlmsFullContent(examplesByComponent: Map<string, string[]>) {
+  const components = ui.filter((item) => item.type === "registry:ui").sort((a, b) => a.name.localeCompare(b.name));
+
+  const componentContents = await Promise.all(
+    components.map(async (component) => {
+      const title = (component as any).title || component.name;
+      const description = (component as any).description || `The ${title} component.`;
+
+      let content = [
+        `===== COMPONENT: ${component.name} =====`,
+        `Title: ${title}`,
+        `Description: ${description}`,
+        "",
+        await readRegistryFilesContents(component as unknown as RegistryItem),
+      ].join("\n");
+
+      // Add examples for this component
+      const relatedExamples = examplesByComponent.get(component.name) || [];
+      for (const exampleName of relatedExamples) {
+        const example = examples.find((e) => e.name === exampleName);
+        if (example) {
+          const exTitle = (example as any).title || example.name;
           content += [
             "",
             "",
-            `===== EXAMPLE: ${example.name} (${example.type}) =====`,
-            exTitle ? `Title: ${exTitle}` : "",
-            exDesc ? `Description: ${exDesc}\n` : "",
-            await readRegistryFilesContents(example)
-          ].filter(Boolean).join("\n");
+            `===== EXAMPLE: ${exampleName} =====`,
+            `Title: ${exTitle}`,
+            "",
+            await readRegistryFilesContents(example as unknown as RegistryItem),
+          ].join("\n");
         }
+      }
 
-        return content;
-      })
+      return content;
+    })
   );
 
-  // Write the combined content
-  const outputPath = path.join(process.cwd(), "public", "llm.txt");
-  await fs.mkdir(path.dirname(outputPath), { recursive: true });
-  await fs.writeFile(outputPath, componentsContents.join("\n\n\n"), "utf8");
+  return componentContents.join("\n\n\n");
+}
+
+async function buildLlmsFiles() {
+  const examplesByComponent = getComponentExamples();
+
+  const [minContent, fullContent] = await Promise.all([
+    generateLlmsContent(),
+    generateLlmsFullContent(examplesByComponent)
+  ]);
+
+  const publicDir = path.join(process.cwd(), "public");
+  await fs.mkdir(publicDir, { recursive: true });
+
+  await Promise.all([
+    fs.writeFile(path.join(publicDir, "llms.txt"), minContent, "utf8"),
+    fs.writeFile(path.join(publicDir, "llms-full.txt"), fullContent, "utf8")
+  ]);
 }
 
 async function buildRegistry() {
@@ -250,9 +301,9 @@ try {
   await buildRegistryJsonFile();
   console.log("✅ Registry JSON file built successfully");
 
-  console.log("🧠 Building llm.txt...");
-  await buildLlmTxtFile();
-  console.log("✅ llm.txt built successfully");
+  console.log("🧠 Building llms files...");
+  await buildLlmsFiles();
+  console.log("✅ llms-min.txt and llms.txt built successfully");
 
   console.log("🏗️ Building registry...");
   await buildRegistry();
