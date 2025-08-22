@@ -32,7 +32,7 @@ export default function VideoTestimonials() {
             }`}
             whileHover={{ scale: 1.02 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none" />
             <iframe
               src={url}
               title={`YouTube testimonial ${index + 1}`}
@@ -42,12 +42,6 @@ export default function VideoTestimonials() {
               className="h-full w-full rounded-xl"
               loading="lazy"
             ></iframe>
-            <div className="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="flex items-center gap-2 text-white text-sm font-medium">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                Watch on YouTube
-              </div>
-            </div>
           </motion.div>
         ))}
       </div>
