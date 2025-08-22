@@ -391,14 +391,9 @@ const TextAnimateBase = ({
         className={cn("whitespace-pre-wrap", className)}
         viewport={{ once }}
         aria-label={accessible ? children : undefined}
-        role={accessible ? "text" : undefined}
         {...props}
       >
-        {accessible && (
-          <span className="sr-only" aria-live="polite">
-            {children}
-          </span>
-        )}
+        {accessible && <span className="sr-only">{children}</span>}
         {segments.map((segment, i) => (
           <motion.span
             key={`${by}-${segment}-${i}`}
@@ -409,8 +404,7 @@ const TextAnimateBase = ({
               by === "character" && "",
               segmentClassName,
             )}
-            aria-hidden={accessible}
-            role={accessible ? "presentation" : undefined}
+            aria-hidden={accessible ? true : undefined}
           >
             {segment}
           </motion.span>
