@@ -145,6 +145,14 @@ export const docsConfig: DocsConfig = {
           paid: false,
           event: "template_changelog_clicked",
         },
+        {
+          title: "Blog",
+          href: `/docs/templates/blog`,
+          items: [],
+          label: "New",
+          paid: false,
+          event: "template_blog_clicked",
+        },
       ],
     },
     {
@@ -590,6 +598,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/interactive-grid-pattern`,
           items: [],
           label: "",
+        },
+        {
+          title: "Grid Beams",
+          href: `/docs/components/grid-beams`,
+          items: [],
+          label: "New",
         },
       ],
     },

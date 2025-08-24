@@ -1720,6 +1720,30 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "grid-beams": {
+    name: "grid-beams",
+    description:
+      "A dynamic grid background with animated light beams rays and grid patterns.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/grid-beams.tsx",
+        type: "registry:ui",
+        target: "components/magicui/grid-beams.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/grid-beams.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4780,6 +4804,30 @@ export const Index: Record<string, any> = {
       const mod = await import(
         "@/registry/example/animated-theme-toggler-demo.tsx"
       );
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "grid-beams-demo": {
+    name: "grid-beams-demo",
+    description:
+      "Demo of the grid-beams component showcasing animated light rays over a grid",
+    type: "registry:example",
+    registryDependencies: ["grid-beams"],
+    files: [
+      {
+        path: "registry/example/grid-beams-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/grid-beams-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

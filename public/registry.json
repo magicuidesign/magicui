@@ -1,6 +1,6 @@
 {
-  "name": "shadcn/ui",
-  "homepage": "https://ui.shadcn.com",
+  "name": "magic-ui",
+  "homepage": "https://magicui.design",
   "items": [
     {
       "name": "index",
@@ -1362,6 +1362,22 @@
           "mix-blend-mode": "normal"
         }
       }
+    },
+    {
+      "name": "grid-beams",
+      "type": "registry:ui",
+      "title": "Grid Beams",
+      "description": "A dynamic grid background with animated light beams rays and grid patterns.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/grid-beams.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/grid-beams.tsx"
+        }
+      ]
     },
     {
       "name": "magic-card-demo",
@@ -3484,6 +3500,20 @@
           "path": "registry/example/animated-theme-toggler-demo.tsx",
           "type": "registry:example",
           "target": "components/animated-theme-toggler-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-beams-demo",
+      "type": "registry:example",
+      "description": "Demo of the grid-beams component showcasing animated light rays over a grid",
+      "registryDependencies": [
+        "grid-beams"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grid-beams-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

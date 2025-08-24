@@ -62,6 +62,10 @@ interface TextAnimateProps extends MotionProps {
    * The animation preset to use
    */
   animation?: AnimationVariant;
+  /**
+   * Whether to enable accessibility features (default: true)
+   */
+  accessible?: boolean;
 }
 
 const staggerTimings: Record<AnimationType, number> = {
@@ -309,6 +313,7 @@ const TextAnimateBase = ({
   once = false,
   by = "word",
   animation = "fadeIn",
+  accessible = true,
   ...props
 }: TextAnimateProps) => {
   const MotionComponent = motion.create(Component);
@@ -385,8 +390,10 @@ const TextAnimateBase = ({
         exit="exit"
         className={cn("whitespace-pre-wrap", className)}
         viewport={{ once }}
+        aria-label={accessible ? children : undefined}
         {...props}
       >
+        {accessible && <span className="sr-only">{children}</span>}
         {segments.map((segment, i) => (
           <motion.span
             key={`${by}-${segment}-${i}`}
@@ -397,6 +404,7 @@ const TextAnimateBase = ({
               by === "character" && "",
               segmentClassName,
             )}
+            aria-hidden={accessible ? true : undefined}
           >
             {segment}
           </motion.span>

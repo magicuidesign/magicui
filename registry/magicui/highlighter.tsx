@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { annotate } from "rough-notation";
 import type React from "react";
 
@@ -37,32 +37,8 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
-  const [isVisible, setIsVisible] = useState(!isView);
 
   useEffect(() => {
-    if (!isView) return;
-
-    const element = elementRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, [isView]);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
     const element = elementRef.current;
     if (!element) return;
 
@@ -84,7 +60,6 @@ export function Highlighter({
       }
     };
   }, [
-    isVisible,
     action,
     color,
     strokeWidth,

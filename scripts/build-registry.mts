@@ -8,12 +8,13 @@ import { z } from "zod";
 import { examples } from "../registry/registry-examples";
 import { lib } from "../registry/registry-lib";
 import { ui } from "../registry/registry-ui";
+import { siteConfig } from "../config/site";
 
 const DEPRECATED_ITEMS = ["toast"];
 
 const registry = {
-  name: "shadcn/ui",
-  homepage: "https://ui.shadcn.com",
+  name: "magic-ui",
+  homepage: "https://magicui.design",
   items: z.array(registryItemSchema).parse(
     [
       {
@@ -33,7 +34,7 @@ const registry = {
       ...lib,
     ].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name);
-    }),
+    })
   ),
 } satisfies Registry;
 
@@ -73,15 +74,14 @@ export const Index: Record<string, any> = {`;
       target: "${file.target ?? ""}"
     }`;
     })}],
-    component: ${
-      componentPath
+    component: ${componentPath
         ? `React.lazy(async () => {
       const mod = await import("${componentPath}")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     })`
         : "null"
-    },
+      },
     meta: ${JSON.stringify(item.meta)},
   },`;
   }
@@ -122,8 +122,160 @@ async function buildRegistryJsonFile() {
   await fs.writeFile(path.join(process.cwd(), `registry.json`), registryJson);
   await fs.writeFile(
     path.join(process.cwd(), `public/registry.json`),
-    registryJson,
+    registryJson
   );
+}
+
+
+type RegistryItem = Registry["items"][number];
+
+type FileEntry = string | { path: string; type?: string; target?: string };
+
+async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
+  if (!item.files?.length) return "";
+
+  const paths = item.files
+    .map((f: FileEntry) => typeof f === "string" ? f : f?.path)
+    .filter(Boolean)
+    .sort() as string[];
+
+  // Read all files in parallel
+  const contents = await Promise.all(
+    paths.map(async (filePath) => {
+      try {
+        const content = await fs.readFile(path.join(process.cwd(), filePath), "utf8");
+        return `--- file: ${filePath} ---\n${content.endsWith("\n") ? content : content + "\n"}`;
+      } catch {
+        return null; // Skip missing files
+      }
+    })
+  );
+
+  // Join non-null contents with blank lines between them
+  return contents.filter(Boolean).join("\n");
+}
+
+
+
+function getComponentExamples() {
+  const examplesByComponent = new Map<string, string[]>();
+
+  examples.forEach((example) => {
+    example.registryDependencies?.forEach((dep) => {
+      const componentName = dep.split("/").pop();
+      if (componentName) {
+        if (!examplesByComponent.has(componentName)) {
+          examplesByComponent.set(componentName, []);
+        }
+        examplesByComponent.get(componentName)!.push(example.name);
+      }
+    });
+  });
+
+  return examplesByComponent;
+}
+
+async function generateLlmsContent() {
+  const components = ui
+    .filter((item) => item.type === "registry:ui")
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((component) => {
+      const title = (component as any).title || component.name;
+      const description = (component as any).description || `The ${title} component.`;
+      return `- [${title}](${siteConfig.url}/docs/components/${component.name}): ${description}`;
+    });
+
+  const exampleSet = new Set<string>();
+  const examplesList = examples
+    .filter((example) => {
+      if (exampleSet.has(example.name)) return false;
+      exampleSet.add(example.name);
+      return true;
+    })
+    .map((example) => {
+      const title = (example as any).title || example.name;
+      const firstFile = example.files?.[0]?.path || "";
+      const url = firstFile ? `${siteConfig.links.github}/blob/main/${firstFile}` : siteConfig.links.github;
+      return `- [${title}](${url}): Example usage`;
+    });
+
+  return [
+    `# ${siteConfig.name}`,
+    "",
+    `> ${siteConfig.description}`,
+    "",
+    "This file provides LLM-friendly entry points to documentation and examples.",
+    "",
+    "## Components",
+    "",
+    ...components,
+    "",
+    "## Examples",
+    "",
+    ...examplesList,
+    "",
+    "## Optional",
+    "",
+    `- [Repository](${siteConfig.links.github}): Source code and issues`,
+    `- [Sitemap](${siteConfig.url}/sitemap.xml): Indexable pages`,
+  ].join("\n");
+}
+
+async function generateLlmsFullContent(examplesByComponent: Map<string, string[]>) {
+  const components = ui.filter((item) => item.type === "registry:ui").sort((a, b) => a.name.localeCompare(b.name));
+
+  const componentContents = await Promise.all(
+    components.map(async (component) => {
+      const title = (component as any).title || component.name;
+      const description = (component as any).description || `The ${title} component.`;
+
+      let content = [
+        `===== COMPONENT: ${component.name} =====`,
+        `Title: ${title}`,
+        `Description: ${description}`,
+        "",
+        await readRegistryFilesContents(component as unknown as RegistryItem),
+      ].join("\n");
+
+      // Add examples for this component
+      const relatedExamples = examplesByComponent.get(component.name) || [];
+      for (const exampleName of relatedExamples) {
+        const example = examples.find((e) => e.name === exampleName);
+        if (example) {
+          const exTitle = (example as any).title || example.name;
+          content += [
+            "",
+            "",
+            `===== EXAMPLE: ${exampleName} =====`,
+            `Title: ${exTitle}`,
+            "",
+            await readRegistryFilesContents(example as unknown as RegistryItem),
+          ].join("\n");
+        }
+      }
+
+      return content;
+    })
+  );
+
+  return componentContents.join("\n\n\n");
+}
+
+async function buildLlmsFiles() {
+  const examplesByComponent = getComponentExamples();
+
+  const [minContent, fullContent] = await Promise.all([
+    generateLlmsContent(),
+    generateLlmsFullContent(examplesByComponent)
+  ]);
+
+  const publicDir = path.join(process.cwd(), "public");
+  await fs.mkdir(publicDir, { recursive: true });
+
+  await Promise.all([
+    fs.writeFile(path.join(publicDir, "llms.txt"), minContent, "utf8"),
+    fs.writeFile(path.join(publicDir, "llms-full.txt"), fullContent, "utf8")
+  ]);
 }
 
 async function buildRegistry() {
@@ -141,13 +293,17 @@ async function buildRegistry() {
 }
 
 try {
-  console.log("🗂️ Building registry/__index__.tsx...");
+  console.log("��️ Building registry/__index__.tsx...");
   await buildRegistryIndex();
   console.log("✅ Registry index built successfully");
 
   console.log("💅 Building registry.json...");
   await buildRegistryJsonFile();
   console.log("✅ Registry JSON file built successfully");
+
+  console.log("🧠 Building llms files...");
+  await buildLlmsFiles();
+  console.log("✅ llms-min.txt and llms.txt built successfully");
 
   console.log("🏗️ Building registry...");
   await buildRegistry();
