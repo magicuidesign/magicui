@@ -1,0 +1,67 @@
+---
+title: Loader
+date: 2025-01-11
+description: A customizable loading component built on top of the LDRS library.
+author: Nazam Kalsi
+published: true
+---
+
+<ComponentPreview name="loader-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/loader"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install ldrs
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="loader" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+## Props
+
+| Prop              | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Default   | Description                                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
+| `name`            | `'bouncy', 'bouncyArc', 'cardio', 'chaoticOrbit', 'dotPulse', 'dotSpinner', 'dotStream', 'dotWave', 'grid', 'hatch', 'helix', 'hourglass', 'infinity', 'jelly', 'jellyTriangle', 'leapfrog', 'lineSpinner', 'lineWobble', 'metronome', 'mirage', 'miyagi', 'momentum', 'newtonsCradle', 'orbit', 'ping', 'pinwheel', 'pulsar', 'quantum', 'reuleaux', 'ring', 'ring2', 'ripples', 'spiral', 'square', 'squircle', 'superballs', 'tailChase', 'tailspin', 'treadmill', 'trefoil', 'trio', 'waveform', 'wobble', 'zoomies'` | Required  | The loader style to render. Must be one of the predefined LDRS loader names.                                       |
+| `size`            | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `"40"`    | The size of loader                                                                                                 |
+| `color`           | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `"black"` | The color of loader                                                                                                |
+| `speed`           | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `"2"`     | The animation speed of the loader.                                                                                 |
+| `strokeLength`    | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `-`       | The length of the stroke used by stroke-based loaders (if applicable).                                             |
+| `stroke`          | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `-`       | The stroke thickness for stroke-based loaders (if applicable).                                                     |
+| `loaderBgOpacity` | `string`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `-`       | The background opacity of the loader element.                                                                      |
+| `blurBg`          | `boolean`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `true`    | If `true`, applies a blurred semi-transparent background behind the loader; otherwise uses a flat overlay color.   |
+| `containerRef`    | `HTMLElement`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `-`       | Reference to a container element. When provided, the loader overlays only that container instead of the full page. |
+
+## Credits
+
+- Credit to [@nazamkalsi](https://github.com/nazam-kalsi) for this component!
+- Inspired by [LDRS](https://uiball.com/ldrs/).

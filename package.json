@@ -60,6 +60,7 @@
     "geist": "^1.2.2",
     "gray-matter": "^4.0.3",
     "jotai": "^2.11.3",
+    "ldrs": "^1.1.7",
     "lodash.template": "^4.5.0",
     "lucide-react": "^0.487.0",
     "masonic": "^4.0.1",

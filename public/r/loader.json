@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader",
+  "type": "registry:ui",
+  "title": "Loader",
+  "description": "A loading spinner component.",
+  "dependencies": [
+    "ldrs"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/loader.tsx",
+      "content": "\"use client\"\nimport React, { useEffect, useState } from \"react\";\nimport * as LDRS from \"ldrs\";\n\ntype Props = {\n  name: keyof typeof LDRS;\n  size?: string;\n  color?: string;\n  speed?: string;\n  stroke?: string;\n  strokeLength?: string;\n  loaderBgOpacity?: string;\n  blurBg?: boolean;\n  containerRef?: React.RefObject<any>;\n};\n\nfunction Loader({\n  name,\n  size = \"40\",\n  color = \"black\",\n  speed = \"0.8\",\n  stroke,\n  strokeLength,\n  loaderBgOpacity,\n  blurBg = true,\n  containerRef,\n}: Props) {\n    const [isClient, setIsClient] = useState(false);\n\n   useEffect(() => {\n    setIsClient(true);\n    const loader = LDRS[name];\n    if (loader && (loader as any).register) {\n      (loader as any).register();\n    }\n  }, [name]);\n\n  if (!isClient) return null;\n\n  const Tag =\n    `l-${(name as string).replace(/([a-z0-9])([A-Z])/g, \"$1-$2\").toLowerCase()}` as keyof JSX.IntrinsicElements;\n\n  const LoaderContent = (\n    <div\n      className={` absolute inset-0 flex items-center justify-center ${\n        blurBg\n          ? \"bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10\"\n          : \"bg-white/50 dark:bg-black/50\"\n      }`}\n    >\n      {/* <Tag size={size} color={color} speed={speed} stroke={stroke} strokeLength={strokeLength} loaderBgOpacity={loaderBgOpacity} /> */}\n      {React.createElement(Tag, {\n        size,\n        color,\n        speed,\n        stroke,\n        strokeLength,\n        loaderBgOpacity,\n      })}\n    </div>\n  );\n\n  return containerRef?.current ? (\n    // inside a container\n    <div className=\"absolute z-50 top-0 w-full h-full\">{LoaderContent}</div>\n  ) : (\n    // for whole page\n    <div className=\"fixed inset-0 z-[51] flex items-center justify-center\">\n      {LoaderContent}\n    </div>\n  );\n}\n\nexport default Loader;\n",
+      "type": "registry:ui",
+      "target": "components/magicui/loader.tsx"
+    }
+  ]
+}

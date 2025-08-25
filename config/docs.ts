@@ -233,6 +233,12 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
+          title: "Loader",
+          href: `/docs/components/loader`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "File Tree",
           href: `/docs/components/file-tree`,
           items: [],

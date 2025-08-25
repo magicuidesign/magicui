@@ -1878,4 +1878,16 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "loader-demo",
+    description: "Demo of the loader component showcasing a loading spinner.",
+    type: "registry:example",
+    registryDependencies: ["loader"],
+    files: [
+      {
+        path: "registry/example/loader-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ];
