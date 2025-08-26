@@ -7978,6 +7978,232 @@ export default function GlobeDemo() {
 
 
 
+===== COMPONENT: grid-beams =====
+Title: Grid Beams
+Description: A dynamic grid background with animated light beams rays and grid patterns.
+
+--- file: registry/magicui/grid-beams.tsx ---
+"use client";
+
+import { motion } from "motion/react";
+import React, { HTMLAttributes, useMemo } from "react";
+import { cn } from "@/lib/utils";
+
+const createGridMask = (start: number, end: number): string => {
+  const mid = (start + end) / 2;
+  return `linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) ${start}%, rgba(0,0,0,0.2) ${mid}%, rgba(0,0,0,0.6) ${end - 20}%, rgba(0,0,0,1) ${end}%)`;
+};
+
+const generateRayConfig = (index: number, total: number) => {
+  const progress = index / Math.max(total - 1, 1);
+  const leftPercent = 2 + progress * 96;
+  const rotation = 28 - progress * 56;
+  const variation = (index * 0.618) % 1;
+
+  return {
+    left: `${leftPercent}%`,
+    rotation,
+    width: 40 + variation * 25,
+    duration: 6 + variation * 5,
+    delay: -variation * 10,
+    swayDuration: 12 + variation * 9,
+    swayDelay: -variation * 10,
+    blur: 24 + variation * 9,
+    strongSway: index % 2 === 0,
+  };
+};
+
+interface GridBeamsProps extends HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  gridSize?: number;
+  gridColor?: string;
+  rayCount?: number;
+  rayOpacity?: number;
+  raySpeed?: number;
+  rayLength?: string;
+  gridFadeStart?: number;
+  gridFadeEnd?: number;
+  backgroundColor?: string;
+}
+
+interface LightRayProps {
+  left: string;
+  rotation: number;
+  width: number;
+  delay: number;
+  duration: number;
+  swayDuration: number;
+  swayDelay: number;
+  blurAmount: number;
+  isStrongerSway: boolean;
+  opacity: number;
+  speed: number;
+  length: string;
+}
+
+const LightRay = React.memo<LightRayProps>(
+  ({
+    left,
+    rotation,
+    width,
+    delay,
+    duration,
+    swayDuration,
+    swayDelay,
+    blurAmount,
+    isStrongerSway,
+    opacity,
+    speed,
+    length,
+  }) => {
+    return (
+      <motion.div
+        className="absolute pointer-events-none -top-[5%] left-[var(--ray-left)] w-[var(--ray-width)] h-[var(--ray-height)] origin-top mix-blend-screen bg-[linear-gradient(to_bottom,rgba(200,220,255,var(--ray-opacity)),rgba(200,220,255,0))] blur-[var(--ray-blur)] translate-x-[-50%] rotate-[var(--ray-rotation)]"
+        style={
+          {
+            "--ray-left": left,
+            "--ray-width": `${width}px`,
+            "--ray-height": length,
+            "--ray-opacity": opacity,
+            "--ray-blur": `${blurAmount}px`,
+            "--ray-rotation": `${rotation}deg`,
+          } as React.CSSProperties
+        }
+        animate={{
+          opacity: [0.3, 0.7, 0.3],
+          transform: [
+            `translateX(-50%) rotate(${rotation}deg)`,
+            `translateX(-50%) rotate(${rotation + (isStrongerSway ? 1 : 0.5)}deg)`,
+            `translateX(-50%) rotate(${rotation}deg)`,
+          ],
+        }}
+        transition={{
+          opacity: {
+            duration: duration / speed,
+            delay: delay / speed,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          transform: {
+            duration: swayDuration / speed,
+            delay: swayDelay / speed,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+      />
+    );
+  },
+);
+
+export const GridBeams: React.FC<GridBeamsProps> = ({
+  children,
+  className,
+  gridSize = 40,
+  gridColor = "rgba(200, 220, 255, 0.2)",
+  rayCount = 15,
+  rayOpacity = 0.35,
+  raySpeed = 1,
+  rayLength = "45vh",
+  gridFadeStart = 30,
+  gridFadeEnd = 90,
+  backgroundColor = "#020412",
+  ...props
+}) => {
+  const rayConfigs = useMemo(() => {
+    return Array.from({ length: rayCount }, (_, i) =>
+      generateRayConfig(i, rayCount),
+    );
+  }, [rayCount]);
+
+  const gridMask = useMemo(
+    () => createGridMask(gridFadeStart, gridFadeEnd),
+    [gridFadeStart, gridFadeEnd],
+  );
+
+  return (
+    <div
+      className={cn(
+        "relative overflow-hidden bg-[var(--bg-color)] bg-[radial-gradient(ellipse_at_50%_-20%,#1a2c5a,transparent_70%)]",
+        className,
+      )}
+      style={
+        {
+          "--bg-color": backgroundColor,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none bg-[linear-gradient(var(--grid-color)_1px,transparent_1px),linear-gradient(90deg,var(--grid-color)_1px,transparent_1px)] bg-size-[var(--grid-size)_var(--grid-size)] [mask-image:var(--grid-mask)] [webkit-mask-image:var(--grid-mask)]"
+        style={
+          {
+            "--grid-color": gridColor,
+            "--grid-size": `${gridSize}px`,
+            "--grid-mask": gridMask,
+          } as React.CSSProperties
+        }
+      />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {rayConfigs.map((config, index) => (
+          <LightRay
+            key={index}
+            left={config.left}
+            rotation={config.rotation}
+            width={config.width}
+            delay={config.delay}
+            duration={config.duration}
+            swayDuration={config.swayDuration}
+            swayDelay={config.swayDelay}
+            blurAmount={config.blur}
+            isStrongerSway={config.strongSway}
+            opacity={rayOpacity}
+            speed={raySpeed}
+            length={rayLength}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+};
+
+
+===== EXAMPLE: grid-beams-demo =====
+Title: grid-beams-demo
+
+--- file: registry/example/grid-beams-demo.tsx ---
+import { GridBeams } from "@/registry/magicui/grid-beams";
+
+export default function GridBeamsDemo() {
+  return (
+    <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
+      <GridBeams
+        gridSize={0}
+        gridColor="rgba(255, 255, 255, 0.2)"
+        rayCount={20}
+        rayOpacity={0.55}
+        raySpeed={1.5}
+        rayLength="40vh"
+        gridFadeStart={5}
+        gridFadeEnd={90}
+        className="h-full w-full"
+      >
+        <div className="flex h-full items-center justify-center">
+          <div className="text-center space-y-6 px-4 mt-50">
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+              Grid <span className="text-blue-400">BEAMS</span>
+            </h1>
+          </div>
+        </div>
+      </GridBeams>
+    </div>
+  );
+}
+
+
+
 ===== COMPONENT: grid-pattern =====
 Title: Grid Pattern
 Description: A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
@@ -8369,10 +8595,10 @@ Description: A text highlighter that mimics the effect of a human-drawn marker s
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useInView } from "motion/react";
 import { annotate } from "rough-notation";
 import type React from "react";
 
-// Define available annotation actions
 type AnnotationAction =
   | "highlight"
   | "underline"
@@ -8382,7 +8608,6 @@ type AnnotationAction =
   | "crossed-off"
   | "bracket";
 
-// Custom TypeScript interface for supported props
 interface HighlighterProps {
   children: React.ReactNode;
   action?: AnnotationAction;
@@ -8392,43 +8617,54 @@ interface HighlighterProps {
   iterations?: number;
   padding?: number;
   multiline?: boolean;
+  isView?: boolean;
 }
 
 export function Highlighter({
   children,
   action = "highlight",
-  color = "#ffd1dc", // Default pink color
+  color = "#ffd1dc",
   strokeWidth = 1.5,
   animationDuration = 600,
   iterations = 2,
   padding = 2,
   multiline = true,
+  isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(elementRef, {
+    once: true,
+    margin: "-10%",
+  });
+
+  // If isView is false, always show. If isView is true, wait for inView
+  const shouldShow = !isView || isInView;
 
   useEffect(() => {
+    if (!shouldShow) return;
+
     const element = elementRef.current;
-    if (element) {
-      const annotation = annotate(element, {
-        type: action,
-        color,
-        strokeWidth,
-        animationDuration,
-        iterations,
-        padding,
-        multiline,
-      });
+    if (!element) return;
 
-      annotation.show();
+    const annotation = annotate(element, {
+      type: action,
+      color,
+      strokeWidth,
+      animationDuration,
+      iterations,
+      padding,
+      multiline,
+    });
 
-      // Store the current element in closure for cleanup
-      return () => {
-        if (element) {
-          annotate(element, { type: action }).remove();
-        }
-      };
-    }
+    annotation.show();
+
+    return () => {
+      if (element) {
+        annotate(element, { type: action }).remove();
+      }
+    };
   }, [
+    shouldShow,
     action,
     color,
     strokeWidth,
@@ -8474,10 +8710,10 @@ export default function HighlighterDemo() {
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useInView } from "motion/react";
 import { annotate } from "rough-notation";
 import type React from "react";
 
-// Define available annotation actions
 type AnnotationAction =
   | "highlight"
   | "underline"
@@ -8487,7 +8723,6 @@ type AnnotationAction =
   | "crossed-off"
   | "bracket";
 
-// Custom TypeScript interface for supported props
 interface HighlighterProps {
   children: React.ReactNode;
   action?: AnnotationAction;
@@ -8497,43 +8732,54 @@ interface HighlighterProps {
   iterations?: number;
   padding?: number;
   multiline?: boolean;
+  isView?: boolean;
 }
 
 export function Highlighter({
   children,
   action = "highlight",
-  color = "#ffd1dc", // Default pink color
+  color = "#ffd1dc",
   strokeWidth = 1.5,
   animationDuration = 600,
   iterations = 2,
   padding = 2,
   multiline = true,
+  isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(elementRef, {
+    once: true,
+    margin: "-10%",
+  });
+
+  // If isView is false, always show. If isView is true, wait for inView
+  const shouldShow = !isView || isInView;
 
   useEffect(() => {
+    if (!shouldShow) return;
+
     const element = elementRef.current;
-    if (element) {
-      const annotation = annotate(element, {
-        type: action,
-        color,
-        strokeWidth,
-        animationDuration,
-        iterations,
-        padding,
-        multiline,
-      });
+    if (!element) return;
 
-      annotation.show();
+    const annotation = annotate(element, {
+      type: action,
+      color,
+      strokeWidth,
+      animationDuration,
+      iterations,
+      padding,
+      multiline,
+    });
 
-      // Store the current element in closure for cleanup
-      return () => {
-        if (element) {
-          annotate(element, { type: action }).remove();
-        }
-      };
-    }
+    annotation.show();
+
+    return () => {
+      if (element) {
+        annotate(element, { type: action }).remove();
+      }
+    };
   }, [
+    shouldShow,
     action,
     color,
     strokeWidth,
@@ -15246,6 +15492,10 @@ interface TextAnimateProps extends MotionProps {
    * The animation preset to use
    */
   animation?: AnimationVariant;
+  /**
+   * Whether to enable accessibility features (default: true)
+   */
+  accessible?: boolean;
 }
 
 const staggerTimings: Record<AnimationType, number> = {
@@ -15493,6 +15743,7 @@ const TextAnimateBase = ({
   once = false,
   by = "word",
   animation = "fadeIn",
+  accessible = true,
   ...props
 }: TextAnimateProps) => {
   const MotionComponent = motion.create(Component);
@@ -15569,8 +15820,10 @@ const TextAnimateBase = ({
         exit="exit"
         className={cn("whitespace-pre-wrap", className)}
         viewport={{ once }}
+        aria-label={accessible ? children : undefined}
         {...props}
       >
+        {accessible && <span className="sr-only">{children}</span>}
         {segments.map((segment, i) => (
           <motion.span
             key={`${by}-${segment}-${i}`}
@@ -15581,6 +15834,7 @@ const TextAnimateBase = ({
               by === "character" && "",
               segmentClassName,
             )}
+            aria-hidden={accessible ? true : undefined}
           >
             {segment}
           </motion.span>
