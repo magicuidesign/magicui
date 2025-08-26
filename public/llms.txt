@@ -33,6 +33,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
 - [Flip Text](https://magicui.design/docs/components/flip-text): Text flipping character animation
 - [Globe](https://magicui.design/docs/components/globe): An autorotating, interactive, and highly performant globe made using WebGL.
+- [Grid Beams](https://magicui.design/docs/components/grid-beams): A dynamic grid background with animated light beams rays and grid patterns.
 - [Grid Pattern](https://magicui.design/docs/components/grid-pattern): A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Hero Video Dialog](https://magicui.design/docs/components/hero-video-dialog): A hero video dialog component.
 - [Highlighter](https://magicui.design/docs/components/highlighter): A text highlighter that mimics the effect of a human-drawn marker stroke.
@@ -210,6 +211,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/highlighter-demo.tsx): Example usage
 - [Arc Timeline Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/arc-timeline-demo.tsx): Example usage
 - [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-theme-toggler-demo.tsx): Example usage
+- [grid-beams-demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/grid-beams-demo.tsx): Example usage
 
 ## Optional
 
