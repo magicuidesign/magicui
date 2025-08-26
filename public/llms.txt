@@ -213,7 +213,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Arc Timeline Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/arc-timeline-demo.tsx): Example usage
 - [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-theme-toggler-demo.tsx): Example usage
 - [grid-beams-demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/grid-beams-demo.tsx): Example usage
+
 - [loader-demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/loader-demo.tsx): Example usage
+
 
 ## Optional
 
