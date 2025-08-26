@@ -10264,12 +10264,11 @@ Title: Loader
 Description: A loading spinner component.
 
 --- file: registry/magicui/loader.tsx ---
-"use client"
-import React, { useEffect, useState } from "react";
-import * as LDRS from "ldrs";
+'use client';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
-  name: keyof typeof LDRS;
+  name: keyof typeof import('ldrs');
   size?: string;
   color?: string;
   speed?: string;
@@ -10277,65 +10276,62 @@ type Props = {
   strokeLength?: string;
   loaderBgOpacity?: string;
   blurBg?: boolean;
-  containerRef?: React.RefObject<any>;
+  bgColor?:string;
+  containerRef?: React.RefObject<HTMLElement | null>;
 };
 
-function Loader({
+const Loader = ({
   name,
-  size = "40",
-  color = "black",
-  speed = "0.8",
+  size = '40',
+  color = 'black',
+  speed = '2',
   stroke,
   strokeLength,
   loaderBgOpacity,
   blurBg = true,
-  containerRef,
-}: Props) {
-    const [isClient, setIsClient] = useState(false);
+  bgColor='bg-white/20',
+  containerRef
+}: Props) => {
+  const [isReady, setIsReady] = useState(false);
 
-   useEffect(() => {
-    setIsClient(true);
-    const loader = LDRS[name];
-    if (loader && (loader as any).register) {
-      (loader as any).register();
-    }
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    (async () => {
+      const LDRS = await import('ldrs');
+      const loader = LDRS[name as keyof typeof LDRS];
+      if (loader && !customElements.get(`l-${name.toLowerCase()}`)) {
+        (loader as any).register();
+      }
+      setIsReady(true);
+    })();
   }, [name]);
 
-  if (!isClient) return null;
+  if (!isReady) return null;
 
-  const Tag =
-    `l-${(name as string).replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase()}` as keyof JSX.IntrinsicElements;
+  const Tag = `l-${name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}` as keyof JSX.IntrinsicElements;
 
   const LoaderContent = (
     <div
-      className={` absolute inset-0 flex items-center justify-center ${
-        blurBg
-          ? "bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
-          : "bg-white/50 dark:bg-black/50"
-      }`}
-    >
-      {/* <Tag size={size} color={color} speed={speed} stroke={stroke} strokeLength={strokeLength} loaderBgOpacity={loaderBgOpacity} /> */}
+      className={`absolute inset-0 flex items-center justify-center ${
+        blurBg ? `${bgColor} bg-clip-padding backdrop-filter backdrop-blur-xs` : `${bgColor}`
+      }`}>
       {React.createElement(Tag, {
         size,
         color,
         speed,
         stroke,
-        strokeLength,
-        loaderBgOpacity,
+        'stroke-length': strokeLength,
+        'bg-opacity': loaderBgOpacity
       })}
     </div>
   );
 
   return containerRef?.current ? (
-    // inside a container
-    <div className="absolute z-50 top-0 w-full h-full">{LoaderContent}</div>
+    <div className="absolute inset-0 z-50 top-0 w-full h-full">{LoaderContent}</div>
   ) : (
-    // for whole page
-    <div className="fixed inset-0 z-[51] flex items-center justify-center">
-      {LoaderContent}
-    </div>
+    <div className="fixed inset-0 z-[51] flex items-center justify-center">{LoaderContent}</div>
   );
-}
+};
 
 export default Loader;
 
@@ -10344,20 +10340,21 @@ export default Loader;
 Title: loader-demo
 
 --- file: registry/example/loader-demo.tsx ---
-"use client"
+"use client";
 import { useRef } from "react";
 import Loader from "../magicui/loader";
 
-export default function LoaderDemo() {
-    const ref = useRef<any>(null);
+const LoaderDemo = () =>{
+  const ref = useRef<HTMLDivElement>(null);
   return (
-    <div className="relative justify-center">
-        <div ref={ref} className="relative">
-            <Loader name="cardio" containerRef={ref} />
-        </div>
+
+    <div className="relative rounded-lg min-h-[26rem] z-[1] w-full justify-center overflow-hidden " ref={ref}>
+        <Loader name='jellyTriangle' size={'50'} containerRef={ref} bgColor="bg-gradient-to-b from-cyan-200/50 to-blue-300/50"/>
     </div>
   );
 }
+
+export default LoaderDemo;
 
 
 

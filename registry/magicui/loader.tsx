@@ -1,8 +1,8 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
 
 type Props = {
-  name: keyof typeof import('ldrs');
+  name: keyof typeof import("ldrs");
   size?: string;
   color?: string;
   speed?: string;
@@ -10,29 +10,28 @@ type Props = {
   strokeLength?: string;
   loaderBgOpacity?: string;
   blurBg?: boolean;
+  bgColor?: string;
   containerRef?: React.RefObject<HTMLElement | null>;
 };
 
 const Loader = ({
   name,
-  size = '40',
-  color = 'white',
-  speed = '2',
+  size = "40",
+  color = "black",
+  speed = "2",
   stroke,
   strokeLength,
   loaderBgOpacity,
   blurBg = true,
-  containerRef
+  bgColor = "bg-white/20",
+  containerRef,
 }: Props) => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
     (async () => {
-      var LDRS = await import('ldrs');
-      // const names = Object.keys(LDRS).map(x=>x)
-      // console.log(names);
-      
+      const LDRS = await import("ldrs");
       const loader = LDRS[name as keyof typeof LDRS];
       if (loader && !customElements.get(`l-${name.toLowerCase()}`)) {
         (loader as any).register();
@@ -43,28 +42,36 @@ const Loader = ({
 
   if (!isReady) return null;
 
-  const Tag = `l-${name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}` as keyof JSX.IntrinsicElements;
+  const Tag =
+    `l-${name.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase()}` as keyof JSX.IntrinsicElements;
 
   const LoaderContent = (
     <div
       className={`absolute inset-0 flex items-center justify-center ${
-        blurBg ? 'bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10' : 'bg-white/50 dark:bg-black/50'
-      }`}>
+        blurBg
+          ? `${bgColor} bg-clip-padding backdrop-filter backdrop-blur-xs`
+          : `${bgColor}`
+      }`}
+    >
       {React.createElement(Tag, {
         size,
         color,
         speed,
         stroke,
-        strokeLength,
-        loaderBgOpacity
+        "stroke-length": strokeLength,
+        "bg-opacity": loaderBgOpacity,
       })}
     </div>
   );
 
   return containerRef?.current ? (
-    <div className="absolute z-50 top-0 w-full h-full">{LoaderContent}</div>
+    <div className="absolute inset-0 z-50 top-0 w-full h-full">
+      {LoaderContent}
+    </div>
   ) : (
-    <div className="fixed inset-0 z-[51] flex items-center justify-center">{LoaderContent}</div>
+    <div className="fixed inset-0 z-[51] flex items-center justify-center">
+      {LoaderContent}
+    </div>
   );
 };
 

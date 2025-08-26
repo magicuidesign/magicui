@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/example/loader-demo.tsx",
-      "content": "\"use client\"\nimport { useRef } from \"react\";\nimport Loader from \"../magicui/loader\";\n\nexport default function LoaderDemo() {\n    const ref = useRef<any>(null);\n  return (\n    <div className=\"relative justify-center\">\n        <div ref={ref} className=\"relative\">\n            <Loader name=\"cardio\" containerRef={ref} />\n        </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\nimport { useRef } from \"react\";\nimport Loader from \"../magicui/loader\";\n\nconst LoaderDemo = () =>{\n  const ref = useRef<HTMLDivElement>(null);\n  return (\n\n    <div className=\"relative rounded-lg min-h-[26rem] z-[1] w-full justify-center overflow-hidden \" ref={ref}>\n        <Loader name='jellyTriangle' size={'50'} containerRef={ref} bgColor=\"bg-gradient-to-b from-cyan-200/50 to-blue-300/50\"/>\n    </div>\n  );\n}\n\nexport default LoaderDemo;\n",
       "type": "registry:example"
     }
   ]
