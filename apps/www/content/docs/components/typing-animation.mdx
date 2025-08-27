@@ -46,17 +46,40 @@ npx shadcn@latest add @magicui/typing-animation
 import { TypingAnimation } from "@/components/magicui/typing-animation"
 ```
 
-```tsx showLineNumbers
+<<<<<<< HEAD:apps/www/content/docs/components/typing-animation.mdx
+
+````tsx showLineNumbers
+=======
+```tsx
+// Single string animation
+>>>>>>> 65e3f543 (feat(typing-animation): add multi-word animation and cursor control):content/docs/components/typing-animation.mdx
 <TypingAnimation>Typing Animation</TypingAnimation>
-```
+
+// Multiple words with loop
+<TypingAnimation
+  words={['build', 'scale', 'optimize']}
+  loop={true}
+/>
+
+// Without cursor
+<TypingAnimation showCursor={false}>
+  No cursor animation
+</TypingAnimation>
+````
 
 ## Props
 
-| Prop          | Type                | Default | Description                                   |
-| ------------- | ------------------- | ------- | --------------------------------------------- |
-| `children`    | `string`            | `-`     | Text content to animate                       |
-| `className`   | `string`            | `-`     | The class name to be applied to the component |
-| `duration`    | `number`            | `100`   | Duration to wait in between each char type    |
-| `delay`       | `number`            | `0`     | Delay before animation starts (in ms)         |
-| `as`          | `React.ElementType` | `"div"` | Component to render as                        |
-| `startOnView` | `boolean`           | `false` | Start animation when component is in view     |
+| Prop          | Type                | Default | Description                                     |
+| ------------- | ------------------- | ------- | ----------------------------------------------- |
+| `children`    | `string`            | `-`     | Single string to animate                        |
+| `words`       | `string[]`          | `-`     | Array of strings to type and delete in sequence |
+| `className`   | `string`            | `-`     | The class name to be applied to the component   |
+| `duration`    | `number`            | `100`   | Duration for each character                     |
+| `typeSpeed`   | `number`            | `100`   | Speed of typing animation (ms per character)    |
+| `deleteSpeed` | `number`            | `50`    | Speed of deleting animation (ms per character)  |
+| `delay`       | `number`            | `0`     | Delay before animation starts (in ms)           |
+| `pauseDelay`  | `number`            | `1000`  | Pause duration between words (in ms)            |
+| `loop`        | `boolean`           | `false` | Whether to loop the animation                   |
+| `as`          | `React.ElementType` | `"div"` | Component to render as                          |
+| `startOnView` | `boolean`           | `false` | Start animation when component is in view       |
+| `showCursor`  | `boolean`           | `true`  | Whether to show the typing cursor               |

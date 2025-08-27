@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/typing-animation-demo.tsx",
-      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function TypingAnimationDemo() {\n  return (\n    <TypingAnimation startOnView={true}>Typing Animation 👋</TypingAnimation>\n  )\n}\n",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function TypingAnimationDemo() {\n  return (\n<<<<<<< HEAD:apps/www/registry/example/typing-animation-demo.tsx\n    <TypingAnimation startOnView={true}>Typing Animation 👋</TypingAnimation>\n  )\n=======\n    <div className=\"space-y-8\">\n      <div>\n        <h3 className=\"text-sm font-medium mb-2\">Single string with emoji</h3>\n        <TypingAnimation startOnView={true}>\n          Typing Animation 👋\n        </TypingAnimation>\n      </div>\n\n      <div>\n        <h3 className=\"text-sm font-medium mb-2\">Multiple words with loop</h3>\n        <TypingAnimation\n          words={[\"build 🔨\", \"scale 📈\", \"optimize ⚡\"]}\n          loop={true}\n          typeSpeed={100}\n          deleteSpeed={50}\n          pauseDelay={1500}\n        />\n      </div>\n\n      <div>\n        <h3 className=\"text-sm font-medium mb-2\">No loop (plays once)</h3>\n        <TypingAnimation\n          words={[\"Hello\", \"World\", \"Welcome!\"]}\n          loop={false}\n          typeSpeed={150}\n          deleteSpeed={75}\n        />\n      </div>\n    </div>\n  );\n>>>>>>> 65e3f543 (feat(typing-animation): add multi-word animation and cursor control):registry/example/typing-animation-demo.tsx\n}\n",
       "type": "registry:example"
     }
   ]
