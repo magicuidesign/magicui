@@ -45,6 +45,7 @@
     "@radix-ui/react-toast": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@t3-oss/env-nextjs": "^0.7.1",
+    "@tabler/icons-react": "^3.34.1",
     "@tailwindcss/postcss": "^4.1.4",
     "@types/lodash.template": "^4.5.3",
     "autoprefixer": "10.4.14",

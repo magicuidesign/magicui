@@ -1,8 +1,9 @@
 import { Mdx } from "@/components/mdx-components";
-import { DocPager } from "@/components/pager";
+import { DocPager, getPagerForDoc } from "@/components/pager";
 import { badgeVariants } from "@/components/ui/badge";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
+import { DocsCopyPage } from "@/components/docs-copy-page";
 
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
 import { allDocs } from "content-collections";
@@ -13,6 +14,8 @@ import { notFound } from "next/navigation";
 import { Contribute } from "@/components/contribute";
 import { SidebarCTA } from "@/components/sidebar-cta";
 import { TableOfContents } from "@/components/toc";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { Button } from "@/components/ui/button";
 
 interface DocPageProps {
   params: {
@@ -82,6 +85,7 @@ export default async function DocPage({ params }: DocPageProps) {
   }
 
   const toc = await getTableOfContents(doc.body.raw);
+  const pager = getPagerForDoc(doc);
 
   return (
     <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]">
@@ -91,10 +95,42 @@ export default async function DocPage({ params }: DocPageProps) {
           <ChevronRightIcon className="size-4" />
           <div className="font-medium text-foreground">{doc.title}</div>
         </div>
-        <div className="space-y-2">
+        <div className="flex flex-col gap-2">
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
             {doc.title}
           </h1>
+          <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
+            <DocsCopyPage
+              page={(doc.body as any).rawWithFrontmatter ?? doc.body.raw}
+              url={absoluteUrl(doc.slug)}
+            />
+            {pager?.prev?.href && (
+              <Button
+                variant="secondary"
+                size="icon"
+                className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
+                asChild
+              >
+                <Link href={pager.prev.href}>
+                  <span className="sr-only">Previous</span>
+                  <IconArrowLeft />
+                </Link>
+              </Button>
+            )}
+            {pager?.next?.href && (
+              <Button
+                variant="secondary"
+                size="icon"
+                className="extend-touch-target size-8 shadow-none md:size-7"
+                asChild
+              >
+                <Link href={pager.next.href}>
+                  <span className="sr-only">Next</span>
+                  <IconArrowRight />
+                </Link>
+              </Button>
+            )}
+          </div>
           {doc.description && (
             <p className="text-balance text-lg text-muted-foreground">
               {doc.description}

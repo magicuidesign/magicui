@@ -40,6 +40,14 @@ const nextConfig = {
       },
     ];
   },
+  rewrites() {
+    return [
+      {
+        source: "/docs/:path*.md",
+        destination: "/llm/:path*",
+      },
+    ]
+  },
 };
 
 export default withContentCollections(nextConfig);
