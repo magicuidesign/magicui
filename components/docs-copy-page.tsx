@@ -138,7 +138,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
           {trigger}
         </PopoverTrigger>
         <PopoverContent
-          className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg p-1 shadow-sm backdrop-blur-sm"
+          className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg shadow-sm backdrop-blur-sm"
           align="start"
         >
           {Object.entries(menuItems).map(([key, value]) => (
@@ -147,7 +147,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
               size="lg"
               asChild
               key={key}
-              className="*:[svg]:text-muted-foreground w-full justify-start text-base font-normal"
+              className="*:[svg]:text-muted-foreground w-full justify-start text-base font-normal p-0"
             >
               {value(url)}
             </Button>

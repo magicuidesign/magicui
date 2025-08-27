@@ -7,6 +7,8 @@ import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
 import { createHighlighter } from "shiki";
 import { visit } from "unist-util-visit";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
@@ -194,6 +196,18 @@ const documents = defineCollection({
       slugAsParams: slugAsParams,
       body: {
         raw: document.content,
+        rawWithFrontmatter: await (async () => {
+          try {
+            const mdxPath = path.join(
+              process.cwd(),
+              "content/docs",
+              `${document._meta.path}.mdx`,
+            );
+            return await readFile(mdxPath, "utf8");
+          } catch {
+            return undefined;
+          }
+        })(),
         code: body,
       },
     };

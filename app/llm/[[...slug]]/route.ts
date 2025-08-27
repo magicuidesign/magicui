@@ -16,7 +16,8 @@ export async function GET(
     notFound();
   }
 
-  return new NextResponse(doc.body.raw, {
+  const mdx = (doc.body as any).rawWithFrontmatter ?? doc.body.raw;
+  return new NextResponse(mdx, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
