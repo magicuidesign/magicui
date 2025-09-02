@@ -941,6 +941,155 @@ Title: Spinning Text Demo 2
 
 
 
+===== COMPONENT: striped-pattern =====
+Title: Striped Pattern
+Description: A background striped pattern made with SVGs, fully customizable using Tailwind CSS.
+
+--- file: registry/magicui/striped-pattern.tsx ---
+import { cn } from "@/lib/utils";
+import React, { useId } from "react";
+
+interface StripedPatternProps extends React.SVGProps<SVGSVGElement> {
+  direction?: "left" | "right";
+}
+
+export function StripedPattern({
+  direction = "left",
+  className,
+  width = 10,
+  height = 10,
+  ...props
+}: StripedPatternProps) {
+  const id = useId();
+  const w = Number(width);
+  const h = Number(height);
+
+  return (
+    <svg
+      aria-hidden="true"
+      className={cn(
+        "absolute z-10 inset-0 pointer-events-none h-full w-full text-neutral-400/80",
+        className,
+      )}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <defs>
+        <pattern id={id} width={w} height={h} patternUnits="userSpaceOnUse">
+          {direction === "left" ? (
+            <>
+              <line
+                x1="0"
+                y1={h}
+                x2={w}
+                y2="0"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+              <line
+                x1={-w}
+                y1={h}
+                x2="0"
+                y2="0"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+              <line
+                x1={w}
+                y1={h}
+                x2={w * 2}
+                y2="0"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+            </>
+          ) : (
+            <>
+              <line
+                x1="0"
+                y1="0"
+                x2={w}
+                y2={h}
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+              <line
+                x1={-w}
+                y1="0"
+                x2="0"
+                y2={h}
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+              <line
+                x1={w}
+                y1="0"
+                x2={w * 2}
+                y2={h}
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+            </>
+          )}
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#${id})`} />
+    </svg>
+  );
+}
+
+
+===== EXAMPLE: striped-pattern-demo =====
+Title: Striped Pattern Demo
+
+--- file: registry/example/striped-pattern-demo.tsx ---
+import { cn } from "@/lib/utils";
+import { StripedPattern } from "../magicui/striped-pattern";
+
+export default function StripedPatternDemo() {
+  return (
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <StripedPattern
+        className={cn(
+          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
+        )}
+      />
+    </div>
+  );
+}
+
+
+===== EXAMPLE: striped-pattern-left =====
+Title: Striped Pattern (Left)
+
+--- file: registry/example/striped-pattern-left.tsx ---
+import { StripedPattern } from "../magicui/striped-pattern";
+
+export default function StripedPatternLeft() {
+  return (
+    <div className="relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <StripedPattern />
+    </div>
+  );
+}
+
+
+===== EXAMPLE: striped-pattern-right =====
+Title: Striped Pattern (Right)
+
+--- file: registry/example/striped-pattern-right.tsx ---
+import { StripedPattern } from "../magicui/striped-pattern";
+
+export default function StripedPatternRight() {
+  return (
+    <div className="relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <StripedPattern direction="right" />
+    </div>
+  );
+}
+
+
+
 ===== COMPONENT: terminal =====
 Title: Terminal
 Description: A terminal component

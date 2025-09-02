@@ -256,6 +256,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "striped-pattern",
+    type: "registry:ui",
+    title: "Striped Pattern",
+    description:
+      "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+    files: [
+      {
+        path: "registry/magicui/striped-pattern.tsx",
+        type: "registry:ui",
+        target: "components/magicui/striped-pattern.tsx",
+      },
+    ],
+  },
+  {
     name: "interactive-grid-pattern",
     type: "registry:ui",
     title: "Interactive Grid Pattern",
