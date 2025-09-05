@@ -2,7 +2,7 @@
 title: iPhone 15 Pro
 date: 2024-09-01
 description: A mockup of the iPhone 15 Pro
-author: dillionverma
+author: dillionverma, Yeom-JinHo
 published: true
 ---
 
@@ -62,11 +62,16 @@ import { Iphone15Pro } from "@/components/magicui/iphone-15-pro";
 
 ## Props
 
-| Prop       | Type     | Default | Description                            |
-| ---------- | -------- | ------- | -------------------------------------- |
-| `width`    | `number` | `433`   | The width of the iPhone 15 Pro window  |
-| `height`   | `number` | `882`   | The height of the iPhone 15 Pro window |
-| `src`      | `string` | `-`     | The source of the image to display     |
-| `videoSrc` | `string` | `-`     | The source of the video to display     |
+| Prop        | Type                  | Default | Description                                       |
+| ----------- | --------------------- | ------- | ------------------------------------------------- |
+| `src`       | `string`              | `-`     | The source of the image to display                |
+| `videoSrc`  | `string`              | `-`     | The source of the video to display                |
+| `className` | `string`              | `-`     | Additional classes applied to the wrapper `<div>` |
+| `style`     | `React.CSSProperties` | `-`     | Inline styles applied to the wrapper `<div>`      |
 
-The `Iphone15Pro` component also accepts all properties of the `SVGElement` type.
+## Notes
+
+- Sizing: width and height props have been removed. The size is controlled by the wrapper `<div>`. The component enforces the aspect ratio 433/882.
+- Masking: The screen area is only masked when media (src or videoSrc) is provided. Without media, only the frame is rendered.
+- HTML Attributes: The Iphone15Pro component accepts all standard HTMLDivElement props.
+- iOS Compatibility: Video is rendered as a DOM overlay instead of foreignObject to avoid Safari/iOS masking issues.
