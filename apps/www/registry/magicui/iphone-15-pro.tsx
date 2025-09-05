@@ -22,6 +22,7 @@ export function Iphone15Pro({
   const radiusPx = 55.75 * Math.min(width / 433, height / 882);
 
   const hasVideo = !!videoSrc;
+  const hasMedia = hasVideo || !!src;
 
   return (
     <div className="relative" style={{ width, height }}>
@@ -59,7 +60,7 @@ export function Iphone15Pro({
         }}
         {...props}
       >
-        <g mask="url(#screenPunch)">
+        <g mask={hasMedia ? "url(#screenPunch)" : undefined}>
           <path
             d="M2 73C2 32.6832 34.6832 0 75 0H357C397.317 0 430 32.6832 430 73V809C430 849.317 397.317 882 357 882H75C34.6832 882 2 849.317 2 809V73Z"
             className="fill-[#E5E5E5] dark:fill-[#404040]"
@@ -95,7 +96,7 @@ export function Iphone15Pro({
         <path
           d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z"
           className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
-          mask="url(#screenPunch)"
+          mask={hasMedia ? "url(#screenPunch)" : undefined}
         />
 
         {!hasVideo && src && (
@@ -106,7 +107,7 @@ export function Iphone15Pro({
             width="389.5"
             height="843.5"
             preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#roundedCorners)"
+            clipPath={hasMedia ? "url(#roundedCorners)" : undefined}
           />
         )}
         <path
