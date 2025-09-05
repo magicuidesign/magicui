@@ -1,31 +1,34 @@
-import { SVGProps } from "react";
+import type { HTMLAttributes } from "react";
 
-export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
-  width?: number;
-  height?: number;
+export interface Iphone15ProProps extends HTMLAttributes<HTMLDivElement> {
   src?: string;
   videoSrc?: string;
 }
 
-export function Iphone15Pro({
-  width = 433,
-  height = 882,
+export default function Iphone15Pro({
   src,
   videoSrc,
+  className,
+  style,
   ...props
 }: Iphone15ProProps) {
-
   const leftPct = (21.25 / 433) * 100;
   const topPct = (19.25 / 882) * 100;
   const wPct = (389.5 / 433) * 100;
   const hPct = (843.5 / 882) * 100;
-  const radiusPx = 55.75 * Math.min(width / 433, height / 882);
+
+  const radiusH = (55.75 / 389.5) * 100;
+  const radiusV = (55.75 / 843.5) * 100;
 
   const hasVideo = !!videoSrc;
   const hasMedia = hasVideo || !!src;
 
   return (
-    <div className="relative" style={{ width, height }}>
+    <div
+      className={`relative inline-block aspect-[433/882] max-w-full align-middle leading-none ${className ?? ""}`}
+      style={style}
+      {...props}
+    >
       {hasVideo && (
         <div
           className="pointer-events-none absolute z-0 overflow-hidden"
@@ -34,7 +37,7 @@ export function Iphone15Pro({
             top: `${topPct}%`,
             width: `${wPct}%`,
             height: `${hPct}%`,
-            borderRadius: `${radiusPx}px`,
+            borderRadius: `${radiusH}% / ${radiusV}%`,
           }}
         >
           <video
@@ -48,17 +51,13 @@ export function Iphone15Pro({
           />
         </div>
       )}
+
       <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
+        viewBox="0 0 433 882"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 z-10"
-        style={{
-          transform: "translateZ(0)",
-        }}
-        {...props}
+        className="absolute inset-0 z-10 h-full w-full"
+        style={{ transform: "translateZ(0)" }}
       >
         <g mask={hasMedia ? "url(#screenPunch)" : undefined}>
           <path
@@ -122,9 +121,10 @@ export function Iphone15Pro({
           d="M254 48.5C254 45.4624 256.462 43 259.5 43C262.538 43 265 45.4624 265 48.5C265 51.5376 262.538 54 259.5 54C256.462 54 254 51.5376 254 48.5Z"
           className="fill-[#E5E5E5] dark:fill-[#404040]"
         />
+
         <defs>
           <mask id="screenPunch" maskUnits="userSpaceOnUse">
-            <rect x="0" y="0" width={width} height={height} fill="white" />
+            <rect x="0" y="0" width="433" height="882" fill="white" />
             <rect
               x="21.25"
               y="19.25"
