@@ -25,7 +25,7 @@ export default function Iphone15Pro({
 
   return (
     <div
-      className={`relative inline-block aspect-[433/882] max-w-full align-middle leading-none ${className ?? ""}`}
+      className={`relative inline-block aspect-[433/882] w-full align-middle leading-none ${className ?? ""}`}
       style={style}
       {...props}
     >
