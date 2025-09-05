@@ -98,7 +98,7 @@ export function Iphone15Pro({
           mask="url(#screenPunch)"
         />
 
-        {src && (
+        {!hasVideo && src && (
           <image
             href={src}
             x="21.25"
