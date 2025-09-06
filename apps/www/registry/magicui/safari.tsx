@@ -1,13 +1,11 @@
-import type { SVGProps } from "react";
+import type { HTMLAttributes, SVGProps } from "react";
 
 type SafariMode = "default" | "simple";
 
-export interface SafariProps extends SVGProps<SVGSVGElement> {
+export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
   url?: string;
   imageSrc?: string;
   videoSrc?: string;
-  width?: number;
-  height?: number;
   mode?: SafariMode;
 }
 
@@ -15,8 +13,6 @@ export function Safari({
   imageSrc,
   videoSrc,
   url,
-  width = 1203,
-  height = 753,
   mode = "default",
   className,
   style,
@@ -40,6 +36,7 @@ export function Safari({
     <div
       className={`relative inline-block aspect-[1203/753] w-full align-middle leading-none ${className ?? ""}`}
       style={style}
+      {...props}
     >
       {hasVideo && (
         <div
@@ -69,7 +66,6 @@ export function Safari({
         xmlns="http://www.w3.org/2000/svg"
         className="absolute inset-0 z-10 h-full w-full"
         style={{ transform: "translateZ(0)" }}
-        {...props}
       >
         <defs>
           <mask id="safariPunch" maskUnits="userSpaceOnUse">
