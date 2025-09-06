@@ -23,7 +23,6 @@ export function Safari({
 
   const screen = { x: 1, y: 52, w: 1200, h: 700 };
 
-
   const leftPct = (screen.x / BASE_W) * 100;
   const topPct = (screen.y / BASE_H) * 100;
   const wPct = (screen.w / BASE_W) * 100;
