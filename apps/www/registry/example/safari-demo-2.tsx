@@ -2,10 +2,9 @@ import { Safari } from "@/registry/magicui/safari";
 
 export default function SafariDemo() {
   return (
-    <div className="relative">
+    <div className="w-[1203px]">
       <Safari
         url="magicui.design"
-        className="size-full"
         imageSrc="https://via.placeholder.com/1200x750"
       />
     </div>
