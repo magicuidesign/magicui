@@ -11418,7 +11418,9 @@ export const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
           "dark:bg-neutral-900",
         )}
       >
-        {children}
+        <div className="relative z-10 w-full h-auto min-w-0 break-words overflow-hidden rounded-[var(--card-content-radius)]">
+            {children}
+        </div>
       </div>
     </div>
   );
