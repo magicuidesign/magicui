@@ -3,6 +3,7 @@
 <p align="center">
     UI Library for Design Engineers
 </p>
+
 <div align="center">
   <a href="https://github.com/magicuidesign/magicui/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/magicuidesign/magicui"></a>
   <a href="https://twitter.com/magicuidesign"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/magicuidesign"></a>
