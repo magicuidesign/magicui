@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue } from "motion/react";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -24,70 +24,56 @@ export function MagicCard({
   gradientFrom = "#9E7AFF",
   gradientTo = "#FE8BBB",
 }: MagicCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(-gradientSize);
   const mouseY = useMotionValue(-gradientSize);
+  const reset = useCallback(() => {
+    mouseX.set(-gradientSize);
+    mouseY.set(-gradientSize);
+  }, [gradientSize, mouseX, mouseY]);
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (cardRef.current) {
-        const { left, top } = cardRef.current.getBoundingClientRect();
-        const { clientX, clientY } = e;
-        mouseX.set(clientX - left);
-        mouseY.set(clientY - top);
-      }
+  const handlePointerMove = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      mouseX.set(e.clientX - rect.left);
+      mouseY.set(e.clientY - rect.top);
     },
     [mouseX, mouseY],
   );
 
-  // Reset on re-enter so we don't show a stale glow
-  const handleMouseOut = useCallback(
-    () => {
-      mouseX.set(-gradientSize);
-      mouseY.set(-gradientSize);
-    },
-    [gradientSize, mouseX, mouseY],
-  );
-
-  const handleMouseEnter = useCallback(() => {
-    mouseX.set(-gradientSize);
-    mouseY.set(-gradientSize);
-  }, [gradientSize, mouseX, mouseY]);
+  useEffect(() => {
+    reset();
+  }, [reset]);
 
   useEffect(() => {
-    // Listeners on window rather than document
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("mouseleave", handleMouseOut);
-    window.addEventListener("mouseenter", handleMouseEnter);
-
-    // Also reset when the window/tab is not active
-    const handleWindowBlur = () => handleMouseOut();
-    const handleVisibility = () => {
-      if (document.visibilityState !== "visible") {
-        handleMouseOut();
+    const handleGlobalPointerOut = (e: PointerEvent) => {
+      if (!e.relatedTarget) {
+        reset();
       }
     };
-    window.addEventListener("blur", handleWindowBlur);
+
+    const handleVisibility = () => {
+      if (document.visibilityState !== "visible") {
+        reset();
+      }
+    };
+
+    window.addEventListener("pointerout", handleGlobalPointerOut);
+    window.addEventListener("blur", reset);
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseleave", handleMouseOut);
-      window.removeEventListener("mouseenter", handleMouseEnter);
-      window.removeEventListener("blur", handleWindowBlur);
+      window.removeEventListener("pointerout", handleGlobalPointerOut);
+      window.removeEventListener("blur", reset);
       document.removeEventListener("visibilitychange", handleVisibility);
     };
-  }, [handleMouseMove, handleMouseOut, handleMouseEnter]);
-
-  useEffect(() => {
-    mouseX.set(-gradientSize);
-    mouseY.set(-gradientSize);
-  }, [gradientSize, mouseX, mouseY]);
+  }, [reset]);
 
   return (
     <div
-      ref={cardRef}
       className={cn("group relative rounded-[inherit]", className)}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={reset}
+      onPointerEnter={reset}
     >
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-[inherit] bg-border duration-300 group-hover:opacity-100"
