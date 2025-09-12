@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { useInView } from "motion/react";
 import { annotate } from "rough-notation";
 import type React from "react";
+import { type RoughAnnotation } from "rough-notation/lib/model";
 
 type AnnotationAction =
   | "highlight"
@@ -38,6 +39,8 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
+  const annotationRef = useRef<RoughAnnotation | null>(null);
+
   const isInView = useInView(elementRef, {
     once: true,
     margin: "-10%",
@@ -52,7 +55,7 @@ export function Highlighter({
     const element = elementRef.current;
     if (!element) return;
 
-    const annotation = annotate(element, {
+    const annotationConfig = {
       type: action,
       color,
       strokeWidth,
@@ -60,13 +63,25 @@ export function Highlighter({
       iterations,
       padding,
       multiline,
+    };
+
+    const annotation = annotate(element, annotationConfig);
+
+    annotationRef.current = annotation;
+    annotationRef.current.show();
+
+    const resizeObserver = new ResizeObserver(() => {
+      annotation.hide();
+      annotation.show();
     });
 
-    annotation.show();
+    resizeObserver.observe(element);
+    resizeObserver.observe(document.body);
 
     return () => {
       if (element) {
         annotate(element, { type: action }).remove();
+        resizeObserver.disconnect();
       }
     };
   }, [
@@ -86,3 +101,4 @@ export function Highlighter({
     </span>
   );
 }
+
