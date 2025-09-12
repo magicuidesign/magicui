@@ -99,7 +99,7 @@ export default async function DocPage({ params }: DocPageProps) {
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
             {doc.title}
           </h1>
-          <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
+          <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 sm:z-0 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
             <DocsCopyPage
               page={(doc.body as any).rawWithFrontmatter ?? doc.body.raw}
               url={absoluteUrl(doc.slug)}
