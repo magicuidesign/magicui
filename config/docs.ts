@@ -605,6 +605,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Striped Pattern",
+          href: `/docs/components/striped-pattern`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],
