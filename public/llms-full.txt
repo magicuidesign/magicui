@@ -8607,6 +8607,7 @@ import { useEffect, useRef } from "react";
 import { useInView } from "motion/react";
 import { annotate } from "rough-notation";
 import type React from "react";
+import { type RoughAnnotation } from "rough-notation/lib/model";
 
 type AnnotationAction =
   | "highlight"
@@ -8641,6 +8642,8 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
+  const annotationRef = useRef<RoughAnnotation | null>(null);
+
   const isInView = useInView(elementRef, {
     once: true,
     margin: "-10%",
@@ -8655,7 +8658,7 @@ export function Highlighter({
     const element = elementRef.current;
     if (!element) return;
 
-    const annotation = annotate(element, {
+    const annotationConfig = {
       type: action,
       color,
       strokeWidth,
@@ -8663,13 +8666,25 @@ export function Highlighter({
       iterations,
       padding,
       multiline,
+    };
+
+    const annotation = annotate(element, annotationConfig);
+
+    annotationRef.current = annotation;
+    annotationRef.current.show();
+
+    const resizeObserver = new ResizeObserver(() => {
+      annotation.hide();
+      annotation.show();
     });
 
-    annotation.show();
+    resizeObserver.observe(element);
+    resizeObserver.observe(document.body);
 
     return () => {
       if (element) {
         annotate(element, { type: action }).remove();
+        resizeObserver.disconnect();
       }
     };
   }, [
@@ -8722,6 +8737,7 @@ import { useEffect, useRef } from "react";
 import { useInView } from "motion/react";
 import { annotate } from "rough-notation";
 import type React from "react";
+import { type RoughAnnotation } from "rough-notation/lib/model";
 
 type AnnotationAction =
   | "highlight"
@@ -8756,6 +8772,8 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
+  const annotationRef = useRef<RoughAnnotation | null>(null);
+
   const isInView = useInView(elementRef, {
     once: true,
     margin: "-10%",
@@ -8770,7 +8788,7 @@ export function Highlighter({
     const element = elementRef.current;
     if (!element) return;
 
-    const annotation = annotate(element, {
+    const annotationConfig = {
       type: action,
       color,
       strokeWidth,
@@ -8778,13 +8796,25 @@ export function Highlighter({
       iterations,
       padding,
       multiline,
+    };
+
+    const annotation = annotate(element, annotationConfig);
+
+    annotationRef.current = annotation;
+    annotationRef.current.show();
+
+    const resizeObserver = new ResizeObserver(() => {
+      annotation.hide();
+      annotation.show();
     });
 
-    annotation.show();
+    resizeObserver.observe(element);
+    resizeObserver.observe(document.body);
 
     return () => {
       if (element) {
         annotate(element, { type: action }).remove();
+        resizeObserver.disconnect();
       }
     };
   }, [
@@ -10276,7 +10306,7 @@ Description: A spotlight effect that follows your mouse cursor and highlights bo
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue } from "motion/react";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -10299,61 +10329,56 @@ export function MagicCard({
   gradientFrom = "#9E7AFF",
   gradientTo = "#FE8BBB",
 }: MagicCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(-gradientSize);
   const mouseY = useMotionValue(-gradientSize);
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (cardRef.current) {
-        const { left, top } = cardRef.current.getBoundingClientRect();
-        const clientX = e.clientX;
-        const clientY = e.clientY;
-        mouseX.set(clientX - left);
-        mouseY.set(clientY - top);
-      }
-    },
-    [mouseX, mouseY],
-  );
-
-  const handleMouseOut = useCallback(
-    (e: MouseEvent) => {
-      if (!e.relatedTarget) {
-        document.removeEventListener("mousemove", handleMouseMove);
-        mouseX.set(-gradientSize);
-        mouseY.set(-gradientSize);
-      }
-    },
-    [handleMouseMove, mouseX, gradientSize, mouseY],
-  );
-
-  const handleMouseEnter = useCallback(() => {
-    document.addEventListener("mousemove", handleMouseMove);
-    mouseX.set(-gradientSize);
-    mouseY.set(-gradientSize);
-  }, [handleMouseMove, mouseX, gradientSize, mouseY]);
-
-  useEffect(() => {
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseout", handleMouseOut);
-    document.addEventListener("mouseenter", handleMouseEnter);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseout", handleMouseOut);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-    };
-  }, [handleMouseEnter, handleMouseMove, handleMouseOut]);
-
-  useEffect(() => {
+  const reset = useCallback(() => {
     mouseX.set(-gradientSize);
     mouseY.set(-gradientSize);
   }, [gradientSize, mouseX, mouseY]);
 
+  const handlePointerMove = useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      mouseX.set(e.clientX - rect.left);
+      mouseY.set(e.clientY - rect.top);
+    },
+    [mouseX, mouseY],
+  );
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
+
+  useEffect(() => {
+    const handleGlobalPointerOut = (e: PointerEvent) => {
+      if (!e.relatedTarget) {
+        reset();
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState !== "visible") {
+        reset();
+      }
+    };
+
+    window.addEventListener("pointerout", handleGlobalPointerOut);
+    window.addEventListener("blur", reset);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      window.removeEventListener("pointerout", handleGlobalPointerOut);
+      window.removeEventListener("blur", reset);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [reset]);
+
   return (
     <div
-      ref={cardRef}
       className={cn("group relative rounded-[inherit]", className)}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={reset}
+      onPointerEnter={reset}
     >
       <motion.div
         className="pointer-events-none absolute inset-0 rounded-[inherit] bg-border duration-300 group-hover:opacity-100"
@@ -11416,6 +11441,7 @@ export const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
           "after:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] after:bg-[length:100%_200%] after:opacity-80",
           "after:animate-background-position-spin",
           "dark:bg-neutral-900",
+          "break-words",
         )}
       >
         {children}
@@ -11434,7 +11460,7 @@ import { NeonGradientCard } from "@/registry/magicui/neon-gradient-card";
 export default function NeonGradientCardDemo() {
   return (
     <NeonGradientCard className="max-w-sm items-center justify-center text-center">
-      <span className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-6xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+      <span className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-3xl md:text-5xl xl:text-6xl font-bold leading-none tracking-tighter text-balance text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
         Neon Gradient Card
       </span>
     </NeonGradientCard>
