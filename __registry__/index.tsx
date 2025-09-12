@@ -1744,6 +1744,29 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  loader: {
+    name: "loader",
+    description: "A loading spinner component.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [
+      {
+        path: "registry/magicui/loader.tsx",
+        type: "registry:ui",
+        target: "components/magicui/loader.tsx",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/loader.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description:
@@ -4828,6 +4851,29 @@ export const Index: Record<string, any> = {
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-beams-demo.tsx");
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object",
+        ) || item.name;
+      return { default: mod.default || mod[exportName] };
+    }),
+    meta: undefined,
+  },
+  "loader-demo": {
+    name: "loader-demo",
+    description: "Demo of the loader component showcasing a loading spinner.",
+    type: "registry:example",
+    registryDependencies: ["loader"],
+    files: [
+      {
+        path: "registry/example/loader-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/loader-demo.tsx");
       const exportName =
         Object.keys(mod).find(
           (key) =>

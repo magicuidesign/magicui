@@ -1380,6 +1380,22 @@
       ]
     },
     {
+      "name": "loader",
+      "type": "registry:ui",
+      "title": "Loader",
+      "description": "A loading spinner component.",
+      "dependencies": [
+        "ldrs"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/loader.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/loader.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3513,6 +3529,20 @@
       "files": [
         {
           "path": "registry/example/grid-beams-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "loader-demo",
+      "type": "registry:example",
+      "description": "Demo of the loader component showcasing a loading spinner.",
+      "registryDependencies": [
+        "loader"
+      ],
+      "files": [
+        {
+          "path": "registry/example/loader-demo.tsx",
           "type": "registry:example"
         }
       ]

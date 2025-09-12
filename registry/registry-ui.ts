@@ -1308,4 +1308,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "loader",
+    type: "registry:ui",
+    title: "Loader",
+    description: "A loading spinner component.",
+    dependencies: ["ldrs"],
+    files: [
+      {
+        path: "registry/magicui/loader.tsx",
+        type: "registry:ui",
+        target: "components/magicui/loader.tsx",
+      },
+    ],
+  },
 ];
