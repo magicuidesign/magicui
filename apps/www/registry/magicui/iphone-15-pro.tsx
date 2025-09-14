@@ -1,7 +1,6 @@
 import { SVGProps } from "react";
 
-export interface Iphone15ProProps
-  extends Omit<SVGProps<SVGSVGElement>, "width" | "height"> {
+export interface Iphone15ProProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
   width?: number;
   height?: number;
   imageSrc?: string; // Image URL to display on the iPhone screen
