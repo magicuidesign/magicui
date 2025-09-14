@@ -20,11 +20,14 @@ export function Safari({
   mode = "default",
   ...props
 }: SafariProps) {
+  const originalWidth: number = 1203;
+  const originalHeight: number = 753;
+
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${originalWidth} ${originalHeight}`} // Maintain original aspect ratio (fixed viewBox)
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
