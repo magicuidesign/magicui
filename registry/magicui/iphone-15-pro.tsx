@@ -1,17 +1,19 @@
 import { SVGProps } from "react";
 
-export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
+export interface Iphone15ProProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
   width?: number;
   height?: number;
-  src?: string;
-  videoSrc?: string;
+  imageSrc?: string; // Image URL to display on the iPhone screen
+  videoSrc?: string; // Video URL to display on the iPhone screen
+  webviewSrc?: string; // WebView URL to display on the iPhone screen
 }
 
 export default function Iphone15Pro({
   width = 433,
   height = 882,
-  src,
+  imageSrc,
   videoSrc,
+  webviewSrc,
   ...props
 }: Iphone15ProProps) {
   const originalWidth: number = 433;
@@ -60,9 +62,9 @@ export default function Iphone15Pro({
         className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
       />
 
-      {src && (
+      {imageSrc && (
         <image
-          href={src}
+          href={imageSrc}
           x="21.25"
           y="19.25"
           width="389.5"
@@ -80,6 +82,20 @@ export default function Iphone15Pro({
             loop
             muted
             playsInline
+          />
+        </foreignObject>
+      )}
+      {webviewSrc && (
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
+          <iframe 
+            title="iPhone 15 Pro WebView"
+            className="size-full overflow-hidden rounded-[55.75px] object-cover"
+            src={webviewSrc}
+            loading="lazy"
+            allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            referrerPolicy="no-referrer"
+            style={{ width: "100%", height: "100%", border: "0" }} // Fallback for browsers that do not support foreignObject
           />
         </foreignObject>
       )}
