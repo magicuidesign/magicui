@@ -5,7 +5,7 @@ export default function Iphone15ProDemo() {
     <div className="relative">
       <Iphone15Pro
         className="size-full"
-        src="https://via.placeholder.com/430x880"
+        imageSrc="https://via.placeholder.com/430x880"
       />
     </div>
   );

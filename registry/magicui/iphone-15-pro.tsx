@@ -1,6 +1,7 @@
 import { SVGProps } from "react";
 
-export interface Iphone15ProProps extends Omit<SVGProps<SVGSVGElement>, 'width' | 'height'> {
+export interface Iphone15ProProps
+  extends Omit<SVGProps<SVGSVGElement>, "width" | "height"> {
   width?: number;
   height?: number;
   imageSrc?: string; // Image URL to display on the iPhone screen
@@ -87,7 +88,7 @@ export default function Iphone15Pro({
       )}
       {webviewSrc && (
         <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
-          <iframe 
+          <iframe
             title="iPhone 15 Pro WebView"
             className="size-full overflow-hidden rounded-[55.75px] object-cover"
             src={webviewSrc}
