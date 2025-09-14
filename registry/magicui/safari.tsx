@@ -6,6 +6,8 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
   url?: string;
   imageSrc?: string;
   videoSrc?: string;
+  frameSrc?: string;
+  webviewSrc?: string;
   width?: number;
   height?: number;
   mode?: SafariMode;
@@ -14,6 +16,7 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
 export function Safari({
   imageSrc,
   videoSrc,
+  webviewSrc,
   url,
   width = 1203,
   height = 753,
@@ -167,6 +170,27 @@ export function Safari({
               loop
               muted
               playsInline
+            />
+          </foreignObject>
+        )}
+        {webviewSrc && (
+          <foreignObject
+            x="1"
+            y="52"
+            width="1200"
+            height="700"
+            preserveAspectRatio="xMidYMid slice"
+            clipPath="url(#roundedBottom)"
+          >
+            <iframe
+              title="Safari WebView"
+              className="size-full overflow-hidden object-cover"
+              src={webviewSrc}
+              loading="lazy"
+              allowFullScreen
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              referrerPolicy="no-referrer"
+              style={{ width: "100%", height: "100%", border: "0" }} // Fallback for browsers that do not support foreignObject
             />
           </foreignObject>
         )}
