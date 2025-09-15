@@ -14,7 +14,7 @@ export function Contribute({ doc }: { doc: Doc }) {
         repo: "magicui",
         title: `[bug]: ${doc.slug}`,
         labels: ["bug", "documentation"],
-        template: "bug_report.md",
+        template: "bug_report.yml",
       }),
     },
     {
@@ -25,13 +25,17 @@ export function Contribute({ doc }: { doc: Doc }) {
         repo: "magicui",
         title: `[feat]: ${doc.slug}`,
         labels: ["enhancement"],
-        template: "feature_request.md",
+        template: "feature_request.yml",
       }),
     },
     {
       text: "Edit this page",
       icon: PencilIcon,
-      href: getGithubFileUrl(doc.slug),
+      href: getGithubFileUrl({
+        owner: "magicuidesign",
+        repo: "magicui",
+        slug: doc.slug,
+      }),
     },
   ];
 

@@ -42,8 +42,15 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
   return `${baseUrl}?${urlParams.toString()}`;
 }
 
-export function getGithubFileUrl(slug: string) {
-  return `https://github.com/magicuidesign/magicui/blob/main/content${
+interface GithubFileUrlParams {
+  owner: string;
+  repo: string;
+  slug: string;
+}
+
+export function getGithubFileUrl(params: GithubFileUrlParams) {
+  const { owner, repo, slug } = params;
+  return `https://github.com/${owner}/${repo}/blob/main/content${
     slug === "/docs" ? "/docs/index" : slug
   }.mdx`;
 }

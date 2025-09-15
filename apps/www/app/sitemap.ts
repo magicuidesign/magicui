@@ -2,8 +2,8 @@ import { allBlogs, allDocs, allPages } from "content-collections";
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const headersList = headers();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const headersList = await headers();
   const domain = headersList.get("host") as string;
   const protocol = "https";
 

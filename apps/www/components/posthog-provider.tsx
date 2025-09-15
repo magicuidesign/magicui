@@ -19,7 +19,7 @@ if (typeof window !== "undefined") {
   });
 }
 
-export function PostHogPageview(): JSX.Element {
+export function PostHogPageview(): React.ReactNode {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
