@@ -9374,7 +9374,7 @@ const slugs = [
 
 export default function IconCloudDemo() {
   const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
   );
 
   return (
@@ -12628,7 +12628,7 @@ export function ProgressiveBlur({
           ? "top-0"
           : position === "bottom"
             ? "bottom-0"
-            : "inset-y-0"
+            : "inset-y-0",
       )}
       style={{
         height: position === "both" ? "100%" : height,

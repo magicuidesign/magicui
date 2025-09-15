@@ -12,7 +12,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/magic-card.tsx",
         type: "registry:ui",
-        target: "components/magicui/magic-card.tsx",
       },
     ],
   },
@@ -25,7 +24,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/android.tsx",
         type: "registry:ui",
-        target: "components/magicui/android.tsx",
       },
     ],
   },
@@ -39,7 +37,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/warp-background.tsx",
         type: "registry:ui",
-        target: "components/magicui/warp-background.tsx",
       },
     ],
   },
@@ -53,7 +50,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/line-shadow-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/line-shadow-text.tsx",
       },
     ],
     cssVars: {
@@ -81,7 +77,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/aurora-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/aurora-text.tsx",
       },
     ],
     cssVars: {
@@ -123,7 +118,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/morphing-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/morphing-text.tsx",
       },
     ],
   },
@@ -137,7 +131,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/scroll-progress.tsx",
         type: "registry:ui",
-        target: "components/magicui/scroll-progress.tsx",
       },
     ],
   },
@@ -152,7 +145,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/lens.tsx",
         type: "registry:ui",
-        target: "components/magicui/lens.tsx",
       },
     ],
   },
@@ -167,7 +159,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/pointer.tsx",
         type: "registry:ui",
-        target: "components/magicui/pointer.tsx",
       },
     ],
   },
@@ -194,7 +185,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/progressive-blur.tsx",
         type: "registry:ui",
-        target: "components/magicui/progressive-blur.tsx",
       },
     ],
   },
@@ -207,7 +197,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/neon-gradient-card.tsx",
         type: "registry:ui",
-        target: "components/magicui/neon-gradient-card.tsx",
       },
     ],
     cssVars: {
@@ -232,7 +221,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/meteors.tsx",
         type: "registry:ui",
-        target: "components/magicui/meteors.tsx",
       },
     ],
     cssVars: {
@@ -264,7 +252,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/grid-pattern.tsx",
         type: "registry:ui",
-        target: "components/magicui/grid-pattern.tsx",
       },
     ],
   },
@@ -278,7 +265,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/interactive-grid-pattern.tsx",
         type: "registry:ui",
-        target: "components/magicui/interactive-grid-pattern.tsx",
       },
     ],
   },
@@ -292,7 +278,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/dot-pattern.tsx",
         type: "registry:ui",
-        target: "components/magicui/dot-pattern.tsx",
       },
     ],
   },
@@ -306,7 +291,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/flickering-grid.tsx",
         type: "registry:ui",
-        target: "components/magicui/flickering-grid.tsx",
       },
     ],
   },
@@ -320,7 +304,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/hero-video-dialog.tsx",
         type: "registry:ui",
-        target: "components/magicui/hero-video-dialog.tsx",
       },
     ],
   },
@@ -334,7 +317,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/code-comparison.tsx",
         type: "registry:ui",
-        target: "components/magicui/code-comparison.tsx",
       },
     ],
   },
@@ -349,7 +331,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/script-copy-btn.tsx",
         type: "registry:ui",
-        target: "components/magicui/script-copy-btn.tsx",
       },
     ],
   },
@@ -363,7 +344,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/marquee.tsx",
         type: "registry:ui",
-        target: "components/magicui/marquee.tsx",
       },
     ],
     cssVars: {
@@ -403,7 +383,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/globe.tsx",
         type: "registry:ui",
-        target: "components/magicui/globe.tsx",
       },
     ],
   },
@@ -417,7 +396,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/shimmer-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/shimmer-button.tsx",
       },
     ],
     cssVars: {
@@ -461,7 +439,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/tweet-card.tsx",
         type: "registry:ui",
-        target: "components/magicui/tweet-card.tsx",
       },
     ],
   },
@@ -476,7 +453,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/client-tweet-card.tsx",
         type: "registry:ui",
-        target: "components/magicui/client-tweet-card.tsx",
       },
     ],
   },
@@ -492,7 +468,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/bento-grid.tsx",
         type: "registry:ui",
-        target: "components/magicui/bento-grid.tsx",
       },
     ],
   },
@@ -506,7 +481,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/particles.tsx",
         type: "registry:ui",
-        target: "components/magicui/particles.tsx",
       },
     ],
   },
@@ -520,7 +494,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/number-ticker.tsx",
         type: "registry:ui",
-        target: "components/magicui/number-ticker.tsx",
       },
     ],
   },
@@ -534,7 +507,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/ripple.tsx",
         type: "registry:ui",
-        target: "components/magicui/ripple.tsx",
       },
     ],
     cssVars: {
@@ -563,7 +535,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/retro-grid.tsx",
         type: "registry:ui",
-        target: "components/magicui/retro-grid.tsx",
       },
     ],
     cssVars: {
@@ -589,7 +560,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-list.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-list.tsx",
       },
     ],
   },
@@ -603,7 +573,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-shiny-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-shiny-text.tsx",
       },
     ],
 
@@ -634,7 +603,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-grid-pattern.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-grid-pattern.tsx",
       },
     ],
   },
@@ -649,7 +617,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/border-beam.tsx",
         type: "registry:ui",
-        target: "components/magicui/border-beam.tsx",
       },
     ],
   },
@@ -664,7 +631,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-beam.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-beam.tsx",
       },
     ],
   },
@@ -678,7 +644,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/text-reveal.tsx",
         type: "registry:ui",
-        target: "components/magicui/text-reveal.tsx",
       },
     ],
   },
@@ -693,7 +658,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/hyper-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/hyper-text.tsx",
       },
     ],
   },
@@ -707,7 +671,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-gradient-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-gradient-text.tsx",
       },
     ],
     cssVars: {
@@ -733,7 +696,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/orbiting-circles.tsx",
         type: "registry:ui",
-        target: "components/magicui/orbiting-circles.tsx",
       },
     ],
     cssVars: {
@@ -765,7 +727,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/dock.tsx",
         type: "registry:ui",
-        target: "components/magicui/dock.tsx",
       },
     ],
   },
@@ -779,7 +740,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/word-rotate.tsx",
         type: "registry:ui",
-        target: "components/magicui/word-rotate.tsx",
       },
     ],
   },
@@ -792,7 +752,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/avatar-circles.tsx",
         type: "registry:ui",
-        target: "components/magicui/avatar-circles.tsx",
       },
     ],
   },
@@ -806,7 +765,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/typing-animation.tsx",
         type: "registry:ui",
-        target: "components/magicui/typing-animation.tsx",
       },
     ],
   },
@@ -821,7 +779,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/sparkles-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/sparkles-text.tsx",
       },
     ],
   },
@@ -836,7 +793,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/spinning-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/spinning-text.tsx",
       },
     ],
   },
@@ -850,7 +806,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/flip-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/flip-text.tsx",
       },
     ],
   },
@@ -864,7 +819,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/comic-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/comic-text.tsx",
       },
     ],
   },
@@ -878,7 +832,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/icon-cloud.tsx",
         type: "registry:ui",
-        target: "components/magicui/icon-cloud.tsx",
       },
     ],
   },
@@ -893,7 +846,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/text-animate.tsx",
         type: "registry:ui",
-        target: "components/magicui/text-animate.tsx",
       },
     ],
   },
@@ -907,7 +859,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/scroll-based-velocity.tsx",
         type: "registry:ui",
-        target: "components/magicui/scroll-based-velocity.tsx",
       },
     ],
   },
@@ -922,7 +873,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/scratch-to-reveal.tsx",
         type: "registry:ui",
-        target: "components/magicui/scratch-to-reveal.tsx",
       },
     ],
   },
@@ -937,7 +887,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/shiny-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/shiny-button.tsx",
       },
     ],
   },
@@ -951,7 +900,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/box-reveal.tsx",
         type: "registry:ui",
-        target: "components/magicui/box-reveal.tsx",
       },
     ],
   },
@@ -964,7 +912,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/shine-border.tsx",
         type: "registry:ui",
-        target: "components/magicui/shine-border.tsx",
       },
     ],
     cssVars: {
@@ -996,7 +943,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-circular-progress-bar.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-circular-progress-bar.tsx",
       },
     ],
   },
@@ -1012,7 +958,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/confetti.tsx",
         type: "registry:ui",
-        target: "components/magicui/confetti.tsx",
       },
     ],
   },
@@ -1027,7 +972,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-subscribe-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-subscribe-button.tsx",
       },
     ],
   },
@@ -1040,7 +984,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/cool-mode.tsx",
         type: "registry:ui",
-        target: "components/magicui/cool-mode.tsx",
       },
     ],
   },
@@ -1054,7 +997,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/pulsating-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/pulsating-button.tsx",
       },
     ],
     cssVars: {
@@ -1078,7 +1020,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/ripple-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/ripple-button.tsx",
       },
     ],
     cssVars: {
@@ -1108,7 +1049,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/file-tree.tsx",
         type: "registry:ui",
-        target: "components/magicui/file-tree.tsx",
       },
     ],
   },
@@ -1123,7 +1063,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/blur-fade.tsx",
         type: "registry:ui",
-        target: "components/magicui/blur-fade.tsx",
       },
     ],
   },
@@ -1136,7 +1075,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/safari.tsx",
         type: "registry:ui",
-        target: "components/magicui/safari.tsx",
       },
     ],
   },
@@ -1149,7 +1087,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/iphone-15-pro.tsx",
         type: "registry:ui",
-        target: "components/magicui/iphone-15-pro.tsx",
       },
     ],
   },
@@ -1162,7 +1099,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/rainbow-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/rainbow-button.tsx",
       },
     ],
     cssVars: {
@@ -1199,7 +1135,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/interactive-hover-button.tsx",
         type: "registry:ui",
-        target: "components/magicui/interactive-hover-button.tsx",
       },
     ],
   },
@@ -1212,7 +1147,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/terminal.tsx",
         type: "registry:ui",
-        target: "components/magicui/terminal.tsx",
       },
     ],
   },
@@ -1226,7 +1160,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/video-text.tsx",
         type: "registry:ui",
-        target: "components/magicui/video-text.tsx",
       },
     ],
   },
@@ -1240,7 +1173,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/pixel-image.tsx",
         type: "registry:ui",
-        target: "components/magicui/pixel-image.tsx",
       },
     ],
   },
@@ -1254,7 +1186,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/highlighter.tsx",
         type: "registry:ui",
-        target: "components/magicui/highlighter.tsx",
       },
     ],
     dependencies: ["rough-notation"],
@@ -1269,7 +1200,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/arc-timeline.tsx",
         type: "registry:ui",
-        target: "components/magicui/arc-timeline.tsx",
       },
     ],
   },
@@ -1283,7 +1213,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/animated-theme-toggler.tsx",
         type: "registry:ui",
-        target: "components/magicui/animated-theme-toggler.tsx",
       },
     ],
     css: {
@@ -1304,7 +1233,6 @@ export const ui: Registry["items"] = [
       {
         path: "registry/magicui/grid-beams.tsx",
         type: "registry:ui",
-        target: "components/magicui/grid-beams.tsx",
       },
     ],
   },

@@ -11,8 +11,7 @@
     {
       "path": "registry/example/rainbow-button-demo-2.tsx",
       "content": "import { RainbowButton } from \"@/registry/magicui/rainbow-button\";\n\nexport default function RainbowButtonDemo() {\n  return <RainbowButton variant=\"outline\">Get Unlimited Access</RainbowButton>;\n}\n",
-      "type": "registry:example",
-      "target": "components/rainbow-button-demo-2.tsx"
+      "type": "registry:example"
     }
   ]
 }

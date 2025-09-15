@@ -188,7 +188,6 @@ export const ui: Registry = [
       {
         path: "registry/magicui/example-component.tsx",
         type: "registry:ui",
-        target: "components/magicui/example-component.tsx",
       },
     ],
     // Add CSS variables for the component

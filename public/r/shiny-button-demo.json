@@ -11,8 +11,7 @@
     {
       "path": "registry/example/shiny-button-demo.tsx",
       "content": "import { ShinyButton } from \"@/registry/magicui/shiny-button\";\n\nexport default function ShinyButtonDemo() {\n  return <ShinyButton>Shiny Button</ShinyButton>;\n}\n",
-      "type": "registry:example",
-      "target": "components/shiny-button-demo.tsx"
+      "type": "registry:example"
     }
   ]
 }
