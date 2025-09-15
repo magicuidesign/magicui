@@ -15468,19 +15468,19 @@ import {
 export default function TerminalDemo2() {
   return (
     <Terminal>
-      <TypingAnimation delay={0}>&gt; npm install</TypingAnimation>
+      <TypingAnimation delay={0}>$ ls</TypingAnimation>
 
-      <AnimatedSpan delay={1000} className="text-green-500">
-        ✔ Installing packages...
+      <AnimatedSpan delay={800} className="text-blue-500">
+        Documents Downloads Pictures
       </AnimatedSpan>
 
-      <AnimatedSpan delay={2000} className="text-green-500">
-        ✔ Done!
-      </AnimatedSpan>
+      <TypingAnimation delay={1600}>$ cd Documents</TypingAnimation>
 
-      <TypingAnimation delay={3000} className="text-muted-foreground">
-        Ready to start coding.
-      </TypingAnimation>
+      <TypingAnimation delay={2400}>$ pwd</TypingAnimation>
+
+      <AnimatedSpan delay={3200} className="text-green-500">
+        /home/user/Documents
+      </AnimatedSpan>
     </Terminal>
   );
 }
