@@ -12,7 +12,7 @@ export interface AndroidProps extends SVGProps<SVGSVGElement> {
   videoSrc?: string;
 }
 
-export default function Android({
+export function Android({
   width = 433,
   height = 882,
   src,
@@ -111,7 +111,7 @@ export default function Android({
 Title: Android Demo
 
 --- file: registry/example/android-demo.tsx ---
-import Android from "@/registry/magicui/android";
+import { Android } from "@/registry/magicui/android";
 
 export default function AndroidDemo() {
   return (
@@ -126,7 +126,7 @@ export default function AndroidDemo() {
 Title: Android Demo 2
 
 --- file: registry/example/android-demo-2.tsx ---
-import Android from "@/registry/magicui/android";
+import { Android } from "@/registry/magicui/android";
 
 export default function AndroidDemo() {
   return (
@@ -144,7 +144,7 @@ export default function AndroidDemo() {
 Title: Android Demo 3
 
 --- file: registry/example/android-demo-3.tsx ---
-import Android from "@/registry/magicui/android";
+import { Android } from "@/registry/magicui/android";
 
 export default function AndroidDemo() {
   return (
@@ -8456,7 +8456,7 @@ const animationVariants = {
   },
 };
 
-export default function HeroVideoDialog({
+export function HeroVideoDialog({
   animationStyle = "from-center",
   videoSrc,
   thumbnailSrc,
@@ -8543,7 +8543,7 @@ export default function HeroVideoDialog({
 Title: Hero Video Dialog Demo
 
 --- file: registry/example/hero-video-dialog-demo.tsx ---
-import HeroVideoDialog from "@/registry/magicui/hero-video-dialog";
+import { HeroVideoDialog } from "@/registry/magicui/hero-video-dialog";
 
 export default function HeroVideoDialogDemo() {
   return (
@@ -8571,7 +8571,7 @@ export default function HeroVideoDialogDemo() {
 Title: Hero Video Dialog Top In Bottom Out Demo
 
 --- file: registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx ---
-import HeroVideoDialog from "@/registry/magicui/hero-video-dialog";
+import { HeroVideoDialog } from "@/registry/magicui/hero-video-dialog";
 
 export default function HeroVideoDialogDemoTopInBottomOut() {
   return (
@@ -9374,7 +9374,7 @@ const slugs = [
 
 export default function IconCloudDemo() {
   const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
   );
 
   return (
@@ -9787,7 +9787,7 @@ export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   videoSrc?: string;
 }
 
-export default function Iphone15Pro({
+export function Iphone15Pro({
   width = 433,
   height = 882,
   src,
@@ -9893,7 +9893,7 @@ export default function Iphone15Pro({
 Title: iPhone 15 Pro Demo
 
 --- file: registry/example/iphone-15-pro-demo.tsx ---
-import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
+import { Iphone15Pro } from "@/registry/magicui/iphone-15-pro";
 
 export default function Iphone15ProDemo() {
   return (
@@ -9908,7 +9908,7 @@ export default function Iphone15ProDemo() {
 Title: iPhone 15 Pro Demo 2
 
 --- file: registry/example/iphone-15-pro-demo-2.tsx ---
-import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
+import { Iphone15Pro } from "@/registry/magicui/iphone-15-pro";
 
 export default function Iphone15ProDemo() {
   return (
@@ -9926,7 +9926,7 @@ export default function Iphone15ProDemo() {
 Title: iPhone 15 Pro Demo 3
 
 --- file: registry/example/iphone-15-pro-demo-3.tsx ---
-import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
+import { Iphone15Pro } from "@/registry/magicui/iphone-15-pro";
 
 export default function Iphone15ProDemo() {
   return (
@@ -12628,7 +12628,7 @@ export function ProgressiveBlur({
           ? "top-0"
           : position === "bottom"
             ? "bottom-0"
-            : "inset-y-0",
+            : "inset-y-0"
       )}
       style={{
         height: position === "both" ? "100%" : height,
@@ -12709,8 +12709,6 @@ export function ProgressiveBlur({
     </div>
   );
 }
-
-export default ProgressiveBlur;
 
 
 ===== EXAMPLE: progressive-blur-demo =====

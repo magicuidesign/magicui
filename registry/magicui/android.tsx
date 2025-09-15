@@ -7,7 +7,7 @@ export interface AndroidProps extends SVGProps<SVGSVGElement> {
   videoSrc?: string;
 }
 
-export default function Android({
+export function Android({
   width = 433,
   height = 882,
   src,

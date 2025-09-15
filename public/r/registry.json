@@ -1,5 +1,5 @@
 {
-  "name": "magic-ui",
+  "name": "magicui",
   "homepage": "https://magicui.design",
   "items": [
     {
@@ -1313,6 +1313,73 @@
       ]
     },
     {
+      "name": "highlighter",
+      "type": "registry:ui",
+      "title": "Highlighter",
+      "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+      "dependencies": [
+        "rough-notation"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/highlighter.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/highlighter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-timeline",
+      "type": "registry:ui",
+      "title": "Arc Timeline",
+      "description": "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
+      "files": [
+        {
+          "path": "registry/magicui/arc-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/arc-timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler",
+      "type": "registry:ui",
+      "title": "Theme Toggler",
+      "description": "A component for theme changing animation.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/animated-theme-toggler.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/animated-theme-toggler.tsx"
+        }
+      ],
+      "css": {
+        "::view-transition-old(root), ::view-transition-new(root)": {
+          "animation": "none",
+          "mix-blend-mode": "normal"
+        }
+      }
+    },
+    {
+      "name": "grid-beams",
+      "type": "registry:ui",
+      "title": "Grid Beams",
+      "description": "A dynamic grid background with animated light beams rays and grid patterns.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/grid-beams.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/grid-beams.tsx"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -2512,6 +2579,22 @@
       ]
     },
     {
+      "name": "scroll-based-velocity-images-demo",
+      "type": "registry:example",
+      "title": "Scroll Based Velocity Images",
+      "description": "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
+      "registryDependencies": [
+        "https://magicui.design/r/scroll-based-velocity"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-based-velocity-images-demo.tsx",
+          "type": "registry:example",
+          "target": "components/scroll-based-velocity-images-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "scratch-to-reveal-demo",
       "type": "registry:example",
       "title": "Scratch To Reveal Demo",
@@ -3024,6 +3107,22 @@
       ]
     },
     {
+      "name": "animated-subscribe-button-controlled-demo",
+      "type": "registry:example",
+      "title": "Animated Subscribe Button (Controlled)",
+      "description": "Controlled example showing async behavior for AnimatedSubscribeButton.",
+      "registryDependencies": [
+        "https://magicui.design/r/animated-subscribe-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-subscribe-button-controlled-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-subscribe-button-controlled-demo.tsx"
+        }
+      ]
+    },
+    {
       "name": "cool-mode-demo",
       "type": "registry:example",
       "title": "Cool Mode Demo",
@@ -3312,6 +3411,22 @@
       ]
     },
     {
+      "name": "terminal-demo-2",
+      "type": "registry:example",
+      "title": "Terminal Demo",
+      "description": "Example showing a terminal with animated text and custom delays",
+      "registryDependencies": [
+        "https://magicui.design/r/terminal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/terminal-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/terminal-demo-2.tsx"
+        }
+      ]
+    },
+    {
       "name": "video-text-demo",
       "type": "registry:example",
       "title": "Video Text Demo",
@@ -3340,6 +3455,81 @@
           "path": "registry/example/pixel-image-demo.tsx",
           "type": "registry:example",
           "target": "components/pixel-image-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "highlighter-demo",
+      "type": "registry:example",
+      "title": "Highlighter Demo",
+      "description": "Example showing the demo of a Highlighter",
+      "dependencies": [
+        "rough-notation"
+      ],
+      "registryDependencies": [
+        "https://magicui.design/r/highlighter"
+      ],
+      "files": [
+        {
+          "path": "registry/example/highlighter-demo.tsx",
+          "type": "registry:example",
+          "target": "components/highlighter-demo.tsx"
+        },
+        {
+          "path": "registry/magicui/highlighter.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/highlighter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-timeline-demo",
+      "type": "registry:example",
+      "title": "Arc Timeline Demo",
+      "description": "Example showing an arc timeline component.",
+      "registryDependencies": [
+        "https://magicui.design/r/arc-timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/example/arc-timeline-demo.tsx",
+          "type": "registry:example",
+          "target": "components/arc-timeline-demo.tsx"
+        },
+        {
+          "path": "registry/magicui/arc-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/arc-timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler Demo",
+      "description": "Example showing animation while changing the theme.",
+      "registryDependencies": [
+        "https://magicui.design/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-demo.tsx",
+          "type": "registry:example",
+          "target": "components/animated-theme-toggler-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-beams-demo",
+      "type": "registry:example",
+      "description": "Demo of the grid-beams component showcasing animated light rays over a grid",
+      "registryDependencies": [
+        "grid-beams"
+      ],
+      "files": [
+        {
+          "path": "registry/example/grid-beams-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

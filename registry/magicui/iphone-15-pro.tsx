@@ -9,7 +9,7 @@ export interface Iphone15ProProps
   webviewSrc?: string; // WebView URL to display on the iPhone screen
 }
 
-export default function Iphone15Pro({
+export function Iphone15Pro({
   width = 433,
   height = 882,
   imageSrc,

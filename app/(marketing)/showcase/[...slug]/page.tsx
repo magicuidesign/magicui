@@ -1,4 +1,3 @@
-import { env } from "@/env.mjs";
 import { allShowcases } from "content-collections";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -6,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ShowcaseCard } from "@/components/sections/showcase";
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
+import process from "process";
 
 interface PageProps {
   params: {
@@ -39,7 +39,7 @@ export async function generateMetadata({
     return {};
   }
 
-  const url = env.NEXT_PUBLIC_APP_URL;
+  const url = process.env.NEXT_PUBLIC_APP_URL;
 
   const ogUrl = new URL(`${url}/og`);
   ogUrl.searchParams.set("heading", page.title);

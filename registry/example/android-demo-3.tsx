@@ -1,4 +1,4 @@
-import Android from "@/registry/magicui/android";
+import { Android } from "@/registry/magicui/android";
 
 export default function AndroidDemo() {
   return (

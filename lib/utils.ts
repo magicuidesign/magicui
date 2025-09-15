@@ -1,6 +1,6 @@
-import { env } from "@/env.mjs";
 import clsx, { ClassValue } from "clsx";
 import { Metadata } from "next";
+import process from "process";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -51,7 +51,7 @@ export function formatDate(input: string | number): string {
 }
 
 export function absoluteUrl(path: string) {
-  return `${env.NEXT_PUBLIC_APP_URL}${path}`;
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 }
 
 export function constructMetadata({

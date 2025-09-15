@@ -68,7 +68,7 @@ const animationVariants = {
   },
 };
 
-export default function HeroVideoDialog({
+export function HeroVideoDialog({
   animationStyle = "from-center",
   videoSrc,
   thumbnailSrc,
