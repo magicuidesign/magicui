@@ -5,7 +5,7 @@
   "title": "Animated Beam Multiple Inputs",
   "description": "Example showing animated beams with multiple input points.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-beam"
+    "@magicui/animated-beam"
   ],
   "files": [
     {

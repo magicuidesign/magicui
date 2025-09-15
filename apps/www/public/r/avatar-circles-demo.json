@@ -5,7 +5,7 @@
   "title": "Avatar Circles Demo",
   "description": "Example showing overlapping avatar circles.",
   "registryDependencies": [
-    "https://magicui.design/r/avatar-circles"
+    "@magicui/avatar-circles"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Flickering Grid Rounded Demo",
   "description": "Example showing a flickering grid background with rounded corners.",
   "registryDependencies": [
-    "https://magicui.design/r/flickering-grid"
+    "@magicui/flickering-grid"
   ],
   "files": [
     {

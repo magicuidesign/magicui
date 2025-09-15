@@ -5,7 +5,7 @@
   "title": "Scroll Based Velocity Demo",
   "description": "Example showing text speed changes based on scroll velocity.",
   "registryDependencies": [
-    "https://magicui.design/r/scroll-based-velocity"
+    "@magicui/scroll-based-velocity"
   ],
   "files": [
     {

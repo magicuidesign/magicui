@@ -5,7 +5,7 @@
   "title": "Text Reveal Demo",
   "description": "Example showing text that fades in on scroll.",
   "registryDependencies": [
-    "https://magicui.design/r/text-reveal"
+    "@magicui/text-reveal"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Scroll Progress Demo",
   "description": "Example showing animated scroll progress for your pages.",
   "registryDependencies": [
-    "https://magicui.design/r/scroll-progress"
+    "@magicui/scroll-progress"
   ],
   "files": [
     {

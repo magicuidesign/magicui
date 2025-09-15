@@ -7,7 +7,7 @@ export const examples: Registry["items"] = [
     title: "Magic Card Demo",
     description:
       "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
-    registryDependencies: ["https://magicui.design/r/magic-card"],
+    registryDependencies: ["@magicui/magic-card"],
     files: [
       {
         path: "example/magic-card-demo.tsx",
@@ -20,7 +20,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Android Demo",
     description: "Example showing a mockup of an Android device.",
-    registryDependencies: ["https://magicui.design/r/android"],
+    registryDependencies: ["@magicui/android"],
     files: [
       {
         path: "example/android-demo.tsx",
@@ -33,7 +33,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Android Demo 2",
     description: "Second example showing a mockup of an Android device.",
-    registryDependencies: ["https://magicui.design/r/android"],
+    registryDependencies: ["@magicui/android"],
     files: [
       {
         path: "example/android-demo-2.tsx",
@@ -46,7 +46,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Android Demo 3",
     description: "Third example showing a mockup of an Android device.",
-    registryDependencies: ["https://magicui.design/r/android"],
+    registryDependencies: ["@magicui/android"],
     files: [
       {
         path: "example/android-demo-3.tsx",
@@ -60,7 +60,7 @@ export const examples: Registry["items"] = [
     title: "Warp Background Demo",
     description:
       "Example showing a card with a time warping background effect.",
-    registryDependencies: ["https://magicui.design/r/warp-background"],
+    registryDependencies: ["@magicui/warp-background"],
     files: [
       {
         path: "example/warp-background-demo.tsx",
@@ -73,7 +73,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Line Shadow Text Demo",
     description: "Example showing a text component with a moving line shadow.",
-    registryDependencies: ["https://magicui.design/r/line-shadow-text"],
+    registryDependencies: ["@magicui/line-shadow-text"],
     files: [
       {
         path: "example/line-shadow-text-demo.tsx",
@@ -86,7 +86,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Aurora Text Demo",
     description: "Example showing a beautiful aurora text effect.",
-    registryDependencies: ["https://magicui.design/r/aurora-text"],
+    registryDependencies: ["@magicui/aurora-text"],
     files: [
       {
         path: "example/aurora-text-demo.tsx",
@@ -99,7 +99,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Morphing Text Demo",
     description: "Example showing a dynamic text morphing component.",
-    registryDependencies: ["https://magicui.design/r/morphing-text"],
+    registryDependencies: ["@magicui/morphing-text"],
     files: [
       {
         path: "example/morphing-text-demo.tsx",
@@ -112,7 +112,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Scroll Progress Demo",
     description: "Example showing animated scroll progress for your pages.",
-    registryDependencies: ["https://magicui.design/r/scroll-progress"],
+    registryDependencies: ["@magicui/scroll-progress"],
     files: [
       {
         path: "example/scroll-progress-demo.tsx",
@@ -125,7 +125,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Lens Demo",
     description: "Example showing a lens effect component",
-    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    registryDependencies: ["button", "card", "@magicui/lens"],
     files: [
       {
         path: "example/lens-demo.tsx",
@@ -138,7 +138,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Lens Demo 2",
     description: "Second example showing a lens effect component",
-    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    registryDependencies: ["button", "card", "@magicui/lens"],
     files: [
       {
         path: "example/lens-demo-2.tsx",
@@ -151,7 +151,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Lens Demo 3",
     description: "Third example showing a lens effect component",
-    registryDependencies: ["button", "card", "https://magicui.design/r/lens"],
+    registryDependencies: ["button", "card", "@magicui/lens"],
     files: [
       {
         path: "example/lens-demo-3.tsx",
@@ -164,7 +164,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Pointer Demo 1",
     description: "Example showing a pointer effect component",
-    registryDependencies: ["https://magicui.design/r/pointer"],
+    registryDependencies: ["@magicui/pointer"],
     files: [
       {
         path: "example/pointer-demo-1.tsx",
@@ -176,7 +176,7 @@ export const examples: Registry["items"] = [
     name: "smooth-cursor-demo",
     description: "Basic smooth cursor example",
     type: "registry:example",
-    registryDependencies: ["https://magicui.design/r/smooth-cursor"],
+    registryDependencies: ["@magicui/smooth-cursor"],
     files: [
       {
         path: "example/smooth-cursor-demo.tsx",
@@ -190,7 +190,7 @@ export const examples: Registry["items"] = [
     title: "Progressive Blur Demo",
     description:
       "Example showing progressive blur effect for scrollable content.",
-    registryDependencies: ["https://magicui.design/r/progressive-blur"],
+    registryDependencies: ["@magicui/progressive-blur"],
     files: [
       {
         path: "example/progressive-blur-demo.tsx",
@@ -203,7 +203,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Neon Gradient Card Demo",
     description: "Example showing a beautiful neon card effect.",
-    registryDependencies: ["https://magicui.design/r/neon-gradient-card"],
+    registryDependencies: ["@magicui/neon-gradient-card"],
     files: [
       {
         path: "example/neon-gradient-card-demo.tsx",
@@ -216,7 +216,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Meteors Demo",
     description: "Example showing a meteor shower effect.",
-    registryDependencies: ["https://magicui.design/r/meteors"],
+    registryDependencies: ["@magicui/meteors"],
     files: [
       {
         path: "example/meteors-demo.tsx",
@@ -229,7 +229,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Grid Pattern Demo",
     description: "Example showing a background grid pattern made with SVGs.",
-    registryDependencies: ["https://magicui.design/r/grid-pattern"],
+    registryDependencies: ["@magicui/grid-pattern"],
     files: [
       {
         path: "example/grid-pattern-demo.tsx",
@@ -242,7 +242,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Grid Pattern Linear Gradient",
     description: "Example showing a grid pattern with linear gradient effects.",
-    registryDependencies: ["https://magicui.design/r/grid-pattern"],
+    registryDependencies: ["@magicui/grid-pattern"],
     files: [
       {
         path: "example/grid-pattern-linear-gradient.tsx",
@@ -255,7 +255,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Grid Pattern Dashed",
     description: "Example showing a dashed grid pattern.",
-    registryDependencies: ["https://magicui.design/r/grid-pattern"],
+    registryDependencies: ["@magicui/grid-pattern"],
     files: [
       {
         path: "example/grid-pattern-dashed.tsx",
@@ -268,7 +268,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dot Pattern Demo",
     description: "Example showing a background dot pattern made with SVGs.",
-    registryDependencies: ["https://magicui.design/r/dot-pattern"],
+    registryDependencies: ["@magicui/dot-pattern"],
     files: [
       {
         path: "example/dot-pattern-demo.tsx",
@@ -281,7 +281,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dot Pattern Linear Gradient",
     description: "Example showing a dot pattern with linear gradient effects.",
-    registryDependencies: ["https://magicui.design/r/dot-pattern"],
+    registryDependencies: ["@magicui/dot-pattern"],
     files: [
       {
         path: "example/dot-pattern-linear-gradient.tsx",
@@ -294,7 +294,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dot Pattern with glow effect",
     description: "Example showing a dot pattern with glow effect",
-    registryDependencies: ["https://magicui.design/r/dot-pattern"],
+    registryDependencies: ["@magicui/dot-pattern"],
     files: [
       {
         path: "example/dot-pattern-with-glow-effect.tsx",
@@ -307,7 +307,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Flickering Grid Demo",
     description: "Example showing a flickering grid background.",
-    registryDependencies: ["https://magicui.design/r/flickering-grid"],
+    registryDependencies: ["@magicui/flickering-grid"],
     files: [
       {
         path: "example/flickering-grid-demo.tsx",
@@ -321,7 +321,7 @@ export const examples: Registry["items"] = [
     title: "Flickering Grid Rounded Demo",
     description:
       "Example showing a flickering grid background with rounded corners.",
-    registryDependencies: ["https://magicui.design/r/flickering-grid"],
+    registryDependencies: ["@magicui/flickering-grid"],
     files: [
       {
         path: "example/flickering-grid-rounded-demo.tsx",
@@ -334,7 +334,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Hero Video Dialog Demo",
     description: "Example showing a hero video dialog component.",
-    registryDependencies: ["https://magicui.design/r/hero-video-dialog"],
+    registryDependencies: ["@magicui/hero-video-dialog"],
     files: [
       {
         path: "example/hero-video-dialog-demo.tsx",
@@ -348,7 +348,7 @@ export const examples: Registry["items"] = [
     title: "Hero Video Dialog Top In Bottom Out Demo",
     description:
       "Example showing a hero video dialog with top-in bottom-out animation.",
-    registryDependencies: ["https://magicui.design/r/hero-video-dialog"],
+    registryDependencies: ["@magicui/hero-video-dialog"],
     files: [
       {
         path: "example/hero-video-dialog-demo-top-in-bottom-out.tsx",
@@ -362,7 +362,7 @@ export const examples: Registry["items"] = [
     title: "Code Comparison Demo",
     description:
       "Example showing a component which compares two code snippets.",
-    registryDependencies: ["https://magicui.design/r/code-comparison"],
+    registryDependencies: ["@magicui/code-comparison"],
     files: [
       {
         path: "example/code-comparison-demo.tsx",
@@ -375,7 +375,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Script Copy Button Demo",
     description: "Example showing how to copy code to clipboard.",
-    registryDependencies: ["https://magicui.design/r/script-copy-btn"],
+    registryDependencies: ["@magicui/script-copy-btn"],
     files: [
       {
         path: "example/script-copy-btn-demo.tsx",
@@ -388,7 +388,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Marquee Demo",
     description: "Example showing an infinite scrolling component.",
-    registryDependencies: ["https://magicui.design/r/marquee"],
+    registryDependencies: ["@magicui/marquee"],
     files: [
       {
         path: "example/marquee-demo.tsx",
@@ -401,7 +401,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Marquee Vertical Demo",
     description: "Example showing a vertical infinite scrolling component.",
-    registryDependencies: ["https://magicui.design/r/marquee"],
+    registryDependencies: ["@magicui/marquee"],
     files: [
       {
         path: "example/marquee-demo-vertical.tsx",
@@ -414,7 +414,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Marquee Logos",
     description: "Example showing an infinite scrolling logo carousel.",
-    registryDependencies: ["https://magicui.design/r/marquee"],
+    registryDependencies: ["@magicui/marquee"],
     files: [
       {
         path: "example/marquee-logos.tsx",
@@ -427,7 +427,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Marquee 3D",
     description: "Example showing a 3D infinite scrolling component.",
-    registryDependencies: ["https://magicui.design/r/marquee"],
+    registryDependencies: ["@magicui/marquee"],
     files: [
       {
         path: "example/marquee-3d.tsx",
@@ -440,7 +440,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Globe Demo",
     description: "Example showing an autorotating, interactive WebGL globe.",
-    registryDependencies: ["https://magicui.design/r/globe"],
+    registryDependencies: ["@magicui/globe"],
     files: [
       {
         path: "example/globe-demo.tsx",
@@ -453,7 +453,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Tweet Card Demo",
     description: "Example showing a tweet card with author info.",
-    registryDependencies: ["https://magicui.design/r/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card"],
     files: [
       {
         path: "example/tweet-card-demo.tsx",
@@ -466,7 +466,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Tweet Card Images",
     description: "Example showing a tweet card with images.",
-    registryDependencies: ["https://magicui.design/r/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card"],
     files: [
       {
         path: "example/tweet-card-images.tsx",
@@ -479,7 +479,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Tweet Card Meta Preview",
     description: "Example showing a tweet card with meta preview.",
-    registryDependencies: ["https://magicui.design/r/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card"],
     files: [
       {
         path: "example/tweet-card-meta-preview.tsx",
@@ -492,7 +492,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Shimmer Button Demo",
     description: "Example showing a button with a shimmering light effect.",
-    registryDependencies: ["https://magicui.design/r/shimmer-button"],
+    registryDependencies: ["@magicui/shimmer-button"],
     files: [
       {
         path: "example/shimmer-button-demo.tsx",
@@ -508,10 +508,10 @@ export const examples: Registry["items"] = [
     registryDependencies: [
       "button",
       "calendar",
-      "https://magicui.design/r/marquee",
-      "https://magicui.design/r/bento-grid",
-      "https://magicui.design/r/animated-list-demo",
-      "https://magicui.design/r/animated-beam-multiple-outputs",
+      "@magicui/marquee",
+      "@magicui/bento-grid",
+      "@magicui/animated-list-demo",
+      "@magicui/animated-beam-multiple-outputs",
     ],
     dependencies: ["@radix-ui/react-icons"],
     files: [
@@ -526,7 +526,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Bento Vertical Demo",
     description: "Example showing a vertical bento grid layout.",
-    registryDependencies: ["https://magicui.design/r/bento-grid"],
+    registryDependencies: ["@magicui/bento-grid"],
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
@@ -540,7 +540,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Number Ticker Demo",
     description: "Example showing animated counting numbers.",
-    registryDependencies: ["https://magicui.design/r/number-ticker"],
+    registryDependencies: ["@magicui/number-ticker"],
     files: [
       {
         path: "example/number-ticker-demo.tsx",
@@ -553,7 +553,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Number Ticker Demo 2",
     description: "Example showing animated counting numbers.",
-    registryDependencies: ["https://magicui.design/r/number-ticker"],
+    registryDependencies: ["@magicui/number-ticker"],
     files: [
       {
         path: "example/number-ticker-demo-2.tsx",
@@ -566,7 +566,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Number Ticker Decimal Demo",
     description: "Example showing animated counting decimal numbers.",
-    registryDependencies: ["https://magicui.design/r/number-ticker"],
+    registryDependencies: ["@magicui/number-ticker"],
     files: [
       {
         path: "example/number-ticker-decimal-demo.tsx",
@@ -579,7 +579,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Ripple Demo",
     description: "Example showing an animated ripple effect.",
-    registryDependencies: ["https://magicui.design/r/ripple"],
+    registryDependencies: ["@magicui/ripple"],
     files: [
       {
         path: "example/ripple-demo.tsx",
@@ -592,7 +592,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Retro Grid Demo",
     description: "Example showing an animated scrolling retro grid effect.",
-    registryDependencies: ["https://magicui.design/r/retro-grid"],
+    registryDependencies: ["@magicui/retro-grid"],
     files: [
       {
         path: "example/retro-grid-demo.tsx",
@@ -605,7 +605,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated List Demo",
     description: "Example showing a list with sequenced item animations.",
-    registryDependencies: ["https://magicui.design/r/animated-list"],
+    registryDependencies: ["@magicui/animated-list"],
     files: [
       {
         path: "example/animated-list-demo.tsx",
@@ -618,7 +618,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Shiny Text Demo",
     description: "Example showing text with a shimmering light effect.",
-    registryDependencies: ["https://magicui.design/r/animated-shiny-text"],
+    registryDependencies: ["@magicui/animated-shiny-text"],
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
@@ -632,7 +632,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Particles Demo",
     description: "Example showing interactive particle effects.",
-    registryDependencies: ["https://magicui.design/r/particles"],
+    registryDependencies: ["@magicui/particles"],
     dependencies: ["next-themes"],
     files: [
       {
@@ -646,7 +646,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Grid Pattern Demo",
     description: "Example showing an animated grid pattern background.",
-    registryDependencies: ["https://magicui.design/r/animated-grid-pattern"],
+    registryDependencies: ["@magicui/animated-grid-pattern"],
     files: [
       {
         path: "example/animated-grid-pattern-demo.tsx",
@@ -659,7 +659,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Interactive Grid Pattern Demo",
     description: "Example showing an interactive grid pattern background.",
-    registryDependencies: ["https://magicui.design/r/interactive-grid-pattern"],
+    registryDependencies: ["@magicui/interactive-grid-pattern"],
     files: [
       {
         path: "example/interactive-grid-pattern-demo.tsx",
@@ -673,7 +673,7 @@ export const examples: Registry["items"] = [
     title: "Interactive Grid Pattern Demo 2",
     description:
       "Second example showing an interactive grid pattern background.",
-    registryDependencies: ["https://magicui.design/r/interactive-grid-pattern"],
+    registryDependencies: ["@magicui/interactive-grid-pattern"],
     files: [
       {
         path: "example/interactive-grid-pattern-demo-2.tsx",
@@ -686,7 +686,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Border Beam Demo",
     description: "Example showing an animated border beam effect.",
-    registryDependencies: ["https://magicui.design/r/border-beam"],
+    registryDependencies: ["@magicui/border-beam"],
     files: [
       {
         path: "example/border-beam-demo.tsx",
@@ -699,11 +699,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Border Beam Demo",
     description: "Example showing an animated border beam effect.",
-    registryDependencies: [
-      "button",
-      "card",
-      "https://magicui.design/r/border-beam",
-    ],
+    registryDependencies: ["button", "card", "@magicui/border-beam"],
     files: [
       {
         path: "example/border-beam-demo-2.tsx",
@@ -721,7 +717,7 @@ export const examples: Registry["items"] = [
       "card",
       "input",
       "label",
-      "https://magicui.design/r/border-beam",
+      "@magicui/border-beam",
     ],
     files: [
       {
@@ -735,7 +731,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Border Beam Demo 4",
     description: "Example showing an animated border beam effect.",
-    registryDependencies: ["button", "https://magicui.design/r/border-beam"],
+    registryDependencies: ["button", "@magicui/border-beam"],
     files: [
       {
         path: "example/border-beam-demo-4.tsx",
@@ -748,7 +744,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Beam Demo",
     description: "Example showing an animated beam of light effect.",
-    registryDependencies: ["https://magicui.design/r/animated-beam"],
+    registryDependencies: ["@magicui/animated-beam"],
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
@@ -762,7 +758,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Beam Unidirectional",
     description: "Example showing a unidirectional animated beam effect.",
-    registryDependencies: ["https://magicui.design/r/animated-beam"],
+    registryDependencies: ["@magicui/animated-beam"],
     files: [
       {
         path: "example/animated-beam-unidirectional.tsx",
@@ -775,7 +771,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Beam Bidirectional",
     description: "Example showing a bidirectional animated beam effect.",
-    registryDependencies: ["https://magicui.design/r/animated-beam"],
+    registryDependencies: ["@magicui/animated-beam"],
     files: [
       {
         path: "example/animated-beam-bidirectional.tsx",
@@ -788,7 +784,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Beam Multiple Inputs",
     description: "Example showing animated beams with multiple input points.",
-    registryDependencies: ["https://magicui.design/r/animated-beam"],
+    registryDependencies: ["@magicui/animated-beam"],
     files: [
       {
         path: "example/animated-beam-multiple-inputs.tsx",
@@ -801,7 +797,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Beam Multiple Outputs",
     description: "Example showing animated beams with multiple output points.",
-    registryDependencies: ["https://magicui.design/r/animated-beam"],
+    registryDependencies: ["@magicui/animated-beam"],
     files: [
       {
         path: "example/animated-beam-multiple-outputs.tsx",
@@ -814,7 +810,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Reveal Demo",
     description: "Example showing text that fades in on scroll.",
-    registryDependencies: ["https://magicui.design/r/text-reveal"],
+    registryDependencies: ["@magicui/text-reveal"],
     files: [
       {
         path: "example/text-reveal-demo.tsx",
@@ -827,7 +823,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Gradient Text Demo",
     description: "Example showing text with animated gradient backgrounds.",
-    registryDependencies: ["https://magicui.design/r/animated-gradient-text"],
+    registryDependencies: ["@magicui/animated-gradient-text"],
     dependencies: ["lucide-react"],
     files: [
       {
@@ -842,7 +838,7 @@ export const examples: Registry["items"] = [
     title: "Animated Gradient Text Demo 2",
     description:
       "Second example showing text with animated gradient backgrounds.",
-    registryDependencies: ["https://magicui.design/r/animated-gradient-text"],
+    registryDependencies: ["@magicui/animated-gradient-text"],
     files: [
       {
         path: "example/animated-gradient-text-demo-2.tsx",
@@ -855,7 +851,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Orbiting Circles Demo",
     description: "Example showing circles moving in orbital paths.",
-    registryDependencies: ["https://magicui.design/r/orbiting-circles"],
+    registryDependencies: ["@magicui/orbiting-circles"],
     dependencies: ["@radix-ui/react-icons"],
     files: [
       {
@@ -870,7 +866,7 @@ export const examples: Registry["items"] = [
     title: "Dock Demo",
     description: "Example showing a MacOS-style dock implementation.",
     dependencies: ["next-themes"],
-    registryDependencies: ["button", "https://magicui.design/r/dock"],
+    registryDependencies: ["button", "@magicui/dock"],
     files: [
       {
         path: "example/dock-demo.tsx",
@@ -887,7 +883,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dock Demo 2",
     description: "Second example showing a MacOS-style dock implementation.",
-    registryDependencies: ["https://magicui.design/r/dock"],
+    registryDependencies: ["@magicui/dock"],
     files: [
       {
         path: "example/dock-demo-2.tsx",
@@ -900,7 +896,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dock Demo 3",
     description: "Third example showing a MacOS-style dock implementation.",
-    registryDependencies: ["https://magicui.design/r/dock"],
+    registryDependencies: ["@magicui/dock"],
     files: [
       {
         path: "example/dock-demo-3.tsx",
@@ -913,7 +909,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Word Rotate Demo",
     description: "Example showing vertical word rotation animation.",
-    registryDependencies: ["https://magicui.design/r/word-rotate"],
+    registryDependencies: ["@magicui/word-rotate"],
     files: [
       {
         path: "example/word-rotate-demo.tsx",
@@ -926,7 +922,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Hyper Text Demo",
     description: "Example showing text with scrambling letter animations.",
-    registryDependencies: ["https://magicui.design/r/hyper-text"],
+    registryDependencies: ["@magicui/hyper-text"],
     files: [
       {
         path: "example/hyper-text-demo.tsx",
@@ -939,7 +935,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Avatar Circles Demo",
     description: "Example showing overlapping avatar circles.",
-    registryDependencies: ["https://magicui.design/r/avatar-circles"],
+    registryDependencies: ["@magicui/avatar-circles"],
     files: [
       {
         path: "example/avatar-circles-demo.tsx",
@@ -952,7 +948,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Typing Animation Demo",
     description: "Example showing typed character animations.",
-    registryDependencies: ["https://magicui.design/r/typing-animation"],
+    registryDependencies: ["@magicui/typing-animation"],
     files: [
       {
         path: "example/typing-animation-demo.tsx",
@@ -965,7 +961,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Scroll Based Velocity Demo",
     description: "Example showing text speed changes based on scroll velocity.",
-    registryDependencies: ["https://magicui.design/r/scroll-based-velocity"],
+    registryDependencies: ["@magicui/scroll-based-velocity"],
     files: [
       {
         path: "example/scroll-based-velocity-demo.tsx",
@@ -979,7 +975,7 @@ export const examples: Registry["items"] = [
     title: "Scroll Based Velocity Images",
     description:
       "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
-    registryDependencies: ["https://magicui.design/r/scroll-based-velocity"],
+    registryDependencies: ["@magicui/scroll-based-velocity"],
     files: [
       {
         path: "example/scroll-based-velocity-images-demo.tsx",
@@ -992,7 +988,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Scratch To Reveal Demo",
     description: "Example showing an interactive scratch-off reveal effect.",
-    registryDependencies: ["https://magicui.design/r/scratch-to-reveal"],
+    registryDependencies: ["@magicui/scratch-to-reveal"],
     files: [
       {
         path: "example/scratch-to-reveal-demo.tsx",
@@ -1005,7 +1001,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Flip Text Demo",
     description: "Example showing text with character flip animations.",
-    registryDependencies: ["https://magicui.design/r/flip-text"],
+    registryDependencies: ["@magicui/flip-text"],
     files: [
       {
         path: "example/flip-text-demo.tsx",
@@ -1018,7 +1014,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Sparkles Text Demo",
     description: "Example showing text with animated sparkle effects.",
-    registryDependencies: ["https://magicui.design/r/sparkles-text"],
+    registryDependencies: ["@magicui/sparkles-text"],
     files: [
       {
         path: "example/sparkles-text-demo.tsx",
@@ -1031,7 +1027,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Spinning Text Demo",
     description: "Example showing spinning text animation.",
-    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    registryDependencies: ["@magicui/spinning-text"],
     files: [
       {
         path: "example/spinning-text-demo.tsx",
@@ -1044,7 +1040,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Spinning Text Demo 2",
     description: "Example showing spinning text animation.",
-    registryDependencies: ["https://magicui.design/r/spinning-text"],
+    registryDependencies: ["@magicui/spinning-text"],
     files: [
       {
         path: "example/spinning-text-demo-2.tsx",
@@ -1057,7 +1053,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Comic Text Demo",
     description: "Example showing comic text animation.",
-    registryDependencies: ["https://magicui.design/r/comic-text"],
+    registryDependencies: ["@magicui/comic-text"],
     files: [
       {
         path: "example/comic-text-demo.tsx",
@@ -1070,7 +1066,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Icon Cloud Demo",
     description: "Example showing an interactive 3D icon cloud.",
-    registryDependencies: ["https://magicui.design/r/icon-cloud"],
+    registryDependencies: ["@magicui/icon-cloud"],
     files: [
       {
         path: "example/icon-cloud-demo.tsx",
@@ -1083,7 +1079,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Icon Cloud Demo 2",
     description: "Second example showing an interactive 3D icon cloud.",
-    registryDependencies: ["https://magicui.design/r/icon-cloud"],
+    registryDependencies: ["@magicui/icon-cloud"],
     files: [
       {
         path: "example/icon-cloud-demo-2.tsx",
@@ -1096,7 +1092,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Icon Cloud Demo 3",
     description: "Third example showing an interactive 3D icon cloud.",
-    registryDependencies: ["https://magicui.design/r/icon-cloud"],
+    registryDependencies: ["@magicui/icon-cloud"],
     files: [
       {
         path: "example/icon-cloud-demo-3.tsx",
@@ -1109,7 +1105,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo",
     description: "Example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo.tsx",
@@ -1122,7 +1118,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 2",
     description: "Second example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-2.tsx",
@@ -1135,7 +1131,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 3",
     description: "Third example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-3.tsx",
@@ -1148,7 +1144,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 4",
     description: "Fourth example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-4.tsx",
@@ -1161,7 +1157,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 5",
     description: "Fifth example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-5.tsx",
@@ -1174,7 +1170,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 6",
     description: "Sixth example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-6.tsx",
@@ -1187,7 +1183,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 7",
     description: "Seventh example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-7.tsx",
@@ -1200,7 +1196,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 8",
     description: "Eighth example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-8.tsx",
@@ -1213,7 +1209,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Text Animate Demo 9",
     description: "Ninth example showing various text animations.",
-    registryDependencies: ["https://magicui.design/r/text-animate"],
+    registryDependencies: ["@magicui/text-animate"],
     files: [
       {
         path: "example/text-animate-demo-9.tsx",
@@ -1226,7 +1222,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Shiny Button Demo",
     description: "Example showing a shiny button with dynamic styles.",
-    registryDependencies: ["https://magicui.design/r/shiny-button"],
+    registryDependencies: ["@magicui/shiny-button"],
     files: [
       {
         path: "example/shiny-button-demo.tsx",
@@ -1239,7 +1235,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Box Reveal Demo",
     description: "Example showing a sliding box text reveal animation.",
-    registryDependencies: ["https://magicui.design/r/box-reveal"],
+    registryDependencies: ["@magicui/box-reveal"],
     files: [
       {
         path: "example/box-reveal-demo.tsx",
@@ -1252,9 +1248,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Circular Progress Bar Demo",
     description: "Example showing an animated circular progress gauge.",
-    registryDependencies: [
-      "https://magicui.design/r/animated-circular-progress-bar",
-    ],
+    registryDependencies: ["@magicui/animated-circular-progress-bar"],
     files: [
       {
         path: "example/animated-circular-progress-bar-demo.tsx",
@@ -1267,7 +1261,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Shine Border Demo",
     description: "Example showing an animated shining border effect.",
-    registryDependencies: ["https://magicui.design/r/shine-border"],
+    registryDependencies: ["@magicui/shine-border"],
     files: [
       {
         path: "example/shine-border-demo.tsx",
@@ -1280,7 +1274,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Shine Border Demo 2",
     description: "Second example showing an animated shining border effect.",
-    registryDependencies: ["https://magicui.design/r/shine-border"],
+    registryDependencies: ["@magicui/shine-border"],
     files: [
       {
         path: "example/shine-border-demo-2.tsx",
@@ -1293,7 +1287,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Demo",
     description: "Example showing confetti animations for celebrations.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-demo.tsx",
@@ -1306,7 +1300,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Basic Cannon",
     description: "Example showing basic confetti cannon animation.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-basic-cannon.tsx",
@@ -1319,7 +1313,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Random Direction",
     description: "Example showing confetti with random directions.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-random-direction.tsx",
@@ -1332,7 +1326,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Fireworks",
     description: "Example showing fireworks-style confetti animation.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-fireworks.tsx",
@@ -1345,7 +1339,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Stars",
     description: "Example showing star-shaped confetti animation.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-stars.tsx",
@@ -1358,7 +1352,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Side Cannons",
     description: "Example showing side-mounted confetti cannons.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-side-cannons.tsx",
@@ -1371,7 +1365,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Custom Shapes",
     description: "Example showing confetti with custom shape particles.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-custom-shapes.tsx",
@@ -1384,7 +1378,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Emoji",
     description: "Example showing confetti with emoji particles.",
-    registryDependencies: ["https://magicui.design/r/confetti"],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-emoji.tsx",
@@ -1398,9 +1392,7 @@ export const examples: Registry["items"] = [
     title: "Animated Subscribe Button Demo",
     description:
       "Example showing an animated subscribe button with micro animations.",
-    registryDependencies: [
-      "https://magicui.design/r/animated-subscribe-button",
-    ],
+    registryDependencies: ["@magicui/animated-subscribe-button"],
     files: [
       {
         path: "example/animated-subscribe-button-demo.tsx",
@@ -1414,9 +1406,7 @@ export const examples: Registry["items"] = [
     title: "Animated Subscribe Button (Controlled)",
     description:
       "Controlled example showing async behavior for AnimatedSubscribeButton.",
-    registryDependencies: [
-      "https://magicui.design/r/animated-subscribe-button",
-    ],
+    registryDependencies: ["@magicui/animated-subscribe-button"],
     files: [
       {
         path: "example/animated-subscribe-button-controlled-demo.tsx",
@@ -1429,7 +1419,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Cool Mode Demo",
     description: "Example showing cool mode effect for buttons and links.",
-    registryDependencies: ["https://magicui.design/r/cool-mode"],
+    registryDependencies: ["@magicui/cool-mode"],
     files: [
       {
         path: "example/cool-mode-demo.tsx",
@@ -1442,7 +1432,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Cool Mode Custom",
     description: "Example showing customized cool mode effects.",
-    registryDependencies: ["https://magicui.design/r/cool-mode"],
+    registryDependencies: ["@magicui/cool-mode"],
     files: [
       {
         path: "example/cool-mode-custom.tsx",
@@ -1455,7 +1445,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Pulsating Button Demo",
     description: "Example showing an animated pulsating button.",
-    registryDependencies: ["https://magicui.design/r/pulsating-button"],
+    registryDependencies: ["@magicui/pulsating-button"],
     files: [
       {
         path: "example/pulsating-button-demo.tsx",
@@ -1468,7 +1458,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Ripple Button Demo",
     description: "Example showing an animated button with ripple effect.",
-    registryDependencies: ["https://magicui.design/r/ripple-button"],
+    registryDependencies: ["@magicui/ripple-button"],
     files: [
       {
         path: "example/ripple-button-demo.tsx",
@@ -1482,7 +1472,7 @@ export const examples: Registry["items"] = [
     title: "File Tree Demo",
     description:
       "Example showing a component that displays folder and file structure.",
-    registryDependencies: ["https://magicui.design/r/file-tree"],
+    registryDependencies: ["@magicui/file-tree"],
     files: [
       {
         path: "example/file-tree-demo.tsx",
@@ -1495,7 +1485,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Blur Fade Demo",
     description: "Example showing blur fade in and out animations.",
-    registryDependencies: ["https://magicui.design/r/blur-fade"],
+    registryDependencies: ["@magicui/blur-fade"],
     files: [
       {
         path: "example/blur-fade-demo.tsx",
@@ -1508,7 +1498,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Blur Fade Text Demo",
     description: "Example showing blur fade animations with text.",
-    registryDependencies: ["https://magicui.design/r/blur-fade"],
+    registryDependencies: ["@magicui/blur-fade"],
     files: [
       {
         path: "example/blur-fade-text-demo.tsx",
@@ -1521,7 +1511,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Safari Demo",
     description: "Example showing a Safari browser mockup.",
-    registryDependencies: ["https://magicui.design/r/safari"],
+    registryDependencies: ["@magicui/safari"],
     files: [
       {
         path: "example/safari-demo.tsx",
@@ -1534,7 +1524,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Safari Demo 2",
     description: "Second example showing a Safari browser mockup.",
-    registryDependencies: ["https://magicui.design/r/safari"],
+    registryDependencies: ["@magicui/safari"],
     files: [
       {
         path: "example/safari-demo-2.tsx",
@@ -1547,7 +1537,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Safari Demo 3",
     description: "Third example showing a Safari browser mockup.",
-    registryDependencies: ["https://magicui.design/r/safari"],
+    registryDependencies: ["@magicui/safari"],
     files: [
       {
         path: "example/safari-demo-3.tsx",
@@ -1560,7 +1550,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Safari Demo 4",
     description: "Fourth example showing a Safari browser mockup.",
-    registryDependencies: ["https://magicui.design/r/safari"],
+    registryDependencies: ["@magicui/safari"],
     files: [
       {
         path: "example/safari-demo-4.tsx",
@@ -1573,7 +1563,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "iPhone 15 Pro Demo",
     description: "Example showing an iPhone 15 Pro mockup.",
-    registryDependencies: ["https://magicui.design/r/iphone-15-pro"],
+    registryDependencies: ["@magicui/iphone-15-pro"],
     files: [
       {
         path: "example/iphone-15-pro-demo.tsx",
@@ -1586,7 +1576,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "iPhone 15 Pro Demo 2",
     description: "Second example showing an iPhone 15 Pro mockup.",
-    registryDependencies: ["https://magicui.design/r/iphone-15-pro"],
+    registryDependencies: ["@magicui/iphone-15-pro"],
     files: [
       {
         path: "example/iphone-15-pro-demo-2.tsx",
@@ -1599,7 +1589,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "iPhone 15 Pro Demo 3",
     description: "Third example showing an iPhone 15 Pro mockup.",
-    registryDependencies: ["https://magicui.design/r/iphone-15-pro"],
+    registryDependencies: ["@magicui/iphone-15-pro"],
     files: [
       {
         path: "example/iphone-15-pro-demo-3.tsx",
@@ -1612,7 +1602,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Rainbow Button Demo",
     description: "Example showing an animated button with rainbow effect.",
-    registryDependencies: ["https://magicui.design/r/rainbow-button"],
+    registryDependencies: ["@magicui/rainbow-button"],
     files: [
       {
         path: "example/rainbow-button-demo.tsx",
@@ -1625,7 +1615,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Rainbow Button Demo 2",
     description: "Example showing an animated button with rainbow effect.",
-    registryDependencies: ["https://magicui.design/r/rainbow-button"],
+    registryDependencies: ["@magicui/rainbow-button"],
     files: [
       {
         path: "example/rainbow-button-demo-2.tsx",
@@ -1638,7 +1628,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Interactive Hover Button Demo",
     description: "Example showing an interactive button with hover effects.",
-    registryDependencies: ["https://magicui.design/r/interactive-hover-button"],
+    registryDependencies: ["@magicui/interactive-hover-button"],
     files: [
       {
         path: "example/interactive-hover-button-demo.tsx",
@@ -1651,7 +1641,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Terminal Demo",
     description: "Example showing a terminal with animated text.",
-    registryDependencies: ["https://magicui.design/r/terminal"],
+    registryDependencies: ["@magicui/terminal"],
     files: [
       {
         path: "example/terminal-demo.tsx",
@@ -1665,7 +1655,7 @@ export const examples: Registry["items"] = [
     title: "Terminal Demo",
     description:
       "Example showing a terminal with animated text and custom delays",
-    registryDependencies: ["https://magicui.design/r/terminal"],
+    registryDependencies: ["@magicui/terminal"],
     files: [
       {
         path: "example/terminal-demo-2.tsx",
@@ -1678,7 +1668,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Video Text Demo",
     description: "Example showing text with a video background.",
-    registryDependencies: ["https://magicui.design/r/video-text"],
+    registryDependencies: ["@magicui/video-text"],
     files: [
       {
         path: "example/video-text-demo.tsx",
@@ -1691,7 +1681,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Pixel Image Demo",
     description: "Example showing a pixelated image effect.",
-    registryDependencies: ["pixel-image"],
+    registryDependencies: ["@magicui/pixel-image"],
     files: [
       {
         path: "example/pixel-image-demo.tsx",
@@ -1704,7 +1694,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Highlighter Demo",
     description: "Example showing the demo of a Highlighter",
-    registryDependencies: ["https://magicui.design/r/highlighter"],
+    registryDependencies: ["@magicui/highlighter"],
     files: [
       {
         path: "example/highlighter-demo.tsx",
@@ -1722,7 +1712,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Arc Timeline Demo",
     description: "Example showing an arc timeline component.",
-    registryDependencies: ["https://magicui.design/r/arc-timeline"],
+    registryDependencies: ["@magicui/arc-timeline"],
     files: [
       {
         path: "example/arc-timeline-demo.tsx",
@@ -1739,7 +1729,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Animated Theme Toggler Demo",
     description: "Example showing animation while changing the theme.",
-    registryDependencies: ["https://magicui.design/animated-theme-toggler"],
+    registryDependencies: ["@magicui/animated-theme-toggler"],
     files: [
       {
         path: "example/animated-theme-toggler-demo.tsx",
@@ -1752,7 +1742,7 @@ export const examples: Registry["items"] = [
     description:
       "Demo of the grid-beams component showcasing animated light rays over a grid",
     type: "registry:example",
-    registryDependencies: ["grid-beams"],
+    registryDependencies: ["@magicui/grid-beams"],
     files: [
       {
         path: "example/grid-beams-demo.tsx",

@@ -5,7 +5,7 @@
   "title": "Grid Pattern Dashed",
   "description": "Example showing a dashed grid pattern.",
   "registryDependencies": [
-    "https://magicui.design/r/grid-pattern"
+    "@magicui/grid-pattern"
   ],
   "files": [
     {

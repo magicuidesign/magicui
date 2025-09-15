@@ -5,7 +5,7 @@
   "title": "Typing Animation Demo",
   "description": "Example showing typed character animations.",
   "registryDependencies": [
-    "https://magicui.design/r/typing-animation"
+    "@magicui/typing-animation"
   ],
   "files": [
     {

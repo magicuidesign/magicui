@@ -5,7 +5,7 @@
   "title": "Animated Gradient Text Demo 2",
   "description": "Second example showing text with animated gradient backgrounds.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-gradient-text"
+    "@magicui/animated-gradient-text"
   ],
   "files": [
     {

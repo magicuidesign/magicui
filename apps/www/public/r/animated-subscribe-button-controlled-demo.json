@@ -5,7 +5,7 @@
   "title": "Animated Subscribe Button (Controlled)",
   "description": "Controlled example showing async behavior for AnimatedSubscribeButton.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-subscribe-button"
+    "@magicui/animated-subscribe-button"
   ],
   "files": [
     {

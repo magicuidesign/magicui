@@ -5,7 +5,7 @@
   "title": "Confetti Basic Cannon",
   "description": "Example showing basic confetti cannon animation.",
   "registryDependencies": [
-    "https://magicui.design/r/confetti"
+    "@magicui/confetti"
   ],
   "files": [
     {

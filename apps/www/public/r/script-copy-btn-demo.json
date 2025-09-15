@@ -5,7 +5,7 @@
   "title": "Script Copy Button Demo",
   "description": "Example showing how to copy code to clipboard.",
   "registryDependencies": [
-    "https://magicui.design/r/script-copy-btn"
+    "@magicui/script-copy-btn"
   ],
   "files": [
     {

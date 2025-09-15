@@ -7,7 +7,7 @@
   "registryDependencies": [
     "button",
     "card",
-    "https://magicui.design/r/lens"
+    "@magicui/lens"
   ],
   "files": [
     {

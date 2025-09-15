@@ -5,7 +5,7 @@
   "title": "Aurora Text Demo",
   "description": "Example showing a beautiful aurora text effect.",
   "registryDependencies": [
-    "https://magicui.design/r/aurora-text"
+    "@magicui/aurora-text"
   ],
   "files": [
     {

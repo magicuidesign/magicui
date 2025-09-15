@@ -5,7 +5,7 @@
   "title": "Number Ticker Demo",
   "description": "Example showing animated counting numbers.",
   "registryDependencies": [
-    "https://magicui.design/r/number-ticker"
+    "@magicui/number-ticker"
   ],
   "files": [
     {

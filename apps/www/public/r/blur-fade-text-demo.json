@@ -5,7 +5,7 @@
   "title": "Blur Fade Text Demo",
   "description": "Example showing blur fade animations with text.",
   "registryDependencies": [
-    "https://magicui.design/r/blur-fade"
+    "@magicui/blur-fade"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Progressive Blur Demo",
   "description": "Example showing progressive blur effect for scrollable content.",
   "registryDependencies": [
-    "https://magicui.design/r/progressive-blur"
+    "@magicui/progressive-blur"
   ],
   "files": [
     {

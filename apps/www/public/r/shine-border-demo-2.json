@@ -5,7 +5,7 @@
   "title": "Shine Border Demo 2",
   "description": "Second example showing an animated shining border effect.",
   "registryDependencies": [
-    "https://magicui.design/r/shine-border"
+    "@magicui/shine-border"
   ],
   "files": [
     {

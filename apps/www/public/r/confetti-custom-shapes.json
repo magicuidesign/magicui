@@ -5,7 +5,7 @@
   "title": "Confetti Custom Shapes",
   "description": "Example showing confetti with custom shape particles.",
   "registryDependencies": [
-    "https://magicui.design/r/confetti"
+    "@magicui/confetti"
   ],
   "files": [
     {

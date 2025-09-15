@@ -9,7 +9,7 @@
     "card",
     "input",
     "label",
-    "https://magicui.design/r/border-beam"
+    "@magicui/border-beam"
   ],
   "files": [
     {

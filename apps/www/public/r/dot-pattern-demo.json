@@ -5,7 +5,7 @@
   "title": "Dot Pattern Demo",
   "description": "Example showing a background dot pattern made with SVGs.",
   "registryDependencies": [
-    "https://magicui.design/r/dot-pattern"
+    "@magicui/dot-pattern"
   ],
   "files": [
     {

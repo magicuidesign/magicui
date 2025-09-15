@@ -5,7 +5,7 @@
   "title": "Marquee Demo",
   "description": "Example showing an infinite scrolling component.",
   "registryDependencies": [
-    "https://magicui.design/r/marquee"
+    "@magicui/marquee"
   ],
   "files": [
     {

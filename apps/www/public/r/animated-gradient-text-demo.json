@@ -8,7 +8,7 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://magicui.design/r/animated-gradient-text"
+    "@magicui/animated-gradient-text"
   ],
   "files": [
     {
