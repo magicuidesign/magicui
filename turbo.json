@@ -1,0 +1,26 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["NODE_ENV"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": ["NEXT_PUBLIC_APP_URL"],
+      "outputs": [".next/**"]
+    },
+    "preview": {
+      "env": ["NEXT_PUBLIC_APP_URL"],
+      "outputs": [".next/**"]
+    },
+    "start": {
+      "dependsOn": ["^build"]
+    },
+    "lint": { "cache": false, "outputs": [] },
+    "lint:fix": { "cache": false, "outputs": [] },
+    "format:check": { "cache": false, "outputs": [] },
+    "format:write": { "cache": false, "outputs": [] },
+    "typecheck": {},
+    "dev": { "cache": false },
+    "check": { "cache": false },
+    "test": { "cache": false, "outputs": [] }
+  }
+}
