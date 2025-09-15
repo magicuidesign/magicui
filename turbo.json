@@ -7,7 +7,7 @@
     "build": {
       "dependsOn": ["^build"],
       "env": ["NEXT_PUBLIC_APP_URL"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**"]
     },
     "preview": {
       "env": ["NEXT_PUBLIC_APP_URL"],
@@ -23,6 +23,10 @@
     "typecheck": {},
     "dev": { "cache": false },
     "check": { "cache": false },
-    "test": { "cache": false, "outputs": [] }
+    "test": { "cache": false, "outputs": [] },
+    "build:registry": {
+      "cache": false,
+      "outputs": []
+    }
   }
 }
