@@ -34,7 +34,7 @@ const registry = {
       ...lib,
     ].filter((item) => {
       return !DEPRECATED_ITEMS.includes(item.name);
-    })
+    }),
   ),
 } satisfies Registry;
 
@@ -48,13 +48,13 @@ import * as React from "react"
 
 export const Index: Record<string, any> = {`;
   for (const item of registry.items) {
-    const resolveFiles = item.files?.map((file) => `${file.path}`);
+    const resolveFiles = item.files?.map((file) => `registry/${file.path}`);
     if (!resolveFiles) {
       continue;
     }
 
     const componentPath = item.files?.[0]?.path
-      ? `@/${item.files[0].path}`
+      ? `@/registry/${item.files[0].path}`
       : "";
 
     index += `
@@ -64,7 +64,7 @@ export const Index: Record<string, any> = {`;
     type: "${item.type}",
     registryDependencies: ${JSON.stringify(item.registryDependencies)},
     files: [${item.files?.map((file) => {
-      const filePath = `${typeof file === "string" ? file : file.path}`;
+      const filePath = `registry/${typeof file === "string" ? file : file.path}`;
       const resolvedFilePath = path.resolve(filePath);
       return typeof file === "string"
         ? `"${resolvedFilePath}"`
@@ -103,7 +103,7 @@ async function buildRegistryJsonFile() {
       const files = item.files?.map((file) => {
         return {
           ...file,
-          path: `${file.path}`,
+          path: `registry/${file.path}`,
         };
       });
 
@@ -114,16 +114,18 @@ async function buildRegistryJsonFile() {
     }),
   };
 
-  // 2. Write the content of the registry to `registry.json` and public folder
+  // 2. Write the content of the registry to `registry.json`
   rimraf.sync(path.join(process.cwd(), `registry.json`));
-  rimraf.sync(path.join(process.cwd(), `public/registry.json`));
-
-  const registryJson = JSON.stringify(fixedRegistry, null, 2);
-
-  await fs.writeFile(path.join(process.cwd(), `registry.json`), registryJson);
   await fs.writeFile(
-    path.join(process.cwd(), `public/registry.json`),
-    registryJson
+    path.join(process.cwd(), `registry.json`),
+    JSON.stringify(fixedRegistry, null, 2),
+  );
+
+  // 3. Copy the registry.json to the www/public/r directory.
+  await fs.cp(
+    path.join(process.cwd(), "registry.json"),
+    path.join(process.cwd(), "../www/public/r/registry.json"),
+    { recursive: true },
   );
 }
 
@@ -145,13 +147,13 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
       try {
         const content = await fs.readFile(
           path.join(process.cwd(), filePath),
-          "utf8"
+          "utf8",
         );
         return `--- file: ${filePath} ---\n${content.endsWith("\n") ? content : content + "\n"}`;
       } catch {
         return null; // Skip missing files
       }
-    })
+    }),
   );
 
   // Join non-null contents with blank lines between them
@@ -226,7 +228,7 @@ async function generateLlmsContent() {
 }
 
 async function generateLlmsFullContent(
-  examplesByComponent: Map<string, string[]>
+  examplesByComponent: Map<string, string[]>,
 ) {
   const components = ui
     .filter((item) => item.type === "registry:ui")
@@ -264,7 +266,7 @@ async function generateLlmsFullContent(
       }
 
       return content;
-    })
+    }),
   );
 
   return componentContents.join("\n\n\n");
