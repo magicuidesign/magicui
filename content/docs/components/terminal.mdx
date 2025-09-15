@@ -8,6 +8,12 @@ published: true
 
 <ComponentPreview name="terminal-demo" />
 
+## Examples
+
+### Custom Delays
+
+<ComponentPreview name="terminal-demo-2" />
+
 ## Installation
 
 <Tabs defaultValue="cli">
@@ -50,17 +56,10 @@ import {
 
 ```tsx
 <Terminal>
-  <TypingAnimation>&gt; pnpm dlx shadcn@latest init</TypingAnimation>
-
-  <AnimatedSpan className="text-green-500">✔ Preflight checks.</AnimatedSpan>
-
-  <AnimatedSpan className="text-green-500">
-    ✔ Validating Tailwind CSS.
-  </AnimatedSpan>
-
-  <TypingAnimation className="text-muted-foreground">
-    Success! Project initialization completed.
-  </TypingAnimation>
+  <TypingAnimation>pnpm dlx shadcn@latest init</TypingAnimation>
+  <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>
+  <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>
+  <TypingAnimation>Success! Project initialization completed.</TypingAnimation>
 </Terminal>
 ```
 
@@ -96,16 +95,3 @@ The terminal sequences its children automatically. Each `TypingAnimation` or `An
 | `delay`       | `number`            | `0`      | Delay in ms before typing starts (used when `sequence` is `false`).      |
 | `as`          | `React.ElementType` | `"span"` | The component type to render.                                            |
 | `startOnView` | `boolean`           | `true`   | If `true`, waits for viewport visibility before typing when unsequenced. |
-
-```tsx
-// Start immediately (ignore viewport)
-<Terminal startOnView={false}>
-  <TypingAnimation>Immediate start</TypingAnimation>
-</Terminal>
-
-// Opt out of sequencing and use manual delays
-<Terminal sequence={false}>
-  <TypingAnimation delay={500}>First</TypingAnimation>
-  <AnimatedSpan delay={1500}>Second</AnimatedSpan>
-</Terminal>
-```

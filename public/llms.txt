@@ -206,6 +206,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Rainbow Button Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/rainbow-button-demo-2.tsx): Example usage
 - [Interactive Hover Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/interactive-hover-button-demo.tsx): Example usage
 - [Terminal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/terminal-demo.tsx): Example usage
+- [Terminal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/terminal-demo-2.tsx): Example usage
 - [Video Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/video-text-demo.tsx): Example usage
 - [Pixel Image Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/pixel-image-demo.tsx): Example usage
 - [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/highlighter-demo.tsx): Example usage
