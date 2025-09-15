@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "terminal-demo-2",
+  "type": "registry:example",
+  "title": "Terminal Demo",
+  "description": "Example showing a terminal with animated text and custom delays",
+  "registryDependencies": [
+    "https://magicui.design/r/terminal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/terminal-demo-2.tsx",
+      "content": "import {\n  AnimatedSpan,\n  Terminal,\n  TypingAnimation,\n} from \"@/registry/magicui/terminal\";\n\nexport default function TerminalDemo2() {\n  return (\n    <Terminal>\n      <TypingAnimation delay={0}>&gt; npm install</TypingAnimation>\n\n      <AnimatedSpan delay={1000} className=\"text-green-500\">\n        ✔ Installing packages...\n      </AnimatedSpan>\n\n      <AnimatedSpan delay={2000} className=\"text-green-500\">\n        ✔ Done!\n      </AnimatedSpan>\n\n      <TypingAnimation delay={3000} className=\"text-muted-foreground\">\n        Ready to start coding.\n      </TypingAnimation>\n    </Terminal>\n  );\n}\n",
+      "type": "registry:example",
+      "target": "components/terminal-demo-2.tsx"
+    }
+  ]
+}
