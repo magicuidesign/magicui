@@ -4,11 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prefix:cli": "pnpm --prefix ./packages/cli/ -- ",
-    "install:cli": "pnpm prefix:cli install",
-    "dev:cli": "pnpm prefix:cli dev",
-    "build:cli": "pnpm prefix:cli build",
-    "release:cli": "pnpm prefix:cli release",
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "prebuild": "pnpm build:docs && pnpm build:registry",
