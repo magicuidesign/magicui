@@ -1,11 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "envMode": "strict",
   "globalEnv": ["NODE_ENV"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "env": ["NEXT_PUBLIC_APP_URL"],
-      "outputs": [".next/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "preview": {
       "env": ["NEXT_PUBLIC_APP_URL"],
