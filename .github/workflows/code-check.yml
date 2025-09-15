@@ -22,7 +22,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.4.0
+          version: 9.15.0
           run_install: false
 
       - name: Get pnpm store directory
@@ -58,7 +58,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.4.0
+          version: 9.15.0
           run_install: false
 
       - name: Get pnpm store directory
@@ -96,7 +96,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.4.0
+          version: 9.15.0
           run_install: false
 
       - name: Get pnpm store directory
