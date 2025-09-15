@@ -50,7 +50,7 @@ interface GithubFileUrlParams {
 
 export function getGithubFileUrl(params: GithubFileUrlParams) {
   const { owner, repo, slug } = params;
-  return `https://github.com/${owner}/${repo}/blob/main/content${
+  return `https://github.com/${owner}/${repo}/edit/main/apps/www/content${
     slug === "/docs" ? "/docs/index" : slug
   }.mdx`;
 }
