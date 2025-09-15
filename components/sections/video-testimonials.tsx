@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-export default function VideoTestimonials() {
+export function VideoTestimonials() {
   const videoUrls = [
     "https://www.youtube.com/embed/UGm8djxwC5s?t=2s",
     "https://www.youtube.com/embed/qh3NGpYRG3I?t=97s",

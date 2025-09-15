@@ -3,7 +3,7 @@ import { ChevronRight, HeartHandshake } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
-export default function CTASection() {
+export function CTASection() {
   return (
     <section id="cta">
       <div className="py-14">

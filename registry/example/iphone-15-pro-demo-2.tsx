@@ -1,4 +1,4 @@
-import Iphone15Pro from "@/registry/magicui/iphone-15-pro";
+import { Iphone15Pro } from "@/registry/magicui/iphone-15-pro";
 
 export default function Iphone15ProDemo() {
   return (
