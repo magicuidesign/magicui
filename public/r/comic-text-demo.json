@@ -11,8 +11,7 @@
     {
       "path": "registry/example/comic-text-demo.tsx",
       "content": "import { ComicText } from \"@/registry/magicui/comic-text\";\n\nexport default function ComicTextDemo() {\n  return (\n    <div className=\"space-y-8 text-center\">\n      <ComicText fontSize={5}>BOOM!</ComicText>\n    </div>\n  );\n}\n",
-      "type": "registry:example",
-      "target": "components/comic-text-demo.tsx"
+      "type": "registry:example"
     }
   ]
 }

@@ -11,8 +11,7 @@
     {
       "path": "registry/example/number-ticker-demo.tsx",
       "content": "import { NumberTicker } from \"@/registry/magicui/number-ticker\";\n\nexport default function NumberTickerDemo() {\n  return (\n    <NumberTicker\n      value={100}\n      className=\"whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white\"\n    />\n  );\n}\n",
-      "type": "registry:example",
-      "target": "components/number-ticker-demo.tsx"
+      "type": "registry:example"
     }
   ]
 }

@@ -11,8 +11,7 @@
     {
       "path": "registry/example/pulsating-button-demo.tsx",
       "content": "import { PulsatingButton } from \"@/registry/magicui/pulsating-button\";\n\nexport default function PulsatingButtonDemo() {\n  return <PulsatingButton>Join Affiliate Program</PulsatingButton>;\n}\n",
-      "type": "registry:example",
-      "target": "components/pulsating-button-demo.tsx"
+      "type": "registry:example"
     }
   ]
 }
