@@ -3411,6 +3411,22 @@
       ]
     },
     {
+      "name": "terminal-demo-2",
+      "type": "registry:example",
+      "title": "Terminal Demo",
+      "description": "Example showing a terminal with animated text and custom delays",
+      "registryDependencies": [
+        "https://magicui.design/r/terminal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/terminal-demo-2.tsx",
+          "type": "registry:example",
+          "target": "components/terminal-demo-2.tsx"
+        }
+      ]
+    },
+    {
       "name": "video-text-demo",
       "type": "registry:example",
       "title": "Video Text Demo",
