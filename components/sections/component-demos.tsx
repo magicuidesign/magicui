@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 const PAGE = "home";
 
-export default function ComponentDemos() {
+export function ComponentDemos() {
   const page = allPages.find((page) => page.slugAsParams === PAGE);
 
   if (!page) {

@@ -40,7 +40,7 @@ export function ShowcaseCard({
   );
 }
 
-export default function Showcase() {
+export function Showcase() {
   return (
     <section id="showcase" className="container py-14">
       <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">

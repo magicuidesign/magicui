@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
-export default async function Hero() {
+export async function Hero() {
   const post = allDocs
     .filter(
       (post) =>

@@ -54,7 +54,7 @@ const allTweets = [
   // "https://x.com/DutchEngIishman/status/1795888864202043645",
 ].map((t) => t.split("/").slice(-1)[0]);
 
-export default function Testimonials() {
+export function Testimonials() {
   return (
     <section id="testimonials" className="container max-w-screen-xl py-14">
       <h2 className="mb-8 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">

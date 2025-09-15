@@ -7,7 +7,7 @@ export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   videoSrc?: string;
 }
 
-export default function Iphone15Pro({
+export function Iphone15Pro({
   width = 433,
   height = 882,
   src,

@@ -22,12 +22,6 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      // "@/components/magicui/*": [
-      //   "registry/magicui/*"
-      // ],
-      // "@/components/example/*": [
-      //   "registry/example/*"
-      // ],
       "content-collections": ["./.content-collections/generated"]
     }
   },
