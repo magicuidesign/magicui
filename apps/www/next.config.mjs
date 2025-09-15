@@ -4,7 +4,6 @@ import { withContentCollections } from "@content-collections/next";
 const nextConfig = {
   output: process.env.NODE_ENV === "production" ? "standalone" : undefined,
   reactStrictMode: true,
-  swcMinify: true,
   experimental: {
     optimizeCss: true,
   },
@@ -46,7 +45,7 @@ const nextConfig = {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },
-    ]
+    ];
   },
 };
 

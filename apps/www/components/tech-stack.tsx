@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 type TechComponentType = {
   name: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
 };
 
 type TechComponents = Record<string, TechComponentType>;

@@ -18,13 +18,14 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
 
 interface DocPageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const slug = params.slug?.join("/") || "index";
+  const { slug: slugArray } = await params;
+  const slug = slugArray?.join("/") || "index";
   const doc = allDocs.find((doc) => doc.slugAsParams === slug);
 
   if (!doc) {
@@ -69,9 +70,7 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<
-  DocPageProps["params"][]
-> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split("/"),
   }));

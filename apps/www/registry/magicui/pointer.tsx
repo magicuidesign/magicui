@@ -24,7 +24,7 @@ export function Pointer({
   style,
   children,
   ...props
-}: PointerProps): JSX.Element {
+}: PointerProps): React.ReactNode {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const [isActive, setIsActive] = useState<boolean>(false);
