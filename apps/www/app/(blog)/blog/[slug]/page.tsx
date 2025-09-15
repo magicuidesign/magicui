@@ -140,9 +140,10 @@ const components = {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string[] };
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
-  const postSlug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+  const { slug } = await params;
+  const postSlug = Array.isArray(slug) ? slug[0] : slug;
   const post = allBlogs.find((post) => post._meta.path === postSlug);
 
   if (!post) {
@@ -175,8 +176,12 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPage({ params }: { params: { slug: string[] } }) {
-  const { slug } = params;
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}) {
+  const { slug } = await params;
 
   const postSlug = Array.isArray(slug) ? slug[0] : slug;
   const currentIndex = allBlogs.findIndex(

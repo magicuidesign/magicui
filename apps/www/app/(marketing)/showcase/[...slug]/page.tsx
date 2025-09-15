@@ -8,23 +8,24 @@ import { absoluteUrl } from "@/lib/utils";
 import process from "process";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export function generateStaticParams(): { slug: string[] }[] {
   return allShowcases.map((page) => ({
     slug: page.slugAsParams.split("/"),
   }));
 }
 
 async function getPageFromParams(params: PageProps["params"]) {
-  const slug = params?.slug?.join("/");
-  const page = allShowcases.find((page) => page.slugAsParams === slug);
+  const { slug } = await params;
+  const slugString = slug?.join("/");
+  const page = allShowcases.find((page) => page.slugAsParams === slugString);
 
   if (!page) {
-    null;
+    return null;
   }
 
   return page;

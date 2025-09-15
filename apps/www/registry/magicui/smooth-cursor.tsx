@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useSpring } from "motion/react";
-import { FC, JSX, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 interface Position {
   x: number;
@@ -9,7 +9,7 @@ interface Position {
 }
 
 export interface SmoothCursorProps {
-  cursor?: JSX.Element;
+  cursor?: React.ReactNode;
   springConfig?: {
     damping: number;
     stiffness: number;

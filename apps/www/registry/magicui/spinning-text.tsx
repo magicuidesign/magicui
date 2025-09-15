@@ -1,29 +1,27 @@
 "use client";
+
 import { cn } from "@/lib/utils";
 import { motion, Transition, Variants } from "motion/react";
-import React, { CSSProperties } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 
-type SpinningTextProps = {
+interface SpinningTextProps extends ComponentPropsWithoutRef<"div"> {
   children: string | string[];
-  style?: CSSProperties;
   duration?: number;
-  className?: string;
   reverse?: boolean;
-  fontSize?: number;
   radius?: number;
   transition?: Transition;
   variants?: {
     container?: Variants;
     item?: Variants;
   };
-};
+}
 
-const BASE_TRANSITION = {
+const BASE_TRANSITION: Transition = {
   repeat: Infinity,
   ease: "linear",
 };
 
-const BASE_ITEM_VARIANTS = {
+const BASE_ITEM_VARIANTS: Variants = {
   hidden: {
     opacity: 1,
   },
@@ -35,12 +33,12 @@ const BASE_ITEM_VARIANTS = {
 export function SpinningText({
   children,
   duration = 10,
-  style,
-  className,
   reverse = false,
   radius = 5,
   transition,
   variants,
+  className,
+  style,
 }: SpinningTextProps) {
   if (typeof children !== "string" && !Array.isArray(children)) {
     throw new Error("children must be a string or an array of strings");
@@ -57,18 +55,18 @@ export function SpinningText({
   const letters = children.split("");
   letters.push(" ");
 
-  const finalTransition = {
+  const finalTransition: Transition = {
     ...BASE_TRANSITION,
     ...transition,
     duration: (transition as { duration?: number })?.duration ?? duration,
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     visible: { rotate: reverse ? -360 : 360 },
     ...variants?.container,
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     ...BASE_ITEM_VARIANTS,
     ...variants?.item,
   };
