@@ -2,7 +2,7 @@ import { exec } from "child_process";
 import { promises as fs } from "fs";
 import path from "path";
 import { rimraf } from "rimraf";
-import { registryItemSchema, type Registry } from "shadcn/registry";
+import { registryItemSchema, type Registry } from "shadcn/schema";
 import { z } from "zod";
 
 import { examples } from "../registry/registry-examples";
@@ -13,7 +13,7 @@ import { siteConfig } from "../config/site";
 const DEPRECATED_ITEMS = ["toast"];
 
 const registry = {
-  name: "magic-ui",
+  name: "magicui",
   homepage: "https://magicui.design",
   items: z.array(registryItemSchema).parse(
     [
@@ -74,14 +74,15 @@ export const Index: Record<string, any> = {`;
       target: "${file.target ?? ""}"
     }`;
     })}],
-    component: ${componentPath
+    component: ${
+      componentPath
         ? `React.lazy(async () => {
       const mod = await import("${componentPath}")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     })`
         : "null"
-      },
+    },
     meta: ${JSON.stringify(item.meta)},
   },`;
   }
@@ -126,7 +127,6 @@ async function buildRegistryJsonFile() {
   );
 }
 
-
 type RegistryItem = Registry["items"][number];
 
 type FileEntry = string | { path: string; type?: string; target?: string };
@@ -135,7 +135,7 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
   if (!item.files?.length) return "";
 
   const paths = item.files
-    .map((f: FileEntry) => typeof f === "string" ? f : f?.path)
+    .map((f: FileEntry) => (typeof f === "string" ? f : f?.path))
     .filter(Boolean)
     .sort() as string[];
 
@@ -143,7 +143,10 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
   const contents = await Promise.all(
     paths.map(async (filePath) => {
       try {
-        const content = await fs.readFile(path.join(process.cwd(), filePath), "utf8");
+        const content = await fs.readFile(
+          path.join(process.cwd(), filePath),
+          "utf8"
+        );
         return `--- file: ${filePath} ---\n${content.endsWith("\n") ? content : content + "\n"}`;
       } catch {
         return null; // Skip missing files
@@ -154,8 +157,6 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
   // Join non-null contents with blank lines between them
   return contents.filter(Boolean).join("\n");
 }
-
-
 
 function getComponentExamples() {
   const examplesByComponent = new Map<string, string[]>();
@@ -181,7 +182,8 @@ async function generateLlmsContent() {
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((component) => {
       const title = (component as any).title || component.name;
-      const description = (component as any).description || `The ${title} component.`;
+      const description =
+        (component as any).description || `The ${title} component.`;
       return `- [${title}](${siteConfig.url}/docs/components/${component.name}): ${description}`;
     });
 
@@ -195,7 +197,9 @@ async function generateLlmsContent() {
     .map((example) => {
       const title = (example as any).title || example.name;
       const firstFile = example.files?.[0]?.path || "";
-      const url = firstFile ? `${siteConfig.links.github}/blob/main/${firstFile}` : siteConfig.links.github;
+      const url = firstFile
+        ? `${siteConfig.links.github}/blob/main/${firstFile}`
+        : siteConfig.links.github;
       return `- [${title}](${url}): Example usage`;
     });
 
@@ -221,13 +225,18 @@ async function generateLlmsContent() {
   ].join("\n");
 }
 
-async function generateLlmsFullContent(examplesByComponent: Map<string, string[]>) {
-  const components = ui.filter((item) => item.type === "registry:ui").sort((a, b) => a.name.localeCompare(b.name));
+async function generateLlmsFullContent(
+  examplesByComponent: Map<string, string[]>
+) {
+  const components = ui
+    .filter((item) => item.type === "registry:ui")
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const componentContents = await Promise.all(
     components.map(async (component) => {
       const title = (component as any).title || component.name;
-      const description = (component as any).description || `The ${title} component.`;
+      const description =
+        (component as any).description || `The ${title} component.`;
 
       let content = [
         `===== COMPONENT: ${component.name} =====`,
@@ -266,7 +275,7 @@ async function buildLlmsFiles() {
 
   const [minContent, fullContent] = await Promise.all([
     generateLlmsContent(),
-    generateLlmsFullContent(examplesByComponent)
+    generateLlmsFullContent(examplesByComponent),
   ]);
 
   const publicDir = path.join(process.cwd(), "public");
@@ -274,7 +283,7 @@ async function buildLlmsFiles() {
 
   await Promise.all([
     fs.writeFile(path.join(publicDir, "llms.txt"), minContent, "utf8"),
-    fs.writeFile(path.join(publicDir, "llms-full.txt"), fullContent, "utf8")
+    fs.writeFile(path.join(publicDir, "llms-full.txt"), fullContent, "utf8"),
   ]);
 }
 
