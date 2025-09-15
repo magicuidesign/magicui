@@ -5,7 +5,7 @@
   "title": "Retro Grid Demo",
   "description": "Example showing an animated scrolling retro grid effect.",
   "registryDependencies": [
-    "https://magicui.design/r/retro-grid"
+    "@magicui/retro-grid"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Tweet Card Demo",
   "description": "Example showing a tweet card with author info.",
   "registryDependencies": [
-    "https://magicui.design/r/tweet-card"
+    "@magicui/tweet-card"
   ],
   "files": [
     {

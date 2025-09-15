@@ -5,7 +5,7 @@
   "title": "Dock Demo 3",
   "description": "Third example showing a MacOS-style dock implementation.",
   "registryDependencies": [
-    "https://magicui.design/r/dock"
+    "@magicui/dock"
   ],
   "files": [
     {

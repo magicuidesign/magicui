@@ -5,7 +5,7 @@
   "title": "Animated List Demo",
   "description": "Example showing a list with sequenced item animations.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-list"
+    "@magicui/animated-list"
   ],
   "files": [
     {

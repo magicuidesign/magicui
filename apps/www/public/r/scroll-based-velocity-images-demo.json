@@ -5,7 +5,7 @@
   "title": "Scroll Based Velocity Images",
   "description": "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
   "registryDependencies": [
-    "https://magicui.design/r/scroll-based-velocity"
+    "@magicui/scroll-based-velocity"
   ],
   "files": [
     {

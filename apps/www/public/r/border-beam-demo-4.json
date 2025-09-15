@@ -6,7 +6,7 @@
   "description": "Example showing an animated border beam effect.",
   "registryDependencies": [
     "button",
-    "https://magicui.design/r/border-beam"
+    "@magicui/border-beam"
   ],
   "files": [
     {

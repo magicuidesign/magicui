@@ -9,7 +9,7 @@
   ],
   "registryDependencies": [
     "button",
-    "https://magicui.design/r/dock"
+    "@magicui/dock"
   ],
   "files": [
     {

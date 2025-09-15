@@ -5,7 +5,7 @@
   "title": "Animated Theme Toggler Demo",
   "description": "Example showing animation while changing the theme.",
   "registryDependencies": [
-    "https://magicui.design/animated-theme-toggler"
+    "@magicui/animated-theme-toggler"
   ],
   "files": [
     {

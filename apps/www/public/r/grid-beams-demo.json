@@ -4,7 +4,7 @@
   "type": "registry:example",
   "description": "Demo of the grid-beams component showcasing animated light rays over a grid",
   "registryDependencies": [
-    "grid-beams"
+    "@magicui/grid-beams"
   ],
   "files": [
     {

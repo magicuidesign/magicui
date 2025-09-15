@@ -5,7 +5,7 @@
   "title": "Word Rotate Demo",
   "description": "Example showing vertical word rotation animation.",
   "registryDependencies": [
-    "https://magicui.design/r/word-rotate"
+    "@magicui/word-rotate"
   ],
   "files": [
     {

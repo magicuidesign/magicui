@@ -5,7 +5,7 @@
   "title": "Neon Gradient Card Demo",
   "description": "Example showing a beautiful neon card effect.",
   "registryDependencies": [
-    "https://magicui.design/r/neon-gradient-card"
+    "@magicui/neon-gradient-card"
   ],
   "files": [
     {

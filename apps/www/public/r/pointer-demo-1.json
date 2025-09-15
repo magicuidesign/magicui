@@ -5,7 +5,7 @@
   "title": "Pointer Demo 1",
   "description": "Example showing a pointer effect component",
   "registryDependencies": [
-    "https://magicui.design/r/pointer"
+    "@magicui/pointer"
   ],
   "files": [
     {

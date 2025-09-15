@@ -5,7 +5,7 @@
   "title": "Blur Fade Demo",
   "description": "Example showing blur fade in and out animations.",
   "registryDependencies": [
-    "https://magicui.design/r/blur-fade"
+    "@magicui/blur-fade"
   ],
   "files": [
     {

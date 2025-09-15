@@ -5,7 +5,7 @@
   "title": "Text Animate Demo 3",
   "description": "Third example showing various text animations.",
   "registryDependencies": [
-    "https://magicui.design/r/text-animate"
+    "@magicui/text-animate"
   ],
   "files": [
     {

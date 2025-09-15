@@ -5,7 +5,7 @@
   "title": "Flickering Grid Demo",
   "description": "Example showing a flickering grid background.",
   "registryDependencies": [
-    "https://magicui.design/r/flickering-grid"
+    "@magicui/flickering-grid"
   ],
   "files": [
     {

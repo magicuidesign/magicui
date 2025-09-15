@@ -5,7 +5,7 @@
   "title": "Interactive Hover Button Demo",
   "description": "Example showing an interactive button with hover effects.",
   "registryDependencies": [
-    "https://magicui.design/r/interactive-hover-button"
+    "@magicui/interactive-hover-button"
   ],
   "files": [
     {

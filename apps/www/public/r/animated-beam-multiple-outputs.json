@@ -5,7 +5,7 @@
   "title": "Animated Beam Multiple Outputs",
   "description": "Example showing animated beams with multiple output points.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-beam"
+    "@magicui/animated-beam"
   ],
   "files": [
     {

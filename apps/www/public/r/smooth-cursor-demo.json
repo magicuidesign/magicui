@@ -4,7 +4,7 @@
   "type": "registry:example",
   "description": "Basic smooth cursor example",
   "registryDependencies": [
-    "https://magicui.design/r/smooth-cursor"
+    "@magicui/smooth-cursor"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Shimmer Button Demo",
   "description": "Example showing a button with a shimmering light effect.",
   "registryDependencies": [
-    "https://magicui.design/r/shimmer-button"
+    "@magicui/shimmer-button"
   ],
   "files": [
     {

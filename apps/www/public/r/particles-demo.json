@@ -8,7 +8,7 @@
     "next-themes"
   ],
   "registryDependencies": [
-    "https://magicui.design/r/particles"
+    "@magicui/particles"
   ],
   "files": [
     {

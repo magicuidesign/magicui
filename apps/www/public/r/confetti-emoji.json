@@ -5,7 +5,7 @@
   "title": "Confetti Emoji",
   "description": "Example showing confetti with emoji particles.",
   "registryDependencies": [
-    "https://magicui.design/r/confetti"
+    "@magicui/confetti"
   ],
   "files": [
     {

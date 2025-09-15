@@ -5,7 +5,7 @@
   "title": "Sparkles Text Demo",
   "description": "Example showing text with animated sparkle effects.",
   "registryDependencies": [
-    "https://magicui.design/r/sparkles-text"
+    "@magicui/sparkles-text"
   ],
   "files": [
     {

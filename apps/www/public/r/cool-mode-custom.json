@@ -5,7 +5,7 @@
   "title": "Cool Mode Custom",
   "description": "Example showing customized cool mode effects.",
   "registryDependencies": [
-    "https://magicui.design/r/cool-mode"
+    "@magicui/cool-mode"
   ],
   "files": [
     {

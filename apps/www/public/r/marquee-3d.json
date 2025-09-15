@@ -5,7 +5,7 @@
   "title": "Marquee 3D",
   "description": "Example showing a 3D infinite scrolling component.",
   "registryDependencies": [
-    "https://magicui.design/r/marquee"
+    "@magicui/marquee"
   ],
   "files": [
     {

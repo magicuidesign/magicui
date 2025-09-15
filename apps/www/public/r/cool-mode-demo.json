@@ -5,7 +5,7 @@
   "title": "Cool Mode Demo",
   "description": "Example showing cool mode effect for buttons and links.",
   "registryDependencies": [
-    "https://magicui.design/r/cool-mode"
+    "@magicui/cool-mode"
   ],
   "files": [
     {

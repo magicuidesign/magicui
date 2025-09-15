@@ -5,7 +5,7 @@
   "title": "Morphing Text Demo",
   "description": "Example showing a dynamic text morphing component.",
   "registryDependencies": [
-    "https://magicui.design/r/morphing-text"
+    "@magicui/morphing-text"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "iPhone 15 Pro Demo",
   "description": "Example showing an iPhone 15 Pro mockup.",
   "registryDependencies": [
-    "https://magicui.design/r/iphone-15-pro"
+    "@magicui/iphone-15-pro"
   ],
   "files": [
     {

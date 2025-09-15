@@ -5,7 +5,7 @@
   "title": "Hero Video Dialog Top In Bottom Out Demo",
   "description": "Example showing a hero video dialog with top-in bottom-out animation.",
   "registryDependencies": [
-    "https://magicui.design/r/hero-video-dialog"
+    "@magicui/hero-video-dialog"
   ],
   "files": [
     {

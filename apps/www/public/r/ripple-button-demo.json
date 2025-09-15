@@ -5,7 +5,7 @@
   "title": "Ripple Button Demo",
   "description": "Example showing an animated button with ripple effect.",
   "registryDependencies": [
-    "https://magicui.design/r/ripple-button"
+    "@magicui/ripple-button"
   ],
   "files": [
     {

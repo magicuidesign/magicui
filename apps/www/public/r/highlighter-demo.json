@@ -8,7 +8,7 @@
     "rough-notation"
   ],
   "registryDependencies": [
-    "https://magicui.design/r/highlighter"
+    "@magicui/highlighter"
   ],
   "files": [
     {

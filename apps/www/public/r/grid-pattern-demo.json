@@ -5,7 +5,7 @@
   "title": "Grid Pattern Demo",
   "description": "Example showing a background grid pattern made with SVGs.",
   "registryDependencies": [
-    "https://magicui.design/r/grid-pattern"
+    "@magicui/grid-pattern"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Interactive Grid Pattern Demo 2",
   "description": "Second example showing an interactive grid pattern background.",
   "registryDependencies": [
-    "https://magicui.design/r/interactive-grid-pattern"
+    "@magicui/interactive-grid-pattern"
   ],
   "files": [
     {

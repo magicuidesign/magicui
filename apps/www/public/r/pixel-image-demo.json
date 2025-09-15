@@ -5,7 +5,7 @@
   "title": "Pixel Image Demo",
   "description": "Example showing a pixelated image effect.",
   "registryDependencies": [
-    "pixel-image"
+    "@magicui/pixel-image"
   ],
   "files": [
     {

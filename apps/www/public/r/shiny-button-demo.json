@@ -5,7 +5,7 @@
   "title": "Shiny Button Demo",
   "description": "Example showing a shiny button with dynamic styles.",
   "registryDependencies": [
-    "https://magicui.design/r/shiny-button"
+    "@magicui/shiny-button"
   ],
   "files": [
     {
