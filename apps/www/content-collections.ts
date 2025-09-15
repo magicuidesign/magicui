@@ -9,6 +9,7 @@ import { createHighlighter } from "shiki";
 import { visit } from "unist-util-visit";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { z } from "zod";
 
 import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
@@ -45,7 +46,7 @@ const showcase = defineCollection({
   name: "Showcase",
   directory: "content/showcase",
   include: "**/*.mdx",
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string(),
     image: z.string(),
@@ -73,7 +74,7 @@ const pages = defineCollection({
   name: "Page",
   directory: "content/pages",
   include: "**/*.mdx",
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string(),
   }),
@@ -97,7 +98,7 @@ const documents = defineCollection({
   name: "Doc",
   directory: "content/docs",
   include: "**/*.mdx",
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string(),
     published: z.boolean().default(true),
@@ -218,7 +219,7 @@ const blog = defineCollection({
   name: "Blog",
   directory: "content/blog",
   include: "**/*.mdx",
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string().optional(),
     image: z.string().optional(),
