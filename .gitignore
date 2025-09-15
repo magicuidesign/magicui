@@ -40,3 +40,6 @@ yarn-error.log*
 next-env.d.ts
 
 .content-collections
+
+# turbo cache
+.turbo
