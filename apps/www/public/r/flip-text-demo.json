@@ -5,7 +5,7 @@
   "title": "Flip Text Demo",
   "description": "Example showing text with character flip animations.",
   "registryDependencies": [
-    "https://magicui.design/r/flip-text"
+    "@magicui/flip-text"
   ],
   "files": [
     {

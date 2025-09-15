@@ -5,7 +5,7 @@
   "title": "Confetti Demo",
   "description": "Example showing confetti animations for celebrations.",
   "registryDependencies": [
-    "https://magicui.design/r/confetti"
+    "@magicui/confetti"
   ],
   "files": [
     {

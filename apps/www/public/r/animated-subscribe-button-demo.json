@@ -5,7 +5,7 @@
   "title": "Animated Subscribe Button Demo",
   "description": "Example showing an animated subscribe button with micro animations.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-subscribe-button"
+    "@magicui/animated-subscribe-button"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Arc Timeline Demo",
   "description": "Example showing an arc timeline component.",
   "registryDependencies": [
-    "https://magicui.design/r/arc-timeline"
+    "@magicui/arc-timeline"
   ],
   "files": [
     {

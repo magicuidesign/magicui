@@ -5,7 +5,7 @@
   "title": "Hero Video Dialog Demo",
   "description": "Example showing a hero video dialog component.",
   "registryDependencies": [
-    "https://magicui.design/r/hero-video-dialog"
+    "@magicui/hero-video-dialog"
   ],
   "files": [
     {

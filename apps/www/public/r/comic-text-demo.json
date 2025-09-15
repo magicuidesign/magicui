@@ -5,7 +5,7 @@
   "title": "Comic Text Demo",
   "description": "Example showing comic text animation.",
   "registryDependencies": [
-    "https://magicui.design/r/comic-text"
+    "@magicui/comic-text"
   ],
   "files": [
     {

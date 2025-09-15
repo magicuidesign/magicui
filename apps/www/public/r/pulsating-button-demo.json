@@ -5,7 +5,7 @@
   "title": "Pulsating Button Demo",
   "description": "Example showing an animated pulsating button.",
   "registryDependencies": [
-    "https://magicui.design/r/pulsating-button"
+    "@magicui/pulsating-button"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Animated Grid Pattern Demo",
   "description": "Example showing an animated grid pattern background.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-grid-pattern"
+    "@magicui/animated-grid-pattern"
   ],
   "files": [
     {

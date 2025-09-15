@@ -5,7 +5,7 @@
   "title": "Android Demo 2",
   "description": "Second example showing a mockup of an Android device.",
   "registryDependencies": [
-    "https://magicui.design/r/android"
+    "@magicui/android"
   ],
   "files": [
     {

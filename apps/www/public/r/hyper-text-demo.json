@@ -5,7 +5,7 @@
   "title": "Hyper Text Demo",
   "description": "Example showing text with scrambling letter animations.",
   "registryDependencies": [
-    "https://magicui.design/r/hyper-text"
+    "@magicui/hyper-text"
   ],
   "files": [
     {

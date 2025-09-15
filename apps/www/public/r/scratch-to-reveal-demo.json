@@ -5,7 +5,7 @@
   "title": "Scratch To Reveal Demo",
   "description": "Example showing an interactive scratch-off reveal effect.",
   "registryDependencies": [
-    "https://magicui.design/r/scratch-to-reveal"
+    "@magicui/scratch-to-reveal"
   ],
   "files": [
     {

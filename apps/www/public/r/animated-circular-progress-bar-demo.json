@@ -5,7 +5,7 @@
   "title": "Animated Circular Progress Bar Demo",
   "description": "Example showing an animated circular progress gauge.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-circular-progress-bar"
+    "@magicui/animated-circular-progress-bar"
   ],
   "files": [
     {

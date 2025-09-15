@@ -5,7 +5,7 @@
   "title": "Spinning Text Demo 2",
   "description": "Example showing spinning text animation.",
   "registryDependencies": [
-    "https://magicui.design/r/spinning-text"
+    "@magicui/spinning-text"
   ],
   "files": [
     {

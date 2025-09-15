@@ -5,7 +5,7 @@
   "title": "Line Shadow Text Demo",
   "description": "Example showing a text component with a moving line shadow.",
   "registryDependencies": [
-    "https://magicui.design/r/line-shadow-text"
+    "@magicui/line-shadow-text"
   ],
   "files": [
     {

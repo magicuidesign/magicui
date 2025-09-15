@@ -5,7 +5,7 @@
   "title": "File Tree Demo",
   "description": "Example showing a component that displays folder and file structure.",
   "registryDependencies": [
-    "https://magicui.design/r/file-tree"
+    "@magicui/file-tree"
   ],
   "files": [
     {

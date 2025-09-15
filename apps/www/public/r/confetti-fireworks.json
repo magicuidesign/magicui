@@ -5,7 +5,7 @@
   "title": "Confetti Fireworks",
   "description": "Example showing fireworks-style confetti animation.",
   "registryDependencies": [
-    "https://magicui.design/r/confetti"
+    "@magicui/confetti"
   ],
   "files": [
     {

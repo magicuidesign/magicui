@@ -5,7 +5,7 @@
   "title": "Marquee Logos",
   "description": "Example showing an infinite scrolling logo carousel.",
   "registryDependencies": [
-    "https://magicui.design/r/marquee"
+    "@magicui/marquee"
   ],
   "files": [
     {

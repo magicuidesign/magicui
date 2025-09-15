@@ -5,7 +5,7 @@
   "title": "Terminal Demo",
   "description": "Example showing a terminal with animated text and custom delays",
   "registryDependencies": [
-    "https://magicui.design/r/terminal"
+    "@magicui/terminal"
   ],
   "files": [
     {

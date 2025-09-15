@@ -5,7 +5,7 @@
   "title": "Dot Pattern with glow effect",
   "description": "Example showing a dot pattern with glow effect",
   "registryDependencies": [
-    "https://magicui.design/r/dot-pattern"
+    "@magicui/dot-pattern"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Animated Beam Bidirectional",
   "description": "Example showing a bidirectional animated beam effect.",
   "registryDependencies": [
-    "https://magicui.design/r/animated-beam"
+    "@magicui/animated-beam"
   ],
   "files": [
     {

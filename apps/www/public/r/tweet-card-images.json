@@ -5,7 +5,7 @@
   "title": "Tweet Card Images",
   "description": "Example showing a tweet card with images.",
   "registryDependencies": [
-    "https://magicui.design/r/tweet-card"
+    "@magicui/tweet-card"
   ],
   "files": [
     {

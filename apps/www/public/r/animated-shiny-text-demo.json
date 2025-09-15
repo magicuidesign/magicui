@@ -8,7 +8,7 @@
     "@radix-ui/react-icons"
   ],
   "registryDependencies": [
-    "https://magicui.design/r/animated-shiny-text"
+    "@magicui/animated-shiny-text"
   ],
   "files": [
     {

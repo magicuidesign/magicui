@@ -5,7 +5,7 @@
   "title": "Code Comparison Demo",
   "description": "Example showing a component which compares two code snippets.",
   "registryDependencies": [
-    "https://magicui.design/r/code-comparison"
+    "@magicui/code-comparison"
   ],
   "files": [
     {

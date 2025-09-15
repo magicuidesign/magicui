@@ -10,10 +10,10 @@
   "registryDependencies": [
     "button",
     "calendar",
-    "https://magicui.design/r/marquee",
-    "https://magicui.design/r/bento-grid",
-    "https://magicui.design/r/animated-list-demo",
-    "https://magicui.design/r/animated-beam-multiple-outputs"
+    "@magicui/marquee",
+    "@magicui/bento-grid",
+    "@magicui/animated-list-demo",
+    "@magicui/animated-beam-multiple-outputs"
   ],
   "files": [
     {

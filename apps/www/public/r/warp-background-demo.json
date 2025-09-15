@@ -5,7 +5,7 @@
   "title": "Warp Background Demo",
   "description": "Example showing a card with a time warping background effect.",
   "registryDependencies": [
-    "https://magicui.design/r/warp-background"
+    "@magicui/warp-background"
   ],
   "files": [
     {

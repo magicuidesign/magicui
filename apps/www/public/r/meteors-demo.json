@@ -5,7 +5,7 @@
   "title": "Meteors Demo",
   "description": "Example showing a meteor shower effect.",
   "registryDependencies": [
-    "https://magicui.design/r/meteors"
+    "@magicui/meteors"
   ],
   "files": [
     {

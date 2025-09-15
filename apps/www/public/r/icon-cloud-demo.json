@@ -5,7 +5,7 @@
   "title": "Icon Cloud Demo",
   "description": "Example showing an interactive 3D icon cloud.",
   "registryDependencies": [
-    "https://magicui.design/r/icon-cloud"
+    "@magicui/icon-cloud"
   ],
   "files": [
     {

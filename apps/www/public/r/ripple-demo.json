@@ -5,7 +5,7 @@
   "title": "Ripple Demo",
   "description": "Example showing an animated ripple effect.",
   "registryDependencies": [
-    "https://magicui.design/r/ripple"
+    "@magicui/ripple"
   ],
   "files": [
     {
