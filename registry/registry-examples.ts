@@ -12,7 +12,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/magic-card-demo.tsx",
         type: "registry:example",
-        target: "components/magic-card-demo.tsx",
       },
     ],
   },
@@ -26,7 +25,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/android-demo.tsx",
         type: "registry:example",
-        target: "components/android-demo.tsx",
       },
     ],
   },
@@ -40,7 +38,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/android-demo-2.tsx",
         type: "registry:example",
-        target: "components/android-demo-2.tsx",
       },
     ],
   },
@@ -54,7 +51,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/android-demo-3.tsx",
         type: "registry:example",
-        target: "components/android-demo-3.tsx",
       },
     ],
   },
@@ -69,7 +65,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/warp-background-demo.tsx",
         type: "registry:example",
-        target: "components/warp-background-demo.tsx",
       },
     ],
   },
@@ -83,7 +78,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/line-shadow-text-demo.tsx",
         type: "registry:example",
-        target: "components/line-shadow-text-demo.tsx",
       },
     ],
   },
@@ -97,7 +91,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/aurora-text-demo.tsx",
         type: "registry:example",
-        target: "components/aurora-text-demo.tsx",
       },
     ],
   },
@@ -111,7 +104,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/morphing-text-demo.tsx",
         type: "registry:example",
-        target: "components/morphing-text-demo.tsx",
       },
     ],
   },
@@ -125,7 +117,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/scroll-progress-demo.tsx",
         type: "registry:example",
-        target: "components/scroll-progress-demo.tsx",
       },
     ],
   },
@@ -139,7 +130,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/lens-demo.tsx",
         type: "registry:example",
-        target: "components/lens-demo.tsx",
       },
     ],
   },
@@ -153,7 +143,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/lens-demo-2.tsx",
         type: "registry:example",
-        target: "components/lens-demo-2.tsx",
       },
     ],
   },
@@ -167,7 +156,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/lens-demo-3.tsx",
         type: "registry:example",
-        target: "components/lens-demo-3.tsx",
       },
     ],
   },
@@ -181,7 +169,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/pointer-demo-1.tsx",
         type: "registry:example",
-        target: "components/pointer-demo-1.tsx",
       },
     ],
   },
@@ -194,7 +181,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/smooth-cursor-demo.tsx",
         type: "registry:example",
-        target: "components/smooth-cursor-demo.tsx",
       },
     ],
   },
@@ -209,7 +195,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/progressive-blur-demo.tsx",
         type: "registry:example",
-        target: "components/progressive-blur-demo.tsx",
       },
     ],
   },
@@ -223,7 +208,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/neon-gradient-card-demo.tsx",
         type: "registry:example",
-        target: "components/neon-gradient-card-demo.tsx",
       },
     ],
   },
@@ -237,7 +221,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/meteors-demo.tsx",
         type: "registry:example",
-        target: "components/meteors-demo.tsx",
       },
     ],
   },
@@ -251,7 +234,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/grid-pattern-demo.tsx",
         type: "registry:example",
-        target: "components/grid-pattern-demo.tsx",
       },
     ],
   },
@@ -265,7 +247,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/grid-pattern-linear-gradient.tsx",
         type: "registry:example",
-        target: "components/grid-pattern-linear-gradient.tsx",
       },
     ],
   },
@@ -279,7 +260,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/grid-pattern-dashed.tsx",
         type: "registry:example",
-        target: "components/grid-pattern-dashed.tsx",
       },
     ],
   },
@@ -293,7 +273,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/dot-pattern-demo.tsx",
         type: "registry:example",
-        target: "components/dot-pattern-demo.tsx",
       },
     ],
   },
@@ -307,7 +286,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/dot-pattern-linear-gradient.tsx",
         type: "registry:example",
-        target: "components/dot-pattern-linear-gradient.tsx",
       },
     ],
   },
@@ -321,7 +299,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/dot-pattern-with-glow-effect.tsx",
         type: "registry:example",
-        target: "components/dot-pattern-with-glow-effect.tsx",
       },
     ],
   },
@@ -335,7 +312,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/flickering-grid-demo.tsx",
         type: "registry:example",
-        target: "components/flickering-grid-demo.tsx",
       },
     ],
   },
@@ -350,7 +326,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/flickering-grid-rounded-demo.tsx",
         type: "registry:example",
-        target: "components/flickering-grid-rounded-demo.tsx",
       },
     ],
   },
@@ -364,7 +339,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/hero-video-dialog-demo.tsx",
         type: "registry:example",
-        target: "components/hero-video-dialog-demo.tsx",
       },
     ],
   },
@@ -379,7 +353,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
         type: "registry:example",
-        target: "components/hero-video-dialog-demo-top-in-bottom-out.tsx",
       },
     ],
   },
@@ -394,7 +367,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/code-comparison-demo.tsx",
         type: "registry:example",
-        target: "components/code-comparison-demo.tsx",
       },
     ],
   },
@@ -408,7 +380,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/script-copy-btn-demo.tsx",
         type: "registry:example",
-        target: "components/script-copy-btn-demo.tsx",
       },
     ],
   },
@@ -422,7 +393,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/marquee-demo.tsx",
         type: "registry:example",
-        target: "components/marquee-demo.tsx",
       },
     ],
   },
@@ -436,7 +406,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/marquee-demo-vertical.tsx",
         type: "registry:example",
-        target: "components/marquee-demo-vertical.tsx",
       },
     ],
   },
@@ -450,7 +419,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/marquee-logos.tsx",
         type: "registry:example",
-        target: "components/marquee-logos.tsx",
       },
     ],
   },
@@ -464,7 +432,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/marquee-3d.tsx",
         type: "registry:example",
-        target: "components/marquee-3d.tsx",
       },
     ],
   },
@@ -478,7 +445,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/globe-demo.tsx",
         type: "registry:example",
-        target: "components/globe-demo.tsx",
       },
     ],
   },
@@ -492,7 +458,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/tweet-card-demo.tsx",
         type: "registry:example",
-        target: "components/tweet-card-demo.tsx",
       },
     ],
   },
@@ -506,7 +471,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/tweet-card-images.tsx",
         type: "registry:example",
-        target: "components/tweet-card-images.tsx",
       },
     ],
   },
@@ -520,7 +484,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/tweet-card-meta-preview.tsx",
         type: "registry:example",
-        target: "components/tweet-card-meta-preview.tsx",
       },
     ],
   },
@@ -534,7 +497,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/shimmer-button-demo.tsx",
         type: "registry:example",
-        target: "components/shimmer-button-demo.tsx",
       },
     ],
   },
@@ -556,7 +518,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/bento-demo.tsx",
         type: "registry:example",
-        target: "components/bento-demo.tsx",
       },
     ],
   },
@@ -571,7 +532,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/bento-demo-vertical.tsx",
         type: "registry:example",
-        target: "components/bento-demo-vertical.tsx",
       },
     ],
   },
@@ -585,7 +545,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/number-ticker-demo.tsx",
         type: "registry:example",
-        target: "components/number-ticker-demo.tsx",
       },
     ],
   },
@@ -599,7 +558,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/number-ticker-demo-2.tsx",
         type: "registry:example",
-        target: "components/number-ticker-demo-2.tsx",
       },
     ],
   },
@@ -613,7 +571,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/number-ticker-decimal-demo.tsx",
         type: "registry:example",
-        target: "components/number-ticker-decimal-demo.tsx",
       },
     ],
   },
@@ -627,7 +584,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/ripple-demo.tsx",
         type: "registry:example",
-        target: "components/ripple-demo.tsx",
       },
     ],
   },
@@ -641,7 +597,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/retro-grid-demo.tsx",
         type: "registry:example",
-        target: "components/retro-grid-demo.tsx",
       },
     ],
   },
@@ -655,7 +610,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-list-demo.tsx",
         type: "registry:example",
-        target: "components/animated-list-demo.tsx",
       },
     ],
   },
@@ -670,7 +624,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-shiny-text-demo.tsx",
         type: "registry:example",
-        target: "components/animated-shiny-text-demo.tsx",
       },
     ],
   },
@@ -685,7 +638,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/particles-demo.tsx",
         type: "registry:example",
-        target: "components/particles-demo.tsx",
       },
     ],
   },
@@ -699,7 +651,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-grid-pattern-demo.tsx",
         type: "registry:example",
-        target: "components/animated-grid-pattern-demo.tsx",
       },
     ],
   },
@@ -713,7 +664,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/interactive-grid-pattern-demo.tsx",
         type: "registry:example",
-        target: "components/interactive-grid-pattern-demo.tsx",
       },
     ],
   },
@@ -728,7 +678,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/interactive-grid-pattern-demo-2.tsx",
         type: "registry:example",
-        target: "components/interactive-grid-pattern-demo-2.tsx",
       },
     ],
   },
@@ -742,7 +691,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/border-beam-demo.tsx",
         type: "registry:example",
-        target: "components/border-beam-demo.tsx",
       },
     ],
   },
@@ -760,7 +708,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/border-beam-demo-2.tsx",
         type: "registry:example",
-        target: "components/border-beam-demo-2.tsx",
       },
     ],
   },
@@ -780,7 +727,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/border-beam-demo-3.tsx",
         type: "registry:example",
-        target: "components/border-beam-demo-3.tsx",
       },
     ],
   },
@@ -794,7 +740,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/border-beam-demo-4.tsx",
         type: "registry:example",
-        target: "components/border-beam-demo-4.tsx",
       },
     ],
   },
@@ -809,7 +754,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-beam-demo.tsx",
         type: "registry:example",
-        target: "components/animated-beam-demo.tsx",
       },
     ],
   },
@@ -823,7 +767,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-beam-unidirectional.tsx",
         type: "registry:example",
-        target: "components/animated-beam-unidirectional.tsx",
       },
     ],
   },
@@ -837,7 +780,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-beam-bidirectional.tsx",
         type: "registry:example",
-        target: "components/animated-beam-bidirectional.tsx",
       },
     ],
   },
@@ -851,7 +793,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-beam-multiple-inputs.tsx",
         type: "registry:example",
-        target: "components/animated-beam-multiple-inputs.tsx",
       },
     ],
   },
@@ -865,7 +806,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-beam-multiple-outputs.tsx",
         type: "registry:example",
-        target: "components/animated-beam-multiple-outputs.tsx",
       },
     ],
   },
@@ -879,7 +819,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-reveal-demo.tsx",
         type: "registry:example",
-        target: "components/text-reveal-demo.tsx",
       },
     ],
   },
@@ -894,7 +833,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-gradient-text-demo.tsx",
         type: "registry:example",
-        target: "components/animated-gradient-text-demo.tsx",
       },
     ],
   },
@@ -909,7 +847,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-gradient-text-demo-2.tsx",
         type: "registry:example",
-        target: "components/animated-gradient-text-demo-2.tsx",
       },
     ],
   },
@@ -924,7 +861,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/orbiting-circles-demo.tsx",
         type: "registry:example",
-        target: "components/orbiting-circles-demo.tsx",
       },
     ],
   },
@@ -939,12 +875,10 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/dock-demo.tsx",
         type: "registry:example",
-        target: "components/dock-demo.tsx",
       },
       {
         path: "registry/magicui/mode-toggle.tsx",
         type: "registry:ui",
-        target: "components/magicui/mode-toggle.tsx",
       },
     ],
   },
@@ -958,7 +892,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/dock-demo-2.tsx",
         type: "registry:example",
-        target: "components/dock-demo-2.tsx",
       },
     ],
   },
@@ -972,7 +905,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/dock-demo-3.tsx",
         type: "registry:example",
-        target: "components/dock-demo-3.tsx",
       },
     ],
   },
@@ -986,7 +918,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/word-rotate-demo.tsx",
         type: "registry:example",
-        target: "components/word-rotate-demo.tsx",
       },
     ],
   },
@@ -1000,7 +931,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/hyper-text-demo.tsx",
         type: "registry:example",
-        target: "components/hyper-text-demo.tsx",
       },
     ],
   },
@@ -1014,7 +944,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/avatar-circles-demo.tsx",
         type: "registry:example",
-        target: "components/avatar-circles-demo.tsx",
       },
     ],
   },
@@ -1028,7 +957,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/typing-animation-demo.tsx",
         type: "registry:example",
-        target: "components/typing-animation-demo.tsx",
       },
     ],
   },
@@ -1042,7 +970,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/scroll-based-velocity-demo.tsx",
         type: "registry:example",
-        target: "components/scroll-based-velocity-demo.tsx",
       },
     ],
   },
@@ -1057,7 +984,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/scroll-based-velocity-images-demo.tsx",
         type: "registry:example",
-        target: "components/scroll-based-velocity-images-demo.tsx",
       },
     ],
   },
@@ -1071,7 +997,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/scratch-to-reveal-demo.tsx",
         type: "registry:example",
-        target: "components/scratch-to-reveal-demo.tsx",
       },
     ],
   },
@@ -1085,7 +1010,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/flip-text-demo.tsx",
         type: "registry:example",
-        target: "components/flip-text-demo.tsx",
       },
     ],
   },
@@ -1099,7 +1023,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/sparkles-text-demo.tsx",
         type: "registry:example",
-        target: "components/sparkles-text-demo.tsx",
       },
     ],
   },
@@ -1113,7 +1036,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/spinning-text-demo.tsx",
         type: "registry:example",
-        target: "components/spinning-text-demo.tsx",
       },
     ],
   },
@@ -1127,7 +1049,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/spinning-text-demo-2.tsx",
         type: "registry:example",
-        target: "components/spinning-text-demo-2.tsx",
       },
     ],
   },
@@ -1141,7 +1062,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/comic-text-demo.tsx",
         type: "registry:example",
-        target: "components/comic-text-demo.tsx",
       },
     ],
   },
@@ -1155,7 +1075,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/icon-cloud-demo.tsx",
         type: "registry:example",
-        target: "components/icon-cloud-demo.tsx",
       },
     ],
   },
@@ -1169,7 +1088,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/icon-cloud-demo-2.tsx",
         type: "registry:example",
-        target: "components/icon-cloud-demo-2.tsx",
       },
     ],
   },
@@ -1183,7 +1101,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/icon-cloud-demo-3.tsx",
         type: "registry:example",
-        target: "components/icon-cloud-demo-3.tsx",
       },
     ],
   },
@@ -1197,7 +1114,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo.tsx",
       },
     ],
   },
@@ -1211,7 +1127,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-2.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-2.tsx",
       },
     ],
   },
@@ -1225,7 +1140,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-3.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-3.tsx",
       },
     ],
   },
@@ -1239,7 +1153,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-4.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-4.tsx",
       },
     ],
   },
@@ -1253,7 +1166,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-5.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-5.tsx",
       },
     ],
   },
@@ -1267,7 +1179,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-6.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-6.tsx",
       },
     ],
   },
@@ -1281,7 +1192,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-7.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-7.tsx",
       },
     ],
   },
@@ -1295,7 +1205,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-8.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-8.tsx",
       },
     ],
   },
@@ -1309,7 +1218,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/text-animate-demo-9.tsx",
         type: "registry:example",
-        target: "components/text-animate-demo-9.tsx",
       },
     ],
   },
@@ -1323,7 +1231,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/shiny-button-demo.tsx",
         type: "registry:example",
-        target: "components/shiny-button-demo.tsx",
       },
     ],
   },
@@ -1337,7 +1244,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/box-reveal-demo.tsx",
         type: "registry:example",
-        target: "components/box-reveal-demo.tsx",
       },
     ],
   },
@@ -1353,7 +1259,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-circular-progress-bar-demo.tsx",
         type: "registry:example",
-        target: "components/animated-circular-progress-bar-demo.tsx",
       },
     ],
   },
@@ -1367,7 +1272,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/shine-border-demo.tsx",
         type: "registry:example",
-        target: "components/shine-border-demo.tsx",
       },
     ],
   },
@@ -1381,7 +1285,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/shine-border-demo-2.tsx",
         type: "registry:example",
-        target: "components/shine-border-demo-2.tsx",
       },
     ],
   },
@@ -1395,7 +1298,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-demo.tsx",
         type: "registry:example",
-        target: "components/confetti-demo.tsx",
       },
     ],
   },
@@ -1409,7 +1311,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-basic-cannon.tsx",
         type: "registry:example",
-        target: "components/confetti-basic-cannon.tsx",
       },
     ],
   },
@@ -1423,7 +1324,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-random-direction.tsx",
         type: "registry:example",
-        target: "components/confetti-random-direction.tsx",
       },
     ],
   },
@@ -1437,7 +1337,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-fireworks.tsx",
         type: "registry:example",
-        target: "components/confetti-fireworks.tsx",
       },
     ],
   },
@@ -1451,7 +1350,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-stars.tsx",
         type: "registry:example",
-        target: "components/confetti-stars.tsx",
       },
     ],
   },
@@ -1465,7 +1363,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-side-cannons.tsx",
         type: "registry:example",
-        target: "components/confetti-side-cannons.tsx",
       },
     ],
   },
@@ -1479,7 +1376,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-custom-shapes.tsx",
         type: "registry:example",
-        target: "components/confetti-custom-shapes.tsx",
       },
     ],
   },
@@ -1493,7 +1389,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/confetti-emoji.tsx",
         type: "registry:example",
-        target: "components/confetti-emoji.tsx",
       },
     ],
   },
@@ -1510,7 +1405,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-subscribe-button-demo.tsx",
         type: "registry:example",
-        target: "components/animated-subscribe-button-demo.tsx",
       },
     ],
   },
@@ -1527,7 +1421,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-subscribe-button-controlled-demo.tsx",
         type: "registry:example",
-        target: "components/animated-subscribe-button-controlled-demo.tsx",
       },
     ],
   },
@@ -1541,7 +1434,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/cool-mode-demo.tsx",
         type: "registry:example",
-        target: "components/cool-mode-demo.tsx",
       },
     ],
   },
@@ -1555,7 +1447,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/cool-mode-custom.tsx",
         type: "registry:example",
-        target: "components/cool-mode-custom.tsx",
       },
     ],
   },
@@ -1569,7 +1460,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/pulsating-button-demo.tsx",
         type: "registry:example",
-        target: "components/pulsating-button-demo.tsx",
       },
     ],
   },
@@ -1583,7 +1473,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/ripple-button-demo.tsx",
         type: "registry:example",
-        target: "components/ripple-button-demo.tsx",
       },
     ],
   },
@@ -1598,7 +1487,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/file-tree-demo.tsx",
         type: "registry:example",
-        target: "components/file-tree-demo.tsx",
       },
     ],
   },
@@ -1612,7 +1500,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/blur-fade-demo.tsx",
         type: "registry:example",
-        target: "components/blur-fade-demo.tsx",
       },
     ],
   },
@@ -1626,7 +1513,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/blur-fade-text-demo.tsx",
         type: "registry:example",
-        target: "components/blur-fade-text-demo.tsx",
       },
     ],
   },
@@ -1640,7 +1526,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/safari-demo.tsx",
         type: "registry:example",
-        target: "components/safari-demo.tsx",
       },
     ],
   },
@@ -1654,7 +1539,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/safari-demo-2.tsx",
         type: "registry:example",
-        target: "components/safari-demo-2.tsx",
       },
     ],
   },
@@ -1668,7 +1552,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/safari-demo-3.tsx",
         type: "registry:example",
-        target: "components/safari-demo-3.tsx",
       },
     ],
   },
@@ -1682,7 +1565,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/safari-demo-4.tsx",
         type: "registry:example",
-        target: "components/safari-demo-4.tsx",
       },
     ],
   },
@@ -1696,7 +1578,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/iphone-15-pro-demo.tsx",
         type: "registry:example",
-        target: "components/iphone-15-pro-demo.tsx",
       },
     ],
   },
@@ -1710,7 +1591,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/iphone-15-pro-demo-2.tsx",
         type: "registry:example",
-        target: "components/iphone-15-pro-demo-2.tsx",
       },
     ],
   },
@@ -1724,7 +1604,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/iphone-15-pro-demo-3.tsx",
         type: "registry:example",
-        target: "components/iphone-15-pro-demo-3.tsx",
       },
     ],
   },
@@ -1738,7 +1617,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/rainbow-button-demo.tsx",
         type: "registry:example",
-        target: "components/rainbow-button-demo.tsx",
       },
     ],
   },
@@ -1752,7 +1630,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/rainbow-button-demo-2.tsx",
         type: "registry:example",
-        target: "components/rainbow-button-demo-2.tsx",
       },
     ],
   },
@@ -1766,7 +1643,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/interactive-hover-button-demo.tsx",
         type: "registry:example",
-        target: "components/interactive-hover-button-demo.tsx",
       },
     ],
   },
@@ -1780,7 +1656,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/terminal-demo.tsx",
         type: "registry:example",
-        target: "components/terminal-demo.tsx",
       },
     ],
   },
@@ -1795,7 +1670,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/terminal-demo-2.tsx",
         type: "registry:example",
-        target: "components/terminal-demo-2.tsx",
       },
     ],
   },
@@ -1809,7 +1683,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/video-text-demo.tsx",
         type: "registry:example",
-        target: "components/video-text-demo.tsx",
       },
     ],
   },
@@ -1823,7 +1696,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/pixel-image-demo.tsx",
         type: "registry:example",
-        target: "components/pixel-image-demo.tsx",
       },
     ],
   },
@@ -1837,12 +1709,10 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/highlighter-demo.tsx",
         type: "registry:example",
-        target: "components/highlighter-demo.tsx",
       },
       {
         path: "registry/magicui/highlighter.tsx",
         type: "registry:ui",
-        target: "components/magicui/highlighter.tsx",
       },
     ],
     dependencies: ["rough-notation"],
@@ -1857,12 +1727,10 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/arc-timeline-demo.tsx",
         type: "registry:example",
-        target: "components/arc-timeline-demo.tsx",
       },
       {
         path: "registry/magicui/arc-timeline.tsx",
         type: "registry:ui",
-        target: "components/magicui/arc-timeline.tsx",
       },
     ],
   },
@@ -1876,7 +1744,6 @@ export const examples: Registry["items"] = [
       {
         path: "registry/example/animated-theme-toggler-demo.tsx",
         type: "registry:example",
-        target: "components/animated-theme-toggler-demo.tsx",
       },
     ],
   },
