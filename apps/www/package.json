@@ -9,7 +9,7 @@
     "prebuild": "pnpm build:docs && pnpm build:registry",
     "build": "next build",
     "build:registry": "npx tsx ./scripts/build-registry.mts && pnpm format:fix",
-    "shadcn:build": "shadcn build",
+    "shadcn:build": "npx shadcn build registry.json --output ../www/public/r",
     "build:docs": "content-collections build",
     "typecheck": "pnpm build:docs && tsc --noEmit",
     "start": "next start",

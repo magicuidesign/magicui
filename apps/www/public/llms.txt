@@ -82,137 +82,137 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
-- [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/magic-card-demo.tsx): Example usage
-- [Android Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/android-demo.tsx): Example usage
-- [Android Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/android-demo-2.tsx): Example usage
-- [Android Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/android-demo-3.tsx): Example usage
-- [Warp Background Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/warp-background-demo.tsx): Example usage
-- [Line Shadow Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/line-shadow-text-demo.tsx): Example usage
-- [Aurora Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/aurora-text-demo.tsx): Example usage
-- [Morphing Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/morphing-text-demo.tsx): Example usage
-- [Scroll Progress Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/scroll-progress-demo.tsx): Example usage
-- [Lens Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/lens-demo.tsx): Example usage
-- [Lens Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/lens-demo-2.tsx): Example usage
-- [Lens Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/lens-demo-3.tsx): Example usage
-- [Pointer Demo 1](https://github.com/magicuidesign/magicui/blob/main/registry/example/pointer-demo-1.tsx): Example usage
-- [smooth-cursor-demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/smooth-cursor-demo.tsx): Example usage
-- [Progressive Blur Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/progressive-blur-demo.tsx): Example usage
-- [Neon Gradient Card Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/neon-gradient-card-demo.tsx): Example usage
-- [Meteors Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/meteors-demo.tsx): Example usage
-- [Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/grid-pattern-demo.tsx): Example usage
-- [Grid Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/registry/example/grid-pattern-linear-gradient.tsx): Example usage
-- [Grid Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/registry/example/grid-pattern-dashed.tsx): Example usage
-- [Dot Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/dot-pattern-demo.tsx): Example usage
-- [Dot Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/registry/example/dot-pattern-linear-gradient.tsx): Example usage
-- [Dot Pattern with glow effect](https://github.com/magicuidesign/magicui/blob/main/registry/example/dot-pattern-with-glow-effect.tsx): Example usage
-- [Flickering Grid Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/flickering-grid-demo.tsx): Example usage
-- [Flickering Grid Rounded Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/flickering-grid-rounded-demo.tsx): Example usage
-- [Hero Video Dialog Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/hero-video-dialog-demo.tsx): Example usage
-- [Hero Video Dialog Top In Bottom Out Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx): Example usage
-- [Code Comparison Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/code-comparison-demo.tsx): Example usage
-- [Script Copy Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/script-copy-btn-demo.tsx): Example usage
-- [Marquee Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/marquee-demo.tsx): Example usage
-- [Marquee Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/marquee-demo-vertical.tsx): Example usage
-- [Marquee Logos](https://github.com/magicuidesign/magicui/blob/main/registry/example/marquee-logos.tsx): Example usage
-- [Marquee 3D](https://github.com/magicuidesign/magicui/blob/main/registry/example/marquee-3d.tsx): Example usage
-- [Globe Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/globe-demo.tsx): Example usage
-- [Tweet Card Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/tweet-card-demo.tsx): Example usage
-- [Tweet Card Images](https://github.com/magicuidesign/magicui/blob/main/registry/example/tweet-card-images.tsx): Example usage
-- [Tweet Card Meta Preview](https://github.com/magicuidesign/magicui/blob/main/registry/example/tweet-card-meta-preview.tsx): Example usage
-- [Shimmer Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/shimmer-button-demo.tsx): Example usage
-- [Bento Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/bento-demo.tsx): Example usage
-- [Bento Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/bento-demo-vertical.tsx): Example usage
-- [Number Ticker Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/number-ticker-demo.tsx): Example usage
-- [Number Ticker Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/number-ticker-demo-2.tsx): Example usage
-- [Number Ticker Decimal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/number-ticker-decimal-demo.tsx): Example usage
-- [Ripple Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/ripple-demo.tsx): Example usage
-- [Retro Grid Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/retro-grid-demo.tsx): Example usage
-- [Animated List Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-list-demo.tsx): Example usage
-- [Animated Shiny Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-shiny-text-demo.tsx): Example usage
-- [Particles Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/particles-demo.tsx): Example usage
-- [Animated Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-grid-pattern-demo.tsx): Example usage
-- [Interactive Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/interactive-grid-pattern-demo.tsx): Example usage
-- [Interactive Grid Pattern Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/interactive-grid-pattern-demo-2.tsx): Example usage
-- [Border Beam Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/border-beam-demo.tsx): Example usage
-- [Border Beam Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/border-beam-demo-2.tsx): Example usage
-- [Border Beam Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/border-beam-demo-3.tsx): Example usage
-- [Border Beam Demo 4](https://github.com/magicuidesign/magicui/blob/main/registry/example/border-beam-demo-4.tsx): Example usage
-- [Animated Beam Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-beam-demo.tsx): Example usage
-- [Animated Beam Unidirectional](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-beam-unidirectional.tsx): Example usage
-- [Animated Beam Bidirectional](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-beam-bidirectional.tsx): Example usage
-- [Animated Beam Multiple Inputs](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-beam-multiple-inputs.tsx): Example usage
-- [Animated Beam Multiple Outputs](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-beam-multiple-outputs.tsx): Example usage
-- [Text Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-reveal-demo.tsx): Example usage
-- [Animated Gradient Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-gradient-text-demo.tsx): Example usage
-- [Animated Gradient Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-gradient-text-demo-2.tsx): Example usage
-- [Orbiting Circles Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/orbiting-circles-demo.tsx): Example usage
-- [Dock Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/dock-demo.tsx): Example usage
-- [Dock Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/dock-demo-2.tsx): Example usage
-- [Dock Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/dock-demo-3.tsx): Example usage
-- [Word Rotate Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/word-rotate-demo.tsx): Example usage
-- [Hyper Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/hyper-text-demo.tsx): Example usage
-- [Avatar Circles Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/avatar-circles-demo.tsx): Example usage
-- [Typing Animation Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/typing-animation-demo.tsx): Example usage
-- [Scroll Based Velocity Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/scroll-based-velocity-demo.tsx): Example usage
-- [Scroll Based Velocity Images](https://github.com/magicuidesign/magicui/blob/main/registry/example/scroll-based-velocity-images-demo.tsx): Example usage
-- [Scratch To Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/scratch-to-reveal-demo.tsx): Example usage
-- [Flip Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/flip-text-demo.tsx): Example usage
-- [Sparkles Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/sparkles-text-demo.tsx): Example usage
-- [Spinning Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/spinning-text-demo.tsx): Example usage
-- [Spinning Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/spinning-text-demo-2.tsx): Example usage
-- [Comic Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/comic-text-demo.tsx): Example usage
-- [Icon Cloud Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/icon-cloud-demo.tsx): Example usage
-- [Icon Cloud Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/icon-cloud-demo-2.tsx): Example usage
-- [Icon Cloud Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/icon-cloud-demo-3.tsx): Example usage
-- [Text Animate Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo.tsx): Example usage
-- [Text Animate Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-2.tsx): Example usage
-- [Text Animate Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-3.tsx): Example usage
-- [Text Animate Demo 4](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-4.tsx): Example usage
-- [Text Animate Demo 5](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-5.tsx): Example usage
-- [Text Animate Demo 6](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-6.tsx): Example usage
-- [Text Animate Demo 7](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-7.tsx): Example usage
-- [Text Animate Demo 8](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-8.tsx): Example usage
-- [Text Animate Demo 9](https://github.com/magicuidesign/magicui/blob/main/registry/example/text-animate-demo-9.tsx): Example usage
-- [Shiny Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/shiny-button-demo.tsx): Example usage
-- [Box Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/box-reveal-demo.tsx): Example usage
-- [Animated Circular Progress Bar Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-circular-progress-bar-demo.tsx): Example usage
-- [Shine Border Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/shine-border-demo.tsx): Example usage
-- [Shine Border Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/shine-border-demo-2.tsx): Example usage
-- [Confetti Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-demo.tsx): Example usage
-- [Confetti Basic Cannon](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-basic-cannon.tsx): Example usage
-- [Confetti Random Direction](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-random-direction.tsx): Example usage
-- [Confetti Fireworks](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-fireworks.tsx): Example usage
-- [Confetti Stars](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-stars.tsx): Example usage
-- [Confetti Side Cannons](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-side-cannons.tsx): Example usage
-- [Confetti Custom Shapes](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-custom-shapes.tsx): Example usage
-- [Confetti Emoji](https://github.com/magicuidesign/magicui/blob/main/registry/example/confetti-emoji.tsx): Example usage
-- [Animated Subscribe Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-subscribe-button-demo.tsx): Example usage
-- [Animated Subscribe Button (Controlled)](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-subscribe-button-controlled-demo.tsx): Example usage
-- [Cool Mode Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/cool-mode-demo.tsx): Example usage
-- [Cool Mode Custom](https://github.com/magicuidesign/magicui/blob/main/registry/example/cool-mode-custom.tsx): Example usage
-- [Pulsating Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/pulsating-button-demo.tsx): Example usage
-- [Ripple Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/ripple-button-demo.tsx): Example usage
-- [File Tree Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/file-tree-demo.tsx): Example usage
-- [Blur Fade Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/blur-fade-demo.tsx): Example usage
-- [Blur Fade Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/blur-fade-text-demo.tsx): Example usage
-- [Safari Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/safari-demo.tsx): Example usage
-- [Safari Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/safari-demo-2.tsx): Example usage
-- [Safari Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/safari-demo-3.tsx): Example usage
-- [Safari Demo 4](https://github.com/magicuidesign/magicui/blob/main/registry/example/safari-demo-4.tsx): Example usage
-- [iPhone 15 Pro Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/iphone-15-pro-demo.tsx): Example usage
-- [iPhone 15 Pro Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/iphone-15-pro-demo-2.tsx): Example usage
-- [iPhone 15 Pro Demo 3](https://github.com/magicuidesign/magicui/blob/main/registry/example/iphone-15-pro-demo-3.tsx): Example usage
-- [Rainbow Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/rainbow-button-demo.tsx): Example usage
-- [Rainbow Button Demo 2](https://github.com/magicuidesign/magicui/blob/main/registry/example/rainbow-button-demo-2.tsx): Example usage
-- [Interactive Hover Button Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/interactive-hover-button-demo.tsx): Example usage
-- [Terminal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/terminal-demo.tsx): Example usage
-- [Terminal Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/terminal-demo-2.tsx): Example usage
-- [Video Text Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/video-text-demo.tsx): Example usage
-- [Pixel Image Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/pixel-image-demo.tsx): Example usage
-- [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/highlighter-demo.tsx): Example usage
-- [Arc Timeline Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/arc-timeline-demo.tsx): Example usage
-- [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/animated-theme-toggler-demo.tsx): Example usage
-- [grid-beams-demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/grid-beams-demo.tsx): Example usage
+- [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo.tsx): Example usage
+- [Android Demo](https://github.com/magicuidesign/magicui/blob/main/example/android-demo.tsx): Example usage
+- [Android Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-2.tsx): Example usage
+- [Android Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-3.tsx): Example usage
+- [Warp Background Demo](https://github.com/magicuidesign/magicui/blob/main/example/warp-background-demo.tsx): Example usage
+- [Line Shadow Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/line-shadow-text-demo.tsx): Example usage
+- [Aurora Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/aurora-text-demo.tsx): Example usage
+- [Morphing Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/morphing-text-demo.tsx): Example usage
+- [Scroll Progress Demo](https://github.com/magicuidesign/magicui/blob/main/example/scroll-progress-demo.tsx): Example usage
+- [Lens Demo](https://github.com/magicuidesign/magicui/blob/main/example/lens-demo.tsx): Example usage
+- [Lens Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/lens-demo-2.tsx): Example usage
+- [Lens Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/lens-demo-3.tsx): Example usage
+- [Pointer Demo 1](https://github.com/magicuidesign/magicui/blob/main/example/pointer-demo-1.tsx): Example usage
+- [smooth-cursor-demo](https://github.com/magicuidesign/magicui/blob/main/example/smooth-cursor-demo.tsx): Example usage
+- [Progressive Blur Demo](https://github.com/magicuidesign/magicui/blob/main/example/progressive-blur-demo.tsx): Example usage
+- [Neon Gradient Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/neon-gradient-card-demo.tsx): Example usage
+- [Meteors Demo](https://github.com/magicuidesign/magicui/blob/main/example/meteors-demo.tsx): Example usage
+- [Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-demo.tsx): Example usage
+- [Grid Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-linear-gradient.tsx): Example usage
+- [Grid Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-dashed.tsx): Example usage
+- [Dot Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-demo.tsx): Example usage
+- [Dot Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-linear-gradient.tsx): Example usage
+- [Dot Pattern with glow effect](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-with-glow-effect.tsx): Example usage
+- [Flickering Grid Demo](https://github.com/magicuidesign/magicui/blob/main/example/flickering-grid-demo.tsx): Example usage
+- [Flickering Grid Rounded Demo](https://github.com/magicuidesign/magicui/blob/main/example/flickering-grid-rounded-demo.tsx): Example usage
+- [Hero Video Dialog Demo](https://github.com/magicuidesign/magicui/blob/main/example/hero-video-dialog-demo.tsx): Example usage
+- [Hero Video Dialog Top In Bottom Out Demo](https://github.com/magicuidesign/magicui/blob/main/example/hero-video-dialog-demo-top-in-bottom-out.tsx): Example usage
+- [Code Comparison Demo](https://github.com/magicuidesign/magicui/blob/main/example/code-comparison-demo.tsx): Example usage
+- [Script Copy Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/script-copy-btn-demo.tsx): Example usage
+- [Marquee Demo](https://github.com/magicuidesign/magicui/blob/main/example/marquee-demo.tsx): Example usage
+- [Marquee Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/example/marquee-demo-vertical.tsx): Example usage
+- [Marquee Logos](https://github.com/magicuidesign/magicui/blob/main/example/marquee-logos.tsx): Example usage
+- [Marquee 3D](https://github.com/magicuidesign/magicui/blob/main/example/marquee-3d.tsx): Example usage
+- [Globe Demo](https://github.com/magicuidesign/magicui/blob/main/example/globe-demo.tsx): Example usage
+- [Tweet Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-demo.tsx): Example usage
+- [Tweet Card Images](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-images.tsx): Example usage
+- [Tweet Card Meta Preview](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-meta-preview.tsx): Example usage
+- [Shimmer Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/shimmer-button-demo.tsx): Example usage
+- [Bento Demo](https://github.com/magicuidesign/magicui/blob/main/example/bento-demo.tsx): Example usage
+- [Bento Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/example/bento-demo-vertical.tsx): Example usage
+- [Number Ticker Demo](https://github.com/magicuidesign/magicui/blob/main/example/number-ticker-demo.tsx): Example usage
+- [Number Ticker Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/number-ticker-demo-2.tsx): Example usage
+- [Number Ticker Decimal Demo](https://github.com/magicuidesign/magicui/blob/main/example/number-ticker-decimal-demo.tsx): Example usage
+- [Ripple Demo](https://github.com/magicuidesign/magicui/blob/main/example/ripple-demo.tsx): Example usage
+- [Retro Grid Demo](https://github.com/magicuidesign/magicui/blob/main/example/retro-grid-demo.tsx): Example usage
+- [Animated List Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-list-demo.tsx): Example usage
+- [Animated Shiny Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-shiny-text-demo.tsx): Example usage
+- [Particles Demo](https://github.com/magicuidesign/magicui/blob/main/example/particles-demo.tsx): Example usage
+- [Animated Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-grid-pattern-demo.tsx): Example usage
+- [Interactive Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/interactive-grid-pattern-demo.tsx): Example usage
+- [Interactive Grid Pattern Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/interactive-grid-pattern-demo-2.tsx): Example usage
+- [Border Beam Demo](https://github.com/magicuidesign/magicui/blob/main/example/border-beam-demo.tsx): Example usage
+- [Border Beam Demo](https://github.com/magicuidesign/magicui/blob/main/example/border-beam-demo-2.tsx): Example usage
+- [Border Beam Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/border-beam-demo-3.tsx): Example usage
+- [Border Beam Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/border-beam-demo-4.tsx): Example usage
+- [Animated Beam Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-demo.tsx): Example usage
+- [Animated Beam Unidirectional](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-unidirectional.tsx): Example usage
+- [Animated Beam Bidirectional](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-bidirectional.tsx): Example usage
+- [Animated Beam Multiple Inputs](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-multiple-inputs.tsx): Example usage
+- [Animated Beam Multiple Outputs](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-multiple-outputs.tsx): Example usage
+- [Text Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-reveal-demo.tsx): Example usage
+- [Animated Gradient Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-gradient-text-demo.tsx): Example usage
+- [Animated Gradient Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/animated-gradient-text-demo-2.tsx): Example usage
+- [Orbiting Circles Demo](https://github.com/magicuidesign/magicui/blob/main/example/orbiting-circles-demo.tsx): Example usage
+- [Dock Demo](https://github.com/magicuidesign/magicui/blob/main/example/dock-demo.tsx): Example usage
+- [Dock Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dock-demo-2.tsx): Example usage
+- [Dock Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/dock-demo-3.tsx): Example usage
+- [Word Rotate Demo](https://github.com/magicuidesign/magicui/blob/main/example/word-rotate-demo.tsx): Example usage
+- [Hyper Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/hyper-text-demo.tsx): Example usage
+- [Avatar Circles Demo](https://github.com/magicuidesign/magicui/blob/main/example/avatar-circles-demo.tsx): Example usage
+- [Typing Animation Demo](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo.tsx): Example usage
+- [Scroll Based Velocity Demo](https://github.com/magicuidesign/magicui/blob/main/example/scroll-based-velocity-demo.tsx): Example usage
+- [Scroll Based Velocity Images](https://github.com/magicuidesign/magicui/blob/main/example/scroll-based-velocity-images-demo.tsx): Example usage
+- [Scratch To Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/scratch-to-reveal-demo.tsx): Example usage
+- [Flip Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/flip-text-demo.tsx): Example usage
+- [Sparkles Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/sparkles-text-demo.tsx): Example usage
+- [Spinning Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/spinning-text-demo.tsx): Example usage
+- [Spinning Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/spinning-text-demo-2.tsx): Example usage
+- [Comic Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/comic-text-demo.tsx): Example usage
+- [Icon Cloud Demo](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo.tsx): Example usage
+- [Icon Cloud Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo-2.tsx): Example usage
+- [Icon Cloud Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo-3.tsx): Example usage
+- [Text Animate Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo.tsx): Example usage
+- [Text Animate Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-2.tsx): Example usage
+- [Text Animate Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-3.tsx): Example usage
+- [Text Animate Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-4.tsx): Example usage
+- [Text Animate Demo 5](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-5.tsx): Example usage
+- [Text Animate Demo 6](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-6.tsx): Example usage
+- [Text Animate Demo 7](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-7.tsx): Example usage
+- [Text Animate Demo 8](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-8.tsx): Example usage
+- [Text Animate Demo 9](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-9.tsx): Example usage
+- [Shiny Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/shiny-button-demo.tsx): Example usage
+- [Box Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/box-reveal-demo.tsx): Example usage
+- [Animated Circular Progress Bar Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-circular-progress-bar-demo.tsx): Example usage
+- [Shine Border Demo](https://github.com/magicuidesign/magicui/blob/main/example/shine-border-demo.tsx): Example usage
+- [Shine Border Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/shine-border-demo-2.tsx): Example usage
+- [Confetti Demo](https://github.com/magicuidesign/magicui/blob/main/example/confetti-demo.tsx): Example usage
+- [Confetti Basic Cannon](https://github.com/magicuidesign/magicui/blob/main/example/confetti-basic-cannon.tsx): Example usage
+- [Confetti Random Direction](https://github.com/magicuidesign/magicui/blob/main/example/confetti-random-direction.tsx): Example usage
+- [Confetti Fireworks](https://github.com/magicuidesign/magicui/blob/main/example/confetti-fireworks.tsx): Example usage
+- [Confetti Stars](https://github.com/magicuidesign/magicui/blob/main/example/confetti-stars.tsx): Example usage
+- [Confetti Side Cannons](https://github.com/magicuidesign/magicui/blob/main/example/confetti-side-cannons.tsx): Example usage
+- [Confetti Custom Shapes](https://github.com/magicuidesign/magicui/blob/main/example/confetti-custom-shapes.tsx): Example usage
+- [Confetti Emoji](https://github.com/magicuidesign/magicui/blob/main/example/confetti-emoji.tsx): Example usage
+- [Animated Subscribe Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-subscribe-button-demo.tsx): Example usage
+- [Animated Subscribe Button (Controlled)](https://github.com/magicuidesign/magicui/blob/main/example/animated-subscribe-button-controlled-demo.tsx): Example usage
+- [Cool Mode Demo](https://github.com/magicuidesign/magicui/blob/main/example/cool-mode-demo.tsx): Example usage
+- [Cool Mode Custom](https://github.com/magicuidesign/magicui/blob/main/example/cool-mode-custom.tsx): Example usage
+- [Pulsating Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/pulsating-button-demo.tsx): Example usage
+- [Ripple Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/ripple-button-demo.tsx): Example usage
+- [File Tree Demo](https://github.com/magicuidesign/magicui/blob/main/example/file-tree-demo.tsx): Example usage
+- [Blur Fade Demo](https://github.com/magicuidesign/magicui/blob/main/example/blur-fade-demo.tsx): Example usage
+- [Blur Fade Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/blur-fade-text-demo.tsx): Example usage
+- [Safari Demo](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo.tsx): Example usage
+- [Safari Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo-2.tsx): Example usage
+- [Safari Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo-3.tsx): Example usage
+- [Safari Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo-4.tsx): Example usage
+- [iPhone 15 Pro Demo](https://github.com/magicuidesign/magicui/blob/main/example/iphone-15-pro-demo.tsx): Example usage
+- [iPhone 15 Pro Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/iphone-15-pro-demo-2.tsx): Example usage
+- [iPhone 15 Pro Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/iphone-15-pro-demo-3.tsx): Example usage
+- [Rainbow Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/rainbow-button-demo.tsx): Example usage
+- [Rainbow Button Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/rainbow-button-demo-2.tsx): Example usage
+- [Interactive Hover Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/interactive-hover-button-demo.tsx): Example usage
+- [Terminal Demo](https://github.com/magicuidesign/magicui/blob/main/example/terminal-demo.tsx): Example usage
+- [Terminal Demo](https://github.com/magicuidesign/magicui/blob/main/example/terminal-demo-2.tsx): Example usage
+- [Video Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/video-text-demo.tsx): Example usage
+- [Pixel Image Demo](https://github.com/magicuidesign/magicui/blob/main/example/pixel-image-demo.tsx): Example usage
+- [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/example/highlighter-demo.tsx): Example usage
+- [Arc Timeline Demo](https://github.com/magicuidesign/magicui/blob/main/example/arc-timeline-demo.tsx): Example usage
+- [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-demo.tsx): Example usage
+- [grid-beams-demo](https://github.com/magicuidesign/magicui/blob/main/example/grid-beams-demo.tsx): Example usage
 
 ## Optional
 
