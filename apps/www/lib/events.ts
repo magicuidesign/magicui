@@ -6,12 +6,23 @@ const eventSchema = z.object({
     "copy_npm_command",
     "copy_usage_code",
     "copy_source_code",
-    // "copy_primitive_code",
-    // "copy_theme_code",
+    "set_layout",
+    "template_agent_clicked",
+    "template_devtool_clicked",
+    "template_mobile_clicked",
+    "template_saas_clicked",
+    "template_startup_clicked",
+    "template_portfolio_clicked",
+    "template_marketing_clicked",
+    "template_changelog_clicked",
+
+    "sidebar_cta_clicked",
   ]),
-  // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
-    .record(z.union([z.string(), z.number(), z.boolean(), z.null()]))
+    .record(
+      z.string(),
+      z.union([z.string(), z.number(), z.boolean(), z.null()]),
+    )
     .optional(),
 });
 

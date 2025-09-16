@@ -1,25 +1,25 @@
-import { allDocs } from "content-collections";
-import { compareDesc } from "date-fns";
+import { source } from "@/lib/source";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-
-import TechStack from "@/components/tech-stack";
+import { TechStack } from "@/components/tech-stack";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
-export async function Hero() {
-  const post = allDocs
-    .filter(
-      (post) =>
-        post.date && post.date <= new Date().toISOString() && post.published,
-    )
-    .sort((a, b) => {
-      if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
-      if (!a.date) return 1; // Move a to the end if date is undefined
-      if (!b.date) return -1; // Move b to the end if date is undefined
-      return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
-    })[0];
+export function Hero() {
+  const pages = source.getPages() as Array<{
+    data?: { title?: string; date?: string };
+    url?: string;
+  }>;
+  const page = pages.sort((a, b) => {
+    const dateA = a?.data?.date;
+    const dateB = b?.data?.date;
+    if (!dateA && !dateB) return 0;
+    if (!dateA) return 1;
+    if (!dateB) return -1;
+    return new Date(dateB).getTime() - new Date(dateA).getTime();
+  })[0];
+  const pageTitle = page?.data?.title;
 
   return (
     <section id="hero">
@@ -28,7 +28,7 @@ export async function Hero() {
           <div className="mt-10 grid grid-cols-1 md:mt-20">
             <div className="flex flex-col items-start gap-6 px-7 pb-8 text-center md:items-center md:px-10">
               <Link
-                href={post.slug}
+                href={page?.url ?? ""}
                 className={cn(
                   buttonVariants({
                     variant: "outline",
@@ -38,7 +38,7 @@ export async function Hero() {
                 )}
               >
                 🎉 <Separator className="mx-2 h-4" orientation="vertical" />
-                Introducing {post.title}
+                Introducing {pageTitle}
                 <ChevronRight className="ml-1 size-4 text-muted-foreground" />
               </Link>
               <div className="relative flex flex-col gap-4 md:items-center lg:flex-row">

@@ -1,17 +1,26 @@
+import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-interface CalloutProps {
-  icon?: string;
-  title?: string;
-  children?: React.ReactNode;
-}
-
-export function Callout({ title, children, icon, ...props }: CalloutProps) {
+export function Callout({
+  title,
+  children,
+  icon,
+  className,
+  ...props
+}: React.ComponentProps<typeof Alert> & { icon?: React.ReactNode }) {
   return (
-    <Alert {...props}>
-      {icon && <span className="mr-4 text-2xl">{icon}</span>}
+    <Alert
+      className={cn(
+        "bg-surface text-surface-foreground mt-6 w-auto border-none md:-mx-1",
+        className,
+      )}
+      {...props}
+    >
+      {icon}
       {title && <AlertTitle>{title}</AlertTitle>}
-      <AlertDescription>{children}</AlertDescription>
+      <AlertDescription className="text-card-foreground/80">
+        {children}
+      </AlertDescription>
     </Alert>
   );
 }

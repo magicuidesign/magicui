@@ -38,7 +38,7 @@ npx shadcn@latest add @magicui/rainbow-button
 
 Add the following to your `globals.css` file:
 
-```css title="app/globals.css" {2-6}
+```css title="app/globals.css" showLineNumbers {2-6}
 :root {
   --color-1: 0 100% 63%;
   --color-2: 270 100% 63%;
@@ -52,7 +52,7 @@ Add the following to your `globals.css` file:
 
 Add the following animations to your global CSS file.
 
-```css title="app/globals.css" {2, 4-11}
+```css title="app/globals.css" showLineNumbers {2, 4-11}
 @theme inline {
   --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
 
@@ -81,11 +81,11 @@ Add the following animations to your global CSS file.
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 ```
 
-```tsx
+```tsx showLineNumbers
 <RainbowButton>Rainbow Button</RainbowButton>
 ```
 

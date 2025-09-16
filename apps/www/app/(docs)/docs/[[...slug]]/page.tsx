@@ -1,21 +1,32 @@
-import { Mdx } from "@/components/mdx-components";
-import { DocPager, getPagerForDoc } from "@/components/pager";
-import { badgeVariants } from "@/components/ui/badge";
-import { getTableOfContents } from "@/lib/toc";
-import { absoluteUrl, cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { absoluteUrl } from "@/lib/utils";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons";
-import { allDocs } from "content-collections";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
+import { DocsTableOfContents } from "@/components/docs-toc";
 import { Contribute } from "@/components/contribute";
-import { SidebarCTA } from "@/components/sidebar-cta";
-import { TableOfContents } from "@/components/toc";
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { ProCTA, SidebarCTA } from "@/components/sidebar-cta";
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconArrowUpRight,
+} from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
+import { source } from "@/lib/source";
+import { mdxComponents } from "@/mdx-components";
+import { findNeighbour } from "fumadocs-core/server";
+import { siteConfig } from "@/config/site";
+import { replaceComponentSource } from "@/lib/docs";
+
+export const revalidate = false;
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return source.generateParams();
+}
 
 interface DocPageProps {
   params: Promise<{
@@ -24,25 +35,32 @@ interface DocPageProps {
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const { slug: slugArray } = await params;
-  const slug = slugArray?.join("/") || "index";
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug);
-
-  if (!doc) {
-    return null;
+  const { slug } = await params;
+  const page = source.getPage(slug);
+  if (!page) notFound();
+  const doc = page.data;
+  if (!doc.title || !doc.description) {
+    notFound();
   }
 
-  return doc;
+  return { doc, page };
 }
 
 export async function generateMetadata({
   params,
 }: DocPageProps): Promise<Metadata> {
-  const doc = await getDocFromParams({ params });
+  const { doc, page } = await getDocFromParams({ params });
 
   if (!doc) {
     return {};
   }
+
+  const url = process.env.NEXT_PUBLIC_APP_URL;
+
+  const ogUrl = new URL(`${url}/og`);
+  ogUrl.searchParams.set("heading", doc.title ?? "");
+  ogUrl.searchParams.set("type", siteConfig.name);
+  ogUrl.searchParams.set("mode", "light");
 
   return {
     title: `${doc.title} | Magic UI`,
@@ -51,10 +69,10 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
       type: "article",
-      url: absoluteUrl(doc.slug),
+      url: absoluteUrl(page.url),
       images: [
         {
-          url: doc.image,
+          url: ogUrl.toString(),
           width: 1200,
           height: 630,
         },
@@ -64,118 +82,139 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [doc.image],
+      images: [ogUrl.toString()],
       creator: "@dillionverma",
     },
   };
 }
 
-export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-  return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split("/"),
-  }));
-}
-
 export default async function DocPage({ params }: DocPageProps) {
-  const doc = await getDocFromParams({ params });
+  const { doc, page } = await getDocFromParams({ params });
 
-  if (!doc || !doc.published) {
-    notFound();
-  }
+  // @ts-expect-error - revisit fumadocs types.
+  const MDX = doc.body;
+  const neighbours = findNeighbour(source.pageTree, page.url);
 
-  const toc = await getTableOfContents(doc.body.raw);
-  const pager = getPagerForDoc(doc);
+  // @ts-expect-error - revisit fumadocs types.
+  const links = doc.links;
 
   return (
-    <main className="relative lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]">
-      <div className="mx-auto w-full min-w-0 max-w-3xl py-6 lg:py-8">
-        <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
-          <div className="truncate">Docs</div>
-          <ChevronRightIcon className="size-4" />
-          <div className="font-medium text-foreground">{doc.title}</div>
-        </div>
-        <div className="flex flex-col gap-2">
-          <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
-            {doc.title}
-          </h1>
-          <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 sm:z-0 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
-            <DocsCopyPage
-              page={(doc.body as any).rawWithFrontmatter ?? doc.body.raw}
-              url={absoluteUrl(doc.slug)}
-            />
-            {pager?.prev?.href && (
-              <Button
-                variant="secondary"
-                size="icon"
-                className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
-                asChild
-              >
-                <Link href={pager.prev.href}>
-                  <span className="sr-only">Previous</span>
-                  <IconArrowLeft />
-                </Link>
-              </Button>
-            )}
-            {pager?.next?.href && (
-              <Button
-                variant="secondary"
-                size="icon"
-                className="extend-touch-target size-8 shadow-none md:size-7"
-                asChild
-              >
-                <Link href={pager.next.href}>
-                  <span className="sr-only">Next</span>
-                  <IconArrowRight />
-                </Link>
-              </Button>
-            )}
+    <div
+      data-slot="docs"
+      className="flex items-stretch text-[1.05rem] sm:text-[15px] xl:w-full"
+    >
+      <div className="flex min-w-0 flex-1 flex-col">
+        <div className="h-(--top-spacing) shrink-0" />
+        <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-start justify-between">
+                <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
+                  {doc.title}
+                </h1>
+                <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
+                  <DocsCopyPage
+                    // @ts-expect-error - revisit fumadocs types.
+                    page={await replaceComponentSource(doc.content)}
+                    url={absoluteUrl(page.url)}
+                  />
+                  {neighbours.previous && (
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="extend-touch-target ml-auto size-8 shadow-none md:size-7"
+                      asChild
+                    >
+                      <Link href={neighbours.previous.url}>
+                        <IconArrowLeft />
+                        <span className="sr-only">Previous</span>
+                      </Link>
+                    </Button>
+                  )}
+                  {neighbours.next && (
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="extend-touch-target size-8 shadow-none md:size-7"
+                      asChild
+                    >
+                      <Link href={neighbours.next.url}>
+                        <span className="sr-only">Next</span>
+                        <IconArrowRight />
+                      </Link>
+                    </Button>
+                  )}
+                </div>
+              </div>
+              {doc.description && (
+                <p className="text-muted-foreground text-[1.05rem] text-balance sm:text-base">
+                  {doc.description}
+                </p>
+              )}
+            </div>
+            {links ? (
+              <div className="flex items-center space-x-2 pt-4">
+                {links?.doc && (
+                  <Badge asChild variant="secondary">
+                    <Link href={links.doc} target="_blank" rel="noreferrer">
+                      Docs <IconArrowUpRight />
+                    </Link>
+                  </Badge>
+                )}
+                {links?.api && (
+                  <Badge asChild variant="secondary">
+                    <Link href={links.api} target="_blank" rel="noreferrer">
+                      API Reference <IconArrowUpRight />
+                    </Link>
+                  </Badge>
+                )}
+              </div>
+            ) : null}
           </div>
-          {doc.description && (
-            <p className="text-balance text-lg text-muted-foreground">
-              {doc.description}
-            </p>
+          <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
+            <MDX components={mdxComponents} />
+          </div>
+        </div>
+        <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-0">
+          {neighbours.previous && (
+            <Button
+              variant="secondary"
+              size="sm"
+              asChild
+              className="shadow-none"
+            >
+              <Link href={neighbours.previous.url}>
+                <IconArrowLeft /> {neighbours.previous.name}
+              </Link>
+            </Button>
           )}
-        </div>
-        {doc.links ? (
-          <div className="flex items-center space-x-2 pt-4">
-            {doc.links?.doc && (
-              <Link
-                href={doc.links.doc}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                Docs
-                <ExternalLinkIcon className="size-3" />
+          {neighbours.next && (
+            <Button
+              variant="secondary"
+              size="sm"
+              className="ml-auto shadow-none"
+              asChild
+            >
+              <Link href={neighbours.next.url}>
+                {neighbours.next.name} <IconArrowRight />
               </Link>
-            )}
-            {doc.links?.api && (
-              <Link
-                href={doc.links.api}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                API Reference
-                <ExternalLinkIcon className="size-3" />
-              </Link>
-            )}
-          </div>
-        ) : null}
-        <div className="pb-12 pt-8">
-          <Mdx code={doc.body.code} />
-        </div>
-        <DocPager doc={doc} />
+            </Button>
+          )}
+        </div>{" "}
       </div>
-      {doc.toc && (
-        <div className="hidden border-l border-border py-6 pl-6 text-sm xl:block">
-          <div className="sticky top-[90px] h-[calc(100vh-3.5rem)] space-y-4">
-            <TableOfContents toc={toc} />
-            <Contribute doc={doc} />
+      <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-84 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
+        <div className="h-(--top-spacing) shrink-0" />
+        {/* @ts-expect-error - revisit fumadocs types. */}
+        {doc.toc?.length ? (
+          <div className="no-scrollbar overflow-y-auto px-8">
+            {/* @ts-expect-error - revisit fumadocs types. */}
+            <DocsTableOfContents toc={doc.toc} />
+            <Contribute page={page} />
+            <div className="h-8" />
             <SidebarCTA />
           </div>
-        </div>
-      )}
-    </main>
+        ) : null}
+      </div>
+    </div>
   );
 }

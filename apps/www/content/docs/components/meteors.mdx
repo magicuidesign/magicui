@@ -39,7 +39,7 @@ npx shadcn@latest add @magicui/meteors
 
 Add the following animations to your global CSS file.
 
-```css title="app/globals.css" {2, 4-15}
+```css title="app/globals.css" showLineNumbers {2, 4-15}
 @theme inline {
   --animate-meteor: meteor 5s linear infinite;
 
@@ -67,12 +67,12 @@ Add the following animations to your global CSS file.
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Meteors } from "@/components/magicui/meteors";
 ```
 
-```tsx
-<div className="relative overflow-hidden h-[500px] w-full max-w-[350px]">
+```tsx showLineNumbers
+<div className="relative overflow-hidden h-[500px] w-full">
   <Meteors />
 </div>
 ```

@@ -39,7 +39,7 @@ npx shadcn@latest add @magicui/orbiting-circles
 
 Add the following animations to your global CSS file.
 
-```css title="app/globals.css" {2, 4-14}
+```css title="app/globals.css" showLineNumbers {2, 4-14}
 @theme inline {
   --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
 
@@ -65,12 +65,12 @@ Add the following animations to your global CSS file.
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 import { File, Settings, Search } from "lucide-react";
 ```
 
-```tsx
+```tsx showLineNumbers
 <div className="relative overflow-hidden h-[500px] w-full">
   <OrbitingCircles>
     <File />

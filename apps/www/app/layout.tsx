@@ -3,14 +3,13 @@ import { PHProvider } from "@/components/posthog-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { fontMono, fontSans } from "@/lib/fonts";
+import { fontVariables } from "@/lib/fonts";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { Provider as JotaiProvider } from "jotai";
-
-import "@/styles/globals.css";
-
 import type { Viewport } from "next";
 import { Metadata } from "next";
+
+import "@/styles/globals.css";
 
 export const metadata: Metadata = constructMetadata({
   title: "Magic UI",
@@ -33,13 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="layout-fixed">
       <head />
       <body
         className={cn(
-          "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
-          fontSans.variable,
-          fontMono.variable,
+          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
+          fontVariables,
         )}
       >
         <JotaiProvider>
@@ -47,7 +45,7 @@ export default function RootLayout({
             <ThemeProvider attribute="class" defaultTheme="light">
               <TooltipProvider>
                 {children}
-                <Toaster />
+                <Toaster position="top-center" richColors toastOptions={{}} />
                 <Analytics />
               </TooltipProvider>
             </ThemeProvider>

@@ -6,9 +6,11 @@
       "name": "index",
       "type": "registry:style",
       "dependencies": [
-        "tw-animate-css",
         "class-variance-authority",
         "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "utils"
@@ -2321,10 +2323,6 @@
         {
           "path": "registry/example/dock-demo.tsx",
           "type": "registry:example"
-        },
-        {
-          "path": "registry/magicui/mode-toggle.tsx",
-          "type": "registry:ui"
         }
       ]
     },

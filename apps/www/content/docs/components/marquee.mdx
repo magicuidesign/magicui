@@ -11,7 +11,7 @@ video: https://cdn.magicui.design/marquee.mp4
 
 ## Installation
 
-<Tabs defaultValue="cli">
+<Tabs>
 
 <TabsList>
   <TabsTrigger value="cli">CLI</TabsTrigger>
@@ -31,7 +31,7 @@ npx shadcn@latest add @magicui/marquee
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="marquee" />
+<ComponentSource name="marquee" title="components/ui/marquee.tsx" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -39,7 +39,7 @@ npx shadcn@latest add @magicui/marquee
 
 Add the following animations to your global CSS file.
 
-```css title="app/globals.css" {2-3, 4-20}
+```css title="app/globals.css" showLineNumbers {2-3, 4-20}
 @theme inline {
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
@@ -81,11 +81,11 @@ Add the following animations to your global CSS file.
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Marquee } from "@/components/magicui/marquee";
 ```
 
-```tsx
+```tsx showLineNumbers
 <Marquee>
   <span>Next.js</span>
   <span>React</span>

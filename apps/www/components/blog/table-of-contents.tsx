@@ -1,6 +1,7 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 // Helper function to generate consistent IDs
@@ -14,13 +15,9 @@ const generateHeadingId = (text: string) => {
     .trim();
 };
 
-export default function BlogTableOfContents({
-  headings: initialHeadings,
-}: {
-  headings: string[];
-}) {
+export function BlogTableOfContents({ className }: { className?: string }) {
   const [activeHeading, setActiveHeading] = useState<string>("");
-  const [headings, setHeadings] = useState<string[]>(initialHeadings);
+  const [headings, setHeadings] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -92,17 +89,18 @@ export default function BlogTableOfContents({
   };
 
   return (
-    <div className="mb-6 w-full">
-      <h3 className="mb-4 font-medium text-primary underline underline-offset-8">
-        On this page
-      </h3>
-      <div className="flex w-full flex-col gap-2.5">
+    <div className={cn("flex flex-col gap-2 p-4 pt-0 text-sm", className)}>
+      <p className="text-muted-foreground bg-background sticky top-0 h-6 text-xs">
+        On This Page
+      </p>
+
+      <nav className="space-y-1">
         {isLoading ? (
           // Skeleton loading state
-          <div className="flex w-full flex-col gap-2.5">
-            <Skeleton className="h-5 w-1/2" />
-            <Skeleton className="h-5 w-2/3" />
-            <Skeleton className="h-5 w-full" />
+          <div className="space-y-1">
+            <Skeleton className="h-4 w-3/4" />
+            <Skeleton className="h-4 w-2/3" />
+            <Skeleton className="h-4 w-4/5" />
           </div>
         ) : (
           headings.map((heading, i) => {
@@ -118,10 +116,10 @@ export default function BlogTableOfContents({
                 key={i}
                 href={`#${headingId}`}
                 onClick={() => handleClick(headingId)}
-                className={`flex items-center gap-2 text-[15px] font-medium tracking-tight transition-colors ${
+                className={`block py-1 text-sm transition-colors ${
                   isActive
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
+                    ? "font-medium text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {heading}
@@ -129,7 +127,7 @@ export default function BlogTableOfContents({
             );
           })
         )}
-      </div>
+      </nav>
     </div>
   );
 }

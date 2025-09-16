@@ -1,187 +1,120 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
-import { Input } from "@/components/ui/input";
-import { allBlogs } from "content-collections";
-import { Search } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { blogSource } from "@/lib/source";
 
-function calculateReadingTime(content: string): number {
+function calculateReadingTimeFromContent(content: string): number {
   const wordsPerMinute = 200;
-  const words = content.split(/\s+/).length;
-  return Math.ceil(words / wordsPerMinute);
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / wordsPerMinute));
 }
 
-export default function BlogPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: Promise<{ tag?: string }>;
+}) {
+  const params = await searchParams;
+  const posts = blogSource.getPages();
 
-  // Get unique tags and filter out undefined
+  const selectedTag = params?.tag ?? "";
   const tags = Array.from(
-    new Set(allBlogs.map((blog) => blog.tag).filter(Boolean)),
-  ).sort();
+    new Set(
+      // @ts-expect-error - revisit fumadocs types.
+      posts.map((p) => p.data?.tag).filter(Boolean),
+    ),
+  ) as string[];
+  tags.sort((a, b) => a.localeCompare(b));
 
-  // Get featured posts
-  const featuredPosts = allBlogs.filter((blog) => blog.featured).slice(0, 7);
-
-  // Filter blogs based on search and tag
-  const filteredBlogs = allBlogs.filter((blog) => {
-    const matchesSearch =
-      blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      blog?.description?.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesTag = !selectedTag || blog.tag === selectedTag;
-    return matchesSearch && matchesTag;
-  });
+  const filteredPosts = selectedTag
+    ? posts.filter(
+        // @ts-expect-error - revisit fumadocs types.
+        (p) => p.data?.tag === selectedTag,
+      )
+    : posts;
 
   return (
-    <section className="mx-auto w-full max-w-7xl p-5">
-      {/* Featured Posts */}
-      {featuredPosts.length > 0 && (
-        <div className="mb-12 rounded-xl border border-border">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Main featured post */}
-            <div className="flex flex-col p-5 lg:border-r">
-              <h2 className="mb-6 w-fit rounded-full border border-border bg-primary px-3 py-1 text-sm font-semibold tracking-tight text-primary-foreground">
-                Featured
-              </h2>
-              <a
-                href={`/blog/${featuredPosts[0]._meta.path}`}
-                className="group relative"
-              >
-                <div className="aspect-[16/10] overflow-hidden rounded-xl border border-border">
-                  <img
-                    src={featuredPosts[0].image}
-                    alt={featuredPosts[0].title}
-                    className="size-full rounded-xl object-cover object-left"
-                  />
-                </div>
-                <div className="py-4">
-                  <div className="mb-2 flex items-center gap-2 text-sm">
-                    {calculateReadingTime(featuredPosts[0].body.raw)} min read
-                    <span className="flex h-6 w-fit items-center justify-center rounded-full border border-border bg-primary/5 px-3 text-sm">
-                      {featuredPosts[0].tag}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold tracking-tighter underline-offset-4 group-hover:underline">
-                    {featuredPosts[0].title}
-                  </h3>
-                </div>
-              </a>
-            </div>
+    <main className="mx-auto w-full max-w-6xl p-6">
+      <h1 className="mb-4 text-2xl font-semibold tracking-tight">Blog</h1>
 
-            {/* Secondary featured posts */}
-            <div className="flex flex-col">
-              {featuredPosts.slice(1, 7).map((blog) => (
-                <a
-                  key={blog._meta.path}
-                  href={`/blog/${blog._meta.path}`}
-                  className="group flex gap-4 border-b border-border p-5 first:border-t last:border-b-0 lg:first:border-t-0"
-                >
-                  <div className="flex flex-col justify-center">
-                    <div className="mb-1 flex items-center gap-2 text-sm text-muted-foreground">
-                      {calculateReadingTime(blog.body.raw)} min read
-                      <span className="flex h-6 w-fit items-center justify-center rounded-full border border-border bg-primary/5 px-3 text-sm">
-                        {blog.tag}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-semibold tracking-tighter underline-offset-4 group-hover:underline">
-                      {blog.title}
-                    </h3>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="mb-8 space-y-4">
-        {/* Search input */}
-        <div className="relative">
-          <Input
-            type="text"
-            placeholder="Search blogs..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-lg border border-border px-4 py-2 focus:border-primary focus:outline-none"
-          />
-        </div>
-
-        {/* Tag filters */}
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => setSelectedTag(null)}
-            className={`rounded-full border border-border px-3 py-1 text-sm transition-colors ${
-              selectedTag === null
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
+      {tags.length > 0 ? (
+        <nav className="mb-6 flex flex-wrap gap-2">
+          <Link
+            href="/blog"
+            className={`rounded-full border px-3 py-1 text-sm ${
+              selectedTag === ""
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-muted"
             }`}
           >
             All
-          </button>
+          </Link>
           {tags.map((tag) => (
-            <button
+            <Link
               key={tag}
-              type="button"
-              onClick={() => tag && setSelectedTag(tag)}
-              className={`rounded-full border border-border px-3 py-1 text-sm transition-colors ${
+              href={`/blog?tag=${encodeURIComponent(tag)}`}
+              className={`rounded-full border px-3 py-1 text-sm ${
                 selectedTag === tag
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-muted"
               }`}
             >
               {tag}
-            </button>
+            </Link>
           ))}
-        </div>
-      </div>
+        </nav>
+      ) : null}
 
-      {filteredBlogs.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-muted p-12 text-center">
-          <Search className="mb-2 text-4xl" />
-          <h3 className="mb-2 text-balance text-xl font-medium tracking-tighter">
-            No blogs found
-          </h3>
-          <p className="text-balance text-muted-foreground">
-            Try adjusting your search or filter to find what you&apos;re looking
-            for
-          </p>
-        </div>
+      {filteredPosts.length === 0 ? (
+        <p className="text-muted-foreground">No posts yet.</p>
       ) : (
-        <ul className="grid grid-cols-1 gap-1.5 overflow-hidden rounded-xl border border-border md:grid-cols-2 lg:grid-cols-3">
-          {filteredBlogs.map((blog) => (
-            <li
-              key={blog._meta.path}
-              className="relative p-4 before:absolute before:-left-1 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-1 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-['']"
-            >
-              <Link
-                href={`/blog/${blog._meta.path}`}
-                className="group grid grid-rows-1"
-              >
-                <div className="overflow-hidden rounded-xl border border-border">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="size-full object-cover object-left transition-transform duration-300 ease-in-out group-hover:scale-[1.01] md:max-h-[200px]"
-                  />
-                </div>
-                <div className="py-2">
-                  <h3 className="tr mb-2 text-xl font-semibold tracking-tighter underline-offset-4 group-hover:underline">
-                    {blog.title}
-                  </h3>
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <span className="flex h-6 w-fit items-center justify-center rounded-full border border-border bg-primary/5 px-3 text-sm">
-                      {blog.tag}
-                    </span>
-                    <span>{calculateReadingTime(blog.body.raw)} min read</span>
+        <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredPosts.map((post) => {
+            // @ts-expect-error - revisit fumadocs types.
+            const image = post.data?.image as string | undefined;
+            const title = (post.data?.title as string | undefined) ?? post.url;
+            const description = post.data?.description as string | undefined;
+            // @ts-expect-error - revisit fumadocs types.
+            const tag = post.data?.tag as string | undefined;
+            // @ts-expect-error - revisit fumadocs types.
+            const content = (post.data?.content as string | undefined) ?? "";
+            const readingTime = calculateReadingTimeFromContent(content);
+
+            return (
+              <li key={post.url} className="overflow-hidden rounded-md border">
+                <Link href={post.url} className="block">
+                  {image ? (
+                    <Image
+                      src={image}
+                      alt={title}
+                      width={640}
+                      height={360}
+                      className="h-40 w-full object-cover"
+                    />
+                  ) : null}
+                  <div className="space-y-2 p-4">
+                    <h2 className="line-clamp-2 font-medium leading-tight underline-offset-2 hover:underline">
+                      {title}
+                    </h2>
+                    {description ? (
+                      <p className="line-clamp-2 text-sm text-muted-foreground">
+                        {description}
+                      </p>
+                    ) : null}
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      {tag ? (
+                        <span className="rounded-full border px-2 py-0.5">
+                          {tag}
+                        </span>
+                      ) : null}
+                      <span>{readingTime} min read</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </li>
-          ))}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
-    </section>
+    </main>
   );
 }

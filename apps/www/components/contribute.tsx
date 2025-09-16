@@ -1,10 +1,9 @@
-import { Doc } from "content-collections";
 import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react";
 import Link from "next/link";
-
 import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github";
+import { Page, PageData } from "fumadocs-core/source";
 
-export function Contribute({ doc }: { doc: Doc }) {
+export function Contribute({ page }: { page: Page<PageData> }) {
   const contributeLinks = [
     {
       text: "Report an issue",
@@ -12,7 +11,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       href: getGitHubIssueUrl({
         owner: "magicuidesign",
         repo: "magicui",
-        title: `[bug]: ${doc.slug}`,
+        title: `[bug]: ${page.url}`,
         labels: ["bug", "documentation"],
         template: "bug_report.yml",
       }),
@@ -23,7 +22,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       href: getGitHubIssueUrl({
         owner: "magicuidesign",
         repo: "magicui",
-        title: `[feat]: ${doc.slug}`,
+        title: `[feat]: ${page.url}`,
         labels: ["enhancement"],
         template: "feature_request.yml",
       }),
@@ -34,24 +33,24 @@ export function Contribute({ doc }: { doc: Doc }) {
       href: getGithubFileUrl({
         owner: "magicuidesign",
         repo: "magicui",
-        slug: doc.slug,
+        slug: page.url,
       }),
     },
   ];
 
   return (
-    <div className="space-y-2">
-      <p className="font-medium">Contribute</p>
-      <ul className="m-0 list-none">
+    <div className="flex flex-col gap-2 p-4">
+      <p className="text-xs font-medium text-muted-foreground">Contribute</p>
+      <ul className="m-0 list-none flex flex-col gap-1">
         {contributeLinks.map((link, index) => (
-          <li key={index} className="mt-0 pt-2">
+          <li key={index}>
             <Link
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
-              <link.icon className="mr-2 size-4" />
+              <link.icon className="size-3" />
               {link.text}
             </Link>
           </li>

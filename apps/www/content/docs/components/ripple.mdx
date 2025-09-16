@@ -39,7 +39,7 @@ npx shadcn@latest add @magicui/ripple
 
 Add the following animations to your global CSS file.
 
-```css title="app/globals.css" {2-3, 5-13}
+```css title="app/globals.css" showLineNumbers {2-3, 5-13}
 @theme inline {
   --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
     infinite;
@@ -64,11 +64,11 @@ Add the following animations to your global CSS file.
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Ripple } from "@/components/magicui/ripple";
 ```
 
-```tsx
+```tsx showLineNumbers
 <div className="relative h-[500px] w-full overflow-hidden">
   <Ripple />
 </div>

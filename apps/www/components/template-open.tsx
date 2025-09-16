@@ -32,7 +32,7 @@ export function TemplateOpen({ url, free = false }: TemplateOpenProps) {
 
   return (
     <Link
-      href="https://pro.magicui.design/#pricing"
+      href="https://pro.magicui.design/"
       target="_blank"
       className={cn(
         buttonVariants({

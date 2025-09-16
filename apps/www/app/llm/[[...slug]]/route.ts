@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
-import { allDocs } from "content-collections";
+import { source } from "@/lib/source";
+import { replaceComponentSource } from "@/lib/docs";
 
 export const revalidate = false;
 
@@ -8,15 +9,19 @@ export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ slug?: string[] }> },
 ) {
-  const { slug: slugSegments } = await params;
-  const slug = slugSegments?.join("/") || "index";
-  const doc = allDocs.find((d) => d.slugAsParams === slug);
+  const slug = (await params).slug;
+  const page = source.getPage(slug);
 
-  if (!doc) {
+  if (!page) {
     notFound();
   }
 
-  const mdx = (doc.body as any).rawWithFrontmatter ?? doc.body.raw;
+  // @ts-expect-error - revisit fumadocs types.
+  let mdx = page.data.content as string;
+
+  // Replace component tags with actual source code
+  mdx = await replaceComponentSource(mdx);
+
   return new NextResponse(mdx, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
@@ -26,7 +31,5 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return allDocs.map((doc) => ({
-    slug: doc.slugAsParams === "index" ? [] : doc.slugAsParams.split("/"),
-  }));
+  return source.generateParams();
 }

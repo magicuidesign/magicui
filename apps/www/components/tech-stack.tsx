@@ -136,7 +136,7 @@ const techComponents: TechComponents = {
   },
 };
 
-export default function TechStack({
+export function TechStack({
   technologies,
   className,
 }: {

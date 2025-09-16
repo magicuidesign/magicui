@@ -39,7 +39,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.content-collections
 
 # turbo cache
 .turbo

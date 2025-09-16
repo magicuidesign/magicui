@@ -1,6 +1,6 @@
 ---
 title: Theme Toggler
-date: 2025-0-17
+date: 2025-08-17
 description: An Animated theme toggler component, fully customizable using Tailwind CSS.
 author: Nazam Kalsi
 published: true
@@ -34,9 +34,9 @@ npx shadcn@latest add @magicui/animated-theme-toggler
 
 <Step>Update the import paths to match your project setup.</Step>
 
-<Step>Add the required CSS into your index.css</Step>
+<Step>Add the required CSS into your global CSS file</Step>
 
-```css title="./index.css"
+```css title="app/globals.css" showLineNumbers
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -52,11 +52,11 @@ npx shadcn@latest add @magicui/animated-theme-toggler
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
 ```
 
-```tsx
+```tsx showLineNumbers
 <AnimatedThemeToggler />
 ```
 
