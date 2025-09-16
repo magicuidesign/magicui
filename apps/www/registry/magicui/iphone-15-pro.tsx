@@ -3,14 +3,14 @@ import { SVGProps } from "react";
 export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
-  src?: string;
+  imageSrc?: string;
   videoSrc?: string;
 }
 
 export function Iphone15Pro({
   width = 433,
   height = 882,
-  src,
+  imageSrc,
   videoSrc,
   ...props
 }: Iphone15ProProps) {
@@ -60,9 +60,9 @@ export function Iphone15Pro({
         className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
       />
 
-      {src && (
+      {imageSrc && (
         <image
-          href={src}
+          href={imageSrc}
           x="21.25"
           y="19.25"
           width="389.5"
