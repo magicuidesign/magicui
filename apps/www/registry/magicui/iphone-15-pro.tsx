@@ -5,6 +5,7 @@ export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   height?: number;
   imageSrc?: string;
   videoSrc?: string;
+  webviewSrc?: string;
 }
 
 export function Iphone15Pro({
@@ -12,6 +13,7 @@ export function Iphone15Pro({
   height = 882,
   imageSrc,
   videoSrc,
+  webviewSrc,
   ...props
 }: Iphone15ProProps) {
   const originalWidth: number = 433;
@@ -80,6 +82,20 @@ export function Iphone15Pro({
             loop
             muted
             playsInline
+          />
+        </foreignObject>
+      )}
+      {webviewSrc && (
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
+          <iframe
+            title="iPhone 15 Pro WebView"
+            className="size-full overflow-hidden rounded-[55.75px] object-cover"
+            src={webviewSrc}
+            loading="lazy"
+            allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            referrerPolicy="no-referrer"
+            style={{ width: "100%", height: "100%", border: "0" }} // Fallback for browsers that do not support
           />
         </foreignObject>
       )}
