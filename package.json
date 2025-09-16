@@ -26,5 +26,9 @@
   "devDependencies": {
     "prettier": "^3.6.2",
     "turbo": "^2.5.6"
+  },
+  "engines": {
+    "node": ">=22.14.0",
+    "pnpm": ">=9"
   }
 }
