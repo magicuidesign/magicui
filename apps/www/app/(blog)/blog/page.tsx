@@ -83,7 +83,7 @@ export default async function Page({
               <li key={post.url} className="overflow-hidden rounded-md border">
                 <Link href={post.url} className="block">
                   {image ? (
-                    <Image
+                    <img
                       src={image}
                       alt={title}
                       width={640}
