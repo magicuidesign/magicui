@@ -19,7 +19,7 @@ export function Iphone15Pro({
 }: Iphone15ProProps) {
   const originalWidth: number = 433;
   const originalHeight: number = 882;
-
+  
   return (
     <svg
       width={width}
@@ -62,7 +62,6 @@ export function Iphone15Pro({
         d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z"
         className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
       />
-
       {imageSrc && (
         <image
           href={imageSrc}
