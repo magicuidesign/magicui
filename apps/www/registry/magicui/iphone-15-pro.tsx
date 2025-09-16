@@ -1,24 +1,30 @@
 import { SVGProps } from "react";
 
-export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
+export interface Iphone15ProProps
+  extends Omit<SVGProps<SVGSVGElement>, "width" | "height"> {
   width?: number;
   height?: number;
-  src?: string;
-  videoSrc?: string;
+  imageSrc?: string; // Image URL to display on the iPhone screen
+  videoSrc?: string; // Video URL to display on the iPhone screen
+  webviewSrc?: string; // WebView URL to display on the iPhone screen
 }
 
 export function Iphone15Pro({
   width = 433,
   height = 882,
-  src,
+  imageSrc,
   videoSrc,
+  webviewSrc,
   ...props
 }: Iphone15ProProps) {
+  const originalWidth: number = 433;
+  const originalHeight: number = 882;
+  
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${originalWidth} ${originalHeight}`} // Maintain original aspect ratio (fixed viewBox)
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -56,10 +62,9 @@ export function Iphone15Pro({
         d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z"
         className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
       />
-
-      {src && (
+      {imageSrc && (
         <image
-          href={src}
+          href={imageSrc}
           x="21.25"
           y="19.25"
           width="389.5"
@@ -77,6 +82,20 @@ export function Iphone15Pro({
             loop
             muted
             playsInline
+          />
+        </foreignObject>
+      )}
+      {webviewSrc && (
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
+          <iframe
+            title="iPhone 15 Pro WebView"
+            className="size-full overflow-hidden rounded-[55.75px] object-cover"
+            src={webviewSrc}
+            loading="lazy"
+            allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            referrerPolicy="no-referrer"
+            style={{ width: "100%", height: "100%", border: "0" }} // Fallback for browsers that do not support foreignObject
           />
         </foreignObject>
       )}
