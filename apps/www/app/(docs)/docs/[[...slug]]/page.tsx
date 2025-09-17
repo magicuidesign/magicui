@@ -7,7 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsTableOfContents } from "@/components/docs-toc";
 import { Contribute } from "@/components/contribute";
-import { ProCTA, SidebarCTA } from "@/components/sidebar-cta";
+import { SidebarCTA } from "@/components/sidebar-cta";
 import {
   IconArrowLeft,
   IconArrowRight,
@@ -58,9 +58,8 @@ export async function generateMetadata({
   const url = process.env.NEXT_PUBLIC_APP_URL;
 
   const ogUrl = new URL(`${url}/og`);
-  ogUrl.searchParams.set("heading", doc.title ?? "");
-  ogUrl.searchParams.set("type", siteConfig.name);
-  ogUrl.searchParams.set("mode", "light");
+  ogUrl.searchParams.set("title", doc.title ?? "");
+  ogUrl.searchParams.set("description", doc.description ?? "");
 
   return {
     title: `${doc.title} | Magic UI`,
