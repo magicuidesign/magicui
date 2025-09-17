@@ -1,6 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { blogSource } from "@/lib/source";
+
+export const revalidate = false;
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 function calculateReadingTimeFromContent(content: string): number {
   const wordsPerMinute = 200;
