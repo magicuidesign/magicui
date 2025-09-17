@@ -3,14 +3,14 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-import { AnimatedShinyText } from "@/registry/magicui/animated-shiny-text";
-import { TextAnimate } from "@/registry/magicui/text-animate";
+import { PingDot } from "@/components/ping-dot";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/events";
+import { AnimatedShinyText } from "@/registry/magicui/animated-shiny-text";
 import { AuroraText } from "@/registry/magicui/aurora-text";
 import { LineShadowText } from "@/registry/magicui/line-shadow-text";
-import { trackEvent } from "@/lib/events";
+import { TextAnimate } from "@/registry/magicui/text-animate";
 import posthog from "posthog-js";
-import { PingDot } from "@/components/ping-dot";
 
 export function ProCTA() {
   return (
@@ -83,7 +83,7 @@ export function ProCTA() {
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2"
           >
-            Get Instant Access
+            Get Lifetime Access
             <ChevronRight className="size-4" />
           </Link>
         </Button>
