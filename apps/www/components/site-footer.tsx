@@ -2,21 +2,31 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="relative border-t border-border py-6 md:py-0">
-      <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
-        <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-          Brought to you by{" "}
-          <a
-            href={siteConfig.links.twitter}
-            title="Twitter"
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium underline underline-offset-4"
-          >
-            dillion
-          </a>
-          .
-        </p>
+    <footer className="group-has-[.section-soft]/body:bg-surface/40 3xl:fixed:bg-transparent group-has-[.docs-nav]/body:pb-20 group-has-[.docs-nav]/body:sm:pb-0 dark:bg-transparent">
+      <div className="container-wrapper px-4 xl:px-6">
+        <div className="flex h-(--footer-height) items-center justify-between">
+          <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
+            Built by{" "}
+            <a
+              href={siteConfig.links.twitter}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              dillion
+            </a>
+            . The source code is available on{" "}
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              GitHub
+            </a>
+            .
+          </div>
+        </div>
       </div>
     </footer>
   );

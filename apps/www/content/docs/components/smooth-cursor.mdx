@@ -42,7 +42,7 @@ npx shadcn@latest add @magicui/smooth-cursor
 
 <Step>Add the component to your page or layout.</Step>
 
-```tsx
+```tsx showLineNumbers
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 export default function Page() {
@@ -63,11 +63,11 @@ export default function Page() {
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 ```
 
-```tsx
+```tsx showLineNumbers
 <SmoothCursor />
 ```
 
@@ -75,7 +75,7 @@ import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 To prevent the default browser cursor from overlapping with the custom cursor, add the following CSS globally:
 
-```css
+```css showLineNumbers
 * {
   cursor: none !important;
 }
@@ -83,7 +83,7 @@ To prevent the default browser cursor from overlapping with the custom cursor, a
 
 ### Optional: Keep text cursor for inputs
 
-```css
+```css showLineNumbers
 input,
 textarea,
 select {
@@ -93,7 +93,7 @@ select {
 
 💡 If you're using Tailwind CSS, you can add cursor-none to your layout wrapper:
 
-```tsx
+```tsx showLineNumbers
 <div className="cursor-none">
   <SmoothCursor />
   {/* your app */}
@@ -109,7 +109,7 @@ select {
 
 ### SpringConfig Type
 
-```typescript
+```typescript showLineNumbers
 interface SpringConfig {
   damping: number; // Controls how quickly the animation settles
   stiffness: number; // Controls the spring stiffness
@@ -120,7 +120,7 @@ interface SpringConfig {
 
 ### Default Spring Configuration
 
-```typescript
+```typescript showLineNumbers
 const defaultSpringConfig = {
   damping: 45,
   stiffness: 400,

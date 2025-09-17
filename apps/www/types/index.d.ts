@@ -8,18 +8,14 @@ export interface NavItem {
   icon?: keyof typeof Icons;
   label?: string;
   paid?: boolean;
-  event?: string;
+  event?: Event["name"];
 }
 
 export interface NavItemWithChildren extends NavItem {
   items?: NavItemWithChildren[];
 }
 
-export interface MainNavItem extends NavItem {}
-
-export interface SidebarNavItem extends NavItemWithChildren {}
-
 export type DashboardConfig = {
-  mainNav: MainNavItem[];
-  sidebarNav: SidebarNavItem[];
+  mainNav: NavItem[];
+  sidebarNav: NavItemWithChildren[];
 };

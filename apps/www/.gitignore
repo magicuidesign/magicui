@@ -7,4 +7,4 @@ node_modules
 .vercel
 *.tsbuildinfo
 next-env.d.ts
-.content-collections
+.source

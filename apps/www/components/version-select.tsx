@@ -15,7 +15,7 @@ const DOMAINS = {
   v4: "https://magicui.design",
 } as const;
 
-export function VersionSelect() {
+export function VersionSelect({ className }: { className?: string }) {
   const [version, setVersion] = React.useState<keyof typeof DOMAINS>("v4");
 
   const handleVersionChange = (value: keyof typeof DOMAINS) => {
@@ -25,10 +25,15 @@ export function VersionSelect() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex h-7 w-14 cursor-pointer items-center justify-between rounded-full border border-muted-foreground/20 bg-muted py-1 pl-2 pr-0.5 text-sm font-medium text-muted-foreground">
+      <DropdownMenuTrigger
+        className={cn(
+          "flex h-7 w-14 cursor-pointer items-center justify-between rounded-full border bg-background py-1 pl-2 pr-0.5 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground",
+          className,
+        )}
+      >
         {version}
-        <div className="flex size-5 items-center justify-center rounded-full border border-muted-foreground/20">
-          <ChevronDownIcon className="size-4 opacity-50" />
+        <div className="flex size-5 items-center justify-center rounded-full border">
+          <ChevronDownIcon className="size-4 text-muted-foreground" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="min-w-[120px]">
@@ -36,7 +41,7 @@ export function VersionSelect() {
           onClick={() => handleVersionChange("v3")}
           className={cn(
             "flex justify-between",
-            version === "v3" && "bg-muted text-primary",
+            version === "v3" && "bg-accent text-accent-foreground",
           )}
         >
           Tailwind v3
@@ -46,7 +51,7 @@ export function VersionSelect() {
           onClick={() => handleVersionChange("v4")}
           className={cn(
             "flex justify-between",
-            version === "v4" && "bg-muted text-primary",
+            version === "v4" && "bg-accent text-accent-foreground",
           )}
         >
           Tailwind v4

@@ -1,11 +1,18 @@
-import { allShowcases } from "content-collections";
+import { ShowcaseCard } from "@/components/sections/showcase";
+import { siteConfig } from "@/config/site";
+import { showcaseSource } from "@/lib/source";
+import { absoluteUrl } from "@/lib/utils";
+
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ShowcaseCard } from "@/components/sections/showcase";
-import { siteConfig } from "@/config/site";
-import { absoluteUrl } from "@/lib/utils";
-import process from "process";
+export const revalidate = false;
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return showcaseSource.generateParams();
+}
 
 interface PageProps {
   params: Promise<{
@@ -13,28 +20,22 @@ interface PageProps {
   }>;
 }
 
-export function generateStaticParams(): { slug: string[] }[] {
-  return allShowcases.map((page) => ({
-    slug: page.slugAsParams.split("/"),
-  }));
-}
-
-async function getPageFromParams(params: PageProps["params"]) {
+async function getDocFromParams({ params }: PageProps) {
   const { slug } = await params;
-  const slugString = slug?.join("/");
-  const page = allShowcases.find((page) => page.slugAsParams === slugString);
-
-  if (!page) {
-    return null;
+  const page = showcaseSource.getPage(slug);
+  if (!page) notFound();
+  const doc = page.data;
+  if (!doc.title || !doc.description) {
+    notFound();
   }
 
-  return page;
+  return { doc, page };
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const page = await getPageFromParams(params);
+  const { doc, page } = await getDocFromParams({ params });
 
   if (!page) {
     return {};
@@ -43,18 +44,17 @@ export async function generateMetadata({
   const url = process.env.NEXT_PUBLIC_APP_URL;
 
   const ogUrl = new URL(`${url}/og`);
-  ogUrl.searchParams.set("heading", page.title);
-  ogUrl.searchParams.set("type", siteConfig.name);
-  ogUrl.searchParams.set("mode", "light");
+  ogUrl.searchParams.set("title", doc.title ?? "");
+  ogUrl.searchParams.set("description", doc.description ?? "");
 
   return {
-    title: page.title,
-    description: page.description,
+    title: doc.title,
+    description: doc.description,
     openGraph: {
-      title: page.title,
-      description: page.description,
+      title: doc.title,
+      description: doc.description,
       type: "article",
-      url: absoluteUrl(page.slug),
+      url: absoluteUrl(page.url),
       images: [
         {
           url: ogUrl.toString(),
@@ -65,33 +65,31 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: page.title,
-      description: page.description,
+      title: doc.title,
+      description: doc.description,
       images: [ogUrl.toString()],
     },
   };
 }
 
 export default async function PagePage({ params }: PageProps) {
-  const page = await getPageFromParams(params);
-
-  if (!page) {
-    notFound();
-  }
+  const { doc, page } = await getDocFromParams({ params });
 
   return (
     <article className="container max-w-2xl py-14">
       <h2 className="mb-4 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
-        {page.title}
+        {doc.title}
       </h2>
       <h3 className="mx-auto mb-8 text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
-        {page.title} uses Magic UI to build their landing page.
+        {doc.title} uses Magic UI to build their landing page.
       </h3>
       <ShowcaseCard
-        title={page.title}
-        href={page.href}
-        image={page.image}
-        affiliation={page.affiliation}
+        title={doc.title ?? ""}
+        href={page.url}
+        // @ts-expect-error - revisit fumadocs types.
+        image={doc.image ?? ""}
+        // @ts-expect-error - revisit fumadocs types.
+        affiliation={doc.affiliation ?? ""}
       />
     </article>
   );

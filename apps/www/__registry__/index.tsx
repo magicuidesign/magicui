@@ -3284,11 +3284,6 @@ export const Index: Record<string, any> = {
         type: "registry:example",
         target: "",
       },
-      {
-        path: "registry/magicui/mode-toggle.tsx",
-        type: "registry:ui",
-        target: "",
-      },
     ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dock-demo.tsx");

@@ -5,7 +5,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
-export default function TemplatePreview({
+export function TemplatePreview({
   href,
   children,
 }: {

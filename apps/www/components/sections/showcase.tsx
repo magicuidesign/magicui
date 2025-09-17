@@ -1,5 +1,5 @@
 import { ChevronRightIcon } from "@radix-ui/react-icons";
-import { allShowcases } from "content-collections";
+import { showcaseSource } from "@/lib/source";
 import Link from "next/link";
 
 import { Marquee } from "@/registry/magicui/marquee";
@@ -41,6 +41,7 @@ export function ShowcaseCard({
 }
 
 export function Showcase() {
+  const showcases = showcaseSource.getPages();
   return (
     <section id="showcase" className="container py-14">
       <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
@@ -51,10 +52,20 @@ export function Showcase() {
       </h3>
       <div className="relative flex flex-col">
         <Marquee className="max-w-screen [--duration:40s]">
-          {allShowcases
-            .filter((showcase) => showcase.featured)
+          {showcases
+            // @ts-expect-error - revisit fumadocs types.
+            .filter((showcase) => showcase.data.featured)
             .map((showcase, idx) => (
-              <ShowcaseCard key={idx} {...showcase} href={showcase.slug} />
+              <ShowcaseCard
+                key={idx}
+                {...showcase}
+                href={showcase.url}
+                title={showcase.data.title ?? ""}
+                // @ts-expect-error - revisit fumadocs types.
+                affiliation={showcase.data.affiliation ?? ""}
+                // @ts-expect-error - revisit fumadocs types.
+                image={showcase.data.image ?? ""}
+              />
             ))}
         </Marquee>
         <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-gradient-to-r from-background"></div>

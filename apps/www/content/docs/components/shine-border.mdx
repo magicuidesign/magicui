@@ -38,7 +38,7 @@ npx shadcn@latest add @magicui/shine-border
 
 Add the following animations to your global CSS file.
 
-```css title="app/globals.css" {2, 4-14}
+```css title="app/globals.css" showLineNumbers {2, 4-14}
 @theme inline {
   --animate-shine: shine var(--duration) infinite linear;
 
@@ -70,11 +70,11 @@ Add the following animations to your global CSS file.
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { ShineBorder } from "@/registry/magicui/shine-border";
 ```
 
-```tsx
+```tsx showLineNumbers
 <div className="relative h-[500px] w-full overflow-hidden">
   <ShineBorder />
 </div>

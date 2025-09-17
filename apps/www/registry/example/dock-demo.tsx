@@ -4,7 +4,6 @@ import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -144,17 +143,6 @@ export default function DockDemo() {
               </Tooltip>
             </DockIcon>
           ))}
-          <Separator orientation="vertical" className="h-full py-2" />
-          <DockIcon>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ModeToggle className="size-12 rounded-full" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Theme</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
         </Dock>
       </TooltipProvider>
     </div>

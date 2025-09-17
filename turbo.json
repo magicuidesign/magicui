@@ -2,7 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
   "envMode": "strict",
-  "globalEnv": ["NODE_ENV"],
+  "globalEnv": ["NODE_ENV", "NEXT_PUBLIC_POSTHOG_API_KEY"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

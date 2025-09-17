@@ -21,8 +21,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "content-collections": ["./.content-collections/generated"]
+      "@/*": ["./*"]
     }
   },
   "include": [

@@ -1,14 +1,13 @@
-import { withContentCollections } from "@content-collections/next";
+import { createMDX } from "fumadocs-mdx/next";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: process.env.NODE_ENV === "production" ? "standalone" : undefined,
-  reactStrictMode: true,
-  experimental: {
-    optimizeCss: true,
+  outputFileTracingIncludes: {
+    "/*": ["./registry/**/*"],
   },
+  reactStrictMode: true,
   images: {
-    domains: ["localhost", "cdn.magicui.design"],
+    domains: ["localhost", "cdn.magicui.design", "images.unsplash.com"],
   },
   async redirects() {
     return [
@@ -19,17 +18,7 @@ const nextConfig = {
       },
       {
         source: "/components",
-        destination: "/docs/components/marquee",
-        permanent: true,
-      },
-      {
-        source: "/components/:path*",
-        destination: "/docs/components/:path*",
-        permanent: true,
-      },
-      {
-        source: "/docs/components",
-        destination: "/docs/components/marquee",
+        destination: "/docs/components",
         permanent: true,
       },
       {
@@ -49,4 +38,6 @@ const nextConfig = {
   },
 };
 
-export default withContentCollections(nextConfig);
+const withMDX = createMDX({});
+
+export default withMDX(nextConfig);

@@ -2,41 +2,10 @@ import { exec } from "child_process";
 import { promises as fs } from "fs";
 import path from "path";
 import { rimraf } from "rimraf";
-import { registryItemSchema, type Registry } from "shadcn/schema";
-import { z } from "zod";
+import { Registry } from "shadcn/schema";
 
-import { examples } from "../registry/registry-examples";
-import { lib } from "../registry/registry-lib";
-import { ui } from "../registry/registry-ui";
+import { registry } from "../registry/index";
 import { siteConfig } from "../config/site";
-
-const DEPRECATED_ITEMS = ["toast"];
-
-const registry = {
-  name: "magicui",
-  homepage: "https://magicui.design",
-  items: z.array(registryItemSchema).parse(
-    [
-      {
-        name: "index",
-        type: "registry:style",
-        dependencies: [
-          "tw-animate-css",
-          "class-variance-authority",
-          "lucide-react",
-        ],
-        registryDependencies: ["utils"],
-        cssVars: {},
-        files: [],
-      },
-      ...ui,
-      ...examples,
-      ...lib,
-    ].filter((item) => {
-      return !DEPRECATED_ITEMS.includes(item.name);
-    }),
-  ),
-} satisfies Registry;
 
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -163,23 +132,25 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
 function getComponentExamples() {
   const examplesByComponent = new Map<string, string[]>();
 
-  examples.forEach((example) => {
-    example.registryDependencies?.forEach((dep) => {
-      const componentName = dep.split("/").pop();
-      if (componentName) {
-        if (!examplesByComponent.has(componentName)) {
-          examplesByComponent.set(componentName, []);
+  registry.items
+    .filter((item) => item.type === "registry:example")
+    .forEach((example) => {
+      example.registryDependencies?.forEach((dep) => {
+        const componentName = dep.split("/").pop();
+        if (componentName) {
+          if (!examplesByComponent.has(componentName)) {
+            examplesByComponent.set(componentName, []);
+          }
+          examplesByComponent.get(componentName)!.push(example.name);
         }
-        examplesByComponent.get(componentName)!.push(example.name);
-      }
+      });
     });
-  });
 
   return examplesByComponent;
 }
 
 async function generateLlmsContent() {
-  const components = ui
+  const components = registry.items
     .filter((item) => item.type === "registry:ui")
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((component) => {
@@ -190,7 +161,8 @@ async function generateLlmsContent() {
     });
 
   const exampleSet = new Set<string>();
-  const examplesList = examples
+  const examplesList = registry.items
+    .filter((item) => item.type === "registry:example")
     .filter((example) => {
       if (exampleSet.has(example.name)) return false;
       exampleSet.add(example.name);
@@ -230,7 +202,7 @@ async function generateLlmsContent() {
 async function generateLlmsFullContent(
   examplesByComponent: Map<string, string[]>,
 ) {
-  const components = ui
+  const components = registry.items
     .filter((item) => item.type === "registry:ui")
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -251,7 +223,7 @@ async function generateLlmsFullContent(
       // Add examples for this component
       const relatedExamples = examplesByComponent.get(component.name) || [];
       for (const exampleName of relatedExamples) {
-        const example = examples.find((e) => e.name === exampleName);
+        const example = registry.items.find((e) => e.name === exampleName);
         if (example) {
           const exTitle = (example as any).title || example.name;
           content += [

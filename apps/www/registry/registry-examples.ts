@@ -872,10 +872,6 @@ export const examples: Registry["items"] = [
         path: "example/dock-demo.tsx",
         type: "registry:example",
       },
-      {
-        path: "magicui/mode-toggle.tsx",
-        type: "registry:ui",
-      },
     ],
   },
   {

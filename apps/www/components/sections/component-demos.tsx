@@ -1,16 +1,19 @@
-import { Mdx } from "@/components/mdx-components";
-
-import { allPages } from "content-collections";
+import { source } from "@/lib/source";
+import { mdxComponents } from "@/mdx-components";
 import { notFound } from "next/navigation";
 
 const PAGE = "home";
 
 export function ComponentDemos() {
-  const page = allPages.find((page) => page.slugAsParams === PAGE);
+  const pages = source.getPages();
+  const page = pages.find((page) => page.url === PAGE);
 
   if (!page) {
     notFound();
   }
+
+  // @ts-expect-error - revisit fumadocs types.
+  const MDX = page.data.body;
 
   return (
     <section id="component-demos" className="container max-w-5xl py-14">
@@ -21,7 +24,7 @@ export function ComponentDemos() {
         Here are some of the components that you can use to build your landing
         pages.
       </h3>
-      <Mdx code={page.body.code} />
+      <MDX components={mdxComponents} />
     </section>
   );
 }
