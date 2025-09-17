@@ -6,11 +6,9 @@ import {
 import rehypePrettyCode from "rehype-pretty-code";
 import { z } from "zod";
 import { transformers } from "@/lib/highlight-code";
-import { remarkImage } from "fumadocs-core/mdx-plugins";
 
 export default defineConfig({
   mdxOptions: {
-    remarkPlugins: [[remarkImage, { useImport: false }]],
     rehypePlugins: (plugins) => {
       plugins.shift();
       plugins.push([

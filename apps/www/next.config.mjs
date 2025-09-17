@@ -7,7 +7,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["localhost", "cdn.magicui.design"],
+    domains: ["localhost", "cdn.magicui.design", "images.unsplash.com"],
   },
   async redirects() {
     return [
