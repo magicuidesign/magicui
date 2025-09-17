@@ -6,7 +6,7 @@ const WORKFLOW_FILE = "publish-article.yml";
 
 export async function POST(request: NextRequest) {
   const auth = request.headers.get("authorization");
-  if (!auth || auth !== `Bearer ${process.env.ACCESS_TOKEN}`) {
+  if (!auth || auth !== `Bearer ${process.env.BLOG_WEBHOOK_ACCESS_TOKEN}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
