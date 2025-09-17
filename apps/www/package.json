@@ -103,7 +103,7 @@
     "prettier": "^3.6.2",
     "rehype": "^13.0.2",
     "rehype-autolink-headings": "^7.1.0",
-    "rehype-pretty-code": "^0.13.2",
+    "rehype-pretty-code": "^0.14.1",
     "rehype-slug": "6.0.0",
     "remark": "^15.0.1",
     "remark-code-import": "^1.2.0",
