@@ -14,7 +14,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Save payload
         run: node -e "require('fs').writeFileSync('payload.json', process.env.PAYLOAD)"
@@ -57,6 +57,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/blog/
-          git commit -m "Add/update blog articles from webhook" || echo "No changes"
+          git add .
+          git commit -m "Add blog article from webhook" || echo "No changes"
           git push
