@@ -14,7 +14,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Save payload
-        run: printf '%s' "${{ github.event.inputs.payload }}" > payload.json
+        run: node -e "require('fs').writeFileSync('payload.json', process.env.PAYLOAD)"
+        env:
+          PAYLOAD: ${{ github.event.inputs.payload }}
 
       - name: Write blog posts
         run: |
