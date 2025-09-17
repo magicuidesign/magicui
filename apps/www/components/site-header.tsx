@@ -1,8 +1,6 @@
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import { Separator } from "@/components/ui/separator";
-import { source } from "@/lib/source";
-import { VersionSelect } from "@/components/version-select";
 import { GitHubLink } from "@/components/github-link";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LogoButton } from "@/components/logo-button";
