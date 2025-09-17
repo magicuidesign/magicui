@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-
+        with:
+          ref: ${{ github.head_ref }}
       - name: Save payload
         run: node -e "require('fs').writeFileSync('payload.json', process.env.PAYLOAD)"
         env:
