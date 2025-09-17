@@ -14,8 +14,8 @@
     "typecheck": "turbo run typecheck",
     "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\"",
-    "build:docs": "pnpm build:docs",
-    "build:registry": "pnpm build:registry",
+    "build:docs": "turbo run build:docs --filter=@magicui/www",
+    "build:registry": "turbo run build:registry --filter=@magicui/www",
     "dev:all": "turbo run dev --parallel",
     "build:all": "turbo run build",
     "lint:all": "turbo run lint",
@@ -26,5 +26,9 @@
   "devDependencies": {
     "prettier": "^3.6.2",
     "turbo": "^2.5.6"
+  },
+  "engines": {
+    "node": ">=22.14.0",
+    "pnpm": ">=9"
   }
 }
