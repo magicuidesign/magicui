@@ -17,7 +17,6 @@ export async function SiteHeader() {
         <div className="3xl:fixed:container flex h-(--header-height) items-center gap-2 **:data-[slot=separator]:!h-4">
           <MobileNav className="flex lg:hidden" />
           <LogoButton />
-          <VersionSelect className="hidden lg:flex" />
           <MainNav items={docsConfig.mainNav} className="hidden lg:flex" />
           <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
             <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">

@@ -37,12 +37,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Tailwind v4",
-          href: "/docs/tailwind-v4",
-          items: [],
-          label: "",
-        },
-        {
           title: "MCP",
           href: "/docs/mcp",
           items: [],
@@ -53,6 +47,12 @@ export const docsConfig: DocsConfig = {
           href: "/docs/story",
           items: [],
           label: "New",
+        },
+        {
+          title: "Legacy",
+          href: "/docs/legacy",
+          items: [],
+          label: "",
         },
       ],
     },
