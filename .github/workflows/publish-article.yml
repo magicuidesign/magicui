@@ -1,4 +1,4 @@
-name: Publish Articles
+name: Publish Blog Article
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  publish:
+  publish-article:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -32,7 +32,7 @@ jobs:
 
           for (const article of payload.data.articles) {
             // folder and file name
-            const folder = path.join('content', 'blog');
+            const folder = path.join('apps', 'www', 'content', 'blog');
             fs.mkdirSync(folder, { recursive: true });
             const filePath = path.join(folder, `${article.slug}.mdx`);
 
