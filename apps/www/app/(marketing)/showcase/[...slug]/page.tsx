@@ -1,5 +1,4 @@
 import { ShowcaseCard } from "@/components/sections/showcase";
-import { siteConfig } from "@/config/site";
 import { showcaseSource } from "@/lib/source";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -86,9 +85,7 @@ export default async function PagePage({ params }: PageProps) {
       <ShowcaseCard
         title={doc.title ?? ""}
         href={page.url}
-        // @ts-expect-error - revisit fumadocs types.
         image={doc.image ?? ""}
-        // @ts-expect-error - revisit fumadocs types.
         affiliation={doc.affiliation ?? ""}
       />
     </article>

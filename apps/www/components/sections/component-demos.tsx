@@ -12,7 +12,6 @@ export function ComponentDemos() {
     notFound();
   }
 
-  // @ts-expect-error - revisit fumadocs types.
   const MDX = page.data.body;
 
   return (

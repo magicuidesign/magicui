@@ -1,5 +1,5 @@
-import { showcaseSource } from "@/lib/source";
 import { ShowcaseCard } from "@/components/sections/showcase";
+import { showcaseSource } from "@/lib/source";
 import { BlurFade } from "@/registry/magicui/blur-fade";
 
 export default function Page() {
@@ -19,9 +19,7 @@ export default function Page() {
               {...showcase}
               href={showcase.url}
               title={showcase.data.title ?? ""}
-              // @ts-expect-error - revisit fumadocs types.
               image={showcase.data.image ?? ""}
-              // @ts-expect-error - revisit fumadocs types.
               affiliation={showcase.data.affiliation ?? ""}
             />
           </BlurFade>

@@ -1,7 +1,7 @@
+import { replaceComponentSource } from "@/lib/docs";
+import { source } from "@/lib/source";
 import { notFound } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
-import { source } from "@/lib/source";
-import { replaceComponentSource } from "@/lib/docs";
 
 export const revalidate = false;
 
@@ -16,7 +16,6 @@ export async function GET(
     notFound();
   }
 
-  // @ts-expect-error - revisit fumadocs types.
   let mdx = page.data.content as string;
 
   // Replace component tags with actual source code

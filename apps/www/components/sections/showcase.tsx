@@ -1,5 +1,5 @@
-import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { showcaseSource } from "@/lib/source";
+import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 import { Marquee } from "@/registry/magicui/marquee";
@@ -53,7 +53,6 @@ export function Showcase() {
       <div className="relative flex flex-col">
         <Marquee className="max-w-screen [--duration:40s]">
           {showcases
-            // @ts-expect-error - revisit fumadocs types.
             .filter((showcase) => showcase.data.featured)
             .map((showcase, idx) => (
               <ShowcaseCard
@@ -61,9 +60,7 @@ export function Showcase() {
                 {...showcase}
                 href={showcase.url}
                 title={showcase.data.title ?? ""}
-                // @ts-expect-error - revisit fumadocs types.
                 affiliation={showcase.data.affiliation ?? ""}
-                // @ts-expect-error - revisit fumadocs types.
                 image={showcase.data.image ?? ""}
               />
             ))}

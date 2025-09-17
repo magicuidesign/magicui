@@ -1,24 +1,23 @@
+import { DocsCopyPage } from "@/components/docs-copy-page";
 import { Badge } from "@/components/ui/badge";
 import { absoluteUrl } from "@/lib/utils";
-import { DocsCopyPage } from "@/components/docs-copy-page";
 
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { DocsTableOfContents } from "@/components/docs-toc";
 import { Contribute } from "@/components/contribute";
+import { DocsTableOfContents } from "@/components/docs-toc";
 import { SidebarCTA } from "@/components/sidebar-cta";
+import { Button } from "@/components/ui/button";
+import { replaceComponentSource } from "@/lib/docs";
+import { source } from "@/lib/source";
+import { mdxComponents } from "@/mdx-components";
 import {
   IconArrowLeft,
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react";
-import { Button } from "@/components/ui/button";
-import { source } from "@/lib/source";
-import { mdxComponents } from "@/mdx-components";
 import { findNeighbour } from "fumadocs-core/server";
-import { siteConfig } from "@/config/site";
-import { replaceComponentSource } from "@/lib/docs";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export const revalidate = false;
 export const dynamic = "force-static";
@@ -89,12 +88,8 @@ export async function generateMetadata({
 
 export default async function DocPage({ params }: DocPageProps) {
   const { doc, page } = await getDocFromParams({ params });
-
-  // @ts-expect-error - revisit fumadocs types.
   const MDX = doc.body;
   const neighbours = findNeighbour(source.pageTree, page.url);
-
-  // @ts-expect-error - revisit fumadocs types.
   const links = doc.links;
 
   return (
@@ -113,7 +108,6 @@ export default async function DocPage({ params }: DocPageProps) {
                 </h1>
                 <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
                   <DocsCopyPage
-                    // @ts-expect-error - revisit fumadocs types.
                     page={await replaceComponentSource(doc.content)}
                     url={absoluteUrl(page.url)}
                   />
@@ -203,10 +197,8 @@ export default async function DocPage({ params }: DocPageProps) {
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-84 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
-        {/* @ts-expect-error - revisit fumadocs types. */}
         {doc.toc?.length ? (
           <div className="no-scrollbar overflow-y-auto px-8">
-            {/* @ts-expect-error - revisit fumadocs types. */}
             <DocsTableOfContents toc={doc.toc} />
             <Contribute page={page} />
             <div className="h-8" />

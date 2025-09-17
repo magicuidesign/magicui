@@ -16,12 +16,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...allDocs.map((post) => ({
       url: `${protocol}://${domain}${post.url}`,
-      // @ts-expect-error - revisit fumadocs types.
       lastModified: post.data.date,
     })),
     ...allBlogs.map((post) => ({
       url: `${protocol}://${domain}${post.url}`,
-      // @ts-expect-error - revisit fumadocs types.
       lastModified: post.data.publishedOn,
     })),
   ];

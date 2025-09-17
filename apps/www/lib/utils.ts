@@ -7,6 +7,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const pluralize = (count: number, word: string) =>
+  `${count} ${word}${count === 1 ? "" : "s"}`;
+
 export function humanize(name: string): string {
   return name
     .replace(/-/g, " ")
@@ -49,6 +52,18 @@ export function formatDate(input: string | number): string {
     year: "numeric",
   });
 }
+
+export const calculateReadingTime = (content: string): number => {
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+};
+
+export const normalizeTag = (tag: unknown): string[] => {
+  if (!tag) return [];
+  return Array.isArray(tag)
+    ? tag.filter((t): t is string => typeof t === "string")
+    : [String(tag)];
+};
 
 export function absoluteUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;

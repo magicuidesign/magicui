@@ -1,3 +1,5 @@
+import { transformers } from "@/lib/highlight-code";
+import { remarkImage } from "fumadocs-core/mdx-plugins";
 import {
   defineConfig,
   defineDocs,
@@ -5,8 +7,6 @@ import {
 } from "fumadocs-mdx/config";
 import rehypePrettyCode from "rehype-pretty-code";
 import { z } from "zod";
-import { transformers } from "@/lib/highlight-code";
-import { remarkImage } from "fumadocs-core/mdx-plugins";
 
 export default defineConfig({
   mdxOptions: {
@@ -71,7 +71,7 @@ export const blog = defineDocs({
   dir: "content/blog",
   docs: {
     schema: frontmatterSchema.extend({
-      tag: z.string().optional(),
+      tag: z.array(z.string()).optional(),
       publishedOn: z.string(),
       featured: z.boolean().optional().default(false),
       image: z.string().optional(),
