@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const REPO_OWNER = "magicuidesign";
 const REPO_NAME = "magicui";
+const BRANCH = "main";
 const WORKFLOW_FILE = "publish-article.yml";
 
 export async function POST(request: NextRequest) {
@@ -25,6 +26,7 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        ref: BRANCH,
         inputs: { payload },
       }),
     },
