@@ -1,12 +1,12 @@
+import { CommandMenu } from "@/components/command-menu";
+import { DiscordLink } from "@/components/discord-link";
+import { GitHubLink } from "@/components/github-link";
+import { LogoButton } from "@/components/logo-button";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
-import { Separator } from "@/components/ui/separator";
-import { GitHubLink } from "@/components/github-link";
 import { ModeToggle } from "@/components/mode-toggle";
-import { LogoButton } from "@/components/logo-button";
-import { DiscordLink } from "@/components/discord-link";
+import { Separator } from "@/components/ui/separator";
 import { docsConfig } from "@/config/docs";
-import { CommandMenu } from "@/components/command-menu";
 
 export async function SiteHeader() {
   return (
