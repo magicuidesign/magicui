@@ -1,0 +1,57 @@
+name: Publish Articles
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: "JSON payload from webhook"
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save payload
+        run: echo '${{ toJson(github.event.inputs.payload) }}' > payload.json
+
+      - name: Write blog posts
+        run: |
+          node - <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const payload = JSON.parse(fs.readFileSync('payload.json', 'utf8'));
+
+          for (const article of payload.data.articles) {
+            // folder and file name
+            const folder = path.join('content', 'blog');
+            fs.mkdirSync(folder, { recursive: true });
+            const filePath = path.join(folder, `${article.slug}.mdx`);
+
+            // build front-matter
+            const fm = [
+              '---',
+              `title: "${article.title.replace(/"/g,'\\"')}"`,
+              `description: "${article.meta_description.replace(/"/g,'\\"')}"`,
+              `image: ${article.image_url}`,
+              `author: Dillion Verma`,
+              `tag: ${article.tags && article.tags.length ? article.tags[0] : ''}`,
+              `publishedOn: ${article.created_at}`,
+              `featured: true`,
+              '---\n'
+            ].join('\n');
+
+            // write file with front-matter + markdown content
+            fs.writeFileSync(filePath, fm + article.content_markdown);
+          }
+          EOF
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/blog/
+          git commit -m "Add/update blog articles from webhook" || echo "No changes"
+          git push
