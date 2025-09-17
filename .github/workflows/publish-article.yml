@@ -36,18 +36,20 @@ jobs:
             fs.mkdirSync(folder, { recursive: true });
             const filePath = path.join(folder, `${article.slug}.mdx`);
 
-            // build front-matter
-            const fm = [
-              '---',
-              `title: "${article.title.replace(/"/g,'\\"')}"`,
-              `description: "${article.meta_description.replace(/"/g,'\\"')}"`,
-              `image: ${article.image_url}`,
-              `author: Dillion Verma`,
-              `tag: ${article.tags && article.tags.length ? article.tags[0] : ''}`,
-              `publishedOn: ${article.created_at}`,
-              `featured: true`,
-              '---\n'
-            ].join('\n');
+            // build front-matter using YAML.stringify for safer escaping
+            const yaml = require('js-yaml');
+            
+            const frontMatter = {
+              title: article.title,
+              description: article.meta_description,
+              image: article.image_url,
+              author: "Dillion Verma",
+              tags: article.tags || [],
+              publishedOn: article.created_at,
+              featured: true
+            };
+            
+            const fm = '---\n' + yaml.dump(frontMatter) + '---\n';
 
             // write file with front-matter + markdown content
             fs.writeFileSync(filePath, fm + article.content_markdown);
