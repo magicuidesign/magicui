@@ -22,6 +22,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/showcase/:path*.mdx",
+        destination: "/showcase/:path*.md",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*.mdx",
+        destination: "/blog/:path*.md",
+        permanent: true,
+      },
+      {
         source: "/docs/:path*.mdx",
         destination: "/docs/:path*.md",
         permanent: true,
