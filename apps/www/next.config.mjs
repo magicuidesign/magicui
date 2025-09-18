@@ -22,8 +22,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/r/:path([^.]*)",
-        destination: "/r/:path.json",
+        source: "/docs/:path*.mdx",
+        destination: "/docs/:path*.md",
         permanent: true,
       },
     ];
