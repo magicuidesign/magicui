@@ -3,22 +3,27 @@ import { SVGProps } from "react";
 export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
-  src?: string;
+  imageSrc?: string;
   videoSrc?: string;
+  webviewSrc?: string;
 }
 
 export function Iphone15Pro({
   width = 433,
   height = 882,
-  src,
+  imageSrc,
   videoSrc,
+  webviewSrc,
   ...props
 }: Iphone15ProProps) {
+  const originalWidth: number = 433;
+  const originalHeight: number = 882;
+
   return (
     <svg
       width={width}
       height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${originalWidth} ${originalHeight}`} // Maintain original aspect ratio (fixed viewBox)
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -57,9 +62,9 @@ export function Iphone15Pro({
         className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
       />
 
-      {src && (
+      {imageSrc && (
         <image
-          href={src}
+          href={imageSrc}
           x="21.25"
           y="19.25"
           width="389.5"
@@ -77,6 +82,20 @@ export function Iphone15Pro({
             loop
             muted
             playsInline
+          />
+        </foreignObject>
+      )}
+      {webviewSrc && (
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
+          <iframe
+            title="iPhone 15 Pro WebView"
+            className="size-full overflow-hidden rounded-[55.75px] object-cover"
+            src={webviewSrc}
+            loading="lazy"
+            allowFullScreen
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            referrerPolicy="no-referrer"
+            style={{ width: "100%", height: "100%", border: "0" }} // Fallback for browsers that do not support
           />
         </foreignObject>
       )}
