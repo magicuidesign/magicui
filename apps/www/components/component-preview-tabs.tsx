@@ -2,11 +2,11 @@
 
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
+import { RotateCcw } from "lucide-react";
 
 export function ComponentPreviewTabs({
   className,
@@ -65,7 +65,7 @@ export function ComponentPreviewTabs({
           className="invisible data-[active=true]:visible overflow-hidden"
         >
           <div className="flex items-center justify-end gap-2 p-4">
-            <OpenInV0Button url={`https://magicui.design/r/${name}.json`} />
+            <OpenInV0Button name={name} />
             <Button
               onClick={() => setKey((prev) => prev + 1)}
               className="flex items-center rounded-lg px-3 py-1"

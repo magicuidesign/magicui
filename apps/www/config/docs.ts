@@ -126,6 +126,19 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Blocks",
+      paid: true,
+      items: [
+        {
+          title: "Pricing",
+          href: `/docs/blocks/pricing`,
+          items: [],
+          paid: true,
+          label: "New",
+        },
+      ],
+    },
+    {
       title: "Components",
       items: [
         {

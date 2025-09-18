@@ -1,8 +1,7 @@
-import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import * as React from "react";
 
-import { cn } from "@/lib/utils";
 import { Callout } from "@/components/callout";
 import { CodeBlockCommand } from "@/components/code-block-command";
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
@@ -12,6 +11,10 @@ import { ComponentSource } from "@/components/component-source";
 import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
 import { getIconForLanguageExtension } from "@/components/icons";
+import { ProComponentPreview } from "@/components/pro-component-preview";
+import { TechStack } from "@/components/tech-stack";
+import { TemplateOpen } from "@/components/template-open";
+import { TemplatePreview } from "@/components/template-preview";
 import {
   Accordion,
   AccordionContent,
@@ -21,9 +24,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TemplateOpen } from "@/components/template-open";
-import { TemplatePreview } from "@/components/template-preview";
-import { TechStack } from "@/components/tech-stack";
+import { cn } from "@/lib/utils";
 import { TweetCard } from "@/registry/magicui/tweet-card";
 
 export const mdxComponents = {
@@ -359,4 +360,5 @@ export const mdxComponents = {
   Tweet: ({ id, className }: { id: string; className?: string }) => (
     <TweetCard id={id} className={cn("mx-auto", className)} />
   ),
+  ProComponentPreview,
 };
