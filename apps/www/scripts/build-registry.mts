@@ -4,8 +4,8 @@ import path from "path";
 import { rimraf } from "rimraf";
 import { Registry } from "shadcn/schema";
 
-import { registry } from "../registry/index";
 import { siteConfig } from "../config/site";
+import { registry } from "../registry/index";
 
 async function buildRegistryIndex() {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -60,8 +60,8 @@ export const Index: Record<string, any> = {`;
   }`;
 
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"));
-  await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index);
+  rimraf.sync(path.join(process.cwd(), "registry/__index__.tsx"));
+  await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index);
 }
 
 async function buildRegistryJsonFile() {
