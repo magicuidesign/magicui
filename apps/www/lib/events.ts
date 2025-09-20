@@ -15,8 +15,10 @@ const eventSchema = z.object({
     "template_portfolio_clicked",
     "template_marketing_clicked",
     "template_changelog_clicked",
+    "template_blog_clicked",
 
     "sidebar_cta_clicked",
+    "header_cta_clicked",
   ]),
   properties: z
     .record(
