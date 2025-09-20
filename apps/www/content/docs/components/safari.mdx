@@ -2,7 +2,7 @@
 title: Safari
 date: 2024-09-01
 description: A safari browser mockup to showcase your website.
-author: dillionverma
+author: dillionverma, Yeom-JinHo
 published: true
 ---
 
@@ -66,15 +66,18 @@ import { Safari } from "@/components/magicui/safari";
 
 ## Props
 
-| Prop       | Type         | Default     | Description                                                 |
-| ---------- | ------------ | ----------- | ----------------------------------------------------------- |
-| `url`      | `string`     | `-`         | The URL to display in the Safari address bar                |
-| `imageSrc` | `string`     | `-`         | The source URL of the image to display in the Safari window |
-| `videoSrc` | `string`     | `-`         | The source URL of the video to display in the Safari window |
-| `width`    | `number`     | `1203`      | The width of the Safari window                              |
-| `height`   | `number`     | `753`       | The height of the Safari window                             |
-| `mode`     | `SafariMode` | `"default"` | The display mode of the Safari window.                      |
+| Prop        | Type                  | Default     | Description                                                 |
+| ----------- | --------------------- | ----------- | ----------------------------------------------------------- |
+| `url`       | `string`              | `-`         | The URL to display in the Safari address bar                |
+| `imageSrc`  | `string`              | `-`         | The source URL of the image to display in the Safari window |
+| `videoSrc`  | `string`              | `-`         | The source URL of the video to display in the Safari window |
+| `mode`      | `SafariMode`          | `"default"` | The display mode of the Safari window.                      |
+| `className` | `string`              | `-`         | Additional classes applied to the wrapper `<div>`           |
+| `style`     | `React.CSSProperties` | `-`         | Inline styles applied to the wrapper `<div>`                |
 
-type `SafariMode` = `"default" | "simple"`.
+## Notes
 
-The `Safari` component also accepts all properties of the `SVGElement` type.
+- Sizing: width and height props have been removed. The size is controlled by the wrapper `<div>`. The component enforces the aspect ratio 1203/753.
+- Masking: The screen area is only masked when media (src or videoSrc) is provided. Without media, only the frame is rendered.
+- HTML Attributes: The Iphone15Pro component accepts all standard HTMLDivElement props.
+- iOS Compatibility: Video is rendered as a DOM overlay instead of foreignObject to avoid Safari/iOS masking issues.
