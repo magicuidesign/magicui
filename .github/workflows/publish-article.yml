@@ -17,44 +17,22 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: ${{ github.head_ref }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Enable corepack
+        run: corepack enable
+      - name: Install dependencies
+        run: pnpm -w i --frozen-lockfile
       - name: Save payload
         run: node -e "require('fs').writeFileSync('payload.json', process.env.PAYLOAD)"
         env:
           PAYLOAD: ${{ github.event.inputs.payload }}
 
       - name: Write blog posts
-        run: |
-          node - <<'EOF'
-          const fs = require('fs');
-          const path = require('path');
-
-          const payload = JSON.parse(fs.readFileSync('payload.json', 'utf8'));
-
-          for (const article of payload.data.articles) {
-            // folder and file name
-            const folder = path.join('apps', 'www', 'content', 'blog');
-            fs.mkdirSync(folder, { recursive: true });
-            const filePath = path.join(folder, `${article.slug}.mdx`);
-
-            // build front-matter using YAML.stringify for safer escaping
-            const yaml = require('js-yaml');
-            
-            const frontMatter = {
-              title: article.title,
-              description: article.meta_description,
-              image: article.image_url,
-              author: "Dillion Verma",
-              tags: article.tags || [],
-              publishedOn: article.created_at,
-              featured: true
-            };
-            
-            const fm = '---\n' + yaml.dump(frontMatter) + '---\n';
-
-            // write file with front-matter + markdown content
-            fs.writeFileSync(filePath, fm + article.content_markdown);
-          }
-          EOF
+        run: node .github/scripts/publish-articles.cjs
 
       - name: Commit & push
         run: |
