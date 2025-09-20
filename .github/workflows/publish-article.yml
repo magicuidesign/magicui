@@ -17,15 +17,23 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: ${{ github.head_ref }}
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - name: Enable corepack
-        run: corepack enable
+          - uses: pnpm/action-setup@v4
+
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.15.0
+          run_install: false
+  
       - name: Install dependencies
-        run: pnpm -w i --frozen-lockfile
+        run: pnpm install
+
       - name: Save payload
         run: node -e "require('fs').writeFileSync('payload.json', process.env.PAYLOAD)"
         env:
