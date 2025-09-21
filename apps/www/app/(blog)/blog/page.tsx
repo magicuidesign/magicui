@@ -12,6 +12,12 @@ import Link from "next/link";
 import type { Blog, WithContext } from "schema-dts";
 
 export const revalidate = false;
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [];
+}
 
 const BLOG_DESCRIPTION =
   "Latest articles about UI components, animations, and web development best practices.";
