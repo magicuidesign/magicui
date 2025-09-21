@@ -3,7 +3,7 @@ import { createMDX } from "fumadocs-mdx/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   outputFileTracingIncludes: {
-    "/*": ["./registry/**/*"],
+    "/*": ["./registry/**/*", "./content/**/*"],
   },
   reactStrictMode: true,
   images: {
