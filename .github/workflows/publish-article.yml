@@ -18,19 +18,17 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+          run_install: false
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-          - uses: pnpm/action-setup@v4
 
-      - name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 9.15.0
-          run_install: false
-  
       - name: Install dependencies
         run: pnpm install
 
