@@ -63,6 +63,25 @@ export function Iphone15Pro({
         </div>
       )}
 
+      {!hasVideo && src && (
+        <div
+          className="pointer-events-none absolute z-0 overflow-hidden"
+          style={{
+            left: `${LEFT_PCT}%`,
+            top: `${TOP_PCT}%`,
+            width: `${WIDTH_PCT}%`,
+            height: `${HEIGHT_PCT}%`,
+            borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
+          }}
+        >
+          <img
+            src={src}
+            alt=""
+            className="block size-full object-cover object-top"
+          />
+        </div>
+      )}
+
       <svg
         viewBox={`0 0 ${PHONE_WIDTH} ${PHONE_HEIGHT}`}
         fill="none"
@@ -109,17 +128,6 @@ export function Iphone15Pro({
           mask={hasMedia ? "url(#screenPunch)" : undefined}
         />
 
-        {!hasVideo && src && (
-          <image
-            href={src}
-            x={SCREEN_X}
-            y={SCREEN_Y}
-            width={SCREEN_WIDTH}
-            height={SCREEN_HEIGHT}
-            preserveAspectRatio="xMidYMid slice"
-            clipPath={hasMedia ? "url(#roundedCorners)" : undefined}
-          />
-        )}
         <path
           d="M154 48.5C154 38.2827 162.283 30 172.5 30H259.5C269.717 30 278 38.2827 278 48.5C278 58.7173 269.717 67 259.5 67H172.5C162.283 67 154 58.7173 154 48.5Z"
           className="fill-[#F5F5F5] dark:fill-[#262626]"

@@ -65,6 +65,25 @@ export function Safari({
         </div>
       )}
 
+      {!hasVideo && imageSrc && (
+        <div
+          className="pointer-events-none absolute z-0 overflow-hidden"
+          style={{
+            left: `${LEFT_PCT}%`,
+            top: `${TOP_PCT}%`,
+            width: `${WIDTH_PCT}%`,
+            height: `${HEIGHT_PCT}%`,
+            borderRadius: "0 0 11px 11px",
+          }}
+        >
+          <img
+            src={imageSrc}
+            alt=""
+            className="block size-full object-cover object-top"
+          />
+        </div>
+      )}
+
       <svg
         viewBox={`0 0 ${SAFARI_WIDTH} ${SAFARI_HEIGHT}`}
         fill="none"
@@ -213,18 +232,6 @@ export function Safari({
             </>
           ) : null}
         </g>
-
-        {!hasVideo && imageSrc && (
-          <image
-            href={imageSrc}
-            width={SCREEN_WIDTH}
-            height={SCREEN_HEIGHT}
-            x={SCREEN_X}
-            y={SCREEN_Y}
-            preserveAspectRatio="xMidYMid slice"
-            clipPath="url(#roundedBottom)"
-          />
-        )}
       </svg>
     </div>
   );

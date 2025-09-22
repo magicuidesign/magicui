@@ -5,7 +5,7 @@ export default function SafariDemo() {
     <div className="w-[1203px]">
       <Safari
         url="magicui.design"
-        imageSrc="https://via.placeholder.com/1200x750"
+        imageSrc="https://placehold.co/1200x750?text=Hello+World"
       />
     </div>
   );
