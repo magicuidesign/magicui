@@ -1,47 +1,58 @@
 import type { HTMLAttributes } from "react";
 
+const PHONE_WIDTH = 433;
+const PHONE_HEIGHT = 882;
+const SCREEN_X = 21.25;
+const SCREEN_Y = 19.25;
+const SCREEN_WIDTH = 389.5;
+const SCREEN_HEIGHT = 843.5;
+const SCREEN_RADIUS = 55.75;
+
+// Calculated percentages
+const LEFT_PCT = (SCREEN_X / PHONE_WIDTH) * 100;
+const TOP_PCT = (SCREEN_Y / PHONE_HEIGHT) * 100;
+const WIDTH_PCT = (SCREEN_WIDTH / PHONE_WIDTH) * 100;
+const HEIGHT_PCT = (SCREEN_HEIGHT / PHONE_HEIGHT) * 100;
+const RADIUS_H = (SCREEN_RADIUS / SCREEN_WIDTH) * 100;
+const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
+
 export interface Iphone15ProProps extends HTMLAttributes<HTMLDivElement> {
   src?: string;
   videoSrc?: string;
 }
 
-export default function Iphone15Pro({
+export function Iphone15Pro({
   src,
   videoSrc,
   className,
   style,
   ...props
 }: Iphone15ProProps) {
-  const leftPct = (21.25 / 433) * 100;
-  const topPct = (19.25 / 882) * 100;
-  const wPct = (389.5 / 433) * 100;
-  const hPct = (843.5 / 882) * 100;
-
-  const radiusH = (55.75 / 389.5) * 100;
-  const radiusV = (55.75 / 843.5) * 100;
-
   const hasVideo = !!videoSrc;
   const hasMedia = hasVideo || !!src;
 
   return (
     <div
-      className={`relative inline-block aspect-[433/882] w-full align-middle leading-none ${className ?? ""}`}
-      style={style}
+      className={`relative inline-block w-full align-middle leading-none ${className}`}
+      style={{
+        aspectRatio: `${PHONE_WIDTH}/${PHONE_HEIGHT}`,
+        ...style,
+      }}
       {...props}
     >
       {hasVideo && (
         <div
           className="pointer-events-none absolute z-0 overflow-hidden"
           style={{
-            left: `${leftPct}%`,
-            top: `${topPct}%`,
-            width: `${wPct}%`,
-            height: `${hPct}%`,
-            borderRadius: `${radiusH}% / ${radiusV}%`,
+            left: `${LEFT_PCT}%`,
+            top: `${TOP_PCT}%`,
+            width: `${WIDTH_PCT}%`,
+            height: `${HEIGHT_PCT}%`,
+            borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
           }}
         >
           <video
-            className="block h-full w-full object-cover"
+            className="block size-full object-cover"
             src={videoSrc}
             autoPlay
             loop
@@ -53,10 +64,10 @@ export default function Iphone15Pro({
       )}
 
       <svg
-        viewBox="0 0 433 882"
+        viewBox={`0 0 ${PHONE_WIDTH} ${PHONE_HEIGHT}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 z-10 h-full w-full"
+        className="absolute inset-0 size-full"
         style={{ transform: "translateZ(0)" }}
       >
         <g mask={hasMedia ? "url(#screenPunch)" : undefined}>
@@ -93,7 +104,7 @@ export default function Iphone15Pro({
         />
 
         <path
-          d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z"
+          d={`M${SCREEN_X} 75C${SCREEN_X} 44.2101 46.2101 ${SCREEN_Y} 77 ${SCREEN_Y}H355C385.79 ${SCREEN_Y} 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 ${SCREEN_X} 837.79 ${SCREEN_X} 807V75Z`}
           className="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
           mask={hasMedia ? "url(#screenPunch)" : undefined}
         />
@@ -101,10 +112,10 @@ export default function Iphone15Pro({
         {!hasVideo && src && (
           <image
             href={src}
-            x="21.25"
-            y="19.25"
-            width="389.5"
-            height="843.5"
+            x={SCREEN_X}
+            y={SCREEN_Y}
+            width={SCREEN_WIDTH}
+            height={SCREEN_HEIGHT}
             preserveAspectRatio="xMidYMid slice"
             clipPath={hasMedia ? "url(#roundedCorners)" : undefined}
           />
@@ -124,25 +135,31 @@ export default function Iphone15Pro({
 
         <defs>
           <mask id="screenPunch" maskUnits="userSpaceOnUse">
-            <rect x="0" y="0" width="433" height="882" fill="white" />
             <rect
-              x="21.25"
-              y="19.25"
-              width="389.5"
-              height="843.5"
-              rx="55.75"
-              ry="55.75"
+              x="0"
+              y="0"
+              width={PHONE_WIDTH}
+              height={PHONE_HEIGHT}
+              fill="white"
+            />
+            <rect
+              x={SCREEN_X}
+              y={SCREEN_Y}
+              width={SCREEN_WIDTH}
+              height={SCREEN_HEIGHT}
+              rx={SCREEN_RADIUS}
+              ry={SCREEN_RADIUS}
               fill="black"
             />
           </mask>
           <clipPath id="roundedCorners">
             <rect
-              x="21.25"
-              y="19.25"
-              width="389.5"
-              height="843.5"
-              rx="55.75"
-              ry="55.75"
+              x={SCREEN_X}
+              y={SCREEN_Y}
+              width={SCREEN_WIDTH}
+              height={SCREEN_HEIGHT}
+              rx={SCREEN_RADIUS}
+              ry={SCREEN_RADIUS}
             />
           </clipPath>
         </defs>
