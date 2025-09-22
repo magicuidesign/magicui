@@ -1,4 +1,17 @@
-import type { HTMLAttributes, SVGProps } from "react";
+import type { HTMLAttributes } from "react";
+
+const SAFARI_WIDTH = 1203;
+const SAFARI_HEIGHT = 753;
+const SCREEN_X = 1;
+const SCREEN_Y = 52;
+const SCREEN_WIDTH = 1200;
+const SCREEN_HEIGHT = 700;
+
+// Calculated percentages
+const LEFT_PCT = (SCREEN_X / SAFARI_WIDTH) * 100;
+const TOP_PCT = (SCREEN_Y / SAFARI_HEIGHT) * 100;
+const WIDTH_PCT = (SCREEN_WIDTH / SAFARI_WIDTH) * 100;
+const HEIGHT_PCT = (SCREEN_HEIGHT / SAFARI_HEIGHT) * 100;
 
 type SafariMode = "default" | "simple";
 
@@ -18,37 +31,30 @@ export function Safari({
   style,
   ...props
 }: SafariProps) {
-  const BASE_W = 1203;
-  const BASE_H = 753;
-
-  const screen = { x: 1, y: 52, w: 1200, h: 700 };
-
-  const leftPct = (screen.x / BASE_W) * 100;
-  const topPct = (screen.y / BASE_H) * 100;
-  const wPct = (screen.w / BASE_W) * 100;
-  const hPct = (screen.h / BASE_H) * 100;
-
   const hasVideo = !!videoSrc;
   const hasMedia = hasVideo || !!imageSrc;
 
   return (
     <div
-      className={`relative inline-block aspect-[1203/753] w-full align-middle leading-none ${className ?? ""}`}
-      style={style}
+      className={`relative inline-block w-full align-middle leading-none ${className ?? ""}`}
+      style={{
+        aspectRatio: `${SAFARI_WIDTH}/${SAFARI_HEIGHT}`,
+        ...style,
+      }}
       {...props}
     >
       {hasVideo && (
         <div
           className="pointer-events-none absolute z-0 overflow-hidden"
           style={{
-            left: `${leftPct}%`,
-            top: `${topPct}%`,
-            width: `${wPct}%`,
-            height: `${hPct}%`,
+            left: `${LEFT_PCT}%`,
+            top: `${TOP_PCT}%`,
+            width: `${WIDTH_PCT}%`,
+            height: `${HEIGHT_PCT}%`,
           }}
         >
           <video
-            className="block h-full w-full object-cover"
+            className="block size-full object-cover"
             src={videoSrc}
             autoPlay
             loop
@@ -60,15 +66,21 @@ export function Safari({
       )}
 
       <svg
-        viewBox={`0 0 ${BASE_W} ${BASE_H}`}
+        viewBox={`0 0 ${SAFARI_WIDTH} ${SAFARI_HEIGHT}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute inset-0 z-10 h-full w-full"
+        className="absolute inset-0 z-10 size-full"
         style={{ transform: "translateZ(0)" }}
       >
         <defs>
           <mask id="safariPunch" maskUnits="userSpaceOnUse">
-            <rect x="0" y="0" width={BASE_W} height={BASE_H} fill="white" />
+            <rect
+              x="0"
+              y="0"
+              width={SAFARI_WIDTH}
+              height={SAFARI_HEIGHT}
+              fill="white"
+            />
             <path
               d="M1 52H1201V741C1201 747.075 1196.08 752 1190 752H12C5.92486 752 1 747.075 1 741V52Z"
               fill="black"
@@ -76,7 +88,7 @@ export function Safari({
           </mask>
 
           <clipPath id="path0">
-            <rect width={BASE_W} height={BASE_H} fill="white" />
+            <rect width={SAFARI_WIDTH} height={SAFARI_HEIGHT} fill="white" />
           </clipPath>
 
           <clipPath id="roundedBottom">
@@ -205,10 +217,10 @@ export function Safari({
         {!hasVideo && imageSrc && (
           <image
             href={imageSrc}
-            width="1200"
-            height="700"
-            x="1"
-            y="52"
+            width={SCREEN_WIDTH}
+            height={SCREEN_HEIGHT}
+            x={SCREEN_X}
+            y={SCREEN_Y}
             preserveAspectRatio="xMidYMid slice"
             clipPath="url(#roundedBottom)"
           />
