@@ -7,8 +7,27 @@ export const dynamic = "force-static";
 export const revalidate = false;
 
 const FEATURED_BLOCKS = [
+  "animated-feature-card-1",
+  "animated-feature-card-2",
+  "animated-feature-card-3",
+  "animated-feature-card-4",
+  "animated-feature-card-5",
+  "animated-feature-card-6",
+  "animated-feature-card-7",
+  "animated-feature-card-8",
+  "animated-feature-card-9",
+  "animated-feature-card-10",
+  "animated-feature-card-11",
+
+  "feature-1",
   "footer-1",
   "faq-3",
+  "header-1",
+  "header-2",
+  "header-3",
+  "hero-1",
+  "hero-2",
+  // "hero-3",
   // "dashboard-01",
   // "sidebar-07",
   // "sidebar-03",
@@ -18,7 +37,7 @@ const FEATURED_BLOCKS = [
 
 export default async function BlocksPage() {
   return (
-    <div className="flex flex-col gap-12 md:gap-24">
+    <div className="flex flex-col gap-12 md:gap-16">
       {FEATURED_BLOCKS.map((name) => (
         <BlockDisplay name={name} key={name} />
       ))}

@@ -6,14 +6,12 @@ import {
   Clipboard,
   File,
   Folder,
-  Fullscreen,
   Monitor,
   RotateCw,
   Smartphone,
   Tablet,
   Terminal,
 } from "lucide-react";
-import Link from "next/link";
 import * as React from "react";
 import { ImperativePanelHandle } from "react-resizable-panels";
 import { registryItemFileSchema, registryItemSchema } from "shadcn/schema";
@@ -176,7 +174,7 @@ function BlockViewerToolbar() {
               <Smartphone />
             </ToggleGroupItem>
             <Separator orientation="vertical" className="!h-4" />
-            <Button
+            {/* <Button
               size="icon"
               variant="ghost"
               className="size-6 rounded-sm p-0"
@@ -188,7 +186,7 @@ function BlockViewerToolbar() {
                 <Fullscreen />
               </Link>
             </Button>
-            <Separator orientation="vertical" className="!h-4" />
+            <Separator orientation="vertical" className="!h-4" /> */}
             <Button
               size="icon"
               variant="ghost"
@@ -230,7 +228,7 @@ function BlockViewerIframe({ className }: { className?: string }) {
   return (
     <iframe
       key={iframeKey}
-      src={`https://pro.magicui.design/preview/${name}`}
+      src={`http://localhost:3001/preview/${name}`}
       height={930}
       loading="lazy"
       className={cn(
@@ -247,14 +245,14 @@ function BlockViewerView() {
   return (
     <div className="hidden group-data-[view=code]/block-view-wrapper:hidden md:h-(--height) lg:flex">
       <div className="relative grid w-full gap-4">
-        <div className="absolute inset-0 right-4 [background-image:radial-gradient(#d4d4d4_1px,transparent_1px)] [background-size:20px_20px] dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"></div>
+        <div className="absolute inset-0 right-4 [background-image:radial-gradient(#b8b8b8_1px,transparent_1px)] [background-size:20px_20px] dark:[background-image:radial-gradient(#303030_1px,transparent_1px)]"></div>
         <ResizablePanelGroup
           direction="horizontal"
-          className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl"
+          className="after:bg-surface/50 relative z-10 after:absolute after:inset-0 after:right-3 after:z-0 after:rounded-xl after:border after:border-border"
         >
           <ResizablePanel
             ref={resizablePanelRef}
-            className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg border md:aspect-auto md:rounded-xl"
+            className="bg-background relative aspect-[4/2.5] overflow-hidden rounded-lg md:aspect-auto md:rounded-xl border"
             defaultSize={100}
             minSize={30}
           >
