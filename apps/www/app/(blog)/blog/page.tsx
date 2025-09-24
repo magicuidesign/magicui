@@ -36,8 +36,8 @@ export default async function Page({
   const selectedTag = params?.tag ?? "";
 
   const posts = blogSource.getPages().sort((a, b) => {
-    const dateA = new Date(a.data?.publishedOn || 0).getTime();
-    const dateB = new Date(b.data?.publishedOn || 0).getTime();
+    const dateA = new Date(a.data?.publishedOn).getTime();
+    const dateB = new Date(b.data?.publishedOn).getTime();
     return dateB - dateA;
   });
 

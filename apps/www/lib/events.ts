@@ -6,7 +6,8 @@ const eventSchema = z.object({
     "copy_npm_command",
     "copy_usage_code",
     "copy_source_code",
-    "set_layout",
+    "copy_block_code",
+
     "template_agent_clicked",
     "template_devtool_clicked",
     "template_mobile_clicked",
