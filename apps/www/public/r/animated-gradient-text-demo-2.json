@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/animated-gradient-text-demo-2.tsx",
-      "content": "import { AnimatedGradientText } from \"@/registry/magicui/animated-gradient-text\";\n\nexport default function AnimatedGradientTextDemo() {\n  return (\n    <AnimatedGradientText\n      speed={2}\n      colorFrom=\"#4ade80\"\n      colorTo=\"#06b6d4\"\n      className=\"text-4xl font-semibold tracking-tight\"\n    >\n      Fast Gradient\n    </AnimatedGradientText>\n  );\n}\n",
+      "content": "import { AnimatedGradientText } from \"@/registry/magicui/animated-gradient-text\"\n\nexport default function AnimatedGradientTextDemo() {\n  return (\n    <AnimatedGradientText\n      speed={2}\n      colorFrom=\"#4ade80\"\n      colorTo=\"#06b6d4\"\n      className=\"text-4xl font-semibold tracking-tight\"\n    >\n      Fast Gradient\n    </AnimatedGradientText>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

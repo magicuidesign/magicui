@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/video-text-demo.tsx",
-      "content": "import { VideoText } from \"@/registry/magicui/video-text\";\n\nexport default function VideoTextDemo() {\n  return (\n    <div className=\"relative h-[200px] w-full overflow-hidden\">\n      <VideoText src=\"https://cdn.magicui.design/ocean-small.webm\">\n        OCEAN\n      </VideoText>\n    </div>\n  );\n}\n",
+      "content": "import { VideoText } from \"@/registry/magicui/video-text\"\n\nexport default function VideoTextDemo() {\n  return (\n    <div className=\"relative h-[200px] w-full overflow-hidden\">\n      <VideoText src=\"https://cdn.magicui.design/ocean-small.webm\">\n        OCEAN\n      </VideoText>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

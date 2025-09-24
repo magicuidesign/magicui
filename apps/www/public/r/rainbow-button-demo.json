@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/rainbow-button-demo.tsx",
-      "content": "import { RainbowButton } from \"@/registry/magicui/rainbow-button\";\n\nexport default function RainbowButtonDemo() {\n  return <RainbowButton>Get Unlimited Access</RainbowButton>;\n}\n",
+      "content": "import { RainbowButton } from \"@/registry/magicui/rainbow-button\"\n\nexport default function RainbowButtonDemo() {\n  return <RainbowButton>Get Unlimited Access</RainbowButton>\n}\n",
       "type": "registry:example"
     }
   ]

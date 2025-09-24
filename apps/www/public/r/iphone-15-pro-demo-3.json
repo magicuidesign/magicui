@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/iphone-15-pro-demo-3.tsx",
-      "content": "import { Iphone15Pro } from \"@/registry/magicui/iphone-15-pro\";\n\nexport default function Iphone15ProDemo() {\n  return (\n    <div className=\"w-[434px]\">\n      <Iphone15Pro videoSrc=\"https://videos.pexels.com/video-files/8946986/8946986-uhd_1440_2732_25fps.mp4\" />\n    </div>\n  );\n}\n",
+      "content": "import { Iphone15Pro } from \"@/registry/magicui/iphone-15-pro\"\n\nexport default function Iphone15ProDemo() {\n  return (\n    <div className=\"w-[434px]\">\n      <Iphone15Pro videoSrc=\"https://videos.pexels.com/video-files/8946986/8946986-uhd_1440_2732_25fps.mp4\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

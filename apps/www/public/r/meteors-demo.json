@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/meteors-demo.tsx",
-      "content": "import { Meteors } from \"@/registry/magicui/meteors\";\n\nexport default function MeteorDemo() {\n  return (\n    <div className=\"relative overflow-hidden h-[500px] w-full\">\n      <Meteors number={30} />\n    </div>\n  );\n}\n",
+      "content": "import { Meteors } from \"@/registry/magicui/meteors\"\n\nexport default function MeteorDemo() {\n  return (\n    <div className=\"relative h-[500px] w-full overflow-hidden\">\n      <Meteors number={30} />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

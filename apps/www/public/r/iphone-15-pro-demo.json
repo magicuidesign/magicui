@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/iphone-15-pro-demo.tsx",
-      "content": "import { Iphone15Pro } from \"@/registry/magicui/iphone-15-pro\";\n\nexport default function Iphone15ProDemo() {\n  return (\n    <div className=\"w-[434px]\">\n      <Iphone15Pro />\n    </div>\n  );\n}\n",
+      "content": "import { Iphone15Pro } from \"@/registry/magicui/iphone-15-pro\"\n\nexport default function Iphone15ProDemo() {\n  return (\n    <div className=\"w-[434px]\">\n      <Iphone15Pro />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/progressive-blur-demo.tsx",
-      "content": "\"use client\";\n\nimport { ScrollArea } from \"@/components/ui/scroll-area\";\nimport { ProgressiveBlur } from \"@/registry/magicui/progressive-blur\";\n\nexport default function ProgressiveBlurDemo() {\n  return (\n    <div className=\"relative w-full border rounded-xl\">\n      <ScrollArea className=\"relative h-[400px] overflow-hidden\">\n        <div className=\"flex flex-col gap-2 p-4\">\n          {Array.from({ length: 20 }).map((_, index) => (\n            <div\n              key={index}\n              className=\"flex h-20 w-full items-center justify-center rounded-xl bg-card border\"\n            >\n              {index}\n            </div>\n          ))}\n        </div>\n        <ProgressiveBlur position=\"bottom\" height=\"40%\" />\n      </ScrollArea>\n    </div>\n  );\n}\n",
+      "content": "\"use client\"\n\nimport { ScrollArea } from \"@/components/ui/scroll-area\"\nimport { ProgressiveBlur } from \"@/registry/magicui/progressive-blur\"\n\nexport default function ProgressiveBlurDemo() {\n  return (\n    <div className=\"relative w-full rounded-xl border\">\n      <ScrollArea className=\"relative h-[400px] overflow-hidden\">\n        <div className=\"flex flex-col gap-2 p-4\">\n          {Array.from({ length: 20 }).map((_, index) => (\n            <div\n              key={index}\n              className=\"bg-card flex h-20 w-full items-center justify-center rounded-xl border\"\n            >\n              {index}\n            </div>\n          ))}\n        </div>\n        <ProgressiveBlur position=\"bottom\" height=\"40%\" />\n      </ScrollArea>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

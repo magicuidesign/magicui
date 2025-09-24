@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/flip-text-demo.tsx",
-      "content": "import { FlipText } from \"@/registry/magicui/flip-text\";\n\nexport default function FlipTextDemo() {\n  return (\n    <FlipText className=\"text-4xl font-bold -tracking-widest text-black dark:text-white md:text-7xl md:leading-[5rem]\">\n      Flip Text\n    </FlipText>\n  );\n}\n",
+      "content": "import { FlipText } from \"@/registry/magicui/flip-text\"\n\nexport default function FlipTextDemo() {\n  return (\n    <FlipText className=\"text-4xl font-bold -tracking-widest text-black md:text-7xl md:leading-[5rem] dark:text-white\">\n      Flip Text\n    </FlipText>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

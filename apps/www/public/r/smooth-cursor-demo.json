@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/example/smooth-cursor-demo.tsx",
-      "content": "import { SmoothCursor } from \"@/registry/magicui/smooth-cursor\";\n\nexport default function SmoothCursorDemo() {\n  return (\n    <>\n      <span className=\"hidden md:block\">Move your mouse around</span>\n      <span className=\"block md:hidden\">Tap anywhere to see the cursor</span>\n      <SmoothCursor />\n    </>\n  );\n}\n",
+      "content": "import { SmoothCursor } from \"@/registry/magicui/smooth-cursor\"\n\nexport default function SmoothCursorDemo() {\n  return (\n    <>\n      <span className=\"hidden md:block\">Move your mouse around</span>\n      <span className=\"block md:hidden\">Tap anywhere to see the cursor</span>\n      <SmoothCursor />\n    </>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

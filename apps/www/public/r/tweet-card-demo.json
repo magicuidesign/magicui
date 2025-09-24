@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/tweet-card-demo.tsx",
-      "content": "import { ClientTweetCard } from \"@/registry/magicui/client-tweet-card\";\n\n/**\n * <TweetCard /> (Server Side Only)\n * <ClientTweetCard /> (Client Side Only)\n */\nexport default function TweetDemo() {\n  return <ClientTweetCard id=\"1668408059125702661\" />;\n}\n",
+      "content": "import { ClientTweetCard } from \"@/registry/magicui/client-tweet-card\"\n\n/**\n * <TweetCard /> (Server Side Only)\n * <ClientTweetCard /> (Client Side Only)\n */\nexport default function TweetDemo() {\n  return <ClientTweetCard id=\"1668408059125702661\" />\n}\n",
       "type": "registry:example"
     }
   ]

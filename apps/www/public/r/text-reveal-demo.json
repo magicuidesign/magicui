@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/text-reveal-demo.tsx",
-      "content": "import { TextReveal } from \"@/registry/magicui/text-reveal\";\n\nexport default function TextRevealDemo() {\n  return <TextReveal>Magic UI will change the way you design.</TextReveal>;\n}\n",
+      "content": "import { TextReveal } from \"@/registry/magicui/text-reveal\"\n\nexport default function TextRevealDemo() {\n  return <TextReveal>Magic UI will change the way you design.</TextReveal>\n}\n",
       "type": "registry:example"
     }
   ]

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/animated-theme-toggler-demo.tsx",
-      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\";\n\nfunction AnimatedThemeTogglerDemo() {\n  return (\n    <div>\n      <AnimatedThemeToggler />\n    </div>\n  );\n}\nexport default AnimatedThemeTogglerDemo;\n",
+      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nfunction AnimatedThemeTogglerDemo() {\n  return (\n    <div>\n      <AnimatedThemeToggler />\n    </div>\n  )\n}\nexport default AnimatedThemeTogglerDemo\n",
       "type": "registry:example"
     }
   ]

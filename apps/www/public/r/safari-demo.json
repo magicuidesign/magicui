@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/safari-demo.tsx",
-      "content": "import { Safari } from \"@/registry/magicui/safari\";\n\nexport default function SafariDemo() {\n  return (\n    <div className=\"w-[1203px]\">\n      <Safari url=\"magicui.design\" />\n    </div>\n  );\n}\n",
+      "content": "import { Safari } from \"@/registry/magicui/safari\"\n\nexport default function SafariDemo() {\n  return (\n    <div className=\"w-[1203px]\">\n      <Safari url=\"magicui.design\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

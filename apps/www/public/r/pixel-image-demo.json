@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/pixel-image-demo.tsx",
-      "content": "import { PixelImage } from \"@/registry/magicui/pixel-image\";\n\nexport default function Home() {\n  return (\n    <PixelImage\n      src=\"/pixel-image-demo.jpg\"\n      customGrid={{ rows: 4, cols: 6 }}\n      grayscaleAnimation\n    />\n  );\n}\n",
+      "content": "import { PixelImage } from \"@/registry/magicui/pixel-image\"\n\nexport default function Home() {\n  return (\n    <PixelImage\n      src=\"/pixel-image-demo.jpg\"\n      customGrid={{ rows: 4, cols: 6 }}\n      grayscaleAnimation\n    />\n  )\n}\n",
       "type": "registry:example"
     }
   ]

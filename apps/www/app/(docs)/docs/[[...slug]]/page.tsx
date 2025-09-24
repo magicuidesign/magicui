@@ -2,17 +2,12 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
-import {
-  IconArrowLeft,
-  IconArrowRight,
-  IconArrowUpRight,
-} from "@tabler/icons-react"
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/server"
 
 import { replaceComponentSource } from "@/lib/docs"
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Contribute } from "@/components/contribute"
 import { DocsCopyPage } from "@/components/docs-copy-page"
@@ -145,24 +140,6 @@ export default async function DocPage({ params }: DocPageProps) {
                 </p>
               )}
             </div>
-            {links ? (
-              <div className="flex items-center space-x-2 pt-4">
-                {links?.doc && (
-                  <Badge asChild variant="secondary">
-                    <Link href={links.doc} target="_blank" rel="noreferrer">
-                      Docs <IconArrowUpRight />
-                    </Link>
-                  </Badge>
-                )}
-                {links?.api && (
-                  <Badge asChild variant="secondary">
-                    <Link href={links.api} target="_blank" rel="noreferrer">
-                      API Reference <IconArrowUpRight />
-                    </Link>
-                  </Badge>
-                )}
-              </div>
-            ) : null}
           </div>
           <div className="w-full flex-1 *:data-[slot=alert]:first:mt-0">
             <MDX components={mdxComponents} />

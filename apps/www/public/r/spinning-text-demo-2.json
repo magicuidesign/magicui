@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/spinning-text-demo-2.tsx",
-      "content": "import { SpinningText } from \"@/registry/magicui/spinning-text\";\n\nexport default function SpinningTextBasic() {\n  return (\n    <SpinningText reverse className=\"text-4xl\" duration={4} radius={6}>\n      learn more • earn more • grow more •\n    </SpinningText>\n  );\n}\n",
+      "content": "import { SpinningText } from \"@/registry/magicui/spinning-text\"\n\nexport default function SpinningTextBasic() {\n  return (\n    <SpinningText reverse className=\"text-4xl\" duration={4} radius={6}>\n      learn more • earn more • grow more •\n    </SpinningText>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

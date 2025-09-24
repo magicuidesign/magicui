@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/spinning-text-demo.tsx",
-      "content": "import { SpinningText } from \"@/registry/magicui/spinning-text\";\n\nexport default function SpinningTextBasic() {\n  return <SpinningText>learn more • earn more • grow more •</SpinningText>;\n}\n",
+      "content": "import { SpinningText } from \"@/registry/magicui/spinning-text\"\n\nexport default function SpinningTextBasic() {\n  return <SpinningText>learn more • earn more • grow more •</SpinningText>\n}\n",
       "type": "registry:example"
     }
   ]

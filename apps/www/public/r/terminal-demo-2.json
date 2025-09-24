@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/terminal-demo-2.tsx",
-      "content": "import {\n  AnimatedSpan,\n  Terminal,\n  TypingAnimation,\n} from \"@/registry/magicui/terminal\";\n\nexport default function TerminalDemo2() {\n  return (\n    <Terminal>\n      <TypingAnimation delay={0}>$ ls</TypingAnimation>\n\n      <AnimatedSpan delay={800} className=\"text-blue-500\">\n        Documents Downloads Pictures\n      </AnimatedSpan>\n\n      <TypingAnimation delay={1600}>$ cd Documents</TypingAnimation>\n\n      <TypingAnimation delay={2400}>$ pwd</TypingAnimation>\n\n      <AnimatedSpan delay={3200} className=\"text-green-500\">\n        /home/user/Documents\n      </AnimatedSpan>\n    </Terminal>\n  );\n}\n",
+      "content": "import {\n  AnimatedSpan,\n  Terminal,\n  TypingAnimation,\n} from \"@/registry/magicui/terminal\"\n\nexport default function TerminalDemo2() {\n  return (\n    <Terminal>\n      <TypingAnimation delay={0}>$ ls</TypingAnimation>\n\n      <AnimatedSpan delay={800} className=\"text-blue-500\">\n        Documents Downloads Pictures\n      </AnimatedSpan>\n\n      <TypingAnimation delay={1600}>$ cd Documents</TypingAnimation>\n\n      <TypingAnimation delay={2400}>$ pwd</TypingAnimation>\n\n      <AnimatedSpan delay={3200} className=\"text-green-500\">\n        /home/user/Documents\n      </AnimatedSpan>\n    </Terminal>\n  )\n}\n",
       "type": "registry:example"
     }
   ]
