@@ -19,9 +19,9 @@ Visit https://magicui.design/docs to view the documentation.
 
 Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/main/CONTRIBUTING.md) to learn how to contribute. It only takes ~5 minutes to add your own!
 
-## Let's talk
+## Community
 
-<a href="https://cal.com/dillionverma/magicui?utm_source=banner&utm_campaign=oss"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
+Have questions, comments or feedback? [Join our discord](http://magicui.design/discord).
 
 ## Authors
 
@@ -29,15 +29,13 @@ Visit our [contributing guide](https://github.com/magicuidesign/magicui/blob/mai
   <img src="https://contrib.rocks/image?repo=magicuidesign/magicui" />
 </a>
 
-## Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmagicuidesign%2Fmagicui)
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/kd94U5?referralCode=xaYd2G)
-
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/38b63c4514a8a4cd7d1307985af2889c78d67bcc.svg "Repobeats analytics image")
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=magicuidesign/magicui&type=Date)](https://www.star-history.com/#magicuidesign/magicui&Date)
 
 ## License
 
