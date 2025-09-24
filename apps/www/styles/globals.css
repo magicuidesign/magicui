@@ -400,7 +400,7 @@
 
 @layer base {
   :root {
-    @apply overscroll-none overflow-x-hidden;
+    @apply overflow-x-hidden overscroll-none;
   }
 
   * {
@@ -495,8 +495,8 @@
   }
 
   .steps > h3:before {
-    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
-    @apply ml-[-50px] mt-[-4px];
+    @apply border-background bg-muted absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-base font-medium;
+    @apply mt-[-4px] ml-[-50px];
     content: counter(steps);
   }
 
