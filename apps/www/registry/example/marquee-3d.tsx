@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { cn } from "@/lib/utils";
-import { Marquee } from "@/registry/magicui/marquee";
+import { cn } from "@/lib/utils"
+import { Marquee } from "@/registry/magicui/marquee"
 
 const reviews = [
   {
@@ -21,12 +21,12 @@ const reviews = [
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: "https://avatar.vercel.sh/john",
   },
-];
+]
 
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
-const thirdRow = reviews.slice(0, reviews.length / 2);
-const fourthRow = reviews.slice(reviews.length / 2);
+const firstRow = reviews.slice(0, reviews.length / 2)
+const secondRow = reviews.slice(reviews.length / 2)
+const thirdRow = reviews.slice(0, reviews.length / 2)
+const fourthRow = reviews.slice(reviews.length / 2)
 
 const ReviewCard = ({
   img,
@@ -34,19 +34,19 @@ const ReviewCard = ({
   username,
   body,
 }: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
+  img: string
+  name: string
+  username: string
+  body: string
 }) => {
   return (
     <figure
       className={cn(
-        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "relative h-full w-fit cursor-pointer overflow-hidden rounded-xl border p-4 sm:w-36",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}
     >
       <div className="flex flex-row items-center gap-2">
@@ -60,8 +60,8 @@ const ReviewCard = ({
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
     </figure>
-  );
-};
+  )
+}
 
 export default function Marquee3D() {
   return (
@@ -95,10 +95,10 @@ export default function Marquee3D() {
         </Marquee>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+      <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b"></div>
+      <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t"></div>
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
     </div>
-  );
+  )
 }

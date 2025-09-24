@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface Avatar {
-  imageUrl: string;
-  profileUrl: string;
+  imageUrl: string
+  profileUrl: string
 }
 interface AvatarCirclesProps {
-  className?: string;
-  numPeople?: number;
-  avatarUrls: Avatar[];
+  className?: string
+  numPeople?: number
+  avatarUrls: Avatar[]
 }
 
 export const AvatarCircles = ({
@@ -46,5 +46,5 @@ export const AvatarCircles = ({
         </a>
       )}
     </div>
-  );
-};
+  )
+}

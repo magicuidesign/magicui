@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { BoxReveal } from "@/registry/magicui/box-reveal";
+import { Button } from "@/components/ui/button"
+import { BoxReveal } from "@/registry/magicui/box-reveal"
 
 export default function BoxRevealDemo() {
   return (
@@ -36,5 +36,5 @@ export default function BoxRevealDemo() {
         <Button className="mt-[1.6rem] bg-[#5046e6]">Explore</Button>
       </BoxReveal>
     </div>
-  );
+  )
 }

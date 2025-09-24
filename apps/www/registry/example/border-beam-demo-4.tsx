@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { BorderBeam } from "@/registry/magicui/border-beam";
+import { Button } from "@/components/ui/button"
+import { BorderBeam } from "@/registry/magicui/border-beam"
 
 export default function Component() {
   return (
@@ -16,5 +16,5 @@ export default function Component() {
         }}
       />
     </Button>
-  );
+  )
 }

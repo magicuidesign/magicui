@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { DotPattern } from "@/registry/magicui/dot-pattern";
+import { cn } from "@/lib/utils"
+import { DotPattern } from "@/registry/magicui/dot-pattern"
 
 export default function DotPatternWithGlowEffectDemo() {
   return (
@@ -9,9 +9,9 @@ export default function DotPatternWithGlowEffectDemo() {
       <DotPattern
         glow={true}
         className={cn(
-          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
+          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
         )}
       />
     </div>
-  );
+  )
 }

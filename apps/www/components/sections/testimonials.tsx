@@ -1,7 +1,8 @@
-import { ExpandableMasonarySection } from "@/components/sections/expandable-masonary-section";
-import { TweetCard } from "@/registry/magicui/tweet-card";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+
+import { ExpandableMasonarySection } from "@/components/sections/expandable-masonary-section"
+import { TweetCard } from "@/registry/magicui/tweet-card"
 
 const allTweets = [
   "https://x.com/steventey/status/1722659583464968612",
@@ -52,12 +53,12 @@ const allTweets = [
   // "https://x.com/Star_Knight12/status/1861814034363981989",
   // "https://x.com/mohamedzamakhan/status/1859810055924895904",
   // "https://x.com/DutchEngIishman/status/1795888864202043645",
-].map((t) => t.split("/").slice(-1)[0]);
+].map((t) => t.split("/").slice(-1)[0])
 
 export function Testimonials() {
   return (
     <section id="testimonials" className="container max-w-screen-xl py-14">
-      <h2 className="mb-8 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
+      <h2 className="text-foreground mb-8 text-center text-5xl leading-[1.2] font-bold tracking-tighter">
         What People Are Saying on Twitter
       </h2>
       <ExpandableMasonarySection>
@@ -69,7 +70,7 @@ export function Testimonials() {
           >
             <TweetCard
               id={id}
-              className="break-inside-avoid overflow-hidden rounded-lg bg-secondary shadow-sm"
+              className="bg-secondary break-inside-avoid overflow-hidden rounded-lg shadow-sm"
             />
             <span className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/20 p-4 text-lg font-bold text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
               <span className="flex translate-y-[14px] items-center gap-2 transition-transform duration-300 ease-in-out group-hover:translate-y-0">
@@ -81,5 +82,5 @@ export function Testimonials() {
         ))}
       </ExpandableMasonarySection>
     </section>
-  );
+  )
 }

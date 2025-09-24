@@ -1,14 +1,14 @@
-import { showcaseSource } from "@/lib/source";
-import { ChevronRightIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
+import Link from "next/link"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
 
-import { Marquee } from "@/registry/magicui/marquee";
+import { showcaseSource } from "@/lib/source"
+import { Marquee } from "@/registry/magicui/marquee"
 
 export interface ShowcaseCardProps {
-  title: string;
-  image: string;
-  href: string;
-  affiliation?: string;
+  title: string
+  image: string
+  href: string
+  affiliation?: string
 }
 export function ShowcaseCard({
   title,
@@ -37,17 +37,17 @@ export function ShowcaseCard({
         <p className="text-sm text-neutral-400">{affiliation}</p>
       </div>
     </Link>
-  );
+  )
 }
 
 export function Showcase() {
-  const showcases = showcaseSource.getPages();
+  const showcases = showcaseSource.getPages()
   return (
     <section id="showcase" className="container py-14">
-      <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
+      <h2 className="text-foreground mb-2 text-center text-5xl leading-[1.2] font-bold tracking-tighter">
         Showcase
       </h2>
-      <h3 className="mx-auto mb-8 text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
+      <h3 className="text-foreground/80 mx-auto mb-8 text-center text-lg font-medium tracking-tight text-balance">
         Companies choose Magic UI to build their landing pages.
       </h3>
       <div className="relative flex flex-col">
@@ -65,9 +65,9 @@ export function Showcase() {
               />
             ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-gradient-to-r from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 h-full  w-1/12 bg-gradient-to-l from-background"></div>
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-gradient-to-r"></div>
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 h-full w-1/12 bg-gradient-to-l"></div>
       </div>
     </section>
-  );
+  )
 }

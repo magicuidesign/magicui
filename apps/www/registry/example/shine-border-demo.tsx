@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -6,14 +6,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ShineBorder } from "@/registry/magicui/shine-border";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { ShineBorder } from "@/registry/magicui/shine-border"
 
 export default function ShineBorderDemo() {
   return (
-    <Card className="relative overflow-hidden max-w-[350px] w-full">
+    <Card className="relative w-full max-w-[350px] overflow-hidden">
       <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
       <CardHeader>
         <CardTitle>Login</CardTitle>
@@ -39,5 +39,5 @@ export default function ShineBorderDemo() {
         <Button className="w-full">Sign In</Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

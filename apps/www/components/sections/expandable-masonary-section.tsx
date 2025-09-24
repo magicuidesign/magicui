@@ -1,27 +1,28 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { AnimatePresence, motion } from "motion/react";
-import dynamic from "next/dynamic";
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
+import dynamic from "next/dynamic"
+import { AnimatePresence, motion } from "motion/react"
+
+import { Button } from "@/components/ui/button"
 
 const Masonry = dynamic(() => import("masonic").then((mod) => mod.Masonry), {
   ssr: false,
-});
+})
 
 interface ExpandableMasonarySectionProps {
-  children: React.ReactNode[];
+  children: React.ReactNode[]
 }
 
 export function ExpandableMasonarySection({
   children,
 }: ExpandableMasonarySectionProps) {
-  const [expanded, setExpanded] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useState(false)
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   const handleToggle = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   return (
     <>
@@ -45,7 +46,7 @@ export function ExpandableMasonarySection({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background"
+              className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t"
             />
           )}
         </AnimatePresence>
@@ -58,5 +59,5 @@ export function ExpandableMasonarySection({
         {expanded ? "Show Less" : "Show More"}
       </Button>
     </>
-  );
+  )
 }

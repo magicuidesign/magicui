@@ -60,22 +60,22 @@ Copy and paste the following code into your project.
 To render on server side using RSC (Next.js 13):
 
 ```tsx showLineNumbers
-import { TweetCard } from "@/components/magicui/tweet-card";
+import { TweetCard } from "@/components/magicui/tweet-card"
 
 export default async function App() {
-  return <TweetCard id="1441032681968212480" />;
+  return <TweetCard id="1441032681968212480" />
 }
 ```
 
 To render on client side:
 
 ```tsx showLineNumbers
-"use client";
+"use client"
 
-import { ClientTweetCard } from "@/components/magicui/client-tweet-card";
+import { ClientTweetCard } from "@/components/magicui/client-tweet-card"
 
 export default function App() {
-  return <ClientTweetCard id="1441032681968212480" />;
+  return <ClientTweetCard id="1441032681968212480" />
 }
 ```
 

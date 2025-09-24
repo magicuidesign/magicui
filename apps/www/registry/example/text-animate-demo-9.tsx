@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { TextAnimate } from "@/registry/magicui/text-animate";
+import { TextAnimate } from "@/registry/magicui/text-animate"
 
 export default function TextAnimateDemo9() {
   return (
@@ -53,5 +53,5 @@ export default function TextAnimateDemo9() {
     >
       Wavy Motion!
     </TextAnimate>
-  );
+  )
 }

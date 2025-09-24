@@ -1,51 +1,52 @@
-import { siteConfig } from "@/config/site";
-import { blogSource } from "@/lib/source";
+import type { Metadata } from "next"
+import Link from "next/link"
+import type { Blog, WithContext } from "schema-dts"
+
+import { siteConfig } from "@/config/site"
+import { blogSource } from "@/lib/source"
 import {
   calculateReadingTime,
   constructMetadata,
   formatDate,
   normalizeTag,
   pluralize,
-} from "@/lib/utils";
-import type { Metadata } from "next";
-import Link from "next/link";
-import type { Blog, WithContext } from "schema-dts";
+} from "@/lib/utils"
 
-export const revalidate = false;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 export function generateStaticParams() {
-  return [];
+  return []
 }
 
 const BLOG_DESCRIPTION =
-  "Latest articles about UI components, animations, and web development best practices.";
+  "Latest articles about UI components, animations, and web development best practices."
 
 export const metadata: Metadata = constructMetadata({
   title: `Blog | ${siteConfig.name}`,
   description: BLOG_DESCRIPTION,
-});
+})
 
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: Promise<{ tag?: string }>;
+  searchParams?: Promise<{ tag?: string }>
 }) {
-  const params = await searchParams;
-  const selectedTag = params?.tag ?? "";
+  const params = await searchParams
+  const selectedTag = params?.tag ?? ""
 
   const posts = blogSource.getPages().sort((a, b) => {
-    const dateA = new Date(a.data?.publishedOn || 0).getTime();
-    const dateB = new Date(b.data?.publishedOn || 0).getTime();
-    return dateB - dateA;
-  });
+    const dateA = new Date(a.data?.publishedOn || 0).getTime()
+    const dateB = new Date(b.data?.publishedOn || 0).getTime()
+    return dateB - dateA
+  })
 
-  const allTags = posts.flatMap((p) => normalizeTag(p.data?.tag));
-  const tags = [...new Set(allTags)].filter(Boolean).sort();
+  const allTags = posts.flatMap((p) => normalizeTag(p.data?.tag))
+  const tags = [...new Set(allTags)].filter(Boolean).sort()
   const filteredPosts = selectedTag
     ? posts.filter((p) => normalizeTag(p.data?.tag).includes(selectedTag))
-    : posts;
+    : posts
 
   // Generate structured data
   const structuredData: WithContext<Blog> = {
@@ -87,7 +88,7 @@ export default async function Page({
         url: siteConfig.url,
       },
     })),
-  };
+  }
 
   return (
     <>
@@ -101,13 +102,13 @@ export default async function Page({
         <header className="mb-8 space-y-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
-            <p className="mt-2 text-lg text-muted-foreground">
+            <p className="text-muted-foreground mt-2 text-lg">
               {BLOG_DESCRIPTION}
             </p>
           </div>
 
           {filteredPosts.length > 0 && (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               {selectedTag
                 ? `${pluralize(filteredPosts.length, "article")} tagged with "${selectedTag}"`
                 : `${pluralize(filteredPosts.length, "article")} total`}
@@ -147,7 +148,7 @@ export default async function Page({
 
         {filteredPosts.length === 0 ? (
           <div className="py-16 text-center">
-            <p className="text-lg text-muted-foreground">
+            <p className="text-muted-foreground text-lg">
               {selectedTag
                 ? `No articles found for "${selectedTag}".`
                 : "No posts yet."}
@@ -155,7 +156,7 @@ export default async function Page({
             {selectedTag && (
               <Link
                 href="/blog"
-                className="mt-4 inline-flex items-center text-primary hover:underline"
+                className="text-primary mt-4 inline-flex items-center hover:underline"
               >
                 View all articles
               </Link>
@@ -166,9 +167,9 @@ export default async function Page({
             {filteredPosts.map((post) => (
               <article
                 key={post.url}
-                className="group flex flex-col overflow-hidden rounded-xl border bg-card transition-all duration-200 hover:bg-accent/5"
+                className="group bg-card hover:bg-accent/5 flex flex-col overflow-hidden rounded-xl border transition-all duration-200"
               >
-                <Link href={post.url} className="flex flex-col h-full">
+                <Link href={post.url} className="flex h-full flex-col">
                   {post.data?.image && (
                     <div className="aspect-video overflow-hidden">
                       <img
@@ -181,19 +182,19 @@ export default async function Page({
                     </div>
                   )}
 
-                  <div className="flex flex-col flex-1 p-6 space-y-4">
+                  <div className="flex flex-1 flex-col space-y-4 p-6">
                     <div className="flex-1 space-y-2">
-                      <h2 className="line-clamp-2 text-xl font-semibold leading-tight group-hover:text-primary transition-colors">
+                      <h2 className="group-hover:text-primary line-clamp-2 text-xl leading-tight font-semibold transition-colors">
                         {post.data?.title ?? post.url}
                       </h2>
                       {post.data?.description && (
-                        <p className="line-clamp-3 text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
                           {post.data.description}
                         </p>
                       )}
                     </div>
 
-                    <div className="flex flex-col gap-2 text-xs text-muted-foreground">
+                    <div className="text-muted-foreground flex flex-col gap-2 text-xs">
                       <div className="flex items-center gap-2">
                         {post.data?.publishedOn && (
                           <time dateTime={post.data.publishedOn}>
@@ -213,7 +214,7 @@ export default async function Page({
                             <Link
                               key={tag}
                               href={`/blog?tag=${encodeURIComponent(tag)}`}
-                              className="rounded-md border px-2 py-1 text-xs transition-colors hover:bg-accent"
+                              className="hover:bg-accent rounded-md border px-2 py-1 text-xs transition-colors"
                             >
                               {tag}
                             </Link>
@@ -229,5 +230,5 @@ export default async function Page({
         )}
       </main>
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { ScrollProgress } from "@/registry/magicui/scroll-progress";
+import { ScrollProgress } from "@/registry/magicui/scroll-progress"
 
 export default function ScrollProgressDemo() {
   return (
@@ -8,5 +8,5 @@ export default function ScrollProgressDemo() {
         Note: The scroll progress is shown below the navbar of the page.
       </h2>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -6,10 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { BorderBeam } from "@/registry/magicui/border-beam";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { BorderBeam } from "@/registry/magicui/border-beam"
 
 export default function Component() {
   return (
@@ -44,5 +44,5 @@ export default function Component() {
       </CardFooter>
       <BorderBeam duration={8} size={100} />
     </Card>
-  );
+  )
 }

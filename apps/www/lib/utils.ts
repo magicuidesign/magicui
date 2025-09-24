@@ -1,14 +1,14 @@
-import clsx, { ClassValue } from "clsx";
-import { Metadata } from "next";
-import process from "process";
-import { twMerge } from "tailwind-merge";
+import process from "process"
+import { Metadata } from "next"
+import clsx, { ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs))
 }
 
 export const pluralize = (count: number, word: string) =>
-  `${count} ${word}${count === 1 ? "" : "s"}`;
+  `${count} ${word}${count === 1 ? "" : "s"}`
 
 export function humanize(name: string): string {
   return name
@@ -17,16 +17,16 @@ export function humanize(name: string): string {
     .trim()
     .split(/\s+/)
     .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase())
-    .join(" ");
+    .join(" ")
 }
 
 export const truncate = (str: string | null, length: number) => {
-  if (!str || str.length <= length) return str;
-  return `${str.slice(0, length - 3)}...`;
-};
+  if (!str || str.length <= length) return str
+  return `${str.slice(0, length - 3)}...`
+}
 
 export const fetcher = (...args: Parameters<typeof fetch>) =>
-  fetch(...args).then((res) => res.json());
+  fetch(...args).then((res) => res.json())
 
 /**
  * Capitalizes first letters of words in string.
@@ -41,32 +41,32 @@ export const fetcher = (...args: Parameters<typeof fetch>) =>
  */
 export const capitalize = (str: string, lower = false) =>
   (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
-    match.toUpperCase(),
-  );
+    match.toUpperCase()
+  )
 
 export function formatDate(input: string | number): string {
-  const date = new Date(input);
+  const date = new Date(input)
   return date.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
-  });
+  })
 }
 
 export const calculateReadingTime = (content: string): number => {
-  const words = content.trim().split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 200));
-};
+  const words = content.trim().split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.ceil(words / 200))
+}
 
 export const normalizeTag = (tag: unknown): string[] => {
-  if (!tag) return [];
+  if (!tag) return []
   return Array.isArray(tag)
     ? tag.filter((t): t is string => typeof t === "string")
-    : [String(tag)];
-};
+    : [String(tag)]
+}
 
 export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
 
 export function constructMetadata({
@@ -75,10 +75,10 @@ export function constructMetadata({
   image = absoluteUrl("/og"),
   ...props
 }: {
-  title?: string;
-  description?: string;
-  image?: string;
-  [key: string]: Metadata[keyof Metadata];
+  title?: string
+  description?: string
+  image?: string
+  [key: string]: Metadata[keyof Metadata]
 }): Metadata {
   return {
     title,
@@ -120,5 +120,5 @@ export function constructMetadata({
     ],
     creator: "dillionverma",
     ...props,
-  };
+  }
 }

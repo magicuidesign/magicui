@@ -18,6 +18,6 @@ export const siteConfig = {
     "Components",
     "Next.js",
   ],
-};
+}
 
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = typeof siteConfig

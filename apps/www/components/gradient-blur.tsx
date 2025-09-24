@@ -1,10 +1,10 @@
-import React from "react";
+import React from "react"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface GradientBlurProps {
-  numberOfLayers?: number;
-  className?: string;
+  numberOfLayers?: number
+  className?: string
 }
 
 const GradientBlur: React.FC<GradientBlurProps> = ({
@@ -12,12 +12,12 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
   className = "",
 }) => {
   const generateLayers = () => {
-    const layers = [];
+    const layers = []
     for (let i = 0; i < numberOfLayers; i++) {
-      const blurAmount = Math.pow(2, i);
-      const startPercent = (i * 100) / numberOfLayers;
-      const midPercent = ((i + 1) * 100) / numberOfLayers;
-      const endPercent = ((i + 2) * 100) / numberOfLayers;
+      const blurAmount = Math.pow(2, i)
+      const startPercent = (i * 100) / numberOfLayers
+      const midPercent = ((i + 1) * 100) / numberOfLayers
+      const endPercent = ((i + 2) * 100) / numberOfLayers
       layers.push(
         <div
           key={i}
@@ -33,14 +33,14 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
               rgba(0, 0, 0, 0) ${endPercent + (endPercent - midPercent)}%
             )`,
           }}
-        />,
-      );
+        />
+      )
     }
-    return layers;
-  };
+    return layers
+  }
 
   return (
-    <div className={cn(`z-5 pointer-events-none inset-x-0 h-full`, className)}>
+    <div className={cn(`pointer-events-none inset-x-0 z-5 h-full`, className)}>
       <div
         className="absolute inset-0"
         style={{
@@ -69,7 +69,7 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
         }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default GradientBlur;
+export default GradientBlur

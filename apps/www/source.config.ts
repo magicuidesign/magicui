@@ -1,12 +1,13 @@
-import { transformers } from "@/lib/highlight-code";
-import { remarkImage } from "fumadocs-core/mdx-plugins";
+import { remarkImage } from "fumadocs-core/mdx-plugins"
 import {
   defineConfig,
   defineDocs,
   frontmatterSchema,
-} from "fumadocs-mdx/config";
-import rehypePrettyCode from "rehype-pretty-code";
-import { z } from "zod";
+} from "fumadocs-mdx/config"
+import rehypePrettyCode from "rehype-pretty-code"
+import { z } from "zod"
+
+import { transformers } from "@/lib/highlight-code"
 
 export default defineConfig({
   mdxOptions: {
@@ -19,7 +20,7 @@ export default defineConfig({
       ],
     ],
     rehypePlugins: (plugins) => {
-      plugins.shift();
+      plugins.shift()
       plugins.push([
         // TODO: fix the type.
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,12 +32,12 @@ export default defineConfig({
           },
           transformers,
         },
-      ]);
+      ])
 
-      return plugins;
+      return plugins
     },
   },
-});
+})
 
 export const docs = defineDocs({
   dir: "content/docs",
@@ -54,7 +55,7 @@ export const docs = defineDocs({
         .optional(),
     }),
   },
-});
+})
 
 export const showcase = defineDocs({
   dir: "content/showcase",
@@ -65,7 +66,7 @@ export const showcase = defineDocs({
       image: z.string().optional(),
     }),
   },
-});
+})
 
 export const blog = defineDocs({
   dir: "content/blog",
@@ -78,4 +79,4 @@ export const blog = defineDocs({
       author: z.string().optional(),
     }),
   },
-});
+})

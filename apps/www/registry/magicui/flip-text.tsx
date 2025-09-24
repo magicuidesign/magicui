@@ -1,32 +1,31 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, Variants, MotionProps } from "motion/react";
+import React, { ElementType } from "react"
+import { AnimatePresence, motion, MotionProps, Variants } from "motion/react"
 
-import { cn } from "@/lib/utils";
-import { ElementType } from "react";
-import React from "react";
+import { cn } from "@/lib/utils"
 
 interface FlipTextProps extends MotionProps {
   /** The duration of the animation */
-  duration?: number;
+  duration?: number
   /** The delay between each character */
-  delayMultiple?: number;
+  delayMultiple?: number
   /** The variants of the animation */
-  framerProps?: Variants;
+  framerProps?: Variants
   /** The class name of the component */
-  className?: string;
+  className?: string
   /** The element type of the component */
-  as?: ElementType;
+  as?: ElementType
   /** The children of the component */
-  children: React.ReactNode;
+  children: React.ReactNode
   /** The variants of the animation */
-  variants?: Variants;
+  variants?: Variants
 }
 
 const defaultVariants: Variants = {
   hidden: { rotateX: -90, opacity: 0 },
   visible: { rotateX: 0, opacity: 1 },
-};
+}
 
 export function FlipText({
   children,
@@ -38,8 +37,8 @@ export function FlipText({
   variants,
   ...props
 }: FlipTextProps) {
-  const MotionComponent = motion.create(Component);
-  const characters = React.Children.toArray(children).join("").split("");
+  const MotionComponent = motion.create(Component)
+  const characters = React.Children.toArray(children).join("").split("")
 
   return (
     <div className="flex justify-center space-x-2">
@@ -60,5 +59,5 @@ export function FlipText({
         ))}
       </AnimatePresence>
     </div>
-  );
+  )
 }

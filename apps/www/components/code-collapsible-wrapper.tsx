@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/collapsible"
+import { Separator } from "@/components/ui/separator"
 
 export function CodeCollapsibleWrapper({
   className,
   children,
   ...props
 }: React.ComponentProps<typeof Collapsible>) {
-  const [isOpened, setIsOpened] = React.useState(false);
+  const [isOpened, setIsOpened] = React.useState(false)
 
   return (
     <Collapsible
@@ -47,5 +47,5 @@ export function CodeCollapsibleWrapper({
         {isOpened ? "Collapse" : "Expand"}
       </CollapsibleTrigger>
     </Collapsible>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { MorphingText } from "@/registry/magicui/morphing-text";
+import { MorphingText } from "@/registry/magicui/morphing-text"
 
 const texts = [
   "Hello",
@@ -10,8 +10,8 @@ const texts = [
   "Smooth",
   "Transition",
   "Engaging",
-];
+]
 
 export default function MorphingTextDemo() {
-  return <MorphingText texts={texts} />;
+  return <MorphingText texts={texts} />
 }

@@ -1,7 +1,7 @@
-import { Hero } from "@/components/sections/hero";
-import { Showcase } from "@/components/sections/showcase";
-import { Testimonials } from "@/components/sections/testimonials";
-import { VideoTestimonials } from "@/components/sections/video-testimonials";
+import { Hero } from "@/components/sections/hero"
+import { Showcase } from "@/components/sections/showcase"
+import { Testimonials } from "@/components/sections/testimonials"
+import { VideoTestimonials } from "@/components/sections/video-testimonials"
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
       <Testimonials />
       <VideoTestimonials />
     </>
-  );
+  )
 }

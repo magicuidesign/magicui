@@ -92,11 +92,12 @@ Material UI card is made up of a list of components such as:
 The CardActionArea component in Material UI makes an area within a card clickable by wrapping contents within a card that should be interactive. The code snippet below shows how to use CardActionArea in combination with a Card component:
 
 ```jsx
-import { CardActionArea } from "@mui/material";
-import Card from "@mui/material/Card";
-<Card>
+import { CardActionArea } from "@mui/material"
+import Card from "@mui/material/Card"
+
+;<Card>
   <CardActionArea>{/* Card Contents */}</CardActionArea>
-</Card>;
+</Card>
 ```
 
 ### CardHeader
@@ -104,16 +105,17 @@ import Card from "@mui/material/Card";
 The Material UI CardHeader provides context to a card by adding a header. It can display a title, an avatar, a subheader, and an action within a card. The example code below shows how to use a CardHeader component.
 
 ```jsx
-import { CardHeader, Avatar, IconButton } from "@mui/material";
-import Card from "@mui/material/Card";
-<Card>
+import { Avatar, CardHeader, IconButton } from "@mui/material"
+import Card from "@mui/material/Card"
+
+;<Card>
   <CardHeader
     avatar={<Avatar aria-label="card-name">C</Avatar>}
     title="Card Title"
     subheader="Subheader"
     action={<IconButton aria-label="settings"></IconButton>}
   />
-</Card>;
+</Card>
 ```
 
 ### CardMedia
@@ -135,11 +137,12 @@ The CardMedia component in Material UI allows adding images, videos, icons, and 
 The CardContent component is used to wrap the core contents of the Card component. The code snippet below illustrates how to use the CardContent component:
 
 ```jsx
-import { CardContent } from "@mui/material";
-import Card from "@mui/material/Card";
-<Card>
+import { CardContent } from "@mui/material"
+import Card from "@mui/material/Card"
+
+;<Card>
   <CardContent>{/* Card Contents */}</CardContent>
-</Card>;
+</Card>
 ```
 
 ### CardActions
@@ -147,13 +150,14 @@ import Card from "@mui/material/Card";
 In material UI, the CardActions component is used to add card actions. The code snippet below shows how to use CardActions in combination with a Card component:
 
 ```jsx
-import { CardActions, Button } from "@mui/material";
-import Card from "@mui/material/Card";
-<Card>
+import { Button, CardActions } from "@mui/material"
+import Card from "@mui/material/Card"
+
+;<Card>
   <CardActions>
     <Button>Click here</Button>
   </CardActions>
-</Card>;
+</Card>
 ```
 
 ## Getting Started With Material UI Card
@@ -174,13 +178,14 @@ The provided code snippet below showcases an example of creating a straightforwa
 
 ```jsx
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
   Typography,
-} from "@mui/material";
-import "./styles.css";
+} from "@mui/material"
+
+import "./styles.css"
 
 const BasicCard = () => {
   return (
@@ -210,8 +215,8 @@ const BasicCard = () => {
         <Button size="small">Read More</Button>
       </CardActions>
     </Card>
-  );
-};
+  )
+}
 
 const App = () => {
   return (
@@ -219,10 +224,10 @@ const App = () => {
       <h1>Basic card</h1>
       <BasicCard />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
 ```
 
 You can create your own Material UI card component by following these steps and using the provided code snippet. The framework offers a straightforward way to structure and style information, making it visually appealing and structured for your webpage or application.

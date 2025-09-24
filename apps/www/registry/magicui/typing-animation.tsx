@@ -1,16 +1,17 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { motion, MotionProps, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"
+import { motion, MotionProps, useInView } from "motion/react"
+
+import { cn } from "@/lib/utils"
 
 interface TypingAnimationProps extends MotionProps {
-  children: string;
-  className?: string;
-  duration?: number;
-  delay?: number;
-  as?: React.ElementType;
-  startOnView?: boolean;
+  children: string
+  className?: string
+  duration?: number
+  delay?: number
+  as?: React.ElementType
+  startOnView?: boolean
 }
 
 export function TypingAnimation({
@@ -24,62 +25,62 @@ export function TypingAnimation({
 }: TypingAnimationProps) {
   const MotionComponent = motion.create(Component, {
     forwardMotionProps: true,
-  });
+  })
 
-  const [displayedText, setDisplayedText] = useState<string>("");
-  const [started, setStarted] = useState(false);
-  const elementRef = useRef<HTMLElement | null>(null);
+  const [displayedText, setDisplayedText] = useState<string>("")
+  const [started, setStarted] = useState(false)
+  const elementRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(elementRef as React.RefObject<Element>, {
     amount: 0.3,
     once: true,
-  });
+  })
 
   useEffect(() => {
     if (!startOnView) {
       const startTimeout = setTimeout(() => {
-        setStarted(true);
-      }, delay);
-      return () => clearTimeout(startTimeout);
+        setStarted(true)
+      }, delay)
+      return () => clearTimeout(startTimeout)
     }
 
-    if (!isInView) return;
+    if (!isInView) return
 
     const startTimeout = setTimeout(() => {
-      setStarted(true);
-    }, delay);
+      setStarted(true)
+    }, delay)
 
-    return () => clearTimeout(startTimeout);
-  }, [delay, startOnView, isInView]);
+    return () => clearTimeout(startTimeout)
+  }, [delay, startOnView, isInView])
 
   useEffect(() => {
-    if (!started) return;
+    if (!started) return
 
-    const graphemes = Array.from(children);
-    let i = 0;
+    const graphemes = Array.from(children)
+    let i = 0
     const typingEffect = setInterval(() => {
       if (i < graphemes.length) {
-        setDisplayedText(graphemes.slice(0, i + 1).join(""));
-        i++;
+        setDisplayedText(graphemes.slice(0, i + 1).join(""))
+        i++
       } else {
-        clearInterval(typingEffect);
+        clearInterval(typingEffect)
       }
-    }, duration);
+    }, duration)
 
     return () => {
-      clearInterval(typingEffect);
-    };
-  }, [children, duration, started]);
+      clearInterval(typingEffect)
+    }
+  }, [children, duration, started])
 
   return (
     <MotionComponent
       ref={elementRef}
       className={cn(
-        "text-4xl font-bold leading-[5rem] tracking-[-0.02em]",
-        className,
+        "text-4xl leading-[5rem] font-bold tracking-[-0.02em]",
+        className
       )}
       {...props}
     >
       {displayedText}
     </MotionComponent>
-  );
+  )
 }

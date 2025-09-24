@@ -1,20 +1,21 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { Event, trackEvent } from "@/lib/events";
-import { cn } from "@/lib/utils";
-import { NavItem } from "@/types";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { NavItem } from "@/types"
+
+import { Event, trackEvent } from "@/lib/events"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 export function MainNav({
   items,
   className,
   ...props
 }: React.ComponentProps<"nav"> & {
-  items: NavItem[];
+  items: NavItem[]
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <nav className={cn("items-center gap-0.5", className)} {...props}>
@@ -25,7 +26,7 @@ export function MainNav({
             className={cn(pathname === item.href && "text-primary")}
             onClick={() => {
               if (item.event) {
-                trackEvent({ name: item.event });
+                trackEvent({ name: item.event })
               }
             }}
           >
@@ -34,5 +35,5 @@ export function MainNav({
         </Button>
       ))}
     </nav>
-  );
+  )
 }

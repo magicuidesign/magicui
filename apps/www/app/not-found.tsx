@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
 
 export default function NotFound() {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <section>
       <div className="container mx-auto flex min-h-[calc(100vh-8rem)] items-center px-6 py-12">
@@ -15,7 +15,7 @@ export default function NotFound() {
           <p className="rounded-full bg-blue-50 p-3 text-sm font-medium dark:bg-gray-800">
             <Icons.warning className="size-6" />
           </p>
-          <h1 className="mt-3 text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
+          <h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
             Page not found
           </h1>
           <p className="mt-4 text-gray-500 dark:text-gray-400">
@@ -38,5 +38,5 @@ export default function NotFound() {
         </div>
       </div>
     </section>
-  );
+  )
 }

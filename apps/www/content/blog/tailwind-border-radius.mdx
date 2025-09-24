@@ -34,18 +34,19 @@ First, make sure that your React project has Tailwind CSS properly configured. N
 Let's add a button to the `App.tsx`. We will apply just the base level of roundedness with `rounded`.
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
-      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+    <div className="flex-rows flex h-screen w-full items-center justify-center gap-4 bg-gray-100">
+      <button className="rounded bg-blue-500 px-4 py-2 text-white">
         'rounded'
       </button>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 When rendered, this is what the button looks like - very aesthetically pleasing, right?
@@ -55,27 +56,28 @@ When rendered, this is what the button looks like - very aesthetically pleasing,
 Let's add more rounded variations and see side-by-side how they compare.
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
-      <button className="bg-blue-500 text-white px-4 py-2">
+    <div className="flex-rows flex h-screen w-full items-center justify-center gap-4 bg-gray-100">
+      <button className="bg-blue-500 px-4 py-2 text-white">
         No Round Corners
       </button>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded">
+      <button className="rounded bg-blue-500 px-4 py-2 text-white">
         'rounded' Corners
       </button>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+      <button className="rounded-md bg-blue-500 px-4 py-2 text-white">
         'rounded-md' Corners
       </button>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-full">
+      <button className="rounded-full bg-blue-500 px-4 py-2 text-white">
         'rounded-full' Corners
       </button>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 Notice the different rounded utility classes added to each button element.
@@ -89,19 +91,20 @@ When creating complex layouts, you can add more interactivity to your elements b
 Here's a sample React card that has `rounded-lg` applied at the start but when the user hovers over it, it changes to `rounded-none` giving the element sharp edges.
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
-      <div className="bg-white p-6 rounded-lg shadow-md hover:rounded-none">
+    <div className="flex-rows flex h-screen w-full items-center justify-center gap-4 bg-gray-100">
+      <div className="rounded-lg bg-white p-6 shadow-md hover:rounded-none">
         <h2 className="text-xl font-bold">Card Title</h2>
         <p className="text-gray-700">This is a card with a border radius.</p>
       </div>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 This is what it looks like when rendered:
@@ -115,21 +118,22 @@ As with all the classes in Tailwind, you can apply different rounded classes bas
 For smaller screens, the card below will have medium roundedness applied. It will switch to Large [at the Medium breakpoint](https://tailwindcss.com/docs/screens) and then stay Extra Large for all of the bigger screens.
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-rows items-center justify-center h-screen bg-gray-100 gap-4">
-      <div className="bg-white p-6 rounded-md md:rounded-lg lg:rounded-xl shadow-md">
+    <div className="flex-rows flex h-screen w-full items-center justify-center gap-4 bg-gray-100">
+      <div className="rounded-md bg-white p-6 shadow-md md:rounded-lg lg:rounded-xl">
         <h2 className="text-xl font-bold">Responsive Card Title</h2>
         <p className="text-gray-700">
           This card adjusts its border radius based on the screen size.
         </p>
       </div>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 ## Next Steps

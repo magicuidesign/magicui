@@ -1,5 +1,6 @@
-import { AnimatedSubscribeButton } from "@/registry/magicui/animated-subscribe-button";
-import { CheckIcon, ChevronRightIcon } from "lucide-react";
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
+
+import { AnimatedSubscribeButton } from "@/registry/magicui/animated-subscribe-button"
 
 export default function AnimatedSubscribeButtonDemo() {
   return (
@@ -13,5 +14,5 @@ export default function AnimatedSubscribeButtonDemo() {
         Subscribed
       </span>
     </AnimatedSubscribeButton>
-  );
+  )
 }

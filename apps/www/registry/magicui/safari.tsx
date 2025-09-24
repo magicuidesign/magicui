@@ -1,25 +1,25 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react"
 
-const SAFARI_WIDTH = 1203;
-const SAFARI_HEIGHT = 753;
-const SCREEN_X = 1;
-const SCREEN_Y = 52;
-const SCREEN_WIDTH = 1200;
-const SCREEN_HEIGHT = 700;
+const SAFARI_WIDTH = 1203
+const SAFARI_HEIGHT = 753
+const SCREEN_X = 1
+const SCREEN_Y = 52
+const SCREEN_WIDTH = 1200
+const SCREEN_HEIGHT = 700
 
 // Calculated percentages
-const LEFT_PCT = (SCREEN_X / SAFARI_WIDTH) * 100;
-const TOP_PCT = (SCREEN_Y / SAFARI_HEIGHT) * 100;
-const WIDTH_PCT = (SCREEN_WIDTH / SAFARI_WIDTH) * 100;
-const HEIGHT_PCT = (SCREEN_HEIGHT / SAFARI_HEIGHT) * 100;
+const LEFT_PCT = (SCREEN_X / SAFARI_WIDTH) * 100
+const TOP_PCT = (SCREEN_Y / SAFARI_HEIGHT) * 100
+const WIDTH_PCT = (SCREEN_WIDTH / SAFARI_WIDTH) * 100
+const HEIGHT_PCT = (SCREEN_HEIGHT / SAFARI_HEIGHT) * 100
 
-type SafariMode = "default" | "simple";
+type SafariMode = "default" | "simple"
 
 export interface SafariProps extends HTMLAttributes<HTMLDivElement> {
-  url?: string;
-  imageSrc?: string;
-  videoSrc?: string;
-  mode?: SafariMode;
+  url?: string
+  imageSrc?: string
+  videoSrc?: string
+  mode?: SafariMode
 }
 
 export function Safari({
@@ -31,8 +31,8 @@ export function Safari({
   style,
   ...props
 }: SafariProps) {
-  const hasVideo = !!videoSrc;
-  const hasMedia = hasVideo || !!imageSrc;
+  const hasVideo = !!videoSrc
+  const hasMedia = hasVideo || !!imageSrc
 
   return (
     <div
@@ -234,5 +234,5 @@ export function Safari({
         </g>
       </svg>
     </div>
-  );
+  )
 }

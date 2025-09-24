@@ -1,23 +1,25 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { ComponentPropsWithoutRef, ReactNode, useState } from "react";
+"use client"
+
+import { ComponentPropsWithoutRef, ReactNode, useState } from "react"
+
+import { cn } from "@/lib/utils"
 
 export interface ArcTimelineItem {
-  time: ReactNode;
+  time: ReactNode
   steps: Array<{
-    icon: ReactNode;
-    content: ReactNode;
-  }>;
+    icon: ReactNode
+    content: ReactNode
+  }>
 }
 interface ArcTimelineProps extends ComponentPropsWithoutRef<"div"> {
   /**
    * Optional CSS class name to apply custom styles
    */
-  className?: string;
+  className?: string
   /**
    * The data of the arc timeline
    */
-  data: ArcTimelineItem[];
+  data: ArcTimelineItem[]
   /**
    * The configuration of the arc timeline
    */
@@ -25,20 +27,20 @@ interface ArcTimelineProps extends ComponentPropsWithoutRef<"div"> {
     /**
      * The width of the circle, default is 5000
      */
-    circleWidth?: number;
+    circleWidth?: number
     /**
      * The angle between minor steps, default is 0.35
      */
-    angleBetweenMinorSteps?: number;
+    angleBetweenMinorSteps?: number
     /**
      * The number of lines to fill between steps, default is 10
      */
-    lineCountFillBetweenSteps?: number;
+    lineCountFillBetweenSteps?: number
     /**
      * The number of lines to fill in before the first step and after the last step
      */
-    boundaryPlaceholderLinesCount?: number;
-  };
+    boundaryPlaceholderLinesCount?: number
+  }
   /**
    * The default active step
    */
@@ -46,12 +48,12 @@ interface ArcTimelineProps extends ComponentPropsWithoutRef<"div"> {
     /**
      * The time of the default active step
      */
-    time?: string;
+    time?: string
     /**
      * The index of the default active step
      */
-    stepIndex?: number;
-  };
+    stepIndex?: number
+  }
 }
 
 export function ArcTimeline(props: ArcTimelineProps) {
@@ -62,37 +64,37 @@ export function ArcTimeline(props: ArcTimelineProps) {
     arcConfig = {},
     defaultActiveStep = {},
     ...restProps
-  } = props;
+  } = props
 
   const {
     circleWidth = 5000,
     angleBetweenMinorSteps = 0.35,
     lineCountFillBetweenSteps = 10,
     boundaryPlaceholderLinesCount = 50,
-  } = arcConfig;
+  } = arcConfig
 
   const {
     time: defaultActiveTime = data[0].time,
     stepIndex: defaultActiveStepIndex = 0,
-  } = defaultActiveStep || {};
+  } = defaultActiveStep || {}
 
   const [circleContainerRotateDeg, setCircleContainerRotateDeg] = useState(
     () => {
-      let count = 0;
+      let count = 0
       for (const timelineItem of data) {
         if (timelineItem.time === defaultActiveTime) {
-          count += defaultActiveStepIndex;
-          break;
+          count += defaultActiveStepIndex
+          break
         } else {
-          count += timelineItem.steps.length;
+          count += timelineItem.steps.length
         }
       }
       return (
         -1 * count * angleBetweenMinorSteps * (lineCountFillBetweenSteps + 1) -
         angleBetweenMinorSteps * boundaryPlaceholderLinesCount
-      );
-    },
-  );
+      )
+    }
+  )
 
   return (
     <div
@@ -104,7 +106,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
           transform: `translateX(-50%) rotate(${circleContainerRotateDeg}deg)`,
           width: `${circleWidth}px`,
         }}
-        className="absolute left-1/2 top-28 aspect-square origin-center rounded-full transition-all duration-500 ease-in-out"
+        className="absolute top-28 left-1/2 aspect-square origin-center rounded-full transition-all duration-500 ease-in-out"
       >
         {data.map((line, lineIndex) => {
           return (
@@ -119,14 +121,14 @@ export function ArcTimeline(props: ArcTimelineProps) {
                       .map((item) => item.steps.length)
                       .reduce((prev, current) => prev + current, 0) +
                       stepIndex) +
-                  angleBetweenMinorSteps * boundaryPlaceholderLinesCount;
+                  angleBetweenMinorSteps * boundaryPlaceholderLinesCount
                 const isLastStep =
                   lineIndex === data.length - 1 &&
-                  stepIndex === line.steps.length - 1;
-                const isFirstStep = lineIndex === 0 && stepIndex === 0;
+                  stepIndex === line.steps.length - 1
+                const isFirstStep = lineIndex === 0 && stepIndex === 0
                 // check if the step is active
                 const isActive =
-                  Math.abs(angle + circleContainerRotateDeg) < 0.01;
+                  Math.abs(angle + circleContainerRotateDeg) < 0.01
                 return (
                   <div key={`${lineIndex}-${stepIndex}`}>
                     {/* placeholder lines before the first step */}
@@ -148,15 +150,15 @@ export function ArcTimeline(props: ArcTimelineProps) {
                     )}
                     <div
                       className={cn(
-                        "absolute left-1/2 top-0 -translate-x-1/2 cursor-pointer transition-all duration-200",
-                        isActive ? "h-[120px] w-[2px]" : "h-16 w-[1.5px]",
+                        "absolute top-0 left-1/2 -translate-x-1/2 cursor-pointer transition-all duration-200",
+                        isActive ? "h-[120px] w-[2px]" : "h-16 w-[1.5px]"
                       )}
                       style={{
                         transformOrigin: `50% ${circleWidth / 2}px`,
                         transform: `rotate(${angle}deg)`,
                       }}
                       onClick={() => {
-                        setCircleContainerRotateDeg(-1 * angle);
+                        setCircleContainerRotateDeg(-1 * angle)
                       }}
                     >
                       <div
@@ -164,7 +166,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                           "h-full w-full transition-colors duration-200",
                           isActive
                             ? "bg-[var(--step-line-active-color,#888888)] dark:bg-[var(--step-line-active-color,#9780ff)]"
-                            : "bg-[var(--step-line-inactive-color,#b1b1b1)] dark:bg-[var(--step-line-inactive-color,#737373)]",
+                            : "bg-[var(--step-line-inactive-color,#b1b1b1)] dark:bg-[var(--step-line-inactive-color,#737373)]"
                         )}
                         style={{
                           transformOrigin: "center top",
@@ -178,7 +180,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                             "absolute bottom-0 left-1/2 aspect-square -translate-x-1/2",
                             isActive
                               ? "translate-y-[calc(100%_+_14px)] scale-[1.2] text-[var(--icon-active-color,#555555)] dark:text-[var(--icon-active-color,#d4d4d4)]"
-                              : "translate-y-[calc(100%_+_4px)] scale-100 text-[var(--icon-inactive-color,#a3a3a3)] dark:text-[var(--icon-inactive-color,#a3a3a3)]",
+                              : "translate-y-[calc(100%_+_4px)] scale-100 text-[var(--icon-inactive-color,#a3a3a3)] dark:text-[var(--icon-inactive-color,#a3a3a3)]"
                           )}
                         >
                           {step.icon}
@@ -187,7 +189,7 @@ export function ArcTimeline(props: ArcTimelineProps) {
                           className={cn(
                             "absolute bottom-0 left-1/2 line-clamp-3 flex w-[240px] -translate-x-1/2 translate-y-[calc(100%_+_42px)] items-center justify-center text-center text-sm transition-opacity duration-300 ease-in",
                             "text-[var(--description-color,#555555)] dark:text-[var(--description-color,#d4d4d4)]",
-                            isActive ? "opacity-100" : "opacity-0",
+                            isActive ? "opacity-100" : "opacity-0"
                           )}
                         >
                           {step.content}
@@ -196,10 +198,10 @@ export function ArcTimeline(props: ArcTimelineProps) {
                       {stepIndex === 0 && (
                         <div
                           className={cn(
-                            "absolute left-1/2 top-0 z-10 -translate-x-1/2 translate-y-[calc(-100%-24px)] whitespace-nowrap",
+                            "absolute top-0 left-1/2 z-10 -translate-x-1/2 translate-y-[calc(-100%-24px)] whitespace-nowrap",
                             isActive
                               ? "text-[var(--time-active-color,#555555)] dark:text-[var(--time-active-color,#d4d4d4)]"
-                              : "text-[var(--time-inactive-color,#a3a3a3)] dark:text-[var(--time-inactive-color,#a3a3a3)]",
+                              : "text-[var(--time-inactive-color,#a3a3a3)] dark:text-[var(--time-inactive-color,#a3a3a3)]"
                           )}
                         >
                           {line.time}
@@ -223,27 +225,27 @@ export function ArcTimeline(props: ArcTimelineProps) {
                       circleContainerRotateDeg={circleContainerRotateDeg}
                     />
                   </div>
-                );
+                )
               })}
             </div>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
 
 interface PlaceholderLinesProps {
-  isFirstStep: boolean;
-  angleBetweenMinorSteps: number;
-  angle: number;
-  lineCountFillBetweenSteps: number;
-  boundaryPlaceholderLinesCount: number;
-  isLastStep: boolean;
-  lineIndex: number;
-  stepIndex: number;
-  circleWidth: number;
-  circleContainerRotateDeg: number;
+  isFirstStep: boolean
+  angleBetweenMinorSteps: number
+  angle: number
+  lineCountFillBetweenSteps: number
+  boundaryPlaceholderLinesCount: number
+  isLastStep: boolean
+  lineIndex: number
+  stepIndex: number
+  circleWidth: number
+  circleContainerRotateDeg: number
 }
 function PlaceholderLines(props: PlaceholderLinesProps) {
   const {
@@ -257,30 +259,30 @@ function PlaceholderLines(props: PlaceholderLinesProps) {
     stepIndex,
     circleWidth,
     circleContainerRotateDeg,
-  } = props;
+  } = props
 
   const getAngle = (index: number) => {
     if (isFirstStep) {
-      return index * angleBetweenMinorSteps;
+      return index * angleBetweenMinorSteps
     } else {
-      return angle + (index + 1) * angleBetweenMinorSteps;
+      return angle + (index + 1) * angleBetweenMinorSteps
     }
-  };
+  }
 
   return (
     <>
       {Array(
         isLastStep || isFirstStep
           ? boundaryPlaceholderLinesCount
-          : lineCountFillBetweenSteps,
+          : lineCountFillBetweenSteps
       )
         .fill("")
         .map((_, fillIndex) => {
-          const fillAngle = getAngle(fillIndex);
+          const fillAngle = getAngle(fillIndex)
           return (
             <div
               key={`${lineIndex}-${stepIndex}-${fillIndex}`}
-              className="absolute left-1/2 top-0 h-[34px] w-[1px] -translate-x-1/2"
+              className="absolute top-0 left-1/2 h-[34px] w-[1px] -translate-x-1/2"
               style={{
                 transformOrigin: `50% ${circleWidth / 2}px`,
                 transform: `rotate(${fillAngle}deg)`,
@@ -296,8 +298,8 @@ function PlaceholderLines(props: PlaceholderLinesProps) {
                 }}
               ></div>
             </div>
-          );
+          )
         })}
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { IconCloud } from "@/registry/magicui/icon-cloud";
+import { IconCloud } from "@/registry/magicui/icon-cloud"
 
 const Icons = {
   gitHub: () => (
@@ -127,11 +127,11 @@ const Icons = {
       />
     </svg>
   ),
-};
+}
 
 export default function IconCloudDemo() {
   return (
-    <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border bg-background">
+    <div className="bg-background relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border">
       <IconCloud
         icons={[
           <Icons.gitHub key="github" />,
@@ -161,5 +161,5 @@ export default function IconCloudDemo() {
         ]}
       />
     </div>
-  );
+  )
 }

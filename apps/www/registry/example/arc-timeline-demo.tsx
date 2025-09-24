@@ -1,14 +1,15 @@
-import { ArcTimeline, ArcTimelineItem } from "@/registry/magicui/arc-timeline";
 import {
-  RocketIcon,
   CubeIcon,
-  LockClosedIcon,
-  GlobeIcon,
   GearIcon,
+  GlobeIcon,
   LightningBoltIcon,
-  StarIcon,
+  LockClosedIcon,
   MagicWandIcon,
-} from "@radix-ui/react-icons";
+  RocketIcon,
+  StarIcon,
+} from "@radix-ui/react-icons"
+
+import { ArcTimeline, ArcTimelineItem } from "@/registry/magicui/arc-timeline"
 
 export default function ArcTimelineDemo() {
   return (
@@ -32,7 +33,7 @@ export default function ArcTimelineDemo() {
         boundaryPlaceholderLinesCount: 50,
       }}
     />
-  );
+  )
 }
 
 const TIMELINE: ArcTimelineItem[] = [
@@ -194,4 +195,4 @@ const TIMELINE: ArcTimelineItem[] = [
       },
     ],
   },
-];
+]

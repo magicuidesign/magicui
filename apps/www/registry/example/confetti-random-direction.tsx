@@ -1,4 +1,4 @@
-import { ConfettiButton } from "@/registry/magicui/confetti";
+import { ConfettiButton } from "@/registry/magicui/confetti"
 
 export default function ConfettiButtonDemo() {
   return (
@@ -6,12 +6,12 @@ export default function ConfettiButtonDemo() {
       <ConfettiButton
         options={{
           get angle() {
-            return Math.random() * 360;
+            return Math.random() * 360
           },
         }}
       >
         Random Confetti 🎉
       </ConfettiButton>
     </div>
-  );
+  )
 }

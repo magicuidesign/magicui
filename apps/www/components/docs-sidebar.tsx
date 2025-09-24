@@ -1,9 +1,12 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { NavItemWithChildren } from "@/types"
 
-import { docsConfig } from "@/config/docs";
+import { docsConfig } from "@/config/docs"
+import { trackEvent } from "@/lib/events"
+import { cn } from "@/lib/utils"
 import {
   Sidebar,
   SidebarContent,
@@ -13,15 +16,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/events";
-import { NavItemWithChildren } from "@/types";
+} from "@/components/ui/sidebar"
 
 interface DocsSidebarNavItemsProps {
-  items: NavItemWithChildren[];
-  pathname: string;
-  level?: number;
+  items: NavItemWithChildren[]
+  pathname: string
+  level?: number
 }
 
 function DocsSidebarNavItems({
@@ -32,8 +32,8 @@ function DocsSidebarNavItems({
   return (
     <SidebarMenu className={cn("gap-0.5", level > 0 && "ml-4")}>
       {items.map((item) => {
-        const isActive = item.href ? pathname === item.href : false;
-        const hasChildren = item.items && item.items.length > 0;
+        const isActive = item.href ? pathname === item.href : false
+        const hasChildren = item.items && item.items.length > 0
 
         return (
           <div key={item.href || item.title}>
@@ -85,16 +85,16 @@ function DocsSidebarNavItems({
               />
             )}
           </div>
-        );
+        )
       })}
     </SidebarMenu>
-  );
+  )
 }
 
 export function DocsSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <Sidebar
@@ -117,9 +117,9 @@ export function DocsSidebar({
                 />
               </SidebarGroupContent>
             </SidebarGroup>
-          );
+          )
         })}
       </SidebarContent>
     </Sidebar>
-  );
+  )
 }

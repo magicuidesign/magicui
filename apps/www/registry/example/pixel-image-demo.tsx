@@ -1,4 +1,4 @@
-import { PixelImage } from "@/registry/magicui/pixel-image";
+import { PixelImage } from "@/registry/magicui/pixel-image"
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       customGrid={{ rows: 4, cols: 6 }}
       grayscaleAnimation
     />
-  );
+  )
 }

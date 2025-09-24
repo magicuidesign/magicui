@@ -1,4 +1,4 @@
-import { BlurFade } from "@/registry/magicui/blur-fade";
+import { BlurFade } from "@/registry/magicui/blur-fade"
 
 export default function BlurFadeTextDemo() {
   return (
@@ -9,10 +9,10 @@ export default function BlurFadeTextDemo() {
         </h2>
       </BlurFade>
       <BlurFade delay={0.25 * 2} inView>
-        <span className="text-pretty text-xl tracking-tighter sm:text-3xl xl:text-4xl/none">
+        <span className="text-xl tracking-tighter text-pretty sm:text-3xl xl:text-4xl/none">
           Nice to meet you
         </span>
       </BlurFade>
     </section>
-  );
+  )
 }

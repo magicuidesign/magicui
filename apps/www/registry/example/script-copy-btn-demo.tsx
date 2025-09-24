@@ -1,4 +1,4 @@
-import { ScriptCopyBtn } from "@/registry/magicui/script-copy-btn";
+import { ScriptCopyBtn } from "@/registry/magicui/script-copy-btn"
 
 export default function ScriptCopyBtnDemo() {
   const customCommandMap = {
@@ -6,7 +6,7 @@ export default function ScriptCopyBtnDemo() {
     yarn: "yarn shadcn add button",
     pnpm: "pnpm dlx shadcn@latest add button",
     bun: "bun x shadcn@latest add button",
-  };
+  }
   return (
     <ScriptCopyBtn
       showMultiplePackageOptions={true}
@@ -15,5 +15,5 @@ export default function ScriptCopyBtnDemo() {
       darkTheme="vitesse-dark"
       commandMap={customCommandMap}
     />
-  );
+  )
 }

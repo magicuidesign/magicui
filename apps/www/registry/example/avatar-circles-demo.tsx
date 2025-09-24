@@ -1,4 +1,4 @@
-import { AvatarCircles } from "@/registry/magicui/avatar-circles";
+import { AvatarCircles } from "@/registry/magicui/avatar-circles"
 
 const avatars = [
   {
@@ -25,8 +25,8 @@ const avatars = [
     imageUrl: "https://avatars.githubusercontent.com/u/89768406",
     profileUrl: "https://github.com/itsarghyadas",
   },
-];
+]
 
 export default function AvatarCirclesDemo() {
-  return <AvatarCircles numPeople={99} avatarUrls={avatars} />;
+  return <AvatarCircles numPeople={99} avatarUrls={avatars} />
 }

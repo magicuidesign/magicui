@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button";
+import { Play, SkipBack, SkipForward } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -6,9 +8,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { BorderBeam } from "@/registry/magicui/border-beam";
-import { Play, SkipBack, SkipForward } from "lucide-react";
+} from "@/components/ui/card"
+import { BorderBeam } from "@/registry/magicui/border-beam"
 
 export default function MusicPlayer() {
   return (
@@ -20,10 +21,10 @@ export default function MusicPlayer() {
       <CardContent>
         <div className="flex flex-col items-center gap-4">
           <div className="h-48 w-48 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500" />
-          <div className="h-1 w-full rounded-full bg-secondary">
-            <div className="h-full w-1/3 rounded-full bg-primary" />
+          <div className="bg-secondary h-1 w-full rounded-full">
+            <div className="bg-primary h-full w-1/3 rounded-full" />
           </div>
-          <div className="flex w-full justify-between text-sm text-muted-foreground">
+          <div className="text-muted-foreground flex w-full justify-between text-sm">
             <span>2:45</span>
             <span>8:02</span>
           </div>
@@ -53,5 +54,5 @@ export default function MusicPlayer() {
         className="from-transparent via-blue-500 to-transparent"
       />
     </Card>
-  );
+  )
 }

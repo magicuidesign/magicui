@@ -1,8 +1,8 @@
-import { NavItem, NavItemWithChildren } from "@/types";
+import { NavItem, NavItemWithChildren } from "@/types"
 
 interface DocsConfig {
-  mainNav: NavItem[];
-  sidebarNav: NavItemWithChildren[];
+  mainNav: NavItem[]
+  sidebarNav: NavItemWithChildren[]
 }
 
 export const docsConfig: DocsConfig = {
@@ -578,4 +578,4 @@ export const docsConfig: DocsConfig = {
       ],
     },
   ],
-};
+}

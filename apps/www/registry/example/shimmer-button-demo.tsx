@@ -1,11 +1,11 @@
-import { ShimmerButton } from "@/registry/magicui/shimmer-button";
+import { ShimmerButton } from "@/registry/magicui/shimmer-button"
 
 export default function ShimmerButtonDemo() {
   return (
     <ShimmerButton className="shadow-2xl">
-      <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+      <span className="text-center text-sm leading-none font-medium tracking-tight whitespace-pre-wrap text-white lg:text-lg dark:from-white dark:to-slate-900/10">
         Shimmer Button
       </span>
     </ShimmerButton>
-  );
+  )
 }

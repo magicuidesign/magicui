@@ -1,37 +1,37 @@
-import * as React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import * as React from "react"
+import Image from "next/image"
+import Link from "next/link"
 
-import { cn } from "@/lib/utils";
-import { Callout } from "@/components/callout";
-import { CodeBlockCommand } from "@/components/code-block-command";
-import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper";
-import { CodeTabs } from "@/components/code-tabs";
-import { ComponentPreview } from "@/components/component-preview";
-import { ComponentSource } from "@/components/component-source";
-import { ComponentsList } from "@/components/components-list";
-import { CopyButton } from "@/components/copy-button";
-import { getIconForLanguageExtension } from "@/components/icons";
+import { cn } from "@/lib/utils"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TemplateOpen } from "@/components/template-open";
-import { TemplatePreview } from "@/components/template-preview";
-import { TechStack } from "@/components/tech-stack";
-import { TweetCard } from "@/registry/magicui/tweet-card";
+} from "@/components/ui/accordion"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Callout } from "@/components/callout"
+import { CodeBlockCommand } from "@/components/code-block-command"
+import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
+import { CodeTabs } from "@/components/code-tabs"
+import { ComponentPreview } from "@/components/component-preview"
+import { ComponentSource } from "@/components/component-source"
+import { ComponentsList } from "@/components/components-list"
+import { CopyButton } from "@/components/copy-button"
+import { getIconForLanguageExtension } from "@/components/icons"
+import { TechStack } from "@/components/tech-stack"
+import { TemplateOpen } from "@/components/template-open"
+import { TemplatePreview } from "@/components/template-preview"
+import { TweetCard } from "@/registry/magicui/tweet-card"
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
       className={cn(
         "font-heading mt-2 scroll-m-28 text-3xl font-bold tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -47,17 +47,17 @@ export const mdxComponents = {
           .toLowerCase()}
         className={cn(
           "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl",
-          className,
+          className
         )}
         {...props}
       />
-    );
+    )
   },
   h3: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-28 text-lg font-medium tracking-tight *:[code]:text-xl",
-        className,
+        className
       )}
       {...props}
     />
@@ -66,7 +66,7 @@ export const mdxComponents = {
     <h4
       className={cn(
         "font-heading mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -75,7 +75,7 @@ export const mdxComponents = {
     <h5
       className={cn(
         "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -84,7 +84,7 @@ export const mdxComponents = {
     <h6
       className={cn(
         "mt-8 scroll-m-28 text-base font-medium tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -131,7 +131,7 @@ export const mdxComponents = {
       <table
         className={cn(
           "relative w-full overflow-hidden border-none text-sm",
-          className,
+          className
         )}
         {...props}
       />
@@ -147,7 +147,7 @@ export const mdxComponents = {
     <th
       className={cn(
         "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className,
+        className
       )}
       {...props}
     />
@@ -156,7 +156,7 @@ export const mdxComponents = {
     <td
       className={cn(
         "px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        className,
+        className
       )}
       {...props}
     />
@@ -166,16 +166,16 @@ export const mdxComponents = {
       <pre
         className={cn(
           "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0",
-          className,
+          className
         )}
         {...props}
       >
         {children}
       </pre>
-    );
+    )
   },
   figure: ({ className, ...props }: React.ComponentProps<"figure">) => {
-    return <figure className={cn(className)} {...props} />;
+    return <figure className={cn(className)} {...props} />
   },
   figcaption: ({
     className,
@@ -185,20 +185,20 @@ export const mdxComponents = {
     const iconExtension =
       "data-language" in props && typeof props["data-language"] === "string"
         ? getIconForLanguageExtension(props["data-language"])
-        : null;
+        : null
 
     return (
       <figcaption
         className={cn(
           "text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70",
-          className,
+          className
         )}
         {...props}
       >
         {iconExtension}
         {children}
       </figcaption>
-    );
+    )
   },
   code: ({
     className,
@@ -210,12 +210,12 @@ export const mdxComponents = {
     __bun__,
     ...props
   }: React.ComponentProps<"code"> & {
-    __raw__?: string;
-    __src__?: string;
-    __npm__?: string;
-    __yarn__?: string;
-    __pnpm__?: string;
-    __bun__?: string;
+    __raw__?: string
+    __src__?: string
+    __npm__?: string
+    __yarn__?: string
+    __pnpm__?: string
+    __bun__?: string
   }) => {
     // Inline Code.
     if (typeof props.children === "string") {
@@ -223,15 +223,15 @@ export const mdxComponents = {
         <code
           className={cn(
             "bg-muted relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
-            className,
+            className
           )}
           {...props}
         />
-      );
+      )
     }
 
     // npm command.
-    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__;
+    const isNpmCommand = __npm__ && __yarn__ && __pnpm__ && __bun__
     if (isNpmCommand) {
       return (
         <CodeBlockCommand
@@ -240,7 +240,7 @@ export const mdxComponents = {
           __pnpm__={__pnpm__}
           __bun__={__bun__}
         />
-      );
+      )
     }
 
     // Default codeblock.
@@ -249,13 +249,13 @@ export const mdxComponents = {
         {__raw__ && <CopyButton value={__raw__} src={__src__} />}
         <code {...props} />
       </>
-    );
+    )
   },
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(
         "font-heading mt-8 scroll-m-32 text-xl font-medium tracking-tight",
-        className,
+        className
       )}
       {...props}
     />
@@ -281,9 +281,7 @@ export const mdxComponents = {
     />
   ),
   Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => {
-    return (
-      <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
-    );
+    return <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
   },
   TabsList: ({
     className,
@@ -292,7 +290,7 @@ export const mdxComponents = {
     <TabsList
       className={cn(
         "justify-start gap-4 rounded-none bg-transparent px-0",
-        className,
+        className
       )}
       {...props}
     />
@@ -304,7 +302,7 @@ export const mdxComponents = {
     <TabsTrigger
       className={cn(
         "text-muted-foreground data-[state=active]:text-foreground data-[state=active]:border-primary dark:data-[state=active]:border-primary hover:text-primary rounded-none border-0 border-b-2 border-transparent bg-transparent px-0 pb-3 text-base data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent",
-        className,
+        className
       )}
       {...props}
     />
@@ -316,7 +314,7 @@ export const mdxComponents = {
     <TabsContent
       className={cn(
         "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-medium *:[figure]:first:mt-0 [&>.steps]:mt-6",
-        className,
+        className
       )}
       {...props}
     />
@@ -348,7 +346,7 @@ export const mdxComponents = {
     <Link
       className={cn(
         "bg-surface text-surface-foreground hover:bg-surface/80 flex w-full flex-col items-center rounded-xl p-6 transition-colors sm:p-10",
-        className,
+        className
       )}
       {...props}
     />
@@ -359,4 +357,4 @@ export const mdxComponents = {
   Tweet: ({ id, className }: { id: string; className?: string }) => (
     <TweetCard id={id} className={cn("mx-auto", className)} />
   ),
-};
+}

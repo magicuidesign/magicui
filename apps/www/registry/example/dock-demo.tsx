@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import React from "react"
+import Link from "next/link"
+import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
 
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { Dock, DockIcon } from "@/registry/magicui/dock";
+} from "@/components/ui/tooltip"
+import { Dock, DockIcon } from "@/registry/magicui/dock"
 
-export type IconProps = React.HTMLAttributes<SVGElement>;
+export type IconProps = React.HTMLAttributes<SVGElement>
 
 const Icons = {
   calendar: (props: IconProps) => <CalendarIcon {...props} />,
@@ -59,7 +59,7 @@ const Icons = {
       ></path>
     </svg>
   ),
-};
+}
 
 const DATA = {
   navbar: [
@@ -90,12 +90,12 @@ const DATA = {
       },
     },
   },
-};
+}
 
 export default function DockDemo() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+      <span className="pointer-events-none bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
         Dock
       </span>
       <TooltipProvider>
@@ -109,7 +109,7 @@ export default function DockDemo() {
                     aria-label={item.label}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
+                      "size-12 rounded-full"
                     )}
                   >
                     <item.icon className="size-4" />
@@ -131,7 +131,7 @@ export default function DockDemo() {
                     aria-label={social.name}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full ",
+                      "size-12 rounded-full"
                     )}
                   >
                     <social.icon className="size-4" />
@@ -146,5 +146,5 @@ export default function DockDemo() {
         </Dock>
       </TooltipProvider>
     </div>
-  );
+  )
 }

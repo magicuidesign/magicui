@@ -87,7 +87,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}
 ```
 
 Now, include Tailwind in your CSS by importing it into your main CSS file. Open `src/index.css` and replace its contents with:
@@ -103,7 +103,7 @@ This will import Tailwind’s base styles, components, and utility classes into 
 To make sure it's included for our entire project, import it into the `App.tsx` like so:
 
 ```javascript
-import "./index.css";
+import "./index.css"
 ```
 
 Now we're ready to start playing around with Tailwind. About time right?
@@ -145,17 +145,20 @@ export default Card;
 Now, we can import this into the `App.tsx` file:
 
 ```javascript
-import "./App.css";
-import Card from "./components/Card";
-import "./index.css";
+import "./App.css"
+
+import Card from "./components/Card"
+
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex h-screen w-full flex-col items-center justify-center bg-gray-100">
       <Card />
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 Start the server with `npm run start` and verify that your screen looks like below.
@@ -183,7 +186,7 @@ module.exports = {
         }
       : {}),
   },
-};
+}
 ```
 
 This will purge your Tailwind classes but only in Production. In Dev, you keep all of them to make it easier to play around with styling.

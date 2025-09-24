@@ -1,16 +1,16 @@
-import { ReactNode } from "react";
-import Link from "next/link";
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ReactNode } from "react"
+import Link from "next/link"
+import { ExternalLinkIcon } from "@radix-ui/react-icons"
 
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 
 export function TemplatePreview({
   href,
   children,
 }: {
-  href: string;
-  children: ReactNode;
+  href: string
+  children: ReactNode
 }) {
   return (
     <Link
@@ -18,7 +18,7 @@ export function TemplatePreview({
         buttonVariants({
           variant: "outline",
         }),
-        "not-prose group relative w-full gap-2 shrink",
+        "not-prose group relative w-full shrink gap-2"
       )}
       href={href}
       target="_blank"
@@ -26,5 +26,5 @@ export function TemplatePreview({
       {children}
       <ExternalLinkIcon className="size-4" />
     </Link>
-  );
+  )
 }

@@ -1,7 +1,8 @@
-import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react";
-import Link from "next/link";
-import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github";
-import { Page, PageData } from "fumadocs-core/source";
+import Link from "next/link"
+import { Page, PageData } from "fumadocs-core/source"
+import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react"
+
+import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github"
 
 export function Contribute({ page }: { page: Page<PageData> }) {
   const contributeLinks = [
@@ -36,19 +37,19 @@ export function Contribute({ page }: { page: Page<PageData> }) {
         slug: page.url,
       }),
     },
-  ];
+  ]
 
   return (
     <div className="flex flex-col gap-2 p-4">
-      <p className="text-xs font-medium text-muted-foreground">Contribute</p>
-      <ul className="m-0 list-none flex flex-col gap-1">
+      <p className="text-muted-foreground text-xs font-medium">Contribute</p>
+      <ul className="m-0 flex list-none flex-col gap-1">
         {contributeLinks.map((link, index) => (
           <li key={index}>
             <Link
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-xs transition-colors"
             >
               <link.icon className="size-3" />
               {link.text}
@@ -57,5 +58,5 @@ export function Contribute({ page }: { page: Page<PageData> }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }

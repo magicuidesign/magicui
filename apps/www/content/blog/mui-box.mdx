@@ -94,35 +94,36 @@ Once the MUI library is installed successfully, you can utilize Material UI comp
 To import the Material-UI Box component, you can use the following code snippet:
 
 ```javascript
-import { Box } from "@mui/system";
+import { Box } from "@mui/system"
 
 export default function BoxExample() {
   return (
     <Box component="section" m={1}>
       This is a box
     </Box>
-  );
+  )
 }
 ```
 
 In the following example, a Box component is imported from the Material-UI library, and a basic function component is created that renders a box with the component prop set to section. The box includes some margin around it.
 
 ```jsx
-import React from "react";
-import ReactDOM from "react-dom";
-import { Box } from "@material-ui/core";
-import "./styles.css";
+import React from "react"
+import { Box } from "@material-ui/core"
+import ReactDOM from "react-dom"
+
+import "./styles.css"
 
 function App() {
   return (
     <Box component="section" sx={{ p: 20, border: "1px dashed grey" }}>
       This is an MUI Box
     </Box>
-  );
+  )
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+const rootElement = document.getElementById("root")
+ReactDOM.render(<App />, rootElement)
 ```
 
 In this example, a functional component called App is created, and an MUI Box is rendered with custom styling, such as padding and a dashed border.
@@ -198,16 +199,16 @@ On the other hand, the Typography component can display text in various forms, i
 The Box component in MUI serves as a wrapper element for your components. By default, it generates a new DOM element, specifically a `<div>`. This default functionality can be altered by utilizing the component prop. For instance, if you wish to utilize a `<span>` instead, you can simply set the component prop to "span":
 
 ```jsx
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import * as React from "react"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
 
 export default function BoxComponent() {
   return (
     <Box component="span" sx={{ p: 2, border: "1px dashed grey" }}>
       <Button>Save</Button>
     </Box>
-  );
+  )
 }
 ```
 

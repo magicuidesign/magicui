@@ -1,19 +1,20 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Check, Copy } from "lucide-react";
-import { motion } from "motion/react";
-import { useTheme } from "next-themes";
-import { HTMLAttributes, useEffect, useState } from "react";
+import { HTMLAttributes, useEffect, useState } from "react"
+import { Check, Copy } from "lucide-react"
+import { motion } from "motion/react"
+import { useTheme } from "next-themes"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 interface ScriptCopyBtnProps extends HTMLAttributes<HTMLDivElement> {
-  showMultiplePackageOptions?: boolean;
-  codeLanguage: string;
-  lightTheme: string;
-  darkTheme: string;
-  commandMap: Record<string, string>;
-  className?: string;
+  showMultiplePackageOptions?: boolean
+  codeLanguage: string
+  lightTheme: string
+  darkTheme: string
+  commandMap: Record<string, string>
+  className?: string
 }
 
 export function ScriptCopyBtn({
@@ -24,17 +25,17 @@ export function ScriptCopyBtn({
   commandMap,
   className,
 }: ScriptCopyBtnProps) {
-  const packageManagers = Object.keys(commandMap);
-  const [packageManager, setPackageManager] = useState(packageManagers[0]);
-  const [copied, setCopied] = useState(false);
-  const [highlightedCode, setHighlightedCode] = useState("");
-  const { theme } = useTheme();
-  const command = commandMap[packageManager];
+  const packageManagers = Object.keys(commandMap)
+  const [packageManager, setPackageManager] = useState(packageManagers[0])
+  const [copied, setCopied] = useState(false)
+  const [highlightedCode, setHighlightedCode] = useState("")
+  const { theme } = useTheme()
+  const command = commandMap[packageManager]
 
   useEffect(() => {
     async function loadHighlightedCode() {
       try {
-        const { codeToHtml } = await import("shiki");
+        const { codeToHtml } = await import("shiki")
         const highlighted = await codeToHtml(command, {
           lang: codeLanguage,
           themes: {
@@ -42,44 +43,44 @@ export function ScriptCopyBtn({
             dark: darkTheme,
           },
           defaultColor: theme === "dark" ? "dark" : "light",
-        });
-        setHighlightedCode(highlighted);
+        })
+        setHighlightedCode(highlighted)
       } catch (error) {
-        console.error("Error highlighting code:", error);
-        setHighlightedCode(`<pre>${command}</pre>`);
+        console.error("Error highlighting code:", error)
+        setHighlightedCode(`<pre>${command}</pre>`)
       }
     }
 
-    loadHighlightedCode();
-  }, [command, theme, codeLanguage, lightTheme, darkTheme]);
+    loadHighlightedCode()
+  }, [command, theme, codeLanguage, lightTheme, darkTheme])
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+    navigator.clipboard.writeText(command)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
     <div
       className={cn(
         "mx-auto flex max-w-md items-center justify-center",
-        className,
+        className
       )}
     >
       <div className="w-full space-y-2">
         <div className="mb-2 flex items-center justify-between">
           {showMultiplePackageOptions && (
             <div className="relative">
-              <div className="inline-flex overflow-hidden rounded-md border border-border text-xs">
+              <div className="border-border inline-flex overflow-hidden rounded-md border text-xs">
                 {packageManagers.map((pm, index) => (
                   <div key={pm} className="flex items-center">
                     {index > 0 && (
-                      <div className="h-4 w-px bg-border" aria-hidden="true" />
+                      <div className="bg-border h-4 w-px" aria-hidden="true" />
                     )}
                     <Button
                       variant="ghost"
                       size="sm"
-                      className={`relative rounded-none bg-background px-2 py-1 hover:bg-background ${
+                      className={`bg-background hover:bg-background relative rounded-none px-2 py-1 ${
                         packageManager === pm
                           ? "text-primary"
                           : "text-muted-foreground"
@@ -89,7 +90,7 @@ export function ScriptCopyBtn({
                       {pm}
                       {packageManager === pm && (
                         <motion.div
-                          className="absolute inset-x-0 bottom-[1px] mx-auto h-0.5 w-[90%] bg-primary"
+                          className="bg-primary absolute inset-x-0 bottom-[1px] mx-auto h-0.5 w-[90%]"
                           layoutId="activeTab"
                           initial={false}
                           transition={{
@@ -116,7 +117,7 @@ export function ScriptCopyBtn({
                 dangerouslySetInnerHTML={{ __html: highlightedCode }}
               />
             ) : (
-              <pre className="rounded-md border border-border bg-white p-2 px-4 font-mono dark:bg-black">
+              <pre className="border-border rounded-md border bg-white p-2 px-4 font-mono dark:bg-black">
                 {command}
               </pre>
             )}
@@ -143,5 +144,5 @@ export function ScriptCopyBtn({
         </div>
       </div>
     </div>
-  );
+  )
 }

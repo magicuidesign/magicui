@@ -54,11 +54,12 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see your 
 Let's start by adding some text and applying the pre-defined font sizes to them. Edit your `App.tsx` with:
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100 gap-4">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-gray-100">
       <p className="text-xs">Text size xs</p>
       <p className="text-sm">Text size sm</p>
       <p className="text-base">Text size base</p>
@@ -73,9 +74,9 @@ function App() {
       <p className="text-8xl">Text size 8xl</p>
       <p className="text-9xl">Text size 9xl</p>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 This is how the sizes look like when previewed.
@@ -85,13 +86,14 @@ This is how the sizes look like when previewed.
 By combining font sizes with other text styles, you can start creating more complex layouts like so:
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100 gap-4">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-gray-100">
       <div className="max-w-xl text-center">
-        <h1 className="text-5xl font-bold underline text-center mb-4">
+        <h1 className="mb-4 text-center text-5xl font-bold underline">
           Welcome to Tailwind CSS
         </h1>
         <p className="text-xl text-gray-600">
@@ -99,15 +101,15 @@ function App() {
           framework for rapidly building custom designs.
         </p>
         <div className="mt-2">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
             Get Started
           </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 This is what it looks like with a heading text up top, then a description followed by a button.
@@ -123,13 +125,14 @@ Tailwind lets you easily change font sizes to ensure that your text is readable 
 We can make the above text layout responsive by adding in the `md:` utility class with bigger font sizes so that on mobile, the font size would be `3xl` but on a bigger screen, it will scale to `5xl`.
 
 ```tsx
-import "./App.css";
-import "./index.css";
+import "./App.css"
+import "./index.css"
+
 function App() {
   return (
-    <div className="w-full flex flex-col items-center justify-center h-screen bg-gray-100 gap-4">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-gray-100">
       <div className="max-w-xl text-center">
-        <h1 className="text-3xl font-bold underline text-center mb-4 md:text-5xl">
+        <h1 className="mb-4 text-center text-3xl font-bold underline md:text-5xl">
           Welcome to Tailwind CSS
         </h1>
         <p className="text-lg text-gray-600 md:text-2xl">
@@ -137,15 +140,15 @@ function App() {
           framework for rapidly building custom designs.
         </p>
         <div className="mt-2">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
             Get Started
           </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
-export default App;
+export default App
 ```
 
 Test this out by opening DevTools (Cmd + Shift + C on Mac) and varying the screen size. You will see that the 2 text lines will change their respective sizes.
@@ -168,7 +171,7 @@ module.exports = {
       },
     },
   },
-};
+}
 ```
 
 The new sizes will then be available for use like this.
@@ -180,9 +183,9 @@ function CustomFontSizeComponent() {
       <p className="text-xxs">This is extra extra small text.</p>
       <p className="text-xxl">This is extra extra large text.</p>
     </div>
-  );
+  )
 }
-export default CustomFontSizeComponent;
+export default CustomFontSizeComponent
 ```
 
 ## Next Steps

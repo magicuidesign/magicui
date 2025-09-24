@@ -226,7 +226,7 @@ Create `.css` files inside your project’s `src` directory for styling.
 [Import CSS files](https://www.w3schools.com/html/html_css.asp) into your React components using:
 
 ```tsx
-import "./App.css";
+import "./App.css"
 ```
 
 #### 4\. Apply Styles
@@ -256,7 +256,7 @@ Change `.css` files to `.scss`.
 Import `.scss` files into React components with:
 
 ```tsx
-import "./App.scss";
+import "./App.scss"
 ```
 
 #### 5\. Compile Sass
@@ -290,8 +290,9 @@ Styling a React Hero component using CSS is simple once you know how to do it. A
 To start, we need to create a Hero component. Below is an example of a simple Hero Component built with React.
 
 ```javascript
-import React from "react";
-import "./Hero.css";
+import React from "react"
+
+import "./Hero.css"
 
 const Hero = () => (
   <div className="hero">
@@ -299,9 +300,9 @@ const Hero = () => (
     <p className="hero-subtitle">Discover amazing content</p>   {" "}
     <button className="hero-cta">Get Started</button> {" "}
   </div>
-);
+)
 
-export default Hero;
+export default Hero
 ```
 
 The first step is to import React and create a functional component. Next, we define the structure of the Hero component. In this example, the Hero Component contains a title, a subtitle, and a call to action button. We export the component so we can import and use it in other files.

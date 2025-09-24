@@ -61,11 +61,11 @@ The easing prop defines the timing function of the animation. It controls how th
 The following example demonstrates a simple implementation of an MUI transition. In this case, a fade transition is used to animate the appearance and disappearance of a piece of text when a button is clicked.
 
 ```javascript
-import { Transition } from "@mui/material";
-import { useState } from "react";
+import { useState } from "react"
+import { Transition } from "@mui/material"
 
 function MyComponent() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   return (
     <div>
@@ -74,7 +74,7 @@ function MyComponent() {
         <div>This component will fade in and out.</div>
       </Transition>
     </div>
-  );
+  )
 }
 ```
 
@@ -144,7 +144,7 @@ Refer to the official MUI documentation for troubleshooting tips and known issue
 [Creating MUI transitions](https://mui.com/material-ui/transitions/) starts with importing the Transition component from MUI's @mui/material/transitions package. You can import the component into your project using the code snippet below.
 
 ```javascript
-import { Transition } from "@mui/material/transitions";
+import { Transition } from "@mui/material/transitions"
 ```
 
 ### Set Up the In Prop for Your MUI Transition
@@ -478,20 +478,20 @@ You can create custom transitions by combining the Transition component with CSS
 
 ```javascript
 function handleEnter(node) {
-  node.style.transform = "scale(0.8)";
+  node.style.transform = "scale(0.8)"
   setTimeout(() => {
-    node.style.transform = "scale(1)";
-  }, 100);
+    node.style.transform = "scale(1)"
+  }, 100)
 }
 ```
 
 ```javascript
 function handleExit(node) {
-  node.style.transform = "scale(1)";
+  node.style.transform = "scale(1)"
 
   setTimeout(() => {
-    node.style.transform = "scale(0.8)";
-  }, 100);
+    node.style.transform = "scale(0.8)"
+  }, 100)
 }
 ```
 
@@ -544,8 +544,8 @@ MagicUI, a [free and open-source UI](https://pro.magicui.design/docs/templates/s
 #### Example
 
 ```javascript
-import { Button } from "@mui/material";
-import { MagicUIButton } from "@magicui/react";
+import { MagicUIButton } from "@magicui/react"
+import { Button } from "@mui/material"
 
 function MyComponent() {
   return (
@@ -553,7 +553,7 @@ function MyComponent() {
       <Button variant="contained">MUI Button</Button>
       <MagicUIButton variant="primary">MagicUI Button</MagicUIButton>
     </div>
-  );
+  )
 }
 ```
 

@@ -1,4 +1,4 @@
-import { CodeComparison } from "@/registry/magicui/code-comparison";
+import { CodeComparison } from "@/registry/magicui/code-comparison"
 
 const beforeCode = `import { NextRequest } from 'next/server';
 
@@ -35,7 +35,7 @@ export const middleware = async (req: NextRequest) => {
 
 export const config = {
   matcher: ['/((?!_next/|_static|_vercel|[\\w-]+\\.\\w+).*)'], // [!code highlight]
-};`;
+};`
 
 const afterCode = `import { createMiddleware, type MiddlewareFunctionProps } from '@app/(auth)/auth/_middleware';
 import { auth } from '@/app/(auth)/auth/_middleware'; // [!code --]
@@ -51,7 +51,7 @@ export const middleware = createMiddleware(middlewares); // [!code focus]
 
 export const config = {
   matcher: ['/((?!_next/|_static|_vercel|[\\w-]+\\.\\w+).*)'],
-};`;
+};`
 
 export default function CodeComparisonDemo() {
   return (
@@ -64,5 +64,5 @@ export default function CodeComparisonDemo() {
       darkTheme="github-dark"
       highlightColor="rgba(101, 117, 133, 0.16)"
     />
-  );
+  )
 }

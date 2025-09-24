@@ -1,4 +1,4 @@
-import { ScratchToReveal } from "@/registry/magicui/scratch-to-reveal";
+import { ScratchToReveal } from "@/registry/magicui/scratch-to-reveal"
 
 export default function ScratchToRevealDemo() {
   return (
@@ -11,5 +11,5 @@ export default function ScratchToRevealDemo() {
     >
       <p className="text-9xl">😎</p>
     </ScratchToReveal>
-  );
+  )
 }

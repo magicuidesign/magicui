@@ -1,4 +1,4 @@
-import { getRegistryItem } from "@/lib/registry";
+import { getRegistryItem } from "@/lib/registry"
 
 /**
  * Replaces ComponentSource tags in content with actual source code from the registry.
@@ -22,17 +22,17 @@ export const replaceComponentSource = async (content: string) => {
   // Replace <ComponentSource name="XXXXX" ... > with actual source code
   const componentSourceMatches = [
     ...content.matchAll(/<ComponentSource\s+name="([^"]+)"[^>]*>/g),
-  ];
+  ]
   for (const [fullMatch, name] of componentSourceMatches) {
-    const component = await getRegistryItem(name);
+    const component = await getRegistryItem(name)
     if (component?.files?.[0]?.content) {
-      const sourceCode = component.files[0].content;
-      const replacement = `\`\`\`tsx\n${sourceCode}\n\`\`\``;
-      content = content.replace(fullMatch, replacement);
+      const sourceCode = component.files[0].content
+      const replacement = `\`\`\`tsx\n${sourceCode}\n\`\`\``
+      content = content.replace(fullMatch, replacement)
     } else {
-      content = content.replace(fullMatch, fullMatch);
+      content = content.replace(fullMatch, fullMatch)
     }
   }
 
-  return content;
-};
+  return content
+}

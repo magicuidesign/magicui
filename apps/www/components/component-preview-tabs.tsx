@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
+import { RotateCcw } from "lucide-react"
 
-import { cn } from "@/lib/utils";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { OpenInV0Button } from "@/components/open-in-v0-button"
 
 export function ComponentPreviewTabs({
   className,
@@ -17,14 +17,14 @@ export function ComponentPreviewTabs({
   source,
   ...props
 }: React.ComponentProps<"div"> & {
-  name: string;
-  align?: "center" | "start" | "end";
-  hideCode?: boolean;
-  component: React.ReactNode;
-  source: React.ReactNode;
+  name: string
+  align?: "center" | "start" | "end"
+  hideCode?: boolean
+  component: React.ReactNode
+  source: React.ReactNode
 }) {
-  const [key, setKey] = React.useState(0);
-  const [tab, setTab] = React.useState("preview");
+  const [key, setKey] = React.useState(0)
+  const [tab, setTab] = React.useState("preview")
 
   return (
     <div
@@ -62,7 +62,7 @@ export function ComponentPreviewTabs({
         <div
           data-slot="preview"
           data-active={tab === "preview"}
-          className="invisible data-[active=true]:visible overflow-hidden"
+          className="invisible overflow-hidden data-[active=true]:visible"
         >
           <div className="flex items-center justify-end gap-2 p-4">
             <OpenInV0Button url={`https://magicui.design/r/${name}.json`} />
@@ -78,7 +78,7 @@ export function ComponentPreviewTabs({
             key={key}
             data-align={align}
             className={cn(
-              "preview flex min-h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start",
+              "preview flex min-h-[450px] w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start"
             )}
           >
             {component}
@@ -93,5 +93,5 @@ export function ComponentPreviewTabs({
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import React, { forwardRef, useRef } from "react";
+import React, { forwardRef, useRef } from "react"
 
-import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/registry/magicui/animated-beam";
+import { cn } from "@/lib/utils"
+import { AnimatedBeam } from "@/registry/magicui/animated-beam"
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -13,36 +13,36 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-        className,
+        "border-border z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        className
       )}
     >
       {children}
     </div>
-  );
-});
+  )
+})
 
-Circle.displayName = "Circle";
+Circle.displayName = "Circle"
 
 export default function AnimatedBeamMultipleOutputDemo({
   className,
 }: {
-  className?: string;
+  className?: string
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const div1Ref = useRef<HTMLDivElement>(null);
-  const div2Ref = useRef<HTMLDivElement>(null);
-  const div3Ref = useRef<HTMLDivElement>(null);
-  const div4Ref = useRef<HTMLDivElement>(null);
-  const div5Ref = useRef<HTMLDivElement>(null);
-  const div6Ref = useRef<HTMLDivElement>(null);
-  const div7Ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const div1Ref = useRef<HTMLDivElement>(null)
+  const div2Ref = useRef<HTMLDivElement>(null)
+  const div3Ref = useRef<HTMLDivElement>(null)
+  const div4Ref = useRef<HTMLDivElement>(null)
+  const div5Ref = useRef<HTMLDivElement>(null)
+  const div6Ref = useRef<HTMLDivElement>(null)
+  const div7Ref = useRef<HTMLDivElement>(null)
 
   return (
     <div
       className={cn(
         "relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10",
-        className,
+        className
       )}
       ref={containerRef}
     >
@@ -107,7 +107,7 @@ export default function AnimatedBeamMultipleOutputDemo({
         toRef={div7Ref}
       />
     </div>
-  );
+  )
 }
 
 const Icons = {
@@ -504,4 +504,4 @@ const Icons = {
       <circle cx="12" cy="7" r="4" />
     </svg>
   ),
-};
+}

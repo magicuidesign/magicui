@@ -1,4 +1,4 @@
-import { AnimatedGradientText } from "@/registry/magicui/animated-gradient-text";
+import { AnimatedGradientText } from "@/registry/magicui/animated-gradient-text"
 
 export default function AnimatedGradientTextDemo() {
   return (
@@ -10,5 +10,5 @@ export default function AnimatedGradientTextDemo() {
     >
       Fast Gradient
     </AnimatedGradientText>
-  );
+  )
 }

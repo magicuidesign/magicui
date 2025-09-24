@@ -1,16 +1,16 @@
-import * as React from "react";
-import Link from "next/link";
+import * as React from "react"
+import Link from "next/link"
 
-import { siteConfig } from "@/config/site";
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
+import { siteConfig } from "@/config/site"
+import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/ui/tooltip"
+import { Icons } from "@/components/icons"
 
 export function GitHubLink({ className }: { className?: string }) {
   return (
@@ -36,7 +36,7 @@ export function GitHubLink({ className }: { className?: string }) {
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  );
+  )
 }
 
 export async function StarsCount() {
@@ -44,9 +44,9 @@ export async function StarsCount() {
     "https://api.github.com/repos/magicuidesign/magicui",
     {
       next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
-    },
-  );
-  const json = await data.json();
+    }
+  )
+  const json = await data.json()
 
   return (
     <span className="text-muted-foreground w-8 text-xs tabular-nums">
@@ -59,5 +59,5 @@ export async function StarsCount() {
           : json.stargazers_count.toLocaleString()}
       </span>
     </span>
-  );
+  )
 }

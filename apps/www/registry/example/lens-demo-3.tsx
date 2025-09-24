@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -8,8 +8,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Lens } from "@/registry/magicui/lens";
+} from "@/components/ui/card"
+import { Lens } from "@/registry/magicui/lens"
 
 export default function LensDemo() {
   return (
@@ -36,5 +36,5 @@ export default function LensDemo() {
         <Button variant="secondary">Another time</Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

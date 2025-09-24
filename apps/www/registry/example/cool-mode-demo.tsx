@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { CoolMode } from "@/registry/magicui/cool-mode";
+import { Button } from "@/components/ui/button"
+import { CoolMode } from "@/registry/magicui/cool-mode"
 
 export default function CoolModeDemo() {
   return (
@@ -8,5 +8,5 @@ export default function CoolModeDemo() {
         <Button>Click Me!</Button>
       </CoolMode>
     </div>
-  );
+  )
 }

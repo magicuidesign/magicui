@@ -3,8 +3,8 @@ import {
   CardContent,
   CardDescription,
   CardTitle,
-} from "@/components/ui/card";
-import { WarpBackground } from "@/registry/magicui/warp-background";
+} from "@/components/ui/card"
+import { WarpBackground } from "@/registry/magicui/warp-background"
 
 export default function ExampleComponentDemo() {
   return (
@@ -20,5 +20,5 @@ export default function ExampleComponentDemo() {
         </CardContent>
       </Card>
     </WarpBackground>
-  );
+  )
 }

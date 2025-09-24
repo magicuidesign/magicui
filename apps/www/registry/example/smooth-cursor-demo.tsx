@@ -1,4 +1,4 @@
-import { SmoothCursor } from "@/registry/magicui/smooth-cursor";
+import { SmoothCursor } from "@/registry/magicui/smooth-cursor"
 
 export default function SmoothCursorDemo() {
   return (
@@ -7,5 +7,5 @@ export default function SmoothCursorDemo() {
       <span className="block md:hidden">Tap anywhere to see the cursor</span>
       <SmoothCursor />
     </>
-  );
+  )
 }

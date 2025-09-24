@@ -1,34 +1,34 @@
-"use client";
+"use client"
 
-import { AnimatePresence, motion, useMotionTemplate } from "motion/react";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react"
+import { AnimatePresence, motion, useMotionTemplate } from "motion/react"
 
 interface Position {
   /** The x coordinate of the lens */
-  x: number;
+  x: number
   /** The y coordinate of the lens */
-  y: number;
+  y: number
 }
 
 interface LensProps {
   /** The children of the lens */
-  children: React.ReactNode;
+  children: React.ReactNode
   /** The zoom factor of the lens */
-  zoomFactor?: number;
+  zoomFactor?: number
   /** The size of the lens */
-  lensSize?: number;
+  lensSize?: number
   /** The position of the lens */
-  position?: Position;
+  position?: Position
   /** The default position of the lens */
-  defaultPosition?: Position;
+  defaultPosition?: Position
   /** Whether the lens is static */
-  isStatic?: boolean;
+  isStatic?: boolean
   /** The duration of the animation */
-  duration?: number;
+  duration?: number
   /** The color of the lens */
-  lensColor?: string;
+  lensColor?: string
   /** The aria label of the lens */
-  ariaLabel?: string;
+  ariaLabel?: string
 }
 
 export function Lens({
@@ -43,42 +43,42 @@ export function Lens({
   ariaLabel = "Zoom Area",
 }: LensProps) {
   if (zoomFactor < 1) {
-    throw new Error("zoomFactor must be greater than 1");
+    throw new Error("zoomFactor must be greater than 1")
   }
   if (lensSize < 0) {
-    throw new Error("lensSize must be greater than 0");
+    throw new Error("lensSize must be greater than 0")
   }
 
-  const [isHovering, setIsHovering] = useState(false);
-  const [mousePosition, setMousePosition] = useState<Position>(position);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false)
+  const [mousePosition, setMousePosition] = useState<Position>(position)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const currentPosition = useMemo(() => {
-    if (isStatic) return position;
-    if (defaultPosition && !isHovering) return defaultPosition;
-    return mousePosition;
-  }, [isStatic, position, defaultPosition, isHovering, mousePosition]);
+    if (isStatic) return position
+    if (defaultPosition && !isHovering) return defaultPosition
+    return mousePosition
+  }, [isStatic, position, defaultPosition, isHovering, mousePosition])
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
+    const rect = e.currentTarget.getBoundingClientRect()
     setMousePosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-    });
-  }, []);
+    })
+  }, [])
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === "Escape") setIsHovering(false);
-  }, []);
+    if (e.key === "Escape") setIsHovering(false)
+  }, [])
 
   const maskImage = useMotionTemplate`radial-gradient(circle ${
     lensSize / 2
   }px at ${currentPosition.x}px ${
     currentPosition.y
-  }px, ${lensColor} 100%, transparent 100%)`;
+  }px, ${lensColor} 100%, transparent 100%)`
 
   const LensContent = useMemo(() => {
-    const { x, y } = currentPosition;
+    const { x, y } = currentPosition
 
     return (
       <motion.div
@@ -104,8 +104,8 @@ export function Lens({
           {children}
         </div>
       </motion.div>
-    );
-  }, [currentPosition, lensSize, lensColor, zoomFactor, children, duration]);
+    )
+  }, [currentPosition, lensSize, lensColor, zoomFactor, children, duration])
 
   return (
     <div
@@ -128,5 +128,5 @@ export function Lens({
         </AnimatePresence>
       )}
     </div>
-  );
+  )
 }

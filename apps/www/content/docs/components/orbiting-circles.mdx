@@ -66,12 +66,13 @@ Add the following animations to your global CSS file.
 ## Usage
 
 ```tsx showLineNumbers
-import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
-import { File, Settings, Search } from "lucide-react";
+import { File, Search, Settings } from "lucide-react"
+
+import { OrbitingCircles } from "@/components/magicui/orbiting-circles"
 ```
 
 ```tsx showLineNumbers
-<div className="relative overflow-hidden h-[500px] w-full">
+<div className="relative h-[500px] w-full overflow-hidden">
   <OrbitingCircles>
     <File />
     <Settings />

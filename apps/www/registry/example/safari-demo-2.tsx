@@ -1,4 +1,4 @@
-import { Safari } from "@/registry/magicui/safari";
+import { Safari } from "@/registry/magicui/safari"
 
 export default function SafariDemo() {
   return (
@@ -8,5 +8,5 @@ export default function SafariDemo() {
         imageSrc="https://placehold.co/1200x750?text=Hello+World"
       />
     </div>
-  );
+  )
 }

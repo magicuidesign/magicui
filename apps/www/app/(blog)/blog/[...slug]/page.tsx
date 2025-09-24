@@ -1,49 +1,50 @@
-import { BlogTableOfContents } from "@/components/blog/table-of-contents";
-import { SidebarCTA } from "@/components/sidebar-cta";
-import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { blogSource } from "@/lib/source";
-import { absoluteUrl, calculateReadingTime, formatDate } from "@/lib/utils";
-import { mdxComponents } from "@/mdx-components";
-import { ArrowLeftIcon } from "lucide-react";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import type { BlogPosting, WithContext } from "schema-dts";
+import type { Metadata } from "next"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { mdxComponents } from "@/mdx-components"
+import { ArrowLeftIcon } from "lucide-react"
+import type { BlogPosting, WithContext } from "schema-dts"
 
-export const revalidate = false;
-export const dynamic = "force-static";
-export const dynamicParams = false;
+import { siteConfig } from "@/config/site"
+import { blogSource } from "@/lib/source"
+import { absoluteUrl, calculateReadingTime, formatDate } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import { BlogTableOfContents } from "@/components/blog/table-of-contents"
+import { SidebarCTA } from "@/components/sidebar-cta"
+
+export const revalidate = false
+export const dynamic = "force-static"
+export const dynamicParams = false
 
 interface PageProps {
   params: Promise<{
-    slug: string[];
-  }>;
+    slug: string[]
+  }>
 }
 
 export function generateStaticParams() {
-  return blogSource.generateParams();
+  return blogSource.generateParams()
 }
 
 async function getDocFromParams({ params }: PageProps) {
-  const { slug } = await params;
-  const page = blogSource.getPage(slug);
-  if (!page) notFound();
-  const doc = page.data;
+  const { slug } = await params
+  const page = blogSource.getPage(slug)
+  if (!page) notFound()
+  const doc = page.data
   if (!doc.title || !doc.description) {
-    notFound();
+    notFound()
   }
 
-  return { doc, page };
+  return { doc, page }
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { doc, page } = await getDocFromParams({ params });
+  const { doc, page } = await getDocFromParams({ params })
 
   if (!page) {
-    return {};
+    return {}
   }
 
   return {
@@ -70,13 +71,13 @@ export async function generateMetadata({
       images: [doc.image || ""],
       creator: "@dillionverma",
     },
-  };
+  }
 }
 
 export default async function BlogPage({ params }: PageProps) {
-  const { doc, page } = await getDocFromParams({ params });
+  const { doc, page } = await getDocFromParams({ params })
 
-  const MDX = doc.body;
+  const MDX = doc.body
 
   // Generate structured data for individual blog post
   const structuredData: WithContext<BlogPosting> = {
@@ -109,12 +110,12 @@ export default async function BlogPage({ params }: PageProps) {
     wordCount: doc.content ? doc.content.split(/\s+/).length : 0,
     timeRequired: `PT${calculateReadingTime(doc.content || "")}M`,
     keywords: (() => {
-      const docTag = doc.tag;
-      if (!docTag) return undefined;
-      return Array.isArray(docTag) ? docTag : [docTag];
+      const docTag = doc.tag
+      if (!docTag) return undefined
+      return Array.isArray(docTag) ? docTag : [docTag]
     })(),
     inLanguage: "en-US",
-  };
+  }
 
   return (
     <>
@@ -138,33 +139,33 @@ export default async function BlogPage({ params }: PageProps) {
                 <img
                   src={doc.image}
                   alt={doc.title}
-                  className="size-full rounded-xl border border-border object-cover object-left"
+                  className="border-border size-full rounded-xl border object-cover object-left"
                 />
               </div>
-              <div className="mx-auto flex flex-col items-center justify-center gap-y-2 border-y border-border p-5">
+              <div className="border-border mx-auto flex flex-col items-center justify-center gap-y-2 border-y p-5">
                 <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-y-2">
-                  <h1 className="text-balance text-center text-3xl font-semibold tracking-tighter md:text-5xl">
+                  <h1 className="text-center text-3xl font-semibold tracking-tighter text-balance md:text-5xl">
                     {doc.title}
                   </h1>
-                  <p className="text-balance text-center text-secondary-foreground md:text-lg">
+                  <p className="text-secondary-foreground text-center text-balance md:text-lg">
                     {doc.description}
                   </p>
                   {doc.publishedOn && (
-                    <time className="text-sm text-secondary-foreground">
+                    <time className="text-secondary-foreground text-sm">
                       {formatDate(doc.publishedOn)}
                     </time>
                   )}
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-x-2 border-b border-border p-3 text-sm text-secondary-foreground">
+              <div className="border-border text-secondary-foreground flex items-center justify-center gap-x-2 border-b p-3 text-sm">
                 <span>{calculateReadingTime(doc.content)} min read</span>
                 {(() => {
-                  const docTag = doc.tag;
+                  const docTag = doc.tag
                   const tags = docTag
                     ? Array.isArray(docTag)
                       ? docTag
                       : [docTag]
-                    : [];
+                    : []
 
                   return (
                     tags.length > 0 && (
@@ -175,7 +176,7 @@ export default async function BlogPage({ params }: PageProps) {
                             <Link
                               key={tag}
                               href={`/blog?tag=${encodeURIComponent(tag)}`}
-                              className="rounded-full border border-border bg-primary/5 px-2.5 py-0.5 transition-colors hover:bg-primary/10"
+                              className="border-border bg-primary/5 hover:bg-primary/10 rounded-full border px-2.5 py-0.5 transition-colors"
                             >
                               {tag}
                             </Link>
@@ -183,7 +184,7 @@ export default async function BlogPage({ params }: PageProps) {
                         </div>
                       </>
                     )
-                  );
+                  )
                 })()}
               </div>
             </div>
@@ -192,7 +193,7 @@ export default async function BlogPage({ params }: PageProps) {
             <div className="article-content col-span-5 p-5 lg:p-10">
               <MDX components={mdxComponents} />
             </div>
-            <div className="sticky top-16 col-span-2 hidden h-fit w-full flex-col items-start justify-start p-5 text-primary lg:flex ">
+            <div className="text-primary sticky top-16 col-span-2 hidden h-fit w-full flex-col items-start justify-start p-5 lg:flex">
               <BlogTableOfContents />
               <div className="h-10" />
               <SidebarCTA />
@@ -201,5 +202,5 @@ export default async function BlogPage({ params }: PageProps) {
         </article>
       </div>
     </>
-  );
+  )
 }

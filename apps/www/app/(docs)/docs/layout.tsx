@@ -1,10 +1,10 @@
-import { DocsSidebar } from "@/components/docs-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar"
+import { DocsSidebar } from "@/components/docs-sidebar"
 
 export default function DocsLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <div className="container-wrapper flex flex-1 flex-col px-2">
@@ -13,5 +13,5 @@ export default function DocsLayout({
         <div className="h-full w-full">{children}</div>
       </SidebarProvider>
     </div>
-  );
+  )
 }

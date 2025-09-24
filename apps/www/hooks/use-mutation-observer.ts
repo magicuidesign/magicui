@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from "react"
 
 export const useMutationObserver = (
   ref: React.RefObject<HTMLElement | null>,
@@ -8,13 +8,13 @@ export const useMutationObserver = (
     characterData: true,
     childList: true,
     subtree: true,
-  },
+  }
 ) => {
   React.useEffect(() => {
     if (ref.current) {
-      const observer = new MutationObserver(callback);
-      observer.observe(ref.current, options);
-      return () => observer.disconnect();
+      const observer = new MutationObserver(callback)
+      observer.observe(ref.current, options)
+      return () => observer.disconnect()
     }
-  }, [ref, callback, options]);
-};
+  }, [ref, callback, options])
+}

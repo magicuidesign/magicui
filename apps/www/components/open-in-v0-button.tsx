@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
 export function OpenInV0Button({ url }: { url: string }) {
   return (
@@ -30,5 +30,5 @@ export function OpenInV0Button({ url }: { url: string }) {
         </svg>
       </a>
     </Button>
-  );
+  )
 }

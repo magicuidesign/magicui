@@ -1,14 +1,10 @@
-import {
-  registryIndexSchema,
-  RegistryItem,
-  type Registry,
-} from "shadcn/schema";
+import { registryIndexSchema, RegistryItem, type Registry } from "shadcn/schema"
 
-import { examples } from "@/registry/registry-examples";
-import { lib } from "@/registry/registry-lib";
-import { ui } from "@/registry/registry-ui";
+import { examples } from "@/registry/registry-examples"
+import { lib } from "@/registry/registry-lib"
+import { ui } from "@/registry/registry-ui"
 
-const DEPRECATED_ITEMS = [""];
+const DEPRECATED_ITEMS = [""]
 
 const DEFAULT: RegistryItem = {
   name: "index",
@@ -18,14 +14,14 @@ const DEFAULT: RegistryItem = {
   registryDependencies: ["utils"],
   cssVars: {},
   files: [],
-};
+}
 
 export const registry = {
   name: "magicui",
   homepage: "https://magicui.design",
   items: registryIndexSchema.parse(
     [DEFAULT, ...ui, ...examples, ...lib].filter((item) => {
-      return !DEPRECATED_ITEMS.includes(item.name);
-    }),
+      return !DEPRECATED_ITEMS.includes(item.name)
+    })
   ),
-} satisfies Registry;
+} satisfies Registry

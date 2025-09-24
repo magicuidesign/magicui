@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
-import { Slot } from "@radix-ui/react-slot";
-import { cva, VariantProps } from "class-variance-authority";
-import React from "react";
+import React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
 
 interface RainbowButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
@@ -13,7 +14,7 @@ const rainbowButtonVariants = cva(
     "rounded-sm outline-none focus-visible:ring-[3px] aria-invalid:border-destructive",
     "text-sm font-medium whitespace-nowrap",
     "disabled:pointer-events-none disabled:opacity-50",
-    "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
+    "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0"
   ),
   {
     variants: {
@@ -34,18 +35,18 @@ const rainbowButtonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
-);
+  }
+)
 
 interface RainbowButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof rainbowButtonVariants> {
-  asChild?: boolean;
+  asChild?: boolean
 }
 
 const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : "button"
     return (
       <Comp
         data-slot="button"
@@ -53,10 +54,10 @@ const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
         ref={ref}
         {...props}
       />
-    );
-  },
-);
+    )
+  }
+)
 
-RainbowButton.displayName = "RainbowButton";
+RainbowButton.displayName = "RainbowButton"
 
-export { RainbowButton, rainbowButtonVariants, type RainbowButtonProps };
+export { RainbowButton, rainbowButtonVariants, type RainbowButtonProps }

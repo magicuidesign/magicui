@@ -1,29 +1,32 @@
-"use client";
-import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-import { Button } from "@/components/ui/button";
+"use client"
+
+import { IconCheck, IconChevronDown, IconCopy } from "@tabler/icons-react"
+
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
 import {
   Popover,
   PopoverAnchor,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { Separator } from "@/components/ui/separator";
+} from "@/components/ui/popover"
+import { Separator } from "@/components/ui/separator"
+
 function getPromptUrl(baseURL: string, url: string) {
   return `${baseURL}?q=${encodeURIComponent(
     `I’m looking at this shadcn/ui documentation: ${url}.
 Help me understand how to use it. Be ready to explain concepts, give examples, or help debug based on it.
-  `,
-  )}`;
+  `
+  )}`
 }
 export function DocsCopyPage({ page, url }: { page: string; url: string }) {
-  const { copyToClipboard, isCopied } = useCopyToClipboard();
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
   const trigger = (
     <Button
       variant="secondary"
@@ -32,17 +35,17 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
     >
       <IconChevronDown className="rotate-180 sm:rotate-0" />
     </Button>
-  );
+  )
 
-  let pathname = "/docs";
+  let pathname = "/docs"
   try {
-    pathname = new URL(url).pathname;
+    pathname = new URL(url).pathname
   } catch (e) {
-    console.error(e);
+    console.error(e)
   }
   const menuItems: Record<string, (url: string) => React.ReactNode> = {
     viewMarkdown: (_url: string) => {
-      const mdUrl = `${pathname}.md`;
+      const mdUrl = `${pathname}.md`
       return (
         <a href={mdUrl} target="_blank" rel="noopener noreferrer">
           <svg strokeLinejoin="round" viewBox="0 0 22 16">
@@ -55,7 +58,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
           </svg>
           View as Markdown
         </a>
-      );
+      )
     },
     v0: (url: string) => (
       <a
@@ -104,7 +107,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         Open in Claude
       </a>
     ),
-  };
+  }
   return (
     <Popover>
       <div className="bg-secondary group/buttons relative flex rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
@@ -147,7 +150,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
               size="lg"
               asChild
               key={key}
-              className="*:[svg]:text-muted-foreground w-full justify-start text-base font-normal p-0"
+              className="*:[svg]:text-muted-foreground w-full justify-start p-0 text-base font-normal"
             >
               {value(url)}
             </Button>
@@ -155,5 +158,5 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </PopoverContent>
       </div>
     </Popover>
-  );
+  )
 }

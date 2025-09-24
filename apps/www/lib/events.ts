@@ -1,5 +1,5 @@
-import posthog from "posthog-js";
-import { z } from "zod";
+import posthog from "posthog-js"
+import { z } from "zod"
 
 const eventSchema = z.object({
   name: z.enum([
@@ -23,16 +23,16 @@ const eventSchema = z.object({
   properties: z
     .record(
       z.string(),
-      z.union([z.string(), z.number(), z.boolean(), z.null()]),
+      z.union([z.string(), z.number(), z.boolean(), z.null()])
     )
     .optional(),
-});
+})
 
-export type Event = z.infer<typeof eventSchema>;
+export type Event = z.infer<typeof eventSchema>
 
 export function trackEvent(input: Event): void {
-  const event = eventSchema.parse(input);
+  const event = eventSchema.parse(input)
   if (event) {
-    posthog.capture(event.name, event.properties);
+    posthog.capture(event.name, event.properties)
   }
 }

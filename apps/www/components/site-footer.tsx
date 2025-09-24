@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site"
 
 export function SiteFooter() {
   return (
@@ -29,5 +29,5 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

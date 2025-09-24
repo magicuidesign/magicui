@@ -1,13 +1,14 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react"
 import {
   AnimatePresence,
   HTMLMotionProps,
   motion,
   useMotionValue,
-} from "motion/react";
-import { useEffect, useRef, useState } from "react";
+} from "motion/react"
+
+import { cn } from "@/lib/utils"
 
 interface PointerProps extends Omit<HTMLMotionProps<"div">, "ref"> {}
 
@@ -25,49 +26,49 @@ export function Pointer({
   children,
   ...props
 }: PointerProps): React.ReactNode {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const [isActive, setIsActive] = useState<boolean>(false)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (typeof window !== "undefined" && containerRef.current) {
       // Get the parent element directly from the ref
-      const parentElement = containerRef.current.parentElement;
+      const parentElement = containerRef.current.parentElement
 
       if (parentElement) {
         // Add cursor-none to parent
-        parentElement.style.cursor = "none";
+        parentElement.style.cursor = "none"
 
         // Add event listeners to parent
         const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX);
-          y.set(e.clientY);
-        };
+          x.set(e.clientX)
+          y.set(e.clientY)
+        }
 
         const handleMouseEnter = (e: MouseEvent) => {
-          x.set(e.clientX);
-          y.set(e.clientY);
-          setIsActive(true);
-        };
+          x.set(e.clientX)
+          y.set(e.clientY)
+          setIsActive(true)
+        }
 
         const handleMouseLeave = () => {
-          setIsActive(false);
-        };
+          setIsActive(false)
+        }
 
-        parentElement.addEventListener("mousemove", handleMouseMove);
-        parentElement.addEventListener("mouseenter", handleMouseEnter);
-        parentElement.addEventListener("mouseleave", handleMouseLeave);
+        parentElement.addEventListener("mousemove", handleMouseMove)
+        parentElement.addEventListener("mouseenter", handleMouseEnter)
+        parentElement.addEventListener("mouseleave", handleMouseLeave)
 
         return () => {
-          parentElement.style.cursor = "";
-          parentElement.removeEventListener("mousemove", handleMouseMove);
-          parentElement.removeEventListener("mouseenter", handleMouseEnter);
-          parentElement.removeEventListener("mouseleave", handleMouseLeave);
-        };
+          parentElement.style.cursor = ""
+          parentElement.removeEventListener("mousemove", handleMouseMove)
+          parentElement.removeEventListener("mouseenter", handleMouseEnter)
+          parentElement.removeEventListener("mouseleave", handleMouseLeave)
+        }
       }
     }
-  }, [x, y]);
+  }, [x, y])
 
   return (
     <>
@@ -75,7 +76,7 @@ export function Pointer({
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="transform-[translate(-50%,-50%)] pointer-events-none fixed z-50"
+            className="pointer-events-none fixed z-50 transform-[translate(-50%,-50%)]"
             style={{
               top: y,
               left: x,
@@ -106,7 +107,7 @@ export function Pointer({
                 xmlns="http://www.w3.org/2000/svg"
                 className={cn(
                   "rotate-[-70deg] stroke-white text-black",
-                  className,
+                  className
                 )}
               >
                 <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z" />
@@ -116,5 +117,5 @@ export function Pointer({
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }

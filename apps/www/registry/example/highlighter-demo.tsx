@@ -1,4 +1,4 @@
-import { Highlighter } from "@/registry/magicui/highlighter";
+import { Highlighter } from "@/registry/magicui/highlighter"
 
 export default function HighlighterDemo() {
   return (
@@ -15,5 +15,5 @@ export default function HighlighterDemo() {
         effortlessly.
       </p>
     </div>
-  );
+  )
 }

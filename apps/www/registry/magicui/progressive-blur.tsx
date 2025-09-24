@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import React from "react";
+import React from "react"
+
+import { cn } from "@/lib/utils"
 
 export interface ProgressiveBlurProps {
-  className?: string;
-  height?: string;
-  position?: "top" | "bottom" | "both";
-  blurLevels?: number[];
-  children?: React.ReactNode;
+  className?: string
+  height?: string
+  position?: "top" | "bottom" | "both"
+  blurLevels?: number[]
+  children?: React.ReactNode
 }
 
 export function ProgressiveBlur({
@@ -18,18 +19,18 @@ export function ProgressiveBlur({
   blurLevels = [0.5, 1, 2, 4, 8, 16, 32, 64],
 }: ProgressiveBlurProps) {
   // Create array with length equal to blurLevels.length - 2 (for before/after pseudo elements)
-  const divElements = Array(blurLevels.length - 2).fill(null);
+  const divElements = Array(blurLevels.length - 2).fill(null)
 
   return (
     <div
       className={cn(
-        "gradient-blur pointer-events-none absolute z-10 inset-x-0",
+        "gradient-blur pointer-events-none absolute inset-x-0 z-10",
         className,
         position === "top"
           ? "top-0"
           : position === "bottom"
             ? "bottom-0"
-            : "inset-y-0",
+            : "inset-y-0"
       )}
       style={{
         height: position === "both" ? "100%" : height,
@@ -59,17 +60,17 @@ export function ProgressiveBlur({
 
       {/* Middle blur layers */}
       {divElements.map((_, index) => {
-        const blurIndex = index + 1;
-        const startPercent = blurIndex * 12.5;
-        const midPercent = (blurIndex + 1) * 12.5;
-        const endPercent = (blurIndex + 2) * 12.5;
+        const blurIndex = index + 1
+        const startPercent = blurIndex * 12.5
+        const midPercent = (blurIndex + 1) * 12.5
+        const endPercent = (blurIndex + 2) * 12.5
 
         const maskGradient =
           position === "bottom"
             ? `linear-gradient(to bottom, rgba(0,0,0,0) ${startPercent}%, rgba(0,0,0,1) ${midPercent}%, rgba(0,0,0,1) ${endPercent}%, rgba(0,0,0,0) ${endPercent + 12.5}%)`
             : position === "top"
               ? `linear-gradient(to top, rgba(0,0,0,0) ${startPercent}%, rgba(0,0,0,1) ${midPercent}%, rgba(0,0,0,1) ${endPercent}%, rgba(0,0,0,0) ${endPercent + 12.5}%)`
-              : `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%)`;
+              : `linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%)`
 
         return (
           <div
@@ -83,7 +84,7 @@ export function ProgressiveBlur({
               WebkitMaskImage: maskGradient,
             }}
           />
-        );
+        )
       })}
 
       {/* Last blur layer (pseudo element) */}
@@ -108,5 +109,5 @@ export function ProgressiveBlur({
         }}
       />
     </div>
-  );
+  )
 }

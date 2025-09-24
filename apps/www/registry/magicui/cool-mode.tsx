@@ -1,121 +1,121 @@
-"use client";
+"use client"
 
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useEffect, useRef } from "react"
 
 export interface BaseParticle {
-  element: HTMLElement | SVGSVGElement;
-  left: number;
-  size: number;
-  top: number;
+  element: HTMLElement | SVGSVGElement
+  left: number
+  size: number
+  top: number
 }
 
 export interface BaseParticleOptions {
-  particle?: string;
-  size?: number;
+  particle?: string
+  size?: number
 }
 
 export interface CoolParticle extends BaseParticle {
-  direction: number;
-  speedHorz: number;
-  speedUp: number;
-  spinSpeed: number;
-  spinVal: number;
+  direction: number
+  speedHorz: number
+  speedUp: number
+  spinSpeed: number
+  spinVal: number
 }
 
 export interface CoolParticleOptions extends BaseParticleOptions {
-  particleCount?: number;
-  speedHorz?: number;
-  speedUp?: number;
+  particleCount?: number
+  speedHorz?: number
+  speedUp?: number
 }
 
 const getContainer = () => {
-  const id = "_coolMode_effect";
-  let existingContainer = document.getElementById(id);
+  const id = "_coolMode_effect"
+  let existingContainer = document.getElementById(id)
 
   if (existingContainer) {
-    return existingContainer;
+    return existingContainer
   }
 
-  const container = document.createElement("div");
-  container.setAttribute("id", id);
+  const container = document.createElement("div")
+  container.setAttribute("id", id)
   container.setAttribute(
     "style",
-    "overflow:hidden; position:fixed; height:100%; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:2147483647",
-  );
+    "overflow:hidden; position:fixed; height:100%; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:2147483647"
+  )
 
-  document.body.appendChild(container);
+  document.body.appendChild(container)
 
-  return container;
-};
+  return container
+}
 
-let instanceCounter = 0;
+let instanceCounter = 0
 
 const applyParticleEffect = (
   element: HTMLElement,
-  options?: CoolParticleOptions,
+  options?: CoolParticleOptions
 ): (() => void) => {
-  instanceCounter++;
+  instanceCounter++
 
-  const defaultParticle = "circle";
-  const particleType = options?.particle || defaultParticle;
-  const sizes = [15, 20, 25, 35, 45];
-  const limit = 45;
+  const defaultParticle = "circle"
+  const particleType = options?.particle || defaultParticle
+  const sizes = [15, 20, 25, 35, 45]
+  const limit = 45
 
-  let particles: CoolParticle[] = [];
-  let autoAddParticle = false;
-  let mouseX = 0;
-  let mouseY = 0;
+  let particles: CoolParticle[] = []
+  let autoAddParticle = false
+  let mouseX = 0
+  let mouseY = 0
 
-  const container = getContainer();
+  const container = getContainer()
 
   function generateParticle() {
     const size =
-      options?.size || sizes[Math.floor(Math.random() * sizes.length)];
-    const speedHorz = options?.speedHorz || Math.random() * 10;
-    const speedUp = options?.speedUp || Math.random() * 25;
-    const spinVal = Math.random() * 360;
-    const spinSpeed = Math.random() * 35 * (Math.random() <= 0.5 ? -1 : 1);
-    const top = mouseY - size / 2;
-    const left = mouseX - size / 2;
-    const direction = Math.random() <= 0.5 ? -1 : 1;
+      options?.size || sizes[Math.floor(Math.random() * sizes.length)]
+    const speedHorz = options?.speedHorz || Math.random() * 10
+    const speedUp = options?.speedUp || Math.random() * 25
+    const spinVal = Math.random() * 360
+    const spinSpeed = Math.random() * 35 * (Math.random() <= 0.5 ? -1 : 1)
+    const top = mouseY - size / 2
+    const left = mouseX - size / 2
+    const direction = Math.random() <= 0.5 ? -1 : 1
 
-    const particle = document.createElement("div");
+    const particle = document.createElement("div")
 
     if (particleType === "circle") {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const circleSVG = document.createElementNS(svgNS, "svg");
-      const circle = document.createElementNS(svgNS, "circle");
-      circle.setAttributeNS(null, "cx", (size / 2).toString());
-      circle.setAttributeNS(null, "cy", (size / 2).toString());
-      circle.setAttributeNS(null, "r", (size / 2).toString());
+      const svgNS = "http://www.w3.org/2000/svg"
+      const circleSVG = document.createElementNS(svgNS, "svg")
+      const circle = document.createElementNS(svgNS, "circle")
+      circle.setAttributeNS(null, "cx", (size / 2).toString())
+      circle.setAttributeNS(null, "cy", (size / 2).toString())
+      circle.setAttributeNS(null, "r", (size / 2).toString())
       circle.setAttributeNS(
         null,
         "fill",
-        `hsl(${Math.random() * 360}, 70%, 50%)`,
-      );
+        `hsl(${Math.random() * 360}, 70%, 50%)`
+      )
 
-      circleSVG.appendChild(circle);
-      circleSVG.setAttribute("width", size.toString());
-      circleSVG.setAttribute("height", size.toString());
+      circleSVG.appendChild(circle)
+      circleSVG.setAttribute("width", size.toString())
+      circleSVG.setAttribute("height", size.toString())
 
-      particle.appendChild(circleSVG);
+      particle.appendChild(circleSVG)
     } else if (
       particleType.startsWith("http") ||
       particleType.startsWith("/")
     ) {
       // Handle URL-based images
-      particle.innerHTML = `<img src="${particleType}" width="${size}" height="${size}" style="border-radius: 50%">`;
+      particle.innerHTML = `<img src="${particleType}" width="${size}" height="${size}" style="border-radius: 50%">`
     } else {
       // Handle emoji or text characters
-      const fontSizeMultiplier = 3; // Make emojis 3x bigger
-      const emojiSize = size * fontSizeMultiplier;
-      particle.innerHTML = `<div style="font-size: ${emojiSize}px; line-height: 1; text-align: center; width: ${size}px; height: ${size}px; display: flex; align-items: center; justify-content: center; transform: scale(${fontSizeMultiplier}); transform-origin: center;">${particleType}</div>`;
+      const fontSizeMultiplier = 3 // Make emojis 3x bigger
+      const emojiSize = size * fontSizeMultiplier
+      particle.innerHTML = `<div style="font-size: ${emojiSize}px; line-height: 1; text-align: center; width: ${size}px; height: ${size}px; display: flex; align-items: center; justify-content: center; transform: scale(${fontSizeMultiplier}); transform-origin: center;">${particleType}</div>`
     }
 
-    particle.style.position = "absolute";
-    particle.style.transform = `translate3d(${left}px, ${top}px, 0px) rotate(${spinVal}deg)`;
+    particle.style.position = "absolute"
+    particle.style.transform = `translate3d(${left}px, ${top}px, 0px) rotate(${spinVal}deg)`
 
-    container.appendChild(particle);
+    container.appendChild(particle)
 
     particles.push({
       direction,
@@ -127,22 +127,22 @@ const applyParticleEffect = (
       spinSpeed,
       spinVal,
       top,
-    });
+    })
   }
 
   function refreshParticles() {
     particles.forEach((p) => {
-      p.left = p.left - p.speedHorz * p.direction;
-      p.top = p.top - p.speedUp;
-      p.speedUp = Math.min(p.size, p.speedUp - 1);
-      p.spinVal = p.spinVal + p.spinSpeed;
+      p.left = p.left - p.speedHorz * p.direction
+      p.top = p.top - p.speedUp
+      p.speedUp = Math.min(p.size, p.speedUp - 1)
+      p.spinVal = p.spinVal + p.spinSpeed
 
       if (
         p.top >=
         Math.max(window.innerHeight, document.body.clientHeight) + p.size
       ) {
-        particles = particles.filter((o) => o !== p);
-        p.element.remove();
+        particles = particles.filter((o) => o !== p)
+        p.element.remove()
       }
 
       p.element.setAttribute(
@@ -153,97 +153,97 @@ const applyParticleEffect = (
           `top:${p.top}px`,
           `left:${p.left}px`,
           `transform:rotate(${p.spinVal}deg)`,
-        ].join(";"),
-      );
-    });
+        ].join(";")
+      )
+    })
   }
 
-  let animationFrame: number | undefined;
+  let animationFrame: number | undefined
 
-  let lastParticleTimestamp = 0;
-  const particleGenerationDelay = 30;
+  let lastParticleTimestamp = 0
+  const particleGenerationDelay = 30
 
   function loop() {
-    const currentTime = performance.now();
+    const currentTime = performance.now()
     if (
       autoAddParticle &&
       particles.length < limit &&
       currentTime - lastParticleTimestamp > particleGenerationDelay
     ) {
-      generateParticle();
-      lastParticleTimestamp = currentTime;
+      generateParticle()
+      lastParticleTimestamp = currentTime
     }
 
-    refreshParticles();
-    animationFrame = requestAnimationFrame(loop);
+    refreshParticles()
+    animationFrame = requestAnimationFrame(loop)
   }
 
-  loop();
+  loop()
 
-  const isTouchInteraction = "ontouchstart" in window;
+  const isTouchInteraction = "ontouchstart" in window
 
-  const tap = isTouchInteraction ? "touchstart" : "mousedown";
-  const tapEnd = isTouchInteraction ? "touchend" : "mouseup";
-  const move = isTouchInteraction ? "touchmove" : "mousemove";
+  const tap = isTouchInteraction ? "touchstart" : "mousedown"
+  const tapEnd = isTouchInteraction ? "touchend" : "mouseup"
+  const move = isTouchInteraction ? "touchmove" : "mousemove"
 
   const updateMousePosition = (e: MouseEvent | TouchEvent) => {
     if ("touches" in e) {
-      mouseX = e.touches?.[0].clientX;
-      mouseY = e.touches?.[0].clientY;
+      mouseX = e.touches?.[0].clientX
+      mouseY = e.touches?.[0].clientY
     } else {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      mouseX = e.clientX
+      mouseY = e.clientY
     }
-  };
+  }
 
   const tapHandler = (e: MouseEvent | TouchEvent) => {
-    updateMousePosition(e);
-    autoAddParticle = true;
-  };
+    updateMousePosition(e)
+    autoAddParticle = true
+  }
 
   const disableAutoAddParticle = () => {
-    autoAddParticle = false;
-  };
+    autoAddParticle = false
+  }
 
-  element.addEventListener(move, updateMousePosition, { passive: true });
-  element.addEventListener(tap, tapHandler, { passive: true });
-  element.addEventListener(tapEnd, disableAutoAddParticle, { passive: true });
+  element.addEventListener(move, updateMousePosition, { passive: true })
+  element.addEventListener(tap, tapHandler, { passive: true })
+  element.addEventListener(tapEnd, disableAutoAddParticle, { passive: true })
   element.addEventListener("mouseleave", disableAutoAddParticle, {
     passive: true,
-  });
+  })
 
   return () => {
-    element.removeEventListener(move, updateMousePosition);
-    element.removeEventListener(tap, tapHandler);
-    element.removeEventListener(tapEnd, disableAutoAddParticle);
-    element.removeEventListener("mouseleave", disableAutoAddParticle);
+    element.removeEventListener(move, updateMousePosition)
+    element.removeEventListener(tap, tapHandler)
+    element.removeEventListener(tapEnd, disableAutoAddParticle)
+    element.removeEventListener("mouseleave", disableAutoAddParticle)
 
     const interval = setInterval(() => {
       if (animationFrame && particles.length === 0) {
-        cancelAnimationFrame(animationFrame);
-        clearInterval(interval);
+        cancelAnimationFrame(animationFrame)
+        clearInterval(interval)
 
         if (--instanceCounter === 0) {
-          container.remove();
+          container.remove()
         }
       }
-    }, 500);
-  };
-};
+    }, 500)
+  }
+}
 
 interface CoolModeProps {
-  children: ReactNode;
-  options?: CoolParticleOptions;
+  children: ReactNode
+  options?: CoolParticleOptions
 }
 
 export const CoolMode: React.FC<CoolModeProps> = ({ children, options }) => {
-  const ref = useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     if (ref.current) {
-      return applyParticleEffect(ref.current, options);
+      return applyParticleEffect(ref.current, options)
     }
-  }, [options]);
+  }, [options])
 
-  return <span ref={ref}>{children}</span>;
-};
+  return <span ref={ref}>{children}</span>
+}

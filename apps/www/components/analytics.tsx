@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import Script from "next/script";
+import Script from "next/script"
 
 export function Analytics() {
   return (
@@ -22,5 +22,5 @@ gtag('config', 'G-4CVHZX68BT');
 `}
       </Script>
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { VideoText } from "@/registry/magicui/video-text";
+import { VideoText } from "@/registry/magicui/video-text"
 
 export default function VideoTextDemo() {
   return (
@@ -7,5 +7,5 @@ export default function VideoTextDemo() {
         OCEAN
       </VideoText>
     </div>
-  );
+  )
 }

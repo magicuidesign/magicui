@@ -1,8 +1,8 @@
-import { FlickeringGrid } from "@/registry/magicui/flickering-grid";
+import { FlickeringGrid } from "@/registry/magicui/flickering-grid"
 
 export default function FlickeringGridDemo() {
   return (
-    <div className="relative h-[500px] w-full overflow-hidden rounded-lg border bg-background">
+    <div className="bg-background relative h-[500px] w-full overflow-hidden rounded-lg border">
       <FlickeringGrid
         className="absolute inset-0 z-0 size-full"
         squareSize={4}
@@ -14,5 +14,5 @@ export default function FlickeringGridDemo() {
         width={800}
       />
     </div>
-  );
+  )
 }

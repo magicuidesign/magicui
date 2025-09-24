@@ -1,10 +1,10 @@
-import { File, Folder, Tree } from "@/registry/magicui/file-tree";
+import { File, Folder, Tree } from "@/registry/magicui/file-tree"
 
 export default function FileTreeDemo() {
   return (
-    <div className="relative flex h-[300px] w-1/2 flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+    <div className="bg-background relative flex h-[300px] w-1/2 flex-col items-center justify-center overflow-hidden rounded-lg border">
       <Tree
-        className="overflow-hidden rounded-md bg-background p-2"
+        className="bg-background overflow-hidden rounded-md p-2"
         initialSelectedId="7"
         initialExpandedItems={[
           "1",
@@ -51,7 +51,7 @@ export default function FileTreeDemo() {
         </Folder>
       </Tree>
     </div>
-  );
+  )
 }
 
 const ELEMENTS = [
@@ -108,4 +108,4 @@ const ELEMENTS = [
       },
     ],
   },
-];
+]

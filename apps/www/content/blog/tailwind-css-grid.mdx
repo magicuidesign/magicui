@@ -77,33 +77,34 @@ Let's start by creating a simple Card component that we will use as the items in
 Create a new file called `src/components/Card.tsx` :
 
 ```tsx
-import { FC } from "react";
+import { FC } from "react"
+
 const Card: FC<any> = () => {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-md bg-white">
+    <div className="max-w-sm overflow-hidden rounded bg-white shadow-md">
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">Mountain Sunset</div>
-        <p className="text-gray-700 text-base">
+        <div className="mb-2 text-xl font-bold">Mountain Sunset</div>
+        <p className="text-base text-gray-700">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
           quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
           nihil.
         </p>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+        <span className="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
           #photography
         </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+        <span className="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
           #travel
         </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">
+        <span className="mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700">
           #winter
         </span>
       </div>
     </div>
-  );
-};
-export default Card;
+  )
+}
+export default Card
 ```
 
 Add it to your `App.tsx` to see what it looks like when it's rendered. It should be something like this.
@@ -117,19 +118,21 @@ Now is the fun part - setting up a grid component to hold all the cards.
 Create a new file called `src/components/CardGallery.tsx`
 
 ```tsx
-import { FC } from "react";
-import Card from "./Card";
+import { FC } from "react"
+
+import Card from "./Card"
+
 const CardGallery: FC<any> = () => {
   return (
-    <div className="grid grid-col-3">
+    <div className="grid-col-3 grid">
       <Card />
       <Card />
       <Card />
       <Card />
     </div>
-  );
-};
-export default CardGallery;
+  )
+}
+export default CardGallery
 ```
 
 Notice how we added the `grid` class to the parent div; this tells Tailwind to treat the children as grid items. With `grid-cols-3` , they get stacked horizontally one after another.
@@ -141,19 +144,21 @@ I added a 4th Card to show how they they are ordered.
 They are a little too close, right? Let's add a gap.
 
 ```tsx
-import { FC } from "react";
-import Card from "./Card";
+import { FC } from "react"
+
+import Card from "./Card"
+
 const CardGallery: FC<any> = () => {
   return (
-    <div className="grid grid-col-3 gap-4">
+    <div className="grid-col-3 grid gap-4">
       <Card />
       <Card />
       <Card />
       <Card />
     </div>
-  );
-};
-export default CardGallery;
+  )
+}
+export default CardGallery
 ```
 
 Much better, no?
@@ -165,19 +170,21 @@ Much better, no?
 We can switch the layout to row-first like so. This will stack 3 cards vertically and then move to the next row.
 
 ```tsx
-import { FC } from "react";
-import Card from "./Card";
+import { FC } from "react"
+
+import Card from "./Card"
+
 const CardGallery: FC<any> = () => {
   return (
-    <div className="grid grid-rows-3 grid-flow-col gap-4">
+    <div className="grid grid-flow-col grid-rows-3 gap-4">
       <Card />
       <Card />
       <Card />
       <Card />
     </div>
-  );
-};
-export default CardGallery;
+  )
+}
+export default CardGallery
 ```
 
 Here's what that looks like.

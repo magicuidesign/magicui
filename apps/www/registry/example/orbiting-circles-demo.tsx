@@ -1,4 +1,4 @@
-import { OrbitingCircles } from "@/registry/magicui/orbiting-circles";
+import { OrbitingCircles } from "@/registry/magicui/orbiting-circles"
 
 export default function OrbitingCirclesDemo() {
   return (
@@ -17,7 +17,7 @@ export default function OrbitingCirclesDemo() {
         <Icons.googleDrive />
       </OrbitingCircles>
     </div>
-  );
+  )
 }
 
 const Icons = {
@@ -147,4 +147,4 @@ const Icons = {
       />
     </svg>
   ),
-};
+}

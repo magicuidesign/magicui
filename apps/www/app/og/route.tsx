@@ -1,6 +1,6 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/og"
 
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons"
 
 async function loadAssets(): Promise<
   { name: string; data: Buffer; weight: 400 | 600; style: "normal" }[]
@@ -13,7 +13,7 @@ async function loadAssets(): Promise<
     import("./geist-regular-otf.json").then((mod) => mod.default || mod),
     import("./geistmono-regular-otf.json").then((mod) => mod.default || mod),
     import("./geist-semibold-otf.json").then((mod) => mod.default || mod),
-  ]);
+  ])
 
   return [
     {
@@ -34,15 +34,15 @@ async function loadAssets(): Promise<
       weight: 600 as const,
       style: "normal" as const,
     },
-  ];
+  ]
 }
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const title = searchParams.get("title");
-  const description = searchParams.get("description");
+  const { searchParams } = new URL(request.url)
+  const title = searchParams.get("title")
+  const description = searchParams.get("description")
 
-  const [fonts] = await Promise.all([loadAssets()]);
+  const [fonts] = await Promise.all([loadAssets()])
 
   return new ImageResponse(
     (
@@ -98,6 +98,6 @@ export async function GET(request: Request) {
       width: 1200,
       height: 628,
       fonts,
-    },
-  );
+    }
+  )
 }

@@ -1,4 +1,4 @@
-import { WordRotate } from "@/registry/magicui/word-rotate";
+import { WordRotate } from "@/registry/magicui/word-rotate"
 
 export default function WordRotateDemo() {
   return (
@@ -6,5 +6,5 @@ export default function WordRotateDemo() {
       className="text-4xl font-bold text-black dark:text-white"
       words={["Word", "Rotate"]}
     />
-  );
+  )
 }

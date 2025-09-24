@@ -1,10 +1,10 @@
-import { SVGProps } from "react";
+import { SVGProps } from "react"
 
 export interface AndroidProps extends SVGProps<SVGSVGElement> {
-  width?: number;
-  height?: number;
-  src?: string;
-  videoSrc?: string;
+  width?: number
+  height?: number
+  src?: string
+  videoSrc?: string
 }
 
 export function Android({
@@ -98,5 +98,5 @@ export function Android({
         </clipPath>
       </defs>
     </svg>
-  );
+  )
 }

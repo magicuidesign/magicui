@@ -43,7 +43,7 @@ npx shadcn@latest add @magicui/smooth-cursor
 <Step>Add the component to your page or layout.</Step>
 
 ```tsx showLineNumbers
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { SmoothCursor } from "@/components/ui/smooth-cursor"
 
 export default function Page() {
   return (
@@ -51,7 +51,7 @@ export default function Page() {
       <SmoothCursor />
       {/* Your page content */}
     </>
-  );
+  )
 }
 ```
 
@@ -64,7 +64,7 @@ export default function Page() {
 ## Usage
 
 ```tsx showLineNumbers
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { SmoothCursor } from "@/components/ui/smooth-cursor"
 ```
 
 ```tsx showLineNumbers
@@ -111,10 +111,10 @@ select {
 
 ```typescript showLineNumbers
 interface SpringConfig {
-  damping: number; // Controls how quickly the animation settles
-  stiffness: number; // Controls the spring stiffness
-  mass: number; // Controls the virtual mass of the animated object
-  restDelta: number; // Controls the threshold at which animation is considered complete
+  damping: number // Controls how quickly the animation settles
+  stiffness: number // Controls the spring stiffness
+  mass: number // Controls the virtual mass of the animated object
+  restDelta: number // Controls the threshold at which animation is considered complete
 }
 ```
 
@@ -126,7 +126,7 @@ const defaultSpringConfig = {
   stiffness: 400,
   mass: 1,
   restDelta: 0.001,
-};
+}
 ```
 
 ## Browser Support

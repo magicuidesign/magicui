@@ -1,6 +1,8 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes"
+
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -8,14 +10,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ShineBorder } from "@/registry/magicui/shine-border";
-import { useTheme } from "next-themes";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { ShineBorder } from "@/registry/magicui/shine-border"
 
 export default function ShineBorderDemo2() {
-  const theme = useTheme();
+  const theme = useTheme()
   return (
     <Card className="relative overflow-hidden">
       <ShineBorder shineColor={theme.theme === "dark" ? "white" : "black"} />
@@ -43,5 +44,5 @@ export default function ShineBorderDemo2() {
         <Button className="w-full">Sign In</Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

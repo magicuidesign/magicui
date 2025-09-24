@@ -1,16 +1,16 @@
+import { cn } from "@/lib/utils"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
+} from "@/components/ui/tooltip"
 
 type TechComponentType = {
-  name: string;
-  icon: React.ReactNode;
-};
+  name: string
+  icon: React.ReactNode
+}
 
-type TechComponents = Record<string, TechComponentType>;
+type TechComponents = Record<string, TechComponentType>
 
 const techComponents: TechComponents = {
   nextjs: {
@@ -134,14 +134,14 @@ const techComponents: TechComponents = {
       </svg>
     ),
   },
-};
+}
 
 export function TechStack({
   technologies,
   className,
 }: {
-  technologies: string[];
-  className?: string;
+  technologies: string[]
+  className?: string
 }) {
   return (
     <div className={cn("flex flex-row gap-2", className)}>
@@ -154,5 +154,5 @@ export function TechStack({
         </Tooltip>
       ))}
     </div>
-  );
+  )
 }

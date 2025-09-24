@@ -2,7 +2,7 @@ import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
-} from "@/registry/magicui/terminal";
+} from "@/registry/magicui/terminal"
 
 export default function TerminalDemo() {
   return (
@@ -58,5 +58,5 @@ export default function TerminalDemo() {
         You may now add components.
       </TypingAnimation>
     </Terminal>
-  );
+  )
 }

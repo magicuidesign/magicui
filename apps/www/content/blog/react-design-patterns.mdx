@@ -79,15 +79,16 @@ For instance, you have an “Apply now” button in your React application; you 
 Code Structure of High Order Components:
 
 ```tsx
-import React, { Component } from "react";
+import React, { Component } from "react"
+
 const HigherOrderComponent = (DecoratedComponent) => {
   class HOC extends Component {
     render() {
-      return <DecoratedComponent />;
+      return <DecoratedComponent />
     }
   }
-  return HOC;
-};
+  return HOC
+}
 ```
 
 ### 2\. The Provider Pattern
@@ -97,18 +98,20 @@ You must understand that the Reacts provider pattern is quite a powerful concept
 Yet again, this pattern is useful when designing a complex app since it solves several problems. The provider pattern uses a provider component that stores global data and distributes it to consumers or custom hooks through the application's component tree. Frameworks like MobX and React Redux also use the provider pattern, making it clear that the provider approach is not just used by React. Let's now examine the code that demonstrates how the provider pattern for React Redux is setup.
 
 ```tsx
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import store from "./store";
-import App from "./App";
-const rootElement = document.getElementById("root");
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+
+import App from "./App"
+import store from "./store"
+
+const rootElement = document.getElementById("root")
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  rootElement,
-);
+  rootElement
+)
 ```
 
 When it comes down to React, the provider pattern is implemented in the React context API. React is well known for supporting a unilateral downward data flow from a parent component to its children by default.
@@ -122,21 +125,23 @@ On the other hand, container components handle tasks like fetching data from ser
 Code Structure of Presentational and Container Components:
 
 ```tsx
-import React, { Component } from "react";
-import PresentationalComponent from "./PresentationalComponent";
+import React, { Component } from "react"
+
+import PresentationalComponent from "./PresentationalComponent"
+
 class ContainerComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       // Initialize state
-    };
+    }
   }
   componentDidMount() {
     // Fetch data or perform initialization logic
   }
   handleEvent = () => {
     // Handle events and update state if needed
-  };
+  }
   render() {
     return (
       <div>
@@ -146,10 +151,10 @@ class ContainerComponent extends Component {
           onClick={this.handleEvent}
         />
       </div>
-    );
+    )
   }
 }
-export default ContainerComponent;
+export default ContainerComponent
 ```
 
 ### 4\. Conditional Rendering Pattern
@@ -162,16 +167,16 @@ Example:
 
 ```tsx
 export default function App() {
-  let [products, setProducts] = useState([]);
+  let [products, setProducts] = useState([])
   useEffect(() => {
     // fetch a list of products from the server
-  }, []);
+  }, [])
   return (
     <div className="App">
       <h1>Products</h1>
       {products.length > 0 ? doSomething() : <p>No products</p>}
     </div>
-  );
+  )
 }
 ```
 
@@ -183,12 +188,12 @@ The strategy design pattern is a way to change some behavior dynamically from th
 
 ```tsx
 const Strategy = ({ children }) => {
-  return <div>{children}</div>;
-};
+  return <div>{children}</div>
+}
 const ChildComp = () => {
-  return <div>ChildComp</div>;
-};
-<Strategy children={<ChildComp />} />;
+  return <div>ChildComp</div>
+}
+;<Strategy children={<ChildComp />} />
 ```
 
 As the open-closed principle is the dominant strategy of object-oriented design, the strategy design pattern is one way to conform to OOP principles and still achieve runtime flexibility.
@@ -202,17 +207,19 @@ In React hooks components, the useState hook handles data updates, the useEffect
 Code Structure of React Hooks Components:
 
 ```tsx
-import React from "react";
-import MyHooksComponent from "./MyHooksComponent";
+import React from "react"
+
+import MyHooksComponent from "./MyHooksComponent"
+
 const App = () => {
   return (
     <div>
       <h1>React Hooks Example</h1>
       <MyHooksComponent />
     </div>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 ### 7\. Compound Component Pattern
@@ -224,18 +231,20 @@ As a result, the user-friendly interface increases user interaction time with yo
 Code Structure of Compound Component Pattern:
 
 ```tsx
-import React from "react";
-import CompoundComponentParent from "./CompoundComponentParent";
-import { CompoundComponentA, CompoundComponentB } from "./CompoundComponents";
+import React from "react"
+
+import CompoundComponentParent from "./CompoundComponentParent"
+import { CompoundComponentA, CompoundComponentB } from "./CompoundComponents"
+
 const App = () => {
   return (
     <CompoundComponentParent>
       <CompoundComponentA propA="Value for A" />
       <CompoundComponentB propB="Value for B" />
     </CompoundComponentParent>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 ### 8\. Render Prop Pattern
@@ -249,17 +258,17 @@ For instance, you might wish to add a temperature conversion input field that al
 These props take an input value and convert it to a corrected temperature in either K or °F.
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 function Input(props) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("")
   return (
     <>
       <input value={value} onChange={(e) => setValue(e.target.value)} />
       {props.renderKelvin({ value: value + 273.15 })}
       {props.renderFahrenheit({ value: (value * 9) / 5 + 32 })}
     </>
-  );
+  )
 }
 
 export default function App() {
@@ -268,7 +277,7 @@ export default function App() {
       renderKelvin={({ value }) => <div className="temp">{value}K</div>}
       renderFahrenheit={({ value }) => <div className="temp">{value}°F</div>}
     />
-  );
+  )
 }
 ```
 

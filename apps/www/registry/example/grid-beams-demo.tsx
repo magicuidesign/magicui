@@ -1,4 +1,4 @@
-import { GridBeams } from "@/registry/magicui/grid-beams";
+import { GridBeams } from "@/registry/magicui/grid-beams"
 
 export default function GridBeamsDemo() {
   return (
@@ -15,13 +15,13 @@ export default function GridBeamsDemo() {
         className="h-full w-full"
       >
         <div className="flex h-full items-center justify-center">
-          <div className="text-center space-y-6 px-4 mt-50">
-            <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+          <div className="mt-50 space-y-6 px-4 text-center">
+            <h1 className="text-5xl leading-tight font-bold text-white md:text-7xl">
               Grid <span className="text-blue-400">BEAMS</span>
             </h1>
           </div>
         </div>
       </GridBeams>
     </div>
-  );
+  )
 }

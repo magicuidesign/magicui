@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -6,10 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { BorderBeam } from "@/registry/magicui/border-beam";
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { BorderBeam } from "@/registry/magicui/border-beam"
 
 export default function LoginForm() {
   return (
@@ -49,5 +49,5 @@ export default function LoginForm() {
         className="from-transparent via-green-500 to-transparent"
       />
     </Card>
-  );
+  )
 }

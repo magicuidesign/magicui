@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import Link from "next/link"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { ArrowRightIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 
 interface TemplateOpenProps {
-  url: string;
-  free?: boolean;
+  url: string
+  free?: boolean
 }
 
 export function TemplateOpen({ url, free = false }: TemplateOpenProps) {
@@ -21,13 +22,13 @@ export function TemplateOpen({ url, free = false }: TemplateOpenProps) {
           buttonVariants({
             variant: "default",
           }),
-          "not-prose group relative w-full gap-2 shrink",
+          "not-prose group relative w-full shrink gap-2"
         )}
       >
         Download
         <GitHubLogoIcon className="size-4" />
       </Link>
-    );
+    )
   }
 
   return (
@@ -38,11 +39,11 @@ export function TemplateOpen({ url, free = false }: TemplateOpenProps) {
         buttonVariants({
           variant: "default",
         }),
-        "not-prose group relative w-full gap-1 shrink",
+        "not-prose group relative w-full shrink gap-1"
       )}
     >
       Buy Now
       <ArrowRightIcon className="size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
     </Link>
-  );
+  )
 }

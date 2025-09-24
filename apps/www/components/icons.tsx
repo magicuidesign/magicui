@@ -1,4 +1,4 @@
-import { DiscordLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
+import { DiscordLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons"
 import {
   AlertTriangle,
   ArrowRight,
@@ -23,9 +23,9 @@ import {
   Trash,
   User,
   X,
-} from "lucide-react";
+} from "lucide-react"
 
-export type IconProps = React.SVGProps<SVGSVGElement>;
+export type IconProps = React.SVGProps<SVGSVGElement>
 
 export const Icons = {
   logo: ({ className, ...props }: IconProps) => (
@@ -664,21 +664,21 @@ export const Icons = {
       ></path>
     </svg>
   ),
-};
+}
 
 export function getIconForLanguageExtension(language: string) {
   switch (language) {
     case "json":
-      return <Icons.json />;
+      return <Icons.json />
     case "css":
-      return <Icons.css className="fill-foreground" />;
+      return <Icons.css className="fill-foreground" />
     case "js":
     case "jsx":
     case "ts":
     case "tsx":
     case "typescript":
-      return <Icons.ts className="fill-foreground" />;
+      return <Icons.ts className="fill-foreground" />
     default:
-      return <FileIcon />;
+      return <FileIcon />
   }
 }
