@@ -47,7 +47,15 @@ import { AvatarCircles } from "@/components/magicui/avatar-circles"
 ```
 
 ```tsx showLineNumbers
-<AvatarCircles numPeople={99} avatarUrls={avatars} />
+<AvatarCircles
+  numPeople={99}
+  avatarUrls={[
+    {
+      imageUrl: "https://avatars.githubusercontent.com/u/16860528",
+      profileUrl: "https://github.com/dillionverma",
+    },
+  ]}
+/>
 ```
 
 ## Props
