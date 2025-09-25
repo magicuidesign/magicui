@@ -40,6 +40,9 @@ jobs:
       - name: Write blog posts
         run: node .github/scripts/publish-articles.cjs
 
+      - name: Format code
+        run: pnpm format:fix
+
       - name: Commit & push
         run: |
           git config user.name "github-actions[bot]"
