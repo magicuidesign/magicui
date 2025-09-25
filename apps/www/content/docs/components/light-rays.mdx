@@ -1,0 +1,66 @@
+---
+title: Light Rays
+date: 2025-09-25
+description: A component with animated light rays which shine down from above.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="light-rays-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/light-rays
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="light-rays" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { LightRays } from "@/components/magicui/light-rays"
+```
+
+```tsx showLineNumbers
+<div className="relative h-[400px] w-full overflow-hidden rounded-xl border">
+  <LightRays />
+</div>
+```
+
+## Props
+
+| Prop        | Type                  | Default                      | Description                                         |
+| ----------- | --------------------- | ---------------------------- | --------------------------------------------------- |
+| `count`     | `number`              | `7`                          | Total number of animated rays.                      |
+| `color`     | `string`              | `"rgba(160, 210, 255, 0.2)"` | Base colour used for the gradients.                 |
+| `blur`      | `number`              | `36`                         | Pixel radius applied to the blur filter.            |
+| `opacity`   | `number`              | `0.65`                       | Maximum opacity that rays reach (0 – 1).            |
+| `speed`     | `number`              | `14`                         | Average seconds each ray takes to complete a cycle. |
+| `length`    | `string \| number`    | `"70vh"`                     | CSS length for the ray height.                      |
+| `className` | `string`              | `undefined`                  | Additional class names applied to the wrapper.      |
+| `style`     | `React.CSSProperties` | `undefined`                  | Inline styles merged into the wrapper.              |

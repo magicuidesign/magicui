@@ -1295,16 +1295,16 @@
       }
     },
     {
-      "name": "grid-beams",
+      "name": "light-rays",
       "type": "registry:ui",
-      "title": "Grid Beams",
-      "description": "A dynamic grid background with animated light beams rays and grid patterns.",
+      "title": "Light Rays",
+      "description": "A component with animated light rays which shine down from above.",
       "dependencies": [
         "motion"
       ],
       "files": [
         {
-          "path": "registry/magicui/grid-beams.tsx",
+          "path": "registry/magicui/light-rays.tsx",
           "type": "registry:ui"
         }
       ]
@@ -3313,15 +3313,15 @@
       ]
     },
     {
-      "name": "grid-beams-demo",
+      "name": "light-rays-demo",
       "type": "registry:example",
-      "description": "Demo of the grid-beams component showcasing animated light rays over a grid",
+      "description": "Demo of the light-rays component showcasing animated light rays",
       "registryDependencies": [
-        "@magicui/grid-beams"
+        "@magicui/light-rays"
       ],
       "files": [
         {
-          "path": "registry/example/grid-beams-demo.tsx",
+          "path": "registry/example/light-rays-demo.tsx",
           "type": "registry:example"
         }
       ]

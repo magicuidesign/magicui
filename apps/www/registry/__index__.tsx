@@ -1239,18 +1239,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "grid-beams": {
-    name: "grid-beams",
-    description: "A dynamic grid background with animated light beams rays and grid patterns.",
+  "light-rays": {
+    name: "light-rays",
+    description: "A component with animated light rays which shine down from above.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
-      path: "registry/magicui/grid-beams.tsx",
+      path: "registry/magicui/light-rays.tsx",
       type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/grid-beams.tsx")
+      const mod = await import("@/registry/magicui/light-rays.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -3474,18 +3474,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "grid-beams-demo": {
-    name: "grid-beams-demo",
-    description: "Demo of the grid-beams component showcasing animated light rays over a grid",
+  "light-rays-demo": {
+    name: "light-rays-demo",
+    description: "Demo of the light-rays component showcasing animated light rays",
     type: "registry:example",
-    registryDependencies: ["@magicui/grid-beams"],
+    registryDependencies: ["@magicui/light-rays"],
     files: [{
-      path: "registry/example/grid-beams-demo.tsx",
+      path: "registry/example/light-rays-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/grid-beams-demo.tsx")
+      const mod = await import("@/registry/example/light-rays-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

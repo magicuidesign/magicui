@@ -447,18 +447,6 @@ Title: Globe Demo
 
 
 
-===== COMPONENT: grid-beams =====
-Title: Grid Beams
-Description: A dynamic grid background with animated light beams rays and grid patterns.
-
-
-
-===== EXAMPLE: grid-beams-demo =====
-Title: grid-beams-demo
-
-
-
-
 ===== COMPONENT: grid-pattern =====
 Title: Grid Pattern
 Description: A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
@@ -613,6 +601,18 @@ Title: Lens Demo 2
 
 ===== EXAMPLE: lens-demo-3 =====
 Title: Lens Demo 3
+
+
+
+
+===== COMPONENT: light-rays =====
+Title: Light Rays
+Description: A component with animated light rays which shine down from above.
+
+
+
+===== EXAMPLE: light-rays-demo =====
+Title: light-rays-demo
 
 
 

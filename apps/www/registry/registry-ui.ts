@@ -1223,15 +1223,15 @@ export const ui: Registry["items"] = [
     },
   },
   {
-    name: "grid-beams",
+    name: "light-rays",
     type: "registry:ui",
-    title: "Grid Beams",
+    title: "Light Rays",
     description:
-      "A dynamic grid background with animated light beams rays and grid patterns.",
+      "A component with animated light rays which shine down from above.",
     dependencies: ["motion"],
     files: [
       {
-        path: "magicui/grid-beams.tsx",
+        path: "magicui/light-rays.tsx",
         type: "registry:ui",
       },
     ],

@@ -1734,14 +1734,14 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "grid-beams-demo",
+    name: "light-rays-demo",
     description:
-      "Demo of the grid-beams component showcasing animated light rays over a grid",
+      "Demo of the light-rays component showcasing animated light rays",
     type: "registry:example",
-    registryDependencies: ["@magicui/grid-beams"],
+    registryDependencies: ["@magicui/light-rays"],
     files: [
       {
-        path: "example/grid-beams-demo.tsx",
+        path: "example/light-rays-demo.tsx",
         type: "registry:example",
       },
     ],
