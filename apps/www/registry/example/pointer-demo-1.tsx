@@ -2,30 +2,16 @@
 
 import { motion } from "motion/react"
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { Pointer } from "@/registry/magicui/pointer"
 
 export default function PointerDemo1() {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2">
-      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-slate-50 to-slate-100 shadow-none transition-all dark:from-slate-900 dark:to-slate-800">
-        <CardHeader className="relative pb-2">
-          <CardTitle className="text-xl font-bold">Animated Pointer</CardTitle>
-          <CardDescription className="text-sm text-slate-600 dark:text-slate-400">
-            Animated pointer
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="relative flex h-40 items-center justify-center p-6">
-          <span className="pointer-events-none text-center text-xl font-medium text-slate-800 dark:text-slate-200">
-            Move your cursor here
-          </span>
-        </CardContent>
+      <div className="border-border rounded-lg border p-4">
+        <div className="relative flex h-40 flex-col items-center justify-center">
+          <h3 className="text-xl font-semibold">Animated Pointer</h3>
+          <p className="text-muted-foreground text-sm">Animated pointer</p>
+        </div>
         <Pointer>
           <motion.div
             animate={{
@@ -59,35 +45,25 @@ export default function PointerDemo1() {
             </svg>
           </motion.div>
         </Pointer>
-      </Card>
+      </div>
 
-      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-blue-50 to-blue-100 shadow-none transition-all dark:from-blue-900 dark:to-blue-800">
-        <CardHeader className="relative pb-2">
-          <CardTitle className="text-xl font-bold">Colored Pointer</CardTitle>
-          <CardDescription className="text-sm text-blue-700 dark:text-blue-300">
+      <div className="border-border rounded-lg border p-4">
+        <div className="relative flex h-40 flex-col items-center justify-center">
+          <h3 className="text-xl font-semibold">Colored Pointer</h3>
+          <p className="text-muted-foreground text-sm">
             A custom pointer with different color
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="relative flex h-40 items-center justify-center p-6">
-          <span className="pointer-events-none text-center text-xl font-medium text-blue-800 dark:text-blue-200">
-            Try me out
-          </span>
-        </CardContent>
+          </p>
+        </div>
         <Pointer className="fill-blue-500" />
-      </Card>
+      </div>
 
-      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-purple-50 to-purple-100 shadow-none transition-all dark:from-purple-900 dark:to-purple-800">
-        <CardHeader className="relative pb-2">
-          <CardTitle className="text-xl font-bold">Custom Shape</CardTitle>
-          <CardDescription className="text-sm text-purple-700 dark:text-purple-300">
+      <div className="border-border rounded-lg border p-4">
+        <div className="relative flex h-40 flex-col items-center justify-center">
+          <h3 className="text-xl font-semibold">Custom Shape</h3>
+          <p className="text-muted-foreground text-sm">
             A pointer with a custom SVG shape
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="relative flex h-40 items-center justify-center p-6">
-          <span className="pointer-events-none text-center text-xl font-medium text-purple-800 dark:text-purple-200">
-            Hover here
-          </span>
-        </CardContent>
+          </p>
+        </div>
         <Pointer>
           <svg
             width="24"
@@ -100,24 +76,19 @@ export default function PointerDemo1() {
             <circle cx="12" cy="12" r="5" className="fill-white" />
           </svg>
         </Pointer>
-      </Card>
+      </div>
 
-      <Card className="col-span-1 row-span-1 overflow-hidden border bg-gradient-to-br from-green-50 to-green-100 shadow-none transition-all dark:from-green-900 dark:to-green-800">
-        <CardHeader className="relative pb-2">
-          <CardTitle className="text-xl font-bold">Emoji Pointer</CardTitle>
-          <CardDescription className="text-sm text-green-700 dark:text-green-300">
+      <div className="border-border rounded-lg border p-4">
+        <div className="relative flex h-40 flex-col items-center justify-center">
+          <h3 className="text-xl font-semibold">Emoji Pointer</h3>
+          <p className="text-muted-foreground text-sm">
             Using an emoji as a custom pointer
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="relative flex h-40 items-center justify-center p-6">
-          <span className="pointer-events-none text-center text-xl font-medium text-green-800 dark:text-green-200">
-            Check this out
-          </span>
-        </CardContent>
+          </p>
+        </div>
         <Pointer>
           <div className="text-2xl">👆</div>
         </Pointer>
-      </Card>
+      </div>
     </div>
   )
 }
