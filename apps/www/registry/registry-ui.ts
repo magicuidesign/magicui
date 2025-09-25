@@ -1169,4 +1169,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dotted-map",
+    type: "registry:ui",
+    title: "Dotted Map",
+    description: "A component with a dotted map.",
+    dependencies: ["svg-dotted-map"],
+    files: [
+      {
+        path: "magicui/dotted-map.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

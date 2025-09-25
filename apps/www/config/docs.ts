@@ -213,8 +213,8 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Animated Theme Toggler",
-          href: `/docs/components/animated-theme-toggler`,
+          title: "Dotted Map",
+          href: `/docs/components/dotted-map`,
           items: [],
           label: "New",
         },
@@ -260,6 +260,12 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/particles`,
           items: [],
           label: "",
+        },
+        {
+          title: "Animated Theme Toggler",
+          href: `/docs/components/animated-theme-toggler`,
+          items: [],
+          label: "New",
         },
       ],
     },

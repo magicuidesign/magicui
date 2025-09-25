@@ -353,6 +353,23 @@ Title: Dot Pattern with glow effect
 
 
 
+===== COMPONENT: dotted-map =====
+Title: Dotted Map
+Description: A component with a dotted map.
+
+
+
+===== EXAMPLE: dotted-map-demo =====
+Title: Dotted Map Demo
+
+
+
+===== EXAMPLE: dotted-map-demo-2 =====
+Title: Dotted Map Demo 2
+
+
+
+
 ===== COMPONENT: file-tree =====
 Title: File Tree
 Description: A component used to showcase the folder and file structure of a directory.
