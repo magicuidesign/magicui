@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "striped-pattern-colored",
+  "type": "registry:example",
+  "title": "Striped Pattern (Colored)",
+  "description": "Example showing a background striped pattern with a colored stroke.",
+  "registryDependencies": [
+    "@magicui/striped-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/striped-pattern-colored.tsx",
+      "content": "import { StripedPattern } from \"@/registry/magicui/striped-pattern\"\n\nexport default function StripedPatternColored() {\n  return (\n    <div className=\"relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <StripedPattern className=\"stroke-[0.3] text-orange-500/60\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": "components/striped-pattern-colored.tsx"
+    }
+  ]
+}

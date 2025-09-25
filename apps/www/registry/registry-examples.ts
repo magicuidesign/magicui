@@ -252,17 +252,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "striped-pattern-left",
+    name: "striped-pattern-colored",
     type: "registry:example",
-    title: "Striped Pattern (Left)",
+    title: "Striped Pattern (Colored)",
     description:
-      "Example showing a background striped pattern slanting to the left using SVG.",
+      "Example showing a background striped pattern with a colored stroke.",
     registryDependencies: ["@magicui/striped-pattern"],
     files: [
       {
-        path: "example/striped-pattern-left.tsx",
+        path: "example/striped-pattern-colored.tsx",
         type: "registry:example",
-        target: "components/striped-pattern-left.tsx",
+        target: "components/striped-pattern-colored.tsx",
       },
     ],
   },

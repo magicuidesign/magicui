@@ -454,6 +454,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Striped Pattern",
+          href: `/docs/components/striped-pattern`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Interactive Grid Pattern",
           href: `/docs/components/interactive-grid-pattern`,
           items: [],
@@ -462,12 +468,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Light Rays",
           href: `/docs/components/light-rays`,
-          items: [],
-          label: "New",
-        },
-        {
-          title: "Striped Pattern",
-          href: `/docs/components/striped-pattern`,
           items: [],
           label: "New",
         },

@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/striped-pattern-left.tsx",
-      "content": "import { StripedPattern } from \"../magicui/striped-pattern\";\n\nexport default function StripedPatternLeft() {\n  return (\n    <div className=\"relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background\">\n      <StripedPattern />\n    </div>\n  );\n}\n",
+      "content": "import { StripedPattern } from \"@/registry/magicui/striped-pattern\"\n\nexport default function StripedPatternLeft() {\n  return (\n    <div className=\"bg-background relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <StripedPattern />\n    </div>\n  )\n}\n",
       "type": "registry:example",
       "target": "components/striped-pattern-left.tsx"
     }

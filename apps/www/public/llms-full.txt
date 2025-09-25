@@ -952,8 +952,8 @@ Title: Striped Pattern Demo
 
 
 
-===== EXAMPLE: striped-pattern-left =====
-Title: Striped Pattern (Left)
+===== EXAMPLE: striped-pattern-colored =====
+Title: Striped Pattern (Colored)
 
 
 
