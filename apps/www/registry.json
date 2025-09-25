@@ -1148,13 +1148,13 @@
       ]
     },
     {
-      "name": "iphone-15-pro",
+      "name": "iphone",
       "type": "registry:ui",
-      "title": "iPhone 15 Pro",
-      "description": "A mockup of the iPhone 15 Pro",
+      "title": "iPhone",
+      "description": "A mockup of the iPhone",
       "files": [
         {
-          "path": "registry/magicui/iphone-15-pro.tsx",
+          "path": "registry/magicui/iphone.tsx",
           "type": "registry:ui"
         }
       ]
@@ -3107,46 +3107,46 @@
       ]
     },
     {
-      "name": "iphone-15-pro-demo",
+      "name": "iphone-demo",
       "type": "registry:example",
-      "title": "iPhone 15 Pro Demo",
-      "description": "Example showing an iPhone 15 Pro mockup.",
+      "title": "iPhone Demo",
+      "description": "Example showing an iPhone mockup.",
       "registryDependencies": [
-        "@magicui/iphone-15-pro"
+        "@magicui/iphone"
       ],
       "files": [
         {
-          "path": "registry/example/iphone-15-pro-demo.tsx",
+          "path": "registry/example/iphone-demo.tsx",
           "type": "registry:example"
         }
       ]
     },
     {
-      "name": "iphone-15-pro-demo-2",
+      "name": "iphone-demo-2",
       "type": "registry:example",
-      "title": "iPhone 15 Pro Demo 2",
-      "description": "Second example showing an iPhone 15 Pro mockup.",
+      "title": "iPhone Demo 2",
+      "description": "Second example showing an iPhone mockup.",
       "registryDependencies": [
-        "@magicui/iphone-15-pro"
+        "@magicui/iphone"
       ],
       "files": [
         {
-          "path": "registry/example/iphone-15-pro-demo-2.tsx",
+          "path": "registry/example/iphone-demo-2.tsx",
           "type": "registry:example"
         }
       ]
     },
     {
-      "name": "iphone-15-pro-demo-3",
+      "name": "iphone-demo-3",
       "type": "registry:example",
-      "title": "iPhone 15 Pro Demo 3",
-      "description": "Third example showing an iPhone 15 Pro mockup.",
+      "title": "iPhone Demo 3",
+      "description": "Third example showing an iPhone mockup.",
       "registryDependencies": [
-        "@magicui/iphone-15-pro"
+        "@magicui/iphone"
       ],
       "files": [
         {
-          "path": "registry/example/iphone-15-pro-demo-3.tsx",
+          "path": "registry/example/iphone-demo-3.tsx",
           "type": "registry:example"
         }
       ]

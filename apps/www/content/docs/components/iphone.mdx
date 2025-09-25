@@ -1,12 +1,12 @@
 ---
-title: iPhone 15 Pro
+title: iPhone
 date: 2024-09-01
-description: A mockup of the iPhone 15 Pro
+description: A mockup of the iPhone
 author: dillionverma, Yeom-JinHo
 published: true
 ---
 
-<ComponentPreview name="iphone-15-pro-demo" />
+<ComponentPreview name="iphone-demo" />
 
 ## Installation
 
@@ -19,7 +19,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @magicui/iphone-15-pro
+npx shadcn@latest add @magicui/iphone
 ```
 
 </TabsContent>
@@ -30,7 +30,7 @@ npx shadcn@latest add @magicui/iphone-15-pro
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="iphone-15-pro" />
+<ComponentSource name="iphone" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -44,20 +44,20 @@ npx shadcn@latest add @magicui/iphone-15-pro
 
 ### With Image
 
-<ComponentPreview name="iphone-15-pro-demo-2" />
+<ComponentPreview name="iphone-demo-2" />
 
 ### With Video
 
-<ComponentPreview name="iphone-15-pro-demo-3" />
+<ComponentPreview name="iphone-demo-3" />
 
 ## Usage
 
 ```tsx showLineNumbers
-import { Iphone15Pro } from "@/components/magicui/iphone-15-pro"
+import { Iphone } from "@/components/magicui/iphone"
 ```
 
 ```tsx showLineNumbers
-<Iphone15Pro />
+<Iphone />
 ```
 
 ## Props
@@ -73,5 +73,5 @@ import { Iphone15Pro } from "@/components/magicui/iphone-15-pro"
 
 - Sizing: width and height props have been removed. The size is controlled by the wrapper `<div>`. The component enforces the aspect ratio 433/882.
 - Masking: The screen area is only masked when media (src or videoSrc) is provided. Without media, only the frame is rendered.
-- HTML Attributes: The Iphone15Pro component accepts all standard HTMLDivElement props.
+- HTML Attributes: The Iphone component accepts all standard HTMLDivElement props.
 - iOS Compatibility: Video is rendered as a DOM overlay instead of foreignObject to avoid Safari/iOS masking issues.

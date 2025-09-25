@@ -1079,13 +1079,13 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "iphone-15-pro",
+    name: "iphone",
     type: "registry:ui",
-    title: "iPhone 15 Pro",
-    description: "A mockup of the iPhone 15 Pro",
+    title: "iPhone",
+    description: "A mockup of the iPhone",
     files: [
       {
-        path: "magicui/iphone-15-pro.tsx",
+        path: "magicui/iphone.tsx",
         type: "registry:ui",
       },
     ],

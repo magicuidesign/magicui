@@ -16,18 +16,18 @@ const HEIGHT_PCT = (SCREEN_HEIGHT / PHONE_HEIGHT) * 100
 const RADIUS_H = (SCREEN_RADIUS / SCREEN_WIDTH) * 100
 const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100
 
-export interface Iphone15ProProps extends HTMLAttributes<HTMLDivElement> {
+export interface IphoneProps extends HTMLAttributes<HTMLDivElement> {
   src?: string
   videoSrc?: string
 }
 
-export function Iphone15Pro({
+export function Iphone({
   src,
   videoSrc,
   className,
   style,
   ...props
-}: Iphone15ProProps) {
+}: IphoneProps) {
   const hasVideo = !!videoSrc
   const hasMedia = hasVideo || !!src
 

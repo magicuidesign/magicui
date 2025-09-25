@@ -1086,18 +1086,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "iphone-15-pro": {
-    name: "iphone-15-pro",
-    description: "A mockup of the iPhone 15 Pro",
+  "iphone": {
+    name: "iphone",
+    description: "A mockup of the iPhone",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
-      path: "registry/magicui/iphone-15-pro.tsx",
+      path: "registry/magicui/iphone.tsx",
       type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/iphone-15-pro.tsx")
+      const mod = await import("@/registry/magicui/iphone.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -3245,52 +3245,52 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "iphone-15-pro-demo": {
-    name: "iphone-15-pro-demo",
-    description: "Example showing an iPhone 15 Pro mockup.",
+  "iphone-demo": {
+    name: "iphone-demo",
+    description: "Example showing an iPhone mockup.",
     type: "registry:example",
-    registryDependencies: ["@magicui/iphone-15-pro"],
+    registryDependencies: ["@magicui/iphone"],
     files: [{
-      path: "registry/example/iphone-15-pro-demo.tsx",
+      path: "registry/example/iphone-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/iphone-15-pro-demo.tsx")
+      const mod = await import("@/registry/example/iphone-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "iphone-15-pro-demo-2": {
-    name: "iphone-15-pro-demo-2",
-    description: "Second example showing an iPhone 15 Pro mockup.",
+  "iphone-demo-2": {
+    name: "iphone-demo-2",
+    description: "Second example showing an iPhone mockup.",
     type: "registry:example",
-    registryDependencies: ["@magicui/iphone-15-pro"],
+    registryDependencies: ["@magicui/iphone"],
     files: [{
-      path: "registry/example/iphone-15-pro-demo-2.tsx",
+      path: "registry/example/iphone-demo-2.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/iphone-15-pro-demo-2.tsx")
+      const mod = await import("@/registry/example/iphone-demo-2.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "iphone-15-pro-demo-3": {
-    name: "iphone-15-pro-demo-3",
-    description: "Third example showing an iPhone 15 Pro mockup.",
+  "iphone-demo-3": {
+    name: "iphone-demo-3",
+    description: "Third example showing an iPhone mockup.",
     type: "registry:example",
-    registryDependencies: ["@magicui/iphone-15-pro"],
+    registryDependencies: ["@magicui/iphone"],
     files: [{
-      path: "registry/example/iphone-15-pro-demo-3.tsx",
+      path: "registry/example/iphone-demo-3.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/iphone-15-pro-demo-3.tsx")
+      const mod = await import("@/registry/example/iphone-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

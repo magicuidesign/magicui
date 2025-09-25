@@ -41,7 +41,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Icon Cloud](https://magicui.design/docs/components/icon-cloud): An interactive 3D tag cloud component
 - [Interactive Grid Pattern](https://magicui.design/docs/components/interactive-grid-pattern): A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [interactive-hover-button](https://magicui.design/docs/components/interactive-hover-button): The interactive-hover-button component.
-- [iPhone 15 Pro](https://magicui.design/docs/components/iphone-15-pro): A mockup of the iPhone 15 Pro
+- [iPhone](https://magicui.design/docs/components/iphone): A mockup of the iPhone
 - [Lens](https://magicui.design/docs/components/lens): A interactive component that enables zooming into images, videos and other elements.
 - [Line Shadow Text](https://magicui.design/docs/components/line-shadow-text): A text component with a moving line shadow.
 - [Magic Card](https://magicui.design/docs/components/magic-card): A spotlight effect that follows your mouse cursor and highlights borders on hover.
@@ -199,9 +199,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Safari Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo-2.tsx): Example usage
 - [Safari Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo-3.tsx): Example usage
 - [Safari Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo-4.tsx): Example usage
-- [iPhone 15 Pro Demo](https://github.com/magicuidesign/magicui/blob/main/example/iphone-15-pro-demo.tsx): Example usage
-- [iPhone 15 Pro Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/iphone-15-pro-demo-2.tsx): Example usage
-- [iPhone 15 Pro Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/iphone-15-pro-demo-3.tsx): Example usage
+- [iPhone Demo](https://github.com/magicuidesign/magicui/blob/main/example/iphone-demo.tsx): Example usage
+- [iPhone Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/iphone-demo-2.tsx): Example usage
+- [iPhone Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/iphone-demo-3.tsx): Example usage
 - [Rainbow Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/rainbow-button-demo.tsx): Example usage
 - [Rainbow Button Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/rainbow-button-demo-2.tsx): Example usage
 - [Interactive Hover Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/interactive-hover-button-demo.tsx): Example usage

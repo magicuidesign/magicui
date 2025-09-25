@@ -573,24 +573,24 @@ Title: Interactive Hover Button Demo
 
 
 
-===== COMPONENT: iphone-15-pro =====
-Title: iPhone 15 Pro
-Description: A mockup of the iPhone 15 Pro
+===== COMPONENT: iphone =====
+Title: iPhone
+Description: A mockup of the iPhone
 
 
 
-===== EXAMPLE: iphone-15-pro-demo =====
-Title: iPhone 15 Pro Demo
+===== EXAMPLE: iphone-demo =====
+Title: iPhone Demo
 
 
 
-===== EXAMPLE: iphone-15-pro-demo-2 =====
-Title: iPhone 15 Pro Demo 2
+===== EXAMPLE: iphone-demo-2 =====
+Title: iPhone Demo 2
 
 
 
-===== EXAMPLE: iphone-15-pro-demo-3 =====
-Title: iPhone 15 Pro Demo 3
+===== EXAMPLE: iphone-demo-3 =====
+Title: iPhone Demo 3
 
 
 

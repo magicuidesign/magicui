@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "iphone-demo",
+  "type": "registry:example",
+  "title": "iPhone Demo",
+  "description": "Example showing an iPhone mockup.",
+  "registryDependencies": [
+    "@magicui/iphone"
+  ],
+  "files": [
+    {
+      "path": "registry/example/iphone-demo.tsx",
+      "content": "import { Iphone } from \"@/registry/magicui/iphone\"\n\nexport default function Demo() {\n  return (\n    <div className=\"w-[434px]\">\n      <Iphone />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
