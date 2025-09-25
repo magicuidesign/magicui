@@ -12,7 +12,7 @@ export default function Demo() {
         </h1>
         <p className="max-w-md text-sm text-slate-800/80 md:text-base dark:text-slate-200/80">
           Drop this component into any container and it will fill the space with
-          softly animated beams moving across a geometric grid backdrop.
+          softly animated light rays shining from above.
         </p>
       </div>
       <LightRays />
