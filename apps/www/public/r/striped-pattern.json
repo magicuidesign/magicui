@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "striped-pattern",
+  "type": "registry:ui",
+  "title": "Striped Pattern",
+  "description": "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+  "files": [
+    {
+      "path": "registry/magicui/striped-pattern.tsx",
+      "content": "import React, { useId } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface StripedPatternProps extends React.SVGProps<SVGSVGElement> {\n  direction?: \"left\" | \"right\"\n}\n\nexport function StripedPattern({\n  direction = \"left\",\n  className,\n  width = 10,\n  height = 10,\n  ...props\n}: StripedPatternProps) {\n  const id = useId()\n  const w = Number(width)\n  const h = Number(height)\n\n  return (\n    <svg\n      aria-hidden=\"true\"\n      className={cn(\n        \"pointer-events-none absolute inset-0 z-10 h-full w-full stroke-[0.5]\",\n        className\n      )}\n      xmlns=\"http://www.w3.org/2000/svg\"\n      {...props}\n    >\n      <defs>\n        <pattern id={id} width={w} height={h} patternUnits=\"userSpaceOnUse\">\n          {direction === \"left\" ? (\n            <>\n              <line x1=\"0\" y1={h} x2={w} y2=\"0\" stroke=\"currentColor\" />\n              <line x1={-w} y1={h} x2=\"0\" y2=\"0\" stroke=\"currentColor\" />\n              <line x1={w} y1={h} x2={w * 2} y2=\"0\" stroke=\"currentColor\" />\n            </>\n          ) : (\n            <>\n              <line x1=\"0\" y1=\"0\" x2={w} y2={h} stroke=\"currentColor\" />\n              <line x1={-w} y1=\"0\" x2=\"0\" y2={h} stroke=\"currentColor\" />\n              <line x1={w} y1=\"0\" x2={w * 2} y2={h} stroke=\"currentColor\" />\n            </>\n          )}\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" fill={`url(#${id})`} />\n    </svg>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/magicui/striped-pattern.tsx"
+    }
+  ]
+}

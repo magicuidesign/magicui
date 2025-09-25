@@ -65,6 +65,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [smooth-cursor](https://magicui.design/docs/components/smooth-cursor): A customizable, physics-based smooth cursor animation component with spring animations and rotation effects
 - [Sparkles Text](https://magicui.design/docs/components/sparkles-text): A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.
 - [Spinning Text](https://magicui.design/docs/components/spinning-text): The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.
+- [Striped Pattern](https://magicui.design/docs/components/striped-pattern): A background striped pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Terminal](https://magicui.design/docs/components/terminal): A terminal component
 - [Text Animate](https://magicui.design/docs/components/text-animate): A text animation component that animates text using a variety of different animations.
 - [Text Reveal](https://magicui.design/docs/components/text-reveal): Fade in text as you scroll down the page.
@@ -94,6 +95,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Neon Gradient Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/neon-gradient-card-demo.tsx): Example usage
 - [Meteors Demo](https://github.com/magicuidesign/magicui/blob/main/example/meteors-demo.tsx): Example usage
 - [Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-demo.tsx): Example usage
+- [Striped Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-demo.tsx): Example usage
+- [Striped Pattern (Colored)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-colored.tsx): Example usage
+- [Striped Pattern (Right)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-right.tsx): Example usage
 - [Grid Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-linear-gradient.tsx): Example usage
 - [Grid Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-dashed.tsx): Example usage
 - [Dot Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-demo.tsx): Example usage

@@ -286,6 +286,19 @@
       ]
     },
     {
+      "name": "striped-pattern",
+      "type": "registry:ui",
+      "title": "Striped Pattern",
+      "description": "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "files": [
+        {
+          "path": "registry/magicui/striped-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/magicui/striped-pattern.tsx"
+        }
+      ]
+    },
+    {
       "name": "interactive-grid-pattern",
       "type": "registry:ui",
       "title": "Interactive Grid Pattern",
@@ -1489,6 +1502,54 @@
         {
           "path": "registry/example/grid-pattern-demo.tsx",
           "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "striped-pattern-demo",
+      "type": "registry:example",
+      "title": "Striped Pattern Demo",
+      "description": "Example showing a background striped pattern made with SVGs.",
+      "registryDependencies": [
+        "@magicui/striped-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/striped-pattern-demo.tsx",
+          "type": "registry:example",
+          "target": "components/striped-pattern-demo.tsx"
+        }
+      ]
+    },
+    {
+      "name": "striped-pattern-colored",
+      "type": "registry:example",
+      "title": "Striped Pattern (Colored)",
+      "description": "Example showing a background striped pattern with a colored stroke.",
+      "registryDependencies": [
+        "@magicui/striped-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/striped-pattern-colored.tsx",
+          "type": "registry:example",
+          "target": "components/striped-pattern-colored.tsx"
+        }
+      ]
+    },
+    {
+      "name": "striped-pattern-right",
+      "type": "registry:example",
+      "title": "Striped Pattern (Right)",
+      "description": "Example showing a background striped pattern slanting to the right using SVG.",
+      "registryDependencies": [
+        "@magicui/striped-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/striped-pattern-right.tsx",
+          "type": "registry:example",
+          "target": "components/striped-pattern-right.tsx"
         }
       ]
     },

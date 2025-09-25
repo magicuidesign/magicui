@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "striped-pattern-right",
+  "type": "registry:example",
+  "title": "Striped Pattern (Right)",
+  "description": "Example showing a background striped pattern slanting to the right using SVG.",
+  "registryDependencies": [
+    "@magicui/striped-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/striped-pattern-right.tsx",
+      "content": "import { StripedPattern } from \"@/registry/magicui/striped-pattern\"\n\nexport default function StripedPatternRight() {\n  return (\n    <div className=\"relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <StripedPattern direction=\"right\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": "components/striped-pattern-right.tsx"
+    }
+  ]
+}

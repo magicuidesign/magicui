@@ -941,6 +941,28 @@ Title: Spinning Text Demo 2
 
 
 
+===== COMPONENT: striped-pattern =====
+Title: Striped Pattern
+Description: A background striped pattern made with SVGs, fully customizable using Tailwind CSS.
+
+
+
+===== EXAMPLE: striped-pattern-demo =====
+Title: Striped Pattern Demo
+
+
+
+===== EXAMPLE: striped-pattern-colored =====
+Title: Striped Pattern (Colored)
+
+
+
+===== EXAMPLE: striped-pattern-right =====
+Title: Striped Pattern (Right)
+
+
+
+
 ===== COMPONENT: terminal =====
 Title: Terminal
 Description: A terminal component

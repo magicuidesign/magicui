@@ -454,6 +454,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Striped Pattern",
+          href: `/docs/components/striped-pattern`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Interactive Grid Pattern",
           href: `/docs/components/interactive-grid-pattern`,
           items: [],

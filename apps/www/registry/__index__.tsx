@@ -253,6 +253,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "striped-pattern": {
+    name: "striped-pattern",
+    description: "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/striped-pattern.tsx",
+      type: "registry:ui",
+      target: "components/magicui/striped-pattern.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/striped-pattern.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "interactive-grid-pattern": {
     name: "interactive-grid-pattern",
     description: "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
@@ -1455,6 +1472,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-pattern-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "striped-pattern-demo": {
+    name: "striped-pattern-demo",
+    description: "Example showing a background striped pattern made with SVGs.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/striped-pattern"],
+    files: [{
+      path: "registry/example/striped-pattern-demo.tsx",
+      type: "registry:example",
+      target: "components/striped-pattern-demo.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/striped-pattern-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "striped-pattern-colored": {
+    name: "striped-pattern-colored",
+    description: "Example showing a background striped pattern with a colored stroke.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/striped-pattern"],
+    files: [{
+      path: "registry/example/striped-pattern-colored.tsx",
+      type: "registry:example",
+      target: "components/striped-pattern-colored.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/striped-pattern-colored.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "striped-pattern-right": {
+    name: "striped-pattern-right",
+    description: "Example showing a background striped pattern slanting to the right using SVG.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/striped-pattern"],
+    files: [{
+      path: "registry/example/striped-pattern-right.tsx",
+      type: "registry:example",
+      target: "components/striped-pattern-right.tsx"
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/striped-pattern-right.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

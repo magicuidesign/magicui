@@ -238,6 +238,50 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "striped-pattern-demo",
+    type: "registry:example",
+    title: "Striped Pattern Demo",
+    description: "Example showing a background striped pattern made with SVGs.",
+    registryDependencies: ["@magicui/striped-pattern"],
+    files: [
+      {
+        path: "example/striped-pattern-demo.tsx",
+        type: "registry:example",
+        target: "components/striped-pattern-demo.tsx",
+      },
+    ],
+  },
+  {
+    name: "striped-pattern-colored",
+    type: "registry:example",
+    title: "Striped Pattern (Colored)",
+    description:
+      "Example showing a background striped pattern with a colored stroke.",
+    registryDependencies: ["@magicui/striped-pattern"],
+    files: [
+      {
+        path: "example/striped-pattern-colored.tsx",
+        type: "registry:example",
+        target: "components/striped-pattern-colored.tsx",
+      },
+    ],
+  },
+  {
+    name: "striped-pattern-right",
+    type: "registry:example",
+    title: "Striped Pattern (Right)",
+    description:
+      "Example showing a background striped pattern slanting to the right using SVG.",
+    registryDependencies: ["@magicui/striped-pattern"],
+    files: [
+      {
+        path: "example/striped-pattern-right.tsx",
+        type: "registry:example",
+        target: "components/striped-pattern-right.tsx",
+      },
+    ],
+  },
+  {
     name: "grid-pattern-linear-gradient",
     type: "registry:example",
     title: "Grid Pattern Linear Gradient",
