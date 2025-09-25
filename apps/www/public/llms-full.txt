@@ -117,23 +117,6 @@ Title: Animated Shiny Text Demo
 
 
 
-===== COMPONENT: animated-subscribe-button =====
-Title: Animated Subscribe Button
-Description: An animated subscribe button useful for showing a micro animation from intial to final result.
-
-
-
-===== EXAMPLE: animated-subscribe-button-demo =====
-Title: Animated Subscribe Button Demo
-
-
-
-===== EXAMPLE: animated-subscribe-button-controlled-demo =====
-Title: Animated Subscribe Button (Controlled)
-
-
-
-
 ===== COMPONENT: animated-theme-toggler =====
 Title: Theme Toggler
 Description: A component for theme changing animation.

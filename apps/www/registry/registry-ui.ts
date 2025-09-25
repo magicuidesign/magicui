@@ -908,20 +908,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "animated-subscribe-button",
-    type: "registry:ui",
-    title: "Animated Subscribe Button",
-    description:
-      "An animated subscribe button useful for showing a micro animation from intial to final result.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/animated-subscribe-button.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "cool-mode",
     type: "registry:ui",
     title: "Cool Mode",

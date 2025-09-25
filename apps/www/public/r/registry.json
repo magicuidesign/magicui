@@ -962,21 +962,6 @@
       ]
     },
     {
-      "name": "animated-subscribe-button",
-      "type": "registry:ui",
-      "title": "Animated Subscribe Button",
-      "description": "An animated subscribe button useful for showing a micro animation from intial to final result.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/animated-subscribe-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "cool-mode",
       "type": "registry:ui",
       "title": "Cool Mode",
@@ -2782,36 +2767,6 @@
       "files": [
         {
           "path": "registry/example/confetti-emoji.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "animated-subscribe-button-demo",
-      "type": "registry:example",
-      "title": "Animated Subscribe Button Demo",
-      "description": "Example showing an animated subscribe button with micro animations.",
-      "registryDependencies": [
-        "@magicui/animated-subscribe-button"
-      ],
-      "files": [
-        {
-          "path": "registry/example/animated-subscribe-button-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "animated-subscribe-button-controlled-demo",
-      "type": "registry:example",
-      "title": "Animated Subscribe Button (Controlled)",
-      "description": "Controlled example showing async behavior for AnimatedSubscribeButton.",
-      "registryDependencies": [
-        "@magicui/animated-subscribe-button"
-      ],
-      "files": [
-        {
-          "path": "registry/example/animated-subscribe-button-controlled-demo.tsx",
           "type": "registry:example"
         }
       ]

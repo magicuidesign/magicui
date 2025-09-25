@@ -899,23 +899,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "animated-subscribe-button": {
-    name: "animated-subscribe-button",
-    description: "An animated subscribe button useful for showing a micro animation from intial to final result.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-subscribe-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/animated-subscribe-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "cool-mode": {
     name: "cool-mode",
     description: "Cool mode effect for buttons, links, and other DOMs",
@@ -2883,40 +2866,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-emoji.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "animated-subscribe-button-demo": {
-    name: "animated-subscribe-button-demo",
-    description: "Example showing an animated subscribe button with micro animations.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/animated-subscribe-button"],
-    files: [{
-      path: "registry/example/animated-subscribe-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-subscribe-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "animated-subscribe-button-controlled-demo": {
-    name: "animated-subscribe-button-controlled-demo",
-    description: "Controlled example showing async behavior for AnimatedSubscribeButton.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/animated-subscribe-button"],
-    files: [{
-      path: "registry/example/animated-subscribe-button-controlled-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-subscribe-button-controlled-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

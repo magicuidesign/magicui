@@ -1331,34 +1331,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "animated-subscribe-button-demo",
-    type: "registry:example",
-    title: "Animated Subscribe Button Demo",
-    description:
-      "Example showing an animated subscribe button with micro animations.",
-    registryDependencies: ["@magicui/animated-subscribe-button"],
-    files: [
-      {
-        path: "example/animated-subscribe-button-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "animated-subscribe-button-controlled-demo",
-    type: "registry:example",
-    title: "Animated Subscribe Button (Controlled)",
-    description:
-      "Controlled example showing async behavior for AnimatedSubscribeButton.",
-    registryDependencies: ["@magicui/animated-subscribe-button"],
-    files: [
-      {
-        path: "example/animated-subscribe-button-controlled-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "cool-mode-demo",
     type: "registry:example",
     title: "Cool Mode Demo",
