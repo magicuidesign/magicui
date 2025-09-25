@@ -1624,23 +1624,6 @@ export const examples: Registry["items"] = [
     dependencies: ["rough-notation"],
   },
   {
-    name: "arc-timeline-demo",
-    type: "registry:example",
-    title: "Arc Timeline Demo",
-    description: "Example showing an arc timeline component.",
-    registryDependencies: ["@magicui/arc-timeline"],
-    files: [
-      {
-        path: "example/arc-timeline-demo.tsx",
-        type: "registry:example",
-      },
-      {
-        path: "magicui/arc-timeline.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "animated-theme-toggler-demo",
     type: "registry:example",
     title: "Animated Theme Toggler Demo",

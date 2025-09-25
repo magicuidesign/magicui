@@ -1123,19 +1123,6 @@ export const ui: Registry["items"] = [
     dependencies: ["rough-notation"],
   },
   {
-    name: "arc-timeline",
-    type: "registry:ui",
-    title: "Arc Timeline",
-    description:
-      "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
-    files: [
-      {
-        path: "magicui/arc-timeline.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "animated-theme-toggler",
     type: "registry:ui",
     title: "Theme Toggler",

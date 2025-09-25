@@ -1182,18 +1182,6 @@
       ]
     },
     {
-      "name": "arc-timeline",
-      "type": "registry:ui",
-      "title": "Arc Timeline",
-      "description": "A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.",
-      "files": [
-        {
-          "path": "registry/magicui/arc-timeline.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "animated-theme-toggler",
       "type": "registry:ui",
       "title": "Theme Toggler",
@@ -3104,25 +3092,6 @@
         },
         {
           "path": "registry/magicui/highlighter.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "arc-timeline-demo",
-      "type": "registry:example",
-      "title": "Arc Timeline Demo",
-      "description": "Example showing an arc timeline component.",
-      "registryDependencies": [
-        "@magicui/arc-timeline"
-      ],
-      "files": [
-        {
-          "path": "registry/example/arc-timeline-demo.tsx",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/magicui/arc-timeline.tsx",
           "type": "registry:ui"
         }
       ]

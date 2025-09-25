@@ -14,7 +14,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated List](https://magicui.design/docs/components/animated-list): A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.
 - [Animated Shiny Text](https://magicui.design/docs/components/animated-shiny-text): A light glare effect which pans across text making it appear as if it is shimmering.
 - [Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler): A component for theme changing animation.
-- [Arc Timeline](https://magicui.design/docs/components/arc-timeline): A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.
 - [Aurora Text](https://magicui.design/docs/components/aurora-text): A beautiful aurora text effect
 - [Avatar Circles](https://magicui.design/docs/components/avatar-circles): Overlapping circles of avatars.
 - [Bento Grid](https://magicui.design/docs/components/bento-grid): Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
@@ -199,7 +198,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Video Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/video-text-demo.tsx): Example usage
 - [Pixel Image Demo](https://github.com/magicuidesign/magicui/blob/main/example/pixel-image-demo.tsx): Example usage
 - [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/example/highlighter-demo.tsx): Example usage
-- [Arc Timeline Demo](https://github.com/magicuidesign/magicui/blob/main/example/arc-timeline-demo.tsx): Example usage
 - [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-demo.tsx): Example usage
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
 

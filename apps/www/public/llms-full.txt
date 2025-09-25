@@ -129,18 +129,6 @@ Title: Animated Theme Toggler Demo
 
 
 
-===== COMPONENT: arc-timeline =====
-Title: Arc Timeline
-Description: A curved timeline that elegantly visualizes key milestones, perfect for Web3 and AI roadmaps.
-
-
-
-===== EXAMPLE: arc-timeline-demo =====
-Title: Arc Timeline Demo
-
-
-
-
 ===== COMPONENT: aurora-text =====
 Title: Aurora Text
 Description: A beautiful aurora text effect
