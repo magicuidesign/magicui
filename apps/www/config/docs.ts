@@ -91,7 +91,6 @@ export const docsConfig: DocsConfig = {
           paid: true,
           event: "template_saas_clicked",
         },
-
         {
           title: "Startup",
           href: `/docs/templates/startup`,
@@ -177,7 +176,6 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
-
         {
           title: "Avatar Circles",
           href: `/docs/components/avatar-circles`,
@@ -187,42 +185,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Icon Cloud",
           href: `/docs/components/icon-cloud`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Animated Circular Progress Bar",
-          href: `/docs/components/animated-circular-progress-bar`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Animated Theme Toggler",
-          href: `/docs/components/animated-theme-toggler`,
-          items: [],
-          label: "New",
-        },
-        {
-          title: "File Tree",
-          href: `/docs/components/file-tree`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Code Comparison",
-          href: `/docs/components/code-comparison`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Script Copy Button",
-          href: `/docs/components/script-copy-btn`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Scroll Progress",
-          href: `/docs/components/scroll-progress`,
           items: [],
           label: "",
         },
@@ -251,33 +213,10 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Arc Timeline",
-          href: `/docs/components/arc-timeline`,
+          title: "Animated Theme Toggler",
+          href: `/docs/components/animated-theme-toggler`,
           items: [],
           label: "New",
-        },
-      ],
-    },
-    {
-      title: "Device Mocks",
-      items: [
-        {
-          title: "Safari",
-          href: `/docs/components/safari`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "iPhone 15 Pro",
-          href: `/docs/components/iphone-15-pro`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Android",
-          href: `/docs/components/android`,
-          items: [],
-          label: "",
         },
       ],
     },
@@ -311,12 +250,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Neon Gradient Card",
-          href: `/docs/components/neon-gradient-card`,
-          items: [],
-          label: "",
-        },
-        {
           title: "Confetti",
           href: `/docs/components/confetti`,
           items: [],
@@ -327,30 +260,6 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/particles`,
           items: [],
           label: "",
-        },
-        {
-          title: "Cool Mode",
-          href: `/docs/components/cool-mode`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Scratch To Reveal",
-          href: `/docs/components/scratch-to-reveal`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Pixel Image",
-          href: "/docs/components/pixel-image",
-          items: [],
-          label: "",
-        },
-        {
-          title: "Highlighter",
-          href: "/docs/components/highlighter",
-          items: [],
-          label: "New",
         },
       ],
     },
@@ -439,18 +348,6 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Flip Text",
-          href: `/docs/components/flip-text`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Box Reveal",
-          href: `/docs/components/box-reveal`,
-          items: [],
-          label: "",
-        },
-        {
           title: "Sparkles Text",
           href: `/docs/components/sparkles-text`,
           items: [],
@@ -469,10 +366,33 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Comic Text",
-          href: `/docs/components/comic-text`,
+          title: "Text Highlighter",
+          href: "/docs/components/highlighter",
           items: [],
           label: "New",
+        },
+      ],
+    },
+    {
+      title: "Device Mocks",
+      items: [
+        {
+          title: "Safari",
+          href: `/docs/components/safari`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "iPhone",
+          href: `/docs/components/iphone`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Android",
+          href: `/docs/components/android`,
+          items: [],
+          label: "",
         },
       ],
     },
@@ -491,30 +411,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Shiny Button",
-          href: `/docs/components/shiny-button`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Interactive Hover Button",
-          href: `/docs/components/interactive-hover-button`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Animated Subscribe Button",
-          href: `/docs/components/animated-subscribe-button`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Pulsating Button",
-          href: "/docs/components/pulsating-button",
-          items: [],
-          label: "",
-        },
-        {
           title: "Ripple Button",
           href: "/docs/components/ripple-button",
           items: [],
@@ -525,12 +421,6 @@ export const docsConfig: DocsConfig = {
     {
       title: "Backgrounds",
       items: [
-        {
-          title: "Warp Background",
-          href: `/docs/components/warp-background`,
-          items: [],
-          label: "",
-        },
         {
           title: "Flickering Grid",
           href: `/docs/components/flickering-grid`,
@@ -570,10 +460,87 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Grid Beams",
-          href: `/docs/components/grid-beams`,
+          title: "Light Rays",
+          href: `/docs/components/light-rays`,
           items: [],
           label: "New",
+        },
+      ],
+    },
+    {
+      title: "Community",
+      items: [
+        {
+          title: "Shiny Button",
+          href: `/docs/components/shiny-button`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "File Tree",
+          href: `/docs/components/file-tree`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Code Comparison",
+          href: `/docs/components/code-comparison`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Scroll Progress",
+          href: `/docs/components/scroll-progress`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Neon Gradient Card",
+          href: `/docs/components/neon-gradient-card`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Comic Text",
+          href: `/docs/components/comic-text`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Cool Mode",
+          href: `/docs/components/cool-mode`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Pixel Image",
+          href: "/docs/components/pixel-image",
+          items: [],
+          label: "",
+        },
+        {
+          title: "Pulsating Button",
+          href: "/docs/components/pulsating-button",
+          items: [],
+          label: "",
+        },
+        {
+          title: "Warp Background",
+          href: `/docs/components/warp-background`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Interactive Hover Button",
+          href: `/docs/components/interactive-hover-button`,
+          items: [],
+          label: "",
+        },
+        {
+          title: "Animated Circular Progress Bar",
+          href: `/docs/components/animated-circular-progress-bar`,
+          items: [],
+          label: "",
         },
       ],
     },
