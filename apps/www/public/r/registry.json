@@ -353,26 +353,6 @@
       ]
     },
     {
-      "name": "script-copy-btn",
-      "type": "registry:ui",
-      "title": "Script Copy Button",
-      "description": "Copy code to clipboard",
-      "dependencies": [
-        "motion",
-        "shiki",
-        "next-themes"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/script-copy-btn.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "marquee",
       "type": "registry:ui",
       "title": "Marquee",
@@ -848,21 +828,6 @@
       ]
     },
     {
-      "name": "flip-text",
-      "type": "registry:ui",
-      "title": "Flip Text",
-      "description": "Text flipping character animation",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/flip-text.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "comic-text",
       "type": "registry:ui",
       "title": "Comic Text",
@@ -921,21 +886,6 @@
       ]
     },
     {
-      "name": "scratch-to-reveal",
-      "type": "registry:ui",
-      "title": "Scratch To Reveal",
-      "description": "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/scratch-to-reveal.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "shiny-button",
       "type": "registry:ui",
       "title": "Shiny Button",
@@ -946,21 +896,6 @@
       "files": [
         {
           "path": "registry/magicui/shiny-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "box-reveal",
-      "type": "registry:ui",
-      "title": "Box Reveal Animation",
-      "description": "Sliding box animation that reveals text behind it.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/box-reveal.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1735,21 +1670,6 @@
       ]
     },
     {
-      "name": "script-copy-btn-demo",
-      "type": "registry:example",
-      "title": "Script Copy Button Demo",
-      "description": "Example showing how to copy code to clipboard.",
-      "registryDependencies": [
-        "@magicui/script-copy-btn"
-      ],
-      "files": [
-        {
-          "path": "registry/example/script-copy-btn-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "marquee-demo",
       "type": "registry:example",
       "title": "Marquee Demo",
@@ -2447,36 +2367,6 @@
       ]
     },
     {
-      "name": "scratch-to-reveal-demo",
-      "type": "registry:example",
-      "title": "Scratch To Reveal Demo",
-      "description": "Example showing an interactive scratch-off reveal effect.",
-      "registryDependencies": [
-        "@magicui/scratch-to-reveal"
-      ],
-      "files": [
-        {
-          "path": "registry/example/scratch-to-reveal-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "flip-text-demo",
-      "type": "registry:example",
-      "title": "Flip Text Demo",
-      "description": "Example showing text with character flip animations.",
-      "registryDependencies": [
-        "@magicui/flip-text"
-      ],
-      "files": [
-        {
-          "path": "registry/example/flip-text-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "sparkles-text-demo",
       "type": "registry:example",
       "title": "Sparkles Text Demo",
@@ -2727,21 +2617,6 @@
       "files": [
         {
           "path": "registry/example/shiny-button-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "box-reveal-demo",
-      "type": "registry:example",
-      "title": "Box Reveal Demo",
-      "description": "Example showing a sliding box text reveal animation.",
-      "registryDependencies": [
-        "@magicui/box-reveal"
-      ],
-      "files": [
-        {
-          "path": "registry/example/box-reveal-demo.tsx",
           "type": "registry:example"
         }
       ]

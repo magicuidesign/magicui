@@ -371,19 +371,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "script-copy-btn-demo",
-    type: "registry:example",
-    title: "Script Copy Button Demo",
-    description: "Example showing how to copy code to clipboard.",
-    registryDependencies: ["@magicui/script-copy-btn"],
-    files: [
-      {
-        path: "example/script-copy-btn-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "marquee-demo",
     type: "registry:example",
     title: "Marquee Demo",
@@ -980,32 +967,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "scratch-to-reveal-demo",
-    type: "registry:example",
-    title: "Scratch To Reveal Demo",
-    description: "Example showing an interactive scratch-off reveal effect.",
-    registryDependencies: ["@magicui/scratch-to-reveal"],
-    files: [
-      {
-        path: "example/scratch-to-reveal-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "flip-text-demo",
-    type: "registry:example",
-    title: "Flip Text Demo",
-    description: "Example showing text with character flip animations.",
-    registryDependencies: ["@magicui/flip-text"],
-    files: [
-      {
-        path: "example/flip-text-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "sparkles-text-demo",
     type: "registry:example",
     title: "Sparkles Text Demo",
@@ -1222,19 +1183,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/shiny-button-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "box-reveal-demo",
-    type: "registry:example",
-    title: "Box Reveal Demo",
-    description: "Example showing a sliding box text reveal animation.",
-    registryDependencies: ["@magicui/box-reveal"],
-    files: [
-      {
-        path: "example/box-reveal-demo.tsx",
         type: "registry:example",
       },
     ],

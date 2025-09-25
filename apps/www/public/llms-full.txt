@@ -243,18 +243,6 @@ Title: Border Beam Demo 4
 
 
 
-===== COMPONENT: box-reveal =====
-Title: Box Reveal Animation
-Description: Sliding box animation that reveals text behind it.
-
-
-
-===== EXAMPLE: box-reveal-demo =====
-Title: Box Reveal Demo
-
-
-
-
 ===== COMPONENT: client-tweet-card =====
 Title: Client Tweet Card
 Description: A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.
@@ -419,18 +407,6 @@ Title: Flickering Grid Demo
 
 ===== EXAMPLE: flickering-grid-rounded-demo =====
 Title: Flickering Grid Rounded Demo
-
-
-
-
-===== COMPONENT: flip-text =====
-Title: Flip Text
-Description: Text flipping character animation
-
-
-
-===== EXAMPLE: flip-text-demo =====
-Title: Flip Text Demo
 
 
 
@@ -879,30 +855,6 @@ Title: Safari Demo 3
 
 ===== EXAMPLE: safari-demo-4 =====
 Title: Safari Demo 4
-
-
-
-
-===== COMPONENT: scratch-to-reveal =====
-Title: Scratch To Reveal
-Description: The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.
-
-
-
-===== EXAMPLE: scratch-to-reveal-demo =====
-Title: Scratch To Reveal Demo
-
-
-
-
-===== COMPONENT: script-copy-btn =====
-Title: Script Copy Button
-Description: Copy code to clipboard
-
-
-
-===== EXAMPLE: script-copy-btn-demo =====
-Title: Script Copy Button Demo
 
 
 

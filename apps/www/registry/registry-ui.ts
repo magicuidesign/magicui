@@ -321,20 +321,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "script-copy-btn",
-    type: "registry:ui",
-    title: "Script Copy Button",
-    description: "Copy code to clipboard",
-    dependencies: ["motion", "shiki", "next-themes"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "magicui/script-copy-btn.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "marquee",
     type: "registry:ui",
     title: "Marquee",
@@ -797,19 +783,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "flip-text",
-    type: "registry:ui",
-    title: "Flip Text",
-    description: "Text flipping character animation",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/flip-text.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "comic-text",
     type: "registry:ui",
     title: "Comic Text",
@@ -863,20 +836,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "scratch-to-reveal",
-    type: "registry:ui",
-    title: "Scratch To Reveal",
-    description:
-      "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/scratch-to-reveal.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "shiny-button",
     type: "registry:ui",
     title: "Shiny Button",
@@ -886,19 +845,6 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/shiny-button.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
-    name: "box-reveal",
-    type: "registry:ui",
-    title: "Box Reveal Animation",
-    description: "Sliding box animation that reveals text behind it.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/box-reveal.tsx",
         type: "registry:ui",
       },
     ],

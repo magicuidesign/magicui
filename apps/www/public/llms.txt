@@ -21,7 +21,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Bento Grid](https://magicui.design/docs/components/bento-grid): Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
 - [Blur Fade](https://magicui.design/docs/components/blur-fade): Blur fade in and out animation. Used to smoothly fade in and out content.
 - [Border Beam](https://magicui.design/docs/components/border-beam): An animated beam of light which travels along the border of its container.
-- [Box Reveal Animation](https://magicui.design/docs/components/box-reveal): Sliding box animation that reveals text behind it.
 - [Client Tweet Card](https://magicui.design/docs/components/client-tweet-card): A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.
 - [Code Comparison](https://magicui.design/docs/components/code-comparison): A component which compares two code snippets.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
@@ -31,7 +30,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [File Tree](https://magicui.design/docs/components/file-tree): A component used to showcase the folder and file structure of a directory.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
-- [Flip Text](https://magicui.design/docs/components/flip-text): Text flipping character animation
 - [Globe](https://magicui.design/docs/components/globe): An autorotating, interactive, and highly performant globe made using WebGL.
 - [Grid Pattern](https://magicui.design/docs/components/grid-pattern): A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Hero Video Dialog](https://magicui.design/docs/components/hero-video-dialog): A hero video dialog component.
@@ -61,8 +59,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Ripple](https://magicui.design/docs/components/ripple): An animated ripple effect typically used behind elements to emphasize them.
 - [Ripple Button](https://magicui.design/docs/components/ripple-button): An animated button with ripple useful for user engagement.
 - [Safari](https://magicui.design/docs/components/safari): A safari browser mockup to showcase your website.
-- [Scratch To Reveal](https://magicui.design/docs/components/scratch-to-reveal): The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.
-- [Script Copy Button](https://magicui.design/docs/components/script-copy-btn): Copy code to clipboard
 - [Scroll Based Velocity](https://magicui.design/docs/components/scroll-based-velocity): Scrolling text whose speed changes based on scroll speed
 - [Scroll Progress](https://magicui.design/docs/components/scroll-progress): Animated Scroll Progress for your pages
 - [Shimmer Button](https://magicui.design/docs/components/shimmer-button): A button with a shimmering light which travels around the perimeter.
@@ -110,7 +106,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Hero Video Dialog Demo](https://github.com/magicuidesign/magicui/blob/main/example/hero-video-dialog-demo.tsx): Example usage
 - [Hero Video Dialog Top In Bottom Out Demo](https://github.com/magicuidesign/magicui/blob/main/example/hero-video-dialog-demo-top-in-bottom-out.tsx): Example usage
 - [Code Comparison Demo](https://github.com/magicuidesign/magicui/blob/main/example/code-comparison-demo.tsx): Example usage
-- [Script Copy Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/script-copy-btn-demo.tsx): Example usage
 - [Marquee Demo](https://github.com/magicuidesign/magicui/blob/main/example/marquee-demo.tsx): Example usage
 - [Marquee Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/example/marquee-demo-vertical.tsx): Example usage
 - [Marquee Logos](https://github.com/magicuidesign/magicui/blob/main/example/marquee-logos.tsx): Example usage
@@ -155,8 +150,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Typing Animation Demo](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo.tsx): Example usage
 - [Scroll Based Velocity Demo](https://github.com/magicuidesign/magicui/blob/main/example/scroll-based-velocity-demo.tsx): Example usage
 - [Scroll Based Velocity Images](https://github.com/magicuidesign/magicui/blob/main/example/scroll-based-velocity-images-demo.tsx): Example usage
-- [Scratch To Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/scratch-to-reveal-demo.tsx): Example usage
-- [Flip Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/flip-text-demo.tsx): Example usage
 - [Sparkles Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/sparkles-text-demo.tsx): Example usage
 - [Spinning Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/spinning-text-demo.tsx): Example usage
 - [Spinning Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/spinning-text-demo-2.tsx): Example usage
@@ -174,7 +167,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Text Animate Demo 8](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-8.tsx): Example usage
 - [Text Animate Demo 9](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-9.tsx): Example usage
 - [Shiny Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/shiny-button-demo.tsx): Example usage
-- [Box Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/box-reveal-demo.tsx): Example usage
 - [Animated Circular Progress Bar Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-circular-progress-bar-demo.tsx): Example usage
 - [Shine Border Demo](https://github.com/magicuidesign/magicui/blob/main/example/shine-border-demo.tsx): Example usage
 - [Shine Border Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/shine-border-demo-2.tsx): Example usage

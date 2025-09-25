@@ -338,23 +338,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "script-copy-btn": {
-    name: "script-copy-btn",
-    description: "Copy code to clipboard",
-    type: "registry:ui",
-    registryDependencies: ["button"],
-    files: [{
-      path: "registry/magicui/script-copy-btn.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/script-copy-btn.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "marquee": {
     name: "marquee",
     description: "An infinite scrolling component that can be used to display text, images, or videos.",
@@ -780,23 +763,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "flip-text": {
-    name: "flip-text",
-    description: "Text flipping character animation",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/flip-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/flip-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "comic-text": {
     name: "comic-text",
     description: "Comic text animation",
@@ -865,23 +831,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "scratch-to-reveal": {
-    name: "scratch-to-reveal",
-    description: "The ScratchToReveal component creates an interactive scratch-off effect with customizable dimensions and animations, revealing hidden content beneath.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/scratch-to-reveal.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/scratch-to-reveal.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "shiny-button": {
     name: "shiny-button",
     description: "A shiny button component with dynamic styles in the dark mode or light mode.",
@@ -894,23 +843,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/shiny-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "box-reveal": {
-    name: "box-reveal",
-    description: "Sliding box animation that reveals text behind it.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/box-reveal.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/box-reveal.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -1732,23 +1664,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "script-copy-btn-demo": {
-    name: "script-copy-btn-demo",
-    description: "Example showing how to copy code to clipboard.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/script-copy-btn"],
-    files: [{
-      path: "registry/example/script-copy-btn-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/script-copy-btn-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "marquee-demo": {
     name: "marquee-demo",
     description: "Example showing an infinite scrolling component.",
@@ -2497,40 +2412,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "scratch-to-reveal-demo": {
-    name: "scratch-to-reveal-demo",
-    description: "Example showing an interactive scratch-off reveal effect.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/scratch-to-reveal"],
-    files: [{
-      path: "registry/example/scratch-to-reveal-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/scratch-to-reveal-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "flip-text-demo": {
-    name: "flip-text-demo",
-    description: "Example showing text with character flip animations.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/flip-text"],
-    files: [{
-      path: "registry/example/flip-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/flip-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "sparkles-text-demo": {
     name: "sparkles-text-demo",
     description: "Example showing text with animated sparkle effects.",
@@ -2815,23 +2696,6 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shiny-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "box-reveal-demo": {
-    name: "box-reveal-demo",
-    description: "Example showing a sliding box text reveal animation.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/box-reveal"],
-    files: [{
-      path: "registry/example/box-reveal-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/box-reveal-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
