@@ -242,10 +242,10 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Striped Pattern Demo",
     description: "Example showing a background striped pattern made with SVGs.",
-    registryDependencies: ["https://magicui.design/r/striped-pattern"],
+    registryDependencies: ["@magicui/striped-pattern"],
     files: [
       {
-        path: "registry/example/striped-pattern-demo.tsx",
+        path: "example/striped-pattern-demo.tsx",
         type: "registry:example",
         target: "components/striped-pattern-demo.tsx",
       },
@@ -257,10 +257,10 @@ export const examples: Registry["items"] = [
     title: "Striped Pattern (Left)",
     description:
       "Example showing a background striped pattern slanting to the left using SVG.",
-    registryDependencies: ["https://magicui.design/r/striped-pattern"],
+    registryDependencies: ["@magicui/striped-pattern"],
     files: [
       {
-        path: "registry/example/striped-pattern-left.tsx",
+        path: "example/striped-pattern-left.tsx",
         type: "registry:example",
         target: "components/striped-pattern-left.tsx",
       },
@@ -272,10 +272,10 @@ export const examples: Registry["items"] = [
     title: "Striped Pattern (Right)",
     description:
       "Example showing a background striped pattern slanting to the right using SVG.",
-    registryDependencies: ["https://magicui.design/r/striped-pattern"],
+    registryDependencies: ["@magicui/striped-pattern"],
     files: [
       {
-        path: "registry/example/striped-pattern-right.tsx",
+        path: "example/striped-pattern-right.tsx",
         type: "registry:example",
         target: "components/striped-pattern-right.tsx",
       },

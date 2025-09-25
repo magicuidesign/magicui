@@ -1,8 +1,9 @@
-import { cn } from "@/lib/utils";
-import React, { useId } from "react";
+import React, { useId } from "react"
+
+import { cn } from "@/lib/utils"
 
 interface StripedPatternProps extends React.SVGProps<SVGSVGElement> {
-  direction?: "left" | "right";
+  direction?: "left" | "right"
 }
 
 export function StripedPattern({
@@ -12,16 +13,16 @@ export function StripedPattern({
   height = 10,
   ...props
 }: StripedPatternProps) {
-  const id = useId();
-  const w = Number(width);
-  const h = Number(height);
+  const id = useId()
+  const w = Number(width)
+  const h = Number(height)
 
   return (
     <svg
       aria-hidden="true"
       className={cn(
-        "absolute z-10 inset-0 pointer-events-none h-full w-full text-neutral-400/80",
-        className,
+        "pointer-events-none absolute inset-0 z-10 h-full w-full text-neutral-400/80",
+        className
       )}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -87,5 +88,5 @@ export function StripedPattern({
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
     </svg>
-  );
+  )
 }

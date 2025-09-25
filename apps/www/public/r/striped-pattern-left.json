@@ -5,7 +5,7 @@
   "title": "Striped Pattern (Left)",
   "description": "Example showing a background striped pattern slanting to the left using SVG.",
   "registryDependencies": [
-    "https://magicui.design/r/striped-pattern"
+    "@magicui/striped-pattern"
   ],
   "files": [
     {

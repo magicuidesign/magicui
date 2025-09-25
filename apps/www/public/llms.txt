@@ -95,9 +95,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Neon Gradient Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/neon-gradient-card-demo.tsx): Example usage
 - [Meteors Demo](https://github.com/magicuidesign/magicui/blob/main/example/meteors-demo.tsx): Example usage
 - [Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-demo.tsx): Example usage
-- [Striped Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/registry/example/striped-pattern-demo.tsx): Example usage
-- [Striped Pattern (Left)](https://github.com/magicuidesign/magicui/blob/main/registry/example/striped-pattern-left.tsx): Example usage
-- [Striped Pattern (Right)](https://github.com/magicuidesign/magicui/blob/main/registry/example/striped-pattern-right.tsx): Example usage
+- [Striped Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-demo.tsx): Example usage
+- [Striped Pattern (Left)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-left.tsx): Example usage
+- [Striped Pattern (Right)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-right.tsx): Example usage
 - [Grid Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-linear-gradient.tsx): Example usage
 - [Grid Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-dashed.tsx): Example usage
 - [Dot Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-demo.tsx): Example usage

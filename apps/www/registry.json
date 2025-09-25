@@ -292,7 +292,7 @@
       "description": "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
       "files": [
         {
-          "path": "registry/registry/magicui/striped-pattern.tsx",
+          "path": "registry/magicui/striped-pattern.tsx",
           "type": "registry:ui",
           "target": "components/magicui/striped-pattern.tsx"
         }
@@ -1511,11 +1511,11 @@
       "title": "Striped Pattern Demo",
       "description": "Example showing a background striped pattern made with SVGs.",
       "registryDependencies": [
-        "https://magicui.design/r/striped-pattern"
+        "@magicui/striped-pattern"
       ],
       "files": [
         {
-          "path": "registry/registry/example/striped-pattern-demo.tsx",
+          "path": "registry/example/striped-pattern-demo.tsx",
           "type": "registry:example",
           "target": "components/striped-pattern-demo.tsx"
         }
@@ -1527,11 +1527,11 @@
       "title": "Striped Pattern (Left)",
       "description": "Example showing a background striped pattern slanting to the left using SVG.",
       "registryDependencies": [
-        "https://magicui.design/r/striped-pattern"
+        "@magicui/striped-pattern"
       ],
       "files": [
         {
-          "path": "registry/registry/example/striped-pattern-left.tsx",
+          "path": "registry/example/striped-pattern-left.tsx",
           "type": "registry:example",
           "target": "components/striped-pattern-left.tsx"
         }
@@ -1543,11 +1543,11 @@
       "title": "Striped Pattern (Right)",
       "description": "Example showing a background striped pattern slanting to the right using SVG.",
       "registryDependencies": [
-        "https://magicui.design/r/striped-pattern"
+        "@magicui/striped-pattern"
       ],
       "files": [
         {
-          "path": "registry/registry/example/striped-pattern-right.tsx",
+          "path": "registry/example/striped-pattern-right.tsx",
           "type": "registry:example",
           "target": "components/striped-pattern-right.tsx"
         }
