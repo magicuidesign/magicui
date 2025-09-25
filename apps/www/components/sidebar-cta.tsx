@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
+import { CheckIcon, ChevronRight } from "lucide-react"
 import posthog from "posthog-js"
 
 import { trackEvent } from "@/lib/events"
@@ -23,7 +23,7 @@ export function ProCTA() {
       </div>
 
       <div className="space-y-3">
-        <p className="text-foreground text-3xl leading-tight font-bold">
+        <p className="text-foreground text-2xl leading-tight font-bold">
           Ship{" "}
           <LineShadowText className="font-bold tracking-tighter italic">
             Faster
@@ -46,19 +46,19 @@ export function ProCTA() {
       <div className="space-y-2.5">
         <div className="text-muted-foreground flex items-center gap-3 text-sm">
           <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
-            <span className="text-xs font-bold text-emerald-600">✓</span>
+            <CheckIcon className="h-3 w-3 text-emerald-600" />
           </div>
           <span>Next.js 15 + TypeScript ready</span>
         </div>
         <div className="text-muted-foreground flex items-center gap-3 text-sm">
           <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
-            <span className="text-xs font-bold text-emerald-600">✓</span>
+            <CheckIcon className="h-3 w-3 text-emerald-600" />
           </div>
           <span>Copy, paste, customize in minutes</span>
         </div>
         <div className="text-muted-foreground flex items-center gap-3 text-sm">
           <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
-            <span className="text-xs font-bold text-emerald-600">✓</span>
+            <CheckIcon className="h-3 w-3 text-emerald-600" />
           </div>
           <span>Save 100+ hours of development</span>
         </div>
