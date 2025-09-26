@@ -6,7 +6,7 @@
 import * as React from "react"
 
 export const Index: Record<string, any> = {
-  "index": {
+  index: {
     name: "index",
     description: "",
     type: "registry:style",
@@ -17,34 +17,47 @@ export const Index: Record<string, any> = {
   },
   "magic-card": {
     name: "magic-card",
-    description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
+    description:
+      "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/magic-card.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/magic-card.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/magic-card.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "android": {
+  android: {
     name: "android",
     description: "A mockup of an Android device.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/android.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/android.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/android.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -54,14 +67,20 @@ export const Index: Record<string, any> = {
     description: "A card with a time warping background effect.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/warp-background.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/warp-background.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/warp-background.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -71,14 +90,20 @@ export const Index: Record<string, any> = {
     description: "A text component with a moving line shadow.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/line-shadow-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/line-shadow-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/line-shadow-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -88,14 +113,20 @@ export const Index: Record<string, any> = {
     description: "A beautiful aurora text effect",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/aurora-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/aurora-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/aurora-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -105,14 +136,20 @@ export const Index: Record<string, any> = {
     description: "A dynamic text morphing component for Magic UI.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/morphing-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/morphing-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/morphing-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -122,82 +159,116 @@ export const Index: Record<string, any> = {
     description: "Animated Scroll Progress for your pages",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/scroll-progress.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/scroll-progress.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/scroll-progress.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "lens": {
+  lens: {
     name: "lens",
-    description: "A interactive component that enables zooming into images, videos and other elements.",
+    description:
+      "A interactive component that enables zooming into images, videos and other elements.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/lens.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/lens.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/lens.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "pointer": {
+  pointer: {
     name: "pointer",
-    description: "A component that displays a pointer when hovering over an element",
+    description:
+      "A component that displays a pointer when hovering over an element",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/pointer.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/pointer.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/pointer.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "smooth-cursor": {
     name: "smooth-cursor",
-    description: "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
+    description:
+      "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/smooth-cursor.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/smooth-cursor.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/smooth-cursor.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "progressive-blur": {
     name: "progressive-blur",
-    description: "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
+    description:
+      "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/progressive-blur.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/progressive-blur.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/progressive-blur.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -207,116 +278,165 @@ export const Index: Record<string, any> = {
     description: "A beautiful neon card effect",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/neon-gradient-card.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/neon-gradient-card.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/neon-gradient-card.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "meteors": {
+  meteors: {
     name: "meteors",
     description: "A meteor shower effect.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/meteors.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/meteors.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/meteors.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "grid-pattern": {
     name: "grid-pattern",
-    description: "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+    description:
+      "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/grid-pattern.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/grid-pattern.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/grid-pattern.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "striped-pattern": {
     name: "striped-pattern",
-    description: "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+    description:
+      "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/striped-pattern.tsx",
-      type: "registry:ui",
-      target: "components/magicui/striped-pattern.tsx"
-    }],
+    files: [
+      {
+        path: "registry/magicui/striped-pattern.tsx",
+        type: "registry:ui",
+        target: "components/magicui/striped-pattern.tsx",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/striped-pattern.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "interactive-grid-pattern": {
     name: "interactive-grid-pattern",
-    description: "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+    description:
+      "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/interactive-grid-pattern.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/interactive-grid-pattern.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/interactive-grid-pattern.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/magicui/interactive-grid-pattern.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "dot-pattern": {
     name: "dot-pattern",
-    description: "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
+    description:
+      "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/dot-pattern.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/dot-pattern.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/dot-pattern.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "flickering-grid": {
     name: "flickering-grid",
-    description: "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
+    description:
+      "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/flickering-grid.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/flickering-grid.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/flickering-grid.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -326,14 +446,20 @@ export const Index: Record<string, any> = {
     description: "A hero video dialog component.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/hero-video-dialog.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/hero-video-dialog.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/hero-video-dialog.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -343,133 +469,188 @@ export const Index: Record<string, any> = {
     description: "A component which compares two code snippets.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/code-comparison.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/code-comparison.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/code-comparison.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "marquee": {
+  marquee: {
     name: "marquee",
-    description: "An infinite scrolling component that can be used to display text, images, or videos.",
+    description:
+      "An infinite scrolling component that can be used to display text, images, or videos.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/marquee.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/marquee.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/marquee.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "globe": {
+  globe: {
     name: "globe",
-    description: "An autorotating, interactive, and highly performant globe made using WebGL.",
+    description:
+      "An autorotating, interactive, and highly performant globe made using WebGL.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/globe.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/globe.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/globe.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "shimmer-button": {
     name: "shimmer-button",
-    description: "A button with a shimmering light which travels around the perimeter.",
+    description:
+      "A button with a shimmering light which travels around the perimeter.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/shimmer-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/shimmer-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/shimmer-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "tweet-card": {
     name: "tweet-card",
-    description: "A card that displays a tweet with the author's name, handle, and profile picture.",
+    description:
+      "A card that displays a tweet with the author's name, handle, and profile picture.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/tweet-card.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/tweet-card.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/tweet-card.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "client-tweet-card": {
     name: "client-tweet-card",
-    description: "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
+    description:
+      "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/client-tweet-card.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/client-tweet-card.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/client-tweet-card.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "bento-grid": {
     name: "bento-grid",
-    description: "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
+    description:
+      "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
     type: "registry:ui",
     registryDependencies: ["button"],
-    files: [{
-      path: "registry/magicui/bento-grid.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/bento-grid.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/bento-grid.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "particles": {
+  particles: {
     name: "particles",
-    description: "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
+    description:
+      "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/particles.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/particles.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/particles.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -479,31 +660,44 @@ export const Index: Record<string, any> = {
     description: "Animate numbers to count up or down to a target number",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/number-ticker.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/number-ticker.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/number-ticker.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "ripple": {
+  ripple: {
     name: "ripple",
-    description: "An animated ripple effect typically used behind elements to emphasize them.",
+    description:
+      "An animated ripple effect typically used behind elements to emphasize them.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/ripple.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/ripple.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/ripple.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -513,99 +707,140 @@ export const Index: Record<string, any> = {
     description: "An animated scrolling retro grid effect",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/retro-grid.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/retro-grid.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/retro-grid.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-list": {
     name: "animated-list",
-    description: "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
+    description:
+      "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-list.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-list.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/animated-list.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-shiny-text": {
     name: "animated-shiny-text",
-    description: "A light glare effect which pans across text making it appear as if it is shimmering.",
+    description:
+      "A light glare effect which pans across text making it appear as if it is shimmering.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-shiny-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-shiny-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/animated-shiny-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-grid-pattern": {
     name: "animated-grid-pattern",
-    description: "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+    description:
+      "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-grid-pattern.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-grid-pattern.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/animated-grid-pattern.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "border-beam": {
     name: "border-beam",
-    description: "An animated beam of light which travels along the border of its container.",
+    description:
+      "An animated beam of light which travels along the border of its container.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/border-beam.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/border-beam.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/border-beam.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-beam": {
     name: "animated-beam",
-    description: "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
+    description:
+      "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-beam.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-beam.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/animated-beam.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -615,82 +850,116 @@ export const Index: Record<string, any> = {
     description: "Fade in text as you scroll down the page.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/text-reveal.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/text-reveal.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/text-reveal.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "hyper-text": {
     name: "hyper-text",
-    description: "A text animation that scrambles letters before revealing the final text.",
+    description:
+      "A text animation that scrambles letters before revealing the final text.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/hyper-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/hyper-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/hyper-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-gradient-text": {
     name: "animated-gradient-text",
-    description: "An animated gradient background which transitions between colors for text.",
+    description:
+      "An animated gradient background which transitions between colors for text.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-gradient-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-gradient-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/animated-gradient-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "orbiting-circles": {
     name: "orbiting-circles",
-    description: "A collection of circles which move in orbit along a circular path",
+    description:
+      "A collection of circles which move in orbit along a circular path",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/orbiting-circles.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/orbiting-circles.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/orbiting-circles.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "dock": {
+  dock: {
     name: "dock",
-    description: "An implementation of the MacOS dock using react + tailwindcss + motion",
+    description:
+      "An implementation of the MacOS dock using react + tailwindcss + motion",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/dock.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/dock.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/dock.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -700,14 +969,20 @@ export const Index: Record<string, any> = {
     description: "A vertical rotation of words",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/word-rotate.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/word-rotate.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/word-rotate.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -717,14 +992,20 @@ export const Index: Record<string, any> = {
     description: "Overlapping circles of avatars.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/avatar-circles.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/avatar-circles.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/avatar-circles.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -734,48 +1015,68 @@ export const Index: Record<string, any> = {
     description: "Characters appearing in typed animation",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/typing-animation.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/typing-animation.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/typing-animation.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "sparkles-text": {
     name: "sparkles-text",
-    description: "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
+    description:
+      "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/sparkles-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/sparkles-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/sparkles-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "spinning-text": {
     name: "spinning-text",
-    description: "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+    description:
+      "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/spinning-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/spinning-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/spinning-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -785,14 +1086,20 @@ export const Index: Record<string, any> = {
     description: "Comic text animation",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/comic-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/comic-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/comic-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -802,31 +1109,44 @@ export const Index: Record<string, any> = {
     description: "An interactive 3D tag cloud component",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/icon-cloud.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/icon-cloud.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/icon-cloud.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "text-animate": {
     name: "text-animate",
-    description: "A text animation component that animates text using a variety of different animations.",
+    description:
+      "A text animation component that animates text using a variety of different animations.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/text-animate.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/text-animate.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/text-animate.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -836,31 +1156,44 @@ export const Index: Record<string, any> = {
     description: "Scrolling text whose speed changes based on scroll speed",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/scroll-based-velocity.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/scroll-based-velocity.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/scroll-based-velocity.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "shiny-button": {
     name: "shiny-button",
-    description: "A shiny button component with dynamic styles in the dark mode or light mode.",
+    description:
+      "A shiny button component with dynamic styles in the dark mode or light mode.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/shiny-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/shiny-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/shiny-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -870,48 +1203,70 @@ export const Index: Record<string, any> = {
     description: "Shine border is an animated background border effect.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/shine-border.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/shine-border.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/shine-border.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-circular-progress-bar": {
     name: "animated-circular-progress-bar",
-    description: "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
+    description:
+      "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-circular-progress-bar.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-circular-progress-bar.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/animated-circular-progress-bar.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/magicui/animated-circular-progress-bar.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "confetti": {
+  confetti: {
     name: "confetti",
-    description: "Confetti animations are best used to delight your users when something special happens",
+    description:
+      "Confetti animations are best used to delight your users when something special happens",
     type: "registry:ui",
     registryDependencies: ["button"],
-    files: [{
-      path: "registry/magicui/confetti.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/confetti.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/confetti.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -921,31 +1276,44 @@ export const Index: Record<string, any> = {
     description: "Cool mode effect for buttons, links, and other DOMs",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/cool-mode.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/cool-mode.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/cool-mode.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "pulsating-button": {
     name: "pulsating-button",
-    description: "An animated pulsating button useful for capturing attention of users.",
+    description:
+      "An animated pulsating button useful for capturing attention of users.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/pulsating-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/pulsating-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/pulsating-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -955,82 +1323,114 @@ export const Index: Record<string, any> = {
     description: "An animated button with ripple useful for user engagement.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/ripple-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/ripple-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/ripple-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "file-tree": {
     name: "file-tree",
-    description: "A component used to showcase the folder and file structure of a directory.",
+    description:
+      "A component used to showcase the folder and file structure of a directory.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/file-tree.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/file-tree.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/file-tree.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "blur-fade": {
     name: "blur-fade",
-    description: "Blur fade in and out animation. Used to smoothly fade in and out content.",
+    description:
+      "Blur fade in and out animation. Used to smoothly fade in and out content.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/blur-fade.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/blur-fade.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/blur-fade.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "safari": {
+  safari: {
     name: "safari",
     description: "A safari browser mockup to showcase your website.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/safari.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/safari.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/safari.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "iphone": {
+  iphone: {
     name: "iphone",
     description: "A mockup of the iPhone",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/iphone.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/iphone.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/iphone.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1040,14 +1440,20 @@ export const Index: Record<string, any> = {
     description: "An animated button with a rainbow effect.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/rainbow-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/rainbow-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/rainbow-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1057,82 +1463,117 @@ export const Index: Record<string, any> = {
     description: "",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/interactive-hover-button.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/interactive-hover-button.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/interactive-hover-button.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/magicui/interactive-hover-button.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "terminal": {
+  terminal: {
     name: "terminal",
     description: "A terminal component",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/terminal.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/terminal.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/terminal.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "video-text": {
     name: "video-text",
-    description: "A component that displays text with a video playing in the background.",
+    description:
+      "A component that displays text with a video playing in the background.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/video-text.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/video-text.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/video-text.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "pixel-image": {
     name: "pixel-image",
-    description: "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+    description:
+      "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/pixel-image.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/pixel-image.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/pixel-image.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "highlighter": {
+  highlighter: {
     name: "highlighter",
-    description: "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+    description:
+      "A text highlighter that mimics the effect of a human-drawn marker stroke.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/highlighter.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/highlighter.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1142,31 +1583,44 @@ export const Index: Record<string, any> = {
     description: "A component for theme changing animation.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/animated-theme-toggler.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/animated-theme-toggler.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/animated-theme-toggler.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "light-rays": {
     name: "light-rays",
-    description: "A component with animated light rays which shine down from above.",
+    description:
+      "A component with animated light rays which shine down from above.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/light-rays.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/light-rays.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/light-rays.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1176,31 +1630,44 @@ export const Index: Record<string, any> = {
     description: "A component with a dotted map.",
     type: "registry:ui",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/dotted-map.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/magicui/dotted-map.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/dotted-map.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "magic-card-demo": {
     name: "magic-card-demo",
-    description: "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
+    description:
+      "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
     type: "registry:example",
     registryDependencies: ["@magicui/magic-card"],
-    files: [{
-      path: "registry/example/magic-card-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/magic-card-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/magic-card-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1210,14 +1677,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a mockup of an Android device.",
     type: "registry:example",
     registryDependencies: ["@magicui/android"],
-    files: [{
-      path: "registry/example/android-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/android-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/android-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1227,14 +1700,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing a mockup of an Android device.",
     type: "registry:example",
     registryDependencies: ["@magicui/android"],
-    files: [{
-      path: "registry/example/android-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/android-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/android-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1244,31 +1723,44 @@ export const Index: Record<string, any> = {
     description: "Third example showing a mockup of an Android device.",
     type: "registry:example",
     registryDependencies: ["@magicui/android"],
-    files: [{
-      path: "registry/example/android-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/android-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/android-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "warp-background-demo": {
     name: "warp-background-demo",
-    description: "Example showing a card with a time warping background effect.",
+    description:
+      "Example showing a card with a time warping background effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/warp-background"],
-    files: [{
-      path: "registry/example/warp-background-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/warp-background-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/warp-background-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1278,14 +1770,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a text component with a moving line shadow.",
     type: "registry:example",
     registryDependencies: ["@magicui/line-shadow-text"],
-    files: [{
-      path: "registry/example/line-shadow-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/line-shadow-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/line-shadow-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1295,14 +1793,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a beautiful aurora text effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/aurora-text"],
-    files: [{
-      path: "registry/example/aurora-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/aurora-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/aurora-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1312,14 +1816,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a dynamic text morphing component.",
     type: "registry:example",
     registryDependencies: ["@magicui/morphing-text"],
-    files: [{
-      path: "registry/example/morphing-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/morphing-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/morphing-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1329,14 +1839,20 @@ export const Index: Record<string, any> = {
     description: "Example showing animated scroll progress for your pages.",
     type: "registry:example",
     registryDependencies: ["@magicui/scroll-progress"],
-    files: [{
-      path: "registry/example/scroll-progress-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/scroll-progress-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/scroll-progress-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1345,15 +1861,21 @@ export const Index: Record<string, any> = {
     name: "lens-demo",
     description: "Example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["button","card","@magicui/lens"],
-    files: [{
-      path: "registry/example/lens-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: ["button", "card", "@magicui/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/lens-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1362,15 +1884,21 @@ export const Index: Record<string, any> = {
     name: "lens-demo-2",
     description: "Second example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["button","card","@magicui/lens"],
-    files: [{
-      path: "registry/example/lens-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: ["button", "card", "@magicui/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/lens-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1379,15 +1907,21 @@ export const Index: Record<string, any> = {
     name: "lens-demo-3",
     description: "Third example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["button","card","@magicui/lens"],
-    files: [{
-      path: "registry/example/lens-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: ["button", "card", "@magicui/lens"],
+    files: [
+      {
+        path: "registry/example/lens-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/lens-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1397,14 +1931,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a pointer effect component",
     type: "registry:example",
     registryDependencies: ["@magicui/pointer"],
-    files: [{
-      path: "registry/example/pointer-demo-1.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/pointer-demo-1.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pointer-demo-1.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1414,31 +1954,44 @@ export const Index: Record<string, any> = {
     description: "Basic smooth cursor example",
     type: "registry:example",
     registryDependencies: ["@magicui/smooth-cursor"],
-    files: [{
-      path: "registry/example/smooth-cursor-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/smooth-cursor-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/smooth-cursor-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "progressive-blur-demo": {
     name: "progressive-blur-demo",
-    description: "Example showing progressive blur effect for scrollable content.",
+    description:
+      "Example showing progressive blur effect for scrollable content.",
     type: "registry:example",
     registryDependencies: ["@magicui/progressive-blur"],
-    files: [{
-      path: "registry/example/progressive-blur-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/progressive-blur-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/progressive-blur-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1448,14 +2001,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a beautiful neon card effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/neon-gradient-card"],
-    files: [{
-      path: "registry/example/neon-gradient-card-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/neon-gradient-card-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/neon-gradient-card-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1465,14 +2024,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a meteor shower effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/meteors"],
-    files: [{
-      path: "registry/example/meteors-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/meteors-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/meteors-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1482,14 +2047,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a background grid pattern made with SVGs.",
     type: "registry:example",
     registryDependencies: ["@magicui/grid-pattern"],
-    files: [{
-      path: "registry/example/grid-pattern-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/grid-pattern-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-pattern-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1499,48 +2070,68 @@ export const Index: Record<string, any> = {
     description: "Example showing a background striped pattern made with SVGs.",
     type: "registry:example",
     registryDependencies: ["@magicui/striped-pattern"],
-    files: [{
-      path: "registry/example/striped-pattern-demo.tsx",
-      type: "registry:example",
-      target: "components/striped-pattern-demo.tsx"
-    }],
+    files: [
+      {
+        path: "registry/example/striped-pattern-demo.tsx",
+        type: "registry:example",
+        target: "components/striped-pattern-demo.tsx",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/striped-pattern-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "striped-pattern-colored": {
     name: "striped-pattern-colored",
-    description: "Example showing a background striped pattern with a colored stroke.",
+    description:
+      "Example showing a background striped pattern with a colored stroke.",
     type: "registry:example",
     registryDependencies: ["@magicui/striped-pattern"],
-    files: [{
-      path: "registry/example/striped-pattern-colored.tsx",
-      type: "registry:example",
-      target: "components/striped-pattern-colored.tsx"
-    }],
+    files: [
+      {
+        path: "registry/example/striped-pattern-colored.tsx",
+        type: "registry:example",
+        target: "components/striped-pattern-colored.tsx",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/striped-pattern-colored.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "striped-pattern-right": {
     name: "striped-pattern-right",
-    description: "Example showing a background striped pattern slanting to the right using SVG.",
+    description:
+      "Example showing a background striped pattern slanting to the right using SVG.",
     type: "registry:example",
     registryDependencies: ["@magicui/striped-pattern"],
-    files: [{
-      path: "registry/example/striped-pattern-right.tsx",
-      type: "registry:example",
-      target: "components/striped-pattern-right.tsx"
-    }],
+    files: [
+      {
+        path: "registry/example/striped-pattern-right.tsx",
+        type: "registry:example",
+        target: "components/striped-pattern-right.tsx",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/striped-pattern-right.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1550,14 +2141,22 @@ export const Index: Record<string, any> = {
     description: "Example showing a grid pattern with linear gradient effects.",
     type: "registry:example",
     registryDependencies: ["@magicui/grid-pattern"],
-    files: [{
-      path: "registry/example/grid-pattern-linear-gradient.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/grid-pattern-linear-gradient.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/grid-pattern-linear-gradient.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/grid-pattern-linear-gradient.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1567,14 +2166,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a dashed grid pattern.",
     type: "registry:example",
     registryDependencies: ["@magicui/grid-pattern"],
-    files: [{
-      path: "registry/example/grid-pattern-dashed.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/grid-pattern-dashed.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-pattern-dashed.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1584,14 +2189,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a background dot pattern made with SVGs.",
     type: "registry:example",
     registryDependencies: ["@magicui/dot-pattern"],
-    files: [{
-      path: "registry/example/dot-pattern-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dot-pattern-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dot-pattern-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1601,14 +2212,22 @@ export const Index: Record<string, any> = {
     description: "Example showing a dot pattern with linear gradient effects.",
     type: "registry:example",
     registryDependencies: ["@magicui/dot-pattern"],
-    files: [{
-      path: "registry/example/dot-pattern-linear-gradient.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dot-pattern-linear-gradient.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dot-pattern-linear-gradient.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/dot-pattern-linear-gradient.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1618,14 +2237,22 @@ export const Index: Record<string, any> = {
     description: "Example showing a dot pattern with glow effect",
     type: "registry:example",
     registryDependencies: ["@magicui/dot-pattern"],
-    files: [{
-      path: "registry/example/dot-pattern-with-glow-effect.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dot-pattern-with-glow-effect.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dot-pattern-with-glow-effect.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/dot-pattern-with-glow-effect.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1635,31 +2262,46 @@ export const Index: Record<string, any> = {
     description: "Example showing a flickering grid background.",
     type: "registry:example",
     registryDependencies: ["@magicui/flickering-grid"],
-    files: [{
-      path: "registry/example/flickering-grid-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/flickering-grid-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/flickering-grid-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "flickering-grid-rounded-demo": {
     name: "flickering-grid-rounded-demo",
-    description: "Example showing a flickering grid background with rounded corners.",
+    description:
+      "Example showing a flickering grid background with rounded corners.",
     type: "registry:example",
     registryDependencies: ["@magicui/flickering-grid"],
-    files: [{
-      path: "registry/example/flickering-grid-rounded-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/flickering-grid-rounded-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/flickering-grid-rounded-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/flickering-grid-rounded-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1669,48 +2311,70 @@ export const Index: Record<string, any> = {
     description: "Example showing a hero video dialog component.",
     type: "registry:example",
     registryDependencies: ["@magicui/hero-video-dialog"],
-    files: [{
-      path: "registry/example/hero-video-dialog-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/hero-video-dialog-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hero-video-dialog-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "hero-video-dialog-demo-top-in-bottom-out": {
     name: "hero-video-dialog-demo-top-in-bottom-out",
-    description: "Example showing a hero video dialog with top-in bottom-out animation.",
+    description:
+      "Example showing a hero video dialog with top-in bottom-out animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/hero-video-dialog"],
-    files: [{
-      path: "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "code-comparison-demo": {
     name: "code-comparison-demo",
-    description: "Example showing a component which compares two code snippets.",
+    description:
+      "Example showing a component which compares two code snippets.",
     type: "registry:example",
     registryDependencies: ["@magicui/code-comparison"],
-    files: [{
-      path: "registry/example/code-comparison-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/code-comparison-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/code-comparison-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1720,14 +2384,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an infinite scrolling component.",
     type: "registry:example",
     registryDependencies: ["@magicui/marquee"],
-    files: [{
-      path: "registry/example/marquee-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/marquee-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/marquee-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1737,14 +2407,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a vertical infinite scrolling component.",
     type: "registry:example",
     registryDependencies: ["@magicui/marquee"],
-    files: [{
-      path: "registry/example/marquee-demo-vertical.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/marquee-demo-vertical.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/marquee-demo-vertical.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1754,14 +2430,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an infinite scrolling logo carousel.",
     type: "registry:example",
     registryDependencies: ["@magicui/marquee"],
-    files: [{
-      path: "registry/example/marquee-logos.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/marquee-logos.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/marquee-logos.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1771,14 +2453,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a 3D infinite scrolling component.",
     type: "registry:example",
     registryDependencies: ["@magicui/marquee"],
-    files: [{
-      path: "registry/example/marquee-3d.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/marquee-3d.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/marquee-3d.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1788,14 +2476,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an autorotating, interactive WebGL globe.",
     type: "registry:example",
     registryDependencies: ["@magicui/globe"],
-    files: [{
-      path: "registry/example/globe-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/globe-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/globe-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1805,14 +2499,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a tweet card with author info.",
     type: "registry:example",
     registryDependencies: ["@magicui/tweet-card"],
-    files: [{
-      path: "registry/example/tweet-card-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/tweet-card-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tweet-card-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1822,14 +2522,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a tweet card with images.",
     type: "registry:example",
     registryDependencies: ["@magicui/tweet-card"],
-    files: [{
-      path: "registry/example/tweet-card-images.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/tweet-card-images.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tweet-card-images.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1839,14 +2545,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a tweet card with meta preview.",
     type: "registry:example",
     registryDependencies: ["@magicui/tweet-card"],
-    files: [{
-      path: "registry/example/tweet-card-meta-preview.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/tweet-card-meta-preview.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tweet-card-meta-preview.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1856,14 +2568,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a button with a shimmering light effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/shimmer-button"],
-    files: [{
-      path: "registry/example/shimmer-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/shimmer-button-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shimmer-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1872,15 +2590,28 @@ export const Index: Record<string, any> = {
     name: "bento-demo",
     description: "Example showing a bento grid layout for showcasing features.",
     type: "registry:example",
-    registryDependencies: ["button","calendar","@magicui/marquee","@magicui/bento-grid","@magicui/animated-list-demo","@magicui/animated-beam-multiple-outputs"],
-    files: [{
-      path: "registry/example/bento-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: [
+      "button",
+      "calendar",
+      "@magicui/marquee",
+      "@magicui/bento-grid",
+      "@magicui/animated-list-demo",
+      "@magicui/animated-beam-multiple-outputs",
+    ],
+    files: [
+      {
+        path: "registry/example/bento-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/bento-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1890,14 +2621,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a vertical bento grid layout.",
     type: "registry:example",
     registryDependencies: ["@magicui/bento-grid"],
-    files: [{
-      path: "registry/example/bento-demo-vertical.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/bento-demo-vertical.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/bento-demo-vertical.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1907,14 +2644,20 @@ export const Index: Record<string, any> = {
     description: "Example showing animated counting numbers.",
     type: "registry:example",
     registryDependencies: ["@magicui/number-ticker"],
-    files: [{
-      path: "registry/example/number-ticker-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/number-ticker-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/number-ticker-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1924,14 +2667,20 @@ export const Index: Record<string, any> = {
     description: "Example showing animated counting numbers.",
     type: "registry:example",
     registryDependencies: ["@magicui/number-ticker"],
-    files: [{
-      path: "registry/example/number-ticker-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/number-ticker-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/number-ticker-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1941,14 +2690,22 @@ export const Index: Record<string, any> = {
     description: "Example showing animated counting decimal numbers.",
     type: "registry:example",
     registryDependencies: ["@magicui/number-ticker"],
-    files: [{
-      path: "registry/example/number-ticker-decimal-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/number-ticker-decimal-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/number-ticker-decimal-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/number-ticker-decimal-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1958,14 +2715,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated ripple effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/ripple"],
-    files: [{
-      path: "registry/example/ripple-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/ripple-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/ripple-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1975,14 +2738,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated scrolling retro grid effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/retro-grid"],
-    files: [{
-      path: "registry/example/retro-grid-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/retro-grid-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/retro-grid-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -1992,14 +2761,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a list with sequenced item animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-list"],
-    files: [{
-      path: "registry/example/animated-list-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-list-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/animated-list-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2009,14 +2784,22 @@ export const Index: Record<string, any> = {
     description: "Example showing text with a shimmering light effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-shiny-text"],
-    files: [{
-      path: "registry/example/animated-shiny-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-shiny-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-shiny-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-shiny-text-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2026,14 +2809,20 @@ export const Index: Record<string, any> = {
     description: "Example showing interactive particle effects.",
     type: "registry:example",
     registryDependencies: ["@magicui/particles"],
-    files: [{
-      path: "registry/example/particles-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/particles-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/particles-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2043,14 +2832,22 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated grid pattern background.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-grid-pattern"],
-    files: [{
-      path: "registry/example/animated-grid-pattern-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-grid-pattern-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-grid-pattern-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-grid-pattern-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2060,31 +2857,48 @@ export const Index: Record<string, any> = {
     description: "Example showing an interactive grid pattern background.",
     type: "registry:example",
     registryDependencies: ["@magicui/interactive-grid-pattern"],
-    files: [{
-      path: "registry/example/interactive-grid-pattern-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/interactive-grid-pattern-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/interactive-grid-pattern-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/interactive-grid-pattern-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "interactive-grid-pattern-demo-2": {
     name: "interactive-grid-pattern-demo-2",
-    description: "Second example showing an interactive grid pattern background.",
+    description:
+      "Second example showing an interactive grid pattern background.",
     type: "registry:example",
     registryDependencies: ["@magicui/interactive-grid-pattern"],
-    files: [{
-      path: "registry/example/interactive-grid-pattern-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/interactive-grid-pattern-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/interactive-grid-pattern-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/interactive-grid-pattern-demo-2.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2094,14 +2908,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/border-beam"],
-    files: [{
-      path: "registry/example/border-beam-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/border-beam-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-beam-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2110,15 +2930,21 @@ export const Index: Record<string, any> = {
     name: "border-beam-demo-2",
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
-    registryDependencies: ["button","card","@magicui/border-beam"],
-    files: [{
-      path: "registry/example/border-beam-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: ["button", "card", "@magicui/border-beam"],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-beam-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2127,15 +2953,27 @@ export const Index: Record<string, any> = {
     name: "border-beam-demo-3",
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
-    registryDependencies: ["button","card","input","label","@magicui/border-beam"],
-    files: [{
-      path: "registry/example/border-beam-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: [
+      "button",
+      "card",
+      "input",
+      "label",
+      "@magicui/border-beam",
+    ],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-beam-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2144,15 +2982,21 @@ export const Index: Record<string, any> = {
     name: "border-beam-demo-4",
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
-    registryDependencies: ["button","@magicui/border-beam"],
-    files: [{
-      path: "registry/example/border-beam-demo-4.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: ["button", "@magicui/border-beam"],
+    files: [
+      {
+        path: "registry/example/border-beam-demo-4.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/border-beam-demo-4.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2162,14 +3006,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated beam of light effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-beam"],
-    files: [{
-      path: "registry/example/animated-beam-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-beam-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/animated-beam-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2179,14 +3029,22 @@ export const Index: Record<string, any> = {
     description: "Example showing a unidirectional animated beam effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-beam"],
-    files: [{
-      path: "registry/example/animated-beam-unidirectional.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-beam-unidirectional.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-beam-unidirectional.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-beam-unidirectional.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2196,14 +3054,22 @@ export const Index: Record<string, any> = {
     description: "Example showing a bidirectional animated beam effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-beam"],
-    files: [{
-      path: "registry/example/animated-beam-bidirectional.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-beam-bidirectional.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-beam-bidirectional.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-beam-bidirectional.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2213,14 +3079,22 @@ export const Index: Record<string, any> = {
     description: "Example showing animated beams with multiple input points.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-beam"],
-    files: [{
-      path: "registry/example/animated-beam-multiple-inputs.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-beam-multiple-inputs.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-beam-multiple-inputs.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-beam-multiple-inputs.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2230,14 +3104,22 @@ export const Index: Record<string, any> = {
     description: "Example showing animated beams with multiple output points.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-beam"],
-    files: [{
-      path: "registry/example/animated-beam-multiple-outputs.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-beam-multiple-outputs.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-beam-multiple-outputs.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-beam-multiple-outputs.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2247,14 +3129,20 @@ export const Index: Record<string, any> = {
     description: "Example showing text that fades in on scroll.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-reveal"],
-    files: [{
-      path: "registry/example/text-reveal-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-reveal-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-reveal-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2264,31 +3152,48 @@ export const Index: Record<string, any> = {
     description: "Example showing text with animated gradient backgrounds.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-gradient-text"],
-    files: [{
-      path: "registry/example/animated-gradient-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-gradient-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-gradient-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-gradient-text-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "animated-gradient-text-demo-2": {
     name: "animated-gradient-text-demo-2",
-    description: "Second example showing text with animated gradient backgrounds.",
+    description:
+      "Second example showing text with animated gradient backgrounds.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-gradient-text"],
-    files: [{
-      path: "registry/example/animated-gradient-text-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-gradient-text-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-gradient-text-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-gradient-text-demo-2.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2298,14 +3203,20 @@ export const Index: Record<string, any> = {
     description: "Example showing circles moving in orbital paths.",
     type: "registry:example",
     registryDependencies: ["@magicui/orbiting-circles"],
-    files: [{
-      path: "registry/example/orbiting-circles-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/orbiting-circles-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/orbiting-circles-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2314,15 +3225,21 @@ export const Index: Record<string, any> = {
     name: "dock-demo",
     description: "Example showing a MacOS-style dock implementation.",
     type: "registry:example",
-    registryDependencies: ["button","@magicui/dock"],
-    files: [{
-      path: "registry/example/dock-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    registryDependencies: ["button", "@magicui/dock"],
+    files: [
+      {
+        path: "registry/example/dock-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dock-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2332,14 +3249,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing a MacOS-style dock implementation.",
     type: "registry:example",
     registryDependencies: ["@magicui/dock"],
-    files: [{
-      path: "registry/example/dock-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dock-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dock-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2349,14 +3272,20 @@ export const Index: Record<string, any> = {
     description: "Third example showing a MacOS-style dock implementation.",
     type: "registry:example",
     registryDependencies: ["@magicui/dock"],
-    files: [{
-      path: "registry/example/dock-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dock-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dock-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2366,14 +3295,20 @@ export const Index: Record<string, any> = {
     description: "Example showing vertical word rotation animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/word-rotate"],
-    files: [{
-      path: "registry/example/word-rotate-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/word-rotate-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/word-rotate-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2383,14 +3318,20 @@ export const Index: Record<string, any> = {
     description: "Example showing text with scrambling letter animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/hyper-text"],
-    files: [{
-      path: "registry/example/hyper-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/hyper-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/hyper-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2400,14 +3341,20 @@ export const Index: Record<string, any> = {
     description: "Example showing overlapping avatar circles.",
     type: "registry:example",
     registryDependencies: ["@magicui/avatar-circles"],
-    files: [{
-      path: "registry/example/avatar-circles-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/avatar-circles-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/avatar-circles-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2417,14 +3364,20 @@ export const Index: Record<string, any> = {
     description: "Example showing typed character animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/typing-animation"],
-    files: [{
-      path: "registry/example/typing-animation-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/typing-animation-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/typing-animation-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2434,31 +3387,48 @@ export const Index: Record<string, any> = {
     description: "Example showing text speed changes based on scroll velocity.",
     type: "registry:example",
     registryDependencies: ["@magicui/scroll-based-velocity"],
-    files: [{
-      path: "registry/example/scroll-based-velocity-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/scroll-based-velocity-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/scroll-based-velocity-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/scroll-based-velocity-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "scroll-based-velocity-images-demo": {
     name: "scroll-based-velocity-images-demo",
-    description: "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
+    description:
+      "Example showing Unsplash images scrolling with speed reacting to scroll velocity.",
     type: "registry:example",
     registryDependencies: ["@magicui/scroll-based-velocity"],
-    files: [{
-      path: "registry/example/scroll-based-velocity-images-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/scroll-based-velocity-images-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/scroll-based-velocity-images-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/scroll-based-velocity-images-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2468,14 +3438,20 @@ export const Index: Record<string, any> = {
     description: "Example showing text with animated sparkle effects.",
     type: "registry:example",
     registryDependencies: ["@magicui/sparkles-text"],
-    files: [{
-      path: "registry/example/sparkles-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/sparkles-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/sparkles-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2485,14 +3461,20 @@ export const Index: Record<string, any> = {
     description: "Example showing spinning text animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/spinning-text"],
-    files: [{
-      path: "registry/example/spinning-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/spinning-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2502,14 +3484,20 @@ export const Index: Record<string, any> = {
     description: "Example showing spinning text animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/spinning-text"],
-    files: [{
-      path: "registry/example/spinning-text-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/spinning-text-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/spinning-text-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2519,14 +3507,20 @@ export const Index: Record<string, any> = {
     description: "Example showing comic text animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/comic-text"],
-    files: [{
-      path: "registry/example/comic-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/comic-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/comic-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2536,14 +3530,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an interactive 3D icon cloud.",
     type: "registry:example",
     registryDependencies: ["@magicui/icon-cloud"],
-    files: [{
-      path: "registry/example/icon-cloud-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/icon-cloud-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/icon-cloud-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2553,14 +3553,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing an interactive 3D icon cloud.",
     type: "registry:example",
     registryDependencies: ["@magicui/icon-cloud"],
-    files: [{
-      path: "registry/example/icon-cloud-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/icon-cloud-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/icon-cloud-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2570,14 +3576,20 @@ export const Index: Record<string, any> = {
     description: "Third example showing an interactive 3D icon cloud.",
     type: "registry:example",
     registryDependencies: ["@magicui/icon-cloud"],
-    files: [{
-      path: "registry/example/icon-cloud-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/icon-cloud-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/icon-cloud-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2587,14 +3599,20 @@ export const Index: Record<string, any> = {
     description: "Example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2604,14 +3622,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2621,14 +3645,20 @@ export const Index: Record<string, any> = {
     description: "Third example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2638,14 +3668,20 @@ export const Index: Record<string, any> = {
     description: "Fourth example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-4.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-4.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-4.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2655,14 +3691,20 @@ export const Index: Record<string, any> = {
     description: "Fifth example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-5.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-5.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-5.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2672,14 +3714,20 @@ export const Index: Record<string, any> = {
     description: "Sixth example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-6.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-6.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-6.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2689,14 +3737,20 @@ export const Index: Record<string, any> = {
     description: "Seventh example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-7.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-7.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-7.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2706,14 +3760,20 @@ export const Index: Record<string, any> = {
     description: "Eighth example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-8.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-8.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-8.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2723,14 +3783,20 @@ export const Index: Record<string, any> = {
     description: "Ninth example showing various text animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/text-animate"],
-    files: [{
-      path: "registry/example/text-animate-demo-9.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/text-animate-demo-9.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-animate-demo-9.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2740,14 +3806,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a shiny button with dynamic styles.",
     type: "registry:example",
     registryDependencies: ["@magicui/shiny-button"],
-    files: [{
-      path: "registry/example/shiny-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/shiny-button-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shiny-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2757,14 +3829,22 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated circular progress gauge.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-circular-progress-bar"],
-    files: [{
-      path: "registry/example/animated-circular-progress-bar-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-circular-progress-bar-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-circular-progress-bar-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-circular-progress-bar-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2774,14 +3854,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated shining border effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/shine-border"],
-    files: [{
-      path: "registry/example/shine-border-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/shine-border-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shine-border-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2791,14 +3877,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing an animated shining border effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/shine-border"],
-    files: [{
-      path: "registry/example/shine-border-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/shine-border-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shine-border-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2808,14 +3900,20 @@ export const Index: Record<string, any> = {
     description: "Example showing confetti animations for celebrations.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2825,14 +3923,20 @@ export const Index: Record<string, any> = {
     description: "Example showing basic confetti cannon animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-basic-cannon.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-basic-cannon.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-basic-cannon.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2842,14 +3946,22 @@ export const Index: Record<string, any> = {
     description: "Example showing confetti with random directions.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-random-direction.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-random-direction.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/confetti-random-direction.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/confetti-random-direction.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2859,14 +3971,20 @@ export const Index: Record<string, any> = {
     description: "Example showing fireworks-style confetti animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-fireworks.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-fireworks.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-fireworks.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2876,14 +3994,20 @@ export const Index: Record<string, any> = {
     description: "Example showing star-shaped confetti animation.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-stars.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-stars.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-stars.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2893,14 +4017,20 @@ export const Index: Record<string, any> = {
     description: "Example showing side-mounted confetti cannons.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-side-cannons.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-side-cannons.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-side-cannons.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2910,14 +4040,20 @@ export const Index: Record<string, any> = {
     description: "Example showing confetti with custom shape particles.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-custom-shapes.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-custom-shapes.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-custom-shapes.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2927,14 +4063,20 @@ export const Index: Record<string, any> = {
     description: "Example showing confetti with emoji particles.",
     type: "registry:example",
     registryDependencies: ["@magicui/confetti"],
-    files: [{
-      path: "registry/example/confetti-emoji.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/confetti-emoji.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/confetti-emoji.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2944,14 +4086,20 @@ export const Index: Record<string, any> = {
     description: "Example showing cool mode effect for buttons and links.",
     type: "registry:example",
     registryDependencies: ["@magicui/cool-mode"],
-    files: [{
-      path: "registry/example/cool-mode-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/cool-mode-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/cool-mode-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2961,14 +4109,20 @@ export const Index: Record<string, any> = {
     description: "Example showing customized cool mode effects.",
     type: "registry:example",
     registryDependencies: ["@magicui/cool-mode"],
-    files: [{
-      path: "registry/example/cool-mode-custom.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/cool-mode-custom.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/cool-mode-custom.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2978,14 +4132,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated pulsating button.",
     type: "registry:example",
     registryDependencies: ["@magicui/pulsating-button"],
-    files: [{
-      path: "registry/example/pulsating-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/pulsating-button-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pulsating-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -2995,31 +4155,44 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated button with ripple effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/ripple-button"],
-    files: [{
-      path: "registry/example/ripple-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/ripple-button-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/ripple-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "file-tree-demo": {
     name: "file-tree-demo",
-    description: "Example showing a component that displays folder and file structure.",
+    description:
+      "Example showing a component that displays folder and file structure.",
     type: "registry:example",
     registryDependencies: ["@magicui/file-tree"],
-    files: [{
-      path: "registry/example/file-tree-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/file-tree-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/file-tree-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3029,14 +4202,20 @@ export const Index: Record<string, any> = {
     description: "Example showing blur fade in and out animations.",
     type: "registry:example",
     registryDependencies: ["@magicui/blur-fade"],
-    files: [{
-      path: "registry/example/blur-fade-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/blur-fade-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/blur-fade-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3046,14 +4225,20 @@ export const Index: Record<string, any> = {
     description: "Example showing blur fade animations with text.",
     type: "registry:example",
     registryDependencies: ["@magicui/blur-fade"],
-    files: [{
-      path: "registry/example/blur-fade-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/blur-fade-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/blur-fade-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3063,14 +4248,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/safari"],
-    files: [{
-      path: "registry/example/safari-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/safari-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/safari-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3080,14 +4271,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/safari"],
-    files: [{
-      path: "registry/example/safari-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/safari-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/safari-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3097,14 +4294,20 @@ export const Index: Record<string, any> = {
     description: "Third example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/safari"],
-    files: [{
-      path: "registry/example/safari-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/safari-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/safari-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3114,14 +4317,20 @@ export const Index: Record<string, any> = {
     description: "Fourth example showing a Safari browser mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/safari"],
-    files: [{
-      path: "registry/example/safari-demo-4.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/safari-demo-4.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/safari-demo-4.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3131,14 +4340,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an iPhone mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/iphone"],
-    files: [{
-      path: "registry/example/iphone-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/iphone-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/iphone-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3148,14 +4363,20 @@ export const Index: Record<string, any> = {
     description: "Second example showing an iPhone mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/iphone"],
-    files: [{
-      path: "registry/example/iphone-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/iphone-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/iphone-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3165,14 +4386,20 @@ export const Index: Record<string, any> = {
     description: "Third example showing an iPhone mockup.",
     type: "registry:example",
     registryDependencies: ["@magicui/iphone"],
-    files: [{
-      path: "registry/example/iphone-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/iphone-demo-3.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/iphone-demo-3.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3182,14 +4409,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated button with rainbow effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/rainbow-button"],
-    files: [{
-      path: "registry/example/rainbow-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/rainbow-button-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/rainbow-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3199,14 +4432,20 @@ export const Index: Record<string, any> = {
     description: "Example showing an animated button with rainbow effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/rainbow-button"],
-    files: [{
-      path: "registry/example/rainbow-button-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/rainbow-button-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/rainbow-button-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3216,14 +4455,22 @@ export const Index: Record<string, any> = {
     description: "Example showing an interactive button with hover effects.",
     type: "registry:example",
     registryDependencies: ["@magicui/interactive-hover-button"],
-    files: [{
-      path: "registry/example/interactive-hover-button-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/interactive-hover-button-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/interactive-hover-button-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/interactive-hover-button-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3233,31 +4480,44 @@ export const Index: Record<string, any> = {
     description: "Example showing a terminal with animated text.",
     type: "registry:example",
     registryDependencies: ["@magicui/terminal"],
-    files: [{
-      path: "registry/example/terminal-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/terminal-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "terminal-demo-2": {
     name: "terminal-demo-2",
-    description: "Example showing a terminal with animated text and custom delays",
+    description:
+      "Example showing a terminal with animated text and custom delays",
     type: "registry:example",
     registryDependencies: ["@magicui/terminal"],
-    files: [{
-      path: "registry/example/terminal-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/terminal-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/terminal-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3267,14 +4527,20 @@ export const Index: Record<string, any> = {
     description: "Example showing text with a video background.",
     type: "registry:example",
     registryDependencies: ["@magicui/video-text"],
-    files: [{
-      path: "registry/example/video-text-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/video-text-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/video-text-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3284,14 +4550,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a pixelated image effect.",
     type: "registry:example",
     registryDependencies: ["@magicui/pixel-image"],
-    files: [{
-      path: "registry/example/pixel-image-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/pixel-image-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/pixel-image-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3301,18 +4573,25 @@ export const Index: Record<string, any> = {
     description: "Example showing the demo of a Highlighter",
     type: "registry:example",
     registryDependencies: ["@magicui/highlighter"],
-    files: [{
-      path: "registry/example/highlighter-demo.tsx",
-      type: "registry:example",
-      target: ""
-    },{
-      path: "registry/magicui/highlighter.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/highlighter-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+      {
+        path: "registry/magicui/highlighter.tsx",
+        type: "registry:ui",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/highlighter-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3322,31 +4601,46 @@ export const Index: Record<string, any> = {
     description: "Example showing animation while changing the theme.",
     type: "registry:example",
     registryDependencies: ["@magicui/animated-theme-toggler"],
-    files: [{
-      path: "registry/example/animated-theme-toggler-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/animated-theme-toggler-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/animated-theme-toggler-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const mod = await import(
+        "@/registry/example/animated-theme-toggler-demo.tsx"
+      )
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
   "light-rays-demo": {
     name: "light-rays-demo",
-    description: "Demo of the light-rays component showcasing animated light rays",
+    description:
+      "Demo of the light-rays component showcasing animated light rays",
     type: "registry:example",
     registryDependencies: ["@magicui/light-rays"],
-    files: [{
-      path: "registry/example/light-rays-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/light-rays-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/light-rays-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3356,14 +4650,20 @@ export const Index: Record<string, any> = {
     description: "Example showing a dotted map.",
     type: "registry:example",
     registryDependencies: ["@magicui/dotted-map"],
-    files: [{
-      path: "registry/example/dotted-map-demo.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dotted-map-demo.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dotted-map-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
@@ -3373,33 +4673,45 @@ export const Index: Record<string, any> = {
     description: "Example showing a dotted map.",
     type: "registry:example",
     registryDependencies: ["@magicui/dotted-map"],
-    files: [{
-      path: "registry/example/dotted-map-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/example/dotted-map-demo-2.tsx",
+        type: "registry:example",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dotted-map-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  "utils": {
+  utils: {
     name: "utils",
     description: "",
     type: "registry:lib",
     registryDependencies: undefined,
-    files: [{
-      path: "registry/lib/utils.ts",
-      type: "registry:lib",
-      target: ""
-    }],
+    files: [
+      {
+        path: "registry/lib/utils.ts",
+        type: "registry:lib",
+        target: "",
+      },
+    ],
     component: React.lazy(async () => {
       const mod = await import("@/registry/lib/utils.ts")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      const exportName =
+        Object.keys(mod).find(
+          (key) =>
+            typeof mod[key] === "function" || typeof mod[key] === "object"
+        ) || item.name
       return { default: mod.default || mod[exportName] }
     }),
     meta: undefined,
   },
-  }
+}
