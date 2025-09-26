@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/dotted-map-demo-2.tsx",
-      "content": "import { DottedMap } from \"@/registry/magicui/dotted-map\"\n\nexport default function Component() {\n  return (\n    <div className=\"relative h-[500px] w-full overflow-hidden rounded-lg border\">\n      <DottedMap mapSamples={3000} dotRadius={0.2} />\n    </div>\n  )\n}\n",
+      "content": "import { DottedMap } from \"@/registry/magicui/dotted-map\"\n\nexport default function Component() {\n  return (\n    <div className=\"relative h-[500px] w-full overflow-hidden rounded-lg border\">\n      <DottedMap dotRadius={0.1} />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]
