@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dotted-map-demo",
+  "type": "registry:example",
+  "title": "Dotted Map Demo",
+  "description": "Example showing a dotted map.",
+  "registryDependencies": [
+    "@magicui/dotted-map"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dotted-map-demo.tsx",
+      "content": "import { DottedMap } from \"@/registry/magicui/dotted-map\"\n\nexport default function Component() {\n  return (\n    <div className=\"relative h-[500px] w-full overflow-hidden rounded-lg border\">\n      <div className=\"to-background absolute inset-0 bg-radial from-transparent to-70%\" />\n      <DottedMap\n        markers={[\n          {\n            lat: 40.7128,\n            lng: -74.006,\n            size: 0.5,\n          }, // New York\n          {\n            lat: 34.0522,\n            lng: -118.2437,\n            size: 0.5,\n          }, // Los Angeles\n          {\n            lat: 51.5074,\n            lng: -0.1278,\n            size: 0.5,\n          }, // London\n          {\n            lat: -33.8688,\n            lng: 151.2093,\n            size: 0.5,\n          }, // Sydney\n        ]}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
