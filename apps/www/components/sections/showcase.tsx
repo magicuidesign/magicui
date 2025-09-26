@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ChevronRightIcon } from "@radix-ui/react-icons"
 
@@ -21,12 +22,12 @@ export function ShowcaseCard({
       href={href}
       className="group relative flex cursor-pointer flex-col gap-2 overflow-hidden"
     >
-      <img
+      <Image
         src={image}
         alt={title}
         width={500}
         height={300}
-        className="size-full max-h-[300px] rounded-xl object-cover"
+        className="size-full h-[300px] max-h-[300px] rounded-xl object-cover"
       />
 
       <div className="flex flex-col">
@@ -51,7 +52,7 @@ export function Showcase() {
         Companies choose Magic UI to build their landing pages.
       </h3>
       <div className="relative flex flex-col">
-        <Marquee className="max-w-screen [--duration:40s]">
+        <Marquee className="max-w-screen [--duration:90s]">
           {showcases
             .filter((showcase) => showcase.data.featured)
             .map((showcase, idx) => (
