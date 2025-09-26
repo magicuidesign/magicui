@@ -28,7 +28,6 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-
       - name: Install dependencies
         run: pnpm install
 
@@ -39,6 +38,9 @@ jobs:
 
       - name: Write blog posts
         run: node .github/scripts/publish-articles.cjs
+
+      - name: Delete payload
+        run: rm -f payload.json
 
       - name: Format code
         run: pnpm format:fix
