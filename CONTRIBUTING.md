@@ -239,18 +239,6 @@ Make sure to add any necessary dependencies, tailwind configurations, or other p
 pnpm build:registry
 ```
 
-### 7. Format and fix linting before committing
-
-```bash
-pnpm format:write
-```
-
-```bash
-pnpm lint:fix
-```
-
-Make sure to run these two commands before committing your changes.
-
 ## Adding to the showcase
 
 ### 1. Create your showcase as a MDX file

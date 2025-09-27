@@ -1,11 +1,18 @@
 import fs from "node:fs/promises"
 import { tmpdir } from "os"
 import path from "path"
-import { registryItemFileSchema, registryItemSchema } from "shadcn/schema"
+import { RegistryItem, registryItemSchema } from "shadcn/schema"
 import { Project, ScriptKind } from "ts-morph"
-import { z } from "zod"
 
 import { Index } from "@/registry/__index__"
+
+// Fumadocs zod v4 compat type fix. Temporary.
+interface RegistryItemFile {
+  path: string
+  content: string
+  type: RegistryItem["type"]
+  target: string
+}
 
 export function getRegistryComponent(name: string) {
   return Index[name]?.component
@@ -43,7 +50,7 @@ export async function getRegistryItem(name: string) {
   }
 
   // Fix file paths.
-  files = fixFilePaths(files)
+  files = fixFilePaths(files as RegistryItemFile[])
 
   const parsed = registryItemSchema.safeParse({
     ...result.data,
@@ -58,7 +65,7 @@ export async function getRegistryItem(name: string) {
   return parsed.data
 }
 
-async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
+async function getFileContent(file: RegistryItemFile) {
   const raw = await fs.readFile(file.path, "utf-8")
 
   const project = new Project({
@@ -90,7 +97,7 @@ async function getFileContent(file: z.infer<typeof registryItemFileSchema>) {
   return code
 }
 
-function getFileTarget(file: z.infer<typeof registryItemFileSchema>) {
+function getFileTarget(file: RegistryItemFile) {
   let target = file.target
 
   if (!target || target === "") {
@@ -124,7 +131,7 @@ async function createTempSourceFile(filename: string) {
   return path.join(dir, filename)
 }
 
-function fixFilePaths(files: z.infer<typeof registryItemSchema>["files"]) {
+function fixFilePaths(files: RegistryItemFile[]) {
   if (!files) {
     return []
   }
