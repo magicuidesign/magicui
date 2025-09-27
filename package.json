@@ -6,22 +6,17 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "start": "turbo run start",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",
-    "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\"",
+    "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "build:docs": "turbo run build:docs --filter=@magicui/www",
     "build:registry": "turbo run build:registry --filter=@magicui/www",
-    "dev:all": "turbo run dev --parallel",
-    "build:all": "turbo run build",
-    "lint:all": "turbo run lint",
-    "typecheck:all": "turbo run typecheck",
-    "check": "pnpm lint && pnpm typecheck && pnpm format:check",
-    "test": "echo 'No tests configured'"
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

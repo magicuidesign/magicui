@@ -1,5 +1,3 @@
-// @ts-nocheck - Temporary disable type checking because of zod 4 type inference with z.infer.
-
 import fs from "node:fs/promises"
 import { tmpdir } from "os"
 import path from "path"
