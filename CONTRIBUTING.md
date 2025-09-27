@@ -260,28 +260,6 @@ affiliation: YC S25, raised $10M
 
 Upload an image of your site to `public/showcase/website-name.png`
 
-## How to use CLI
-
-1. Run CLI script from project `root` folder
-
-```bash
-pnpm run install:cli
-```
-
-```bash
-pnpm run dev:cli
-```
-
-```bash
-pnpm run build:cli
-```
-
-```bash
-pnpm run release:cli
-```
-
-The CLI in development uses index.json from default `3000` port on localhost. Otherwise [https://magicui.design](https://magicui.design/registry/index.json)
-
 ## Ask for Help
 
 For any help or questions, please open a new GitHub issue.
