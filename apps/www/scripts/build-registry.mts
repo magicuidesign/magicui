@@ -96,6 +96,13 @@ async function buildRegistryJsonFile() {
     path.join(process.cwd(), "../www/public/r/registry.json"),
     { recursive: true }
   )
+
+  // 3. Copy the registry.json to the www/public/r directory.
+  await fs.cp(
+    path.join(process.cwd(), "registry.json"),
+    path.join(process.cwd(), "../www/public/registry.json"),
+    { recursive: true }
+  )
 }
 
 type RegistryItem = Registry["items"][number]
