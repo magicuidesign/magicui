@@ -19,9 +19,9 @@
     "check": "pnpm lint && pnpm typecheck && pnpm format:check"
   },
   "devDependencies": {
+    "js-yaml": "^4.1.0",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.6",
-    "js-yaml": "^4.1.0"
+    "turbo": "^2.5.8"
   },
   "engines": {
     "node": ">=22.14.0",
