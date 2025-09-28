@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "striped-pattern-dashed",
+  "type": "registry:example",
+  "title": "Striped Pattern (Dashed)",
+  "description": "Example showing a background striped pattern with a dashed stroke.",
+  "registryDependencies": [
+    "@magicui/striped-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/striped-pattern-dashed.tsx",
+      "content": "import { StripedPattern } from \"@/registry/magicui/striped-pattern\"\n\nexport default function Component() {\n  return (\n    <div className=\"relative flex h-[300px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <StripedPattern className=\"stroke-[0.3] [stroke-dasharray:8,4]\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example",
+      "target": "components/striped-pattern-dashed.tsx"
+    }
+  ]
+}

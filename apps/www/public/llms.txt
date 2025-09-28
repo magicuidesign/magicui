@@ -97,7 +97,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Meteors Demo](https://github.com/magicuidesign/magicui/blob/main/example/meteors-demo.tsx): Example usage
 - [Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-demo.tsx): Example usage
 - [Striped Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-demo.tsx): Example usage
-- [Striped Pattern (Colored)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-colored.tsx): Example usage
+- [Striped Pattern (Dashed)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-dashed.tsx): Example usage
 - [Striped Pattern (Right)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-right.tsx): Example usage
 - [Grid Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-linear-gradient.tsx): Example usage
 - [Grid Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-dashed.tsx): Example usage

@@ -1511,18 +1511,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "striped-pattern-colored": {
-    name: "striped-pattern-colored",
-    description: "Example showing a background striped pattern with a colored stroke.",
+  "striped-pattern-dashed": {
+    name: "striped-pattern-dashed",
+    description: "Example showing a background striped pattern with a dashed stroke.",
     type: "registry:example",
     registryDependencies: ["@magicui/striped-pattern"],
     files: [{
-      path: "registry/example/striped-pattern-colored.tsx",
+      path: "registry/example/striped-pattern-dashed.tsx",
       type: "registry:example",
-      target: "components/striped-pattern-colored.tsx"
+      target: "components/striped-pattern-dashed.tsx"
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/striped-pattern-colored.tsx")
+      const mod = await import("@/registry/example/striped-pattern-dashed.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
