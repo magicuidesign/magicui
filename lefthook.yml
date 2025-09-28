@@ -1,0 +1,24 @@
+pre-commit:
+  parallel: true
+  commands:
+    build:registry:
+      glob: "**/registry/**/*.{ts,tsx}"
+      run: pnpm build:registry && git add --all
+      stage_fixed: true
+    typecheck:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm typecheck
+      stage_fixed: true
+    lint:fix:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm lint:fix
+      stage_fixed: true
+    format:fix:silent:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: pnpm format:fix:silent
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    "lint commit message":
+      run: npx --no -- commitlint --edit "$1"

@@ -1785,4 +1785,30 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dotted-map-demo",
+    type: "registry:example",
+    title: "Dotted Map Demo",
+    description: "Example showing a dotted map.",
+    registryDependencies: ["@magicui/dotted-map"],
+    files: [
+      {
+        path: "example/dotted-map-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dotted-map-demo-2",
+    type: "registry:example",
+    title: "Dotted Map Demo 2",
+    description: "Example showing a dotted map.",
+    registryDependencies: ["@magicui/dotted-map"],
+    files: [
+      {
+        path: "example/dotted-map-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

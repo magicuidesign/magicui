@@ -1,0 +1,73 @@
+---
+title: Dotted Map
+date: 2025-09-25
+description: A component with a svg dotted map.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="dotted-map-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/dotted-map
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dotted-map" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Smaller Dots
+
+<ComponentPreview name="dotted-map-demo-2" />
+
+## Usage
+
+```tsx showLineNumbers
+import { DottedMap } from "@/components/ui/dotted-map"
+```
+
+```tsx showLineNumbers
+<div className="relative h-[400px] w-full overflow-hidden rounded-xl border">
+  <DottedMap />
+</div>
+```
+
+## Props
+
+| Prop          | Type                  | Default     | Description                                           |
+| ------------- | --------------------- | ----------- | ----------------------------------------------------- |
+| `width`       | `number`              | `150`       | Width of the SVG map.                                 |
+| `height`      | `number`              | `75`        | Height of the SVG map.                                |
+| `mapSamples`  | `number`              | `5500`      | Number of sample points for map generation.           |
+| `markers`     | `Marker[]`            | `[]`        | Array of markers to display on the map.               |
+| `dotColor`    | `string`              | `undefined` | Color of the map dots (uses currentColor if not set). |
+| `markerColor` | `string`              | `"#FF6900"` | Color of the markers.                                 |
+| `dotRadius`   | `number`              | `0.22`      | Radius of the map dots.                               |
+| `className`   | `string`              | `undefined` | Additional class names applied to the SVG.            |
+| `style`       | `React.CSSProperties` | `undefined` | Inline styles merged into the SVG.                    |

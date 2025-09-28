@@ -1231,6 +1231,21 @@
       ]
     },
     {
+      "name": "dotted-map",
+      "type": "registry:ui",
+      "title": "Dotted Map",
+      "description": "A component with a dotted map.",
+      "dependencies": [
+        "svg-dotted-map"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/dotted-map.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3287,6 +3302,36 @@
       "files": [
         {
           "path": "registry/example/light-rays-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dotted-map-demo",
+      "type": "registry:example",
+      "title": "Dotted Map Demo",
+      "description": "Example showing a dotted map.",
+      "registryDependencies": [
+        "@magicui/dotted-map"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dotted-map-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dotted-map-demo-2",
+      "type": "registry:example",
+      "title": "Dotted Map Demo 2",
+      "description": "Example showing a dotted map.",
+      "registryDependencies": [
+        "@magicui/dotted-map"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dotted-map-demo-2.tsx",
           "type": "registry:example"
         }
       ]

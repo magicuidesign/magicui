@@ -239,18 +239,6 @@ Make sure to add any necessary dependencies, tailwind configurations, or other p
 pnpm build:registry
 ```
 
-### 7. Format and fix linting before committing
-
-```bash
-pnpm format:write
-```
-
-```bash
-pnpm lint:fix
-```
-
-Make sure to run these two commands before committing your changes.
-
 ## Adding to the showcase
 
 ### 1. Create your showcase as a MDX file
@@ -271,28 +259,6 @@ affiliation: YC S25, raised $10M
 ### 2. Create an image
 
 Upload an image of your site to `public/showcase/website-name.png`
-
-## How to use CLI
-
-1. Run CLI script from project `root` folder
-
-```bash
-pnpm run install:cli
-```
-
-```bash
-pnpm run dev:cli
-```
-
-```bash
-pnpm run build:cli
-```
-
-```bash
-pnpm run release:cli
-```
-
-The CLI in development uses index.json from default `3000` port on localhost. Otherwise [https://magicui.design](https://magicui.design/registry/index.json)
 
 ## Ask for Help
 

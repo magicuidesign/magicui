@@ -1,6 +1,6 @@
 import { LightRays } from "@/registry/magicui/light-rays"
 
-export default function Demo() {
+export default function Component() {
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
       <div className="relative z-10 flex h-full flex-col items-center justify-center gap-4 px-6 text-center">

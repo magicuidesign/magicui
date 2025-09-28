@@ -6,6 +6,13 @@ import { toast } from "sonner"
 
 import { Badge } from "@/components/ui/badge"
 
+type Commit = {
+  commit: {
+    message: string
+    author: { date: string }
+  }
+}
+
 export default function CommitList({
   repo,
   owner,
@@ -14,7 +21,7 @@ export default function CommitList({
   owner: string
 }) {
   const [loading, setLoading] = useState(false)
-  const [commits, setCommits] = useState<any[]>([])
+  const [commits, setCommits] = useState<Commit[]>([])
 
   useEffect(() => {
     const loadCommits = async () => {

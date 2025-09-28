@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dotted-map",
+  "type": "registry:ui",
+  "title": "Dotted Map",
+  "description": "A component with a dotted map.",
+  "dependencies": [
+    "svg-dotted-map"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/dotted-map.tsx",
+      "content": "import { createMap } from \"svg-dotted-map\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface Marker {\n  lat: number\n  lng: number\n  size?: number\n}\n\nexport interface DottedMapProps extends React.SVGProps<SVGSVGElement> {\n  width?: number\n  height?: number\n  mapSamples?: number\n  markers?: Marker[]\n  dotColor?: string\n  markerColor?: string\n  dotRadius?: number\n}\n\nexport function DottedMap({\n  width = 150,\n  height = 75,\n  mapSamples = 5500,\n  markers = [],\n  markerColor = \"#FF6900\",\n  dotRadius = 0.2,\n  className,\n  style,\n}: DottedMapProps) {\n  const { points, addMarkers } = createMap({\n    width,\n    height,\n    mapSamples,\n  })\n\n  const processedMarkers = addMarkers(markers)\n\n  return (\n    <svg\n      viewBox={`0 0 ${width} ${height}`}\n      className={cn(\"fill-black dark:fill-white\", className)}\n      style={{ width: \"100%\", height: \"100%\", ...style }}\n    >\n      {points.map((point, index) => {\n        return (\n          <circle\n            cx={point.x}\n            cy={point.y}\n            r={dotRadius}\n            fill=\"currentColor\"\n            key={`${point.x}-${point.y}-${index}`}\n          />\n        )\n      })}\n      {processedMarkers.map((marker, index) => {\n        return (\n          <circle\n            cx={marker.x}\n            cy={marker.y}\n            r={marker.size ?? dotRadius}\n            fill={markerColor}\n            key={`${marker.x}-${marker.y}-${index}`}\n          />\n        )\n      })}\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

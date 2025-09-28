@@ -1,35 +1,39 @@
 {
-  "name": "@magicui/workspace",
+  "name": "magicui",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "start": "turbo run start",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",
-    "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\"",
-    "build:docs": "turbo run build:docs --filter=@magicui/www",
-    "build:registry": "turbo run build:registry --filter=@magicui/www",
-    "dev:all": "turbo run dev --parallel",
-    "build:all": "turbo run build",
-    "lint:all": "turbo run lint",
-    "typecheck:all": "turbo run typecheck",
-    "check": "pnpm lint && pnpm typecheck && pnpm format:check",
-    "test": "echo 'No tests configured'"
+    "format:fix": "turbo run format:fix",
+    "format:fix:silent": "turbo run format:fix -- --log-level silent",
+    "format:check": "turbo run format:check",
+    "build:docs": "turbo run build:docs --filter=www",
+    "build:registry": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:fix:silent",
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.6",
-    "js-yaml": "^4.1.0"
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "js-yaml": "^4.1.0",
+    "lefthook": "^1.13.4",
+    "turbo": "^2.5.8",
+    "ultracite": "5.4.4"
   },
   "engines": {
     "node": ">=22.14.0",
     "pnpm": ">=9"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

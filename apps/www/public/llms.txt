@@ -26,6 +26,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
+- [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
 - [File Tree](https://magicui.design/docs/components/file-tree): A component used to showcase the folder and file structure of a directory.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
 - [Globe](https://magicui.design/docs/components/globe): An autorotating, interactive, and highly performant globe made using WebGL.
@@ -211,6 +212,8 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/example/highlighter-demo.tsx): Example usage
 - [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-demo.tsx): Example usage
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
+- [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
+- [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage
 
 ## Optional
 
