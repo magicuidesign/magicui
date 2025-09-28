@@ -1077,6 +1077,41 @@ Title: Typing Animation Demo
 
 
 
+===== EXAMPLE: typing-animation-demo-2 =====
+Title: Typing Animation Multiple Words
+
+
+
+===== EXAMPLE: typing-animation-demo-3 =====
+Title: Typing Animation Custom Speed
+
+
+
+===== EXAMPLE: typing-animation-demo-4 =====
+Title: Typing Animation Start on View
+
+
+
+===== EXAMPLE: typing-animation-demo-5 =====
+Title: Typing Animation Without Cursor
+
+
+
+===== EXAMPLE: typing-animation-demo-6 =====
+Title: Typing Animation Single Play
+
+
+
+===== EXAMPLE: typing-animation-demo-7 =====
+Title: Typing Animation Cursor Blinking
+
+
+
+===== EXAMPLE: typing-animation-demo-8 =====
+Title: Typing Animation Cursor Styles
+
+
+
 
 ===== COMPONENT: video-text =====
 Title: Video Text

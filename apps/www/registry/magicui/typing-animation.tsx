@@ -18,6 +18,8 @@ interface TypingAnimationProps extends MotionProps {
   as?: React.ElementType
   startOnView?: boolean
   showCursor?: boolean
+  blinkCursor?: boolean
+  cursorStyle?: "line" | "block" | "underscore"
 }
 
 export function TypingAnimation({
@@ -33,6 +35,8 @@ export function TypingAnimation({
   as: Component = "div",
   startOnView = false,
   showCursor = true,
+  blinkCursor = true,
+  cursorStyle = "line",
   ...props
 }: TypingAnimationProps) {
   const MotionComponent = motion.create(Component, {
@@ -79,7 +83,7 @@ export function TypingAnimation({
             setDisplayedText(graphemes.slice(0, currentCharIndex + 1).join(""))
             setCurrentCharIndex(currentCharIndex + 1)
           } else {
-            if (hasMultipleWords) {
+            if (hasMultipleWords || loop) {
               const isLastWord = currentWordIndex === wordsToAnimate.length - 1
               if (!isLastWord || loop) {
                 setPhase("pause")
@@ -131,7 +135,28 @@ export function TypingAnimation({
     phase !== "deleting"
 
   const shouldShowCursor =
-    showCursor && !isComplete && (phase === "typing" || phase === "deleting")
+    showCursor &&
+    !isComplete &&
+    (hasMultipleWords || currentCharIndex < currentWordGraphemes.length) &&
+    (blinkCursor || phase === "typing" || phase === "deleting")
+
+  const getCursorChar = () => {
+    switch (cursorStyle) {
+      case "block":
+        return "▌"
+      case "underscore":
+        return "_"
+      case "line":
+      default:
+        return "|"
+    }
+  }
+
+  const cursorClass = cn(
+    "inline-block",
+    blinkCursor && "animate-pulse",
+    cursorStyle === "block"
+  )
 
   return (
     <MotionComponent
@@ -143,7 +168,9 @@ export function TypingAnimation({
       {...props}
     >
       {displayedText}
-      {shouldShowCursor && <span className="animate-pulse">|</span>}
+      {shouldShowCursor && (
+        <span className={cursorClass}>{getCursorChar()}</span>
+      )}
     </MotionComponent>
   )
 }

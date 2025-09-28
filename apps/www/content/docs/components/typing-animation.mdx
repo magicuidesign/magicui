@@ -40,41 +40,55 @@ npx shadcn@latest add @magicui/typing-animation
 
 </Tabs>
 
-## Usage
+## Examples
 
-```tsx showLineNumbers
-import { TypingAnimation } from "@/components/magicui/typing-animation"
-```
+### Basic Usage
 
-```tsx showLineNumbers
-// Single string animation
-<TypingAnimation>Typing Animation</TypingAnimation>
+<ComponentPreview name="typing-animation-demo" />
 
-// Multiple words with loop
-<TypingAnimation
-  words={['build', 'scale', 'optimize']}
-  loop={true}
-/>
+### Multiple Words with Loop
 
-// Without cursor
-<TypingAnimation showCursor={false}>
-  No cursor animation
-</TypingAnimation>
-```
+<ComponentPreview name="typing-animation-demo-2" />
+
+### Custom Speed
+
+<ComponentPreview name="typing-animation-demo-3" />
+
+### Start on View
+
+<ComponentPreview name="typing-animation-demo-4" />
+
+### Without Cursor
+
+<ComponentPreview name="typing-animation-demo-5" />
+
+### Single Play (No Loop)
+
+<ComponentPreview name="typing-animation-demo-6" />
+
+### Cursor Blinking
+
+<ComponentPreview name="typing-animation-demo-7" />
+
+### Cursor Styles
+
+<ComponentPreview name="typing-animation-demo-8" />
 
 ## Props
 
-| Prop          | Type                | Default | Description                                     |
-| ------------- | ------------------- | ------- | ----------------------------------------------- |
-| `children`    | `string`            | `-`     | Single string to animate                        |
-| `words`       | `string[]`          | `-`     | Array of strings to type and delete in sequence |
-| `className`   | `string`            | `-`     | The class name to be applied to the component   |
-| `duration`    | `number`            | `100`   | Duration for each character                     |
-| `typeSpeed`   | `number`            | `100`   | Speed of typing animation (ms per character)    |
-| `deleteSpeed` | `number`            | `50`    | Speed of deleting animation (ms per character)  |
-| `delay`       | `number`            | `0`     | Delay before animation starts (in ms)           |
-| `pauseDelay`  | `number`            | `1000`  | Pause duration between words (in ms)            |
-| `loop`        | `boolean`           | `false` | Whether to loop the animation                   |
-| `as`          | `React.ElementType` | `"div"` | Component to render as                          |
-| `startOnView` | `boolean`           | `false` | Start animation when component is in view       |
-| `showCursor`  | `boolean`           | `true`  | Whether to show the typing cursor               |
+| Prop          | Type                                | Default  | Description                                     |
+| ------------- | ----------------------------------- | -------- | ----------------------------------------------- |
+| `children`    | `string`                            | `-`      | Single string to animate                        |
+| `words`       | `string[]`                          | `-`      | Array of strings to type and delete in sequence |
+| `className`   | `string`                            | `-`      | The class name to be applied to the component   |
+| `duration`    | `number`                            | `100`    | Duration for each character                     |
+| `typeSpeed`   | `number`                            | `100`    | Speed of typing animation (ms per character)    |
+| `deleteSpeed` | `number`                            | `50`     | Speed of deleting animation (ms per character)  |
+| `delay`       | `number`                            | `0`      | Delay before animation starts (in ms)           |
+| `pauseDelay`  | `number`                            | `1000`   | Pause duration between words (in ms)            |
+| `loop`        | `boolean`                           | `false`  | Whether to loop the animation                   |
+| `as`          | `React.ElementType`                 | `"div"`  | Component to render as                          |
+| `startOnView` | `boolean`                           | `false`  | Start animation when component is in view       |
+| `showCursor`  | `boolean`                           | `true`   | Whether to show the typing cursor               |
+| `blinkCursor` | `boolean`                           | `true`   | Whether the cursor should blink                 |
+| `cursorStyle` | `"line" \| "block" \| "underscore"` | `"line"` | Style of the cursor (like VSCode)               |

@@ -984,6 +984,98 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "typing-animation-demo-2",
+    type: "registry:example",
+    title: "Typing Animation Multiple Words",
+    description: "Example showing multiple words with looping.",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-animation-demo-3",
+    type: "registry:example",
+    title: "Typing Animation Custom Speed",
+    description: "Example showing custom typing and deleting speeds.",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-animation-demo-4",
+    type: "registry:example",
+    title: "Typing Animation Start on View",
+    description: "Example showing animation that starts when in viewport.",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-animation-demo-5",
+    type: "registry:example",
+    title: "Typing Animation Without Cursor",
+    description: "Example showing typing animation without cursor.",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-5.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-animation-demo-6",
+    type: "registry:example",
+    title: "Typing Animation Single Play",
+    description: "Example showing single play without looping.",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-6.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-animation-demo-7",
+    type: "registry:example",
+    title: "Typing Animation Cursor Blinking",
+    description: "Example showing cursor blinking control.",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-7.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "typing-animation-demo-8",
+    type: "registry:example",
+    title: "Typing Animation Cursor Styles",
+    description:
+      "Example showing different cursor styles (line, block, underscore).",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [
+      {
+        path: "example/typing-animation-demo-8.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "scroll-based-velocity-demo",
     type: "registry:example",
     title: "Scroll Based Velocity Demo",

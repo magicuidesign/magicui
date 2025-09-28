@@ -150,6 +150,13 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Hyper Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/hyper-text-demo.tsx): Example usage
 - [Avatar Circles Demo](https://github.com/magicuidesign/magicui/blob/main/example/avatar-circles-demo.tsx): Example usage
 - [Typing Animation Demo](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo.tsx): Example usage
+- [Typing Animation Multiple Words](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-2.tsx): Example usage
+- [Typing Animation Custom Speed](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-3.tsx): Example usage
+- [Typing Animation Start on View](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-4.tsx): Example usage
+- [Typing Animation Without Cursor](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-5.tsx): Example usage
+- [Typing Animation Single Play](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-6.tsx): Example usage
+- [Typing Animation Cursor Blinking](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-7.tsx): Example usage
+- [Typing Animation Cursor Styles](https://github.com/magicuidesign/magicui/blob/main/example/typing-animation-demo-8.tsx): Example usage
 - [Scroll Based Velocity Demo](https://github.com/magicuidesign/magicui/blob/main/example/scroll-based-velocity-demo.tsx): Example usage
 - [Scroll Based Velocity Images](https://github.com/magicuidesign/magicui/blob/main/example/scroll-based-velocity-images-demo.tsx): Example usage
 - [Sparkles Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/sparkles-text-demo.tsx): Example usage
