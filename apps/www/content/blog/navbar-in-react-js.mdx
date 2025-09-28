@@ -74,30 +74,38 @@ I’m a big fan of this co-location approach. The component’s logic (`Navbar.j
 
 Let's lay down the basic skeleton for our **navbar in React JS**. Open up that `Navbar.jsx` file you just created and paste in this initial JSX. This gives us a solid blueprint with placeholders for our logo, navigation links, and a couple of call-to-action buttons.
 
+```jsx
 import React from "react"
 
 import styles from "./Navbar.module.css"
 
 const Navbar = () => {
-return (
-<nav className={styles.navbar}>
-<a href="/" className={styles.logo}>
-Logo
-</a>
-<ul className={styles.navLinks}>
-<li><a href="/features">Features</a></li>
-<li><a href="/pricing">Pricing</a></li>
-<li><a href="/about">About</a></li>
-</ul>
-<div className={styles.navButtons}>
-<button className={styles.loginBtn}>Log In</button>
-<button className={styles.signupBtn}>Sign Up</button>
-</div>
-</nav>
-);
-};
+  return (
+    <nav className={styles.navbar}>
+      <a href="/" className={styles.logo}>
+        Logo
+      </a>
+      <ul className={styles.navLinks}>
+        <li>
+          <a href="/features">Features</a>
+        </li>
+        <li>
+          <a href="/pricing">Pricing</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+      </ul>
+      <div className={styles.navButtons}>
+        <button className={styles.loginBtn}>Log In</button>
+        <button className={styles.signupBtn}>Sign Up</button>
+      </div>
+    </nav>
+  )
+}
 
 export default Navbar
+```
 
 > This initial JSX provides a clear and semantic structure using a `<nav>` element for accessibility. By separating the logo, links, and buttons into distinct containers, we've set a strong foundation for the responsive styling and state management we'll add next.
 
@@ -121,30 +129,33 @@ On smaller screens, there's just not enough room to lay out all our navigation l
 
 This is a perfect job for the `useState` hook. It's React's built-in way to add state to functional components. Let's pop it into our `Navbar.jsx` file.
 
+```jsx
 import React, { useState } from "react"
 
 import styles from "./Navbar.module.css"
 
 const Navbar = () => {
-const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
-return (
-<nav className={styles.navbar}>
-<a href="/" className={styles.logo}>
-Logo
-</a>
-<div className={styles.menuIcon} onClick={() => setMenuOpen(!menuOpen)}>
-{/* Hamburger Icon SVG or an element */}
-</div>
-<ul className={`${styles.navLinks} ${menuOpen ? styles.active : ''}`}>
-{/* ... our li elements */}
-</ul>
-{/* ... navButtons div */}
-</nav>
-);
-};
+  return (
+    <nav className={styles.navbar}>
+      <a href="/" className={styles.logo}>
+        Logo
+      </a>
+      <div className={styles.menuIcon} onClick={() => setMenuOpen(!menuOpen)}>
+        {/* Hamburger Icon SVG or an element */}
+      </div>
+      <ul className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
+        {/* ... our li elements */}
+      </ul>
+      {/* ... navButtons div */}
+    </nav>
+  )
+}
 
-export default Navbar;
+export default Navbar
+```
+
 When we call `useState(false)`, we're creating a new piece of state called `menuOpen` and setting its initial value to `false`. The `setMenuOpen` function is what we'll use to change that value. The real magic is the `onClick` event, which simply flips the `menuOpen` state from true to false and back again with every tap.
 
 To really get a handle on the interactive parts of a navbar, it helps to know which hooks do what. Here’s a quick rundown of the most common ones you’ll encounter.
@@ -195,25 +206,48 @@ With that installed, we can pop open our `Navbar.jsx` file, import `NavLink`, an
 
 The magic happens with the `className` prop. We can pass it a function that receives an `isActive` boolean. This is a clean, modern way to conditionally apply our active link style.
 
+```jsx
 import { NavLink } from "react-router-dom"
 
 import styles from "./Navbar.module.css"
 
 const Navbar = () => {
-// ... existing useState logic
+  // ... existing useState logic
 
-return (
-<nav className={styles.navbar}>
-{/* ... logo and menu icon */}
-<ul className={`${styles.navLinks} ${menuOpen ? styles.active : ''}`}>
-<li><NavLink to="/" className={({isActive}) => isActive ? styles.activeLink : ''}>Home</NavLink></li>
-<li><NavLink to="/features" className={({isActive}) => isActive ? styles.activeLink : ''}>Features</NavLink></li>
-<li><NavLink to="/pricing" className={({isActive}) => isActive ? styles.activeLink : ''}>Pricing</NavLink></li>
-</ul>
-{/* ... buttons */}
-</nav>
-);
-};
+  return (
+    <nav className={styles.navbar}>
+      {/* ... logo and menu icon */}
+      <ul className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/features"
+            className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          >
+            Features
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/pricing"
+            className={({ isActive }) => (isActive ? styles.activeLink : "")}
+          >
+            Pricing
+          </NavLink>
+        </li>
+      </ul>
+      {/* ... buttons */}
+    </nav>
+  )
+}
+```
 
 When a link is active, this code applies the `styles.activeLink` class from our CSS module. It’s a simple but incredibly effective way to give users instant feedback on their location.
 
@@ -259,6 +293,7 @@ With the dependencies installed, we can now bring the `AnimatedShinyText` compon
 
 Here’s a quick example of how you could replace the "Features" link in your navbar:
 
+```jsx
 import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 
@@ -266,26 +301,31 @@ import { AnimatedShinyText } from "../components/magicui/AnimatedShinyText" // M
 import styles from "./Navbar.module.css"
 
 const Navbar = () => {
-const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
-return (
-<nav className={styles.navbar}>
-{/* ... your logo and menu icon ... */}
-<ul className={`${styles.navLinks} ${menuOpen ? styles.active : ''}`}>
-<li><NavLink to="/">Home</NavLink></li>
-<li>
-<NavLink to="/features">
-<AnimatedShinyText className="inline-flex items-center justify-center ...">
-<span>✨ Features</span>
-</AnimatedShinyText>
-</NavLink>
-</li>
-<li><NavLink to="/pricing">Pricing</NavLink></li>
-</ul>
-{/* ... your buttons ... */}
-</nav>
-);
-};
+  return (
+    <nav className={styles.navbar}>
+      {/* ... your logo and menu icon ... */}
+      <ul className={`${styles.navLinks} ${menuOpen ? styles.active : ""}`}>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/features">
+            <AnimatedShinyText className="inline-flex items-center justify-center ...">
+              <span>✨ Features</span>
+            </AnimatedShinyText>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/pricing">Pricing</NavLink>
+        </li>
+      </ul>
+      {/* ... your buttons ... */}
+    </nav>
+  )
+}
+```
 
 > By simply wrapping a standard navigation link with a pre-built animated component, you add a layer of sophistication in minutes. This is a massive time-saver compared to trying to build complex CSS or JavaScript animations from the ground up.
 
