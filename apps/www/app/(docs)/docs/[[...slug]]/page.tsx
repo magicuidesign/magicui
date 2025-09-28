@@ -126,7 +126,7 @@ export default async function DocPage({ params }: DocPageProps) {
     description: doc.description,
     url: absoluteUrl(page.url),
     inLanguage: "en-US",
-    datePublished: doc.published.toString(),
+    datePublished: doc.date,
     dateModified: doc.lastModified?.toString(),
     mainEntityOfPage: absoluteUrl(page.url),
     publisher: {
