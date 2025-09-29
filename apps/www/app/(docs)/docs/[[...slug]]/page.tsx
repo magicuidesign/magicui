@@ -60,7 +60,7 @@ export async function generateMetadata({
   ogUrl.searchParams.set("description", doc.description ?? "")
 
   return {
-    title: `${doc.title} | React Components & Templates by Magic UI`,
+    title: `${doc.title} | React Components & Templates`,
     description: doc.description,
     openGraph: {
       title: doc.title,
