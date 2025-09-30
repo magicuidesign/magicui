@@ -4,7 +4,6 @@ import * as React from "react"
 
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
-import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
@@ -48,14 +47,12 @@ export async function ComponentSource({
 
   if (!collapsible) {
     return (
-      <div className={cn("relative", className)}>
-        <ComponentCode
-          code={code}
-          highlightedCode={highlightedCode}
-          language={lang}
-          title={title}
-        />
-      </div>
+      <ComponentCode
+        code={code}
+        highlightedCode={highlightedCode}
+        language={lang}
+        title={title}
+      />
     )
   }
 
@@ -83,7 +80,7 @@ function ComponentCode({
   title: string | undefined
 }) {
   return (
-    <figure data-rehype-pretty-code-figure="" className="[&>pre]:max-h-96">
+    <figure data-rehype-pretty-code-figure="" className="h-full">
       {title && (
         <figcaption
           data-rehype-pretty-code-title=""
@@ -95,7 +92,10 @@ function ComponentCode({
         </figcaption>
       )}
       <CopyButton value={code} />
-      <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      <div
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
+        className="h-full"
+      />
     </figure>
   )
 }
