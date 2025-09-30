@@ -6,6 +6,9 @@ const nextConfig = {
     "/*": ["./registry/**/*", "./content/**/*"],
   },
   reactStrictMode: true,
+  experimental: {
+    inlineCss: true,
+  },
   images: {
     domains: [
       "localhost",
