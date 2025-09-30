@@ -8,7 +8,7 @@ import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
 
-export async function SiteHeader() {
+export function SiteHeader() {
   return (
     <header className="bg-background sticky top-0 z-50 w-full">
       <div className="container-wrapper 3xl:fixed:px-0 px-6">
