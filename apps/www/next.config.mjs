@@ -1,4 +1,4 @@
-import { createMDX } from "fumadocs-mdx/next";
+import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,7 +7,12 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["localhost", "cdn.magicui.design", "images.unsplash.com"],
+    domains: [
+      "localhost",
+      "cdn.magicui.design",
+      "images.unsplash.com",
+      "img.youtube.com",
+    ],
   },
   async redirects() {
     return [
@@ -36,7 +41,7 @@ const nextConfig = {
         destination: "/docs/:path*.md",
         permanent: true,
       },
-    ];
+    ]
   },
   rewrites() {
     return [
@@ -44,10 +49,10 @@ const nextConfig = {
         source: "/docs/:path*.md",
         destination: "/llm/:path*",
       },
-    ];
+    ]
   },
-};
+}
 
-const withMDX = createMDX({});
+const withMDX = createMDX({})
 
-export default withMDX(nextConfig);
+export default withMDX(nextConfig)

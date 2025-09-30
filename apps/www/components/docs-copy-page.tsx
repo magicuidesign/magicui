@@ -31,6 +31,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
     <Button
       variant="secondary"
       size="sm"
+      name="copy-page"
       className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
     >
       <IconChevronDown className="rotate-180 sm:rotate-0" />
