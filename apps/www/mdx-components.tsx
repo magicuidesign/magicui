@@ -1,4 +1,5 @@
 import * as React from "react"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -24,7 +25,10 @@ import { getIconForLanguageExtension } from "@/components/icons"
 import { TechStack } from "@/components/tech-stack"
 import { TemplateOpen } from "@/components/template-open"
 import { TemplatePreview } from "@/components/template-preview"
-import { TweetCard } from "@/registry/magicui/tweet-card"
+
+const TweetCard = dynamic(() =>
+  import("@/registry/magicui/tweet-card").then((module) => module.TweetCard)
+)
 
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (

@@ -12,6 +12,7 @@ const nextConfig = {
       "cdn.magicui.design",
       "images.unsplash.com",
       "img.youtube.com",
+      "pbs.twimg.com",
     ],
   },
   async redirects() {
