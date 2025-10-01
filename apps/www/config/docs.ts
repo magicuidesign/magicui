@@ -290,6 +290,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Typing Animation",
+          href: `/docs/components/typing-animation`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Line Shadow Text",
           href: `/docs/components/line-shadow-text`,
           items: [],
@@ -338,12 +344,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Word Rotate",
           href: `/docs/components/word-rotate`,
-          items: [],
-          label: "",
-        },
-        {
-          title: "Typing Animation",
-          href: `/docs/components/typing-animation`,
           items: [],
           label: "",
         },
