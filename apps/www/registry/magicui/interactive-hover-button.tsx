@@ -1,18 +1,14 @@
-import React from "react"
 import { ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-interface InteractiveHoverButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
-export const InteractiveHoverButton = React.forwardRef<
-  HTMLButtonElement,
-  InteractiveHoverButtonProps
->(({ children, className, ...props }, ref) => {
+export function InteractiveHoverButton({
+  children,
+  className,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
-      ref={ref}
       className={cn(
         "group bg-background relative w-auto cursor-pointer overflow-hidden rounded-full border p-2 px-6 text-center font-semibold",
         className
@@ -31,6 +27,4 @@ export const InteractiveHoverButton = React.forwardRef<
       </div>
     </button>
   )
-})
-
-InteractiveHoverButton.displayName = "InteractiveHoverButton"
+}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { motion, MotionProps, useInView } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -53,7 +53,10 @@ export function TypingAnimation({
     once: true,
   })
 
-  const wordsToAnimate = words || (children ? [children] : [])
+  const wordsToAnimate = useMemo(
+    () => words || (children ? [children] : []),
+    [words, children]
+  )
   const hasMultipleWords = wordsToAnimate.length > 1
 
   const typingSpeed = typeSpeed || duration

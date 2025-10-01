@@ -2353,7 +2353,7 @@ export interface AnimatedGridPatternProps
   height?: number
   x?: number
   y?: number
-  strokeDasharray?: any
+  strokeDasharray?: number
   numSquares?: number
   maxOpacity?: number
   duration?: number
@@ -2370,7 +2370,6 @@ export function AnimatedGridPattern({
   className,
   maxOpacity = 0.5,
   duration = 4,
-  repeatDelay = 0.5,
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId()
@@ -2412,12 +2411,12 @@ export function AnimatedGridPattern({
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares))
     }
-  }, [dimensions, numSquares])
+  }, [dimensions, numSquares, generateSquares])
 
   // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         setDimensions({
           width: entry.contentRect.width,
           height: entry.contentRect.height,
@@ -3853,7 +3852,7 @@ export const ClientTweetCard = ({
     return <NotFound error={onError ? onError(error) : error} />
   }
 
-  return <MagicTweet tweet={data} components={components} {...props} />
+  return <MagicTweet tweet={data} {...props} />
 }
 
 
@@ -4715,7 +4714,7 @@ export interface CoolParticleOptions extends BaseParticleOptions {
 
 const getContainer = () => {
   const id = "_coolMode_effect"
-  let existingContainer = document.getElementById(id)
+  const existingContainer = document.getElementById(id)
 
   if (existingContainer) {
     return existingContainer
@@ -6094,8 +6093,6 @@ const useTree = () => {
   return context
 }
 
-interface TreeViewComponentProps extends React.HTMLAttributes<HTMLDivElement> {}
-
 type Direction = "rtl" | "ltr" | undefined
 
 type TreeViewProps = {
@@ -6105,7 +6102,7 @@ type TreeViewProps = {
   initialExpandedItems?: string[]
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
-} & TreeViewComponentProps
+} & React.HTMLAttributes<HTMLDivElement>
 
 const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
   (
@@ -6251,15 +6248,12 @@ const TreeIndicator = forwardRef<
 
 TreeIndicator.displayName = "TreeIndicator"
 
-interface FolderComponentProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
-
 type FolderProps = {
   expandedItems?: string[]
   element: string
   isSelectable?: boolean
   isSelect?: boolean
-} & FolderComponentProps
+} & React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 
 const Folder = forwardRef<
   HTMLDivElement,
@@ -8472,21 +8466,17 @@ Title: interactive-hover-button
 Description: The interactive-hover-button component.
 
 --- file: magicui/interactive-hover-button.tsx ---
-import React from "react"
 import { ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-interface InteractiveHoverButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
-export const InteractiveHoverButton = React.forwardRef<
-  HTMLButtonElement,
-  InteractiveHoverButtonProps
->(({ children, className, ...props }, ref) => {
+export function InteractiveHoverButton({
+  children,
+  className,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
-      ref={ref}
       className={cn(
         "group bg-background relative w-auto cursor-pointer overflow-hidden rounded-full border p-2 px-6 text-center font-semibold",
         className
@@ -8505,9 +8495,7 @@ export const InteractiveHoverButton = React.forwardRef<
       </div>
     </button>
   )
-})
-
-InteractiveHoverButton.displayName = "InteractiveHoverButton"
+}
 
 
 ===== EXAMPLE: interactive-hover-button-demo =====
@@ -9044,27 +9032,18 @@ Description: A component with animated light rays which shine down from above.
 --- file: magicui/light-rays.tsx ---
 "use client"
 
-import {
-  forwardRef,
-  useEffect,
-  useState,
-  type CSSProperties,
-  type HTMLAttributes,
-  type ReactNode,
-} from "react"
+import { useEffect, useState, type CSSProperties } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-export type LightRaysProps = Omit<HTMLAttributes<HTMLDivElement>, "color"> & {
-  children?: ReactNode
+interface LightRaysProps extends React.HTMLAttributes<HTMLDivElement> {
+  ref?: React.Ref<HTMLDivElement>
   count?: number
   color?: string
   blur?: number
-  opacity?: number
   speed?: number
   length?: string
-  fill?: boolean
 }
 
 type LightRay = {
@@ -9137,77 +9116,69 @@ const Ray = ({
   )
 }
 
-export const LightRays = forwardRef<HTMLDivElement, LightRaysProps>(
-  (
-    {
-      className,
-      style,
-      count = 7,
-      color = "rgba(160, 210, 255, 0.2)",
-      blur = 36,
-      opacity = 0.65,
-      speed = 14,
-      length = "70vh",
-      fill = true,
-      ...props
-    },
-    ref
-  ) => {
-    const [rays, setRays] = useState<LightRay[]>([])
-    const cycleDuration = Math.max(speed, 0.1)
+export function LightRays({
+  className,
+  style,
+  count = 7,
+  color = "rgba(160, 210, 255, 0.2)",
+  blur = 36,
+  speed = 14,
+  length = "70vh",
+  ref,
+  ...props
+}: LightRaysProps) {
+  const [rays, setRays] = useState<LightRay[]>([])
+  const cycleDuration = Math.max(speed, 0.1)
 
-    useEffect(() => {
-      setRays(createRays(count, cycleDuration))
-    }, [count, cycleDuration])
+  useEffect(() => {
+    setRays(createRays(count, cycleDuration))
+  }, [count, cycleDuration])
 
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "pointer-events-none absolute inset-0 isolate overflow-hidden rounded-[inherit]",
-          className
-        )}
-        style={
-          {
-            "--light-rays-color": color,
-            "--light-rays-blur": `${blur}px`,
-            "--light-rays-length": length,
-            ...style,
-          } as CSSProperties
-        }
-        {...props}
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-60"
-            style={
-              {
-                background:
-                  "radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--light-rays-color) 45%, transparent), transparent 70%)",
-              } as CSSProperties
-            }
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-60"
-            style={
-              {
-                background:
-                  "radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--light-rays-color) 35%, transparent), transparent 75%)",
-              } as CSSProperties
-            }
-          />
-          {rays.map((ray) => (
-            <Ray {...ray} />
-          ))}
-        </div>
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "pointer-events-none absolute inset-0 isolate overflow-hidden rounded-[inherit]",
+        className
+      )}
+      style={
+        {
+          "--light-rays-color": color,
+          "--light-rays-blur": `${blur}px`,
+          "--light-rays-length": length,
+          ...style,
+        } as CSSProperties
+      }
+      {...props}
+    >
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-60"
+          style={
+            {
+              background:
+                "radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--light-rays-color) 45%, transparent), transparent 70%)",
+            } as CSSProperties
+          }
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-60"
+          style={
+            {
+              background:
+                "radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--light-rays-color) 35%, transparent), transparent 75%)",
+            } as CSSProperties
+          }
+        />
+        {rays.map((ray) => (
+          <Ray key={ray.id} {...ray} />
+        ))}
       </div>
-    )
-  }
-)
-
-LightRays.displayName = "LightRays"
+    </div>
+  )
+}
 
 
 ===== EXAMPLE: light-rays-demo =====
@@ -10337,7 +10308,7 @@ interface NeonColorsProps {
   secondColor: string
 }
 
-interface NeonGradientCardProps {
+interface NeonGradientCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * @default <div />
    * @type ReactElement
@@ -10384,8 +10355,6 @@ interface NeonGradientCardProps {
    * The colors of the neon gradient
    * */
   neonColors?: NeonColorsProps
-
-  [key: string]: any
 }
 
 export const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
@@ -11376,22 +11345,20 @@ import {
 
 import { cn } from "@/lib/utils"
 
-interface PointerProps extends Omit<HTMLMotionProps<"div">, "ref"> {}
-
 /**
  * A custom pointer component that displays an animated cursor.
  * Add this as a child to any component to enable a custom pointer when hovering.
  * You can pass custom children to render as the pointer.
  *
  * @component
- * @param {PointerProps} props - The component props
+ * @param {HTMLMotionProps<"div">} props - The component props
  */
 export function Pointer({
   className,
   style,
   children,
   ...props
-}: PointerProps): React.ReactNode {
+}: HTMLMotionProps<"div">): React.ReactNode {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -11815,9 +11782,6 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
-
-interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const rainbowButtonVariants = cva(
   cn(
@@ -12811,18 +12775,20 @@ Description: Animated Scroll Progress for your pages
 --- file: magicui/scroll-progress.tsx ---
 "use client"
 
-import React from "react"
 import { motion, MotionProps, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
 interface ScrollProgressProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {}
+  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
+  ref?: React.Ref<HTMLDivElement>
+}
 
-export const ScrollProgress = React.forwardRef<
-  HTMLDivElement,
-  ScrollProgressProps
->(({ className, ...props }, ref) => {
+export function ScrollProgress({
+  className,
+  ref,
+  ...props
+}: ScrollProgressProps) {
   const { scrollYProgress } = useScroll()
 
   return (
@@ -12838,9 +12804,7 @@ export const ScrollProgress = React.forwardRef<
       {...props}
     />
   )
-})
-
-ScrollProgress.displayName = "ScrollProgress"
+}
 
 
 ===== EXAMPLE: scroll-progress-demo =====
@@ -14969,12 +14933,7 @@ Description: A card that displays a tweet with the author's name, handle, and pr
 --- file: magicui/tweet-card.tsx ---
 /* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react"
-import {
-  enrichTweet,
-  type EnrichedTweet,
-  type TweetProps,
-  type TwitterComponents,
-} from "react-tweet"
+import { enrichTweet, type EnrichedTweet, type TweetProps } from "react-tweet"
 import { getTweet, type Tweet } from "react-tweet/api"
 
 import { cn } from "@/lib/utils"
@@ -15182,11 +15141,11 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
       )}
       {!tweet.video &&
         !tweet.photos &&
-        // @ts-ignore
+        // @ts-expect-error package doesn't have type definitions
         tweet?.card?.binding_values?.thumbnail_image_large?.image_value.url && (
           <img
             src={
-              // @ts-ignore
+              // @ts-expect-error package doesn't have type definitions
               tweet.card.binding_values.thumbnail_image_large.image_value.url
             }
             className="h-64 rounded-xl border object-cover shadow-sm"
@@ -15199,12 +15158,10 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
 
 export const MagicTweet = ({
   tweet,
-  components,
   className,
   ...props
 }: {
   tweet: Tweet
-  components?: TwitterComponents
   className?: string
 }) => {
   const enrichedTweet = enrichTweet(tweet)
@@ -15303,7 +15260,7 @@ Description: Characters appearing in typed animation
 --- file: magicui/typing-animation.tsx ---
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { motion, MotionProps, useInView } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -15356,7 +15313,10 @@ export function TypingAnimation({
     once: true,
   })
 
-  const wordsToAnimate = words || (children ? [children] : [])
+  const wordsToAnimate = useMemo(
+    () => words || (children ? [children] : []),
+    [words, children]
+  )
   const hasMultipleWords = wordsToAnimate.length > 1
 
   const typingSpeed = typeSpeed || duration

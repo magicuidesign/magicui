@@ -25,5 +25,5 @@ export const ClientTweetCard = ({
     return <NotFound error={onError ? onError(error) : error} />
   }
 
-  return <MagicTweet tweet={data} components={components} {...props} />
+  return <MagicTweet tweet={data} {...props} />
 }

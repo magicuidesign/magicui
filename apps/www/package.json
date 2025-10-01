@@ -13,8 +13,8 @@
     "shadcn:build": "npx shadcn build registry.json --output ../www/public/r",
     "typecheck": "tsc --noEmit",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
     "check": "pnpm lint && pnpm typecheck && pnpm format:check"
@@ -74,6 +74,7 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@shikijs/transformers": "^2.5.0",
     "@tailwindcss/typography": "^0.5.16",

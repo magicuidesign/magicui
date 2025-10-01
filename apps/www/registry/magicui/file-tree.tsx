@@ -44,8 +44,6 @@ const useTree = () => {
   return context
 }
 
-interface TreeViewComponentProps extends React.HTMLAttributes<HTMLDivElement> {}
-
 type Direction = "rtl" | "ltr" | undefined
 
 type TreeViewProps = {
@@ -55,7 +53,7 @@ type TreeViewProps = {
   initialExpandedItems?: string[]
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
-} & TreeViewComponentProps
+} & React.HTMLAttributes<HTMLDivElement>
 
 const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
   (
@@ -201,15 +199,12 @@ const TreeIndicator = forwardRef<
 
 TreeIndicator.displayName = "TreeIndicator"
 
-interface FolderComponentProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
-
 type FolderProps = {
   expandedItems?: string[]
   element: string
   isSelectable?: boolean
   isSelect?: boolean
-} & FolderComponentProps
+} & React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 
 const Folder = forwardRef<
   HTMLDivElement,
