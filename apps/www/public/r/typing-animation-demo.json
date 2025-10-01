@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/typing-animation-demo.tsx",
-      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function TypingAnimationDemo() {\n  return (\n    <TypingAnimation className=\"text-4xl font-bold\">\n      Hello World! 👋\n    </TypingAnimation>\n  )\n}\n",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return <TypingAnimation>Hello World! 👋</TypingAnimation>\n}\n",
       "type": "registry:example"
     }
   ]

@@ -1,8 +1,8 @@
 import { TypingAnimation } from "@/registry/magicui/typing-animation"
 
-export default function TypingAnimationDemo10() {
+export default function Component() {
   return (
-    <div className="space-y-8">
+    <div className="flex-1 space-y-8">
       <div>
         <p className="text-muted-foreground mb-2 text-sm">
           With blinking cursor (default) - watch during pause
@@ -11,7 +11,7 @@ export default function TypingAnimationDemo10() {
           words={["Type", "Pause", "Delete"]}
           blinkCursor={true}
           pauseDelay={2000}
-          loop={true}
+          loop
           className="text-4xl font-bold"
         >
           Blinking cursor
@@ -25,7 +25,7 @@ export default function TypingAnimationDemo10() {
           words={["Type", "Pause", "Delete"]}
           blinkCursor={false}
           pauseDelay={2000}
-          loop={true}
+          loop
           className="text-4xl font-bold"
         >
           Static cursor

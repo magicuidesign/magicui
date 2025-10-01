@@ -767,6 +767,21 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+    cssVars: {
+      theme: {
+        "animate-blink-cursor": "blink-cursor 1.2s step-end infinite",
+      },
+    },
+    css: {
+      "@keyframes blink-cursor": {
+        "0%, 49%": {
+          opacity: "1",
+        },
+        "50%, 100%": {
+          opacity: "0",
+        },
+      },
+    },
   },
   {
     name: "sparkles-text",

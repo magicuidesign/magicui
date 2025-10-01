@@ -74,6 +74,16 @@ npx shadcn@latest add @magicui/typing-animation
 
 <ComponentPreview name="typing-animation-demo-8" />
 
+## Usage
+
+```tsx showLineNumbers
+import { TypingAnimation } from "@/components/ui/typing-animation"
+```
+
+```tsx showLineNumbers
+<TypingAnimation>Hello World! 👋</TypingAnimation>
+```
+
 ## Props
 
 | Prop          | Type                                | Default  | Description                                     |
@@ -87,8 +97,8 @@ npx shadcn@latest add @magicui/typing-animation
 | `delay`       | `number`                            | `0`      | Delay before animation starts (in ms)           |
 | `pauseDelay`  | `number`                            | `1000`   | Pause duration between words (in ms)            |
 | `loop`        | `boolean`                           | `false`  | Whether to loop the animation                   |
-| `as`          | `React.ElementType`                 | `"div"`  | Component to render as                          |
-| `startOnView` | `boolean`                           | `false`  | Start animation when component is in view       |
+| `as`          | `React.ElementType`                 | `"span"` | Component to render as                          |
+| `startOnView` | `boolean`                           | `true`   | Start animation when component is in view       |
 | `showCursor`  | `boolean`                           | `true`   | Whether to show the typing cursor               |
 | `blinkCursor` | `boolean`                           | `true`   | Whether the cursor should blink                 |
 | `cursorStyle` | `"line" \| "block" \| "underscore"` | `"line"` | Style of the cursor (like VSCode)               |

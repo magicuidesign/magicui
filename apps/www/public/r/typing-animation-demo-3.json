@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/typing-animation-demo-3.tsx",
-      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function TypingAnimationDemo3() {\n  return (\n    <TypingAnimation\n      words={[\"Fast typing\", \"Slow delete\"]}\n      typeSpeed={50}\n      deleteSpeed={150}\n      pauseDelay={2000}\n      loop={true}\n      className=\"text-4xl font-bold\"\n    />\n  )\n}\n",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return (\n    <TypingAnimation\n      words={[\"Fast typing\", \"Slow delete\"]}\n      typeSpeed={50}\n      deleteSpeed={150}\n      pauseDelay={2000}\n      loop\n    />\n  )\n}\n",
       "type": "registry:example"
     }
   ]

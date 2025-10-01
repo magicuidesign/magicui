@@ -32,8 +32,8 @@ export function TypingAnimation({
   delay = 0,
   pauseDelay = 1000,
   loop = false,
-  as: Component = "div",
-  startOnView = false,
+  as: Component = "span",
+  startOnView = true,
   showCursor = true,
   blinkCursor = true,
   cursorStyle = "line",
@@ -137,8 +137,7 @@ export function TypingAnimation({
   const shouldShowCursor =
     showCursor &&
     !isComplete &&
-    (hasMultipleWords || currentCharIndex < currentWordGraphemes.length) &&
-    (blinkCursor || phase === "typing" || phase === "deleting")
+    (hasMultipleWords || loop || currentCharIndex < currentWordGraphemes.length)
 
   const getCursorChar = () => {
     switch (cursorStyle) {
@@ -152,24 +151,19 @@ export function TypingAnimation({
     }
   }
 
-  const cursorClass = cn(
-    "inline-block",
-    blinkCursor && "animate-pulse",
-    cursorStyle === "block"
-  )
-
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn(
-        "text-4xl leading-[5rem] font-bold tracking-[-0.02em]",
-        className
-      )}
+      className={cn("leading-[5rem] tracking-[-0.02em]", className)}
       {...props}
     >
       {displayedText}
       {shouldShowCursor && (
-        <span className={cursorClass}>{getCursorChar()}</span>
+        <span
+          className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
+        >
+          {getCursorChar()}
+        </span>
       )}
     </MotionComponent>
   )

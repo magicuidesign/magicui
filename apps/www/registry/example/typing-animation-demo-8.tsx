@@ -1,8 +1,8 @@
 import { TypingAnimation } from "@/registry/magicui/typing-animation"
 
-export default function TypingAnimationDemo11() {
+export default function Component() {
   return (
-    <div className="space-y-8">
+    <div className="flex-1 space-y-8">
       <div>
         <p className="text-muted-foreground mb-2 text-sm">
           Line cursor (default)
@@ -10,7 +10,7 @@ export default function TypingAnimationDemo11() {
         <TypingAnimation
           words={["Line cursor"]}
           cursorStyle="line"
-          loop={true}
+          loop
           className="text-4xl font-bold"
         />
       </div>
@@ -21,7 +21,7 @@ export default function TypingAnimationDemo11() {
         <TypingAnimation
           words={["Block cursor"]}
           cursorStyle="block"
-          loop={true}
+          loop
           className="text-4xl font-bold"
         />
       </div>
@@ -30,7 +30,7 @@ export default function TypingAnimationDemo11() {
         <TypingAnimation
           words={["Underscore cursor"]}
           cursorStyle="underscore"
-          loop={true}
+          loop
           className="text-4xl font-bold"
         />
       </div>
