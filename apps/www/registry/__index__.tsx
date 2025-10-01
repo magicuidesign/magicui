@@ -2429,6 +2429,125 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "typing-animation-demo-2": {
+    name: "typing-animation-demo-2",
+    description: "Example showing multiple words with looping.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typing-animation-demo-3": {
+    name: "typing-animation-demo-3",
+    description: "Example showing custom typing and deleting speeds.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-3.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typing-animation-demo-4": {
+    name: "typing-animation-demo-4",
+    description: "Example showing animation that starts when in viewport.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-4.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-4.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typing-animation-demo-5": {
+    name: "typing-animation-demo-5",
+    description: "Example showing typing animation without cursor.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-5.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-5.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typing-animation-demo-6": {
+    name: "typing-animation-demo-6",
+    description: "Example showing single play without looping.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-6.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-6.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typing-animation-demo-7": {
+    name: "typing-animation-demo-7",
+    description: "Example showing cursor blinking control.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-7.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-7.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "typing-animation-demo-8": {
+    name: "typing-animation-demo-8",
+    description: "Example showing different cursor styles (line, block, underscore).",
+    type: "registry:example",
+    registryDependencies: ["@magicui/typing-animation"],
+    files: [{
+      path: "registry/example/typing-animation-demo-8.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/typing-animation-demo-8.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "scroll-based-velocity-demo": {
     name: "scroll-based-velocity-demo",
     description: "Example showing text speed changes based on scroll velocity.",

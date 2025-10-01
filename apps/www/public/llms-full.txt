@@ -15309,21 +15309,37 @@ import { motion, MotionProps, useInView } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface TypingAnimationProps extends MotionProps {
-  children: string
+  children?: string
+  words?: string[]
   className?: string
   duration?: number
+  typeSpeed?: number
+  deleteSpeed?: number
   delay?: number
+  pauseDelay?: number
+  loop?: boolean
   as?: React.ElementType
   startOnView?: boolean
+  showCursor?: boolean
+  blinkCursor?: boolean
+  cursorStyle?: "line" | "block" | "underscore"
 }
 
 export function TypingAnimation({
   children,
+  words,
   className,
   duration = 100,
+  typeSpeed,
+  deleteSpeed,
   delay = 0,
-  as: Component = "div",
-  startOnView = false,
+  pauseDelay = 1000,
+  loop = false,
+  as: Component = "span",
+  startOnView = true,
+  showCursor = true,
+  blinkCursor = true,
+  cursorStyle = "line",
   ...props
 }: TypingAnimationProps) {
   const MotionComponent = motion.create(Component, {
@@ -15331,59 +15347,127 @@ export function TypingAnimation({
   })
 
   const [displayedText, setDisplayedText] = useState<string>("")
-  const [started, setStarted] = useState(false)
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const [currentCharIndex, setCurrentCharIndex] = useState(0)
+  const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing")
   const elementRef = useRef<HTMLElement | null>(null)
   const isInView = useInView(elementRef as React.RefObject<Element>, {
     amount: 0.3,
     once: true,
   })
 
-  useEffect(() => {
-    if (!startOnView) {
-      const startTimeout = setTimeout(() => {
-        setStarted(true)
-      }, delay)
-      return () => clearTimeout(startTimeout)
-    }
+  const wordsToAnimate = words || (children ? [children] : [])
+  const hasMultipleWords = wordsToAnimate.length > 1
 
-    if (!isInView) return
+  const typingSpeed = typeSpeed || duration
+  const deletingSpeed = deleteSpeed || typingSpeed / 2
 
-    const startTimeout = setTimeout(() => {
-      setStarted(true)
-    }, delay)
-
-    return () => clearTimeout(startTimeout)
-  }, [delay, startOnView, isInView])
+  const shouldStart = startOnView ? isInView : true
 
   useEffect(() => {
-    if (!started) return
+    if (!shouldStart || wordsToAnimate.length === 0) return
 
-    const graphemes = Array.from(children)
-    let i = 0
-    const typingEffect = setInterval(() => {
-      if (i < graphemes.length) {
-        setDisplayedText(graphemes.slice(0, i + 1).join(""))
-        i++
-      } else {
-        clearInterval(typingEffect)
+    const timeoutDelay =
+      delay > 0 && displayedText === ""
+        ? delay
+        : phase === "typing"
+          ? typingSpeed
+          : phase === "deleting"
+            ? deletingSpeed
+            : pauseDelay
+
+    const timeout = setTimeout(() => {
+      const currentWord = wordsToAnimate[currentWordIndex] || ""
+      const graphemes = Array.from(currentWord)
+
+      switch (phase) {
+        case "typing":
+          if (currentCharIndex < graphemes.length) {
+            setDisplayedText(graphemes.slice(0, currentCharIndex + 1).join(""))
+            setCurrentCharIndex(currentCharIndex + 1)
+          } else {
+            if (hasMultipleWords || loop) {
+              const isLastWord = currentWordIndex === wordsToAnimate.length - 1
+              if (!isLastWord || loop) {
+                setPhase("pause")
+              }
+            }
+          }
+          break
+
+        case "pause":
+          setPhase("deleting")
+          break
+
+        case "deleting":
+          if (currentCharIndex > 0) {
+            setDisplayedText(graphemes.slice(0, currentCharIndex - 1).join(""))
+            setCurrentCharIndex(currentCharIndex - 1)
+          } else {
+            const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length
+            setCurrentWordIndex(nextIndex)
+            setPhase("typing")
+          }
+          break
       }
-    }, duration)
+    }, timeoutDelay)
 
-    return () => {
-      clearInterval(typingEffect)
+    return () => clearTimeout(timeout)
+  }, [
+    shouldStart,
+    phase,
+    currentCharIndex,
+    currentWordIndex,
+    displayedText,
+    wordsToAnimate,
+    hasMultipleWords,
+    loop,
+    typingSpeed,
+    deletingSpeed,
+    pauseDelay,
+    delay,
+  ])
+
+  const currentWordGraphemes = Array.from(
+    wordsToAnimate[currentWordIndex] || ""
+  )
+  const isComplete =
+    !loop &&
+    currentWordIndex === wordsToAnimate.length - 1 &&
+    currentCharIndex >= currentWordGraphemes.length &&
+    phase !== "deleting"
+
+  const shouldShowCursor =
+    showCursor &&
+    !isComplete &&
+    (hasMultipleWords || loop || currentCharIndex < currentWordGraphemes.length)
+
+  const getCursorChar = () => {
+    switch (cursorStyle) {
+      case "block":
+        return "▌"
+      case "underscore":
+        return "_"
+      case "line":
+      default:
+        return "|"
     }
-  }, [children, duration, started])
+  }
 
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn(
-        "text-4xl leading-[5rem] font-bold tracking-[-0.02em]",
-        className
-      )}
+      className={cn("leading-[5rem] tracking-[-0.02em]", className)}
       {...props}
     >
       {displayedText}
+      {shouldShowCursor && (
+        <span
+          className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
+        >
+          {getCursorChar()}
+        </span>
+      )}
     </MotionComponent>
   )
 }
@@ -15395,9 +15479,159 @@ Title: Typing Animation Demo
 --- file: example/typing-animation-demo.tsx ---
 import { TypingAnimation } from "@/registry/magicui/typing-animation"
 
-export default function TypingAnimationDemo() {
+export default function Component() {
+  return <TypingAnimation>Hello World! 👋</TypingAnimation>
+}
+
+
+===== EXAMPLE: typing-animation-demo-2 =====
+Title: Typing Animation Multiple Words
+
+--- file: example/typing-animation-demo-2.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
+  return <TypingAnimation words={["Design 🎨", "Build 🔨", "Ship 🚀"]} loop />
+}
+
+
+===== EXAMPLE: typing-animation-demo-3 =====
+Title: Typing Animation Custom Speed
+
+--- file: example/typing-animation-demo-3.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
   return (
-    <TypingAnimation startOnView={true}>Typing Animation 👋</TypingAnimation>
+    <TypingAnimation
+      words={["Fast typing", "Slow delete"]}
+      typeSpeed={50}
+      deleteSpeed={150}
+      pauseDelay={2000}
+      loop
+    />
+  )
+}
+
+
+===== EXAMPLE: typing-animation-demo-4 =====
+Title: Typing Animation Start on View
+
+--- file: example/typing-animation-demo-4.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
+  return (
+    <TypingAnimation startOnView>Starts typing when in view</TypingAnimation>
+  )
+}
+
+
+===== EXAMPLE: typing-animation-demo-5 =====
+Title: Typing Animation Without Cursor
+
+--- file: example/typing-animation-demo-5.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
+  return <TypingAnimation showCursor={false}>No cursor shown</TypingAnimation>
+}
+
+
+===== EXAMPLE: typing-animation-demo-6 =====
+Title: Typing Animation Single Play
+
+--- file: example/typing-animation-demo-6.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
+  return <TypingAnimation words={["First", "Second", "Final"]} loop={false} />
+}
+
+
+===== EXAMPLE: typing-animation-demo-7 =====
+Title: Typing Animation Cursor Blinking
+
+--- file: example/typing-animation-demo-7.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
+  return (
+    <div className="flex-1 space-y-8">
+      <div>
+        <p className="text-muted-foreground mb-2 text-sm">
+          With blinking cursor (default) - watch during pause
+        </p>
+        <TypingAnimation
+          words={["Type", "Pause", "Delete"]}
+          blinkCursor={true}
+          pauseDelay={2000}
+          loop
+          className="text-4xl font-bold"
+        >
+          Blinking cursor
+        </TypingAnimation>
+      </div>
+      <div>
+        <p className="text-muted-foreground mb-2 text-sm">
+          Without blinking cursor - static during pause
+        </p>
+        <TypingAnimation
+          words={["Type", "Pause", "Delete"]}
+          blinkCursor={false}
+          pauseDelay={2000}
+          loop
+          className="text-4xl font-bold"
+        >
+          Static cursor
+        </TypingAnimation>
+      </div>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: typing-animation-demo-8 =====
+Title: Typing Animation Cursor Styles
+
+--- file: example/typing-animation-demo-8.tsx ---
+import { TypingAnimation } from "@/registry/magicui/typing-animation"
+
+export default function Component() {
+  return (
+    <div className="flex-1 space-y-8">
+      <div>
+        <p className="text-muted-foreground mb-2 text-sm">
+          Line cursor (default)
+        </p>
+        <TypingAnimation
+          words={["Line cursor"]}
+          cursorStyle="line"
+          loop
+          className="text-4xl font-bold"
+        />
+      </div>
+      <div>
+        <p className="text-muted-foreground mb-2 text-sm">
+          Block cursor (VSCode style)
+        </p>
+        <TypingAnimation
+          words={["Block cursor"]}
+          cursorStyle="block"
+          loop
+          className="text-4xl font-bold"
+        />
+      </div>
+      <div>
+        <p className="text-muted-foreground mb-2 text-sm">Underscore cursor</p>
+        <TypingAnimation
+          words={["Underscore cursor"]}
+          cursorStyle="underscore"
+          loop
+          className="text-4xl font-bold"
+        />
+      </div>
+    </div>
   )
 }
 

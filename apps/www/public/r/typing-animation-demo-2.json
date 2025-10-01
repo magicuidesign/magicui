@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo-2",
+  "type": "registry:example",
+  "title": "Typing Animation Multiple Words",
+  "description": "Example showing multiple words with looping.",
+  "registryDependencies": [
+    "@magicui/typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo-2.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return <TypingAnimation words={[\"Design 🎨\", \"Build 🔨\", \"Ship 🚀\"]} loop />\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

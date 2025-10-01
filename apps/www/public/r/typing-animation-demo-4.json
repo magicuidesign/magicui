@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo-4",
+  "type": "registry:example",
+  "title": "Typing Animation Start on View",
+  "description": "Example showing animation that starts when in viewport.",
+  "registryDependencies": [
+    "@magicui/typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo-4.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return (\n    <TypingAnimation startOnView>Starts typing when in view</TypingAnimation>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 import { TypingAnimation } from "@/registry/magicui/typing-animation"
 
 export default function Component() {
-  return <TypingAnimation>Hello World! 👋</TypingAnimation>
+  return (
+    <TypingAnimation startOnView>Starts typing when in view</TypingAnimation>
+  )
 }

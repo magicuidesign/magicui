@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo-6",
+  "type": "registry:example",
+  "title": "Typing Animation Single Play",
+  "description": "Example showing single play without looping.",
+  "registryDependencies": [
+    "@magicui/typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo-6.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return <TypingAnimation words={[\"First\", \"Second\", \"Final\"]} loop={false} />\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

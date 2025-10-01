@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo-3",
+  "type": "registry:example",
+  "title": "Typing Animation Custom Speed",
+  "description": "Example showing custom typing and deleting speeds.",
+  "registryDependencies": [
+    "@magicui/typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo-3.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return (\n    <TypingAnimation\n      words={[\"Fast typing\", \"Slow delete\"]}\n      typeSpeed={50}\n      deleteSpeed={150}\n      pauseDelay={2000}\n      loop\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

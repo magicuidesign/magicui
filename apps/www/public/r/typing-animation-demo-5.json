@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo-5",
+  "type": "registry:example",
+  "title": "Typing Animation Without Cursor",
+  "description": "Example showing typing animation without cursor.",
+  "registryDependencies": [
+    "@magicui/typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo-5.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return <TypingAnimation showCursor={false}>No cursor shown</TypingAnimation>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-animation-demo-7",
+  "type": "registry:example",
+  "title": "Typing Animation Cursor Blinking",
+  "description": "Example showing cursor blinking control.",
+  "registryDependencies": [
+    "@magicui/typing-animation"
+  ],
+  "files": [
+    {
+      "path": "registry/example/typing-animation-demo-7.tsx",
+      "content": "import { TypingAnimation } from \"@/registry/magicui/typing-animation\"\n\nexport default function Component() {\n  return (\n    <div className=\"flex-1 space-y-8\">\n      <div>\n        <p className=\"text-muted-foreground mb-2 text-sm\">\n          With blinking cursor (default) - watch during pause\n        </p>\n        <TypingAnimation\n          words={[\"Type\", \"Pause\", \"Delete\"]}\n          blinkCursor={true}\n          pauseDelay={2000}\n          loop\n          className=\"text-4xl font-bold\"\n        >\n          Blinking cursor\n        </TypingAnimation>\n      </div>\n      <div>\n        <p className=\"text-muted-foreground mb-2 text-sm\">\n          Without blinking cursor - static during pause\n        </p>\n        <TypingAnimation\n          words={[\"Type\", \"Pause\", \"Delete\"]}\n          blinkCursor={false}\n          pauseDelay={2000}\n          loop\n          className=\"text-4xl font-bold\"\n        >\n          Static cursor\n        </TypingAnimation>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
