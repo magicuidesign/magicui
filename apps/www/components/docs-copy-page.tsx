@@ -45,7 +45,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
     console.error(e)
   }
   const menuItems: Record<string, (url: string) => React.ReactNode> = {
-    viewMarkdown: (_url: string) => {
+    viewMarkdown: () => {
       const mdUrl = `${pathname}.md`
       return (
         <a href={mdUrl} target="_blank" rel="noopener noreferrer">
