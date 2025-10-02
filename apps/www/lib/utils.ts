@@ -54,7 +54,7 @@ export function formatDate(input: string | number): string {
 }
 
 export const calculateReadingTime = (content: string): number => {
-  const words = content.trim().split(/\s+/).filter(Boolean).length
+  const words = content?.trim().split(/\s+/).filter(Boolean).length
   return Math.max(1, Math.ceil(words / 200))
 }
 

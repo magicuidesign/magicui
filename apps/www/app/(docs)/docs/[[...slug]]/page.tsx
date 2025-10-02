@@ -88,6 +88,7 @@ export async function generateMetadata({
 export default async function DocPage({ params }: DocPageProps) {
   const { doc, page } = await getDocFromParams({ params })
   const MDX = doc.body
+  const content = await doc.getText("raw")
   const neighbours = findNeighbour(source.pageTree, page.url)
   const breadcrumbs = getBreadcrumbItems(page.url, source.pageTree, {
     includeRoot: { url: "/docs" },
@@ -126,7 +127,7 @@ export default async function DocPage({ params }: DocPageProps) {
     description: doc.description,
     url: absoluteUrl(page.url),
     inLanguage: "en-US",
-    datePublished: doc.date,
+    datePublished: doc.date?.toString(),
     dateModified: doc.lastModified?.toString(),
     mainEntityOfPage: absoluteUrl(page.url),
     publisher: {
@@ -148,7 +149,7 @@ export default async function DocPage({ params }: DocPageProps) {
       name: "Magic UI Documentation",
       url: absoluteUrl("/docs"),
     },
-    wordCount: doc.content ? doc.content.split(/\s+/).length : 0,
+    wordCount: content ? content.split(/\s+/).length : 0,
   }
 
   const serializedDocStructuredData = JSON.stringify(docStructuredData).replace(
@@ -222,7 +223,7 @@ export default async function DocPage({ params }: DocPageProps) {
                   </h1>
                   <div className="docs-nav bg-background/80 border-border/50 fixed inset-x-0 bottom-0 isolate z-50 flex items-center gap-2 border-t px-6 py-4 backdrop-blur-sm sm:static sm:z-0 sm:border-t-0 sm:bg-transparent sm:px-0 sm:pt-1.5 sm:backdrop-blur-none">
                     <DocsCopyPage
-                      page={await replaceComponentSource(doc.content)}
+                      page={await replaceComponentSource(content)}
                       url={absoluteUrl(page.url)}
                     />
                     {neighbours.previous && (

@@ -79,6 +79,8 @@ export default async function BlogPage({ params }: PageProps) {
 
   const MDX = doc.body
 
+  const content = await doc.getText("raw")
+
   // Generate structured data for individual blog post
   const structuredData: WithContext<BlogPosting> = {
     "@context": "https://schema.org",
@@ -107,10 +109,10 @@ export default async function BlogPage({ params }: PageProps) {
       "@type": "WebPage",
       "@id": absoluteUrl(page.url),
     },
-    wordCount: doc.content ? doc.content.split(/\s+/).length : 0,
-    timeRequired: `PT${calculateReadingTime(doc.content || "")}M`,
+    wordCount: content ? content.split(/\s+/).length : 0,
+    timeRequired: `PT${calculateReadingTime(content || "")}M`,
     keywords: (() => {
-      const docTag = doc.tag
+      const docTag = doc.tags
       if (!docTag) return undefined
       return Array.isArray(docTag) ? docTag : [docTag]
     })(),
@@ -158,9 +160,8 @@ export default async function BlogPage({ params }: PageProps) {
                 </div>
               </div>
               <div className="border-border text-secondary-foreground flex items-center justify-center gap-x-2 border-b p-3 text-sm">
-                <span>{calculateReadingTime(doc.content)} min read</span>
                 {(() => {
-                  const docTag = doc.tag
+                  const docTag = doc.tags
                   const tags = docTag
                     ? Array.isArray(docTag)
                       ? docTag
@@ -170,6 +171,7 @@ export default async function BlogPage({ params }: PageProps) {
                   return (
                     tags.length > 0 && (
                       <>
+                        <span>{calculateReadingTime(content)} min read</span>
                         <span>·</span>
                         <div className="flex flex-wrap gap-1">
                           {tags.map((tag) => (

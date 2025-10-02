@@ -43,9 +43,9 @@ export const docs = defineDocs({
   dir: "content/docs",
   docs: {
     schema: frontmatterSchema.extend({
-      date: z.string(),
-      author: z.string(),
-      published: z.boolean(),
+      date: z.date().optional(),
+      author: z.string().optional(),
+      published: z.boolean().optional().default(true),
       video: z.string().optional(),
       links: z
         .object({
@@ -72,7 +72,7 @@ export const blog = defineDocs({
   dir: "content/blog",
   docs: {
     schema: frontmatterSchema.extend({
-      tag: z.array(z.string()).optional(),
+      tags: z.array(z.string()).optional(),
       publishedOn: z.string(),
       featured: z.boolean().optional().default(false),
       image: z.string().optional(),

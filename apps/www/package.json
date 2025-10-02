@@ -47,7 +47,7 @@
     "cmdk": "^1.1.1",
     "cobe": "^0.6.4",
     "fumadocs-core": "^15.8.2",
-    "fumadocs-mdx": "^11.10.0",
+    "fumadocs-mdx": "^12.0.1",
     "fumadocs-ui": "^15.7.12",
     "geist": "^1.5.1",
     "jotai": "^2.14.0",

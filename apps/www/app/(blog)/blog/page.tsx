@@ -42,10 +42,10 @@ export default async function Page({
     return dateB - dateA
   })
 
-  const allTags = posts.flatMap((p) => normalizeTag(p.data?.tag))
+  const allTags = posts.flatMap((p) => normalizeTag(p.data?.tags))
   const tags = [...new Set(allTags)].filter(Boolean).sort()
   const filteredPosts = selectedTag
-    ? posts.filter((p) => normalizeTag(p.data?.tag).includes(selectedTag))
+    ? posts.filter((p) => normalizeTag(p.data?.tags).includes(selectedTag))
     : posts
 
   // Generate structured data
@@ -79,8 +79,8 @@ export default async function Page({
       },
       image: post.data?.image ? [post.data?.image] : undefined,
       keywords:
-        normalizeTag(post.data?.tag).length > 0
-          ? normalizeTag(post.data?.tag)
+        normalizeTag(post.data?.tags).length > 0
+          ? normalizeTag(post.data?.tags)
           : undefined,
       publisher: {
         "@type": "Organization",
@@ -116,7 +116,7 @@ export default async function Page({
           )}
         </header>
 
-        {tags.length > 0 && (
+        {/* {tags.length > 0 && (
           <nav className="mb-8">
             <div className="flex flex-wrap gap-2">
               <Link
@@ -144,7 +144,7 @@ export default async function Page({
               ))}
             </div>
           </nav>
-        )}
+        )} */}
 
         {filteredPosts.length === 0 ? (
           <div className="py-16 text-center">
@@ -164,68 +164,69 @@ export default async function Page({
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredPosts.map((post) => (
-              <article
-                key={post.url}
-                className="group bg-card hover:bg-accent/5 flex flex-col overflow-hidden rounded-xl border transition-all duration-200"
-              >
-                <Link href={post.url} className="flex h-full flex-col">
-                  {post.data?.image && (
-                    <div className="aspect-video overflow-hidden">
-                      <img
-                        src={post.data.image}
-                        alt={post.data?.title ?? post.url}
-                        width={640}
-                        height={360}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  )}
+            {filteredPosts.map(async (post) => {
+              const content = await post.data?.getText("raw")
+              return (
+                <article
+                  key={post.url}
+                  className="group bg-card hover:bg-accent/5 flex flex-col overflow-hidden rounded-xl border transition-all duration-200"
+                >
+                  <Link href={post.url} className="flex h-full flex-col">
+                    {post.data?.image && (
+                      <div className="aspect-video overflow-hidden">
+                        <img
+                          src={post.data.image}
+                          alt={post.data?.title ?? post.url}
+                          width={640}
+                          height={360}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    )}
 
-                  <div className="flex flex-1 flex-col space-y-4 p-6">
-                    <div className="flex-1 space-y-2">
-                      <h2 className="group-hover:text-primary line-clamp-2 text-xl leading-tight font-semibold transition-colors">
-                        {post.data?.title ?? post.url}
-                      </h2>
-                      {post.data?.description && (
-                        <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
-                          {post.data.description}
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="text-muted-foreground flex flex-col gap-2 text-xs">
-                      <div className="flex items-center gap-2">
-                        {post.data?.publishedOn && (
-                          <time dateTime={post.data.publishedOn}>
-                            {formatDate(post.data.publishedOn)}
-                          </time>
+                    <div className="flex flex-1 flex-col space-y-4 p-6">
+                      <div className="flex-1 space-y-2">
+                        <h2 className="group-hover:text-primary line-clamp-2 text-xl leading-tight font-semibold transition-colors">
+                          {post.data?.title ?? post.url}
+                        </h2>
+                        {post.data?.description && (
+                          <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
+                            {post.data.description}
+                          </p>
                         )}
-                        {post.data?.publishedOn && <span>·</span>}
-                        <span>
-                          {calculateReadingTime(post.data?.content ?? "")} min
-                          read
-                        </span>
                       </div>
 
-                      {normalizeTag(post.data?.tag).length > 0 && (
-                        <div className="flex flex-wrap gap-1">
-                          {normalizeTag(post.data.tag).map((tag) => (
-                            <Link
-                              key={tag}
-                              href={`/blog?tag=${encodeURIComponent(tag)}`}
-                              className="hover:bg-accent rounded-md border px-2 py-1 text-xs transition-colors"
-                            >
-                              {tag}
-                            </Link>
-                          ))}
+                      <div className="text-muted-foreground flex flex-col gap-2 text-xs">
+                        <div className="flex items-center gap-2">
+                          {post.data?.publishedOn && (
+                            <time dateTime={post.data.publishedOn}>
+                              {formatDate(post.data.publishedOn)}
+                            </time>
+                          )}
+                          {post.data?.publishedOn && <span>·</span>}
+                          <span>
+                            {calculateReadingTime(content ?? "")} min read
+                          </span>
                         </div>
-                      )}
+
+                        {normalizeTag(post.data?.tags).length > 0 && (
+                          <div className="flex flex-wrap gap-1">
+                            {normalizeTag(post.data.tags).map((tag) => (
+                              <span
+                                key={tag}
+                                className="bg-muted/50 rounded-md border px-2 py-1 text-xs"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </article>
-            ))}
+                  </Link>
+                </article>
+              )
+            })}
           </div>
         )}
       </main>

@@ -17,7 +17,7 @@ export async function GET(
     notFound()
   }
 
-  let mdx = page.data.content as string
+  let mdx = await page.data.getText("raw")
 
   // Replace component tags with actual source code
   mdx = await replaceComponentSource(mdx)
