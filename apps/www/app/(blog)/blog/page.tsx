@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import type { Blog, WithContext } from "schema-dts"
+import type { Blog, BreadcrumbList, WithContext } from "schema-dts"
 
 import { siteConfig } from "@/config/site"
 import { blogSource } from "@/lib/source"
 import {
+  absoluteUrl,
   calculateReadingTime,
   constructMetadata,
   formatDate,
@@ -48,6 +49,22 @@ export default async function Page({
     ? posts.filter((p) => normalizeTag(p.data?.tags).includes(selectedTag))
     : posts
 
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+  ] as const
+
+  const breadcrumbStructuredData: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: breadcrumb.name,
+      item: absoluteUrl(breadcrumb.url),
+    })),
+  }
+
   // Generate structured data
   const structuredData: WithContext<Blog> = {
     "@context": "https://schema.org",
@@ -90,12 +107,24 @@ export default async function Page({
     })),
   }
 
+  const serializedStructuredData = JSON.stringify(structuredData).replace(
+    /</g,
+    "\\u003c"
+  )
+  const serializedBreadcrumbStructuredData = JSON.stringify(
+    breadcrumbStructuredData
+  ).replace(/</g, "\\u003c")
+
   return (
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializedStructuredData }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          __html: serializedBreadcrumbStructuredData,
         }}
       />
       <main className="mx-auto w-full max-w-6xl px-6 py-8">

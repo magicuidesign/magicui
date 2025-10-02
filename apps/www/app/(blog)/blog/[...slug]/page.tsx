@@ -3,7 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
 import { ArrowLeftIcon } from "lucide-react"
-import type { BlogPosting, WithContext } from "schema-dts"
+import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts"
 
 import { siteConfig } from "@/config/site"
 import { blogSource } from "@/lib/source"
@@ -76,10 +76,32 @@ export async function generateMetadata({
 
 export default async function BlogPage({ params }: PageProps) {
   const { doc, page } = await getDocFromParams({ params })
-
+  const content = await doc.getText("raw")
   const MDX = doc.body
 
-  const content = await doc.getText("raw")
+  const toBreadcrumbLabel = (segment: string) =>
+    segment
+      .split("-")
+      .filter(Boolean)
+      .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+      .join(" ") || segment
+
+  const slugSegments = page.url
+    .replace(/^\/blog\/?/, "")
+    .split("/")
+    .filter(Boolean)
+  const intermediateCrumbs = slugSegments
+    .slice(0, -1)
+    .map((segment, index) => ({
+      name: toBreadcrumbLabel(segment),
+      url: `/blog/${slugSegments.slice(0, index + 1).join("/")}`,
+    }))
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+    ...intermediateCrumbs,
+    { name: doc.title, url: page.url },
+  ] as const
 
   // Generate structured data for individual blog post
   const structuredData: WithContext<BlogPosting> = {
@@ -119,12 +141,35 @@ export default async function BlogPage({ params }: PageProps) {
     inLanguage: "en-US",
   }
 
+  const breadcrumbStructuredData: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: breadcrumb.name,
+      item: absoluteUrl(breadcrumb.url),
+    })),
+  }
+
+  const serializedStructuredData = JSON.stringify(structuredData).replace(
+    /</g,
+    "\\u003c"
+  )
+  const serializedBreadcrumbStructuredData = JSON.stringify(
+    breadcrumbStructuredData
+  ).replace(/</g, "\\u003c")
+
   return (
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializedStructuredData }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          __html: serializedBreadcrumbStructuredData,
         }}
       />
       <div className="mx-auto mt-5 max-w-6xl px-5 xl:px-0">
