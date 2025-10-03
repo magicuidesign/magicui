@@ -1,0 +1,53 @@
+name: Submit Sitemap to Google
+
+on:
+  workflow_run:
+    workflows:
+      - Publish Blog Article
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      sitemap_url:
+        description: "Override sitemap URL (optional)"
+        required: false
+
+permissions: {}
+
+env:
+  SITEMAP_URL: https://magicui.design/sitemap.xml
+  SITE_URL: https://magicui.design/
+
+jobs:
+  submit-sitemap:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Publish Sitemap
+        env:
+          GOOGLE_SEARCH_CONSOLE_JSON_KEY: ${{ secrets.GOOGLE_SEARCH_CONSOLE_JSON_KEY }}
+          SITE_URL: ${{ env.SITE_URL }}
+          SITEMAP_URL: ${{ inputs.sitemap_url || env.SITEMAP_URL }}
+        run: |
+          if [ -z "${GOOGLE_SEARCH_CONSOLE_JSON_KEY}" ]; then
+            echo "GOOGLE_SEARCH_CONSOLE_JSON_KEY is not set" >&2
+            exit 1
+          fi
+          echo "Submitting via Google Search Console API"
+          corepack enable pnpm
+          pnpm add --no-save googleapis google-auth-library
+          node .github/scripts/submit-sitemap.mjs
