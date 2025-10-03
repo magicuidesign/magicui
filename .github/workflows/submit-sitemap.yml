@@ -38,7 +38,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install googleapis google-auth-library
+        run: pnpm install -w googleapis google-auth-library
 
       - name: Publish Sitemap
         run: node .github/scripts/submit-sitemap.mjs
