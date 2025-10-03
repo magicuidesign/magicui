@@ -16,7 +16,7 @@ permissions: {}
 
 env:
   SITEMAP_URL: https://magicui.design/sitemap.xml
-  SITE_URL: https://magicui.design/
+  SITE_URL: sc-domain:magicui.design/
 
 jobs:
   submit-sitemap:
