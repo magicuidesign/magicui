@@ -49,5 +49,5 @@ jobs:
           fi
           echo "Submitting via Google Search Console API"
           corepack enable pnpm
-          pnpm add --no-save googleapis google-auth-library
+          pnpm install --no-save googleapis google-auth-library
           node .github/scripts/submit-sitemap.mjs
