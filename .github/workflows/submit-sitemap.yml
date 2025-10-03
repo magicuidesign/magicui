@@ -37,6 +37,9 @@ jobs:
           node-version: 22
           cache: pnpm
 
+      - name: Install dependencies
+        run: pnpm install googleapis google-auth-library
+
       - name: Publish Sitemap
         env:
           GOOGLE_SEARCH_CONSOLE_JSON_KEY: ${{ secrets.GOOGLE_SEARCH_CONSOLE_JSON_KEY }}
@@ -48,6 +51,4 @@ jobs:
             exit 1
           fi
           echo "Submitting via Google Search Console API"
-          corepack enable pnpm
-          pnpm install googleapis google-auth-library
           node .github/scripts/submit-sitemap.mjs
