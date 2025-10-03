@@ -26,19 +26,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9.15.0
-          run_install: false
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm add -w --no-save googleapis google-auth-library
+        run: npm install --no-save googleapis google-auth-library
 
       - name: Publish Sitemap
         run: node .github/scripts/submit-sitemap.mjs
