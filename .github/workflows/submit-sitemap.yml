@@ -41,14 +41,8 @@ jobs:
         run: pnpm install googleapis google-auth-library
 
       - name: Publish Sitemap
+        run: node .github/scripts/submit-sitemap.mjs
         env:
           GOOGLE_SEARCH_CONSOLE_JSON_KEY: ${{ secrets.GOOGLE_SEARCH_CONSOLE_JSON_KEY }}
           SITE_URL: ${{ env.SITE_URL }}
           SITEMAP_URL: ${{ inputs.sitemap_url || env.SITEMAP_URL }}
-        run: |
-          if [ -z "${GOOGLE_SEARCH_CONSOLE_JSON_KEY}" ]; then
-            echo "GOOGLE_SEARCH_CONSOLE_JSON_KEY is not set" >&2
-            exit 1
-          fi
-          echo "Submitting via Google Search Console API"
-          node .github/scripts/submit-sitemap.mjs
