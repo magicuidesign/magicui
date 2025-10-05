@@ -6,11 +6,16 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-type Props = {
-  className?: string
+interface AnimatedThemeTogglerProps
+  extends React.ComponentPropsWithoutRef<"button"> {
+  duration?: number
 }
 
-export const AnimatedThemeToggler = ({ className }: Props) => {
+export const AnimatedThemeToggler = ({
+  className,
+  duration = 400,
+  ...props
+}: AnimatedThemeTogglerProps) => {
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -59,15 +64,20 @@ export const AnimatedThemeToggler = ({ className }: Props) => {
         ],
       },
       {
-        duration: 700,
+        duration,
         easing: "ease-in-out",
         pseudoElement: "::view-transition-new(root)",
       }
     )
-  }, [isDark])
+  }, [isDark, duration])
 
   return (
-    <button ref={buttonRef} onClick={toggleTheme} className={cn(className)}>
+    <button
+      ref={buttonRef}
+      onClick={toggleTheme}
+      className={cn(className)}
+      {...props}
+    >
       {isDark ? <Sun /> : <Moon />}
     </button>
   )
