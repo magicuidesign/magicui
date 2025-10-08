@@ -1676,6 +1676,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "liquid-metal-button-demo",
+    type: "registry:example",
+    title: "Liquid Metal Button Demo",
+    description: "Example showing a button with liquid metal shader effect.",
+    registryDependencies: ["@magicui/liquid-metal-button"],
+    files: [
+      {
+        path: "example/liquid-metal-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "interactive-hover-button-demo",
     type: "registry:example",
     title: "Interactive Hover Button Demo",

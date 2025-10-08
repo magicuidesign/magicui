@@ -32,6 +32,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.62.0(react@19.1.1))
+      '@paper-design/shaders-react':
+        specifier: ^0.0.57
+        version: 0.0.57(@types/react@19.1.13)(react@19.1.1)
       '@radix-ui/react-accordion':
         specifier: ^1.2.12
         version: 1.2.12(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -1247,6 +1250,18 @@ packages:
   '@orama/orama@3.1.14':
     resolution: {integrity: sha512-Iq4RxYC7y0pA/hLgcUGpYYs5Vze4qNmJk0Qi1uIrg2bHGpm6A06nbjWcH9h4HQsddkDFFlanLj/zYBH3Sxdb4w==}
     engines: {node: '>= 20.0.0'}
+
+  '@paper-design/shaders-react@0.0.57':
+    resolution: {integrity: sha512-PUr//I3Fdk4l44ORt6NNGPgz4MRz+DDNjAWK9B/hNlLZrKPKdBJtiXYUlQBpcJfnBUjq3sy2VJk6tNdby8o/2g==}
+    peerDependencies:
+      '@types/react': ^18 || ^19
+      react: ^18 || ^19
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  '@paper-design/shaders@0.0.57':
+    resolution: {integrity: sha512-2bV7CqLcfA9paFOdH0a5NQuqzyAKep4Zf5j7ll78bCV6lzFz5/z0TMjduR+cd+DrSWGzdJfVQE8QC7f7AmcQQQ==}
 
   '@posthog/core@1.2.2':
     resolution: {integrity: sha512-f16Ozx6LIigRG+HsJdt+7kgSxZTHeX5f1JlCGKI1lXcvlZgfsCR338FuMI2QRYXGl+jg/vYFzGOTQBxl90lnBg==}
@@ -6892,6 +6907,15 @@ snapshots:
   '@open-draft/until@2.1.0': {}
 
   '@orama/orama@3.1.14': {}
+
+  '@paper-design/shaders-react@0.0.57(@types/react@19.1.13)(react@19.1.1)':
+    dependencies:
+      '@paper-design/shaders': 0.0.57
+      react: 19.1.1
+    optionalDependencies:
+      '@types/react': 19.1.13
+
+  '@paper-design/shaders@0.0.57': {}
 
   '@posthog/core@1.2.2': {}
 

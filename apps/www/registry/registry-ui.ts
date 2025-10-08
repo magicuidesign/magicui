@@ -1090,6 +1090,20 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "liquid-metal-button",
+    type: "registry:ui",
+    title: "Liquid Metal Button",
+    description:
+      "A button with a futuristic liquid metal shader effect that simulates dynamic surface distortion.",
+    dependencies: ["@paper-design/shaders-react"],
+    files: [
+      {
+        path: "magicui/liquid-metal-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "interactive-hover-button",
     type: "registry:ui",
     files: [

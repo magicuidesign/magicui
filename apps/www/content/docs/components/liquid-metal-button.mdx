@@ -1,0 +1,97 @@
+---
+title: Liquid Metal Button
+date: 2025-10-08
+description: A button with a futuristic liquid metal shader effect.
+author: Jeffery Pippitt
+published: true
+---
+
+<ComponentPreview name="liquid-metal-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/liquid-metal-button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependency</Step>
+
+```bash
+pnpm add @paper-design/shaders-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="liquid-metal-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { LiquidMetalButton } from "@/components/ui/liquid-metal-button"
+```
+
+```tsx showLineNumbers
+<LiquidMetalButton>Liquid Metal</LiquidMetalButton>
+```
+
+### With Custom Shader Properties
+
+```tsx showLineNumbers
+<LiquidMetalButton
+  colorBack="#0a0a0a"
+  colorTint="#3b82f6"
+  repetition={6}
+  softness={0.5}
+  distortion={0.2}
+  shape="metaballs"
+  speed={0.8}
+>
+  Liquid Metal
+</LiquidMetalButton>
+```
+
+## Props
+
+| Prop         | Type                                           | Default     | Description                                                      |
+| ------------ | ---------------------------------------------- | ----------- | ---------------------------------------------------------------- |
+| `children`   | `React.ReactNode`                              | `-`         | The content to be displayed inside the button.                   |
+| `className`  | `string`                                       | `-`         | Additional CSS classes to be applied to the button.              |
+| `variant`    | `"default" \| "outline"`                       | `"default"` | The variant of the button.                                       |
+| `size`       | `"default" \| "sm" \| "lg" \| "icon"`          | `"default"` | The size of the button.                                          |
+| `colorBack`  | `string`                                       | `"#000000"` | Background color (Hex, RGB, or HSL).                             |
+| `colorTint`  | `string`                                       | `"#ffffff"` | Overlay color (Hex, RGB, or HSL).                                |
+| `repetition` | `number`                                       | `4`         | Density of pattern stripes (1 to 10).                            |
+| `softness`   | `number`                                       | `0.3`       | Color transition sharpness (0 = hard edge, 1 = smooth gradient). |
+| `shiftRed`   | `number`                                       | `0.3`       | R-channel dispersion (-1 to 1).                                  |
+| `shiftBlue`  | `number`                                       | `0.3`       | B-channel dispersion (-1 to 1).                                  |
+| `distortion` | `number`                                       | `0.1`       | Noise distortion over the stripes pattern (0 to 1).              |
+| `contour`    | `number`                                       | `1`         | Strength of the distortion on the shape edges (0 to 1).          |
+| `shape`      | `"none" \| "circle" \| "daisy" \| "metaballs"` | `"circle"`  | Shape type for the liquid metal effect.                          |
+| `speed`      | `number`                                       | `1`         | Animation speed.                                                 |
+| `scale`      | `number`                                       | `0.6`       | Overall zoom level of the graphics (0.01 to 4).                  |
+
+## Credits
+
+Built with [Paper Design](https://github.com/paper-design/shaders) by [@jefferypippitt](https://github.com/jefferypippitt).

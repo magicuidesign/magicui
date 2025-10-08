@@ -412,6 +412,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Liquid Metal Button",
+          href: `/docs/components/liquid-metal-button`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Shimmer Button",
           href: `/docs/components/shimmer-button`,
           items: [],

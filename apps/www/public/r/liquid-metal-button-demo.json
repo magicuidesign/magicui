@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-metal-button-demo",
+  "type": "registry:example",
+  "title": "Liquid Metal Button Demo",
+  "description": "Example showing a button with liquid metal shader effect.",
+  "registryDependencies": [
+    "@magicui/liquid-metal-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/liquid-metal-button-demo.tsx",
+      "content": "import { LiquidMetalButton } from \"@/registry/magicui/liquid-metal-button\"\n\nexport default function LiquidMetalButtonDemo() {\n  return (\n    <LiquidMetalButton\n      colorBack=\"#0a0a0a\"\n      colorTint=\"#00d4ff\"\n      repetition={3}\n      distortion={0.3}\n      contour={0.88}\n      shape=\"metaballs\"\n    >\n      Liquid Metal\n    </LiquidMetalButton>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
