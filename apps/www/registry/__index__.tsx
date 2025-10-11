@@ -1052,6 +1052,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "liquid-metal-button": {
+    name: "liquid-metal-button",
+    description: "A button with a futuristic liquid metal shader effect that simulates dynamic surface distortion.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/liquid-metal-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/liquid-metal-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "interactive-hover-button": {
     name: "interactive-hover-button",
     description: "",
@@ -3325,6 +3342,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/rainbow-button-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "liquid-metal-button-demo": {
+    name: "liquid-metal-button-demo",
+    description: "Example showing a button with liquid metal shader effect.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/liquid-metal-button"],
+    files: [{
+      path: "registry/example/liquid-metal-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/liquid-metal-button-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

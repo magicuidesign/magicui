@@ -1149,6 +1149,21 @@
       }
     },
     {
+      "name": "liquid-metal-button",
+      "type": "registry:ui",
+      "title": "Liquid Metal Button",
+      "description": "A button with a futuristic liquid metal shader effect that simulates dynamic surface distortion.",
+      "dependencies": [
+        "@paper-design/shaders-react"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/liquid-metal-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "interactive-hover-button",
       "type": "registry:ui",
       "files": [
@@ -3191,6 +3206,21 @@
       "files": [
         {
           "path": "registry/example/rainbow-button-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-button-demo",
+      "type": "registry:example",
+      "title": "Liquid Metal Button Demo",
+      "description": "Example showing a button with liquid metal shader effect.",
+      "registryDependencies": [
+        "@magicui/liquid-metal-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/liquid-metal-button-demo.tsx",
           "type": "registry:example"
         }
       ]
