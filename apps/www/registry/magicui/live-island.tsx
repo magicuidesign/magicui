@@ -13,9 +13,9 @@ import { motion, useInView, type Transition, type Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample29 } from "./live-island-pass"
+import { passSample30 } from "./live-island-pass"
 
-void passSample29(0)
+void passSample30(0)
 export interface LiveIslandUpdate {
   /** Short headline of the update. */
   title: string
