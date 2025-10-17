@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "live-island-demo",
+  "title": "Live Island Demo",
+  "description": "A live pill cycling through a payment, a signup and a deploy.",
+  "registryDependencies": [
+    "@magicui/live-island",
+    "@magicui/live-island-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/live-island-demo.tsx",
+      "content": "import { LiveIsland } from \"@/registry/magicui/live-island\"\n\nexport default function LiveIslandDemo() {\n  return (\n    <div className=\"flex w-full items-center justify-center py-4\">\n      <LiveIsland />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

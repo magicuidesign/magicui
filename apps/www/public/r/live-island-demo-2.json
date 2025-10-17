@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "live-island-demo-2",
+  "title": "Live Island Custom Updates Demo",
+  "description": "Store orders, refunds and reviews with one accent color.",
+  "registryDependencies": [
+    "@magicui/live-island",
+    "@magicui/live-island-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/live-island-demo-2.tsx",
+      "content": "import type { ReactNode } from \"react\"\n\nimport {\n  LiveIsland,\n  type LiveIslandUpdate,\n} from \"@/registry/magicui/live-island\"\n\nfunction Icon({ children }: { children: ReactNode }) {\n  return (\n    <svg\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      aria-hidden=\"true\"\n    >\n      {children}\n    </svg>\n  )\n}\n\nconst updates: LiveIslandUpdate[] = [\n  {\n    title: \"New order\",\n    description: \"Maya Chen · canvas tote · $58\",\n    time: \"now\",\n    icon: (\n      <Icon>\n        <path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\" />\n        <path d=\"M3 6h18\" />\n        <path d=\"M16 10a4 4 0 0 1-8 0\" />\n      </Icon>\n    ),\n  },\n  {\n    title: \"Refund issued\",\n    description: \"Eli Woods · ceramic cup · $32\",\n    time: \"4m ago\",\n    icon: (\n      <Icon>\n        <path d=\"M9 14 4 9l5-5\" />\n        <path d=\"M4 9h10.5a5.5 5.5 0 0 1 0 11H11\" />\n      </Icon>\n    ),\n  },\n  {\n    title: \"Review posted\",\n    description: \"Five stars for the linen apron\",\n    time: \"9m ago\",\n    icon: (\n      <Icon>\n        <polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\" />\n      </Icon>\n    ),\n  },\n]\n\nexport default function LiveIslandDemo2() {\n  return (\n    <div className=\"flex w-full items-center justify-center py-4\">\n      <LiveIsland label=\"Orders\" color=\"#1E86FF\" updates={updates} />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

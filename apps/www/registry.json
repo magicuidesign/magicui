@@ -19,6 +19,21 @@
       "type": "registry:style"
     },
     {
+      "name": "live-island",
+      "title": "Live Island",
+      "description": "A live pill that opens into one notification at a time, like a payment or a deploy, without moving the layout around it.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/live-island.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1388,6 +1403,54 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "live-island-demo",
+      "title": "Live Island Demo",
+      "description": "A live pill cycling through a payment, a signup and a deploy.",
+      "registryDependencies": [
+        "@magicui/live-island",
+        "@magicui/live-island-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/live-island-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "live-island-demo-2",
+      "title": "Live Island Custom Updates Demo",
+      "description": "Store orders, refunds and reviews with one accent color.",
+      "registryDependencies": [
+        "@magicui/live-island",
+        "@magicui/live-island-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/live-island-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "live-island-demo-3",
+      "title": "Live Island Compact Demo",
+      "description": "A smaller inbox island, scaled with a font-size class.",
+      "registryDependencies": [
+        "@magicui/live-island",
+        "@magicui/live-island-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/live-island-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     },
     {
       "name": "magic-card-demo",
