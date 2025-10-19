@@ -180,6 +180,7 @@ Getting it integrated is super straightforward. First, import the component at t
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text"
 
 // ... inside your Navbar component's return statement
+
 ;<div className="hidden items-center space-x-6 md:flex">
   <a href="/features" className="group">
     <AnimatedShinyText>
@@ -263,6 +264,7 @@ From there, it's just a bit of CSS. You can target that `.active` class to make 
 import { NavLink } from "react-router-dom"
 
 // A snippet from a Navbar component
+
 ;<NavLink
   to="/features"
   className={({ isActive }) =>
