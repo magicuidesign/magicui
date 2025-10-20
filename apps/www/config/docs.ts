@@ -210,6 +210,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Live Island",
+          href: `/docs/components/live-island`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Dock",
           href: `/docs/components/dock`,
           items: [],

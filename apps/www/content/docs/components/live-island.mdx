@@ -1,0 +1,117 @@
+---
+title: Live Island
+date: 2026-11-04
+description: A live pill that opens into one notification at a time, like a payment or a deploy, without moving the layout around it.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="live-island-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/live-island
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="live-island" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { LiveIsland } from "@/components/ui/live-island"
+```
+
+```tsx showLineNumbers
+<LiveIsland />
+```
+
+Pass your own updates. `onUpdateOpen` tells you which one is showing, so nearby UI can follow it.
+
+```tsx showLineNumbers
+const updates = [
+  {
+    title: "New order",
+    description: "Maya Chen · canvas tote · $58",
+    time: "now",
+  },
+  {
+    title: "Refund issued",
+    description: "Eli Woods · ceramic cup · $32",
+    time: "4m ago",
+  },
+]
+
+<LiveIsland
+  label="Orders"
+  updates={updates}
+  onUpdateOpen={(index) => setActiveOrder(index)}
+/>
+```
+
+It reserves its open size from the first render, so the layout never shifts. A font-size class such as `text-sm` scales the whole island.
+
+Press the island to hold the current update open, and press again to resume. With reduced motion it shows one update at a time, and each press shows the next one.
+
+## Props
+
+| Prop           | Type                                                | Default        | Description                                                       |
+| -------------- | --------------------------------------------------- | -------------- | ----------------------------------------------------------------- |
+| `updates`      | `LiveIslandUpdate[]`                                | Sample updates | Updates shown one at a time, in order                             |
+| `label`        | `string`                                            | `"Live"`       | Text on the resting pill                                          |
+| `duration`     | `number`                                            | `0.6`          | Seconds the pill takes to open                                    |
+| `repeatDelay`  | `number`                                            | `2.5`          | Seconds each update stays open before the next one                |
+| `color`        | `string`                                            | `"#00C9A7"`    | Live dot and icon squares without their own color. Sets `--color` |
+| `onUpdateOpen` | `(index: number, update: LiveIslandUpdate) => void` | `-`            | Called each time an update opens                                  |
+
+### LiveIslandUpdate
+
+```tsx showLineNumbers
+interface LiveIslandUpdate {
+  title: string
+  description?: string // one line
+  time?: string // shown muted after the title, such as "2m ago"
+  icon?: ReactNode // an inline SVG, sized for you
+  color?: string // tint of the icon square
+}
+```
+
+## Examples
+
+### Custom Updates
+
+<ComponentPreview name="live-island-demo-2" />
+
+### Compact
+
+<ComponentPreview name="live-island-demo-3" />
