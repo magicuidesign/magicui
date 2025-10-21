@@ -210,12 +210,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Live Island",
-          href: `/docs/components/live-island`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Dock",
           href: `/docs/components/dock`,
           items: [],
@@ -276,6 +270,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dotted Map",
           href: `/docs/components/dotted-map`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Live Island",
+          href: `/docs/components/live-island`,
           items: [],
           label: "New",
         },
