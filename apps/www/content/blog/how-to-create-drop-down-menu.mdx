@@ -151,27 +151,48 @@ In the React world, we don't manually toggle CSS classes to show or hide element
 
 The `useState` hook is your best friend for this. You can declare a piece of state, let's call it `isOpen`, and a function to update it, `setIsOpen`. It's a clean, declarative way to manage the dropdown's visibility.
 
+```jsx
 import React, { useState } from "react"
 
 function Dropdown() {
-const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-return (
-
-<div className="relative">
-<button onClick={() => setIsOpen(!isOpen)}>
-Options
-</button>
-{isOpen && (
-<ul className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-<li><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a></li>
-<li><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a></li>
-<li><a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a></li>
-</ul>
-)}
-</div>
-);
+  return (
+    <div className="relative">
+      <button onClick={() => setIsOpen(!isOpen)}>Options</button>
+      {isOpen && (
+        <ul className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white py-1 shadow-lg">
+          <li>
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Profile
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Settings
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Logout
+            </a>
+          </li>
+        </ul>
+      )}
+    </div>
+  )
 }
+```
+
 Notice how the `<ul>` element is only rendered if `isOpen` is `true`. Clicking the button simply flips that boolean value. Simple, right? If you're building out more complex navigation, this component-based approach is key. You can see more examples in our guide to building a [React JS navbar](https://magicui.design/blog/react-js-navbar).
 
 > **Pro Tip:** A crucial bit of UX is making the menu disappear when a user clicks anywhere else on the page. You can handle this gracefully by creating a custom hook that listens for click events on the `document` and checks if the target is outside your dropdown component.
