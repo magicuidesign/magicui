@@ -4,8 +4,7 @@
   "title": "Live Island Demo",
   "description": "A live pill cycling through a payment, a signup and a deploy.",
   "registryDependencies": [
-    "@magicui/live-island",
-    "@magicui/live-island-pass"
+    "@magicui/live-island"
   ],
   "files": [
     {

@@ -4,8 +4,7 @@
   "title": "Live Island Compact Demo",
   "description": "A smaller inbox island, scaled with a font-size class.",
   "registryDependencies": [
-    "@magicui/live-island",
-    "@magicui/live-island-pass"
+    "@magicui/live-island"
   ],
   "files": [
     {

@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "live-island-demo",
     description: "A live pill cycling through a payment, a signup and a deploy.",
     type: "registry:example",
-    registryDependencies: ["@magicui/live-island","@magicui/live-island-pass"],
+    registryDependencies: ["@magicui/live-island"],
     files: [{
       path: "registry/example/live-island-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "live-island-demo-2",
     description: "Store orders, refunds and reviews with one accent color.",
     type: "registry:example",
-    registryDependencies: ["@magicui/live-island","@magicui/live-island-pass"],
+    registryDependencies: ["@magicui/live-island"],
     files: [{
       path: "registry/example/live-island-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "live-island-demo-3",
     description: "A smaller inbox island, scaled with a font-size class.",
     type: "registry:example",
-    registryDependencies: ["@magicui/live-island","@magicui/live-island-pass"],
+    registryDependencies: ["@magicui/live-island"],
     files: [{
       path: "registry/example/live-island-demo-3.tsx",
       type: "registry:example",

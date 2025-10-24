@@ -1409,8 +1409,7 @@
       "title": "Live Island Demo",
       "description": "A live pill cycling through a payment, a signup and a deploy.",
       "registryDependencies": [
-        "@magicui/live-island",
-        "@magicui/live-island-pass"
+        "@magicui/live-island"
       ],
       "files": [
         {
@@ -1425,8 +1424,7 @@
       "title": "Live Island Custom Updates Demo",
       "description": "Store orders, refunds and reviews with one accent color.",
       "registryDependencies": [
-        "@magicui/live-island",
-        "@magicui/live-island-pass"
+        "@magicui/live-island"
       ],
       "files": [
         {
@@ -1441,8 +1439,7 @@
       "title": "Live Island Compact Demo",
       "description": "A smaller inbox island, scaled with a font-size class.",
       "registryDependencies": [
-        "@magicui/live-island",
-        "@magicui/live-island-pass"
+        "@magicui/live-island"
       ],
       "files": [
         {
