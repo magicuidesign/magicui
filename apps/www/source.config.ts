@@ -64,6 +64,7 @@ export const showcase = defineDocs({
       affiliation: z.string().optional(),
       featured: z.boolean().optional().default(false),
       image: z.string().optional(),
+      href: z.string().optional(),
     }),
   },
 })
