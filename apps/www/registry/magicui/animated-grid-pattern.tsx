@@ -8,9 +8,7 @@ import {
   useRef,
   useState,
 } from "react"
-
 // Use native SVG <animate> for per-rect opacity animation (lighter than framer-motion)
-
 import { cn } from "@/lib/utils"
 
 export interface AnimatedGridPatternProps
@@ -79,7 +77,7 @@ export function AnimatedGridPattern({
     const node = containerRef.current
     if (node) resizeObserver.observe(node)
     return () => {
-      // Disconnect the observer to fully release resources and avoid stale references
+      // Fully disconnect to release all observers and avoid stale refs
       resizeObserver.disconnect()
     }
   }, [])
@@ -118,7 +116,7 @@ export function AnimatedGridPattern({
       <g transform={`translate(${x}, ${y})`}>
         {squares.map(({ pos: [px, py] }, index) => (
           <rect
-            key={index}
+            key={`${px}-${py}-${index}`}
             width={width - 1}
             height={height - 1}
             x={px * width + 1}
@@ -127,9 +125,6 @@ export function AnimatedGridPattern({
             strokeWidth="0"
             opacity={0}
           >
-            {/* Use native SVG animation for opacity. This is much lighter than
-                mounting many JS-driven animation nodes (framer-motion) and
-                keeps animation on the compositor where possible. */}
             <animate
               attributeName="opacity"
               values={`0;${maxOpacity};0`}
