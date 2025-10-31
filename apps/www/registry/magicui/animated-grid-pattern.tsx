@@ -2,12 +2,14 @@
 
 import {
   ComponentPropsWithoutRef,
+  useCallback,
   useEffect,
   useId,
   useRef,
   useState,
 } from "react"
-import { motion } from "motion/react"
+
+// Use native SVG <animate> for per-rect opacity animation (lighter than framer-motion)
 
 import { cn } from "@/lib/utils"
 
@@ -37,47 +39,33 @@ export function AnimatedGridPattern({
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId()
-  const containerRef = useRef(null)
+  const containerRef = useRef<SVGSVGElement | null>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [squares, setSquares] = useState(() => generateSquares(numSquares))
 
-  function getPos() {
+  const getPos = useCallback(() => {
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
     ]
-  }
+  }, [dimensions, width, height])
 
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }))
-  }
+  const generateSquares = useCallback(
+    (count: number) =>
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        pos: getPos(),
+      })),
+    [getPos]
+  )
 
-  // Function to update a single square's position
-  const updateSquarePosition = (id: number) => {
-    setSquares((currentSquares) =>
-      currentSquares.map((sq) =>
-        sq.id === id
-          ? {
-              ...sq,
-              pos: getPos(),
-            }
-          : sq
-      )
-    )
-  }
+  const [squares, setSquares] = useState(() => generateSquares(numSquares))
 
-  // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares))
     }
   }, [dimensions, numSquares, generateSquares])
 
-  // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -88,16 +76,13 @@ export function AnimatedGridPattern({
       }
     })
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current)
-    }
-
+    const node = containerRef.current
+    if (node) resizeObserver.observe(node)
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current)
-      }
+      // Disconnect the observer to fully release resources and avoid stale references
+      resizeObserver.disconnect()
     }
-  }, [containerRef])
+  }, [])
 
   return (
     <svg
@@ -125,29 +110,36 @@ export function AnimatedGridPattern({
           />
         </pattern>
       </defs>
+
+      {/* background grid */}
       <rect width="100%" height="100%" fill={`url(#${id})`} />
-      <svg x={x} y={y} className="overflow-visible">
-        {squares.map(({ pos: [x, y], id }, index) => (
-          <motion.rect
-            initial={{ opacity: 0 }}
-            animate={{ opacity: maxOpacity }}
-            transition={{
-              duration,
-              repeat: 1,
-              delay: index * 0.1,
-              repeatType: "reverse",
-            }}
-            onAnimationComplete={() => updateSquarePosition(id)}
-            key={`${x}-${y}-${index}`}
+
+      {/* animated squares */}
+      <g transform={`translate(${x}, ${y})`}>
+        {squares.map(({ pos: [px, py] }, index) => (
+          <rect
+            key={index}
             width={width - 1}
             height={height - 1}
-            x={x * width + 1}
-            y={y * height + 1}
+            x={px * width + 1}
+            y={py * height + 1}
             fill="currentColor"
             strokeWidth="0"
-          />
+            opacity={0}
+          >
+            {/* Use native SVG animation for opacity. This is much lighter than
+                mounting many JS-driven animation nodes (framer-motion) and
+                keeps animation on the compositor where possible. */}
+            <animate
+              attributeName="opacity"
+              values={`0;${maxOpacity};0`}
+              dur={`${duration}s`}
+              begin={`${(index * 0.1).toFixed(2)}s`}
+              repeatCount="indefinite"
+            />
+          </rect>
         ))}
-      </svg>
+      </g>
     </svg>
   )
 }
