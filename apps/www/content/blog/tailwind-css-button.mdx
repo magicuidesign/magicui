@@ -222,6 +222,7 @@ const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus
 
 // The final className will be built conditionally
 return (
+
 <button className={...} {...props}>
 {children}
 </button>
@@ -264,11 +265,11 @@ clsx(baseClasses, variantClasses[variant], sizeClasses[size], className)
 );
 
 return (
+
 <button className={finalClasses} {...props}>
-{children}
+  {children}
 </button>
-);
-}
+); }
 
 And there you have it. This reusable `Button` component is now the foundation for a scalable, maintainable UI system. You can call it anywhere in your app, pass a few props, and get a perfectly styled, consistent button every time.
 
