@@ -17,9 +17,9 @@ import { motion, useInView, useReducedMotion, useSpring } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample23 } from "./peek-list-pass"
+import { passSample24 } from "./peek-list-pass"
 
-void passSample23(0)
+void passSample24(0)
 export interface PeekListItem {
   /** Unique, stable key shared by the row and its preview. */
   id: string
