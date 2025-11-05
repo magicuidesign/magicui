@@ -58,6 +58,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Number Ticker](https://magicui.design/docs/components/number-ticker): Animate numbers to count up or down to a target number
 - [Orbiting Circles](https://magicui.design/docs/components/orbiting-circles): A collection of circles which move in orbit along a circular path
 - [Particles](https://magicui.design/docs/components/particles): Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
+- [Peek List](https://magicui.design/docs/components/peek-list): A large typographic list with one floating card that opens beside the pointer and glides between rows.
 - [Pixel Image](https://magicui.design/docs/components/pixel-image): A component that displays an image with a pixelated effect, creating a retro aesthetic.
 - [Pointer](https://magicui.design/docs/components/pointer): A component that displays a pointer when hovering over an element
 - [Progressive Blur](https://magicui.design/docs/components/progressive-blur): The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Peek List Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/peek-list-demo.tsx): Example usage
+- [Peek List Integrations](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/peek-list-demo-2.tsx): Example usage
+- [Peek List Narrow Container](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/peek-list-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage

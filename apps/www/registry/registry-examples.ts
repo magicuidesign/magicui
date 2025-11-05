@@ -2,6 +2,48 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "peek-list-demo",
+    type: "registry:example",
+    title: "Peek List Demo",
+    description:
+      "Customer stories from fictional companies, each with a result and a quote in the card.",
+    registryDependencies: ["@magicui/peek-list"],
+    files: [
+      {
+        path: "example/peek-list-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "peek-list-demo-2",
+    type: "registry:example",
+    title: "Peek List Integrations",
+    description:
+      "Integrations with brand marks and a small product view for each tool.",
+    registryDependencies: ["@magicui/peek-list"],
+    files: [
+      {
+        path: "example/peek-list-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "peek-list-demo-3",
+    type: "registry:example",
+    title: "Peek List Narrow Container",
+    description:
+      "Linked field notes in a narrow column, where the card becomes a static panel above the list.",
+    registryDependencies: ["@magicui/peek-list"],
+    files: [
+      {
+        path: "example/peek-list-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
