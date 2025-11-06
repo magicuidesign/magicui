@@ -183,12 +183,6 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "Peek List",
-          href: `/docs/components/peek-list`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],
@@ -276,6 +270,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dotted Map",
           href: `/docs/components/dotted-map`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Peek List",
+          href: `/docs/components/peek-list`,
           items: [],
           label: "New",
         },
