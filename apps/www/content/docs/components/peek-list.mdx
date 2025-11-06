@@ -1,0 +1,115 @@
+---
+title: Peek List
+date: 2026-11-04
+description: A large typographic list with one floating card that opens beside the pointer and glides between rows.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="peek-list-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/peek-list
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="peek-list" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { PeekList, type PeekListItem } from "@/components/ui/peek-list"
+```
+
+```tsx showLineNumbers
+const items: PeekListItem[] = [
+  {
+    id: "northwind",
+    title: "Northwind Freight",
+    meta: "Logistics",
+    href: "/customers/northwind",
+    preview: (
+      <div className="flex h-full flex-col justify-end p-5">
+        <p className="text-5xl font-medium tracking-tight">41%</p>
+        <p className="text-muted-foreground mt-2 text-sm">
+          faster freight quotes
+        </p>
+      </div>
+    ),
+  },
+  // ...
+]
+
+export function CustomerStories() {
+  return <PeekList items={items} />
+}
+```
+
+From a `36rem` container with a mouse or trackpad, the card floats over the
+list and follows the pointer. In a narrower container or on touch, it is a
+static panel above the list. The card is a container, so previews can size
+themselves with `@xs:` and `@sm:` variants. PeekList takes its width from its
+parent, so give it a width inside a flex row or an inline context. Previews are
+hidden from assistive technology, so keep anything essential in `title` or
+`meta`.
+
+## Props
+
+### PeekList
+
+| Prop       | Type             | Default | Description                                                                                                                         |
+| ---------- | ---------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `items`    | `PeekListItem[]` | `-`     | The rows and their previews, in order. Shows three sample rows when omitted.                                                        |
+| `size`     | `number`         | `340`   | Width of the floating card in pixels, capped at half of the component's width.                                                      |
+| `duration` | `number`         | `0.35`  | Seconds for the card to glide to the pointer or a row. The picture swap and the title step follow it.                               |
+| `intro`    | `boolean`        | `true`  | Walk the card through two rows once when the list first comes into view, on devices with a fine pointer and without reduced motion. |
+
+### PeekListItem
+
+| Prop       | Type         | Default | Description                                           |
+| ---------- | ------------ | ------- | ----------------------------------------------------- |
+| `id`       | `string`     | `-`     | Unique, stable key shared by the row and its preview. |
+| `title`    | `ReactNode`  | `-`     | The row's large title.                                |
+| `preview`  | `ReactNode`  | `-`     | Fills the card; hidden from assistive technology.     |
+| `meta`     | `ReactNode`  | `-`     | Short label on the right of the row.                  |
+| `href`     | `string`     | `-`     | Renders the row as a link instead of a button.        |
+| `onSelect` | `() => void` | `-`     | Called when the row is activated.                     |
+
+## Examples
+
+### Integrations
+
+<ComponentPreview name="peek-list-demo-2" />
+
+### Narrow Container
+
+<ComponentPreview name="peek-list-demo-3" />
