@@ -1409,8 +1409,7 @@
       "title": "Peek List Demo",
       "description": "Customer stories from fictional companies, each with a result and a quote in the card.",
       "registryDependencies": [
-        "@magicui/peek-list",
-        "@magicui/peek-list-pass"
+        "@magicui/peek-list"
       ],
       "files": [
         {
@@ -1425,8 +1424,7 @@
       "title": "Peek List Integrations",
       "description": "Integrations with brand marks and a small product view for each tool.",
       "registryDependencies": [
-        "@magicui/peek-list",
-        "@magicui/peek-list-pass"
+        "@magicui/peek-list"
       ],
       "files": [
         {
@@ -1441,8 +1439,7 @@
       "title": "Peek List Narrow Container",
       "description": "Linked field notes in a narrow column, where the card becomes a static panel above the list.",
       "registryDependencies": [
-        "@magicui/peek-list",
-        "@magicui/peek-list-pass"
+        "@magicui/peek-list"
       ],
       "files": [
         {

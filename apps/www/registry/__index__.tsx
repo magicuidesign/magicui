@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "peek-list-demo",
     description: "Customer stories from fictional companies, each with a result and a quote in the card.",
     type: "registry:example",
-    registryDependencies: ["@magicui/peek-list","@magicui/peek-list-pass"],
+    registryDependencies: ["@magicui/peek-list"],
     files: [{
       path: "registry/example/peek-list-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "peek-list-demo-2",
     description: "Integrations with brand marks and a small product view for each tool.",
     type: "registry:example",
-    registryDependencies: ["@magicui/peek-list","@magicui/peek-list-pass"],
+    registryDependencies: ["@magicui/peek-list"],
     files: [{
       path: "registry/example/peek-list-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "peek-list-demo-3",
     description: "Linked field notes in a narrow column, where the card becomes a static panel above the list.",
     type: "registry:example",
-    registryDependencies: ["@magicui/peek-list","@magicui/peek-list-pass"],
+    registryDependencies: ["@magicui/peek-list"],
     files: [{
       path: "registry/example/peek-list-demo-3.tsx",
       type: "registry:example",

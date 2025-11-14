@@ -4,8 +4,7 @@
   "title": "Peek List Integrations",
   "description": "Integrations with brand marks and a small product view for each tool.",
   "registryDependencies": [
-    "@magicui/peek-list",
-    "@magicui/peek-list-pass"
+    "@magicui/peek-list"
   ],
   "files": [
     {

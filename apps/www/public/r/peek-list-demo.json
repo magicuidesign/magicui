@@ -4,8 +4,7 @@
   "title": "Peek List Demo",
   "description": "Customer stories from fictional companies, each with a result and a quote in the card.",
   "registryDependencies": [
-    "@magicui/peek-list",
-    "@magicui/peek-list-pass"
+    "@magicui/peek-list"
   ],
   "files": [
     {
