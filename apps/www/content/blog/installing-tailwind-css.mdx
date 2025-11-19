@@ -100,10 +100,7 @@ Open up your `tailwind.config.js` file and find the `content` array. You need to
 ```js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
+  content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
   theme: {
     extend: {},
   },
@@ -180,10 +177,7 @@ The real key is modifying your `tailwind.config.js`. You need to point the `cont
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
@@ -208,9 +202,9 @@ The only significant difference is the `content` path in `tailwind.config.js`. Y
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},
@@ -263,12 +257,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brand-primary': '#0A74DA',
-        'brand-secondary': '#F6C90E',
+        "brand-primary": "#0A74DA",
+        "brand-secondary": "#F6C90E",
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
-        'display': ['Poppins', 'sans-serif'],
+        sans: ["Inter", "sans-serif"],
+        display: ["Poppins", "sans-serif"],
       },
     },
   },
@@ -296,9 +290,7 @@ Then, just require it inside the `plugins` array in your config file.
 // tailwind.config.js
 module.exports = {
   // ...
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 }
 ```
 

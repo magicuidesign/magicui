@@ -87,7 +87,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#3490dc',
+        primary: "#3490dc",
       },
     },
   },
@@ -130,8 +130,8 @@ To bring in custom fonts, you can drop a standard `@font-face` rule into your ma
 ```css
 /* In your main CSS file */
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
@@ -147,8 +147,8 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xs': '480px',
-        '3xl': '1920px',
+        xs: "480px",
+        "3xl": "1920px",
       },
     },
   },
@@ -165,8 +165,8 @@ The `theme()` function is your bridge between your config file and your custom C
 
 ```css
 .custom-component {
-  background-color: theme('colors.primary');
-  padding: theme('spacing.4');
+  background-color: theme("colors.primary");
+  padding: theme("spacing.4");
 }
 ```
 
@@ -203,10 +203,7 @@ module.exports = {
   theme: {
     // ...
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 }
 ```
 

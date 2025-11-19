@@ -177,15 +177,15 @@ A typical setup for a Next.js project, for example, might look like this:
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-};
+}
 ```
 
 Keeping these paths clean and accurate is a simple but incredibly powerful way to guarantee a lean, optimized build every time.
@@ -249,30 +249,38 @@ Here’s the finished `Button` component, fully equipped to handle variants and 
 import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-function Button({ children, variant = 'primary', size = 'md', className, ...props }) {
+function Button({
+  children,
+  variant = "primary",
+  size = "md",
+  className,
+  ...props
+}) {
   const baseClasses =
-    'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors';
+    "font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors"
 
   const variantClasses = {
-    primary: 'bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500',
-    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500',
-  };
+    primary:
+      "bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500",
+    secondary:
+      "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500",
+  }
 
   const sizeClasses = {
-    sm: 'py-1 px-3 text-sm',
-    md: 'py-2 px-4 text-base',
-    lg: 'py-3 px-6 text-lg',
-  };
+    sm: "py-1 px-3 text-sm",
+    md: "py-2 px-4 text-base",
+    lg: "py-3 px-6 text-lg",
+  }
 
   const finalClasses = twMerge(
     clsx(baseClasses, variantClasses[variant], sizeClasses[size], className)
-  );
+  )
 
   return (
     <button className={finalClasses} {...props}>
       {children}
     </button>
-  );
+  )
 }
 ```
 
