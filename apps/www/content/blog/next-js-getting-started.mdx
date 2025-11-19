@@ -140,8 +140,8 @@ Let's get our hands dirty and build out two pages every website needs: a homepag
 
 And that's literally all it takes. You've just created the `/about` route. Now, let's drop some basic React code into `app/about/page.tsx` so it actually displays something.
 
-// app/about/page.tsx
 ```tsx
+// app/about/page.tsx
 export default function AboutPage() {
   return (
       <main className="p-24">
@@ -164,6 +164,7 @@ To connect your homepage to the about page, you'll import `Link` from `next/link
 
 Here’s a quick example of how you could add a link to your `app/page.tsx`:
 
+````tsx
 // app/page.tsx
 import Link from 'next/link';
 
@@ -179,6 +180,7 @@ export default function HomePage() {
     </main>
   )
 }
+```
 
 The `href` prop tells the `<Link>` component where to go. When a user clicks it, Next.js fetches what it needs in the background and swaps out the view without that classic white flash of a page refresh.
 
