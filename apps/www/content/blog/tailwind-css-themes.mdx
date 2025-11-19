@@ -81,17 +81,19 @@ So where does the real magic happen? It's when Tailwind takes these definitions 
 
 Let's say we want to add a custom primary color to our configuration:
 
+```js
 // tailwind.config.js
 module.exports = {
-theme: {
-extend: {
-colors: {
-primary: '#3490dc',
-},
-},
-},
-plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3490dc',
+      },
+    },
+  },
+  plugins: [],
 }
+```
 
 With just that simple addition, you've unlocked a whole set of brand-new utilities. You can now jump into your HTML and use classes like `bg-primary`, `text-primary`, and `border-primary`. This direct link between your config and your code is what makes Tailwind so incredibly powerful for theming. It ensures you’re always pulling from approved brand colors, which means no more guesswork or random one-off hex codes.
 
@@ -125,29 +127,33 @@ A polished theme almost always needs custom typography and a sophisticated appro
 
 To bring in custom fonts, you can drop a standard `@font-face` rule into your main CSS file and then give it a name in your `tailwind.config.js`.
 
-/_ In your main CSS file _/
+```css
+/* In your main CSS file */
 @font-face {
-font-family: 'Inter';
-src: url('/fonts/Inter-Regular.woff2') format('woff2');
-font-weight: 400;
-font-style: normal;
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
+```
 
 From there, you just wire it up in your theme configuration to make it available as a utility class, like `font-display`. This keeps your typography consistent and lets you apply it with the same utility-first workflow you use for everything else.
 
 In the same way, you can define more specific responsive breakpoints for trickier layouts. While Tailwind's defaults are a great starting point, your design might need to target some non-standard screen sizes.
 
+```js
 // tailwind.config.js
 module.exports = {
-theme: {
-extend: {
-screens: {
-'xs': '480px',
-'3xl': '1920px',
-},
-},
-},
+  theme: {
+    extend: {
+      screens: {
+        'xs': '480px',
+        '3xl': '1920px',
+      },
+    },
+  },
 }
+```
 
 Just like that, you’ve created new `xs:` and `3xl:` prefixes, giving you much finer control over how your layout snaps into place across a wider range of devices.
 
@@ -157,10 +163,12 @@ Sometimes you need a little escape hatch. Maybe you need to access your design t
 
 The `theme()` function is your bridge between your config file and your custom CSS. It lets you pull any design token from `tailwind.config.js` right into a CSS rule. It's perfect for styling complex components that need a bit more than just utility classes.
 
+```css
 .custom-component {
-background-color: theme('colors.primary');
-padding: theme('spacing.4');
+  background-color: theme('colors.primary');
+  padding: theme('spacing.4');
 }
+```
 
 This ensures that even your custom CSS stays perfectly in sync with your design system.
 
@@ -189,16 +197,18 @@ Two of the most indispensable official plugins are:
 
 Getting them set up is a breeze. First, pull the package in with npm, then simply register it in the `plugins` array of your `tailwind.config.js` file.
 
+```js
 // tailwind.config.js
 module.exports = {
-theme: {
-// ...
-},
-plugins: [
-require('@tailwindcss/typography'),
-require('@tailwindcss/forms'),
-],
+  theme: {
+    // ...
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+  ],
 }
+```
 
 Just like that, you’ve unlocked powerful new features that feel like a natural part of your theme.
 

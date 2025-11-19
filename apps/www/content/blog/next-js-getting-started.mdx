@@ -141,14 +141,16 @@ Let's get our hands dirty and build out two pages every website needs: a homepag
 And that's literally all it takes. You've just created the `/about` route. Now, let's drop some basic React code into `app/about/page.tsx` so it actually displays something.
 
 // app/about/page.tsx
+```tsx
 export default function AboutPage() {
-return (
-
-<main className="p-24">
-  <h1 className="text-4xl font-bold">About Us</h1>
-  <p className="mt-4">This is the about page for our first Next.js app!</p>
-</main>
-); }
+  return (
+      <main className="p-24">
+        <h1 className="text-4xl font-bold">About Us</h1>
+        <p className="mt-4">This is the about page for our first Next.js app!</p>
+      </main>
+    );
+}
+```
 
 With that code in place, Next.js handles the rest. Fire up your browser and navigate to `localhost:3000/about`, and you'll see your new component rendered on the screen.
 
@@ -211,33 +213,35 @@ One of the coolest things about Server Components is the ability to just drop `a
 
 Let's look at a practical example. Say you want to pull in a list of products from a public REST API and display them on a page. Here’s how you could fetch and render that data right inside a page component.
 
+```tsx
 // app/products/page.tsx
 async function getProducts() {
-const res = await fetch('https://dummyjson.com/products');
-if (!res.ok) {
-// This will activate the closest `error.js` Error Boundary
-throw new Error('Failed to fetch data');
-}
-return res.json();
+  const res = await fetch('https://dummyjson.com/products');
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
 }
 
 export default async function ProductsPage() {
   const data = await getProducts();
 
-return (
-
-<main className="p-24">
-  <h1 className="mb-8 text-4xl font-bold">Our Products</h1>
-  <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-    {data.products.map((product) => (
-      <div key={product.id} className="rounded-lg border p-4">
-        <h2 className="text-xl font-semibold">{product.title}</h2>
-        <p className="mt-2 text-gray-600">{product.description}</p>
+  return (
+    <main className="p-24">
+      <h1 className="mb-8 text-4xl font-bold">Our Products</h1>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {{"{"}}data.products.map((product) => (
+          <div key={product.id} className="rounded-lg border p-4">
+            <h2 className="text-xl font-semibold">{{"{"}}product.title{{"}"}}</h2>
+            <p className="mt-2 text-gray-600">{{"{"}}product.description{{"}"}}</p>
+          </div>
+        )){{"}"}}
       </div>
-    ))}
-  </div>
-</main>
-); }
+    </main>
+  );
+}
+```
 
 Did you catch it? `ProductsPage` is an `async` function. That one keyword lets you `await` the `getProducts()` call right before returning your JSX. It’s an incredibly clean and direct way to handle what used to be a much more complicated task.
 

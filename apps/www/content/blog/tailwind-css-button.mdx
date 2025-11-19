@@ -173,18 +173,21 @@ By giving it precise paths to your template files, you make sure the compiler sc
 
 A typical setup for a Next.js project, for example, might look like this:
 
-/** @type {import('tailwindcss').Config} \*/
+```js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-content: [
-'./src/pages/**/_.{js,ts,jsx,tsx,mdx}',
-'./src/components/\*\*/_.{js,ts,jsx,tsx,mdx}',
-'./src/app/\*_/_.{js,ts,jsx,tsx,mdx}',
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };
+```
+
 Keeping these paths clean and accurate is a simple but incredibly powerful way to guarantee a lean, optimized build every time.
 
 ### The HTML vs. CSS Performance Question
@@ -215,19 +218,18 @@ We'll set up our component to accept props for `variant` (like `primary` or `sec
 
 Here’s the basic skeleton:
 
+```jsx
 // A basic structure for a reusable Button component
 function Button({ children, variant = 'primary', size = 'md', ...props }) {
-// We'll add class logic here
-const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2';
-
+// We'll add class logic here const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2';
 // The final className will be built conditionally
-return (
-
-<button className={...} {...props}>
-{children}
-</button>
-);
+  return (
+    <button className={...} {...props}>
+      {children}
+    </button>
+  );
 }
+```
 
 This is our starting point. We've got a set of base styles that apply to _every_ button. Now, we just need a clean way to manage the classes that change based on the `variant` and `size` props we pass in.
 
@@ -243,33 +245,36 @@ Let’s bring these tools together to flesh out our component's logic.
 
 Here’s the finished `Button` component, fully equipped to handle variants and sizes gracefully. If you're looking for more real-world examples, exploring a high-quality **[Tailwind CSS component library](https://magicui.design/blog/tailwind-css-component-library)** can show you just how powerful this pattern is.
 
+```tsx
 import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 function Button({ children, variant = 'primary', size = 'md', className, ...props }) {
-const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors';
+  const baseClasses =
+    'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors';
 
-const variantClasses = {
-primary: 'bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500',
-secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500',
-};
+  const variantClasses = {
+    primary: 'bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500',
+    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500',
+  };
 
-const sizeClasses = {
-sm: 'py-1 px-3 text-sm',
-md: 'py-2 px-4 text-base',
-lg: 'py-3 px-6 text-lg',
-};
+  const sizeClasses = {
+    sm: 'py-1 px-3 text-sm',
+    md: 'py-2 px-4 text-base',
+    lg: 'py-3 px-6 text-lg',
+  };
 
-const finalClasses = twMerge(
-clsx(baseClasses, variantClasses[variant], sizeClasses[size], className)
-);
+  const finalClasses = twMerge(
+    clsx(baseClasses, variantClasses[variant], sizeClasses[size], className)
+  );
 
-return (
-
-<button className={finalClasses} {...props}>
-  {children}
-</button>
-); }
+  return (
+    <button className={finalClasses} {...props}>
+      {children}
+    </button>
+  );
+}
+```
 
 And there you have it. This reusable `Button` component is now the foundation for a scalable, maintainable UI system. You can call it anywhere in your app, pass a few props, and get a perfectly styled, consistent button every time.
 

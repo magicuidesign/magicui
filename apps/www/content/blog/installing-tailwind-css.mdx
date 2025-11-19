@@ -97,17 +97,19 @@ Alright, this next part is the most critical step of the entire process. Serious
 
 Open up your `tailwind.config.js` file and find the `content` array. You need to add paths to every single file that might contain a Tailwind class—HTML files, JavaScript components, you name it.
 
-/** @type {import('tailwindcss').Config} \*/
+```js
+/** @type {import('tailwindcss').Config} */
 export default {
-content: [
-'./public/**/_.html',
-'./src/\*\*/_.{js,jsx,ts,tsx,vue}',
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
+```
 
 This example uses "glob patterns" to find any `.html` files in the `public` folder and a variety of component files inside `src`. Make sure you adjust these paths to match your project's actual folder structure.
 
@@ -174,18 +176,20 @@ npx tailwindcss init -p
 
 The real key is modifying your `tailwind.config.js`. You need to point the `content` array to your **JSX** and **TSX** files so Tailwind’s JIT compiler knows where to look for utility classes.
 
+```js
 // tailwind.config.js
-/** @type {import('tailwindcss').Config} \*/
+/** @type {import('tailwindcss').Config} */
 export default {
-content: [
-"./index.html",
-"./src/**/\*.{js,ts,jsx,tsx}",
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
+```
 
 Lastly, create a main CSS file (something like `src/index.css`) and drop in the three core Tailwind directives. Just make sure to import this CSS file at the very top of your main entry point, which is usually `src/main.jsx`.
 
@@ -199,19 +203,21 @@ But if you're adding Tailwind to an _existing_ Next.js project, the process is n
 
 The only significant difference is the `content` path in `tailwind.config.js`. You’ll want to configure it to scan the `pages`, `components`, and `app` directories commonly found in Next.js apps.
 
+```js
 // tailwind.config.js
-/** @type {import('tailwindcss').Config} \*/
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-content: [
-'./pages/**/_.{js,ts,jsx,tsx,mdx}',
-'./components/\*\*/_.{js,ts,jsx,tsx,mdx}',
-'./app/\*_/_.{js,ts,jsx,tsx,mdx}',
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
+```
 
 Once that's configured, just add the `@tailwind` directives to your `globals.css` file and make sure it’s imported in your `_app.js` or `layout.js` file.
 
@@ -251,22 +257,25 @@ You don't have to throw the baby out with the bathwater. The `theme.extend` obje
 
 For instance, here’s how you might add a couple of custom brand colors and a new display font:
 
+```js
 // tailwind.config.js
 module.exports = {
-theme: {
-extend: {
-colors: {
-'brand-primary': '#0A74DA',
-'brand-secondary': '#F6C90E',
-},
-fontFamily: {
-'sans': ['Inter', 'sans-serif'],
-'display': ['Poppins', 'sans-serif'],
-},
-},
-},
-plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        'brand-primary': '#0A74DA',
+        'brand-secondary': '#F6C90E',
+      },
+      fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
+        'display': ['Poppins', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
 }
+```
+
 Just like that, you can start using classes like `bg-brand-primary` or `font-display` right in your markup. This is how you enforce consistency and stick to your design specs, which is a huge step up from a basic installation.
 
 > The ability to extend the theme is what makes Tailwind so scalable. You can start with the defaults for rapid prototyping and then gradually introduce custom tokens as your design system matures, all without breaking your existing work.
@@ -283,13 +292,15 @@ First, you'll need to install the package:
 
 Then, just require it inside the `plugins` array in your config file.
 
+```js
 // tailwind.config.js
 module.exports = {
-// ...
-plugins: [
-require('@tailwindcss/typography'),
-],
+  // ...
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
+```
 
 Now, just by adding a single `prose` className to any container of raw HTML, it will be beautifully styled from top to bottom. This modular approach is great because it keeps your main configuration file clean and makes it simple to add or remove features as your project's needs change.
 
