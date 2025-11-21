@@ -13,9 +13,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample13 } from "./cursor-lean-pass"
+import { passSample14 } from "./cursor-lean-pass"
 
-void passSample13(0)
+void passSample14(0)
 export interface CursorLeanProps extends React.ComponentProps<"span"> {
   /** Sensing distance past each side in pixels. @default 56 */
   distance?: number
