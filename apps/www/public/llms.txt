@@ -35,6 +35,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Highlighter](https://magicui.design/docs/components/highlighter): A text highlighter that mimics the effect of a human-drawn marker stroke.
 - [Hyper Text](https://magicui.design/docs/components/hyper-text): A text animation that scrambles letters before revealing the final text.
 - [Icon Cloud](https://magicui.design/docs/components/icon-cloud): An interactive 3D tag cloud component
+- [Infinity Text](https://magicui.design/docs/components/infinity-text): A component with an infinitely scrolling text.
 - [Interactive Grid Pattern](https://magicui.design/docs/components/interactive-grid-pattern): A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [interactive-hover-button](https://magicui.design/docs/components/interactive-hover-button): The interactive-hover-button component.
 - [iPhone](https://magicui.design/docs/components/iphone): A mockup of the iPhone
@@ -214,6 +215,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage
+- [Infinity Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/infinity-text-demo.tsx): Example usage
 
 ## Optional
 
