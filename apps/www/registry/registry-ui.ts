@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "cursor-lean",
+    type: "registry:ui",
+    title: "Cursor Lean",
+    description:
+      "Draws a button or link toward a nearby cursor, with an optional text layer that travels further.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/cursor-lean.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",

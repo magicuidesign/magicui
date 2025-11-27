@@ -25,6 +25,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
+- [Cursor Lean](https://magicui.design/docs/components/cursor-lean): Draws a button or link toward a nearby cursor, with an optional text layer that travels further.
 - [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
 - [Dither Field](https://magicui.design/docs/components/dither-field): An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Cursor Lean Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/cursor-lean-demo.tsx): Example usage
+- [Cursor Lean Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/cursor-lean-demo-2.tsx): Example usage
+- [Cursor Lean Demo 3](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/cursor-lean-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage

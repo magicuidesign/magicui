@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-lean-demo-2",
+  "title": "Cursor Lean Demo 2",
+  "description": "Two adjacent calls to action that lean independently toward the cursor.",
+  "registryDependencies": [
+    "@magicui/cursor-lean",
+    "@magicui/cursor-lean-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/cursor-lean-demo-2.tsx",
+      "content": "import { CursorLean, CursorLeanLabel } from \"@/registry/magicui/cursor-lean\"\n\nexport function CursorLeanDemo2() {\n  return (\n    <section className=\"bg-background border-border text-foreground dark:bg-card w-full rounded-xl border px-6 py-16 text-center\">\n      <p className=\"text-muted-foreground text-xs font-medium tracking-widest uppercase\">\n        Make room for deep work\n      </p>\n      <h2 className=\"mt-4 text-3xl font-semibold tracking-tight text-balance\">\n        Less busywork.\n        <br />\n        More momentum.\n      </h2>\n      <p className=\"text-muted-foreground mx-auto mt-4 max-w-md text-sm leading-relaxed text-pretty\">\n        Bring your team&apos;s projects, decisions, and next steps into one calm\n        workspace with Tally.\n      </p>\n      <div className=\"mt-10 flex flex-wrap items-center justify-center gap-4\">\n        <CursorLean distance={120}>\n          <button\n            type=\"button\"\n            className=\"bg-foreground text-background focus-visible:outline-ring h-12 rounded-full border border-transparent px-6 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4\"\n          >\n            <CursorLeanLabel>Start your workspace</CursorLeanLabel>\n          </button>\n        </CursorLean>\n        <CursorLean distance={120}>\n          <button\n            type=\"button\"\n            className=\"border-border bg-background text-foreground focus-visible:outline-ring h-12 rounded-full border px-6 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4\"\n          >\n            <CursorLeanLabel>Book a walkthrough</CursorLeanLabel>\n          </button>\n        </CursorLean>\n      </div>\n      <p className=\"text-muted-foreground mt-8 text-xs\">\n        Free for teams of up to five. No credit card needed.\n      </p>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

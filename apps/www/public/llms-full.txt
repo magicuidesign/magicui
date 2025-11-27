@@ -6004,6 +6004,398 @@ export default function CoolModeCustom() {
 
 
 
+===== COMPONENT: cursor-lean =====
+Title: Cursor Lean
+Description: Draws a button or link toward a nearby cursor, with an optional text layer that travels further.
+
+--- file: magicui/cursor-lean.tsx ---
+"use client"
+
+import React from "react"
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+  type MotionValue,
+} from "motion/react"
+
+import { cn } from "@/lib/utils"
+
+import { passSample27 } from "./cursor-lean-pass"
+
+void passSample27(0)
+export interface CursorLeanProps extends React.ComponentProps<"span"> {
+  /** Sensing distance past each side in pixels. @default 56 */
+  distance?: number
+  /** Maximum body displacement in pixels. @default 9 */
+  offset?: number
+  /** Total label displacement as a multiple of the body. @default 1.4 */
+  depth?: number
+  /** Approach duration in seconds. @default 0.28 */
+  duration?: number
+  /** Spring bounce on release; approach never overshoots. @default 0.38 */
+  bounce?: number
+  /** Keep the same markup without movement. @default false */
+  isStatic?: boolean
+}
+
+const LabelContext = React.createContext<MotionValue<number>[] | null>(null)
+const pointerQuery = "(any-hover: hover) and (any-pointer: fine)"
+const controlSelector =
+  'button, a, input[type="button"], input[type="submit"], summary, [role="button"], [role="link"]'
+const unavailableSelector = ':disabled, [aria-disabled="true"], [inert]'
+
+export function CursorLean({
+  children,
+  className,
+  distance = 56,
+  offset = 9,
+  depth = 1.4,
+  duration = 0.28,
+  bounce = 0.38,
+  isStatic = false,
+  ref,
+  ...props
+}: CursorLeanProps) {
+  const root = React.useRef<HTMLSpanElement>(null)
+  React.useImperativeHandle(ref, () => root.current as HTMLSpanElement, [])
+  const preference = useReducedMotion()
+  const visible = useInView(root)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const strength = useMotionValue(0)
+  const labelX = useMotionValue(0)
+  const labelY = useMotionValue(0)
+  const values = React.useRef([x, y, strength, labelX, labelY]).current
+  const textX = useTransform(() => labelX.get() - x.get())
+  const textY = useTransform(() => labelY.get() - y.get())
+  const scale = useTransform(strength, [0, 1], [1, 1.02])
+  const config = React.useRef({ distance, offset, depth, duration, bounce })
+  const hasChildren = React.Children.toArray(children).some(Boolean)
+
+  React.useEffect(() => {
+    config.current = { distance, offset, depth, duration, bounce }
+  }, [distance, offset, depth, duration, bounce])
+
+  React.useEffect(() => {
+    const node = root.current
+    if (!node || !hasChildren || !visible || isStatic) return
+    const media = window.matchMedia(pointerQuery)
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const controller = new AbortController()
+    const options = { signal: controller.signal, capture: true, passive: true }
+    let bounds = node.getBoundingClientRect()
+    let active = false
+
+    const drive = (tx = 0, ty = 0, power = 0) => {
+      const settings = config.current
+      const targets = [tx, ty, power, tx * settings.depth, ty * settings.depth]
+      const time = Math.max(0.01, settings.duration) * (active ? 1 : 2.2)
+      const rebound = active ? 0 : settings.bounce
+      for (const [index, value] of values.entries()) {
+        const visualDuration = time * (!active && index > 2 ? 1.12 : 1)
+        const frequency = (2 * Math.PI) / (visualDuration * 1.2)
+        animate(value, targets.at(index) ?? 0, {
+          type: "spring",
+          visualDuration,
+          bounce: rebound,
+          stiffness: frequency ** 2,
+          damping: 2 * Math.max(0.05, 1 - rebound) * frequency,
+        })
+      }
+    }
+    const reset = () => {
+      active = false
+      for (const value of values) value.jump(0)
+    }
+    const release = () => {
+      if (!active) return
+      active = false
+      drive()
+    }
+    const refresh = () => {
+      release()
+      bounds = node.getBoundingClientRect()
+    }
+    const track = (event: PointerEvent) => {
+      if (event.pointerType === "touch" || reduced.matches) return reset()
+      const control = node.querySelector(controlSelector)
+      if (!control || control.closest(unavailableSelector)) return release()
+      if (control.matches(":focus-visible")) return reset()
+      if (event.buttons) return
+      const width = bounds.width / 2
+      const height = bounds.height / 2
+      const dx = event.clientX - bounds.left - width
+      const dy = event.clientY - bounds.top - height
+      const settings = config.current
+      const reach = Math.max(0, settings.distance)
+      const zone = Math.hypot(dx / (width + reach), dy / (height + reach))
+      if (!width || !height || zone >= 1) return release()
+      const box = Math.max(Math.abs(dx) / width, Math.abs(dy) / height)
+      const progress = (1 - zone) / (1 - zone / box)
+      const power = box <= 1 ? box : progress ** 2 * (3 - 2 * progress)
+      const radius = Math.hypot(dx, dy) || 1
+      const amount = Math.min(radius, Math.max(0, settings.offset) * power)
+      active = true
+      drive((dx / radius) * amount, (dy / radius) * amount, power)
+    }
+    const listen = () => {
+      window.removeEventListener("pointermove", track, true)
+      if (media.matches && !reduced.matches && !document.hidden)
+        window.addEventListener("pointermove", track, options)
+      else reset()
+    }
+    const on = (target: EventTarget, type: string, action: EventListener) =>
+      target.addEventListener(type, action, options)
+    const resize = new ResizeObserver(refresh)
+    const availability = new MutationObserver(refresh)
+    resize.observe(node)
+    resize.observe(document.documentElement)
+    availability.observe(document.documentElement, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["disabled", "aria-disabled", "inert"],
+    })
+
+    on(media, "change", listen)
+    on(reduced, "change", listen)
+    on(document, "visibilitychange", listen)
+    on(window, "scroll", refresh)
+    on(window, "blur", release)
+    on(window, "pointerout", (event) => {
+      if (!(event as PointerEvent).relatedTarget) release()
+    })
+    on(node, "pointerdown", (event) => {
+      if ((event as PointerEvent).pointerType === "touch") return reset()
+      if (active) {
+        for (const value of values) value.stop()
+      }
+    })
+    on(window, "pointercancel", reset)
+    on(node, "focusin", () => {
+      if (node.querySelector(":focus-visible")) reset()
+    })
+    listen()
+    return () => {
+      controller.abort()
+      resize.disconnect()
+      availability.disconnect()
+      reset()
+    }
+  }, [hasChildren, isStatic, preference, values, visible])
+
+  return (
+    <span {...props} ref={root} className={cn("inline-flex", className)}>
+      <LabelContext.Provider value={[textX, textY]}>
+        <motion.span className="inline-flex flex-1" style={{ x, y, scale }}>
+          {children}
+        </motion.span>
+      </LabelContext.Provider>
+    </span>
+  )
+}
+
+export function CursorLeanLabel(props: React.ComponentProps<"span">) {
+  const axes = React.useContext(LabelContext)
+  if (!axes) return <span {...props} />
+  return (
+    <span {...props} className={cn(props.className)}>
+      <motion.span
+        className="inline-block"
+        style={{ x: axes.at(0), y: axes.at(1) }}
+      >
+        {props.children}
+      </motion.span>
+    </span>
+  )
+}
+
+
+===== EXAMPLE: cursor-lean-demo =====
+Title: Cursor Lean Demo
+
+--- file: example/cursor-lean-demo.tsx ---
+import { CursorLean, CursorLeanLabel } from "@/registry/magicui/cursor-lean"
+
+export function CursorLeanDemo() {
+  return (
+    <section className="bg-background border-border text-foreground dark:bg-card flex w-full flex-col items-center rounded-xl border px-6 py-20 text-center">
+      <p className="mb-5 rounded-full border border-violet-300 px-3 py-1 text-xs font-medium tracking-widest text-violet-700 uppercase dark:border-violet-700 dark:text-violet-300">
+        Meet Folio
+      </p>
+      <h2 className="max-w-lg text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+        Your best work deserves a home.
+      </h2>
+      <p className="text-muted-foreground mt-5 max-w-md text-sm leading-relaxed text-pretty">
+        Turn your projects into a portfolio you are proud to share. Publish in
+        minutes, then get back to making things.
+      </p>
+      <div className="mt-14 flex justify-center">
+        <CursorLean>
+          <button
+            type="button"
+            className="focus-visible:outline-ring rounded-full border border-transparent bg-violet-600 px-6 py-3 text-sm font-medium text-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4 motion-safe:active:scale-[0.98]"
+          >
+            <CursorLeanLabel>Create your portfolio</CursorLeanLabel>
+          </button>
+        </CursorLean>
+      </div>
+      <a
+        href="https://magicui.design/docs/templates/portfolio"
+        className="text-muted-foreground hover:text-foreground focus-visible:outline-ring mt-10 rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+      >
+        Explore the template
+      </a>
+      <p className="text-muted-foreground mt-6 text-xs">
+        Free to start. No credit card needed.
+      </p>
+    </section>
+  )
+}
+
+
+===== EXAMPLE: cursor-lean-demo-2 =====
+Title: Cursor Lean Demo 2
+
+--- file: example/cursor-lean-demo-2.tsx ---
+import { CursorLean, CursorLeanLabel } from "@/registry/magicui/cursor-lean"
+
+export function CursorLeanDemo2() {
+  return (
+    <section className="bg-background border-border text-foreground dark:bg-card w-full rounded-xl border px-6 py-16 text-center">
+      <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+        Make room for deep work
+      </p>
+      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance">
+        Less busywork.
+        <br />
+        More momentum.
+      </h2>
+      <p className="text-muted-foreground mx-auto mt-4 max-w-md text-sm leading-relaxed text-pretty">
+        Bring your team&apos;s projects, decisions, and next steps into one calm
+        workspace with Tally.
+      </p>
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <CursorLean distance={120}>
+          <button
+            type="button"
+            className="bg-foreground text-background focus-visible:outline-ring h-12 rounded-full border border-transparent px-6 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            <CursorLeanLabel>Start your workspace</CursorLeanLabel>
+          </button>
+        </CursorLean>
+        <CursorLean distance={120}>
+          <button
+            type="button"
+            className="border-border bg-background text-foreground focus-visible:outline-ring h-12 rounded-full border px-6 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            <CursorLeanLabel>Book a walkthrough</CursorLeanLabel>
+          </button>
+        </CursorLean>
+      </div>
+      <p className="text-muted-foreground mt-8 text-xs">
+        Free for teams of up to five. No credit card needed.
+      </p>
+    </section>
+  )
+}
+
+
+===== EXAMPLE: cursor-lean-demo-3 =====
+Title: Cursor Lean Demo 3
+
+--- file: example/cursor-lean-demo-3.tsx ---
+import { CursorLean, CursorLeanLabel } from "@/registry/magicui/cursor-lean"
+
+export function CursorLeanDemo3() {
+  return (
+    <section className="bg-background text-foreground w-full p-6 sm:p-8">
+      <div className="mb-8 text-center">
+        <h2 className="text-3xl font-semibold tracking-tight text-balance">
+          A home for every stage.
+        </h2>
+        <p className="text-muted-foreground mt-3 text-sm text-pretty">
+          Start a side project or grow your studio with Folio.
+        </p>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-3">
+        <div className="border-border bg-background dark:bg-card flex flex-col rounded-xl border p-5">
+          <h3 className="font-semibold">Personal</h3>
+          <p className="mt-4 text-3xl font-semibold">
+            $0
+            <span className="text-muted-foreground text-sm font-normal">
+              {" "}
+              / month
+            </span>
+          </p>
+          <p className="text-muted-foreground mt-4 mb-8 flex-1 text-sm leading-relaxed">
+            One beautiful portfolio with everything you need to share your first
+            projects.
+          </p>
+          <button
+            type="button"
+            className="border-border focus-visible:outline-ring h-12 w-full rounded-full border px-4 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            Start for free
+          </button>
+        </div>
+        <div className="border-foreground bg-background dark:bg-card flex flex-col rounded-xl border p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="font-semibold">Pro</h3>
+            <span className="bg-muted rounded-full px-2 py-1 text-xs">
+              Recommended
+            </span>
+          </div>
+          <p className="mt-4 text-3xl font-semibold">
+            $12
+            <span className="text-muted-foreground text-sm font-normal">
+              {" "}
+              / month
+            </span>
+          </p>
+          <p className="text-muted-foreground mt-4 mb-8 flex-1 text-sm leading-relaxed">
+            Your own domain, unlimited projects, and insights into who is
+            discovering your work.
+          </p>
+          <CursorLean distance={120} offset={16} className="w-full">
+            <button
+              type="button"
+              className="bg-foreground text-background focus-visible:outline-ring h-12 w-full rounded-full border border-transparent px-6 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              <CursorLeanLabel>Build with Pro</CursorLeanLabel>
+            </button>
+          </CursorLean>
+        </div>
+        <div className="border-border bg-background dark:bg-card flex flex-col rounded-xl border p-5">
+          <h3 className="font-semibold">Studio</h3>
+          <p className="mt-4 text-3xl font-semibold">
+            $29
+            <span className="text-muted-foreground text-sm font-normal">
+              {" "}
+              / month
+            </span>
+          </p>
+          <p className="text-muted-foreground mt-4 mb-8 flex-1 text-sm leading-relaxed">
+            A shared home for your team&apos;s work, with collaborative editing
+            and client review.
+          </p>
+          <button
+            type="button"
+            className="border-border focus-visible:outline-ring h-12 w-full rounded-full border px-4 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            Choose Studio
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+
 ===== COMPONENT: dia-text-reveal =====
 Title: Dia Text Reveal
 Description: A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.

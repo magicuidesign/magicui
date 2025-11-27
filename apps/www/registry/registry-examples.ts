@@ -2,6 +2,47 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "cursor-lean-demo",
+    type: "registry:example",
+    title: "Cursor Lean Demo",
+    description: "A portfolio hero with one layered primary action.",
+    registryDependencies: ["@magicui/cursor-lean"],
+    files: [
+      {
+        path: "example/cursor-lean-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "cursor-lean-demo-2",
+    type: "registry:example",
+    title: "Cursor Lean Demo 2",
+    description:
+      "Two adjacent calls to action that lean independently toward the cursor.",
+    registryDependencies: ["@magicui/cursor-lean"],
+    files: [
+      {
+        path: "example/cursor-lean-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "cursor-lean-demo-3",
+    type: "registry:example",
+    title: "Cursor Lean Demo 3",
+    description:
+      "A pricing section with cursor attraction on the recommended plan.",
+    registryDependencies: ["@magicui/cursor-lean"],
+    files: [
+      {
+        path: "example/cursor-lean-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
