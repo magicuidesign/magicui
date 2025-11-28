@@ -1,0 +1,112 @@
+---
+title: Cursor Lean
+date: 2026-11-04
+description: Draws a button or link toward a nearby cursor, with an optional text layer that travels further.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="cursor-lean-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/cursor-lean
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the dependency.</Step>
+
+```bash
+pnpm add motion
+```
+
+<Step>Copy and paste the component into your project.</Step>
+
+<ComponentSource name="cursor-lean" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { CursorLean, CursorLeanLabel } from "@/components/ui/cursor-lean"
+```
+
+```tsx showLineNumbers
+<CursorLean>
+  <button type="button">
+    <CursorLeanLabel>Create your portfolio</CursorLeanLabel>
+  </button>
+</CursorLean>
+```
+
+Wrap one control: a `button`, `a`, `input[type="button"]`, `input[type="submit"]`, `summary`, or an element with `role="button"` or `role="link"`. Give each control its own `CursorLean`. Put `CursorLeanLabel` around its text or icon to add depth; without it, the child moves as one piece. Both wrappers render spans, so links also work inside paragraphs.
+
+The sensing zone is an ellipse centred on the unmoving root, extending `distance` pixels beyond each side. Pull follows the line toward the cursor, reaches `offset` at the box edge, falls linearly to zero at the centre and fades smoothly to zero at the outer boundary. A subtle scale lift reaches 1.02 at the edge and disappears at rest.
+
+Approach uses a duration-based Motion spring with no bounce. On exit, the spring swings home with one soft overshoot in about 620ms at the default duration and `bounce`. Body, scale and label each preserve their own velocity between pointer updates. The label travels `depth` times as far as the body and takes 12% longer to settle on release. At rest, both layers return to `transform: none`.
+
+The spring parameters are derived from `visualDuration` and `bounce`, using Motion’s duration formula. They are also passed explicitly because Motion versions that resolve duration springs with zero velocity would otherwise discard momentum when a pointer update interrupts an animation.
+
+The effect stays off for keyboard focus, reduced motion, touch input and disabled or inert controls. Set `isStatic` to disable movement while keeping the same markup. Hover-capable fine pointers, including pens, can participate. Pressing holds an engaged lean; press styling and clicks belong to the child. Disabling a control or its containing fieldset, or making an ancestor inert, releases it even while the pointer is still or pressed. Controls are resolved again on each pointer movement, so swapped or late-rendered children work too.
+
+Bounds are cached and refreshed by resize observers on the root and document, and on scroll. Scrolling releases the control; the next pointer movement can re-engage it using fresh bounds. Off-screen controls stop tracking the pointer. Cursor movement does not read layout or hit-test the moving child, so small controls cannot oscillate against an occlusion test.
+
+While leaning, `position: fixed` children position against the moving layer, so render tooltips and popovers through a portal.
+
+For a full-width action, give both the wrapper and the button `w-full`:
+
+```tsx
+<CursorLean className="w-full">
+  <button type="button" className="w-full">
+    Build with Pro
+  </button>
+</CursorLean>
+```
+
+## Props
+
+| Prop       | Type      | Default | Description                                                  |
+| ---------- | --------- | ------- | ------------------------------------------------------------ |
+| `distance` | `number`  | `56`    | Sensing distance beyond each side of the root, in pixels.    |
+| `offset`   | `number`  | `9`     | Maximum body displacement, in pixels.                        |
+| `depth`    | `number`  | `1.4`   | Total label displacement as a multiple of body travel.       |
+| `duration` | `number`  | `0.28`  | Approach time in seconds; release uses 2.2 times this value. |
+| `bounce`   | `number`  | `0.38`  | Spring bounce on release; approach always has no bounce.     |
+| `isStatic` | `boolean` | `false` | Disable movement while preserving the wrapper markup.        |
+
+`CursorLeanLabel` accepts native span props. Outside a `CursorLean`, it renders a plain span without changing inline wrapping. Both exports accept native classes, styles, attributes and refs. Because the root is a span, use phrasing content such as buttons or links rather than block elements as children.
+
+## Examples
+
+### Adjacent calls to action
+
+Wrap each button on its own; both respond to the same cursor.
+
+<ComponentPreview name="cursor-lean-demo-2" />
+
+### Recommended pricing tier
+
+Draw attention to one plan with a larger sensing distance and displacement.
+
+<ComponentPreview name="cursor-lean-demo-3" />
