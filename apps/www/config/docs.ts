@@ -554,6 +554,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Infinity Text",
+          href: `/docs/components/infinity-text`,
+          items: [],
+          label: "",
+        },
       ],
     },
   ],
