@@ -193,7 +193,8 @@
       "type": "registry:ui",
       "description": "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
       "dependencies": [
-        "framer-motion"
+        "framer-motion",
+        "smooth-cursor"
       ],
       "files": [
         {
