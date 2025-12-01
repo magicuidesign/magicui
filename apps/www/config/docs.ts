@@ -334,16 +334,16 @@ export const docsConfig: DocsConfig = {
       title: "Animations",
       items: [
         {
-          title: "Cursor Lean",
-          href: `/docs/components/cursor-lean`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Blur Fade",
           href: `/docs/components/blur-fade`,
           items: [],
           label: "",
+        },
+        {
+          title: "Cursor Lean",
+          href: `/docs/components/cursor-lean`,
+          items: [],
+          label: "New",
         },
       ],
     },
