@@ -178,21 +178,22 @@ Go ahead and create a new component file, `HeroSection.jsx`, and drop in this in
 
 const HeroSection = () => {
 return (
+
 <section className="bg-gray-900 text-white">
-<div className="container mx-auto px-6 py-16 flex flex-col items-center text-center">
-<h1 className="text-4xl font-extrabold tracking-tight">
-Build Modern UIs with Next.js and Tailwind
-</h1>
-<p className="mt-4 max-w-2xl text-lg text-gray-300">
-Combine the power of React with the speed of utility-first CSS to create beautiful, high-performance web applications.
-</p>
-<button className="mt-8 px-8 py-3 bg-indigo-600 font-semibold rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-Get Started
-</button>
-</div>
+  <div className="container mx-auto flex flex-col items-center px-6 py-16 text-center">
+    <h1 className="text-4xl font-extrabold tracking-tight">
+      Build Modern UIs with Next.js and Tailwind
+    </h1>
+    <p className="mt-4 max-w-2xl text-lg text-gray-300">
+      Combine the power of React with the speed of utility-first CSS to create
+      beautiful, high-performance web applications.
+    </p>
+    <button className="mt-8 rounded-md bg-indigo-600 px-8 py-3 font-semibold hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none">
+      Get Started
+    </button>
+  </div>
 </section>
-);
-};
+); };
 
 export default HeroSection
 
@@ -299,12 +300,12 @@ const HeavyChartComponent = dynamic(() => import('../components/HeavyChart'));
 
 function MyPage() {
 return (
+
 <div>
-{/* Other content */}
-<HeavyChartComponent />
+  {/* Other content */}
+  <HeavyChartComponent />
 </div>
-);
-}
+); }
 
 This simple change ensures the code for `HeavyChartComponent` is only downloaded and run when it's actually needed. It's a small tweak that can make a huge difference in your initial page load time, keeping your application feeling snappy even as it grows in complexity.
 
