@@ -4,8 +4,7 @@
   "title": "Cursor Lean Demo 3",
   "description": "A pricing section with cursor attraction on the recommended plan.",
   "registryDependencies": [
-    "@magicui/cursor-lean",
-    "@magicui/cursor-lean-pass"
+    "@magicui/cursor-lean"
   ],
   "files": [
     {

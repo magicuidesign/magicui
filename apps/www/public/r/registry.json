@@ -1409,8 +1409,7 @@
       "title": "Cursor Lean Demo",
       "description": "A portfolio hero with one layered primary action.",
       "registryDependencies": [
-        "@magicui/cursor-lean",
-        "@magicui/cursor-lean-pass"
+        "@magicui/cursor-lean"
       ],
       "files": [
         {
@@ -1425,8 +1424,7 @@
       "title": "Cursor Lean Demo 2",
       "description": "Two adjacent calls to action that lean independently toward the cursor.",
       "registryDependencies": [
-        "@magicui/cursor-lean",
-        "@magicui/cursor-lean-pass"
+        "@magicui/cursor-lean"
       ],
       "files": [
         {
@@ -1441,8 +1439,7 @@
       "title": "Cursor Lean Demo 3",
       "description": "A pricing section with cursor attraction on the recommended plan.",
       "registryDependencies": [
-        "@magicui/cursor-lean",
-        "@magicui/cursor-lean-pass"
+        "@magicui/cursor-lean"
       ],
       "files": [
         {

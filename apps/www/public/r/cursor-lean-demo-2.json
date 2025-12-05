@@ -4,8 +4,7 @@
   "title": "Cursor Lean Demo 2",
   "description": "Two adjacent calls to action that lean independently toward the cursor.",
   "registryDependencies": [
-    "@magicui/cursor-lean",
-    "@magicui/cursor-lean-pass"
+    "@magicui/cursor-lean"
   ],
   "files": [
     {

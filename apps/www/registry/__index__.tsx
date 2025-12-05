@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "cursor-lean-demo",
     description: "A portfolio hero with one layered primary action.",
     type: "registry:example",
-    registryDependencies: ["@magicui/cursor-lean","@magicui/cursor-lean-pass"],
+    registryDependencies: ["@magicui/cursor-lean"],
     files: [{
       path: "registry/example/cursor-lean-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "cursor-lean-demo-2",
     description: "Two adjacent calls to action that lean independently toward the cursor.",
     type: "registry:example",
-    registryDependencies: ["@magicui/cursor-lean","@magicui/cursor-lean-pass"],
+    registryDependencies: ["@magicui/cursor-lean"],
     files: [{
       path: "registry/example/cursor-lean-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "cursor-lean-demo-3",
     description: "A pricing section with cursor attraction on the recommended plan.",
     type: "registry:example",
-    registryDependencies: ["@magicui/cursor-lean","@magicui/cursor-lean-pass"],
+    registryDependencies: ["@magicui/cursor-lean"],
     files: [{
       path: "registry/example/cursor-lean-demo-3.tsx",
       type: "registry:example",

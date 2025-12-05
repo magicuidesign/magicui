@@ -4,8 +4,7 @@
   "title": "Cursor Lean Demo",
   "description": "A portfolio hero with one layered primary action.",
   "registryDependencies": [
-    "@magicui/cursor-lean",
-    "@magicui/cursor-lean-pass"
+    "@magicui/cursor-lean"
   ],
   "files": [
     {
