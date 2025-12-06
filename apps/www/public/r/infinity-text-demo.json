@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinity-text-demo",
+  "type": "registry:example",
+  "title": "Infinity Text Demo",
+  "description": "Example showing an infinitely scrolling text.",
+  "registryDependencies": [
+    "@magicui/infinity-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/infinity-text-demo.tsx",
+      "content": "import { InfinityText } from \"../magicui/infinity-text\"\n\nexport default function InfinityTextDemo() {\n  return (\n    <div>\n      <InfinityText text=\"Recent Works\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

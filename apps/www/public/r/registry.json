@@ -1261,6 +1261,21 @@
       ]
     },
     {
+      "name": "infinity-text",
+      "type": "registry:ui",
+      "title": "Infinity Text",
+      "description": "A component with an infinitely scrolling text.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/infinity-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3347,6 +3362,21 @@
       "files": [
         {
           "path": "registry/example/dotted-map-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "infinity-text-demo",
+      "type": "registry:example",
+      "title": "Infinity Text Demo",
+      "description": "Example showing an infinitely scrolling text.",
+      "registryDependencies": [
+        "@magicui/infinity-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/infinity-text-demo.tsx",
           "type": "registry:example"
         }
       ]
