@@ -65,6 +65,7 @@
     "react-tweet": "^3.2.2",
     "rough-notation": "^0.5.1",
     "schema-dts": "^1.1.5",
+    "smooth-cursor": "^0.1.2",
     "sonner": "^1.7.4",
     "svg-dotted-map": "^2.0.1",
     "tailwind-merge": "^3.3.1",
