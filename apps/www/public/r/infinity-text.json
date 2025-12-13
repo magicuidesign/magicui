@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinity-text",
+  "type": "registry:ui",
+  "title": "Infinity Text",
+  "description": "A component with an infinitely scrolling text.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/infinity-text.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState } from \"react\"\nimport { motion } from \"framer-motion\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface InfinityTextProps {\n  text?: string\n  speed?: number\n  fontSize?: string\n  fontStyle?: string\n  separator?: string\n  className?: string\n  colorMode?: \"auto\" | \"light\" | \"dark\" // NEW\n}\n\nexport function InfinityText({\n  text = \"RECENT WORK\",\n  speed = 50,\n  fontSize = \"text-6xl\",\n  fontStyle = \"\",\n  separator = \"•\",\n  className,\n  colorMode = \"auto\",\n}: InfinityTextProps) {\n  const containerRef = useRef<HTMLDivElement | null>(null)\n  const textRef = useRef<HTMLSpanElement | null>(null)\n\n  const [textWidth, setTextWidth] = useState(0)\n  const [textColor, setTextColor] = useState(\"white\")\n\n  // Measure width\n  useEffect(() => {\n    const measure = () => {\n      if (textRef.current) {\n        setTextWidth(textRef.current.offsetWidth)\n      }\n    }\n\n    measure()\n    window.addEventListener(\"resize\", measure)\n    return () => window.removeEventListener(\"resize\", measure)\n  }, [])\n\n  // Detect background + pick correct color\n  useEffect(() => {\n    if (colorMode === \"light\") {\n      setTextColor(\"black\")\n      return\n    }\n    if (colorMode === \"dark\") {\n      setTextColor(\"white\")\n      return\n    }\n\n    if (containerRef.current) {\n      const bg = getComputedStyle(containerRef.current).backgroundColor\n\n      const match = bg.match(/\\d+/g)\n      if (!match) return\n\n      const [r, g, b] = match.map(Number)\n      const brightness = (r * 299 + g * 587 + b * 114) / 1000\n\n      if (brightness > 150) {\n        setTextColor(\"black\")\n      } else {\n        setTextColor(\"white\")\n      }\n    }\n  }, [colorMode])\n\n  const scrollingText = ` ${text}   ${separator}   `\n  const duration = textWidth ? textWidth / speed : 10\n\n  return (\n    <div\n      ref={containerRef}\n      className={cn(\n        \"relative w-full overflow-hidden p-4 select-none\",\n        className\n      )}\n    >\n      <motion.div\n        className={cn(\"flex font-bold whitespace-nowrap\", fontSize, fontStyle)}\n        style={{ color: textColor }}\n        initial={{ x: 0 }}\n        animate={{ x: -textWidth }}\n        transition={{\n          repeat: Infinity,\n          repeatType: \"loop\",\n          duration,\n          ease: \"linear\",\n        }}\n      >\n        <span ref={textRef}>{scrollingText.repeat(60)}</span>\n      </motion.div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

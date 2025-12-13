@@ -35,5 +35,8 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.24"
   }
 }
