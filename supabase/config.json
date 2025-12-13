@@ -1,0 +1,5 @@
+{
+  "dbUrl": "postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/postgres",
+  "projectId": "[YOUR-PROJECT-ID]",
+  "projectRef": "[YOUR-PROJECT-REF]"
+}
