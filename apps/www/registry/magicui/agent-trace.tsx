@@ -22,9 +22,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample12 } from "./agent-trace-pass"
+import { passSample13 } from "./agent-trace-pass"
 
-void passSample12(0)
+void passSample13(0)
 export interface AgentTraceStep {
   /** What the step does, shown on one line. */
   label: string
