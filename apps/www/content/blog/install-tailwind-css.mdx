@@ -87,12 +87,14 @@ Next, you need to tell PostCSS which plugins to use. Create a `postcss.config.js
 
 Inside that file, add this small snippet:
 
+```ts
 module.exports = {
-plugins: {
-tailwindcss: {},
-autoprefixer: {},
-},
-};
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
 
 This is pretty straightforward. You're just telling PostCSS to run your CSS through both Tailwind and Autoprefixer during the build step.
 
@@ -138,17 +140,19 @@ That `-p` flag is a great little timesaver. It automatically creates both your `
 
 Next, you have to tell Tailwind where your template files live. Pop open `tailwind.config.js` and update the `content` array to point to all your source files. This is how Tailwind knows where to scan for utility classes.
 
+```ts
 /** @type {import('tailwindcss').Config} \*/
 export default {
-content: [
-"./index.html",
-"./src/**/\*.{js,ts,jsx,tsx,vue}", // Don't forget .vue for Vue projects!
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: [
+    "./index.html",
+    "./src/**/\*.{js,ts,jsx,tsx,vue}", // Don't forget .vue for Vue projects!
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
+```
 
 Last step: create your main CSS file (I usually put it at `src/index.css`) and drop in the three main Tailwind directives. Import that CSS file into your main entry point—like `main.jsx` or `main.js`—and you're good to go. For a more detailed walkthrough, our guide on how to [install Tailwind CSS in a React project](https://magicui.design/blog/install-tailwind-react) covers this from top to bottom.
 
@@ -173,17 +177,18 @@ After you've created your project with `npx create-react-app my-app`, run the st
 
 The most important part for CRA is getting the `content` array in `tailwind.config.js` to match its file structure. It should look like this:
 
+```ts
 /** @type {import('tailwindcss').Config} \*/
 module.exports = {
-content: [
-"./src/**/*.{js,jsx,ts,tsx}",
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
-This kind of seamless integration is exactly why Tailwind's popularity has exploded. By **2025**, it has become the go-to choice over Bootstrap for countless developers who value its customization and performance. Because its build process only includes the classes you *actually\* use, the result is a much smaller CSS file and a faster website—a massive win in today's performance-focused world.
+```
+
+This kind of seamless integration is exactly why Tailwind's popularity has exploded. By **2025**, it has become the go-to choice over Bootstrap for countless developers who value its customization and performance. Because its build process only includes the classes you \*actually\* use, the result is a much smaller CSS file and a faster website—a massive win in today's performance-focused world.
 
 ## Customizing Your Tailwind Design System
 
@@ -208,21 +213,23 @@ Honestly, for most projects, sticking with `extend` is the way to go. It offers 
 
 Let's make this practical. Say your brand uses a specific shade of purple and the "Poppins" font. Here’s how you’d wire that up in your config file:
 
+```ts
 // tailwind.config.js
 module.exports = {
-theme: {
-extend: {
-colors: {
-'brand-purple': '#5D3BEE',
-'brand-dark': '#1a202c',
-},
-fontFamily: {
-sans: ['Poppins', 'sans-serif'],
-},
-},
-},
-plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        "brand-purple": "#5D3BEE",
+        "brand-dark": "#1a202c",
+      },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
 }
+```
 
 Once you save that file and your build process refreshes, you can immediately start using classes like `bg-brand-purple` and `font-sans` in your HTML. It's that seamless.
 
@@ -253,18 +260,21 @@ Nailing down your `content` paths is absolutely non-negotiable for a successful 
 
 A classic mistake is forgetting to include a specific folder or file extension. For instance, if you’ve neatly organized your UI components into a `src/components` directory, you have to tell Tailwind to look there.
 
+```ts
 // tailwind.config.js
 module.exports = {
-content: [
-'./src/pages/**/*.{js,ts,jsx,tsx}',
-'./src/components/**/*.{js,ts,jsx,tsx}',
-// Add any other directories that contain Tailwind classes
-],
-theme: {
-extend: {},
-},
-plugins: [],
-};
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    // Add any other directories that contain Tailwind classes
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
 This setup instructs Tailwind to scan for any JavaScript or TypeScript files inside both the `pages` and `components` folders. My advice? Always double-check these paths before you deploy.
 
 ### Solving Common Build Issues
@@ -320,16 +330,18 @@ First things first, you need to import the font into your main CSS file. Using `
 
 With the font imported, pop open your `tailwind.config.js` and extend the `theme.fontFamily` object. This step registers your new font with Tailwind and gives it a name you can reference with a utility class.
 
+```ts
 // tailwind.config.js
 module.exports = {
-theme: {
-extend: {
-fontFamily: {
-sans: ['Inter', 'sans-serif'],
-},
-},
-},
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
+    },
+  },
 }
+```
 
 And that's it! Now you can apply your beautiful new font anywhere in your project just by using the `font-sans` class.
 

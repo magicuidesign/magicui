@@ -94,21 +94,23 @@ Now, we need to tell Tailwind which files to watch. This is how its Just-in-Time
 
 Open up `tailwind.config.ts` and paste these paths into the `content` array.
 
+```ts
 // tailwind.config.ts
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config: Config = {
-content: [
-"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-],
-theme: {
-extend: {},
-},
-plugins: [],
-};
-export default config;
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+export default config
+```
 
 This glob pattern tells Tailwind to scan every relevant file inside your `app`, `components`, and `pages` directories. It's a critical step, so don't skip it!
 
@@ -167,6 +169,7 @@ The CLI works its magic, automatically adding the necessary files right into you
 
 Here's how you'd drop it into a page:
 
+```tsx
 import { Dock, DockIcon } from "@/components/magicui/dock"
 
 export default function HomePage() {
@@ -179,6 +182,7 @@ export default function HomePage() {
     </div>
   )
 }
+```
 
 Just like that, you've added a genuinely sophisticated and interactive element to your app. This kind of rapid enhancement is a huge reason why Next.js has become so popular. With a **52.9% usage rate** among rendering frameworks as of 2025 and over **132,000 stars** on GitHub, its robust ecosystem is one of its greatest strengths. You can find more details on [Next.js framework advantages on aalpha.net](https://www.aalpha.net/articles/nextjs-advantages-and-disadvantages/).
 

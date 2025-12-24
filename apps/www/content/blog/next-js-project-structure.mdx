@@ -219,17 +219,19 @@ By making a small tweak to your `tsconfig.json` file, you can set up absolute im
 
 Here’s the setup I use in almost every project:
 
+```json
 {
-"compilerOptions": {
-"baseUrl": ".",
-"paths": {
-"@/components/_": ["components/_"],
-"@/lib/_": ["lib/_"],
-"@/hooks/_": ["hooks/_"],
-"@/styles/_": ["styles/_"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/_": ["components/_"],
+      "@/lib/_": ["lib/_"],
+      "@/hooks/_": ["hooks/_"],
+      "@/styles/_": ["styles/_"]
+    }
+  }
 }
-}
-}
+```
 
 With that in place, our horrible import from before transforms into this beauty: `import Button from '@/components/ui/Button'`. Suddenly, it doesn't matter how deeply nested your component is. The path is always the same, making refactoring a breeze instead of a nightmare.
 

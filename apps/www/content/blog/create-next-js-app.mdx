@@ -102,32 +102,34 @@ Tailwind's default theme is fantastic, but let's be real—you need to make it y
 
 Let's say you're building a sleek, modern dashboard. You can easily extend the default theme to include your specific brand colors.
 
+```ts
 // tailwind.config.ts
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss"
 
 const config: Config = {
-content: [
-'./pages/**/*.{js,ts,jsx,tsx,mdx}',
-'./components/**/*.{js,ts,jsx,tsx,mdx}',
-'./app/**/*.{js,ts,jsx,tsx,mdx}',
-],
-theme: {
-extend: {
-colors: {
-brand: {
-primary: '#0A72E4',
-secondary: '#F5A623',
-},
-dark: {
-900: '#1a1a1a',
-800: '#2b2b2b',
-},
-},
-},
-},
-plugins: [],
-};
-export default config;
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          primary: "#0A72E4",
+          secondary: "#F5A623",
+        },
+        dark: {
+          900: "#1a1a1a",
+          800: "#2b2b2b",
+        },
+      },
+    },
+  },
+  plugins: [],
+}
+export default config
+```
 
 By nesting your custom colors inside `theme.extend`, you’ve just created new utility classes like `bg-brand-primary` and `text-dark-900` that you can use anywhere. It’s a simple change that enforces brand consistency and makes your markup much more descriptive.
 
@@ -139,21 +141,27 @@ Now, let's put this into practice and build a simple, responsive card component.
 
 You'll see just how fast and intuitive this is.
 
+```tsx
 // components/InfoCard.tsx
-import React from 'react';
+import React from "react"
 
-export const InfoCard = ({ title, children }: { title: string; children: React.ReactNode }) => {
+export const InfoCard = ({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) => {
   return (
-    <div className="max-w-sm rounded-lg border border-neutral-200 bg-white p-6 shadow-md transition-shadow hover:shadow-lg dark:border-neutral-700 dark:bg-dark-800">
+    <div className="dark:bg-dark-800 max-w-sm rounded-lg border border-neutral-200 bg-white p-6 shadow-md transition-shadow hover:shadow-lg dark:border-neutral-700">
       <h3 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
         {title}
       </h3>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        {children}
-      </p>
+      <p className="font-normal text-gray-700 dark:text-gray-400">{children}</p>
     </div>
-  );
-};
+  )
+}
+```
 
 > The beauty of this method is its immediacy. You build, style, and see the results without ever leaving your component file. This tight feedback loop is what makes developing with Tailwind and Next.js feel so productive.
 
@@ -200,6 +208,7 @@ First, you need to bring the component's code into your project. This is the rec
 
 Now, you can import and use it in your `app/page.tsx` file (or anywhere else) just like any other React component.
 
+```tsx
 import ShimmerButton from "@/components/magicui/shimmer-button"
 
 export default function HomePage() {
@@ -207,7 +216,7 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-center font-mono text-sm lg:flex">
         <ShimmerButton className="shadow-2xl">
-          <span className="text-center text-sm leading-none font-medium tracking-tight whitespace-pre-wrap text-white lg:text-lg dark:from-white dark:to-slate-900/10">
+          <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white lg:text-lg dark:from-white dark:to-slate-900/10">
             Get Started Now
           </span>
         </ShimmerButton>
@@ -215,6 +224,7 @@ export default function HomePage() {
     </main>
   )
 }
+```
 
 > Just like that, you've added a layer of interactivity that makes your UI feel more dynamic and satisfying. This is the core value of Magic UI—achieving maximum visual impact with minimal code.
 
@@ -258,17 +268,19 @@ The culprit is usually your `tailwind.config.ts` file. Tailwind's magic works by
 
 The fix is easy. Just make sure your `content` path in the config file is broad enough to catch everything:
 
+```ts
 // tailwind.config.ts
 const config = {
-content: [
-'./pages/**/*.{js,ts,jsx,tsx,mdx}',
-'./components/**/*.{js,ts,jsx,tsx,mdx}',
-'./app/**/*.{js,ts,jsx,tsx,mdx}',
-// Make sure to add any other directories you're using!
-'./src/**/*.{js,ts,jsx,tsx,mdx}',
-],
-// ... rest of your config
-};
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    // Make sure to add any other directories you're using!
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  // ... rest of your config
+}
+```
 
 One crucial detail: after updating the config, you **must** restart your dev server (`npm run dev`). A simple browser refresh won't cut it. Restarting forces Tailwind to re-scan your entire project and build the correct stylesheet.
 
@@ -284,24 +296,32 @@ For instance, if you try to render `new Date().toLocaleTimeString()` directly in
 
 A reliable pattern for this is to use the `useState` and `useEffect` hooks. This effectively delays the rendering of your client-specific code until _after_ the initial server render has been "hydrated" on the client.
 
-'use client';
-import { useState, useEffect } from 'react';
+```tsx
+"use client"
+
+import { useEffect, useState } from "react"
 
 const ClientOnlyComponent = () => {
-const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false)
 
-useEffect(() => {
-// This runs only on the client, after the initial render
-setIsClient(true);
-}, []);
+  useEffect(() => {
+    // This runs only on the client, after the initial render
+    setIsClient(true)
+  }, [])
 
-if (!isClient) {
-return null; // Or you could return a loading skeleton here
+  if (!isClient) {
+    return null // Or you could return a loading skeleton here
+  }
+
+  // Now you're safely on the client and can use browser APIs
+  return (
+    <div>
+      Your current timezone is:{" "}
+      {Intl.DateTimeFormat().resolvedOptions().timeZone}
+    </div>
+  )
 }
-
-// Now you're safely on the client and can use browser APIs
-return <div>Your current timezone is: {Intl.DateTimeFormat().resolvedOptions().timeZone}</div>;
-};
+```
 
 This little trick ensures your component handles the server-to-client transition smoothly, getting rid of those frustrating errors and keeping your console nice and clean.
 

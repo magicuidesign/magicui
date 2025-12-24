@@ -125,17 +125,16 @@ This command adds two critical files. The `postcss.config.js` file is usually go
 
 Open up `tailwind.config.js` and update the `content` array to point to all your component files.
 
+```tsx
 /** @type {import('tailwindcss').Config} \*/
 export default {
-content: [
-"./index.html",
-"./src/**/\*.{js,ts,jsx,tsx}",
-],
-theme: {
-extend: {},
-},
-plugins: [],
+  content: ["./index.html", "./src/**/\*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
+```
 
 The final piece of the puzzle is telling your app to actually use Tailwind's styles. Find your main CSS file (usually `src/index.css`), clear out whatever is in there, and add these three Tailwind directives.
 

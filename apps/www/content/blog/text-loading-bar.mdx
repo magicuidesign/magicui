@@ -85,20 +85,22 @@ This layering technique is a classic web design pattern that's been proven effec
 
 A static bar doesn't do much, so we need a little JavaScript to simulate a loading process. This snippet will incrementally update the `width` of our fill element and change the text content to match, creating a fully functional text loading bar.
 
-const fill = document.querySelector('.progress-bar-fill');
-const text = document.querySelector('.progress-bar-text');
-let progress = 0;
+```js
+const fill = document.querySelector(".progress-bar-fill")
+const text = document.querySelector(".progress-bar-text")
+let progress = 0
 
 const interval = setInterval(() => {
-progress += 10;
-if (progress <= 100) {
-fill.style.width = progress + '%';
-text.textContent = 'Loading... ' + progress + '%';
-} else {
-clearInterval(interval);
-text.textContent = 'Complete!';
-}
-}, 500);
+  progress += 10
+  if (progress <= 100) {
+    fill.style.width = progress + "%"
+    text.textContent = "Loading... " + progress + "%"
+  } else {
+    clearInterval(interval)
+    text.textContent = "Complete!"
+  }
+}, 500)
+```
 
 This simple update loop gives you a complete, working example. You now have a solid, framework-agnostic component that’s easy to drop into any project and adapt as needed.
 
