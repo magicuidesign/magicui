@@ -1197,4 +1197,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "infinity-text",
+    type: "registry:ui",
+    title: "Infinity Text",
+    description: "A component with an infinitely scrolling text.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "magicui/infinity-text.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

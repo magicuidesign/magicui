@@ -1811,4 +1811,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "infinity-text-demo",
+    type: "registry:example",
+    title: "Infinity Text Demo",
+    description: "Example showing an infinitely scrolling text.",
+    registryDependencies: ["@magicui/infinity-text"],
+    files: [
+      {
+        path: "example/infinity-text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
