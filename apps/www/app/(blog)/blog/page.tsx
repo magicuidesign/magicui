@@ -127,7 +127,7 @@ export default async function Page({
           __html: serializedBreadcrumbStructuredData,
         }}
       />
-      <main className="container mx-auto py-10 md:py-14">
+      <main className="container mx-auto py-10 md:py-14 px-10">
         <header className="mb-12 space-y-3">
           <div>
             <h1 className="text-3xl font-semibold tracking-tight">Blog</h1>
