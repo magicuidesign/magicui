@@ -123,15 +123,17 @@ Your template will almost certainly come with a file called something like `.env
 
 For an e-commerce site using Stripe and a headless CMS, for instance, your `.env.local` file would end up looking something like this:
 
-# Stripe API Keys
+### Stripe API Keys
 
-NEXT*PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test*...
-STRIPE*SECRET_KEY=sk_test*...
+`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...`
 
-# Headless CMS Config
+`STRIPE_SECRET_KEY=sk_test_...`
 
-CMS_API_URL=https://your-cms.com/graphql
-CMS_PREVIEW_SECRET=a_very_secret_token
+### Headless CMS Config
+
+`CMS_API_URL=https://your-cms.com/graphql`
+
+`CMS_PREVIEW_SECRET=a_very_secret_token`
 
 Getting these values right is non-negotiable. If they're missing or incorrect, your app simply won't work as expected.
 
