@@ -44,8 +44,8 @@ export function ShowcaseCard({
 export function Showcase() {
   const showcases = showcaseSource.getPages()
   return (
-    <section id="showcase" className="container py-14">
-      <h2 className="text-foreground mb-2 text-center text-5xl leading-[1.2] font-bold tracking-tighter">
+    <section id="showcase" className="container py-10 md:py-14">
+      <h2 className="text-foreground mb-2 text-center text-3xl leading-[1.2] font-semibold tracking-tighter text-balance md:text-4xl lg:text-5xl">
         Showcase
       </h2>
       <h3 className="text-foreground/80 mx-auto mb-8 text-center text-lg font-medium tracking-tight text-balance">
@@ -66,8 +66,8 @@ export function Showcase() {
               />
             ))}
         </Marquee>
-        <div className="from-background pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-gradient-to-r"></div>
-        <div className="from-background pointer-events-none absolute inset-y-0 right-0 h-full w-1/12 bg-gradient-to-l"></div>
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-linear-to-r"></div>
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 h-full w-1/12 bg-linear-to-l"></div>
       </div>
     </section>
   )

@@ -64,7 +64,7 @@ export const TweetSkeleton = ({
 }) => (
   <div
     className={cn(
-      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-lg border p-4",
+      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-xl border p-4",
       className
     )}
     {...props}
@@ -96,8 +96,8 @@ export const TweetNotFound = ({
 )
 
 export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="flex flex-row justify-between tracking-tight">
-    <div className="flex items-center space-x-2">
+  <div className="flex flex-row items-start justify-between tracking-normal">
+    <div className="flex items-center space-x-3">
       <a href={tweet.user.url} target="_blank" rel="noreferrer">
         <img
           title={`Profile picture of ${tweet.user.name}`}
@@ -105,15 +105,15 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
           height={48}
           width={48}
           src={tweet.user.profile_image_url_https}
-          className="overflow-hidden rounded-full border border-transparent"
+          className="border-border/50 overflow-hidden rounded-full border"
         />
       </a>
-      <div>
+      <div className="flex flex-col gap-0.5">
         <a
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center font-semibold whitespace-nowrap"
+          className="text-foreground flex items-center font-medium whitespace-nowrap transition-opacity hover:opacity-80"
         >
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified ||
@@ -126,7 +126,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
             href={tweet.user.url}
             target="_blank"
             rel="noreferrer"
-            className="text-sm text-gray-500 transition-all duration-75"
+            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
           >
             @{truncate(tweet.user.screen_name, 16)}
           </a>
@@ -135,13 +135,13 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     </div>
     <a href={tweet.url} target="_blank" rel="noreferrer">
       <span className="sr-only">Link to tweet</span>
-      <Twitter className="size-5 items-start text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
+      <Twitter className="text-muted-foreground hover:text-foreground size-5 items-start transition-all ease-in-out hover:scale-105" />
     </a>
   </div>
 )
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="leading-normal tracking-tighter break-words">
+  <div className="text-[15px] leading-relaxed tracking-normal wrap-break-word">
     {tweet.entities.map((entity, idx) => {
       switch (entity.type) {
         case "url":
@@ -154,7 +154,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               href={entity.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-normal text-gray-500"
+              className="text-muted-foreground hover:text-foreground text-[15px] font-normal transition-colors"
             >
               <span>{entity.text}</span>
             </a>
@@ -163,7 +163,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
           return (
             <span
               key={idx}
-              className="text-sm font-normal"
+              className="text-foreground text-[15px] font-normal"
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           )
@@ -235,7 +235,7 @@ export const MagicTweet = ({
   return (
     <div
       className={cn(
-        "relative flex h-fit w-full max-w-lg flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
+        "relative flex h-fit w-full max-w-lg flex-col gap-4 overflow-hidden rounded-xl border p-5",
         className
       )}
       {...props}
