@@ -50,7 +50,7 @@ export const mdxComponents = {
           .replace(/\?/g, "")
           .toLowerCase()}
         className={cn(
-          "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:!mt-4 *:[code]:text-xl",
+          "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:mt-4! *:[code]:text-xl",
           className
         )}
         {...props}
@@ -101,7 +101,7 @@ export const mdxComponents = {
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
     <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
+      className={cn("leading-relaxed not-first:mt-6", className)}
       {...props}
     />
   ),
@@ -119,7 +119,7 @@ export const mdxComponents = {
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
+      className={cn("mt-6 border-l-2 pl-6 pr-4 italic bg-muted/50 py-4 rounded-r-md", className)}
       {...props}
     />
   ),
@@ -127,30 +127,50 @@ export const mdxComponents = {
     // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
-  hr: ({ ...props }: React.ComponentProps<"hr">) => (
-    <hr className="my-4 md:my-8" {...props} />
+  iframe: ({ className, ...props }: React.ComponentProps<"iframe">) => (
+    <iframe
+      className={cn("mt-6 rounded-md w-full", className)}
+      {...props}
+    />
+  ),
+  hr: ({ className, ...props }: React.ComponentProps<"hr">) => (
+    <div className={cn("my-4 flex items-center justify-center md:my-8", className)}>
+      <hr
+        className="mx-4 h-px w-full border-0 bg-linear-to-r from-transparent via-border to-transparent"
+        {...props}
+      />
+    </div>
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
-    <div className="my-6 w-full overflow-y-auto">
+    <div className="my-6 w-full overflow-x-auto rounded-lg border">
       <table
         className={cn(
-          "relative w-full overflow-hidden border-none text-sm",
+          "relative w-full text-sm",
           className
         )}
         {...props}
       />
     </div>
   ),
+  thead: ({ className, ...props }: React.ComponentProps<"thead">) => (
+    <thead
+      className={cn("bg-muted border-b", className)}
+      {...props}
+    />
+  ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
     <tr
-      className={cn("last:border-b-none m-0 border-b", className)}
+      className={cn(
+        "m-0 border-b transition-colors hover:bg-muted/50 last:border-b-0",
+        className
+      )}
       {...props}
     />
   ),
   th: ({ className, ...props }: React.ComponentProps<"th">) => (
     <th
       className={cn(
-        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+        "min-w-[120px] px-4 py-3 text-left font-semibold [[align=center]]:text-center [[align=right]]:text-right",
         className
       )}
       {...props}
@@ -159,7 +179,7 @@ export const mdxComponents = {
   td: ({ className, ...props }: React.ComponentProps<"td">) => (
     <td
       className={cn(
-        "px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        "min-w-[120px] px-4 py-3 text-left [[align=center]]:text-center [[align=right]]:text-right",
         className
       )}
       {...props}
@@ -169,7 +189,7 @@ export const mdxComponents = {
     return (
       <pre
         className={cn(
-          "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0",
+          "no-scrollbar min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-data-highlighted-line:px-0 has-data-line-numbers:px-0 has-data-[slot=tabs]:p-0",
           className
         )}
         {...props}
@@ -226,7 +246,7 @@ export const mdxComponents = {
       return (
         <code
           className={cn(
-            "bg-muted relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] break-words outline-none",
+            "bg-muted relative rounded-md px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] wrap-break-word outline-none",
             className
           )}
           {...props}

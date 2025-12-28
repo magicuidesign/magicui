@@ -145,17 +145,18 @@ To bring the sidebar to life, we need to manage its state. While the `isOpen` pr
 
 For example, a parent component would typically manage the open/closed state like this:
 
-const [isSidebarOpen, setSidebarOpen] = useState(false);
+```tsx
+const [isSidebarOpen, setSidebarOpen] = useState(false)
 
 return (
-
-<div>
-  <button onClick={() => setSidebarOpen(true)}>Open Menu</button>
-  <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)}>
-    {/* Navigation links go here */}
-  </Sidebar>
-</div>
-);
+  <div>
+    <button onClick={() => setSidebarOpen(true)}>Open Menu</button>
+    <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)}>
+      {/* Navigation links go here */}
+    </Sidebar>
+  </div>
+)
+```
 
 This pattern is called a **controlled component**. The parent has full authority over the sidebar's visibility, which makes state management crystal clear. Inside our sidebar, we can use the `useEffect` hook to handle side effects, like adding an event listener to close the sidebar when the "Escape" key is pressed. It's a small touch, but one that significantly improves keyboard accessibility.
 

@@ -173,13 +173,13 @@ By giving it precise paths to your template files, you make sure the compiler sc
 
 A typical setup for a Next.js project, for example, might look like this:
 
-```js
-/** @type {import('tailwindcss').Config} */
+```ts
+/** @type {import('tailwindcss').Config} \*/
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/pages/**/_.{js,ts,jsx,tsx,mdx}",
+    "./src/components/\*\*/_.{js,ts,jsx,tsx,mdx}",
+    "./src/app/\*_/_.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},
@@ -218,7 +218,7 @@ We'll set up our component to accept props for `variant` (like `primary` or `sec
 
 Here’s the basic skeleton:
 
-```jsx
+```tsx
 // A basic structure for a reusable Button component
 function Button({ children, variant = 'primary', size = 'md', ...props }) {
 // We'll add class logic here const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2';

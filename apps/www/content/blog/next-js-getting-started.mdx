@@ -220,30 +220,30 @@ Let's look at a practical example. Say you want to pull in a list of products fr
 ```tsx
 // app/products/page.tsx
 async function getProducts() {
-  const res = await fetch('https://dummyjson.com/products');
+  const res = await fetch("https://dummyjson.com/products")
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+    throw new Error("Failed to fetch data")
   }
-  return res.json();
+  return res.json()
 }
 
 export default async function ProductsPage() {
-  const data = await getProducts();
+  const data = await getProducts()
 
   return (
     <main className="p-24">
       <h1 className="mb-8 text-4xl font-bold">Our Products</h1>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {{"{"}}data.products.map((product) => (
+        {data.products.map((product) => (
           <div key={product.id} className="rounded-lg border p-4">
-            <h2 className="text-xl font-semibold">{{"{"}}product.title{{"}"}}</h2>
-            <p className="mt-2 text-gray-600">{{"{"}}product.description{{"}"}}</p>
+            <h2 className="text-xl font-semibold">{product.title}</h2>
+            <p className="mt-2 text-gray-600">{product.description}</p>
           </div>
-        )){{"}"}}
+        ))}
       </div>
     </main>
-  );
+  )
 }
 ```
 

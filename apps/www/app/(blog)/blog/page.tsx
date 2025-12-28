@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next"
 import Link from "next/link"
 import type { Blog, BreadcrumbList, WithContext } from "schema-dts"
@@ -12,6 +13,7 @@ import {
   normalizeTag,
   pluralize,
 } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -43,8 +45,6 @@ export default async function Page({
     return dateB - dateA
   })
 
-  const allTags = posts.flatMap((p) => normalizeTag(p.data?.tags))
-  const tags = [...new Set(allTags)].filter(Boolean).sort()
   const filteredPosts = selectedTag
     ? posts.filter((p) => normalizeTag(p.data?.tags).includes(selectedTag))
     : posts
@@ -127,21 +127,21 @@ export default async function Page({
           __html: serializedBreadcrumbStructuredData,
         }}
       />
-      <main className="mx-auto w-full max-w-6xl px-6 py-8">
-        <header className="mb-8 space-y-4">
+      <main className="container mx-auto py-10 md:py-14 px-10">
+        <header className="mb-12 space-y-3">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
+            <h1 className="text-3xl font-semibold tracking-tight">Blog</h1>
             <p className="text-muted-foreground mt-2 text-lg">
               {BLOG_DESCRIPTION}
             </p>
           </div>
 
           {filteredPosts.length > 0 && (
-            <p className="text-muted-foreground text-sm">
+            <Badge variant="default" className="text-xs shadow-none">
               {selectedTag
                 ? `${pluralize(filteredPosts.length, "article")} tagged with "${selectedTag}"`
                 : `${pluralize(filteredPosts.length, "article")} total`}
-            </p>
+            </Badge>
           )}
         </header>
 
@@ -192,65 +192,64 @@ export default async function Page({
             )}
           </div>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {filteredPosts.map(async (post) => {
               const content = await post.data?.getText("raw")
               return (
                 <article
                   key={post.url}
-                  className="group bg-card hover:bg-accent/5 flex flex-col overflow-hidden rounded-xl border transition-all duration-200"
+                  className="group flex flex-col rounded-lg border"
                 >
                   <Link href={post.url} className="flex h-full flex-col">
                     {post.data?.image && (
-                      <div className="aspect-video overflow-hidden">
+                      <div className="border-b overflow-hidden rounded-t-lg">
                         <img
                           src={post.data.image}
                           alt={post.data?.title ?? post.url}
                           width={640}
                           height={360}
-                          className="h-full w-full object-cover"
+                          className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                         />
                       </div>
                     )}
 
-                    <div className="flex flex-1 flex-col space-y-4 p-6">
+                    <div className="flex flex-1 flex-col space-y-3 p-6">
                       <div className="flex-1 space-y-2">
-                        <h2 className="group-hover:text-primary line-clamp-2 text-xl leading-tight font-semibold transition-colors">
+                        <h2 className="group-hover:text-primary line-clamp-2 text-xl font-semibold leading-tight transition-colors">
                           {post.data?.title ?? post.url}
                         </h2>
                         {post.data?.description && (
-                          <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
+                          <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
                             {post.data.description}
                           </p>
                         )}
                       </div>
 
-                      <div className="text-muted-foreground flex flex-col gap-2 text-xs">
-                        <div className="flex items-center gap-2">
-                          {post.data?.publishedOn && (
-                            <time dateTime={post.data.publishedOn}>
-                              {formatDate(post.data.publishedOn)}
-                            </time>
-                          )}
-                          {post.data?.publishedOn && <span>·</span>}
-                          <span>
-                            {calculateReadingTime(content ?? "")} min read
-                          </span>
-                        </div>
-
-                        {normalizeTag(post.data?.tags).length > 0 && (
-                          <div className="flex flex-wrap gap-1">
-                            {normalizeTag(post.data.tags).map((tag) => (
-                              <span
-                                key={tag}
-                                className="bg-muted/50 rounded-md border px-2 py-1 text-xs"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+                      <div className="text-muted-foreground flex items-center gap-2 text-xs">
+                        {post.data?.publishedOn && (
+                          <time dateTime={post.data.publishedOn}>
+                            {formatDate(post.data.publishedOn)}
+                          </time>
                         )}
+                        {post.data?.publishedOn && <span>·</span>}
+                        <span>
+                          {calculateReadingTime(content ?? "")} min read
+                        </span>
                       </div>
+
+                      {normalizeTag(post.data?.tags).length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {normalizeTag(post.data.tags).slice(0, 3).map((tag) => (
+                            <Badge
+                              key={tag}
+                              variant="secondary"
+                              className="border border-border text-xs"
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </Link>
                 </article>

@@ -516,7 +516,7 @@
     background-color: var(--color-code);
     color: var(--color-code-foreground);
     border-radius: var(--radius-lg);
-    border-width: 0px;
+    border-width: 1px;
     border-color: var(--border);
     margin-top: calc(var(--spacing) * 6);
     overflow: hidden;
@@ -614,5 +614,9 @@
     padding-block: 0.1rem;
     font-family: var(--font-mono);
     font-size: 0.8rem;
+  }
+
+  iframe {
+    @apply mt-6 rounded-lg overflow-hidden;
   }
 }

@@ -58,12 +58,12 @@ export function VideoTestimonials() {
   return (
     <section
       id="video-testimonials"
-      className="container max-w-screen-xl py-14"
+      className="container mx-auto py-10 md:py-14"
     >
-      <h2 className="text-foreground mb-8 text-center text-5xl leading-[1.2] font-bold tracking-tighter">
+      <h2 className="text-foreground mb-10 text-center text-3xl leading-[1.2] font-semibold tracking-tighter text-balance md:text-4xl lg:text-5xl">
         Featured on YouTube
       </h2>
-      <div className="grid auto-rows-[300px] grid-cols-1 gap-6 md:auto-rows-[350px] md:grid-cols-4 lg:grid-cols-6">
+      <div className="grid auto-rows-[280px] grid-cols-1 gap-4 md:auto-rows-[300px] md:grid-cols-6 md:gap-6 lg:auto-rows-[320px]">
         {VIDEO_EMBEDS.map((embedUrl, index) => {
           const videoId = extractVideoId(embedUrl)
           const isActive = activeIndex === index
@@ -73,8 +73,10 @@ export function VideoTestimonials() {
 
           const columnClasses =
             index === 0
-              ? "md:col-span-2 md:row-span-2 lg:col-span-3 lg:row-span-2"
-              : "md:col-span-2 lg:col-span-3"
+              ? "md:col-span-4 md:row-span-2"
+              : index === 1 || index === 2
+                ? "md:col-span-2 md:row-span-1"
+                : "md:col-span-3 md:row-span-1"
 
           return (
             <motion.button
@@ -91,8 +93,8 @@ export function VideoTestimonials() {
                   setActiveIndex(index)
                 }
               }}
-              className={`group bg-card focus-visible:outline-primary relative overflow-hidden rounded-xl border shadow-lg transition-all duration-300 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${columnClasses}`}
-              whileHover={{ scale: 1.02 }}
+              className={`group bg-card focus-visible:outline-primary border-border hover:border-border/80 relative cursor-pointer overflow-hidden rounded-xl border transition-[border-color,transform] duration-200 ease-in-out focus-visible:outline focus-visible:outline-offset-2 ${columnClasses}`}
+              whileHover={{ scale: 1.01 }}
             >
               {!isActive && (
                 <>
@@ -110,9 +112,10 @@ export function VideoTestimonials() {
                       Video preview unavailable
                     </span>
                   )}
-                  <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="bg-card/5 pointer-events-none absolute inset-0 z-10 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <span className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-                    <PlayIcon className="h-16 w-16" />
+                    <PlayIcon className="h-20 w-20 drop-shadow-xl transition-transform duration-200 group-hover:scale-[1.08]" />
                   </span>
                 </>
               )}

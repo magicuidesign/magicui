@@ -97,10 +97,11 @@ Alright, this next part is the most critical step of the entire process. Serious
 
 Open up your `tailwind.config.js` file and find the `content` array. You need to add paths to every single file that might contain a Tailwind class—HTML files, JavaScript components, you name it.
 
-```js
-/** @type {import('tailwindcss').Config} */
+
+```ts
+/** @type {import('tailwindcss').Config} \*/
 export default {
-  content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
+  content: ["./public/**/_.html", "./src/\*\*/_.{js,jsx,ts,tsx,vue}"],
   theme: {
     extend: {},
   },
@@ -173,11 +174,12 @@ npx tailwindcss init -p
 
 The real key is modifying your `tailwind.config.js`. You need to point the `content` array to your **JSX** and **TSX** files so Tailwind’s JIT compiler knows where to look for utility classes.
 
-```js
+```ts
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  content: ["./index.html", "./src/**/\*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
@@ -197,14 +199,14 @@ But if you're adding Tailwind to an _existing_ Next.js project, the process is n
 
 The only significant difference is the `content` path in `tailwind.config.js`. You’ll want to configure it to scan the `pages`, `components`, and `app` directories commonly found in Next.js apps.
 
-```js
+```ts
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/_.{js,ts,jsx,tsx,mdx}",
+    "./components/\*\*/_.{js,ts,jsx,tsx,mdx}",
+    "./app/\*_/_.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},
@@ -251,7 +253,7 @@ You don't have to throw the baby out with the bathwater. The `theme.extend` obje
 
 For instance, here’s how you might add a couple of custom brand colors and a new display font:
 
-```js
+```ts
 // tailwind.config.js
 module.exports = {
   theme: {
@@ -286,7 +288,8 @@ First, you'll need to install the package:
 
 Then, just require it inside the `plugins` array in your config file.
 
-```js
+
+```ts
 // tailwind.config.js
 module.exports = {
   // ...

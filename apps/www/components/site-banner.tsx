@@ -18,7 +18,7 @@ export function ProBanner() {
           <span className="ml-1 font-[580] dark:font-[550]">
             {" "}
             Introducing Magic UI Pro - 50+ blocks and templates to build
-            beautiful landing pages in minutes.
+            beautiful landing pages in minutes
           </span>{" "}
           <ChevronRight className="mt-[3px] ml-1 hidden size-4 transition-all duration-300 ease-out group-hover:translate-x-1 lg:inline-block" />
         </Link>

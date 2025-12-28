@@ -81,7 +81,7 @@ So where does the real magic happen? It's when Tailwind takes these definitions 
 
 Let's say we want to add a custom primary color to our configuration:
 
-```js
+```tsx
 // tailwind.config.js
 module.exports = {
   theme: {
@@ -128,8 +128,7 @@ A polished theme almost always needs custom typography and a sophisticated appro
 To bring in custom fonts, you can drop a standard `@font-face` rule into your main CSS file and then give it a name in your `tailwind.config.js`.
 
 ```css
-/* In your main CSS file */
-@font-face {
+/_ In your main CSS file _/ @font-face {
   font-family: "Inter";
   src: url("/fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 400;
@@ -141,7 +140,7 @@ From there, you just wire it up in your theme configuration to make it available
 
 In the same way, you can define more specific responsive breakpoints for trickier layouts. While Tailwind's defaults are a great starting point, your design might need to target some non-standard screen sizes.
 
-```js
+```tsx
 // tailwind.config.js
 module.exports = {
   theme: {
@@ -197,7 +196,7 @@ Two of the most indispensable official plugins are:
 
 Getting them set up is a breeze. First, pull the package in with npm, then simply register it in the `plugins` array of your `tailwind.config.js` file.
 
-```js
+```tsx
 // tailwind.config.js
 module.exports = {
   theme: {

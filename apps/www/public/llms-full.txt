@@ -2237,8 +2237,7 @@ import { ComponentPropsWithoutRef } from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface AnimatedGradientTextProps
-  extends ComponentPropsWithoutRef<"div"> {
+export interface AnimatedGradientTextProps extends ComponentPropsWithoutRef<"div"> {
   speed?: number
   colorFrom?: string
   colorTo?: string
@@ -2347,8 +2346,7 @@ import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-export interface AnimatedGridPatternProps
-  extends ComponentPropsWithoutRef<"svg"> {
+export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"> {
   width?: number
   height?: number
   x?: number
@@ -2717,8 +2715,7 @@ import { ComponentPropsWithoutRef, CSSProperties, FC } from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface AnimatedShinyTextProps
-  extends ComponentPropsWithoutRef<"span"> {
+export interface AnimatedShinyTextProps extends ComponentPropsWithoutRef<"span"> {
   shimmerWidth?: number
 }
 
@@ -2795,8 +2792,7 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-interface AnimatedThemeTogglerProps
-  extends React.ComponentPropsWithoutRef<"button"> {
+interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number
 }
 
@@ -3921,9 +3917,8 @@ export function CodeComparison({
     async function highlightCode() {
       try {
         const { codeToHtml } = await import("shiki")
-        const { transformerNotationHighlight } = await import(
-          "@shikijs/transformers"
-        )
+        const { transformerNotationHighlight } =
+          await import("@shikijs/transformers")
 
         const before = await codeToHtml(beforeCode, {
           lang: language,
@@ -5075,8 +5070,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
 Dock.displayName = "Dock"
 
-export interface DockIconProps
-  extends Omit<MotionProps & React.HTMLAttributes<HTMLDivElement>, "children"> {
+export interface DockIconProps extends Omit<
+  MotionProps & React.HTMLAttributes<HTMLDivElement>,
+  "children"
+> {
   size?: number
   magnification?: number
   disableMagnification?: boolean
@@ -9227,7 +9224,8 @@ import { motion, MotionProps } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface LineShadowTextProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
     MotionProps {
   shadowColor?: string
   as?: React.ElementType
@@ -10598,8 +10596,7 @@ import React from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface OrbitingCirclesProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface OrbitingCirclesProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   children?: React.ReactNode
   reverse?: boolean
@@ -11721,8 +11718,7 @@ import React from "react"
 
 import { cn } from "@/lib/utils"
 
-interface PulsatingButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface PulsatingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   pulseColor?: string
   duration?: string
 }
@@ -11821,7 +11817,8 @@ const rainbowButtonVariants = cva(
 )
 
 interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof rainbowButtonVariants> {
   asChild?: boolean
 }
@@ -12061,8 +12058,7 @@ import React, { MouseEvent, useEffect, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
-interface RippleButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   rippleColor?: string
   duration?: string
 }
@@ -12785,8 +12781,10 @@ import { motion, MotionProps, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-interface ScrollProgressProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
+interface ScrollProgressProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  keyof MotionProps
+> {
   ref?: React.Ref<HTMLDivElement>
 }
 
@@ -13161,7 +13159,8 @@ const animationProps: MotionProps = {
 }
 
 interface ShinyButtonProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
     MotionProps {
   children: React.ReactNode
   className?: string
@@ -14813,7 +14812,7 @@ export const TweetSkeleton = ({
 }) => (
   <div
     className={cn(
-      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-lg border p-4",
+      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-xl border p-4",
       className
     )}
     {...props}
@@ -14845,8 +14844,8 @@ export const TweetNotFound = ({
 )
 
 export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="flex flex-row justify-between tracking-tight">
-    <div className="flex items-center space-x-2">
+  <div className="flex flex-row items-start justify-between tracking-normal">
+    <div className="flex items-center space-x-3">
       <a href={tweet.user.url} target="_blank" rel="noreferrer">
         <img
           title={`Profile picture of ${tweet.user.name}`}
@@ -14854,15 +14853,15 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
           height={48}
           width={48}
           src={tweet.user.profile_image_url_https}
-          className="overflow-hidden rounded-full border border-transparent"
+          className="border-border/50 overflow-hidden rounded-full border"
         />
       </a>
-      <div>
+      <div className="flex flex-col gap-0.5">
         <a
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center font-semibold whitespace-nowrap"
+          className="text-foreground flex items-center font-medium whitespace-nowrap transition-opacity hover:opacity-80"
         >
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified ||
@@ -14875,7 +14874,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
             href={tweet.user.url}
             target="_blank"
             rel="noreferrer"
-            className="text-sm text-gray-500 transition-all duration-75"
+            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
           >
             @{truncate(tweet.user.screen_name, 16)}
           </a>
@@ -14884,13 +14883,13 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     </div>
     <a href={tweet.url} target="_blank" rel="noreferrer">
       <span className="sr-only">Link to tweet</span>
-      <Twitter className="size-5 items-start text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
+      <Twitter className="text-muted-foreground hover:text-foreground size-5 items-start transition-all ease-in-out hover:scale-105" />
     </a>
   </div>
 )
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="leading-normal tracking-tighter break-words">
+  <div className="text-[15px] leading-relaxed tracking-normal wrap-break-word">
     {tweet.entities.map((entity, idx) => {
       switch (entity.type) {
         case "url":
@@ -14903,7 +14902,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               href={entity.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-normal text-gray-500"
+              className="text-muted-foreground hover:text-foreground text-[15px] font-normal transition-colors"
             >
               <span>{entity.text}</span>
             </a>
@@ -14912,7 +14911,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
           return (
             <span
               key={idx}
-              className="text-sm font-normal"
+              className="text-foreground text-[15px] font-normal"
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           )
@@ -14984,7 +14983,7 @@ export const MagicTweet = ({
   return (
     <div
       className={cn(
-        "relative flex h-fit w-full max-w-lg flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
+        "relative flex h-fit w-full max-w-lg flex-col gap-4 overflow-hidden rounded-xl border p-5",
         className
       )}
       {...props}

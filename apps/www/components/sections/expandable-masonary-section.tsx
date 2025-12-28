@@ -46,7 +46,7 @@ export function ExpandableMasonarySection({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t"
+              className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t"
             />
           )}
         </AnimatePresence>
