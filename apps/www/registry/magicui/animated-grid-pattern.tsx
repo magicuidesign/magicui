@@ -77,10 +77,13 @@ export function AnimatedGridPattern({
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares))
     }
-  }, [dimensions, numSquares, generateSquares])
+  }, [dimensions.width, dimensions.height, width, height, numSquares])
 
   // Resize observer to update container dimensions
   useEffect(() => {
+    const element = containerRef.current
+    if (!element) return
+
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         setDimensions({
@@ -90,16 +93,12 @@ export function AnimatedGridPattern({
       }
     })
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current)
-    }
+    resizeObserver.observe(element)
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current)
-      }
+      resizeObserver.disconnect()
     }
-  }, [containerRef])
+  }, [])
 
   return (
     <svg
