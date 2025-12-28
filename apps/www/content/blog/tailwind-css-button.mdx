@@ -221,13 +221,16 @@ Here’s the basic skeleton:
 ```tsx
 // A basic structure for a reusable Button component
 function Button({ children, variant = 'primary', size = 'md', ...props }) {
-// We'll add class logic here const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2';
+// We'll add class logic here
+const baseClasses = 'font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2';
+
 // The final className will be built conditionally
-  return (
-    <button className={...} {...props}>
-      {children}
-    </button>
-  );
+return (
+
+<button className={...} {...props}>
+{children}
+</button>
+);
 }
 ```
 

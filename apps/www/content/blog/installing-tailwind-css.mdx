@@ -97,7 +97,6 @@ Alright, this next part is the most critical step of the entire process. Serious
 
 Open up your `tailwind.config.js` file and find the `content` array. You need to add paths to every single file that might contain a Tailwind class—HTML files, JavaScript components, you name it.
 
-
 ```ts
 /** @type {import('tailwindcss').Config} \*/
 export default {
@@ -176,9 +175,8 @@ The real key is modifying your `tailwind.config.js`. You need to point the `cont
 
 ```ts
 // tailwind.config.js
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} \*/
 export default {
-
   content: ["./index.html", "./src/**/\*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
@@ -201,7 +199,7 @@ The only significant difference is the `content` path in `tailwind.config.js`. Y
 
 ```ts
 // tailwind.config.js
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} \*/
 module.exports = {
   content: [
     "./pages/**/_.{js,ts,jsx,tsx,mdx}",
@@ -287,7 +285,6 @@ First, you'll need to install the package:
 `npm install -D @tailwindcss/typography`
 
 Then, just require it inside the `plugins` array in your config file.
-
 
 ```ts
 // tailwind.config.js
