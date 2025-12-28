@@ -16,7 +16,6 @@ const nextConfig = {
       "images.unsplash.com",
       "img.youtube.com",
       "pbs.twimg.com",
-      "cdn.outrank.so",
     ],
   },
   async redirects() {
