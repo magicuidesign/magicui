@@ -9,18 +9,30 @@ interface Marker {
   size?: number
 }
 
-export interface DottedMapProps extends React.SVGProps<SVGSVGElement> {
+type MapMarker<M extends Marker> = M & { x: number; y: number }
+
+export interface DottedMapProps<
+  M extends Marker = Marker,
+> extends React.SVGProps<SVGSVGElement> {
   width?: number
   height?: number
   mapSamples?: number
-  markers?: Marker[]
+  markers?: M[]
   dotColor?: string
   markerColor?: string
   dotRadius?: number
   stagger?: boolean
+
+  renderMarkerOverlay?: (args: {
+    marker: MapMarker<M>
+    index: number
+    x: number
+    y: number
+    r: number
+  }) => React.ReactNode
 }
 
-export function DottedMap({
+export function DottedMap<M extends Marker = Marker>({
   width = 150,
   height = 75,
   mapSamples = 5000,
@@ -28,16 +40,17 @@ export function DottedMap({
   markerColor = "#FF6900",
   dotRadius = 0.2,
   stagger = true,
+  renderMarkerOverlay,
   className,
   style,
-}: DottedMapProps) {
+  ...svgProps
+}: DottedMapProps<M>) {
   const { points, addMarkers } = createMap({
     width,
     height,
     mapSamples,
   })
-
-  const processedMarkers = addMarkers(markers)
+  const processedMarkers = addMarkers(markers) as MapMarker<M>[]
 
   // Compute stagger helpers in a single, simple pass
   const { xStep, yToRowIndex } = React.useMemo(() => {
@@ -69,6 +82,7 @@ export function DottedMap({
       viewBox={`0 0 ${width} ${height}`}
       className={cn("text-gray-500 dark:text-gray-500", className)}
       style={{ width: "100%", height: "100%", ...style }}
+      {...svgProps}
     >
       {points.map((point, index) => {
         const rowIndex = yToRowIndex.get(point.y) ?? 0
@@ -83,17 +97,21 @@ export function DottedMap({
           />
         )
       })}
+
       {processedMarkers.map((marker, index) => {
         const rowIndex = yToRowIndex.get(marker.y) ?? 0
         const offsetX = stagger && rowIndex % 2 === 1 ? xStep / 2 : 0
+
+        const x = marker.x + offsetX
+        const y = marker.y
+        const r = marker.size ?? dotRadius
+
         return (
-          <circle
-            cx={marker.x + offsetX}
-            cy={marker.y}
-            r={marker.size ?? dotRadius}
-            fill={markerColor}
-            key={`${marker.x}-${marker.y}-${index}`}
-          />
+          <g key={`${marker.x}-${marker.y}-${index}`}>
+            <circle cx={x} cy={y} r={r} fill={markerColor} />
+
+            {renderMarkerOverlay?.({ marker, index, x, y, r })}
+          </g>
         )
       })}
     </svg>
