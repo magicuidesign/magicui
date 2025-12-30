@@ -1811,4 +1811,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dotted-map-demo-3",
+    type: "registry:example",
+    title: "Dotted Map Demo 3",
+    description: "Example showing a dotted map with pulse animation.",
+    registryDependencies: ["@magicui/dotted-map"],
+    files: [
+      {
+        path: "example/dotted-map-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
