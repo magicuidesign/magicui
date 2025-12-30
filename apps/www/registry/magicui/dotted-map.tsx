@@ -3,7 +3,7 @@ import { createMap } from "svg-dotted-map"
 
 import { cn } from "@/lib/utils"
 
-interface Marker {
+export interface Marker {
   lat: number
   lng: number
   size?: number
