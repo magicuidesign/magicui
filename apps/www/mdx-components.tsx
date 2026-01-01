@@ -100,10 +100,7 @@ export const mdxComponents = {
     />
   ),
   p: ({ className, ...props }: React.ComponentProps<"p">) => (
-    <p
-      className={cn("leading-relaxed not-first:mt-6", className)}
-      {...props}
-    />
+    <p className={cn("leading-relaxed not-first:mt-6", className)} {...props} />
   ),
   strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <strong className={cn("font-medium", className)} {...props} />
@@ -119,7 +116,10 @@ export const mdxComponents = {
   ),
   blockquote: ({ className, ...props }: React.ComponentProps<"blockquote">) => (
     <blockquote
-      className={cn("mt-6 border-l-2 pl-6 pr-4 italic bg-muted/50 py-4 rounded-r-md", className)}
+      className={cn(
+        "bg-muted/50 mt-6 rounded-r-md border-l-2 py-4 pr-4 pl-6 italic",
+        className
+      )}
       {...props}
     />
   ),
@@ -128,40 +128,30 @@ export const mdxComponents = {
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   iframe: ({ className, ...props }: React.ComponentProps<"iframe">) => (
-    <iframe
-      className={cn("mt-6 rounded-md w-full", className)}
-      {...props}
-    />
+    <iframe className={cn("mt-6 w-full rounded-md", className)} {...props} />
   ),
   hr: ({ className, ...props }: React.ComponentProps<"hr">) => (
-    <div className={cn("my-4 flex items-center justify-center md:my-8", className)}>
+    <div
+      className={cn("my-4 flex items-center justify-center md:my-8", className)}
+    >
       <hr
-        className="mx-4 h-px w-full border-0 bg-linear-to-r from-transparent via-border to-transparent"
+        className="via-border mx-4 h-px w-full border-0 bg-linear-to-r from-transparent to-transparent"
         {...props}
       />
     </div>
   ),
   table: ({ className, ...props }: React.ComponentProps<"table">) => (
     <div className="my-6 w-full overflow-x-auto rounded-lg border">
-      <table
-        className={cn(
-          "relative w-full text-sm",
-          className
-        )}
-        {...props}
-      />
+      <table className={cn("relative w-full text-sm", className)} {...props} />
     </div>
   ),
   thead: ({ className, ...props }: React.ComponentProps<"thead">) => (
-    <thead
-      className={cn("bg-muted border-b", className)}
-      {...props}
-    />
+    <thead className={cn("bg-muted border-b", className)} {...props} />
   ),
   tr: ({ className, ...props }: React.ComponentProps<"tr">) => (
     <tr
       className={cn(
-        "m-0 border-b transition-colors hover:bg-muted/50 last:border-b-0",
+        "hover:bg-muted/50 m-0 border-b transition-colors last:border-b-0",
         className
       )}
       {...props}
