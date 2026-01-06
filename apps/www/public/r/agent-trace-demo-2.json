@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-trace-demo-2",
+  "title": "Agent Trace Deploy Demo",
+  "description": "A deploy section with a custom color and five pipeline checks.",
+  "registryDependencies": [
+    "@magicui/agent-trace",
+    "@magicui/agent-trace-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/agent-trace-demo-2.tsx",
+      "content": "import { AgentTrace } from \"@/registry/magicui/agent-trace\"\n\nexport default function AgentTraceDemo2() {\n  return (\n    <section className=\"bg-background text-foreground w-full min-w-0 p-4 sm:p-8\">\n      <div className=\"mx-auto w-full max-w-md sm:p-6\">\n        <p className=\"text-muted-foreground mb-3 text-xs font-medium tracking-wider uppercase\">\n          Deploys\n        </p>\n        <h2 className=\"text-2xl font-semibold tracking-tight text-balance\">\n          Every push, checked before it ships.\n        </h2>\n        <p className=\"text-muted-foreground mt-3 mb-6 text-sm leading-relaxed text-pretty\">\n          Merge with confidence: every release passes the same checks on its way\n          to production.\n        </p>\n        <AgentTrace\n          color=\"#0f9d6b\"\n          steps={[\n            { label: \"Install dependencies\", duration: 1.8 },\n            { label: \"Type-check\", duration: 0.9 },\n            { label: \"Run 412 tests\", duration: 3.4 },\n            { label: \"Build\", duration: 2.2 },\n            { label: \"Promote to production\", duration: 0.6 },\n          ]}\n          result=\"Live on production\"\n        />\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

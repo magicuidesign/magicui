@@ -15,6 +15,23 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "agent-trace": {
+    name: "agent-trace",
+    description: "An animated checklist that ticks off each step with a running timer, then shows the result.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/agent-trace.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/agent-trace.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1353,6 +1370,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/dither-field.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "agent-trace-demo": {
+    name: "agent-trace-demo",
+    description: "A coding-agent hero whose trace ends in a pull request.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/agent-trace","@magicui/agent-trace-pass"],
+    files: [{
+      path: "registry/example/agent-trace-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/agent-trace-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "agent-trace-demo-2": {
+    name: "agent-trace-demo-2",
+    description: "A deploy section with a custom color and five pipeline checks.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/agent-trace","@magicui/agent-trace-pass"],
+    files: [{
+      path: "registry/example/agent-trace-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/agent-trace-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "agent-trace-demo-3": {
+    name: "agent-trace-demo-3",
+    description: "A support ticket that plays its refund steps once.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/agent-trace","@magicui/agent-trace-pass"],
+    files: [{
+      path: "registry/example/agent-trace-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/agent-trace-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

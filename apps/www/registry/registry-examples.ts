@@ -2,6 +2,46 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "agent-trace-demo",
+    type: "registry:example",
+    title: "Agent Trace Demo",
+    description: "A coding-agent hero whose trace ends in a pull request.",
+    registryDependencies: ["@magicui/agent-trace"],
+    files: [
+      {
+        path: "example/agent-trace-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "agent-trace-demo-2",
+    type: "registry:example",
+    title: "Agent Trace Deploy Demo",
+    description:
+      "A deploy section with a custom color and five pipeline checks.",
+    registryDependencies: ["@magicui/agent-trace"],
+    files: [
+      {
+        path: "example/agent-trace-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "agent-trace-demo-3",
+    type: "registry:example",
+    title: "Agent Trace Support Demo",
+    description: "A support ticket that plays its refund steps once.",
+    registryDependencies: ["@magicui/agent-trace"],
+    files: [
+      {
+        path: "example/agent-trace-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",

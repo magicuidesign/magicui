@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-trace-demo",
+  "title": "Agent Trace Demo",
+  "description": "A coding-agent hero whose trace ends in a pull request.",
+  "registryDependencies": [
+    "@magicui/agent-trace",
+    "@magicui/agent-trace-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/agent-trace-demo.tsx",
+      "content": "import { AgentTrace } from \"@/registry/magicui/agent-trace\"\n\nexport default function AgentTraceDemo() {\n  return (\n    <section className=\"bg-background text-foreground w-full min-w-0 px-4 py-12 sm:px-8\">\n      <div className=\"mx-auto flex max-w-xl flex-col items-center text-center\">\n        <p className=\"border-border text-muted-foreground mb-4 rounded-full border px-3 py-1 text-xs font-medium\">\n          Introducing Tern\n        </p>\n        <h2 className=\"max-w-lg text-3xl font-semibold tracking-tight text-balance sm:text-4xl\">\n          <span className=\"block\">Hand it the ticket.</span>{\" \"}\n          <span className=\"block\">Get back a pull request.</span>\n        </h2>\n        <p className=\"text-muted-foreground mt-4 max-w-lg text-sm leading-relaxed text-pretty\">\n          Tern reads the bug, writes the fix and runs your tests before anyone\n          is paged.\n        </p>\n        <div className=\"mt-6 flex flex-wrap justify-center gap-3\">\n          <button\n            type=\"button\"\n            className=\"bg-foreground text-background focus-visible:ring-ring focus-visible:ring-offset-background rounded-lg px-4 py-2 text-sm font-medium focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none\"\n          >\n            Start for free\n          </button>\n          <button\n            type=\"button\"\n            className=\"border-border focus-visible:ring-ring focus-visible:ring-offset-background rounded-lg border px-4 py-2 text-sm font-medium focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none\"\n          >\n            See how it works\n          </button>\n        </div>\n        <div className=\"mt-10 flex w-full justify-center\">\n          <AgentTrace />\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -6,6 +6,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Components
 
+- [Agent Trace](https://magicui.design/docs/components/agent-trace): An animated checklist that ticks off each step with a running timer, then shows the result.
 - [Android](https://magicui.design/docs/components/android): A mockup of an Android device.
 - [Animated Beam](https://magicui.design/docs/components/animated-beam): An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.
 - [Animated Circular Progress Bar](https://magicui.design/docs/components/animated-circular-progress-bar): Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Agent Trace Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/agent-trace-demo.tsx): Example usage
+- [Agent Trace Deploy Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/agent-trace-demo-2.tsx): Example usage
+- [Agent Trace Support Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/agent-trace-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage
