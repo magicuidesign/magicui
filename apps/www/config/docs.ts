@@ -183,12 +183,6 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
-          title: "Agent Trace",
-          href: `/docs/components/agent-trace`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],
@@ -276,6 +270,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dotted Map",
           href: `/docs/components/dotted-map`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Agent Trace",
+          href: `/docs/components/agent-trace`,
           items: [],
           label: "New",
         },
