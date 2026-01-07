@@ -183,6 +183,12 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Agent Trace",
+          href: `/docs/components/agent-trace`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],
