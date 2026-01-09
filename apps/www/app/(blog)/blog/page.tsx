@@ -127,7 +127,7 @@ export default async function Page({
           __html: serializedBreadcrumbStructuredData,
         }}
       />
-      <main className="container mx-auto py-10 md:py-14 px-10">
+      <main className="container mx-auto px-10 py-10 md:py-14">
         <header className="mb-12 space-y-3">
           <div>
             <h1 className="text-3xl font-semibold tracking-tight">Blog</h1>
@@ -202,20 +202,20 @@ export default async function Page({
                 >
                   <Link href={post.url} className="flex h-full flex-col">
                     {post.data?.image && (
-                      <div className="border-b overflow-hidden rounded-t-lg">
+                      <div className="overflow-hidden rounded-t-lg border-b">
                         <img
                           src={post.data.image}
                           alt={post.data?.title ?? post.url}
                           width={640}
                           height={360}
-                          className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                          className="h-auto w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                         />
                       </div>
                     )}
 
                     <div className="flex flex-1 flex-col space-y-3 p-6">
                       <div className="flex-1 space-y-2">
-                        <h2 className="group-hover:text-primary line-clamp-2 text-xl font-semibold leading-tight transition-colors">
+                        <h2 className="group-hover:text-primary line-clamp-2 text-xl leading-tight font-semibold transition-colors">
                           {post.data?.title ?? post.url}
                         </h2>
                         {post.data?.description && (
@@ -239,15 +239,17 @@ export default async function Page({
 
                       {normalizeTag(post.data?.tags).length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
-                          {normalizeTag(post.data.tags).slice(0, 3).map((tag) => (
-                            <Badge
-                              key={tag}
-                              variant="secondary"
-                              className="border border-border text-xs"
-                            >
-                              {tag}
-                            </Badge>
-                          ))}
+                          {normalizeTag(post.data.tags)
+                            .slice(0, 3)
+                            .map((tag) => (
+                              <Badge
+                                key={tag}
+                                variant="secondary"
+                                className="border-border border text-xs"
+                              >
+                                {tag}
+                              </Badge>
+                            ))}
                         </div>
                       )}
                     </div>

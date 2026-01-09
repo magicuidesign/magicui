@@ -55,9 +55,16 @@ export async function generateMetadata({
 
   const url = process.env.NEXT_PUBLIC_APP_URL
 
-  const ogUrl = new URL(`${url}/og`)
-  ogUrl.searchParams.set("title", doc.title ?? "")
-  ogUrl.searchParams.set("description", doc.description ?? "")
+  let ogUrl: URL | null = null
+  try {
+    if (url) {
+      ogUrl = new URL(`${url}/og`)
+      ogUrl.searchParams.set("title", doc.title ?? "")
+      ogUrl.searchParams.set("description", doc.description ?? "")
+    }
+  } catch {
+    // Invalid URL, will use default
+  }
 
   return {
     title: `${doc.title} | React Components & Templates`,
@@ -67,19 +74,21 @@ export async function generateMetadata({
       description: doc.description,
       type: "article",
       url: absoluteUrl(page.url),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-        },
-      ],
+      images: ogUrl
+        ? [
+            {
+              url: ogUrl.toString(),
+              width: 1200,
+              height: 630,
+            },
+          ]
+        : [],
     },
     twitter: {
       card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: [ogUrl.toString()],
+      images: ogUrl ? [ogUrl.toString()] : [],
       creator: "@dillionverma",
     },
   }

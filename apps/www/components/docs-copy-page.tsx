@@ -41,8 +41,8 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
   let pathname = "/docs"
   try {
     pathname = new URL(url).pathname
-  } catch (e) {
-    console.error(e)
+  } catch {
+    // Invalid URL provided, using default pathname
   }
   const menuItems: Record<string, (url: string) => React.ReactNode> = {
     viewMarkdown: () => {

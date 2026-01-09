@@ -13,7 +13,7 @@
   "files": [
     {
       "path": "registry/example/highlighter-demo.tsx",
-      "content": "import { Highlighter } from \"@/registry/magicui/highlighter\"\n\nexport default function HighlighterDemo() {\n  return (\n    <div className=\"text-center\">\n      <p className=\"leading-relaxed\">\n        The{\" \"}\n        <Highlighter action=\"underline\" color=\"#FF9800\">\n          Magic UI Highlighter\n        </Highlighter>{\" \"}\n        makes important{\" \"}\n        <Highlighter action=\"highlight\" color=\"#87CEFA\">\n          text stand out\n        </Highlighter>{\" \"}\n        effortlessly.\n      </p>\n    </div>\n  )\n}\n",
+      "content": "import { Highlighter } from \"@/registry/magicui/highlighter\"\n\nexport default function HighlighterDemo() {\n  return (\n    <div className=\"text-center\">\n      <p className=\"leading-relaxed\">\n        The{\" \"}\n        <Highlighter action=\"underline\" color=\"#FF9800\">\n          Magic UI Highlighter\n        </Highlighter>{\" \"}\n        makes important{\" \"}\n        <Highlighter action=\"highlight\" color=\"#6366F1\">\n          text stand out\n        </Highlighter>{\" \"}\n        effortlessly.\n      </p>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     },
     {

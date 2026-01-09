@@ -7467,7 +7467,7 @@ export default function HighlighterDemo() {
           Magic UI Highlighter
         </Highlighter>{" "}
         makes important{" "}
-        <Highlighter action="highlight" color="#87CEFA">
+        <Highlighter action="highlight" color="#6366F1">
           text stand out
         </Highlighter>{" "}
         effortlessly.
