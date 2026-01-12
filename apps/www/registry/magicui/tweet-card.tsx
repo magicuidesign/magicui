@@ -98,7 +98,12 @@ export const TweetNotFound = ({
 export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
   <div className="flex flex-row items-start justify-between tracking-normal">
     <div className="flex items-center space-x-3">
-      <a href={tweet.user.url} target="_blank" rel="noreferrer">
+      <a
+        href={tweet.user.url}
+        target="_blank"
+        rel="noreferrer"
+        className="shrink-0"
+      >
         <img
           title={`Profile picture of ${tweet.user.name}`}
           alt={tweet.user.screen_name}
