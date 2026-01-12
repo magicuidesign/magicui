@@ -2337,6 +2337,7 @@ Description: A animated background grid pattern made with SVGs, fully customizab
 
 import {
   ComponentPropsWithoutRef,
+  useCallback,
   useEffect,
   useId,
   useRef,
@@ -2358,6 +2359,12 @@ export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"
   repeatDelay?: number
 }
 
+type Square = {
+  id: number
+  pos: [number, number]
+  iteration: number
+}
+
 export function AnimatedGridPattern({
   width = 40,
   height = 40,
@@ -2372,58 +2379,69 @@ export function AnimatedGridPattern({
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId()
-  const containerRef = useRef(null)
+  const containerRef = useRef<SVGSVGElement | null>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [squares, setSquares] = useState<
-    Array<{ id: number; pos: [number, number] }>
-  >([])
+  const [squares, setSquares] = useState<Array<Square>>([])
 
-  function getPos(): [number, number] {
+  const getPos = useCallback((): [number, number] => {
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
     ]
-  }
+  }, [dimensions.height, dimensions.width, height, width])
 
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }))
-  }
+  const generateSquares = useCallback(
+    (count: number) => {
+      return Array.from({ length: count }, (_, i) => ({
+        id: i,
+        pos: getPos(),
+        iteration: 0,
+      }))
+    },
+    [getPos]
+  )
 
-  // Function to update a single square's position
-  const updateSquarePosition = (id: number) => {
-    setSquares((currentSquares) =>
-      currentSquares.map((sq) =>
-        sq.id === id
-          ? {
-              ...sq,
-              pos: getPos(),
-            }
-          : sq
-      )
-    )
-  }
+  const updateSquarePosition = useCallback(
+    (squareId: number) => {
+      setSquares((currentSquares) => {
+        const current = currentSquares[squareId]
+        if (!current || current.id !== squareId) return currentSquares
 
-  // Update squares to animate in
+        const nextSquares = currentSquares.slice()
+        nextSquares[squareId] = {
+          ...current,
+          pos: getPos(),
+          iteration: current.iteration + 1,
+        }
+
+        return nextSquares
+      })
+    },
+    [getPos]
+  )
+
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares))
     }
-  }, [dimensions.width, dimensions.height, width, height, numSquares])
+  }, [dimensions.width, dimensions.height, generateSquares, numSquares])
 
-  // Resize observer to update container dimensions
   useEffect(() => {
     const element = containerRef.current
     if (!element) return
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
+        setDimensions((currentDimensions) => {
+          const nextWidth = entry.contentRect.width
+          const nextHeight = entry.contentRect.height
+          if (
+            currentDimensions.width === nextWidth &&
+            currentDimensions.height === nextHeight
+          ) {
+            return currentDimensions
+          }
+          return { width: nextWidth, height: nextHeight }
         })
       }
     })
@@ -2463,7 +2481,7 @@ export function AnimatedGridPattern({
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
       <svg x={x} y={y} className="overflow-visible">
-        {squares.map(({ pos: [x, y], id }, index) => (
+        {squares.map(({ pos: [squareX, squareY], id, iteration }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
             animate={{ opacity: maxOpacity }}
@@ -2475,11 +2493,11 @@ export function AnimatedGridPattern({
               repeatDelay,
             }}
             onAnimationComplete={() => updateSquarePosition(id)}
-            key={`${x}-${y}-${index}`}
+            key={`${id}-${iteration}`}
             width={width - 1}
             height={height - 1}
-            x={x * width + 1}
-            y={y * height + 1}
+            x={squareX * width + 1}
+            y={squareY * height + 1}
             fill="currentColor"
             strokeWidth="0"
           />
@@ -2506,7 +2524,7 @@ export default function AnimatedGridPatternDemo() {
         duration={3}
         repeatDelay={1}
         className={cn(
-          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+          "mask-[radial-gradient(500px_circle_at_center,white,transparent)]",
           "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
         )}
       />
