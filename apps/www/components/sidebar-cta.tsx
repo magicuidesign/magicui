@@ -28,7 +28,20 @@ export function ProCTA() {
           <LineShadowText className="font-bold tracking-tighter italic">
             Faster
           </LineShadowText>{" "}
-          with <AuroraText colors={["#FF66CC", "#FFDC18", "#41FFD7", "#38bdf8", "#8338EC", "#F72585", "#3A86FF"]}>Magic UI Pro</AuroraText>
+          with{" "}
+          <AuroraText
+            colors={[
+              "#FF66CC",
+              "#FFDC18",
+              "#41FFD7",
+              "#38bdf8",
+              "#8338EC",
+              "#F72585",
+              "#3A86FF",
+            ]}
+          >
+            Magic UI Pro
+          </AuroraText>
         </p>
         <p className="text-muted-foreground text-sm leading-relaxed font-medium">
           Stop building from scratch. <br /> Get{" "}
@@ -45,20 +58,20 @@ export function ProCTA() {
 
       <div className="space-y-2.5 font-medium">
         <div className="text-muted-foreground flex items-start gap-3 text-sm">
-          <div className="flex size-4 items-center justify-center rounded-full border border-border bg-foreground shrink-0 mt-0.5">
-            <CheckIcon className="size-2.5 text-primary-foreground stroke-4" />
+          <div className="border-border bg-foreground mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border">
+            <CheckIcon className="text-primary-foreground size-2.5 stroke-4" />
           </div>
           <span>Next.js 15 + TypeScript ready</span>
         </div>
         <div className="text-muted-foreground flex items-start gap-3 text-sm">
-          <div className="flex size-4 items-center justify-center rounded-full border border-border bg-foreground shrink-0 mt-0.5">
-            <CheckIcon className="size-2.5 text-primary-foreground stroke-4" />
+          <div className="border-border bg-foreground mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border">
+            <CheckIcon className="text-primary-foreground size-2.5 stroke-4" />
           </div>
           <span>Copy, paste, customize in minutes</span>
         </div>
         <div className="text-muted-foreground flex items-start gap-3 text-sm">
-          <div className="flex size-4 items-center justify-center rounded-full border border-border bg-foreground shrink-0 mt-0.5">
-            <CheckIcon className="size-2.5 text-primary-foreground stroke-4" />
+          <div className="border-border bg-foreground mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border">
+            <CheckIcon className="text-primary-foreground size-2.5 stroke-4" />
           </div>
           <span>Save 100+ hours of development</span>
         </div>

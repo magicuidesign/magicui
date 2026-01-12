@@ -16,10 +16,10 @@ const generateHeadingId = (text: string) => {
     .trim()
 }
 
-export function BlogTableOfContents({ 
+export function BlogTableOfContents({
   className,
   onLinkClick,
-}: { 
+}: {
   className?: string
   onLinkClick?: () => void
 }) {

@@ -4,14 +4,15 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
 import { ArrowLeftIcon } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts"
+
 import { siteConfig } from "@/config/site"
 import { blogSource } from "@/lib/source"
 import { absoluteUrl, calculateReadingTime, formatDate } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
-import { BlogTableOfContents } from "@/components/blog/table-of-contents"
 import { MobileTOC } from "@/components/blog/mobile-toc"
+import { BlogTableOfContents } from "@/components/blog/table-of-contents"
 import { SidebarCTA } from "@/components/sidebar-cta"
 
 export const revalidate = false
@@ -188,7 +189,7 @@ export default async function BlogPage({ params }: PageProps) {
                 <img
                   src={doc.image}
                   alt={doc.title}
-                  className="size-full rounded-xl object-cover object-left border border-border"
+                  className="border-border size-full rounded-xl border object-cover object-left"
                 />
               </div>
               <div className="mx-auto flex flex-col items-center justify-center gap-y-2 p-5">
@@ -219,14 +220,16 @@ export default async function BlogPage({ params }: PageProps) {
 
                   return (
                     tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1 items-center justify-center">
+                      <div className="flex flex-wrap items-center justify-center gap-1">
                         {tags.map((tag) => (
                           <Link
                             key={tag}
                             href={`/blog?tag=${encodeURIComponent(tag)}`}
-
                           >
-                            <Badge variant="secondary" className="border border-border text-xs">
+                            <Badge
+                              variant="secondary"
+                              className="border-border border text-xs"
+                            >
                               {tag}
                             </Badge>
                           </Link>
