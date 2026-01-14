@@ -5,6 +5,15 @@ import { ChevronRightIcon } from "@radix-ui/react-icons"
 import { showcaseSource } from "@/lib/source"
 import { Marquee } from "@/registry/magicui/marquee"
 
+function isExternalHref(href: string) {
+  try {
+    const url = new URL(href)
+    return url.protocol === "http:" || url.protocol === "https:"
+  } catch {
+    return false
+  }
+}
+
 export interface ShowcaseCardProps {
   title: string
   image: string
@@ -17,9 +26,13 @@ export function ShowcaseCard({
   href,
   affiliation,
 }: ShowcaseCardProps) {
+  const isExternal = isExternalHref(href)
   return (
     <Link
       href={href}
+      prefetch={isExternal ? false : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      target={isExternal ? "_blank" : undefined}
       className="group relative flex cursor-pointer flex-col gap-2 overflow-hidden"
     >
       <Image

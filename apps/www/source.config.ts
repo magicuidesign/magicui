@@ -63,6 +63,7 @@ export const showcase = defineDocs({
     schema: frontmatterSchema.extend({
       affiliation: z.string().optional(),
       featured: z.boolean().optional().default(false),
+      href: z.string().url().optional(),
       image: z.string().optional(),
     }),
   },
