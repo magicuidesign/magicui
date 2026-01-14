@@ -84,7 +84,7 @@ export default async function PagePage({ params }: PageProps) {
       </h3>
       <ShowcaseCard
         title={doc.title ?? ""}
-        href={page.url}
+        href={doc.href ?? page.url}
         image={doc.image ?? ""}
         affiliation={doc.affiliation ?? ""}
       />
