@@ -4,6 +4,7 @@ import * as React from "react"
 
 import { highlightCode } from "@/lib/highlight-code"
 import { getRegistryItem } from "@/lib/registry"
+import { cn } from "@/lib/utils"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { CopyButton } from "@/components/copy-button"
 import { getIconForLanguageExtension } from "@/components/icons"
@@ -91,7 +92,7 @@ function ComponentCode({
           {title}
         </figcaption>
       )}
-      <CopyButton value={code} />
+      <CopyButton value={code} className={cn(!title && "top-1.5")} />
       <div
         dangerouslySetInnerHTML={{ __html: highlightedCode }}
         className="h-full"
