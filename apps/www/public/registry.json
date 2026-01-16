@@ -418,6 +418,18 @@
       ]
     },
     {
+      "name": "glare-hover",
+      "type": "registry:ui",
+      "title": "Glare Hover",
+      "description": "A component that creates a subtle glare effect that animates across the element on hover.",
+      "files": [
+        {
+          "path": "registry/magicui/glare-hover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shimmer-button",
       "type": "registry:ui",
       "title": "Shimmer Button",
@@ -1804,6 +1816,51 @@
       "files": [
         {
           "path": "registry/example/globe-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover-demo",
+      "type": "registry:example",
+      "title": "Glare Hover Demo",
+      "description": "Example showing a subtle glare effect that animates across the element on hover.",
+      "registryDependencies": [
+        "@magicui/glare-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glare-hover-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover-demo-blue",
+      "type": "registry:example",
+      "title": "Glare Hover Demo - Blue",
+      "description": "Example showing a blue glare effect using custom color classes.",
+      "registryDependencies": [
+        "@magicui/glare-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glare-hover-demo-blue.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover-demo-purple",
+      "type": "registry:example",
+      "title": "Glare Hover Demo - Purple",
+      "description": "Example showing a purple glare effect using custom color classes.",
+      "registryDependencies": [
+        "@magicui/glare-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glare-hover-demo-purple.tsx",
           "type": "registry:example"
         }
       ]

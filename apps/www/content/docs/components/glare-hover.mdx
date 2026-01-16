@@ -1,0 +1,124 @@
+---
+title: Glare Hover
+date: 2024-12-19
+description: A component that creates a subtle glare effect that animates across the element on hover.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="glare-hover-demo" />
+
+## Examples
+
+### Custom Color - Blue
+
+<ComponentPreview name="glare-hover-demo-blue" />
+
+### Custom Color - Purple
+
+<ComponentPreview name="glare-hover-demo-purple" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/glare-hover
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glare-hover" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { GlareHover } from "@/registry/magicui/glare-hover"
+```
+
+```tsx showLineNumbers
+<GlareHover className="rounded-lg">
+  <Card>
+    <CardContent>
+      <CardTitle>Hello World</CardTitle>
+      <CardDescription>Hover over this card to see the effect</CardDescription>
+    </CardContent>
+  </Card>
+</GlareHover>
+```
+
+```tsx showLineNumbers
+<GlareHover className="rounded-lg" rotate={30}>
+  <Card>
+    <CardContent>
+      <CardTitle>Custom Rotation</CardTitle>
+      <CardDescription>With custom rotation angle</CardDescription>
+    </CardContent>
+  </Card>
+</GlareHover>
+```
+
+### Customizing the Glare Color
+
+You can customize the glare effect color by using the `glareClassName` prop with Tailwind's `via-<color>` utility classes. The component uses a gradient with `via-black/15` by default (and `via-white/50` in dark mode), which you can override.
+
+```tsx showLineNumbers
+<GlareHover 
+  className="rounded-lg" 
+  glareClassName="via-blue-500/30 dark:via-blue-400/40"
+>
+  <Card>
+    <CardContent>
+      <CardTitle>Custom Color</CardTitle>
+      <CardDescription>With blue glare effect</CardDescription>
+    </CardContent>
+  </Card>
+</GlareHover>
+```
+
+```tsx showLineNumbers
+<GlareHover 
+  className="rounded-lg" 
+  glareClassName="via-purple-500/40 dark:via-purple-300/50"
+>
+  <Card>
+    <CardContent>
+      <CardTitle>Purple Glare</CardTitle>
+      <CardDescription>With purple glare effect</CardDescription>
+    </CardContent>
+  </Card>
+</GlareHover>
+```
+
+## Props
+
+### GlareHover
+
+| Prop name        | Type              | Default | Description                                          |
+| ---------------- | ----------------- | ------- | ---------------------------------------------------- |
+| `children`       | `React.ReactNode` | `-`     | The content to be wrapped with the glare effect     |
+| `className`      | `string`          | `-`     | Additional CSS classes for the root container       |
+| `glareClassName` | `string`          | `-`     | Additional CSS classes for the glare element. Use `via-<color>` Tailwind classes to customize the glare color (e.g., `via-blue-500/30`) |
+| `rotate`         | `number`          | `45`    | Rotation angle in degrees for the glare effect      |
+
+The glare effect uses a gradient that automatically adapts to light and dark themes, creating a subtle shine effect that moves across the element on hover. By default, it uses `via-black/15` in light mode and `via-white/50` in dark mode, but you can customize it using the `glareClassName` prop with Tailwind's `via-<color>` utility classes.

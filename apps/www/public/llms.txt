@@ -29,6 +29,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
 - [File Tree](https://magicui.design/docs/components/file-tree): A component used to showcase the folder and file structure of a directory.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
+- [Glare Hover](https://magicui.design/docs/components/glare-hover): A component that creates a subtle glare effect that animates across the element on hover.
 - [Globe](https://magicui.design/docs/components/globe): An autorotating, interactive, and highly performant globe made using WebGL.
 - [Grid Pattern](https://magicui.design/docs/components/grid-pattern): A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Hero Video Dialog](https://magicui.design/docs/components/hero-video-dialog): A hero video dialog component.
@@ -114,6 +115,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Marquee Logos](https://github.com/magicuidesign/magicui/blob/main/example/marquee-logos.tsx): Example usage
 - [Marquee 3D](https://github.com/magicuidesign/magicui/blob/main/example/marquee-3d.tsx): Example usage
 - [Globe Demo](https://github.com/magicuidesign/magicui/blob/main/example/globe-demo.tsx): Example usage
+- [Glare Hover Demo](https://github.com/magicuidesign/magicui/blob/main/example/glare-hover-demo.tsx): Example usage
+- [Glare Hover Demo - Blue](https://github.com/magicuidesign/magicui/blob/main/example/glare-hover-demo-blue.tsx): Example usage
+- [Glare Hover Demo - Purple](https://github.com/magicuidesign/magicui/blob/main/example/glare-hover-demo-purple.tsx): Example usage
 - [Tweet Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-demo.tsx): Example usage
 - [Tweet Card Images](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-images.tsx): Example usage
 - [Tweet Card Meta Preview](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-meta-preview.tsx): Example usage

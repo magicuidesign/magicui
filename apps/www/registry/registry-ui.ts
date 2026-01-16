@@ -387,6 +387,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "glare-hover",
+    type: "registry:ui",
+    title: "Glare Hover",
+    description:
+      "A component that creates a subtle glare effect that animates across the element on hover.",
+    files: [
+      {
+        path: "magicui/glare-hover.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "shimmer-button",
     type: "registry:ui",
     title: "Shimmer Button",

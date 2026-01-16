@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover",
+  "type": "registry:ui",
+  "title": "Glare Hover",
+  "description": "A component that creates a subtle glare effect that animates across the element on hover.",
+  "files": [
+    {
+      "path": "registry/magicui/glare-hover.tsx",
+      "content": "import type * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GlareHoverProps extends React.ComponentProps<\"div\"> {\n  /**\n   * The rotation angle in degrees for the glare effect.\n   * @default 45\n   */\n  rotate?: number\n  /**\n   * Additional CSS classes to apply to the glare element.\n   */\n  glareClassName?: string\n}\n\nfunction GlareHover({\n  children,\n  rotate = 45,\n  className,\n  glareClassName,\n  ...props\n}: GlareHoverProps) {\n  return (\n    <div\n      className={cn(\"group/glare relative w-fit overflow-hidden\", className)}\n    >\n      {children}\n      <span\n        className={cn(\n          \"absolute inset-0 size-full opacity-30 blur-sm transition-transform\",\n          \"translate-x-[-100%] bg-gradient-to-t from-transparent via-black/15 to-transparent duration-500 dark:via-white/50\",\n          \"group-hover/glare:translate-x-[100%]\",\n          glareClassName\n        )}\n        style={{ rotate: `${rotate}deg` }}\n        aria-hidden=\"true\"\n        role=\"presentation\"\n        {...props}\n      />\n    </div>\n  )\n}\n\nexport { GlareHover }\n",
+      "type": "registry:ui"
+    }
+  ]
+}
