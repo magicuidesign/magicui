@@ -5858,24 +5858,36 @@ import { createMap } from "svg-dotted-map"
 
 import { cn } from "@/lib/utils"
 
-interface Marker {
+export interface Marker {
   lat: number
   lng: number
   size?: number
 }
 
-export interface DottedMapProps extends React.SVGProps<SVGSVGElement> {
+type MapMarker<M extends Marker> = M & { x: number; y: number }
+
+export interface DottedMapProps<
+  M extends Marker = Marker,
+> extends React.SVGProps<SVGSVGElement> {
   width?: number
   height?: number
   mapSamples?: number
-  markers?: Marker[]
+  markers?: M[]
   dotColor?: string
   markerColor?: string
   dotRadius?: number
   stagger?: boolean
+
+  renderMarkerOverlay?: (args: {
+    marker: MapMarker<M>
+    index: number
+    x: number
+    y: number
+    r: number
+  }) => React.ReactNode
 }
 
-export function DottedMap({
+export function DottedMap<M extends Marker = Marker>({
   width = 150,
   height = 75,
   mapSamples = 5000,
@@ -5883,16 +5895,17 @@ export function DottedMap({
   markerColor = "#FF6900",
   dotRadius = 0.2,
   stagger = true,
+  renderMarkerOverlay,
   className,
   style,
-}: DottedMapProps) {
+  ...svgProps
+}: DottedMapProps<M>) {
   const { points, addMarkers } = createMap({
     width,
     height,
     mapSamples,
   })
-
-  const processedMarkers = addMarkers(markers)
+  const processedMarkers = addMarkers(markers) as MapMarker<M>[]
 
   // Compute stagger helpers in a single, simple pass
   const { xStep, yToRowIndex } = React.useMemo(() => {
@@ -5924,6 +5937,7 @@ export function DottedMap({
       viewBox={`0 0 ${width} ${height}`}
       className={cn("text-gray-500 dark:text-gray-500", className)}
       style={{ width: "100%", height: "100%", ...style }}
+      {...svgProps}
     >
       {points.map((point, index) => {
         const rowIndex = yToRowIndex.get(point.y) ?? 0
@@ -5938,17 +5952,21 @@ export function DottedMap({
           />
         )
       })}
+
       {processedMarkers.map((marker, index) => {
         const rowIndex = yToRowIndex.get(marker.y) ?? 0
         const offsetX = stagger && rowIndex % 2 === 1 ? xStep / 2 : 0
+
+        const x = marker.x + offsetX
+        const y = marker.y
+        const r = marker.size ?? dotRadius
+
         return (
-          <circle
-            cx={marker.x + offsetX}
-            cy={marker.y}
-            r={marker.size ?? dotRadius}
-            fill={markerColor}
-            key={`${marker.x}-${marker.y}-${index}`}
-          />
+          <g key={`${marker.x}-${marker.y}-${index}`}>
+            <circle cx={x} cy={y} r={r} fill={markerColor} />
+
+            {renderMarkerOverlay?.({ marker, index, x, y, r })}
+          </g>
         )
       })}
     </svg>
@@ -5961,90 +5979,85 @@ Title: Dotted Map Demo
 
 --- file: example/dotted-map-demo.tsx ---
 import { DottedMap } from "@/registry/magicui/dotted-map"
+import type { Marker } from "@/registry/magicui/dotted-map"
 
-const markers = [
+type MyMarker = Marker & {
+  overlay: {
+    countryCode: string // "kr", "us"
+    label: string
+  }
+}
+
+const markers: MyMarker[] = [
+  {
+    lat: 37.5665,
+    lng: 126.978,
+    size: 2.8,
+    overlay: { countryCode: "kr", label: "Seoul" },
+  },
   {
     lat: 40.7128,
     lng: -74.006,
-    size: 0.3,
-  }, // New York
-  {
-    lat: 34.0522,
-    lng: -118.2437,
-    size: 0.3,
-  }, // Los Angeles
-  {
-    lat: 51.5074,
-    lng: -0.1278,
-    size: 0.3,
-  }, // London
-  {
-    lat: -33.8688,
-    lng: 151.2093,
-    size: 0.3,
-  }, // Sydney
-  {
-    lat: 48.8566,
-    lng: 2.3522,
-    size: 0.3,
-  }, // Paris
-  {
-    lat: 35.6762,
-    lng: 139.6503,
-    size: 0.3,
-  }, // Tokyo
-  {
-    lat: 55.7558,
-    lng: 37.6176,
-    size: 0.3,
-  }, // Moscow
-  {
-    lat: 39.9042,
-    lng: 116.4074,
-    size: 0.3,
-  }, // Beijing
-  {
-    lat: 28.6139,
-    lng: 77.209,
-    size: 0.3,
-  }, // New Delhi
-  {
-    lat: -23.5505,
-    lng: -46.6333,
-    size: 0.3,
-  }, // São Paulo
-  {
-    lat: 1.3521,
-    lng: 103.8198,
-    size: 0.3,
-  }, // Singapore
-  {
-    lat: 25.2048,
-    lng: 55.2708,
-    size: 0.3,
-  }, // Dubai
-  {
-    lat: 52.52,
-    lng: 13.405,
-    size: 0.3,
-  }, // Berlin
-  {
-    lat: 19.4326,
-    lng: -99.1332,
-    size: 0.3,
-  }, // Mexico City
-  {
-    lat: -26.2041,
-    lng: 28.0473,
-    size: 0.3,
-  }, // Johannesburg
+    size: 2.8,
+    overlay: { countryCode: "us", label: "NYC" },
+  },
 ]
 
 export default function Component() {
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
-      <div className="to-background absolute inset-0 bg-radial from-transparent to-70%" />
-      <DottedMap markers={markers} />
+      <div className="to-background absolute inset-0 bg-radial from-transparent to-200%" />
+      <DottedMap<MyMarker>
+        markers={markers}
+        renderMarkerOverlay={({ marker, x, y, r, index }) => {
+          const { countryCode, label } = marker.overlay
+          const href = `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
+
+          const clipId = `flag-clip-${index}`
+          const imgR = r * 0.75
+
+          const fontSize = r * 0.9
+          const pillH = r * 1.5
+          const pillW = label.length * (fontSize * 0.62) + r * 1.4
+          const pillX = x + r + r * 0.6
+          const pillY = y - pillH / 2
+
+          return (
+            <g style={{ pointerEvents: "none" }}>
+              <clipPath id={clipId}>
+                <circle cx={x} cy={y} r={imgR} />
+              </clipPath>
+
+              <image
+                href={href}
+                x={x - imgR}
+                y={y - imgR}
+                width={imgR * 2}
+                height={imgR * 2}
+                preserveAspectRatio="xMidYMid slice"
+                clipPath={`url(#${clipId})`}
+              />
+
+              <rect
+                x={pillX}
+                y={pillY}
+                width={pillW}
+                height={pillH}
+                rx={pillH / 2}
+                fill="rgba(0,0,0,0.55)"
+              />
+              <text
+                x={pillX + r * 0.7}
+                y={y + fontSize * 0.35}
+                fontSize={fontSize}
+                fill="white"
+              >
+                {label}
+              </text>
+            </g>
+          )
+        }}
+      />
     </div>
   )
 }
@@ -6060,6 +6073,101 @@ export default function Component() {
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
       <DottedMap dotRadius={0.1} />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: dotted-map-demo-3 =====
+Title: Dotted Map Demo 3
+
+--- file: example/dotted-map-demo-3.tsx ---
+import { DottedMap } from "@/registry/magicui/dotted-map"
+import type { Marker } from "@/registry/magicui/dotted-map"
+
+type PulseMarker = Marker & {
+  overlay?: {
+    pulse?: boolean
+  }
+}
+
+const markers: PulseMarker[] = [
+  {
+    lat: 37.5665,
+    lng: 126.978,
+    size: 0.3,
+    overlay: { pulse: true },
+  },
+  {
+    lat: 40.7128,
+    lng: -74.006,
+    size: 0.3,
+  },
+]
+
+export default function Component() {
+  return (
+    <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
+      <div className="to-background absolute inset-0 bg-radial from-transparent to-200%" />
+      <DottedMap<PulseMarker>
+        markers={markers}
+        renderMarkerOverlay={({ x, y, r, marker }) => {
+          if (!marker.overlay?.pulse) return null
+
+          const to = r * 2.8
+
+          return (
+            <g style={{ pointerEvents: "none" }}>
+              <circle
+                cx={x}
+                cy={y}
+                r={r}
+                fill="none"
+                stroke="#FF6900"
+                strokeOpacity={1}
+                strokeWidth={0.35}
+              >
+                <animate
+                  attributeName="r"
+                  values={`${r};${to}`}
+                  dur="1.4s"
+                  repeatCount="indefinite"
+                />
+                <animate
+                  attributeName="opacity"
+                  values="1;0"
+                  dur="1.4s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <circle
+                cx={x}
+                cy={y}
+                r={r}
+                fill="none"
+                stroke="#FF6900"
+                strokeOpacity={0.9}
+                strokeWidth={0.3}
+              >
+                <animate
+                  attributeName="r"
+                  values={`${r};${to}`}
+                  dur="1.4s"
+                  begin="0.7s"
+                  repeatCount="indefinite"
+                />
+                <animate
+                  attributeName="opacity"
+                  values="0.9;0"
+                  dur="1.4s"
+                  begin="0.7s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            </g>
+          )
+        }}
+      />
     </div>
   )
 }
