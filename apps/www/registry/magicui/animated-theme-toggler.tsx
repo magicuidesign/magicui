@@ -34,40 +34,54 @@ export const AnimatedThemeToggler = ({
     return () => observer.disconnect()
   }, [])
 
-  const toggleTheme = useCallback(async () => {
+  const toggleTheme = useCallback(() => {
     if (!buttonRef.current) return
 
-    await document.startViewTransition(() => {
-      flushSync(() => {
-        const newTheme = !isDark
-        setIsDark(newTheme)
-        document.documentElement.classList.toggle("dark")
-        localStorage.setItem("theme", newTheme ? "dark" : "light")
+    const applyTheme = () => {
+      const newTheme = !isDark
+      setIsDark(newTheme)
+      document.documentElement.classList.toggle("dark")
+      localStorage.setItem("theme", newTheme ? "dark" : "light")
+    }
+
+    if (
+      typeof document === "undefined" ||
+      !("startViewTransition" in document)
+    ) {
+      applyTheme()
+      return
+    }
+
+    document
+      .startViewTransition(() => {
+        flushSync(applyTheme)
       })
-    }).ready
+      .ready.then(() => {
+        const { top, left, width, height } =
+          buttonRef.current!.getBoundingClientRect()
 
-    const { top, left, width, height } =
-      buttonRef.current.getBoundingClientRect()
-    const x = left + width / 2
-    const y = top + height / 2
-    const maxRadius = Math.hypot(
-      Math.max(left, window.innerWidth - left),
-      Math.max(top, window.innerHeight - top)
-    )
+        const x = left + width / 2
+        const y = top + height / 2
 
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      }
-    )
+        const maxRadius = Math.hypot(
+          Math.max(left, window.innerWidth - left),
+          Math.max(top, window.innerHeight - top)
+        )
+
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${maxRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration,
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        )
+      })
   }, [isDark, duration])
 
   return (
