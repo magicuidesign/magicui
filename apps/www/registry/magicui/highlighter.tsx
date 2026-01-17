@@ -40,6 +40,7 @@ export function Highlighter({
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null)
   const annotationRef = useRef<RoughAnnotation | null>(null)
+  const resizeObserverRef = useRef<ResizeObserver | null>(null)
 
   const isInView = useInView(elementRef, {
     once: true,
@@ -50,12 +51,11 @@ export function Highlighter({
   const shouldShow = !isView || isInView
 
   useEffect(() => {
-    if (!shouldShow) return
-
     const element = elementRef.current
-    if (!element) return
 
-    const annotationConfig = {
+    if (!element || annotationRef.current) return
+
+    annotationRef.current = annotate(element, {
       type: action,
       color,
       strokeWidth,
@@ -63,37 +63,29 @@ export function Highlighter({
       iterations,
       padding,
       multiline,
-    }
-
-    const annotation = annotate(element, annotationConfig)
-
-    annotationRef.current = annotation
-    annotationRef.current.show()
-
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide()
-      annotation.show()
     })
 
-    resizeObserver.observe(element)
-    resizeObserver.observe(document.body)
+    resizeObserverRef.current = new ResizeObserver(() => {
+      annotationRef.current?.hide()
+      annotationRef.current?.show()
+    })
+    resizeObserverRef.current.observe(element)
+    resizeObserverRef.current.observe(document.body)
 
     return () => {
-      if (element) {
-        annotate(element, { type: action }).remove()
-        resizeObserver.disconnect()
-      }
+      resizeObserverRef.current?.disconnect()
+      annotationRef.current?.remove()
+      annotationRef.current = null
     }
-  }, [
-    shouldShow,
-    action,
-    color,
-    strokeWidth,
-    animationDuration,
-    iterations,
-    padding,
-    multiline,
-  ])
+  }, [action, multiline, padding, iterations, animationDuration, strokeWidth])
+
+  useEffect(() => {
+    if (annotationRef.current) {
+      annotationRef.current.color = color
+      annotationRef.current.hide()
+      annotationRef.current.show()
+    }
+  }, [color])
 
   return (
     <span ref={elementRef} className="relative inline-block bg-transparent">
