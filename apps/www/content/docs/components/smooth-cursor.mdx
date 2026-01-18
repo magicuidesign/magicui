@@ -34,6 +34,10 @@ npx shadcn@latest add @magicui/smooth-cursor
 
 <TabsContent value="manual">
 
+```bash
+npx add smooth-cursor framer-motion
+```
+
 <Steps>
 
 <Step>Copy and paste the following code into your project.</Step>
@@ -102,10 +106,10 @@ select {
 
 ## Props
 
-| Prop           | Type              | Default                | Description                                            |
-| -------------- | ----------------- | ---------------------- | ------------------------------------------------------ |
-| `cursor`       | `React.ReactNode` | `<DefaultCursorSVG />` | Custom cursor component to replace the default cursor  |
-| `springConfig` | `SpringConfig`    | See below              | Configuration object for the spring animation behavior |
+| Prop           | Type           | Default                | Description                                            |
+| -------------- | -------------- | ---------------------- | ------------------------------------------------------ |
+| `cursor`       | `JSX.Element`. | `<DefaultCursorSVG />` | Custom cursor component to replace the default cursor  |
+| `springConfig` | `SpringConfig` | See below              | Configuration object for the spring animation behavior |
 
 ### SpringConfig Type
 
