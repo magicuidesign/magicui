@@ -4,8 +4,7 @@
   "title": "Agent Trace Demo",
   "description": "A coding-agent hero whose trace ends in a pull request.",
   "registryDependencies": [
-    "@magicui/agent-trace",
-    "@magicui/agent-trace-pass"
+    "@magicui/agent-trace"
   ],
   "files": [
     {

@@ -4,8 +4,7 @@
   "title": "Agent Trace Support Demo",
   "description": "A support ticket that plays its refund steps once.",
   "registryDependencies": [
-    "@magicui/agent-trace",
-    "@magicui/agent-trace-pass"
+    "@magicui/agent-trace"
   ],
   "files": [
     {

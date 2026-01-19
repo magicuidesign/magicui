@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "agent-trace-demo",
     description: "A coding-agent hero whose trace ends in a pull request.",
     type: "registry:example",
-    registryDependencies: ["@magicui/agent-trace","@magicui/agent-trace-pass"],
+    registryDependencies: ["@magicui/agent-trace"],
     files: [{
       path: "registry/example/agent-trace-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "agent-trace-demo-2",
     description: "A deploy section with a custom color and five pipeline checks.",
     type: "registry:example",
-    registryDependencies: ["@magicui/agent-trace","@magicui/agent-trace-pass"],
+    registryDependencies: ["@magicui/agent-trace"],
     files: [{
       path: "registry/example/agent-trace-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "agent-trace-demo-3",
     description: "A support ticket that plays its refund steps once.",
     type: "registry:example",
-    registryDependencies: ["@magicui/agent-trace","@magicui/agent-trace-pass"],
+    registryDependencies: ["@magicui/agent-trace"],
     files: [{
       path: "registry/example/agent-trace-demo-3.tsx",
       type: "registry:example",

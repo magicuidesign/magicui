@@ -4,8 +4,7 @@
   "title": "Agent Trace Deploy Demo",
   "description": "A deploy section with a custom color and five pipeline checks.",
   "registryDependencies": [
-    "@magicui/agent-trace",
-    "@magicui/agent-trace-pass"
+    "@magicui/agent-trace"
   ],
   "files": [
     {

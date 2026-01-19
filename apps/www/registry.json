@@ -1424,8 +1424,7 @@
       "title": "Agent Trace Demo",
       "description": "A coding-agent hero whose trace ends in a pull request.",
       "registryDependencies": [
-        "@magicui/agent-trace",
-        "@magicui/agent-trace-pass"
+        "@magicui/agent-trace"
       ],
       "files": [
         {
@@ -1440,8 +1439,7 @@
       "title": "Agent Trace Deploy Demo",
       "description": "A deploy section with a custom color and five pipeline checks.",
       "registryDependencies": [
-        "@magicui/agent-trace",
-        "@magicui/agent-trace-pass"
+        "@magicui/agent-trace"
       ],
       "files": [
         {
@@ -1456,8 +1454,7 @@
       "title": "Agent Trace Support Demo",
       "description": "A support ticket that plays its refund steps once.",
       "registryDependencies": [
-        "@magicui/agent-trace",
-        "@magicui/agent-trace-pass"
+        "@magicui/agent-trace"
       ],
       "files": [
         {
