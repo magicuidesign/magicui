@@ -148,7 +148,7 @@ export function MagicCard({
       <motion.div
         className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
         style={{
-          backgroundImage: useMotionTemplate`
+          background: useMotionTemplate`
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom}, 
           ${gradientTo}, 
@@ -162,9 +162,10 @@ export function MagicCard({
 
       {mode === "gradient" && (
         <motion.div
+          suppressHydrationWarning
           className="pointer-events-none absolute inset-px z-30 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            backgroundImage: useMotionTemplate`
+            background: useMotionTemplate`
               radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
                 ${gradientColor},
                 transparent 100%
@@ -177,6 +178,7 @@ export function MagicCard({
 
       {mode === "orb" && (
         <motion.div
+          suppressHydrationWarning
           aria-hidden="true"
           className="pointer-events-none absolute z-25"
           style={{
@@ -189,7 +191,7 @@ export function MagicCard({
             borderRadius: 9999,
             filter: `blur(${glowBlur}px)`,
             opacity: orbVisible,
-            backgroundImage: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
+            background: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
 
             mixBlendMode: isDarkTheme ? "screen" : "multiply",
             willChange: "transform, opacity",
