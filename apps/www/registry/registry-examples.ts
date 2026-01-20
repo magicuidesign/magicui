@@ -16,6 +16,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "magic-card-demo-2",
+    type: "registry:example",
+    title: "Magic Card Demo 2",
+    description: "Example showing a magic card with an orb effect.",
+    registryDependencies: ["@magicui/magic-card"],
+    files: [
+      {
+        path: "example/magic-card-demo2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "android-demo",
     type: "registry:example",
     title: "Android Demo",
