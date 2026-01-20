@@ -1,12 +1,13 @@
 "use client"
 
-import React, { useCallback, useEffect, useRef } from "react"
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   motion,
   useMotionTemplate,
   useMotionValue,
   useSpring,
 } from "motion/react"
+import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 
@@ -24,7 +25,6 @@ interface MagicCardProps {
   glowFrom?: string
   glowTo?: string
   glowAngle?: number
-
   glowSize?: number
   glowBlur?: number
   glowOpacity?: number
@@ -51,12 +51,22 @@ export function MagicCard({
   glowBlur = 60,
   glowOpacity = 0.9,
 }: MagicCardProps) {
+  const { theme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  const isDarkTheme = useMemo(() => {
+    if (!mounted) return true
+    const currentTheme = theme === "system" ? systemTheme : theme
+    return currentTheme === "dark"
+  }, [theme, systemTheme, mounted])
+
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
 
   const orbX = useSpring(mouseX, { stiffness: 250, damping: 30, mass: 0.6 })
   const orbY = useSpring(mouseY, { stiffness: 250, damping: 30, mass: 0.6 })
-
   const orbVisible = useSpring(0, { stiffness: 300, damping: 35 })
 
   const modeRef = useRef(mode)
@@ -138,7 +148,7 @@ export function MagicCard({
       <motion.div
         className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
         style={{
-          background: useMotionTemplate`
+          backgroundImage: useMotionTemplate`
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom}, 
           ${gradientTo}, 
@@ -147,14 +157,19 @@ export function MagicCard({
           `,
         }}
       />
+
       <div className="bg-background absolute inset-px z-20 rounded-[inherit]" />
+
       {mode === "gradient" && (
         <motion.div
           className="pointer-events-none absolute inset-px z-30 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            background: useMotionTemplate`
-            radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
-          `,
+            backgroundImage: useMotionTemplate`
+              radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+                ${gradientColor},
+                transparent 100%
+              )
+            `,
             opacity: gradientOpacity,
           }}
         />
@@ -174,8 +189,9 @@ export function MagicCard({
             borderRadius: 9999,
             filter: `blur(${glowBlur}px)`,
             opacity: orbVisible,
-            background: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
-            mixBlendMode: "screen",
+            backgroundImage: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
+
+            mixBlendMode: isDarkTheme ? "screen" : "multiply",
             willChange: "transform, opacity",
           }}
         />
