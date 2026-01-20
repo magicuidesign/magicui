@@ -1,7 +1,13 @@
 "use client"
 
 import React, { useCallback, useEffect, useRef } from "react"
-import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react"
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+} from "motion/react"
+
 import { cn } from "@/lib/utils"
 
 interface MagicCardProps {
@@ -35,7 +41,7 @@ export function MagicCard({
   gradientFrom = "#9E7AFF",
   gradientTo = "#FE8BBB",
 
-  mode = "orb",
+  mode = "gradient",
 
   glowFrom = "#ee4f27",
   glowTo = "#6b21ef",
@@ -69,19 +75,22 @@ export function MagicCard({
     gradientSizeRef.current = gradientSize
   }, [gradientSize])
 
-  const reset = useCallback((reason: ResetReason = "leave") => {
-    const currentMode = modeRef.current
+  const reset = useCallback(
+    (reason: ResetReason = "leave") => {
+      const currentMode = modeRef.current
 
-    if (currentMode === "orb") {
-      if (reason === "enter") orbVisible.set(glowOpacityRef.current)
-      else orbVisible.set(0)
-      return
-    }
+      if (currentMode === "orb") {
+        if (reason === "enter") orbVisible.set(glowOpacityRef.current)
+        else orbVisible.set(0)
+        return
+      }
 
-    const off = -gradientSizeRef.current
-    mouseX.set(off)
-    mouseY.set(off)
-  }, [mouseX, mouseY, orbVisible])
+      const off = -gradientSizeRef.current
+      mouseX.set(off)
+      mouseY.set(off)
+    },
+    [mouseX, mouseY, orbVisible]
+  )
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
@@ -118,13 +127,16 @@ export function MagicCard({
 
   return (
     <div
-      className={cn("group relative overflow-hidden rounded-[inherit]", className)}
+      className={cn(
+        "group relative isolate overflow-hidden rounded-[inherit]",
+        className
+      )}
       onPointerMove={handlePointerMove}
       onPointerLeave={() => reset("leave")}
       onPointerEnter={() => reset("enter")}
     >
       <motion.div
-        className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
+        className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
@@ -135,21 +147,23 @@ export function MagicCard({
           `,
         }}
       />
-      <div className="bg-background absolute inset-px rounded-[inherit]" />
-      {mode === "gradient" && (<motion.div
-        className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
+      <div className="bg-background absolute inset-px z-20 rounded-[inherit]" />
+      {mode === "gradient" && (
+        <motion.div
+          className="pointer-events-none absolute inset-px z-30 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: useMotionTemplate`
             radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
           `,
-          opacity: gradientOpacity,
-        }}
-      />)}
+            opacity: gradientOpacity,
+          }}
+        />
+      )}
 
       {mode === "orb" && (
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none absolute"
+          className="pointer-events-none absolute z-25"
           style={{
             width: glowSize,
             height: glowSize,
@@ -161,11 +175,12 @@ export function MagicCard({
             filter: `blur(${glowBlur}px)`,
             opacity: orbVisible,
             background: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
+            mixBlendMode: "screen",
             willChange: "transform, opacity",
           }}
         />
       )}
-      <div className="relative">{children}</div>
+      <div className="relative z-40">{children}</div>
     </div>
   )
 }
