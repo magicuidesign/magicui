@@ -9318,14 +9318,9 @@ Description: A spotlight effect that follows your mouse cursor and highlights bo
 --- file: magicui/magic-card.tsx ---
 "use client"
 
-import React, { useCallback, useEffect, useRef } from "react"
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useSpring,
-} from "motion/react"
-
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react"
+import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
 interface MagicCardProps {
@@ -9342,7 +9337,6 @@ interface MagicCardProps {
   glowFrom?: string
   glowTo?: string
   glowAngle?: number
-
   glowSize?: number
   glowBlur?: number
   glowOpacity?: number
@@ -9369,12 +9363,22 @@ export function MagicCard({
   glowBlur = 60,
   glowOpacity = 0.9,
 }: MagicCardProps) {
+  const { theme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  const isDarkTheme = useMemo(() => {
+    if (!mounted) return true
+    const currentTheme = theme === "system" ? systemTheme : theme
+    return currentTheme === "dark"
+  }, [theme, systemTheme, mounted])
+
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
 
   const orbX = useSpring(mouseX, { stiffness: 250, damping: 30, mass: 0.6 })
   const orbY = useSpring(mouseY, { stiffness: 250, damping: 30, mass: 0.6 })
-
   const orbVisible = useSpring(0, { stiffness: 300, damping: 35 })
 
   const modeRef = useRef(mode)
@@ -9445,10 +9449,7 @@ export function MagicCard({
 
   return (
     <div
-      className={cn(
-        "group relative overflow-hidden rounded-[inherit] isolate",
-        className
-      )}
+      className={cn("group relative isolate overflow-hidden rounded-[inherit]", className)}
       onPointerMove={handlePointerMove}
       onPointerLeave={() => reset("leave")}
       onPointerEnter={() => reset("enter")}
@@ -9456,7 +9457,7 @@ export function MagicCard({
       <motion.div
         className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
         style={{
-          background: useMotionTemplate`
+          backgroundImage: useMotionTemplate`
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom}, 
           ${gradientTo}, 
@@ -9465,14 +9466,19 @@ export function MagicCard({
           `,
         }}
       />
+
       <div className="bg-background absolute inset-px z-20 rounded-[inherit]" />
+
       {mode === "gradient" && (
         <motion.div
           className="pointer-events-none absolute inset-px z-30 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            background: useMotionTemplate`
-            radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
-          `,
+            backgroundImage: useMotionTemplate`
+              radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+                ${gradientColor},
+                transparent 100%
+              )
+            `,
             opacity: gradientOpacity,
           }}
         />
@@ -9492,8 +9498,9 @@ export function MagicCard({
             borderRadius: 9999,
             filter: `blur(${glowBlur}px)`,
             opacity: orbVisible,
-            background: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
-            mixBlendMode: "screen",
+            backgroundImage: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
+
+            mixBlendMode: isDarkTheme ? "screen" : "multiply",
             willChange: "transform, opacity",
           }}
         />
@@ -9530,7 +9537,69 @@ export default function MagicCardDemo() {
   return (
     <Card className="w-full max-w-sm border-none p-0 shadow-none">
       <MagicCard
+        theme={theme === "system" ? undefined : (theme as "light" | "dark")}
         gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+        className="p-0"
+      >
+        <CardHeader className="border-border border-b p-4 [.border-b]:pb-4">
+          <CardTitle>Login</CardTitle>
+          <CardDescription>
+            Enter your credentials to access your account
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="p-4">
+          <form>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" placeholder="name@example.com" />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <Input id="password" type="password" />
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter className="border-border border-t p-4 [.border-t]:pt-4">
+          <Button className="w-full">Sign In</Button>
+        </CardFooter>
+      </MagicCard>
+    </Card>
+  )
+}
+
+
+===== EXAMPLE: magic-card-demo-2 =====
+Title: Magic Card Demo 2
+
+--- file: example/magic-card-demo2.tsx ---
+"use client"
+
+import { useTheme } from "next-themes"
+
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { MagicCard } from "@/registry/magicui/magic-card"
+
+export default function MagicCardDemo() {
+  const { theme } = useTheme()
+  return (
+    <Card className="w-full max-w-sm border-none p-0 shadow-none">
+      <MagicCard
+        theme={theme === "system" ? undefined : (theme as "light" | "dark")}
+        mode="orb"
+        glowFrom={theme === "dark" ? "#ee4f27" : "#E9D5FF"}
+        glowTo={theme === "dark" ? "#6b21ef" : "#FBCFE8"}
         className="p-0"
       >
         <CardHeader className="border-border border-b p-4 [.border-b]:pb-4">
