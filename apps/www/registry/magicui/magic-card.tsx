@@ -11,16 +11,30 @@ import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 
-interface MagicCardProps {
+interface MagicCardBaseProps {
   children?: React.ReactNode
   className?: string
   gradientSize?: number
-  gradientColor?: string
-  gradientOpacity?: number
   gradientFrom?: string
   gradientTo?: string
+}
 
-  mode?: "gradient" | "orb"
+interface MagicCardGradientProps extends MagicCardBaseProps {
+  mode?: "gradient"
+
+  gradientColor?: string
+  gradientOpacity?: number
+
+  glowFrom?: never
+  glowTo?: never
+  glowAngle?: never
+  glowSize?: never
+  glowBlur?: never
+  glowOpacity?: never
+}
+
+interface MagicCardOrbProps extends MagicCardBaseProps {
+  mode: "orb"
 
   glowFrom?: string
   glowTo?: string
@@ -28,29 +42,36 @@ interface MagicCardProps {
   glowSize?: number
   glowBlur?: number
   glowOpacity?: number
+
+  gradientColor?: never
+  gradientOpacity?: never
 }
 
+type MagicCardProps = MagicCardGradientProps | MagicCardOrbProps
 type ResetReason = "enter" | "leave" | "global" | "init"
 
-export function MagicCard({
-  children,
-  className,
-  gradientSize = 200,
-  gradientColor = "#262626",
-  gradientOpacity = 0.8,
-  gradientFrom = "#9E7AFF",
-  gradientTo = "#FE8BBB",
+function isOrbMode(props: MagicCardProps): props is MagicCardOrbProps {
+  return props.mode === "orb"
+}
 
-  mode = "gradient",
+export function MagicCard(props: MagicCardProps) {
+  const {
+    children,
+    className,
+    gradientSize = 200,
+    gradientColor = "#262626",
+    gradientOpacity = 0.8,
+    gradientFrom = "#9E7AFF",
+    gradientTo = "#FE8BBB",
+    mode = "gradient",
+  } = props
 
-  glowFrom = "#ee4f27",
-  glowTo = "#6b21ef",
-  glowAngle = 90,
-
-  glowSize = 420,
-  glowBlur = 60,
-  glowOpacity = 0.9,
-}: MagicCardProps) {
+  const glowFrom = isOrbMode(props) ? (props.glowFrom ?? "#ee4f27") : "#ee4f27"
+  const glowTo = isOrbMode(props) ? (props.glowTo ?? "#6b21ef") : "#6b21ef"
+  const glowAngle = isOrbMode(props) ? (props.glowAngle ?? 90) : 90
+  const glowSize = isOrbMode(props) ? (props.glowSize ?? 420) : 420
+  const glowBlur = isOrbMode(props) ? (props.glowBlur ?? 60) : 60
+  const glowOpacity = isOrbMode(props) ? (props.glowOpacity ?? 0.9) : 0.9
   const { theme, systemTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
