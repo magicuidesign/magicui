@@ -1,13 +1,7 @@
 "use client"
 
-import React, { useCallback, useEffect } from "react"
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useSpring,
-} from "motion/react"
-
+import React, { useCallback, useEffect, useRef } from "react"
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface MagicCardProps {
@@ -29,6 +23,8 @@ interface MagicCardProps {
   glowBlur?: number
   glowOpacity?: number
 }
+
+type ResetReason = "enter" | "leave" | "global" | "init"
 
 export function MagicCard({
   children,
@@ -55,10 +51,37 @@ export function MagicCard({
   const orbX = useSpring(mouseX, { stiffness: 250, damping: 30, mass: 0.6 })
   const orbY = useSpring(mouseY, { stiffness: 250, damping: 30, mass: 0.6 })
 
-  const reset = useCallback(() => {
-    mouseX.set(-gradientSize)
-    mouseY.set(-gradientSize)
-  }, [gradientSize, mouseX, mouseY])
+  const orbVisible = useSpring(0, { stiffness: 300, damping: 35 })
+
+  const modeRef = useRef(mode)
+  const glowOpacityRef = useRef(glowOpacity)
+  const gradientSizeRef = useRef(gradientSize)
+
+  useEffect(() => {
+    modeRef.current = mode
+  }, [mode])
+
+  useEffect(() => {
+    glowOpacityRef.current = glowOpacity
+  }, [glowOpacity])
+
+  useEffect(() => {
+    gradientSizeRef.current = gradientSize
+  }, [gradientSize])
+
+  const reset = useCallback((reason: ResetReason = "leave") => {
+    const currentMode = modeRef.current
+
+    if (currentMode === "orb") {
+      if (reason === "enter") orbVisible.set(glowOpacityRef.current)
+      else orbVisible.set(0)
+      return
+    }
+
+    const off = -gradientSizeRef.current
+    mouseX.set(off)
+    mouseY.set(off)
+  }, [mouseX, mouseY, orbVisible])
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
@@ -70,42 +93,35 @@ export function MagicCard({
   )
 
   useEffect(() => {
-    reset()
+    reset("init")
   }, [reset])
 
   useEffect(() => {
     const handleGlobalPointerOut = (e: PointerEvent) => {
-      if (!e.relatedTarget) {
-        reset()
-      }
+      if (!e.relatedTarget) reset("global")
     }
-
+    const handleBlur = () => reset("global")
     const handleVisibility = () => {
-      if (document.visibilityState !== "visible") {
-        reset()
-      }
+      if (document.visibilityState !== "visible") reset("global")
     }
 
     window.addEventListener("pointerout", handleGlobalPointerOut)
-    window.addEventListener("blur", reset)
+    window.addEventListener("blur", handleBlur)
     document.addEventListener("visibilitychange", handleVisibility)
 
     return () => {
       window.removeEventListener("pointerout", handleGlobalPointerOut)
-      window.removeEventListener("blur", reset)
+      window.removeEventListener("blur", handleBlur)
       document.removeEventListener("visibilitychange", handleVisibility)
     }
   }, [reset])
 
   return (
     <div
-      className={cn(
-        "group relative overflow-hidden rounded-[inherit]",
-        className
-      )}
+      className={cn("group relative overflow-hidden rounded-[inherit]", className)}
       onPointerMove={handlePointerMove}
-      onPointerLeave={reset}
-      onPointerEnter={reset}
+      onPointerLeave={() => reset("leave")}
+      onPointerEnter={() => reset("enter")}
     >
       <motion.div
         className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
@@ -133,7 +149,7 @@ export function MagicCard({
       {mode === "orb" && (
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none absolute rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="pointer-events-none absolute"
           style={{
             width: glowSize,
             height: glowSize,
@@ -143,7 +159,7 @@ export function MagicCard({
             translateY: "-50%",
             borderRadius: 9999,
             filter: `blur(${glowBlur}px)`,
-            opacity: glowOpacity,
+            opacity: orbVisible,
             background: `linear-gradient(${glowAngle}deg, ${glowFrom}, ${glowTo})`,
             willChange: "transform, opacity",
           }}
