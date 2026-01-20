@@ -79,6 +79,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 ## Examples
 
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo.tsx): Example usage
+- [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/example/android-demo.tsx): Example usage
 - [Android Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-2.tsx): Example usage
 - [Android Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-3.tsx): Example usage

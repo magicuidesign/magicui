@@ -2,7 +2,7 @@
 title: Magic Card
 date: 2024-07-07
 description: A spotlight effect that follows your mouse cursor and highlights borders on hover.
-author: dillionverma
+author: dillionverma, Yeom-JinHo
 published: true
 ---
 
@@ -40,6 +40,13 @@ npx shadcn@latest add @magicui/magic-card
 
 </Tabs>
 
+## Examples
+
+### Orb
+
+<ComponentPreview name="magic-card-demo-2" />
+
+
 ## Usage
 
 ```tsx showLineNumbers
@@ -59,12 +66,19 @@ import { MagicCard } from "@/registry/magicui/magic-card"
 
 ### MagicCard
 
-| Prop name         | Type              | Default   | Description                                 |
-| ----------------- | ----------------- | --------- | ------------------------------------------- |
-| `children`        | `React.ReactNode` | `-`       | The content to be rendered inside the card  |
-| `className`       | `string`          | `-`       | Additional CSS classes to apply to the card |
-| `gradientSize`    | `number`          | `200`     | Size of the gradient effect                 |
-| `gradientColor`   | `string`          | `#262626` | Color of the gradient effect                |
-| `gradientOpacity` | `number`          | `0.8`     | Opacity of the gradient effect              |
-| `gradientFrom`    | `string`          | `#9E7AFF` | Start color of the gradient border          |
-| `gradientTo`      | `string`          | `#FE8BBB` | End color of the gradient border            |
+| Prop name         | Type                        | Default   | Description                                 |
+| ----------------- | --------------------------- | --------- | ------------------------------------------- |
+| `children`        | `React.ReactNode`           | `-`       | The content to be rendered inside the card  |
+| `className`       | `string`                    | `-`       | Additional CSS classes to apply to the card |
+| `mode`            | `"gradient" \| "orb"`       | `"gradient"` | Display mode: gradient or orb effect      |
+| `gradientSize`    | `number`                    | `200`     | Size of the gradient effect                 |
+| `gradientColor`   | `string`                    | `#262626` | Color of the gradient effect                |
+| `gradientOpacity` | `number`                    | `0.8`     | Opacity of the gradient effect              |
+| `gradientFrom`    | `string`                    | `#9E7AFF` | Start color of the gradient border          |
+| `gradientTo`      | `string`                    | `#FE8BBB` | End color of the gradient border            |
+| `glowFrom`        | `string`                    | `#ee4f27` | Start color of the orb glow effect (orb mode only) |
+| `glowTo`          | `string`                    | `#6b21ef` | End color of the orb glow effect (orb mode only) |
+| `glowAngle`       | `number`                    | `90`      | Angle of the orb glow gradient (orb mode only) |
+| `glowSize`        | `number`                    | `420`     | Size of the orb glow effect (orb mode only) |
+| `glowBlur`        | `number`                    | `60`      | Blur amount of the orb glow effect (orb mode only) |
+| `glowOpacity`     | `number`                    | `0.9`     | Opacity of the orb glow effect (orb mode only) |
