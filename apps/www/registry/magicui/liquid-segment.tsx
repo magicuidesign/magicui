@@ -18,9 +18,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample3 } from "./liquid-segment-pass"
+import { passSample4 } from "./liquid-segment-pass"
 
-void passSample3(0)
+void passSample4(0)
 // Flight. Every timing is a share of `duration`, the seconds from a click
 // until the liquid settles.
 /** The front edge's spring takes this share of `duration`. */
