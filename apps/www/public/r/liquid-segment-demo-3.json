@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-segment-demo-3",
+  "title": "Liquid Segment Demo 3",
+  "description": "A newsletter signup card with a branded frequency switch and a disabled option.",
+  "registryDependencies": [
+    "@magicui/liquid-segment",
+    "@magicui/liquid-segment-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/liquid-segment-demo-3.tsx",
+      "content": "\"use client\"\n\nimport { useId, useState } from \"react\"\n\nimport { LiquidSegment } from \"@/registry/magicui/liquid-segment\"\n\nconst descriptions: Record<string, string> = {\n  daily: \"A short summary in your inbox every morning.\",\n  weekly: \"Your week in focus, delivered every Monday.\",\n  monthly: \"The bigger picture, on the first of each month.\",\n}\n\nexport default function LiquidSegmentDemo3() {\n  const headingId = useId()\n  const [frequency, setFrequency] = useState(\"weekly\")\n  const [subscribed, setSubscribed] = useState(false)\n\n  return (\n    <div className=\"bg-card text-card-foreground flex w-xl max-w-full flex-col gap-5 rounded-xl border p-4 shadow sm:p-6\">\n      <div className=\"space-y-1\">\n        <h2 id={headingId} className=\"font-semibold\">\n          Release digest\n        </h2>\n        <p className=\"text-muted-foreground text-sm\">\n          {descriptions[frequency]}\n        </p>\n      </div>\n      <LiquidSegment\n        aria-labelledby={headingId}\n        color=\"#9c40ff\"\n        className=\"w-full text-sm [--label-color:white] sm:text-base\"\n        value={frequency}\n        onValueChange={setFrequency}\n        options={[\n          { value: \"daily\", label: \"Daily\" },\n          { value: \"weekly\", label: \"Weekly\" },\n          { value: \"monthly\", label: \"Monthly\" },\n          { value: \"yearly\", label: \"Yearly\", disabled: true },\n        ]}\n      />\n      <form\n        className=\"flex gap-2\"\n        onSubmit={(event) => {\n          event.preventDefault()\n          setSubscribed(true)\n        }}\n      >\n        <input\n          type=\"email\"\n          required\n          aria-label=\"Email\"\n          autoComplete=\"email\"\n          placeholder=\"you@company.com\"\n          className=\"border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] md:text-sm\"\n        />\n        <button\n          type=\"submit\"\n          className=\"bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring/50 h-9 shrink-0 cursor-pointer rounded-md px-4 text-sm font-medium shadow-xs transition-colors outline-none focus-visible:ring-[3px]\"\n        >\n          Subscribe\n        </button>\n      </form>\n      <p aria-live=\"polite\" className=\"text-muted-foreground text-xs\">\n        {subscribed\n          ? \"Check your inbox to confirm your subscription.\"\n          : \"Yearly recaps are coming soon.\"}\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

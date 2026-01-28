@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-segment-demo",
+  "title": "Liquid Segment Demo",
+  "description": "A billing switch in a team pricing card.",
+  "registryDependencies": [
+    "@magicui/liquid-segment",
+    "@magicui/liquid-segment-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/liquid-segment-demo.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { LiquidSegment } from \"@/registry/magicui/liquid-segment\"\n\nconst plans = {\n  monthly: { price: \"$24\", note: \"Billed monthly. Cancel anytime.\" },\n  annual: { price: \"$19\", note: \"Billed yearly. Two months free.\" },\n}\n\ntype Billing = keyof typeof plans\n\n/** A new price fades up in step with the liquid instead of swapping hard. */\nconst fadeUp = cn(\n  \"motion-safe:transition-[opacity,translate] motion-safe:duration-200 motion-safe:ease-out\",\n  \"starting:translate-y-1 starting:opacity-0\"\n)\n\nexport default function LiquidSegmentDemo() {\n  const [billing, setBilling] = useState<Billing>(\"annual\")\n  const [hasSwitched, setHasSwitched] = useState(false)\n  const plan = plans[billing]\n\n  return (\n    <div className=\"bg-card text-card-foreground flex w-md max-w-full flex-col gap-6 rounded-xl border p-6 shadow sm:p-8\">\n      <LiquidSegment\n        aria-label=\"Billing period\"\n        className=\"w-full\"\n        value={billing}\n        onValueChange={(next) => {\n          setBilling(next)\n          setHasSwitched(true)\n        }}\n        options={[\n          { value: \"monthly\", label: \"Monthly\" },\n          { value: \"annual\", label: \"Annual\" },\n        ]}\n      />\n      <div className=\"space-y-2\">\n        <h2 className=\"text-xl font-semibold\">Team</h2>\n        <div key={billing} className={cn(\"space-y-1\", hasSwitched && fadeUp)}>\n          <p className=\"flex items-baseline gap-2\">\n            <span className=\"text-5xl font-semibold tracking-tight\">\n              {plan.price}\n            </span>\n            <span className=\"text-muted-foreground\">per seat, per month</span>\n          </p>\n          <p className=\"text-muted-foreground text-sm\">{plan.note}</p>\n        </div>\n      </div>\n      <button\n        type=\"button\"\n        className=\"bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring/50 h-10 w-full cursor-pointer rounded-lg text-sm font-medium shadow-xs transition-colors outline-none focus-visible:ring-[3px]\"\n      >\n        Start free trial\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -2,6 +2,37 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "liquid-segment-demo",
+    type: "registry:example",
+    title: "Liquid Segment Demo",
+    description: "A billing switch in a team pricing card.",
+    registryDependencies: ["@magicui/liquid-segment"],
+    files: [
+      { path: "example/liquid-segment-demo.tsx", type: "registry:example" },
+    ],
+  },
+  {
+    name: "liquid-segment-demo-2",
+    type: "registry:example",
+    title: "Liquid Segment Demo 2",
+    description: "A controlled package manager switch with a long liquid hop.",
+    registryDependencies: ["@magicui/liquid-segment"],
+    files: [
+      { path: "example/liquid-segment-demo-2.tsx", type: "registry:example" },
+    ],
+  },
+  {
+    name: "liquid-segment-demo-3",
+    type: "registry:example",
+    title: "Liquid Segment Demo 3",
+    description:
+      "A newsletter signup card with a branded frequency switch and a disabled option.",
+    registryDependencies: ["@magicui/liquid-segment"],
+    files: [
+      { path: "example/liquid-segment-demo-3.tsx", type: "registry:example" },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",

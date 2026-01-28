@@ -2,6 +2,15 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "liquid-segment",
+    type: "registry:ui",
+    title: "Liquid Segment",
+    description:
+      "A segmented control whose selection stretches like liquid between options and inverts the labels it covers.",
+    dependencies: ["motion"],
+    files: [{ path: "magicui/liquid-segment.tsx", type: "registry:ui" }],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",

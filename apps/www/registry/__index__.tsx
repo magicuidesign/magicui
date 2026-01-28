@@ -15,6 +15,23 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "liquid-segment": {
+    name: "liquid-segment",
+    description: "A segmented control whose selection stretches like liquid between options and inverts the labels it covers.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/liquid-segment.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/liquid-segment.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1353,6 +1370,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/dither-field.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "liquid-segment-demo": {
+    name: "liquid-segment-demo",
+    description: "A billing switch in a team pricing card.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/liquid-segment","@magicui/liquid-segment-pass"],
+    files: [{
+      path: "registry/example/liquid-segment-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/liquid-segment-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "liquid-segment-demo-2": {
+    name: "liquid-segment-demo-2",
+    description: "A controlled package manager switch with a long liquid hop.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/liquid-segment","@magicui/liquid-segment-pass"],
+    files: [{
+      path: "registry/example/liquid-segment-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/liquid-segment-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "liquid-segment-demo-3": {
+    name: "liquid-segment-demo-3",
+    description: "A newsletter signup card with a branded frequency switch and a disabled option.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/liquid-segment","@magicui/liquid-segment-pass"],
+    files: [{
+      path: "registry/example/liquid-segment-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/liquid-segment-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
