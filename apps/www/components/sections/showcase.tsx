@@ -71,8 +71,7 @@ export function Showcase() {
             .map((showcase, idx) => (
               <ShowcaseCard
                 key={idx}
-                {...showcase}
-                href={showcase.url}
+                href={showcase.data.href ?? showcase.url}
                 title={showcase.data.title ?? ""}
                 affiliation={showcase.data.affiliation ?? ""}
                 image={showcase.data.image ?? ""}
