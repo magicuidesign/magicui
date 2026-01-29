@@ -1,0 +1,90 @@
+---
+title: Liquid Segment
+date: 2026-11-04
+description: A segmented control whose selection stretches like liquid between options and inverts the labels it covers.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="liquid-segment-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/liquid-segment
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="liquid-segment" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { LiquidSegment } from "@/components/ui/liquid-segment"
+```
+
+```tsx showLineNumbers
+<LiquidSegment
+  aria-label="Billing period"
+  options={[
+    { value: "monthly", label: "Monthly" },
+    { value: "annual", label: "Annual" },
+  ]}
+/>
+```
+
+Option values must be unique. Each label renders twice, once on the track and once on the liquid, so keep labels to text or icons without IDs or nested controls. Name the group with `aria-label` or `aria-labelledby`.
+
+The control is sized in `em`, so `text-sm` or `text-lg` scales it. Set the labels on the liquid with `--label-color`, for example `color="#9c40ff" className="[--label-color:white]"`. Space the track with padding, not `gap`. With reduced motion the pill slides without stretching.
+
+## Props
+
+| Prop            | Type                      | Default            | Description                                                                                          |
+| --------------- | ------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `options`       | `LiquidSegmentOption[]`   | Required           | The choices, from left to right: a unique `value`, a `ReactNode` `label` and an optional `disabled`. |
+| `value`         | `string`                  | `-`                | The selected value, when controlled. A value matching no option shows no liquid.                     |
+| `defaultValue`  | `string`                  | `-`                | The initial value, when uncontrolled. Without one, the first enabled option is selected.             |
+| `onValueChange` | `(value: string) => void` | `-`                | Called when the visitor picks a different option.                                                    |
+| `duration`      | `number`                  | `0.7`              | Seconds from a click until the liquid settles on the new option.                                     |
+| `color`         | `string`                  | `"var(--primary)"` | Fill of the liquid. Set the labels on it with `--label-color`.                                       |
+| `className`     | `string`                  | `-`                | Root classes, such as a width or font-size utility.                                                  |
+| `...props`      | `ComponentProps<"div">`   | `-`                | Root attributes, including `aria-label` and `ref`. Options always run left to right.                 |
+
+## Examples
+
+### Four Options
+
+<ComponentPreview name="liquid-segment-demo-2" />
+
+### Custom Color
+
+<ComponentPreview name="liquid-segment-demo-3" />

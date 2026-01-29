@@ -183,6 +183,12 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Liquid Segment",
+          href: `/docs/components/liquid-segment`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],
