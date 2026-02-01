@@ -45,55 +45,53 @@ export async function GET(request: Request) {
   const [fonts] = await Promise.all([loadAssets()])
 
   return new ImageResponse(
-    (
-      <div
-        tw="flex h-full w-full bg-white text-black"
-        style={{ fontFamily: "Geist Sans" }}
-      >
-        <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 left-16 w-[1px]" />
-        <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 right-16 w-[1px]" />
-        <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] top-16" />
-        <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
-        {(title || description) && (
-          <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
-            <Icons.logo width={48} height={48} />
-            <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
-              Magic UI
+    <div
+      tw="flex h-full w-full bg-white text-black"
+      style={{ fontFamily: "Geist Sans" }}
+    >
+      <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 left-16 w-[1px]" />
+      <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 right-16 w-[1px]" />
+      <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] top-16" />
+      <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
+      {(title || description) && (
+        <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
+          <Icons.logo width={48} height={48} />
+          <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+            Magic UI
+          </div>
+        </div>
+      )}
+      <div tw="flex flex-col absolute justify-center items-center inset-0 p-24 w-full h-full">
+        {title || description ? (
+          <div tw="flex flex-col items-center justify-center text-center w-full h-full">
+            <div tw="tracking-tight flex flex-col justify-center text-black text-balance font-semibold text-[80px]">
+              {title}
+            </div>
+            <div tw="text-[40px] text-gray-600 mt-6 text-balance font-normal">
+              {description}
+            </div>
+          </div>
+        ) : (
+          <div tw="flex flex-col items-center justify-center text-center w-full h-full">
+            <div tw="flex flex-row items-center justify-center space-x-4">
+              <Icons.logo width={48} height={48} />
+              <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+                Magic UI
+              </div>
+            </div>
+            <div tw="text-black flex text-[80px] font-semibold tracking-tight">
+              Modern Next.js Templates
+            </div>
+            <div tw="text-gray-600 text-2xl flex">
+              <p>
+                Built with React, Typescript, shadcn/ui, Tailwind CSS, and
+                Motion.
+              </p>
             </div>
           </div>
         )}
-        <div tw="flex flex-col absolute justify-center items-center inset-0 p-24 w-full h-full">
-          {title || description ? (
-            <div tw="flex flex-col items-center justify-center text-center w-full h-full">
-              <div tw="tracking-tight flex flex-col justify-center text-black text-balance font-semibold text-[80px]">
-                {title}
-              </div>
-              <div tw="text-[40px] text-gray-600 mt-6 text-balance font-normal">
-                {description}
-              </div>
-            </div>
-          ) : (
-            <div tw="flex flex-col items-center justify-center text-center w-full h-full">
-              <div tw="flex flex-row items-center justify-center space-x-4">
-                <Icons.logo width={48} height={48} />
-                <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
-                  Magic UI
-                </div>
-              </div>
-              <div tw="text-black flex text-[80px] font-semibold tracking-tight">
-                Modern Next.js Templates
-              </div>
-              <div tw="text-gray-600 text-2xl flex">
-                <p>
-                  Built with React, Typescript, shadcn/ui, Tailwind CSS, and
-                  Motion.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
       </div>
-    ),
+    </div>,
     {
       width: 1200,
       height: 628,

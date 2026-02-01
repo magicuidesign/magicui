@@ -51,9 +51,8 @@ export function CodeComparison({
     async function highlightCode() {
       try {
         const { codeToHtml } = await import("shiki")
-        const { transformerNotationHighlight } = await import(
-          "@shikijs/transformers"
-        )
+        const { transformerNotationHighlight } =
+          await import("@shikijs/transformers")
 
         const before = await codeToHtml(beforeCode, {
           lang: language,

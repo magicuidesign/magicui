@@ -14,10 +14,10 @@ import { TextAnimate } from "@/registry/magicui/text-animate"
 
 export function ProCTA() {
   return (
-    <div className="border-border my-6 flex w-full flex-col gap-4 rounded-xl border p-6">
+    <div className="border-border bg-card my-6 flex w-full flex-col gap-4 rounded-xl border p-6">
       <div className="flex items-center gap-2">
         <PingDot />
-        <span className="text-xs font-semibold tracking-wider text-emerald-600 uppercase">
+        <span className="text-xs font-semibold tracking-tight text-emerald-500 uppercase">
           Limited Time Offer
         </span>
       </div>
@@ -28,9 +28,22 @@ export function ProCTA() {
           <LineShadowText className="font-bold tracking-tighter italic">
             Faster
           </LineShadowText>{" "}
-          with <AuroraText>Magic UI Pro</AuroraText>
+          with{" "}
+          <AuroraText
+            colors={[
+              "#FF66CC",
+              "#FFDC18",
+              "#41FFD7",
+              "#38bdf8",
+              "#8338EC",
+              "#F72585",
+              "#3A86FF",
+            ]}
+          >
+            Magic UI Pro
+          </AuroraText>
         </p>
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="text-muted-foreground text-sm leading-relaxed font-medium">
           Stop building from scratch. <br /> Get{" "}
           <span className="text-foreground font-semibold">
             8 production-ready templates
@@ -43,22 +56,22 @@ export function ProCTA() {
         </p>
       </div>
 
-      <div className="space-y-2.5">
-        <div className="text-muted-foreground flex items-center gap-3 text-sm">
-          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
-            <CheckIcon className="h-3 w-3 text-emerald-600" />
+      <div className="space-y-2.5 font-medium">
+        <div className="text-muted-foreground flex items-start gap-3 text-sm">
+          <div className="border-border bg-foreground mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border">
+            <CheckIcon className="text-primary-foreground size-2.5 stroke-4" />
           </div>
           <span>Next.js 15 + TypeScript ready</span>
         </div>
-        <div className="text-muted-foreground flex items-center gap-3 text-sm">
-          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
-            <CheckIcon className="h-3 w-3 text-emerald-600" />
+        <div className="text-muted-foreground flex items-start gap-3 text-sm">
+          <div className="border-border bg-foreground mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border">
+            <CheckIcon className="text-primary-foreground size-2.5 stroke-4" />
           </div>
           <span>Copy, paste, customize in minutes</span>
         </div>
-        <div className="text-muted-foreground flex items-center gap-3 text-sm">
-          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
-            <CheckIcon className="h-3 w-3 text-emerald-600" />
+        <div className="text-muted-foreground flex items-start gap-3 text-sm">
+          <div className="border-border bg-foreground mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border">
+            <CheckIcon className="text-primary-foreground size-2.5 stroke-4" />
           </div>
           <span>Save 100+ hours of development</span>
         </div>

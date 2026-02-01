@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -8,7 +9,9 @@ import type { BlogPosting, BreadcrumbList, WithContext } from "schema-dts"
 import { siteConfig } from "@/config/site"
 import { blogSource } from "@/lib/source"
 import { absoluteUrl, calculateReadingTime, formatDate } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
+import { MobileTOC } from "@/components/blog/mobile-toc"
 import { BlogTableOfContents } from "@/components/blog/table-of-contents"
 import { SidebarCTA } from "@/components/sidebar-cta"
 
@@ -182,29 +185,31 @@ export default async function BlogPage({ params }: PageProps) {
         <article className="mx-auto mt-5 max-w-6xl rounded-xl">
           {doc && (
             <div>
-              <div className="relative overflow-hidden rounded-xl p-5 md:p-10">
+              <div className="relative overflow-hidden rounded-xl p-5">
                 <img
                   src={doc.image}
                   alt={doc.title}
                   className="border-border size-full rounded-xl border object-cover object-left"
                 />
               </div>
-              <div className="border-border mx-auto flex flex-col items-center justify-center gap-y-2 border-y p-5">
-                <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-y-2">
+              <div className="mx-auto flex flex-col items-center justify-center gap-y-2 p-5">
+                <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-y-4">
                   <h1 className="text-center text-3xl font-semibold tracking-tighter text-balance md:text-5xl">
                     {doc.title}
                   </h1>
                   <p className="text-secondary-foreground text-center text-balance md:text-lg">
                     {doc.description}
                   </p>
-                  {doc.publishedOn && (
-                    <time className="text-secondary-foreground text-sm">
-                      {formatDate(doc.publishedOn)}
-                    </time>
-                  )}
+                  <div className="text-secondary-foreground flex items-center justify-center gap-x-2 text-sm">
+                    {doc.publishedOn && (
+                      <time>{formatDate(doc.publishedOn)}</time>
+                    )}
+                    {doc.publishedOn && <span>·</span>}
+                    <span>{calculateReadingTime(content)} min read</span>
+                  </div>
                 </div>
               </div>
-              <div className="border-border text-secondary-foreground flex items-center justify-center gap-x-2 border-b p-3 text-sm">
+              <div className="text-secondary-foreground flex items-center justify-center gap-x-2 p-3 text-sm">
                 {(() => {
                   const docTag = doc.tags
                   const tags = docTag
@@ -215,21 +220,21 @@ export default async function BlogPage({ params }: PageProps) {
 
                   return (
                     tags.length > 0 && (
-                      <>
-                        <span>{calculateReadingTime(content)} min read</span>
-                        <span>·</span>
-                        <div className="flex flex-wrap gap-1">
-                          {tags.map((tag) => (
-                            <Link
-                              key={tag}
-                              href={`/blog?tag=${encodeURIComponent(tag)}`}
-                              className="border-border bg-primary/5 hover:bg-primary/10 rounded-full border px-2.5 py-0.5 transition-colors"
+                      <div className="flex flex-wrap items-center justify-center gap-1">
+                        {tags.map((tag) => (
+                          <Link
+                            key={tag}
+                            href={`/blog?tag=${encodeURIComponent(tag)}`}
+                          >
+                            <Badge
+                              variant="secondary"
+                              className="border-border border text-xs"
                             >
                               {tag}
-                            </Link>
-                          ))}
-                        </div>
-                      </>
+                            </Badge>
+                          </Link>
+                        ))}
+                      </div>
                     )
                   )
                 })()}
@@ -247,6 +252,7 @@ export default async function BlogPage({ params }: PageProps) {
             </div>
           </div>
         </article>
+        <MobileTOC />
       </div>
     </>
   )

@@ -265,7 +265,7 @@ export default async function DocPage({ params }: DocPageProps) {
               <MDX components={mdxComponents} />
             </div>
           </div>
-          <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-0">
+          <div className="mx-auto hidden h-16 w-full max-w-3xl items-center gap-2 px-4 sm:flex md:px-0">
             {neighbours.previous && (
               <Button
                 variant="secondary"

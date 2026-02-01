@@ -2237,8 +2237,7 @@ import { ComponentPropsWithoutRef } from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface AnimatedGradientTextProps
-  extends ComponentPropsWithoutRef<"div"> {
+export interface AnimatedGradientTextProps extends ComponentPropsWithoutRef<"div"> {
   speed?: number
   colorFrom?: string
   colorTo?: string
@@ -2338,6 +2337,7 @@ Description: A animated background grid pattern made with SVGs, fully customizab
 
 import {
   ComponentPropsWithoutRef,
+  useCallback,
   useEffect,
   useId,
   useRef,
@@ -2347,8 +2347,7 @@ import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-export interface AnimatedGridPatternProps
-  extends ComponentPropsWithoutRef<"svg"> {
+export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"> {
   width?: number
   height?: number
   x?: number
@@ -2358,6 +2357,12 @@ export interface AnimatedGridPatternProps
   maxOpacity?: number
   duration?: number
   repeatDelay?: number
+}
+
+type Square = {
+  id: number
+  pos: [number, number]
+  iteration: number
 }
 
 export function AnimatedGridPattern({
@@ -2370,70 +2375,83 @@ export function AnimatedGridPattern({
   className,
   maxOpacity = 0.5,
   duration = 4,
+  repeatDelay = 0.5,
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId()
-  const containerRef = useRef(null)
+  const containerRef = useRef<SVGSVGElement | null>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [squares, setSquares] = useState(() => generateSquares(numSquares))
+  const [squares, setSquares] = useState<Array<Square>>([])
 
-  function getPos() {
+  const getPos = useCallback((): [number, number] => {
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
     ]
-  }
+  }, [dimensions.height, dimensions.width, height, width])
 
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }))
-  }
+  const generateSquares = useCallback(
+    (count: number) => {
+      return Array.from({ length: count }, (_, i) => ({
+        id: i,
+        pos: getPos(),
+        iteration: 0,
+      }))
+    },
+    [getPos]
+  )
 
-  // Function to update a single square's position
-  const updateSquarePosition = (id: number) => {
-    setSquares((currentSquares) =>
-      currentSquares.map((sq) =>
-        sq.id === id
-          ? {
-              ...sq,
-              pos: getPos(),
-            }
-          : sq
-      )
-    )
-  }
+  const updateSquarePosition = useCallback(
+    (squareId: number) => {
+      setSquares((currentSquares) => {
+        const current = currentSquares[squareId]
+        if (!current || current.id !== squareId) return currentSquares
 
-  // Update squares to animate in
+        const nextSquares = currentSquares.slice()
+        nextSquares[squareId] = {
+          ...current,
+          pos: getPos(),
+          iteration: current.iteration + 1,
+        }
+
+        return nextSquares
+      })
+    },
+    [getPos]
+  )
+
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares))
     }
-  }, [dimensions, numSquares, generateSquares])
+  }, [dimensions.width, dimensions.height, generateSquares, numSquares])
 
-  // Resize observer to update container dimensions
   useEffect(() => {
+    const element = containerRef.current
+    if (!element) return
+
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height,
+        setDimensions((currentDimensions) => {
+          const nextWidth = entry.contentRect.width
+          const nextHeight = entry.contentRect.height
+          if (
+            currentDimensions.width === nextWidth &&
+            currentDimensions.height === nextHeight
+          ) {
+            return currentDimensions
+          }
+          return { width: nextWidth, height: nextHeight }
         })
       }
     })
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current)
-    }
+    resizeObserver.observe(element)
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current)
-      }
+      resizeObserver.disconnect()
     }
-  }, [containerRef])
+  }, [])
 
   return (
     <svg
@@ -2463,7 +2481,7 @@ export function AnimatedGridPattern({
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
       <svg x={x} y={y} className="overflow-visible">
-        {squares.map(({ pos: [x, y], id }, index) => (
+        {squares.map(({ pos: [squareX, squareY], id, iteration }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
             animate={{ opacity: maxOpacity }}
@@ -2472,13 +2490,14 @@ export function AnimatedGridPattern({
               repeat: 1,
               delay: index * 0.1,
               repeatType: "reverse",
+              repeatDelay,
             }}
             onAnimationComplete={() => updateSquarePosition(id)}
-            key={`${x}-${y}-${index}`}
+            key={`${id}-${iteration}`}
             width={width - 1}
             height={height - 1}
-            x={x * width + 1}
-            y={y * height + 1}
+            x={squareX * width + 1}
+            y={squareY * height + 1}
             fill="currentColor"
             strokeWidth="0"
           />
@@ -2505,7 +2524,7 @@ export default function AnimatedGridPatternDemo() {
         duration={3}
         repeatDelay={1}
         className={cn(
-          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
+          "mask-[radial-gradient(500px_circle_at_center,white,transparent)]",
           "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
         )}
       />
@@ -2717,8 +2736,7 @@ import { ComponentPropsWithoutRef, CSSProperties, FC } from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface AnimatedShinyTextProps
-  extends ComponentPropsWithoutRef<"span"> {
+export interface AnimatedShinyTextProps extends ComponentPropsWithoutRef<"span"> {
   shimmerWidth?: number
 }
 
@@ -2795,8 +2813,7 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-interface AnimatedThemeTogglerProps
-  extends React.ComponentPropsWithoutRef<"button"> {
+interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number
 }
 
@@ -2922,7 +2939,7 @@ export const AuroraText = memo(
       <span className={`relative inline-block ${className}`}>
         <span className="sr-only">{children}</span>
         <span
-          className="animate-aurora relative bg-[length:200%_auto] bg-clip-text text-transparent"
+          className="animate-aurora relative bg-size-[200%_auto] bg-clip-text text-transparent"
           style={gradientStyle}
           aria-hidden="true"
         >
@@ -3581,7 +3598,7 @@ export const BorderBeam = ({
 }: BorderBeamProps) => {
   return (
     <div
-      className="pointer-events-none absolute inset-0 rounded-[inherit] border-(length:--border-beam-width) border-transparent [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)] [mask-composite:intersect] [mask-clip:padding-box,border-box]"
+      className="pointer-events-none absolute inset-0 rounded-[inherit] border-(length:--border-beam-width) border-transparent mask-[linear-gradient(transparent,transparent),linear-gradient(#000,#000)] mask-intersect [mask-clip:padding-box,border-box]"
       style={
         {
           "--border-beam-width": `${borderWidth}px`,
@@ -3591,7 +3608,7 @@ export const BorderBeam = ({
       <motion.div
         className={cn(
           "absolute aspect-square",
-          "bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent",
+          "bg-linear-to-l from-(--color-from) via-(--color-to) to-transparent",
           className
         )}
         style={
@@ -3921,9 +3938,8 @@ export function CodeComparison({
     async function highlightCode() {
       try {
         const { codeToHtml } = await import("shiki")
-        const { transformerNotationHighlight } = await import(
-          "@shikijs/transformers"
-        )
+        const { transformerNotationHighlight } =
+          await import("@shikijs/transformers")
 
         const before = await codeToHtml(beforeCode, {
           lang: language,
@@ -5075,8 +5091,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
 Dock.displayName = "Dock"
 
-export interface DockIconProps
-  extends Omit<MotionProps & React.HTMLAttributes<HTMLDivElement>, "children"> {
+export interface DockIconProps extends Omit<
+  MotionProps & React.HTMLAttributes<HTMLDivElement>,
+  "children"
+> {
   size?: number
   magnification?: number
   disableMagnification?: boolean
@@ -5242,7 +5260,7 @@ const DATA = {
 export default function DockDemo() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <span className="pointer-events-none bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
+      <span className="pointer-events-none bg-linear-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
         Dock
       </span>
       <TooltipProvider>
@@ -9351,7 +9369,8 @@ import { motion, MotionProps } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface LineShadowTextProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
     MotionProps {
   shadowColor?: string
   as?: React.ElementType
@@ -10722,8 +10741,7 @@ import React from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface OrbitingCirclesProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface OrbitingCirclesProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   children?: React.ReactNode
   reverse?: boolean
@@ -11845,8 +11863,7 @@ import React from "react"
 
 import { cn } from "@/lib/utils"
 
-interface PulsatingButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface PulsatingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   pulseColor?: string
   duration?: string
 }
@@ -11945,7 +11962,8 @@ const rainbowButtonVariants = cva(
 )
 
 interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof rainbowButtonVariants> {
   asChild?: boolean
 }
@@ -12185,8 +12203,7 @@ import React, { MouseEvent, useEffect, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
-interface RippleButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   rippleColor?: string
   duration?: string
 }
@@ -12909,8 +12926,10 @@ import { motion, MotionProps, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-interface ScrollProgressProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps> {
+interface ScrollProgressProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  keyof MotionProps
+> {
   ref?: React.Ref<HTMLDivElement>
 }
 
@@ -13285,7 +13304,8 @@ const animationProps: MotionProps = {
 }
 
 interface ShinyButtonProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
     MotionProps {
   children: React.ReactNode
   className?: string
@@ -15127,7 +15147,7 @@ export const TweetSkeleton = ({
 }) => (
   <div
     className={cn(
-      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-lg border p-4",
+      "flex size-full max-h-max min-w-72 flex-col gap-2 rounded-xl border p-4",
       className
     )}
     {...props}
@@ -15159,24 +15179,29 @@ export const TweetNotFound = ({
 )
 
 export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="flex flex-row justify-between tracking-tight">
-    <div className="flex items-center space-x-2">
-      <a href={tweet.user.url} target="_blank" rel="noreferrer">
+  <div className="flex flex-row items-start justify-between tracking-normal">
+    <div className="flex items-center space-x-3">
+      <a
+        href={tweet.user.url}
+        target="_blank"
+        rel="noreferrer"
+        className="shrink-0"
+      >
         <img
           title={`Profile picture of ${tweet.user.name}`}
           alt={tweet.user.screen_name}
           height={48}
           width={48}
           src={tweet.user.profile_image_url_https}
-          className="overflow-hidden rounded-full border border-transparent"
+          className="border-border/50 overflow-hidden rounded-full border"
         />
       </a>
-      <div>
+      <div className="flex flex-col gap-0.5">
         <a
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="flex items-center font-semibold whitespace-nowrap"
+          className="text-foreground flex items-center font-medium whitespace-nowrap transition-opacity hover:opacity-80"
         >
           {truncate(tweet.user.name, 20)}
           {tweet.user.verified ||
@@ -15189,7 +15214,7 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
             href={tweet.user.url}
             target="_blank"
             rel="noreferrer"
-            className="text-sm text-gray-500 transition-all duration-75"
+            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
           >
             @{truncate(tweet.user.screen_name, 16)}
           </a>
@@ -15198,13 +15223,13 @@ export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
     </div>
     <a href={tweet.url} target="_blank" rel="noreferrer">
       <span className="sr-only">Link to tweet</span>
-      <Twitter className="size-5 items-start text-[#3BA9EE] transition-all ease-in-out hover:scale-105" />
+      <Twitter className="text-muted-foreground hover:text-foreground size-5 items-start transition-all ease-in-out hover:scale-105" />
     </a>
   </div>
 )
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="leading-normal tracking-tighter break-words">
+  <div className="text-[15px] leading-relaxed tracking-normal wrap-break-word">
     {tweet.entities.map((entity, idx) => {
       switch (entity.type) {
         case "url":
@@ -15217,7 +15242,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               href={entity.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-normal text-gray-500"
+              className="text-muted-foreground hover:text-foreground text-[15px] font-normal transition-colors"
             >
               <span>{entity.text}</span>
             </a>
@@ -15226,7 +15251,7 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
           return (
             <span
               key={idx}
-              className="text-sm font-normal"
+              className="text-foreground text-[15px] font-normal"
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           )
@@ -15298,7 +15323,7 @@ export const MagicTweet = ({
   return (
     <div
       className={cn(
-        "relative flex h-fit w-full max-w-lg flex-col gap-2 overflow-hidden rounded-lg border p-4 backdrop-blur-md",
+        "relative flex h-fit w-full max-w-lg flex-col gap-4 overflow-hidden rounded-xl border p-5",
         className
       )}
       {...props}

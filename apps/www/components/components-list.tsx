@@ -16,12 +16,12 @@ export function ComponentsList() {
   )
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-8 lg:gap-y-6">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-x-6 lg:gap-y-6">
       {list.map((component) => (
         <Link
           key={component.$id}
           href={component.url}
-          className="text-lg font-medium underline-offset-4 hover:underline md:text-base"
+          className="text-base font-medium underline-offset-4 hover:underline"
         >
           {component.name}
         </Link>

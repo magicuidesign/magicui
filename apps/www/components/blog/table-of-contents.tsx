@@ -16,7 +16,13 @@ const generateHeadingId = (text: string) => {
     .trim()
 }
 
-export function BlogTableOfContents({ className }: { className?: string }) {
+export function BlogTableOfContents({
+  className,
+  onLinkClick,
+}: {
+  className?: string
+  onLinkClick?: () => void
+}) {
   const [activeHeading, setActiveHeading] = useState<string>("")
   const [headings, setHeadings] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -85,6 +91,7 @@ export function BlogTableOfContents({ className }: { className?: string }) {
 
   const handleClick = (headingId: string) => {
     setActiveHeading(headingId)
+    onLinkClick?.()
   }
 
   return (
