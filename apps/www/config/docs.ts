@@ -60,6 +60,14 @@ export const docsConfig: DocsConfig = {
       title: "Templates",
       items: [
         {
+          title: "CodeForge",
+          href: `/docs/templates/codeforge`,
+          items: [],
+          label: "New",
+          paid: true,
+          event: "template_codeforge_clicked",
+        },
+        {
           title: "AI Agent",
           href: `/docs/templates/agent`,
           items: [],
