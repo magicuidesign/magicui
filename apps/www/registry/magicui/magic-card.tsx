@@ -1,7 +1,12 @@
 "use client"
 
-import React, { useCallback, useEffect } from "react"
-import { motion, useMotionTemplate, useMotionValue } from "motion/react"
+import React, { useCallback, useEffect, useRef } from "react"
+import {
+  animate,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -24,11 +29,43 @@ export function MagicCard({
   gradientFrom = "#9E7AFF",
   gradientTo = "#FE8BBB",
 }: MagicCardProps) {
+  const ref = useRef<HTMLDivElement>(null)
+
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
+
   const reset = useCallback(() => {
-    mouseX.set(-gradientSize)
-    mouseY.set(-gradientSize)
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const x = mouseX.get()
+    const y = mouseY.get()
+
+    const distances = {
+      left: x,
+      right: rect.width - x,
+      top: y,
+      bottom: rect.height - y,
+    }
+
+    const closestEdge = Object.entries(distances).reduce(
+      (closest, [edge, distance]) =>
+        distance < closest.distance ? { edge, distance } : closest,
+      { edge: "left", distance: distances.left }
+    ).edge
+
+    switch (closestEdge) {
+      case "left":
+        return animate(mouseX, -gradientSize)
+      case "right":
+        return animate(mouseX, rect.width + gradientSize)
+      case "top":
+        return animate(mouseY, -gradientSize)
+      case "bottom":
+        return animate(mouseY, rect.height + gradientSize)
+      default:
+        animate(mouseX, -gradientSize)
+        animate(mouseY, -gradientSize)
+    }
   }, [gradientSize, mouseX, mouseY])
 
   const handlePointerMove = useCallback(
@@ -69,27 +106,28 @@ export function MagicCard({
   }, [reset])
 
   return (
-    <div
-      className={cn("group relative rounded-[inherit]", className)}
+    <motion.div
+      ref={ref}
+      className={cn(
+        "group relative overflow-hidden rounded-[inherit] border border-transparent",
+        className
+      )}
       onPointerMove={handlePointerMove}
       onPointerLeave={reset}
       onPointerEnter={reset}
+      style={{
+        background: useMotionTemplate`
+        linear-gradient(var(--color-background) 0 0) padding-box,
+        radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+          ${gradientFrom}, 
+          ${gradientTo},
+          var(--color-border) 100%
+        ) border-box
+        `,
+      }}
     >
       <motion.div
-        className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-          radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-          ${gradientFrom}, 
-          ${gradientTo}, 
-          var(--border) 100%
-          )
-          `,
-        }}
-      />
-      <div className="bg-background absolute inset-px rounded-[inherit]" />
-      <motion.div
-        className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
@@ -98,6 +136,6 @@ export function MagicCard({
         }}
       />
       <div className="relative">{children}</div>
-    </div>
+    </motion.div>
   )
 }
