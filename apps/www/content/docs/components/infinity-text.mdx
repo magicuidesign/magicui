@@ -1,0 +1,67 @@
+---
+title: Infinity Text
+date: 2025-11-25
+description: A smooth, infinitely scrolling marquee text component, fully customizable using Tailwind CSS.
+author: aniketsaha
+published: true
+---
+
+<ComponentPreview name="infinity-text-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/infinity-text
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="infinity-text" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { InfinityText } from "@/components/ui/infinity-text"
+```
+
+```tsx showLineNumbers
+<InfinityText text="Recent Works" />
+```
+
+## Props
+
+| Prop        | Type                    | Default       | Description                                           |
+| ----------- | ----------------------- | ------------- | ----------------------------------------------------- |
+| `text`      | `string`                | `RECENT WORK` | The color of the component                            |
+| `speed`     | `number`                | `50`          | Controls how fast the text scrolls                    |
+| `fontSize`  | `string`                | `text-6xl`    | Tailwind font-size class applied to the text          |
+| `fontStyle` | `string`                | `-`           | Custom font class (Google Fonts, Tailwind, or custom) |
+| `separator` | `string`                | `•`           | Separator placed between repeated text segments       |
+| `className` | `string`                | `-`           | Additional CSS classes for the container              |
+| `colorMode` | `auto \| light \| dark` | `auto`        | Automatically switches text color based on background |
+
+## Credits
+
+- Credit to [@AniketSaha](https://github.com/Aniket-a14)
