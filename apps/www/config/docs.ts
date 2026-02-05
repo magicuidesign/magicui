@@ -253,6 +253,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Glare Hover",
+          href: `/docs/components/glare-hover`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Meteors",
           href: `/docs/components/meteors`,
           items: [],

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover-demo",
+  "type": "registry:example",
+  "title": "Glare Hover Demo",
+  "description": "Example showing a subtle glare effect that animates across the element on hover.",
+  "registryDependencies": [
+    "@magicui/glare-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glare-hover-demo.tsx",
+      "content": "\"use client\"\n\nimport { Sparkles } from \"lucide-react\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { GlareHover } from \"@/registry/magicui/glare-hover\"\n\nexport default function GlareHoverDemo() {\n  return (\n    <div className=\"relative flex w-full items-center justify-center\">\n      <GlareHover className=\"w-full max-w-lg rounded-xl\">\n        <Card>\n          <CardHeader>\n            <div className=\"mb-4 flex items-center gap-3\">\n              <div className=\"bg-primary/10 flex size-12 items-center justify-center rounded-lg\">\n                <Sparkles className=\"text-primary size-6\" />\n              </div>\n              <div>\n                <CardTitle>Interactive Glare Effect</CardTitle>\n                <CardDescription className=\"mt-1\">\n                  Hover to see the magic\n                </CardDescription>\n              </div>\n            </div>\n          </CardHeader>\n          <CardContent>\n            <p className=\"text-muted-foreground\">\n              This component adds a subtle glare effect that smoothly animates\n              across the element when you hover over it. Perfect for adding a\n              premium, polished feel to your UI components.\n            </p>\n          </CardContent>\n        </Card>\n      </GlareHover>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

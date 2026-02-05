@@ -6825,6 +6825,224 @@ export default function FlickeringGridRoundedDemo() {
 
 
 
+===== COMPONENT: glare-hover =====
+Title: Glare Hover
+Description: A component that creates a subtle glare effect that animates across the element on hover.
+
+--- file: magicui/glare-hover.tsx ---
+import type * as React from "react"
+
+import { cn } from "@/lib/utils"
+
+export interface GlareHoverProps extends React.ComponentProps<"div"> {
+  /**
+   * The rotation angle in degrees for the glare effect.
+   * @default 45
+   */
+  rotate?: number
+  /**
+   * Additional CSS classes to apply to the glare element.
+   */
+  glareClassName?: string
+}
+
+function GlareHover({
+  children,
+  rotate = 45,
+  className,
+  glareClassName,
+  ...props
+}: GlareHoverProps) {
+  return (
+    <div
+      className={cn("group/glare relative w-fit overflow-hidden", className)}
+    >
+      {children}
+      <span
+        className={cn(
+          "absolute inset-0 size-full opacity-30 blur-sm transition-transform",
+          "translate-x-[-100%] bg-gradient-to-t from-transparent via-black/15 to-transparent duration-500 dark:via-white/50",
+          "group-hover/glare:translate-x-[100%]",
+          glareClassName
+        )}
+        style={{ rotate: `${rotate}deg` }}
+        aria-hidden="true"
+        role="presentation"
+        {...props}
+      />
+    </div>
+  )
+}
+
+export { GlareHover }
+
+
+===== EXAMPLE: glare-hover-demo =====
+Title: Glare Hover Demo
+
+--- file: example/glare-hover-demo.tsx ---
+"use client"
+
+import { Sparkles } from "lucide-react"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { GlareHover } from "@/registry/magicui/glare-hover"
+
+export default function GlareHoverDemo() {
+  return (
+    <div className="relative flex w-full items-center justify-center">
+      <GlareHover className="w-full max-w-lg rounded-xl">
+        <Card>
+          <CardHeader>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="bg-primary/10 flex size-12 items-center justify-center rounded-lg">
+                <Sparkles className="text-primary size-6" />
+              </div>
+              <div>
+                <CardTitle>Interactive Glare Effect</CardTitle>
+                <CardDescription className="mt-1">
+                  Hover to see the magic
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">
+              This component adds a subtle glare effect that smoothly animates
+              across the element when you hover over it. Perfect for adding a
+              premium, polished feel to your UI components.
+            </p>
+          </CardContent>
+        </Card>
+      </GlareHover>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: glare-hover-demo-blue =====
+Title: Glare Hover Demo - Blue
+
+--- file: example/glare-hover-demo-blue.tsx ---
+"use client"
+
+import { TrendingUp, Users, Zap } from "lucide-react"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { GlareHover } from "@/registry/magicui/glare-hover"
+
+export default function GlareHoverDemoBlue() {
+  return (
+    <div className="relative flex w-full items-center justify-center">
+      <GlareHover
+        className="w-full max-w-lg rounded-xl"
+        glareClassName="via-blue-500/30 dark:via-blue-400/40"
+      >
+        <Card>
+          <CardHeader>
+            <CardTitle>Performance Metrics</CardTitle>
+            <CardDescription>Real-time analytics dashboard</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="flex flex-col items-center gap-2 rounded-lg border p-4">
+                <Zap className="size-5 text-blue-500" />
+                <div className="text-2xl font-bold">98%</div>
+                <div className="text-muted-foreground text-xs">Uptime</div>
+              </div>
+              <div className="flex flex-col items-center gap-2 rounded-lg border p-4">
+                <TrendingUp className="size-5 text-blue-500" />
+                <div className="text-2xl font-bold">+24%</div>
+                <div className="text-muted-foreground text-xs">Growth</div>
+              </div>
+              <div className="flex flex-col items-center gap-2 rounded-lg border p-4">
+                <Users className="size-5 text-blue-500" />
+                <div className="text-2xl font-bold">12.5k</div>
+                <div className="text-muted-foreground text-xs">Users</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </GlareHover>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: glare-hover-demo-purple =====
+Title: Glare Hover Demo - Purple
+
+--- file: example/glare-hover-demo-purple.tsx ---
+"use client"
+
+import { Award, CheckCircle2 } from "lucide-react"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { GlareHover } from "@/registry/magicui/glare-hover"
+
+export default function GlareHoverDemoPurple() {
+  return (
+    <div className="relative flex w-full items-center justify-center">
+      <GlareHover
+        className="w-full max-w-lg rounded-xl"
+        glareClassName="via-purple-500/40 dark:via-purple-300/50"
+      >
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="flex size-12 items-center justify-center rounded-full bg-purple-500/10">
+                <Award className="size-6 text-purple-500" />
+              </div>
+              <div className="flex-1">
+                <CardTitle>Achievement Unlocked!</CardTitle>
+                <CardDescription className="mt-1">
+                  You&apos;ve reached a new milestone
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="size-4 text-purple-500" />
+                <span className="text-sm">Completed 100 tasks</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="size-4 text-purple-500" />
+                <span className="text-sm">Maintained 30-day streak</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="size-4 text-purple-500" />
+                <span className="text-sm">Earned Expert badge</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </GlareHover>
+    </div>
+  )
+}
+
+
+
 ===== COMPONENT: globe =====
 Title: Globe
 Description: An autorotating, interactive, and highly performant globe made using WebGL.

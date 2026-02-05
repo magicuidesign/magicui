@@ -389,6 +389,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "glare-hover": {
+    name: "glare-hover",
+    description: "A component that creates a subtle glare effect that animates across the element on hover.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/glare-hover.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/glare-hover.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "shimmer-button": {
     name: "shimmer-button",
     description: "A button with a shimmering light which travels around the perimeter.",
@@ -1795,6 +1812,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/globe-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glare-hover-demo": {
+    name: "glare-hover-demo",
+    description: "Example showing a subtle glare effect that animates across the element on hover.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [{
+      path: "registry/example/glare-hover-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glare-hover-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glare-hover-demo-blue": {
+    name: "glare-hover-demo-blue",
+    description: "Example showing a blue glare effect using custom color classes.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [{
+      path: "registry/example/glare-hover-demo-blue.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glare-hover-demo-blue.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glare-hover-demo-purple": {
+    name: "glare-hover-demo-purple",
+    description: "Example showing a purple glare effect using custom color classes.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [{
+      path: "registry/example/glare-hover-demo-purple.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glare-hover-demo-purple.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

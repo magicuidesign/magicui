@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover-demo-blue",
+  "type": "registry:example",
+  "title": "Glare Hover Demo - Blue",
+  "description": "Example showing a blue glare effect using custom color classes.",
+  "registryDependencies": [
+    "@magicui/glare-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glare-hover-demo-blue.tsx",
+      "content": "\"use client\"\n\nimport { TrendingUp, Users, Zap } from \"lucide-react\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { GlareHover } from \"@/registry/magicui/glare-hover\"\n\nexport default function GlareHoverDemoBlue() {\n  return (\n    <div className=\"relative flex w-full items-center justify-center\">\n      <GlareHover\n        className=\"w-full max-w-lg rounded-xl\"\n        glareClassName=\"via-blue-500/30 dark:via-blue-400/40\"\n      >\n        <Card>\n          <CardHeader>\n            <CardTitle>Performance Metrics</CardTitle>\n            <CardDescription>Real-time analytics dashboard</CardDescription>\n          </CardHeader>\n          <CardContent>\n            <div className=\"grid grid-cols-3 gap-4\">\n              <div className=\"flex flex-col items-center gap-2 rounded-lg border p-4\">\n                <Zap className=\"size-5 text-blue-500\" />\n                <div className=\"text-2xl font-bold\">98%</div>\n                <div className=\"text-muted-foreground text-xs\">Uptime</div>\n              </div>\n              <div className=\"flex flex-col items-center gap-2 rounded-lg border p-4\">\n                <TrendingUp className=\"size-5 text-blue-500\" />\n                <div className=\"text-2xl font-bold\">+24%</div>\n                <div className=\"text-muted-foreground text-xs\">Growth</div>\n              </div>\n              <div className=\"flex flex-col items-center gap-2 rounded-lg border p-4\">\n                <Users className=\"size-5 text-blue-500\" />\n                <div className=\"text-2xl font-bold\">12.5k</div>\n                <div className=\"text-muted-foreground text-xs\">Users</div>\n              </div>\n            </div>\n          </CardContent>\n        </Card>\n      </GlareHover>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

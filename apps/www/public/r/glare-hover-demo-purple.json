@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover-demo-purple",
+  "type": "registry:example",
+  "title": "Glare Hover Demo - Purple",
+  "description": "Example showing a purple glare effect using custom color classes.",
+  "registryDependencies": [
+    "@magicui/glare-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glare-hover-demo-purple.tsx",
+      "content": "\"use client\"\n\nimport { Award, CheckCircle2 } from \"lucide-react\"\n\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { GlareHover } from \"@/registry/magicui/glare-hover\"\n\nexport default function GlareHoverDemoPurple() {\n  return (\n    <div className=\"relative flex w-full items-center justify-center\">\n      <GlareHover\n        className=\"w-full max-w-lg rounded-xl\"\n        glareClassName=\"via-purple-500/40 dark:via-purple-300/50\"\n      >\n        <Card>\n          <CardHeader>\n            <div className=\"flex items-center gap-3\">\n              <div className=\"flex size-12 items-center justify-center rounded-full bg-purple-500/10\">\n                <Award className=\"size-6 text-purple-500\" />\n              </div>\n              <div className=\"flex-1\">\n                <CardTitle>Achievement Unlocked!</CardTitle>\n                <CardDescription className=\"mt-1\">\n                  You&apos;ve reached a new milestone\n                </CardDescription>\n              </div>\n            </div>\n          </CardHeader>\n          <CardContent>\n            <div className=\"space-y-3\">\n              <div className=\"flex items-center gap-2\">\n                <CheckCircle2 className=\"size-4 text-purple-500\" />\n                <span className=\"text-sm\">Completed 100 tasks</span>\n              </div>\n              <div className=\"flex items-center gap-2\">\n                <CheckCircle2 className=\"size-4 text-purple-500\" />\n                <span className=\"text-sm\">Maintained 30-day streak</span>\n              </div>\n              <div className=\"flex items-center gap-2\">\n                <CheckCircle2 className=\"size-4 text-purple-500\" />\n                <span className=\"text-sm\">Earned Expert badge</span>\n              </div>\n            </div>\n          </CardContent>\n        </Card>\n      </GlareHover>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
