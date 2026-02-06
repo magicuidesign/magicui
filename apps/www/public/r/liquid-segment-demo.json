@@ -4,8 +4,7 @@
   "title": "Liquid Segment Demo",
   "description": "A billing switch in a team pricing card.",
   "registryDependencies": [
-    "@magicui/liquid-segment",
-    "@magicui/liquid-segment-pass"
+    "@magicui/liquid-segment"
   ],
   "files": [
     {

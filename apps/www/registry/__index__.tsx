@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "liquid-segment-demo",
     description: "A billing switch in a team pricing card.",
     type: "registry:example",
-    registryDependencies: ["@magicui/liquid-segment","@magicui/liquid-segment-pass"],
+    registryDependencies: ["@magicui/liquid-segment"],
     files: [{
       path: "registry/example/liquid-segment-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "liquid-segment-demo-2",
     description: "A controlled package manager switch with a long liquid hop.",
     type: "registry:example",
-    registryDependencies: ["@magicui/liquid-segment","@magicui/liquid-segment-pass"],
+    registryDependencies: ["@magicui/liquid-segment"],
     files: [{
       path: "registry/example/liquid-segment-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "liquid-segment-demo-3",
     description: "A newsletter signup card with a branded frequency switch and a disabled option.",
     type: "registry:example",
-    registryDependencies: ["@magicui/liquid-segment","@magicui/liquid-segment-pass"],
+    registryDependencies: ["@magicui/liquid-segment"],
     files: [{
       path: "registry/example/liquid-segment-demo-3.tsx",
       type: "registry:example",

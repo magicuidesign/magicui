@@ -1409,8 +1409,7 @@
       "title": "Liquid Segment Demo",
       "description": "A billing switch in a team pricing card.",
       "registryDependencies": [
-        "@magicui/liquid-segment",
-        "@magicui/liquid-segment-pass"
+        "@magicui/liquid-segment"
       ],
       "files": [
         {
@@ -1425,8 +1424,7 @@
       "title": "Liquid Segment Demo 2",
       "description": "A controlled package manager switch with a long liquid hop.",
       "registryDependencies": [
-        "@magicui/liquid-segment",
-        "@magicui/liquid-segment-pass"
+        "@magicui/liquid-segment"
       ],
       "files": [
         {
@@ -1441,8 +1439,7 @@
       "title": "Liquid Segment Demo 3",
       "description": "A newsletter signup card with a branded frequency switch and a disabled option.",
       "registryDependencies": [
-        "@magicui/liquid-segment",
-        "@magicui/liquid-segment-pass"
+        "@magicui/liquid-segment"
       ],
       "files": [
         {

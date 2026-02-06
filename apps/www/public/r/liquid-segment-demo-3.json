@@ -4,8 +4,7 @@
   "title": "Liquid Segment Demo 3",
   "description": "A newsletter signup card with a branded frequency switch and a disabled option.",
   "registryDependencies": [
-    "@magicui/liquid-segment",
-    "@magicui/liquid-segment-pass"
+    "@magicui/liquid-segment"
   ],
   "files": [
     {

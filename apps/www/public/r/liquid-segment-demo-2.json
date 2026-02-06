@@ -4,8 +4,7 @@
   "title": "Liquid Segment Demo 2",
   "description": "A controlled package manager switch with a long liquid hop.",
   "registryDependencies": [
-    "@magicui/liquid-segment",
-    "@magicui/liquid-segment-pass"
+    "@magicui/liquid-segment"
   ],
   "files": [
     {
