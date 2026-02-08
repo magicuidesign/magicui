@@ -214,6 +214,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage
+- [Dotted Map Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-3.tsx): Example usage
 
 ## Optional
 

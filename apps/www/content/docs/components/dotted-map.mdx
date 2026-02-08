@@ -1,8 +1,8 @@
 ---
 title: Dotted Map
-date: 2025-09-25
+date: 2025-12-31
 description: A component with a svg dotted map.
-author: dillionverma
+author: dillionverma, Yeom-JinHo
 published: true
 ---
 
@@ -46,10 +46,14 @@ npx shadcn@latest add @magicui/dotted-map
 
 <ComponentPreview name="dotted-map-demo-2" />
 
+### PulseMarker
+
+<ComponentPreview name="dotted-map-demo-3" />
+
 ## Usage
 
 ```tsx showLineNumbers
-import { DottedMap } from "@/components/ui/dotted-map"
+import { DottedMap, type Marker } from "@/components/ui/dotted-map"
 ```
 
 ```tsx showLineNumbers
@@ -58,16 +62,72 @@ import { DottedMap } from "@/components/ui/dotted-map"
 </div>
 ```
 
+### With Custom Markers
+
+```tsx showLineNumbers
+import { DottedMap, type Marker } from "@/components/ui/dotted-map"
+
+type MyMarker = Marker & {
+  overlay: {
+    countryCode: string
+    label: string
+  }
+}
+
+const markers: MyMarker[] = [
+  {
+    lat: 37.5665,
+    lng: 126.978,
+    size: 2.8,
+    overlay: { countryCode: "kr", label: "Seoul" },
+  },
+]
+
+<DottedMap<MyMarker>
+  markers={markers}
+  renderMarkerOverlay={({ marker, x, y, r }) => {
+    // Custom overlay rendering
+    return <text x={x} y={y}>{marker.overlay.label}</text>
+  }}
+/>
+```
+
 ## Props
 
-| Prop          | Type                  | Default     | Description                                           |
-| ------------- | --------------------- | ----------- | ----------------------------------------------------- |
-| `width`       | `number`              | `150`       | Width of the SVG map.                                 |
-| `height`      | `number`              | `75`        | Height of the SVG map.                                |
-| `mapSamples`  | `number`              | `5500`      | Number of sample points for map generation.           |
-| `markers`     | `Marker[]`            | `[]`        | Array of markers to display on the map.               |
-| `dotColor`    | `string`              | `undefined` | Color of the map dots (uses currentColor if not set). |
-| `markerColor` | `string`              | `"#FF6900"` | Color of the markers.                                 |
-| `dotRadius`   | `number`              | `0.22`      | Radius of the map dots.                               |
-| `className`   | `string`              | `undefined` | Additional class names applied to the SVG.            |
-| `style`       | `React.CSSProperties` | `undefined` | Inline styles merged into the SVG.                    |
+| Prop                  | Type                  | Default     | Description                                                    |
+| --------------------- | --------------------- | ----------- | -------------------------------------------------------------- |
+| `width`               | `number`              | `150`       | Width of the SVG map.                                          |
+| `height`              | `number`              | `75`        | Height of the SVG map.                                         |
+| `mapSamples`          | `number`              | `5000`      | Number of sample points for map generation.                    |
+| `markers`             | `Marker[]`            | `[]`        | Array of markers to display on the map.                        |
+| `dotColor`            | `string`              | `undefined` | Color of the map dots (uses currentColor if not set).          |
+| `markerColor`         | `string`              | `"#FF6900"` | Color of the markers.                                          |
+| `dotRadius`           | `number`              | `0.2`       | Radius of the map dots.                                        |
+| `stagger`             | `boolean`             | `true`      | Whether to stagger dots in alternating rows for visual effect. |
+| `renderMarkerOverlay` | `(args) => ReactNode` | `undefined` | Custom render function for marker overlays.                    |
+| `className`           | `string`              | `undefined` | Additional class names applied to the SVG.                     |
+| `style`               | `React.CSSProperties` | `undefined` | Inline styles merged into the SVG.                             |
+
+## Types
+
+### Marker
+
+```tsx
+export interface Marker {
+  lat: number
+  lng: number
+  size?: number
+}
+```
+
+The `DottedMap` component supports generic types, allowing you to extend the `Marker` interface with custom properties:
+
+```tsx
+type MyMarker = Marker & {
+  overlay: {
+    countryCode: string
+    label: string
+  }
+}
+;<DottedMap<MyMarker> markers={markers} />
+```

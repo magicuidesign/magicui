@@ -3504,6 +3504,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "dotted-map-demo-3": {
+    name: "dotted-map-demo-3",
+    description: "Example showing a dotted map with pulse animation.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dotted-map"],
+    files: [{
+      path: "registry/example/dotted-map-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dotted-map-demo-3.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "utils": {
     name: "utils",
     description: "",
