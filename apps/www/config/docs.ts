@@ -5,6 +5,53 @@ interface DocsConfig {
   sidebarNav: NavItemWithChildren[]
 }
 
+export interface DocNavLink {
+  url: string
+  name: string
+}
+
+function flattenSidebarItems(
+  items: NavItemWithChildren[],
+  acc: DocNavLink[] = []
+): DocNavLink[] {
+  for (const item of items) {
+    if (item.href) {
+      acc.push({ url: item.href, name: item.title })
+    }
+    if (item.items?.length) {
+      flattenSidebarItems(item.items, acc)
+    }
+  }
+  return acc
+}
+
+function getFlattenedDocsNav(): DocNavLink[] {
+  const result: DocNavLink[] = []
+  for (const section of docsConfig.sidebarNav) {
+    if (section.items?.length) {
+      flattenSidebarItems(section.items, result)
+    }
+  }
+  return result
+}
+
+export function getNeighboursFromConfig(currentUrl: string): {
+  previous?: DocNavLink
+  next?: DocNavLink
+} {
+  const nav = getFlattenedDocsNav()
+  const normalized = currentUrl.replace(/\/$/, "") || "/"
+  const index = nav.findIndex((item) => {
+    const itemNorm = item.url.replace(/\/$/, "") || "/"
+    return itemNorm === normalized
+  })
+  if (index < 0) return {}
+  return {
+    previous: index > 0 ? nav.at(index - 1) : undefined,
+    next: index < nav.length - 1 ? nav.at(index + 1) : undefined,
+  }
+}
+
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
