@@ -11,9 +11,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample22 } from "./departure-board-pass"
+import { passSample24 } from "./departure-board-pass"
 
-void passSample22(0)
+void passSample24(0)
 const DEFAULT_CHARACTER_SETS = [
   "0123456789",
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
