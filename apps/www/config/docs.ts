@@ -450,6 +450,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Departure Board",
+          href: `/docs/components/departure-board`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

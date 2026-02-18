@@ -1,0 +1,94 @@
+---
+title: Departure Board
+date: 2026-11-04
+description: A split-flap board that flips each character into place, like an airport departure sign.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="departure-board-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/departure-board
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="departure-board" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { DepartureBoard } from "@/components/ui/departure-board"
+```
+
+```tsx showLineNumbers
+<DepartureBoard className="text-5xl">18,640</DepartureBoard>
+```
+
+```tsx showLineNumbers
+<h2 className="text-4xl font-semibold">
+  Now boarding at <DepartureBoard>GATE B12</DepartureBoard>
+</h2>
+```
+
+Each flap flips forward through its character set, so digits count up instead of scrambling. When `children` changes, only the characters that differ flip. Punctuation such as `,`, `%` and `#` stays still, and text that changes shape, such as `999` to `1,000`, swaps without flipping.
+
+Keep text short, up to about 24 flaps. On mobile, size the board with container units, as the demos do. Flaps fit Latin letters and digits.
+
+### Character sets
+
+Pass `characterSets` to change what each flap flips through. Put letters and digits in one set to let them flip through each other, or add characters such as `ÄÖÜ` to a set so they flip too.
+
+```tsx showLineNumbers
+<DepartureBoard characterSets={["0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"]}>
+  GATE B12
+</DepartureBoard>
+```
+
+## Props
+
+| Prop            | Type               | Default                                                                      | Description                                                                                                                          |
+| --------------- | ------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `children`      | `string \| number` | `-`                                                                          | The text to show. When it changes, only the characters that differ flip.                                                             |
+| `characterSets` | `string[]`         | `["0123456789", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"]` | Sets of characters a flap flips through, in order. Each string is one set, such as `"0123456789"`. Characters in no set do not flip. |
+| `duration`      | `number`           | `1`                                                                          | Seconds one flap takes to flip into place.                                                                                           |
+| `delay`         | `number`           | `0`                                                                          | Seconds to wait before the board first flips in.                                                                                     |
+| `startOnView`   | `boolean`          | `true`                                                                       | Start when a third of the board scrolls into view.                                                                                   |
+| `className`     | `string`           | `-`                                                                          | Root classes, merged last. A font-size utility sets the board's size; add `justify-center` to center wrapped rows.                   |
+
+## Examples
+
+### Launch banner
+
+<ComponentPreview name="departure-board-demo-2" />
+
+### Waitlist counter
+
+Change `children` and only the characters that differ flip to their new value.
+
+<ComponentPreview name="departure-board-demo-3" />
