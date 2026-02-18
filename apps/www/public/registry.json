@@ -19,6 +19,19 @@
       "type": "registry:style"
     },
     {
+      "name": "departure-board",
+      "title": "Departure Board",
+      "description": "A split-flap board that flips each character into place, like an airport departure sign.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/departure-board.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1388,6 +1401,54 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "departure-board-demo",
+      "title": "Departure Board Stats",
+      "description": "A stats band with teams, uptime, and countries.",
+      "registryDependencies": [
+        "@magicui/departure-board",
+        "@magicui/departure-board-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/departure-board-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "departure-board-demo-2",
+      "title": "Departure Board Launch Banner",
+      "description": "A responsive launch banner with an early access action.",
+      "registryDependencies": [
+        "@magicui/departure-board",
+        "@magicui/departure-board-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/departure-board-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "departure-board-demo-3",
+      "title": "Departure Board Waitlist",
+      "description": "An interactive waitlist showing a change in queue position.",
+      "registryDependencies": [
+        "@magicui/departure-board",
+        "@magicui/departure-board-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/departure-board-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     },
     {
       "name": "magic-card-demo",

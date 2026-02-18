@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "departure-board-demo-3",
+  "title": "Departure Board Waitlist",
+  "description": "An interactive waitlist showing a change in queue position.",
+  "registryDependencies": [
+    "@magicui/departure-board",
+    "@magicui/departure-board-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/departure-board-demo-3.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { DepartureBoard } from \"@/registry/magicui/departure-board\"\n\nconst START_PLACE = 4_718\nconst PRIORITY_JUMP = 250\n/** Quick turns, so the digits passed on the way never read as a number. */\nconst TURN_DURATION = 0.6\n\nconst formatPlace = (place: number) => `#${place.toLocaleString(\"en-US\")}`\n\nfunction CheckIcon() {\n  return (\n    <svg\n      aria-hidden=\"true\"\n      viewBox=\"0 0 16 16\"\n      fill=\"none\"\n      stroke=\"currentColor\"\n      strokeWidth={2}\n      strokeLinecap=\"round\"\n      strokeLinejoin=\"round\"\n      className=\"size-4\"\n    >\n      <path d=\"M3.5 8.5 6.5 11.5 12.5 4.5\" />\n    </svg>\n  )\n}\n\nexport default function DepartureBoardDemo3() {\n  const [place, setPlace] = useState(START_PLACE)\n  const moved = place !== START_PLACE\n\n  return (\n    <section className=\"border-border bg-background text-foreground @container flex w-[28rem] max-w-full flex-col items-center gap-6 rounded-xl border px-5 py-12 text-center\">\n      <div className=\"space-y-2\">\n        <h2 className=\"text-xl font-semibold\">Your place in line</h2>\n        <p className=\"text-muted-foreground text-sm text-balance\">\n          The next wave of early access opens on Friday.\n        </p>\n      </div>\n      {/* Sized to the card, so the number fits on phones. */}\n      <DepartureBoard\n        duration={TURN_DURATION}\n        className=\"text-[clamp(2.25rem,17cqi,3.75rem)]\"\n      >\n        {formatPlace(place)}\n      </DepartureBoard>\n      {/* Once used, the pass turns into a quiet outline with a check. */}\n      <button\n        type=\"button\"\n        aria-disabled={moved}\n        onClick={() => setPlace(START_PLACE - PRIORITY_JUMP)}\n        className=\"bg-foreground text-background hover:bg-foreground/90 focus-visible:ring-ring focus-visible:ring-offset-background aria-disabled:border-border aria-disabled:bg-background aria-disabled:text-foreground inline-flex items-center gap-2 rounded-lg border border-transparent px-5 py-2.5 text-sm font-medium outline-none focus-visible:ring-2 focus-visible:ring-offset-2 aria-disabled:pointer-events-none\"\n      >\n        {moved && <CheckIcon />}\n        {moved ? \"Priority pass applied\" : \"Use a priority pass\"}\n      </button>\n      <p className=\"text-muted-foreground text-sm\" aria-live=\"polite\">\n        {moved\n          ? `You moved up ${PRIORITY_JUMP} places to ${formatPlace(place)}.`\n          : `Skip ${PRIORITY_JUMP} places in one go.`}\n      </p>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "departure-board",
+    type: "registry:ui",
+    title: "Departure Board",
+    description:
+      "A split-flap board that flips each character into place, like an airport departure sign.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/departure-board.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",

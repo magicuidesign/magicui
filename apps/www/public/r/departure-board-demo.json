@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "departure-board-demo",
+  "title": "Departure Board Stats",
+  "description": "A stats band with teams, uptime, and countries.",
+  "registryDependencies": [
+    "@magicui/departure-board",
+    "@magicui/departure-board-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/departure-board-demo.tsx",
+      "content": "import { DepartureBoard } from \"@/registry/magicui/departure-board\"\n\nconst stats = [\n  { value: \"18,640\", label: \"Teams on the platform\" },\n  { value: \"99.98%\", label: \"Uptime over the last 90 days\" },\n  { value: \"41\", label: \"Countries with active teams\" },\n]\n\n/** Each board starts a moment after the one to its left. */\nconst BOARD_STAGGER = 0.05\n\nexport default function DepartureBoardDemo() {\n  return (\n    <section className=\"bg-background text-foreground w-[64rem] max-w-full px-4 py-12\">\n      <div className=\"mb-8 space-y-2 text-center\">\n        <p className=\"text-muted-foreground text-sm font-medium\">\n          By the numbers\n        </p>\n        <h2 className=\"text-2xl font-semibold tracking-tight text-balance\">\n          Shipping for teams around the world\n        </h2>\n      </div>\n      <div className=\"border-border @container rounded-xl border\">\n        <div className=\"divide-border grid divide-y @2xl:grid-cols-3 @2xl:divide-x @2xl:divide-y-0\">\n          {stats.map(({ value, label }, index) => (\n            <div\n              key={label}\n              className=\"flex flex-col items-center gap-3 px-3 py-8 text-center\"\n            >\n              {/* In three columns, sized to the card so each number fills its column. */}\n              <DepartureBoard\n                delay={index * BOARD_STAGGER}\n                className=\"text-5xl @2xl:text-[clamp(2.25rem,6cqi,3.75rem)]\"\n              >\n                {value}\n              </DepartureBoard>\n              <p className=\"text-muted-foreground text-sm\">{label}</p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

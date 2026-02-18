@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "departure-board-demo-2",
+  "title": "Departure Board Launch Banner",
+  "description": "A responsive launch banner with an early access action.",
+  "registryDependencies": [
+    "@magicui/departure-board",
+    "@magicui/departure-board-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/departure-board-demo-2.tsx",
+      "content": "import { DepartureBoard } from \"@/registry/magicui/departure-board\"\n\nexport default function DepartureBoardDemo2() {\n  return (\n    <section className=\"border-border bg-background text-foreground @container flex w-[48rem] max-w-full flex-col items-center gap-8 rounded-xl border px-6 py-14 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"text-muted-foreground text-xs font-medium tracking-widest uppercase\">\n          Platform 01 · Spring release\n        </p>\n        <h2 className=\"text-3xl font-semibold tracking-tight text-balance\">\n          Your next chapter is boarding.\n        </h2>\n        <p className=\"text-muted-foreground mx-auto max-w-sm text-sm text-balance\">\n          A calmer space to plan, build, and ship together.\n        </p>\n      </div>\n      {/* Sized to the card, so the reading stays on one line on phones. */}\n      <DepartureBoard className=\"text-[clamp(1.75rem,11cqi,3.75rem)]\">\n        LIVE MAR 14\n      </DepartureBoard>\n      <button\n        type=\"button\"\n        className=\"bg-foreground text-background hover:bg-foreground/90 focus-visible:ring-ring focus-visible:ring-offset-background rounded-lg px-5 py-2.5 text-sm font-medium outline-none focus-visible:ring-2 focus-visible:ring-offset-2\"\n      >\n        Reserve early access\n      </button>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
