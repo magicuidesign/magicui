@@ -15,7 +15,7 @@ export function rehypeComponent() {
           name: string
           value?: string
           type?: string
-        }) || {}
+        }) ?? {}
 
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string
