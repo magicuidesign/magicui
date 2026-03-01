@@ -43,7 +43,7 @@ export function rehypeComponent() {
                     )
                   }
                   return false
-                }) || component.files[0]?.path
+                }) ?? component.files[0]?.path
               : component.files[0]?.path
           }
 

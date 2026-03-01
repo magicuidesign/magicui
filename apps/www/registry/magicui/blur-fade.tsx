@@ -60,7 +60,7 @@ export function BlurFade({
       filter: `blur(0px)`,
     },
   }
-  const combinedVariants = variant || defaultVariants
+  const combinedVariants = variant ?? defaultVariants
 
   const hiddenFilter = getFilter(combinedVariants.hidden)
   const visibleFilter = getFilter(combinedVariants.visible)
