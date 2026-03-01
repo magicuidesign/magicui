@@ -58,6 +58,29 @@ export function BlurFade({
     },
   }
   const combinedVariants = variant || defaultVariants
+
+  const hiddenVariant = combinedVariants.hidden
+  const visibleVariant = combinedVariants.visible
+
+  const hiddenFilter =
+    typeof hiddenVariant === "object" &&
+    hiddenVariant !== null &&
+    "filter" in hiddenVariant
+      ? hiddenVariant.filter
+      : undefined
+
+  const visibleFilter =
+    typeof visibleVariant === "object" &&
+    visibleVariant !== null &&
+    "filter" in visibleVariant
+      ? visibleVariant.filter
+      : undefined
+
+  const shouldTransitionFilter =
+    hiddenFilter !== undefined &&
+    visibleFilter !== undefined &&
+    hiddenFilter !== visibleFilter
+
   return (
     <AnimatePresence>
       <motion.div
@@ -70,6 +93,7 @@ export function BlurFade({
           delay: 0.04 + delay,
           duration,
           ease: "easeOut",
+          ...(shouldTransitionFilter ? { filter: { duration } } : {}),
         }}
         className={className}
         {...props}
