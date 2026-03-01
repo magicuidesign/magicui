@@ -12516,6 +12516,7 @@ interface ScrollVelocityRowProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   baseVelocity?: number
   direction?: 1 | -1
+  scrollReactivity?: boolean
 }
 
 export const wrap = (min: number, max: number, v: number) => {
@@ -12573,6 +12574,7 @@ function ScrollVelocityRowImpl({
   direction = 1,
   className,
   velocityFactor,
+  scrollReactivity = true,
   ...props
 }: ScrollVelocityRowImplProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -12644,7 +12646,7 @@ function ScrollVelocityRowImpl({
   useAnimationFrame((_, delta) => {
     if (!isInViewRef.current || !isPageVisibleRef.current) return
     const dt = delta / 1000
-    const vf = velocityFactor.get()
+    const vf = scrollReactivity ? velocityFactor.get() : 0
     const absVf = Math.min(5, Math.abs(vf))
     const speedMultiplier = prefersReducedMotionRef.current ? 1 : 1 + absVf
 
