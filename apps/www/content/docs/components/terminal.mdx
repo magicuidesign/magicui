@@ -87,11 +87,11 @@ The terminal sequences its children automatically. Each `TypingAnimation` or `An
 
 ### TypingAnimation
 
-| Prop          | Type                | Default  | Description                                                              |
-| ------------- | ------------------- | -------- | ------------------------------------------------------------------------ |
-| `children`    | `string`            | `-`      | Text to be typed.                                                        |
-| `className`   | `string`            | `-`      | Custom CSS class for styling.                                            |
-| `duration`    | `number`            | `60`     | Milliseconds per character.                                              |
-| `delay`       | `number`            | `0`      | Delay in ms before typing starts (used when `sequence` is `false`).      |
-| `as`          | `React.ElementType` | `"span"` | The component type to render.                                            |
-| `startOnView` | `boolean`           | `true`   | If `true`, waits for viewport visibility before typing when unsequenced. |
+| Prop          | Type                                                                                                       | Default  | Description                                                              |
+| ------------- | ---------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| `children`    | `string`                                                                                                   | `-`      | Text to be typed.                                                        |
+| `className`   | `string`                                                                                                   | `-`      | Custom CSS class for styling.                                            |
+| `duration`    | `number`                                                                                                   | `60`     | Milliseconds per character.                                              |
+| `delay`       | `number`                                                                                                   | `0`      | Delay in ms before typing starts (used when `sequence` is `false`).      |
+| `as`          | `"article" \| "div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "li" \| "p" \| "section" \| "span"` | `"span"` | The component type to render.                                            |
+| `startOnView` | `boolean`                                                                                                  | `true`   | If `true`, waits for viewport visibility before typing when unsequenced. |

@@ -8,8 +8,16 @@ import {
   useMemo,
   useRef,
   useState,
+  type ComponentType,
+  type RefAttributes,
 } from "react"
-import { motion, useInView, type MotionProps } from "motion/react"
+import {
+  motion,
+  useInView,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -25,6 +33,29 @@ const useSequence = () => useContext(SequenceContext)
 
 const ItemIndexContext = createContext<number | null>(null)
 const useItemIndex = () => useContext(ItemIndexContext)
+
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type TerminalTypingMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"span">, "ref"> & RefAttributes<HTMLElement>
+>
 
 interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode
@@ -79,12 +110,12 @@ export const AnimatedSpan = ({
   )
 }
 
-interface TypingAnimationProps extends MotionProps {
+interface TypingAnimationProps extends Omit<MotionProps, "children"> {
   children: string
   className?: string
   duration?: number
   delay?: number
-  as?: React.ElementType
+  as?: MotionElementType
   startOnView?: boolean
 }
 
@@ -101,13 +132,9 @@ export const TypingAnimation = ({
     throw new Error("TypingAnimation: children must be a string. Received:")
   }
 
-  const MotionComponent = useMemo(
-    () =>
-      motion.create(Component, {
-        forwardMotionProps: true,
-      }),
-    [Component]
-  )
+  const MotionComponent = motionElements[
+    Component
+  ] as TerminalTypingMotionComponent
 
   const [displayedText, setDisplayedText] = useState<string>("")
   const [started, setStarted] = useState(false)
