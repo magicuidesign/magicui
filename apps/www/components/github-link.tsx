@@ -22,15 +22,22 @@ const formatCompactCount = (value: number) => {
 
 const getStarsCount = async () => {
   try {
-    const data = await fetch("https://api.github.com/repos/magicuidesign/magicui", {
-      next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
-    })
+    const data = await fetch(
+      "https://api.github.com/repos/magicuidesign/magicui",
+      {
+        next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
+      }
+    )
     if (!data.ok) {
       return 0
     }
 
     const json: unknown = await data.json()
-    if (typeof json !== "object" || json === null || !("stargazers_count" in json)) {
+    if (
+      typeof json !== "object" ||
+      json === null ||
+      !("stargazers_count" in json)
+    ) {
       return 0
     }
 
@@ -78,9 +85,7 @@ export async function StarsCount() {
   return (
     <span className="text-muted-foreground w-8 text-xs tabular-nums">
       <span className="hidden sm:inline">{starsCount.toLocaleString()}</span>
-      <span className="sm:hidden">
-        {formatCompactCount(starsCount)}
-      </span>
+      <span className="sm:hidden">{formatCompactCount(starsCount)}</span>
     </span>
   )
 }

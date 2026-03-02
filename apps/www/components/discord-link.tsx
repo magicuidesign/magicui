@@ -34,7 +34,11 @@ const getActiveMembersCount = async () => {
     }
 
     const json: unknown = await data.json()
-    if (typeof json !== "object" || json === null || !("presence_count" in json)) {
+    if (
+      typeof json !== "object" ||
+      json === null ||
+      !("presence_count" in json)
+    ) {
       return 0
     }
 
