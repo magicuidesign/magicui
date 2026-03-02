@@ -1,7 +1,9 @@
 import process from "process"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import clsx, { ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+
+import { siteConfig } from "@/config/site"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -65,8 +67,18 @@ export const normalizeTag = (tag: unknown): string[] => {
     : [String(tag)]
 }
 
+const getBaseUrl = (): string => {
+  const configuredUrl = process.env.NEXT_PUBLIC_APP_URL?.trim()
+  if (configuredUrl) {
+    return configuredUrl.replace(/\/$/, "")
+  }
+
+  return siteConfig.url
+}
+
 export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`
+  return new URL(normalizedPath, `${getBaseUrl()}/`).toString()
 }
 
 export function constructMetadata({
