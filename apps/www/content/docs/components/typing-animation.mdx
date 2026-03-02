@@ -86,19 +86,19 @@ import { TypingAnimation } from "@/components/ui/typing-animation"
 
 ## Props
 
-| Prop          | Type                                | Default  | Description                                     |
-| ------------- | ----------------------------------- | -------- | ----------------------------------------------- |
-| `children`    | `string`                            | `-`      | Single string to animate                        |
-| `words`       | `string[]`                          | `-`      | Array of strings to type and delete in sequence |
-| `className`   | `string`                            | `-`      | The class name to be applied to the component   |
-| `duration`    | `number`                            | `100`    | Duration for each character                     |
-| `typeSpeed`   | `number`                            | `100`    | Speed of typing animation (ms per character)    |
-| `deleteSpeed` | `number`                            | `50`     | Speed of deleting animation (ms per character)  |
-| `delay`       | `number`                            | `0`      | Delay before animation starts (in ms)           |
-| `pauseDelay`  | `number`                            | `1000`   | Pause duration between words (in ms)            |
-| `loop`        | `boolean`                           | `false`  | Whether to loop the animation                   |
-| `as`          | `React.ElementType`                 | `"span"` | Component to render as                          |
-| `startOnView` | `boolean`                           | `true`   | Start animation when component is in view       |
-| `showCursor`  | `boolean`                           | `true`   | Whether to show the typing cursor               |
-| `blinkCursor` | `boolean`                           | `true`   | Whether the cursor should blink                 |
-| `cursorStyle` | `"line" \| "block" \| "underscore"` | `"line"` | Style of the cursor (like VSCode)               |
+| Prop          | Type                                                                                                       | Default  | Description                                     |
+| ------------- | ---------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------- |
+| `children`    | `string`                                                                                                   | `-`      | Single string to animate                        |
+| `words`       | `string[]`                                                                                                 | `-`      | Array of strings to type and delete in sequence |
+| `className`   | `string`                                                                                                   | `-`      | The class name to be applied to the component   |
+| `duration`    | `number`                                                                                                   | `100`    | Duration for each character                     |
+| `typeSpeed`   | `number`                                                                                                   | `100`    | Speed of typing animation (ms per character)    |
+| `deleteSpeed` | `number`                                                                                                   | `50`     | Speed of deleting animation (ms per character)  |
+| `delay`       | `number`                                                                                                   | `0`      | Delay before animation starts (in ms)           |
+| `pauseDelay`  | `number`                                                                                                   | `1000`   | Pause duration between words (in ms)            |
+| `loop`        | `boolean`                                                                                                  | `false`  | Whether to loop the animation                   |
+| `as`          | `"article" \| "div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "li" \| "p" \| "section" \| "span"` | `"span"` | Component to render as                          |
+| `startOnView` | `boolean`                                                                                                  | `true`   | Start animation when component is in view       |
+| `showCursor`  | `boolean`                                                                                                  | `true`   | Whether to show the typing cursor               |
+| `blinkCursor` | `boolean`                                                                                                  | `true`   | Whether the cursor should blink                 |
+| `cursorStyle` | `"line" \| "block" \| "underscore"`                                                                        | `"line"` | Style of the cursor (like VSCode)               |
