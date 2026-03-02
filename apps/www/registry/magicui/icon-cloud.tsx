@@ -46,7 +46,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   useEffect(() => {
     if (!icons && !images) return
 
-    const items = icons || images || []
+    const items = icons ?? images ?? []
     imagesLoadedRef.current = new Array(items.length).fill(false)
 
     const newIconCanvases = items.map((item, index) => {
@@ -96,7 +96,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
   // Generate initial icon positions on a sphere
   useEffect(() => {
-    const items = icons || images || []
+    const items = icons ?? images ?? []
     const newIcons: Icon[] = []
     const numIcons = items.length || 20
 

@@ -31,7 +31,7 @@ export function BlogTableOfContents({
     // Extract headings from rendered DOM
     const extractHeadings = () => {
       const headingElements =
-        document.querySelector(".article-content")?.querySelectorAll("h2") || []
+        document.querySelector(".article-content")?.querySelectorAll("h2") ?? []
       const extractedHeadings: string[] = []
       headingElements.forEach((element) => {
         if (element.textContent) {
@@ -60,13 +60,13 @@ export function BlogTableOfContents({
     )
 
     const headingElements =
-      document.querySelector(".article-content")?.querySelectorAll("h2") || []
+      document.querySelector(".article-content")?.querySelectorAll("h2") ?? []
     headingElements.forEach((element) => observer.observe(element))
 
     // Also update active heading on scroll
     const onScroll = () => {
       const headings = Array.from(
-        document.querySelector(".article-content")?.querySelectorAll("h2") || []
+        document.querySelector(".article-content")?.querySelectorAll("h2") ?? []
       )
       const middle = window.innerHeight / 2
 

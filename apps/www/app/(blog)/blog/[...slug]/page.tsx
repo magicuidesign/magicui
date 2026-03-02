@@ -60,7 +60,7 @@ export async function generateMetadata({
       url: absoluteUrl(page.url),
       images: [
         {
-          url: doc.image || "",
+          url: doc.image ?? "",
           width: 1200,
           height: 630,
         },
@@ -71,7 +71,7 @@ export async function generateMetadata({
       title: doc.title,
       description: doc.description,
 
-      images: [doc.image || ""],
+      images: [doc.image ?? ""],
       creator: "@dillionverma",
     },
   }
@@ -117,7 +117,7 @@ export default async function BlogPage({ params }: PageProps) {
     dateModified: doc.publishedOn,
     author: {
       "@type": "Person",
-      name: doc.author || "Magic UI Team",
+      name: doc.author ?? "Magic UI Team",
       url: siteConfig.links?.twitter,
     },
     image: doc.image ? [doc.image] : undefined,

@@ -54,13 +54,13 @@ export function TypingAnimation({
   })
 
   const wordsToAnimate = useMemo(
-    () => words || (children ? [children] : []),
+    () => words ?? (children ? [children] : []),
     [words, children]
   )
   const hasMultipleWords = wordsToAnimate.length > 1
 
-  const typingSpeed = typeSpeed || duration
-  const deletingSpeed = deleteSpeed || typingSpeed / 2
+  const typingSpeed = typeSpeed ?? duration
+  const deletingSpeed = deleteSpeed ?? typingSpeed / 2
 
   const shouldStart = startOnView ? isInView : true
 

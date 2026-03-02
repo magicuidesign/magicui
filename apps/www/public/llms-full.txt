@@ -3394,8 +3394,8 @@ import { useRef } from "react"
 import {
   AnimatePresence,
   motion,
-  type MotionProps,
   useInView,
+  type MotionProps,
   type UseInViewOptions,
   type Variants,
 } from "motion/react"
@@ -3450,7 +3450,7 @@ export function BlurFade({
       filter: `blur(0px)`,
     },
   }
-  const combinedVariants = variant || defaultVariants
+  const combinedVariants = variant ?? defaultVariants
 
   const hiddenFilter = getFilter(combinedVariants.hidden)
   const visibleFilter = getFilter(combinedVariants.visible)
@@ -3888,7 +3888,7 @@ export const ClientTweetCard = ({
 
   if (isLoading) return fallback
   if (error || !data) {
-    const NotFound = components?.TweetNotFound || TweetNotFound
+    const NotFound = components?.TweetNotFound ?? TweetNotFound
     return <NotFound error={onError ? onError(error) : error} />
   }
 
@@ -7840,7 +7840,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   useEffect(() => {
     if (!icons && !images) return
 
-    const items = icons || images || []
+    const items = icons ?? images ?? []
     imagesLoadedRef.current = new Array(items.length).fill(false)
 
     const newIconCanvases = items.map((item, index) => {
@@ -7890,7 +7890,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
   // Generate initial icon positions on a sphere
   useEffect(() => {
-    const items = icons || images || []
+    const items = icons ?? images ?? []
     const newIcons: Icon[] = []
     const numIcons = items.length || 20
 
@@ -15264,7 +15264,7 @@ export const TweetCard = async ({
     : undefined
 
   if (!tweet) {
-    const NotFound = components?.TweetNotFound || TweetNotFound
+    const NotFound = components?.TweetNotFound ?? TweetNotFound
     return <NotFound {...props} />
   }
 
@@ -15375,13 +15375,13 @@ export function TypingAnimation({
   })
 
   const wordsToAnimate = useMemo(
-    () => words || (children ? [children] : []),
+    () => words ?? (children ? [children] : []),
     [words, children]
   )
   const hasMultipleWords = wordsToAnimate.length > 1
 
-  const typingSpeed = typeSpeed || duration
-  const deletingSpeed = deleteSpeed || typingSpeed / 2
+  const typingSpeed = typeSpeed ?? duration
+  const deletingSpeed = deleteSpeed ?? typingSpeed / 2
 
   const shouldStart = startOnView ? isInView : true
 
