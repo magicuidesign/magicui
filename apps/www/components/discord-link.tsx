@@ -13,6 +13,46 @@ import {
 import { Icons } from "@/components/icons"
 import { PingDot } from "@/components/ping-dot"
 
+const formatCompactCount = (value: number) => {
+  if (value >= 1000) {
+    return `${(value / 1000).toFixed(1)}k`
+  }
+
+  return value.toLocaleString()
+}
+
+const getActiveMembersCount = async () => {
+  try {
+    const data = await fetch(
+      "https://discord.com/api/guilds/1151315619246002176/widget.json",
+      {
+        next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
+      }
+    )
+    if (!data.ok) {
+      return 0
+    }
+
+    const json: unknown = await data.json()
+    if (
+      typeof json !== "object" ||
+      json === null ||
+      !("presence_count" in json)
+    ) {
+      return 0
+    }
+
+    const membersCount = json.presence_count
+    if (typeof membersCount !== "number" || !Number.isFinite(membersCount)) {
+      return 0
+    }
+
+    return membersCount
+  } catch {
+    return 0
+  }
+}
+
 export function DiscordLink({ className }: { className?: string }) {
   return (
     <Tooltip>
@@ -50,21 +90,13 @@ export async function ActiveMembersCount({
 }: {
   className?: string
 }) {
-  const data = await fetch(
-    "https://discord.com/api/guilds/1151315619246002176/widget.json",
-    {
-      next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
-    }
-  )
-  const json = await data.json()
+  const activeMembersCount = await getActiveMembersCount()
 
   return (
     <div className={cn("ml-2 inline-flex items-center gap-1", className)}>
       <PingDot />
       <span className="min-w-[2rem] text-xs font-medium tabular-nums">
-        {json.presence_count >= 1000
-          ? `${(json.presence_count / 1000).toFixed(1)}k`
-          : json.presence_count.toLocaleString()}
+        {formatCompactCount(activeMembersCount)}
       </span>
     </div>
   )
