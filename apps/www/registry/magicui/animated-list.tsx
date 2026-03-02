@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import { AnimatePresence, motion, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 

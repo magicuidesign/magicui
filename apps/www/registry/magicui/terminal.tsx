@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { motion, MotionProps, useInView } from "motion/react"
+import { motion, useInView, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
