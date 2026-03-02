@@ -2547,7 +2547,7 @@ import React, {
   useMemo,
   useState,
 } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import { AnimatePresence, motion, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -7612,7 +7612,7 @@ Description: A text animation that scrambles letters before revealing the final 
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import { AnimatePresence, motion, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -9240,7 +9240,7 @@ Description: A text component with a moving line shadow.
 --- file: magicui/line-shadow-text.tsx ---
 "use client"
 
-import { motion, MotionProps } from "motion/react"
+import { motion, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -11401,6 +11401,7 @@ export function Pointer({
         const handleMouseMove = (e: MouseEvent) => {
           x.set(e.clientX)
           y.set(e.clientY)
+          setIsActive(true)
         }
 
         const handleMouseEnter = (e: MouseEvent) => {
@@ -12798,7 +12799,7 @@ Description: Animated Scroll Progress for your pages
 --- file: magicui/scroll-progress.tsx ---
 "use client"
 
-import { motion, MotionProps, useScroll } from "motion/react"
+import { motion, useScroll, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -13906,7 +13907,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { motion, MotionProps, useInView } from "motion/react"
+import { motion, useInView, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -14260,7 +14261,12 @@ Description: A text animation component that animates text using a variety of di
 "use client"
 
 import { ElementType, memo } from "react"
-import { AnimatePresence, motion, MotionProps, Variants } from "motion/react"
+import {
+  AnimatePresence,
+  motion,
+  Variants,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -15292,7 +15298,7 @@ Description: Characters appearing in typed animation
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { motion, MotionProps, useInView } from "motion/react"
+import { motion, useInView, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -15985,7 +15991,7 @@ Description: A vertical rotation of words
 "use client"
 
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import { AnimatePresence, motion, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
