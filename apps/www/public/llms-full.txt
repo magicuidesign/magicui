@@ -2233,7 +2233,7 @@ Title: Animated Gradient Text
 Description: An animated gradient background which transitions between colors for text.
 
 --- file: magicui/animated-gradient-text.tsx ---
-import { ComponentPropsWithoutRef } from "react"
+import { type ComponentPropsWithoutRef } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -2336,12 +2336,12 @@ Description: A animated background grid pattern made with SVGs, fully customizab
 "use client"
 
 import {
-  ComponentPropsWithoutRef,
   useCallback,
   useEffect,
   useId,
   useRef,
   useState,
+  type ComponentPropsWithoutRef,
 } from "react"
 import { motion } from "motion/react"
 
@@ -2542,10 +2542,10 @@ Description: A list that animates each item in sequence with a delay. Used to sh
 "use client"
 
 import React, {
-  ComponentPropsWithoutRef,
   useEffect,
   useMemo,
   useState,
+  type ComponentPropsWithoutRef,
 } from "react"
 import { AnimatePresence, motion, type MotionProps } from "motion/react"
 
@@ -2732,7 +2732,11 @@ Title: Animated Shiny Text
 Description: A light glare effect which pans across text making it appear as if it is shimmering.
 
 --- file: magicui/animated-shiny-text.tsx ---
-import { ComponentPropsWithoutRef, CSSProperties, FC } from "react"
+import {
+  type ComponentPropsWithoutRef,
+  type CSSProperties,
+  type FC,
+} from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -3070,7 +3074,7 @@ Title: Bento Grid
 Description: Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
 
 --- file: magicui/bento-grid.tsx ---
-import { ComponentPropsWithoutRef, ReactNode } from "react"
+import { type ComponentPropsWithoutRef, type ReactNode } from "react"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
@@ -9485,7 +9489,7 @@ Title: Marquee
 Description: An infinite scrolling component that can be used to display text, images, or videos.
 
 --- file: magicui/marquee.tsx ---
-import { ComponentPropsWithoutRef } from "react"
+import { type ComponentPropsWithoutRef } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -10490,7 +10494,7 @@ Description: Animate numbers to count up or down to a target number
 --- file: magicui/number-ticker.tsx ---
 "use client"
 
-import { ComponentPropsWithoutRef, useEffect, useRef } from "react"
+import { useEffect, useRef, type ComponentPropsWithoutRef } from "react"
 import { useInView, useMotionValue, useSpring } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -10851,10 +10855,10 @@ Description: Particles are a fun way to add some visual flair to your website. T
 "use client"
 
 import React, {
-  ComponentPropsWithoutRef,
   useEffect,
   useRef,
   useState,
+  type ComponentPropsWithoutRef,
 } from "react"
 
 import { cn } from "@/lib/utils"
@@ -11990,7 +11994,7 @@ Title: Ripple
 Description: An animated ripple effect typically used behind elements to emphasize them.
 
 --- file: magicui/ripple.tsx ---
-import React, { ComponentPropsWithoutRef, CSSProperties } from "react"
+import React, { type ComponentPropsWithoutRef, type CSSProperties } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -12859,7 +12863,7 @@ Title: Shimmer Button
 Description: A button with a shimmering light which travels around the perimeter.
 
 --- file: magicui/shimmer-button.tsx ---
-import React, { ComponentPropsWithoutRef, CSSProperties } from "react"
+import React, { type ComponentPropsWithoutRef, type CSSProperties } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -13651,7 +13655,7 @@ Description: The Spinning Text component animates text in a circular motion with
 --- file: magicui/spinning-text.tsx ---
 "use client"
 
-import React, { ComponentPropsWithoutRef } from "react"
+import React, { type ComponentPropsWithoutRef } from "react"
 import { motion, Transition, Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -14877,7 +14881,12 @@ Description: Fade in text as you scroll down the page.
 --- file: magicui/text-reveal.tsx ---
 "use client"
 
-import { ComponentPropsWithoutRef, FC, ReactNode, useRef } from "react"
+import {
+  useRef,
+  type ComponentPropsWithoutRef,
+  type FC,
+  type ReactNode,
+} from "react"
 import { motion, MotionValue, useScroll, useTransform } from "motion/react"
 
 import { cn } from "@/lib/utils"

@@ -1,10 +1,10 @@
 "use client"
 
 import React, {
-  ComponentPropsWithoutRef,
   useEffect,
   useRef,
   useState,
+  type ComponentPropsWithoutRef,
 } from "react"
 
 import { cn } from "@/lib/utils"
