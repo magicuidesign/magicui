@@ -24,7 +24,8 @@
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
       "dependencies": [
-        "motion"
+        "motion",
+        "next-themes"
       ],
       "files": [
         {
