@@ -4,10 +4,10 @@ import { useRef } from "react"
 import {
   AnimatePresence,
   motion,
-  MotionProps,
   useInView,
-  UseInViewOptions,
-  Variants,
+  type MotionProps,
+  type UseInViewOptions,
+  type Variants,
 } from "motion/react"
 
 type MarginType = UseInViewOptions["margin"]
@@ -27,6 +27,9 @@ interface BlurFadeProps extends MotionProps {
   inViewMargin?: MarginType
   blur?: string
 }
+
+const getFilter = (v: Variants[string]) =>
+  typeof v === "function" ? undefined : v.filter
 
 export function BlurFade({
   children,
@@ -58,6 +61,15 @@ export function BlurFade({
     },
   }
   const combinedVariants = variant || defaultVariants
+
+  const hiddenFilter = getFilter(combinedVariants.hidden)
+  const visibleFilter = getFilter(combinedVariants.visible)
+
+  const shouldTransitionFilter =
+    hiddenFilter != null &&
+    visibleFilter != null &&
+    hiddenFilter !== visibleFilter
+
   return (
     <AnimatePresence>
       <motion.div
@@ -70,6 +82,7 @@ export function BlurFade({
           delay: 0.04 + delay,
           duration,
           ease: "easeOut",
+          ...(shouldTransitionFilter ? { filter: { duration } } : {}),
         }}
         className={className}
         {...props}
