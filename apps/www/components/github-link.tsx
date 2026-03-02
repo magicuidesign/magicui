@@ -12,6 +12,39 @@ import {
 } from "@/components/ui/tooltip"
 import { Icons } from "@/components/icons"
 
+const formatCompactCount = (value: number) => {
+  if (value >= 1000) {
+    return `${(value / 1000).toFixed(1)}k`
+  }
+
+  return value.toLocaleString()
+}
+
+const getStarsCount = async () => {
+  try {
+    const data = await fetch("https://api.github.com/repos/magicuidesign/magicui", {
+      next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
+    })
+    if (!data.ok) {
+      return 0
+    }
+
+    const json: unknown = await data.json()
+    if (typeof json !== "object" || json === null || !("stargazers_count" in json)) {
+      return 0
+    }
+
+    const starsCount = json.stargazers_count
+    if (typeof starsCount !== "number" || !Number.isFinite(starsCount)) {
+      return 0
+    }
+
+    return starsCount
+  } catch {
+    return 0
+  }
+}
+
 export function GitHubLink({ className }: { className?: string }) {
   return (
     <TooltipProvider>
@@ -40,23 +73,13 @@ export function GitHubLink({ className }: { className?: string }) {
 }
 
 export async function StarsCount() {
-  const data = await fetch(
-    "https://api.github.com/repos/magicuidesign/magicui",
-    {
-      next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
-    }
-  )
-  const json = await data.json()
+  const starsCount = await getStarsCount()
 
   return (
     <span className="text-muted-foreground w-8 text-xs tabular-nums">
-      <span className="hidden sm:inline">
-        {json.stargazers_count.toLocaleString()}
-      </span>
+      <span className="hidden sm:inline">{starsCount.toLocaleString()}</span>
       <span className="sm:hidden">
-        {json.stargazers_count >= 1000
-          ? `${(json.stargazers_count / 1000).toFixed(1)}k`
-          : json.stargazers_count.toLocaleString()}
+        {formatCompactCount(starsCount)}
       </span>
     </span>
   )
