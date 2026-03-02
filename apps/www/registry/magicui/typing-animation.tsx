@@ -1,10 +1,19 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentType,
+  type RefAttributes,
+  type RefObject,
+} from "react"
 import {
   motion,
   useInView,
   type DOMMotionComponents,
+  type HTMLMotionProps,
   type MotionProps,
 } from "motion/react"
 
@@ -28,6 +37,9 @@ const motionElements = {
 type MotionElementType = Extract<
   keyof DOMMotionComponents,
   keyof typeof motionElements
+>
+type TypingAnimationMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"span">, "ref"> & RefAttributes<HTMLElement>
 >
 
 interface TypingAnimationProps extends Omit<MotionProps, "children"> {
@@ -64,14 +76,16 @@ export function TypingAnimation({
   cursorStyle = "line",
   ...props
 }: TypingAnimationProps) {
-  const MotionComponent = motionElements[Component]
+  const MotionComponent = motionElements[
+    Component
+  ] as TypingAnimationMotionComponent
 
   const [displayedText, setDisplayedText] = useState<string>("")
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
   const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing")
-  const wrapperRef = useRef<HTMLDivElement | null>(null)
-  const isInView = useInView(wrapperRef, {
+  const elementRef = useRef<HTMLElement | null>(null)
+  const isInView = useInView(elementRef as RefObject<Element>, {
     amount: 0.3,
     once: true,
   })
@@ -189,26 +203,23 @@ export function TypingAnimation({
   }
 
   return (
-    <div
-      ref={wrapperRef}
-      className={cn(Component === "span" ? "inline-block" : undefined)}
+    <MotionComponent
+      ref={elementRef}
+      className={cn(
+        "leading-20 tracking-[-0.02em]",
+        Component === "span" && "inline-block",
+        className
+      )}
+      {...props}
     >
-      <MotionComponent
-        className={cn("leading-20 tracking-[-0.02em]", className)}
-        {...props}
-      >
-        {displayedText}
-        {shouldShowCursor && (
-          <span
-            className={cn(
-              "inline-block",
-              blinkCursor && "animate-blink-cursor"
-            )}
-          >
-            {getCursorChar()}
-          </span>
-        )}
-      </MotionComponent>
-    </div>
+      {displayedText}
+      {shouldShowCursor && (
+        <span
+          className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
+        >
+          {getCursorChar()}
+        </span>
+      )}
+    </MotionComponent>
   )
 }
