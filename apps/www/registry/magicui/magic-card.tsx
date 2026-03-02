@@ -201,7 +201,7 @@ export function MagicCard(props: MagicCardProps) {
         <motion.div
           suppressHydrationWarning
           aria-hidden="true"
-          className="pointer-events-none absolute z-25"
+          className="pointer-events-none absolute z-30"
           style={{
             width: glowSize,
             height: glowSize,
