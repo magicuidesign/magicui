@@ -88,15 +88,17 @@ import { TextAnimate } from "@/components/ui/text-animate"
 
 ## Props
 
-| Prop          | Type                                        | Default    | Description                                               |
-| ------------- | ------------------------------------------- | ---------- | --------------------------------------------------------- |
-| `children`    | `string`                                    | `-`        | The text content to animate                               |
-| `className`   | `string`                                    | `-`        | The class name to be applied to the component             |
-| `delay`       | `number`                                    | `0`        | Delay before animation starts                             |
-| `duration`    | `number`                                    | `0.3`      | Duration of the animation                                 |
-| `variants`    | `Variants`                                  | `-`        | Custom motion variants for the animation                  |
-| `as`          | `ElementType`                               | `"p"`      | The element type to render                                |
-| `by`          | `"text" \| "word" \| "character" \| "line"` | `"word"`   | How to split the text ("text", "word", "character")       |
-| `startOnView` | `boolean`                                   | `true`     | Whether to start animation when component enters viewport |
-| `once`        | `boolean`                                   | `false`    | Whether to animate only once                              |
-| `animation`   | `AnimationVariant`                          | `"fadeIn"` | The animation preset to use                               |
+| Prop               | Type                                                                                                       | Default    | Description                                               |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------- |
+| `children`         | `string`                                                                                                   | `-`        | The text content to animate                               |
+| `className`        | `string`                                                                                                   | `-`        | The class name to be applied to the component             |
+| `segmentClassName` | `string`                                                                                                   | `-`        | The class name to be applied to each segment              |
+| `delay`            | `number`                                                                                                   | `0`        | Delay before animation starts                             |
+| `duration`         | `number`                                                                                                   | `0.3`      | Duration of the animation                                 |
+| `variants`         | `Variants`                                                                                                 | `-`        | Custom motion variants for the animation                  |
+| `as`               | `"article" \| "div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "li" \| "p" \| "section" \| "span"` | `"p"`      | The element type to render                                |
+| `by`               | `"text" \| "word" \| "character" \| "line"`                                                                | `"word"`   | How to split the text ("text", "word", "character")       |
+| `startOnView`      | `boolean`                                                                                                  | `true`     | Whether to start animation when component enters viewport |
+| `once`             | `boolean`                                                                                                  | `false`    | Whether to animate only once                              |
+| `animation`        | `AnimationVariant`                                                                                         | `"fadeIn"` | The animation preset to use                               |
+| `accessible`       | `boolean`                                                                                                  | `true`     | Whether to render an accessible screen-reader label       |
