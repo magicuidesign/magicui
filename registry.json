@@ -1407,8 +1407,7 @@
       "title": "Departure Board Stats",
       "description": "A stats band with teams, uptime, and countries.",
       "registryDependencies": [
-        "@magicui/departure-board",
-        "@magicui/departure-board-pass"
+        "@magicui/departure-board"
       ],
       "files": [
         {
@@ -1423,8 +1422,7 @@
       "title": "Departure Board Launch Banner",
       "description": "A responsive launch banner with an early access action.",
       "registryDependencies": [
-        "@magicui/departure-board",
-        "@magicui/departure-board-pass"
+        "@magicui/departure-board"
       ],
       "files": [
         {
@@ -1439,8 +1437,7 @@
       "title": "Departure Board Waitlist",
       "description": "An interactive waitlist showing a change in queue position.",
       "registryDependencies": [
-        "@magicui/departure-board",
-        "@magicui/departure-board-pass"
+        "@magicui/departure-board"
       ],
       "files": [
         {

@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "departure-board-demo",
     description: "A stats band with teams, uptime, and countries.",
     type: "registry:example",
-    registryDependencies: ["@magicui/departure-board","@magicui/departure-board-pass"],
+    registryDependencies: ["@magicui/departure-board"],
     files: [{
       path: "registry/example/departure-board-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "departure-board-demo-2",
     description: "A responsive launch banner with an early access action.",
     type: "registry:example",
-    registryDependencies: ["@magicui/departure-board","@magicui/departure-board-pass"],
+    registryDependencies: ["@magicui/departure-board"],
     files: [{
       path: "registry/example/departure-board-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "departure-board-demo-3",
     description: "An interactive waitlist showing a change in queue position.",
     type: "registry:example",
-    registryDependencies: ["@magicui/departure-board","@magicui/departure-board-pass"],
+    registryDependencies: ["@magicui/departure-board"],
     files: [{
       path: "registry/example/departure-board-demo-3.tsx",
       type: "registry:example",

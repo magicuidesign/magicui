@@ -4,8 +4,7 @@
   "title": "Departure Board Stats",
   "description": "A stats band with teams, uptime, and countries.",
   "registryDependencies": [
-    "@magicui/departure-board",
-    "@magicui/departure-board-pass"
+    "@magicui/departure-board"
   ],
   "files": [
     {

@@ -4,8 +4,7 @@
   "title": "Departure Board Launch Banner",
   "description": "A responsive launch banner with an early access action.",
   "registryDependencies": [
-    "@magicui/departure-board",
-    "@magicui/departure-board-pass"
+    "@magicui/departure-board"
   ],
   "files": [
     {

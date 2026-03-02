@@ -4,8 +4,7 @@
   "title": "Departure Board Waitlist",
   "description": "An interactive waitlist showing a change in queue position.",
   "registryDependencies": [
-    "@magicui/departure-board",
-    "@magicui/departure-board-pass"
+    "@magicui/departure-board"
   ],
   "files": [
     {
