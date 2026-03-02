@@ -69,11 +69,21 @@ export const normalizeTag = (tag: unknown): string[] => {
 
 const getBaseUrl = (): string => {
   const configuredUrl = process.env.NEXT_PUBLIC_APP_URL?.trim()
-  if (configuredUrl) {
-    return configuredUrl.replace(/\/$/, "")
+  if (!configuredUrl) {
+    return siteConfig.url
   }
 
-  return siteConfig.url
+  let url = configuredUrl.replace(/\/$/, "")
+  if (!/^https?:\/\//i.test(url)) {
+    url = `https://${url}`
+  }
+
+  try {
+    new URL(url)
+    return url
+  } catch {
+    return siteConfig.url
+  }
 }
 
 export function absoluteUrl(path: string) {
