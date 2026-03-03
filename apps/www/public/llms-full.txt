@@ -2817,8 +2817,7 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-interface AnimatedThemeTogglerProps
-  extends React.ComponentPropsWithoutRef<"button"> {
+interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number
 }
 
@@ -2856,7 +2855,6 @@ export const AnimatedThemeToggler = ({
       localStorage.setItem("theme", newTheme ? "dark" : "light")
     }
 
-   
     if (
       typeof document === "undefined" ||
       !("startViewTransition" in document)
@@ -2865,8 +2863,6 @@ export const AnimatedThemeToggler = ({
       return
     }
 
-
-    
     document
       .startViewTransition(() => {
         flushSync(applyTheme)
