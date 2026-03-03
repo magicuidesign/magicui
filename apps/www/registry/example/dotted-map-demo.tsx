@@ -1,3 +1,5 @@
+import * as React from "react"
+
 import { DottedMap } from "@/registry/magicui/dotted-map"
 import type { Marker } from "@/registry/magicui/dotted-map"
 
@@ -24,6 +26,7 @@ const markers: MyMarker[] = [
 ]
 
 export default function Component() {
+  const id = React.useId()
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
       <div className="to-background absolute inset-0 bg-radial from-transparent to-200%" />
@@ -33,7 +36,7 @@ export default function Component() {
           const { countryCode, label } = marker.overlay
           const href = `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
 
-          const clipId = `flag-clip-${index}`
+          const clipId = `${id}-flag-clip-${index}`.replace(/:/g, "-")
           const imgR = r * 0.75
 
           const fontSize = r * 0.9
