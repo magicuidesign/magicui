@@ -131,7 +131,7 @@ export function ProductHuntCTA() {
         loop
         playsInline
         muted
-        src="/agent-demo.mp4"
+        src="https://cdn.magicui.design/agent-demo.mp4"
         className="w-full overflow-hidden rounded-xl shadow-2xl"
       />
     </Link>
