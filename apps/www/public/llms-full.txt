@@ -9638,9 +9638,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
+import { AvatarCircles } from "@/registry/magicui/avatar-circles"
 import { MagicCard } from "@/registry/magicui/magic-card"
-
-import { AvatarCircles } from "../magicui/avatar-circles"
 
 export default function MagicCardDemo() {
   const { theme, systemTheme } = useTheme()
