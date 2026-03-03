@@ -52,13 +52,17 @@ export const AnimatedThemeToggler = ({
       return
     }
 
-    document
-      .startViewTransition(() => {
-        flushSync(applyTheme)
-      })
-      .ready.then(() => {
-        const { top, left, width, height } =
-          buttonRef.current!.getBoundingClientRect()
+    const transition = document.startViewTransition(() => {
+      flushSync(applyTheme)
+    })
+
+    const ready = transition?.ready
+    if (ready && typeof ready.then === "function") {
+      ready.then(() => {
+        const button = buttonRef.current
+        if (!button) return
+
+        const { top, left, width, height } = button.getBoundingClientRect()
 
         const x = left + width / 2
         const y = top + height / 2
@@ -82,6 +86,7 @@ export const AnimatedThemeToggler = ({
           }
         )
       })
+    }
   }, [isDark, duration])
 
   return (
