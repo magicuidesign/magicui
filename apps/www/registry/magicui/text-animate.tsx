@@ -1,10 +1,11 @@
 "use client"
 
-import { ElementType, memo } from "react"
+import { memo } from "react"
 import {
   AnimatePresence,
   motion,
   Variants,
+  type DOMMotionComponents,
   type MotionProps,
 } from "motion/react"
 
@@ -23,7 +24,27 @@ type AnimationVariant =
   | "scaleUp"
   | "scaleDown"
 
-interface TextAnimateProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+
+interface TextAnimateProps extends Omit<MotionProps, "children"> {
   /**
    * The text content to animate
    */
@@ -51,7 +72,7 @@ interface TextAnimateProps extends MotionProps {
   /**
    * The element type to render
    */
-  as?: ElementType
+  as?: MotionElementType
   /**
    * How to split the text ("text", "word", "character")
    */
@@ -322,7 +343,7 @@ const TextAnimateBase = ({
   accessible = true,
   ...props
 }: TextAnimateProps) => {
-  const MotionComponent = motion.create(Component)
+  const MotionComponent = motionElements[Component]
 
   let segments: string[] = []
   switch (by) {
