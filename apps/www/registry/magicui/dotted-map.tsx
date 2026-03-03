@@ -9,7 +9,11 @@ export interface Marker {
   size?: number
 }
 
-type MapMarker<M extends Marker> = M & { x: number; y: number }
+/** addMarkers returns markers with lat/lng removed; only x, y and other props (e.g. size) remain */
+type MapMarker<M extends Marker> = Omit<M, "lat" | "lng"> & {
+  x: number
+  y: number
+}
 
 export interface DottedMapProps<
   M extends Marker = Marker,
@@ -50,7 +54,7 @@ export function DottedMap<M extends Marker = Marker>({
     height,
     mapSamples,
   })
-  const processedMarkers = addMarkers(markers) as MapMarker<M>[]
+  const processedMarkers = addMarkers(markers)
 
   // Compute stagger helpers in a single, simple pass
   const { xStep, yToRowIndex } = React.useMemo(() => {
