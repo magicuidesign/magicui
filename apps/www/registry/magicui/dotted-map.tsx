@@ -172,7 +172,13 @@ export function DottedMap<M extends Marker = Marker>({
               </g>
             ) : null}
 
-            {renderMarkerOverlay?.({ marker, index, x, y, r })}
+            {renderMarkerOverlay?.({
+              marker: { ...marker, x, y },
+              index,
+              x,
+              y,
+              r,
+            })}
           </g>
         )
       })}
