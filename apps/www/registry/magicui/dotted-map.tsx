@@ -7,6 +7,7 @@ export interface Marker {
   lat: number
   lng: number
   size?: number
+  pulse?: boolean
 }
 
 /** addMarkers returns markers with lat/lng removed; only x, y and other props (e.g. size) remain */
@@ -26,6 +27,7 @@ export interface DottedMapProps<
   markerColor?: string
   dotRadius?: number
   stagger?: boolean
+  pulse?: boolean
 
   renderMarkerOverlay?: (args: {
     marker: MapMarker<M>
@@ -44,6 +46,7 @@ export function DottedMap<M extends Marker = Marker>({
   markerColor = "#FF6900",
   dotRadius = 0.2,
   stagger = true,
+  pulse = false,
   renderMarkerOverlay,
   className,
   style,
@@ -109,10 +112,65 @@ export function DottedMap<M extends Marker = Marker>({
         const x = marker.x + offsetX
         const y = marker.y
         const r = marker.size ?? dotRadius
+        const shouldPulse = pulse
+          ? marker.pulse !== false
+          : marker.pulse === true
+        const pulseTo = r * 2.8
 
         return (
           <g key={`${marker.x}-${marker.y}-${index}`}>
             <circle cx={x} cy={y} r={r} fill={markerColor} />
+
+            {shouldPulse ? (
+              <g pointerEvents="none">
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="none"
+                  stroke={markerColor}
+                  strokeOpacity={1}
+                  strokeWidth={0.35}
+                >
+                  <animate
+                    attributeName="r"
+                    values={`${r};${pulseTo}`}
+                    dur="1.4s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="1;0"
+                    dur="1.4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="none"
+                  stroke={markerColor}
+                  strokeOpacity={0.9}
+                  strokeWidth={0.3}
+                >
+                  <animate
+                    attributeName="r"
+                    values={`${r};${pulseTo}`}
+                    dur="1.4s"
+                    begin="0.7s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.9;0"
+                    dur="1.4s"
+                    begin="0.7s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </g>
+            ) : null}
 
             {renderMarkerOverlay?.({ marker, index, x, y, r })}
           </g>

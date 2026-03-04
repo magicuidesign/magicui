@@ -104,6 +104,7 @@ const markers: MyMarker[] = [
 | `markerColor`         | `string`              | `"#FF6900"` | Color of the markers.                                          |
 | `dotRadius`           | `number`              | `0.2`       | Radius of the map dots.                                        |
 | `stagger`             | `boolean`             | `true`      | Whether to stagger dots in alternating rows for visual effect. |
+| `pulse`               | `boolean`             | `false`     | Enables built-in pulse animation for markers.                  |
 | `renderMarkerOverlay` | `(args) => ReactNode` | `undefined` | Custom render function for marker overlays.                    |
 | `className`           | `string`              | `undefined` | Additional class names applied to the SVG.                     |
 | `style`               | `React.CSSProperties` | `undefined` | Inline styles merged into the SVG.                             |
@@ -117,8 +118,11 @@ export interface Marker {
   lat: number
   lng: number
   size?: number
+  pulse?: boolean
 }
 ```
+
+Set `pulse` on `DottedMap` to animate all markers (and use `marker.pulse = false` to opt out per marker). Without the `pulse` prop, only markers with `marker.pulse = true` will pulse.
 
 The `DottedMap` component supports generic types, allowing you to extend the `Marker` interface with custom properties:
 
