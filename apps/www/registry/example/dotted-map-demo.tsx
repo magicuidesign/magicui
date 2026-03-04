@@ -34,7 +34,7 @@ export default function Component() {
         markers={markers}
         renderMarkerOverlay={({ marker, x, y, r, index }) => {
           const { countryCode, label } = marker.overlay
-          const href = `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
+          const href = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.webp` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
 
           const clipId = `${id}-flag-clip-${index}`.replace(/:/g, "-")
           const imgR = r * 0.75
