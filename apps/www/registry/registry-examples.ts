@@ -1793,6 +1793,7 @@ export const examples: Registry["items"] = [
     title: "Dotted Map Demo",
     description: "Example showing a dotted map.",
     registryDependencies: ["@magicui/dotted-map"],
+    dependencies: ["countries-list"],
     files: [
       {
         path: "example/dotted-map-demo.tsx",

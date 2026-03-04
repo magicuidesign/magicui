@@ -3331,6 +3331,9 @@
       "type": "registry:example",
       "title": "Dotted Map Demo",
       "description": "Example showing a dotted map.",
+      "dependencies": [
+        "countries-list"
+      ],
       "registryDependencies": [
         "@magicui/dotted-map"
       ],
