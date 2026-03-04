@@ -66,10 +66,13 @@ import { DottedMap, type Marker } from "@/components/ui/dotted-map"
 
 ```tsx showLineNumbers
 import { DottedMap, type Marker } from "@/components/ui/dotted-map"
+import type { TCountryCode } from "countries-list"
+
+type CountryCode = Lowercase<TCountryCode>
 
 type MyMarker = Marker & {
   overlay: {
-    countryCode: string
+    countryCode: CountryCode
     label: string
   }
 }
@@ -127,9 +130,13 @@ Set `pulse` on `DottedMap` to animate all markers (and use `marker.pulse = false
 The `DottedMap` component supports generic types, allowing you to extend the `Marker` interface with custom properties:
 
 ```tsx
+import type { TCountryCode } from "countries-list"
+
+type CountryCode = Lowercase<TCountryCode>
+
 type MyMarker = Marker & {
   overlay: {
-    countryCode: string
+    countryCode: CountryCode
     label: string
   }
 }

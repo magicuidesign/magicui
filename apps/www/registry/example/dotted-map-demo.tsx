@@ -1,11 +1,14 @@
 import * as React from "react"
+import type { TCountryCode } from "countries-list"
 
 import { DottedMap } from "@/registry/magicui/dotted-map"
 import type { Marker } from "@/registry/magicui/dotted-map"
 
+type CountryCode = Lowercase<TCountryCode>
+
 type MyMarker = Marker & {
   overlay: {
-    countryCode: string // "kr", "us"
+    countryCode: CountryCode
     label: string
   }
 }
@@ -34,7 +37,7 @@ export default function Component() {
         markers={markers}
         renderMarkerOverlay={({ marker, x, y, r, index }) => {
           const { countryCode, label } = marker.overlay
-          const href = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.webp` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
+          const href = `https://flagcdn.com/w80/${countryCode}.webp` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
 
           const clipId = `${id}-flag-clip-${index}`.replace(/:/g, "-")
           const imgR = r * 0.75
