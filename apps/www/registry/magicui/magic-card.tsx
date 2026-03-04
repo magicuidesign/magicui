@@ -159,7 +159,7 @@ export function MagicCard(props: MagicCardProps) {
   return (
     <div
       className={cn(
-        "group relative isolate overflow-hidden rounded-[inherit]",
+        "group relative isolate overflow-hidden rounded-[inherit] border border-transparent",
         className
       )}
       onPointerMove={handlePointerMove}
@@ -170,6 +170,7 @@ export function MagicCard(props: MagicCardProps) {
         className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
+          linear-gradient(var(--color-background) 0 0) padding-box,
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom}, 
           ${gradientTo}, 

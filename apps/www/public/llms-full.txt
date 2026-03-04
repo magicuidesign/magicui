@@ -2845,40 +2845,59 @@ export const AnimatedThemeToggler = ({
     return () => observer.disconnect()
   }, [])
 
-  const toggleTheme = useCallback(async () => {
+  const toggleTheme = useCallback(() => {
     if (!buttonRef.current) return
 
-    await document.startViewTransition(() => {
-      flushSync(() => {
-        const newTheme = !isDark
-        setIsDark(newTheme)
-        document.documentElement.classList.toggle("dark")
-        localStorage.setItem("theme", newTheme ? "dark" : "light")
+    const applyTheme = () => {
+      const newTheme = !isDark
+      setIsDark(newTheme)
+      document.documentElement.classList.toggle("dark")
+      localStorage.setItem("theme", newTheme ? "dark" : "light")
+    }
+
+    if (
+      typeof document === "undefined" ||
+      !("startViewTransition" in document)
+    ) {
+      applyTheme()
+      return
+    }
+
+    const transition = document.startViewTransition(() => {
+      flushSync(applyTheme)
+    })
+
+    const ready = transition?.ready
+    if (ready && typeof ready.then === "function") {
+      ready.then(() => {
+        const button = buttonRef.current
+        if (!button) return
+
+        const { top, left, width, height } = button.getBoundingClientRect()
+
+        const x = left + width / 2
+        const y = top + height / 2
+
+        const maxRadius = Math.hypot(
+          Math.max(left, window.innerWidth - left),
+          Math.max(top, window.innerHeight - top)
+        )
+
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${maxRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration,
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        )
       })
-    }).ready
-
-    const { top, left, width, height } =
-      buttonRef.current.getBoundingClientRect()
-    const x = left + width / 2
-    const y = top + height / 2
-    const maxRadius = Math.hypot(
-      Math.max(left, window.innerWidth - left),
-      Math.max(top, window.innerHeight - top)
-    )
-
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${maxRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      }
-    )
+    }
   }, [isDark, duration])
 
   return (
@@ -7309,7 +7328,7 @@ export function HeroVideoDialog({
                 <iframe
                   src={videoSrc}
                   title="Hero Video player"
-                  className="size-full rounded-2xl"
+                  className="mt-0 size-full rounded-2xl"
                   allowFullScreen
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 ></iframe>
@@ -7628,14 +7647,49 @@ Description: A text animation that scrambles letters before revealing the final 
 --- file: magicui/hyper-text.tsx ---
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, type MotionProps } from "motion/react"
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ComponentType,
+  type RefAttributes,
+} from "react"
+import {
+  AnimatePresence,
+  motion,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
 type CharacterSet = string[] | readonly string[]
 
-interface HyperTextProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type HyperTextMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"div">, "ref"> & RefAttributes<HTMLElement>
+>
+
+interface HyperTextProps extends Omit<MotionProps, "children"> {
   /** The text content to be animated */
   children: string
   /** Optional className for styling */
@@ -7645,7 +7699,7 @@ interface HyperTextProps extends MotionProps {
   /** Delay before animation starts in milliseconds */
   delay?: number
   /** Component to render as - defaults to div */
-  as?: React.ElementType
+  as?: MotionElementType
   /** Whether to start animation when element comes into view */
   startOnView?: boolean
   /** Whether to trigger animation on hover */
@@ -7671,16 +7725,14 @@ export function HyperText({
   characterSet = DEFAULT_CHARACTER_SET,
   ...props
 }: HyperTextProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  })
+  const MotionComponent = motionElements[Component] as HyperTextMotionComponent
 
   const [displayText, setDisplayText] = useState<string[]>(() =>
     children.split("")
   )
   const [isAnimating, setIsAnimating] = useState(false)
   const iterationCount = useRef(0)
-  const elementRef = useRef<HTMLElement>(null)
+  const elementRef = useRef<HTMLElement | null>(null)
 
   const handleAnimationTrigger = () => {
     if (animateOnHover && !isAnimating) {
@@ -9257,16 +9309,40 @@ Description: A text component with a moving line shadow.
 --- file: magicui/line-shadow-text.tsx ---
 "use client"
 
-import { motion, type MotionProps } from "motion/react"
+import { type CSSProperties, type HTMLAttributes } from "react"
+import {
+  motion,
+  type DOMMotionComponents,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+
 interface LineShadowTextProps
-  extends
-    Omit<React.HTMLAttributes<HTMLElement>, keyof MotionProps>,
-    MotionProps {
+  extends Omit<HTMLAttributes<HTMLElement>, keyof MotionProps>, MotionProps {
+  children: string
   shadowColor?: string
-  as?: React.ElementType
+  as?: MotionElementType
 }
 
 export function LineShadowText({
@@ -9276,16 +9352,11 @@ export function LineShadowText({
   as: Component = "span",
   ...props
 }: LineShadowTextProps) {
-  const MotionComponent = motion.create(Component)
-  const content = typeof children === "string" ? children : null
-
-  if (!content) {
-    throw new Error("LineShadowText only accepts string content")
-  }
+  const MotionComponent = motionElements[Component]
 
   return (
     <MotionComponent
-      style={{ "--shadow-color": shadowColor } as React.CSSProperties}
+      style={{ "--shadow-color": shadowColor } as CSSProperties}
       className={cn(
         "relative z-0 inline-flex",
         "after:absolute after:top-[0.04em] after:left-[0.04em] after:content-[attr(data-text)]",
@@ -9294,10 +9365,10 @@ export function LineShadowText({
         "after:animate-line-shadow",
         className
       )}
-      data-text={content}
+      data-text={children}
       {...props}
     >
-      {content}
+      {children}
     </MotionComponent>
   )
 }
@@ -9494,7 +9565,7 @@ export function MagicCard(props: MagicCardProps) {
   return (
     <div
       className={cn(
-        "group relative isolate overflow-hidden rounded-[inherit]",
+        "group relative isolate overflow-hidden rounded-[inherit] border border-transparent",
         className
       )}
       onPointerMove={handlePointerMove}
@@ -9505,6 +9576,7 @@ export function MagicCard(props: MagicCardProps) {
         className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
+          linear-gradient(var(--color-background) 0 0) padding-box,
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
           ${gradientFrom}, 
           ${gradientTo}, 
@@ -12950,7 +13022,7 @@ import {
 export default function ScrollBasedVelocityDemo() {
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <ScrollVelocityContainer className="text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem]">
+      <ScrollVelocityContainer className="text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-20">
         <ScrollVelocityRow baseVelocity={20} direction={1}>
           Velocity Scroll
         </ScrollVelocityRow>
@@ -14140,8 +14212,16 @@ import {
   useMemo,
   useRef,
   useState,
+  type ComponentType,
+  type RefAttributes,
 } from "react"
-import { motion, useInView, type MotionProps } from "motion/react"
+import {
+  motion,
+  useInView,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -14157,6 +14237,29 @@ const useSequence = () => useContext(SequenceContext)
 
 const ItemIndexContext = createContext<number | null>(null)
 const useItemIndex = () => useContext(ItemIndexContext)
+
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type TerminalTypingMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"span">, "ref"> & RefAttributes<HTMLElement>
+>
 
 interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode
@@ -14211,12 +14314,12 @@ export const AnimatedSpan = ({
   )
 }
 
-interface TypingAnimationProps extends MotionProps {
+interface TypingAnimationProps extends Omit<MotionProps, "children"> {
   children: string
   className?: string
   duration?: number
   delay?: number
-  as?: React.ElementType
+  as?: MotionElementType
   startOnView?: boolean
 }
 
@@ -14233,13 +14336,9 @@ export const TypingAnimation = ({
     throw new Error("TypingAnimation: children must be a string. Received:")
   }
 
-  const MotionComponent = useMemo(
-    () =>
-      motion.create(Component, {
-        forwardMotionProps: true,
-      }),
-    [Component]
-  )
+  const MotionComponent = motionElements[
+    Component
+  ] as TerminalTypingMotionComponent
 
   const [displayedText, setDisplayedText] = useState<string>("")
   const [started, setStarted] = useState(false)
@@ -14494,11 +14593,12 @@ Description: A text animation component that animates text using a variety of di
 --- file: magicui/text-animate.tsx ---
 "use client"
 
-import { ElementType, memo } from "react"
+import { memo } from "react"
 import {
   AnimatePresence,
   motion,
   Variants,
+  type DOMMotionComponents,
   type MotionProps,
 } from "motion/react"
 
@@ -14517,7 +14617,27 @@ type AnimationVariant =
   | "scaleUp"
   | "scaleDown"
 
-interface TextAnimateProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+
+interface TextAnimateProps extends Omit<MotionProps, "children"> {
   /**
    * The text content to animate
    */
@@ -14545,7 +14665,7 @@ interface TextAnimateProps extends MotionProps {
   /**
    * The element type to render
    */
-  as?: ElementType
+  as?: MotionElementType
   /**
    * How to split the text ("text", "word", "character")
    */
@@ -14816,7 +14936,7 @@ const TextAnimateBase = ({
   accessible = true,
   ...props
 }: TextAnimateProps) => {
-  const MotionComponent = motion.create(Component)
+  const MotionComponent = motionElements[Component]
 
   let segments: string[] = []
   switch (by) {
@@ -15536,12 +15656,49 @@ Description: Characters appearing in typed animation
 --- file: magicui/typing-animation.tsx ---
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
-import { motion, useInView, type MotionProps } from "motion/react"
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentType,
+  type RefAttributes,
+  type RefObject,
+} from "react"
+import {
+  motion,
+  useInView,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-interface TypingAnimationProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type TypingAnimationMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"span">, "ref"> & RefAttributes<HTMLElement>
+>
+
+interface TypingAnimationProps extends Omit<MotionProps, "children"> {
   children?: string
   words?: string[]
   className?: string
@@ -15551,7 +15708,7 @@ interface TypingAnimationProps extends MotionProps {
   delay?: number
   pauseDelay?: number
   loop?: boolean
-  as?: React.ElementType
+  as?: MotionElementType
   startOnView?: boolean
   showCursor?: boolean
   blinkCursor?: boolean
@@ -15575,16 +15732,16 @@ export function TypingAnimation({
   cursorStyle = "line",
   ...props
 }: TypingAnimationProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  })
+  const MotionComponent = motionElements[
+    Component
+  ] as TypingAnimationMotionComponent
 
   const [displayedText, setDisplayedText] = useState<string>("")
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
   const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing")
   const elementRef = useRef<HTMLElement | null>(null)
-  const isInView = useInView(elementRef as React.RefObject<Element>, {
+  const isInView = useInView(elementRef as RefObject<Element>, {
     amount: 0.3,
     once: true,
   })
@@ -15599,6 +15756,17 @@ export function TypingAnimation({
   const deletingSpeed = deleteSpeed ?? typingSpeed / 2
 
   const shouldStart = startOnView ? isInView : true
+  const animationSourceKey = useMemo(
+    () => (words ? words.join("\u0000") : (children ?? "")),
+    [words, children]
+  )
+
+  useEffect(() => {
+    setDisplayedText("")
+    setCurrentWordIndex(0)
+    setCurrentCharIndex(0)
+    setPhase("typing")
+  }, [animationSourceKey])
 
   useEffect(() => {
     if (!shouldStart || wordsToAnimate.length === 0) return
@@ -15693,7 +15861,11 @@ export function TypingAnimation({
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn("leading-[5rem] tracking-[-0.02em]", className)}
+      className={cn(
+        "leading-20 tracking-[-0.02em]",
+        Component === "span" && "inline-block",
+        className
+      )}
       {...props}
     >
       {displayedText}

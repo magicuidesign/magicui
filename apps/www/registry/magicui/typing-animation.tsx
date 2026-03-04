@@ -1,11 +1,48 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
-import { motion, useInView, type MotionProps } from "motion/react"
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentType,
+  type RefAttributes,
+  type RefObject,
+} from "react"
+import {
+  motion,
+  useInView,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-interface TypingAnimationProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type TypingAnimationMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"span">, "ref"> & RefAttributes<HTMLElement>
+>
+
+interface TypingAnimationProps extends Omit<MotionProps, "children"> {
   children?: string
   words?: string[]
   className?: string
@@ -15,7 +52,7 @@ interface TypingAnimationProps extends MotionProps {
   delay?: number
   pauseDelay?: number
   loop?: boolean
-  as?: React.ElementType
+  as?: MotionElementType
   startOnView?: boolean
   showCursor?: boolean
   blinkCursor?: boolean
@@ -39,16 +76,16 @@ export function TypingAnimation({
   cursorStyle = "line",
   ...props
 }: TypingAnimationProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  })
+  const MotionComponent = motionElements[
+    Component
+  ] as TypingAnimationMotionComponent
 
   const [displayedText, setDisplayedText] = useState<string>("")
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
   const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing")
   const elementRef = useRef<HTMLElement | null>(null)
-  const isInView = useInView(elementRef as React.RefObject<Element>, {
+  const isInView = useInView(elementRef as RefObject<Element>, {
     amount: 0.3,
     once: true,
   })
@@ -63,6 +100,17 @@ export function TypingAnimation({
   const deletingSpeed = deleteSpeed ?? typingSpeed / 2
 
   const shouldStart = startOnView ? isInView : true
+  const animationSourceKey = useMemo(
+    () => (words ? words.join("\u0000") : (children ?? "")),
+    [words, children]
+  )
+
+  useEffect(() => {
+    setDisplayedText("")
+    setCurrentWordIndex(0)
+    setCurrentCharIndex(0)
+    setPhase("typing")
+  }, [animationSourceKey])
 
   useEffect(() => {
     if (!shouldStart || wordsToAnimate.length === 0) return
@@ -157,7 +205,11 @@ export function TypingAnimation({
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn("leading-[5rem] tracking-[-0.02em]", className)}
+      className={cn(
+        "leading-20 tracking-[-0.02em]",
+        Component === "span" && "inline-block",
+        className
+      )}
       {...props}
     >
       {displayedText}
