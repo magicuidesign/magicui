@@ -50,37 +50,40 @@ export function Highlighter({
   const shouldShow = !isView || isInView
 
   useEffect(() => {
-    if (!shouldShow) return
-
     const element = elementRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const annotationConfig = {
-      type: action,
-      color,
-      strokeWidth,
-      animationDuration,
-      iterations,
-      padding,
-      multiline,
+    if (shouldShow && element) {
+      const annotationConfig = {
+        type: action,
+        color,
+        strokeWidth,
+        animationDuration,
+        iterations,
+        padding,
+        multiline,
+      }
+
+      const annotation = annotate(element, annotationConfig)
+
+      annotationRef.current = annotation
+      annotation.show()
+
+      resizeObserver = new ResizeObserver(() => {
+        annotation.hide()
+        annotation.show()
+      })
+
+      resizeObserver.observe(element)
+      resizeObserver.observe(document.body)
     }
 
-    const annotation = annotate(element, annotationConfig)
-
-    annotationRef.current = annotation
-    annotationRef.current.show()
-
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide()
-      annotation.show()
-    })
-
-    resizeObserver.observe(element)
-    resizeObserver.observe(document.body)
-
     return () => {
-      if (element) {
-        annotate(element, { type: action }).remove()
+      if (annotationRef.current) {
+        annotationRef.current.remove()
+        annotationRef.current = null
+      }
+      if (resizeObserver) {
         resizeObserver.disconnect()
       }
     }

@@ -2428,28 +2428,32 @@ export function AnimatedGridPattern({
 
   useEffect(() => {
     const element = containerRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setDimensions((currentDimensions) => {
-          const nextWidth = entry.contentRect.width
-          const nextHeight = entry.contentRect.height
-          if (
-            currentDimensions.width === nextWidth &&
-            currentDimensions.height === nextHeight
-          ) {
-            return currentDimensions
-          }
-          return { width: nextWidth, height: nextHeight }
-        })
-      }
-    })
+    if (element) {
+      resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          setDimensions((currentDimensions) => {
+            const nextWidth = entry.contentRect.width
+            const nextHeight = entry.contentRect.height
+            if (
+              currentDimensions.width === nextWidth &&
+              currentDimensions.height === nextHeight
+            ) {
+              return currentDimensions
+            }
+            return { width: nextWidth, height: nextHeight }
+          })
+        }
+      })
 
-    resizeObserver.observe(element)
+      resizeObserver.observe(element)
+    }
 
     return () => {
-      resizeObserver.disconnect()
+      if (resizeObserver) {
+        resizeObserver.disconnect()
+      }
     }
   }, [])
 
@@ -2580,12 +2584,18 @@ export const AnimatedList = React.memo(
     )
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (index < childrenArray.length - 1) {
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length)
         }, delay)
+      }
 
-        return () => clearTimeout(timeout)
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [index, delay, childrenArray.length])
 
@@ -4982,8 +4992,17 @@ export const CoolMode: React.FC<CoolModeProps> = ({ children, options }) => {
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    if (ref.current) {
-      return applyParticleEffect(ref.current, options)
+    const element = ref.current
+    let cleanup: (() => void) | null = null
+
+    if (element) {
+      cleanup = applyParticleEffect(element, options)
+    }
+
+    return () => {
+      if (cleanup) {
+        cleanup()
+      }
     }
   }, [options])
 
@@ -6730,66 +6749,70 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   useEffect(() => {
     const canvas = canvasRef.current
     const container = containerRef.current
-    if (!canvas || !container) return
+    const ctx = canvas?.getContext("2d") ?? null
+    let animationFrameId: number | null = null
+    let resizeObserver: ResizeObserver | null = null
+    let intersectionObserver: IntersectionObserver | null = null
+    let gridParams: ReturnType<typeof setupCanvas> | null = null
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    if (canvas && container && ctx) {
+      const updateCanvasSize = () => {
+        const newWidth = width || container.clientWidth
+        const newHeight = height || container.clientHeight
+        setCanvasSize({ width: newWidth, height: newHeight })
+        gridParams = setupCanvas(canvas, newWidth, newHeight)
+      }
 
-    let animationFrameId: number
-    let gridParams: ReturnType<typeof setupCanvas>
-
-    const updateCanvasSize = () => {
-      const newWidth = width || container.clientWidth
-      const newHeight = height || container.clientHeight
-      setCanvasSize({ width: newWidth, height: newHeight })
-      gridParams = setupCanvas(canvas, newWidth, newHeight)
-    }
-
-    updateCanvasSize()
-
-    let lastTime = 0
-    const animate = (time: number) => {
-      if (!isInView) return
-
-      const deltaTime = (time - lastTime) / 1000
-      lastTime = time
-
-      updateSquares(gridParams.squares, deltaTime)
-      drawGrid(
-        ctx,
-        canvas.width,
-        canvas.height,
-        gridParams.cols,
-        gridParams.rows,
-        gridParams.squares,
-        gridParams.dpr
-      )
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
       updateCanvasSize()
-    })
 
-    resizeObserver.observe(container)
+      let lastTime = 0
+      const animate = (time: number) => {
+        if (!isInView || !gridParams) return
 
-    const intersectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting)
-      },
-      { threshold: 0 }
-    )
+        const deltaTime = (time - lastTime) / 1000
+        lastTime = time
 
-    intersectionObserver.observe(canvas)
+        updateSquares(gridParams.squares, deltaTime)
+        drawGrid(
+          ctx,
+          canvas.width,
+          canvas.height,
+          gridParams.cols,
+          gridParams.rows,
+          gridParams.squares,
+          gridParams.dpr
+        )
+        animationFrameId = requestAnimationFrame(animate)
+      }
 
-    if (isInView) {
-      animationFrameId = requestAnimationFrame(animate)
+      resizeObserver = new ResizeObserver(() => {
+        updateCanvasSize()
+      })
+      resizeObserver.observe(container)
+
+      intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          setIsInView(entry.isIntersecting)
+        },
+        { threshold: 0 }
+      )
+      intersectionObserver.observe(canvas)
+
+      if (isInView) {
+        animationFrameId = requestAnimationFrame(animate)
+      }
     }
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
-      resizeObserver.disconnect()
-      intersectionObserver.disconnect()
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+      if (resizeObserver) {
+        resizeObserver.disconnect()
+      }
+      if (intersectionObserver) {
+        intersectionObserver.disconnect()
+      }
     }
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
 
@@ -7456,37 +7479,40 @@ export function Highlighter({
   const shouldShow = !isView || isInView
 
   useEffect(() => {
-    if (!shouldShow) return
-
     const element = elementRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const annotationConfig = {
-      type: action,
-      color,
-      strokeWidth,
-      animationDuration,
-      iterations,
-      padding,
-      multiline,
+    if (shouldShow && element) {
+      const annotationConfig = {
+        type: action,
+        color,
+        strokeWidth,
+        animationDuration,
+        iterations,
+        padding,
+        multiline,
+      }
+
+      const annotation = annotate(element, annotationConfig)
+
+      annotationRef.current = annotation
+      annotation.show()
+
+      resizeObserver = new ResizeObserver(() => {
+        annotation.hide()
+        annotation.show()
+      })
+
+      resizeObserver.observe(element)
+      resizeObserver.observe(document.body)
     }
 
-    const annotation = annotate(element, annotationConfig)
-
-    annotationRef.current = annotation
-    annotationRef.current.show()
-
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide()
-      annotation.show()
-    })
-
-    resizeObserver.observe(element)
-    resizeObserver.observe(document.body)
-
     return () => {
-      if (element) {
-        annotate(element, { type: action }).remove()
+      if (annotationRef.current) {
+        annotationRef.current.remove()
+        annotationRef.current = null
+      }
+      if (resizeObserver) {
         resizeObserver.disconnect()
       }
     }
@@ -7586,37 +7612,40 @@ export function Highlighter({
   const shouldShow = !isView || isInView
 
   useEffect(() => {
-    if (!shouldShow) return
-
     const element = elementRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const annotationConfig = {
-      type: action,
-      color,
-      strokeWidth,
-      animationDuration,
-      iterations,
-      padding,
-      multiline,
+    if (shouldShow && element) {
+      const annotationConfig = {
+        type: action,
+        color,
+        strokeWidth,
+        animationDuration,
+        iterations,
+        padding,
+        multiline,
+      }
+
+      const annotation = annotate(element, annotationConfig)
+
+      annotationRef.current = annotation
+      annotation.show()
+
+      resizeObserver = new ResizeObserver(() => {
+        annotation.hide()
+        annotation.show()
+      })
+
+      resizeObserver.observe(element)
+      resizeObserver.observe(document.body)
     }
 
-    const annotation = annotate(element, annotationConfig)
-
-    annotationRef.current = annotation
-    annotationRef.current.show()
-
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide()
-      annotation.show()
-    })
-
-    resizeObserver.observe(element)
-    resizeObserver.observe(document.body)
-
     return () => {
-      if (element) {
-        annotate(element, { type: action }).remove()
+      if (annotationRef.current) {
+        annotationRef.current.remove()
+        annotationRef.current = null
+      }
+      if (resizeObserver) {
         resizeObserver.disconnect()
       }
     }
@@ -7771,38 +7800,43 @@ export function HyperText({
 
   // Handle scramble animation
   useEffect(() => {
-    if (!isAnimating) return
+    let animationFrameId: number | null = null
 
-    const maxIterations = children.length
-    const startTime = performance.now()
-    let animationFrameId: number
+    if (isAnimating) {
+      const maxIterations = children.length
+      const startTime = performance.now()
 
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
 
-      iterationCount.current = progress * maxIterations
+        iterationCount.current = progress * maxIterations
 
-      setDisplayText((currentText) =>
-        currentText.map((letter, index) =>
-          letter === " "
-            ? letter
-            : index <= iterationCount.current
-              ? children[index]
-              : characterSet[getRandomInt(characterSet.length)]
+        setDisplayText((currentText) =>
+          currentText.map((letter, index) =>
+            letter === " "
+              ? letter
+              : index <= iterationCount.current
+                ? children[index]
+                : characterSet[getRandomInt(characterSet.length)]
+          )
         )
-      )
 
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate)
-      } else {
-        setIsAnimating(false)
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(animate)
+        } else {
+          setIsAnimating(false)
+        }
       }
+
+      animationFrameId = requestAnimationFrame(animate)
     }
 
-    animationFrameId = requestAnimationFrame(animate)
-
-    return () => cancelAnimationFrame(animationFrameId)
+    return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
   }, [children, duration, isAnimating, characterSet])
 
   return (
@@ -8060,88 +8094,91 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext("2d")
-    if (!canvas || !ctx) return
+    if (canvas && ctx) {
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+        const centerX = canvas.width / 2
+        const centerY = canvas.height / 2
+        const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY)
+        const dx = mousePos.x - centerX
+        const dy = mousePos.y - centerY
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        const speed = 0.003 + (distance / maxDistance) * 0.01
 
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
-      const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY)
-      const dx = mousePos.x - centerX
-      const dy = mousePos.y - centerY
-      const distance = Math.sqrt(dx * dx + dy * dy)
-      const speed = 0.003 + (distance / maxDistance) * 0.01
+        if (targetRotation) {
+          const elapsed = performance.now() - targetRotation.startTime
+          const progress = Math.min(1, elapsed / targetRotation.duration)
+          const easedProgress = easeOutCubic(progress)
 
-      if (targetRotation) {
-        const elapsed = performance.now() - targetRotation.startTime
-        const progress = Math.min(1, elapsed / targetRotation.duration)
-        const easedProgress = easeOutCubic(progress)
+          rotationRef.current = {
+            x:
+              targetRotation.startX +
+              (targetRotation.x - targetRotation.startX) * easedProgress,
+            y:
+              targetRotation.startY +
+              (targetRotation.y - targetRotation.startY) * easedProgress,
+          }
 
-        rotationRef.current = {
-          x:
-            targetRotation.startX +
-            (targetRotation.x - targetRotation.startX) * easedProgress,
-          y:
-            targetRotation.startY +
-            (targetRotation.y - targetRotation.startY) * easedProgress,
+          if (progress >= 1) {
+            setTargetRotation(null)
+          }
+        } else if (!isDragging) {
+          rotationRef.current = {
+            x: rotationRef.current.x + (dy / canvas.height) * speed,
+            y: rotationRef.current.y + (dx / canvas.width) * speed,
+          }
         }
 
-        if (progress >= 1) {
-          setTargetRotation(null)
-        }
-      } else if (!isDragging) {
-        rotationRef.current = {
-          x: rotationRef.current.x + (dy / canvas.height) * speed,
-          y: rotationRef.current.y + (dx / canvas.width) * speed,
-        }
+        iconPositions.forEach((icon, index) => {
+          const cosX = Math.cos(rotationRef.current.x)
+          const sinX = Math.sin(rotationRef.current.x)
+          const cosY = Math.cos(rotationRef.current.y)
+          const sinY = Math.sin(rotationRef.current.y)
+
+          const rotatedX = icon.x * cosY - icon.z * sinY
+          const rotatedZ = icon.x * sinY + icon.z * cosY
+          const rotatedY = icon.y * cosX + rotatedZ * sinX
+
+          const scale = (rotatedZ + 200) / 300
+          const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200))
+
+          ctx.save()
+          ctx.translate(
+            canvas.width / 2 + rotatedX,
+            canvas.height / 2 + rotatedY
+          )
+          ctx.scale(scale, scale)
+          ctx.globalAlpha = opacity
+
+          if (icons || images) {
+            // Only try to render icons/images if they exist
+            if (
+              iconCanvasesRef.current[index] &&
+              imagesLoadedRef.current[index]
+            ) {
+              ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40)
+            }
+          } else {
+            // Show numbered circles if no icons/images are provided
+            ctx.beginPath()
+            ctx.arc(0, 0, 20, 0, Math.PI * 2)
+            ctx.fillStyle = "#4444ff"
+            ctx.fill()
+            ctx.fillStyle = "white"
+            ctx.textAlign = "center"
+            ctx.textBaseline = "middle"
+            ctx.font = "16px Arial"
+            ctx.fillText(`${icon.id + 1}`, 0, 0)
+          }
+
+          ctx.restore()
+        })
+        animationFrameRef.current = requestAnimationFrame(animate)
       }
 
-      iconPositions.forEach((icon, index) => {
-        const cosX = Math.cos(rotationRef.current.x)
-        const sinX = Math.sin(rotationRef.current.x)
-        const cosY = Math.cos(rotationRef.current.y)
-        const sinY = Math.sin(rotationRef.current.y)
-
-        const rotatedX = icon.x * cosY - icon.z * sinY
-        const rotatedZ = icon.x * sinY + icon.z * cosY
-        const rotatedY = icon.y * cosX + rotatedZ * sinX
-
-        const scale = (rotatedZ + 200) / 300
-        const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200))
-
-        ctx.save()
-        ctx.translate(canvas.width / 2 + rotatedX, canvas.height / 2 + rotatedY)
-        ctx.scale(scale, scale)
-        ctx.globalAlpha = opacity
-
-        if (icons || images) {
-          // Only try to render icons/images if they exist
-          if (
-            iconCanvasesRef.current[index] &&
-            imagesLoadedRef.current[index]
-          ) {
-            ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40)
-          }
-        } else {
-          // Show numbered circles if no icons/images are provided
-          ctx.beginPath()
-          ctx.arc(0, 0, 20, 0, Math.PI * 2)
-          ctx.fillStyle = "#4444ff"
-          ctx.fill()
-          ctx.fillStyle = "white"
-          ctx.textAlign = "center"
-          ctx.textBaseline = "middle"
-          ctx.font = "16px Arial"
-          ctx.fillText(`${icon.id + 1}`, 0, 0)
-        }
-
-        ctx.restore()
-      })
-      animationFrameRef.current = requestAnimationFrame(animate)
+      animate()
     }
-
-    animate()
 
     return () => {
       if (animationFrameRef.current) {
@@ -10647,11 +10684,18 @@ export function NumberTicker({
   const isInView = useInView(ref, { once: true, margin: "0px" })
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null
+
     if (isInView) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         motionValue.set(direction === "down" ? startValue : value)
       }, delay * 1000)
-      return () => clearTimeout(timer)
+    }
+
+    return () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
     }
   }, [motionValue, isInView, delay, value, direction, startValue])
 
@@ -11515,41 +11559,40 @@ export function Pointer({
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window !== "undefined" && containerRef.current) {
-      // Get the parent element directly from the ref
-      const parentElement = containerRef.current.parentElement
+    const parentElement =
+      typeof window !== "undefined"
+        ? (containerRef.current?.parentElement ?? null)
+        : null
 
+    const handleMouseMove = (e: MouseEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+      setIsActive(true)
+    }
+
+    const handleMouseEnter = (e: MouseEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+      setIsActive(true)
+    }
+
+    const handleMouseLeave = () => {
+      setIsActive(false)
+    }
+
+    if (parentElement) {
+      parentElement.style.cursor = "none"
+      parentElement.addEventListener("mousemove", handleMouseMove)
+      parentElement.addEventListener("mouseenter", handleMouseEnter)
+      parentElement.addEventListener("mouseleave", handleMouseLeave)
+    }
+
+    return () => {
       if (parentElement) {
-        // Add cursor-none to parent
-        parentElement.style.cursor = "none"
-
-        // Add event listeners to parent
-        const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX)
-          y.set(e.clientY)
-          setIsActive(true)
-        }
-
-        const handleMouseEnter = (e: MouseEvent) => {
-          x.set(e.clientX)
-          y.set(e.clientY)
-          setIsActive(true)
-        }
-
-        const handleMouseLeave = () => {
-          setIsActive(false)
-        }
-
-        parentElement.addEventListener("mousemove", handleMouseMove)
-        parentElement.addEventListener("mouseenter", handleMouseEnter)
-        parentElement.addEventListener("mouseleave", handleMouseLeave)
-
-        return () => {
-          parentElement.style.cursor = ""
-          parentElement.removeEventListener("mousemove", handleMouseMove)
-          parentElement.removeEventListener("mouseenter", handleMouseEnter)
-          parentElement.removeEventListener("mouseleave", handleMouseLeave)
-        }
+        parentElement.style.cursor = ""
+        parentElement.removeEventListener("mousemove", handleMouseMove)
+        parentElement.removeEventListener("mouseenter", handleMouseEnter)
+        parentElement.removeEventListener("mouseleave", handleMouseLeave)
       }
     }
   }, [x, y])
@@ -12247,14 +12290,21 @@ export const RippleButton = React.forwardRef<
     }
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (buttonRipples.length > 0) {
         const lastRipple = buttonRipples[buttonRipples.length - 1]
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setButtonRipples((prevRipples) =>
             prevRipples.filter((ripple) => ripple.key !== lastRipple.key)
           )
         }, parseInt(duration))
-        return () => clearTimeout(timeout)
+      }
+
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [buttonRipples, duration])
 
@@ -12722,47 +12772,59 @@ function ScrollVelocityRowImpl({
   useEffect(() => {
     const container = containerRef.current
     const block = blockRef.current
-    if (!container || !block) return
-
-    const updateSizes = () => {
-      const cw = container.offsetWidth || 0
-      const bw = block.scrollWidth || 0
-      unitWidth.set(bw)
-      const nextCopies = bw > 0 ? Math.max(3, Math.ceil(cw / bw) + 2) : 1
-      setNumCopies((prev) => (prev === nextCopies ? prev : nextCopies))
-    }
-
-    updateSizes()
-
-    const ro = new ResizeObserver(updateSizes)
-    ro.observe(container)
-    ro.observe(block)
-
-    const io = new IntersectionObserver(([entry]) => {
-      isInViewRef.current = entry.isIntersecting
-    })
-    io.observe(container)
-
+    let ro: ResizeObserver | null = null
+    let io: IntersectionObserver | null = null
+    let mq: MediaQueryList | null = null
     const handleVisibility = () => {
       isPageVisibleRef.current = document.visibilityState === "visible"
     }
-    document.addEventListener("visibilitychange", handleVisibility, {
-      passive: true,
-    })
-    handleVisibility()
-
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
     const handlePRM = () => {
-      prefersReducedMotionRef.current = mq.matches
+      if (mq) {
+        prefersReducedMotionRef.current = mq.matches
+      }
     }
-    mq.addEventListener("change", handlePRM)
-    handlePRM()
+
+    if (container && block) {
+      const updateSizes = () => {
+        const cw = container.offsetWidth || 0
+        const bw = block.scrollWidth || 0
+        unitWidth.set(bw)
+        const nextCopies = bw > 0 ? Math.max(3, Math.ceil(cw / bw) + 2) : 1
+        setNumCopies((prev) => (prev === nextCopies ? prev : nextCopies))
+      }
+
+      updateSizes()
+
+      ro = new ResizeObserver(updateSizes)
+      ro.observe(container)
+      ro.observe(block)
+
+      io = new IntersectionObserver(([entry]) => {
+        isInViewRef.current = entry.isIntersecting
+      })
+      io.observe(container)
+
+      document.addEventListener("visibilitychange", handleVisibility, {
+        passive: true,
+      })
+      handleVisibility()
+
+      mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+      mq.addEventListener("change", handlePRM)
+      handlePRM()
+    }
 
     return () => {
-      ro.disconnect()
-      io.disconnect()
+      if (ro) {
+        ro.disconnect()
+      }
+      if (io) {
+        io.disconnect()
+      }
       document.removeEventListener("visibilitychange", handleVisibility)
-      mq.removeEventListener("change", handlePRM)
+      if (mq) {
+        mq.removeEventListener("change", handlePRM)
+      }
     }
   }, [children, unitWidth])
 
@@ -14177,24 +14239,25 @@ export const TypingAnimation = ({
   const itemIndex = useItemIndex()
 
   useEffect(() => {
+    let startTimeout: ReturnType<typeof setTimeout> | null = null
+
     if (sequence && itemIndex !== null) {
-      if (!sequence.sequenceStarted) return
-      if (started) return
-      if (sequence.activeIndex === itemIndex) {
+      if (
+        sequence.sequenceStarted &&
+        !started &&
+        sequence.activeIndex === itemIndex
+      ) {
         setStarted(true)
       }
-      return
+    } else if (!startOnView || isInView) {
+      startTimeout = setTimeout(() => setStarted(true), delay)
     }
 
-    if (!startOnView) {
-      const startTimeout = setTimeout(() => setStarted(true), delay)
-      return () => clearTimeout(startTimeout)
+    return () => {
+      if (startTimeout !== null) {
+        clearTimeout(startTimeout)
+      }
     }
-
-    if (!isInView) return
-
-    const startTimeout = setTimeout(() => setStarted(true), delay)
-    return () => clearTimeout(startTimeout)
   }, [
     delay,
     startOnView,
@@ -14206,23 +14269,29 @@ export const TypingAnimation = ({
   ])
 
   useEffect(() => {
-    if (!started) return
+    let typingEffect: ReturnType<typeof setInterval> | null = null
 
-    let i = 0
-    const typingEffect = setInterval(() => {
-      if (i < children.length) {
-        setDisplayedText(children.substring(0, i + 1))
-        i++
-      } else {
-        clearInterval(typingEffect)
-        if (sequence && itemIndex !== null) {
-          sequence.completeItem(itemIndex)
+    if (started) {
+      let i = 0
+      typingEffect = setInterval(() => {
+        if (i < children.length) {
+          setDisplayedText(children.substring(0, i + 1))
+          i++
+        } else {
+          if (typingEffect !== null) {
+            clearInterval(typingEffect)
+          }
+          if (sequence && itemIndex !== null) {
+            sequence.completeItem(itemIndex)
+          }
         }
-      }
-    }, duration)
+      }, duration)
+    }
 
     return () => {
-      clearInterval(typingEffect)
+      if (typingEffect !== null) {
+        clearInterval(typingEffect)
+      }
     }
   }, [children, duration, started])
 
@@ -15594,54 +15663,65 @@ export function TypingAnimation({
   }, [animationSourceKey])
 
   useEffect(() => {
-    if (!shouldStart || wordsToAnimate.length === 0) return
+    let timeout: ReturnType<typeof setTimeout> | null = null
 
-    const timeoutDelay =
-      delay > 0 && displayedText === ""
-        ? delay
-        : phase === "typing"
-          ? typingSpeed
-          : phase === "deleting"
-            ? deletingSpeed
-            : pauseDelay
+    if (shouldStart && wordsToAnimate.length > 0) {
+      const timeoutDelay =
+        delay > 0 && displayedText === ""
+          ? delay
+          : phase === "typing"
+            ? typingSpeed
+            : phase === "deleting"
+              ? deletingSpeed
+              : pauseDelay
 
-    const timeout = setTimeout(() => {
-      const currentWord = wordsToAnimate[currentWordIndex] || ""
-      const graphemes = Array.from(currentWord)
+      timeout = setTimeout(() => {
+        const currentWord = wordsToAnimate[currentWordIndex] || ""
+        const graphemes = Array.from(currentWord)
 
-      switch (phase) {
-        case "typing":
-          if (currentCharIndex < graphemes.length) {
-            setDisplayedText(graphemes.slice(0, currentCharIndex + 1).join(""))
-            setCurrentCharIndex(currentCharIndex + 1)
-          } else {
-            if (hasMultipleWords || loop) {
-              const isLastWord = currentWordIndex === wordsToAnimate.length - 1
-              if (!isLastWord || loop) {
-                setPhase("pause")
+        switch (phase) {
+          case "typing":
+            if (currentCharIndex < graphemes.length) {
+              setDisplayedText(
+                graphemes.slice(0, currentCharIndex + 1).join("")
+              )
+              setCurrentCharIndex(currentCharIndex + 1)
+            } else {
+              if (hasMultipleWords || loop) {
+                const isLastWord =
+                  currentWordIndex === wordsToAnimate.length - 1
+                if (!isLastWord || loop) {
+                  setPhase("pause")
+                }
               }
             }
-          }
-          break
+            break
 
-        case "pause":
-          setPhase("deleting")
-          break
+          case "pause":
+            setPhase("deleting")
+            break
 
-        case "deleting":
-          if (currentCharIndex > 0) {
-            setDisplayedText(graphemes.slice(0, currentCharIndex - 1).join(""))
-            setCurrentCharIndex(currentCharIndex - 1)
-          } else {
-            const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length
-            setCurrentWordIndex(nextIndex)
-            setPhase("typing")
-          }
-          break
+          case "deleting":
+            if (currentCharIndex > 0) {
+              setDisplayedText(
+                graphemes.slice(0, currentCharIndex - 1).join("")
+              )
+              setCurrentCharIndex(currentCharIndex - 1)
+            } else {
+              const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length
+              setCurrentWordIndex(nextIndex)
+              setPhase("typing")
+            }
+            break
+        }
+      }, timeoutDelay)
+    }
+
+    return () => {
+      if (timeout !== null) {
+        clearTimeout(timeout)
       }
-    }, timeoutDelay)
-
-    return () => clearTimeout(timeout)
+    }
   }, [
     shouldStart,
     phase,

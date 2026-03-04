@@ -45,14 +45,21 @@ export const RippleButton = React.forwardRef<
     }
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (buttonRipples.length > 0) {
         const lastRipple = buttonRipples[buttonRipples.length - 1]
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setButtonRipples((prevRipples) =>
             prevRipples.filter((ripple) => ripple.key !== lastRipple.key)
           )
         }, parseInt(duration))
-        return () => clearTimeout(timeout)
+      }
+
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [buttonRipples, duration])
 
