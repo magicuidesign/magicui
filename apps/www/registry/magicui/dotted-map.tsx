@@ -43,6 +43,7 @@ export function DottedMap<M extends Marker = Marker>({
   height = 75,
   mapSamples = 5000,
   markers = [],
+  dotColor = "currentColor",
   markerColor = "#FF6900",
   dotRadius = 0.2,
   stagger = true,
@@ -99,7 +100,7 @@ export function DottedMap<M extends Marker = Marker>({
             cx={point.x + offsetX}
             cy={point.y}
             r={dotRadius}
-            fill="currentColor"
+            fill={dotColor}
             key={`${point.x}-${point.y}-${index}`}
           />
         )
