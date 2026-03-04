@@ -110,6 +110,8 @@ export function SmoothCursor({
   })
 
   useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout> | null = null
+
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now()
       const deltaTime = currentTime - lastUpdateTime.current
@@ -151,12 +153,14 @@ export function SmoothCursor({
         scale.set(0.95)
         setIsMoving(true)
 
-        const timeout = setTimeout(() => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
+
+        timeout = setTimeout(() => {
           scale.set(1)
           setIsMoving(false)
         }, 150)
-
-        return () => clearTimeout(timeout)
       }
     }
 
@@ -177,6 +181,9 @@ export function SmoothCursor({
       window.removeEventListener("mousemove", throttledMouseMove)
       document.body.style.cursor = "auto"
       if (rafId) cancelAnimationFrame(rafId)
+      if (timeout !== null) {
+        clearTimeout(timeout)
+      }
     }
   }, [cursorX, cursorY, rotation, scale])
 
