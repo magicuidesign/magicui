@@ -1,7 +1,7 @@
 ## Description
 <!-- Summarize what this PR changes in 2-4 lines. -->
 
-### Changes
+## Changes
 <!-- List concrete changes by item (e.g., feature, refactor, bug fix). -->
 
 ## Motivation
