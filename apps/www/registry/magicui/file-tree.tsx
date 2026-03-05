@@ -132,7 +132,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       if (initialSelectedId) {
         expandSpecificTargetedElements(elements, initialSelectedId)
       }
-    }, [initialSelectedId, elements])
+    }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
 
@@ -345,27 +345,34 @@ const CollapseButton = forwardRef<
   const { expandedItems, setExpandedItems } = useTree()
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
+    const expandedElementIds: string[] = []
+
     const expandTree = (element: TreeViewElement) => {
       const isSelectable = element.isSelectable ?? true
       if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id])
-        element.children.forEach(expandTree)
+        expandedElementIds.push(element.id)
+        for (const child of element.children) {
+          expandTree(child)
+        }
       }
     }
 
-    elements.forEach(expandTree)
+    for (const element of elements) {
+      expandTree(element)
+    }
+
+    return [...new Set(expandedElementIds)]
   }, [])
 
   const closeAll = useCallback(() => {
     setExpandedItems?.([])
-  }, [])
+  }, [setExpandedItems])
 
   useEffect(() => {
-    console.log(expandAll)
     if (expandAll) {
-      expendAllTree(elements)
+      setExpandedItems?.(expendAllTree(elements))
     }
-  }, [expandAll])
+  }, [expandAll, elements, expendAllTree, setExpandedItems])
 
   return (
     <Button
@@ -374,7 +381,7 @@ const CollapseButton = forwardRef<
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll
-          : () => expendAllTree(elements)
+          : () => setExpandedItems?.(expendAllTree(elements))
       }
       ref={ref}
       {...props}

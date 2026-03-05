@@ -6268,7 +6268,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       if (initialSelectedId) {
         expandSpecificTargetedElements(elements, initialSelectedId)
       }
-    }, [initialSelectedId, elements])
+    }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
 
@@ -6481,27 +6481,34 @@ const CollapseButton = forwardRef<
   const { expandedItems, setExpandedItems } = useTree()
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
+    const expandedElementIds: string[] = []
+
     const expandTree = (element: TreeViewElement) => {
       const isSelectable = element.isSelectable ?? true
       if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id])
-        element.children.forEach(expandTree)
+        expandedElementIds.push(element.id)
+        for (const child of element.children) {
+          expandTree(child)
+        }
       }
     }
 
-    elements.forEach(expandTree)
+    for (const element of elements) {
+      expandTree(element)
+    }
+
+    return [...new Set(expandedElementIds)]
   }, [])
 
   const closeAll = useCallback(() => {
     setExpandedItems?.([])
-  }, [])
+  }, [setExpandedItems])
 
   useEffect(() => {
-    console.log(expandAll)
     if (expandAll) {
-      expendAllTree(elements)
+      setExpandedItems?.(expendAllTree(elements))
     }
-  }, [expandAll])
+  }, [expandAll, elements, expendAllTree, setExpandedItems])
 
   return (
     <Button
@@ -6510,7 +6517,7 @@ const CollapseButton = forwardRef<
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll
-          : () => expendAllTree(elements)
+          : () => setExpandedItems?.(expendAllTree(elements))
       }
       ref={ref}
       {...props}
@@ -6948,9 +6955,9 @@ export function Globe({
   className?: string
   config?: COBEOptions
 }) {
-  let phi = 0
-  let width = 0
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const phiRef = useRef(0)
+  const widthRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
 
@@ -6979,7 +6986,7 @@ export function Globe({
   useEffect(() => {
     const onResize = () => {
       if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth
+        widthRef.current = canvasRef.current.offsetWidth
       }
     }
 
@@ -6988,13 +6995,13 @@ export function Globe({
 
     const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width * 2,
-      height: width * 2,
+      width: widthRef.current * 2,
+      height: widthRef.current * 2,
       onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005
-        state.phi = phi + rs.get()
-        state.width = width * 2
-        state.height = width * 2
+        if (!pointerInteracting.current) phiRef.current += 0.005
+        state.phi = phiRef.current + rs.get()
+        state.width = widthRef.current * 2
+        state.height = widthRef.current * 2
       },
     })
 
@@ -8994,7 +9001,7 @@ export function Lens({
         </div>
       </motion.div>
     )
-  }, [currentPosition, lensSize, lensColor, zoomFactor, children, duration])
+  }, [currentPosition, maskImage, zoomFactor, children, duration])
 
   return (
     <div
@@ -11123,20 +11130,23 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
   const rafID = useRef<number | null>(null)
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null)
+  const initCanvasRef = useRef<() => void>(() => {})
+  const onMouseMoveRef = useRef<() => void>(() => {})
+  const animateRef = useRef<() => void>(() => {})
 
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
-    initCanvas()
-    animate()
+    initCanvasRef.current()
+    animateRef.current()
 
     const handleResize = () => {
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current)
       }
       resizeTimeout.current = setTimeout(() => {
-        initCanvas()
+        initCanvasRef.current()
       }, 200)
     }
 
@@ -11154,11 +11164,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   }, [color])
 
   useEffect(() => {
-    onMouseMove()
+    onMouseMoveRef.current()
   }, [mousePosition.x, mousePosition.y])
 
   useEffect(() => {
-    initCanvas()
+    initCanvasRef.current()
   }, [refresh])
 
   const initCanvas = () => {
@@ -11322,8 +11332,12 @@ export const Particles: React.FC<ParticlesProps> = ({
         drawCircle(newCircle)
       }
     })
-    rafID.current = window.requestAnimationFrame(animate)
+    rafID.current = window.requestAnimationFrame(animateRef.current)
   }
+
+  initCanvasRef.current = initCanvas
+  onMouseMoveRef.current = onMouseMove
+  animateRef.current = animate
 
   return (
     <div
@@ -14186,7 +14200,7 @@ export const AnimatedSpan = ({
     if (sequence.activeIndex === itemIndex) {
       setHasStarted(true)
     }
-  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex])
+  }, [sequence, hasStarted, itemIndex])
 
   const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true
 
@@ -14245,16 +14259,24 @@ export const TypingAnimation = ({
 
   const sequence = useSequence()
   const itemIndex = useItemIndex()
+  const hasSequence = sequence !== null
+  const sequenceStarted = sequence?.sequenceStarted ?? false
+  const sequenceActiveIndex = sequence?.activeIndex ?? null
+  const sequenceCompleteItemRef = useRef<
+    SequenceContextValue["completeItem"] | null
+  >(null)
+  const sequenceItemIndexRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    sequenceCompleteItemRef.current = sequence?.completeItem ?? null
+    sequenceItemIndexRef.current = itemIndex
+  }, [sequence?.completeItem, itemIndex])
 
   useEffect(() => {
     let startTimeout: ReturnType<typeof setTimeout> | null = null
 
-    if (sequence && itemIndex !== null) {
-      if (
-        sequence.sequenceStarted &&
-        !started &&
-        sequence.activeIndex === itemIndex
-      ) {
+    if (hasSequence && itemIndex !== null) {
+      if (sequenceStarted && !started && sequenceActiveIndex === itemIndex) {
         setStarted(true)
       }
     } else if (!startOnView || isInView) {
@@ -14271,8 +14293,9 @@ export const TypingAnimation = ({
     startOnView,
     isInView,
     started,
-    sequence?.activeIndex,
-    sequence?.sequenceStarted,
+    hasSequence,
+    sequenceActiveIndex,
+    sequenceStarted,
     itemIndex,
   ])
 
@@ -14289,8 +14312,10 @@ export const TypingAnimation = ({
           if (typingEffect !== null) {
             clearInterval(typingEffect)
           }
-          if (sequence && itemIndex !== null) {
-            sequence.completeItem(itemIndex)
+          const completeItem = sequenceCompleteItemRef.current
+          const currentItemIndex = sequenceItemIndexRef.current
+          if (completeItem && currentItemIndex !== null) {
+            completeItem(currentItemIndex)
           }
         }
       }, duration)
