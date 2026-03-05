@@ -234,6 +234,7 @@ const Folder = forwardRef<
 
     return (
       <AccordionPrimitive.Item
+        ref={ref}
         {...props}
         value={value}
         className="relative h-full overflow-hidden"
@@ -293,6 +294,7 @@ const File = forwardRef<
       value,
       className,
       handleSelect,
+      onClick,
       isSelectable = true,
       isSelect,
       fileIcon,
@@ -317,7 +319,11 @@ const File = forwardRef<
           direction === "rtl" ? "rtl" : "ltr",
           className
         )}
-        onClick={() => selectItem(value)}
+        onClick={(event) => {
+          selectItem(value)
+          handleSelect?.(value)
+          onClick?.(event)
+        }}
         {...props}
       >
         {fileIcon ?? <FileIcon className="size-4" />}
@@ -364,7 +370,7 @@ const CollapseButton = forwardRef<
   return (
     <Button
       variant={"ghost"}
-      className="absolute right-2 bottom-1 h-8 w-fit p-1"
+      className={cn("absolute right-2 bottom-1 h-8 w-fit p-1", className)}
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll

@@ -100,8 +100,8 @@ export function DotPattern({
       const col = i % Math.ceil(dimensions.width / width)
       const row = Math.floor(i / Math.ceil(dimensions.width / width))
       return {
-        x: col * width + cx,
-        y: row * height + cy,
+        x: col * width + cx + x,
+        y: row * height + cy + y,
         delay: Math.random() * 5,
         duration: Math.random() * 3 + 2,
       }
@@ -124,7 +124,7 @@ export function DotPattern({
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </radialGradient>
       </defs>
-      {dots.map((dot, index) => (
+      {dots.map((dot) => (
         <motion.circle
           key={`${dot.x}-${dot.y}`}
           cx={dot.x}

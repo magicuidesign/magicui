@@ -3357,7 +3357,9 @@ const features = [
     description: "We automatically save your files as you type.",
     href: "/",
     cta: "Learn more",
-    background: <img alt="" className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
@@ -3366,7 +3368,9 @@ const features = [
     description: "Search through all your files in one place.",
     href: "/",
     cta: "Learn more",
-    background: <img alt="" className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
@@ -3375,7 +3379,9 @@ const features = [
     description: "Supports 100+ languages and counting.",
     href: "/",
     cta: "Learn more",
-    background: <img alt="" className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
@@ -3384,7 +3390,9 @@ const features = [
     description: "Use the calendar to filter your files by date.",
     href: "/",
     cta: "Learn more",
-    background: <img alt="" className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
@@ -3394,7 +3402,9 @@ const features = [
       "Get notified when someone shares a file or mentions you in a comment.",
     href: "/",
     cta: "Learn more",
-    background: <img alt="" className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
 ]
@@ -5770,8 +5780,8 @@ export function DotPattern({
       const col = i % Math.ceil(dimensions.width / width)
       const row = Math.floor(i / Math.ceil(dimensions.width / width))
       return {
-        x: col * width + cx,
-        y: row * height + cy,
+        x: col * width + cx + x,
+        y: row * height + cy + y,
         delay: Math.random() * 5,
         duration: Math.random() * 3 + 2,
       }
@@ -5794,7 +5804,7 @@ export function DotPattern({
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </radialGradient>
       </defs>
-      {dots.map((dot, index) => (
+      {dots.map((dot) => (
         <motion.circle
           key={`${dot.x}-${dot.y}`}
           cx={dot.x}
@@ -6360,6 +6370,7 @@ const Folder = forwardRef<
 
     return (
       <AccordionPrimitive.Item
+        ref={ref}
         {...props}
         value={value}
         className="relative h-full overflow-hidden"
@@ -6419,6 +6430,7 @@ const File = forwardRef<
       value,
       className,
       handleSelect,
+      onClick,
       isSelectable = true,
       isSelect,
       fileIcon,
@@ -6443,7 +6455,11 @@ const File = forwardRef<
           direction === "rtl" ? "rtl" : "ltr",
           className
         )}
-        onClick={() => selectItem(value)}
+        onClick={(event) => {
+          selectItem(value)
+          handleSelect?.(value)
+          onClick?.(event)
+        }}
         {...props}
       >
         {fileIcon ?? <FileIcon className="size-4" />}
@@ -6490,7 +6506,7 @@ const CollapseButton = forwardRef<
   return (
     <Button
       variant={"ghost"}
-      className="absolute right-2 bottom-1 h-8 w-fit p-1"
+      className={cn("absolute right-2 bottom-1 h-8 w-fit p-1", className)}
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll
@@ -7901,7 +7917,6 @@ function easeOutCubic(t: number): number {
 export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -7915,7 +7930,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     duration: number
   } | null>(null)
   const animationFrameRef = useRef<number>(0)
-  const rotationRef = useRef(rotation)
+  const rotationRef = useRef({ x: 0, y: 0 })
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([])
   const imagesLoadedRef = useRef<boolean[]>([])
 
@@ -13429,7 +13444,7 @@ Description: A customizable, physics-based smooth cursor animation component wit
 --- file: magicui/smooth-cursor.tsx ---
 "use client"
 
-import { FC, useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef } from "react"
 import { motion, useSpring } from "motion/react"
 
 interface Position {
@@ -13518,7 +13533,6 @@ export function SmoothCursor({
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false)
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
@@ -13580,7 +13594,6 @@ export function SmoothCursor({
         previousAngle.current = currentAngle
 
         scale.set(0.95)
-        setIsMoving(true)
 
         if (timeout !== null) {
           clearTimeout(timeout)
@@ -13588,7 +13601,6 @@ export function SmoothCursor({
 
         timeout = setTimeout(() => {
           scale.set(1)
-          setIsMoving(false)
         }, 150)
       }
     }
