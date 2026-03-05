@@ -154,22 +154,18 @@ jobs:
 
       - name: Verify registry artifacts are committed
         run: |
-          if ! git diff --quiet -- \
+          CHANGED_FILES="$(git status --porcelain --untracked-files=all -- \
             apps/www/registry.json \
             apps/www/registry/__index__.tsx \
             apps/www/public/registry.json \
             apps/www/public/r \
             apps/www/public/llms.txt \
-            apps/www/public/llms-full.txt; then
+            apps/www/public/llms-full.txt)"
+
+          if [ -n "$CHANGED_FILES" ]; then
             echo "Registry artifacts are out of date."
             echo "Changed files:"
-            git diff --name-only -- \
-              apps/www/registry.json \
-              apps/www/registry/__index__.tsx \
-              apps/www/public/registry.json \
-              apps/www/public/r \
-              apps/www/public/llms.txt \
-              apps/www/public/llms-full.txt
+            printf '%s\n' "$CHANGED_FILES"
             echo "Run: pnpm build:registry"
             echo "Then commit generated files."
             exit 1
