@@ -172,6 +172,8 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           )
+        default:
+          return null
       }
     })}
   </div>

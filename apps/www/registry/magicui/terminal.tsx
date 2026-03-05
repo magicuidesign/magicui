@@ -148,24 +148,25 @@ export const TypingAnimation = ({
   const itemIndex = useItemIndex()
 
   useEffect(() => {
+    let startTimeout: ReturnType<typeof setTimeout> | null = null
+
     if (sequence && itemIndex !== null) {
-      if (!sequence.sequenceStarted) return
-      if (started) return
-      if (sequence.activeIndex === itemIndex) {
+      if (
+        sequence.sequenceStarted &&
+        !started &&
+        sequence.activeIndex === itemIndex
+      ) {
         setStarted(true)
       }
-      return
+    } else if (!startOnView || isInView) {
+      startTimeout = setTimeout(() => setStarted(true), delay)
     }
 
-    if (!startOnView) {
-      const startTimeout = setTimeout(() => setStarted(true), delay)
-      return () => clearTimeout(startTimeout)
+    return () => {
+      if (startTimeout !== null) {
+        clearTimeout(startTimeout)
+      }
     }
-
-    if (!isInView) return
-
-    const startTimeout = setTimeout(() => setStarted(true), delay)
-    return () => clearTimeout(startTimeout)
   }, [
     delay,
     startOnView,
@@ -177,23 +178,29 @@ export const TypingAnimation = ({
   ])
 
   useEffect(() => {
-    if (!started) return
+    let typingEffect: ReturnType<typeof setInterval> | null = null
 
-    let i = 0
-    const typingEffect = setInterval(() => {
-      if (i < children.length) {
-        setDisplayedText(children.substring(0, i + 1))
-        i++
-      } else {
-        clearInterval(typingEffect)
-        if (sequence && itemIndex !== null) {
-          sequence.completeItem(itemIndex)
+    if (started) {
+      let i = 0
+      typingEffect = setInterval(() => {
+        if (i < children.length) {
+          setDisplayedText(children.substring(0, i + 1))
+          i++
+        } else {
+          if (typingEffect !== null) {
+            clearInterval(typingEffect)
+          }
+          if (sequence && itemIndex !== null) {
+            sequence.completeItem(itemIndex)
+          }
         }
-      }
-    }, duration)
+      }, duration)
+    }
 
     return () => {
-      clearInterval(typingEffect)
+      if (typingEffect !== null) {
+        clearInterval(typingEffect)
+      }
     }
   }, [children, duration, started])
 

@@ -124,38 +124,43 @@ export function HyperText({
 
   // Handle scramble animation
   useEffect(() => {
-    if (!isAnimating) return
+    let animationFrameId: number | null = null
 
-    const maxIterations = children.length
-    const startTime = performance.now()
-    let animationFrameId: number
+    if (isAnimating) {
+      const maxIterations = children.length
+      const startTime = performance.now()
 
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
 
-      iterationCount.current = progress * maxIterations
+        iterationCount.current = progress * maxIterations
 
-      setDisplayText((currentText) =>
-        currentText.map((letter, index) =>
-          letter === " "
-            ? letter
-            : index <= iterationCount.current
-              ? children[index]
-              : characterSet[getRandomInt(characterSet.length)]
+        setDisplayText((currentText) =>
+          currentText.map((letter, index) =>
+            letter === " "
+              ? letter
+              : index <= iterationCount.current
+                ? children[index]
+                : characterSet[getRandomInt(characterSet.length)]
+          )
         )
-      )
 
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate)
-      } else {
-        setIsAnimating(false)
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(animate)
+        } else {
+          setIsAnimating(false)
+        }
       }
+
+      animationFrameId = requestAnimationFrame(animate)
     }
 
-    animationFrameId = requestAnimationFrame(animate)
-
-    return () => cancelAnimationFrame(animationFrameId)
+    return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
   }, [children, duration, isAnimating, characterSet])
 
   return (
