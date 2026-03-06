@@ -1209,7 +1209,7 @@ export const Index: Record<string, any> = {
     name: "magic-card-demo-2",
     description: "Example showing a magic card with an orb effect.",
     type: "registry:example",
-    registryDependencies: ["@magicui/magic-card"],
+    registryDependencies: ["@magicui/magic-card","@magicui/avatar-circles"],
     files: [{
       path: "registry/example/magic-card-demo2.tsx",
       type: "registry:example",

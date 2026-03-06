@@ -1282,7 +1282,8 @@
       "title": "Magic Card Demo 2",
       "description": "Example showing a magic card with an orb effect.",
       "registryDependencies": [
-        "@magicui/magic-card"
+        "@magicui/magic-card",
+        "@magicui/avatar-circles"
       ],
       "files": [
         {

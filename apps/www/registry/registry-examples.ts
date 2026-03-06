@@ -20,7 +20,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Magic Card Demo 2",
     description: "Example showing a magic card with an orb effect.",
-    registryDependencies: ["@magicui/magic-card"],
+    registryDependencies: ["@magicui/magic-card", "@magicui/avatar-circles"],
     files: [
       {
         path: "example/magic-card-demo2.tsx",
