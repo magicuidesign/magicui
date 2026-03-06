@@ -4,7 +4,9 @@
   "type": "registry:example",
   "title": "Confetti Emoji",
   "description": "Example showing confetti with emoji particles.",
-  "registryDependencies": [],
+  "registryDependencies": [
+    "@magicui/confetti"
+  ],
   "files": [
     {
       "path": "registry/example/confetti-emoji.tsx",

@@ -2977,7 +2977,7 @@ export const Index: Record<string, any> = {
     name: "confetti-fireworks",
     description: "Example showing fireworks-style confetti animation.",
     type: "registry:example",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [{
       path: "registry/example/confetti-fireworks.tsx",
       type: "registry:example",
@@ -2994,7 +2994,7 @@ export const Index: Record<string, any> = {
     name: "confetti-stars",
     description: "Example showing star-shaped confetti animation.",
     type: "registry:example",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [{
       path: "registry/example/confetti-stars.tsx",
       type: "registry:example",
@@ -3011,7 +3011,7 @@ export const Index: Record<string, any> = {
     name: "confetti-side-cannons",
     description: "Example showing side-mounted confetti cannons.",
     type: "registry:example",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [{
       path: "registry/example/confetti-side-cannons.tsx",
       type: "registry:example",
@@ -3028,7 +3028,7 @@ export const Index: Record<string, any> = {
     name: "confetti-custom-shapes",
     description: "Example showing confetti with custom shape particles.",
     type: "registry:example",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [{
       path: "registry/example/confetti-custom-shapes.tsx",
       type: "registry:example",
@@ -3045,7 +3045,7 @@ export const Index: Record<string, any> = {
     name: "confetti-emoji",
     description: "Example showing confetti with emoji particles.",
     type: "registry:example",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [{
       path: "registry/example/confetti-emoji.tsx",
       type: "registry:example",

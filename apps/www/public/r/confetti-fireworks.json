@@ -4,7 +4,9 @@
   "type": "registry:example",
   "title": "Confetti Fireworks",
   "description": "Example showing fireworks-style confetti animation.",
-  "registryDependencies": [],
+  "registryDependencies": [
+    "@magicui/confetti"
+  ],
   "files": [
     {
       "path": "registry/example/confetti-fireworks.tsx",

@@ -4,7 +4,9 @@
   "type": "registry:example",
   "title": "Confetti Stars",
   "description": "Example showing star-shaped confetti animation.",
-  "registryDependencies": [],
+  "registryDependencies": [
+    "@magicui/confetti"
+  ],
   "files": [
     {
       "path": "registry/example/confetti-stars.tsx",

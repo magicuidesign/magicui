@@ -1408,7 +1408,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Fireworks",
     description: "Example showing fireworks-style confetti animation.",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-fireworks.tsx",
@@ -1421,7 +1421,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Stars",
     description: "Example showing star-shaped confetti animation.",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-stars.tsx",
@@ -1434,7 +1434,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Side Cannons",
     description: "Example showing side-mounted confetti cannons.",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-side-cannons.tsx",
@@ -1447,7 +1447,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Custom Shapes",
     description: "Example showing confetti with custom shape particles.",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-custom-shapes.tsx",
@@ -1460,7 +1460,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Confetti Emoji",
     description: "Example showing confetti with emoji particles.",
-    registryDependencies: [],
+    registryDependencies: ["@magicui/confetti"],
     files: [
       {
         path: "example/confetti-emoji.tsx",
