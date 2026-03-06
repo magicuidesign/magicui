@@ -504,6 +504,16 @@ function formatIssue(issue: ExampleIssue) {
   ].join("\n")
 }
 
+// Treat missing files or missing dependencies as failures that need action.
+function hasBlockingIssue(issue: ExampleIssue) {
+  return issue.missingDependencies.length > 0 || issue.missingFiles.length > 0
+}
+
+// Treat extra dependencies as non-blocking warnings to avoid destructive churn.
+function hasWarningIssue(issue: ExampleIssue) {
+  return issue.extraDependencies.length > 0 && !hasBlockingIssue(issue)
+}
+
 // Raise a hard failure when an example points at files that cannot be read.
 export function assertNoMissingExampleFiles(issues: ExampleIssue[]) {
   const missingFileIssues = issues.filter((issue) => issue.missingFiles.length > 0)
@@ -597,12 +607,7 @@ export async function syncExampleRegistryDependencies({
     const missingDependencies = expectedDependencies.filter((dependency) => {
       return !currentMagicUiDependencies.includes(dependency)
     })
-    const nextDependencies = [
-      ...normalizedCurrentDependencies.filter((dependency) => {
-        return !isMagicUiPackage(dependency) || expectedDependencies.includes(dependency)
-      }),
-      ...missingDependencies,
-    ]
+    const nextDependencies = [...normalizedCurrentDependencies, ...missingDependencies]
     const dependenciesChanged =
       nextDependencies.length !== currentDependencies.length ||
       nextDependencies.some(
@@ -635,18 +640,27 @@ export async function syncExampleRegistryDependencies({
 async function main() {
   const mode = process.argv.includes("--check") ? "check" : "fix"
   const issues = await syncExampleRegistryDependencies({ mode })
+  const blockingIssues = issues.filter(hasBlockingIssue)
+  const warningIssues = issues.filter(hasWarningIssue)
 
   if (issues.length === 0) {
     console.log("registry example dependencies are in sync")
     return
   }
 
-  const issueSummary = issues.map(formatIssue).join("\n")
+  const blockingIssueSummary = blockingIssues.map(formatIssue).join("\n")
+  const warningIssueSummary = warningIssues.map(formatIssue).join("\n")
 
   if (mode === "check") {
-    console.error("registry example dependency mismatches found:")
-    console.error(issueSummary)
-    process.exit(1)
+    if (blockingIssues.length > 0) {
+      console.error("registry example dependency mismatches found:")
+      console.error(blockingIssueSummary)
+      process.exit(1)
+    }
+
+    console.warn("registry example dependencies have non-blocking warnings:")
+    console.warn(warningIssueSummary)
+    return
   }
 
   try {
@@ -657,8 +671,17 @@ async function main() {
     process.exit(1)
   }
 
-  console.log("updated registry example dependencies:")
-  console.log(issueSummary)
+  if (blockingIssues.length > 0) {
+    console.log("updated registry example dependencies:")
+    console.log(blockingIssueSummary)
+  } else {
+    console.log("registry example dependencies are in sync")
+  }
+
+  if (warningIssues.length > 0) {
+    console.warn("registry example dependencies have non-blocking warnings:")
+    console.warn(warningIssueSummary)
+  }
 }
 
 if (isMainModule()) {
