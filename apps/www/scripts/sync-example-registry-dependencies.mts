@@ -14,6 +14,7 @@ const scriptPath = fileURLToPath(import.meta.url)
 const appRoot = path.resolve(path.dirname(scriptPath), "..")
 const registryRoot = path.join(appRoot, "registry")
 const registryExamplesPath = path.join(registryRoot, "registry-examples.ts")
+const registryUiPath = path.join(registryRoot, "registry-ui.ts")
 
 type SyncMode = "check" | "fix"
 
@@ -143,6 +144,21 @@ function getRegistryItemType(node: Node) {
   return getStringLiteralValue(typeProperty.getInitializer())
 }
 
+// Read a registry array declaration like examples/ui so items can be inspected.
+function getRegistryItemsDeclaration(sourceFile: Node, declarationName: string) {
+  if (!Node.isSourceFile(sourceFile)) {
+    return null
+  }
+
+  const declaration = sourceFile.getVariableDeclaration(declarationName)
+  const initializer = declaration?.getInitializer()
+  if (!initializer || !Node.isArrayLiteralExpression(initializer)) {
+    return null
+  }
+
+  return initializer
+}
+
 // Preserve insertion order while removing duplicates.
 function dedupe(values: string[]) {
   const seen = new Set<string>()
@@ -210,6 +226,25 @@ function getRegistryDependencyNameFromFilePath(filePath: string) {
 // Limit exact matching to magicui package entries and leave other deps alone.
 function isMagicUiPackage(dependency: string) {
   return dependency.startsWith(MAGICUI_PACKAGE_PREFIX)
+}
+
+// Infer the primary UI package from example naming conventions like confetti-fireworks.
+function inferRegistryDependenciesFromExampleName(
+  exampleName: string,
+  registryUiNames: string[]
+) {
+  const matchingUiNames = registryUiNames
+    .filter((uiName) => {
+      return exampleName === uiName || exampleName.startsWith(`${uiName}-`)
+    })
+    .sort((left, right) => right.length - left.length || left.localeCompare(right))
+
+  const longestMatch = matchingUiNames.at(0)
+  if (!longestMatch) {
+    return []
+  }
+
+  return [`${MAGICUI_PACKAGE_PREFIX}${longestMatch}`]
 }
 
 // Collect static and dynamic module specifiers from a source file.
@@ -494,15 +529,36 @@ export async function syncExampleRegistryDependencies({
   })
   const registryExamplesSourceFile =
     project.addSourceFileAtPath(registryExamplesPath)
+  const registryUiSourceFile = project.addSourceFileAtPath(registryUiPath)
 
-  const examplesDeclaration = registryExamplesSourceFile.getVariableDeclaration(
+  const initializer = getRegistryItemsDeclaration(
+    registryExamplesSourceFile,
     "examples"
   )
-  const initializer = examplesDeclaration?.getInitializer()
+  const uiInitializer = getRegistryItemsDeclaration(registryUiSourceFile, "ui")
 
-  if (!initializer || !Node.isArrayLiteralExpression(initializer)) {
+  if (!initializer) {
     throw new Error("Could not find the examples array in registry-examples.ts.")
   }
+
+  if (!uiInitializer) {
+    throw new Error("Could not find the ui array in registry-ui.ts.")
+  }
+
+  const registryUiNames = uiInitializer
+    .getElements()
+    .flatMap((item) => {
+      if (!Node.isObjectLiteralExpression(item)) {
+        return []
+      }
+
+      if (getRegistryItemType(item) !== "registry:ui") {
+        return []
+      }
+
+      return [getRegistryItemName(item)]
+    })
+    .sort((left, right) => right.length - left.length || left.localeCompare(right))
 
   const issues: ExampleIssue[] = []
 
@@ -522,20 +578,28 @@ export async function syncExampleRegistryDependencies({
     )
     const { dependencies: importedDependencies, missingFiles } =
       await collectExampleRegistryDependencies(project, exampleFiles)
+    const inferredDependencies = inferRegistryDependenciesFromExampleName(
+      exampleName,
+      registryUiNames
+    )
+    const expectedDependencies = dedupe([
+      ...importedDependencies,
+      ...inferredDependencies,
+    ]).sort((left, right) => left.localeCompare(right))
 
     const normalizedCurrentDependencies = dedupe(currentDependencies)
     const currentMagicUiDependencies = normalizedCurrentDependencies.filter(
       isMagicUiPackage
     )
     const extraDependencies = currentMagicUiDependencies.filter((dependency) => {
-      return !importedDependencies.includes(dependency)
+      return !expectedDependencies.includes(dependency)
     })
-    const missingDependencies = importedDependencies.filter((dependency) => {
+    const missingDependencies = expectedDependencies.filter((dependency) => {
       return !currentMagicUiDependencies.includes(dependency)
     })
     const nextDependencies = [
       ...normalizedCurrentDependencies.filter((dependency) => {
-        return !isMagicUiPackage(dependency) || importedDependencies.includes(dependency)
+        return !isMagicUiPackage(dependency) || expectedDependencies.includes(dependency)
       }),
       ...missingDependencies,
     ]
