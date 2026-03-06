@@ -484,7 +484,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Tweet Card Demo",
     description: "Example showing a tweet card with author info.",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card", "@magicui/client-tweet-card"],
     files: [
       {
         path: "example/tweet-card-demo.tsx",
@@ -497,7 +497,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Tweet Card Images",
     description: "Example showing a tweet card with images.",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card", "@magicui/client-tweet-card"],
     files: [
       {
         path: "example/tweet-card-images.tsx",
@@ -510,7 +510,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Tweet Card Meta Preview",
     description: "Example showing a tweet card with meta preview.",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card", "@magicui/client-tweet-card"],
     files: [
       {
         path: "example/tweet-card-meta-preview.tsx",

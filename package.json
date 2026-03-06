@@ -15,9 +15,10 @@
     "format:fix": "turbo run format:fix",
     "format:fix:silent": "turbo run format:fix -- --log-level silent",
     "format:check": "turbo run format:check",
+    "registry-deps:check": "pnpm --filter=www registry-deps:check",
     "build:docs": "turbo run build:docs --filter=www",
     "build:registry": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:fix:silent",
-    "check": "pnpm lint && pnpm typecheck && pnpm format:check"
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm registry-deps:check"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
