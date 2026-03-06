@@ -5,7 +5,10 @@ import { rimraf } from "rimraf"
 import { Registry } from "shadcn/schema"
 
 import { siteConfig } from "../config/site"
-import { syncExampleRegistryDependencies } from "./sync-example-registry-dependencies.mts"
+import {
+  assertNoMissingExampleFiles,
+  syncExampleRegistryDependencies,
+} from "./sync-example-registry-dependencies.mts"
 
 async function loadRegistry(): Promise<Registry> {
   const { registry } = await import("../registry/index.ts")
@@ -288,7 +291,8 @@ async function buildRegistry() {
 
 try {
   console.log("🔎 Syncing registry example dependencies...")
-  await syncExampleRegistryDependencies({ mode: "fix" })
+  const syncIssues = await syncExampleRegistryDependencies({ mode: "fix" })
+  assertNoMissingExampleFiles(syncIssues)
   console.log("✅ Registry example dependencies synced")
 
   const registry = await loadRegistry()

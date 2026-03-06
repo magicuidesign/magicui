@@ -313,6 +313,22 @@ function formatIssue(issue: ExampleIssue) {
   ].join("\n")
 }
 
+// Raise a hard failure when an example points at files that cannot be read.
+export function assertNoMissingExampleFiles(issues: ExampleIssue[]) {
+  const missingFileIssues = issues.filter((issue) => issue.missingFiles.length > 0)
+  if (missingFileIssues.length === 0) {
+    return
+  }
+
+  const issueSummary = missingFileIssues.map(formatIssue).join("\n")
+  throw new Error(
+    [
+      "registry example dependency sync failed because some example files are missing:",
+      issueSummary,
+    ].join("\n")
+  )
+}
+
 // Compare imported magicui components with declared registryDependencies.
 export async function syncExampleRegistryDependencies({
   mode,
@@ -413,10 +429,11 @@ async function main() {
     process.exit(1)
   }
 
-  const missingFileIssues = issues.filter((issue) => issue.missingFiles.length > 0)
-  if (missingFileIssues.length > 0) {
+  try {
+    assertNoMissingExampleFiles(issues)
+  } catch (error) {
     console.error("registry example dependency sync completed with missing files:")
-    console.error(missingFileIssues.map(formatIssue).join("\n"))
+    console.error(error instanceof Error ? error.message : error)
     process.exit(1)
   }
 
