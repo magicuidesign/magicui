@@ -5,9 +5,17 @@ import { rimraf } from "rimraf"
 import { Registry } from "shadcn/schema"
 
 import { siteConfig } from "../config/site"
-import { registry } from "../registry/index"
+import {
+  assertNoMissingExampleFiles,
+  syncExampleRegistryDependencies,
+} from "./sync-example-registry-dependencies.mts"
 
-async function buildRegistryIndex() {
+async function loadRegistry(): Promise<Registry> {
+  const { registry } = await import("../registry/index.ts")
+  return registry
+}
+
+async function buildRegistryIndex(registry: Registry) {
   let index = `/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck
@@ -64,7 +72,7 @@ export const Index: Record<string, any> = {`
   await fs.writeFile(path.join(process.cwd(), "registry/__index__.tsx"), index)
 }
 
-async function buildRegistryJsonFile() {
+async function buildRegistryJsonFile(registry: Registry) {
   // 1. Fix the path for registry items.
   const fixedRegistry = {
     ...registry,
@@ -136,7 +144,7 @@ async function readRegistryFilesContents(item: RegistryItem): Promise<string> {
   return contents.filter(Boolean).join("\n")
 }
 
-function getComponentExamples() {
+function getComponentExamples(registry: Registry) {
   const examplesByComponent = new Map<string, string[]>()
 
   registry.items
@@ -156,7 +164,7 @@ function getComponentExamples() {
   return examplesByComponent
 }
 
-async function generateLlmsContent() {
+async function generateLlmsContent(registry: Registry) {
   const components = registry.items
     .filter((item) => item.type === "registry:ui")
     .sort((a, b) => a.name.localeCompare(b.name))
@@ -206,6 +214,7 @@ async function generateLlmsContent() {
 }
 
 async function generateLlmsFullContent(
+  registry: Registry,
   examplesByComponent: Map<string, string[]>
 ) {
   const components = registry.items
@@ -249,12 +258,12 @@ async function generateLlmsFullContent(
   return componentContents.join("\n\n\n")
 }
 
-async function buildLlmsFiles() {
-  const examplesByComponent = getComponentExamples()
+async function buildLlmsFiles(registry: Registry) {
+  const examplesByComponent = getComponentExamples(registry)
 
   const [minContent, fullContent] = await Promise.all([
-    generateLlmsContent(),
-    generateLlmsFullContent(examplesByComponent),
+    generateLlmsContent(registry),
+    generateLlmsFullContent(registry, examplesByComponent),
   ])
 
   const publicDir = path.join(process.cwd(), "public")
@@ -281,16 +290,23 @@ async function buildRegistry() {
 }
 
 try {
+  console.log("🔎 Syncing registry example dependencies...")
+  const syncIssues = await syncExampleRegistryDependencies({ mode: "fix" })
+  assertNoMissingExampleFiles(syncIssues)
+  console.log("✅ Registry example dependencies synced")
+
+  const registry = await loadRegistry()
+
   console.log("��️ Building registry/__index__.tsx...")
-  await buildRegistryIndex()
+  await buildRegistryIndex(registry)
   console.log("✅ Registry index built successfully")
 
   console.log("💅 Building registry.json...")
-  await buildRegistryJsonFile()
+  await buildRegistryJsonFile(registry)
   console.log("✅ Registry JSON file built successfully")
 
   console.log("🧠 Building llms files...")
-  await buildLlmsFiles()
+  await buildLlmsFiles(registry)
   console.log("✅ llms-min.txt and llms.txt built successfully")
 
   console.log("🏗️ Building registry...")

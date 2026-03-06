@@ -1821,7 +1821,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-demo",
     description: "Example showing a tweet card with author info.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card","@magicui/tweet-card"],
     files: [{
       path: "registry/example/tweet-card-demo.tsx",
       type: "registry:example",
@@ -1838,7 +1838,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-images",
     description: "Example showing a tweet card with images.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card","@magicui/tweet-card"],
     files: [{
       path: "registry/example/tweet-card-images.tsx",
       type: "registry:example",
@@ -1855,7 +1855,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-meta-preview",
     description: "Example showing a tweet card with meta preview.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card","@magicui/tweet-card"],
     files: [{
       path: "registry/example/tweet-card-meta-preview.tsx",
       type: "registry:example",
@@ -1889,7 +1889,7 @@ export const Index: Record<string, any> = {
     name: "bento-demo",
     description: "Example showing a bento grid layout for showcasing features.",
     type: "registry:example",
-    registryDependencies: ["button","calendar","@magicui/marquee","@magicui/bento-grid","@magicui/animated-list-demo","@magicui/animated-beam-multiple-outputs"],
+    registryDependencies: ["button","calendar","@magicui/marquee","@magicui/bento-grid","@magicui/animated-beam","@magicui/animated-list","@magicui/animated-beam-multiple-outputs","@magicui/animated-list-demo"],
     files: [{
       path: "registry/example/bento-demo.tsx",
       type: "registry:example",

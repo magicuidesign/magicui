@@ -7,6 +7,8 @@
     "preinstall": "npx only-allow pnpm",
     "postinstall": "fumadocs-mdx",
     "dev": "next dev",
+    "registry-deps:check": "npx tsx ./scripts/sync-example-registry-dependencies.mts --check",
+    "registry-deps:fix": "npx tsx ./scripts/sync-example-registry-dependencies.mts --fix",
     "prebuild": "pnpm build:registry",
     "build": "next build",
     "build:registry": "npx tsx ./scripts/build-registry.mts && prettier --log-level silent --write \"registry/**/*.{ts,tsx,mdx}\" --cache",
@@ -17,7 +19,7 @@
     "lint:fix": "eslint --fix .",
     "format:fix": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "check": "pnpm lint && pnpm typecheck && pnpm format:check"
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm registry-deps:check"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

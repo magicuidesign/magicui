@@ -240,8 +240,17 @@ export const CoolMode: React.FC<CoolModeProps> = ({ children, options }) => {
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    if (ref.current) {
-      return applyParticleEffect(ref.current, options)
+    const element = ref.current
+    let cleanup: (() => void) | null = null
+
+    if (element) {
+      cleanup = applyParticleEffect(element, options)
+    }
+
+    return () => {
+      if (cleanup) {
+        cleanup()
+      }
     }
   }, [options])
 

@@ -351,6 +351,129 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
 }
 
 
+===== EXAMPLE: bento-demo =====
+Title: Bento Demo
+
+--- file: example/bento-demo.tsx ---
+import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons"
+import { BellIcon, Share2Icon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import AnimatedBeamMultipleOutputDemo from "@/registry/example/animated-beam-multiple-outputs"
+import AnimatedListDemo from "@/registry/example/animated-list-demo"
+import { BentoCard, BentoGrid } from "@/registry/magicui/bento-grid"
+import { Marquee } from "@/registry/magicui/marquee"
+
+const files = [
+  {
+    name: "bitcoin.pdf",
+    body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+  },
+  {
+    name: "finances.xlsx",
+    body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+  },
+  {
+    name: "logo.svg",
+    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
+  },
+  {
+    name: "keys.gpg",
+    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+  },
+  {
+    name: "seed.txt",
+    body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+  },
+]
+
+const features = [
+  {
+    Icon: FileTextIcon,
+    name: "Save your files",
+    description: "We automatically save your files as you type.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <Marquee
+        pauseOnHover
+        className="absolute top-10 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] [--duration:20s]"
+      >
+        {files.map((f, idx) => (
+          <figure
+            key={idx}
+            className={cn(
+              "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+              "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+              "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+            )}
+          >
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-col">
+                <figcaption className="text-sm font-medium dark:text-white">
+                  {f.name}
+                </figcaption>
+              </div>
+            </div>
+            <blockquote className="mt-2 text-xs">{f.body}</blockquote>
+          </figure>
+        ))}
+      </Marquee>
+    ),
+  },
+  {
+    Icon: BellIcon,
+    name: "Notifications",
+    description: "Get notified when something happens.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <AnimatedListDemo className="absolute top-4 right-2 h-[300px] w-full scale-75 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90" />
+    ),
+  },
+  {
+    Icon: Share2Icon,
+    name: "Integrations",
+    description: "Supports 100+ integrations and counting.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <AnimatedBeamMultipleOutputDemo className="absolute top-4 right-2 h-[300px] border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-105" />
+    ),
+  },
+  {
+    Icon: CalendarIcon,
+    name: "Calendar",
+    description: "Use the calendar to filter your files by date.",
+    className: "col-span-3 lg:col-span-1",
+    href: "#",
+    cta: "Learn more",
+    background: (
+      <Calendar
+        mode="single"
+        selected={new Date(2022, 4, 11, 0, 0, 0)}
+        className="absolute top-10 right-0 origin-top scale-75 rounded-md border [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90"
+      />
+    ),
+  },
+]
+
+export default function BentoDemo() {
+  return (
+    <BentoGrid>
+      {features.map((feature, idx) => (
+        <BentoCard key={idx} {...feature} />
+      ))}
+    </BentoGrid>
+  )
+}
+
+
 ===== EXAMPLE: animated-beam-demo =====
 Title: Animated Beam Demo
 
@@ -2183,7 +2306,7 @@ export function AnimatedCircularProgressBar({
       </svg>
       <span
         data-current-value={currentPercent}
-        className="animate-in fade-in absolute inset-0 m-auto size-fit delay-[var(--delay)] duration-[var(--transition-length)] ease-linear"
+        className="animate-in fade-in absolute inset-0 m-auto size-fit delay-(--delay) duration-(--transition-length) ease-linear"
       >
         {currentPercent}
       </span>
@@ -2261,7 +2384,7 @@ export function AnimatedGradientText({
         } as React.CSSProperties
       }
       className={cn(
-        `animate-gradient inline bg-gradient-to-r from-[var(--color-from)] via-[var(--color-to)] to-[var(--color-from)] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+        `animate-gradient inline bg-linear-to-r from-(--color-from) via-(--color-to) to-(--color-from) bg-size-[var(--bg-size)_100%] bg-clip-text text-transparent`,
         className
       )}
       {...props}
@@ -2428,28 +2551,32 @@ export function AnimatedGridPattern({
 
   useEffect(() => {
     const element = containerRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        setDimensions((currentDimensions) => {
-          const nextWidth = entry.contentRect.width
-          const nextHeight = entry.contentRect.height
-          if (
-            currentDimensions.width === nextWidth &&
-            currentDimensions.height === nextHeight
-          ) {
-            return currentDimensions
-          }
-          return { width: nextWidth, height: nextHeight }
-        })
-      }
-    })
+    if (element) {
+      resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          setDimensions((currentDimensions) => {
+            const nextWidth = entry.contentRect.width
+            const nextHeight = entry.contentRect.height
+            if (
+              currentDimensions.width === nextWidth &&
+              currentDimensions.height === nextHeight
+            ) {
+              return currentDimensions
+            }
+            return { width: nextWidth, height: nextHeight }
+          })
+        }
+      })
 
-    resizeObserver.observe(element)
+      resizeObserver.observe(element)
+    }
 
     return () => {
-      resizeObserver.disconnect()
+      if (resizeObserver) {
+        resizeObserver.disconnect()
+      }
     }
   }, [])
 
@@ -2580,12 +2707,18 @@ export const AnimatedList = React.memo(
     )
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (index < childrenArray.length - 1) {
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length)
         }, delay)
+      }
 
-        return () => clearTimeout(timeout)
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [index, delay, childrenArray.length])
 
@@ -2612,6 +2745,129 @@ export const AnimatedList = React.memo(
 )
 
 AnimatedList.displayName = "AnimatedList"
+
+
+===== EXAMPLE: bento-demo =====
+Title: Bento Demo
+
+--- file: example/bento-demo.tsx ---
+import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons"
+import { BellIcon, Share2Icon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import AnimatedBeamMultipleOutputDemo from "@/registry/example/animated-beam-multiple-outputs"
+import AnimatedListDemo from "@/registry/example/animated-list-demo"
+import { BentoCard, BentoGrid } from "@/registry/magicui/bento-grid"
+import { Marquee } from "@/registry/magicui/marquee"
+
+const files = [
+  {
+    name: "bitcoin.pdf",
+    body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+  },
+  {
+    name: "finances.xlsx",
+    body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+  },
+  {
+    name: "logo.svg",
+    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
+  },
+  {
+    name: "keys.gpg",
+    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+  },
+  {
+    name: "seed.txt",
+    body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+  },
+]
+
+const features = [
+  {
+    Icon: FileTextIcon,
+    name: "Save your files",
+    description: "We automatically save your files as you type.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <Marquee
+        pauseOnHover
+        className="absolute top-10 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] [--duration:20s]"
+      >
+        {files.map((f, idx) => (
+          <figure
+            key={idx}
+            className={cn(
+              "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+              "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+              "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+              "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+            )}
+          >
+            <div className="flex flex-row items-center gap-2">
+              <div className="flex flex-col">
+                <figcaption className="text-sm font-medium dark:text-white">
+                  {f.name}
+                </figcaption>
+              </div>
+            </div>
+            <blockquote className="mt-2 text-xs">{f.body}</blockquote>
+          </figure>
+        ))}
+      </Marquee>
+    ),
+  },
+  {
+    Icon: BellIcon,
+    name: "Notifications",
+    description: "Get notified when something happens.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <AnimatedListDemo className="absolute top-4 right-2 h-[300px] w-full scale-75 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90" />
+    ),
+  },
+  {
+    Icon: Share2Icon,
+    name: "Integrations",
+    description: "Supports 100+ integrations and counting.",
+    href: "#",
+    cta: "Learn more",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <AnimatedBeamMultipleOutputDemo className="absolute top-4 right-2 h-[300px] border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-105" />
+    ),
+  },
+  {
+    Icon: CalendarIcon,
+    name: "Calendar",
+    description: "Use the calendar to filter your files by date.",
+    className: "col-span-3 lg:col-span-1",
+    href: "#",
+    cta: "Learn more",
+    background: (
+      <Calendar
+        mode="single"
+        selected={new Date(2022, 4, 11, 0, 0, 0)}
+        className="absolute top-10 right-0 origin-top scale-75 rounded-md border [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90"
+      />
+    ),
+  },
+]
+
+export default function BentoDemo() {
+  return (
+    <BentoGrid>
+      {features.map((feature, idx) => (
+        <BentoCard key={idx} {...feature} />
+      ))}
+    </BentoGrid>
+  )
+}
 
 
 ===== EXAMPLE: animated-list-demo =====
@@ -2761,10 +3017,10 @@ export const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({
         "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70",
 
         // Shine effect
-        "animate-shiny-text [background-size:var(--shiny-width)_100%] bg-clip-text [background-position:0_0] bg-no-repeat [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]",
+        "animate-shiny-text bg-size-[var(--shiny-width)_100%] bg-clip-text bg-position-[0_0] bg-no-repeat [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]",
 
         // Shine gradient
-        "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent dark:via-white/80",
+        "bg-linear-to-r from-transparent via-black/80 via-50% to-transparent dark:via-white/80",
 
         className
       )}
@@ -2846,7 +3102,18 @@ export const AnimatedThemeToggler = ({
   }, [])
 
   const toggleTheme = useCallback(() => {
-    if (!buttonRef.current) return
+    const button = buttonRef.current
+    if (!button) return
+
+    const { top, left, width, height } = button.getBoundingClientRect()
+    const x = left + width / 2
+    const y = top + height / 2
+    const viewportWidth = window.visualViewport?.width ?? window.innerWidth
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight
+    const maxRadius = Math.hypot(
+      Math.max(x, viewportWidth - x),
+      Math.max(y, viewportHeight - y)
+    )
 
     const applyTheme = () => {
       const newTheme = !isDark
@@ -2855,10 +3122,7 @@ export const AnimatedThemeToggler = ({
       localStorage.setItem("theme", newTheme ? "dark" : "light")
     }
 
-    if (
-      typeof document === "undefined" ||
-      !("startViewTransition" in document)
-    ) {
+    if (typeof document.startViewTransition !== "function") {
       applyTheme()
       return
     }
@@ -2870,19 +3134,6 @@ export const AnimatedThemeToggler = ({
     const ready = transition?.ready
     if (ready && typeof ready.then === "function") {
       ready.then(() => {
-        const button = buttonRef.current
-        if (!button) return
-
-        const { top, left, width, height } = button.getBoundingClientRect()
-
-        const x = left + width / 2
-        const y = top + height / 2
-
-        const maxRadius = Math.hypot(
-          Math.max(left, window.innerWidth - left),
-          Math.max(top, window.innerHeight - top)
-        )
-
         document.documentElement.animate(
           {
             clipPath: [
@@ -2902,6 +3153,7 @@ export const AnimatedThemeToggler = ({
 
   return (
     <button
+      type="button"
       ref={buttonRef}
       onClick={toggleTheme}
       className={cn(className)}
@@ -2997,7 +3249,6 @@ Title: Avatar Circles
 Description: Overlapping circles of avatars.
 
 --- file: magicui/avatar-circles.tsx ---
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { cn } from "@/lib/utils"
@@ -3197,7 +3448,7 @@ const BentoCard = ({
       </Button>
     </div>
 
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/3 group-hover:dark:bg-neutral-800/10" />
   </div>
 )
 
@@ -3348,7 +3599,9 @@ const features = [
     description: "We automatically save your files as you type.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
@@ -3357,7 +3610,9 @@ const features = [
     description: "Search through all your files in one place.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
@@ -3366,7 +3621,9 @@ const features = [
     description: "Supports 100+ languages and counting.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
@@ -3375,7 +3632,9 @@ const features = [
     description: "Use the calendar to filter your files by date.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
@@ -3385,7 +3644,9 @@ const features = [
       "Get notified when someone shares a file or mentions you in a comment.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
 ]
@@ -3507,7 +3768,6 @@ export function BlurFade({
 Title: Blur Fade Demo
 
 --- file: example/blur-fade-demo.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { BlurFade } from "@/registry/magicui/blur-fade"
 
 const images = Array.from({ length: 9 }, (_, i) => {
@@ -3755,7 +4015,7 @@ export default function MusicPlayer() {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col items-center gap-4">
-          <div className="h-48 w-48 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500" />
+          <div className="h-48 w-48 rounded-lg bg-linear-to-br from-purple-500 to-pink-500" />
           <div className="bg-secondary h-1 w-full rounded-full">
             <div className="bg-primary h-full w-1/3 rounded-full" />
           </div>
@@ -3915,6 +4175,43 @@ export const ClientTweetCard = ({
 }
 
 
+===== EXAMPLE: tweet-card-demo =====
+Title: Tweet Card Demo
+
+--- file: example/tweet-card-demo.tsx ---
+import { ClientTweetCard } from "@/registry/magicui/client-tweet-card"
+
+/**
+ * <TweetCard /> (Server Side Only)
+ * <ClientTweetCard /> (Client Side Only)
+ */
+export default function TweetDemo() {
+  return <ClientTweetCard id="1668408059125702661" />
+}
+
+
+===== EXAMPLE: tweet-card-images =====
+Title: Tweet Card Images
+
+--- file: example/tweet-card-images.tsx ---
+import { ClientTweetCard } from "@/registry/magicui/client-tweet-card"
+
+export default function TweetImages() {
+  return <ClientTweetCard id="1678577280489234432" className="shadow-2xl" />
+}
+
+
+===== EXAMPLE: tweet-card-meta-preview =====
+Title: Tweet Card Meta Preview
+
+--- file: example/tweet-card-meta-preview.tsx ---
+import { ClientTweetCard } from "@/registry/magicui/client-tweet-card"
+
+export default function TweetMetaPreview() {
+  return <ClientTweetCard id="1675849118445436929" className="shadow-2xl" />
+}
+
+
 
 ===== COMPONENT: code-comparison =====
 Title: Code Comparison
@@ -4013,12 +4310,12 @@ export function CodeComparison({
           style={{ "--highlight-color": highlightColor } as React.CSSProperties}
           className={cn(
             "bg-background h-full w-full overflow-auto font-mono text-xs",
-            "[&>pre]:h-full [&>pre]:!w-screen [&>pre]:py-2",
-            "[&>pre>code]:!inline-block [&>pre>code]:!w-full",
-            "[&>pre>code>span]:!inline-block [&>pre>code>span]:w-full [&>pre>code>span]:px-4 [&>pre>code>span]:py-0.5",
-            "[&>pre>code>.highlighted]:inline-block [&>pre>code>.highlighted]:w-full [&>pre>code>.highlighted]:!bg-[var(--highlight-color)]",
-            "group-hover/left:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/left:[&>pre>code>:not(.focused)]:!blur-none",
-            "group-hover/right:[&>pre>code>:not(.focused)]:!opacity-100 group-hover/right:[&>pre>code>:not(.focused)]:!blur-none",
+            "[&>pre]:h-full [&>pre]:w-screen! [&>pre]:py-2",
+            "[&>pre>code]:inline-block! [&>pre>code]:w-full!",
+            "[&>pre>code>span]:inline-block! [&>pre>code>span]:w-full [&>pre>code>span]:px-4 [&>pre>code>span]:py-0.5",
+            "[&>pre>code>.highlighted]:inline-block [&>pre>code>.highlighted]:w-full [&>pre>code>.highlighted]:bg-(--highlight-color)!",
+            "group-hover/left:[&>pre>code>:not(.focused)]:opacity-100! group-hover/left:[&>pre>code>:not(.focused)]:blur-none!",
+            "group-hover/right:[&>pre>code>:not(.focused)]:opacity-100! group-hover/right:[&>pre>code>:not(.focused)]:blur-none!",
             "[&>pre>code>.add]:bg-[rgba(16,185,129,.16)] [&>pre>code>.remove]:bg-[rgba(244,63,94,.16)]",
             "group-hover/left:[&>pre>code>:not(.focused)]:transition-all group-hover/left:[&>pre>code>:not(.focused)]:duration-300",
             "group-hover/right:[&>pre>code>:not(.focused)]:transition-all group-hover/right:[&>pre>code>:not(.focused)]:duration-300"
@@ -4043,7 +4340,7 @@ export function CodeComparison({
             className={cn(
               "leftside group/left border-primary/20 md:border-r",
               hasLeftFocus &&
-                "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
+                "[&>div>pre>code>:not(.focused)]:opacity-50! [&>div>pre>code>:not(.focused)]:blur-[0.095rem]!",
               "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
             )}
           >
@@ -4058,7 +4355,7 @@ export function CodeComparison({
             className={cn(
               "rightside group/right border-primary/20 border-t md:border-t-0",
               hasRightFocus &&
-                "[&>div>pre>code>:not(.focused)]:!opacity-50 [&>div>pre>code>:not(.focused)]:!blur-[0.095rem]",
+                "[&>div>pre>code>:not(.focused)]:opacity-50! [&>div>pre>code>:not(.focused)]:blur-[0.095rem]!",
               "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300"
             )}
           >
@@ -4408,7 +4705,7 @@ export default function ConfettiDemo() {
 
   return (
     <div className="bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border">
-      <span className="pointer-events-none bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
+      <span className="pointer-events-none bg-linear-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
         Confetti
       </span>
 
@@ -4982,8 +5279,17 @@ export const CoolMode: React.FC<CoolModeProps> = ({ children, options }) => {
   const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    if (ref.current) {
-      return applyParticleEffect(ref.current, options)
+    const element = ref.current
+    let cleanup: (() => void) | null = null
+
+    if (element) {
+      cleanup = applyParticleEffect(element, options)
+    }
+
+    return () => {
+      if (cleanup) {
+        cleanup()
+      }
     }
   }, [options])
 
@@ -5753,8 +6059,8 @@ export function DotPattern({
       const col = i % Math.ceil(dimensions.width / width)
       const row = Math.floor(i / Math.ceil(dimensions.width / width))
       return {
-        x: col * width + cx,
-        y: row * height + cy,
+        x: col * width + cx + x,
+        y: row * height + cy + y,
         delay: Math.random() * 5,
         duration: Math.random() * 3 + 2,
       }
@@ -5777,7 +6083,7 @@ export function DotPattern({
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </radialGradient>
       </defs>
-      {dots.map((dot, index) => (
+      {dots.map((dot) => (
         <motion.circle
           key={`${dot.x}-${dot.y}`}
           cx={dot.x}
@@ -6241,7 +6547,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       if (initialSelectedId) {
         expandSpecificTargetedElements(elements, initialSelectedId)
       }
-    }, [initialSelectedId, elements])
+    }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
 
@@ -6343,6 +6649,7 @@ const Folder = forwardRef<
 
     return (
       <AccordionPrimitive.Item
+        ref={ref}
         {...props}
         value={value}
         className="relative h-full overflow-hidden"
@@ -6402,6 +6709,7 @@ const File = forwardRef<
       value,
       className,
       handleSelect,
+      onClick,
       isSelectable = true,
       isSelect,
       fileIcon,
@@ -6426,7 +6734,11 @@ const File = forwardRef<
           direction === "rtl" ? "rtl" : "ltr",
           className
         )}
-        onClick={() => selectItem(value)}
+        onClick={(event) => {
+          selectItem(value)
+          handleSelect?.(value)
+          onClick?.(event)
+        }}
         {...props}
       >
         {fileIcon ?? <FileIcon className="size-4" />}
@@ -6448,36 +6760,43 @@ const CollapseButton = forwardRef<
   const { expandedItems, setExpandedItems } = useTree()
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
+    const expandedElementIds: string[] = []
+
     const expandTree = (element: TreeViewElement) => {
       const isSelectable = element.isSelectable ?? true
       if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id])
-        element.children.forEach(expandTree)
+        expandedElementIds.push(element.id)
+        for (const child of element.children) {
+          expandTree(child)
+        }
       }
     }
 
-    elements.forEach(expandTree)
+    for (const element of elements) {
+      expandTree(element)
+    }
+
+    return [...new Set(expandedElementIds)]
   }, [])
 
   const closeAll = useCallback(() => {
     setExpandedItems?.([])
-  }, [])
+  }, [setExpandedItems])
 
   useEffect(() => {
-    console.log(expandAll)
     if (expandAll) {
-      expendAllTree(elements)
+      setExpandedItems?.(expendAllTree(elements))
     }
-  }, [expandAll])
+  }, [expandAll, elements, expendAllTree, setExpandedItems])
 
   return (
     <Button
       variant={"ghost"}
-      className="absolute right-2 bottom-1 h-8 w-fit p-1"
+      className={cn("absolute right-2 bottom-1 h-8 w-fit p-1", className)}
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll
-          : () => expendAllTree(elements)
+          : () => setExpandedItems?.(expendAllTree(elements))
       }
       ref={ref}
       {...props}
@@ -6730,66 +7049,70 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   useEffect(() => {
     const canvas = canvasRef.current
     const container = containerRef.current
-    if (!canvas || !container) return
+    const ctx = canvas?.getContext("2d") ?? null
+    let animationFrameId: number | null = null
+    let resizeObserver: ResizeObserver | null = null
+    let intersectionObserver: IntersectionObserver | null = null
+    let gridParams: ReturnType<typeof setupCanvas> | null = null
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    if (canvas && container && ctx) {
+      const updateCanvasSize = () => {
+        const newWidth = width || container.clientWidth
+        const newHeight = height || container.clientHeight
+        setCanvasSize({ width: newWidth, height: newHeight })
+        gridParams = setupCanvas(canvas, newWidth, newHeight)
+      }
 
-    let animationFrameId: number
-    let gridParams: ReturnType<typeof setupCanvas>
-
-    const updateCanvasSize = () => {
-      const newWidth = width || container.clientWidth
-      const newHeight = height || container.clientHeight
-      setCanvasSize({ width: newWidth, height: newHeight })
-      gridParams = setupCanvas(canvas, newWidth, newHeight)
-    }
-
-    updateCanvasSize()
-
-    let lastTime = 0
-    const animate = (time: number) => {
-      if (!isInView) return
-
-      const deltaTime = (time - lastTime) / 1000
-      lastTime = time
-
-      updateSquares(gridParams.squares, deltaTime)
-      drawGrid(
-        ctx,
-        canvas.width,
-        canvas.height,
-        gridParams.cols,
-        gridParams.rows,
-        gridParams.squares,
-        gridParams.dpr
-      )
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
       updateCanvasSize()
-    })
 
-    resizeObserver.observe(container)
+      let lastTime = 0
+      const animate = (time: number) => {
+        if (!isInView || !gridParams) return
 
-    const intersectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting)
-      },
-      { threshold: 0 }
-    )
+        const deltaTime = (time - lastTime) / 1000
+        lastTime = time
 
-    intersectionObserver.observe(canvas)
+        updateSquares(gridParams.squares, deltaTime)
+        drawGrid(
+          ctx,
+          canvas.width,
+          canvas.height,
+          gridParams.cols,
+          gridParams.rows,
+          gridParams.squares,
+          gridParams.dpr
+        )
+        animationFrameId = requestAnimationFrame(animate)
+      }
 
-    if (isInView) {
-      animationFrameId = requestAnimationFrame(animate)
+      resizeObserver = new ResizeObserver(() => {
+        updateCanvasSize()
+      })
+      resizeObserver.observe(container)
+
+      intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          setIsInView(entry.isIntersecting)
+        },
+        { threshold: 0 }
+      )
+      intersectionObserver.observe(canvas)
+
+      if (isInView) {
+        animationFrameId = requestAnimationFrame(animate)
+      }
     }
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
-      resizeObserver.disconnect()
-      intersectionObserver.disconnect()
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+      if (resizeObserver) {
+        resizeObserver.disconnect()
+      }
+      if (intersectionObserver) {
+        intersectionObserver.disconnect()
+      }
     }
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
 
@@ -6911,9 +7234,9 @@ export function Globe({
   className?: string
   config?: COBEOptions
 }) {
-  let phi = 0
-  let width = 0
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const phiRef = useRef(0)
+  const widthRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
 
@@ -6942,7 +7265,7 @@ export function Globe({
   useEffect(() => {
     const onResize = () => {
       if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth
+        widthRef.current = canvasRef.current.offsetWidth
       }
     }
 
@@ -6951,13 +7274,13 @@ export function Globe({
 
     const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width * 2,
-      height: width * 2,
+      width: widthRef.current * 2,
+      height: widthRef.current * 2,
       onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005
-        state.phi = phi + rs.get()
-        state.width = width * 2
-        state.height = width * 2
+        if (!pointerInteracting.current) phiRef.current += 0.005
+        state.phi = phiRef.current + rs.get()
+        state.width = widthRef.current * 2
+        state.height = widthRef.current * 2
       },
     })
 
@@ -6971,13 +7294,13 @@ export function Globe({
   return (
     <div
       className={cn(
-        "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[600px]",
+        "absolute inset-0 mx-auto aspect-square w-full max-w-150",
         className
       )}
     >
       <canvas
         className={cn(
-          "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]"
+          "size-full opacity-0 transition-opacity duration-500 contain-[layout_paint_size]"
         )}
         ref={canvasRef}
         onPointerDown={(e) => {
@@ -7005,7 +7328,7 @@ import { Globe } from "@/registry/magicui/globe"
 export default function GlobeDemo() {
   return (
     <div className="bg-background relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg border px-40 pt-8 pb-40 md:pb-60">
-      <span className="pointer-events-none bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
+      <span className="pointer-events-none bg-linear-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
         Globe
       </span>
       <Globe className="top-28" />
@@ -7189,7 +7512,6 @@ Title: Hero Video Dialog
 Description: A hero video dialog component.
 
 --- file: magicui/hero-video-dialog.tsx ---
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState } from "react"
@@ -7287,7 +7609,7 @@ export function HeroVideoDialog({
         <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
           <div className="bg-primary/10 flex size-28 items-center justify-center rounded-full backdrop-blur-md">
             <div
-              className={`from-primary/30 to-primary relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]`}
+              className={`from-primary/30 to-primary relative flex size-20 scale-100 items-center justify-center rounded-full bg-linear-to-b shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]`}
             >
               <Play
                 className="size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105"
@@ -7324,7 +7646,7 @@ export function HeroVideoDialog({
               <motion.button className="absolute -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black">
                 <XIcon className="size-5" />
               </motion.button>
-              <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
+              <div className="relative isolate z-1 size-full overflow-hidden rounded-2xl border-2 border-white">
                 <iframe
                   src={videoSrc}
                   title="Hero Video player"
@@ -7456,37 +7778,40 @@ export function Highlighter({
   const shouldShow = !isView || isInView
 
   useEffect(() => {
-    if (!shouldShow) return
-
     const element = elementRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const annotationConfig = {
-      type: action,
-      color,
-      strokeWidth,
-      animationDuration,
-      iterations,
-      padding,
-      multiline,
+    if (shouldShow && element) {
+      const annotationConfig = {
+        type: action,
+        color,
+        strokeWidth,
+        animationDuration,
+        iterations,
+        padding,
+        multiline,
+      }
+
+      const annotation = annotate(element, annotationConfig)
+
+      annotationRef.current = annotation
+      annotation.show()
+
+      resizeObserver = new ResizeObserver(() => {
+        annotation.hide()
+        annotation.show()
+      })
+
+      resizeObserver.observe(element)
+      resizeObserver.observe(document.body)
     }
 
-    const annotation = annotate(element, annotationConfig)
-
-    annotationRef.current = annotation
-    annotationRef.current.show()
-
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide()
-      annotation.show()
-    })
-
-    resizeObserver.observe(element)
-    resizeObserver.observe(document.body)
-
     return () => {
-      if (element) {
-        annotate(element, { type: action }).remove()
+      if (annotationRef.current) {
+        annotationRef.current.remove()
+        annotationRef.current = null
+      }
+      if (resizeObserver) {
         resizeObserver.disconnect()
       }
     }
@@ -7586,37 +7911,40 @@ export function Highlighter({
   const shouldShow = !isView || isInView
 
   useEffect(() => {
-    if (!shouldShow) return
-
     const element = elementRef.current
-    if (!element) return
+    let resizeObserver: ResizeObserver | null = null
 
-    const annotationConfig = {
-      type: action,
-      color,
-      strokeWidth,
-      animationDuration,
-      iterations,
-      padding,
-      multiline,
+    if (shouldShow && element) {
+      const annotationConfig = {
+        type: action,
+        color,
+        strokeWidth,
+        animationDuration,
+        iterations,
+        padding,
+        multiline,
+      }
+
+      const annotation = annotate(element, annotationConfig)
+
+      annotationRef.current = annotation
+      annotation.show()
+
+      resizeObserver = new ResizeObserver(() => {
+        annotation.hide()
+        annotation.show()
+      })
+
+      resizeObserver.observe(element)
+      resizeObserver.observe(document.body)
     }
 
-    const annotation = annotate(element, annotationConfig)
-
-    annotationRef.current = annotation
-    annotationRef.current.show()
-
-    const resizeObserver = new ResizeObserver(() => {
-      annotation.hide()
-      annotation.show()
-    })
-
-    resizeObserver.observe(element)
-    resizeObserver.observe(document.body)
-
     return () => {
-      if (element) {
-        annotate(element, { type: action }).remove()
+      if (annotationRef.current) {
+        annotationRef.current.remove()
+        annotationRef.current = null
+      }
+      if (resizeObserver) {
         resizeObserver.disconnect()
       }
     }
@@ -7771,38 +8099,43 @@ export function HyperText({
 
   // Handle scramble animation
   useEffect(() => {
-    if (!isAnimating) return
+    let animationFrameId: number | null = null
 
-    const maxIterations = children.length
-    const startTime = performance.now()
-    let animationFrameId: number
+    if (isAnimating) {
+      const maxIterations = children.length
+      const startTime = performance.now()
 
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
 
-      iterationCount.current = progress * maxIterations
+        iterationCount.current = progress * maxIterations
 
-      setDisplayText((currentText) =>
-        currentText.map((letter, index) =>
-          letter === " "
-            ? letter
-            : index <= iterationCount.current
-              ? children[index]
-              : characterSet[getRandomInt(characterSet.length)]
+        setDisplayText((currentText) =>
+          currentText.map((letter, index) =>
+            letter === " "
+              ? letter
+              : index <= iterationCount.current
+                ? children[index]
+                : characterSet[getRandomInt(characterSet.length)]
+          )
         )
-      )
 
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate)
-      } else {
-        setIsAnimating(false)
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(animate)
+        } else {
+          setIsAnimating(false)
+        }
       }
+
+      animationFrameId = requestAnimationFrame(animate)
     }
 
-    animationFrameId = requestAnimationFrame(animate)
-
-    return () => cancelAnimationFrame(animationFrameId)
+    return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
   }, [children, duration, isAnimating, characterSet])
 
   return (
@@ -7870,7 +8203,6 @@ function easeOutCubic(t: number): number {
 export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -7884,7 +8216,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     duration: number
   } | null>(null)
   const animationFrameRef = useRef<number>(0)
-  const rotationRef = useRef(rotation)
+  const rotationRef = useRef({ x: 0, y: 0 })
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([])
   const imagesLoadedRef = useRef<boolean[]>([])
 
@@ -8060,88 +8392,91 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext("2d")
-    if (!canvas || !ctx) return
+    if (canvas && ctx) {
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+        const centerX = canvas.width / 2
+        const centerY = canvas.height / 2
+        const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY)
+        const dx = mousePos.x - centerX
+        const dy = mousePos.y - centerY
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        const speed = 0.003 + (distance / maxDistance) * 0.01
 
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
-      const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY)
-      const dx = mousePos.x - centerX
-      const dy = mousePos.y - centerY
-      const distance = Math.sqrt(dx * dx + dy * dy)
-      const speed = 0.003 + (distance / maxDistance) * 0.01
+        if (targetRotation) {
+          const elapsed = performance.now() - targetRotation.startTime
+          const progress = Math.min(1, elapsed / targetRotation.duration)
+          const easedProgress = easeOutCubic(progress)
 
-      if (targetRotation) {
-        const elapsed = performance.now() - targetRotation.startTime
-        const progress = Math.min(1, elapsed / targetRotation.duration)
-        const easedProgress = easeOutCubic(progress)
+          rotationRef.current = {
+            x:
+              targetRotation.startX +
+              (targetRotation.x - targetRotation.startX) * easedProgress,
+            y:
+              targetRotation.startY +
+              (targetRotation.y - targetRotation.startY) * easedProgress,
+          }
 
-        rotationRef.current = {
-          x:
-            targetRotation.startX +
-            (targetRotation.x - targetRotation.startX) * easedProgress,
-          y:
-            targetRotation.startY +
-            (targetRotation.y - targetRotation.startY) * easedProgress,
+          if (progress >= 1) {
+            setTargetRotation(null)
+          }
+        } else if (!isDragging) {
+          rotationRef.current = {
+            x: rotationRef.current.x + (dy / canvas.height) * speed,
+            y: rotationRef.current.y + (dx / canvas.width) * speed,
+          }
         }
 
-        if (progress >= 1) {
-          setTargetRotation(null)
-        }
-      } else if (!isDragging) {
-        rotationRef.current = {
-          x: rotationRef.current.x + (dy / canvas.height) * speed,
-          y: rotationRef.current.y + (dx / canvas.width) * speed,
-        }
+        iconPositions.forEach((icon, index) => {
+          const cosX = Math.cos(rotationRef.current.x)
+          const sinX = Math.sin(rotationRef.current.x)
+          const cosY = Math.cos(rotationRef.current.y)
+          const sinY = Math.sin(rotationRef.current.y)
+
+          const rotatedX = icon.x * cosY - icon.z * sinY
+          const rotatedZ = icon.x * sinY + icon.z * cosY
+          const rotatedY = icon.y * cosX + rotatedZ * sinX
+
+          const scale = (rotatedZ + 200) / 300
+          const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200))
+
+          ctx.save()
+          ctx.translate(
+            canvas.width / 2 + rotatedX,
+            canvas.height / 2 + rotatedY
+          )
+          ctx.scale(scale, scale)
+          ctx.globalAlpha = opacity
+
+          if (icons || images) {
+            // Only try to render icons/images if they exist
+            if (
+              iconCanvasesRef.current[index] &&
+              imagesLoadedRef.current[index]
+            ) {
+              ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40)
+            }
+          } else {
+            // Show numbered circles if no icons/images are provided
+            ctx.beginPath()
+            ctx.arc(0, 0, 20, 0, Math.PI * 2)
+            ctx.fillStyle = "#4444ff"
+            ctx.fill()
+            ctx.fillStyle = "white"
+            ctx.textAlign = "center"
+            ctx.textBaseline = "middle"
+            ctx.font = "16px Arial"
+            ctx.fillText(`${icon.id + 1}`, 0, 0)
+          }
+
+          ctx.restore()
+        })
+        animationFrameRef.current = requestAnimationFrame(animate)
       }
 
-      iconPositions.forEach((icon, index) => {
-        const cosX = Math.cos(rotationRef.current.x)
-        const sinX = Math.sin(rotationRef.current.x)
-        const cosY = Math.cos(rotationRef.current.y)
-        const sinY = Math.sin(rotationRef.current.y)
-
-        const rotatedX = icon.x * cosY - icon.z * sinY
-        const rotatedZ = icon.x * sinY + icon.z * cosY
-        const rotatedY = icon.y * cosX + rotatedZ * sinX
-
-        const scale = (rotatedZ + 200) / 300
-        const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200))
-
-        ctx.save()
-        ctx.translate(canvas.width / 2 + rotatedX, canvas.height / 2 + rotatedY)
-        ctx.scale(scale, scale)
-        ctx.globalAlpha = opacity
-
-        if (icons || images) {
-          // Only try to render icons/images if they exist
-          if (
-            iconCanvasesRef.current[index] &&
-            imagesLoadedRef.current[index]
-          ) {
-            ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40)
-          }
-        } else {
-          // Show numbered circles if no icons/images are provided
-          ctx.beginPath()
-          ctx.arc(0, 0, 20, 0, Math.PI * 2)
-          ctx.fillStyle = "#4444ff"
-          ctx.fill()
-          ctx.fillStyle = "white"
-          ctx.textAlign = "center"
-          ctx.textBaseline = "middle"
-          ctx.font = "16px Arial"
-          ctx.fillText(`${icon.id + 1}`, 0, 0)
-        }
-
-        ctx.restore()
-      })
-      animationFrameRef.current = requestAnimationFrame(animate)
+      animate()
     }
-
-    animate()
 
     return () => {
       if (animationFrameRef.current) {
@@ -8490,7 +8825,7 @@ export function InteractiveGridPattern({
             width={width}
             height={height}
             className={cn(
-              "stroke-gray-400/30 transition-all duration-100 ease-in-out [&:not(:hover)]:duration-1000",
+              "stroke-gray-400/30 transition-all duration-100 ease-in-out not-[&:hover]:duration-1000",
               hoveredSquare === index ? "fill-gray-300/30" : "fill-transparent",
               squaresClassName
             )}
@@ -8945,7 +9280,7 @@ export function Lens({
         </div>
       </motion.div>
     )
-  }, [currentPosition, lensSize, lensColor, zoomFactor, children, duration])
+  }, [currentPosition, maskImage, zoomFactor, children, duration])
 
   return (
     <div
@@ -8976,8 +9311,6 @@ export function Lens({
 Title: Lens Demo
 
 --- file: example/lens-demo.tsx ---
-/* eslint-disable @next/next/no-img-element */
-
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -9029,8 +9362,6 @@ export default function LensDemo() {
 Title: Lens Demo 2
 
 --- file: example/lens-demo-2.tsx ---
-/* eslint-disable @next/next/no-img-element */
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9075,8 +9406,6 @@ export default function LensDemo() {
 Title: Lens Demo 3
 
 --- file: example/lens-demo-3.tsx ---
-/* eslint-disable @next/next/no-img-element */
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9186,7 +9515,7 @@ const Ray = ({
 }: LightRay) => {
   return (
     <motion.div
-      className="pointer-events-none absolute -top-[12%] left-[var(--ray-left)] h-[var(--light-rays-length)] w-[var(--ray-width)] origin-top -translate-x-1/2 rounded-full bg-gradient-to-b from-[color-mix(in_srgb,var(--light-rays-color)_70%,transparent)] to-transparent opacity-0 mix-blend-screen blur-[var(--light-rays-blur)]"
+      className="pointer-events-none absolute -top-[12%] left-[var(--ray-left)] h-[var(--light-rays-length)] w-[var(--ray-width)] origin-top -translate-x-1/2 rounded-full bg-linear-to-b from-[color-mix(in_srgb,var(--light-rays-color)_70%,transparent)] to-transparent opacity-0 mix-blend-screen blur-[var(--light-rays-blur)]"
       style={
         {
           "--ray-left": `${left}%`,
@@ -9361,7 +9690,7 @@ export function LineShadowText({
         "relative z-0 inline-flex",
         "after:absolute after:top-[0.04em] after:left-[0.04em] after:content-[attr(data-text)]",
         "after:bg-[linear-gradient(45deg,transparent_45%,var(--shadow-color)_45%,var(--shadow-color)_55%,transparent_0)]",
-        "after:-z-10 after:bg-[length:0.06em_0.06em] after:bg-clip-text after:text-transparent",
+        "after:-z-10 after:bg-size-[0.06em_0.06em] after:bg-clip-text after:text-transparent",
         "after:animate-line-shadow",
         className
       )}
@@ -9837,7 +10166,7 @@ export function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex [gap:var(--gap)] overflow-hidden p-2 [--duration:40s] [--gap:1rem]",
+        "group flex gap-(--gap) overflow-hidden p-2 [--duration:40s] [--gap:1rem]",
         {
           "flex-row": !vertical,
           "flex-col": vertical,
@@ -9850,7 +10179,7 @@ export function Marquee({
         .map((_, i) => (
           <div
             key={i}
-            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+            className={cn("flex shrink-0 justify-around gap-(--gap)", {
               "animate-marquee flex-row": !vertical,
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
@@ -9973,7 +10302,6 @@ export default function MarqueeDemo() {
 Title: Marquee Vertical Demo
 
 --- file: example/marquee-demo-vertical.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/registry/magicui/marquee"
 
@@ -10049,7 +10377,7 @@ export default function MarqueeDemoVertical() {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b"></div>
+      <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-linear-to-b"></div>
       <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t"></div>
     </div>
   )
@@ -10117,7 +10445,6 @@ export default function MarqueeLogos() {
 Title: Marquee 3D
 
 --- file: example/marquee-3d.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/registry/magicui/marquee"
 
@@ -10214,7 +10541,7 @@ export default function Marquee3D() {
         </Marquee>
       </div>
 
-      <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b"></div>
+      <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-linear-to-b"></div>
       <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t"></div>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
       <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
@@ -10402,12 +10729,12 @@ export const Meteors = ({
           key={idx}
           style={{ ...style }}
           className={cn(
-            "animate-meteor pointer-events-none absolute size-0.5 rotate-[var(--angle)] rounded-full bg-zinc-500 shadow-[0_0_0_1px_#ffffff10]",
+            "animate-meteor pointer-events-none absolute size-0.5 rotate-(--angle) rounded-full bg-zinc-500 shadow-[0_0_0_1px_#ffffff10]",
             className
           )}
         >
           {/* Meteor Tail */}
-          <div className="pointer-events-none absolute top-1/2 -z-10 h-px w-[50px] -translate-y-1/2 bg-gradient-to-r from-zinc-500 to-transparent" />
+          <div className="pointer-events-none absolute top-1/2 -z-10 h-px w-12.5 -translate-y-1/2 bg-linear-to-r from-zinc-500 to-transparent" />
         </span>
       ))}
     </>
@@ -10425,7 +10752,7 @@ export default function MeteorDemo() {
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border">
       <Meteors number={30} />
-      <span className="pointer-events-none bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
+      <span className="pointer-events-none bg-linear-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl leading-none font-semibold whitespace-pre-wrap text-transparent dark:from-white dark:to-slate-900/10">
         Meteors
       </span>
     </div>
@@ -10580,7 +10907,7 @@ export const MorphingText: React.FC<MorphingTextProps> = ({
 }) => (
   <div
     className={cn(
-      "relative mx-auto h-16 w-full max-w-screen-md text-center font-sans text-[40pt] leading-none font-bold [filter:url(#threshold)_blur(0.6px)] md:h-24 lg:text-[6rem]",
+      "relative mx-auto h-16 w-full max-w-3xl text-center font-sans text-[40pt] leading-none font-bold filter-[url(#threshold)_blur(0.6px)] md:h-24 lg:text-[6rem]",
       className
     )}
   >
@@ -10742,24 +11069,24 @@ export const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
         } as CSSProperties
       }
       className={cn(
-        "relative z-10 size-full rounded-[var(--border-radius)]",
+        "relative z-10 size-full rounded-(--border-radius)",
         className
       )}
       {...props}
     >
       <div
         className={cn(
-          "relative size-full min-h-[inherit] rounded-[var(--card-content-radius)] bg-gray-100 p-6",
-          "before:absolute before:-top-[var(--border-size)] before:-left-[var(--border-size)] before:-z-10 before:block",
-          "before:h-[var(--pseudo-element-height)] before:w-[var(--pseudo-element-width)] before:rounded-[var(--border-radius)] before:content-['']",
-          "before:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] before:bg-[length:100%_200%]",
+          "relative size-full min-h-[inherit] rounded-(--card-content-radius) bg-gray-100 p-6",
+          "before:absolute before:-top-(--border-size) before:-left-(--border-size) before:-z-10 before:block",
+          "before:h-(--pseudo-element-height) before:w-(--pseudo-element-width) before:rounded-(--border-radius) before:content-['']",
+          "before:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] before:bg-size-[100%_200%]",
           "before:animate-background-position-spin",
-          "after:absolute after:-top-[var(--border-size)] after:-left-[var(--border-size)] after:-z-10 after:block",
-          "after:h-[var(--pseudo-element-height)] after:w-[var(--pseudo-element-width)] after:rounded-[var(--border-radius)] after:blur-[var(--after-blur)] after:content-['']",
-          "after:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] after:bg-[length:100%_200%] after:opacity-80",
+          "after:absolute after:-top-(--border-size) after:-left-(--border-size) after:-z-10 after:block",
+          "after:h-(--pseudo-element-height) after:w-(--pseudo-element-width) after:rounded-(--border-radius) after:blur-(--after-blur) after:content-['']",
+          "after:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] after:bg-size-[100%_200%] after:opacity-80",
           "after:animate-background-position-spin",
           "dark:bg-neutral-900",
-          "break-words"
+          "wrap-break-word"
         )}
       >
         {children}
@@ -10778,7 +11105,7 @@ import { NeonGradientCard } from "@/registry/magicui/neon-gradient-card"
 export default function NeonGradientCardDemo() {
   return (
     <NeonGradientCard className="max-w-sm items-center justify-center text-center">
-      <span className="pointer-events-none z-10 h-full bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-3xl leading-none font-bold tracking-tighter text-balance whitespace-pre-wrap text-transparent md:text-5xl xl:text-6xl dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+      <span className="pointer-events-none z-10 h-full bg-linear-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-3xl leading-none font-bold tracking-tighter text-balance whitespace-pre-wrap text-transparent md:text-5xl xl:text-6xl dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
         Neon Gradient Card
       </span>
     </NeonGradientCard>
@@ -10825,11 +11152,18 @@ export function NumberTicker({
   const isInView = useInView(ref, { once: true, margin: "0px" })
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null
+
     if (isInView) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         motionValue.set(direction === "down" ? startValue : value)
       }, delay * 1000)
-      return () => clearTimeout(timer)
+    }
+
+    return () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
     }
   }, [motionValue, isInView, delay, value, direction, startValue])
 
@@ -10975,7 +11309,7 @@ export function OrbitingCircles({
               } as React.CSSProperties
             }
             className={cn(
-              `animate-orbit absolute flex size-[var(--icon-size)] transform-gpu items-center justify-center rounded-full`,
+              `animate-orbit absolute flex size-(--icon-size) transform-gpu items-center justify-center rounded-full`,
               { "[animation-direction:reverse]": reverse },
               className
             )}
@@ -11253,20 +11587,23 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
   const rafID = useRef<number | null>(null)
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null)
+  const initCanvasRef = useRef<() => void>(() => {})
+  const onMouseMoveRef = useRef<() => void>(() => {})
+  const animateRef = useRef<() => void>(() => {})
 
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
-    initCanvas()
-    animate()
+    initCanvasRef.current()
+    animateRef.current()
 
     const handleResize = () => {
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current)
       }
       resizeTimeout.current = setTimeout(() => {
-        initCanvas()
+        initCanvasRef.current()
       }, 200)
     }
 
@@ -11284,11 +11621,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   }, [color])
 
   useEffect(() => {
-    onMouseMove()
+    onMouseMoveRef.current()
   }, [mousePosition.x, mousePosition.y])
 
   useEffect(() => {
-    initCanvas()
+    initCanvasRef.current()
   }, [refresh])
 
   const initCanvas = () => {
@@ -11452,8 +11789,12 @@ export const Particles: React.FC<ParticlesProps> = ({
         drawCircle(newCircle)
       }
     })
-    rafID.current = window.requestAnimationFrame(animate)
+    rafID.current = window.requestAnimationFrame(animateRef.current)
   }
+
+  initCanvasRef.current = initCanvas
+  onMouseMoveRef.current = onMouseMove
+  animateRef.current = animate
 
   return (
     <div
@@ -11693,41 +12034,40 @@ export function Pointer({
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window !== "undefined" && containerRef.current) {
-      // Get the parent element directly from the ref
-      const parentElement = containerRef.current.parentElement
+    const parentElement =
+      typeof window !== "undefined"
+        ? (containerRef.current?.parentElement ?? null)
+        : null
 
+    const handleMouseMove = (e: MouseEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+      setIsActive(true)
+    }
+
+    const handleMouseEnter = (e: MouseEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+      setIsActive(true)
+    }
+
+    const handleMouseLeave = () => {
+      setIsActive(false)
+    }
+
+    if (parentElement) {
+      parentElement.style.cursor = "none"
+      parentElement.addEventListener("mousemove", handleMouseMove)
+      parentElement.addEventListener("mouseenter", handleMouseEnter)
+      parentElement.addEventListener("mouseleave", handleMouseLeave)
+    }
+
+    return () => {
       if (parentElement) {
-        // Add cursor-none to parent
-        parentElement.style.cursor = "none"
-
-        // Add event listeners to parent
-        const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX)
-          y.set(e.clientY)
-          setIsActive(true)
-        }
-
-        const handleMouseEnter = (e: MouseEvent) => {
-          x.set(e.clientX)
-          y.set(e.clientY)
-          setIsActive(true)
-        }
-
-        const handleMouseLeave = () => {
-          setIsActive(false)
-        }
-
-        parentElement.addEventListener("mousemove", handleMouseMove)
-        parentElement.addEventListener("mouseenter", handleMouseEnter)
-        parentElement.addEventListener("mouseleave", handleMouseLeave)
-
-        return () => {
-          parentElement.style.cursor = ""
-          parentElement.removeEventListener("mousemove", handleMouseMove)
-          parentElement.removeEventListener("mouseenter", handleMouseEnter)
-          parentElement.removeEventListener("mouseleave", handleMouseLeave)
-        }
+        parentElement.style.cursor = ""
+        parentElement.removeEventListener("mousemove", handleMouseMove)
+        parentElement.removeEventListener("mouseenter", handleMouseEnter)
+        parentElement.removeEventListener("mouseleave", handleMouseLeave)
       }
     }
   }, [x, y])
@@ -12250,18 +12590,18 @@ export function RetroGrid({
   return (
     <div
       className={cn(
-        "pointer-events-none absolute size-full overflow-hidden [perspective:200px]",
-        `opacity-[var(--opacity)]`,
+        "pointer-events-none absolute size-full overflow-hidden perspective-[200px]",
+        `opacity-(--opacity)`,
         className
       )}
       style={gridStyles}
       {...props}
     >
-      <div className="absolute inset-0 [transform:rotateX(var(--grid-angle))]">
-        <div className="animate-grid [inset:0%_0px] [margin-left:-200%] [height:300vh] [width:600vw] [transform-origin:100%_0_0] [background-image:linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] [background-size:var(--cell-size)_var(--cell-size)] [background-repeat:repeat] dark:[background-image:linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
+      <div className="absolute inset-0 transform-[rotateX(var(--grid-angle))]">
+        <div className="animate-grid inset-[0%_0px] ml-[-200%] h-[300vh] w-[600vw] origin-[100%_0_0] bg-[linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] bg-size-[var(--cell-size)_var(--cell-size)] bg-repeat dark:bg-[linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent to-90% dark:from-black" />
+      <div className="absolute inset-0 bg-linear-to-t from-white to-transparent to-90% dark:from-black" />
     </div>
   )
 }
@@ -12278,7 +12618,7 @@ import { RetroGrid } from "@/registry/magicui/retro-grid"
 export default function RetroGridDemo() {
   return (
     <div className="bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border">
-      <span className="pointer-events-none z-10 bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl leading-none font-bold tracking-tighter whitespace-pre-wrap text-transparent">
+      <span className="pointer-events-none z-10 bg-linear-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl leading-none font-bold tracking-tighter whitespace-pre-wrap text-transparent">
         Retro Grid
       </span>
 
@@ -12314,7 +12654,7 @@ export const Ripple = React.memo(function Ripple({
   return (
     <div
       className={cn(
-        "pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,white,transparent)] select-none",
+        "pointer-events-none absolute inset-0 mask-[linear-gradient(to_bottom,white,transparent)] select-none",
         className
       )}
       {...props}
@@ -12425,14 +12765,21 @@ export const RippleButton = React.forwardRef<
     }
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (buttonRipples.length > 0) {
         const lastRipple = buttonRipples[buttonRipples.length - 1]
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setButtonRipples((prevRipples) =>
             prevRipples.filter((ripple) => ripple.key !== lastRipple.key)
           )
         }, parseInt(duration))
-        return () => clearTimeout(timeout)
+      }
+
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [buttonRipples, duration])
 
@@ -12452,14 +12799,17 @@ export const RippleButton = React.forwardRef<
             <span
               className="animate-rippling bg-background absolute rounded-full opacity-30"
               key={ripple.key}
-              style={{
-                width: `${ripple.size}px`,
-                height: `${ripple.size}px`,
-                top: `${ripple.y}px`,
-                left: `${ripple.x}px`,
-                backgroundColor: rippleColor,
-                transform: `scale(0)`,
-              }}
+              style={
+                {
+                  width: `${ripple.size}px`,
+                  height: `${ripple.size}px`,
+                  top: `${ripple.y}px`,
+                  left: `${ripple.x}px`,
+                  backgroundColor: rippleColor,
+                  transform: `scale(0)`,
+                  "--duration": duration,
+                } as React.CSSProperties
+              }
             />
           ))}
         </span>
@@ -12897,47 +13247,59 @@ function ScrollVelocityRowImpl({
   useEffect(() => {
     const container = containerRef.current
     const block = blockRef.current
-    if (!container || !block) return
-
-    const updateSizes = () => {
-      const cw = container.offsetWidth || 0
-      const bw = block.scrollWidth || 0
-      unitWidth.set(bw)
-      const nextCopies = bw > 0 ? Math.max(3, Math.ceil(cw / bw) + 2) : 1
-      setNumCopies((prev) => (prev === nextCopies ? prev : nextCopies))
-    }
-
-    updateSizes()
-
-    const ro = new ResizeObserver(updateSizes)
-    ro.observe(container)
-    ro.observe(block)
-
-    const io = new IntersectionObserver(([entry]) => {
-      isInViewRef.current = entry.isIntersecting
-    })
-    io.observe(container)
-
+    let ro: ResizeObserver | null = null
+    let io: IntersectionObserver | null = null
+    let mq: MediaQueryList | null = null
     const handleVisibility = () => {
       isPageVisibleRef.current = document.visibilityState === "visible"
     }
-    document.addEventListener("visibilitychange", handleVisibility, {
-      passive: true,
-    })
-    handleVisibility()
-
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
     const handlePRM = () => {
-      prefersReducedMotionRef.current = mq.matches
+      if (mq) {
+        prefersReducedMotionRef.current = mq.matches
+      }
     }
-    mq.addEventListener("change", handlePRM)
-    handlePRM()
+
+    if (container && block) {
+      const updateSizes = () => {
+        const cw = container.offsetWidth || 0
+        const bw = block.scrollWidth || 0
+        unitWidth.set(bw)
+        const nextCopies = bw > 0 ? Math.max(3, Math.ceil(cw / bw) + 2) : 1
+        setNumCopies((prev) => (prev === nextCopies ? prev : nextCopies))
+      }
+
+      updateSizes()
+
+      ro = new ResizeObserver(updateSizes)
+      ro.observe(container)
+      ro.observe(block)
+
+      io = new IntersectionObserver(([entry]) => {
+        isInViewRef.current = entry.isIntersecting
+      })
+      io.observe(container)
+
+      document.addEventListener("visibilitychange", handleVisibility, {
+        passive: true,
+      })
+      handleVisibility()
+
+      mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+      mq.addEventListener("change", handlePRM)
+      handlePRM()
+    }
 
     return () => {
-      ro.disconnect()
-      io.disconnect()
+      if (ro) {
+        ro.disconnect()
+      }
+      if (io) {
+        io.disconnect()
+      }
       document.removeEventListener("visibilitychange", handleVisibility)
-      mq.removeEventListener("change", handlePRM)
+      if (mq) {
+        mq.removeEventListener("change", handlePRM)
+      }
     }
   }, [children, unitWidth])
 
@@ -13127,7 +13489,7 @@ export function ScrollProgress({
     <motion.div
       ref={ref}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 h-px origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]",
+        "fixed inset-x-0 top-0 z-50 h-px origin-left bg-linear-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]",
         className
       )}
       style={{
@@ -13218,11 +13580,11 @@ export const ShimmerButton = React.forwardRef<
         <div
           className={cn(
             "-z-30 blur-[2px]",
-            "[container-type:size] absolute inset-0 overflow-visible"
+            "@container-[size] absolute inset-0 overflow-visible"
           )}
         >
           {/* spark */}
-          <div className="animate-shimmer-slide absolute inset-0 [aspect-ratio:1] h-[100cqh] [border-radius:0] [mask:none]">
+          <div className="animate-shimmer-slide absolute inset-0 aspect-[1] h-[100cqh] rounded-none [mask:none]">
             {/* spark before */}
             <div className="animate-spin-around absolute -inset-full w-auto [translate:0_0] rotate-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))]" />
           </div>
@@ -13250,7 +13612,7 @@ export const ShimmerButton = React.forwardRef<
         {/* backdrop */}
         <div
           className={cn(
-            "absolute [inset:var(--cut)] -z-20 [border-radius:var(--radius)] [background:var(--bg)]"
+            "absolute inset-(--cut) -z-20 [border-radius:var(--radius)] [background:var(--bg)]"
           )}
         />
       </button>
@@ -13553,7 +13915,7 @@ Description: A customizable, physics-based smooth cursor animation component wit
 --- file: magicui/smooth-cursor.tsx ---
 "use client"
 
-import { FC, useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef } from "react"
 import { motion, useSpring } from "motion/react"
 
 interface Position {
@@ -13642,7 +14004,6 @@ export function SmoothCursor({
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false)
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
@@ -13663,6 +14024,8 @@ export function SmoothCursor({
   })
 
   useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout> | null = null
+
     const updateVelocity = (currentPos: Position) => {
       const currentTime = Date.now()
       const deltaTime = currentTime - lastUpdateTime.current
@@ -13702,14 +14065,14 @@ export function SmoothCursor({
         previousAngle.current = currentAngle
 
         scale.set(0.95)
-        setIsMoving(true)
 
-        const timeout = setTimeout(() => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
+
+        timeout = setTimeout(() => {
           scale.set(1)
-          setIsMoving(false)
         }, 150)
-
-        return () => clearTimeout(timeout)
       }
     }
 
@@ -13730,6 +14093,9 @@ export function SmoothCursor({
       window.removeEventListener("mousemove", throttledMouseMove)
       document.body.style.cursor = "auto"
       if (rafId) cancelAnimationFrame(rafId)
+      if (timeout !== null) {
+        clearTimeout(timeout)
+      }
     }
   }, [cursorX, cursorY, rotation, scale])
 
@@ -14291,7 +14657,7 @@ export const AnimatedSpan = ({
     if (sequence.activeIndex === itemIndex) {
       setHasStarted(true)
     }
-  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex])
+  }, [sequence, hasStarted, itemIndex])
 
   const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true
 
@@ -14350,54 +14716,72 @@ export const TypingAnimation = ({
 
   const sequence = useSequence()
   const itemIndex = useItemIndex()
+  const hasSequence = sequence !== null
+  const sequenceStarted = sequence?.sequenceStarted ?? false
+  const sequenceActiveIndex = sequence?.activeIndex ?? null
+  const sequenceCompleteItemRef = useRef<
+    SequenceContextValue["completeItem"] | null
+  >(null)
+  const sequenceItemIndexRef = useRef<number | null>(null)
 
   useEffect(() => {
-    if (sequence && itemIndex !== null) {
-      if (!sequence.sequenceStarted) return
-      if (started) return
-      if (sequence.activeIndex === itemIndex) {
+    sequenceCompleteItemRef.current = sequence?.completeItem ?? null
+    sequenceItemIndexRef.current = itemIndex
+  }, [sequence?.completeItem, itemIndex])
+
+  useEffect(() => {
+    let startTimeout: ReturnType<typeof setTimeout> | null = null
+
+    if (hasSequence && itemIndex !== null) {
+      if (sequenceStarted && !started && sequenceActiveIndex === itemIndex) {
         setStarted(true)
       }
-      return
+    } else if (!startOnView || isInView) {
+      startTimeout = setTimeout(() => setStarted(true), delay)
     }
 
-    if (!startOnView) {
-      const startTimeout = setTimeout(() => setStarted(true), delay)
-      return () => clearTimeout(startTimeout)
+    return () => {
+      if (startTimeout !== null) {
+        clearTimeout(startTimeout)
+      }
     }
-
-    if (!isInView) return
-
-    const startTimeout = setTimeout(() => setStarted(true), delay)
-    return () => clearTimeout(startTimeout)
   }, [
     delay,
     startOnView,
     isInView,
     started,
-    sequence?.activeIndex,
-    sequence?.sequenceStarted,
+    hasSequence,
+    sequenceActiveIndex,
+    sequenceStarted,
     itemIndex,
   ])
 
   useEffect(() => {
-    if (!started) return
+    let typingEffect: ReturnType<typeof setInterval> | null = null
 
-    let i = 0
-    const typingEffect = setInterval(() => {
-      if (i < children.length) {
-        setDisplayedText(children.substring(0, i + 1))
-        i++
-      } else {
-        clearInterval(typingEffect)
-        if (sequence && itemIndex !== null) {
-          sequence.completeItem(itemIndex)
+    if (started) {
+      let i = 0
+      typingEffect = setInterval(() => {
+        if (i < children.length) {
+          setDisplayedText(children.substring(0, i + 1))
+          i++
+        } else {
+          if (typingEffect !== null) {
+            clearInterval(typingEffect)
+          }
+          const completeItem = sequenceCompleteItemRef.current
+          const currentItemIndex = sequenceItemIndexRef.current
+          if (completeItem && currentItemIndex !== null) {
+            completeItem(currentItemIndex)
+          }
         }
-      }
-    }, duration)
+      }, duration)
+    }
 
     return () => {
-      clearInterval(typingEffect)
+      if (typingEffect !== null) {
+        clearInterval(typingEffect)
+      }
     }
   }, [children, duration, started])
 
@@ -14459,7 +14843,7 @@ export const Terminal = ({
     <div
       ref={containerRef}
       className={cn(
-        "border-border bg-background z-0 h-full max-h-[400px] w-full max-w-lg rounded-xl border",
+        "border-border bg-background z-0 h-full max-h-100 w-full max-w-lg rounded-xl border",
         className
       )}
     >
@@ -15259,7 +15643,7 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
     <div ref={targetRef} className={cn("relative z-0 h-[200vh]", className)}>
       <div
         className={
-          "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-[1rem] py-[5rem]"
+          "sticky top-0 mx-auto flex h-[50%] max-w-4xl items-center bg-transparent px-4 py-20"
         }
       >
         <span
@@ -15322,7 +15706,6 @@ Title: Tweet Card
 Description: A card that displays a tweet with the author's name, handle, and profile picture.
 
 --- file: magicui/tweet-card.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react"
 import { enrichTweet, type EnrichedTweet, type TweetProps } from "react-tweet"
 import { getTweet, type Tweet } from "react-tweet/api"
@@ -15496,6 +15879,8 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           )
+        default:
+          return null
       }
     })}
   </div>
@@ -15769,54 +16154,65 @@ export function TypingAnimation({
   }, [animationSourceKey])
 
   useEffect(() => {
-    if (!shouldStart || wordsToAnimate.length === 0) return
+    let timeout: ReturnType<typeof setTimeout> | null = null
 
-    const timeoutDelay =
-      delay > 0 && displayedText === ""
-        ? delay
-        : phase === "typing"
-          ? typingSpeed
-          : phase === "deleting"
-            ? deletingSpeed
-            : pauseDelay
+    if (shouldStart && wordsToAnimate.length > 0) {
+      const timeoutDelay =
+        delay > 0 && displayedText === ""
+          ? delay
+          : phase === "typing"
+            ? typingSpeed
+            : phase === "deleting"
+              ? deletingSpeed
+              : pauseDelay
 
-    const timeout = setTimeout(() => {
-      const currentWord = wordsToAnimate[currentWordIndex] || ""
-      const graphemes = Array.from(currentWord)
+      timeout = setTimeout(() => {
+        const currentWord = wordsToAnimate[currentWordIndex] || ""
+        const graphemes = Array.from(currentWord)
 
-      switch (phase) {
-        case "typing":
-          if (currentCharIndex < graphemes.length) {
-            setDisplayedText(graphemes.slice(0, currentCharIndex + 1).join(""))
-            setCurrentCharIndex(currentCharIndex + 1)
-          } else {
-            if (hasMultipleWords || loop) {
-              const isLastWord = currentWordIndex === wordsToAnimate.length - 1
-              if (!isLastWord || loop) {
-                setPhase("pause")
+        switch (phase) {
+          case "typing":
+            if (currentCharIndex < graphemes.length) {
+              setDisplayedText(
+                graphemes.slice(0, currentCharIndex + 1).join("")
+              )
+              setCurrentCharIndex(currentCharIndex + 1)
+            } else {
+              if (hasMultipleWords || loop) {
+                const isLastWord =
+                  currentWordIndex === wordsToAnimate.length - 1
+                if (!isLastWord || loop) {
+                  setPhase("pause")
+                }
               }
             }
-          }
-          break
+            break
 
-        case "pause":
-          setPhase("deleting")
-          break
+          case "pause":
+            setPhase("deleting")
+            break
 
-        case "deleting":
-          if (currentCharIndex > 0) {
-            setDisplayedText(graphemes.slice(0, currentCharIndex - 1).join(""))
-            setCurrentCharIndex(currentCharIndex - 1)
-          } else {
-            const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length
-            setCurrentWordIndex(nextIndex)
-            setPhase("typing")
-          }
-          break
+          case "deleting":
+            if (currentCharIndex > 0) {
+              setDisplayedText(
+                graphemes.slice(0, currentCharIndex - 1).join("")
+              )
+              setCurrentCharIndex(currentCharIndex - 1)
+            } else {
+              const nextIndex = (currentWordIndex + 1) % wordsToAnimate.length
+              setCurrentWordIndex(nextIndex)
+              setPhase("typing")
+            }
+            break
+        }
+      }, timeoutDelay)
+    }
+
+    return () => {
+      if (timeout !== null) {
+        clearTimeout(timeout)
       }
-    }, timeoutDelay)
-
-    return () => clearTimeout(timeout)
+    }
   }, [
     shouldStart,
     phase,
@@ -16251,7 +16647,7 @@ const Beam = ({
           "--background": `linear-gradient(hsl(${hue} 80% 60%), transparent)`,
         } as React.CSSProperties
       }
-      className={`absolute top-0 left-[var(--x)] [aspect-ratio:1/var(--aspect-ratio)] [width:var(--width)] [background:var(--background)]`}
+      className={`absolute top-0 left-(--x) aspect-[1/var(--aspect-ratio)] w-(--width) [background:var(--background)]`}
       initial={{ y: "100cqmax", x: "-50%" }}
       animate={{ y: "-100%", x: "-50%" }}
       transition={{
@@ -16305,11 +16701,11 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
           } as React.CSSProperties
         }
         className={
-          "[container-type:size] pointer-events-none absolute top-0 left-0 size-full overflow-hidden [clipPath:inset(0)] [perspective:var(--perspective)] [transform-style:preserve-3d]"
+          "@container-[size] pointer-events-none absolute top-0 left-0 size-full overflow-hidden [clipPath:inset(0)] perspective-(--perspective) transform-3d"
         }
       >
         {/* top side */}
-        <div className="[container-type:inline-size] absolute z-20 [height:100cqmax] [width:100cqi] [transform-origin:50%_0%] [transform:rotateX(-90deg)] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [transform-style:preserve-3d]">
+        <div className="@container absolute z-20 h-[100cqmax] w-[100cqi] origin-[50%_0%] transform-[rotateX(-90deg)] bg-size-[var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] transform-3d">
           {topBeams.map((beam, index) => (
             <Beam
               key={`top-${index}`}
@@ -16321,7 +16717,7 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
           ))}
         </div>
         {/* bottom side */}
-        <div className="[container-type:inline-size] absolute top-full [height:100cqmax] [width:100cqi] [transform-origin:50%_0%] [transform:rotateX(-90deg)] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [transform-style:preserve-3d]">
+        <div className="@container absolute top-full h-[100cqmax] w-[100cqi] origin-[50%_0%] transform-[rotateX(-90deg)] bg-size-[var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] transform-3d">
           {bottomBeams.map((beam, index) => (
             <Beam
               key={`bottom-${index}`}
@@ -16333,7 +16729,7 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
           ))}
         </div>
         {/* left side */}
-        <div className="[container-type:inline-size] absolute top-0 left-0 [height:100cqmax] [width:100cqh] [transform-origin:0%_0%] [transform:rotate(90deg)_rotateX(-90deg)] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [transform-style:preserve-3d]">
+        <div className="@container absolute top-0 left-0 h-[100cqmax] w-[100cqh] origin-[0%_0%] transform-[rotate(90deg)_rotateX(-90deg)] bg-size-[var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] transform-3d">
           {leftBeams.map((beam, index) => (
             <Beam
               key={`left-${index}`}
@@ -16345,7 +16741,7 @@ export const WarpBackground: React.FC<WarpBackgroundProps> = ({
           ))}
         </div>
         {/* right side */}
-        <div className="[container-type:inline-size] absolute top-0 right-0 [height:100cqmax] [width:100cqh] [transform-origin:100%_0%] [transform:rotate(-90deg)_rotateX(-90deg)] [background-size:var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,_var(--grid-color)_0_1px,_transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] [transform-style:preserve-3d]">
+        <div className="@container absolute top-0 right-0 h-[100cqmax] w-[100cqh] origin-[100%_0%] transform-[rotate(-90deg)_rotateX(-90deg)] bg-size-[var(--beam-size)_var(--beam-size)] [background:linear-gradient(var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_-0.5px_/var(--beam-size)_var(--beam-size),linear-gradient(90deg,var(--grid-color)_0_1px,transparent_1px_var(--beam-size))_50%_50%_/var(--beam-size)_var(--beam-size)] transform-3d">
           {rightBeams.map((beam, index) => (
             <Beam
               key={`right-${index}`}
