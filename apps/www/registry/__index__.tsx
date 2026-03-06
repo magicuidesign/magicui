@@ -1804,7 +1804,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-demo",
     description: "Example showing a tweet card with author info.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card","@magicui/client-tweet-card"],
     files: [{
       path: "registry/example/tweet-card-demo.tsx",
       type: "registry:example",
@@ -1821,7 +1821,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-images",
     description: "Example showing a tweet card with images.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card","@magicui/client-tweet-card"],
     files: [{
       path: "registry/example/tweet-card-images.tsx",
       type: "registry:example",
@@ -1838,7 +1838,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-meta-preview",
     description: "Example showing a tweet card with meta preview.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card"],
+    registryDependencies: ["@magicui/tweet-card","@magicui/client-tweet-card"],
     files: [{
       path: "registry/example/tweet-card-meta-preview.tsx",
       type: "registry:example",

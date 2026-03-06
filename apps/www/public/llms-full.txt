@@ -3929,6 +3929,43 @@ export const ClientTweetCard = ({
 }
 
 
+===== EXAMPLE: tweet-card-demo =====
+Title: Tweet Card Demo
+
+--- file: example/tweet-card-demo.tsx ---
+import { ClientTweetCard } from "@/registry/magicui/client-tweet-card"
+
+/**
+ * <TweetCard /> (Server Side Only)
+ * <ClientTweetCard /> (Client Side Only)
+ */
+export default function TweetDemo() {
+  return <ClientTweetCard id="1668408059125702661" />
+}
+
+
+===== EXAMPLE: tweet-card-images =====
+Title: Tweet Card Images
+
+--- file: example/tweet-card-images.tsx ---
+import { ClientTweetCard } from "@/registry/magicui/client-tweet-card"
+
+export default function TweetImages() {
+  return <ClientTweetCard id="1678577280489234432" className="shadow-2xl" />
+}
+
+
+===== EXAMPLE: tweet-card-meta-preview =====
+Title: Tweet Card Meta Preview
+
+--- file: example/tweet-card-meta-preview.tsx ---
+import { ClientTweetCard } from "@/registry/magicui/client-tweet-card"
+
+export default function TweetMetaPreview() {
+  return <ClientTweetCard id="1675849118445436929" className="shadow-2xl" />
+}
+
+
 
 ===== COMPONENT: code-comparison =====
 Title: Code Comparison
