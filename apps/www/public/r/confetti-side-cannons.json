@@ -4,9 +4,7 @@
   "type": "registry:example",
   "title": "Confetti Side Cannons",
   "description": "Example showing side-mounted confetti cannons.",
-  "registryDependencies": [
-    "@magicui/confetti"
-  ],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/example/confetti-side-cannons.tsx",

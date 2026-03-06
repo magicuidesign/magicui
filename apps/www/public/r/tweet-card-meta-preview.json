@@ -5,7 +5,6 @@
   "title": "Tweet Card Meta Preview",
   "description": "Example showing a tweet card with meta preview.",
   "registryDependencies": [
-    "@magicui/tweet-card",
     "@magicui/client-tweet-card"
   ],
   "files": [

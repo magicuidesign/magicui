@@ -1814,7 +1814,6 @@
       "title": "Tweet Card Demo",
       "description": "Example showing a tweet card with author info.",
       "registryDependencies": [
-        "@magicui/tweet-card",
         "@magicui/client-tweet-card"
       ],
       "files": [
@@ -1830,7 +1829,6 @@
       "title": "Tweet Card Images",
       "description": "Example showing a tweet card with images.",
       "registryDependencies": [
-        "@magicui/tweet-card",
         "@magicui/client-tweet-card"
       ],
       "files": [
@@ -1846,7 +1844,6 @@
       "title": "Tweet Card Meta Preview",
       "description": "Example showing a tweet card with meta preview.",
       "registryDependencies": [
-        "@magicui/tweet-card",
         "@magicui/client-tweet-card"
       ],
       "files": [
@@ -1883,9 +1880,7 @@
         "button",
         "calendar",
         "@magicui/marquee",
-        "@magicui/bento-grid",
-        "@magicui/animated-list-demo",
-        "@magicui/animated-beam-multiple-outputs"
+        "@magicui/bento-grid"
       ],
       "files": [
         {
@@ -2888,9 +2883,7 @@
       "type": "registry:example",
       "title": "Confetti Fireworks",
       "description": "Example showing fireworks-style confetti animation.",
-      "registryDependencies": [
-        "@magicui/confetti"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/example/confetti-fireworks.tsx",
@@ -2903,9 +2896,7 @@
       "type": "registry:example",
       "title": "Confetti Stars",
       "description": "Example showing star-shaped confetti animation.",
-      "registryDependencies": [
-        "@magicui/confetti"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/example/confetti-stars.tsx",
@@ -2918,9 +2909,7 @@
       "type": "registry:example",
       "title": "Confetti Side Cannons",
       "description": "Example showing side-mounted confetti cannons.",
-      "registryDependencies": [
-        "@magicui/confetti"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/example/confetti-side-cannons.tsx",
@@ -2933,9 +2922,7 @@
       "type": "registry:example",
       "title": "Confetti Custom Shapes",
       "description": "Example showing confetti with custom shape particles.",
-      "registryDependencies": [
-        "@magicui/confetti"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/example/confetti-custom-shapes.tsx",
@@ -2948,9 +2935,7 @@
       "type": "registry:example",
       "title": "Confetti Emoji",
       "description": "Example showing confetti with emoji particles.",
-      "registryDependencies": [
-        "@magicui/confetti"
-      ],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/example/confetti-emoji.tsx",

@@ -1804,7 +1804,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-demo",
     description: "Example showing a tweet card with author info.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card","@magicui/client-tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card"],
     files: [{
       path: "registry/example/tweet-card-demo.tsx",
       type: "registry:example",
@@ -1821,7 +1821,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-images",
     description: "Example showing a tweet card with images.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card","@magicui/client-tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card"],
     files: [{
       path: "registry/example/tweet-card-images.tsx",
       type: "registry:example",
@@ -1838,7 +1838,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-meta-preview",
     description: "Example showing a tweet card with meta preview.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tweet-card","@magicui/client-tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card"],
     files: [{
       path: "registry/example/tweet-card-meta-preview.tsx",
       type: "registry:example",
@@ -1872,7 +1872,7 @@ export const Index: Record<string, any> = {
     name: "bento-demo",
     description: "Example showing a bento grid layout for showcasing features.",
     type: "registry:example",
-    registryDependencies: ["button","calendar","@magicui/marquee","@magicui/bento-grid","@magicui/animated-list-demo","@magicui/animated-beam-multiple-outputs"],
+    registryDependencies: ["button","calendar","@magicui/marquee","@magicui/bento-grid"],
     files: [{
       path: "registry/example/bento-demo.tsx",
       type: "registry:example",
@@ -2977,7 +2977,7 @@ export const Index: Record<string, any> = {
     name: "confetti-fireworks",
     description: "Example showing fireworks-style confetti animation.",
     type: "registry:example",
-    registryDependencies: ["@magicui/confetti"],
+    registryDependencies: [],
     files: [{
       path: "registry/example/confetti-fireworks.tsx",
       type: "registry:example",
@@ -2994,7 +2994,7 @@ export const Index: Record<string, any> = {
     name: "confetti-stars",
     description: "Example showing star-shaped confetti animation.",
     type: "registry:example",
-    registryDependencies: ["@magicui/confetti"],
+    registryDependencies: [],
     files: [{
       path: "registry/example/confetti-stars.tsx",
       type: "registry:example",
@@ -3011,7 +3011,7 @@ export const Index: Record<string, any> = {
     name: "confetti-side-cannons",
     description: "Example showing side-mounted confetti cannons.",
     type: "registry:example",
-    registryDependencies: ["@magicui/confetti"],
+    registryDependencies: [],
     files: [{
       path: "registry/example/confetti-side-cannons.tsx",
       type: "registry:example",
@@ -3028,7 +3028,7 @@ export const Index: Record<string, any> = {
     name: "confetti-custom-shapes",
     description: "Example showing confetti with custom shape particles.",
     type: "registry:example",
-    registryDependencies: ["@magicui/confetti"],
+    registryDependencies: [],
     files: [{
       path: "registry/example/confetti-custom-shapes.tsx",
       type: "registry:example",
@@ -3045,7 +3045,7 @@ export const Index: Record<string, any> = {
     name: "confetti-emoji",
     description: "Example showing confetti with emoji particles.",
     type: "registry:example",
-    registryDependencies: ["@magicui/confetti"],
+    registryDependencies: [],
     files: [{
       path: "registry/example/confetti-emoji.tsx",
       type: "registry:example",

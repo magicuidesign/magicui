@@ -11,9 +11,7 @@
     "button",
     "calendar",
     "@magicui/marquee",
-    "@magicui/bento-grid",
-    "@magicui/animated-list-demo",
-    "@magicui/animated-beam-multiple-outputs"
+    "@magicui/bento-grid"
   ],
   "files": [
     {
