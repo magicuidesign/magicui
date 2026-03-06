@@ -7,6 +7,7 @@ import { CodeBlockWriter, Node, Project, SyntaxKind } from "ts-morph"
 
 const MAGICUI_IMPORT_PREFIX = "@/registry/magicui/"
 const MAGICUI_PACKAGE_PREFIX = "@magicui/"
+const REGISTRY_IMPORT_PREFIX = "@/registry/"
 
 const scriptPath = fileURLToPath(import.meta.url)
 const appRoot = path.resolve(path.dirname(scriptPath), "..")
@@ -169,13 +170,34 @@ function getMagicUiPackageName(moduleSpecifier: string) {
   return `${MAGICUI_PACKAGE_PREFIX}${componentName}`
 }
 
+// Map a registry/magicui source file back to its published @magicui/* package name.
+function getMagicUiPackageNameFromFilePath(filePath: string) {
+  const magicUiRoot = path.join(registryRoot, "magicui")
+  const relativePath = path.relative(magicUiRoot, filePath)
+
+  if (
+    relativePath.startsWith("..") ||
+    path.isAbsolute(relativePath) ||
+    !/\.(ts|tsx)$/.test(relativePath)
+  ) {
+    return null
+  }
+
+  const packageName = relativePath
+    .replace(/\.(ts|tsx)$/, "")
+    .split(path.sep)
+    .join("/")
+
+  return `${MAGICUI_PACKAGE_PREFIX}${packageName}`
+}
+
 // Limit exact matching to magicui package entries and leave other deps alone.
 function isMagicUiPackage(dependency: string) {
   return dependency.startsWith(MAGICUI_PACKAGE_PREFIX)
 }
 
-// Collect magicui imports from one source file, including dynamic imports.
-function collectMagicUiImportsFromSourceFile(sourceFile: Node) {
+// Collect static and dynamic module specifiers from a source file.
+function collectModuleSpecifiersFromSourceFile(sourceFile: Node) {
   const importSpecifiers = sourceFile
     .getDescendantsOfKind(SyntaxKind.ImportDeclaration)
     .map((importDeclaration) => importDeclaration.getModuleSpecifierValue())
@@ -191,14 +213,125 @@ function collectMagicUiImportsFromSourceFile(sourceFile: Node) {
     })
     .filter((specifier): specifier is string => specifier !== null)
 
-  const dependencies = [...importSpecifiers, ...dynamicImportSpecifiers]
-    .flatMap((moduleSpecifier) => {
-      const packageName = getMagicUiPackageName(moduleSpecifier)
-      return packageName ? [packageName] : []
-    })
-    .sort((left, right) => left.localeCompare(right))
+  return dedupe([...importSpecifiers, ...dynamicImportSpecifiers])
+}
 
-  return dedupe(dependencies)
+// Check whether an import points at another source file under apps/www/registry.
+function getRegistryImportBasePath(
+  fromFilePath: string,
+  moduleSpecifier: string
+) {
+  if (moduleSpecifier.startsWith(REGISTRY_IMPORT_PREFIX)) {
+    return path.join(registryRoot, moduleSpecifier.slice(REGISTRY_IMPORT_PREFIX.length))
+  }
+
+  if (!moduleSpecifier.startsWith(".")) {
+    return null
+  }
+
+  const resolvedPath = path.resolve(path.dirname(fromFilePath), moduleSpecifier)
+  const relativePath = path.relative(registryRoot, resolvedPath)
+
+  if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
+    return null
+  }
+
+  return resolvedPath
+}
+
+// Resolve registry-local imports without needing a full tsconfig module resolver.
+async function resolveRegistryImportPath(
+  fromFilePath: string,
+  moduleSpecifier: string
+) {
+  const basePath = getRegistryImportBasePath(fromFilePath, moduleSpecifier)
+  if (!basePath) {
+    return null
+  }
+
+  const candidates = /\.[mc]?[jt]sx?$/.test(basePath)
+    ? [basePath]
+    : [
+        `${basePath}.tsx`,
+        `${basePath}.ts`,
+        path.join(basePath, "index.tsx"),
+        path.join(basePath, "index.ts"),
+      ]
+
+  for (const candidate of candidates) {
+    try {
+      await fs.access(candidate)
+      return candidate
+    } catch {
+      continue
+    }
+  }
+
+  return {
+    missingImport: moduleSpecifier,
+    sourceFile: path.relative(registryRoot, fromFilePath),
+  }
+}
+
+// Walk the local registry import graph and collect all reachable @magicui/* packages.
+async function collectRegistryDependenciesFromFile(
+  project: Project,
+  filePath: string,
+  dependencies: Set<string>,
+  missingFiles: string[],
+  visitedFiles = new Set<string>()
+) {
+  const absolutePath = path.resolve(filePath)
+  if (visitedFiles.has(absolutePath)) {
+    return
+  }
+
+  visitedFiles.add(absolutePath)
+
+  const sourceFile =
+    project.getSourceFile(absolutePath) ??
+    project.addSourceFileAtPathIfExists(absolutePath)
+
+  if (!sourceFile) {
+    missingFiles.push(path.relative(registryRoot, absolutePath))
+    return
+  }
+
+  const fileDependency = getMagicUiPackageNameFromFilePath(absolutePath)
+  if (fileDependency) {
+    dependencies.add(fileDependency)
+  }
+
+  for (const moduleSpecifier of collectModuleSpecifiersFromSourceFile(sourceFile)) {
+    const directDependency = getMagicUiPackageName(moduleSpecifier)
+    if (directDependency) {
+      dependencies.add(directDependency)
+    }
+
+    const resolvedImport = await resolveRegistryImportPath(
+      absolutePath,
+      moduleSpecifier
+    )
+
+    if (!resolvedImport) {
+      continue
+    }
+
+    if (typeof resolvedImport !== "string") {
+      missingFiles.push(
+        `${resolvedImport.sourceFile} -> ${resolvedImport.missingImport}`
+      )
+      continue
+    }
+
+    await collectRegistryDependenciesFromFile(
+      project,
+      resolvedImport,
+      dependencies,
+      missingFiles,
+      visitedFiles
+    )
+  }
 }
 
 // Aggregate magicui dependencies across all files referenced by one example.
@@ -208,6 +341,7 @@ async function collectExampleRegistryDependencies(
 ) {
   const missingFiles: string[] = []
   const dependencies = new Set<string>()
+  const visitedFiles = new Set<string>()
 
   for (const filePath of filePaths) {
     const absolutePath = path.join(registryRoot, filePath)
@@ -219,18 +353,13 @@ async function collectExampleRegistryDependencies(
       continue
     }
 
-    const sourceFile =
-      project.getSourceFile(absolutePath) ??
-      project.addSourceFileAtPathIfExists(absolutePath)
-
-    if (!sourceFile) {
-      missingFiles.push(filePath)
-      continue
-    }
-
-    for (const dependency of collectMagicUiImportsFromSourceFile(sourceFile)) {
-      dependencies.add(dependency)
-    }
+    await collectRegistryDependenciesFromFile(
+      project,
+      absolutePath,
+      dependencies,
+      missingFiles,
+      visitedFiles
+    )
   }
 
   return {
