@@ -22,6 +22,7 @@ type SyncOptions = {
 type ExampleIssue = {
   exampleName: string
   exampleFiles: string[]
+  extraDependencies: string[]
   missingDependencies: string[]
   missingFiles: string[]
 }
@@ -168,6 +169,11 @@ function getMagicUiPackageName(moduleSpecifier: string) {
   return `${MAGICUI_PACKAGE_PREFIX}${componentName}`
 }
 
+// Limit exact matching to magicui package entries and leave other deps alone.
+function isMagicUiPackage(dependency: string) {
+  return dependency.startsWith(MAGICUI_PACKAGE_PREFIX)
+}
+
 // Collect magicui imports from one source file, including dynamic imports.
 function collectMagicUiImportsFromSourceFile(sourceFile: Node) {
   const importSpecifiers = sourceFile
@@ -287,6 +293,10 @@ function setRegistryDependencies(node: Node, dependencies: string[]) {
 function formatIssue(issue: ExampleIssue) {
   const fileList =
     issue.exampleFiles.length > 0 ? issue.exampleFiles.join(", ") : "no files"
+  const extraDependencies =
+    issue.extraDependencies.length > 0
+      ? issue.extraDependencies.join(", ")
+      : "none"
   const missingDependencies =
     issue.missingDependencies.length > 0
       ? issue.missingDependencies.join(", ")
@@ -297,6 +307,7 @@ function formatIssue(issue: ExampleIssue) {
   return [
     `- ${issue.exampleName}`,
     `  files: ${fileList}`,
+    `  extra registryDependencies: ${extraDependencies}`,
     `  missing registryDependencies: ${missingDependencies}`,
     `  missing files: ${missingFiles}`,
   ].join("\n")
@@ -341,11 +352,19 @@ export async function syncExampleRegistryDependencies({
       await collectExampleRegistryDependencies(project, exampleFiles)
 
     const normalizedCurrentDependencies = dedupe(currentDependencies)
+    const currentMagicUiDependencies = normalizedCurrentDependencies.filter(
+      isMagicUiPackage
+    )
+    const extraDependencies = currentMagicUiDependencies.filter((dependency) => {
+      return !importedDependencies.includes(dependency)
+    })
     const missingDependencies = importedDependencies.filter((dependency) => {
-      return !normalizedCurrentDependencies.includes(dependency)
+      return !currentMagicUiDependencies.includes(dependency)
     })
     const nextDependencies = [
-      ...normalizedCurrentDependencies,
+      ...normalizedCurrentDependencies.filter((dependency) => {
+        return !isMagicUiPackage(dependency) || importedDependencies.includes(dependency)
+      }),
       ...missingDependencies,
     ]
     const dependenciesChanged =
@@ -358,6 +377,7 @@ export async function syncExampleRegistryDependencies({
       issues.push({
         exampleName,
         exampleFiles,
+        extraDependencies,
         missingDependencies,
         missingFiles,
       })
