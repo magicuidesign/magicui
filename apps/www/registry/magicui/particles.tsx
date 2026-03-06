@@ -99,20 +99,23 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
   const rafID = useRef<number | null>(null)
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null)
+  const initCanvasRef = useRef<() => void>(() => {})
+  const onMouseMoveRef = useRef<() => void>(() => {})
+  const animateRef = useRef<() => void>(() => {})
 
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
-    initCanvas()
-    animate()
+    initCanvasRef.current()
+    animateRef.current()
 
     const handleResize = () => {
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current)
       }
       resizeTimeout.current = setTimeout(() => {
-        initCanvas()
+        initCanvasRef.current()
       }, 200)
     }
 
@@ -130,11 +133,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   }, [color])
 
   useEffect(() => {
-    onMouseMove()
+    onMouseMoveRef.current()
   }, [mousePosition.x, mousePosition.y])
 
   useEffect(() => {
-    initCanvas()
+    initCanvasRef.current()
   }, [refresh])
 
   const initCanvas = () => {
@@ -298,8 +301,12 @@ export const Particles: React.FC<ParticlesProps> = ({
         drawCircle(newCircle)
       }
     })
-    rafID.current = window.requestAnimationFrame(animate)
+    rafID.current = window.requestAnimationFrame(animateRef.current)
   }
+
+  initCanvasRef.current = initCanvas
+  onMouseMoveRef.current = onMouseMove
+  animateRef.current = animate
 
   return (
     <div

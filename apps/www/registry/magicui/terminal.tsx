@@ -87,7 +87,7 @@ export const AnimatedSpan = ({
     if (sequence.activeIndex === itemIndex) {
       setHasStarted(true)
     }
-  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex])
+  }, [sequence, hasStarted, itemIndex])
 
   const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true
 
@@ -146,16 +146,24 @@ export const TypingAnimation = ({
 
   const sequence = useSequence()
   const itemIndex = useItemIndex()
+  const hasSequence = sequence !== null
+  const sequenceStarted = sequence?.sequenceStarted ?? false
+  const sequenceActiveIndex = sequence?.activeIndex ?? null
+  const sequenceCompleteItemRef = useRef<
+    SequenceContextValue["completeItem"] | null
+  >(null)
+  const sequenceItemIndexRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    sequenceCompleteItemRef.current = sequence?.completeItem ?? null
+    sequenceItemIndexRef.current = itemIndex
+  }, [sequence?.completeItem, itemIndex])
 
   useEffect(() => {
     let startTimeout: ReturnType<typeof setTimeout> | null = null
 
-    if (sequence && itemIndex !== null) {
-      if (
-        sequence.sequenceStarted &&
-        !started &&
-        sequence.activeIndex === itemIndex
-      ) {
+    if (hasSequence && itemIndex !== null) {
+      if (sequenceStarted && !started && sequenceActiveIndex === itemIndex) {
         setStarted(true)
       }
     } else if (!startOnView || isInView) {
@@ -172,8 +180,9 @@ export const TypingAnimation = ({
     startOnView,
     isInView,
     started,
-    sequence?.activeIndex,
-    sequence?.sequenceStarted,
+    hasSequence,
+    sequenceActiveIndex,
+    sequenceStarted,
     itemIndex,
   ])
 
@@ -190,8 +199,10 @@ export const TypingAnimation = ({
           if (typingEffect !== null) {
             clearInterval(typingEffect)
           }
-          if (sequence && itemIndex !== null) {
-            sequence.completeItem(itemIndex)
+          const completeItem = sequenceCompleteItemRef.current
+          const currentItemIndex = sequenceItemIndexRef.current
+          if (completeItem && currentItemIndex !== null) {
+            completeItem(currentItemIndex)
           }
         }
       }, duration)

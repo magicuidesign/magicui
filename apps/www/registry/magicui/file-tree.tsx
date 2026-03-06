@@ -132,7 +132,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       if (initialSelectedId) {
         expandSpecificTargetedElements(elements, initialSelectedId)
       }
-    }, [initialSelectedId, elements])
+    }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
 
@@ -234,6 +234,7 @@ const Folder = forwardRef<
 
     return (
       <AccordionPrimitive.Item
+        ref={ref}
         {...props}
         value={value}
         className="relative h-full overflow-hidden"
@@ -293,6 +294,7 @@ const File = forwardRef<
       value,
       className,
       handleSelect,
+      onClick,
       isSelectable = true,
       isSelect,
       fileIcon,
@@ -317,7 +319,11 @@ const File = forwardRef<
           direction === "rtl" ? "rtl" : "ltr",
           className
         )}
-        onClick={() => selectItem(value)}
+        onClick={(event) => {
+          selectItem(value)
+          handleSelect?.(value)
+          onClick?.(event)
+        }}
         {...props}
       >
         {fileIcon ?? <FileIcon className="size-4" />}
@@ -339,36 +345,43 @@ const CollapseButton = forwardRef<
   const { expandedItems, setExpandedItems } = useTree()
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
+    const expandedElementIds: string[] = []
+
     const expandTree = (element: TreeViewElement) => {
       const isSelectable = element.isSelectable ?? true
       if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id])
-        element.children.forEach(expandTree)
+        expandedElementIds.push(element.id)
+        for (const child of element.children) {
+          expandTree(child)
+        }
       }
     }
 
-    elements.forEach(expandTree)
+    for (const element of elements) {
+      expandTree(element)
+    }
+
+    return [...new Set(expandedElementIds)]
   }, [])
 
   const closeAll = useCallback(() => {
     setExpandedItems?.([])
-  }, [])
+  }, [setExpandedItems])
 
   useEffect(() => {
-    console.log(expandAll)
     if (expandAll) {
-      expendAllTree(elements)
+      setExpandedItems?.(expendAllTree(elements))
     }
-  }, [expandAll])
+  }, [expandAll, elements, expendAllTree, setExpandedItems])
 
   return (
     <Button
       variant={"ghost"}
-      className="absolute right-2 bottom-1 h-8 w-fit p-1"
+      className={cn("absolute right-2 bottom-1 h-8 w-fit p-1", className)}
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll
-          : () => expendAllTree(elements)
+          : () => setExpandedItems?.(expendAllTree(elements))
       }
       ref={ref}
       {...props}

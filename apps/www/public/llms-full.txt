@@ -3003,7 +3003,6 @@ Title: Avatar Circles
 Description: Overlapping circles of avatars.
 
 --- file: magicui/avatar-circles.tsx ---
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { cn } from "@/lib/utils"
@@ -3354,7 +3353,9 @@ const features = [
     description: "We automatically save your files as you type.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
@@ -3363,7 +3364,9 @@ const features = [
     description: "Search through all your files in one place.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
@@ -3372,7 +3375,9 @@ const features = [
     description: "Supports 100+ languages and counting.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
@@ -3381,7 +3386,9 @@ const features = [
     description: "Use the calendar to filter your files by date.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
@@ -3391,7 +3398,9 @@ const features = [
       "Get notified when someone shares a file or mentions you in a comment.",
     href: "/",
     cta: "Learn more",
-    background: <img className="absolute -top-20 -right-20 opacity-60" />,
+    background: (
+      <img alt="" className="absolute -top-20 -right-20 opacity-60" />
+    ),
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
   },
 ]
@@ -3513,7 +3522,6 @@ export function BlurFade({
 Title: Blur Fade Demo
 
 --- file: example/blur-fade-demo.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { BlurFade } from "@/registry/magicui/blur-fade"
 
 const images = Array.from({ length: 9 }, (_, i) => {
@@ -5768,8 +5776,8 @@ export function DotPattern({
       const col = i % Math.ceil(dimensions.width / width)
       const row = Math.floor(i / Math.ceil(dimensions.width / width))
       return {
-        x: col * width + cx,
-        y: row * height + cy,
+        x: col * width + cx + x,
+        y: row * height + cy + y,
         delay: Math.random() * 5,
         duration: Math.random() * 3 + 2,
       }
@@ -5792,7 +5800,7 @@ export function DotPattern({
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </radialGradient>
       </defs>
-      {dots.map((dot, index) => (
+      {dots.map((dot) => (
         <motion.circle
           key={`${dot.x}-${dot.y}`}
           cx={dot.x}
@@ -6256,7 +6264,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       if (initialSelectedId) {
         expandSpecificTargetedElements(elements, initialSelectedId)
       }
-    }, [initialSelectedId, elements])
+    }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
 
@@ -6358,6 +6366,7 @@ const Folder = forwardRef<
 
     return (
       <AccordionPrimitive.Item
+        ref={ref}
         {...props}
         value={value}
         className="relative h-full overflow-hidden"
@@ -6417,6 +6426,7 @@ const File = forwardRef<
       value,
       className,
       handleSelect,
+      onClick,
       isSelectable = true,
       isSelect,
       fileIcon,
@@ -6441,7 +6451,11 @@ const File = forwardRef<
           direction === "rtl" ? "rtl" : "ltr",
           className
         )}
-        onClick={() => selectItem(value)}
+        onClick={(event) => {
+          selectItem(value)
+          handleSelect?.(value)
+          onClick?.(event)
+        }}
         {...props}
       >
         {fileIcon ?? <FileIcon className="size-4" />}
@@ -6463,36 +6477,43 @@ const CollapseButton = forwardRef<
   const { expandedItems, setExpandedItems } = useTree()
 
   const expendAllTree = useCallback((elements: TreeViewElement[]) => {
+    const expandedElementIds: string[] = []
+
     const expandTree = (element: TreeViewElement) => {
       const isSelectable = element.isSelectable ?? true
       if (isSelectable && element.children && element.children.length > 0) {
-        setExpandedItems?.((prev) => [...(prev ?? []), element.id])
-        element.children.forEach(expandTree)
+        expandedElementIds.push(element.id)
+        for (const child of element.children) {
+          expandTree(child)
+        }
       }
     }
 
-    elements.forEach(expandTree)
+    for (const element of elements) {
+      expandTree(element)
+    }
+
+    return [...new Set(expandedElementIds)]
   }, [])
 
   const closeAll = useCallback(() => {
     setExpandedItems?.([])
-  }, [])
+  }, [setExpandedItems])
 
   useEffect(() => {
-    console.log(expandAll)
     if (expandAll) {
-      expendAllTree(elements)
+      setExpandedItems?.(expendAllTree(elements))
     }
-  }, [expandAll])
+  }, [expandAll, elements, expendAllTree, setExpandedItems])
 
   return (
     <Button
       variant={"ghost"}
-      className="absolute right-2 bottom-1 h-8 w-fit p-1"
+      className={cn("absolute right-2 bottom-1 h-8 w-fit p-1", className)}
       onClick={
         expandedItems && expandedItems.length > 0
           ? closeAll
-          : () => expendAllTree(elements)
+          : () => setExpandedItems?.(expendAllTree(elements))
       }
       ref={ref}
       {...props}
@@ -6930,9 +6951,9 @@ export function Globe({
   className?: string
   config?: COBEOptions
 }) {
-  let phi = 0
-  let width = 0
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const phiRef = useRef(0)
+  const widthRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
 
@@ -6961,7 +6982,7 @@ export function Globe({
   useEffect(() => {
     const onResize = () => {
       if (canvasRef.current) {
-        width = canvasRef.current.offsetWidth
+        widthRef.current = canvasRef.current.offsetWidth
       }
     }
 
@@ -6970,13 +6991,13 @@ export function Globe({
 
     const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width * 2,
-      height: width * 2,
+      width: widthRef.current * 2,
+      height: widthRef.current * 2,
       onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005
-        state.phi = phi + rs.get()
-        state.width = width * 2
-        state.height = width * 2
+        if (!pointerInteracting.current) phiRef.current += 0.005
+        state.phi = phiRef.current + rs.get()
+        state.width = widthRef.current * 2
+        state.height = widthRef.current * 2
       },
     })
 
@@ -7208,7 +7229,6 @@ Title: Hero Video Dialog
 Description: A hero video dialog component.
 
 --- file: magicui/hero-video-dialog.tsx ---
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState } from "react"
@@ -7900,7 +7920,6 @@ function easeOutCubic(t: number): number {
 export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -7914,7 +7933,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     duration: number
   } | null>(null)
   const animationFrameRef = useRef<number>(0)
-  const rotationRef = useRef(rotation)
+  const rotationRef = useRef({ x: 0, y: 0 })
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([])
   const imagesLoadedRef = useRef<boolean[]>([])
 
@@ -8978,7 +8997,7 @@ export function Lens({
         </div>
       </motion.div>
     )
-  }, [currentPosition, lensSize, lensColor, zoomFactor, children, duration])
+  }, [currentPosition, maskImage, zoomFactor, children, duration])
 
   return (
     <div
@@ -9009,8 +9028,6 @@ export function Lens({
 Title: Lens Demo
 
 --- file: example/lens-demo.tsx ---
-/* eslint-disable @next/next/no-img-element */
-
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -9062,8 +9079,6 @@ export default function LensDemo() {
 Title: Lens Demo 2
 
 --- file: example/lens-demo-2.tsx ---
-/* eslint-disable @next/next/no-img-element */
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9108,8 +9123,6 @@ export default function LensDemo() {
 Title: Lens Demo 3
 
 --- file: example/lens-demo-3.tsx ---
-/* eslint-disable @next/next/no-img-element */
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9828,7 +9841,6 @@ export default function MarqueeDemo() {
 Title: Marquee Vertical Demo
 
 --- file: example/marquee-demo-vertical.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/registry/magicui/marquee"
 
@@ -9972,7 +9984,6 @@ export default function MarqueeLogos() {
 Title: Marquee 3D
 
 --- file: example/marquee-3d.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/registry/magicui/marquee"
 
@@ -11115,20 +11126,23 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
   const rafID = useRef<number | null>(null)
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null)
+  const initCanvasRef = useRef<() => void>(() => {})
+  const onMouseMoveRef = useRef<() => void>(() => {})
+  const animateRef = useRef<() => void>(() => {})
 
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
-    initCanvas()
-    animate()
+    initCanvasRef.current()
+    animateRef.current()
 
     const handleResize = () => {
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current)
       }
       resizeTimeout.current = setTimeout(() => {
-        initCanvas()
+        initCanvasRef.current()
       }, 200)
     }
 
@@ -11146,11 +11160,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   }, [color])
 
   useEffect(() => {
-    onMouseMove()
+    onMouseMoveRef.current()
   }, [mousePosition.x, mousePosition.y])
 
   useEffect(() => {
-    initCanvas()
+    initCanvasRef.current()
   }, [refresh])
 
   const initCanvas = () => {
@@ -11314,8 +11328,12 @@ export const Particles: React.FC<ParticlesProps> = ({
         drawCircle(newCircle)
       }
     })
-    rafID.current = window.requestAnimationFrame(animate)
+    rafID.current = window.requestAnimationFrame(animateRef.current)
   }
+
+  initCanvasRef.current = initCanvas
+  onMouseMoveRef.current = onMouseMove
+  animateRef.current = animate
 
   return (
     <div
@@ -13436,7 +13454,7 @@ Description: A customizable, physics-based smooth cursor animation component wit
 --- file: magicui/smooth-cursor.tsx ---
 "use client"
 
-import { FC, useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef } from "react"
 import { motion, useSpring } from "motion/react"
 
 interface Position {
@@ -13525,7 +13543,6 @@ export function SmoothCursor({
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false)
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
@@ -13587,7 +13604,6 @@ export function SmoothCursor({
         previousAngle.current = currentAngle
 
         scale.set(0.95)
-        setIsMoving(true)
 
         if (timeout !== null) {
           clearTimeout(timeout)
@@ -13595,7 +13611,6 @@ export function SmoothCursor({
 
         timeout = setTimeout(() => {
           scale.set(1)
-          setIsMoving(false)
         }, 150)
       }
     }
@@ -14181,7 +14196,7 @@ export const AnimatedSpan = ({
     if (sequence.activeIndex === itemIndex) {
       setHasStarted(true)
     }
-  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex])
+  }, [sequence, hasStarted, itemIndex])
 
   const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true
 
@@ -14240,16 +14255,24 @@ export const TypingAnimation = ({
 
   const sequence = useSequence()
   const itemIndex = useItemIndex()
+  const hasSequence = sequence !== null
+  const sequenceStarted = sequence?.sequenceStarted ?? false
+  const sequenceActiveIndex = sequence?.activeIndex ?? null
+  const sequenceCompleteItemRef = useRef<
+    SequenceContextValue["completeItem"] | null
+  >(null)
+  const sequenceItemIndexRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    sequenceCompleteItemRef.current = sequence?.completeItem ?? null
+    sequenceItemIndexRef.current = itemIndex
+  }, [sequence?.completeItem, itemIndex])
 
   useEffect(() => {
     let startTimeout: ReturnType<typeof setTimeout> | null = null
 
-    if (sequence && itemIndex !== null) {
-      if (
-        sequence.sequenceStarted &&
-        !started &&
-        sequence.activeIndex === itemIndex
-      ) {
+    if (hasSequence && itemIndex !== null) {
+      if (sequenceStarted && !started && sequenceActiveIndex === itemIndex) {
         setStarted(true)
       }
     } else if (!startOnView || isInView) {
@@ -14266,8 +14289,9 @@ export const TypingAnimation = ({
     startOnView,
     isInView,
     started,
-    sequence?.activeIndex,
-    sequence?.sequenceStarted,
+    hasSequence,
+    sequenceActiveIndex,
+    sequenceStarted,
     itemIndex,
   ])
 
@@ -14284,8 +14308,10 @@ export const TypingAnimation = ({
           if (typingEffect !== null) {
             clearInterval(typingEffect)
           }
-          if (sequence && itemIndex !== null) {
-            sequence.completeItem(itemIndex)
+          const completeItem = sequenceCompleteItemRef.current
+          const currentItemIndex = sequenceItemIndexRef.current
+          if (completeItem && currentItemIndex !== null) {
+            completeItem(currentItemIndex)
           }
         }
       }, duration)
@@ -15219,7 +15245,6 @@ Title: Tweet Card
 Description: A card that displays a tweet with the author's name, handle, and profile picture.
 
 --- file: magicui/tweet-card.tsx ---
-/* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react"
 import { enrichTweet, type EnrichedTweet, type TweetProps } from "react-tweet"
 import { getTweet, type Tweet } from "react-tweet/api"
