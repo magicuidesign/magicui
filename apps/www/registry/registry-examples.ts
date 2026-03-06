@@ -543,6 +543,8 @@ export const examples: Registry["items"] = [
       "@magicui/bento-grid",
       "@magicui/animated-beam",
       "@magicui/animated-list",
+      "@magicui/animated-beam-multiple-outputs",
+      "@magicui/animated-list-demo",
     ],
     dependencies: ["@radix-ui/react-icons"],
     files: [

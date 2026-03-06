@@ -1885,7 +1885,9 @@
         "@magicui/marquee",
         "@magicui/bento-grid",
         "@magicui/animated-beam",
-        "@magicui/animated-list"
+        "@magicui/animated-list",
+        "@magicui/animated-beam-multiple-outputs",
+        "@magicui/animated-list-demo"
       ],
       "files": [
         {
