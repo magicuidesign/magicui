@@ -7,6 +7,7 @@ import { CodeBlockWriter, Node, Project, SyntaxKind } from "ts-morph"
 
 const MAGICUI_IMPORT_PREFIX = "@/registry/magicui/"
 const MAGICUI_PACKAGE_PREFIX = "@magicui/"
+const EXAMPLE_IMPORT_PREFIX = "@/registry/example/"
 const REGISTRY_IMPORT_PREFIX = "@/registry/"
 
 const scriptPath = fileURLToPath(import.meta.url)
@@ -156,28 +157,43 @@ function dedupe(values: string[]) {
   })
 }
 
-// Convert @/registry/magicui/* imports into @magicui/* package names.
-function getMagicUiPackageName(moduleSpecifier: string) {
-  if (!moduleSpecifier.startsWith(MAGICUI_IMPORT_PREFIX)) {
+// Convert local registry imports into namespaced registry dependency ids.
+function getRegistryDependencyName(moduleSpecifier: string) {
+  const prefix = [MAGICUI_IMPORT_PREFIX, EXAMPLE_IMPORT_PREFIX].find((value) =>
+    moduleSpecifier.startsWith(value)
+  )
+
+  if (!prefix) {
     return null
   }
 
-  const componentName = moduleSpecifier.slice(MAGICUI_IMPORT_PREFIX.length)
-  if (!componentName) {
+  const itemName = moduleSpecifier.slice(prefix.length)
+  if (!itemName) {
     return null
   }
 
-  return `${MAGICUI_PACKAGE_PREFIX}${componentName}`
+  return `${MAGICUI_PACKAGE_PREFIX}${itemName}`
 }
 
-// Map a registry/magicui source file back to its published @magicui/* package name.
-function getMagicUiPackageNameFromFilePath(filePath: string) {
-  const magicUiRoot = path.join(registryRoot, "magicui")
-  const relativePath = path.relative(magicUiRoot, filePath)
+// Map registry source files back to their published registry dependency ids.
+function getRegistryDependencyNameFromFilePath(filePath: string) {
+  const registryItemRoots = [
+    path.join(registryRoot, "magicui"),
+    path.join(registryRoot, "example"),
+  ]
+
+  const matchingRoot = registryItemRoots.find((rootPath) => {
+    const relativePath = path.relative(rootPath, filePath)
+    return !relativePath.startsWith("..") && !path.isAbsolute(relativePath)
+  })
+
+  if (!matchingRoot) {
+    return null
+  }
+
+  const relativePath = path.relative(matchingRoot, filePath)
 
   if (
-    relativePath.startsWith("..") ||
-    path.isAbsolute(relativePath) ||
     !/\.(ts|tsx)$/.test(relativePath)
   ) {
     return null
@@ -279,6 +295,7 @@ async function collectRegistryDependenciesFromFile(
   filePath: string,
   dependencies: Set<string>,
   missingFiles: string[],
+  excludedDependencies: Set<string>,
   visitedFiles = new Set<string>()
 ) {
   const absolutePath = path.resolve(filePath)
@@ -297,14 +314,14 @@ async function collectRegistryDependenciesFromFile(
     return
   }
 
-  const fileDependency = getMagicUiPackageNameFromFilePath(absolutePath)
-  if (fileDependency) {
+  const fileDependency = getRegistryDependencyNameFromFilePath(absolutePath)
+  if (fileDependency && !excludedDependencies.has(fileDependency)) {
     dependencies.add(fileDependency)
   }
 
   for (const moduleSpecifier of collectModuleSpecifiersFromSourceFile(sourceFile)) {
-    const directDependency = getMagicUiPackageName(moduleSpecifier)
-    if (directDependency) {
+    const directDependency = getRegistryDependencyName(moduleSpecifier)
+    if (directDependency && !excludedDependencies.has(directDependency)) {
       dependencies.add(directDependency)
     }
 
@@ -329,6 +346,7 @@ async function collectRegistryDependenciesFromFile(
       resolvedImport,
       dependencies,
       missingFiles,
+      excludedDependencies,
       visitedFiles
     )
   }
@@ -342,6 +360,14 @@ async function collectExampleRegistryDependencies(
   const missingFiles: string[] = []
   const dependencies = new Set<string>()
   const visitedFiles = new Set<string>()
+  const excludedDependencies = new Set(
+    filePaths
+      .filter((filePath) => filePath.startsWith("example/"))
+      .map((filePath) => {
+        return getRegistryDependencyNameFromFilePath(path.join(registryRoot, filePath))
+      })
+      .filter((dependency): dependency is string => dependency !== null)
+  )
 
   for (const filePath of filePaths) {
     const absolutePath = path.join(registryRoot, filePath)
@@ -358,6 +384,7 @@ async function collectExampleRegistryDependencies(
       absolutePath,
       dependencies,
       missingFiles,
+      excludedDependencies,
       visitedFiles
     )
   }
