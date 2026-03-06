@@ -1814,6 +1814,7 @@
       "title": "Tweet Card Demo",
       "description": "Example showing a tweet card with author info.",
       "registryDependencies": [
+        "@magicui/client-tweet-card",
         "@magicui/tweet-card"
       ],
       "files": [
@@ -1829,6 +1830,7 @@
       "title": "Tweet Card Images",
       "description": "Example showing a tweet card with images.",
       "registryDependencies": [
+        "@magicui/client-tweet-card",
         "@magicui/tweet-card"
       ],
       "files": [
@@ -1844,6 +1846,7 @@
       "title": "Tweet Card Meta Preview",
       "description": "Example showing a tweet card with meta preview.",
       "registryDependencies": [
+        "@magicui/client-tweet-card",
         "@magicui/tweet-card"
       ],
       "files": [
@@ -1881,8 +1884,10 @@
         "calendar",
         "@magicui/marquee",
         "@magicui/bento-grid",
-        "@magicui/animated-list-demo",
-        "@magicui/animated-beam-multiple-outputs"
+        "@magicui/animated-beam",
+        "@magicui/animated-list",
+        "@magicui/animated-beam-multiple-outputs",
+        "@magicui/animated-list-demo"
       ],
       "files": [
         {

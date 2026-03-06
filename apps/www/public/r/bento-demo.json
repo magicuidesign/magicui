@@ -12,8 +12,10 @@
     "calendar",
     "@magicui/marquee",
     "@magicui/bento-grid",
-    "@magicui/animated-list-demo",
-    "@magicui/animated-beam-multiple-outputs"
+    "@magicui/animated-beam",
+    "@magicui/animated-list",
+    "@magicui/animated-beam-multiple-outputs",
+    "@magicui/animated-list-demo"
   ],
   "files": [
     {
