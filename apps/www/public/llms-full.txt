@@ -9721,8 +9721,8 @@ export function Marquee({
             className={cn("flex shrink-0 justify-around gap-(--gap)", {
               "animate-marquee flex-row": !vertical,
               "animate-marquee-vertical flex-col": vertical,
-              "group-hover:paused": pauseOnHover,
-              "direction-[reverse]": reverse,
+              "group-hover:[animation-play-state:paused]": pauseOnHover,
+              "[animation-direction:reverse]": reverse,
             })}
           >
             {children}
@@ -10849,7 +10849,7 @@ export function OrbitingCircles({
             }
             className={cn(
               `animate-orbit absolute flex size-(--icon-size) transform-gpu items-center justify-center rounded-full`,
-              { "direction-[reverse]": reverse },
+              { "[animation-direction:reverse]": reverse },
               className
             )}
             {...props}
