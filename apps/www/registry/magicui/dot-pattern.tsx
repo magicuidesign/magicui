@@ -44,12 +44,15 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
  * // Basic usage
  * <DotPattern />
  *
+ * // With custom color via Tailwind text utility (fully backward-compatible)
+ * <DotPattern className="text-red-500" />
+ *
  * // With glowing effect and custom spacing
  * <DotPattern
- * width={20}
- * height={20}
- * glow={true}
- * className="opacity-50"
+ *   width={20}
+ *   height={20}
+ *   glow={true}
+ *   className="opacity-50"
  * />
  *
  * @notes
@@ -57,6 +60,8 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
  * - Highly performant: uses a single <rect> to render an infinite grid.
  * - Responsive: automatically fills its parent container via CSS (inset-0).
  * - When glow is enabled, the entire pattern performs a hardware-accelerated opacity transition.
+ * - Color is controlled via `text-*` Tailwind classes (e.g. `text-red-500`), as
+ *   `<circle fill="currentColor" />` inherits the SVG's CSS `color` property.
  */
 export function DotPattern({
   width = 16,
@@ -76,7 +81,7 @@ export function DotPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80",
+        "pointer-events-none absolute inset-0 h-full w-full text-neutral-400/80",
         className
       )}
       {...props}
@@ -90,7 +95,7 @@ export function DotPattern({
           x={x}
           y={y}
         >
-          <circle cx={cx} cy={cy} r={cr} />
+          <circle cx={cx} cy={cy} r={cr} fill="currentColor" />
         </pattern>
       </defs>
 
