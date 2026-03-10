@@ -9,7 +9,7 @@ export function CodeTabs({ children }: React.ComponentProps<typeof Tabs>) {
   const [config, setConfig] = useConfig()
 
   const installationType = React.useMemo(() => {
-    return config.installationType || "cli"
+    return config.installationType ?? "cli"
   }, [config])
 
   return (

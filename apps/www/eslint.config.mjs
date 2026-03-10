@@ -26,6 +26,12 @@ const eslintConfig = [
       "@next/next/no-duplicate-head": "off",
     },
   }),
+  {
+    files: ["registry/**/*.tsx"],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
 ]
 
 export default eslintConfig

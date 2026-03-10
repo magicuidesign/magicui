@@ -8,6 +8,7 @@ import { getBreadcrumbItems } from "fumadocs-core/breadcrumb"
 import { findNeighbour } from "fumadocs-core/server"
 import type { BreadcrumbList, TechArticle, WithContext } from "schema-dts"
 
+import { getNeighboursFromConfig } from "@/config/docs"
 import { siteConfig } from "@/config/site"
 import { replaceComponentSource } from "@/lib/docs"
 import { source } from "@/lib/source"
@@ -53,9 +54,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const url = process.env.NEXT_PUBLIC_APP_URL
-
-  const ogUrl = new URL(`${url}/og`)
+  const ogUrl = new URL(absoluteUrl("/og"))
   ogUrl.searchParams.set("title", doc.title ?? "")
   ogUrl.searchParams.set("description", doc.description ?? "")
 
@@ -89,7 +88,12 @@ export default async function DocPage({ params }: DocPageProps) {
   const { doc, page } = await getDocFromParams({ params })
   const MDX = doc.body
   const content = await doc.getText("raw")
-  const neighbours = findNeighbour(source.pageTree, page.url)
+  const configNeighbours = getNeighboursFromConfig(page.url)
+  const treeNeighbours = findNeighbour(source.pageTree, page.url)
+  const neighbours = {
+    previous: configNeighbours.previous ?? treeNeighbours.previous,
+    next: configNeighbours.next ?? treeNeighbours.next,
+  }
   const breadcrumbs = getBreadcrumbItems(page.url, source.pageTree, {
     includeRoot: { url: "/docs" },
     includePage: true,

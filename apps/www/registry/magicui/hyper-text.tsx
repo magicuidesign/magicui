@@ -1,13 +1,48 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ComponentType,
+  type RefAttributes,
+} from "react"
+import {
+  AnimatePresence,
+  motion,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
 type CharacterSet = string[] | readonly string[]
 
-interface HyperTextProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type HyperTextMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"div">, "ref"> & RefAttributes<HTMLElement>
+>
+
+interface HyperTextProps extends Omit<MotionProps, "children"> {
   /** The text content to be animated */
   children: string
   /** Optional className for styling */
@@ -17,7 +52,7 @@ interface HyperTextProps extends MotionProps {
   /** Delay before animation starts in milliseconds */
   delay?: number
   /** Component to render as - defaults to div */
-  as?: React.ElementType
+  as?: MotionElementType
   /** Whether to start animation when element comes into view */
   startOnView?: boolean
   /** Whether to trigger animation on hover */
@@ -43,16 +78,14 @@ export function HyperText({
   characterSet = DEFAULT_CHARACTER_SET,
   ...props
 }: HyperTextProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  })
+  const MotionComponent = motionElements[Component] as HyperTextMotionComponent
 
   const [displayText, setDisplayText] = useState<string[]>(() =>
     children.split("")
   )
   const [isAnimating, setIsAnimating] = useState(false)
   const iterationCount = useRef(0)
-  const elementRef = useRef<HTMLElement>(null)
+  const elementRef = useRef<HTMLElement | null>(null)
 
   const handleAnimationTrigger = () => {
     if (animateOnHover && !isAnimating) {
@@ -91,38 +124,43 @@ export function HyperText({
 
   // Handle scramble animation
   useEffect(() => {
-    if (!isAnimating) return
+    let animationFrameId: number | null = null
 
-    const maxIterations = children.length
-    const startTime = performance.now()
-    let animationFrameId: number
+    if (isAnimating) {
+      const maxIterations = children.length
+      const startTime = performance.now()
 
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(elapsed / duration, 1)
 
-      iterationCount.current = progress * maxIterations
+        iterationCount.current = progress * maxIterations
 
-      setDisplayText((currentText) =>
-        currentText.map((letter, index) =>
-          letter === " "
-            ? letter
-            : index <= iterationCount.current
-              ? children[index]
-              : characterSet[getRandomInt(characterSet.length)]
+        setDisplayText((currentText) =>
+          currentText.map((letter, index) =>
+            letter === " "
+              ? letter
+              : index <= iterationCount.current
+                ? children[index]
+                : characterSet[getRandomInt(characterSet.length)]
+          )
         )
-      )
 
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate)
-      } else {
-        setIsAnimating(false)
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(animate)
+        } else {
+          setIsAnimating(false)
+        }
       }
+
+      animationFrameId = requestAnimationFrame(animate)
     }
 
-    animationFrameId = requestAnimationFrame(animate)
-
-    return () => cancelAnimationFrame(animationFrameId)
+    return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+    }
   }, [children, duration, isAnimating, characterSet])
 
   return (

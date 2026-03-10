@@ -8,8 +8,16 @@ import {
   useMemo,
   useRef,
   useState,
+  type ComponentType,
+  type RefAttributes,
 } from "react"
-import { motion, MotionProps, useInView } from "motion/react"
+import {
+  motion,
+  useInView,
+  type DOMMotionComponents,
+  type HTMLMotionProps,
+  type MotionProps,
+} from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -25,6 +33,29 @@ const useSequence = () => useContext(SequenceContext)
 
 const ItemIndexContext = createContext<number | null>(null)
 const useItemIndex = () => useContext(ItemIndexContext)
+
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+type TerminalTypingMotionComponent = ComponentType<
+  Omit<HTMLMotionProps<"span">, "ref"> & RefAttributes<HTMLElement>
+>
 
 interface AnimatedSpanProps extends MotionProps {
   children: React.ReactNode
@@ -56,7 +87,7 @@ export const AnimatedSpan = ({
     if (sequence.activeIndex === itemIndex) {
       setHasStarted(true)
     }
-  }, [sequence?.activeIndex, sequence?.sequenceStarted, hasStarted, itemIndex])
+  }, [sequence, hasStarted, itemIndex])
 
   const shouldAnimate = sequence ? hasStarted : startOnView ? isInView : true
 
@@ -79,12 +110,12 @@ export const AnimatedSpan = ({
   )
 }
 
-interface TypingAnimationProps extends MotionProps {
+interface TypingAnimationProps extends Omit<MotionProps, "children"> {
   children: string
   className?: string
   duration?: number
   delay?: number
-  as?: React.ElementType
+  as?: MotionElementType
   startOnView?: boolean
 }
 
@@ -101,13 +132,9 @@ export const TypingAnimation = ({
     throw new Error("TypingAnimation: children must be a string. Received:")
   }
 
-  const MotionComponent = useMemo(
-    () =>
-      motion.create(Component, {
-        forwardMotionProps: true,
-      }),
-    [Component]
-  )
+  const MotionComponent = motionElements[
+    Component
+  ] as TerminalTypingMotionComponent
 
   const [displayedText, setDisplayedText] = useState<string>("")
   const [started, setStarted] = useState(false)
@@ -119,54 +146,72 @@ export const TypingAnimation = ({
 
   const sequence = useSequence()
   const itemIndex = useItemIndex()
+  const hasSequence = sequence !== null
+  const sequenceStarted = sequence?.sequenceStarted ?? false
+  const sequenceActiveIndex = sequence?.activeIndex ?? null
+  const sequenceCompleteItemRef = useRef<
+    SequenceContextValue["completeItem"] | null
+  >(null)
+  const sequenceItemIndexRef = useRef<number | null>(null)
 
   useEffect(() => {
-    if (sequence && itemIndex !== null) {
-      if (!sequence.sequenceStarted) return
-      if (started) return
-      if (sequence.activeIndex === itemIndex) {
+    sequenceCompleteItemRef.current = sequence?.completeItem ?? null
+    sequenceItemIndexRef.current = itemIndex
+  }, [sequence?.completeItem, itemIndex])
+
+  useEffect(() => {
+    let startTimeout: ReturnType<typeof setTimeout> | null = null
+
+    if (hasSequence && itemIndex !== null) {
+      if (sequenceStarted && !started && sequenceActiveIndex === itemIndex) {
         setStarted(true)
       }
-      return
+    } else if (!startOnView || isInView) {
+      startTimeout = setTimeout(() => setStarted(true), delay)
     }
 
-    if (!startOnView) {
-      const startTimeout = setTimeout(() => setStarted(true), delay)
-      return () => clearTimeout(startTimeout)
+    return () => {
+      if (startTimeout !== null) {
+        clearTimeout(startTimeout)
+      }
     }
-
-    if (!isInView) return
-
-    const startTimeout = setTimeout(() => setStarted(true), delay)
-    return () => clearTimeout(startTimeout)
   }, [
     delay,
     startOnView,
     isInView,
     started,
-    sequence?.activeIndex,
-    sequence?.sequenceStarted,
+    hasSequence,
+    sequenceActiveIndex,
+    sequenceStarted,
     itemIndex,
   ])
 
   useEffect(() => {
-    if (!started) return
+    let typingEffect: ReturnType<typeof setInterval> | null = null
 
-    let i = 0
-    const typingEffect = setInterval(() => {
-      if (i < children.length) {
-        setDisplayedText(children.substring(0, i + 1))
-        i++
-      } else {
-        clearInterval(typingEffect)
-        if (sequence && itemIndex !== null) {
-          sequence.completeItem(itemIndex)
+    if (started) {
+      let i = 0
+      typingEffect = setInterval(() => {
+        if (i < children.length) {
+          setDisplayedText(children.substring(0, i + 1))
+          i++
+        } else {
+          if (typingEffect !== null) {
+            clearInterval(typingEffect)
+          }
+          const completeItem = sequenceCompleteItemRef.current
+          const currentItemIndex = sequenceItemIndexRef.current
+          if (completeItem && currentItemIndex !== null) {
+            completeItem(currentItemIndex)
+          }
         }
-      }
-    }, duration)
+      }, duration)
+    }
 
     return () => {
-      clearInterval(typingEffect)
+      if (typingEffect !== null) {
+        clearInterval(typingEffect)
+      }
     }
   }, [children, duration, started])
 
@@ -228,7 +273,7 @@ export const Terminal = ({
     <div
       ref={containerRef}
       className={cn(
-        "border-border bg-background z-0 h-full max-h-[400px] w-full max-w-lg rounded-xl border",
+        "border-border bg-background z-0 h-full max-h-100 w-full max-w-lg rounded-xl border",
         className
       )}
     >

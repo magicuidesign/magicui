@@ -18,6 +18,7 @@ interface ScrollVelocityRowProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   baseVelocity?: number
   direction?: 1 | -1
+  scrollReactivity?: boolean
 }
 
 export const wrap = (min: number, max: number, v: number) => {
@@ -75,6 +76,7 @@ function ScrollVelocityRowImpl({
   direction = 1,
   className,
   velocityFactor,
+  scrollReactivity = true,
   ...props
 }: ScrollVelocityRowImplProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -93,47 +95,59 @@ function ScrollVelocityRowImpl({
   useEffect(() => {
     const container = containerRef.current
     const block = blockRef.current
-    if (!container || !block) return
-
-    const updateSizes = () => {
-      const cw = container.offsetWidth || 0
-      const bw = block.scrollWidth || 0
-      unitWidth.set(bw)
-      const nextCopies = bw > 0 ? Math.max(3, Math.ceil(cw / bw) + 2) : 1
-      setNumCopies((prev) => (prev === nextCopies ? prev : nextCopies))
-    }
-
-    updateSizes()
-
-    const ro = new ResizeObserver(updateSizes)
-    ro.observe(container)
-    ro.observe(block)
-
-    const io = new IntersectionObserver(([entry]) => {
-      isInViewRef.current = entry.isIntersecting
-    })
-    io.observe(container)
-
+    let ro: ResizeObserver | null = null
+    let io: IntersectionObserver | null = null
+    let mq: MediaQueryList | null = null
     const handleVisibility = () => {
       isPageVisibleRef.current = document.visibilityState === "visible"
     }
-    document.addEventListener("visibilitychange", handleVisibility, {
-      passive: true,
-    })
-    handleVisibility()
-
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
     const handlePRM = () => {
-      prefersReducedMotionRef.current = mq.matches
+      if (mq) {
+        prefersReducedMotionRef.current = mq.matches
+      }
     }
-    mq.addEventListener("change", handlePRM)
-    handlePRM()
+
+    if (container && block) {
+      const updateSizes = () => {
+        const cw = container.offsetWidth || 0
+        const bw = block.scrollWidth || 0
+        unitWidth.set(bw)
+        const nextCopies = bw > 0 ? Math.max(3, Math.ceil(cw / bw) + 2) : 1
+        setNumCopies((prev) => (prev === nextCopies ? prev : nextCopies))
+      }
+
+      updateSizes()
+
+      ro = new ResizeObserver(updateSizes)
+      ro.observe(container)
+      ro.observe(block)
+
+      io = new IntersectionObserver(([entry]) => {
+        isInViewRef.current = entry.isIntersecting
+      })
+      io.observe(container)
+
+      document.addEventListener("visibilitychange", handleVisibility, {
+        passive: true,
+      })
+      handleVisibility()
+
+      mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+      mq.addEventListener("change", handlePRM)
+      handlePRM()
+    }
 
     return () => {
-      ro.disconnect()
-      io.disconnect()
+      if (ro) {
+        ro.disconnect()
+      }
+      if (io) {
+        io.disconnect()
+      }
       document.removeEventListener("visibilitychange", handleVisibility)
-      mq.removeEventListener("change", handlePRM)
+      if (mq) {
+        mq.removeEventListener("change", handlePRM)
+      }
     }
   }, [children, unitWidth])
 
@@ -146,7 +160,7 @@ function ScrollVelocityRowImpl({
   useAnimationFrame((_, delta) => {
     if (!isInViewRef.current || !isPageVisibleRef.current) return
     const dt = delta / 1000
-    const vf = velocityFactor.get()
+    const vf = scrollReactivity ? velocityFactor.get() : 0
     const absVf = Math.min(5, Math.abs(vf))
     const speedMultiplier = prefersReducedMotionRef.current ? 1 : 1 + absVf
 

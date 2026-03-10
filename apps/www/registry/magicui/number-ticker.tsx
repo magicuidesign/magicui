@@ -1,6 +1,6 @@
 "use client"
 
-import { ComponentPropsWithoutRef, useEffect, useRef } from "react"
+import { useEffect, useRef, type ComponentPropsWithoutRef } from "react"
 import { useInView, useMotionValue, useSpring } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -31,11 +31,18 @@ export function NumberTicker({
   const isInView = useInView(ref, { once: true, margin: "0px" })
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null
+
     if (isInView) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         motionValue.set(direction === "down" ? startValue : value)
       }, delay * 1000)
-      return () => clearTimeout(timer)
+    }
+
+    return () => {
+      if (timer !== null) {
+        clearTimeout(timer)
+      }
     }
   }, [motionValue, isInView, delay, value, direction, startValue])
 

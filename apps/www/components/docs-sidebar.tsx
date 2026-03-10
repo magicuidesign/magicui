@@ -112,7 +112,7 @@ export function DocsSidebar({
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <DocsSidebarNavItems
-                  items={section.items || []}
+                  items={section.items ?? []}
                   pathname={pathname}
                 />
               </SidebarGroupContent>

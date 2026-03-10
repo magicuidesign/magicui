@@ -55,8 +55,8 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       canvas.height = height * dpr
       canvas.style.width = `${width}px`
       canvas.style.height = `${height}px`
-      const cols = Math.floor(width / (squareSize + gridGap))
-      const rows = Math.floor(height / (squareSize + gridGap))
+      const cols = Math.ceil(width / (squareSize + gridGap))
+      const rows = Math.ceil(height / (squareSize + gridGap))
 
       const squares = new Float32Array(cols * rows)
       for (let i = 0; i < squares.length; i++) {
@@ -112,66 +112,70 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   useEffect(() => {
     const canvas = canvasRef.current
     const container = containerRef.current
-    if (!canvas || !container) return
+    const ctx = canvas?.getContext("2d") ?? null
+    let animationFrameId: number | null = null
+    let resizeObserver: ResizeObserver | null = null
+    let intersectionObserver: IntersectionObserver | null = null
+    let gridParams: ReturnType<typeof setupCanvas> | null = null
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    if (canvas && container && ctx) {
+      const updateCanvasSize = () => {
+        const newWidth = width || container.clientWidth
+        const newHeight = height || container.clientHeight
+        setCanvasSize({ width: newWidth, height: newHeight })
+        gridParams = setupCanvas(canvas, newWidth, newHeight)
+      }
 
-    let animationFrameId: number
-    let gridParams: ReturnType<typeof setupCanvas>
-
-    const updateCanvasSize = () => {
-      const newWidth = width || container.clientWidth
-      const newHeight = height || container.clientHeight
-      setCanvasSize({ width: newWidth, height: newHeight })
-      gridParams = setupCanvas(canvas, newWidth, newHeight)
-    }
-
-    updateCanvasSize()
-
-    let lastTime = 0
-    const animate = (time: number) => {
-      if (!isInView) return
-
-      const deltaTime = (time - lastTime) / 1000
-      lastTime = time
-
-      updateSquares(gridParams.squares, deltaTime)
-      drawGrid(
-        ctx,
-        canvas.width,
-        canvas.height,
-        gridParams.cols,
-        gridParams.rows,
-        gridParams.squares,
-        gridParams.dpr
-      )
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
       updateCanvasSize()
-    })
 
-    resizeObserver.observe(container)
+      let lastTime = 0
+      const animate = (time: number) => {
+        if (!isInView || !gridParams) return
 
-    const intersectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting)
-      },
-      { threshold: 0 }
-    )
+        const deltaTime = (time - lastTime) / 1000
+        lastTime = time
 
-    intersectionObserver.observe(canvas)
+        updateSquares(gridParams.squares, deltaTime)
+        drawGrid(
+          ctx,
+          canvas.width,
+          canvas.height,
+          gridParams.cols,
+          gridParams.rows,
+          gridParams.squares,
+          gridParams.dpr
+        )
+        animationFrameId = requestAnimationFrame(animate)
+      }
 
-    if (isInView) {
-      animationFrameId = requestAnimationFrame(animate)
+      resizeObserver = new ResizeObserver(() => {
+        updateCanvasSize()
+      })
+      resizeObserver.observe(container)
+
+      intersectionObserver = new IntersectionObserver(
+        ([entry]) => {
+          setIsInView(entry.isIntersecting)
+        },
+        { threshold: 0 }
+      )
+      intersectionObserver.observe(canvas)
+
+      if (isInView) {
+        animationFrameId = requestAnimationFrame(animate)
+      }
     }
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
-      resizeObserver.disconnect()
-      intersectionObserver.disconnect()
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+      }
+      if (resizeObserver) {
+        resizeObserver.disconnect()
+      }
+      if (intersectionObserver) {
+        intersectionObserver.disconnect()
+      }
     }
   }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
 

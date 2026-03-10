@@ -43,6 +43,7 @@ export async function GET(request: Request) {
   const description = searchParams.get("description")
 
   const [fonts] = await Promise.all([loadAssets()])
+  const hasContent = [title, description].some(Boolean)
 
   return new ImageResponse(
     <div
@@ -53,7 +54,7 @@ export async function GET(request: Request) {
       <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 right-16 w-[1px]" />
       <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] top-16" />
       <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
-      {(title || description) && (
+      {hasContent && (
         <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
           <Icons.logo width={48} height={48} />
           <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
@@ -62,7 +63,7 @@ export async function GET(request: Request) {
         </div>
       )}
       <div tw="flex flex-col absolute justify-center items-center inset-0 p-24 w-full h-full">
-        {title || description ? (
+        {hasContent ? (
           <div tw="flex flex-col items-center justify-center text-center w-full h-full">
             <div tw="tracking-tight flex flex-col justify-center text-black text-balance font-semibold text-[80px]">
               {title}

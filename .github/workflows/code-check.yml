@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: pnpm lint
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     name: pnpm format:check
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -83,7 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     name: pnpm typecheck
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -114,3 +114,95 @@ jobs:
         run: pnpm install
 
       - run: pnpm typecheck
+
+  registry-deps:
+    runs-on: ubuntu-latest
+    name: pnpm registry-deps:check
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.15.0
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+
+      - run: pnpm registry-deps:check
+
+  registry-drift:
+    runs-on: ubuntu-latest
+    name: registry artifact drift check
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.15.0
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build registry artifacts
+        run: pnpm build:registry
+
+      - name: Verify registry artifacts are committed
+        run: |
+          CHANGED_FILES="$(git status --porcelain --untracked-files=all -- \
+            apps/www/registry.json \
+            apps/www/registry/__index__.tsx \
+            apps/www/public/registry.json \
+            apps/www/public/r \
+            apps/www/public/llms.txt \
+            apps/www/public/llms-full.txt)"
+
+          if [ -n "$CHANGED_FILES" ]; then
+            echo "Registry artifacts are out of date."
+            echo "Changed files:"
+            printf '%s\n' "$CHANGED_FILES"
+            echo "Run: pnpm build:registry"
+            echo "Then commit generated files."
+            exit 1
+          fi

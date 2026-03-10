@@ -15,7 +15,7 @@ export function rehypeComponent() {
           name: string
           value?: string
           type?: string
-        }) || {}
+        }) ?? {}
 
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string
@@ -35,7 +35,7 @@ export function rehypeComponent() {
           } else {
             const component = Index[name]
             src = fileName
-              ? component.files.find((file: unknown) => {
+              ? (component.files.find((file: unknown) => {
                   if (typeof file === "string") {
                     return (
                       file.endsWith(`${fileName}.tsx`) ||
@@ -43,7 +43,7 @@ export function rehypeComponent() {
                     )
                   }
                   return false
-                }) || component.files[0]?.path
+                }) ?? component.files[0]?.path)
               : component.files[0]?.path
           }
 

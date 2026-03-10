@@ -45,14 +45,21 @@ export const RippleButton = React.forwardRef<
     }
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (buttonRipples.length > 0) {
         const lastRipple = buttonRipples[buttonRipples.length - 1]
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setButtonRipples((prevRipples) =>
             prevRipples.filter((ripple) => ripple.key !== lastRipple.key)
           )
         }, parseInt(duration))
-        return () => clearTimeout(timeout)
+      }
+
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [buttonRipples, duration])
 
@@ -72,14 +79,17 @@ export const RippleButton = React.forwardRef<
             <span
               className="animate-rippling bg-background absolute rounded-full opacity-30"
               key={ripple.key}
-              style={{
-                width: `${ripple.size}px`,
-                height: `${ripple.size}px`,
-                top: `${ripple.y}px`,
-                left: `${ripple.x}px`,
-                backgroundColor: rippleColor,
-                transform: `scale(0)`,
-              }}
+              style={
+                {
+                  width: `${ripple.size}px`,
+                  height: `${ripple.size}px`,
+                  top: `${ripple.y}px`,
+                  left: `${ripple.x}px`,
+                  backgroundColor: rippleColor,
+                  transform: `scale(0)`,
+                  "--duration": duration,
+                } as React.CSSProperties
+              }
             />
           ))}
         </span>

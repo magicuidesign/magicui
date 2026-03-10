@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Suspense } from "react"
 import { enrichTweet, type EnrichedTweet, type TweetProps } from "react-tweet"
 import { getTweet, type Tweet } from "react-tweet/api"
@@ -172,6 +171,8 @@ export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
               dangerouslySetInnerHTML={{ __html: entity.text }}
             />
           )
+        default:
+          return null
       }
     })}
   </div>
@@ -275,7 +276,7 @@ export const TweetCard = async ({
     : undefined
 
   if (!tweet) {
-    const NotFound = components?.TweetNotFound || TweetNotFound
+    const NotFound = components?.TweetNotFound ?? TweetNotFound
     return <NotFound {...props} />
   }
 

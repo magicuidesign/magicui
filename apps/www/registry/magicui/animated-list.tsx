@@ -1,12 +1,12 @@
 "use client"
 
 import React, {
-  ComponentPropsWithoutRef,
   useEffect,
   useMemo,
   useState,
+  type ComponentPropsWithoutRef,
 } from "react"
-import { AnimatePresence, motion, MotionProps } from "motion/react"
+import { AnimatePresence, motion, type MotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -39,12 +39,18 @@ export const AnimatedList = React.memo(
     )
 
     useEffect(() => {
+      let timeout: ReturnType<typeof setTimeout> | null = null
+
       if (index < childrenArray.length - 1) {
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
           setIndex((prevIndex) => (prevIndex + 1) % childrenArray.length)
         }, delay)
+      }
 
-        return () => clearTimeout(timeout)
+      return () => {
+        if (timeout !== null) {
+          clearTimeout(timeout)
+        }
       }
     }, [index, delay, childrenArray.length])
 
