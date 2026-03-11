@@ -24,7 +24,8 @@
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
       "dependencies": [
-        "motion"
+        "motion",
+        "next-themes"
       ],
       "files": [
         {
@@ -1271,6 +1272,22 @@
       "files": [
         {
           "path": "registry/example/magic-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "magic-card-demo-2",
+      "type": "registry:example",
+      "title": "Magic Card Demo 2",
+      "description": "Example showing a magic card with an orb effect.",
+      "registryDependencies": [
+        "@magicui/magic-card",
+        "@magicui/avatar-circles"
+      ],
+      "files": [
+        {
+          "path": "registry/example/magic-card-demo2.tsx",
           "type": "registry:example"
         }
       ]
