@@ -157,7 +157,7 @@ export function MagicCard(props: MagicCardProps) {
   }, [reset])
 
   return (
-    <div
+    <motion.div
       className={cn(
         "group relative isolate overflow-hidden rounded-[inherit] border border-transparent",
         className
@@ -165,21 +165,17 @@ export function MagicCard(props: MagicCardProps) {
       onPointerMove={handlePointerMove}
       onPointerLeave={() => reset("leave")}
       onPointerEnter={() => reset("enter")}
-    >
-      <motion.div
-        className="bg-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
+      style={{
+        background: useMotionTemplate`
           linear-gradient(var(--color-background) 0 0) padding-box,
           radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-          ${gradientFrom}, 
-          ${gradientTo}, 
-          var(--border) 100%
-          )
-          `,
-        }}
-      />
-
+            ${gradientFrom},
+            ${gradientTo},
+            var(--color-border) 100%
+          ) border-box
+        `,
+      }}
+    >
       <div className="bg-background absolute inset-px z-20 rounded-[inherit]" />
 
       {mode === "gradient" && (
@@ -221,6 +217,6 @@ export function MagicCard(props: MagicCardProps) {
         />
       )}
       <div className="relative z-40">{children}</div>
-    </div>
+    </motion.div>
   )
 }
