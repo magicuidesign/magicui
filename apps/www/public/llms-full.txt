@@ -6526,6 +6526,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 type TreeViewElement = {
   id: string
   name: string
+  type?: "file" | "folder"
   isSelectable?: boolean
   children?: TreeViewElement[]
 }
@@ -6554,6 +6555,47 @@ const useTree = () => {
 
 type Direction = "rtl" | "ltr" | undefined
 
+const isFolderElement = (element: TreeViewElement) => {
+  if (element.type) {
+    return element.type === "folder"
+  }
+
+  return Array.isArray(element.children)
+}
+
+const mergeExpandedItems = (
+  currentItems: string[] | undefined,
+  nextItems: string[]
+) => [...new Set([...(currentItems ?? []), ...nextItems])]
+
+const renderTreeElements = (elements: TreeViewElement[]): React.ReactNode =>
+  elements.map((element) => {
+    if (isFolderElement(element)) {
+      return (
+        <Folder
+          key={element.id}
+          value={element.id}
+          element={element.name}
+          isSelectable={element.isSelectable}
+        >
+          {Array.isArray(element.children)
+            ? renderTreeElements(element.children)
+            : null}
+        </Folder>
+      )
+    }
+
+    return (
+      <File
+        key={element.id}
+        value={element.id}
+        isSelectable={element.isSelectable}
+      >
+        <span>{element.name}</span>
+      </File>
+    )
+  })
+
 type TreeViewProps = {
   initialSelectedId?: string
   indicator?: boolean
@@ -6561,7 +6603,10 @@ type TreeViewProps = {
   initialExpandedItems?: string[]
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>
+} & Omit<
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>,
+  "defaultValue" | "onValueChange" | "type" | "value"
+>
 
 const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
   (
@@ -6610,18 +6655,17 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           const newPath = [...currentPath, currentElement.id]
           if (currentElement.id === selectId) {
             if (isSelectable) {
-              setExpandedItems((prev) => [...(prev ?? []), ...newPath])
+              setExpandedItems((prev) => mergeExpandedItems(prev, newPath))
             } else {
               if (newPath.includes(currentElement.id)) {
                 newPath.pop()
-                setExpandedItems((prev) => [...(prev ?? []), ...newPath])
+                setExpandedItems((prev) => mergeExpandedItems(prev, newPath))
               }
             }
             return
           }
           if (
-            isSelectable &&
-            currentElement.children &&
+            Array.isArray(currentElement.children) &&
             currentElement.children.length > 0
           ) {
             currentElement.children.forEach((child) => {
@@ -6643,6 +6687,8 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
     }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
+    const treeChildren =
+      children ?? (elements ? renderTreeElements(elements) : null)
 
     return (
       <TreeContext.Provider
@@ -6667,15 +6713,11 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
             <AccordionPrimitive.Root
               {...props}
               type="multiple"
-              defaultValue={expandedItems}
               value={expandedItems}
               className="flex flex-col gap-1"
-              onValueChange={(value) =>
-                setExpandedItems((prev) => [...(prev ?? []), value[0]])
-              }
               dir={dir as Direction}
             >
-              {children}
+              {treeChildren}
             </AccordionPrimitive.Root>
           </ScrollArea>
         </div>
@@ -6735,7 +6777,6 @@ const Folder = forwardRef<
       handleExpand,
       expandedItems,
       indicator,
-      setExpandedItems,
       openIcon,
       closeIcon,
     } = useTree()
@@ -6771,11 +6812,7 @@ const Folder = forwardRef<
             dir={direction}
             type="multiple"
             className="ml-5 flex flex-col gap-1 py-1 rtl:mr-5"
-            defaultValue={expandedItems}
             value={expandedItems}
-            onValueChange={(value) => {
-              setExpandedItems?.((prev) => [...(prev ?? []), value[0]])
-            }}
           >
             {children}
           </AccordionPrimitive.Root>
@@ -6909,109 +6946,86 @@ export { CollapseButton, File, Folder, Tree, type TreeViewElement }
 Title: File Tree Demo
 
 --- file: example/file-tree-demo.tsx ---
-import { File, Folder, Tree } from "@/registry/magicui/file-tree"
+import { Tree } from "@/registry/magicui/file-tree"
+import type { TreeViewElement } from "@/registry/magicui/file-tree"
 
 export default function FileTreeDemo() {
   return (
-    <div className="bg-background relative flex h-[300px] w-1/2 flex-col items-center justify-center overflow-hidden rounded-lg border">
+    <div className="bg-background relative flex h-[300px] w-full max-w-sm flex-col items-center justify-center overflow-hidden rounded-lg border">
       <Tree
         className="bg-background overflow-hidden rounded-md p-2"
-        initialSelectedId="7"
-        initialExpandedItems={[
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-        ]}
+        initialSelectedId="button"
+        initialExpandedItems={["src", "app", "components", "ui", "lib"]}
         elements={ELEMENTS}
-      >
-        <Folder element="src" value="1">
-          <Folder value="2" element="app">
-            <File value="3">
-              <p>layout.tsx</p>
-            </File>
-            <File value="4">
-              <p>page.tsx</p>
-            </File>
-          </Folder>
-          <Folder value="5" element="components">
-            <Folder value="6" element="ui">
-              <File value="7">
-                <p>button.tsx</p>
-              </File>
-            </Folder>
-            <File value="8">
-              <p>header.tsx</p>
-            </File>
-            <File value="9">
-              <p>footer.tsx</p>
-            </File>
-          </Folder>
-          <Folder value="10" element="lib">
-            <File value="11">
-              <p>utils.ts</p>
-            </File>
-          </Folder>
-        </Folder>
-      </Tree>
+      />
     </div>
   )
 }
 
-const ELEMENTS = [
+const ELEMENTS: TreeViewElement[] = [
   {
-    id: "1",
+    id: "src",
+    type: "folder",
     isSelectable: true,
     name: "src",
     children: [
       {
-        id: "2",
+        id: "app",
+        type: "folder",
         isSelectable: true,
         name: "app",
         children: [
           {
-            id: "3",
+            id: "layout",
             isSelectable: true,
             name: "layout.tsx",
           },
           {
-            id: "4",
+            id: "page",
             isSelectable: true,
             name: "page.tsx",
           },
         ],
       },
       {
-        id: "5",
+        id: "components",
+        type: "folder",
         isSelectable: true,
         name: "components",
         children: [
           {
-            id: "6",
+            id: "ui",
+            type: "folder",
+            isSelectable: true,
+            name: "ui",
+            children: [
+              {
+                id: "button",
+                isSelectable: true,
+                name: "button.tsx",
+              },
+            ],
+          },
+          {
+            id: "header",
             isSelectable: true,
             name: "header.tsx",
           },
           {
-            id: "7",
+            id: "footer",
             isSelectable: true,
             name: "footer.tsx",
           },
         ],
       },
       {
-        id: "8",
+        id: "lib",
+        type: "folder",
         isSelectable: true,
         name: "lib",
         children: [
           {
-            id: "9",
+            id: "utils",
             isSelectable: true,
             name: "utils.ts",
           },

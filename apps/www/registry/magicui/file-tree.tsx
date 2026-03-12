@@ -18,6 +18,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 type TreeViewElement = {
   id: string
   name: string
+  type?: "file" | "folder"
   isSelectable?: boolean
   children?: TreeViewElement[]
 }
@@ -46,6 +47,47 @@ const useTree = () => {
 
 type Direction = "rtl" | "ltr" | undefined
 
+const isFolderElement = (element: TreeViewElement) => {
+  if (element.type) {
+    return element.type === "folder"
+  }
+
+  return Array.isArray(element.children)
+}
+
+const mergeExpandedItems = (
+  currentItems: string[] | undefined,
+  nextItems: string[]
+) => [...new Set([...(currentItems ?? []), ...nextItems])]
+
+const renderTreeElements = (elements: TreeViewElement[]): React.ReactNode =>
+  elements.map((element) => {
+    if (isFolderElement(element)) {
+      return (
+        <Folder
+          key={element.id}
+          value={element.id}
+          element={element.name}
+          isSelectable={element.isSelectable}
+        >
+          {Array.isArray(element.children)
+            ? renderTreeElements(element.children)
+            : null}
+        </Folder>
+      )
+    }
+
+    return (
+      <File
+        key={element.id}
+        value={element.id}
+        isSelectable={element.isSelectable}
+      >
+        <span>{element.name}</span>
+      </File>
+    )
+  })
+
 type TreeViewProps = {
   initialSelectedId?: string
   indicator?: boolean
@@ -53,7 +95,10 @@ type TreeViewProps = {
   initialExpandedItems?: string[]
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>
+} & Omit<
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>,
+  "defaultValue" | "onValueChange" | "type" | "value"
+>
 
 const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
   (
@@ -102,18 +147,17 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
           const newPath = [...currentPath, currentElement.id]
           if (currentElement.id === selectId) {
             if (isSelectable) {
-              setExpandedItems((prev) => [...(prev ?? []), ...newPath])
+              setExpandedItems((prev) => mergeExpandedItems(prev, newPath))
             } else {
               if (newPath.includes(currentElement.id)) {
                 newPath.pop()
-                setExpandedItems((prev) => [...(prev ?? []), ...newPath])
+                setExpandedItems((prev) => mergeExpandedItems(prev, newPath))
               }
             }
             return
           }
           if (
-            isSelectable &&
-            currentElement.children &&
+            Array.isArray(currentElement.children) &&
             currentElement.children.length > 0
           ) {
             currentElement.children.forEach((child) => {
@@ -135,6 +179,8 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
     }, [initialSelectedId, elements, expandSpecificTargetedElements])
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
+    const treeChildren =
+      children ?? (elements ? renderTreeElements(elements) : null)
 
     return (
       <TreeContext.Provider
@@ -159,15 +205,11 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
             <AccordionPrimitive.Root
               {...props}
               type="multiple"
-              defaultValue={expandedItems}
               value={expandedItems}
               className="flex flex-col gap-1"
-              onValueChange={(value) =>
-                setExpandedItems((prev) => [...(prev ?? []), value[0]])
-              }
               dir={dir as Direction}
             >
-              {children}
+              {treeChildren}
             </AccordionPrimitive.Root>
           </ScrollArea>
         </div>
@@ -227,7 +269,6 @@ const Folder = forwardRef<
       handleExpand,
       expandedItems,
       indicator,
-      setExpandedItems,
       openIcon,
       closeIcon,
     } = useTree()
@@ -263,11 +304,7 @@ const Folder = forwardRef<
             dir={direction}
             type="multiple"
             className="ml-5 flex flex-col gap-1 py-1 rtl:mr-5"
-            defaultValue={expandedItems}
             value={expandedItems}
-            onValueChange={(value) => {
-              setExpandedItems?.((prev) => [...(prev ?? []), value[0]])
-            }}
           >
             {children}
           </AccordionPrimitive.Root>
