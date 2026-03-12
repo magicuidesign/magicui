@@ -43,33 +43,54 @@ npx shadcn@latest add @magicui/file-tree
 ## Usage
 
 ```tsx showLineNumbers
-import { File, Folder, Tree } from "@/components/ui/file-tree"
+import { Tree } from "@/components/ui/file-tree"
+import type { TreeViewElement } from "@/components/ui/file-tree"
 ```
 
 ```tsx showLineNumbers
-<Tree>
-  <Folder>
-    <Folder>
-      <File>layout.tsx</File>
-      <File>page.tsx</File>
-    </Folder>
-  </Folder>
-</Tree>
+const elements: TreeViewElement[] = [
+  {
+    id: "src",
+    type: "folder",
+    name: "src",
+    children: [
+      { id: "components", type: "folder", name: "components" },
+      { id: "app", type: "folder", name: "app" },
+      { id: "page", name: "page.tsx" },
+      { id: "layout", name: "layout.tsx" },
+    ],
+  },
+]
+
+<Tree elements={elements} />
 ```
+
+When you pass `elements` and omit `children`, the tree is rendered from data and siblings are sorted automatically using a folders-first alphabetical order. Use `sort="none"` to preserve the input order, or pass a custom comparator.
 
 ## Props
 
 ### Tree
 
-| Prop                   | Type                | Default | Description                                                  |
-| ---------------------- | ------------------- | ------- | ------------------------------------------------------------ |
-| `initialSelectedId`    | `string`            | `-`     | The ID of the initially selected item.                       |
-| `indicator`            | `boolean`           | `true`  | Whether to show the tree indicator line.                     |
-| `elements`             | `TreeViewElement[]` | `-`     | An array of tree view elements to render.                    |
-| `initialExpandedItems` | `string[]`          | `-`     | An array of IDs for items that should be initially expanded. |
-| `openIcon`             | `React.ReactNode`   | `-`     | Custom icon for open folders.                                |
-| `closeIcon`            | `React.ReactNode`   | `-`     | Custom icon for closed folders.                              |
-| `dir`                  | `"rtl" \| "ltr"`    | `"ltr"` | The text direction of the tree.                              |
+| Prop                   | Type                                        | Default     | Description                                                           |
+| ---------------------- | ------------------------------------------- | ----------- | --------------------------------------------------------------------- |
+| `initialSelectedId`    | `string`                                    | `-`         | The ID of the initially selected item.                                |
+| `indicator`            | `boolean`                                   | `true`      | Whether to show the tree indicator line.                              |
+| `elements`             | `TreeViewElement[]`                         | `-`         | An array of tree view elements to render when `children` are omitted. |
+| `initialExpandedItems` | `string[]`                                  | `-`         | An array of IDs for items that should be initially expanded.          |
+| `openIcon`             | `React.ReactNode`                           | `-`         | Custom icon for open folders.                                         |
+| `closeIcon`            | `React.ReactNode`                           | `-`         | Custom icon for closed folders.                                       |
+| `sort`                 | `"default" \| "none" \| ((a, b) => number)` | `"default"` | Sorting mode used for data-driven trees rendered from `elements`.     |
+| `dir`                  | `"rtl" \| "ltr"`                            | `"ltr"`     | The text direction of the tree.                                       |
+
+### TreeViewElement
+
+| Prop           | Type                 | Default | Description                                           |
+| -------------- | -------------------- | ------- | ----------------------------------------------------- |
+| `id`           | `string`             | `-`     | A unique identifier for the node.                     |
+| `name`         | `string`             | `-`     | The label rendered for the node in data-driven mode.  |
+| `type`         | `"file" \| "folder"` | `-`     | Explicit node type. Use `"folder"` for empty folders. |
+| `isSelectable` | `boolean`            | `true`  | Whether the node can be selected.                     |
+| `children`     | `TreeViewElement[]`  | `-`     | Child nodes for folders.                              |
 
 ### Folder
 
