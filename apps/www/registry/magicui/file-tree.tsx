@@ -329,9 +329,12 @@ const Folder = forwardRef<
       handleExpand,
       expandedItems,
       indicator,
+      selectedId,
+      selectItem,
       openIcon,
       closeIcon,
     } = useTree()
+    const isSelected = isSelect ?? selectedId === value
 
     return (
       <AccordionPrimitive.Item
@@ -345,13 +348,16 @@ const Folder = forwardRef<
             `flex items-center gap-1 rounded-md text-sm`,
             className,
             {
-              "bg-muted rounded-md": isSelect && isSelectable,
+              "bg-muted rounded-md": isSelected && isSelectable,
               "cursor-pointer": isSelectable,
               "cursor-not-allowed opacity-50": !isSelectable,
             }
           )}
           disabled={!isSelectable}
-          onClick={() => handleExpand(value)}
+          onClick={() => {
+            selectItem(value)
+            handleExpand(value)
+          }}
         >
           {expandedItems?.includes(value)
             ? (openIcon ?? <FolderOpenIcon className="size-4" />)
