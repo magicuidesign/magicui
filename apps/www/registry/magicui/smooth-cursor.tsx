@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, useEffect, useRef } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import { motion, useSpring } from "motion/react"
 
 interface Position {
@@ -17,6 +17,8 @@ export interface SmoothCursorProps {
     restDelta: number
   }
 }
+
+const DESKTOP_POINTER_QUERY = "(any-hover: hover) and (any-pointer: fine)"
 
 const DefaultCursorSVG: FC = () => {
   return (
@@ -94,6 +96,8 @@ export function SmoothCursor({
   const lastUpdateTime = useRef(Date.now())
   const previousAngle = useRef(0)
   const accumulatedRotation = useRef(0)
+  const [isEnabled, setIsEnabled] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   const cursorX = useSpring(0, springConfig)
   const cursorY = useSpring(0, springConfig)
@@ -109,6 +113,30 @@ export function SmoothCursor({
   })
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_POINTER_QUERY)
+
+    const updateEnabled = () => {
+      const nextIsEnabled = mediaQuery.matches
+      setIsEnabled(nextIsEnabled)
+
+      if (!nextIsEnabled) {
+        setIsVisible(false)
+      }
+    }
+
+    updateEnabled()
+    mediaQuery.addEventListener("change", updateEnabled)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateEnabled)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isEnabled) {
+      return
+    }
+
     let timeout: ReturnType<typeof setTimeout> | null = null
 
     const updateVelocity = (currentPos: Position) => {
@@ -126,7 +154,13 @@ export function SmoothCursor({
       lastMousePos.current = currentPos
     }
 
-    const smoothMouseMove = (e: MouseEvent) => {
+    const smoothPointerMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") {
+        return
+      }
+
+      setIsVisible(true)
+
       const currentPos = { x: e.clientX, y: e.clientY }
       updateVelocity(currentPos)
 
@@ -161,28 +195,38 @@ export function SmoothCursor({
       }
     }
 
-    let rafId: number
-    const throttledMouseMove = (e: MouseEvent) => {
+    let rafId = 0
+    const throttledPointerMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") {
+        return
+      }
+
       if (rafId) return
 
       rafId = requestAnimationFrame(() => {
-        smoothMouseMove(e)
+        smoothPointerMove(e)
         rafId = 0
       })
     }
 
     document.body.style.cursor = "none"
-    window.addEventListener("mousemove", throttledMouseMove)
+    window.addEventListener("pointermove", throttledPointerMove, {
+      passive: true,
+    })
 
     return () => {
-      window.removeEventListener("mousemove", throttledMouseMove)
+      window.removeEventListener("pointermove", throttledPointerMove)
       document.body.style.cursor = "auto"
       if (rafId) cancelAnimationFrame(rafId)
       if (timeout !== null) {
         clearTimeout(timeout)
       }
     }
-  }, [cursorX, cursorY, rotation, scale])
+  }, [cursorX, cursorY, rotation, scale, isEnabled])
+
+  if (!isEnabled) {
+    return null
+  }
 
   return (
     <motion.div
@@ -197,13 +241,12 @@ export function SmoothCursor({
         zIndex: 100,
         pointerEvents: "none",
         willChange: "transform",
+        opacity: isVisible ? 1 : 0,
       }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
+      initial={false}
+      animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{
-        type: "spring",
-        stiffness: 400,
-        damping: 30,
+        duration: 0.15,
       }}
     >
       {cursor}
