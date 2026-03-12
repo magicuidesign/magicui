@@ -6573,6 +6573,11 @@ const mergeExpandedItems = (
   nextItems: string[]
 ) => [...new Set([...(currentItems ?? []), ...nextItems])]
 
+const treeCollator = new Intl.Collator("en", {
+  numeric: true,
+  sensitivity: "base",
+})
+
 const defaultTreeComparator = (a: TreeViewElement, b: TreeViewElement) => {
   const aIsFolder = isFolderElement(a)
   const bIsFolder = isFolderElement(b)
@@ -6581,10 +6586,7 @@ const defaultTreeComparator = (a: TreeViewElement, b: TreeViewElement) => {
     return aIsFolder ? -1 : 1
   }
 
-  return a.name.localeCompare(b.name, undefined, {
-    numeric: true,
-    sensitivity: "base",
-  })
+  return treeCollator.compare(a.name, b.name)
 }
 
 const getTreeComparator = (sort: TreeSortMode) => {
