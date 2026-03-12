@@ -23,6 +23,11 @@ type TreeViewElement = {
   children?: TreeViewElement[]
 }
 
+type TreeSortMode =
+  | "default"
+  | "none"
+  | ((a: TreeViewElement, b: TreeViewElement) => number)
+
 type TreeContextProps = {
   selectedId: string | undefined
   expandedItems: string[] | undefined
@@ -60,8 +65,61 @@ const mergeExpandedItems = (
   nextItems: string[]
 ) => [...new Set([...(currentItems ?? []), ...nextItems])]
 
-const renderTreeElements = (elements: TreeViewElement[]): React.ReactNode =>
-  elements.map((element) => {
+const defaultTreeComparator = (a: TreeViewElement, b: TreeViewElement) => {
+  const aIsFolder = isFolderElement(a)
+  const bIsFolder = isFolderElement(b)
+
+  if (aIsFolder !== bIsFolder) {
+    return aIsFolder ? -1 : 1
+  }
+
+  return a.name.localeCompare(b.name, undefined, {
+    numeric: true,
+    sensitivity: "base",
+  })
+}
+
+const getTreeComparator = (sort: TreeSortMode) => {
+  if (sort === "none") {
+    return undefined
+  }
+
+  if (sort === "default") {
+    return defaultTreeComparator
+  }
+
+  return sort
+}
+
+const sortTreeElements = (
+  elements: TreeViewElement[],
+  sort: TreeSortMode
+): TreeViewElement[] => {
+  const comparator = getTreeComparator(sort)
+
+  const nextElements = elements.map((element) => {
+    if (!Array.isArray(element.children)) {
+      return element
+    }
+
+    return {
+      ...element,
+      children: sortTreeElements(element.children, sort),
+    }
+  })
+
+  if (!comparator) {
+    return nextElements
+  }
+
+  return [...nextElements].sort(comparator)
+}
+
+const renderTreeElements = (
+  elements: TreeViewElement[],
+  sort: TreeSortMode
+): React.ReactNode =>
+  sortTreeElements(elements, sort).map((element) => {
     if (isFolderElement(element)) {
       return (
         <Folder
@@ -71,7 +129,7 @@ const renderTreeElements = (elements: TreeViewElement[]): React.ReactNode =>
           isSelectable={element.isSelectable}
         >
           {Array.isArray(element.children)
-            ? renderTreeElements(element.children)
+            ? renderTreeElements(element.children, sort)
             : null}
         </Folder>
       )
@@ -95,6 +153,7 @@ type TreeViewProps = {
   initialExpandedItems?: string[]
   openIcon?: React.ReactNode
   closeIcon?: React.ReactNode
+  sort?: TreeSortMode
 } & Omit<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>,
   "defaultValue" | "onValueChange" | "type" | "value"
@@ -111,6 +170,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
       indicator = true,
       openIcon,
       closeIcon,
+      sort = "default",
       dir,
       ...props
     },
@@ -180,7 +240,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
 
     const direction = dir === "rtl" ? "rtl" : "ltr"
     const treeChildren =
-      children ?? (elements ? renderTreeElements(elements) : null)
+      children ?? (elements ? renderTreeElements(elements, sort) : null)
 
     return (
       <TreeContext.Provider
@@ -432,3 +492,4 @@ const CollapseButton = forwardRef<
 CollapseButton.displayName = "CollapseButton"
 
 export { CollapseButton, File, Folder, Tree, type TreeViewElement }
+export type { TreeSortMode }

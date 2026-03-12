@@ -22,20 +22,33 @@ const ELEMENTS: TreeViewElement[] = [
     name: "src",
     children: [
       {
+        id: "lib",
+        type: "folder",
+        isSelectable: true,
+        name: "lib",
+        children: [
+          {
+            id: "utils",
+            isSelectable: true,
+            name: "utils.ts",
+          },
+        ],
+      },
+      {
         id: "app",
         type: "folder",
         isSelectable: true,
         name: "app",
         children: [
           {
-            id: "layout",
-            isSelectable: true,
-            name: "layout.tsx",
-          },
-          {
             id: "page",
             isSelectable: true,
             name: "page.tsx",
+          },
+          {
+            id: "layout",
+            isSelectable: true,
+            name: "layout.tsx",
           },
         ],
       },
@@ -45,6 +58,11 @@ const ELEMENTS: TreeViewElement[] = [
         isSelectable: true,
         name: "components",
         children: [
+          {
+            id: "header",
+            isSelectable: true,
+            name: "header.tsx",
+          },
           {
             id: "ui",
             type: "folder",
@@ -59,27 +77,9 @@ const ELEMENTS: TreeViewElement[] = [
             ],
           },
           {
-            id: "header",
-            isSelectable: true,
-            name: "header.tsx",
-          },
-          {
             id: "footer",
             isSelectable: true,
             name: "footer.tsx",
-          },
-        ],
-      },
-      {
-        id: "lib",
-        type: "folder",
-        isSelectable: true,
-        name: "lib",
-        children: [
-          {
-            id: "utils",
-            isSelectable: true,
-            name: "utils.ts",
           },
         ],
       },
