@@ -20,6 +20,10 @@ export interface SmoothCursorProps {
 
 const DESKTOP_POINTER_QUERY = "(any-hover: hover) and (any-pointer: fine)"
 
+function isTrackablePointer(pointerType: string) {
+  return pointerType !== "touch"
+}
+
 const DefaultCursorSVG: FC = () => {
   return (
     <svg
@@ -155,7 +159,7 @@ export function SmoothCursor({
     }
 
     const smoothPointerMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") {
+      if (!isTrackablePointer(e.pointerType)) {
         return
       }
 
@@ -197,7 +201,7 @@ export function SmoothCursor({
 
     let rafId = 0
     const throttledPointerMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") {
+      if (!isTrackablePointer(e.pointerType)) {
         return
       }
 
