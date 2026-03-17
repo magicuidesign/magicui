@@ -47,6 +47,7 @@ const float gridLineAlignmentOffsetPx = ${GRID_LINE_ALIGNMENT_OFFSET_PX.toFixed(
 const float gridLineAntialiasMultiplier = ${GRID_LINE_ANTIALIAS_MULTIPLIER.toFixed(1)};
 const float lineWidthPx = ${GRID_LINE_WIDTH_PX.toFixed(2)};
 const float perspectivePx = ${PERSPECTIVE_PX.toFixed(1)};
+const float gridTravelRatio = 0.5;
 
 void main() {
   float angle = radians(clamp(u_angle, 1.0, 89.0));
@@ -79,27 +80,28 @@ void main() {
   float localY = dot(hitPoint, planeYAxis);
   float gridWidth = u_viewport_size.x * gridWidthRatio;
   float gridHeight = u_viewport_size.y * gridHeightRatio;
-  float translateY = mix(
-    gridStartOffsetRatio * gridHeight,
-    0.0,
-    fract(u_time / animationDurationSeconds)
-  );
+  float gridScrollSpeed = (gridHeight * gridTravelRatio) / animationDurationSeconds;
+  float patternOffsetY = u_time * gridScrollSpeed;
   float gridLeft = (-0.5 * u_container_size.x) + (gridXOffsetRatio * u_container_size.x);
-  float gridTop = (-0.5 * u_container_size.y) + translateY;
-  vec2 gridPosition = vec2(localX - gridLeft, localY - gridTop);
+  float gridTop = (-0.5 * u_container_size.y) + (gridStartOffsetRatio * gridHeight);
+  vec2 planePosition = vec2(localX - gridLeft, localY - gridTop);
 
   if (
-    gridPosition.x < 0.0 ||
-    gridPosition.y < 0.0 ||
-    gridPosition.x > gridWidth ||
-    gridPosition.y > gridHeight
+    planePosition.x < 0.0 ||
+    planePosition.y < 0.0 ||
+    planePosition.x > gridWidth ||
+    planePosition.y > gridHeight
   ) {
     discard;
   }
 
-  vec2 wrapped = mod(gridPosition + vec2(gridLineAlignmentOffsetPx), u_cell_size);
+  vec2 patternPosition = vec2(planePosition.x, planePosition.y - patternOffsetY);
+  vec2 wrapped = mod(
+    patternPosition + vec2(gridLineAlignmentOffsetPx),
+    u_cell_size
+  );
   vec2 antiAliasWidth = max(
-    fwidth(gridPosition) * gridLineAntialiasMultiplier,
+    fwidth(patternPosition) * gridLineAntialiasMultiplier,
     vec2(0.0001)
   );
   float verticalLine = 1.0 - smoothstep(
