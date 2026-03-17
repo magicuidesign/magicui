@@ -476,43 +476,6 @@ export function RetroGrid({
       return
     }
 
-    const gl = canvas.getContext("webgl", {
-      alpha: true,
-      antialias: true,
-      premultipliedAlpha: true,
-    })
-
-    if (!gl || !gl.getExtension("OES_standard_derivatives")) {
-      return
-    }
-
-    const program = createProgram(gl)
-
-    if (!program) {
-      return
-    }
-
-    const programInfo = getProgramInfo(gl, program)
-
-    if (!programInfo) {
-      gl.deleteProgram(program)
-      return
-    }
-
-    const positionBuffer = gl.createBuffer()
-
-    if (!positionBuffer) {
-      gl.deleteProgram(program)
-      return
-    }
-
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-    gl.bufferData(
-      gl.ARRAY_BUFFER,
-      new Float32Array([-1, -1, 3, -1, -1, 3]),
-      gl.STATIC_DRAW
-    )
-
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const colorScheme = window.matchMedia("(prefers-color-scheme: dark)")
 
@@ -520,8 +483,90 @@ export function RetroGrid({
     let currentWidth = 0
     let currentHeight = 0
     let currentDevicePixelRatio = 1
+    let gl: WebGLRenderingContext | null = null
     let isVisible = true
+    let isContextLost = false
     let lineColor = resolveLineColor(lightLineColorRef.current, container)
+    let positionBuffer: WebGLBuffer | null = null
+    let programInfo: ProgramInfo | null = null
+
+    const getContext = () => {
+      const nextGl = canvas.getContext("webgl", {
+        alpha: true,
+        antialias: true,
+        premultipliedAlpha: true,
+      })
+
+      if (!nextGl || !nextGl.getExtension("OES_standard_derivatives")) {
+        return null
+      }
+
+      return nextGl
+    }
+
+    const releasePipeline = (shouldDeleteResources: boolean) => {
+      if (shouldDeleteResources && gl) {
+        if (positionBuffer) {
+          gl.deleteBuffer(positionBuffer)
+        }
+
+        if (programInfo) {
+          gl.deleteProgram(programInfo.program)
+        }
+      }
+
+      positionBuffer = null
+      programInfo = null
+
+      if (shouldDeleteResources) {
+        gl = null
+      }
+    }
+
+    const initializePipeline = () => {
+      const nextGl = getContext()
+
+      if (!nextGl) {
+        releasePipeline(false)
+        return false
+      }
+
+      gl = nextGl
+      releasePipeline(true)
+      gl = nextGl
+
+      const program = createProgram(nextGl)
+
+      if (!program) {
+        return false
+      }
+
+      const nextProgramInfo = getProgramInfo(nextGl, program)
+
+      if (!nextProgramInfo) {
+        nextGl.deleteProgram(program)
+        return false
+      }
+
+      const nextPositionBuffer = nextGl.createBuffer()
+
+      if (!nextPositionBuffer) {
+        nextGl.deleteProgram(program)
+        return false
+      }
+
+      nextGl.bindBuffer(nextGl.ARRAY_BUFFER, nextPositionBuffer)
+      nextGl.bufferData(
+        nextGl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 3, -1, -1, 3]),
+        nextGl.STATIC_DRAW
+      )
+
+      positionBuffer = nextPositionBuffer
+      programInfo = nextProgramInfo
+
+      return true
+    }
 
     const updateLineColor = () => {
       const activeColor = isDarkMode(colorScheme)
@@ -534,7 +579,7 @@ export function RetroGrid({
       currentWidth = Math.floor(container.clientWidth)
       currentHeight = Math.floor(container.clientHeight)
 
-      if (currentWidth === 0 || currentHeight === 0) {
+      if (currentWidth === 0 || currentHeight === 0 || !gl) {
         return
       }
 
@@ -551,7 +596,14 @@ export function RetroGrid({
     }
 
     const draw = (timestamp: number) => {
-      if (currentWidth === 0 || currentHeight === 0) {
+      if (
+        currentWidth === 0 ||
+        currentHeight === 0 ||
+        !gl ||
+        !positionBuffer ||
+        !programInfo ||
+        isContextLost
+      ) {
         return
       }
 
@@ -617,6 +669,20 @@ export function RetroGrid({
     }
 
     const syncScene = () => {
+      if (isContextLost) {
+        stopAnimation()
+        setIsWebGlReady(false)
+        return
+      }
+
+      if (!gl || !positionBuffer || !programInfo) {
+        if (!initializePipeline()) {
+          stopAnimation()
+          setIsWebGlReady(false)
+          return
+        }
+      }
+
       resizeCanvas()
 
       if (currentWidth === 0 || currentHeight === 0) {
@@ -662,8 +728,7 @@ export function RetroGrid({
     intersectionObserver.observe(container)
 
     const themeObserver = new MutationObserver(() => {
-      updateLineColor()
-      draw(performance.now())
+      syncScene()
     })
     themeObserver.observe(document.documentElement, {
       attributeFilter: ["class"],
@@ -675,13 +740,27 @@ export function RetroGrid({
     }
 
     const handleColorSchemeChange = () => {
-      updateLineColor()
-      draw(performance.now())
+      syncScene()
+    }
+
+    const handleContextLost = (event: Event) => {
+      event.preventDefault()
+      isContextLost = true
+      stopAnimation()
+      releasePipeline(false)
+      setIsWebGlReady(false)
+    }
+
+    const handleContextRestored = () => {
+      isContextLost = false
+      syncScene()
     }
 
     reducedMotion.addEventListener("change", handleMotionChange)
     colorScheme.addEventListener("change", handleColorSchemeChange)
     window.addEventListener("resize", handleWindowResize)
+    canvas.addEventListener("webglcontextlost", handleContextLost)
+    canvas.addEventListener("webglcontextrestored", handleContextRestored)
 
     syncScene()
 
@@ -693,9 +772,10 @@ export function RetroGrid({
       reducedMotion.removeEventListener("change", handleMotionChange)
       colorScheme.removeEventListener("change", handleColorSchemeChange)
       window.removeEventListener("resize", handleWindowResize)
+      canvas.removeEventListener("webglcontextlost", handleContextLost)
+      canvas.removeEventListener("webglcontextrestored", handleContextRestored)
       syncSceneRef.current = null
-      gl.deleteBuffer(positionBuffer)
-      gl.deleteProgram(programInfo.program)
+      releasePipeline(!isContextLost)
     }
   }, [])
 
