@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils"
 
 const ANIMATION_DURATION_SECONDS = 15
 const GRID_HEIGHT_RATIO = 3
+const GRID_LINE_ALIGNMENT_OFFSET_PX = 0.5
+const GRID_LINE_ANTIALIAS_MULTIPLIER = 0.9
+const GRID_LINE_WIDTH_PX = 0.92
 const GRID_START_OFFSET_RATIO = -0.5
 const GRID_WIDTH_RATIO = 6
 const GRID_X_OFFSET_RATIO = -2
@@ -40,7 +43,9 @@ const float gridHeightRatio = ${GRID_HEIGHT_RATIO.toFixed(1)};
 const float gridStartOffsetRatio = ${GRID_START_OFFSET_RATIO.toFixed(1)};
 const float gridWidthRatio = ${GRID_WIDTH_RATIO.toFixed(1)};
 const float gridXOffsetRatio = ${GRID_X_OFFSET_RATIO.toFixed(1)};
-const float lineWidthPx = 1.0;
+const float gridLineAlignmentOffsetPx = ${GRID_LINE_ALIGNMENT_OFFSET_PX.toFixed(1)};
+const float gridLineAntialiasMultiplier = ${GRID_LINE_ANTIALIAS_MULTIPLIER.toFixed(1)};
+const float lineWidthPx = ${GRID_LINE_WIDTH_PX.toFixed(2)};
 const float perspectivePx = ${PERSPECTIVE_PX.toFixed(1)};
 
 void main() {
@@ -92,8 +97,11 @@ void main() {
     discard;
   }
 
-  vec2 wrapped = mod(gridPosition, u_cell_size);
-  vec2 antiAliasWidth = max(fwidth(gridPosition), vec2(0.0001));
+  vec2 wrapped = mod(gridPosition + vec2(gridLineAlignmentOffsetPx), u_cell_size);
+  vec2 antiAliasWidth = max(
+    fwidth(gridPosition) * gridLineAntialiasMultiplier,
+    vec2(0.0001)
+  );
   float verticalLine = 1.0 - smoothstep(
     lineWidthPx,
     lineWidthPx + (antiAliasWidth.x * 1.5),
