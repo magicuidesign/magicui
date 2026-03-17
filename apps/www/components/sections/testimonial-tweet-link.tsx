@@ -14,12 +14,17 @@ interface TestimonialTweetLinkProps {
 const interactiveSelector =
   'a, button, input, select, textarea, summary, [role="button"], [role="link"]'
 
-const isInteractiveTarget = (target: EventTarget | null) => {
+const isInteractiveTarget = (
+  target: EventTarget | null,
+  container: HTMLElement
+) => {
   if (!(target instanceof HTMLElement)) {
     return false
   }
 
-  return target.closest(interactiveSelector) !== null
+  const interactiveElement = target.closest(interactiveSelector)
+
+  return interactiveElement !== null && interactiveElement !== container
 }
 
 export function TestimonialTweetLink({
@@ -31,7 +36,7 @@ export function TestimonialTweetLink({
   }
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (isInteractiveTarget(event.target)) {
+    if (isInteractiveTarget(event.target, event.currentTarget)) {
       return
     }
 
