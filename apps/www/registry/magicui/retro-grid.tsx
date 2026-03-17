@@ -454,6 +454,19 @@ export function RetroGrid({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isWebGlReady, setIsWebGlReady] = useState(false)
+  const angleRef = useRef(angle)
+  const cellSizeRef = useRef(cellSize)
+  const darkLineColorRef = useRef(darkLineColor)
+  const lightLineColorRef = useRef(lightLineColor)
+  const syncSceneRef = useRef<(() => void) | null>(null)
+
+  useEffect(() => {
+    angleRef.current = angle
+    cellSizeRef.current = cellSize
+    darkLineColorRef.current = darkLineColor
+    lightLineColorRef.current = lightLineColor
+    syncSceneRef.current?.()
+  }, [angle, cellSize, darkLineColor, lightLineColor])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -508,12 +521,12 @@ export function RetroGrid({
     let currentHeight = 0
     let currentDevicePixelRatio = 1
     let isVisible = true
-    let lineColor = resolveLineColor(lightLineColor, container)
+    let lineColor = resolveLineColor(lightLineColorRef.current, container)
 
     const updateLineColor = () => {
       const activeColor = isDarkMode(colorScheme)
-        ? darkLineColor
-        : lightLineColor
+        ? darkLineColorRef.current
+        : lightLineColorRef.current
       lineColor = resolveLineColor(activeColor, container)
     }
 
@@ -557,9 +570,12 @@ export function RetroGrid({
       gl.clear(gl.COLOR_BUFFER_BIT)
       gl.uniform1f(
         programInfo.uniforms.angle,
-        clamp(angle, MIN_ANGLE, MAX_ANGLE)
+        clamp(angleRef.current, MIN_ANGLE, MAX_ANGLE)
       )
-      gl.uniform1f(programInfo.uniforms.cellSize, Math.max(cellSize, 1))
+      gl.uniform1f(
+        programInfo.uniforms.cellSize,
+        Math.max(cellSizeRef.current, 1)
+      )
       gl.uniform2f(
         programInfo.uniforms.containerSize,
         currentWidth,
@@ -622,6 +638,8 @@ export function RetroGrid({
       }
     }
 
+    syncSceneRef.current = syncScene
+
     const resizeObserver = new ResizeObserver(() => {
       syncScene()
     })
@@ -675,10 +693,11 @@ export function RetroGrid({
       reducedMotion.removeEventListener("change", handleMotionChange)
       colorScheme.removeEventListener("change", handleColorSchemeChange)
       window.removeEventListener("resize", handleWindowResize)
+      syncSceneRef.current = null
       gl.deleteBuffer(positionBuffer)
       gl.deleteProgram(programInfo.program)
     }
-  }, [angle, cellSize, darkLineColor, lightLineColor])
+  }, [])
 
   const gridStyles = {
     ...style,
