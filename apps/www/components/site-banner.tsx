@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
-import posthog from "posthog-js"
+
+import { trackEvent } from "@/lib/events"
 
 export function ProBanner() {
   return (
@@ -10,8 +11,9 @@ export function ProBanner() {
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
           href="https://pro.magicui.design"
-          onClick={() => posthog.capture("banner_cta_clicked")}
+          onClick={() => trackEvent({ name: "banner_cta_clicked" })}
           target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex text-xs leading-normal md:text-sm"
         >
           ✨{" "}
@@ -34,8 +36,9 @@ export function ProductHuntBanner() {
       <div className="container flex flex-col items-center justify-center gap-4 md:h-12 md:flex-row">
         <Link
           href="https://www.producthunt.com/posts/magic-ui-2?utm_source=site-banner&utm_medium=banner&utm_campaign=product-hunt-banner"
-          onClick={() => posthog.capture("product_hunt_banner_clicked")}
+          onClick={() => trackEvent({ name: "product_hunt_banner_clicked" })}
           target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex text-xs leading-normal md:text-sm"
         >
           ✨{" "}

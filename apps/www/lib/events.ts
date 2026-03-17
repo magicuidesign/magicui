@@ -1,5 +1,6 @@
-import posthog from "posthog-js"
 import { z } from "zod"
+
+import { capturePostHogEvent } from "@/lib/posthog"
 
 const eventSchema = z.object({
   name: z.enum([
@@ -19,6 +20,9 @@ const eventSchema = z.object({
 
     "sidebar_cta_clicked",
     "header_cta_clicked",
+    "banner_cta_clicked",
+    "product_hunt_banner_clicked",
+    "product_hunt_sidebar_cta_clicked",
   ]),
   properties: z
     .record(
@@ -33,6 +37,6 @@ export type Event = z.infer<typeof eventSchema>
 export function trackEvent(input: Event): void {
   const event = eventSchema.parse(input)
   if (event) {
-    posthog.capture(event.name, event.properties)
+    capturePostHogEvent(event.name, event.properties)
   }
 }

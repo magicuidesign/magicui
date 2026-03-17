@@ -1,8 +1,5 @@
-import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
 import { ExpandableMasonarySection } from "@/components/sections/expandable-masonary-section"
+import { TestimonialTweetLink } from "@/components/sections/testimonial-tweet-link"
 import { TweetCard } from "@/registry/magicui/tweet-card"
 
 const allTweets = [
@@ -64,26 +61,15 @@ export function Testimonials() {
       </h2>
       <ExpandableMasonarySection>
         {allTweets.map((id) => (
-          <Link
-            href={`https://x.com/i/status/${id}`}
+          <TestimonialTweetLink
             key={id}
-            className="group relative block contain-layout"
+            tweetUrl={`https://x.com/i/status/${id}`}
           >
             <TweetCard
               id={id}
               className="border-border bg-card break-inside-avoid overflow-hidden rounded-xl border transition-[border-color,background-color,box-shadow] duration-200 ease-in-out hover:shadow-md"
             />
-            <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/5 opacity-0 backdrop-blur-sm transition-opacity duration-200 ease-in-out will-change-[opacity] group-hover:opacity-100">
-              <Button
-                variant="default"
-                size="default"
-                className="pointer-events-none h-8 w-fit translate-y-3 px-2 transition-transform duration-200 ease-in-out will-change-transform group-hover:translate-y-0"
-              >
-                View Tweet
-                <ArrowUpRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </Link>
+          </TestimonialTweetLink>
         ))}
       </ExpandableMasonarySection>
     </section>
