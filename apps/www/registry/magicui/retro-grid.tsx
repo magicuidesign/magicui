@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import type { CSSProperties, HTMLAttributes } from "react"
 
 import { cn } from "@/lib/utils"
@@ -17,6 +17,25 @@ const MAX_ANGLE = 89
 const MAX_DEVICE_PIXEL_RATIO = 2
 const MIN_ANGLE = 1
 const PERSPECTIVE_PX = 200
+const FALLBACK_ANIMATION_NAME = "retro-grid-fallback-scroll"
+const FALLBACK_STYLES = `
+@keyframes ${FALLBACK_ANIMATION_NAME} {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-retro-grid-scroll="true"] {
+    animation: none !important;
+    transform: translateY(-50%) !important;
+  }
+}
+`
 
 const VERTEX_SHADER_SOURCE = `
 attribute vec2 a_position;
@@ -409,6 +428,19 @@ function resolveLineColor(color: string, element: HTMLElement) {
   )
 }
 
+function createFallbackGridStyle(
+  cellSize: number,
+  lineColor: string
+): CSSProperties {
+  return {
+    animation: `${FALLBACK_ANIMATION_NAME} ${ANIMATION_DURATION_SECONDS}s linear infinite`,
+    backgroundImage: `linear-gradient(to right, ${lineColor} 1px, transparent 0), linear-gradient(to bottom, ${lineColor} 1px, transparent 0)`,
+    backgroundRepeat: "repeat",
+    backgroundSize: `${cellSize}px ${cellSize}px`,
+    transform: "translateY(-50%)",
+  }
+}
+
 export function RetroGrid({
   className,
   angle = 65,
@@ -421,6 +453,7 @@ export function RetroGrid({
 }: RetroGridProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isWebGlReady, setIsWebGlReady] = useState(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -577,6 +610,7 @@ export function RetroGrid({
 
       updateLineColor()
       draw(performance.now())
+      setIsWebGlReady(true)
 
       if (reducedMotion.matches || !isVisible) {
         stopAnimation()
@@ -592,6 +626,10 @@ export function RetroGrid({
       syncScene()
     })
     resizeObserver.observe(container)
+
+    const handleWindowResize = () => {
+      syncScene()
+    }
 
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       isVisible = entry?.isIntersecting ?? false
@@ -625,6 +663,7 @@ export function RetroGrid({
 
     reducedMotion.addEventListener("change", handleMotionChange)
     colorScheme.addEventListener("change", handleColorSchemeChange)
+    window.addEventListener("resize", handleWindowResize)
 
     syncScene()
 
@@ -635,6 +674,7 @@ export function RetroGrid({
       themeObserver.disconnect()
       reducedMotion.removeEventListener("change", handleMotionChange)
       colorScheme.removeEventListener("change", handleColorSchemeChange)
+      window.removeEventListener("resize", handleWindowResize)
       gl.deleteBuffer(positionBuffer)
       gl.deleteProgram(programInfo.program)
     }
@@ -644,6 +684,20 @@ export function RetroGrid({
     ...style,
     opacity,
   } as CSSProperties
+  const fallbackProjectionStyles = {
+    perspective: `${PERSPECTIVE_PX}px`,
+  } as CSSProperties
+  const fallbackRotationStyles = {
+    transform: `rotateX(${angle}deg)`,
+  } as CSSProperties
+  const lightFallbackGridStyles = createFallbackGridStyle(
+    cellSize,
+    lightLineColor
+  )
+  const darkFallbackGridStyles = createFallbackGridStyle(
+    cellSize,
+    darkLineColor
+  )
 
   return (
     <div
@@ -655,7 +709,30 @@ export function RetroGrid({
       style={gridStyles}
       {...props}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 size-full" />
+      <style>{FALLBACK_STYLES}</style>
+      {!isWebGlReady ? (
+        <div className="absolute inset-0" style={fallbackProjectionStyles}>
+          <div className="absolute inset-0" style={fallbackRotationStyles}>
+            <div
+              data-retro-grid-scroll="true"
+              className="absolute inset-[0%_0px] ml-[-200%] h-[300vh] w-[600vw] origin-[100%_0_0] dark:hidden"
+              style={lightFallbackGridStyles}
+            />
+            <div
+              data-retro-grid-scroll="true"
+              className="absolute inset-[0%_0px] ml-[-200%] hidden h-[300vh] w-[600vw] origin-[100%_0_0] dark:block"
+              style={darkFallbackGridStyles}
+            />
+          </div>
+        </div>
+      ) : null}
+      <canvas
+        ref={canvasRef}
+        className={cn(
+          "absolute inset-0 size-full",
+          isWebGlReady ? "opacity-100" : "opacity-0"
+        )}
+      />
       <div className="absolute inset-0 bg-linear-to-t from-white to-transparent to-90% dark:from-black" />
     </div>
   )
