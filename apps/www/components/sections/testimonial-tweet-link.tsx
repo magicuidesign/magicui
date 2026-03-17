@@ -16,9 +16,9 @@ const interactiveSelector =
 
 const isInteractiveTarget = (
   target: EventTarget | null,
-  container: HTMLElement
+  container: Element
 ) => {
-  if (!(target instanceof HTMLElement)) {
+  if (!(target instanceof Element)) {
     return false
   }
 
