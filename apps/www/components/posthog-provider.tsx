@@ -5,39 +5,40 @@ import { usePathname, useSearchParams } from "next/navigation"
 import posthog from "posthog-js"
 import { PostHogProvider } from "posthog-js/react"
 
-if (typeof window !== "undefined") {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_API_KEY!, {
-    api_host: "https://app.posthog.com",
-    capture_pageview: true,
-    session_recording: {
-      maskAllInputs: false,
-    },
-    // Enable debug mode in development
-    loaded: (posthog) => {
-      if (process.env.NODE_ENV === "development") posthog.debug()
-    },
-  })
-}
+import {
+  capturePostHogEvent,
+  initPostHog,
+  isPostHogEnabled,
+} from "@/lib/posthog"
+
+initPostHog()
 
 export function PostHogPageview(): React.ReactNode {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (pathname) {
-      let url = window.origin + pathname
-      if (searchParams && searchParams.toString()) {
-        url = url + `?${searchParams.toString()}`
-      }
-      posthog.capture("$pageview", {
-        $current_url: url,
-      })
+    if (!isPostHogEnabled || !pathname) {
+      return
     }
+
+    let url = window.origin + pathname
+    if (searchParams && searchParams.toString()) {
+      url = url + `?${searchParams.toString()}`
+    }
+
+    capturePostHogEvent("$pageview", {
+      $current_url: url,
+    })
   }, [pathname, searchParams])
 
   return <></>
 }
 
 export function PHProvider({ children }: { children: React.ReactNode }) {
+  if (!isPostHogEnabled) {
+    return children
+  }
+
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>
 }
