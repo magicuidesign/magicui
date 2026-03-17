@@ -45,9 +45,35 @@ const float gridWidthRatio = ${GRID_WIDTH_RATIO.toFixed(1)};
 const float gridXOffsetRatio = ${GRID_X_OFFSET_RATIO.toFixed(1)};
 const float gridLineAlignmentOffsetPx = ${GRID_LINE_ALIGNMENT_OFFSET_PX.toFixed(1)};
 const float gridLineAntialiasMultiplier = ${GRID_LINE_ANTIALIAS_MULTIPLIER.toFixed(1)};
+const float horizontalLodLevelOneEndPx = 5.6;
+const float horizontalLodLevelOneStartPx = 2.8;
+const float horizontalLodLevelTwoEndPx = 3.0;
+const float horizontalLodLevelTwoStartPx = 1.4;
+const float horizontalCompressionEndPx = 2.8;
+const float horizontalCompressionStartPx = 1.2;
 const float lineWidthPx = ${GRID_LINE_WIDTH_PX.toFixed(2)};
 const float perspectivePx = ${PERSPECTIVE_PX.toFixed(1)};
 const float gridTravelRatio = 0.5;
+const float verticalCompressionEndPx = 2.6;
+const float verticalCompressionStartPx = 1.0;
+const float verticalEdgeCompressionEnd = 0.95;
+const float verticalEdgeCompressionStart = 0.45;
+const float verticalLodLevelEnd = 0.64;
+const float verticalLodLevelStart = 0.22;
+const float verticalTopCompressionEndCells = 6.0;
+const float verticalTopCompressionStartCells = 2.0;
+
+float renderGridLine(
+  float wrappedCoord,
+  float antiAliasWidth,
+  float softnessBoost
+) {
+  return 1.0 - smoothstep(
+    lineWidthPx,
+    lineWidthPx + (antiAliasWidth * (1.5 + softnessBoost)),
+    wrappedCoord
+  );
+}
 
 void main() {
   float angle = radians(clamp(u_angle, 1.0, 89.0));
@@ -100,19 +126,97 @@ void main() {
     patternPosition + vec2(gridLineAlignmentOffsetPx),
     u_cell_size
   );
-  vec2 antiAliasWidth = max(
-    fwidth(patternPosition) * gridLineAntialiasMultiplier,
-    vec2(0.0001)
+  vec2 patternDerivative = max(fwidth(patternPosition), vec2(0.0001));
+  vec2 antiAliasWidth = patternDerivative * gridLineAntialiasMultiplier;
+  float horizontalCellSpanPx = u_cell_size / patternDerivative.y;
+  float horizontalCompression = 1.0 - smoothstep(
+    horizontalCompressionStartPx,
+    horizontalCompressionEndPx,
+    horizontalCellSpanPx
   );
-  float verticalLine = 1.0 - smoothstep(
-    lineWidthPx,
-    lineWidthPx + (antiAliasWidth.x * 1.5),
-    wrapped.x
+  float verticalCellSpanPx = u_cell_size / patternDerivative.x;
+  float sideDistance = abs((planePosition.x / gridWidth) * 2.0 - 1.0);
+  float verticalEdgeCompression = smoothstep(
+    verticalEdgeCompressionStart,
+    verticalEdgeCompressionEnd,
+    sideDistance
   );
-  float horizontalLine = 1.0 - smoothstep(
-    lineWidthPx,
-    lineWidthPx + (antiAliasWidth.y * 1.5),
-    wrapped.y
+  float verticalTopCompression = 1.0 - smoothstep(
+    u_cell_size * verticalTopCompressionStartCells,
+    u_cell_size * verticalTopCompressionEndCells,
+    planePosition.y
+  );
+  float verticalCompression =
+    (1.0 - smoothstep(
+      verticalCompressionStartPx,
+      verticalCompressionEndPx,
+      verticalCellSpanPx
+    )) * verticalEdgeCompression * verticalTopCompression;
+  float horizontalSoftnessBoost = 1.0 + (horizontalCompression * 3.0);
+  float verticalSoftnessBoost = 1.0 + (verticalCompression * 3.5);
+  float verticalLod = smoothstep(
+    verticalLodLevelStart,
+    verticalLodLevelEnd,
+    verticalCompression
+  );
+  float verticalLineFine = renderGridLine(
+    wrapped.x,
+    antiAliasWidth.x,
+    verticalSoftnessBoost
+  );
+  float verticalWrappedLod = mod(
+    patternPosition.x + gridLineAlignmentOffsetPx,
+    u_cell_size * 2.0
+  );
+  float verticalLineCoarse = renderGridLine(
+    verticalWrappedLod,
+    antiAliasWidth.x,
+    verticalSoftnessBoost + verticalLod
+  );
+  float verticalLine = max(
+    verticalLineFine * (1.0 - verticalLod),
+    verticalLineCoarse * verticalLod
+  );
+  float horizontalLodLevelOne = 1.0 - smoothstep(
+    horizontalLodLevelOneStartPx,
+    horizontalLodLevelOneEndPx,
+    horizontalCellSpanPx
+  );
+  float horizontalLodLevelTwo = 1.0 - smoothstep(
+    horizontalLodLevelTwoStartPx,
+    horizontalLodLevelTwoEndPx,
+    horizontalCellSpanPx
+  );
+  float horizontalLineFine = renderGridLine(
+    wrapped.y,
+    antiAliasWidth.y,
+    horizontalSoftnessBoost
+  );
+  float horizontalWrappedLodOne = mod(
+    patternPosition.y + gridLineAlignmentOffsetPx,
+    u_cell_size * 2.0
+  );
+  float horizontalWrappedLodTwo = mod(
+    patternPosition.y + gridLineAlignmentOffsetPx,
+    u_cell_size * 4.0
+  );
+  float horizontalLineCoarse = renderGridLine(
+    horizontalWrappedLodOne,
+    antiAliasWidth.y,
+    horizontalSoftnessBoost + horizontalLodLevelOne
+  );
+  float horizontalLineExtraCoarse = renderGridLine(
+    horizontalWrappedLodTwo,
+    antiAliasWidth.y,
+    horizontalSoftnessBoost + horizontalLodLevelOne + horizontalLodLevelTwo
+  );
+  float horizontalLineReduced = max(
+    horizontalLineFine * (1.0 - horizontalLodLevelOne),
+    horizontalLineCoarse * horizontalLodLevelOne
+  );
+  float horizontalLine = max(
+    horizontalLineReduced * (1.0 - horizontalLodLevelTwo),
+    horizontalLineExtraCoarse * horizontalLodLevelTwo
   );
   float line = max(verticalLine, horizontalLine);
 
