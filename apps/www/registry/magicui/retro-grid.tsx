@@ -93,20 +93,18 @@ void main() {
   }
 
   vec2 wrapped = mod(gridPosition, u_cell_size);
-  vec2 distanceToLine = min(wrapped, u_cell_size - wrapped);
   vec2 antiAliasWidth = max(fwidth(gridPosition), vec2(0.0001));
-  vec2 lineMask = 1.0 - smoothstep(
-    vec2(lineWidthPx),
-    vec2(lineWidthPx) + (antiAliasWidth * 1.5),
-    distanceToLine
+  float verticalLine = 1.0 - smoothstep(
+    lineWidthPx,
+    lineWidthPx + (antiAliasWidth.x * 1.5),
+    wrapped.x
   );
-  float line = max(lineMask.x, lineMask.y);
-  float projectedScale = perspectivePx / max(perspectivePx - hitPoint.z, 1.0);
-  float thicknessFade = smoothstep(0.06, 0.2, projectedScale);
-  float densityFade = smoothstep(0.75, 2.0, u_cell_size * projectedScale);
-  float horizonFade = smoothstep(0.0, u_cell_size * 1.5, gridPosition.y);
-
-  line *= thicknessFade * densityFade * horizonFade;
+  float horizontalLine = 1.0 - smoothstep(
+    lineWidthPx,
+    lineWidthPx + (antiAliasWidth.y * 1.5),
+    wrapped.y
+  );
+  float line = max(verticalLine, horizontalLine);
 
   if (line <= 0.001) {
     discard;
