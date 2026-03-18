@@ -537,17 +537,6 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    cssVars: {
-      theme: {
-        "animate-grid": "grid 15s linear infinite",
-      },
-    },
-    css: {
-      "@keyframes grid": {
-        "0%": { transform: "translateY(-50%)" },
-        "100%": { transform: "translateY(0)" },
-      },
-    },
   },
   {
     name: "animated-list",
