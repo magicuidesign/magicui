@@ -70,6 +70,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Terminal](https://magicui.design/docs/components/terminal): A terminal component
 - [Text Animate](https://magicui.design/docs/components/text-animate): A text animation component that animates text using a variety of different animations.
 - [Text Reveal](https://magicui.design/docs/components/text-reveal): Fade in text as you scroll down the page.
+- [Tubes Background](https://magicui.design/docs/components/tubes-background): A Three.js powered animated background with interactive 3D tubes that follow your cursor.
 - [Tweet Card](https://magicui.design/docs/components/tweet-card): A card that displays a tweet with the author's name, handle, and profile picture.
 - [Typing Animation](https://magicui.design/docs/components/typing-animation): Characters appearing in typed animation
 - [Video Text](https://magicui.design/docs/components/video-text): A component that displays text with a video playing in the background.
@@ -84,6 +85,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Android Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-2.tsx): Example usage
 - [Android Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-3.tsx): Example usage
 - [Warp Background Demo](https://github.com/magicuidesign/magicui/blob/main/example/warp-background-demo.tsx): Example usage
+- [Tubes Background Demo](https://github.com/magicuidesign/magicui/blob/main/example/tubes-background-demo.tsx): Example usage
 - [Line Shadow Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/line-shadow-text-demo.tsx): Example usage
 - [Aurora Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/aurora-text-demo.tsx): Example usage
 - [Morphing Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/morphing-text-demo.tsx): Example usage

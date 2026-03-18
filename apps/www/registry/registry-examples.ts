@@ -82,6 +82,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "tubes-background-demo",
+    type: "registry:example",
+    title: "Tubes Background Demo",
+    description:
+      "Example showing a Three.js powered animated background with interactive 3D tubes.",
+    registryDependencies: ["@magicui/tubes-background"],
+    files: [
+      {
+        path: "example/tubes-background-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "line-shadow-text-demo",
     type: "registry:example",
     title: "Line Shadow Text Demo",

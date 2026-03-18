@@ -62,6 +62,21 @@
       ]
     },
     {
+      "name": "tubes-background",
+      "type": "registry:ui",
+      "title": "Tubes Background",
+      "description": "A Three.js powered animated background with interactive 3D tubes that follow your cursor.",
+      "dependencies": [
+        "threejs-components"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/tubes-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "line-shadow-text",
       "type": "registry:ui",
       "title": "Line Shadow Text",
@@ -1348,6 +1363,21 @@
       "files": [
         {
           "path": "registry/example/warp-background-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "tubes-background-demo",
+      "type": "registry:example",
+      "title": "Tubes Background Demo",
+      "description": "Example showing a Three.js powered animated background with interactive 3D tubes.",
+      "registryDependencies": [
+        "@magicui/tubes-background"
+      ],
+      "files": [
+        {
+          "path": "registry/example/tubes-background-demo.tsx",
           "type": "registry:example"
         }
       ]

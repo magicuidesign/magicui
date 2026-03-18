@@ -41,6 +41,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "tubes-background",
+    type: "registry:ui",
+    title: "Tubes Background",
+    description:
+      "A Three.js powered animated background with interactive 3D tubes that follow your cursor.",
+    dependencies: ["threejs-components"],
+    files: [
+      {
+        path: "magicui/tubes-background.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "line-shadow-text",
     type: "registry:ui",
     title: "Line Shadow Text",
