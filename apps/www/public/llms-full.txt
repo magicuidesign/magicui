@@ -13123,6 +13123,8 @@ interface ProgramInfo {
   }
 }
 
+let colorResolveContext: CanvasRenderingContext2D | null | undefined
+
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max)
 }
@@ -13237,6 +13239,21 @@ function isDarkMode(colorScheme: MediaQueryList) {
   return colorScheme.matches
 }
 
+function getColorResolveContext() {
+  if (colorResolveContext !== undefined) {
+    return colorResolveContext
+  }
+
+  const canvas = document.createElement("canvas")
+  canvas.width = 1
+  canvas.height = 1
+  colorResolveContext = canvas.getContext("2d", {
+    willReadFrequently: true,
+  })
+
+  return colorResolveContext
+}
+
 function resolveLineColor(color: string, element: HTMLElement) {
   const resolver = document.createElement("span")
   resolver.style.color = color
@@ -13247,19 +13264,22 @@ function resolveLineColor(color: string, element: HTMLElement) {
 
   const resolvedColor = getComputedStyle(resolver).color
   resolver.remove()
-  const channels = resolvedColor.match(/[\d.]+/g)
+  const context = getColorResolveContext()
 
-  if (!channels || channels.length < 3) {
+  if (!context) {
     return new Float32Array([0.5, 0.5, 0.5, 1])
   }
 
-  const alpha = channels[3] ? Number(channels[3]) : 1
+  context.clearRect(0, 0, 1, 1)
+  context.fillStyle = resolvedColor
+  context.fillRect(0, 0, 1, 1)
+  const pixel = context.getImageData(0, 0, 1, 1).data
 
   return new Float32Array([
-    Number(channels[0]) / 255,
-    Number(channels[1]) / 255,
-    Number(channels[2]) / 255,
-    alpha,
+    pixel[0] / 255,
+    pixel[1] / 255,
+    pixel[2] / 255,
+    pixel[3] / 255,
   ])
 }
 
