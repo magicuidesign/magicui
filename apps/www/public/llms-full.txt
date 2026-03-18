@@ -12880,7 +12880,7 @@ precision highp float;
 
 uniform vec2 u_container_size;
 uniform vec2 u_viewport_size;
-uniform vec3 u_line_color;
+uniform vec4 u_line_color;
 uniform float u_angle;
 uniform float u_cell_size;
 uniform float u_device_pixel_ratio;
@@ -13072,7 +13072,8 @@ void main() {
     discard;
   }
 
-  gl_FragColor = vec4(u_line_color * line, line);
+  float alpha = u_line_color.a * line;
+  gl_FragColor = vec4(u_line_color.rgb * alpha, alpha);
 }
 `
 
@@ -13249,12 +13250,17 @@ function resolveLineColor(color: string, element: HTMLElement) {
   const channels = resolvedColor.match(/[\d.]+/g)
 
   if (!channels || channels.length < 3) {
-    return new Float32Array([0.5, 0.5, 0.5])
+    return new Float32Array([0.5, 0.5, 0.5, 1])
   }
 
-  return new Float32Array(
-    channels.slice(0, 3).map((channel) => Number(channel) / 255)
-  )
+  const alpha = channels[3] ? Number(channels[3]) : 1
+
+  return new Float32Array([
+    Number(channels[0]) / 255,
+    Number(channels[1]) / 255,
+    Number(channels[2]) / 255,
+    alpha,
+  ])
 }
 
 function createFallbackGridStyle(
@@ -13466,7 +13472,7 @@ export function RetroGrid({
         programInfo.uniforms.devicePixelRatio,
         currentDevicePixelRatio
       )
-      gl.uniform3fv(programInfo.uniforms.lineColor, lineColor)
+      gl.uniform4fv(programInfo.uniforms.lineColor, lineColor)
       gl.uniform1f(
         programInfo.uniforms.time,
         reducedMotion.matches ? 0 : timestamp / 1000
