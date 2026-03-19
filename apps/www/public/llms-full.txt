@@ -166,7 +166,7 @@ Description: An animated beam of light which travels along a path. Useful for sh
 --- file: magicui/animated-beam.tsx ---
 "use client"
 
-import { RefObject, useEffect, useId, useState } from "react"
+import { useEffect, useId, useState, type RefObject } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -185,6 +185,8 @@ export interface AnimatedBeamProps {
   gradientStopColor?: string
   delay?: number
   duration?: number
+  repeat?: number
+  repeatDelay?: number
   startXOffset?: number
   startYOffset?: number
   endXOffset?: number
@@ -198,13 +200,15 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   toRef,
   curvature = 0,
   reverse = false, // Include the reverse prop
-  duration = Math.random() * 3 + 4,
+  duration = 5,
   delay = 0,
   pathColor = "gray",
   pathWidth = 2,
   pathOpacity = 0.2,
   gradientStartColor = "#ffaa40",
   gradientStopColor = "#9c40ff",
+  repeat = Infinity,
+  repeatDelay = 0,
   startXOffset = 0,
   startYOffset = 0,
   endXOffset = 0,
@@ -332,8 +336,8 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
             delay,
             duration,
             ease: [0.16, 1, 0.3, 1], // https://easings.net/#easeOutExpo
-            repeat: Infinity,
-            repeatDelay: 0,
+            repeat,
+            repeatDelay,
           }}
         >
           <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
