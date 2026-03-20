@@ -6,8 +6,7 @@ export default function CoolModeCustom() {
     <div className="relative justify-center">
       <CoolMode
         options={{
-          particle:
-            "https://pbs.twimg.com/profile_images/1782811051504885763/YR5-kWOI_400x400.jpg",
+          particle: "https://avatars.githubusercontent.com/u/81306489",
         }}
       >
         <Button>Click Me!</Button>
