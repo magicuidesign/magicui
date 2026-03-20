@@ -72,6 +72,7 @@
     "svg-dotted-map": "^2.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.13",
+    "threejs-components": "^0.0.30",
     "ts-morph": "^23.0.0",
     "tw-animate-css": "^1.3.8",
     "zod": "^4.1.11"

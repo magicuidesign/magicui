@@ -66,6 +66,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "tubes-background": {
+    name: "tubes-background",
+    description: "A Three.js powered animated background with interactive 3D tubes that follow your cursor.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/tubes-background.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/tubes-background.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "line-shadow-text": {
     name: "line-shadow-text",
     description: "A text component with a moving line shadow.",
@@ -1285,6 +1302,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/warp-background-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "tubes-background-demo": {
+    name: "tubes-background-demo",
+    description: "Example showing a Three.js powered animated background with interactive 3D tubes.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/tubes-background"],
+    files: [{
+      path: "registry/example/tubes-background-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/tubes-background-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

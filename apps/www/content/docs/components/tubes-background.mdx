@@ -1,0 +1,70 @@
+---
+title: Tubes Background
+date: 2025-03-16
+description: A Three.js powered animated background with interactive 3D tubes that follow your cursor.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="tubes-background-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/tubes-background
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install threejs-components
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tubes-background" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { TubesBackground } from "@/components/ui/tubes-background"
+```
+
+```tsx showLineNumbers
+<TubesBackground>
+  <div className="w-80">
+    <p>Tubes Background</p>
+    <p>An interactive 3D tubes animation that follows your cursor.</p>
+  </div>
+</TubesBackground>
+```
+
+## Props
+
+| Prop                     | Type              | Default | Description                                           |
+| ------------------------ | ----------------- | ------- | ----------------------------------------------------- |
+| `children`               | `React.ReactNode` | `-`     | The content to overlay on top of the tubes background |
+| `className`              | `string`          | `-`     | Additional CSS classes for the container              |
+| `enableClickInteraction` | `boolean`         | `true`  | Whether clicking randomizes the tube and light colors |

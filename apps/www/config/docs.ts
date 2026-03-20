@@ -532,6 +532,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Tubes Background",
+          href: `/docs/components/tubes-background`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

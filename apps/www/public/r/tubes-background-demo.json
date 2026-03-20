@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tubes-background-demo",
+  "type": "registry:example",
+  "title": "Tubes Background Demo",
+  "description": "Example showing a Three.js powered animated background with interactive 3D tubes.",
+  "registryDependencies": [
+    "@magicui/tubes-background"
+  ],
+  "files": [
+    {
+      "path": "registry/example/tubes-background-demo.tsx",
+      "content": "import {\n  Card,\n  CardContent,\n  CardDescription,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { TubesBackground } from \"@/registry/magicui/tubes-background\"\n\nexport default function TubesBackgroundDemo() {\n  return (\n    <TubesBackground className=\"min-h-[400px]\">\n      <Card className=\"w-80\">\n        <CardContent className=\"flex flex-col gap-2 p-4\">\n          <CardTitle>Interactive 3D Tubes</CardTitle>\n          <CardDescription>\n            A Three.js powered animated background with interactive tubes that\n            follow your cursor. Click anywhere to randomize the colors.\n          </CardDescription>\n        </CardContent>\n      </Card>\n    </TubesBackground>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

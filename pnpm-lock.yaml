@@ -179,6 +179,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.13
         version: 4.1.18
+      threejs-components:
+        specifier: ^0.0.30
+        version: 0.0.30
       ts-morph:
         specifier: ^23.0.0
         version: 23.0.0
@@ -5414,6 +5417,9 @@ packages:
   text-extensions@2.4.0:
     resolution: {integrity: sha512-te/NtwBwfiNRLf9Ijqx3T0nlqZiQ2XrrtBvu+cLL8ZRrGkO0NHTug8MYFKyoSrv/sHTaSKfilUkizV6XhxMJ3g==}
     engines: {node: '>=8'}
+
+  threejs-components@0.0.30:
+    resolution: {integrity: sha512-JGc2KKX39/ofHluXHOw0WslyAke7DpfaDmvnY9TPNPACAdNoytCHbFR1i0lJ/Qa2TJkSEg2O58TFC1JL5yIesA==}
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
@@ -11610,6 +11616,8 @@ snapshots:
   tapable@2.3.0: {}
 
   text-extensions@2.4.0: {}
+
+  threejs-components@0.0.30: {}
 
   through@2.3.8: {}
 
