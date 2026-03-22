@@ -23,16 +23,30 @@ export const replaceComponentSource = async (content: string) => {
   const componentSourceMatches = [
     ...content.matchAll(/<ComponentSource\s+name="([^"]+)"[^>]*>/g),
   ]
-  for (const [fullMatch, name] of componentSourceMatches) {
-    const component = await getRegistryItem(name)
-    if (component?.files?.[0]?.content) {
-      const sourceCode = component.files[0].content
-      const replacement = `\`\`\`tsx\n${sourceCode}\n\`\`\``
-      content = content.replace(fullMatch, replacement)
-    } else {
-      content = content.replace(fullMatch, fullMatch)
-    }
+  if (componentSourceMatches.length === 0) {
+    return content
   }
 
-  return content
+  const replacements = await Promise.all(
+    componentSourceMatches.map(async ([fullMatch, name]) => {
+      const component = await getRegistryItem(name)
+      if (!component?.files?.[0]?.content) {
+        return fullMatch
+      }
+
+      return `\`\`\`tsx\n${component.files[0].content}\n\`\`\``
+    })
+  )
+
+  let previousIndex = 0
+  let nextContent = ""
+
+  for (const [index, match] of componentSourceMatches.entries()) {
+    const startIndex = match.index ?? previousIndex
+    nextContent += content.slice(previousIndex, startIndex)
+    nextContent += replacements[index]
+    previousIndex = startIndex + match[0].length
+  }
+
+  return `${nextContent}${content.slice(previousIndex)}`
 }
