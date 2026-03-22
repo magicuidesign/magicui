@@ -85,23 +85,17 @@ export async function getRegistryItem(name: string) {
   return getCachedRegistryItem(name)
 }
 
-function normalizeRegistryItemFiles(
-  files: unknown
-): RegistryItemFile[] | undefined {
+function normalizeRegistryItemFiles(files: unknown) {
   if (!Array.isArray(files)) {
-    return undefined
+    return files
   }
 
-  return files.flatMap((file) => {
+  return files.map((file) => {
     if (typeof file === "string") {
-      return [{ path: file }]
+      return { path: file }
     }
 
-    if (typeof file === "object" && file !== null && "path" in file) {
-      return [file as RegistryItemFile]
-    }
-
-    return []
+    return file
   })
 }
 
