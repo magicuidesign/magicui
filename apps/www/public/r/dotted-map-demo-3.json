@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dotted-map-demo-3",
+  "type": "registry:example",
+  "title": "Dotted Map Demo 3",
+  "description": "Example showing a dotted map with pulse animation.",
+  "registryDependencies": [
+    "@magicui/dotted-map"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dotted-map-demo-3.tsx",
+      "content": "import { DottedMap } from \"@/registry/magicui/dotted-map\"\nimport type { Marker } from \"@/registry/magicui/dotted-map\"\n\nconst markers: Marker[] = [\n  {\n    lat: 37.5665,\n    lng: 126.978,\n    size: 0.3,\n  },\n  {\n    lat: 40.7128,\n    lng: -74.006,\n    size: 0.3,\n    pulse: false,\n  },\n]\n\nexport default function Component() {\n  return (\n    <div className=\"relative h-[500px] w-full overflow-hidden rounded-lg border\">\n      <div className=\"to-background absolute inset-0 bg-radial from-transparent to-200%\" />\n      <DottedMap markers={markers} pulse />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

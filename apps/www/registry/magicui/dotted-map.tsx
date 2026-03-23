@@ -3,40 +3,61 @@ import { createMap } from "svg-dotted-map"
 
 import { cn } from "@/lib/utils"
 
-interface Marker {
+export interface Marker {
   lat: number
   lng: number
   size?: number
+  pulse?: boolean
 }
 
-export interface DottedMapProps extends React.SVGProps<SVGSVGElement> {
+/** addMarkers returns markers with lat/lng removed; only x, y and other props (e.g. size) remain */
+type MapMarker<M extends Marker> = Omit<M, "lat" | "lng"> & {
+  x: number
+  y: number
+}
+
+export interface DottedMapProps<
+  M extends Marker = Marker,
+> extends React.SVGProps<SVGSVGElement> {
   width?: number
   height?: number
   mapSamples?: number
-  markers?: Marker[]
+  markers?: M[]
   dotColor?: string
   markerColor?: string
   dotRadius?: number
   stagger?: boolean
+  pulse?: boolean
+
+  renderMarkerOverlay?: (args: {
+    marker: MapMarker<M>
+    index: number
+    x: number
+    y: number
+    r: number
+  }) => React.ReactNode
 }
 
-export function DottedMap({
+export function DottedMap<M extends Marker = Marker>({
   width = 150,
   height = 75,
   mapSamples = 5000,
   markers = [],
+  dotColor = "currentColor",
   markerColor = "#FF6900",
   dotRadius = 0.2,
   stagger = true,
+  pulse = false,
+  renderMarkerOverlay,
   className,
   style,
-}: DottedMapProps) {
+  ...svgProps
+}: DottedMapProps<M>) {
   const { points, addMarkers } = createMap({
     width,
     height,
     mapSamples,
   })
-
   const processedMarkers = addMarkers(markers)
 
   // Compute stagger helpers in a single, simple pass
@@ -69,6 +90,7 @@ export function DottedMap({
       viewBox={`0 0 ${width} ${height}`}
       className={cn("text-gray-500 dark:text-gray-500", className)}
       style={{ width: "100%", height: "100%", ...style }}
+      {...svgProps}
     >
       {points.map((point, index) => {
         const rowIndex = yToRowIndex.get(point.y) ?? 0
@@ -78,22 +100,87 @@ export function DottedMap({
             cx={point.x + offsetX}
             cy={point.y}
             r={dotRadius}
-            fill="currentColor"
+            fill={dotColor}
             key={`${point.x}-${point.y}-${index}`}
           />
         )
       })}
+
       {processedMarkers.map((marker, index) => {
         const rowIndex = yToRowIndex.get(marker.y) ?? 0
         const offsetX = stagger && rowIndex % 2 === 1 ? xStep / 2 : 0
+
+        const x = marker.x + offsetX
+        const y = marker.y
+        const r = marker.size ?? dotRadius
+        const shouldPulse = pulse
+          ? marker.pulse !== false
+          : marker.pulse === true
+        const pulseTo = r * 2.8
+
         return (
-          <circle
-            cx={marker.x + offsetX}
-            cy={marker.y}
-            r={marker.size ?? dotRadius}
-            fill={markerColor}
-            key={`${marker.x}-${marker.y}-${index}`}
-          />
+          <g key={`${marker.x}-${marker.y}-${index}`}>
+            <circle cx={x} cy={y} r={r} fill={markerColor} />
+
+            {shouldPulse ? (
+              <g pointerEvents="none">
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="none"
+                  stroke={markerColor}
+                  strokeOpacity={1}
+                  strokeWidth={0.35}
+                >
+                  <animate
+                    attributeName="r"
+                    values={`${r};${pulseTo}`}
+                    dur="1.4s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="1;0"
+                    dur="1.4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="none"
+                  stroke={markerColor}
+                  strokeOpacity={0.9}
+                  strokeWidth={0.3}
+                >
+                  <animate
+                    attributeName="r"
+                    values={`${r};${pulseTo}`}
+                    dur="1.4s"
+                    begin="0.7s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.9;0"
+                    dur="1.4s"
+                    begin="0.7s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </g>
+            ) : null}
+
+            {renderMarkerOverlay?.({
+              marker: { ...marker, x, y },
+              index,
+              x,
+              y,
+              r,
+            })}
+          </g>
         )
       })}
     </svg>

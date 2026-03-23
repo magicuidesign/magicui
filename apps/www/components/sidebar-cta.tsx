@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { CheckIcon, ChevronRight } from "lucide-react"
-import posthog from "posthog-js"
 
 import { trackEvent } from "@/lib/events"
 import { Button } from "@/components/ui/button"
@@ -116,7 +115,8 @@ export function ProductHuntCTA() {
     <Link
       href="https://www.producthunt.com/posts/magic-ui-2?utm_source=sidebar-cta&utm_medium=sidebar-cta&utm_campaign=product-hunt-sidebar-cta"
       target="_blank"
-      onClick={() => posthog.capture("product_hunt_sidebar_cta_clicked")}
+      rel="noopener noreferrer"
+      onClick={() => trackEvent({ name: "product_hunt_sidebar_cta_clicked" })}
       className="group my-20 flex w-full flex-col items-center justify-center gap-2 rounded-xl bg-[#ff6154] p-4 text-center text-lg leading-tight font-medium text-white"
     >
       <TextAnimate animate="blurInUp" by="word" className="text-2xl">

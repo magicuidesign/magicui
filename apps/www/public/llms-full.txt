@@ -166,7 +166,7 @@ Description: An animated beam of light which travels along a path. Useful for sh
 --- file: magicui/animated-beam.tsx ---
 "use client"
 
-import { RefObject, useEffect, useId, useState } from "react"
+import { useEffect, useId, useState, type RefObject } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -185,6 +185,8 @@ export interface AnimatedBeamProps {
   gradientStopColor?: string
   delay?: number
   duration?: number
+  repeat?: number
+  repeatDelay?: number
   startXOffset?: number
   startYOffset?: number
   endXOffset?: number
@@ -198,13 +200,15 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   toRef,
   curvature = 0,
   reverse = false, // Include the reverse prop
-  duration = Math.random() * 3 + 4,
+  duration = 5,
   delay = 0,
   pathColor = "gray",
   pathWidth = 2,
   pathOpacity = 0.2,
   gradientStartColor = "#ffaa40",
   gradientStopColor = "#9c40ff",
+  repeat = Infinity,
+  repeatDelay = 0,
   startXOffset = 0,
   startYOffset = 0,
   endXOffset = 0,
@@ -332,8 +336,8 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
             delay,
             duration,
             ease: [0.16, 1, 0.3, 1], // https://easings.net/#easeOutExpo
-            repeat: Infinity,
-            repeatDelay: 0,
+            repeat,
+            repeatDelay,
           }}
         >
           <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
@@ -5160,6 +5164,8 @@ export interface CoolParticleOptions extends BaseParticleOptions {
   speedUp?: number
 }
 
+const SVG_NS = "http://www.w3.org/2000/svg"
+
 const getContainer = () => {
   const id = "_coolMode_effect"
   const existingContainer = document.getElementById(id)
@@ -5200,6 +5206,61 @@ const applyParticleEffect = (
 
   const container = getContainer()
 
+  const appendCircleParticle = (particle: HTMLDivElement, size: number) => {
+    const circleSVG = document.createElementNS(SVG_NS, "svg")
+    const circle = document.createElementNS(SVG_NS, "circle")
+
+    circle.setAttributeNS(null, "cx", (size / 2).toString())
+    circle.setAttributeNS(null, "cy", (size / 2).toString())
+    circle.setAttributeNS(null, "r", (size / 2).toString())
+    circle.setAttributeNS(null, "fill", `hsl(${Math.random() * 360}, 70%, 50%)`)
+
+    circleSVG.appendChild(circle)
+    circleSVG.setAttribute("width", size.toString())
+    circleSVG.setAttribute("height", size.toString())
+
+    particle.appendChild(circleSVG)
+  }
+
+  const appendImageParticle = (
+    particle: HTMLDivElement,
+    imageSrc: string,
+    size: number
+  ) => {
+    const image = document.createElement("img")
+    image.src = imageSrc
+    image.width = size
+    image.height = size
+    image.alt = ""
+    image.style.borderRadius = "50%"
+
+    particle.appendChild(image)
+  }
+
+  const appendTextParticle = (
+    particle: HTMLDivElement,
+    particleContent: string,
+    size: number
+  ) => {
+    const fontSizeMultiplier = 3
+    const emojiSize = size * fontSizeMultiplier
+    const content = document.createElement("div")
+
+    content.textContent = particleContent
+    content.style.fontSize = `${emojiSize}px`
+    content.style.lineHeight = "1"
+    content.style.textAlign = "center"
+    content.style.width = `${size}px`
+    content.style.height = `${size}px`
+    content.style.display = "flex"
+    content.style.alignItems = "center"
+    content.style.justifyContent = "center"
+    content.style.transform = `scale(${fontSizeMultiplier})`
+    content.style.transformOrigin = "center"
+
+    particle.appendChild(content)
+  }
+
   function generateParticle() {
     const size =
       options?.size || sizes[Math.floor(Math.random() * sizes.length)]
@@ -5214,34 +5275,14 @@ const applyParticleEffect = (
     const particle = document.createElement("div")
 
     if (particleType === "circle") {
-      const svgNS = "http://www.w3.org/2000/svg"
-      const circleSVG = document.createElementNS(svgNS, "svg")
-      const circle = document.createElementNS(svgNS, "circle")
-      circle.setAttributeNS(null, "cx", (size / 2).toString())
-      circle.setAttributeNS(null, "cy", (size / 2).toString())
-      circle.setAttributeNS(null, "r", (size / 2).toString())
-      circle.setAttributeNS(
-        null,
-        "fill",
-        `hsl(${Math.random() * 360}, 70%, 50%)`
-      )
-
-      circleSVG.appendChild(circle)
-      circleSVG.setAttribute("width", size.toString())
-      circleSVG.setAttribute("height", size.toString())
-
-      particle.appendChild(circleSVG)
+      appendCircleParticle(particle, size)
     } else if (
       particleType.startsWith("http") ||
       particleType.startsWith("/")
     ) {
-      // Handle URL-based images
-      particle.innerHTML = `<img src="${particleType}" width="${size}" height="${size}" style="border-radius: 50%">`
+      appendImageParticle(particle, particleType, size)
     } else {
-      // Handle emoji or text characters
-      const fontSizeMultiplier = 3 // Make emojis 3x bigger
-      const emojiSize = size * fontSizeMultiplier
-      particle.innerHTML = `<div style="font-size: ${emojiSize}px; line-height: 1; text-align: center; width: ${size}px; height: ${size}px; display: flex; align-items: center; justify-content: center; transform: scale(${fontSizeMultiplier}); transform-origin: center;">${particleType}</div>`
+      appendTextParticle(particle, particleType, size)
     }
 
     particle.style.position = "absolute"
@@ -5420,8 +5461,7 @@ export default function CoolModeCustom() {
     <div className="relative justify-center">
       <CoolMode
         options={{
-          particle:
-            "https://pbs.twimg.com/profile_images/1782811051504885763/YR5-kWOI_400x400.jpg",
+          particle: "https://avatars.githubusercontent.com/u/81306489",
         }}
       >
         <Button>Click Me!</Button>
@@ -6293,40 +6333,61 @@ import { createMap } from "svg-dotted-map"
 
 import { cn } from "@/lib/utils"
 
-interface Marker {
+export interface Marker {
   lat: number
   lng: number
   size?: number
+  pulse?: boolean
 }
 
-export interface DottedMapProps extends React.SVGProps<SVGSVGElement> {
+/** addMarkers returns markers with lat/lng removed; only x, y and other props (e.g. size) remain */
+type MapMarker<M extends Marker> = Omit<M, "lat" | "lng"> & {
+  x: number
+  y: number
+}
+
+export interface DottedMapProps<
+  M extends Marker = Marker,
+> extends React.SVGProps<SVGSVGElement> {
   width?: number
   height?: number
   mapSamples?: number
-  markers?: Marker[]
+  markers?: M[]
   dotColor?: string
   markerColor?: string
   dotRadius?: number
   stagger?: boolean
+  pulse?: boolean
+
+  renderMarkerOverlay?: (args: {
+    marker: MapMarker<M>
+    index: number
+    x: number
+    y: number
+    r: number
+  }) => React.ReactNode
 }
 
-export function DottedMap({
+export function DottedMap<M extends Marker = Marker>({
   width = 150,
   height = 75,
   mapSamples = 5000,
   markers = [],
+  dotColor = "currentColor",
   markerColor = "#FF6900",
   dotRadius = 0.2,
   stagger = true,
+  pulse = false,
+  renderMarkerOverlay,
   className,
   style,
-}: DottedMapProps) {
+  ...svgProps
+}: DottedMapProps<M>) {
   const { points, addMarkers } = createMap({
     width,
     height,
     mapSamples,
   })
-
   const processedMarkers = addMarkers(markers)
 
   // Compute stagger helpers in a single, simple pass
@@ -6359,6 +6420,7 @@ export function DottedMap({
       viewBox={`0 0 ${width} ${height}`}
       className={cn("text-gray-500 dark:text-gray-500", className)}
       style={{ width: "100%", height: "100%", ...style }}
+      {...svgProps}
     >
       {points.map((point, index) => {
         const rowIndex = yToRowIndex.get(point.y) ?? 0
@@ -6368,22 +6430,87 @@ export function DottedMap({
             cx={point.x + offsetX}
             cy={point.y}
             r={dotRadius}
-            fill="currentColor"
+            fill={dotColor}
             key={`${point.x}-${point.y}-${index}`}
           />
         )
       })}
+
       {processedMarkers.map((marker, index) => {
         const rowIndex = yToRowIndex.get(marker.y) ?? 0
         const offsetX = stagger && rowIndex % 2 === 1 ? xStep / 2 : 0
+
+        const x = marker.x + offsetX
+        const y = marker.y
+        const r = marker.size ?? dotRadius
+        const shouldPulse = pulse
+          ? marker.pulse !== false
+          : marker.pulse === true
+        const pulseTo = r * 2.8
+
         return (
-          <circle
-            cx={marker.x + offsetX}
-            cy={marker.y}
-            r={marker.size ?? dotRadius}
-            fill={markerColor}
-            key={`${marker.x}-${marker.y}-${index}`}
-          />
+          <g key={`${marker.x}-${marker.y}-${index}`}>
+            <circle cx={x} cy={y} r={r} fill={markerColor} />
+
+            {shouldPulse ? (
+              <g pointerEvents="none">
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="none"
+                  stroke={markerColor}
+                  strokeOpacity={1}
+                  strokeWidth={0.35}
+                >
+                  <animate
+                    attributeName="r"
+                    values={`${r};${pulseTo}`}
+                    dur="1.4s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="1;0"
+                    dur="1.4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill="none"
+                  stroke={markerColor}
+                  strokeOpacity={0.9}
+                  strokeWidth={0.3}
+                >
+                  <animate
+                    attributeName="r"
+                    values={`${r};${pulseTo}`}
+                    dur="1.4s"
+                    begin="0.7s"
+                    repeatCount="indefinite"
+                  />
+                  <animate
+                    attributeName="opacity"
+                    values="0.9;0"
+                    dur="1.4s"
+                    begin="0.7s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </g>
+            ) : null}
+
+            {renderMarkerOverlay?.({
+              marker: { ...marker, x, y },
+              index,
+              x,
+              y,
+              r,
+            })}
+          </g>
         )
       })}
     </svg>
@@ -6395,91 +6522,92 @@ export function DottedMap({
 Title: Dotted Map Demo
 
 --- file: example/dotted-map-demo.tsx ---
-import { DottedMap } from "@/registry/magicui/dotted-map"
+import * as React from "react"
+import type { TCountryCode } from "countries-list"
 
-const markers = [
+import { DottedMap } from "@/registry/magicui/dotted-map"
+import type { Marker } from "@/registry/magicui/dotted-map"
+
+type CountryCode = Lowercase<TCountryCode>
+
+type MyMarker = Marker & {
+  overlay: {
+    countryCode: CountryCode
+    label: string
+  }
+}
+
+const markers: MyMarker[] = [
+  {
+    lat: 37.5665,
+    lng: 126.978,
+    size: 2.8,
+    overlay: { countryCode: "kr", label: "Seoul" },
+  },
   {
     lat: 40.7128,
     lng: -74.006,
-    size: 0.3,
-  }, // New York
-  {
-    lat: 34.0522,
-    lng: -118.2437,
-    size: 0.3,
-  }, // Los Angeles
-  {
-    lat: 51.5074,
-    lng: -0.1278,
-    size: 0.3,
-  }, // London
-  {
-    lat: -33.8688,
-    lng: 151.2093,
-    size: 0.3,
-  }, // Sydney
-  {
-    lat: 48.8566,
-    lng: 2.3522,
-    size: 0.3,
-  }, // Paris
-  {
-    lat: 35.6762,
-    lng: 139.6503,
-    size: 0.3,
-  }, // Tokyo
-  {
-    lat: 55.7558,
-    lng: 37.6176,
-    size: 0.3,
-  }, // Moscow
-  {
-    lat: 39.9042,
-    lng: 116.4074,
-    size: 0.3,
-  }, // Beijing
-  {
-    lat: 28.6139,
-    lng: 77.209,
-    size: 0.3,
-  }, // New Delhi
-  {
-    lat: -23.5505,
-    lng: -46.6333,
-    size: 0.3,
-  }, // São Paulo
-  {
-    lat: 1.3521,
-    lng: 103.8198,
-    size: 0.3,
-  }, // Singapore
-  {
-    lat: 25.2048,
-    lng: 55.2708,
-    size: 0.3,
-  }, // Dubai
-  {
-    lat: 52.52,
-    lng: 13.405,
-    size: 0.3,
-  }, // Berlin
-  {
-    lat: 19.4326,
-    lng: -99.1332,
-    size: 0.3,
-  }, // Mexico City
-  {
-    lat: -26.2041,
-    lng: 28.0473,
-    size: 0.3,
-  }, // Johannesburg
+    size: 2.8,
+    overlay: { countryCode: "us", label: "NYC" },
+  },
 ]
 
 export default function Component() {
+  const id = React.useId()
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
-      <div className="to-background absolute inset-0 bg-radial from-transparent to-70%" />
-      <DottedMap markers={markers} />
+      <div className="to-background absolute inset-0 bg-radial from-transparent to-200%" />
+      <DottedMap<MyMarker>
+        markers={markers}
+        renderMarkerOverlay={({ marker, x, y, r, index }) => {
+          const { countryCode, label } = marker.overlay
+          const href = `https://flagcdn.com/w80/${countryCode}.webp` // FlagCDN  [oai_citation:7‡Flagpedia](https://flagpedia.net/download/api)
+
+          const clipId = `${id}-flag-clip-${index}`.replace(/:/g, "-")
+          const imgR = r * 0.75
+
+          const fontSize = r * 0.9
+          const pillH = r * 1.5
+          const pillW = label.length * (fontSize * 0.62) + r * 1.4
+          const pillX = x + r + r * 0.6
+          const pillY = y - pillH / 2
+
+          return (
+            <g style={{ pointerEvents: "none" }}>
+              <clipPath id={clipId}>
+                <circle cx={x} cy={y} r={imgR} />
+              </clipPath>
+
+              <image
+                href={href}
+                x={x - imgR}
+                y={y - imgR}
+                width={imgR * 2}
+                height={imgR * 2}
+                preserveAspectRatio="xMidYMid slice"
+                clipPath={`url(#${clipId})`}
+              />
+
+              <rect
+                x={pillX}
+                y={pillY}
+                width={pillW}
+                height={pillH}
+                rx={pillH / 2}
+                fill="rgba(0,0,0,0.55)"
+              />
+              <text
+                x={pillX + r * 0.7}
+                y={y + fontSize * 0.35}
+                fontSize={fontSize}
+                fill="white"
+              >
+                {label}
+              </text>
+            </g>
+          )
+        }}
+      />
     </div>
   )
 }
@@ -6495,6 +6623,37 @@ export default function Component() {
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
       <DottedMap dotRadius={0.1} />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: dotted-map-demo-3 =====
+Title: Dotted Map Demo 3
+
+--- file: example/dotted-map-demo-3.tsx ---
+import { DottedMap } from "@/registry/magicui/dotted-map"
+import type { Marker } from "@/registry/magicui/dotted-map"
+
+const markers: Marker[] = [
+  {
+    lat: 37.5665,
+    lng: 126.978,
+    size: 0.3,
+  },
+  {
+    lat: 40.7128,
+    lng: -74.006,
+    size: 0.3,
+    pulse: false,
+  },
+]
+
+export default function Component() {
+  return (
+    <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
+      <div className="to-background absolute inset-0 bg-radial from-transparent to-200%" />
+      <DottedMap markers={markers} pulse />
     </div>
   )
 }
@@ -7904,7 +8063,7 @@ Description: A text highlighter that mimics the effect of a human-drawn marker s
 --- file: magicui/highlighter.tsx ---
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import type React from "react"
 import { useInView } from "motion/react"
 import { annotate } from "rough-notation"
@@ -7943,7 +8102,6 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null)
-  const annotationRef = useRef<RoughAnnotation | null>(null)
 
   const isInView = useInView(elementRef, {
     once: true,
@@ -7953,8 +8111,9 @@ export function Highlighter({
   // If isView is false, always show. If isView is true, wait for inView
   const shouldShow = !isView || isInView
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = elementRef.current
+    let annotation: RoughAnnotation | null = null
     let resizeObserver: ResizeObserver | null = null
 
     if (shouldShow && element) {
@@ -7968,14 +8127,13 @@ export function Highlighter({
         multiline,
       }
 
-      const annotation = annotate(element, annotationConfig)
-
-      annotationRef.current = annotation
-      annotation.show()
+      const currentAnnotation = annotate(element, annotationConfig)
+      annotation = currentAnnotation
+      currentAnnotation.show()
 
       resizeObserver = new ResizeObserver(() => {
-        annotation.hide()
-        annotation.show()
+        currentAnnotation.hide()
+        currentAnnotation.show()
       })
 
       resizeObserver.observe(element)
@@ -7983,10 +8141,7 @@ export function Highlighter({
     }
 
     return () => {
-      if (annotationRef.current) {
-        annotationRef.current.remove()
-        annotationRef.current = null
-      }
+      annotation?.remove()
       if (resizeObserver) {
         resizeObserver.disconnect()
       }
@@ -8037,7 +8192,7 @@ export default function HighlighterDemo() {
 --- file: magicui/highlighter.tsx ---
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import type React from "react"
 import { useInView } from "motion/react"
 import { annotate } from "rough-notation"
@@ -8076,7 +8231,6 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null)
-  const annotationRef = useRef<RoughAnnotation | null>(null)
 
   const isInView = useInView(elementRef, {
     once: true,
@@ -8086,8 +8240,9 @@ export function Highlighter({
   // If isView is false, always show. If isView is true, wait for inView
   const shouldShow = !isView || isInView
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = elementRef.current
+    let annotation: RoughAnnotation | null = null
     let resizeObserver: ResizeObserver | null = null
 
     if (shouldShow && element) {
@@ -8101,14 +8256,13 @@ export function Highlighter({
         multiline,
       }
 
-      const annotation = annotate(element, annotationConfig)
-
-      annotationRef.current = annotation
-      annotation.show()
+      const currentAnnotation = annotate(element, annotationConfig)
+      annotation = currentAnnotation
+      currentAnnotation.show()
 
       resizeObserver = new ResizeObserver(() => {
-        annotation.hide()
-        annotation.show()
+        currentAnnotation.hide()
+        currentAnnotation.show()
       })
 
       resizeObserver.observe(element)
@@ -8116,10 +8270,7 @@ export function Highlighter({
     }
 
     return () => {
-      if (annotationRef.current) {
-        annotationRef.current.remove()
-        annotationRef.current = null
-      }
+      annotation?.remove()
       if (resizeObserver) {
         resizeObserver.disconnect()
       }
@@ -12708,9 +12859,257 @@ Title: Retro Grid
 Description: An animated scrolling retro grid effect
 
 --- file: magicui/retro-grid.tsx ---
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import type { CSSProperties, HTMLAttributes } from "react"
+
 import { cn } from "@/lib/utils"
 
-interface RetroGridProps extends React.HTMLAttributes<HTMLDivElement> {
+const ANIMATION_DURATION_SECONDS = 15
+const GRID_HEIGHT_RATIO = 3
+const GRID_LINE_ALIGNMENT_OFFSET_PX = 0.5
+const GRID_LINE_ANTIALIAS_MULTIPLIER = 0.9
+const GRID_LINE_WIDTH_PX = 0.92
+const GRID_START_OFFSET_RATIO = -0.5
+const GRID_WIDTH_RATIO = 6
+const GRID_X_OFFSET_RATIO = -2
+const MAX_ANGLE = 89
+const MAX_DEVICE_PIXEL_RATIO = 2
+const MIN_ANGLE = 1
+const PERSPECTIVE_PX = 200
+const FALLBACK_ANIMATION_NAME = "retro-grid-fallback-scroll"
+const FALLBACK_STYLES = `
+@keyframes ${FALLBACK_ANIMATION_NAME} {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-retro-grid-scroll="true"] {
+    animation: none !important;
+    transform: translateY(-50%) !important;
+  }
+}
+`
+
+const VERTEX_SHADER_SOURCE = `
+attribute vec2 a_position;
+
+void main() {
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}
+`
+
+const FRAGMENT_SHADER_SOURCE = `
+#extension GL_OES_standard_derivatives : enable
+precision highp float;
+
+uniform vec2 u_container_size;
+uniform vec2 u_viewport_size;
+uniform vec4 u_line_color;
+uniform float u_angle;
+uniform float u_cell_size;
+uniform float u_device_pixel_ratio;
+uniform float u_time;
+
+const float animationDurationSeconds = ${ANIMATION_DURATION_SECONDS.toFixed(1)};
+const float gridHeightRatio = ${GRID_HEIGHT_RATIO.toFixed(1)};
+const float gridStartOffsetRatio = ${GRID_START_OFFSET_RATIO.toFixed(1)};
+const float gridWidthRatio = ${GRID_WIDTH_RATIO.toFixed(1)};
+const float gridXOffsetRatio = ${GRID_X_OFFSET_RATIO.toFixed(1)};
+const float gridLineAlignmentOffsetPx = ${GRID_LINE_ALIGNMENT_OFFSET_PX.toFixed(1)};
+const float gridLineAntialiasMultiplier = ${GRID_LINE_ANTIALIAS_MULTIPLIER.toFixed(1)};
+const float horizontalLodLevelOneEndPx = 5.6;
+const float horizontalLodLevelOneStartPx = 2.8;
+const float horizontalLodLevelTwoEndPx = 3.0;
+const float horizontalLodLevelTwoStartPx = 1.4;
+const float horizontalCompressionEndPx = 2.8;
+const float horizontalCompressionStartPx = 1.2;
+const float lineWidthPx = ${GRID_LINE_WIDTH_PX.toFixed(2)};
+const float perspectivePx = ${PERSPECTIVE_PX.toFixed(1)};
+const float gridTravelRatio = 0.5;
+const float verticalCompressionEndPx = 2.6;
+const float verticalCompressionStartPx = 1.0;
+const float verticalEdgeCompressionEnd = 0.95;
+const float verticalEdgeCompressionStart = 0.45;
+const float verticalLodLevelEnd = 0.64;
+const float verticalLodLevelStart = 0.22;
+const float verticalTopCompressionEndCells = 6.0;
+const float verticalTopCompressionStartCells = 2.0;
+
+float renderGridLine(
+  float wrappedCoord,
+  float antiAliasWidth,
+  float softnessBoost
+) {
+  return 1.0 - smoothstep(
+    lineWidthPx,
+    lineWidthPx + (antiAliasWidth * (1.5 + softnessBoost)),
+    wrappedCoord
+  );
+}
+
+void main() {
+  float angle = radians(clamp(u_angle, 1.0, 89.0));
+  float sinAngle = sin(angle);
+  float cosAngle = cos(angle);
+  vec2 screen = vec2(
+    (gl_FragCoord.x / u_device_pixel_ratio) - (u_container_size.x * 0.5),
+    (u_container_size.y * 0.5) - (gl_FragCoord.y / u_device_pixel_ratio)
+  );
+
+  vec3 rayOrigin = vec3(0.0, 0.0, perspectivePx);
+  vec3 rayDirection = normalize(vec3(screen, -perspectivePx));
+  vec3 planeXAxis = vec3(1.0, 0.0, 0.0);
+  vec3 planeYAxis = vec3(0.0, cosAngle, sinAngle);
+  vec3 planeNormal = normalize(cross(planeXAxis, planeYAxis));
+  float denominator = dot(rayDirection, planeNormal);
+
+  if (abs(denominator) < 0.0001) {
+    discard;
+  }
+
+  float distanceToPlane = dot(-rayOrigin, planeNormal) / denominator;
+
+  if (distanceToPlane <= 0.0) {
+    discard;
+  }
+
+  vec3 hitPoint = rayOrigin + (rayDirection * distanceToPlane);
+  float localX = hitPoint.x;
+  float localY = dot(hitPoint, planeYAxis);
+  float gridWidth = u_viewport_size.x * gridWidthRatio;
+  float gridHeight = u_viewport_size.y * gridHeightRatio;
+  float gridScrollSpeed = (gridHeight * gridTravelRatio) / animationDurationSeconds;
+  float patternOffsetY = u_time * gridScrollSpeed;
+  float gridLeft = (-0.5 * u_container_size.x) + (gridXOffsetRatio * u_container_size.x);
+  float gridTop = (-0.5 * u_container_size.y) + (gridStartOffsetRatio * gridHeight);
+  vec2 planePosition = vec2(localX - gridLeft, localY - gridTop);
+
+  if (
+    planePosition.x < 0.0 ||
+    planePosition.y < 0.0 ||
+    planePosition.x > gridWidth ||
+    planePosition.y > gridHeight
+  ) {
+    discard;
+  }
+
+  vec2 patternPosition = vec2(planePosition.x, planePosition.y - patternOffsetY);
+  vec2 wrapped = mod(
+    patternPosition + vec2(gridLineAlignmentOffsetPx),
+    u_cell_size
+  );
+  vec2 patternDerivative = max(fwidth(patternPosition), vec2(0.0001));
+  vec2 antiAliasWidth = patternDerivative * gridLineAntialiasMultiplier;
+  float horizontalCellSpanPx = u_cell_size / patternDerivative.y;
+  float horizontalCompression = 1.0 - smoothstep(
+    horizontalCompressionStartPx,
+    horizontalCompressionEndPx,
+    horizontalCellSpanPx
+  );
+  float verticalCellSpanPx = u_cell_size / patternDerivative.x;
+  float sideDistance = abs((planePosition.x / gridWidth) * 2.0 - 1.0);
+  float verticalEdgeCompression = smoothstep(
+    verticalEdgeCompressionStart,
+    verticalEdgeCompressionEnd,
+    sideDistance
+  );
+  float verticalTopCompression = 1.0 - smoothstep(
+    u_cell_size * verticalTopCompressionStartCells,
+    u_cell_size * verticalTopCompressionEndCells,
+    planePosition.y
+  );
+  float verticalCompression =
+    (1.0 - smoothstep(
+      verticalCompressionStartPx,
+      verticalCompressionEndPx,
+      verticalCellSpanPx
+    )) * verticalEdgeCompression * verticalTopCompression;
+  float horizontalSoftnessBoost = 1.0 + (horizontalCompression * 3.0);
+  float verticalSoftnessBoost = 1.0 + (verticalCompression * 3.5);
+  float verticalLod = smoothstep(
+    verticalLodLevelStart,
+    verticalLodLevelEnd,
+    verticalCompression
+  );
+  float verticalLineFine = renderGridLine(
+    wrapped.x,
+    antiAliasWidth.x,
+    verticalSoftnessBoost
+  );
+  float verticalWrappedLod = mod(
+    patternPosition.x + gridLineAlignmentOffsetPx,
+    u_cell_size * 2.0
+  );
+  float verticalLineCoarse = renderGridLine(
+    verticalWrappedLod,
+    antiAliasWidth.x,
+    verticalSoftnessBoost + verticalLod
+  );
+  float verticalLine = max(
+    verticalLineFine * (1.0 - verticalLod),
+    verticalLineCoarse * verticalLod
+  );
+  float horizontalLodLevelOne = 1.0 - smoothstep(
+    horizontalLodLevelOneStartPx,
+    horizontalLodLevelOneEndPx,
+    horizontalCellSpanPx
+  );
+  float horizontalLodLevelTwo = 1.0 - smoothstep(
+    horizontalLodLevelTwoStartPx,
+    horizontalLodLevelTwoEndPx,
+    horizontalCellSpanPx
+  );
+  float horizontalLineFine = renderGridLine(
+    wrapped.y,
+    antiAliasWidth.y,
+    horizontalSoftnessBoost
+  );
+  float horizontalWrappedLodOne = mod(
+    patternPosition.y + gridLineAlignmentOffsetPx,
+    u_cell_size * 2.0
+  );
+  float horizontalWrappedLodTwo = mod(
+    patternPosition.y + gridLineAlignmentOffsetPx,
+    u_cell_size * 4.0
+  );
+  float horizontalLineCoarse = renderGridLine(
+    horizontalWrappedLodOne,
+    antiAliasWidth.y,
+    horizontalSoftnessBoost + horizontalLodLevelOne
+  );
+  float horizontalLineExtraCoarse = renderGridLine(
+    horizontalWrappedLodTwo,
+    antiAliasWidth.y,
+    horizontalSoftnessBoost + horizontalLodLevelOne + horizontalLodLevelTwo
+  );
+  float horizontalLineReduced = max(
+    horizontalLineFine * (1.0 - horizontalLodLevelOne),
+    horizontalLineCoarse * horizontalLodLevelOne
+  );
+  float horizontalLine = max(
+    horizontalLineReduced * (1.0 - horizontalLodLevelTwo),
+    horizontalLineExtraCoarse * horizontalLodLevelTwo
+  );
+  float line = max(verticalLine, horizontalLine);
+
+  if (line <= 0.001) {
+    discard;
+  }
+
+  float alpha = u_line_color.a * line;
+  gl_FragColor = vec4(u_line_color.rgb * alpha, alpha);
+}
+`
+
+interface RetroGridProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Additional CSS classes to apply to the grid container
    */
@@ -12742,6 +13141,193 @@ interface RetroGridProps extends React.HTMLAttributes<HTMLDivElement> {
   darkLineColor?: string
 }
 
+interface ProgramInfo {
+  attributeLocation: number
+  program: WebGLProgram
+  uniforms: {
+    angle: WebGLUniformLocation
+    cellSize: WebGLUniformLocation
+    containerSize: WebGLUniformLocation
+    devicePixelRatio: WebGLUniformLocation
+    lineColor: WebGLUniformLocation
+    time: WebGLUniformLocation
+    viewportSize: WebGLUniformLocation
+  }
+}
+
+let colorResolveContext: CanvasRenderingContext2D | null | undefined
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max)
+}
+
+function createShader(gl: WebGLRenderingContext, type: number, source: string) {
+  const shader = gl.createShader(type)
+
+  if (!shader) {
+    return null
+  }
+
+  gl.shaderSource(shader, source)
+  gl.compileShader(shader)
+
+  if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    return shader
+  }
+
+  gl.deleteShader(shader)
+  return null
+}
+
+function createProgram(gl: WebGLRenderingContext) {
+  const vertexShader = createShader(gl, gl.VERTEX_SHADER, VERTEX_SHADER_SOURCE)
+  const fragmentShader = createShader(
+    gl,
+    gl.FRAGMENT_SHADER,
+    FRAGMENT_SHADER_SOURCE
+  )
+
+  if (!vertexShader || !fragmentShader) {
+    return null
+  }
+
+  const program = gl.createProgram()
+
+  if (!program) {
+    gl.deleteShader(vertexShader)
+    gl.deleteShader(fragmentShader)
+    return null
+  }
+
+  gl.attachShader(program, vertexShader)
+  gl.attachShader(program, fragmentShader)
+  gl.linkProgram(program)
+  gl.deleteShader(vertexShader)
+  gl.deleteShader(fragmentShader)
+
+  if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    return program
+  }
+
+  gl.deleteProgram(program)
+  return null
+}
+
+function getProgramInfo(
+  gl: WebGLRenderingContext,
+  program: WebGLProgram
+): ProgramInfo | null {
+  const attributeLocation = gl.getAttribLocation(program, "a_position")
+  const angle = gl.getUniformLocation(program, "u_angle")
+  const cellSize = gl.getUniformLocation(program, "u_cell_size")
+  const containerSize = gl.getUniformLocation(program, "u_container_size")
+  const devicePixelRatio = gl.getUniformLocation(
+    program,
+    "u_device_pixel_ratio"
+  )
+  const lineColor = gl.getUniformLocation(program, "u_line_color")
+  const time = gl.getUniformLocation(program, "u_time")
+  const viewportSize = gl.getUniformLocation(program, "u_viewport_size")
+
+  if (
+    attributeLocation < 0 ||
+    !angle ||
+    !cellSize ||
+    !containerSize ||
+    !devicePixelRatio ||
+    !lineColor ||
+    !time ||
+    !viewportSize
+  ) {
+    return null
+  }
+
+  return {
+    attributeLocation,
+    program,
+    uniforms: {
+      angle,
+      cellSize,
+      containerSize,
+      devicePixelRatio,
+      lineColor,
+      time,
+      viewportSize,
+    },
+  }
+}
+
+function isDarkMode(colorScheme: MediaQueryList) {
+  const root = document.documentElement
+
+  if (root.classList.contains("dark")) {
+    return true
+  }
+
+  if (root.classList.contains("light")) {
+    return false
+  }
+
+  return colorScheme.matches
+}
+
+function getColorResolveContext() {
+  if (colorResolveContext !== undefined) {
+    return colorResolveContext
+  }
+
+  const canvas = document.createElement("canvas")
+  canvas.width = 1
+  canvas.height = 1
+  colorResolveContext = canvas.getContext("2d", {
+    willReadFrequently: true,
+  })
+
+  return colorResolveContext
+}
+
+function resolveLineColor(color: string, element: HTMLElement) {
+  const resolver = document.createElement("span")
+  resolver.style.color = color
+  resolver.style.opacity = "0"
+  resolver.style.pointerEvents = "none"
+  resolver.style.position = "absolute"
+  element.appendChild(resolver)
+
+  const resolvedColor = getComputedStyle(resolver).color
+  resolver.remove()
+  const context = getColorResolveContext()
+
+  if (!context) {
+    return new Float32Array([0.5, 0.5, 0.5, 1])
+  }
+
+  context.clearRect(0, 0, 1, 1)
+  context.fillStyle = resolvedColor
+  context.fillRect(0, 0, 1, 1)
+  const pixel = context.getImageData(0, 0, 1, 1).data
+
+  return new Float32Array([
+    pixel[0] / 255,
+    pixel[1] / 255,
+    pixel[2] / 255,
+    pixel[3] / 255,
+  ])
+}
+
+function createFallbackGridStyle(
+  cellSize: number,
+  lineColor: string
+): CSSProperties {
+  return {
+    animation: `${FALLBACK_ANIMATION_NAME} ${ANIMATION_DURATION_SECONDS}s linear infinite`,
+    backgroundImage: `linear-gradient(to right, ${lineColor} 1px, transparent 0), linear-gradient(to bottom, ${lineColor} 1px, transparent 0)`,
+    backgroundRepeat: "repeat",
+    backgroundSize: `${cellSize}px ${cellSize}px`,
+    transform: "translateY(-50%)",
+  }
+}
+
 export function RetroGrid({
   className,
   angle = 65,
@@ -12749,30 +13335,392 @@ export function RetroGrid({
   opacity = 0.5,
   lightLineColor = "gray",
   darkLineColor = "gray",
+  style,
   ...props
 }: RetroGridProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isWebGlReady, setIsWebGlReady] = useState(false)
+  const angleRef = useRef(angle)
+  const cellSizeRef = useRef(cellSize)
+  const darkLineColorRef = useRef(darkLineColor)
+  const lightLineColorRef = useRef(lightLineColor)
+  const syncSceneRef = useRef<(() => void) | null>(null)
+
+  useEffect(() => {
+    angleRef.current = angle
+    cellSizeRef.current = cellSize
+    darkLineColorRef.current = darkLineColor
+    lightLineColorRef.current = lightLineColor
+    syncSceneRef.current?.()
+  }, [angle, cellSize, darkLineColor, lightLineColor])
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const container = containerRef.current
+
+    if (!canvas || !container) {
+      return
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const colorScheme = window.matchMedia("(prefers-color-scheme: dark)")
+
+    let animationFrameId: number | null = null
+    let currentWidth = 0
+    let currentHeight = 0
+    let currentDevicePixelRatio = 1
+    let gl: WebGLRenderingContext | null = null
+    let isVisible = true
+    let isContextLost = false
+    let lineColor = resolveLineColor(lightLineColorRef.current, container)
+    let positionBuffer: WebGLBuffer | null = null
+    let programInfo: ProgramInfo | null = null
+
+    const getContext = () => {
+      const nextGl = canvas.getContext("webgl", {
+        alpha: true,
+        antialias: true,
+        premultipliedAlpha: true,
+      })
+
+      if (!nextGl || !nextGl.getExtension("OES_standard_derivatives")) {
+        return null
+      }
+
+      return nextGl
+    }
+
+    const releasePipeline = (shouldDeleteResources: boolean) => {
+      if (shouldDeleteResources && gl) {
+        if (positionBuffer) {
+          gl.deleteBuffer(positionBuffer)
+        }
+
+        if (programInfo) {
+          gl.deleteProgram(programInfo.program)
+        }
+      }
+
+      positionBuffer = null
+      programInfo = null
+
+      if (shouldDeleteResources) {
+        gl = null
+      }
+    }
+
+    const initializePipeline = () => {
+      const nextGl = getContext()
+
+      if (!nextGl) {
+        releasePipeline(false)
+        return false
+      }
+
+      gl = nextGl
+      releasePipeline(true)
+      gl = nextGl
+
+      const program = createProgram(nextGl)
+
+      if (!program) {
+        return false
+      }
+
+      const nextProgramInfo = getProgramInfo(nextGl, program)
+
+      if (!nextProgramInfo) {
+        nextGl.deleteProgram(program)
+        return false
+      }
+
+      const nextPositionBuffer = nextGl.createBuffer()
+
+      if (!nextPositionBuffer) {
+        nextGl.deleteProgram(program)
+        return false
+      }
+
+      nextGl.bindBuffer(nextGl.ARRAY_BUFFER, nextPositionBuffer)
+      nextGl.bufferData(
+        nextGl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 3, -1, -1, 3]),
+        nextGl.STATIC_DRAW
+      )
+
+      positionBuffer = nextPositionBuffer
+      programInfo = nextProgramInfo
+
+      return true
+    }
+
+    const updateLineColor = () => {
+      const activeColor = isDarkMode(colorScheme)
+        ? darkLineColorRef.current
+        : lightLineColorRef.current
+      lineColor = resolveLineColor(activeColor, container)
+    }
+
+    const resizeCanvas = () => {
+      currentWidth = Math.floor(container.clientWidth)
+      currentHeight = Math.floor(container.clientHeight)
+
+      if (currentWidth === 0 || currentHeight === 0 || !gl) {
+        return
+      }
+
+      currentDevicePixelRatio = Math.min(
+        window.devicePixelRatio || 1,
+        MAX_DEVICE_PIXEL_RATIO
+      )
+
+      canvas.width = Math.floor(currentWidth * currentDevicePixelRatio)
+      canvas.height = Math.floor(currentHeight * currentDevicePixelRatio)
+      canvas.style.width = `${currentWidth}px`
+      canvas.style.height = `${currentHeight}px`
+      gl.viewport(0, 0, canvas.width, canvas.height)
+    }
+
+    const draw = (timestamp: number) => {
+      if (
+        currentWidth === 0 ||
+        currentHeight === 0 ||
+        !gl ||
+        !positionBuffer ||
+        !programInfo ||
+        isContextLost
+      ) {
+        return
+      }
+
+      gl.useProgram(programInfo.program)
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
+      gl.enableVertexAttribArray(programInfo.attributeLocation)
+      gl.vertexAttribPointer(
+        programInfo.attributeLocation,
+        2,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      )
+      gl.clearColor(0, 0, 0, 0)
+      gl.clear(gl.COLOR_BUFFER_BIT)
+      gl.uniform1f(
+        programInfo.uniforms.angle,
+        clamp(angleRef.current, MIN_ANGLE, MAX_ANGLE)
+      )
+      gl.uniform1f(
+        programInfo.uniforms.cellSize,
+        Math.max(cellSizeRef.current, 1)
+      )
+      gl.uniform2f(
+        programInfo.uniforms.containerSize,
+        currentWidth,
+        currentHeight
+      )
+      gl.uniform1f(
+        programInfo.uniforms.devicePixelRatio,
+        currentDevicePixelRatio
+      )
+      gl.uniform4fv(programInfo.uniforms.lineColor, lineColor)
+      gl.uniform1f(
+        programInfo.uniforms.time,
+        reducedMotion.matches ? 0 : timestamp / 1000
+      )
+      gl.uniform2f(
+        programInfo.uniforms.viewportSize,
+        window.innerWidth,
+        window.innerHeight
+      )
+      gl.drawArrays(gl.TRIANGLES, 0, 3)
+    }
+
+    const stopAnimation = () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId)
+        animationFrameId = null
+      }
+    }
+
+    const frame = (timestamp: number) => {
+      draw(timestamp)
+
+      if (!reducedMotion.matches && isVisible) {
+        animationFrameId = requestAnimationFrame(frame)
+        return
+      }
+
+      animationFrameId = null
+    }
+
+    const syncScene = () => {
+      if (isContextLost) {
+        stopAnimation()
+        setIsWebGlReady(false)
+        return
+      }
+
+      if (!gl || !positionBuffer || !programInfo) {
+        if (!initializePipeline()) {
+          stopAnimation()
+          setIsWebGlReady(false)
+          return
+        }
+      }
+
+      resizeCanvas()
+
+      if (currentWidth === 0 || currentHeight === 0) {
+        stopAnimation()
+        return
+      }
+
+      updateLineColor()
+      draw(performance.now())
+      setIsWebGlReady(true)
+
+      if (reducedMotion.matches || !isVisible) {
+        stopAnimation()
+        return
+      }
+
+      if (animationFrameId === null) {
+        animationFrameId = requestAnimationFrame(frame)
+      }
+    }
+
+    syncSceneRef.current = syncScene
+
+    const resizeObserver = new ResizeObserver(() => {
+      syncScene()
+    })
+    resizeObserver.observe(container)
+
+    const handleWindowResize = () => {
+      syncScene()
+    }
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      isVisible = entry?.isIntersecting ?? false
+
+      if (isVisible) {
+        syncScene()
+        return
+      }
+
+      stopAnimation()
+    })
+    intersectionObserver.observe(container)
+
+    const themeObserver = new MutationObserver(() => {
+      syncScene()
+    })
+    themeObserver.observe(document.documentElement, {
+      attributeFilter: ["class"],
+      attributes: true,
+    })
+
+    const handleMotionChange = () => {
+      syncScene()
+    }
+
+    const handleColorSchemeChange = () => {
+      syncScene()
+    }
+
+    const handleContextLost = (event: Event) => {
+      event.preventDefault()
+      isContextLost = true
+      stopAnimation()
+      releasePipeline(false)
+      setIsWebGlReady(false)
+    }
+
+    const handleContextRestored = () => {
+      isContextLost = false
+      syncScene()
+    }
+
+    reducedMotion.addEventListener("change", handleMotionChange)
+    colorScheme.addEventListener("change", handleColorSchemeChange)
+    window.addEventListener("resize", handleWindowResize)
+    canvas.addEventListener("webglcontextlost", handleContextLost)
+    canvas.addEventListener("webglcontextrestored", handleContextRestored)
+
+    syncScene()
+
+    return () => {
+      stopAnimation()
+      resizeObserver.disconnect()
+      intersectionObserver.disconnect()
+      themeObserver.disconnect()
+      reducedMotion.removeEventListener("change", handleMotionChange)
+      colorScheme.removeEventListener("change", handleColorSchemeChange)
+      window.removeEventListener("resize", handleWindowResize)
+      canvas.removeEventListener("webglcontextlost", handleContextLost)
+      canvas.removeEventListener("webglcontextrestored", handleContextRestored)
+      syncSceneRef.current = null
+      releasePipeline(!isContextLost)
+    }
+  }, [])
+
   const gridStyles = {
-    "--grid-angle": `${angle}deg`,
-    "--cell-size": `${cellSize}px`,
-    "--opacity": opacity,
-    "--light-line": lightLineColor,
-    "--dark-line": darkLineColor,
-  } as React.CSSProperties
+    ...style,
+    opacity,
+  } as CSSProperties
+  const normalizedAngle = clamp(angle, MIN_ANGLE, MAX_ANGLE)
+  const normalizedCellSize = Math.max(cellSize, 1)
+  const fallbackProjectionStyles = {
+    perspective: `${PERSPECTIVE_PX}px`,
+  } as CSSProperties
+  const fallbackRotationStyles = {
+    transform: `rotateX(${normalizedAngle}deg)`,
+  } as CSSProperties
+  const lightFallbackGridStyles = createFallbackGridStyle(
+    normalizedCellSize,
+    lightLineColor
+  )
+  const darkFallbackGridStyles = createFallbackGridStyle(
+    normalizedCellSize,
+    darkLineColor
+  )
 
   return (
     <div
+      ref={containerRef}
       className={cn(
-        "pointer-events-none absolute size-full overflow-hidden perspective-[200px]",
-        `opacity-(--opacity)`,
+        "pointer-events-none absolute size-full overflow-hidden",
         className
       )}
       style={gridStyles}
       {...props}
     >
-      <div className="absolute inset-0 transform-[rotateX(var(--grid-angle))]">
-        <div className="animate-grid inset-[0%_0px] ml-[-200%] h-[300vh] w-[600vw] origin-[100%_0_0] bg-[linear-gradient(to_right,var(--light-line)_1px,transparent_0),linear-gradient(to_bottom,var(--light-line)_1px,transparent_0)] bg-size-[var(--cell-size)_var(--cell-size)] bg-repeat dark:bg-[linear-gradient(to_right,var(--dark-line)_1px,transparent_0),linear-gradient(to_bottom,var(--dark-line)_1px,transparent_0)]" />
-      </div>
-
+      <style>{FALLBACK_STYLES}</style>
+      {!isWebGlReady ? (
+        <div className="absolute inset-0" style={fallbackProjectionStyles}>
+          <div className="absolute inset-0" style={fallbackRotationStyles}>
+            <div
+              data-retro-grid-scroll="true"
+              className="absolute inset-[0%_0px] ml-[-200%] h-[300vh] w-[600vw] origin-[100%_0_0] dark:hidden"
+              style={lightFallbackGridStyles}
+            />
+            <div
+              data-retro-grid-scroll="true"
+              className="absolute inset-[0%_0px] ml-[-200%] hidden h-[300vh] w-[600vw] origin-[100%_0_0] dark:block"
+              style={darkFallbackGridStyles}
+            />
+          </div>
+        </div>
+      ) : null}
+      <canvas
+        ref={canvasRef}
+        className={cn(
+          "absolute inset-0 size-full",
+          isWebGlReady ? "opacity-100" : "opacity-0"
+        )}
+      />
       <div className="absolute inset-0 bg-linear-to-t from-white to-transparent to-90% dark:from-black" />
     </div>
   )

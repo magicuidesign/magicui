@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import type React from "react"
 import { useInView } from "motion/react"
 import { annotate } from "rough-notation"
@@ -39,7 +39,6 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null)
-  const annotationRef = useRef<RoughAnnotation | null>(null)
 
   const isInView = useInView(elementRef, {
     once: true,
@@ -49,8 +48,9 @@ export function Highlighter({
   // If isView is false, always show. If isView is true, wait for inView
   const shouldShow = !isView || isInView
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = elementRef.current
+    let annotation: RoughAnnotation | null = null
     let resizeObserver: ResizeObserver | null = null
 
     if (shouldShow && element) {
@@ -64,14 +64,13 @@ export function Highlighter({
         multiline,
       }
 
-      const annotation = annotate(element, annotationConfig)
-
-      annotationRef.current = annotation
-      annotation.show()
+      const currentAnnotation = annotate(element, annotationConfig)
+      annotation = currentAnnotation
+      currentAnnotation.show()
 
       resizeObserver = new ResizeObserver(() => {
-        annotation.hide()
-        annotation.show()
+        currentAnnotation.hide()
+        currentAnnotation.show()
       })
 
       resizeObserver.observe(element)
@@ -79,10 +78,7 @@ export function Highlighter({
     }
 
     return () => {
-      if (annotationRef.current) {
-        annotationRef.current.remove()
-        annotationRef.current = null
-      }
+      annotation?.remove()
       if (resizeObserver) {
         resizeObserver.disconnect()
       }

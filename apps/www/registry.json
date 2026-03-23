@@ -584,22 +584,7 @@
           "path": "registry/magicui/retro-grid.tsx",
           "type": "registry:ui"
         }
-      ],
-      "cssVars": {
-        "theme": {
-          "animate-grid": "grid 15s linear infinite"
-        }
-      },
-      "css": {
-        "@keyframes grid": {
-          "0%": {
-            "transform": "translateY(-50%)"
-          },
-          "100%": {
-            "transform": "translateY(0)"
-          }
-        }
-      }
+      ]
     },
     {
       "name": "animated-list",
@@ -3378,6 +3363,9 @@
       "type": "registry:example",
       "title": "Dotted Map Demo",
       "description": "Example showing a dotted map.",
+      "dependencies": [
+        "countries-list"
+      ],
       "registryDependencies": [
         "@magicui/dotted-map"
       ],
@@ -3399,6 +3387,21 @@
       "files": [
         {
           "path": "registry/example/dotted-map-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dotted-map-demo-3",
+      "type": "registry:example",
+      "title": "Dotted Map Demo 3",
+      "description": "Example showing a dotted map with pulse animation.",
+      "registryDependencies": [
+        "@magicui/dotted-map"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dotted-map-demo-3.tsx",
           "type": "registry:example"
         }
       ]
