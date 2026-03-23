@@ -9,7 +9,7 @@ import { TubesBackground } from "@/registry/magicui/tubes-background"
 export default function TubesBackgroundDemo() {
   return (
     <TubesBackground className="min-h-[400px]">
-      <Card className="w-80">
+      <Card className="w-80 bg-transparent">
         <CardContent className="flex flex-col gap-2 p-4">
           <CardTitle>Interactive 3D Tubes</CardTitle>
           <CardDescription>
