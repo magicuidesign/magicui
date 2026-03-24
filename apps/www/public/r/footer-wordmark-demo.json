@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-wordmark-demo",
+  "title": "Footer Wordmark Demo",
+  "description": "A fitted wordmark beneath a scheduling product's footer.",
+  "registryDependencies": [
+    "@magicui/footer-wordmark",
+    "@magicui/footer-wordmark-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-wordmark-demo.tsx",
+      "content": "import { FooterWordmark } from \"@/registry/magicui/footer-wordmark\"\n\nconst columns = [\n  { title: \"Product\", links: [\"Scheduling\", \"Integrations\", \"Pricing\"] },\n  { title: \"Company\", links: [\"About\", \"Careers\", \"Blog\"] },\n  { title: \"Legal\", links: [\"Privacy\", \"Terms\", \"Security\"] },\n]\n\nexport default function FooterWordmarkDemo() {\n  return (\n    <div className=\"flex min-h-[calc(100svh-3rem)] w-5xl max-w-full flex-col justify-end\">\n      <footer className=\"bg-background text-foreground text-xs sm:text-sm\">\n        <div className=\"flex flex-col gap-6 pb-6 sm:flex-row sm:justify-between sm:pb-8\">\n          <div className=\"flex flex-col justify-between gap-2\">\n            <p>A calmer calendar for busy teams.</p>\n            <p className=\"text-muted-foreground\">© 2026 Meridian Labs, Inc.</p>\n          </div>\n          <div className=\"grid grid-cols-3 gap-6 sm:gap-12\">\n            {columns.map((column) => (\n              <div key={column.title} className=\"space-y-3\">\n                <h3 className=\"font-medium\">{column.title}</h3>\n                <ul className=\"text-muted-foreground space-y-2\">\n                  {column.links.map((link) => (\n                    <li key={link}>\n                      <a\n                        href={`#${link.toLowerCase()}`}\n                        className=\"hover:text-foreground transition-colors\"\n                      >\n                        {link}\n                      </a>\n                    </li>\n                  ))}\n                </ul>\n              </div>\n            ))}\n          </div>\n        </div>\n        <div className=\"border-border border-t pt-6 sm:pt-8\">\n          <FooterWordmark>Meridian</FooterWordmark>\n        </div>\n      </footer>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

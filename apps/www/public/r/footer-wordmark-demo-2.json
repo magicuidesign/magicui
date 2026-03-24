@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-wordmark-demo-2",
+  "title": "Footer Wordmark Demo 2",
+  "description": "A cropped sign-off at the bottom of a footer card.",
+  "registryDependencies": [
+    "@magicui/footer-wordmark",
+    "@magicui/footer-wordmark-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-wordmark-demo-2.tsx",
+      "content": "import { FooterWordmark } from \"@/registry/magicui/footer-wordmark\"\n\nexport default function FooterWordmarkDemo2() {\n  return (\n    <footer className=\"bg-card text-card-foreground border-border w-5xl max-w-full overflow-hidden rounded-xl border px-6 pt-8 sm:px-10 sm:pt-10\">\n      <div className=\"mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between\">\n        <p className=\"max-w-sm text-xl font-medium tracking-tight text-balance sm:text-2xl\">\n          Every decision starts with a clearer view.\n        </p>\n        <p className=\"text-muted-foreground text-xs sm:text-sm\">\n          © 2026 Northline Analytics\n        </p>\n      </div>\n      <FooterWordmark crop={0.3}>Northline</FooterWordmark>\n    </footer>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

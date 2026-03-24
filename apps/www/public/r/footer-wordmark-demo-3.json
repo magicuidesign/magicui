@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-wordmark-demo-3",
+  "title": "Footer Wordmark Demo 3",
+  "description": "A serif wordmark beneath a design tool's closing call to action.",
+  "registryDependencies": [
+    "@magicui/footer-wordmark",
+    "@magicui/footer-wordmark-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/footer-wordmark-demo-3.tsx",
+      "content": "import { FooterWordmark } from \"@/registry/magicui/footer-wordmark\"\n\nexport default function FooterWordmarkDemo3() {\n  return (\n    <section className=\"bg-background text-foreground flex min-h-[calc(100svh-3rem)] w-5xl max-w-full flex-col justify-end gap-10\">\n      <div className=\"flex flex-col items-start gap-5\">\n        <div className=\"space-y-2\">\n          <h2 className=\"text-2xl font-semibold tracking-tight text-balance sm:text-3xl\">\n            Make room for the next idea.\n          </h2>\n          <p className=\"text-muted-foreground text-sm\">\n            A shared canvas for thoughtful teams.\n          </p>\n        </div>\n        <button\n          type=\"button\"\n          className=\"bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring/50 inline-flex h-9 items-center rounded-lg px-4 text-sm font-medium shadow-xs transition-all outline-none focus-visible:ring-[3px]\"\n        >\n          Start a workspace\n        </button>\n      </div>\n      <FooterWordmark className=\"font-serif font-normal tracking-normal\">\n        Tesserine\n      </FooterWordmark>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -2,6 +2,46 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "footer-wordmark-demo",
+    type: "registry:example",
+    title: "Footer Wordmark Demo",
+    description: "A fitted wordmark beneath a scheduling product's footer.",
+    registryDependencies: ["@magicui/footer-wordmark"],
+    files: [
+      {
+        path: "example/footer-wordmark-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "footer-wordmark-demo-2",
+    type: "registry:example",
+    title: "Footer Wordmark Demo 2",
+    description: "A cropped sign-off at the bottom of a footer card.",
+    registryDependencies: ["@magicui/footer-wordmark"],
+    files: [
+      {
+        path: "example/footer-wordmark-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "footer-wordmark-demo-3",
+    type: "registry:example",
+    title: "Footer Wordmark Demo 3",
+    description:
+      "A serif wordmark beneath a design tool's closing call to action.",
+    registryDependencies: ["@magicui/footer-wordmark"],
+    files: [
+      {
+        path: "example/footer-wordmark-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
