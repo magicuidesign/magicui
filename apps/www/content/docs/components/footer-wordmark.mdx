@@ -1,0 +1,78 @@
+---
+title: Footer Wordmark
+date: 2026-11-04
+description: A wordmark that spans its container edge to edge, fitted to the ink of your font, and rises into view letter by letter.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="footer-wordmark-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/footer-wordmark
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="footer-wordmark" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { FooterWordmark } from "@/components/ui/footer-wordmark"
+```
+
+```tsx showLineNumbers
+<FooterWordmark>Meridian</FooterWordmark>
+```
+
+The wordmark fills the width of its parent, so give the parent a definite width; a shrink-to-fit parent (`w-fit`, `inline-flex`) collapses it. Set the font, weight, tracking, case and color through `className`, and keep them the same at every breakpoint, since responsive font classes leave the fit stale. Keep names to twelve characters or fewer so they stay legible on a phone. Ligatures, font features, small caps, and joined or right-to-left scripts are not supported.
+
+## Props
+
+| Prop          | Type      | Default | Description                                                                                             |
+| ------------- | --------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| `children`    | `string`  | `-`     | The name to set.                                                                                        |
+| `duration`    | `number`  | `0.9`   | Seconds one letter takes to rise.                                                                       |
+| `delay`       | `number`  | `0`     | Seconds to wait after the trigger before the first letter moves.                                        |
+| `crop`        | `number`  | `0`     | Share of the ink height, from `0` to `0.5`, cut off the bottom of the letters.                          |
+| `startOnView` | `boolean` | `true`  | Wait until a fifth of the word is in view. When `false`, rise on mount.                                 |
+| `className`   | `string`  | `-`     | Font, weight, tracking, case and color. Defaults to `font-semibold tracking-[-0.03em] text-foreground`. |
+
+## Examples
+
+### Cropped
+
+Set `crop` to cut off the bottom of the letters, so the word sits flush on the edge of its container.
+
+<ComponentPreview name="footer-wordmark-demo-2" />
+
+### Custom typeface
+
+The fit follows any font set through `className`.
+
+<ComponentPreview name="footer-wordmark-demo-3" />

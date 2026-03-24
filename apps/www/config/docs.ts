@@ -345,6 +345,12 @@ export const docsConfig: DocsConfig = {
       title: "Text Animations",
       items: [
         {
+          title: "Footer Wordmark",
+          href: `/docs/components/footer-wordmark`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Text Animate",
           href: `/docs/components/text-animate`,
           items: [],
