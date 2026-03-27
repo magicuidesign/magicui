@@ -1188,6 +1188,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "backlight": {
+    name: "backlight",
+    description: "A backlight glow effect for videos, images, and SVGs.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/backlight.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/backlight.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description: "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -3533,6 +3550,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dotted-map-demo-3.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "backlight-video-demo": {
+    name: "backlight-video-demo",
+    description: "An example of the backlight component with a video.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/backlight"],
+    files: [{
+      path: "registry/example/backlight-video-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/backlight-video-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "backlight-image-demo": {
+    name: "backlight-image-demo",
+    description: "An example of the backlight component with a image.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/backlight"],
+    files: [{
+      path: "registry/example/backlight-image-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/backlight-image-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "backlight-svg-demo": {
+    name: "backlight-svg-demo",
+    description: "An example of the backlight component with SVGs.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/backlight"],
+    files: [{
+      path: "registry/example/backlight-svg-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/backlight-svg-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
