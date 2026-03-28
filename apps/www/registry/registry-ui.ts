@@ -1191,7 +1191,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Backlight",
     description: "A backlight glow effect for videos, images, and SVGs.",
-    dependencies: ["motion"],
+    dependencies: [],
     files: [
       {
         path: "magicui/backlight.tsx",
