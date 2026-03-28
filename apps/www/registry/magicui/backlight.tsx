@@ -1,7 +1,7 @@
-import { useId } from "react"
+import { ReactElement, useId } from "react"
 
 type BacklightProps = {
-  children?: React.ReactElement
+  children?: ReactElement
   className?: string
   blur?: number
 }
