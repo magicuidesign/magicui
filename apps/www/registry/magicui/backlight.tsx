@@ -31,7 +31,7 @@ export default function Backlight({
         </filter>
       </svg>
 
-      <div style={{ filter: `url(#${id})` }}> {children}</div>
+      <div style={{ filter: `url(#${id})` }}>{children}</div>
     </div>
   )
 }
