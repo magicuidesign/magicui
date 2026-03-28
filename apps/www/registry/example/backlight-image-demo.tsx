@@ -1,4 +1,4 @@
-import Backlight from "@/registry/magicui/backlight"
+import { Backlight } from "@/registry/magicui/backlight"
 
 export default function BacklightImageDemo() {
   return (

@@ -1,4 +1,4 @@
-import { ReactElement, useId } from "react"
+import { useId, type ReactElement } from "react"
 
 type BacklightProps = {
   children?: ReactElement
@@ -6,11 +6,7 @@ type BacklightProps = {
   blur?: number
 }
 
-export default function Backlight({
-  blur = 20,
-  children,
-  className,
-}: BacklightProps) {
+export function Backlight({ blur = 20, children, className }: BacklightProps) {
   const id = useId()
 
   return (

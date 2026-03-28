@@ -3441,7 +3441,7 @@ Title: Backlight
 Description: A backlight glow effect for videos, images, and SVGs.
 
 --- file: magicui/backlight.tsx ---
-import { ReactElement, useId } from "react"
+import { useId, type ReactElement } from "react"
 
 type BacklightProps = {
   children?: ReactElement
@@ -3449,11 +3449,7 @@ type BacklightProps = {
   blur?: number
 }
 
-export default function Backlight({
-  blur = 20,
-  children,
-  className,
-}: BacklightProps) {
+export function Backlight({ blur = 20, children, className }: BacklightProps) {
   const id = useId()
 
   return (
@@ -3484,7 +3480,7 @@ export default function Backlight({
 Title: backlight-video-demo
 
 --- file: example/backlight-video-demo.tsx ---
-import Backlight from "@/registry/magicui/backlight"
+import { Backlight } from "@/registry/magicui/backlight"
 
 export default function BacklightVideoDemo() {
   return (
@@ -3508,7 +3504,7 @@ export default function BacklightVideoDemo() {
 Title: backlight-image-demo
 
 --- file: example/backlight-image-demo.tsx ---
-import Backlight from "@/registry/magicui/backlight"
+import { Backlight } from "@/registry/magicui/backlight"
 
 export default function BacklightImageDemo() {
   return (
@@ -3529,7 +3525,7 @@ export default function BacklightImageDemo() {
 Title: backlight-svg-demo
 
 --- file: example/backlight-svg-demo.tsx ---
-import Backlight from "@/registry/magicui/backlight"
+import { Backlight } from "@/registry/magicui/backlight"
 
 export default function BacklightSVGDemo() {
   return (
