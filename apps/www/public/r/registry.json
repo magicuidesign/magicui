@@ -1247,6 +1247,19 @@
       ]
     },
     {
+      "name": "backlight",
+      "type": "registry:ui",
+      "title": "Backlight",
+      "description": "A backlight glow effect for videos, images, and SVGs.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/backlight.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3372,6 +3385,48 @@
       "files": [
         {
           "path": "registry/example/dotted-map-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "backlight-video-demo",
+      "type": "registry:example",
+      "description": "An example of the backlight component with a video.",
+      "registryDependencies": [
+        "@magicui/backlight"
+      ],
+      "files": [
+        {
+          "path": "registry/example/backlight-video-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "backlight-image-demo",
+      "type": "registry:example",
+      "description": "An example of the backlight component with a image.",
+      "registryDependencies": [
+        "@magicui/backlight"
+      ],
+      "files": [
+        {
+          "path": "registry/example/backlight-image-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "backlight-svg-demo",
+      "type": "registry:example",
+      "description": "An example of the backlight component with SVGs.",
+      "registryDependencies": [
+        "@magicui/backlight"
+      ],
+      "files": [
+        {
+          "path": "registry/example/backlight-svg-demo.tsx",
           "type": "registry:example"
         }
       ]

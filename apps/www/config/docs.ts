@@ -609,6 +609,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Backlight",
+          href: `/docs/components/backlight`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],
