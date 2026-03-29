@@ -3487,7 +3487,7 @@ export default function BacklightVideoDemo() {
     <Backlight blur={40} className="w-full">
       <iframe
         className="mx-auto aspect-video w-full max-w-lg"
-        src="https://www.youtube.com/embed/qxzbh6vPRZg"
+        src="https://www.youtube.com/embed/9CJLtzzUphU"
         title="Gradient Loop Background"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
