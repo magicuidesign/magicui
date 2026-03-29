@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/example/backlight-video-demo.tsx",
-      "content": "import { Backlight } from \"@/registry/magicui/backlight\"\n\nexport default function BacklightVideoDemo() {\n  return (\n    <Backlight blur={40}>\n      <iframe\n        className=\"block aspect-video max-w-lg rounded-xl\"\n        width=\"512\"\n        height=\"288\"\n        src=\"https://www.youtube.com/embed/qxzbh6vPRZg\"\n        title=\"Gradient Loop Background\"\n        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n        referrerPolicy=\"strict-origin-when-cross-origin\"\n        allowFullScreen\n      ></iframe>\n    </Backlight>\n  )\n}\n",
+      "content": "import { Backlight } from \"@/registry/magicui/backlight\"\n\nexport default function BacklightVideoDemo() {\n  return (\n    <Backlight blur={40} className=\"w-full\">\n      <iframe\n        className=\"mx-auto aspect-video w-full max-w-lg\"\n        src=\"https://www.youtube.com/embed/qxzbh6vPRZg\"\n        title=\"Gradient Loop Background\"\n        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n        referrerPolicy=\"strict-origin-when-cross-origin\"\n        allowFullScreen\n      ></iframe>\n    </Backlight>\n  )\n}\n",
       "type": "registry:example"
     }
   ]
