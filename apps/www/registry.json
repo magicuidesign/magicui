@@ -67,7 +67,8 @@
       "title": "Tubes Background",
       "description": "A Three.js powered animated background with interactive 3D tubes that follow your cursor.",
       "dependencies": [
-        "threejs-components"
+        "three",
+        "@types/three"
       ],
       "files": [
         {
@@ -1371,6 +1372,7 @@
       "title": "Tubes Background Demo",
       "description": "Example showing a Three.js powered animated background with interactive 3D tubes.",
       "registryDependencies": [
+        "card",
         "@magicui/tubes-background"
       ],
       "files": [

@@ -46,7 +46,7 @@ export const ui: Registry["items"] = [
     title: "Tubes Background",
     description:
       "A Three.js powered animated background with interactive 3D tubes that follow your cursor.",
-    dependencies: ["threejs-components"],
+    dependencies: ["three", "@types/three"],
     files: [
       {
         path: "magicui/tubes-background.tsx",

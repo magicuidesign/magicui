@@ -17333,7 +17333,7 @@ export function TubesBackground({
       const shouldUpdateGeometry = frameCount % 2 === 0
       tubes.forEach((t, i) => {
         if (t.vectors.length === 0) return
-        
+
         t.angle += t.speed * delta
         const offsetX = Math.cos(t.angle + i) * t.radius
         const offsetY = Math.sin(t.angle + i) * t.radius

@@ -5,6 +5,7 @@
   "title": "Tubes Background Demo",
   "description": "Example showing a Three.js powered animated background with interactive 3D tubes.",
   "registryDependencies": [
+    "card",
     "@magicui/tubes-background"
   ],
   "files": [

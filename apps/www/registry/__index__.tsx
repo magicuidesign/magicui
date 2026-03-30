@@ -1328,7 +1328,7 @@ export const Index: Record<string, any> = {
     name: "tubes-background-demo",
     description: "Example showing a Three.js powered animated background with interactive 3D tubes.",
     type: "registry:example",
-    registryDependencies: ["@magicui/tubes-background"],
+    registryDependencies: ["card","@magicui/tubes-background"],
     files: [{
       path: "registry/example/tubes-background-demo.tsx",
       type: "registry:example",
