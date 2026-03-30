@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "backlight-video-demo",
+  "type": "registry:example",
+  "description": "An example of the backlight component with a video.",
+  "registryDependencies": [
+    "@magicui/backlight"
+  ],
+  "files": [
+    {
+      "path": "registry/example/backlight-video-demo.tsx",
+      "content": "import { Backlight } from \"@/registry/magicui/backlight\"\n\nexport default function BacklightVideoDemo() {\n  return (\n    <Backlight blur={40} className=\"w-full\">\n      <iframe\n        className=\"mx-auto aspect-video w-full max-w-lg\"\n        src=\"https://www.youtube.com/embed/9CJLtzzUphU\"\n        title=\"Gradient Loop Background\"\n        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n        referrerPolicy=\"strict-origin-when-cross-origin\"\n        allowFullScreen\n      ></iframe>\n    </Backlight>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

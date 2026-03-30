@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "backlight",
+  "type": "registry:ui",
+  "title": "Backlight",
+  "description": "A backlight glow effect for videos, images, and SVGs.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/magicui/backlight.tsx",
+      "content": "import { useId, type ReactElement } from \"react\"\n\ntype BacklightProps = {\n  children?: ReactElement\n  className?: string\n  blur?: number\n}\n\nexport function Backlight({ blur = 20, children, className }: BacklightProps) {\n  const id = useId()\n\n  return (\n    <div className={className}>\n      <svg width=\"0\" height=\"0\" aria-hidden=\"true\">\n        <filter id={id} y=\"-50%\" x=\"-50%\" width=\"200%\" height=\"200%\">\n          <feGaussianBlur\n            in=\"SourceGraphic\"\n            stdDeviation={blur}\n            result=\"blurred\"\n          ></feGaussianBlur>\n          <feColorMatrix\n            type=\"saturate\"\n            in=\"blurred\"\n            values=\"4\"\n          ></feColorMatrix>\n          <feComposite in=\"SourceGraphic\" operator=\"over\"></feComposite>\n        </filter>\n      </svg>\n\n      <div style={{ filter: `url(#${id})` }}>{children}</div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

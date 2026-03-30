@@ -1854,4 +1854,40 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "backlight-video-demo",
+    description: "An example of the backlight component with a video.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/backlight"],
+    files: [
+      {
+        path: "example/backlight-video-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "backlight-image-demo",
+    description: "An example of the backlight component with a image.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/backlight"],
+    files: [
+      {
+        path: "example/backlight-image-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "backlight-svg-demo",
+    description: "An example of the backlight component with SVGs.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/backlight"],
+    files: [
+      {
+        path: "example/backlight-svg-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

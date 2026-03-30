@@ -16,6 +16,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler): A component for theme changing animation.
 - [Aurora Text](https://magicui.design/docs/components/aurora-text): A beautiful aurora text effect
 - [Avatar Circles](https://magicui.design/docs/components/avatar-circles): Overlapping circles of avatars.
+- [Backlight](https://magicui.design/docs/components/backlight): A backlight glow effect for videos, images, and SVGs.
 - [Bento Grid](https://magicui.design/docs/components/bento-grid): Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
 - [Blur Fade](https://magicui.design/docs/components/blur-fade): Blur fade in and out animation. Used to smoothly fade in and out content.
 - [Border Beam](https://magicui.design/docs/components/border-beam): An animated beam of light which travels along the border of its container.
@@ -218,6 +219,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage
 - [Dotted Map Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-3.tsx): Example usage
+- [backlight-video-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-video-demo.tsx): Example usage
+- [backlight-image-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-image-demo.tsx): Example usage
+- [backlight-svg-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-svg-demo.tsx): Example usage
 
 ## Optional
 
