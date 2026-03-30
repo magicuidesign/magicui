@@ -6,13 +6,13 @@ import * as THREE from "three"
 import { cn } from "@/lib/utils"
 
 const randomColors = (count: number) => {
-  return new Array(count).fill(0).map(
-    () =>
-      "#" +
-      Math.floor(Math.random() * 16777215)
-        .toString(16)
-        .padStart(6, "0")
-  )
+  return new Array(count).fill(0).map(() => {
+    // HSL with guaranteed lightness gives better-looking random colors
+    const h = Math.floor(Math.random() * 360)
+    const s = 60 + Math.floor(Math.random() * 30)
+    const l = 45 + Math.floor(Math.random() * 25)
+    return `hsl(${h}, ${s}%, ${l}%)`
+  })
 }
 
 interface TubesBackgroundProps {
@@ -34,7 +34,8 @@ export function TubesBackground({
   } | null>(null)
 
   useEffect(() => {
-    if (!canvasRef.current || !containerRef.current) return
+    const container = containerRef.current
+    if (!canvasRef.current || !container) return
 
     let renderer: THREE.WebGLRenderer
     try {
@@ -48,8 +49,8 @@ export function TubesBackground({
       return
     }
 
-    const width = containerRef.current.clientWidth
-    const height = containerRef.current.clientHeight
+    const width = container.clientWidth
+    const height = container.clientHeight
 
     renderer.setSize(width, height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -110,9 +111,9 @@ export function TubesBackground({
     const createTubes = () => {
       // clear existing
       tubesGroup.children.forEach((group) => {
-        ; (group as THREE.Group).children.forEach((c) => {
-          ; (c as THREE.Mesh).geometry?.dispose()
-            ; ((c as THREE.Mesh).material as THREE.Material)?.dispose()
+        ;(group as THREE.Group).children.forEach((c) => {
+          ;(c as THREE.Mesh).geometry?.dispose()
+          ;((c as THREE.Mesh).material as THREE.Material)?.dispose()
         })
       })
       tubesGroup.clear()
@@ -137,36 +138,60 @@ export function TubesBackground({
         const ambientRadius = glowRadius + 4.0 + Math.random() * 2.0
 
         // Ambient (surrounding) glow
-        const geometryAmbient = new THREE.TubeGeometry(curve, 50, ambientRadius, 8, false)
-        const materialAmbient = new THREE.MeshBasicMaterial({
+        const geometryAmbient = new THREE.TubeGeometry(
+          curve,
+          50,
+          ambientRadius,
+          8,
+          false
+        )
+        const materialAmbient = new THREE.MeshStandardMaterial({
           color: tubeColors[i % tubeColors.length],
           transparent: true,
           opacity: 0.1,
           blending: THREE.AdditiveBlending,
           side: THREE.BackSide,
           depthWrite: false,
+          roughness: 0.4,
+          metalness: 0.8,
         })
         const ambientMesh = new THREE.Mesh(geometryAmbient, materialAmbient)
 
         // Inner Glow geometry
-        const geometryGlow = new THREE.TubeGeometry(curve, 50, glowRadius, 8, false)
-        const materialGlow = new THREE.MeshBasicMaterial({
+        const geometryGlow = new THREE.TubeGeometry(
+          curve,
+          50,
+          glowRadius,
+          8,
+          false
+        )
+        const materialGlow = new THREE.MeshStandardMaterial({
           color: tubeColors[i % tubeColors.length],
           transparent: true,
           opacity: 0.3,
           blending: THREE.AdditiveBlending,
           side: THREE.BackSide,
           depthWrite: false,
+          roughness: 0.4,
+          metalness: 0.8,
         })
         const glowMesh = new THREE.Mesh(geometryGlow, materialGlow)
 
         // Core geometry
-        const geometryCore = new THREE.TubeGeometry(curve, 50, coreRadius, 8, false)
-        const materialCore = new THREE.MeshBasicMaterial({
+        const geometryCore = new THREE.TubeGeometry(
+          curve,
+          50,
+          coreRadius,
+          8,
+          false
+        )
+        const materialCore = new THREE.MeshStandardMaterial({
           color: new THREE.Color(0xffffff),
           transparent: true,
           opacity: 0.9,
           blending: THREE.AdditiveBlending,
+          roughness: 0.4,
+          metalness: 0.8,
         })
         const coreMesh = new THREE.Mesh(geometryCore, materialCore)
 
@@ -187,7 +212,7 @@ export function TubesBackground({
           radius: 3 + Math.random() * 12,
           coreRadius,
           glowRadius,
-          ambientRadius
+          ambientRadius,
         })
       }
     }
@@ -203,8 +228,8 @@ export function TubesBackground({
     const onPointerMove = (e: PointerEvent) => {
       isInteracting = true
       lastMouseMoveTime = performance.now()
-      const rect = containerRef.current?.getBoundingClientRect()
-      if (!rect) return
+      const rect = container.getBoundingClientRect()
+      if (!rect.width || !rect.height) return
       mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1
       mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1
     }
@@ -213,14 +238,16 @@ export function TubesBackground({
       isInteracting = false
     }
 
-    window.addEventListener("pointermove", onPointerMove)
-    containerRef.current.addEventListener("pointerleave", onPointerLeave)
+    container.addEventListener("pointermove", onPointerMove)
+    container.addEventListener("pointerleave", onPointerLeave)
 
     let animationFrameId: number
     const clock = new THREE.Clock()
+    let frameCount = 0
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate)
+      frameCount++
       const delta = clock.getDelta()
       const time = clock.getElapsedTime()
 
@@ -247,33 +274,58 @@ export function TubesBackground({
       }
 
       // Update tubes
+      const shouldUpdateGeometry = frameCount % 2 === 0
       tubes.forEach((t, i) => {
+        if (t.vectors.length === 0) return
+
         t.angle += t.speed * delta
         const offsetX = Math.cos(t.angle + i) * t.radius
         const offsetY = Math.sin(t.angle + i) * t.radius
 
-        // Shift vectors
-        t.vectors.pop()
+        if (shouldUpdateGeometry) {
+          // Shift vectors
+          t.vectors.pop()
 
-        // Follow target + offset
-        const newPos = new THREE.Vector3(
-          target.x + offsetX,
-          target.y + offsetY,
-          target.z + Math.sin(time + i) * 5
-        )
+          // Follow target + offset
+          const newPos = new THREE.Vector3(
+            target.x + offsetX,
+            target.y + offsetY,
+            target.z + Math.sin(time + i) * 5
+          )
 
-        // Smooth dampening towards target
-        const smoothedPos = new THREE.Vector3().copy(t.vectors[0]).lerp(newPos, 0.15)
-        t.vectors.unshift(smoothedPos)
+          // Smooth dampening towards target
+          const smoothedPos = new THREE.Vector3()
+            .copy(t.vectors[0])
+            .lerp(newPos, 0.15)
+          t.vectors.unshift(smoothedPos)
 
-        // Smoothly interpolate arrays to curve
-        const curve = new THREE.CatmullRomCurve3(t.vectors)
-        t.coreMesh.geometry.dispose()
-        t.glowMesh.geometry.dispose()
-        t.ambientMesh.geometry.dispose()
-        t.coreMesh.geometry = new THREE.TubeGeometry(curve, 50, t.coreRadius, 8, false)
-        t.glowMesh.geometry = new THREE.TubeGeometry(curve, 50, t.glowRadius, 8, false)
-        t.ambientMesh.geometry = new THREE.TubeGeometry(curve, 50, t.ambientRadius, 8, false)
+          // Smoothly interpolate arrays to curve
+          const curve = new THREE.CatmullRomCurve3(t.vectors)
+          t.coreMesh.geometry.dispose()
+          t.glowMesh.geometry.dispose()
+          t.ambientMesh.geometry.dispose()
+          t.coreMesh.geometry = new THREE.TubeGeometry(
+            curve,
+            50,
+            t.coreRadius,
+            8,
+            false
+          )
+          t.glowMesh.geometry = new THREE.TubeGeometry(
+            curve,
+            50,
+            t.glowRadius,
+            8,
+            false
+          )
+          t.ambientMesh.geometry = new THREE.TubeGeometry(
+            curve,
+            50,
+            t.ambientRadius,
+            8,
+            false
+          )
+        }
       })
 
       // Rotate point lights slowly
@@ -291,9 +343,9 @@ export function TubesBackground({
       setColors: (colors) => {
         tubeColors = colors.map((c) => new THREE.Color(c))
         tubes.forEach((t, i) => {
-          ; (t.glowMesh.material as THREE.MeshBasicMaterial).color =
+          ;(t.glowMesh.material as THREE.MeshStandardMaterial).color =
             tubeColors[i % tubeColors.length]
-          ; (t.ambientMesh.material as THREE.MeshBasicMaterial).color =
+          ;(t.ambientMesh.material as THREE.MeshStandardMaterial).color =
             tubeColors[i % tubeColors.length]
         })
       },
@@ -303,27 +355,28 @@ export function TubesBackground({
     }
 
     const handleResize = () => {
-      if (!containerRef.current) return
-      const w = containerRef.current.clientWidth
-      const h = containerRef.current.clientHeight
+      if (!container) return
+      const w = container.clientWidth
+      const h = container.clientHeight
       camera.aspect = w / h
       camera.updateProjectionMatrix()
       renderer.setSize(w, h)
     }
 
-    window.addEventListener("resize", handleResize)
+    const resizeObserver = new ResizeObserver(handleResize)
+    resizeObserver.observe(container)
 
     return () => {
-      window.removeEventListener("pointermove", onPointerMove)
-      containerRef.current?.removeEventListener("pointerleave", onPointerLeave)
-      window.removeEventListener("resize", handleResize)
+      container.removeEventListener("pointermove", onPointerMove)
+      container.removeEventListener("pointerleave", onPointerLeave)
+      resizeObserver.disconnect()
       cancelAnimationFrame(animationFrameId)
 
       // Proper disposal
       tubesGroup.children.forEach((group) => {
-        ; (group as THREE.Group).children.forEach((c) => {
-          ; (c as THREE.Mesh).geometry.dispose()
-            ; ((c as THREE.Mesh).material as THREE.Material).dispose()
+        ;(group as THREE.Group).children.forEach((c) => {
+          ;(c as THREE.Mesh).geometry.dispose()
+          ;((c as THREE.Mesh).material as THREE.Material).dispose()
         })
       })
       scene.clear()
@@ -345,14 +398,15 @@ export function TubesBackground({
         "relative flex min-h-[90vh] w-full items-center justify-center overflow-hidden bg-[#030712]",
         className
       )}
-      onClick={handleClick}
+      style={{ cursor: enableClickInteraction ? "pointer" : "default" }}
+      onClick={enableClickInteraction ? handleClick : undefined}
     >
       <canvas
         ref={canvasRef}
         className="absolute inset-0 block size-full"
         style={{ touchAction: "none" }}
       />
-      <div className="pointer-events-none relative z-10 flex w-full flex-col items-center justify-center">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center">
         {children}
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-[#030712]" />
