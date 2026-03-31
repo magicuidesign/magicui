@@ -5,9 +5,9 @@ import type { ComponentProps, CSSProperties } from "react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample45 } from "./footer-wordmark-pass"
+import { passSample46 } from "./footer-wordmark-pass"
 
-void passSample45(0)
+void passSample46(0)
 /** Font size, in px, at which the word is measured; large keeps em precise. */
 const RULER_SIZE = 1_000
 /** Font size, in px, at which an edge letter is drawn to find its ink. */
