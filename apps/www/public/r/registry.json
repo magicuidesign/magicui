@@ -1407,8 +1407,7 @@
       "title": "Footer Wordmark Demo",
       "description": "A fitted wordmark beneath a scheduling product's footer.",
       "registryDependencies": [
-        "@magicui/footer-wordmark",
-        "@magicui/footer-wordmark-pass"
+        "@magicui/footer-wordmark"
       ],
       "files": [
         {
@@ -1423,8 +1422,7 @@
       "title": "Footer Wordmark Demo 2",
       "description": "A cropped sign-off at the bottom of a footer card.",
       "registryDependencies": [
-        "@magicui/footer-wordmark",
-        "@magicui/footer-wordmark-pass"
+        "@magicui/footer-wordmark"
       ],
       "files": [
         {
@@ -1439,8 +1437,7 @@
       "title": "Footer Wordmark Demo 3",
       "description": "A serif wordmark beneath a design tool's closing call to action.",
       "registryDependencies": [
-        "@magicui/footer-wordmark",
-        "@magicui/footer-wordmark-pass"
+        "@magicui/footer-wordmark"
       ],
       "files": [
         {

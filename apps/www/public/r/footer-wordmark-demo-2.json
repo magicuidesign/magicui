@@ -4,8 +4,7 @@
   "title": "Footer Wordmark Demo 2",
   "description": "A cropped sign-off at the bottom of a footer card.",
   "registryDependencies": [
-    "@magicui/footer-wordmark",
-    "@magicui/footer-wordmark-pass"
+    "@magicui/footer-wordmark"
   ],
   "files": [
     {

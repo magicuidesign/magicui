@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "footer-wordmark-demo",
     description: "A fitted wordmark beneath a scheduling product's footer.",
     type: "registry:example",
-    registryDependencies: ["@magicui/footer-wordmark","@magicui/footer-wordmark-pass"],
+    registryDependencies: ["@magicui/footer-wordmark"],
     files: [{
       path: "registry/example/footer-wordmark-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "footer-wordmark-demo-2",
     description: "A cropped sign-off at the bottom of a footer card.",
     type: "registry:example",
-    registryDependencies: ["@magicui/footer-wordmark","@magicui/footer-wordmark-pass"],
+    registryDependencies: ["@magicui/footer-wordmark"],
     files: [{
       path: "registry/example/footer-wordmark-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "footer-wordmark-demo-3",
     description: "A serif wordmark beneath a design tool's closing call to action.",
     type: "registry:example",
-    registryDependencies: ["@magicui/footer-wordmark","@magicui/footer-wordmark-pass"],
+    registryDependencies: ["@magicui/footer-wordmark"],
     files: [{
       path: "registry/example/footer-wordmark-demo-3.tsx",
       type: "registry:example",

@@ -4,8 +4,7 @@
   "title": "Footer Wordmark Demo",
   "description": "A fitted wordmark beneath a scheduling product's footer.",
   "registryDependencies": [
-    "@magicui/footer-wordmark",
-    "@magicui/footer-wordmark-pass"
+    "@magicui/footer-wordmark"
   ],
   "files": [
     {

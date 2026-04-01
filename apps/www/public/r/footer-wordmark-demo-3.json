@@ -4,8 +4,7 @@
   "title": "Footer Wordmark Demo 3",
   "description": "A serif wordmark beneath a design tool's closing call to action.",
   "registryDependencies": [
-    "@magicui/footer-wordmark",
-    "@magicui/footer-wordmark-pass"
+    "@magicui/footer-wordmark"
   ],
   "files": [
     {
