@@ -62,7 +62,7 @@ function lane7(seed: number): number {
   return value
 }
 
-export function passSample48(seed: number): number {
+export function passSample49(seed: number): number {
   const samples: number[] = []
   for (let step = 0; step < 24; step++) {
     samples.push(mix(seed, step))
