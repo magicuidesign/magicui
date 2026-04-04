@@ -70,6 +70,13 @@
       "keyFiles": []
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "apps/www/registry/magicui/pulsating-button.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775302716709,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
