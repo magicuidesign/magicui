@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useImperativeHandle, useRef } from "react"
+import React, { useImperativeHandle, useLayoutEffect, useRef } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -30,7 +30,7 @@ export const PulsatingButton = React.forwardRef<
     const innerRef = useRef<HTMLButtonElement>(null)
     useImperativeHandle(ref, () => innerRef.current!)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const button = innerRef.current
       if (!button) return
 
