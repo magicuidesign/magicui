@@ -8,6 +8,7 @@ interface PulsatingButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElem
   pulseColor?: string
   duration?: string
   distance?: string
+  variant?: "pulse" | "ripple"
 }
 
 export const PulsatingButton = React.forwardRef<
@@ -21,6 +22,7 @@ export const PulsatingButton = React.forwardRef<
       pulseColor,
       duration = "1.5s",
       distance = "8px",
+      variant = "pulse",
       ...props
     },
     ref
@@ -39,7 +41,8 @@ export const PulsatingButton = React.forwardRef<
       <button
         ref={innerRef}
         className={cn(
-          "bg-primary text-primary-foreground animate-pulse cursor-pointer rounded-lg px-4 py-2",
+          "bg-primary text-primary-foreground cursor-pointer rounded-lg px-4 py-2",
+          variant === "pulse" ? "animate-pulse" : "animate-pulse-ripple",
           className
         )}
         style={
