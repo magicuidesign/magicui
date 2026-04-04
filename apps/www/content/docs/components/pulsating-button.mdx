@@ -41,7 +41,8 @@ Add the following animations to your global CSS file.
 ```css title="app/globals.css" showLineNumbers {2, 4-12}
 @theme inline {
   --animate-pulse: pulse var(--duration) ease-out infinite;
-  --animate-pulse-ripple: pulse-ripple var(--duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  --animate-pulse-ripple: pulse-ripple var(--duration)
+    cubic-bezier(0.16, 1, 0.3, 1) infinite;
 
   @keyframes pulse {
     0%,
@@ -49,7 +50,8 @@ Add the following animations to your global CSS file.
       box-shadow: 0 0 0 0 var(--pulse-color, oklch(from var(--bg) l c h / 0.5));
     }
     50% {
-      box-shadow: 0 0 0 var(--distance) var(--pulse-color, oklch(from var(--bg) l c h / 0.5));
+      box-shadow: 0 0 0 var(--distance)
+        var(--pulse-color, oklch(from var(--bg) l c h / 0.5));
     }
   }
 
@@ -58,7 +60,8 @@ Add the following animations to your global CSS file.
       box-shadow: 0 0 0 0 oklch(from var(--pulse-color, var(--bg)) l c h / 1);
     }
     100% {
-      box-shadow: 0 0 0 var(--distance) oklch(from var(--pulse-color, var(--bg)) l c h / 0);
+      box-shadow: 0 0 0 var(--distance)
+        oklch(from var(--pulse-color, var(--bg)) l c h / 0);
     }
   }
 }
@@ -88,15 +91,14 @@ import { PulsatingButton } from "@/components/ui/pulsating-button"
 
 ## Props
 
-| Prop         | Type                  | Default                          | Description                                  |
-| ------------ | --------------------- | -------------------------------- | -------------------------------------------- |
-| `children`   | `React.ReactNode`     | `-`                              | The content of the button.                   |
-| `className`  | `string`              | `-`                              | Additional class names for the button.       |
-| `pulseColor` | `string`              | `Derived from button background` | Any valid CSS color for the pulsing waves.   |
-| `duration`   | `string`              | `1.5s`                           | The duration of one pulse.                   |
-| `distance`   | `string`              | `8px`                            | How far the pulse expands from the button.   |
-| `variant`    | `"pulse" \| "ripple"` | `pulse`                          | The pulse animation style.                   |
-
+| Prop         | Type                  | Default                          | Description                                |
+| ------------ | --------------------- | -------------------------------- | ------------------------------------------ |
+| `children`   | `React.ReactNode`     | `-`                              | The content of the button.                 |
+| `className`  | `string`              | `-`                              | Additional class names for the button.     |
+| `pulseColor` | `string`              | `Derived from button background` | Any valid CSS color for the pulsing waves. |
+| `duration`   | `string`              | `1.5s`                           | The duration of one pulse.                 |
+| `distance`   | `string`              | `8px`                            | How far the pulse expands from the button. |
+| `variant`    | `"pulse" \| "ripple"` | `pulse`                          | The pulse animation style.                 |
 
 ## Credits
 
