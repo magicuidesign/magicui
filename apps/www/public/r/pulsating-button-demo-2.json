@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/pulsating-button-demo-2.tsx",
-      "content": "import { PulsatingButton } from \"@/registry/magicui/pulsating-button\"\n\nexport default function PulsatingButtonDemo2() {\n  return (\n    <PulsatingButton variant=\"ripple\" distance=\"10px\">\n      Join Affiliate Program\n    </PulsatingButton>\n  )\n}\n",
+      "content": "import { PulsatingButton } from \"@/registry/magicui/pulsating-button\"\n\nexport default function PulsatingButtonDemo2() {\n  return (\n    <PulsatingButton\n      variant=\"ripple\"\n      distance=\"10px\"\n      className=\"bg-blue-400 text-white\"\n    >\n      Join Affiliate Program\n    </PulsatingButton>\n  )\n}\n",
       "type": "registry:example"
     }
   ]
