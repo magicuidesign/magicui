@@ -12883,7 +12883,9 @@ Title: Pulsating Button
 Description: An animated pulsating button useful for capturing attention of users.
 
 --- file: magicui/pulsating-button.tsx ---
-import React from "react"
+"use client"
+
+import React, { useEffect, useImperativeHandle, useRef } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -12900,22 +12902,34 @@ export const PulsatingButton = React.forwardRef<
     {
       className,
       children,
-      pulseColor = "#808080",
+      pulseColor,
       duration = "1.5s",
       ...props
     },
     ref
   ) => {
+
+    const innerRef = useRef<HTMLButtonElement>(null)
+    useImperativeHandle(ref, () => innerRef.current!);
+
+
+    useEffect(() => {
+      if (!innerRef.current) return
+
+      const bg = getComputedStyle(innerRef.current).backgroundColor;
+      innerRef.current.style.setProperty("--bg", bg);
+    }, [])
+
     return (
       <button
-        ref={ref}
+        ref={innerRef}
         className={cn(
-          "animate-pulse bg-primary text-primary-foreground cursor-pointer rounded-lg px-4 py-2",
+          "bg-primary text-primary-foreground animate-pulse cursor-pointer rounded-lg px-4 py-2",
           className
         )}
         style={
           {
-            "--pulse-color": pulseColor,
+            ...(pulseColor && { "--pulse-color": pulseColor }),
             "--duration": duration,
           } as React.CSSProperties
         }
