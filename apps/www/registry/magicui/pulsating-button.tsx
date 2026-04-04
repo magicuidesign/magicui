@@ -99,8 +99,7 @@ export const PulsatingButton = React.forwardRef<
       <button
         ref={innerRef}
         className={cn(
-          "bg-primary text-primary-foreground cursor-pointer rounded-lg px-4 py-2",
-          variant === "pulse" ? "animate-pulse" : "animate-pulse-ripple",
+          "bg-primary text-primary-foreground relative flex cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-center",
           className
         )}
         style={
@@ -112,7 +111,14 @@ export const PulsatingButton = React.forwardRef<
         }
         {...props}
       >
-        {children}
+        <span className="relative z-10">{children}</span>
+        <span
+          aria-hidden="true"
+          className={cn(
+            "pointer-events-none absolute inset-0 rounded-[inherit] bg-inherit",
+            variant === "pulse" ? "animate-pulse" : "animate-pulse-ripple"
+          )}
+        />
       </button>
     )
   }
