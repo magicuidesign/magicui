@@ -12915,25 +12915,25 @@ export const PulsatingButton = React.forwardRef<
     const innerRef = useRef<HTMLButtonElement>(null)
     useImperativeHandle(ref, () => innerRef.current!)
 
-useEffect(() => {
-  if (!innerRef.current) return
+    useEffect(() => {
+      if (!innerRef.current) return
 
-  const updateBg = () => {
-    if (!innerRef.current) return
-    const bg = getComputedStyle(innerRef.current).backgroundColor
-    innerRef.current.style.setProperty("--bg", bg)
-  }
+      const updateBg = () => {
+        if (!innerRef.current) return
+        const bg = getComputedStyle(innerRef.current).backgroundColor
+        innerRef.current.style.setProperty("--bg", bg)
+      }
 
-  updateBg()
+      updateBg()
 
-const observer = new MutationObserver(updateBg)
-observer.observe(document.documentElement, {
-  attributes: true,
-  attributeFilter: ["class"],
-})
+      const observer = new MutationObserver(updateBg)
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      })
 
-  return () => observer.disconnect()
-}, [])
+      return () => observer.disconnect()
+    }, [])
 
     return (
       <button
@@ -12969,6 +12969,21 @@ import { PulsatingButton } from "@/registry/magicui/pulsating-button"
 
 export default function PulsatingButtonDemo() {
   return <PulsatingButton>Join Affiliate Program</PulsatingButton>
+}
+
+
+===== EXAMPLE: pulsating-button-demo-2 =====
+Title: Pulsating Button Demo 2
+
+--- file: example/pulsating-button-demo-2.tsx ---
+import { PulsatingButton } from "@/registry/magicui/pulsating-button"
+
+export default function PulsatingButtonDemo2() {
+  return (
+    <PulsatingButton variant="ripple" distance="10px">
+      Join Affiliate Program
+    </PulsatingButton>
+  )
 }
 
 

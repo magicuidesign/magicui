@@ -3143,6 +3143,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "pulsating-button-demo-2": {
+    name: "pulsating-button-demo-2",
+    description: "Example showing an animated pulsating button with a ripple varaint.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/pulsating-button"],
+    files: [{
+      path: "registry/example/pulsating-button-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/pulsating-button-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "ripple-button-demo": {
     name: "ripple-button-demo",
     description: "Example showing an animated button with ripple effect.",
