@@ -1521,6 +1521,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "pulsating-button-demo-2",
+    type: "registry:example",
+    title: "Pulsating Button Demo 2",
+    description:
+      "Example showing an animated pulsating button with a ripple varaint.",
+    registryDependencies: ["@magicui/pulsating-button"],
+    files: [
+      {
+        path: "example/pulsating-button-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "ripple-button-demo",
     type: "registry:example",
     title: "Ripple Button Demo",

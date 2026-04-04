@@ -193,6 +193,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Cool Mode Demo](https://github.com/magicuidesign/magicui/blob/main/example/cool-mode-demo.tsx): Example usage
 - [Cool Mode Custom](https://github.com/magicuidesign/magicui/blob/main/example/cool-mode-custom.tsx): Example usage
 - [Pulsating Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/pulsating-button-demo.tsx): Example usage
+- [Pulsating Button Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/pulsating-button-demo-2.tsx): Example usage
 - [Ripple Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/ripple-button-demo.tsx): Example usage
 - [File Tree Demo](https://github.com/magicuidesign/magicui/blob/main/example/file-tree-demo.tsx): Example usage
 - [Blur Fade Demo](https://github.com/magicuidesign/magicui/blob/main/example/blur-fade-demo.tsx): Example usage

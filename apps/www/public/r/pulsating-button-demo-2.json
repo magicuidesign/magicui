@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pulsating-button-demo-2",
+  "type": "registry:example",
+  "title": "Pulsating Button Demo 2",
+  "description": "Example showing an animated pulsating button with a ripple varaint.",
+  "registryDependencies": [
+    "@magicui/pulsating-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/pulsating-button-demo-2.tsx",
+      "content": "import { PulsatingButton } from \"@/registry/magicui/pulsating-button\"\n\nexport default function PulsatingButtonDemo2() {\n  return (\n    <PulsatingButton\n      variant=\"ripple\"\n      distance=\"10px\"\n      className=\"bg-blue-400 text-white\"\n    >\n      Join Affiliate Program\n    </PulsatingButton>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
