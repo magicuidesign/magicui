@@ -12916,24 +12916,69 @@ export const PulsatingButton = React.forwardRef<
     useImperativeHandle(ref, () => innerRef.current!)
 
     useEffect(() => {
-      if (!innerRef.current) return
+      const button = innerRef.current
+      if (!button) return
+
+      if (pulseColor) {
+        button.style.removeProperty("--bg")
+        return
+      }
+
+      let animationFrameId = 0
+      let currentBg = ""
 
       const updateBg = () => {
-        if (!innerRef.current) return
-        const bg = getComputedStyle(innerRef.current).backgroundColor
-        innerRef.current.style.setProperty("--bg", bg)
+        animationFrameId = 0
+
+        const nextBg = getComputedStyle(button).backgroundColor
+        if (nextBg === currentBg) return
+
+        currentBg = nextBg
+        button.style.setProperty("--bg", nextBg)
+      }
+
+      const scheduleBgUpdate = () => {
+        if (animationFrameId) return
+        animationFrameId = window.requestAnimationFrame(updateBg)
       }
 
       updateBg()
 
-      const observer = new MutationObserver(updateBg)
-      observer.observe(document.documentElement, {
+      const themeObserver = new MutationObserver(scheduleBgUpdate)
+      themeObserver.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ["class"],
       })
 
-      return () => observer.disconnect()
-    }, [])
+      const buttonObserver = new MutationObserver(scheduleBgUpdate)
+      buttonObserver.observe(button, {
+        attributes: true,
+      })
+
+      const syncEvents = [
+        "blur",
+        "focus",
+        "pointerenter",
+        "pointerleave",
+      ] as const
+
+      for (const eventName of syncEvents) {
+        button.addEventListener(eventName, scheduleBgUpdate)
+      }
+
+      return () => {
+        if (animationFrameId) {
+          window.cancelAnimationFrame(animationFrameId)
+        }
+
+        themeObserver.disconnect()
+        buttonObserver.disconnect()
+
+        for (const eventName of syncEvents) {
+          button.removeEventListener(eventName, scheduleBgUpdate)
+        }
+      }
+    }, [pulseColor])
 
     return (
       <button
