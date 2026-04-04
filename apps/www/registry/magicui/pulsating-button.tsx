@@ -33,8 +33,21 @@ export const PulsatingButton = React.forwardRef<
     useEffect(() => {
       if (!innerRef.current) return
 
-      const bg = getComputedStyle(innerRef.current).backgroundColor
-      innerRef.current.style.setProperty("--bg", bg)
+      const updateBg = () => {
+        if (!innerRef.current) return
+        const bg = getComputedStyle(innerRef.current).backgroundColor
+        innerRef.current.style.setProperty("--bg", bg)
+      }
+
+      updateBg()
+
+      const observer = new MutationObserver(updateBg)
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      })
+
+      return () => observer.disconnect()
     }, [])
 
     return (
