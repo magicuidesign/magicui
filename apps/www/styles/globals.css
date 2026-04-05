@@ -156,12 +156,15 @@
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
   --animate-shiny-text: shiny-text 8s infinite;
-  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
-  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
+    alternate;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
+    infinite;
   --animate-rippling: rippling var(--duration, 0.6s) ease-out;
   --animate-line: line 2s linear infinite;
   --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
-  --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
+  --animate-background-position-spin: background-position-spin 3000ms infinite
+    alternate;
   --animate-shine: shine var(--duration) infinite linear;
   --animate-pulse: pulse var(--duration) ease-out infinite;
   --animate-pulse-ripple: pulse-ripple var(--duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
@@ -170,6 +173,7 @@
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
+
   /* End Animation Variables */
 
   /* Added Keyframes */
@@ -338,10 +342,13 @@
 
   @keyframes orbit {
     0% {
-      transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+      transform: rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
     }
     100% {
-      transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+      transform: rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
     }
   }
 
@@ -401,7 +408,6 @@
       opacity: 0;
     }
   }
-
 }
 
 @layer base {
@@ -412,11 +418,9 @@
   * {
     @apply border-border outline-ring/50;
   }
-
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
-
   html {
     @apply scroll-smooth;
   }
@@ -451,7 +455,6 @@
 @utility container-wrapper {
   @apply 3xl:fixed:max-w-[calc(var(--breakpoint-2xl)+2rem)] mx-auto w-full px-2;
 }
-
 @utility container {
   @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
 }
@@ -465,23 +468,31 @@
 .lab-bg {
   --mask-offset: 100px;
   -webkit-mask:
-    linear-gradient(to bottom,
+    linear-gradient(
+      to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent),
-    linear-gradient(to right,
+      transparent
+    ),
+    linear-gradient(
+      to right,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent);
+      transparent
+    );
   mask:
-    linear-gradient(to bottom,
+    linear-gradient(
+      to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent),
-    linear-gradient(to right,
+      transparent
+    ),
+    linear-gradient(
+      to right,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent);
+      transparent
+    );
   -webkit-mask-composite: source-in, xor;
   mask-composite: intersect;
 }
@@ -491,11 +502,11 @@
     counter-reset: steps;
   }
 
-  .steps>h3 {
+  .steps > h3 {
     counter-increment: steps;
   }
 
-  .steps>h3:before {
+  .steps > h3:before {
     @apply border-background bg-muted absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-base font-medium;
     @apply mt-[-4px] ml-[-50px];
     content: counter(steps);
@@ -589,9 +600,11 @@
       width: 2px;
       height: 100%;
       content: "";
-      background-color: color-mix(in oklab,
-          var(--muted-foreground) 50%,
-          transparent);
+      background-color: color-mix(
+        in oklab,
+        var(--muted-foreground) 50%,
+        transparent
+      );
     }
   }
 
