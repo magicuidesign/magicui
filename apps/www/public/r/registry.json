@@ -1293,6 +1293,21 @@
       ]
     },
     {
+      "name": "text-3d-flip",
+      "type": "registry:ui",
+      "title": "Text 3D Flip",
+      "description": "A text effect that flips each letter in 3D with a staggered animation on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/text-3d-flip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3580,6 +3595,36 @@
       "files": [
         {
           "path": "registry/example/backlight-svg-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "text-3d-flip-demo",
+      "type": "registry:example",
+      "title": "Text 3D Flip Demo",
+      "description": "Example showing a 3D text animation that rotates each letter on hover.",
+      "registryDependencies": [
+        "@magicui/text-3d-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-3d-flip-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "text-3d-flip-demo-2",
+      "type": "registry:example",
+      "title": "Text 3D Flip Demo 2",
+      "description": "Example showing a 3D text flip with stagger from center.",
+      "registryDependencies": [
+        "@magicui/text-3d-flip"
+      ],
+      "files": [
+        {
+          "path": "registry/example/text-3d-flip-demo-2.tsx",
           "type": "registry:example"
         }
       ]

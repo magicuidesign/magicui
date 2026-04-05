@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-3d-flip-demo-2",
+  "type": "registry:example",
+  "title": "Text 3D Flip Demo 2",
+  "description": "Example showing a 3D text flip with stagger from center.",
+  "registryDependencies": [
+    "@magicui/text-3d-flip"
+  ],
+  "files": [
+    {
+      "path": "registry/example/text-3d-flip-demo-2.tsx",
+      "content": "import Text3DFlip from \"@/registry/magicui/text-3d-flip\"\n\nexport default function Text3DFlipDemo2() {\n  return (\n    <Text3DFlip\n      className=\"bg-background font-serif text-2xl sm:text-5xl md:text-[56px]\"\n      textClassName=\"bg-background text-foreground\"\n      flipTextClassName=\"bg-background text-foreground\"\n      rotateDirection=\"top\"\n      staggerDuration={0.03}\n      staggerFrom=\"center\"\n    >\n      Design for failure\n    </Text3DFlip>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

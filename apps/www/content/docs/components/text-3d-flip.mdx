@@ -1,0 +1,82 @@
+---
+title: Text 3D Flip
+date: 2026-04-05
+description: A text effect that flips each letter in 3D with a staggered animation on hover.
+author: aayushbharti
+published: true
+---
+
+<ComponentPreview name="text-3d-flip-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/text-3d-flip
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="text-3d-flip" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import Text3DFlip from "@/components/ui/text-3d-flip"
+```
+
+```tsx showLineNumbers
+<Text3DFlip
+  className="bg-background"
+  textClassName="bg-background text-foreground"
+  flipTextClassName="bg-background text-foreground"
+  rotateDirection="top"
+>
+  Stay hungry, stay foolish
+</Text3DFlip>
+```
+
+## Examples
+
+### Stagger from center
+
+<ComponentPreview name="text-3d-flip-demo-2" />
+
+## Props
+
+| Prop                | Type                                                  | Default                                           | Description                                                                                   |
+| ------------------- | ----------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `children`\*        | `ReactNode`                                           | `-`                                               | The content to be displayed and animated                                                      |
+| `as`                | `ElementType`                                         | `"p"`                                             | HTML element to render the component as                                                       |
+| `className`         | `string`                                              | `-`                                               | Class name for the main container element                                                     |
+| `textClassName`     | `string`                                              | `-`                                               | Class name for each letter (visible before flip)                                              |
+| `flipTextClassName` | `string`                                              | `-`                                               | Class name for each letter (revealed after flip)                                              |
+| `staggerDuration`   | `number`                                              | `0.05`                                            | Duration of stagger delay between each letter in seconds                                      |
+| `staggerFrom`       | `"first" \| "last" \| "center" \| number \| "random"` | `"first"`                                         | Direction to stagger animations from. Use a number to stagger from a specific character index |
+| `transition`        | `ValueAnimationTransition \| AnimationOptions`        | `{ type: "spring", damping: 30, stiffness: 300 }` | Animation transition configuration from Motion                                                |
+| `rotateDirection`   | `"top" \| "right" \| "bottom" \| "left"`              | `"right"`                                         | Direction of 3D rotation on hover                                                             |
+
+## Credits
+
+- Credit to [@AayushBharti](https://github.com/AayushBharti)

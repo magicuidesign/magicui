@@ -438,6 +438,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Text 3D Flip",
+          href: `/docs/components/text-3d-flip`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

@@ -1239,6 +1239,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "text-3d-flip": {
+    name: "text-3d-flip",
+    description: "A text effect that flips each letter in 3D with a staggered animation on hover.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/text-3d-flip.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/text-3d-flip.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description: "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -3771,6 +3788,40 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/backlight-svg-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "text-3d-flip-demo": {
+    name: "text-3d-flip-demo",
+    description: "Example showing a 3D text animation that rotates each letter on hover.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/text-3d-flip"],
+    files: [{
+      path: "registry/example/text-3d-flip-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-3d-flip-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "text-3d-flip-demo-2": {
+    name: "text-3d-flip-demo-2",
+    description: "Example showing a 3D text flip with stagger from center.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/text-3d-flip"],
+    files: [{
+      path: "registry/example/text-3d-flip-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/text-3d-flip-demo-2.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

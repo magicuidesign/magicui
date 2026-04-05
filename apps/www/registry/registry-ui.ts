@@ -1243,4 +1243,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "text-3d-flip",
+    type: "registry:ui",
+    title: "Text 3D Flip",
+    description:
+      "A text effect that flips each letter in 3D with a staggered animation on hover.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/text-3d-flip.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
