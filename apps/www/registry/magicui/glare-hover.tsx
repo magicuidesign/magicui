@@ -128,7 +128,7 @@ function GlareHover({
       className={cn(
         "relative grid size-fit cursor-pointer place-items-center overflow-hidden bg-transparent",
         // BEFORE ELEMENT
-        "before:absolute before:inset-0 before:z-10 before:bg-no-repeat before:content-['']",
+        "before:pointer-events-none before:absolute before:inset-0 before:z-10 before:bg-no-repeat before:content-['']",
         // GRADIENT
         "before:[background-image:linear-gradient(var(--gh-angle),transparent_60%,var(--gh-rgba)_70%,transparent,transparent_100%)]",
         // SIZE + POSITION

@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775395744355,
+  "projectRoot": "/Users/yeomjinho/github/magicui",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": ">=22.14.0",
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "pnpm",
+    "runtime": "Node.js 22.14.0"
+  },
+  "build": {
+    "buildCommand": "pnpm build",
+    "testCommand": null,
+    "lintCommand": "pnpm lint",
+    "devCommand": "pnpm dev",
+    "scripts": {
+      "preinstall": "npx only-allow pnpm",
+      "dev": "turbo run dev --parallel",
+      "build": "turbo run build",
+      "start": "turbo run start",
+      "lint": "turbo run lint",
+      "lint:fix": "turbo run lint:fix",
+      "typecheck": "turbo run typecheck",
+      "format:fix": "turbo run format:fix",
+      "format:fix:silent": "turbo run format:fix -- --log-level silent",
+      "format:check": "turbo run format:check",
+      "registry-deps:check": "pnpm --filter=www registry-deps:check",
+      "build:registry": "pnpm --filter=www build:registry && pnpm --filter=www lint:fix && pnpm format:fix:silent",
+      "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm registry-deps:check"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": true,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "apps": {
+      "path": "apps",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1775395744311,
+      "keyFiles": []
+    },
+    "skills": {
+      "path": "skills",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1775395744313,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "apps/www/registry/magicui/glare-hover.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1775395968302,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

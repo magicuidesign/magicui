@@ -74,7 +74,12 @@ import { GlareHover } from "@/registry/magicui/glare-hover"
 Use **`color`** (hex glare highlight) and **`opacity`** (alpha of that highlight). **`background`** sets the container background (default `#000`).
 
 ```tsx showLineNumbers
-<GlareHover className="rounded-lg" color="#a78bfa" opacity={0.35} background="#0a0a0a">
+<GlareHover
+  className="rounded-lg"
+  color="#a78bfa"
+  opacity={0.35}
+  background="#0a0a0a"
+>
   <Card>{/* ... */}</Card>
 </GlareHover>
 ```
@@ -117,19 +122,19 @@ Optional **`width`** and **`height`** are merged onto the root `style` (string v
 
 ### GlareHover
 
-| Prop          | Type              | Default   | Description |
-| ------------- | ----------------- | --------- | ----------- |
-| `children`    | `React.ReactNode` | —         | Content inside the wrapper. |
-| `className`   | `string`          | —         | Classes on the root `div` (use `rounded-*`, `overflow-hidden`, etc.). |
-| `style`       | `CSSProperties`   | —         | Merged after CSS variables and `background`. |
-| `background`  | `string`          | `"#000"`  | Root background color. |
-| `color`       | `string`          | `"#ffffff"` | Glare highlight (hex `#rgb` / `#rrggbb`). |
-| `opacity`     | `number`          | `0.5`     | Alpha for the parsed glare color. |
-| `angle`       | `number`          | `-45`     | Gradient angle in degrees (`--gh-angle`). |
-| `size`        | `number`          | `250`     | Glare tile size in `%` (`--gh-size`). |
-| `duration`    | `number`          | `650`     | Transition duration in ms (`--gh-duration`). |
-| `playOnce`    | `boolean`         | `false`   | If `true`, animation runs on hover only (no transition until hover). |
-| `width`       | `string`          | —         | Optional `width` on the root `style`. |
-| `height`      | `string`          | —         | Optional `height` on the root `style`. |
+| Prop         | Type              | Default     | Description                                                           |
+| ------------ | ----------------- | ----------- | --------------------------------------------------------------------- |
+| `children`   | `React.ReactNode` | —           | Content inside the wrapper.                                           |
+| `className`  | `string`          | —           | Classes on the root `div` (use `rounded-*`, `overflow-hidden`, etc.). |
+| `style`      | `CSSProperties`   | —           | Merged after CSS variables and `background`.                          |
+| `background` | `string`          | `"#000"`    | Root background color.                                                |
+| `color`      | `string`          | `"#ffffff"` | Glare highlight (hex `#rgb` / `#rrggbb`).                             |
+| `opacity`    | `number`          | `0.5`       | Alpha for the parsed glare color.                                     |
+| `angle`      | `number`          | `-45`       | Gradient angle in degrees (`--gh-angle`).                             |
+| `size`       | `number`          | `250`       | Glare tile size in `%` (`--gh-size`).                                 |
+| `duration`   | `number`          | `650`       | Transition duration in ms (`--gh-duration`).                          |
+| `playOnce`   | `boolean`         | `false`     | If `true`, animation runs on hover only (no transition until hover).  |
+| `width`      | `string`          | —           | Optional `width` on the root `style`.                                 |
+| `height`     | `string`          | —           | Optional `height` on the root `style`.                                |
 
 The root forwards standard **`div`** props (`onClick`, `data-*`, etc.). The glare is drawn on **`::before`** with `z-10` above the content.
