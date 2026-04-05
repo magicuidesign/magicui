@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover-demo-alert",
+  "type": "registry:example",
+  "title": "Glare Hover Demo — Alerts",
+  "description": "Three alerts with custom glare colors and opacity.",
+  "registryDependencies": [
+    "@magicui/glare-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glare-hover-demo-alert.tsx",
+      "content": "import { CheckCircleIcon, InfoIcon, TriangleAlertIcon } from \"lucide-react\"\n\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"\nimport { GlareHover } from \"@/registry/magicui/glare-hover\"\n\nexport default function Alerts() {\n  return (\n    <div className=\"flex flex-col gap-3\">\n      <GlareHover className=\"rounded-lg\" duration={550} opacity={0.25}>\n        <Alert className=\"[&>svg~*]:pl-10\">\n          <InfoIcon />\n          <AlertTitle>Action required</AlertTitle>\n          <AlertDescription>\n            Your plan expires in 3 days. Renew to keep access.\n          </AlertDescription>\n        </Alert>\n      </GlareHover>\n\n      <GlareHover\n        className=\"w-full rounded-lg\"\n        color=\"#ff6070\"\n        opacity={0.25}\n        duration={550}\n      >\n        <Alert variant=\"destructive\" className=\"bg-background [&>svg~*]:pl-10\">\n          <TriangleAlertIcon />\n          <AlertTitle>Payment declined</AlertTitle>\n          <AlertDescription>\n            Check your card details and try again.\n          </AlertDescription>\n        </Alert>\n      </GlareHover>\n\n      <GlareHover\n        className=\"w-full rounded-lg\"\n        color=\"#60ff70\"\n        opacity={0.25}\n        duration={550}\n      >\n        <Alert className=\"[&>svg~*]:pl-10\">\n          <CheckCircleIcon className=\"stroke-emerald-500\" />\n          <AlertTitle className=\"text-emerald-500\">\n            Subscription confirmed\n          </AlertTitle>\n          <AlertDescription className=\"text-emerald-500\">\n            You have full Pro access until April 5, 2027.\n          </AlertDescription>\n        </Alert>\n      </GlareHover>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

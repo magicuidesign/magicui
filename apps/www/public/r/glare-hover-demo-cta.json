@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover-demo-cta",
+  "type": "registry:example",
+  "title": "Glare Hover Demo — CTA",
+  "description": "CTA card with hover glare (700ms).",
+  "registryDependencies": [
+    "@magicui/glare-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glare-hover-demo-cta.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport {\n  Card,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { GlareHover } from \"@/registry/magicui/glare-hover\"\n\nexport default function Cta() {\n  return (\n    <GlareHover className=\"rounded-xl\" color=\"#505050\" duration={700}>\n      <Card className=\"w-full text-center\">\n        <CardHeader>\n          <p className=\"text-muted-foreground text-xs font-medium tracking-widest uppercase\">\n            14-day free trial · No card required\n          </p>\n          <CardTitle className=\"text-2xl tracking-tight\">\n            Ready to get started?\n          </CardTitle>\n          <CardDescription className=\"mx-auto max-w-sm\">\n            Join 4,000+ teams already using our platform to ship faster.\n          </CardDescription>\n        </CardHeader>\n        <CardFooter className=\"justify-center gap-2\">\n          <Button>Start free trial</Button>\n          <Button variant=\"outline\">View demo</Button>\n        </CardFooter>\n      </Card>\n    </GlareHover>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

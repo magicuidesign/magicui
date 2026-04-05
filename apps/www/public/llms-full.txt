@@ -7699,6 +7699,336 @@ export default function FlickeringGridRoundedDemo() {
 
 
 
+===== COMPONENT: glare-hover =====
+Title: Glare Hover
+Description: A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).
+
+--- file: magicui/glare-hover.tsx ---
+import type { ComponentProps, CSSProperties } from "react"
+import { useMemo } from "react"
+
+import { cn } from "@/lib/utils"
+
+export interface GlareHoverProps extends ComponentProps<"div"> {
+  /**
+   * Optional CSS width on the root element (e.g. `"100%"`, `"320px"`).
+   * @example
+   * ```tsx
+   * <GlareHover width="100%">...</GlareHover>
+   * ```
+   */
+  width?: string
+  /**
+   * Optional CSS height on the root element (e.g. `"auto"`, `"200px"`).
+   * @example
+   * ```tsx
+   * <GlareHover height="200px">...</GlareHover>
+   * ```
+   */
+  height?: string
+  /**
+   * Background color of the wrapper (CSS color string).
+   * @example
+   * ```tsx
+   * <GlareHover background="#0a0a0a">...</GlareHover>
+   * ```
+   */
+  background?: string
+  /**
+   * Glare highlight as `#rrggbb` or `#rgb`; parsed to `rgba` for the gradient.
+   * @example
+   * ```tsx
+   * <GlareHover color="#a78bfa">...</GlareHover>
+   * ```
+   */
+  color?: Color
+  /**
+   * Opacity applied to the glare color when converting hex to `rgba` (0–1).
+   * @example
+   * ```tsx
+   * <GlareHover color="#ffffff" opacity={0.35}>...</GlareHover>
+   * ```
+   */
+  opacity?: number
+  /**
+   * Gradient angle in degrees (`--gh-angle`).
+   * @example
+   * ```tsx
+   * <GlareHover angle={-30}>...</GlareHover>
+   * ```
+   */
+  angle?: number
+  /**
+   * Glare tile size as a percentage of the element (`--gh-size`, `background-size`).
+   * @example
+   * ```tsx
+   * <GlareHover size={280}>...</GlareHover>
+   * ```
+   */
+  size?: number
+  /**
+   * Transition duration for the glare sweep in milliseconds (`--gh-duration`).
+   * @example
+   * ```tsx
+   * <GlareHover duration={500}>...</GlareHover>
+   * ```
+   */
+  duration?: number
+  /**
+   * When `true`, the glare transition only runs on hover (no animation until pointer enters).
+   * @example
+   * ```tsx
+   * <GlareHover playOnce>...</GlareHover>
+   * ```
+   */
+  playOnce?: boolean
+}
+
+type Color = `#${string}`
+type RGBA = `rgba(${number},${number},${number},${number})`
+
+function parseHEX(color: Color, opacity: number): RGBA | Color {
+  const hex = color.replace("#", "")
+  const parse = (h: string) => Number.parseInt(h, 16)
+  if (/^[0-9A-Fa-f]{6}$/.test(hex)) {
+    return `rgba(${parse(hex.slice(0, 2))},${parse(hex.slice(2, 4))},${parse(hex.slice(4, 6))},${opacity})`
+  }
+  if (/^[0-9A-Fa-f]{3}$/.test(hex)) {
+    return `rgba(${parse(hex[0] + hex[0])},${parse(hex[1] + hex[1])},${parse(hex[2] + hex[2])},${opacity})`
+  }
+
+  return color
+}
+
+function GlareHover({
+  background = "#000",
+  children,
+  color = "#ffffff",
+  opacity = 0.5,
+  angle = -45,
+  size = 250,
+  duration = 650,
+  playOnce = false,
+  className,
+  style,
+  width,
+  height,
+  ...props
+}: GlareHoverProps) {
+  const rgba = useMemo(() => parseHEX(color, opacity), [color, opacity])
+
+  const cssVars = {
+    "--gh-angle": `${angle}deg`,
+    "--gh-duration": `${duration}ms`,
+    "--gh-size": `${size}%`,
+    "--gh-rgba": rgba,
+    background,
+    ...style,
+    ...(width !== undefined ? { width } : {}),
+    ...(height !== undefined ? { height } : {}),
+  } as CSSProperties
+
+  return (
+    <div
+      {...props}
+      className={cn(
+        "relative grid size-fit cursor-pointer place-items-center overflow-hidden bg-transparent",
+        // BEFORE ELEMENT
+        "before:absolute before:inset-0 before:z-10 before:bg-no-repeat before:content-['']",
+        // GRADIENT
+        "before:[background-image:linear-gradient(var(--gh-angle),transparent_60%,var(--gh-rgba)_70%,transparent,transparent_100%)]",
+        // SIZE + POSITION
+        "before:[background-size:var(--gh-size)_var(--gh-size),100%_100%]",
+        "before:[background-position:-100%_-100%,0_0]",
+        // TRANSITION
+        !playOnce &&
+          "before:transition-[background-position] before:duration-[var(--gh-duration)] before:ease-in-out",
+        playOnce &&
+          "before:transition-none hover:before:transition-[background-position] hover:before:duration-[var(--gh-duration)]",
+        // HOVER EFFECT
+        "hover:before:[background-position:100%_100%,0_0]",
+        className
+      )}
+      style={cssVars}
+    >
+      {children}
+    </div>
+  )
+}
+
+export { GlareHover }
+
+
+===== EXAMPLE: glare-hover-demo =====
+Title: Glare Hover Demo
+
+--- file: example/glare-hover-demo.tsx ---
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { GlareHover } from "@/registry/magicui/glare-hover"
+
+export default function PricingCard() {
+  return (
+    <GlareHover className="rounded-xl" duration={600}>
+      <Card className="w-[340px]">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <CardTitle>Pro</CardTitle>
+            <Badge>Popular</Badge>
+          </div>
+          <CardDescription>For teams that need more.</CardDescription>
+          <div className="flex items-baseline gap-1 pt-2">
+            <span className="text-4xl font-semibold tracking-tight">$49</span>
+            <span className="text-muted-foreground text-sm">/mo</span>
+          </div>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2.5">
+          {[
+            "Unlimited projects",
+            "Team collaboration",
+            "Advanced analytics",
+          ].map((f) => (
+            <div key={f} className="flex items-center gap-2 text-sm">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path
+                  d="M12.5 3.5L6 10L2.5 6.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {f}
+            </div>
+          ))}
+          <div className="text-muted-foreground flex items-center gap-2 text-sm">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <circle
+                cx="7.5"
+                cy="7.5"
+                r="1.5"
+                fill="currentColor"
+                opacity="0.4"
+              />
+            </svg>
+            SSO (coming soon)
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button className="w-full">Get started</Button>
+        </CardFooter>
+      </Card>
+    </GlareHover>
+  )
+}
+
+
+===== EXAMPLE: glare-hover-demo-cta =====
+Title: Glare Hover Demo — CTA
+
+--- file: example/glare-hover-demo-cta.tsx ---
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { GlareHover } from "@/registry/magicui/glare-hover"
+
+export default function Cta() {
+  return (
+    <GlareHover className="rounded-xl" color="#505050" duration={700}>
+      <Card className="w-full text-center">
+        <CardHeader>
+          <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+            14-day free trial · No card required
+          </p>
+          <CardTitle className="text-2xl tracking-tight">
+            Ready to get started?
+          </CardTitle>
+          <CardDescription className="mx-auto max-w-sm">
+            Join 4,000+ teams already using our platform to ship faster.
+          </CardDescription>
+        </CardHeader>
+        <CardFooter className="justify-center gap-2">
+          <Button>Start free trial</Button>
+          <Button variant="outline">View demo</Button>
+        </CardFooter>
+      </Card>
+    </GlareHover>
+  )
+}
+
+
+===== EXAMPLE: glare-hover-demo-alert =====
+Title: Glare Hover Demo — Alerts
+
+--- file: example/glare-hover-demo-alert.tsx ---
+import { CheckCircleIcon, InfoIcon, TriangleAlertIcon } from "lucide-react"
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { GlareHover } from "@/registry/magicui/glare-hover"
+
+export default function Alerts() {
+  return (
+    <div className="flex flex-col gap-3">
+      <GlareHover className="rounded-lg" duration={550} opacity={0.25}>
+        <Alert className="[&>svg~*]:pl-10">
+          <InfoIcon />
+          <AlertTitle>Action required</AlertTitle>
+          <AlertDescription>
+            Your plan expires in 3 days. Renew to keep access.
+          </AlertDescription>
+        </Alert>
+      </GlareHover>
+
+      <GlareHover
+        className="w-full rounded-lg"
+        color="#ff6070"
+        opacity={0.25}
+        duration={550}
+      >
+        <Alert variant="destructive" className="bg-background [&>svg~*]:pl-10">
+          <TriangleAlertIcon />
+          <AlertTitle>Payment declined</AlertTitle>
+          <AlertDescription>
+            Check your card details and try again.
+          </AlertDescription>
+        </Alert>
+      </GlareHover>
+
+      <GlareHover
+        className="w-full rounded-lg"
+        color="#60ff70"
+        opacity={0.25}
+        duration={550}
+      >
+        <Alert className="[&>svg~*]:pl-10">
+          <CheckCircleIcon className="stroke-emerald-500" />
+          <AlertTitle className="text-emerald-500">
+            Subscription confirmed
+          </AlertTitle>
+          <AlertDescription className="text-emerald-500">
+            You have full Pro access until April 5, 2027.
+          </AlertDescription>
+        </Alert>
+      </GlareHover>
+    </div>
+  )
+}
+
+
+
 ===== COMPONENT: globe =====
 Title: Globe
 Description: An autorotating, interactive, and highly performant globe made using WebGL.

@@ -25,6 +25,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command"
 
+/** Palette lists links from `docsConfig` (`@/config/docs.ts`): main nav and every sidebar doc. */
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter()
   const [open, setOpen] = React.useState(false)

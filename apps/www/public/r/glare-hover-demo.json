@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover-demo",
+  "type": "registry:example",
+  "title": "Glare Hover Demo",
+  "description": "Pricing card with diagonal hover glare (duration 600ms).",
+  "registryDependencies": [
+    "@magicui/glare-hover"
+  ],
+  "files": [
+    {
+      "path": "registry/example/glare-hover-demo.tsx",
+      "content": "import { Badge } from \"@/components/ui/badge\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { GlareHover } from \"@/registry/magicui/glare-hover\"\n\nexport default function PricingCard() {\n  return (\n    <GlareHover className=\"rounded-xl\" duration={600}>\n      <Card className=\"w-[340px]\">\n        <CardHeader>\n          <div className=\"flex items-center justify-between\">\n            <CardTitle>Pro</CardTitle>\n            <Badge>Popular</Badge>\n          </div>\n          <CardDescription>For teams that need more.</CardDescription>\n          <div className=\"flex items-baseline gap-1 pt-2\">\n            <span className=\"text-4xl font-semibold tracking-tight\">$49</span>\n            <span className=\"text-muted-foreground text-sm\">/mo</span>\n          </div>\n        </CardHeader>\n        <CardContent className=\"flex flex-col gap-2.5\">\n          {[\n            \"Unlimited projects\",\n            \"Team collaboration\",\n            \"Advanced analytics\",\n          ].map((f) => (\n            <div key={f} className=\"flex items-center gap-2 text-sm\">\n              <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\">\n                <path\n                  d=\"M12.5 3.5L6 10L2.5 6.5\"\n                  stroke=\"currentColor\"\n                  strokeWidth=\"1.5\"\n                  strokeLinecap=\"round\"\n                  strokeLinejoin=\"round\"\n                />\n              </svg>\n              {f}\n            </div>\n          ))}\n          <div className=\"text-muted-foreground flex items-center gap-2 text-sm\">\n            <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\">\n              <circle\n                cx=\"7.5\"\n                cy=\"7.5\"\n                r=\"1.5\"\n                fill=\"currentColor\"\n                opacity=\"0.4\"\n              />\n            </svg>\n            SSO (coming soon)\n          </div>\n        </CardContent>\n        <CardFooter>\n          <Button className=\"w-full\">Get started</Button>\n        </CardFooter>\n      </Card>\n    </GlareHover>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

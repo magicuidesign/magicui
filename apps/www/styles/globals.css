@@ -156,15 +156,12 @@
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
   --animate-shiny-text: shiny-text 8s infinite;
-  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
-    alternate;
-  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
-    infinite;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
   --animate-rippling: rippling var(--duration, 0.6s) ease-out;
   --animate-line: line 2s linear infinite;
   --animate-orbit: orbit calc(var(--duration) * 1s) linear infinite;
-  --animate-background-position-spin: background-position-spin 3000ms infinite
-    alternate;
+  --animate-background-position-spin: background-position-spin 3000ms infinite alternate;
   --animate-shine: shine var(--duration) infinite linear;
   --animate-pulse: pulse var(--duration) ease-out infinite;
   --animate-pulse-ripple: pulse-ripple var(--duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
@@ -173,15 +170,27 @@
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
+  /* Glare hover: animates background-position on a large gradient tile */
+  --glare-duration: 0.65s;
+  --animate-glare-hover-to-left: glare-hover-to-left var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-right: glare-hover-to-right var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-top: glare-hover-to-top var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-bottom: glare-hover-to-bottom var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-top-right: glare-hover-to-top-right var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-top-left: glare-hover-to-top-left var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-bottom-left: glare-hover-to-bottom-left var(--glare-duration) ease-in-out forwards;
+  --animate-glare-hover-to-bottom-right: glare-hover-to-bottom-right var(--glare-duration) ease-in-out forwards;
 
   /* End Animation Variables */
 
   /* Added Keyframes */
   @keyframes blink-cursor {
+
     0%,
     49% {
       opacity: 1;
     }
+
     50%,
     100% {
       opacity: 0;
@@ -193,18 +202,22 @@
       background-position: 0% 50%;
       transform: rotate(-5deg) scale(0.9);
     }
+
     25% {
       background-position: 50% 100%;
       transform: rotate(5deg) scale(1.1);
     }
+
     50% {
       background-position: 100% 50%;
       transform: rotate(-3deg) scale(0.95);
     }
+
     75% {
       background-position: 50% 0%;
       transform: rotate(3deg) scale(1.05);
     }
+
     100% {
       background-position: 0% 50%;
       transform: rotate(-5deg) scale(0.9);
@@ -215,6 +228,7 @@
     from {
       height: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
     }
@@ -224,6 +238,7 @@
     from {
       height: var(--radix-accordion-content-height);
     }
+
     to {
       height: 0;
     }
@@ -233,6 +248,7 @@
     0% {
       background-position: top center;
     }
+
     100% {
       background-position: bottom center;
     }
@@ -249,9 +265,11 @@
       transform: rotate(var(--angle)) translateX(0);
       opacity: 1;
     }
+
     70% {
       opacity: 1;
     }
+
     100% {
       transform: rotate(var(--angle)) translateX(-500px);
       opacity: 0;
@@ -262,6 +280,7 @@
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(calc(-100% - var(--gap)));
     }
@@ -271,6 +290,7 @@
     from {
       transform: translateY(0);
     }
+
     to {
       transform: translateY(calc(-100% - var(--gap)));
     }
@@ -280,24 +300,29 @@
     0% {
       transform: translateZ(0) rotate(0);
     }
+
     15%,
     35% {
       transform: translateZ(0) rotate(90deg);
     }
+
     65%,
     85% {
       transform: translateZ(0) rotate(270deg);
     }
+
     100% {
       transform: translateZ(0) rotate(360deg);
     }
   }
 
   @keyframes ripple {
+
     0%,
     100% {
       transform: translate(-50%, -50%) scale(1);
     }
+
     50% {
       transform: translate(-50%, -50%) scale(0.9);
     }
@@ -307,6 +332,7 @@
     0% {
       opacity: 1;
     }
+
     100% {
       transform: scale(2);
       opacity: 0;
@@ -323,17 +349,20 @@
     0% {
       mask-position-x: 0%;
     }
+
     100% {
       mask-position-x: 100%;
     }
   }
 
   @keyframes shiny-text {
+
     0%,
     90%,
     100% {
       background-position: calc(-100% - var(--shiny-width)) 0;
     }
+
     30%,
     60% {
       background-position: calc(100% + var(--shiny-width)) 0;
@@ -342,13 +371,11 @@
 
   @keyframes orbit {
     0% {
-      transform: rotate(calc(var(--angle) * 1deg))
-        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+      transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
     }
+
     100% {
-      transform: rotate(calc(var(--angle) * 1deg + 360deg))
-        translateY(calc(var(--radius) * 1px))
-        rotate(calc((var(--angle) * -1deg) - 360deg));
+      transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
     }
   }
 
@@ -356,19 +383,23 @@
     0% {
       background-position: 0% 0%;
     }
+
     50% {
       background-position: 100% 100%;
     }
+
     to {
       background-position: 0% 0%;
     }
   }
 
   @keyframes pulse {
+
     0%,
     100% {
       box-shadow: 0 0 0 0 var(--pulse-color, oklch(from var(--bg) l c h / 0.5));
     }
+
     50% {
       box-shadow: 0 0 0 var(--distance) var(--pulse-color, oklch(from var(--bg) l c h / 0.5));
     }
@@ -378,6 +409,7 @@
     0% {
       box-shadow: 0 0 0 0 oklch(from var(--pulse-color, var(--bg)) l c h / 1);
     }
+
     100% {
       box-shadow: 0 0 0 var(--distance) oklch(from var(--pulse-color, var(--bg)) l c h / 0);
     }
@@ -387,6 +419,7 @@
     0% {
       background-position: 0%;
     }
+
     100% {
       background-position: 200%;
     }
@@ -396,16 +429,98 @@
     0% {
       background-position: 0 0;
     }
+
     100% {
       background-position: 100% -100%;
     }
   }
 
   @keyframes ping {
+
     75%,
     100% {
       transform: scale(2);
       opacity: 0;
+    }
+  }
+
+  @keyframes glare-hover-to-right {
+    from {
+      background-position: -100% 50%;
+    }
+
+    to {
+      background-position: 200% 50%;
+    }
+  }
+
+  @keyframes glare-hover-to-left {
+    from {
+      background-position: 200% 50%;
+    }
+
+    to {
+      background-position: -100% 50%;
+    }
+  }
+
+  @keyframes glare-hover-to-top {
+    from {
+      background-position: 50% 200%;
+    }
+
+    to {
+      background-position: 50% -100%;
+    }
+  }
+
+  @keyframes glare-hover-to-bottom {
+    from {
+      background-position: 50% -100%;
+    }
+
+    to {
+      background-position: 50% 200%;
+    }
+  }
+
+  @keyframes glare-hover-to-top-right {
+    from {
+      background-position: -100% 100%;
+    }
+
+    to {
+      background-position: 100% -100%;
+    }
+  }
+
+  @keyframes glare-hover-to-top-left {
+    from {
+      background-position: 100% 100%;
+    }
+
+    to {
+      background-position: -100% -100%;
+    }
+  }
+
+  @keyframes glare-hover-to-bottom-left {
+    from {
+      background-position: 100% -100%;
+    }
+
+    to {
+      background-position: -100% 100%;
+    }
+  }
+
+  @keyframes glare-hover-to-bottom-right {
+    from {
+      background-position: -100% -100%;
+    }
+
+    to {
+      background-position: 100% 100%;
     }
   }
 }
@@ -418,9 +533,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
+
   html {
     @apply scroll-smooth;
   }
@@ -455,6 +572,7 @@
 @utility container-wrapper {
   @apply 3xl:fixed:max-w-[calc(var(--breakpoint-2xl)+2rem)] mx-auto w-full px-2;
 }
+
 @utility container {
   @apply 3xl:max-w-screen-2xl mx-auto max-w-[1400px] px-4 lg:px-8;
 }
@@ -468,31 +586,23 @@
 .lab-bg {
   --mask-offset: 100px;
   -webkit-mask:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    ),
-    linear-gradient(
-      to right,
+      transparent),
+    linear-gradient(to right,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    );
+      transparent);
   mask:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    ),
-    linear-gradient(
-      to right,
+      transparent),
+    linear-gradient(to right,
       transparent,
       #fff var(--mask-offset) calc(100% - var(--mask-offset)),
-      transparent
-    );
+      transparent);
   -webkit-mask-composite: source-in, xor;
   mask-composite: intersect;
 }
@@ -502,11 +612,11 @@
     counter-reset: steps;
   }
 
-  .steps > h3 {
+  .steps>h3 {
     counter-increment: steps;
   }
 
-  .steps > h3:before {
+  .steps>h3:before {
     @apply border-background bg-muted absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-base font-medium;
     @apply mt-[-4px] ml-[-50px];
     content: counter(steps);
@@ -600,11 +710,9 @@
       width: 2px;
       height: 100%;
       content: "";
-      background-color: color-mix(
-        in oklab,
-        var(--muted-foreground) 50%,
-        transparent
-      );
+      background-color: color-mix(in oklab,
+          var(--muted-foreground) 50%,
+          transparent);
     }
   }
 
