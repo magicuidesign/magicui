@@ -419,6 +419,18 @@
       ]
     },
     {
+      "name": "glare-hover",
+      "type": "registry:ui",
+      "title": "Glare Hover",
+      "description": "A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).",
+      "files": [
+        {
+          "path": "registry/magicui/glare-hover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shimmer-button",
       "type": "registry:ui",
       "title": "Shimmer Button",
@@ -1828,6 +1840,51 @@
       "files": [
         {
           "path": "registry/example/globe-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover-demo",
+      "type": "registry:example",
+      "title": "Glare Hover Demo",
+      "description": "Pricing card with diagonal hover glare (duration 600ms).",
+      "registryDependencies": [
+        "@magicui/glare-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glare-hover-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover-demo-cta",
+      "type": "registry:example",
+      "title": "Glare Hover Demo — CTA",
+      "description": "CTA card with hover glare (700ms).",
+      "registryDependencies": [
+        "@magicui/glare-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glare-hover-demo-cta.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover-demo-alert",
+      "type": "registry:example",
+      "title": "Glare Hover Demo — Alerts",
+      "description": "Three alerts with custom glare colors and opacity.",
+      "registryDependencies": [
+        "@magicui/glare-hover"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glare-hover-demo-alert.tsx",
           "type": "registry:example"
         }
       ]

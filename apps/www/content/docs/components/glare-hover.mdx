@@ -1,0 +1,140 @@
+---
+title: Glare Hover
+date: 2024-12-19
+description: A diagonal light glare on hover using a ::before gradient, CSS variables, and background-position animation—no extra global keyframes required.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="glare-hover-demo" />
+
+## Examples
+
+### CTA
+
+<ComponentPreview name="glare-hover-demo-cta" />
+
+### Alerts
+
+<ComponentPreview name="glare-hover-demo-alert" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/glare-hover
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glare-hover" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+The effect is implemented with a **`::before` pseudo-element**: a `linear-gradient` tile moves from one corner to the opposite on hover. Color is parsed from **hex** (`#rgb` or `#rrggbb`) into `rgba` for the glare band.
+
+```tsx showLineNumbers
+import { GlareHover } from "@/registry/magicui/glare-hover"
+```
+
+```tsx showLineNumbers
+<GlareHover className="rounded-lg">
+  <Card>
+    <CardContent>
+      <CardTitle>Hello World</CardTitle>
+      <CardDescription>Hover to see the glare sweep</CardDescription>
+    </CardContent>
+  </Card>
+</GlareHover>
+```
+
+### Colors and opacity
+
+Use **`color`** (hex glare highlight) and **`opacity`** (alpha of that highlight). **`background`** sets the container background (default `#000`).
+
+```tsx showLineNumbers
+<GlareHover
+  className="rounded-lg"
+  color="#a78bfa"
+  opacity={0.35}
+  background="#0a0a0a"
+>
+  <Card>{/* ... */}</Card>
+</GlareHover>
+```
+
+### Angle and size
+
+**`angle`** is the gradient angle in degrees (default **-45**). **`size`** is the glare tile size as a **percentage** of the element (default **250**), passed to `background-size`.
+
+```tsx showLineNumbers
+<GlareHover className="rounded-lg" angle={-30} size={280}>
+  <Card>{/* ... */}</Card>
+</GlareHover>
+```
+
+### Duration
+
+**`duration`** is the transition length in **milliseconds** (default **650**).
+
+```tsx showLineNumbers
+<GlareHover className="rounded-lg" duration={500}>
+  <Card>{/* ... */}</Card>
+</GlareHover>
+```
+
+### playOnce
+
+With **`playOnce`** (default **false**), the glare only animates while hovering: transitions are disabled until hover, so the sweep runs each time you enter the element instead of animating on first paint.
+
+```tsx showLineNumbers
+<GlareHover className="rounded-lg" playOnce>
+  <Card>{/* ... */}</Card>
+</GlareHover>
+```
+
+### Layout
+
+Optional **`width`** and **`height`** are merged onto the root `style` (string values, e.g. `"100%"`). You can also rely on **`className`** (e.g. `w-full`) and normal `style` / `div` props.
+
+## Props
+
+### GlareHover
+
+| Prop         | Type              | Default     | Description                                                           |
+| ------------ | ----------------- | ----------- | --------------------------------------------------------------------- |
+| `children`   | `React.ReactNode` | —           | Content inside the wrapper.                                           |
+| `className`  | `string`          | —           | Classes on the root `div` (use `rounded-*`, `overflow-hidden`, etc.). |
+| `style`      | `CSSProperties`   | —           | Merged after CSS variables and `background`.                          |
+| `background` | `string`          | `"#000"`    | Root background color.                                                |
+| `color`      | `string`          | `"#ffffff"` | Glare highlight (hex `#rgb` / `#rrggbb`).                             |
+| `opacity`    | `number`          | `0.5`       | Alpha for the parsed glare color.                                     |
+| `angle`      | `number`          | `-45`       | Gradient angle in degrees (`--gh-angle`).                             |
+| `size`       | `number`          | `250`       | Glare tile size in `%` (`--gh-size`).                                 |
+| `duration`   | `number`          | `650`       | Transition duration in ms (`--gh-duration`).                          |
+| `playOnce`   | `boolean`         | `false`     | If `true`, animation runs on hover only (no transition until hover).  |
+| `width`      | `string`          | —           | Optional `width` on the root `style`.                                 |
+| `height`     | `string`          | —           | Optional `height` on the root `style`.                                |
+
+The root forwards standard **`div`** props (`onClick`, `data-*`, etc.). The glare is drawn on **`::before`** with `z-10` above the content.

@@ -493,6 +493,45 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "glare-hover-demo",
+    type: "registry:example",
+    title: "Glare Hover Demo",
+    description: "Pricing card with diagonal hover glare (duration 600ms).",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [
+      {
+        path: "example/glare-hover-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "glare-hover-demo-cta",
+    type: "registry:example",
+    title: "Glare Hover Demo — CTA",
+    description: "CTA card with hover glare (700ms).",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [
+      {
+        path: "example/glare-hover-demo-cta.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "glare-hover-demo-alert",
+    type: "registry:example",
+    title: "Glare Hover Demo — Alerts",
+    description: "Three alerts with custom glare colors and opacity.",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [
+      {
+        path: "example/glare-hover-demo-alert.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "tweet-card-demo",
     type: "registry:example",
     title: "Tweet Card Demo",

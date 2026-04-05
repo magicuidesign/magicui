@@ -389,6 +389,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "glare-hover": {
+    name: "glare-hover",
+    description: "A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/glare-hover.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/glare-hover.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "shimmer-button": {
     name: "shimmer-button",
     description: "A button with a shimmering light which travels around the perimeter.",
@@ -1829,6 +1846,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/globe-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glare-hover-demo": {
+    name: "glare-hover-demo",
+    description: "Pricing card with diagonal hover glare (duration 600ms).",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [{
+      path: "registry/example/glare-hover-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glare-hover-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glare-hover-demo-cta": {
+    name: "glare-hover-demo-cta",
+    description: "CTA card with hover glare (700ms).",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [{
+      path: "registry/example/glare-hover-demo-cta.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glare-hover-demo-cta.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glare-hover-demo-alert": {
+    name: "glare-hover-demo-alert",
+    description: "Three alerts with custom glare colors and opacity.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glare-hover"],
+    files: [{
+      path: "registry/example/glare-hover-demo-alert.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glare-hover-demo-alert.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

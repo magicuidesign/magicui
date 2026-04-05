@@ -21,6 +21,8 @@
 
 # IDE Files
 .idea
+.omc/
+.claude/settings.local.json
 
 # debug
 npm-debug.log*
