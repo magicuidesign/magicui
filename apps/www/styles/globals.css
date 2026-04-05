@@ -170,17 +170,6 @@
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
-  /* Glare hover: animates background-position on a large gradient tile */
-  --glare-duration: 0.65s;
-  --animate-glare-hover-to-left: glare-hover-to-left var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-right: glare-hover-to-right var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-top: glare-hover-to-top var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-bottom: glare-hover-to-bottom var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-top-right: glare-hover-to-top-right var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-top-left: glare-hover-to-top-left var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-bottom-left: glare-hover-to-bottom-left var(--glare-duration) ease-in-out forwards;
-  --animate-glare-hover-to-bottom-right: glare-hover-to-bottom-right var(--glare-duration) ease-in-out forwards;
-
   /* End Animation Variables */
 
   /* Added Keyframes */
@@ -444,85 +433,6 @@
     }
   }
 
-  @keyframes glare-hover-to-right {
-    from {
-      background-position: -100% 50%;
-    }
-
-    to {
-      background-position: 200% 50%;
-    }
-  }
-
-  @keyframes glare-hover-to-left {
-    from {
-      background-position: 200% 50%;
-    }
-
-    to {
-      background-position: -100% 50%;
-    }
-  }
-
-  @keyframes glare-hover-to-top {
-    from {
-      background-position: 50% 200%;
-    }
-
-    to {
-      background-position: 50% -100%;
-    }
-  }
-
-  @keyframes glare-hover-to-bottom {
-    from {
-      background-position: 50% -100%;
-    }
-
-    to {
-      background-position: 50% 200%;
-    }
-  }
-
-  @keyframes glare-hover-to-top-right {
-    from {
-      background-position: -100% 100%;
-    }
-
-    to {
-      background-position: 100% -100%;
-    }
-  }
-
-  @keyframes glare-hover-to-top-left {
-    from {
-      background-position: 100% 100%;
-    }
-
-    to {
-      background-position: -100% -100%;
-    }
-  }
-
-  @keyframes glare-hover-to-bottom-left {
-    from {
-      background-position: 100% -100%;
-    }
-
-    to {
-      background-position: -100% 100%;
-    }
-  }
-
-  @keyframes glare-hover-to-bottom-right {
-    from {
-      background-position: -100% -100%;
-    }
-
-    to {
-      background-position: 100% 100%;
-    }
-  }
 }
 
 @layer base {
