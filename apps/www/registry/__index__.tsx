@@ -253,6 +253,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "hexagon-pattern": {
+    name: "hexagon-pattern",
+    description: "A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/hexagon-pattern.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/hexagon-pattern.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "striped-pattern": {
     name: "striped-pattern",
     description: "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
@@ -1625,6 +1642,74 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/grid-pattern-dashed.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "hexagon-pattern-demo": {
+    name: "hexagon-pattern-demo",
+    description: "Example showing a background hexagon pattern made with SVGs.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/hexagon-pattern"],
+    files: [{
+      path: "registry/example/hexagon-pattern-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hexagon-pattern-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "hexagon-pattern-linear-gradient": {
+    name: "hexagon-pattern-linear-gradient",
+    description: "Example showing a hexagon pattern with linear gradient effects.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/hexagon-pattern"],
+    files: [{
+      path: "registry/example/hexagon-pattern-linear-gradient.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hexagon-pattern-linear-gradient.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "hexagon-pattern-dashed": {
+    name: "hexagon-pattern-dashed",
+    description: "Example showing a dashed hexagon pattern.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/hexagon-pattern"],
+    files: [{
+      path: "registry/example/hexagon-pattern-dashed.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hexagon-pattern-dashed.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "hexagon-pattern-spacing": {
+    name: "hexagon-pattern-spacing",
+    description: "Example showing a dashed hexagon pattern with extra spacing between cells.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/hexagon-pattern"],
+    files: [{
+      path: "registry/example/hexagon-pattern-spacing.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/hexagon-pattern-spacing.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

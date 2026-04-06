@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hexagon-pattern-demo",
+  "type": "registry:example",
+  "title": "Hexagon Pattern Demo",
+  "description": "Example showing a background hexagon pattern made with SVGs.",
+  "registryDependencies": [
+    "@magicui/hexagon-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hexagon-pattern-demo.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { HexagonPattern } from \"@/registry/magicui/hexagon-pattern\"\n\nexport default function HexagonPatternDemo() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <HexagonPattern\n        hexagons={[\n          [1, 1],\n          [4, 4],\n          [2, 2],\n          [3, 4],\n          [5, 4],\n          [8, 2],\n          [6, 3],\n          [8, 5],\n          [10, 10],\n        ]}\n        className={cn(\n          \"mask-[radial-gradient(420px_circle_at_center,white,transparent)]\",\n          \"inset-0 skew-y-6\"\n        )}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

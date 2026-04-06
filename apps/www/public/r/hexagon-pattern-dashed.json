@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hexagon-pattern-dashed",
+  "type": "registry:example",
+  "title": "Hexagon Pattern Dashed",
+  "description": "Example showing a dashed hexagon pattern.",
+  "registryDependencies": [
+    "@magicui/hexagon-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hexagon-pattern-dashed.tsx",
+      "content": "\"use client\"\n\nimport { HexagonPattern } from \"@/registry/magicui/hexagon-pattern\"\n\nexport default function HexagonPatternDashed() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border p-20\">\n      <HexagonPattern radius={40} x={-1} y={-1} strokeDasharray=\"4 2\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

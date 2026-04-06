@@ -521,6 +521,12 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Hexagon Pattern",
+          href: `/docs/components/hexagon-pattern`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Striped Pattern",
           href: `/docs/components/striped-pattern`,
           items: [],
