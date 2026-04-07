@@ -244,7 +244,7 @@ export function HexagonPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-none stroke-gray-400/30",
+        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
         className
       )}
       {...props}
@@ -284,12 +284,7 @@ export function HexagonPattern({
       <rect width="100%" height="100%" fill={`url(#${id})`} stroke="none" />
 
       {hexagons && hexagons.length > 0 && (
-        <svg
-          aria-hidden="true"
-          className="overflow-visible fill-gray-400/30"
-          x={x}
-          y={y}
-        >
+        <svg aria-hidden="true" className="overflow-visible" x={x} y={y}>
           {hexagons.map(([col, row]) => {
             const [cx, cy] = hexCenter(col, row, radius, direction, gap)
             return (
