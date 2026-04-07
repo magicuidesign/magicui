@@ -213,6 +213,19 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "noise-texture",
+    type: "registry:ui",
+    title: "Noise Texture",
+    description:
+      "An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.",
+    files: [
+      {
+        path: "magicui/noise-texture.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "meteors",
     type: "registry:ui",
     title: "Meteors",
