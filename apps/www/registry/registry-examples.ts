@@ -365,7 +365,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Hexagon Pattern Spacing",
     description:
-      "Example showing a dashed hexagon pattern with extra spacing between cells.",
+      "Example showing a hexagon pattern with extra spacing between cells.",
     registryDependencies: ["@magicui/hexagon-pattern"],
     files: [
       {

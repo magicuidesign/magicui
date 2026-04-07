@@ -1700,7 +1700,7 @@ export const Index: Record<string, any> = {
   },
   "hexagon-pattern-spacing": {
     name: "hexagon-pattern-spacing",
-    description: "Example showing a dashed hexagon pattern with extra spacing between cells.",
+    description: "Example showing a hexagon pattern with extra spacing between cells.",
     type: "registry:example",
     registryDependencies: ["@magicui/hexagon-pattern"],
     files: [{
