@@ -8679,6 +8679,43 @@ function isSolidStrokeDasharray(strokeDasharray: string): boolean {
   return t === "" || t === "none" || t === "0"
 }
 
+function getHexSpacing(
+  r: number,
+  direction: "horizontal" | "vertical",
+  gap: number
+): {
+  colStep: number
+  rowStep: number
+  tileW: number
+  tileH: number
+} {
+  const sqrt3 = Math.sqrt(3)
+
+  // `gap` should match the visible edge-to-edge spacing, so we add it along
+  // the shared-edge normal instead of directly on the raw x/y axes.
+  if (direction === "horizontal") {
+    const colStep = (3 * r) / 2 + (sqrt3 * gap) / 2
+    const rowStep = sqrt3 * r + gap
+
+    return {
+      colStep,
+      rowStep,
+      tileW: colStep * 2,
+      tileH: rowStep,
+    }
+  }
+
+  const colStep = sqrt3 * r + gap
+  const rowStep = (3 * r) / 2 + (sqrt3 * gap) / 2
+
+  return {
+    colStep,
+    rowStep,
+    tileW: colStep,
+    tileH: rowStep * 2,
+  }
+}
+
 function getTileGeometry(
   r: number,
   direction: "horizontal" | "vertical",
@@ -8688,15 +8725,12 @@ function getTileGeometry(
   tileH: number
   centers: [number, number][]
 } {
-  const sqrt3 = Math.sqrt(3)
-
   if (direction === "horizontal") {
-    const tileW = 3 * r + gap
-    const tileH = r * sqrt3 + gap
+    const { colStep, rowStep, tileW, tileH } = getHexSpacing(r, direction, gap)
 
     const canonical: [number, number][] = [
-      [tileW / 4, tileH / 2],
-      [(tileW * 3) / 4, tileH],
+      [colStep / 2, rowStep / 2],
+      [(colStep * 3) / 2, rowStep],
     ]
 
     const centers: [number, number][] = []
@@ -8715,12 +8749,11 @@ function getTileGeometry(
 
     return { tileW, tileH, centers }
   } else {
-    const tileW = r * sqrt3 + gap
-    const tileH = 3 * r + gap
+    const { colStep, rowStep, tileW, tileH } = getHexSpacing(r, direction, gap)
 
     const canonical: [number, number][] = [
-      [tileW / 2, tileH / 4],
-      [tileW, (tileH * 3) / 4],
+      [colStep / 2, rowStep / 2],
+      [colStep, (rowStep * 3) / 2],
     ]
 
     const centers: [number, number][] = []
@@ -8748,19 +8781,15 @@ function hexCenter(
   direction: "horizontal" | "vertical",
   gap: number
 ): [number, number] {
-  const sqrt3 = Math.sqrt(3)
-
   if (direction === "horizontal") {
-    const tileW = 3 * r + gap
-    const tileH = r * sqrt3 + gap
-    const x = col * (tileW / 2) + tileW / 4
-    const y = row * tileH + tileH / 2 + (col % 2 !== 0 ? tileH / 2 : 0)
+    const { colStep, rowStep } = getHexSpacing(r, direction, gap)
+    const x = col * colStep + colStep / 2
+    const y = row * rowStep + rowStep / 2 + (col % 2 !== 0 ? rowStep / 2 : 0)
     return [x, y]
   } else {
-    const tileW = r * sqrt3 + gap
-    const tileH = 3 * r + gap
-    const x = col * tileW + tileW / 2 + (row % 2 !== 0 ? tileW / 2 : 0)
-    const y = row * (tileH / 2) + tileH / 4
+    const { colStep, rowStep } = getHexSpacing(r, direction, gap)
+    const x = col * colStep + colStep / 2 + (row % 2 !== 0 ? colStep / 2 : 0)
+    const y = row * rowStep + rowStep / 2
     return [x, y]
   }
 }
