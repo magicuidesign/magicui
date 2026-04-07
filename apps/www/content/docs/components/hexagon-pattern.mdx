@@ -1,0 +1,84 @@
+---
+title: Hexagon Pattern
+date: 2026-04-05
+description: A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="hexagon-pattern-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/hexagon-pattern
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="hexagon-pattern" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Linear Gradient
+
+<ComponentPreview name="hexagon-pattern-linear-gradient" />
+
+### Dashed Stroke
+
+<ComponentPreview name="hexagon-pattern-dashed" />
+
+### Spacing
+
+<ComponentPreview name="hexagon-pattern-spacing" />
+
+## Usage
+
+```tsx showLineNumbers
+import { HexagonPattern } from "@/components/ui/hexagon-pattern"
+```
+
+```tsx showLineNumbers
+<div className="relative h-[500px] w-full overflow-hidden">
+  <HexagonPattern />
+</div>
+```
+
+## Props
+
+### HexagonPattern
+
+| Prop              | Type                         | Default        | Description                                                               |
+| ----------------- | ---------------------------- | -------------- | ------------------------------------------------------------------------- |
+| `radius`          | `number`                     | `40`           | Radius from center to vertex for each hexagon                             |
+| `gap`             | `number`                     | `0`            | Extra spacing between adjacent hexagons (pixels)                          |
+| `x`               | `number`                     | `-1`           | X offset of the pattern origin                                            |
+| `y`               | `number`                     | `-1`           | Y offset of the pattern origin                                            |
+| `direction`       | `"horizontal" \| "vertical"` | `"horizontal"` | `horizontal` — flat-top honeycomb; `vertical` — pointy-top honeycomb      |
+| `hexagons`        | `Array<[col, row]>`          | —              | Grid coordinates of highlighted (filled) hexagons                         |
+| `strokeDasharray` | `string`                     | `"0"`          | SVG `stroke-dasharray` for outline hexagons in the repeating pattern      |
+| `className`       | `string`                     | —              | Additional classes on the root SVG (for example Tailwind color utilities) |
+
+Also accepts standard SVG attributes on the root `<svg>` (for example `aria-hidden`, `role`) where applicable.

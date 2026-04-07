@@ -34,6 +34,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Globe](https://magicui.design/docs/components/globe): An autorotating, interactive, and highly performant globe made using WebGL.
 - [Grid Pattern](https://magicui.design/docs/components/grid-pattern): A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Hero Video Dialog](https://magicui.design/docs/components/hero-video-dialog): A hero video dialog component.
+- [Hexagon Pattern](https://magicui.design/docs/components/hexagon-pattern): A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Highlighter](https://magicui.design/docs/components/highlighter): A text highlighter that mimics the effect of a human-drawn marker stroke.
 - [Hyper Text](https://magicui.design/docs/components/hyper-text): A text animation that scrambles letters before revealing the final text.
 - [Icon Cloud](https://magicui.design/docs/components/icon-cloud): An interactive 3D tag cloud component
@@ -104,6 +105,10 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Striped Pattern (Right)](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-right.tsx): Example usage
 - [Grid Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-linear-gradient.tsx): Example usage
 - [Grid Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-dashed.tsx): Example usage
+- [Hexagon Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/hexagon-pattern-demo.tsx): Example usage
+- [Hexagon Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/hexagon-pattern-linear-gradient.tsx): Example usage
+- [Hexagon Pattern Dashed](https://github.com/magicuidesign/magicui/blob/main/example/hexagon-pattern-dashed.tsx): Example usage
+- [Hexagon Pattern Spacing](https://github.com/magicuidesign/magicui/blob/main/example/hexagon-pattern-spacing.tsx): Example usage
 - [Dot Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-demo.tsx): Example usage
 - [Dot Pattern Linear Gradient](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-linear-gradient.tsx): Example usage
 - [Dot Pattern with glow effect](https://github.com/magicuidesign/magicui/blob/main/example/dot-pattern-with-glow-effect.tsx): Example usage

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hexagon-pattern-spacing",
+  "type": "registry:example",
+  "title": "Hexagon Pattern Spacing",
+  "description": "Example showing a hexagon pattern with extra spacing between cells.",
+  "registryDependencies": [
+    "@magicui/hexagon-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hexagon-pattern-spacing.tsx",
+      "content": "\"use client\"\n\nimport { HexagonPattern } from \"@/registry/magicui/hexagon-pattern\"\n\nexport default function HexagonPatternSpacing() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border p-20\">\n      <HexagonPattern gap={20} radius={40} x={-1} y={-1} />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

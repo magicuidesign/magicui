@@ -287,6 +287,18 @@
       ]
     },
     {
+      "name": "hexagon-pattern",
+      "type": "registry:ui",
+      "title": "Hexagon Pattern",
+      "description": "A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "files": [
+        {
+          "path": "registry/magicui/hexagon-pattern.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "striped-pattern",
       "type": "registry:ui",
       "title": "Striped Pattern",
@@ -1645,6 +1657,66 @@
       "files": [
         {
           "path": "registry/example/grid-pattern-dashed.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-pattern-demo",
+      "type": "registry:example",
+      "title": "Hexagon Pattern Demo",
+      "description": "Example showing a background hexagon pattern made with SVGs.",
+      "registryDependencies": [
+        "@magicui/hexagon-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hexagon-pattern-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-pattern-linear-gradient",
+      "type": "registry:example",
+      "title": "Hexagon Pattern Linear Gradient",
+      "description": "Example showing a hexagon pattern with linear gradient effects.",
+      "registryDependencies": [
+        "@magicui/hexagon-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hexagon-pattern-linear-gradient.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-pattern-dashed",
+      "type": "registry:example",
+      "title": "Hexagon Pattern Dashed",
+      "description": "Example showing a dashed hexagon pattern.",
+      "registryDependencies": [
+        "@magicui/hexagon-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hexagon-pattern-dashed.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-pattern-spacing",
+      "type": "registry:example",
+      "title": "Hexagon Pattern Spacing",
+      "description": "Example showing a hexagon pattern with extra spacing between cells.",
+      "registryDependencies": [
+        "@magicui/hexagon-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/hexagon-pattern-spacing.tsx",
           "type": "registry:example"
         }
       ]

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hexagon-pattern-linear-gradient",
+  "type": "registry:example",
+  "title": "Hexagon Pattern Linear Gradient",
+  "description": "Example showing a hexagon pattern with linear gradient effects.",
+  "registryDependencies": [
+    "@magicui/hexagon-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/hexagon-pattern-linear-gradient.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { HexagonPattern } from \"@/registry/magicui/hexagon-pattern\"\n\nexport default function HexagonPatternLinearGradient() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border p-20\">\n      <HexagonPattern\n        radius={40}\n        x={-1}\n        y={-1}\n        className={cn(\n          \"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]\"\n        )}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

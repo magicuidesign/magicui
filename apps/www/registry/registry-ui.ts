@@ -256,6 +256,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "hexagon-pattern",
+    type: "registry:ui",
+    title: "Hexagon Pattern",
+    description:
+      "A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.",
+    files: [
+      {
+        path: "magicui/hexagon-pattern.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "striped-pattern",
     type: "registry:ui",
     title: "Striped Pattern",
