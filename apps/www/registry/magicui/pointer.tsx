@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react"
 import {
   AnimatePresence,
-  HTMLMotionProps,
   motion,
   useMotionValue,
+  type HTMLMotionProps,
 } from "motion/react"
 
 import { cn } from "@/lib/utils"

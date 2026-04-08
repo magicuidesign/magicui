@@ -13243,7 +13243,7 @@ Description: A component that displays a pointer when hovering over an element
 import { useEffect, useRef, useState } from "react"
 import {
   AnimatePresence,
-  HTMLMotionProps,
+  type HTMLMotionProps,
   motion,
   useMotionValue,
 } from "motion/react"
