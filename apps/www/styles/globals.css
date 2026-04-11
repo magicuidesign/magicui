@@ -413,6 +413,7 @@
 @layer base {
   :root {
     @apply overflow-x-hidden overscroll-none;
+    --magicui-theme-toggle-vt-duration: 400ms;
   }
 
   * {
@@ -440,6 +441,11 @@
   ::view-transition-new(root) {
     animation: none;
     mix-blend-mode: normal;
+  }
+
+  /* Match theme-toggle clip duration (toggler sets --magicui-theme-toggle-vt-duration on each click). */
+  ::view-transition-group(root) {
+    animation-duration: var(--magicui-theme-toggle-vt-duration);
   }
 }
 

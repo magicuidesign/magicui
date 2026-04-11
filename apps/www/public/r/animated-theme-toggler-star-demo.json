@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-theme-toggler-star-demo",
+  "type": "registry:example",
+  "title": "Animated Theme Toggler — Star",
+  "description": "Theme transition with a star-shaped clip reveal.",
+  "registryDependencies": [
+    "@magicui/animated-theme-toggler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-theme-toggler-star-demo.tsx",
+      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nexport default function AnimatedThemeTogglerStarDemo() {\n  return (\n    <div className=\"flex justify-center p-6\">\n      <AnimatedThemeToggler animatedVariant=\"star\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
