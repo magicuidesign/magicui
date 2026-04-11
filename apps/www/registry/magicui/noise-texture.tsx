@@ -1,6 +1,6 @@
 "use client"
 
-import type { ComponentProps } from "react"
+import { useId, type ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -37,6 +37,8 @@ export const NoiseTexture = ({
   opacity = 0.4,
   ...props
 }: NoiseTextureProps) => {
+  const filterId = useId()
+
   return (
     <svg
       className={cn(
@@ -46,7 +48,7 @@ export const NoiseTexture = ({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <filter id="noise">
+      <filter id={filterId}>
         <feTurbulence
           type="fractalNoise"
           baseFrequency={frequency}
@@ -60,7 +62,12 @@ export const NoiseTexture = ({
           <feFuncB type="linear" slope={slope} />
         </feComponentTransfer>
       </filter>
-      <rect width="100%" height="100%" filter="url(#noise)" opacity={opacity} />
+      <rect
+        width="100%"
+        height="100%"
+        filter={`url(#${filterId})`}
+        opacity={opacity}
+      />
     </svg>
   )
 }
