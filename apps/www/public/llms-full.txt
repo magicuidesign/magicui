@@ -12383,7 +12383,7 @@ export interface NoiseTextureProps extends ComponentProps<"svg"> {
    * Opacity of the filled noise layer (`rect`).
    * @default 0.4
    */
-  opacity?: number
+  noiseOpacity?: number
 }
 
 export const NoiseTexture = ({
@@ -12391,7 +12391,7 @@ export const NoiseTexture = ({
   frequency = 0.5,
   octaves = 4,
   slope = 0.15,
-  opacity = 0.4,
+  noiseOpacity = 0.4,
   ...props
 }: NoiseTextureProps) => {
   const filterId = useId()
@@ -12423,7 +12423,7 @@ export const NoiseTexture = ({
         width="100%"
         height="100%"
         filter={`url(#${filterId})`}
-        opacity={opacity}
+        opacity={noiseOpacity}
       />
     </svg>
   )
