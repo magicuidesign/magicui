@@ -49,6 +49,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Meteors](https://magicui.design/docs/components/meteors): A meteor shower effect.
 - [Morphing Text](https://magicui.design/docs/components/morphing-text): A dynamic text morphing component for Magic UI.
 - [Neon Gradient Card](https://magicui.design/docs/components/neon-gradient-card): A beautiful neon card effect
+- [Noise Texture](https://magicui.design/docs/components/noise-texture): An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.
 - [Number Ticker](https://magicui.design/docs/components/number-ticker): Animate numbers to count up or down to a target number
 - [Orbiting Circles](https://magicui.design/docs/components/orbiting-circles): A collection of circles which move in orbit along a circular path
 - [Particles](https://magicui.design/docs/components/particles): Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
@@ -99,6 +100,10 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [smooth-cursor-demo](https://github.com/magicuidesign/magicui/blob/main/example/smooth-cursor-demo.tsx): Example usage
 - [Progressive Blur Demo](https://github.com/magicuidesign/magicui/blob/main/example/progressive-blur-demo.tsx): Example usage
 - [Neon Gradient Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/neon-gradient-card-demo.tsx): Example usage
+- [Noise Texture Demo](https://github.com/magicuidesign/magicui/blob/main/example/noise-texture-demo.tsx): Example usage
+- [Noise Texture Demo (newsletter card)](https://github.com/magicuidesign/magicui/blob/main/example/noise-texture-demo-2.tsx): Example usage
+- [Noise Texture Demo (button)](https://github.com/magicuidesign/magicui/blob/main/example/noise-texture-demo-3.tsx): Example usage
+- [Noise Texture Demo (input)](https://github.com/magicuidesign/magicui/blob/main/example/noise-texture-demo-4.tsx): Example usage
 - [Meteors Demo](https://github.com/magicuidesign/magicui/blob/main/example/meteors-demo.tsx): Example usage
 - [Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/grid-pattern-demo.tsx): Example usage
 - [Striped Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/striped-pattern-demo.tsx): Example usage

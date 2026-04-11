@@ -550,6 +550,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Noise Texture",
+          href: `/docs/components/noise-texture`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
