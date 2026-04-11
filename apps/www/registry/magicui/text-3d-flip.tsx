@@ -3,6 +3,7 @@
 import React, {
   memo,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   type ElementType,
@@ -83,9 +84,19 @@ const Text3DFlip = ({
   ...props
 }: Text3DFlipProps) => {
   const isAnimatingRef = useRef(false)
+  const isMountedRef = useRef(false)
   const [scope, animate] = useAnimate()
 
   const rotationTransform = ROTATION_MAP[rotateDirection]
+
+  useEffect(() => {
+    isMountedRef.current = true
+
+    return () => {
+      isMountedRef.current = false
+      isAnimatingRef.current = false
+    }
+  }, [])
 
   const text = useMemo(() => {
     try {
@@ -133,31 +144,37 @@ const Text3DFlip = ({
     if (isAnimatingRef.current) return
     isAnimatingRef.current = true
 
-    const totalChars = characters.reduce(
-      (sum, word) => sum + word.characters.length,
-      0
-    )
+    try {
+      const totalChars = characters.reduce(
+        (sum, word) => sum + word.characters.length,
+        0
+      )
 
-    const delays = Array.from({ length: totalChars }, (_, i) =>
-      getStaggerDelay(i, totalChars)
-    )
+      const delays = Array.from({ length: totalChars }, (_, i) =>
+        getStaggerDelay(i, totalChars)
+      )
 
-    await animate(
-      ".text-3d-flip-char",
-      { transform: rotationTransform },
-      {
-        ...transition,
-        delay: (i: number) => delays[i],
+      await animate(
+        ".text-3d-flip-char",
+        { transform: rotationTransform },
+        {
+          ...transition,
+          delay: (i: number) => delays[i],
+        }
+      )
+
+      if (!isMountedRef.current) return
+
+      await animate(
+        ".text-3d-flip-char",
+        { transform: "rotateX(0deg) rotateY(0deg)" },
+        { duration: 0 }
+      )
+    } finally {
+      if (isMountedRef.current) {
+        isAnimatingRef.current = false
       }
-    )
-
-    await animate(
-      ".text-3d-flip-char",
-      { transform: "rotateX(0deg) rotateY(0deg)" },
-      { duration: 0 }
-    )
-
-    isAnimatingRef.current = false
+    }
   }, [characters, transition, getStaggerDelay, rotationTransform, animate])
 
   return (
