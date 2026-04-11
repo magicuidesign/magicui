@@ -1983,4 +1983,31 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "text-3d-flip-demo",
+    type: "registry:example",
+    title: "Text 3D Flip Demo",
+    description:
+      "Example showing a 3D text animation that rotates each letter on hover.",
+    registryDependencies: ["@magicui/text-3d-flip"],
+    files: [
+      {
+        path: "example/text-3d-flip-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "text-3d-flip-demo-2",
+    type: "registry:example",
+    title: "Text 3D Flip Demo 2",
+    description: "Example showing a 3D text flip with stagger from center.",
+    registryDependencies: ["@magicui/text-3d-flip"],
+    files: [
+      {
+        path: "example/text-3d-flip-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
