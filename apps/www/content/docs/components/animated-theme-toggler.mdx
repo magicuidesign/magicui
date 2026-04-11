@@ -42,6 +42,14 @@ npx shadcn@latest add @magicui/animated-theme-toggler
   animation: none;
   mix-blend-mode: normal;
 }
+
+/* Keep the view-transition group on screen as long as the clip-path animation (the toggler sets --magicui-theme-toggle-vt-duration on each click). */
+:root {
+  --magicui-theme-toggle-vt-duration: 400ms;
+}
+::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration);
+}
 ```
 
 </Steps>
@@ -60,13 +68,40 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 <AnimatedThemeToggler />
 ```
 
+Use `animatedVariant` to change the clip-path shape of the view transition (circle, diamond, rectangle, hexagon, or star):
+
+```tsx showLineNumbers
+<AnimatedThemeToggler animatedVariant="star" />
+```
+
+## Examples
+
+The preview at the top of this page uses the default **circle** reveal. Below, each variant has its own isolated preview so you can test one shape at a time.
+
+### Diamond
+
+<ComponentPreview name="animated-theme-toggler-diamond-demo" />
+
+### Rectangle
+
+<ComponentPreview name="animated-theme-toggler-rectangle-demo" />
+
+### Hexagon
+
+<ComponentPreview name="animated-theme-toggler-hexagon-demo" />
+
+### Star
+
+<ComponentPreview name="animated-theme-toggler-star-demo" />
+
 ## Props
 
-| Prop        | Type     | Default | Description                                                |
-| ----------- | -------- | ------- | ---------------------------------------------------------- |
-| `className` | `String` | " "     | Additional classes to be added to the component            |
-| `duration`  | `Number` | `400`   | Duration of the theme transition animation in milliseconds |
+| Prop               | Type                                                                                    | Default     | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------- |
+| `className`        | `String`                                                                                | —           | Additional classes to be added to the component                           |
+| `duration`         | `Number`                                                                                | `400`       | Duration of the theme transition animation in milliseconds                  |
+| `animatedVariant`  | `"circle" \| "diamond" \| "rectangle" \| "hexagon" \| "star"`                          | `"circle"`  | Shape used for the view-transition clip-path reveal                         |
 
 ## Credits
 
-- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app)
+- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app) and [chishiyac](https://github.com/chishiyac)

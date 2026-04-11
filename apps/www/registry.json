@@ -3481,6 +3481,66 @@
       ]
     },
     {
+      "name": "animated-theme-toggler-diamond-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Diamond",
+      "description": "Theme transition with a diamond-shaped clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-diamond-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-rectangle-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Rectangle",
+      "description": "Theme transition with a rectangle clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-rectangle-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-hexagon-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Hexagon",
+      "description": "Theme transition with a hexagon clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-hexagon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-star-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Star",
+      "description": "Theme transition with a star-shaped clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-star-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "light-rays-demo",
       "type": "registry:example",
       "description": "Demo of the light-rays component showcasing animated light rays",
