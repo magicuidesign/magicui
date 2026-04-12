@@ -1,7 +1,7 @@
 ---
 title: Theme Toggler
 date: 2025-08-17
-description: An Animated theme toggler component, fully customizable using Tailwind CSS.
+description: Animated theme toggle using the View Transitions API with configurable clip-path shapes and origin.
 author: Nazam Kalsi
 published: true
 ---
@@ -68,10 +68,16 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 <AnimatedThemeToggler />
 ```
 
-Use `animatedVariant` to change the clip-path shape of the view transition (circle, diamond, rectangle, hexagon, or star):
+Use `animatedVariant` to change the clip-path shape of the view transition (`circle`, `square`, `triangle`, `diamond`, `rectangle`, `hexagon`, or `star`):
 
 ```tsx showLineNumbers
 <AnimatedThemeToggler animatedVariant="star" />
+```
+
+The optional `variant` prop is an alias for `animatedVariant` (same values). Expand from the viewport center instead of the button with `fromCenter`:
+
+```tsx showLineNumbers
+<AnimatedThemeToggler animatedVariant="hexagon" duration={600} fromCenter />
 ```
 
 ## Examples
@@ -96,12 +102,16 @@ The preview at the top of this page uses the default **circle** reveal. Below, e
 
 ## Props
 
-| Prop               | Type                                                                                    | Default     | Description                                                                 |
-| ------------------ | --------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------- |
-| `className`        | `String`                                                                                | —           | Additional classes to be added to the component                           |
-| `duration`         | `Number`                                                                                | `400`       | Duration of the theme transition animation in milliseconds                  |
-| `animatedVariant`  | `"circle" \| "diamond" \| "rectangle" \| "hexagon" \| "star"`                          | `"circle"`  | Shape used for the view-transition clip-path reveal                         |
+| Prop              | Type                 | Default     | Description                                                                 |
+| ----------------- | -------------------- | ----------- | --------------------------------------------------------------------------- |
+| `className`       | `string`             | —           | Additional classes for the button                                         |
+| `duration`        | `number`             | `400`       | Duration of the theme transition animation in milliseconds                  |
+| `animatedVariant` | `TransitionVariant`  | `"circle"`  | Shape used for the view-transition clip-path reveal                       |
+| `variant`         | `TransitionVariant`  | —           | Alias for `animatedVariant` (if both are set, `variant` wins)               |
+| `fromCenter`      | `boolean`            | `false`     | If true, the clip expands from the viewport center instead of the button  |
+
+Export `TransitionVariant` from the same module when you need typed props or menus.
 
 ## Credits
 
-- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app) and [chishiyac](https://github.com/chishiyac)
+- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app), [chishiyac](https://github.com/chishiyac), [dikshantgulekar20-oss](https://github.com/dikshantgulekar20-oss)

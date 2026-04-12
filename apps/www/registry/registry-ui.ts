@@ -1188,7 +1188,8 @@ export const ui: Registry["items"] = [
     name: "animated-theme-toggler",
     type: "registry:ui",
     title: "Theme Toggler",
-    description: "A component for theme changing animation.",
+    description:
+      "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
     dependencies: ["lucide-react"],
     files: [
       {

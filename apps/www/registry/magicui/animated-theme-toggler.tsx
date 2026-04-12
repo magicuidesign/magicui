@@ -8,11 +8,25 @@ import { cn } from "@/lib/utils"
 
 const VT_GROUP_STYLE_ID = "magicui-animated-theme-toggler-vt-group"
 
-export type Variant = "circle" | "diamond" | "hexagon" | "rectangle" | "star"
+export type TransitionVariant =
+  | "circle"
+  | "square"
+  | "triangle"
+  | "diamond"
+  | "hexagon"
+  | "rectangle"
+  | "star"
+
+/** @deprecated Use `TransitionVariant` instead. */
+export type Variant = TransitionVariant
 
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number
-  animatedVariant?: Variant
+  animatedVariant?: TransitionVariant
+  /** Same as `animatedVariant` — provided for convenience when copying examples that use `variant`. */
+  variant?: TransitionVariant
+  /** When true, the transition expands from the viewport center instead of the button center. */
+  fromCenter?: boolean
 }
 
 function polygonCollapsed(cx: number, cy: number, vertexCount: number): string {
@@ -39,7 +53,7 @@ function ensureViewTransitionGroupDurationStyle() {
 }
 
 function getThemeTransitionClipPaths(
-  variant: Variant,
+  variant: TransitionVariant,
   cx: number,
   cy: number,
   maxRadius: number,
@@ -52,6 +66,28 @@ function getThemeTransitionClipPaths(
         `circle(0px at ${cx}px ${cy}px)`,
         `circle(${maxRadius}px at ${cx}px ${cy}px)`,
       ]
+    case "square": {
+      const halfW = Math.max(cx, viewportWidth - cx)
+      const halfH = Math.max(cy, viewportHeight - cy)
+      const halfSide = Math.max(halfW, halfH) * 1.05
+      const end = [
+        `${cx - halfSide}px ${cy - halfSide}px`,
+        `${cx + halfSide}px ${cy - halfSide}px`,
+        `${cx + halfSide}px ${cy + halfSide}px`,
+        `${cx - halfSide}px ${cy + halfSide}px`,
+      ].join(", ")
+      return [polygonCollapsed(cx, cy, 4), `polygon(${end})`]
+    }
+    case "triangle": {
+      const scale = maxRadius * 2.2
+      const dx = (Math.sqrt(3) / 2) * scale
+      const verts = [
+        `${cx}px ${cy - scale}px`,
+        `${cx + dx}px ${cy + 0.5 * scale}px`,
+        `${cx - dx}px ${cy + 0.5 * scale}px`,
+      ].join(", ")
+      return [polygonCollapsed(cx, cy, 3), `polygon(${verts})`]
+    }
     case "diamond": {
       // Slightly larger than the view-transition circle radius so axis-aligned coverage matches the circle reveal.
       const R = maxRadius * Math.SQRT2
@@ -115,9 +151,12 @@ function getThemeTransitionClipPaths(
 export const AnimatedThemeToggler = ({
   className,
   duration = 400,
-  animatedVariant = "circle",
+  animatedVariant,
+  variant,
+  fromCenter = false,
   ...props
 }: AnimatedThemeTogglerProps) => {
+  const shape = variant ?? animatedVariant ?? "circle"
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -141,11 +180,20 @@ export const AnimatedThemeToggler = ({
     const button = buttonRef.current
     if (!button) return
 
-    const { top, left, width, height } = button.getBoundingClientRect()
-    const x = left + width / 2
-    const y = top + height / 2
     const viewportWidth = window.visualViewport?.width ?? window.innerWidth
     const viewportHeight = window.visualViewport?.height ?? window.innerHeight
+
+    let x: number
+    let y: number
+    if (fromCenter) {
+      x = viewportWidth / 2
+      y = viewportHeight / 2
+    } else {
+      const { top, left, width, height } = button.getBoundingClientRect()
+      x = left + width / 2
+      y = top + height / 2
+    }
+
     const maxRadius = Math.hypot(
       Math.max(x, viewportWidth - x),
       Math.max(y, viewportHeight - y)
@@ -176,7 +224,7 @@ export const AnimatedThemeToggler = ({
     const ready = transition?.ready
     if (ready && typeof ready.then === "function") {
       const clipPath = getThemeTransitionClipPaths(
-        animatedVariant,
+        shape,
         x,
         y,
         maxRadius,
@@ -191,14 +239,14 @@ export const AnimatedThemeToggler = ({
           {
             duration,
             // Star: linear avoids easing overshoot that fights polygon interpolation at t→1; VT group duration is synced above.
-            easing: animatedVariant === "star" ? "linear" : "ease-in-out",
+            easing: shape === "star" ? "linear" : "ease-in-out",
             fill: "forwards",
             pseudoElement: "::view-transition-new(root)",
           }
         )
       })
     }
-  }, [animatedVariant, duration, isDark])
+  }, [shape, fromCenter, duration, isDark])
 
   return (
     <button

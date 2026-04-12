@@ -1173,7 +1173,7 @@ export const Index: Record<string, any> = {
   },
   "animated-theme-toggler": {
     name: "animated-theme-toggler",
-    description: "A component for theme changing animation.",
+    description: "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
