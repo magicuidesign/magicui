@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/noise-texture-demo.tsx",
-      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { NoiseTexture } from \"@/registry/magicui/noise-texture\"\n\nexport default function NoiseTextureDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-neutral-100 dark:bg-neutral-950\">\n      <NoiseTexture\n        className={cn(\n          \"absolute inset-0\",\n          \"mask-[radial-gradient(420px_circle_at_center,white,transparent)]\"\n        )}\n      />\n    </div>\n  )\n}\n",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { NoiseTexture } from \"@/registry/magicui/noise-texture\"\n\nexport default function NoiseTextureDemo() {\n  return (\n    <div className=\"relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-neutral-100/80 dark:bg-neutral-950\">\n      <NoiseTexture\n        className={cn(\n          \"absolute inset-0\",\n          \"mask-[radial-gradient(420px_circle_at_center,white,transparent)]\"\n        )}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

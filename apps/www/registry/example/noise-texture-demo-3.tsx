@@ -10,7 +10,10 @@ export default function NoiseTextureDemo3() {
         variant="secondary"
       >
         <span className="relative z-10 font-medium">Subscribe</span>
-        <NoiseTexture className="transition-all group-hover/button:opacity-100" />
+        <NoiseTexture
+          noiseOpacity={0.45}
+          className="transition-all group-hover/button:opacity-100"
+        />
       </Button>
     </div>
   )

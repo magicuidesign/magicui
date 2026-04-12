@@ -9,7 +9,7 @@ export default function NoiseTextureDemo4() {
         Search with texture
       </Label>
       <div className="bg-muted/30 relative overflow-hidden rounded-lg border">
-        <NoiseTexture />
+        <NoiseTexture noiseOpacity={0.45} />
         <Input
           className="relative z-10 border-0 bg-transparent shadow-none focus-visible:ring-2"
           id="noise-input-demo"

@@ -12366,12 +12366,12 @@ export interface NoiseTextureProps extends ComponentProps<"svg"> {
   className?: string
   /**
    * `baseFrequency` for `feTurbulence`; higher values yield finer-grained noise.
-   * @default 0.5
+   * @default 0.4
    */
   frequency?: number
   /**
    * `numOctaves` for `feTurbulence`; more octaves add detail at smaller scales.
-   * @default 4
+   * @default 6
    */
   octaves?: number
   /**
@@ -12381,17 +12381,17 @@ export interface NoiseTextureProps extends ComponentProps<"svg"> {
   slope?: number
   /**
    * Opacity of the filled noise layer (`rect`).
-   * @default 0.4
+   * @default 0.6
    */
   noiseOpacity?: number
 }
 
 export const NoiseTexture = ({
   className,
-  frequency = 0.5,
-  octaves = 4,
+  frequency = 0.4,
+  octaves = 6,
   slope = 0.15,
-  noiseOpacity = 0.4,
+  noiseOpacity = 0.6,
   ...props
 }: NoiseTextureProps) => {
   const filterId = useId()
@@ -12399,7 +12399,7 @@ export const NoiseTexture = ({
   return (
     <svg
       className={cn(
-        "pointer-events-none absolute inset-0 z-0 size-full opacity-50 select-none",
+        "pointer-events-none absolute inset-0 z-0 size-full opacity-50 select-none dark:opacity-[0.75]",
         className
       )}
       xmlns="http://www.w3.org/2000/svg"
@@ -12441,7 +12441,7 @@ import { NoiseTexture } from "@/registry/magicui/noise-texture"
 
 export default function NoiseTextureDemo() {
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-neutral-100 dark:bg-neutral-950">
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-neutral-100/80 dark:bg-neutral-950">
       <NoiseTexture
         className={cn(
           "absolute inset-0",
@@ -12472,8 +12472,8 @@ import { NoiseTexture } from "@/registry/magicui/noise-texture"
 export default function NoiseTextureDemo2() {
   return (
     <div className="flex justify-center p-4">
-      <Card className="bg-card relative w-full max-w-md overflow-hidden border">
-        <NoiseTexture />
+      <Card className="bg-card/80 relative w-full max-w-md overflow-hidden border">
+        <NoiseTexture noiseOpacity={0.45} />
         <CardHeader className="relative z-10 space-y-1 pb-4">
           <CardTitle className="text-xl">The weekly digest</CardTitle>
           <CardDescription>
@@ -12517,7 +12517,10 @@ export default function NoiseTextureDemo3() {
         variant="secondary"
       >
         <span className="relative z-10 font-medium">Subscribe</span>
-        <NoiseTexture className="transition-all group-hover/button:opacity-100" />
+        <NoiseTexture
+          noiseOpacity={0.45}
+          className="transition-all group-hover/button:opacity-100"
+        />
       </Button>
     </div>
   )
@@ -12539,7 +12542,7 @@ export default function NoiseTextureDemo4() {
         Search with texture
       </Label>
       <div className="bg-muted/30 relative overflow-hidden rounded-lg border">
-        <NoiseTexture />
+        <NoiseTexture noiseOpacity={0.45} />
         <Input
           className="relative z-10 border-0 bg-transparent shadow-none focus-visible:ring-2"
           id="noise-input-demo"

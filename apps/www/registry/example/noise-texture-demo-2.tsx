@@ -13,8 +13,8 @@ import { NoiseTexture } from "@/registry/magicui/noise-texture"
 export default function NoiseTextureDemo2() {
   return (
     <div className="flex justify-center p-4">
-      <Card className="bg-card relative w-full max-w-md overflow-hidden border">
-        <NoiseTexture />
+      <Card className="bg-card/80 relative w-full max-w-md overflow-hidden border">
+        <NoiseTexture noiseOpacity={0.45} />
         <CardHeader className="relative z-10 space-y-1 pb-4">
           <CardTitle className="text-xl">The weekly digest</CardTitle>
           <CardDescription>
