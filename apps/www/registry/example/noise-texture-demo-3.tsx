@@ -5,7 +5,7 @@ export default function NoiseTextureDemo3() {
   return (
     <div className="flex justify-center p-8">
       <Button
-        className="relative cursor-pointer overflow-hidden px-8 active:scale-98"
+        className="group/button relative cursor-pointer overflow-hidden px-8 active:scale-98"
         type="button"
         variant="secondary"
       >
