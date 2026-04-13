@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-texture-demo-2",
+  "type": "registry:example",
+  "title": "Noise Texture Demo (newsletter card)",
+  "description": "Example showing a newsletter signup card with email input over a noise texture.",
+  "registryDependencies": [
+    "@magicui/noise-texture",
+    "button",
+    "card",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/example/noise-texture-demo-2.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { Input } from \"@/components/ui/input\"\nimport { Label } from \"@/components/ui/label\"\nimport { NoiseTexture } from \"@/registry/magicui/noise-texture\"\n\nexport default function NoiseTextureDemo2() {\n  return (\n    <div className=\"flex justify-center p-4\">\n      <Card className=\"bg-card/80 relative w-full max-w-md overflow-hidden border\">\n        <NoiseTexture noiseOpacity={0.45} />\n        <CardHeader className=\"relative z-10 space-y-1 pb-4\">\n          <CardTitle className=\"text-xl\">The weekly digest</CardTitle>\n          <CardDescription>\n            One email on Sundays—new components, tips, and changelog highlights.\n            No spam, unsubscribe anytime.\n          </CardDescription>\n        </CardHeader>\n        <CardContent className=\"relative z-10 space-y-4 pt-0\">\n          <div className=\"space-y-2\">\n            <Label htmlFor=\"newsletter-email\">Email</Label>\n            <Input\n              id=\"newsletter-email\"\n              autoComplete=\"email\"\n              placeholder=\"you@company.com\"\n              type=\"email\"\n            />\n          </div>\n          <Button className=\"w-full\" type=\"button\">\n            Subscribe\n          </Button>\n        </CardContent>\n      </Card>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

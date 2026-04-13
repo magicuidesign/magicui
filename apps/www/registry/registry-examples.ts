@@ -225,6 +225,68 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "noise-texture-demo",
+    type: "registry:example",
+    title: "Noise Texture Demo",
+    description:
+      "Example showing the SVG noise texture in a framed panel with a radial mask.",
+    registryDependencies: ["@magicui/noise-texture"],
+    files: [
+      {
+        path: "example/noise-texture-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "noise-texture-demo-2",
+    type: "registry:example",
+    title: "Noise Texture Demo (newsletter card)",
+    description:
+      "Example showing a newsletter signup card with email input over a noise texture.",
+    registryDependencies: [
+      "@magicui/noise-texture",
+      "button",
+      "card",
+      "input",
+      "label",
+    ],
+    files: [
+      {
+        path: "example/noise-texture-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "noise-texture-demo-3",
+    type: "registry:example",
+    title: "Noise Texture Demo (button)",
+    description:
+      "Example showing NoiseTexture behind a button label inside a relative button.",
+    registryDependencies: ["@magicui/noise-texture", "button"],
+    files: [
+      {
+        path: "example/noise-texture-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "noise-texture-demo-4",
+    type: "registry:example",
+    title: "Noise Texture Demo (input)",
+    description:
+      "Example showing a labeled input field with NoiseTexture filling the input container.",
+    registryDependencies: ["@magicui/noise-texture", "input", "label"],
+    files: [
+      {
+        path: "example/noise-texture-demo-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "meteors-demo",
     type: "registry:example",
     title: "Meteors Demo",
