@@ -1195,7 +1195,7 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    dependencies: ["rough-notation"],
+    dependencies: ["motion", "rough-notation"],
   },
   {
     name: "animated-theme-toggler",

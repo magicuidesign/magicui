@@ -1231,6 +1231,7 @@
       "title": "Highlighter",
       "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
       "dependencies": [
+        "motion",
         "rough-notation"
       ],
       "files": [
@@ -3543,6 +3544,7 @@
       "title": "Highlighter Demo",
       "description": "Example showing the demo of a Highlighter",
       "dependencies": [
+        "motion",
         "rough-notation"
       ],
       "registryDependencies": [

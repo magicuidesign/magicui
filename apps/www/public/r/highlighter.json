@@ -5,6 +5,7 @@
   "title": "Highlighter",
   "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
   "dependencies": [
+    "motion",
     "rough-notation"
   ],
   "files": [

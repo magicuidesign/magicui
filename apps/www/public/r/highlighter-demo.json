@@ -5,6 +5,7 @@
   "title": "Highlighter Demo",
   "description": "Example showing the demo of a Highlighter",
   "dependencies": [
+    "motion",
     "rough-notation"
   ],
   "registryDependencies": [
