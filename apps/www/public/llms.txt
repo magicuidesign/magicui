@@ -25,6 +25,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
+- [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
@@ -158,6 +159,10 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated Beam Multiple Inputs](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-multiple-inputs.tsx): Example usage
 - [Animated Beam Multiple Outputs](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-multiple-outputs.tsx): Example usage
 - [Text Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-reveal-demo.tsx): Example usage
+- [Dia Text Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo.tsx): Example usage
+- [Dia Text Reveal Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo-2.tsx): Example usage
+- [Dia Text Reveal Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo-3.tsx): Example usage
+- [Dia Text Reveal Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo-4.tsx): Example usage
 - [Animated Gradient Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-gradient-text-demo.tsx): Example usage
 - [Animated Gradient Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/animated-gradient-text-demo-2.tsx): Example usage
 - [Orbiting Circles Demo](https://github.com/magicuidesign/magicui/blob/main/example/orbiting-circles-demo.tsx): Example usage

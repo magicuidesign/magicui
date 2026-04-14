@@ -676,6 +676,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "dia-text-reveal",
+    type: "registry:ui",
+    title: "Dia Text Reveal",
+    description:
+      "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+    files: [
+      {
+        path: "magicui/dia-text-reveal.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "hyper-text",
     type: "registry:ui",
     title: "Hyper Text",
