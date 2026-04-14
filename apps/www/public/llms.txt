@@ -42,6 +42,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Highlighter](https://magicui.design/docs/components/highlighter): A text highlighter that mimics the effect of a human-drawn marker stroke.
 - [Hyper Text](https://magicui.design/docs/components/hyper-text): A text animation that scrambles letters before revealing the final text.
 - [Icon Cloud](https://magicui.design/docs/components/icon-cloud): An interactive 3D tag cloud component
+- [Ink Reveal](https://magicui.design/docs/components/ink-reveal): A spreading ink stain that reveals content as it scrolls into view.
 - [Interactive Grid Pattern](https://magicui.design/docs/components/interactive-grid-pattern): A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [interactive-hover-button](https://magicui.design/docs/components/interactive-hover-button): The interactive-hover-button component.
 - [iPhone](https://magicui.design/docs/components/iphone): A mockup of the iPhone
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Ink Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/ink-reveal-demo.tsx): Example usage
+- [Ink Reveal Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/ink-reveal-demo-2.tsx): Example usage
+- [Ink Reveal Demo 3](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/ink-reveal-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage

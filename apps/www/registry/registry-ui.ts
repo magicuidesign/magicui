@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "ink-reveal",
+    type: "registry:ui",
+    title: "Ink Reveal",
+    description:
+      "A spreading ink stain that reveals content as it scrolls into view.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/ink-reveal.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
