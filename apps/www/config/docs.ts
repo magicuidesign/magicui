@@ -279,6 +279,12 @@ export const docsConfig: DocsConfig = {
       title: "Special Effects",
       items: [
         {
+          title: "Ink Reveal",
+          href: "/docs/components/ink-reveal",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Animated Beam",
           href: `/docs/components/animated-beam`,
           items: [],
