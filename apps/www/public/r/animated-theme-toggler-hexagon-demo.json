@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/animated-theme-toggler-hexagon-demo.tsx",
-      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nexport default function AnimatedThemeTogglerHexagonDemo() {\n  return (\n    <div className=\"flex justify-center p-6\">\n      <AnimatedThemeToggler animatedVariant=\"hexagon\" />\n    </div>\n  )\n}\n",
+      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nexport default function AnimatedThemeTogglerHexagonDemo() {\n  return (\n    <div className=\"flex justify-center p-6\">\n      <AnimatedThemeToggler variant=\"hexagon\" />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]

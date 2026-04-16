@@ -36,6 +36,8 @@ npx shadcn@latest add @magicui/animated-theme-toggler
 
 <Step>Add the required CSS into your global CSS file</Step>
 
+The component sets `--magicui-theme-toggle-vt-duration` on each click so the clip-path animation stays in sync with the view-transition group. **You must include the rules below** (including `::view-transition-group(root)`) so that variable actually controls the group duration; without it, the reveal and the transition can fall out of sync.
+
 ```css title="app/globals.css" showLineNumbers
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -68,16 +70,16 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 <AnimatedThemeToggler />
 ```
 
-Use `animatedVariant` to change the clip-path shape of the view transition (`circle`, `square`, `triangle`, `diamond`, `rectangle`, `hexagon`, or `star`):
+Use `variant` to change the clip-path shape of the view transition (`circle`, `square`, `triangle`, `diamond`, `rectangle`, `hexagon`, or `star`):
 
 ```tsx showLineNumbers
-<AnimatedThemeToggler animatedVariant="star" />
+<AnimatedThemeToggler variant="star" />
 ```
 
-The optional `variant` prop is an alias for `animatedVariant` (same values). Expand from the viewport center instead of the button with `fromCenter`:
+Expand from the viewport center instead of the button with `fromCenter`:
 
 ```tsx showLineNumbers
-<AnimatedThemeToggler animatedVariant="hexagon" duration={600} fromCenter />
+<AnimatedThemeToggler variant="hexagon" duration={600} fromCenter />
 ```
 
 ## Examples
@@ -96,6 +98,10 @@ The preview at the top of this page uses the default **circle** reveal. Below, e
 
 <ComponentPreview name="animated-theme-toggler-hexagon-demo" />
 
+### Triangle
+
+<ComponentPreview name="animated-theme-toggler-triangle-demo" />
+
 ### Star
 
 <ComponentPreview name="animated-theme-toggler-star-demo" />
@@ -106,8 +112,7 @@ The preview at the top of this page uses the default **circle** reveal. Below, e
 | ----------------- | ------------------- | ---------- | ------------------------------------------------------------------------ |
 | `className`       | `string`            | —          | Additional classes for the button                                        |
 | `duration`        | `number`            | `400`      | Duration of the theme transition animation in milliseconds               |
-| `animatedVariant` | `TransitionVariant` | `"circle"` | Shape used for the view-transition clip-path reveal                      |
-| `variant`         | `TransitionVariant` | —          | Alias for `animatedVariant` (if both are set, `variant` wins)            |
+| `variant`         | `TransitionVariant` | `"circle"` | Shape used for the view-transition clip-path reveal                      |
 | `fromCenter`      | `boolean`           | `false`    | If true, the clip expands from the viewport center instead of the button |
 
 Export `TransitionVariant` from the same module when you need typed props or menus.

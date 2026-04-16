@@ -3725,6 +3725,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-theme-toggler-triangle-demo": {
+    name: "animated-theme-toggler-triangle-demo",
+    description: "Theme transition with a triangle clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-triangle-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-triangle-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "animated-theme-toggler-star-demo": {
     name: "animated-theme-toggler-star-demo",
     description: "Theme transition with a star-shaped clip reveal.",

@@ -1934,6 +1934,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "animated-theme-toggler-triangle-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Triangle",
+    description: "Theme transition with a triangle clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-triangle-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "animated-theme-toggler-star-demo",
     type: "registry:example",
     title: "Animated Theme Toggler — Star",

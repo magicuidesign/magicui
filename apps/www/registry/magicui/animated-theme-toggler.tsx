@@ -6,8 +6,6 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
-const VT_GROUP_STYLE_ID = "magicui-animated-theme-toggler-vt-group"
-
 export type TransitionVariant =
   | "circle"
   | "square"
@@ -17,13 +15,8 @@ export type TransitionVariant =
   | "rectangle"
   | "star"
 
-/** @deprecated Use `TransitionVariant` instead. */
-export type Variant = TransitionVariant
-
 interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number
-  animatedVariant?: TransitionVariant
-  /** Same as `animatedVariant` — provided for convenience when copying examples that use `variant`. */
   variant?: TransitionVariant
   /** When true, the transition expands from the viewport center instead of the button center. */
   fromCenter?: boolean
@@ -35,21 +28,6 @@ function polygonCollapsed(cx: number, cy: number, vertexCount: number): string {
     () => `${cx}px ${cy}px`
   ).join(", ")
   return `polygon(${pairs})`
-}
-
-function ensureViewTransitionGroupDurationStyle() {
-  if (document.getElementById(VT_GROUP_STYLE_ID)) {
-    return
-  }
-  const el = document.createElement("style")
-  el.id = VT_GROUP_STYLE_ID
-  el.textContent = `
-:root { --magicui-theme-toggle-vt-duration: 400ms; }
-::view-transition-group(root) {
-  animation-duration: var(--magicui-theme-toggle-vt-duration);
-}
-`.trim()
-  document.head.appendChild(el)
 }
 
 function getThemeTransitionClipPaths(
@@ -151,12 +129,11 @@ function getThemeTransitionClipPaths(
 export const AnimatedThemeToggler = ({
   className,
   duration = 400,
-  animatedVariant,
   variant,
   fromCenter = false,
   ...props
 }: AnimatedThemeTogglerProps) => {
-  const shape = variant ?? animatedVariant ?? "circle"
+  const shape = variant ?? "circle"
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
@@ -211,7 +188,6 @@ export const AnimatedThemeToggler = ({
       return
     }
 
-    ensureViewTransitionGroupDurationStyle()
     document.documentElement.style.setProperty(
       "--magicui-theme-toggle-vt-duration",
       `${duration}ms`
