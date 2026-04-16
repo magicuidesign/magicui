@@ -1321,6 +1321,18 @@
       ]
     },
     {
+      "name": "click-spark",
+      "type": "registry:ui",
+      "title": "Click Spark",
+      "description": "A component that creates a spark effect when clicked.",
+      "files": [
+        {
+          "path": "registry/magicui/click-spark.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3706,6 +3718,22 @@
       "files": [
         {
           "path": "registry/example/text-3d-flip-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "click-spark-demo",
+      "type": "registry:example",
+      "title": "Click Spark Demo",
+      "description": "Example showing a spark effect when clicked.",
+      "registryDependencies": [
+        "@magicui/click-spark",
+        "@magicui/dot-pattern"
+      ],
+      "files": [
+        {
+          "path": "registry/example/click-spark-demo.tsx",
           "type": "registry:example"
         }
       ]

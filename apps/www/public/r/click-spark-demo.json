@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "click-spark-demo",
+  "type": "registry:example",
+  "title": "Click Spark Demo",
+  "description": "Example showing a spark effect when clicked.",
+  "registryDependencies": [
+    "@magicui/click-spark",
+    "@magicui/dot-pattern"
+  ],
+  "files": [
+    {
+      "path": "registry/example/click-spark-demo.tsx",
+      "content": "import { ClickSpark } from \"@/registry/magicui/click-spark\"\n\nexport default function ClickSparkDemo() {\n  return (\n    <div className=\"bg-background relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-xl md:shadow-2xl\">\n      <ClickSpark\n        sparkColor=\"#a1a1aa\"\n        sparkSize={8}\n        sparkRadius={20}\n        sparkCount={7}\n        duration={500}\n      >\n        <div className=\"flex h-full w-full flex-col items-center justify-center space-y-4\">\n          <p className=\"z-10 bg-gradient-to-b from-zinc-400 to-zinc-900 bg-clip-text text-center text-5xl font-medium tracking-tighter text-transparent dark:from-zinc-100 dark:to-zinc-500\">\n            Interactive Spark\n          </p>\n          <p className=\"z-10 text-center text-sm font-light tracking-wide text-zinc-500 dark:text-zinc-400\">\n            Click anywhere to experience the effect\n          </p>\n        </div>\n      </ClickSpark>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

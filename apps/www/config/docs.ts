@@ -339,6 +339,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Click Spark",
+          href: `/docs/components/click-spark`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

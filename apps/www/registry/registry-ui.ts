@@ -1270,4 +1270,16 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "click-spark",
+    type: "registry:ui",
+    title: "Click Spark",
+    description: "A component that creates a spark effect when clicked.",
+    files: [
+      {
+        path: "magicui/click-spark.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
