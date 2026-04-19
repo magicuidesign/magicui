@@ -2601,7 +2601,7 @@ export const Index: Record<string, any> = {
   },
   "dia-text-reveal-demo-3": {
     name: "dia-text-reveal-demo-3",
-    description: "Multiple phrases with repeat, repeat delay, and fixed width.",
+    description: "Rotating phrases with repeat and repeat delay.",
     type: "registry:example",
     registryDependencies: ["@magicui/dia-text-reveal"],
     files: [{

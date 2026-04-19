@@ -1051,7 +1051,7 @@ export const examples: Registry["items"] = [
     name: "dia-text-reveal-demo-3",
     type: "registry:example",
     title: "Dia Text Reveal Demo 3",
-    description: "Multiple phrases with repeat, repeat delay, and fixed width.",
+    description: "Rotating phrases with repeat and repeat delay.",
     registryDependencies: ["@magicui/dia-text-reveal"],
     files: [
       {
