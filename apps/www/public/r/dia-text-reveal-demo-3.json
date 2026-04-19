@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dia-text-reveal-demo-3",
+  "type": "registry:example",
+  "title": "Dia Text Reveal Demo 3",
+  "description": "Rotating phrases with repeat and repeat delay.",
+  "registryDependencies": [
+    "@magicui/dia-text-reveal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dia-text-reveal-demo-3.tsx",
+      "content": "import { DiaTextReveal } from \"@/registry/magicui/dia-text-reveal\"\n\nexport default function DiaTextRevealDemo3() {\n  return (\n    <div className=\"text-foreground flex min-h-64 items-center justify-center p-8\">\n      <h1 className=\"text-center text-3xl font-semibold tracking-tight md:text-4xl\">\n        Learn to{\" \"}\n        <DiaTextReveal\n          repeat\n          repeatDelay={1.2}\n          text={[\"build faster\", \"ship smarter\", \"scale easier\"]}\n        />\n      </h1>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

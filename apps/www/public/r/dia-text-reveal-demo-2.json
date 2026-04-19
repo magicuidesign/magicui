@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dia-text-reveal-demo-2",
+  "type": "registry:example",
+  "title": "Dia Text Reveal Demo 2",
+  "description": "Custom gradient colors and settled text color on a light background.",
+  "registryDependencies": [
+    "@magicui/dia-text-reveal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dia-text-reveal-demo-2.tsx",
+      "content": "import { DiaTextReveal } from \"@/registry/magicui/dia-text-reveal\"\n\nexport default function DiaTextRevealDemo2() {\n  return (\n    <div className=\"flex min-h-56 items-center justify-center p-8\">\n      <DiaTextReveal\n        className=\"text-4xl font-bold tracking-tight\"\n        colors={[\"#22d3ee\", \"#818cf8\", \"#f472b6\", \"#34d399\"]}\n        text=\"Design systems\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

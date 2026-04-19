@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dia-text-reveal-demo",
+  "type": "registry:example",
+  "title": "Dia Text Reveal Demo",
+  "description": "Example showing a sweeping color band reveal on headline text.",
+  "registryDependencies": [
+    "@magicui/dia-text-reveal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dia-text-reveal-demo.tsx",
+      "content": "import { DiaTextReveal } from \"@/registry/magicui/dia-text-reveal\"\n\nexport default function DiaTextRevealDemo() {\n  return (\n    <div className=\"flex min-h-64 items-center justify-center p-8\">\n      <DiaTextReveal\n        className=\"text-4xl font-bold tracking-tight\"\n        text=\"Magic UI\"\n        colors={[\"#A97CF8\", \"#F38CB8\", \"#FDCC92\"]}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

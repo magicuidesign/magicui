@@ -397,6 +397,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Dia Text Reveal",
+          href: `/docs/components/dia-text-reveal`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Hyper Text",
           href: `/docs/components/hyper-text`,
           items: [],
