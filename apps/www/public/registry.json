@@ -714,6 +714,9 @@
       "type": "registry:ui",
       "title": "Dia Text Reveal",
       "description": "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/magicui/dia-text-reveal.tsx",

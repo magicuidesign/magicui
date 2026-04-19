@@ -681,6 +681,7 @@ export const ui: Registry["items"] = [
     title: "Dia Text Reveal",
     description:
       "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+    dependencies: ["motion"],
     files: [
       {
         path: "magicui/dia-text-reveal.tsx",
