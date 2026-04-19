@@ -6,7 +6,9 @@ import {
   motion,
   useInView,
   useMotionValue,
+  useReducedMotion,
   useTransform,
+  type HTMLMotionProps,
 } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -64,7 +66,10 @@ function measureWidths(el: HTMLElement, texts: string[]) {
 /**
  * Props for {@link DiaTextReveal}.
  */
-export interface DiaTextRevealProps {
+export interface DiaTextRevealProps extends Omit<
+  HTMLMotionProps<"span">,
+  "ref" | "children" | "style" | "animate" | "transition" | "color"
+> {
   /**
    * Text to reveal. Pass multiple strings to rotate when {@link DiaTextRevealProps.repeat} is `true`.
    */
@@ -131,9 +136,11 @@ export function DiaTextReveal({
   once = true,
   className,
   fixedWidth = false,
+  ...props
 }: DiaTextRevealProps) {
   const texts = Array.isArray(text) ? text : [text]
   const isMulti = texts.length > 1
+  const prefersReducedMotion = useReducedMotion()
 
   const spanRef = useRef<HTMLSpanElement>(null)
   const optsRef = useRef({
@@ -202,6 +209,10 @@ export function DiaTextReveal({
   }
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      sweepPos.set(SWEEP_END)
+      return
+    }
     if (startOnView && !isInView) return
     if (once && hasPlayedRef.current) return
     hasPlayedRef.current = true
@@ -211,7 +222,7 @@ export function DiaTextReveal({
       stopRef.current?.()
       clearTimeout(timerRef.current)
     }
-  }, [isInView, startOnView, once])
+  }, [isInView, startOnView, once, prefersReducedMotion, sweepPos])
 
   const fixedW =
     isMulti && fixedWidth && measuredWidths.length > 0
@@ -244,6 +255,7 @@ export function DiaTextReveal({
       }}
       animate={animatedW != null ? { width: animatedW } : undefined}
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+      {...props}
     >
       {texts[activeIndex]}
     </motion.span>
