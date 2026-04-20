@@ -23,6 +23,9 @@ export async function ComponentSource({
   language?: string
   collapsible?: boolean
 }) {
+  const resolvedTitle =
+    title ?? (name ? `components/ui/${name}.tsx` : undefined)
+
   if (!name && !src) {
     return null
   }
@@ -43,7 +46,7 @@ export async function ComponentSource({
     return null
   }
 
-  const lang = language ?? title?.split(".").pop() ?? "tsx"
+  const lang = language ?? resolvedTitle?.split(".").pop() ?? "tsx"
   const highlightedCode = await highlightCode(code, lang)
 
   if (!collapsible) {
@@ -52,7 +55,7 @@ export async function ComponentSource({
         code={code}
         highlightedCode={highlightedCode}
         language={lang}
-        title={title}
+        title={resolvedTitle}
       />
     )
   }
@@ -63,7 +66,7 @@ export async function ComponentSource({
         code={code}
         highlightedCode={highlightedCode}
         language={lang}
-        title={title}
+        title={resolvedTitle}
       />
     </CodeCollapsibleWrapper>
   )
