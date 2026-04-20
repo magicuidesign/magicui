@@ -604,6 +604,18 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Backlight",
+          href: `/docs/components/backlight`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Kinetic Text",
+          href: `/docs/components/kinetic-text`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Cool Mode",
           href: `/docs/components/cool-mode`,
           items: [],
@@ -638,12 +650,6 @@ export const docsConfig: DocsConfig = {
           href: `/docs/components/animated-circular-progress-bar`,
           items: [],
           label: "",
-        },
-        {
-          title: "Backlight",
-          href: `/docs/components/backlight`,
-          items: [],
-          label: "New",
         },
       ],
     },

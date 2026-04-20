@@ -1273,6 +1273,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "kinetic-text": {
+    name: "kinetic-text",
+    description: "A text component that animates font weight of characters on hover.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/kinetic-text.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/kinetic-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "text-3d-flip": {
     name: "text-3d-flip",
     description: "A text effect that flips each letter in 3D with a staggered animation on hover.",
@@ -3958,6 +3975,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/backlight-svg-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "kinetic-text-demo": {
+    name: "kinetic-text-demo",
+    description: "An example of the kinetic text component.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/kinetic-text"],
+    files: [{
+      path: "registry/example/kinetic-text-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/kinetic-text-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

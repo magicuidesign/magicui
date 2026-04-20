@@ -1321,6 +1321,19 @@
       ]
     },
     {
+      "name": "kinetic-text",
+      "type": "registry:ui",
+      "title": "Kinetic Text",
+      "description": "A text component that animates font weight of characters on hover.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/kinetic-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "text-3d-flip",
       "type": "registry:ui",
       "title": "Text 3D Flip",
@@ -3751,6 +3764,20 @@
       "files": [
         {
           "path": "registry/example/backlight-svg-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "kinetic-text-demo",
+      "type": "registry:example",
+      "description": "An example of the kinetic text component.",
+      "registryDependencies": [
+        "@magicui/kinetic-text"
+      ],
+      "files": [
+        {
+          "path": "registry/example/kinetic-text-demo.tsx",
           "type": "registry:example"
         }
       ]

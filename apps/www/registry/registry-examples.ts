@@ -2100,6 +2100,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "kinetic-text-demo",
+    description: "An example of the kinetic text component.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/kinetic-text"],
+    files: [
+      {
+        path: "example/kinetic-text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "text-3d-flip-demo",
     type: "registry:example",
     title: "Text 3D Flip Demo",

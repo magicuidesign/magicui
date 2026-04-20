@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kinetic-text-demo",
+  "type": "registry:example",
+  "description": "An example of the kinetic text component.",
+  "registryDependencies": [
+    "@magicui/kinetic-text"
+  ],
+  "files": [
+    {
+      "path": "registry/example/kinetic-text-demo.tsx",
+      "content": "import { KineticText } from \"@/registry/magicui/kinetic-text\"\n\nexport default function KineticTextDemo() {\n  return (\n    <div className=\"relative justify-center\">\n      <KineticText\n        text=\"Nostalgia\"\n        className=\"text-[6rem] tracking-[-5%] [font-optical-sizing:auto]\"\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
