@@ -1,0 +1,104 @@
+---
+title: Dia Text Reveal
+date: 2026-04-13
+description: A horizontal color band sweeps across text with a gradient shine, then settles on your theme foreground color.
+author: magicuidesign
+published: true
+---
+
+<ComponentPreview name="dia-text-reveal-demo" />
+
+## Examples
+
+### Custom gradient
+
+Override `colors` for a shorter or softer palette on a single line of text.
+
+<ComponentPreview name="dia-text-reveal-demo-2" />
+
+### Rotating phrases in a heading
+
+Pass `text` as an array and set `repeat` to cycle strings after each sweep. You can place static words in the same `<h1>` (or paragraph) before the component—no extra layout wrappers are required for basic inline use.
+
+<ComponentPreview name="dia-text-reveal-demo-3" />
+
+Use `fixedWidth` when the strings differ a lot in length and you want to avoid horizontal layout shift (not shown in this example).
+
+### Duration and delay
+
+Slow the sweep with `duration`, or add a short `delay` before the band moves.
+
+<ComponentPreview name="dia-text-reveal-demo-4" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/dia-text-reveal
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dia-text-reveal" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { DiaTextReveal } from "@/components/ui/dia-text-reveal"
+```
+
+```tsx showLineNumbers
+<DiaTextReveal text="Magic UI" />
+```
+
+```tsx showLineNumbers
+<h1 className="text-3xl font-semibold">
+  Learn to{" "}
+  <DiaTextReveal
+    repeat
+    repeatDelay={1.2}
+    text={["build faster", "ship smarter", "scale easier"]}
+  />
+</h1>
+```
+
+## Props
+
+| Prop          | Type                 | Default                                                   | Description                                                                     |
+| ------------- | -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `text`        | `string \| string[]` | —                                                         | Text to display. Use an array to rotate between strings when `repeat` is on.    |
+| `colors`      | `string[]`           | `["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]` | Colors in the sweeping gradient band.                                           |
+| `textColor`   | `string`             | `var(--foreground)`                                       | Solid text color after the animation (matches your theme by default).           |
+| `duration`    | `number`             | `1.5`                                                     | Sweep duration in seconds.                                                      |
+| `delay`       | `number`             | `0`                                                       | Delay before the sweep starts, in seconds.                                      |
+| `repeat`      | `boolean`            | `false`                                                   | When `text` is an array, advance to the next string after each cycle.           |
+| `repeatDelay` | `number`             | `0.5`                                                     | Pause in seconds before replaying or advancing (when `repeat` is true).         |
+| `startOnView` | `boolean`            | `true`                                                    | Start the animation when the element enters the viewport.                       |
+| `once`        | `boolean`            | `true`                                                    | Play only the first time (when `startOnView` is used).                          |
+| `className`   | `string`             | —                                                         | Additional CSS classes on the root `span`.                                      |
+| `fixedWidth`  | `boolean`            | `false`                                                   | Lock width to the widest string when `text` is an array to reduce layout shift. |
+
+## Credits
+
+- Credit to [@chishiyac](https://github.com/chishiyac)

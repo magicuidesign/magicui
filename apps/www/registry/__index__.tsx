@@ -678,6 +678,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "dia-text-reveal": {
+    name: "dia-text-reveal",
+    description: "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/dia-text-reveal.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/dia-text-reveal.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "hyper-text": {
     name: "hyper-text",
     description: "A text animation that scrambles letters before revealing the final text.",
@@ -2543,6 +2560,74 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-reveal-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dia-text-reveal-demo": {
+    name: "dia-text-reveal-demo",
+    description: "Example showing a sweeping color band reveal on headline text.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [{
+      path: "registry/example/dia-text-reveal-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dia-text-reveal-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dia-text-reveal-demo-2": {
+    name: "dia-text-reveal-demo-2",
+    description: "Custom gradient colors and settled text color on a light background.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [{
+      path: "registry/example/dia-text-reveal-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dia-text-reveal-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dia-text-reveal-demo-3": {
+    name: "dia-text-reveal-demo-3",
+    description: "Rotating phrases with repeat and repeat delay.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [{
+      path: "registry/example/dia-text-reveal-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dia-text-reveal-demo-3.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dia-text-reveal-demo-4": {
+    name: "dia-text-reveal-demo-4",
+    description: "Slower sweep with delay — custom duration and timing.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [{
+      path: "registry/example/dia-text-reveal-demo-4.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dia-text-reveal-demo-4.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

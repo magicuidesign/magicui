@@ -1020,6 +1020,60 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dia-text-reveal-demo",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo",
+    description:
+      "Example showing a sweeping color band reveal on headline text.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dia-text-reveal-demo-2",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo 2",
+    description:
+      "Custom gradient colors and settled text color on a light background.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dia-text-reveal-demo-3",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo 3",
+    description: "Rotating phrases with repeat and repeat delay.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dia-text-reveal-demo-4",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo 4",
+    description: "Slower sweep with delay — custom duration and timing.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "animated-gradient-text-demo",
     type: "registry:example",
     title: "Animated Gradient Text Demo",
