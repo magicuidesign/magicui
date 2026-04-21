@@ -12,19 +12,16 @@ import { getIconForLanguageExtension } from "@/components/icons"
 export async function ComponentSource({
   name,
   src,
-  title,
   language,
   collapsible = true,
   className,
 }: React.ComponentProps<"div"> & {
   name?: string
   src?: string
-  title?: string
   language?: string
   collapsible?: boolean
 }) {
-  const resolvedTitle =
-    title ?? (name ? `components/ui/${name}.tsx` : undefined)
+  const resolvedTitle = name ? `components/ui/${name}.tsx` : undefined
 
   if (!name && !src) {
     return null
