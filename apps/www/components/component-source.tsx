@@ -21,7 +21,11 @@ export async function ComponentSource({
   language?: string
   collapsible?: boolean
 }) {
-  const resolvedTitle = name ? `components/ui/${name}.tsx` : undefined
+  const resolvedTitle = name
+    ? `components/ui/${name}.tsx`
+    : src
+      ? src
+      : undefined
 
   if (!name && !src) {
     return null
