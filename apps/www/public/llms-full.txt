@@ -12516,9 +12516,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample52 } from "./ink-reveal-pass"
+import { passSample53 } from "./ink-reveal-pass"
 
-void passSample52(0)
+void passSample53(0)
 export interface InkRevealProps extends ComponentProps<"div"> {
   /**
    * Length of the reveal, in seconds.
