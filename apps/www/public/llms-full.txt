@@ -3259,14 +3259,25 @@ export const AnimatedThemeToggler = ({
       return
     }
 
-    document.documentElement.style.setProperty(
+    const root = document.documentElement
+    root.dataset.magicuiThemeVt = "active"
+    root.style.setProperty(
       "--magicui-theme-toggle-vt-duration",
       `${duration}ms`
     )
+    const cleanup = () => {
+      delete root.dataset.magicuiThemeVt
+      root.style.removeProperty("--magicui-theme-toggle-vt-duration")
+    }
 
     const transition = document.startViewTransition(() => {
       flushSync(applyTheme)
     })
+    if (typeof transition?.finished?.finally === "function") {
+      transition.finished.finally(cleanup)
+    } else {
+      cleanup()
+    }
 
     const ready = transition?.ready
     if (ready && typeof ready.then === "function") {
