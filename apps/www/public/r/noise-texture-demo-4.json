@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-texture-demo-4",
+  "type": "registry:example",
+  "title": "Noise Texture Demo (input)",
+  "description": "Example showing a labeled input field with NoiseTexture filling the input container.",
+  "registryDependencies": [
+    "@magicui/noise-texture",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "registry/example/noise-texture-demo-4.tsx",
+      "content": "import { Input } from \"@/components/ui/input\"\nimport { Label } from \"@/components/ui/label\"\nimport { NoiseTexture } from \"@/registry/magicui/noise-texture\"\n\nexport default function NoiseTextureDemo4() {\n  return (\n    <div className=\"mx-auto flex max-w-sm flex-col gap-3 p-4\">\n      <Label className=\"text-muted-foreground\" htmlFor=\"noise-input-demo\">\n        Search with texture\n      </Label>\n      <div className=\"bg-muted/30 relative overflow-hidden rounded-lg border\">\n        <NoiseTexture noiseOpacity={0.45} />\n        <Input\n          className=\"relative z-10 border-0 bg-transparent shadow-none focus-visible:ring-2\"\n          id=\"noise-input-demo\"\n          placeholder=\"Try typing…\"\n          type=\"search\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

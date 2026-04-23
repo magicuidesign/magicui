@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-texture",
+  "type": "registry:ui",
+  "title": "Noise Texture",
+  "description": "An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.",
+  "files": [
+    {
+      "path": "registry/magicui/noise-texture.tsx",
+      "content": "\"use client\"\n\nimport { useId, type ComponentProps } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface NoiseTextureProps extends ComponentProps<\"svg\"> {\n  /** Extra classes merged onto the root `svg` element. */\n  className?: string\n  /**\n   * `baseFrequency` for `feTurbulence`; higher values yield finer-grained noise.\n   * @default 0.4\n   */\n  frequency?: number\n  /**\n   * `numOctaves` for `feTurbulence`; more octaves add detail at smaller scales.\n   * @default 6\n   */\n  octaves?: number\n  /**\n   * Linear slope on each channel after desaturation; adjusts contrast of the noise.\n   * @default 0.15\n   */\n  slope?: number\n  /**\n   * Opacity of the filled noise layer (`rect`).\n   * @default 0.6\n   */\n  noiseOpacity?: number\n}\n\nexport const NoiseTexture = ({\n  className,\n  frequency = 0.4,\n  octaves = 6,\n  slope = 0.15,\n  noiseOpacity = 0.6,\n  ...props\n}: NoiseTextureProps) => {\n  const filterId = useId()\n\n  return (\n    <svg\n      className={cn(\n        \"pointer-events-none absolute inset-0 z-0 size-full opacity-50 select-none dark:opacity-[0.75]\",\n        className\n      )}\n      xmlns=\"http://www.w3.org/2000/svg\"\n      {...props}\n    >\n      <filter id={filterId}>\n        <feTurbulence\n          type=\"fractalNoise\"\n          baseFrequency={frequency}\n          numOctaves={octaves}\n          stitchTiles=\"stitch\"\n        />\n        <feColorMatrix type=\"saturate\" values=\"0\" />\n        <feComponentTransfer>\n          <feFuncR type=\"linear\" slope={slope} />\n          <feFuncG type=\"linear\" slope={slope} />\n          <feFuncB type=\"linear\" slope={slope} />\n        </feComponentTransfer>\n      </filter>\n      <rect\n        width=\"100%\"\n        height=\"100%\"\n        filter={`url(#${filterId})`}\n        opacity={noiseOpacity}\n      />\n    </svg>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

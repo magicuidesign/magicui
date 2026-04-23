@@ -1,0 +1,87 @@
+---
+title: Noise Texture
+date: 2026-04-07
+description: An SVG fractal noise layer using feTurbulence for subtle texture overlays.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="noise-texture-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/noise-texture
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="noise-texture" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Newsletter digest
+
+<ComponentPreview name="noise-texture-demo-2" />
+
+### Button
+
+<ComponentPreview name="noise-texture-demo-3" />
+
+### Input field
+
+<ComponentPreview name="noise-texture-demo-4" />
+
+## Usage
+
+`NoiseTexture` renders a full-size `svg` (absolute, inset 0). Put it inside a `relative` container and layer content above with `z-10` when needed.
+
+```tsx showLineNumbers
+import { NoiseTexture } from "@/components/ui/noise-texture"
+```
+
+```tsx showLineNumbers
+<div className="relative h-64 overflow-hidden rounded-lg border">
+  <NoiseTexture />
+</div>
+```
+
+## Props
+
+`NoiseTextureProps` extends React’s `ComponentProps<"svg">`. Besides standard SVG attributes, these props are supported:
+
+### NoiseTexture
+
+| Prop           | Type     | Default | Description                                 |
+| -------------- | -------- | ------- | ------------------------------------------- |
+| `className`    | `string` | —       | Merged onto the root `svg` (via `cn`)       |
+| `frequency`    | `number` | `0.4`   | `baseFrequency` for `feTurbulence`          |
+| `octaves`      | `number` | `6`     | `numOctaves` for `feTurbulence`             |
+| `slope`        | `number` | `0.15`  | Linear slope per channel after desaturation |
+| `noiseOpacity` | `number` | `0.6`   | Opacity of the noise `rect`                 |
+
+## Credits
+
+- Credit to [@chishiyac](https://github.com/chishiyac)

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-texture-demo-3",
+  "type": "registry:example",
+  "title": "Noise Texture Demo (button)",
+  "description": "Example showing NoiseTexture behind a button label inside a relative button.",
+  "registryDependencies": [
+    "@magicui/noise-texture",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/noise-texture-demo-3.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { NoiseTexture } from \"@/registry/magicui/noise-texture\"\n\nexport default function NoiseTextureDemo3() {\n  return (\n    <div className=\"flex justify-center p-8\">\n      <Button\n        className=\"group/button relative cursor-pointer overflow-hidden px-8 active:scale-98\"\n        type=\"button\"\n        variant=\"secondary\"\n      >\n        <span className=\"relative z-10 font-medium\">Subscribe</span>\n        <NoiseTexture\n          noiseOpacity={0.45}\n          className=\"transition-all group-hover/button:opacity-100\"\n        />\n      </Button>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

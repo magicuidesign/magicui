@@ -12569,6 +12569,212 @@ export default function NeonGradientCardDemo() {
 
 
 
+===== COMPONENT: noise-texture =====
+Title: Noise Texture
+Description: An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.
+
+--- file: magicui/noise-texture.tsx ---
+"use client"
+
+import { useId, type ComponentProps } from "react"
+
+import { cn } from "@/lib/utils"
+
+export interface NoiseTextureProps extends ComponentProps<"svg"> {
+  /** Extra classes merged onto the root `svg` element. */
+  className?: string
+  /**
+   * `baseFrequency` for `feTurbulence`; higher values yield finer-grained noise.
+   * @default 0.4
+   */
+  frequency?: number
+  /**
+   * `numOctaves` for `feTurbulence`; more octaves add detail at smaller scales.
+   * @default 6
+   */
+  octaves?: number
+  /**
+   * Linear slope on each channel after desaturation; adjusts contrast of the noise.
+   * @default 0.15
+   */
+  slope?: number
+  /**
+   * Opacity of the filled noise layer (`rect`).
+   * @default 0.6
+   */
+  noiseOpacity?: number
+}
+
+export const NoiseTexture = ({
+  className,
+  frequency = 0.4,
+  octaves = 6,
+  slope = 0.15,
+  noiseOpacity = 0.6,
+  ...props
+}: NoiseTextureProps) => {
+  const filterId = useId()
+
+  return (
+    <svg
+      className={cn(
+        "pointer-events-none absolute inset-0 z-0 size-full opacity-50 select-none dark:opacity-[0.75]",
+        className
+      )}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <filter id={filterId}>
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency={frequency}
+          numOctaves={octaves}
+          stitchTiles="stitch"
+        />
+        <feColorMatrix type="saturate" values="0" />
+        <feComponentTransfer>
+          <feFuncR type="linear" slope={slope} />
+          <feFuncG type="linear" slope={slope} />
+          <feFuncB type="linear" slope={slope} />
+        </feComponentTransfer>
+      </filter>
+      <rect
+        width="100%"
+        height="100%"
+        filter={`url(#${filterId})`}
+        opacity={noiseOpacity}
+      />
+    </svg>
+  )
+}
+
+
+===== EXAMPLE: noise-texture-demo =====
+Title: Noise Texture Demo
+
+--- file: example/noise-texture-demo.tsx ---
+"use client"
+
+import { cn } from "@/lib/utils"
+import { NoiseTexture } from "@/registry/magicui/noise-texture"
+
+export default function NoiseTextureDemo() {
+  return (
+    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-neutral-100/80 dark:bg-neutral-950">
+      <NoiseTexture
+        className={cn(
+          "absolute inset-0",
+          "mask-[radial-gradient(420px_circle_at_center,white,transparent)]"
+        )}
+      />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: noise-texture-demo-2 =====
+Title: Noise Texture Demo (newsletter card)
+
+--- file: example/noise-texture-demo-2.tsx ---
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { NoiseTexture } from "@/registry/magicui/noise-texture"
+
+export default function NoiseTextureDemo2() {
+  return (
+    <div className="flex justify-center p-4">
+      <Card className="bg-card/80 relative w-full max-w-md overflow-hidden border">
+        <NoiseTexture noiseOpacity={0.45} />
+        <CardHeader className="relative z-10 space-y-1 pb-4">
+          <CardTitle className="text-xl">The weekly digest</CardTitle>
+          <CardDescription>
+            One email on Sundays—new components, tips, and changelog highlights.
+            No spam, unsubscribe anytime.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="relative z-10 space-y-4 pt-0">
+          <div className="space-y-2">
+            <Label htmlFor="newsletter-email">Email</Label>
+            <Input
+              id="newsletter-email"
+              autoComplete="email"
+              placeholder="you@company.com"
+              type="email"
+            />
+          </div>
+          <Button className="w-full" type="button">
+            Subscribe
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: noise-texture-demo-3 =====
+Title: Noise Texture Demo (button)
+
+--- file: example/noise-texture-demo-3.tsx ---
+import { Button } from "@/components/ui/button"
+import { NoiseTexture } from "@/registry/magicui/noise-texture"
+
+export default function NoiseTextureDemo3() {
+  return (
+    <div className="flex justify-center p-8">
+      <Button
+        className="group/button relative cursor-pointer overflow-hidden px-8 active:scale-98"
+        type="button"
+        variant="secondary"
+      >
+        <span className="relative z-10 font-medium">Subscribe</span>
+        <NoiseTexture
+          noiseOpacity={0.45}
+          className="transition-all group-hover/button:opacity-100"
+        />
+      </Button>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: noise-texture-demo-4 =====
+Title: Noise Texture Demo (input)
+
+--- file: example/noise-texture-demo-4.tsx ---
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { NoiseTexture } from "@/registry/magicui/noise-texture"
+
+export default function NoiseTextureDemo4() {
+  return (
+    <div className="mx-auto flex max-w-sm flex-col gap-3 p-4">
+      <Label className="text-muted-foreground" htmlFor="noise-input-demo">
+        Search with texture
+      </Label>
+      <div className="bg-muted/30 relative overflow-hidden rounded-lg border">
+        <NoiseTexture noiseOpacity={0.45} />
+        <Input
+          className="relative z-10 border-0 bg-transparent shadow-none focus-visible:ring-2"
+          id="noise-input-demo"
+          placeholder="Try typing…"
+          type="search"
+        />
+      </div>
+    </div>
+  )
+}
+
+
+
 ===== COMPONENT: number-ticker =====
 Title: Number Ticker
 Description: Animate numbers to count up or down to a target number

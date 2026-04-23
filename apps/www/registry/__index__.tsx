@@ -219,6 +219,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "noise-texture": {
+    name: "noise-texture",
+    description: "An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/noise-texture.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/noise-texture.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "meteors": {
     name: "meteors",
     description: "A meteor shower effect.",
@@ -1540,6 +1557,74 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/neon-gradient-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "noise-texture-demo": {
+    name: "noise-texture-demo",
+    description: "Example showing the SVG noise texture in a framed panel with a radial mask.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/noise-texture"],
+    files: [{
+      path: "registry/example/noise-texture-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/noise-texture-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "noise-texture-demo-2": {
+    name: "noise-texture-demo-2",
+    description: "Example showing a newsletter signup card with email input over a noise texture.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/noise-texture","button","card","input","label"],
+    files: [{
+      path: "registry/example/noise-texture-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/noise-texture-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "noise-texture-demo-3": {
+    name: "noise-texture-demo-3",
+    description: "Example showing NoiseTexture behind a button label inside a relative button.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/noise-texture","button"],
+    files: [{
+      path: "registry/example/noise-texture-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/noise-texture-demo-3.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "noise-texture-demo-4": {
+    name: "noise-texture-demo-4",
+    description: "Example showing a labeled input field with NoiseTexture filling the input container.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/noise-texture","input","label"],
+    files: [{
+      path: "registry/example/noise-texture-demo-4.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/noise-texture-demo-4.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
