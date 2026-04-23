@@ -3759,6 +3759,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "animated-theme-toggler-square-demo": {
+    name: "animated-theme-toggler-square-demo",
+    description: "Theme transition with a square clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-square-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-square-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "animated-theme-toggler-diamond-demo": {
     name: "animated-theme-toggler-diamond-demo",
     description: "Theme transition with a diamond-shaped clip reveal.",

@@ -1957,6 +1957,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "animated-theme-toggler-square-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Square",
+    description: "Theme transition with a square clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-square-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "animated-theme-toggler-diamond-demo",
     type: "registry:example",
     title: "Animated Theme Toggler — Diamond",

@@ -3336,6 +3336,21 @@ export default function AnimatedThemeTogglerDemo() {
 }
 
 
+===== EXAMPLE: animated-theme-toggler-square-demo =====
+Title: Animated Theme Toggler — Square
+
+--- file: example/animated-theme-toggler-square-demo.tsx ---
+import { AnimatedThemeToggler } from "@/registry/magicui/animated-theme-toggler"
+
+export default function AnimatedThemeTogglerSquareDemo() {
+  return (
+    <div className="flex justify-center p-6">
+      <AnimatedThemeToggler variant="square" />
+    </div>
+  )
+}
+
+
 ===== EXAMPLE: animated-theme-toggler-diamond-demo =====
 Title: Animated Theme Toggler — Diamond
 
