@@ -1207,7 +1207,7 @@ export const Index: Record<string, any> = {
   },
   "animated-theme-toggler": {
     name: "animated-theme-toggler",
-    description: "A component for theme changing animation.",
+    description: "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -3839,6 +3839,108 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/animated-theme-toggler-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-square-demo": {
+    name: "animated-theme-toggler-square-demo",
+    description: "Theme transition with a square clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-square-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-square-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-diamond-demo": {
+    name: "animated-theme-toggler-diamond-demo",
+    description: "Theme transition with a diamond-shaped clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-diamond-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-diamond-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-rectangle-demo": {
+    name: "animated-theme-toggler-rectangle-demo",
+    description: "Theme transition with a rectangle clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-rectangle-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-rectangle-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-hexagon-demo": {
+    name: "animated-theme-toggler-hexagon-demo",
+    description: "Theme transition with a hexagon clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-hexagon-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-hexagon-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-triangle-demo": {
+    name: "animated-theme-toggler-triangle-demo",
+    description: "Theme transition with a triangle clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-triangle-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-triangle-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "animated-theme-toggler-star-demo": {
+    name: "animated-theme-toggler-star-demo",
+    description: "Theme transition with a star-shaped clip reveal.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [{
+      path: "registry/example/animated-theme-toggler-star-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/animated-theme-toggler-star-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

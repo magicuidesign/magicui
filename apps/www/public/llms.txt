@@ -13,7 +13,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated Grid Pattern](https://magicui.design/docs/components/animated-grid-pattern): A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Animated List](https://magicui.design/docs/components/animated-list): A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.
 - [Animated Shiny Text](https://magicui.design/docs/components/animated-shiny-text): A light glare effect which pans across text making it appear as if it is shimmering.
-- [Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler): A component for theme changing animation.
+- [Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler): Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.
 - [Aurora Text](https://magicui.design/docs/components/aurora-text): A beautiful aurora text effect
 - [Avatar Circles](https://magicui.design/docs/components/avatar-circles): Overlapping circles of avatars.
 - [Backlight](https://magicui.design/docs/components/backlight): A backlight glow effect for videos, images, and SVGs.
@@ -234,6 +234,12 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pixel Image Demo](https://github.com/magicuidesign/magicui/blob/main/example/pixel-image-demo.tsx): Example usage
 - [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/example/highlighter-demo.tsx): Example usage
 - [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-demo.tsx): Example usage
+- [Animated Theme Toggler — Square](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-square-demo.tsx): Example usage
+- [Animated Theme Toggler — Diamond](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-diamond-demo.tsx): Example usage
+- [Animated Theme Toggler — Rectangle](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-rectangle-demo.tsx): Example usage
+- [Animated Theme Toggler — Hexagon](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-hexagon-demo.tsx): Example usage
+- [Animated Theme Toggler — Triangle](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-triangle-demo.tsx): Example usage
+- [Animated Theme Toggler — Star](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-star-demo.tsx): Example usage
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage

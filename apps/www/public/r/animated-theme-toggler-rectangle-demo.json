@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-theme-toggler-rectangle-demo",
+  "type": "registry:example",
+  "title": "Animated Theme Toggler — Rectangle",
+  "description": "Theme transition with a rectangle clip reveal.",
+  "registryDependencies": [
+    "@magicui/animated-theme-toggler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-theme-toggler-rectangle-demo.tsx",
+      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nexport default function AnimatedThemeTogglerRectangleDemo() {\n  return (\n    <div className=\"flex justify-center p-6\">\n      <AnimatedThemeToggler variant=\"rectangle\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

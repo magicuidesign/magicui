@@ -1,7 +1,7 @@
 ---
 title: Theme Toggler
 date: 2025-08-17
-description: An Animated theme toggler component, fully customizable using Tailwind CSS.
+description: Animated theme toggle using the View Transitions API with configurable clip-path shapes and origin.
 author: Nazam Kalsi
 published: true
 ---
@@ -36,11 +36,18 @@ npx shadcn@latest add @magicui/animated-theme-toggler
 
 <Step>Add the required CSS into your global CSS file</Step>
 
+The component sets `--magicui-theme-toggle-vt-duration` and a `data-magicui-theme-vt="active"` flag on `<html>` only while a toggle is in flight, so the clip-path animation stays in sync with the view-transition group **without affecting any other view transitions in your app** (e.g. Next.js navigation transitions).
+
 ```css title="app/globals.css" showLineNumbers
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+}
+
+/* Scoped to AnimatedThemeToggler — the toggler sets the data-attribute and the variable only during a theme toggle. */
+html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration);
 }
 ```
 
@@ -60,13 +67,57 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 <AnimatedThemeToggler />
 ```
 
+Use `variant` to change the clip-path shape of the view transition (`circle`, `square`, `triangle`, `diamond`, `rectangle`, `hexagon`, or `star`):
+
+```tsx showLineNumbers
+<AnimatedThemeToggler variant="star" />
+```
+
+Expand from the viewport center instead of the button with `fromCenter`:
+
+```tsx showLineNumbers
+<AnimatedThemeToggler variant="hexagon" duration={600} fromCenter />
+```
+
+## Examples
+
+The preview at the top of this page uses the default **circle** reveal. Below, each variant has its own isolated preview so you can test one shape at a time.
+
+### Square
+
+<ComponentPreview name="animated-theme-toggler-square-demo" />
+
+### Diamond
+
+<ComponentPreview name="animated-theme-toggler-diamond-demo" />
+
+### Rectangle
+
+<ComponentPreview name="animated-theme-toggler-rectangle-demo" />
+
+### Hexagon
+
+<ComponentPreview name="animated-theme-toggler-hexagon-demo" />
+
+### Triangle
+
+<ComponentPreview name="animated-theme-toggler-triangle-demo" />
+
+### Star
+
+<ComponentPreview name="animated-theme-toggler-star-demo" />
+
 ## Props
 
-| Prop        | Type     | Default | Description                                                |
-| ----------- | -------- | ------- | ---------------------------------------------------------- |
-| `className` | `String` | " "     | Additional classes to be added to the component            |
-| `duration`  | `Number` | `400`   | Duration of the theme transition animation in milliseconds |
+| Prop         | Type                | Default    | Description                                                              |
+| ------------ | ------------------- | ---------- | ------------------------------------------------------------------------ |
+| `className`  | `string`            | —          | Additional classes for the button                                        |
+| `duration`   | `number`            | `400`      | Duration of the theme transition animation in milliseconds               |
+| `variant`    | `TransitionVariant` | `"circle"` | Shape used for the view-transition clip-path reveal                      |
+| `fromCenter` | `boolean`           | `false`    | If true, the clip expands from the viewport center instead of the button |
+
+Export `TransitionVariant` from the same module when you need typed props or menus.
 
 ## Credits
 
-- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app)
+- Credit to [Nazam Kalsi](https://nazam-kalsi-portfolio.vercel.app), [chishiyac](https://github.com/chishiyac), [dikshantgulekar20-oss](https://github.com/dikshantgulekar20-oss)

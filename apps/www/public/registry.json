@@ -1260,7 +1260,7 @@
       "name": "animated-theme-toggler",
       "type": "registry:ui",
       "title": "Theme Toggler",
-      "description": "A component for theme changing animation.",
+      "description": "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
       "dependencies": [
         "lucide-react"
       ],
@@ -3647,6 +3647,96 @@
       "files": [
         {
           "path": "registry/example/animated-theme-toggler-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-square-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Square",
+      "description": "Theme transition with a square clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-square-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-diamond-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Diamond",
+      "description": "Theme transition with a diamond-shaped clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-diamond-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-rectangle-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Rectangle",
+      "description": "Theme transition with a rectangle clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-rectangle-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-hexagon-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Hexagon",
+      "description": "Theme transition with a hexagon clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-hexagon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-triangle-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Triangle",
+      "description": "Theme transition with a triangle clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-triangle-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-star-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — Star",
+      "description": "Theme transition with a star-shaped clip reveal.",
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-star-demo.tsx",
           "type": "registry:example"
         }
       ]
