@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kinetic-text",
+  "type": "registry:ui",
+  "title": "Kinetic Text",
+  "description": "A text component that animates font weight of characters on hover.",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/magicui/kinetic-text.tsx",
+      "content": "import React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype As = \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"p\" | \"span\"\n\ntype KineticTextProps = React.ComponentProps<As> & {\n  text: string\n  as?: As\n}\n\nexport function KineticText({\n  text,\n  as: Tag = \"h1\",\n  className = \"\",\n}: KineticTextProps) {\n  return (\n    <Tag\n      className={cn(\"flex flex-wrap font-[300]\", className)}\n      style={\n        {\n          \"--hover-padding\": \"calc(1em / 12)\",\n          \"--text-stroke-width\": \"calc(1em * 125 / 6000)\",\n        } as React.CSSProperties\n      }\n    >\n      {text.split(\"\").map((letter, i) => (\n        <span\n          key={i}\n          aria-hidden=\"true\"\n          className=\"[will-change:font-weight,-webkit-text-stroke-width,padding] [-webkit-text-stroke-color:transparent] [-webkit-text-stroke-width:var(--text-stroke-width)] [transition:font-weight_0.4s,_-webkit-text-stroke-color_0.4s,_padding_0.4s] hover:[padding-inline:var(--hover-padding)] hover:font-[900] hover:[-webkit-text-stroke-color:currentcolor] hover:[-webkit-text-stroke-width:calc(var(--text-stroke-width)*2)] has-[+span+span:hover]:font-[400] has-[+span:hover]:[padding-inline:var(--hover-padding)] has-[+span:hover]:font-[600] [:hover+&]:[padding-inline:var(--hover-padding)] [:hover+&]:font-[600] [:hover+span+&]:font-[400]\"\n        >\n          {letter === \" \" ? \"\\u00A0\" : letter}\n        </span>\n      ))}\n      <span className=\"sr-only\">{text}</span>\n    </Tag>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}
