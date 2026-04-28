@@ -4,8 +4,7 @@
   "title": "Ink Reveal Demo 3",
   "description": "An integrations panel on a tinted surface, with a matching cover and brand ink.",
   "registryDependencies": [
-    "@magicui/ink-reveal",
-    "@magicui/ink-reveal-pass"
+    "@magicui/ink-reveal"
   ],
   "files": [
     {

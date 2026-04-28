@@ -1407,8 +1407,7 @@
       "title": "Ink Reveal Demo",
       "description": "A product hero with a detailed revenue dashboard revealed by ink.",
       "registryDependencies": [
-        "@magicui/ink-reveal",
-        "@magicui/ink-reveal-pass"
+        "@magicui/ink-reveal"
       ],
       "files": [
         {
@@ -1423,8 +1422,7 @@
       "title": "Ink Reveal Demo 2",
       "description": "Three feature cards revealed one after another with a staggered delay.",
       "registryDependencies": [
-        "@magicui/ink-reveal",
-        "@magicui/ink-reveal-pass"
+        "@magicui/ink-reveal"
       ],
       "files": [
         {
@@ -1439,8 +1437,7 @@
       "title": "Ink Reveal Demo 3",
       "description": "An integrations panel on a tinted surface, with a matching cover and brand ink.",
       "registryDependencies": [
-        "@magicui/ink-reveal",
-        "@magicui/ink-reveal-pass"
+        "@magicui/ink-reveal"
       ],
       "files": [
         {

@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "ink-reveal-demo",
     description: "A product hero with a detailed revenue dashboard revealed by ink.",
     type: "registry:example",
-    registryDependencies: ["@magicui/ink-reveal","@magicui/ink-reveal-pass"],
+    registryDependencies: ["@magicui/ink-reveal"],
     files: [{
       path: "registry/example/ink-reveal-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "ink-reveal-demo-2",
     description: "Three feature cards revealed one after another with a staggered delay.",
     type: "registry:example",
-    registryDependencies: ["@magicui/ink-reveal","@magicui/ink-reveal-pass"],
+    registryDependencies: ["@magicui/ink-reveal"],
     files: [{
       path: "registry/example/ink-reveal-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "ink-reveal-demo-3",
     description: "An integrations panel on a tinted surface, with a matching cover and brand ink.",
     type: "registry:example",
-    registryDependencies: ["@magicui/ink-reveal","@magicui/ink-reveal-pass"],
+    registryDependencies: ["@magicui/ink-reveal"],
     files: [{
       path: "registry/example/ink-reveal-demo-3.tsx",
       type: "registry:example",

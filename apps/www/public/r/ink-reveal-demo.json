@@ -4,8 +4,7 @@
   "title": "Ink Reveal Demo",
   "description": "A product hero with a detailed revenue dashboard revealed by ink.",
   "registryDependencies": [
-    "@magicui/ink-reveal",
-    "@magicui/ink-reveal-pass"
+    "@magicui/ink-reveal"
   ],
   "files": [
     {
