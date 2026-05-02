@@ -2204,4 +2204,20 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "curtain-loader-demo",
+    type: "registry:example",
+    title: "Curtain Loader Demo",
+    description: "Example showing a curtain-style loader animation.",
+    registryDependencies: [
+      "@magicui/curtain-loader",
+      "@magicui/rainbow-button",
+    ],
+    files: [
+      {
+        path: "example/curtain-loader-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

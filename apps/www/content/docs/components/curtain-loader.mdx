@@ -1,0 +1,83 @@
+---
+title: Curtain Loader
+date: 2026-05-02
+description: A curtain-style loader animation.
+author: Aniket
+published: true
+---
+
+<ComponentPreview name="curtain-loader-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://magicui.design/r/curtain-loader"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="curtain-loader" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import CurtainLoader from "@/components/magicui/curtain-loader";
+```
+
+```tsx showLineNumbers
+export default function MyComponent() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <>
+      <AnimatePresence>
+        {isLoading && (
+          <CurtainLoader
+            greetings={["Hello", "Welcome", "Bonjour"]}
+            speed={200}
+            onComplete={() => setIsLoading(false)}
+          />
+        )}
+      </AnimatePresence>
+      
+      {!isLoading && <div>Your main app content goes here!</div>}
+    </>
+  );
+}
+```
+
+## Props
+
+| Prop         | Type         | Default | Description                                                                                                    |
+| ------------ | ------------ | ------- | -------------------------------------------------------------------------------------------------------------- |
+| `onComplete` | `() => void` |         | Callback triggered when the animation finishes. **Required** to unmount the loader.                            |
+| `greetings`  | `string[]`   |         | Array of greetings to display in sequence.                                                                     |
+| `speed`      | `number`     | `150`   | The speed (in ms) at which greetings cycle.                                                                    |
+
+## Credits
+
+Built by [@Aniket-a14](https://github.com/Aniket-a14).

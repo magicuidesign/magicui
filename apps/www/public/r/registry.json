@@ -1336,6 +1336,21 @@
       ]
     },
     {
+      "name": "curtain-loader",
+      "type": "registry:ui",
+      "title": "Curtain Loader",
+      "description": "A full-screen curtain-style loader animation.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/curtain-loader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3871,6 +3886,22 @@
       "files": [
         {
           "path": "registry/example/text-3d-flip-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "curtain-loader-demo",
+      "type": "registry:example",
+      "title": "Curtain Loader Demo",
+      "description": "Example showing a curtain-style loader animation.",
+      "registryDependencies": [
+        "@magicui/curtain-loader",
+        "@magicui/rainbow-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/curtain-loader-demo.tsx",
           "type": "registry:example"
         }
       ]

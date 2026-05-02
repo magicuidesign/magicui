@@ -1285,4 +1285,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "curtain-loader",
+    type: "registry:ui",
+    title: "Curtain Loader",
+    description: "A full-screen curtain-style loader animation.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "magicui/curtain-loader.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

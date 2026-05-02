@@ -25,6 +25,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
+- [Curtain Loader](https://magicui.design/docs/components/curtain-loader): A full-screen curtain-style loader animation.
 - [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
@@ -249,6 +250,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [backlight-svg-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-svg-demo.tsx): Example usage
 - [Text 3D Flip Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo.tsx): Example usage
 - [Text 3D Flip Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo-2.tsx): Example usage
+- [Curtain Loader Demo](https://github.com/magicuidesign/magicui/blob/main/example/curtain-loader-demo.tsx): Example usage
 
 ## Optional
 

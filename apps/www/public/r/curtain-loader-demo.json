@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "curtain-loader-demo",
+  "type": "registry:example",
+  "title": "Curtain Loader Demo",
+  "description": "Example showing a curtain-style loader animation.",
+  "registryDependencies": [
+    "@magicui/curtain-loader",
+    "@magicui/rainbow-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/curtain-loader-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useEffect, useState } from \"react\"\nimport { AnimatePresence, motion } from \"framer-motion\"\n\nimport CurtainLoader from \"@/registry/magicui/curtain-loader\"\nimport { RainbowButton } from \"@/registry/magicui/rainbow-button\"\n\nexport default function CurtainLoaderDemo() {\n  const [isLoading, setIsLoading] = useState(true)\n\n  useEffect(() => {\n    sessionStorage.removeItem(\"hasVisited\")\n  }, [])\n\n  const handleReplay = () => {\n    sessionStorage.removeItem(\"hasVisited\")\n    setIsLoading(true)\n  }\n\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl\">\n      <AnimatePresence>\n        {isLoading && <CurtainLoader onComplete={() => setIsLoading(false)} />}\n      </AnimatePresence>\n\n      {!isLoading && (\n        <motion.div\n          initial={{ opacity: 0, filter: \"blur(10px)\" }}\n          animate={{ opacity: 1, filter: \"blur(0px)\" }}\n          transition={{ duration: 1, delay: 0.2, ease: \"easeOut\" }}\n          className=\"z-10 flex flex-col items-center gap-8 text-center\"\n        >\n          <div className=\"flex flex-col items-center gap-3\">\n            <h2 className=\"text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50\">\n              You are Welcome!\n            </h2>\n            <p className=\"text-zinc-500 dark:text-zinc-400\">\n              Click the button below to replay the animation.\n            </p>\n          </div>\n\n          <div className=\"mt-4\">\n            <RainbowButton onClick={handleReplay} className=\"gap-2\">\n              <svg\n                className=\"h-4 w-4 transition-transform group-hover:-rotate-180\"\n                viewBox=\"0 0 24 24\"\n                fill=\"none\"\n                stroke=\"currentColor\"\n                strokeWidth=\"2\"\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n              >\n                <path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\" />\n                <path d=\"M3 3v5h5\" />\n              </svg>\n              Replay\n            </RainbowButton>\n          </div>\n        </motion.div>\n      )}\n\n      <div className=\"pointer-events-none absolute inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-950\">\n        <div className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.05)_0%,transparent_100%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_0%,transparent_100%)]\" />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

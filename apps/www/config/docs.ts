@@ -339,6 +339,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Curtain Loader",
+          href: `/docs/components/curtain-loader`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

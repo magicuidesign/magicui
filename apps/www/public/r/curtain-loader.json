@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "curtain-loader",
+  "type": "registry:ui",
+  "title": "Curtain Loader",
+  "description": "A full-screen curtain-style loader animation.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/magicui/curtain-loader.tsx",
+      "content": "\"use client\"\n\nimport React, { useEffect, useState } from \"react\"\nimport { motion } from \"framer-motion\"\n\nexport interface LoaderProps {\n  onComplete?: () => void\n  greetings?: string[]\n  speed?: number\n}\n\nexport default function CurtainLoader({\n  onComplete,\n  greetings = [\n    \"• Hi\",\n    \"• Hola\",\n    \"• Bonjour\",\n    \"• Hallo\",\n    \"• Ciao\",\n    \"• Sawasdee\",\n    \"• Aloha\",\n    \"• Salaam\",\n    \"• হ্যালো\",\n    \"• Namaste\",\n  ],\n  speed = 150,\n}: LoaderProps) {\n  const [moveUp, setMoveUp] = useState(false)\n  const [greetingIndex, setGreetingIndex] = useState(0)\n\n  useEffect(() => {\n    const hasVisited = sessionStorage.getItem(\"hasVisited\")\n    const delayBeforeGreetings = 500\n    let greetingInterval: NodeJS.Timeout\n\n    const startGreetings = setTimeout(() => {\n      let index = 0\n      const maxGreetings = hasVisited ? 1 : greetings.length\n\n      greetingInterval = setInterval(() => {\n        index++\n        if (index < maxGreetings) {\n          setGreetingIndex(index)\n        } else {\n          clearInterval(greetingInterval)\n          if (!hasVisited) sessionStorage.setItem(\"hasVisited\", \"true\")\n          setTimeout(() => setMoveUp(true), 100)\n          setTimeout(() => {\n            onComplete?.()\n          }, 200)\n        }\n      }, speed)\n    }, delayBeforeGreetings)\n\n    return () => {\n      clearTimeout(startGreetings)\n      if (greetingInterval) clearInterval(greetingInterval)\n    }\n  }, [onComplete, greetings.length, speed])\n\n  return (\n    <>\n      <motion.div\n        exit={{ opacity: 0, transition: { duration: 0.8 } }}\n        className=\"absolute inset-0 z-40 bg-black\"\n      />\n      <motion.div\n        initial={{ y: 0, scale: 1 }}\n        exit={{\n          y: \"-100%\",\n          scale: 1.05,\n          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },\n        }}\n        className=\"absolute top-0 right-0 bottom-0 left-0 z-50 flex flex-col items-center justify-center bg-black shadow-[0_4px_30px_rgba(0,0,0,0.5)]\"\n        role=\"status\"\n        aria-live=\"polite\"\n        style={{\n          backfaceVisibility: \"hidden\",\n          WebkitBackfaceVisibility: \"hidden\",\n          willChange: \"transform, opacity\",\n        }}\n      >\n        <motion.div\n          initial={{ opacity: 0 }}\n          animate={{ opacity: 1 }}\n          transition={{ duration: 0.8, ease: \"easeOut\" }}\n          className=\"mb-4 text-5xl font-medium text-white\"\n        >\n          {greetings[greetingIndex]}\n        </motion.div>\n\n        <div className=\"absolute bottom-0 h-6 w-full shadow-lg\" />\n      </motion.div>\n    </>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}
