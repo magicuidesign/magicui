@@ -43,14 +43,15 @@ npx shadcn@latest add "https://magicui.design/r/curtain-loader"
 ## Usage
 
 ```tsx showLineNumbers
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import CurtainLoader from "@/components/magicui/curtain-loader";
+import { useState } from "react"
+import { AnimatePresence } from "framer-motion"
+
+import CurtainLoader from "@/components/magicui/curtain-loader"
 ```
 
 ```tsx showLineNumbers
 export default function MyComponent() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <>
@@ -63,20 +64,20 @@ export default function MyComponent() {
           />
         )}
       </AnimatePresence>
-      
+
       {!isLoading && <div>Your main app content goes here!</div>}
     </>
-  );
+  )
 }
 ```
 
 ## Props
 
-| Prop         | Type         | Default | Description                                                                                                    |
-| ------------ | ------------ | ------- | -------------------------------------------------------------------------------------------------------------- |
-| `onComplete` | `() => void` |         | Callback triggered when the animation finishes. **Required** to unmount the loader.                            |
-| `greetings`  | `string[]`   |         | Array of greetings to display in sequence.                                                                     |
-| `speed`      | `number`     | `150`   | The speed (in ms) at which greetings cycle.                                                                    |
+| Prop         | Type         | Default | Description                                                                         |
+| ------------ | ------------ | ------- | ----------------------------------------------------------------------------------- |
+| `onComplete` | `() => void` |         | Callback triggered when the animation finishes. **Required** to unmount the loader. |
+| `greetings`  | `string[]`   |         | Array of greetings to display in sequence.                                          |
+| `speed`      | `number`     | `150`   | The speed (in ms) at which greetings cycle.                                         |
 
 ## Credits
 
