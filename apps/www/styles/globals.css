@@ -441,6 +441,11 @@
     animation: none;
     mix-blend-mode: normal;
   }
+
+  /* Scoped to AnimatedThemeToggler so other root view transitions stay unaffected. */
+  html[data-magicui-theme-vt="active"]::view-transition-group(root) {
+    animation-duration: var(--magicui-theme-toggle-vt-duration);
+  }
 }
 
 @utility no-scrollbar {

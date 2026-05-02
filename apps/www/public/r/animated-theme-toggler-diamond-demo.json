@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-theme-toggler-diamond-demo",
+  "type": "registry:example",
+  "title": "Animated Theme Toggler — Diamond",
+  "description": "Theme transition with a diamond-shaped clip reveal.",
+  "registryDependencies": [
+    "@magicui/animated-theme-toggler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-theme-toggler-diamond-demo.tsx",
+      "content": "import { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nexport default function AnimatedThemeTogglerDiamondDemo() {\n  return (\n    <div className=\"flex justify-center p-6\">\n      <AnimatedThemeToggler variant=\"diamond\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

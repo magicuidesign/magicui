@@ -676,6 +676,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "dia-text-reveal",
+    type: "registry:ui",
+    title: "Dia Text Reveal",
+    description:
+      "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/dia-text-reveal.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "hyper-text",
     type: "registry:ui",
     title: "Hyper Text",
@@ -1201,7 +1215,8 @@ export const ui: Registry["items"] = [
     name: "animated-theme-toggler",
     type: "registry:ui",
     title: "Theme Toggler",
-    description: "A component for theme changing animation.",
+    description:
+      "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
     dependencies: ["lucide-react"],
     files: [
       {

@@ -13,7 +13,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated Grid Pattern](https://magicui.design/docs/components/animated-grid-pattern): A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Animated List](https://magicui.design/docs/components/animated-list): A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.
 - [Animated Shiny Text](https://magicui.design/docs/components/animated-shiny-text): A light glare effect which pans across text making it appear as if it is shimmering.
-- [Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler): A component for theme changing animation.
+- [Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler): Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.
 - [Aurora Text](https://magicui.design/docs/components/aurora-text): A beautiful aurora text effect
 - [Avatar Circles](https://magicui.design/docs/components/avatar-circles): Overlapping circles of avatars.
 - [Backlight](https://magicui.design/docs/components/backlight): A backlight glow effect for videos, images, and SVGs.
@@ -26,6 +26,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
+- [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
@@ -159,6 +160,10 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated Beam Multiple Inputs](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-multiple-inputs.tsx): Example usage
 - [Animated Beam Multiple Outputs](https://github.com/magicuidesign/magicui/blob/main/example/animated-beam-multiple-outputs.tsx): Example usage
 - [Text Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-reveal-demo.tsx): Example usage
+- [Dia Text Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo.tsx): Example usage
+- [Dia Text Reveal Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo-2.tsx): Example usage
+- [Dia Text Reveal Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo-3.tsx): Example usage
+- [Dia Text Reveal Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/dia-text-reveal-demo-4.tsx): Example usage
 - [Animated Gradient Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-gradient-text-demo.tsx): Example usage
 - [Animated Gradient Text Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/animated-gradient-text-demo-2.tsx): Example usage
 - [Orbiting Circles Demo](https://github.com/magicuidesign/magicui/blob/main/example/orbiting-circles-demo.tsx): Example usage
@@ -230,6 +235,12 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pixel Image Demo](https://github.com/magicuidesign/magicui/blob/main/example/pixel-image-demo.tsx): Example usage
 - [Highlighter Demo](https://github.com/magicuidesign/magicui/blob/main/example/highlighter-demo.tsx): Example usage
 - [Animated Theme Toggler Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-demo.tsx): Example usage
+- [Animated Theme Toggler — Square](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-square-demo.tsx): Example usage
+- [Animated Theme Toggler — Diamond](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-diamond-demo.tsx): Example usage
+- [Animated Theme Toggler — Rectangle](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-rectangle-demo.tsx): Example usage
+- [Animated Theme Toggler — Hexagon](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-hexagon-demo.tsx): Example usage
+- [Animated Theme Toggler — Triangle](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-triangle-demo.tsx): Example usage
+- [Animated Theme Toggler — Star](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-star-demo.tsx): Example usage
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage

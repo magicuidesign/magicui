@@ -1020,6 +1020,60 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dia-text-reveal-demo",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo",
+    description:
+      "Example showing a sweeping color band reveal on headline text.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dia-text-reveal-demo-2",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo 2",
+    description:
+      "Custom gradient colors and settled text color on a light background.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dia-text-reveal-demo-3",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo 3",
+    description: "Rotating phrases with repeat and repeat delay.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dia-text-reveal-demo-4",
+    type: "registry:example",
+    title: "Dia Text Reveal Demo 4",
+    description: "Slower sweep with delay — custom duration and timing.",
+    registryDependencies: ["@magicui/dia-text-reveal"],
+    files: [
+      {
+        path: "example/dia-text-reveal-demo-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "animated-gradient-text-demo",
     type: "registry:example",
     title: "Animated Gradient Text Demo",
@@ -1952,6 +2006,84 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/animated-theme-toggler-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-theme-toggler-square-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Square",
+    description: "Theme transition with a square clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-square-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-theme-toggler-diamond-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Diamond",
+    description: "Theme transition with a diamond-shaped clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-diamond-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-theme-toggler-rectangle-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Rectangle",
+    description: "Theme transition with a rectangle clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-rectangle-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-theme-toggler-hexagon-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Hexagon",
+    description: "Theme transition with a hexagon clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-hexagon-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-theme-toggler-triangle-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Triangle",
+    description: "Theme transition with a triangle clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-triangle-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "animated-theme-toggler-star-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — Star",
+    description: "Theme transition with a star-shaped clip reveal.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-star-demo.tsx",
         type: "registry:example",
       },
     ],
