@@ -6,7 +6,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Click Spark Demo",
     description: "Example showing a click spark component.",
-    registryDependencies: ["@magicui/click-spark", "button"],
+    registryDependencies: ["@magicui/click-spark"],
     files: [
       {
         path: "example/click-spark-demo.tsx",
