@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "click-spark-demo",
+  "type": "registry:example",
+  "title": "Click Spark Demo",
+  "description": "Example showing a click spark component.",
+  "registryDependencies": [
+    "@magicui/click-spark",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/click-spark-demo.tsx",
+      "content": "import ClickSpark from \"@/registry/magicui/click-spark\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ClickSparkDemo() {\n  return (\n    <div className=\"relative flex h-[350px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl\">\n      <ClickSpark\n        sparkColor=\"#fff\"\n        sparkSize={10}\n        sparkRadius={15}\n        sparkCount={8}\n        duration={400}\n      >\n        <Button variant=\"secondary\" className=\"px-8 py-6 text-lg font-semibold\">\n          Click Me\n        </Button>\n      </ClickSpark>\n    </div>\n  );\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

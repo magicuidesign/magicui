@@ -19,6 +19,18 @@
       "cssVars": {}
     },
     {
+      "name": "click-spark",
+      "type": "registry:ui",
+      "title": "Click Spark",
+      "description": "A component that renders sparks when clicked.",
+      "files": [
+        {
+          "path": "registry/magicui/click-spark.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card",
       "type": "registry:ui",
       "title": "Magic Card",
@@ -1345,6 +1357,22 @@
         {
           "path": "registry/magicui/text-3d-flip.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "click-spark-demo",
+      "type": "registry:example",
+      "title": "Click Spark Demo",
+      "description": "Example showing a click spark component.",
+      "registryDependencies": [
+        "@magicui/click-spark",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/click-spark-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

@@ -2,6 +2,18 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "click-spark",
+    type: "registry:ui",
+    title: "Click Spark",
+    description: "A component that renders sparks when clicked.",
+    files: [
+      {
+        path: "magicui/click-spark.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",

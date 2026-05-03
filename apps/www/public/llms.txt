@@ -20,6 +20,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Bento Grid](https://magicui.design/docs/components/bento-grid): Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
 - [Blur Fade](https://magicui.design/docs/components/blur-fade): Blur fade in and out animation. Used to smoothly fade in and out content.
 - [Border Beam](https://magicui.design/docs/components/border-beam): An animated beam of light which travels along the border of its container.
+- [Click Spark](https://magicui.design/docs/components/click-spark): A component that renders sparks when clicked.
 - [Client Tweet Card](https://magicui.design/docs/components/client-tweet-card): A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.
 - [Code Comparison](https://magicui.design/docs/components/code-comparison): A component which compares two code snippets.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
@@ -85,6 +86,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Click Spark Demo](https://github.com/magicuidesign/magicui/blob/main/example/click-spark-demo.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/example/android-demo.tsx): Example usage
