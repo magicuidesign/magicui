@@ -6,7 +6,6 @@
   "description": "Example showing a click spark component.",
   "registryDependencies": [
     "@magicui/click-spark",
-    "button"
   ],
   "files": [
     {
