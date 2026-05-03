@@ -334,6 +334,12 @@ export const docsConfig: DocsConfig = {
       title: "Animations",
       items: [
         {
+          title: "Click Spark",
+          href: `/docs/components/click-spark`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Blur Fade",
           href: `/docs/components/blur-fade`,
           items: [],
