@@ -10771,7 +10771,7 @@ import { cn } from "@/lib/utils"
 
 type As = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span"
 
-type KineticTextProps = React.ComponentProps<As> & {
+type KineticTextProps = React.HTMLAttributes<HTMLElement> & {
   text: string
   as?: As
 }
@@ -10780,16 +10780,20 @@ export function KineticText({
   text,
   as: Tag = "h1",
   className = "",
+  style,
+  ...rest
 }: KineticTextProps) {
+  const mergedStyle = {
+    "--hover-padding": "calc(1em / 12)",
+    "--text-stroke-width": "calc(1em * 125 / 6000)",
+    ...(style as React.CSSProperties | undefined),
+  } as React.CSSProperties
+
   return (
     <Tag
       className={cn("flex flex-wrap font-[300]", className)}
-      style={
-        {
-          "--hover-padding": "calc(1em / 12)",
-          "--text-stroke-width": "calc(1em * 125 / 6000)",
-        } as React.CSSProperties
-      }
+      style={mergedStyle}
+      {...rest}
     >
       {text.split("").map((letter, i) => (
         <span
