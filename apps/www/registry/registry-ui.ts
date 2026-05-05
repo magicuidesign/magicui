@@ -1272,6 +1272,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "kinetic-text",
+    type: "registry:ui",
+    title: "Kinetic Text",
+    description:
+      "A text component that animates font weight of characters on hover.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/kinetic-text.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "text-3d-flip",
     type: "registry:ui",
     title: "Text 3D Flip",

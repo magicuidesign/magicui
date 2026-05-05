@@ -604,6 +604,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Kinetic Text",
+          href: `/docs/components/kinetic-text`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Cool Mode",
           href: `/docs/components/cool-mode`,
           items: [],

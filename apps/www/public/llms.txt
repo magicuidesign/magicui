@@ -42,6 +42,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Interactive Grid Pattern](https://magicui.design/docs/components/interactive-grid-pattern): A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [interactive-hover-button](https://magicui.design/docs/components/interactive-hover-button): The interactive-hover-button component.
 - [iPhone](https://magicui.design/docs/components/iphone): A mockup of the iPhone
+- [Kinetic Text](https://magicui.design/docs/components/kinetic-text): A text component that animates font weight of characters on hover.
 - [Lens](https://magicui.design/docs/components/lens): A interactive component that enables zooming into images, videos and other elements.
 - [Light Rays](https://magicui.design/docs/components/light-rays): A component with animated light rays which shine down from above.
 - [Line Shadow Text](https://magicui.design/docs/components/line-shadow-text): A text component with a moving line shadow.
@@ -247,6 +248,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [backlight-video-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-video-demo.tsx): Example usage
 - [backlight-image-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-image-demo.tsx): Example usage
 - [backlight-svg-demo](https://github.com/magicuidesign/magicui/blob/main/example/backlight-svg-demo.tsx): Example usage
+- [kinetic-text-demo](https://github.com/magicuidesign/magicui/blob/main/example/kinetic-text-demo.tsx): Example usage
 - [Text 3D Flip Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo.tsx): Example usage
 - [Text 3D Flip Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo-2.tsx): Example usage
 
