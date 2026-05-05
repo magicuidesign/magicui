@@ -24,9 +24,9 @@ export function KineticText({
 
   return (
     <Tag
+      {...rest}
       className={cn("flex flex-wrap font-[300]", className)}
       style={mergedStyle}
-      {...rest}
     >
       {text.split("").map((letter, i) => (
         <span
