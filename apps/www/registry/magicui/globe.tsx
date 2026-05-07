@@ -11,7 +11,6 @@ const MOVEMENT_DAMPING = 1400
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
   height: 800,
-  onRender: () => {},
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
@@ -72,6 +71,8 @@ export function Globe({
   }
 
   useEffect(() => {
+    let animationFrameId: number
+
     const onResize = () => {
       if (canvasRef.current) {
         widthRef.current = canvasRef.current.offsetWidth
@@ -85,16 +86,27 @@ export function Globe({
       ...config,
       width: widthRef.current * 2,
       height: widthRef.current * 2,
-      onRender: (state) => {
-        if (!pointerInteracting.current) phiRef.current += 0.005
-        state.phi = phiRef.current + rs.get()
-        state.width = widthRef.current * 2
-        state.height = widthRef.current * 2
-      },
     })
+
+    const render = () => {
+      if (pointerInteracting.current === null) {
+        phiRef.current += 0.005
+      }
+
+      globe.update({
+        phi: phiRef.current + rs.get(),
+        width: widthRef.current * 2,
+        height: widthRef.current * 2,
+      })
+
+      animationFrameId = window.requestAnimationFrame(render)
+    }
+
+    render()
 
     setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0)
     return () => {
+      window.cancelAnimationFrame(animationFrameId)
       globe.destroy()
       window.removeEventListener("resize", onResize)
     }
