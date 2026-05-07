@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "keycap-sequence-demo-2",
+  "title": "Keycap Sequence Feature Card",
+  "description": "An editor feature card with a three-key release shortcut.",
+  "registryDependencies": [
+    "@magicui/keycap-sequence",
+    "@magicui/keycap-sequence-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/keycap-sequence-demo-2.tsx",
+      "content": "import { KeycapSequence } from \"@/registry/magicui/keycap-sequence\"\n\nconst RELEASE_KEYS = [\"⌘\", \"⇧\", \"↩\"]\n\nexport default function KeycapSequenceDemo2() {\n  return (\n    <article className=\"border-border bg-background text-foreground w-full max-w-md rounded-xl border p-6 sm:p-8\">\n      <h3 className=\"text-xl font-semibold tracking-tight\">\n        Ship from the editor\n      </h3>\n      <p className=\"text-muted-foreground mt-2 text-sm leading-relaxed text-pretty\">\n        Previews build on every save, and a release is one chord away.\n      </p>\n      <div className=\"mt-8 flex flex-wrap items-center gap-x-3 gap-y-2\">\n        <KeycapSequence keys={RELEASE_KEYS} />\n        <span className=\"text-muted-foreground text-sm\">\n          Deploy to production\n        </span>\n      </div>\n    </article>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

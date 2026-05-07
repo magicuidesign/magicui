@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "keycap-sequence-demo",
+  "title": "Keycap Sequence Demo",
+  "description": "A notes app hero with Command K in its command bar.",
+  "registryDependencies": [
+    "@magicui/keycap-sequence",
+    "@magicui/keycap-sequence-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/keycap-sequence-demo.tsx",
+      "content": "import { KeycapSequence } from \"@/registry/magicui/keycap-sequence\"\n\nexport default function KeycapSequenceDemo() {\n  return (\n    <section className=\"bg-background text-foreground flex w-full flex-col items-center px-6 py-16 text-center\">\n      <p className=\"text-muted-foreground text-xs font-medium tracking-widest uppercase\">\n        Kestrel\n      </p>\n      <h2 className=\"mt-4 max-w-lg text-3xl font-semibold tracking-tight text-balance sm:text-4xl\">\n        Every note, one keystroke away.\n      </h2>\n      <p className=\"text-muted-foreground mt-4 max-w-md text-sm leading-relaxed text-pretty\">\n        Kestrel opens over whatever you are doing, and gets out of the way when\n        you are done.\n      </p>\n      <button\n        type=\"button\"\n        className=\"bg-primary text-primary-foreground hover:bg-primary/90 mt-8 inline-flex h-10 items-center rounded-md px-6 text-sm font-medium whitespace-nowrap transition-colors\"\n      >\n        Download for Mac\n      </button>\n      {/* The app's command bar, where the shortcut lives in the product. */}\n      <div className=\"border-border bg-background text-muted-foreground mt-10 flex h-11 w-full max-w-sm items-center gap-4 rounded-xl border pr-2.5 pl-4 text-left text-sm shadow-xs\">\n        <span className=\"min-w-0 flex-1 truncate\">Search notes and tasks…</span>\n        <KeycapSequence />\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

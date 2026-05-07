@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "keycap-sequence-demo-3",
+  "title": "Keycap Sequence Shortcut List",
+  "description": "Staggered shortcuts with compact and word-labeled keycaps.",
+  "registryDependencies": [
+    "@magicui/keycap-sequence",
+    "@magicui/keycap-sequence-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/keycap-sequence-demo-3.tsx",
+      "content": "import { KeycapSequence } from \"@/registry/magicui/keycap-sequence\"\n\n// Rows share one period (duration + repeatDelay), so offset delays press them in turn.\nconst ROW_REPEAT_DELAY = 2.6\n\nconst shortcuts = [\n  { action: \"Search everything\", keys: [\"Ctrl\", \"K\"], delay: 0.25 },\n  { action: \"Toggle the sidebar\", keys: [\"Ctrl\", \"B\"], delay: 1.4 },\n  { action: \"Open the command list\", keys: [\"Ctrl\", \"Shift\", \"P\"], delay: 2.6 },\n]\n\nexport default function KeycapSequenceDemo3() {\n  return (\n    <section className=\"border-border bg-background text-foreground w-sm max-w-full rounded-xl border p-6\">\n      <h3 className=\"text-lg font-semibold tracking-tight\">\n        Keyboard shortcuts\n      </h3>\n      <dl className=\"divide-border mt-2 divide-y\">\n        {shortcuts.map((shortcut) => (\n          <div\n            key={shortcut.action}\n            className=\"flex items-center justify-between gap-4 py-5\"\n          >\n            {/* Wraps onto a second line rather than crowding the keys. */}\n            <dt className=\"text-muted-foreground min-w-0 text-sm text-pretty\">\n              {shortcut.action}\n            </dt>\n            <dd>\n              <KeycapSequence\n                keys={shortcut.keys}\n                delay={shortcut.delay}\n                repeatDelay={ROW_REPEAT_DELAY}\n              />\n            </dd>\n          </div>\n        ))}\n      </dl>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

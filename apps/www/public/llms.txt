@@ -45,6 +45,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Interactive Grid Pattern](https://magicui.design/docs/components/interactive-grid-pattern): A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [interactive-hover-button](https://magicui.design/docs/components/interactive-hover-button): The interactive-hover-button component.
 - [iPhone](https://magicui.design/docs/components/iphone): A mockup of the iPhone
+- [Keycap Sequence](https://magicui.design/docs/components/keycap-sequence): Keycaps that press through a keyboard shortcut and spring back in reverse order.
 - [Kinetic Text](https://magicui.design/docs/components/kinetic-text): A text component that animates font weight of characters on hover.
 - [Lens](https://magicui.design/docs/components/lens): A interactive component that enables zooming into images, videos and other elements.
 - [Light Rays](https://magicui.design/docs/components/light-rays): A component with animated light rays which shine down from above.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Keycap Sequence Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/keycap-sequence-demo.tsx): Example usage
+- [Keycap Sequence Feature Card](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/keycap-sequence-demo-2.tsx): Example usage
+- [Keycap Sequence Shortcut List](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/keycap-sequence-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage
