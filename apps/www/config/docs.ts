@@ -216,12 +216,6 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Keycap Sequence",
-          href: `/docs/components/keycap-sequence`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Globe",
           href: `/docs/components/globe`,
           items: [],
@@ -276,6 +270,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dotted Map",
           href: `/docs/components/dotted-map`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Keycap Sequence",
+          href: `/docs/components/keycap-sequence`,
           items: [],
           label: "New",
         },
