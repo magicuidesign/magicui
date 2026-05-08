@@ -1,0 +1,81 @@
+---
+title: Keycap Sequence
+date: 2026-11-04
+description: Keycaps that press through a keyboard shortcut and spring back in reverse order.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="keycap-sequence-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/keycap-sequence
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="keycap-sequence" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { KeycapSequence } from "@/components/ui/keycap-sequence"
+```
+
+```tsx showLineNumbers
+<KeycapSequence keys={["⌘", "⇧", "P"]} />
+```
+
+Hovering replays the keys. The component only displays the shortcut; it does
+not listen for it.
+
+## Props
+
+| Prop          | Type       | Default      | Description                                                        |
+| ------------- | ---------- | ------------ | ------------------------------------------------------------------ |
+| `keys`        | `string[]` | `["⌘", "K"]` | Labels in pressing order, modifiers first                          |
+| `size`        | `number`   | `24`         | Key height in pixels                                               |
+| `duration`    | `number`   | `1.1`        | Seconds for one press and release                                  |
+| `delay`       | `number`   | `0.25`       | Seconds to wait after the keys scroll into view                    |
+| `repeatDelay` | `number`   | `1.8`        | Seconds to pause after a play before the next one starts           |
+| `aria-label`  | `string`   | `-`          | Screen reader text. Defaults to the key names, such as "Command K" |
+
+## Examples
+
+### Feature Card
+
+<ComponentPreview name="keycap-sequence-demo-2" />
+
+### Shortcut List
+
+<ComponentPreview name="keycap-sequence-demo-3" />
