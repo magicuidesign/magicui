@@ -22,9 +22,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample39 } from "./keycap-sequence-pass"
+import { passSample40 } from "./keycap-sequence-pass"
 
-void passSample39(0)
+void passSample40(0)
 const DEFAULT_KEYS = ["⌘", "K"]
 
 // A finger bottoming out: the key accelerates into a hard stop, no rebound.
