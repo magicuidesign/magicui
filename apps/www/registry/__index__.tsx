@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "keycap-sequence-demo",
     description: "A notes app hero with Command K in its command bar.",
     type: "registry:example",
-    registryDependencies: ["@magicui/keycap-sequence","@magicui/keycap-sequence-pass"],
+    registryDependencies: ["@magicui/keycap-sequence"],
     files: [{
       path: "registry/example/keycap-sequence-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "keycap-sequence-demo-2",
     description: "An editor feature card with a three-key release shortcut.",
     type: "registry:example",
-    registryDependencies: ["@magicui/keycap-sequence","@magicui/keycap-sequence-pass"],
+    registryDependencies: ["@magicui/keycap-sequence"],
     files: [{
       path: "registry/example/keycap-sequence-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "keycap-sequence-demo-3",
     description: "Staggered shortcuts with compact and word-labeled keycaps.",
     type: "registry:example",
-    registryDependencies: ["@magicui/keycap-sequence","@magicui/keycap-sequence-pass"],
+    registryDependencies: ["@magicui/keycap-sequence"],
     files: [{
       path: "registry/example/keycap-sequence-demo-3.tsx",
       type: "registry:example",

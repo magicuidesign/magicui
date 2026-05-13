@@ -4,8 +4,7 @@
   "title": "Keycap Sequence Feature Card",
   "description": "An editor feature card with a three-key release shortcut.",
   "registryDependencies": [
-    "@magicui/keycap-sequence",
-    "@magicui/keycap-sequence-pass"
+    "@magicui/keycap-sequence"
   ],
   "files": [
     {

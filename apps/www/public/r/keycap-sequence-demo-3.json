@@ -4,8 +4,7 @@
   "title": "Keycap Sequence Shortcut List",
   "description": "Staggered shortcuts with compact and word-labeled keycaps.",
   "registryDependencies": [
-    "@magicui/keycap-sequence",
-    "@magicui/keycap-sequence-pass"
+    "@magicui/keycap-sequence"
   ],
   "files": [
     {

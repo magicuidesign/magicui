@@ -1409,8 +1409,7 @@
       "title": "Keycap Sequence Demo",
       "description": "A notes app hero with Command K in its command bar.",
       "registryDependencies": [
-        "@magicui/keycap-sequence",
-        "@magicui/keycap-sequence-pass"
+        "@magicui/keycap-sequence"
       ],
       "files": [
         {
@@ -1425,8 +1424,7 @@
       "title": "Keycap Sequence Feature Card",
       "description": "An editor feature card with a three-key release shortcut.",
       "registryDependencies": [
-        "@magicui/keycap-sequence",
-        "@magicui/keycap-sequence-pass"
+        "@magicui/keycap-sequence"
       ],
       "files": [
         {
@@ -1441,8 +1439,7 @@
       "title": "Keycap Sequence Shortcut List",
       "description": "Staggered shortcuts with compact and word-labeled keycaps.",
       "registryDependencies": [
-        "@magicui/keycap-sequence",
-        "@magicui/keycap-sequence-pass"
+        "@magicui/keycap-sequence"
       ],
       "files": [
         {

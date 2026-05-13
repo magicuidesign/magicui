@@ -4,8 +4,7 @@
   "title": "Keycap Sequence Demo",
   "description": "A notes app hero with Command K in its command bar.",
   "registryDependencies": [
-    "@magicui/keycap-sequence",
-    "@magicui/keycap-sequence-pass"
+    "@magicui/keycap-sequence"
   ],
   "files": [
     {
