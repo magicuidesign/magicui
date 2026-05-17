@@ -1366,8 +1366,7 @@
       "title": "Click Spark Demo",
       "description": "Example showing a click spark component.",
       "registryDependencies": [
-        "@magicui/click-spark",
-        "button"
+        "@magicui/click-spark"
       ],
       "files": [
         {

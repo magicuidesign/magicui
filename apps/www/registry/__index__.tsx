@@ -1362,7 +1362,7 @@ export const Index: Record<string, any> = {
     name: "magic-card-demo-2",
     description: "Example showing a magic card with an orb effect.",
     type: "registry:example",
-    registryDependencies: ["@magicui/magic-card", "@magicui/avatar-circles"],
+    registryDependencies: ["@magicui/magic-card","@magicui/avatar-circles"],
     files: [{
       path: "registry/example/magic-card-demo2.tsx",
       type: "registry:example",
@@ -1515,7 +1515,7 @@ export const Index: Record<string, any> = {
     name: "lens-demo",
     description: "Example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["button", "card", "@magicui/lens"],
+    registryDependencies: ["button","card","@magicui/lens"],
     files: [{
       path: "registry/example/lens-demo.tsx",
       type: "registry:example",
@@ -1532,7 +1532,7 @@ export const Index: Record<string, any> = {
     name: "lens-demo-2",
     description: "Second example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["button", "card", "@magicui/lens"],
+    registryDependencies: ["button","card","@magicui/lens"],
     files: [{
       path: "registry/example/lens-demo-2.tsx",
       type: "registry:example",
@@ -1549,7 +1549,7 @@ export const Index: Record<string, any> = {
     name: "lens-demo-3",
     description: "Third example showing a lens effect component",
     type: "registry:example",
-    registryDependencies: ["button", "card", "@magicui/lens"],
+    registryDependencies: ["button","card","@magicui/lens"],
     files: [{
       path: "registry/example/lens-demo-3.tsx",
       type: "registry:example",
@@ -1651,7 +1651,7 @@ export const Index: Record<string, any> = {
     name: "noise-texture-demo-2",
     description: "Example showing a newsletter signup card with email input over a noise texture.",
     type: "registry:example",
-    registryDependencies: ["@magicui/noise-texture", "button", "card", "input", "label"],
+    registryDependencies: ["@magicui/noise-texture","button","card","input","label"],
     files: [{
       path: "registry/example/noise-texture-demo-2.tsx",
       type: "registry:example",
@@ -1668,7 +1668,7 @@ export const Index: Record<string, any> = {
     name: "noise-texture-demo-3",
     description: "Example showing NoiseTexture behind a button label inside a relative button.",
     type: "registry:example",
-    registryDependencies: ["@magicui/noise-texture", "button"],
+    registryDependencies: ["@magicui/noise-texture","button"],
     files: [{
       path: "registry/example/noise-texture-demo-3.tsx",
       type: "registry:example",
@@ -1685,7 +1685,7 @@ export const Index: Record<string, any> = {
     name: "noise-texture-demo-4",
     description: "Example showing a labeled input field with NoiseTexture filling the input container.",
     type: "registry:example",
-    registryDependencies: ["@magicui/noise-texture", "input", "label"],
+    registryDependencies: ["@magicui/noise-texture","input","label"],
     files: [{
       path: "registry/example/noise-texture-demo-4.tsx",
       type: "registry:example",
@@ -2161,7 +2161,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-demo",
     description: "Example showing a tweet card with author info.",
     type: "registry:example",
-    registryDependencies: ["@magicui/client-tweet-card", "@magicui/tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card","@magicui/tweet-card"],
     files: [{
       path: "registry/example/tweet-card-demo.tsx",
       type: "registry:example",
@@ -2178,7 +2178,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-images",
     description: "Example showing a tweet card with images.",
     type: "registry:example",
-    registryDependencies: ["@magicui/client-tweet-card", "@magicui/tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card","@magicui/tweet-card"],
     files: [{
       path: "registry/example/tweet-card-images.tsx",
       type: "registry:example",
@@ -2195,7 +2195,7 @@ export const Index: Record<string, any> = {
     name: "tweet-card-meta-preview",
     description: "Example showing a tweet card with meta preview.",
     type: "registry:example",
-    registryDependencies: ["@magicui/client-tweet-card", "@magicui/tweet-card"],
+    registryDependencies: ["@magicui/client-tweet-card","@magicui/tweet-card"],
     files: [{
       path: "registry/example/tweet-card-meta-preview.tsx",
       type: "registry:example",
@@ -2229,7 +2229,7 @@ export const Index: Record<string, any> = {
     name: "bento-demo",
     description: "Example showing a bento grid layout for showcasing features.",
     type: "registry:example",
-    registryDependencies: ["button", "calendar", "@magicui/marquee", "@magicui/bento-grid", "@magicui/animated-beam", "@magicui/animated-list", "@magicui/animated-beam-multiple-outputs", "@magicui/animated-list-demo"],
+    registryDependencies: ["button","calendar","@magicui/marquee","@magicui/bento-grid","@magicui/animated-beam","@magicui/animated-list","@magicui/animated-beam-multiple-outputs","@magicui/animated-list-demo"],
     files: [{
       path: "registry/example/bento-demo.tsx",
       type: "registry:example",
@@ -2467,7 +2467,7 @@ export const Index: Record<string, any> = {
     name: "border-beam-demo-2",
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
-    registryDependencies: ["button", "card", "@magicui/border-beam"],
+    registryDependencies: ["button","card","@magicui/border-beam"],
     files: [{
       path: "registry/example/border-beam-demo-2.tsx",
       type: "registry:example",
@@ -2484,7 +2484,7 @@ export const Index: Record<string, any> = {
     name: "border-beam-demo-3",
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
-    registryDependencies: ["button", "card", "input", "label", "@magicui/border-beam"],
+    registryDependencies: ["button","card","input","label","@magicui/border-beam"],
     files: [{
       path: "registry/example/border-beam-demo-3.tsx",
       type: "registry:example",
@@ -2501,7 +2501,7 @@ export const Index: Record<string, any> = {
     name: "border-beam-demo-4",
     description: "Example showing an animated border beam effect.",
     type: "registry:example",
-    registryDependencies: ["button", "@magicui/border-beam"],
+    registryDependencies: ["button","@magicui/border-beam"],
     files: [{
       path: "registry/example/border-beam-demo-4.tsx",
       type: "registry:example",
@@ -2739,7 +2739,7 @@ export const Index: Record<string, any> = {
     name: "dock-demo",
     description: "Example showing a MacOS-style dock implementation.",
     type: "registry:example",
-    registryDependencies: ["button", "@magicui/dock"],
+    registryDependencies: ["button","@magicui/dock"],
     files: [{
       path: "registry/example/dock-demo.tsx",
       type: "registry:example",
@@ -3866,7 +3866,7 @@ export const Index: Record<string, any> = {
       path: "registry/example/highlighter-demo.tsx",
       type: "registry:example",
       target: ""
-    }, {
+    },{
       path: "registry/magicui/highlighter.tsx",
       type: "registry:ui",
       target: ""
@@ -4184,4 +4184,4 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-}
+  }
