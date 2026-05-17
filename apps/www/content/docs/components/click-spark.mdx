@@ -1,0 +1,53 @@
+---
+title: Click Spark
+date: 2026-05-17
+description: A component that renders sparks when clicked.
+author: rishabhmishra
+published: true
+---
+
+<ComponentPreview name="click-spark-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/click-spark
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="click-spark" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop          | Type     | Default    | Description                       |
+| ------------- | -------- | ---------- | --------------------------------- |
+| `sparkColor`  | `string` | `#fff`     | Color of the sparks.              |
+| `sparkSize`   | `number` | `10`       | Size of the sparks.               |
+| `sparkRadius` | `number` | `15`       | Radius of the sparks.             |
+| `sparkCount`  | `number` | `8`        | Number of sparks.                 |
+| `duration`    | `number` | `400`      | Duration of the animation.        |
+| `easing`      | `string` | `ease-out` | Easing function of the animation. |
+| `extraScale`  | `number` | `1.0`      | Extra scale of the sparks.        |
