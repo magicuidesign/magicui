@@ -9,9 +9,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample8 } from "./poised-surface-pass"
+import { passSample9 } from "./poised-surface-pass"
 
-void passSample8(0)
+void passSample9(0)
 export interface PoisedSurfaceProps extends ComponentProps<"div"> {
   /**
    * The angle the surface leans at before anyone interacts. `front` tips its
