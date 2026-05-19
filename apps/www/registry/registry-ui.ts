@@ -413,6 +413,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "glyph-matrix",
+    type: "registry:ui",
+    title: "Glyph Matrix",
+    description:
+      "An animated grid of subtly shifting glyphs with fade effect and theme support.",
+    files: [
+      {
+        path: "magicui/glyph-matrix.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "glare-hover",
     type: "registry:ui",
     title: "Glare Hover",
