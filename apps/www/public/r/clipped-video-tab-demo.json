@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clipped-video-tab-demo",
+  "type": "registry:example",
+  "title": "Clipped Video Tab Demo",
+  "description": "Clipped video tab demo",
+  "registryDependencies": [
+    "@magicui/clipped-video-tab"
+  ],
+  "files": [
+    {
+      "path": "registry/example/clipped-video-tab-demo.tsx",
+      "content": "import Component from \"@/registry/magicui/clipped-video-tab\"\n\nexport default function ClippedVideoTabDemo() {\n  return <Component />\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -2,6 +2,19 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "clipped-video-tab-demo",
+    type: "registry:example",
+    title: "Clipped Video Tab Demo",
+    description: "Clipped video tab demo",
+    registryDependencies: ["@magicui/clipped-video-tab"],
+    files: [
+      {
+        path: "example/clipped-video-tab-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",

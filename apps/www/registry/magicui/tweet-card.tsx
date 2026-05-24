@@ -1,6 +1,11 @@
 import { Suspense } from "react"
 import { enrichTweet, type EnrichedTweet, type TweetProps } from "react-tweet"
-import { getTweet, type Tweet } from "react-tweet/api"
+import {
+  getTweet,
+  type QuotedTweet,
+  type Tweet,
+  type TweetEntities,
+} from "react-tweet/api"
 
 import { cn } from "@/lib/utils"
 
@@ -229,6 +234,43 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
   )
 }
 
+const EMPTY_TWEET_ENTITIES: TweetEntities = {
+  hashtags: [],
+  urls: [],
+  user_mentions: [],
+  symbols: [],
+}
+
+/** Syndication API responses sometimes omit entity arrays; react-tweet expects iterables. */
+function normalizeTweetEntities<T extends Tweet | QuotedTweet>(tweet: T): T {
+  const entities: TweetEntities = {
+    ...EMPTY_TWEET_ENTITIES,
+    ...tweet.entities,
+    hashtags: tweet.entities?.hashtags ?? [],
+    urls: tweet.entities?.urls ?? [],
+    user_mentions: tweet.entities?.user_mentions ?? [],
+    symbols: tweet.entities?.symbols ?? [],
+    ...(tweet.entities?.media ? { media: tweet.entities.media } : {}),
+  }
+
+  const textLength = tweet.text?.length ?? 0
+
+  const normalized = {
+    ...tweet,
+    entities,
+    display_text_range: tweet.display_text_range ?? [0, textLength],
+  }
+
+  if ("quoted_tweet" in tweet && tweet.quoted_tweet) {
+    return {
+      ...normalized,
+      quoted_tweet: normalizeTweetEntities(tweet.quoted_tweet),
+    }
+  }
+
+  return normalized
+}
+
 export const MagicTweet = ({
   tweet,
   className,
@@ -237,7 +279,7 @@ export const MagicTweet = ({
   tweet: Tweet
   className?: string
 }) => {
-  const enrichedTweet = enrichTweet(tweet)
+  const enrichedTweet = enrichTweet(normalizeTweetEntities(tweet))
   return (
     <div
       className={cn(

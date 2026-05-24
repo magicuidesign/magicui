@@ -491,6 +491,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "clipped-video-tab": {
+    name: "clipped-video-tab",
+    description: "A full-width tabbed section with clipped video backgrounds and animated content cards.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/clipped-video-tab.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/clipped-video-tab.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "bento-grid": {
     name: "bento-grid",
     description: "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
@@ -1302,6 +1319,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/text-3d-flip.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "clipped-video-tab-demo": {
+    name: "clipped-video-tab-demo",
+    description: "Clipped video tab demo",
+    type: "registry:example",
+    registryDependencies: ["@magicui/clipped-video-tab"],
+    files: [{
+      path: "registry/example/clipped-video-tab-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/clipped-video-tab-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

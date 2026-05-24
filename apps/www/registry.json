@@ -524,6 +524,21 @@
       ]
     },
     {
+      "name": "clipped-video-tab",
+      "type": "registry:ui",
+      "title": "Clipped Video Tab",
+      "description": "A full-width tabbed section with clipped video backgrounds and animated content cards.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/clipped-video-tab.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "bento-grid",
       "type": "registry:ui",
       "title": "Bento Grid",
@@ -1345,6 +1360,21 @@
         {
           "path": "registry/magicui/text-3d-flip.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "clipped-video-tab-demo",
+      "type": "registry:example",
+      "title": "Clipped Video Tab Demo",
+      "description": "Clipped video tab demo",
+      "registryDependencies": [
+        "@magicui/clipped-video-tab"
+      ],
+      "files": [
+        {
+          "path": "registry/example/clipped-video-tab-demo.tsx",
+          "type": "registry:example"
         }
       ]
     },

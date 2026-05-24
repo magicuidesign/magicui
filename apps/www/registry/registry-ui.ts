@@ -496,6 +496,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "clipped-video-tab",
+    type: "registry:ui",
+    title: "Clipped Video Tab",
+    description:
+      "A full-width tabbed section with clipped video backgrounds and animated content cards.",
+    dependencies: ["framer-motion"],
+    files: [
+      {
+        path: "magicui/clipped-video-tab.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "bento-grid",
     type: "registry:ui",
     title: "Bento Grid",
