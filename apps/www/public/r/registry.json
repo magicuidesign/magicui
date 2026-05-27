@@ -444,7 +444,7 @@
       "title": "Globe",
       "description": "An autorotating, interactive, and highly performant globe made using WebGL.",
       "dependencies": [
-        "cobe",
+        "cobe@^0.6.4",
         "motion"
       ],
       "files": [
@@ -3777,6 +3777,24 @@
       "files": [
         {
           "path": "registry/example/animated-theme-toggler-star-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler-next-themes-demo",
+      "type": "registry:example",
+      "title": "Animated Theme Toggler — next-themes",
+      "description": "Controlled usage with next-themes so useTheme() subscribers stay in sync on toggle.",
+      "dependencies": [
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "@magicui/animated-theme-toggler"
+      ],
+      "files": [
+        {
+          "path": "registry/example/animated-theme-toggler-next-themes-demo.tsx",
           "type": "registry:example"
         }
       ]

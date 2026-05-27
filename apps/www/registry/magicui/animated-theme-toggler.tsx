@@ -20,6 +20,13 @@ interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"butt
   variant?: TransitionVariant
   /** When true, the transition expands from the viewport center instead of the button center. */
   fromCenter?: boolean
+  /**
+   * Controlled theme value. When provided, the parent owns persistence
+   * (e.g. `next-themes`) and this component will not write to localStorage.
+   */
+  theme?: "light" | "dark"
+  /** Called on toggle. Pair with `theme` for controlled usage. */
+  onThemeChange?: (theme: "light" | "dark") => void
 }
 
 function polygonCollapsed(cx: number, cy: number, vertexCount: number): string {
@@ -131,15 +138,21 @@ export const AnimatedThemeToggler = ({
   duration = 400,
   variant,
   fromCenter = false,
+  theme,
+  onThemeChange,
   ...props
 }: AnimatedThemeTogglerProps) => {
   const shape = variant ?? "circle"
-  const [isDark, setIsDark] = useState(false)
+  const isControlled = theme !== undefined
+  const [internalIsDark, setInternalIsDark] = useState(false)
+  const isDark = isControlled ? theme === "dark" : internalIsDark
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    if (isControlled) return
+
     const updateTheme = () => {
-      setIsDark(document.documentElement.classList.contains("dark"))
+      setInternalIsDark(document.documentElement.classList.contains("dark"))
     }
 
     updateTheme()
@@ -151,7 +164,7 @@ export const AnimatedThemeToggler = ({
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [isControlled])
 
   const toggleTheme = useCallback(() => {
     const button = buttonRef.current
@@ -178,9 +191,15 @@ export const AnimatedThemeToggler = ({
 
     const applyTheme = () => {
       const newTheme = !isDark
-      setIsDark(newTheme)
+      // Always toggle the class synchronously so the View Transitions API
+      // snapshots the new theme inside the startViewTransition callback.
       document.documentElement.classList.toggle("dark")
-      localStorage.setItem("theme", newTheme ? "dark" : "light")
+      if (isControlled) {
+        onThemeChange?.(newTheme ? "dark" : "light")
+      } else {
+        setInternalIsDark(newTheme)
+        localStorage.setItem("theme", newTheme ? "dark" : "light")
+      }
     }
 
     if (typeof document.startViewTransition !== "function") {
@@ -188,15 +207,28 @@ export const AnimatedThemeToggler = ({
       return
     }
 
+    const clipPath = getThemeTransitionClipPaths(
+      shape,
+      x,
+      y,
+      maxRadius,
+      viewportWidth,
+      viewportHeight
+    )
+
     const root = document.documentElement
     root.dataset.magicuiThemeVt = "active"
     root.style.setProperty(
       "--magicui-theme-toggle-vt-duration",
       `${duration}ms`
     )
+    // Pin the collapsed clip-path via CSS so Firefox does not paint the new
+    // theme unclipped between snapshot and the ready.then() JS animation.
+    root.style.setProperty("--magicui-theme-vt-clip-from", clipPath[0])
     const cleanup = () => {
       delete root.dataset.magicuiThemeVt
       root.style.removeProperty("--magicui-theme-toggle-vt-duration")
+      root.style.removeProperty("--magicui-theme-vt-clip-from")
     }
 
     const transition = document.startViewTransition(() => {
@@ -210,14 +242,6 @@ export const AnimatedThemeToggler = ({
 
     const ready = transition?.ready
     if (ready && typeof ready.then === "function") {
-      const clipPath = getThemeTransitionClipPaths(
-        shape,
-        x,
-        y,
-        maxRadius,
-        viewportWidth,
-        viewportHeight
-      )
       ready.then(() => {
         document.documentElement.animate(
           {
@@ -233,7 +257,7 @@ export const AnimatedThemeToggler = ({
         )
       })
     }
-  }, [shape, fromCenter, duration, isDark])
+  }, [shape, fromCenter, duration, isDark, isControlled, onThemeChange])
 
   return (
     <button
