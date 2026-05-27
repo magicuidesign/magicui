@@ -2089,6 +2089,21 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "animated-theme-toggler-next-themes-demo",
+    type: "registry:example",
+    title: "Animated Theme Toggler — next-themes",
+    description:
+      "Controlled usage with next-themes so useTheme() subscribers stay in sync on toggle.",
+    registryDependencies: ["@magicui/animated-theme-toggler"],
+    dependencies: ["next-themes"],
+    files: [
+      {
+        path: "example/animated-theme-toggler-next-themes-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "light-rays-demo",
     description:
       "Demo of the light-rays component showcasing animated light rays",

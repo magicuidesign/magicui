@@ -241,6 +241,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated Theme Toggler — Hexagon](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-hexagon-demo.tsx): Example usage
 - [Animated Theme Toggler — Triangle](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-triangle-demo.tsx): Example usage
 - [Animated Theme Toggler — Star](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-star-demo.tsx): Example usage
+- [Animated Theme Toggler — next-themes](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-next-themes-demo.tsx): Example usage
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage

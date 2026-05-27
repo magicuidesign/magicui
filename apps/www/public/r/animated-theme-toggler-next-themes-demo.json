@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-theme-toggler-next-themes-demo",
+  "type": "registry:example",
+  "title": "Animated Theme Toggler — next-themes",
+  "description": "Controlled usage with next-themes so useTheme() subscribers stay in sync on toggle.",
+  "dependencies": [
+    "next-themes"
+  ],
+  "registryDependencies": [
+    "@magicui/animated-theme-toggler"
+  ],
+  "files": [
+    {
+      "path": "registry/example/animated-theme-toggler-next-themes-demo.tsx",
+      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\n\nimport { AnimatedThemeToggler } from \"@/registry/magicui/animated-theme-toggler\"\n\nexport default function AnimatedThemeTogglerNextThemesDemo() {\n  const { resolvedTheme, setTheme } = useTheme()\n\n  return (\n    <div className=\"flex justify-center p-6\">\n      <AnimatedThemeToggler\n        theme={resolvedTheme === \"dark\" ? \"dark\" : \"light\"}\n        onThemeChange={setTheme}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
