@@ -60,6 +60,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Particles](https://magicui.design/docs/components/particles): Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
 - [Pixel Image](https://magicui.design/docs/components/pixel-image): A component that displays an image with a pixelated effect, creating a retro aesthetic.
 - [Pointer](https://magicui.design/docs/components/pointer): A component that displays a pointer when hovering over an element
+- [Poised Surface](https://magicui.design/docs/components/poised-surface): A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.
 - [Progressive Blur](https://magicui.design/docs/components/progressive-blur): The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
 - [Pulsating Button](https://magicui.design/docs/components/pulsating-button): An animated pulsating button useful for capturing attention of users.
 - [Rainbow Button](https://magicui.design/docs/components/rainbow-button): An animated button with a rainbow effect.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Poised Surface Hero](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/poised-surface-demo.tsx): Example usage
+- [Poised Surface Pose](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/poised-surface-demo-2.tsx): Example usage
+- [Poised Surface Interactive Content](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/poised-surface-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage

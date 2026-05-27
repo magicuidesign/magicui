@@ -12860,6 +12860,137 @@ export function Iphone({
 }
 
 
+===== EXAMPLE: poised-surface-demo-2 =====
+Title: Poised Surface Pose
+
+--- file: example/poised-surface-demo-2.tsx ---
+import type { CSSProperties } from "react"
+
+import { cn } from "@/lib/utils"
+import { Iphone } from "@/registry/magicui/iphone"
+import { PoisedSurface } from "@/registry/magicui/poised-surface"
+
+// The Iphone mock draws a 433 × 882 frame. These numbers come from its
+// screen and island, so the app sits exactly in the screen and the island
+// it covers is drawn again on top.
+const PHONE = { width: 433, height: 882 }
+const SCREEN = {
+  x: 21.25,
+  y: 19.25,
+  width: 389.5,
+  height: 843.5,
+  radius: 55.75,
+}
+const ISLAND = { y: 30, width: 124, height: 37 }
+
+// A neutral-200 bezel inside a neutral-300 hairline, so the light frame reads
+// as a device rather than a white ring. The speaker slot is left out.
+const frame = cn(
+  "[&>svg>path[opacity]]:hidden",
+  "[&>svg>g>path]:fill-neutral-300 dark:[&>svg>g>path]:fill-neutral-700",
+  "[&>svg>g>path:last-child]:fill-neutral-200",
+  "dark:[&>svg>g>path:last-child]:fill-neutral-800"
+)
+
+const percent = (part: number, whole: number) => `${(part / whole) * 100}%`
+
+const screenStyle: CSSProperties = {
+  left: percent(SCREEN.x, PHONE.width),
+  top: percent(SCREEN.y, PHONE.height),
+  width: percent(SCREEN.width, PHONE.width),
+  height: percent(SCREEN.height, PHONE.height),
+  borderRadius: `${percent(SCREEN.radius, SCREEN.width)} / ${percent(SCREEN.radius, SCREEN.height)}`,
+}
+
+const islandStyle: CSSProperties = {
+  top: percent(ISLAND.y - SCREEN.y, SCREEN.height),
+  width: percent(ISLAND.width, SCREEN.width),
+  height: percent(ISLAND.height, SCREEN.height),
+}
+
+const COLLECTION = [
+  { title: "Small rituals, better days", detail: "Journal · 4 min read" },
+  { title: "Notes from the coast", detail: "Travel · 12 photos" },
+  { title: "An idea for tomorrow", detail: "Draft · Edited 9:41" },
+  { title: "Books for the long weekend", detail: "Reading list · 6 books" },
+]
+
+export default function PoisedSurfaceDemo2() {
+  return (
+    <section className="bg-background text-foreground w-full overflow-hidden rounded-2xl px-8 py-16">
+      <div className="mx-auto grid max-w-4xl items-center gap-12 sm:grid-cols-2 sm:gap-16">
+        <PoisedSurface
+          pose="end"
+          className="w-full max-w-68 justify-self-center rounded-[16.9%/8.3%] sm:justify-self-end"
+        >
+          <div className="ring-foreground/10 relative grid rounded-[inherit] ring-1 ring-inset">
+            <Iphone aria-hidden="true" className={frame} />
+            <div
+              style={screenStyle}
+              className="bg-card absolute flex flex-col overflow-hidden px-4 pt-12 pb-6"
+            >
+              <div
+                aria-hidden="true"
+                style={islandStyle}
+                className="absolute left-1/2 -translate-x-1/2 rounded-full bg-neutral-950"
+              />
+              <p className="text-muted-foreground text-[10px] font-medium tracking-wide uppercase">
+                Fieldnotes · Today
+              </p>
+              <h3 className="mt-3 text-xl font-semibold tracking-tight">
+                A little more room to think.
+              </h3>
+              <div className="border-border bg-muted/40 mt-5 space-y-1 rounded-xl border p-3 text-xs">
+                <p className="font-medium">The morning edit</p>
+                <p className="text-foreground/70">
+                  Three ideas worth keeping. One clear next step.
+                </p>
+              </div>
+              <div className="mt-4 text-xs">
+                <p className="mb-1 font-medium">Your collection</p>
+                {COLLECTION.map((note) => (
+                  <div
+                    key={note.title}
+                    className="border-border border-b py-2 last:border-b-0"
+                  >
+                    <p>{note.title}</p>
+                    <p className="text-muted-foreground mt-0.5 text-[10px]">
+                      {note.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted-foreground mt-auto pt-4 text-[10px]">
+                All notes saved · Just for you
+              </p>
+            </div>
+          </div>
+        </PoisedSurface>
+        <div className="max-w-md space-y-4">
+          <p className="text-muted-foreground text-sm font-medium">
+            Fieldnotes for iOS
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Your best ideas travel with you.
+          </h2>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            Capture the thought before it slips away. Fieldnotes keeps your
+            writing, reading, and daily reflections together wherever the day
+            takes you.
+          </p>
+          <a
+            href="https://magicui.design/docs"
+            className="inline-flex rounded-sm text-sm font-medium underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            Explore Fieldnotes
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
 ===== EXAMPLE: iphone-demo =====
 Title: iPhone Demo
 
@@ -16233,6 +16364,1000 @@ export default function PointerDemo1() {
 
 
 
+===== COMPONENT: poised-surface =====
+Title: Poised Surface
+Description: A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.
+
+--- file: magicui/poised-surface.tsx ---
+"use client"
+
+import {
+  useEffect,
+  useRef,
+  type ComponentProps,
+  type CSSProperties,
+} from "react"
+
+import { cn } from "@/lib/utils"
+
+import { passSample32 } from "./poised-surface-pass"
+
+void passSample32(0)
+export interface PoisedSurfaceProps extends ComponentProps<"div"> {
+  /**
+   * The angle the surface leans at before anyone interacts. `front` tips its
+   * top edge away, `start` and `end` also turn it to face that side of the
+   * page, and `flat` keeps it flat.
+   * @default "front"
+   */
+  pose?: "front" | "start" | "end" | "flat"
+  /**
+   * Maximum swing in degrees toward the pointer, up to `15`. `0` turns it off.
+   * @default 3
+   */
+  tilt?: number
+  /**
+   * Seconds the surface takes to follow the pointer. It settles back in 1.5
+   * times this once the pointer leaves.
+   * @default 0.75
+   */
+  duration?: number
+  /**
+   * Opacity of the shadows under the surface, from `0` to `1`. Use `0` for
+   * translucent or cut-out children.
+   * @default 1
+   */
+  shadowOpacity?: number
+}
+
+interface Angles {
+  /** Degrees the top edge tips away from the viewer. */
+  pitch: number
+  /** Degrees the surface turns to face the right of the screen. */
+  yaw: number
+}
+
+interface Size {
+  width: number
+  height: number
+}
+
+const DEFAULT_TILT = 3
+const MAX_TILT = 15
+const DEFAULT_DURATION = 0.75
+const MAX_DURATION = 10
+const DEFAULT_SHADOW_OPACITY = 1
+
+const FLAT: Angles = { pitch: 0, yaw: 0 }
+/** Each pose as it reads in a left-to-right page. */
+const POSES: Record<NonNullable<PoisedSurfaceProps["pose"]>, Angles> = {
+  front: { pitch: 7, yaw: 0 },
+  start: { pitch: 5, yaw: -11 },
+  end: { pitch: 5, yaw: 11 },
+  flat: FLAT,
+}
+/**
+ * Below this width in pixels, `start` and `end` turn half as far, so a narrow
+ * surface such as a phone keeps its text readable.
+ */
+const NARROW_WIDTH = 480
+const NARROW_YAW = 0.5
+/** While the pointer lingers, the pose relaxes to this share of its lean. */
+const RELAXED_POSE = 0.65
+/**
+ * Camera distance as a multiple of the surface's longer side, so a phone and
+ * a wide dashboard foreshorten by the same proportion.
+ */
+const PERSPECTIVE_PER_SIZE = 2.4
+
+/** The surface leans into its pose once, when it first scrolls into view. */
+const ARRIVAL_MS = 1100
+/**
+ * Share of the surface that must be in view before it leans in. A surface
+ * taller than the viewport leans in once it covers this share of the viewport.
+ */
+const ARRIVAL_THRESHOLD = 0.2
+/**
+ * A surface smaller than this in pixels, such as an image that has not loaded
+ * and shows only its border, has nothing to lean yet.
+ */
+const MIN_ARRIVAL_SIZE = 24
+/** Fine steps up to the threshold, so a tall surface reports as it scrolls. */
+const ARRIVAL_STEPS = Array.from(
+  { length: 21 },
+  (_, step) => (step / 20) * ARRIVAL_THRESHOLD
+)
+/** Settling back to rest takes this multiple of `duration`. */
+const RETURN_FACTOR = 1.5
+/** Shadow strength at rest, relative to its strength while tilting. */
+const REST_SHADOW = 0.6
+/**
+ * How far the soft shadow drifts toward the side that lifts, in pixels. Keep
+ * both under the soft shadow's 16px inset (`inset-4`).
+ */
+const SHADOW_SHIFT = { x: 12, y: 8 }
+/** After a pause this long, the next pointer move measures the root again. */
+const IDLE_GAP_MS = 250
+
+const TILTING_ATTRIBUTE = "data-tilting"
+const ARRIVING_ATTRIBUTE = "data-arriving"
+
+const EASE = "ease-[cubic-bezier(0.22,1,0.36,1)]"
+
+const planeLayer = cn(
+  // `h-full` passes a height or aspect ratio on the root on to the child.
+  "relative isolate grid h-full origin-center rounded-[inherit]",
+  // A transparent outline and a hidden back face keep the tilted edge smooth.
+  "outline outline-transparent backface-hidden",
+  // MagicUI's Safari and Iphone put their frame on a layer of its own with an
+  // inline `translateZ(0)`. Dropping it keeps the frame in the plane's layer,
+  // so the frame and the screen it holds tilt as one sheet.
+  "[&_svg[style*=translateZ]]:transform-none!",
+  "transition-transform motion-reduce:transition-none",
+  EASE,
+  "duration-(--poised-return)",
+  "data-[tilting]:duration-(--poised-duration)",
+  "data-[arriving]:duration-(--poised-arrival)"
+)
+
+/**
+ * Both shadows sit under the content, inside the plane, so they tilt with it.
+ * They answer only to their own plane, so nested surfaces stay independent.
+ */
+const shadowLayer = cn(
+  "pointer-events-none absolute -z-10 rounded-[inherit]",
+  "opacity-(--poised-shadow-rest) [[data-tilting]>&]:opacity-(--poised-shadow)",
+  "motion-reduce:transition-none",
+  EASE,
+  "duration-(--poised-return) [[data-tilting]>&]:duration-(--poised-duration)"
+)
+
+/** A tight contact shadow, locked to the content's edge. */
+const contactShadowLayer = cn(
+  shadowLayer,
+  "inset-0 transition-opacity",
+  "shadow-[0_1px_2px_rgb(0_0_0/0.08)]",
+  "dark:shadow-[0_1px_3px_rgb(0_0_0/0.5)]"
+)
+
+/**
+ * The soft shadow drifts toward the side that lifts. A box shadow never paints
+ * inside its own box, so a box that slid out from under the content would show
+ * the page through it as a pale card behind the surface. This box is inset
+ * further than it ever drifts, so its empty middle stays under the content.
+ */
+const softShadowLayer = cn(
+  shadowLayer,
+  "inset-4 transition-[opacity,translate]",
+  "shadow-[0_16px_36px_rgb(0_0_0/0.24)]",
+  "dark:shadow-[0_18px_44px_rgb(0_0_0/0.6)]"
+)
+
+const clamp = (value: number, min: number, max: number, fallback: number) =>
+  Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : fallback
+
+const toTilt = (value: number) => clamp(value, 0, MAX_TILT, DEFAULT_TILT)
+
+const toDuration = (value: number) =>
+  clamp(value, 0, MAX_DURATION, DEFAULT_DURATION)
+
+const toRadians = (degrees: number) => (degrees * Math.PI) / 180
+
+/** Eases a position from -1 to 1: quick near the middle, flat at the edges. */
+const soften = (value: number) =>
+  Math.sin((clamp(value, -1, 1, 0) * Math.PI) / 2)
+
+const isFlat = ({ pitch, yaw }: Angles) => pitch === 0 && yaw === 0
+
+const hasArea = ({ width, height }: Size) => width > 0 && height > 0
+
+const canArrive = ({ width, height }: Size) =>
+  width >= MIN_ARRIVAL_SIZE && height >= MIN_ARRIVAL_SIZE
+
+/**
+ * Enough of the surface is in view to lean in: a share of the surface, or for
+ * a surface taller than the viewport, the same share of the viewport.
+ */
+const isArriving = (entry: IntersectionObserverEntry) => {
+  if (!entry.isIntersecting) {
+    return false
+  }
+  if (entry.intersectionRatio >= ARRIVAL_THRESHOLD) {
+    return true
+  }
+  const viewport = entry.rootBounds?.height ?? window.innerHeight
+  return entry.intersectionRect.height >= viewport * ARRIVAL_THRESHOLD
+}
+
+/** How far the nearest corner of the plane comes toward the viewer. */
+const nearestDepth = ({ pitch, yaw }: Angles, { width, height }: Size) =>
+  (height / 2) * Math.abs(Math.sin(toRadians(pitch))) +
+  (width / 2) * Math.abs(Math.sin(toRadians(yaw))) * Math.cos(toRadians(pitch))
+
+/** The camera sits a few lengths away, in whole pixels. */
+const toPerspective = ({ width, height }: Size) =>
+  `${Math.round(Math.max(width, height) * PERSPECTIVE_PER_SIZE)}px`
+
+/**
+ * Turns the plane to `angles`. The plane is pushed back by how far the resting
+ * `pose` brings its nearest corner forward, so at rest it never projects past
+ * the root, without a `scale()` that would soften the text. The push-back holds
+ * while the pointer swings it, so the surface never grows or shrinks.
+ */
+const toTransform = (angles: Angles, pose: Angles, size: Size) =>
+  [
+    `translateZ(${-Math.round(nearestDepth(pose, size))}px)`,
+    `rotateX(${angles.pitch.toFixed(2)}deg)`,
+    `rotateY(${angles.yaw.toFixed(2)}deg)`,
+  ].join(" ")
+
+export function PoisedSurface({
+  pose = "front",
+  tilt = DEFAULT_TILT,
+  duration = DEFAULT_DURATION,
+  shadowOpacity = DEFAULT_SHADOW_OPACITY,
+  children,
+  className,
+  style,
+  ...props
+}: PoisedSurfaceProps) {
+  const planeRef = useRef<HTMLDivElement>(null)
+  const softShadowRef = useRef<HTMLDivElement>(null)
+  // Read when the surface moves, so changing them never re-runs the effect.
+  const settings = useRef({ pose, tilt, duration })
+  const refreshRef = useRef<(() => void) | null>(null)
+
+  useEffect(() => {
+    settings.current = { pose, tilt, duration }
+    refreshRef.current?.()
+  }, [pose, tilt, duration])
+
+  useEffect(() => {
+    const plane = planeRef.current
+    // The root never moves, so it is the hit area while the plane tilts and
+    // holds the camera. It is read through parentElement so the user's ref on
+    // the root needs no merging.
+    const root = plane?.parentElement
+    if (!plane || !root) {
+      return
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let bounds = new DOMRect()
+    let size: Size = { width: 0, height: 0 }
+    let rtl = false
+    // A surface that still holds its pose, as when an <Activity> shows it
+    // again, has already leaned in.
+    let arrived = plane.style.transform !== ""
+    // It came into view before it had a size, so it leans in once it has one.
+    let pendingArrival = false
+    let tilting = false
+    let stale = true
+    let lastMove = 0
+    let pointer = { x: 0, y: 0 }
+    let frame = 0
+    let settleTimer = 0
+    // Kept apart from its ref, so cleanup can still center it after unmount.
+    let shiftedShadow: HTMLElement | null = null
+
+    const measureSize = () => {
+      size = { width: plane.offsetWidth, height: plane.offsetHeight }
+      rtl = getComputedStyle(root).direction === "rtl"
+    }
+
+    const measure = () => {
+      bounds = root.getBoundingClientRect()
+      measureSize()
+      stale = false
+    }
+
+    const returnMs = () =>
+      toDuration(settings.current.duration) * RETURN_FACTOR * 1000
+
+    /** The pose to hold, flat until the surface has leaned in. */
+    const currentPose = (): Angles => {
+      if (!arrived) {
+        return FLAT
+      }
+      const { pitch, yaw } = POSES[settings.current.pose] ?? POSES.front
+      const turn = size.width < NARROW_WIDTH ? yaw * NARROW_YAW : yaw
+      // `start` and `end` follow the page's writing direction.
+      return { pitch, yaw: rtl ? -turn : turn }
+    }
+
+    /**
+     * Turns the plane to `angles` around its center. The camera sits on the
+     * root, not in the plane's transform: when WebKit paints the plane without
+     * compositing, as in a snapshot, a perspective inside the transform comes
+     * out as a sideways shear.
+     */
+    const project = (angles: Angles, target: Angles) => {
+      root.style.perspective = toPerspective(size)
+      plane.style.transform = toTransform(angles, target, size)
+    }
+
+    /** Applies a style change instantly, then restores the transition. */
+    const withoutTransition = (change: () => void) => {
+      plane.style.transition = "none"
+      change()
+      // Commit the change before the transition comes back.
+      plane.getBoundingClientRect()
+      plane.style.removeProperty("transition")
+    }
+
+    /** Starts from a flat transform with the same functions as the pose. */
+    const prepare = () => {
+      if (plane.style.transform) {
+        return
+      }
+      withoutTransition(() => project(FLAT, FLAT))
+    }
+
+    /** Clears the transform, so the children paint exactly as without it. */
+    const flatten = () => {
+      if (plane.style.transform) {
+        withoutTransition(() => plane.style.removeProperty("transform"))
+      }
+      root.style.removeProperty("perspective")
+    }
+
+    const centerShadow = () => {
+      shiftedShadow?.style.removeProperty("translate")
+      shiftedShadow = null
+    }
+
+    /** Once at rest, drops every compositing hint so the text re-rasterizes. */
+    const settle = () => {
+      plane.removeAttribute(ARRIVING_ATTRIBUTE)
+      plane.style.removeProperty("will-change")
+      if (isFlat(currentPose())) {
+        flatten()
+      }
+    }
+
+    /**
+     * Moves the plane to its pose and settles once it gets there. `instant`
+     * jumps straight there, as after a resize.
+     */
+    const rest = (settleMs: number, instant = false) => {
+      window.clearTimeout(settleTimer)
+      if (reducedMotion.matches || !hasArea(size)) {
+        flatten()
+        settle()
+        return
+      }
+      const target = currentPose()
+      if (!isFlat(target)) {
+        prepare()
+      }
+      if (plane.style.transform) {
+        if (instant) {
+          withoutTransition(() => project(target, target))
+        } else {
+          project(target, target)
+        }
+      }
+      settleTimer = window.setTimeout(settle, settleMs)
+    }
+
+    const arrive = () => {
+      pendingArrival = false
+      arrived = true
+      plane.setAttribute(ARRIVING_ATTRIBUTE, "")
+      rest(ARRIVAL_MS)
+    }
+
+    const arrival = new IntersectionObserver(
+      (entries) => {
+        if (arrived || !entries.some(isArriving)) {
+          return
+        }
+        arrival.disconnect()
+        measureSize()
+        if (canArrive(size)) {
+          arrive()
+        } else {
+          // An image without a width and height, async content or a collapsed
+          // parent has nothing to lean yet. The resize observer leans it in.
+          pendingArrival = true
+        }
+      },
+      { threshold: ARRIVAL_STEPS }
+    )
+
+    const update = () => {
+      frame = 0
+      if (!tilting) {
+        return
+      }
+      const swing = toTilt(settings.current.tilt)
+      // The side under the pointer recedes.
+      const x = soften(pointer.x)
+      const y = soften(pointer.y)
+      const target = currentPose()
+      project(
+        {
+          pitch: target.pitch * RELAXED_POSE - y * swing,
+          yaw: target.yaw * RELAXED_POSE + x * swing,
+        },
+        target
+      )
+      // The shadow drifts toward the side that lifts, in whole pixels.
+      shiftedShadow = softShadowRef.current
+      shiftedShadow?.style.setProperty(
+        "translate",
+        `${Math.round(-x * SHADOW_SHIFT.x)}px ${Math.round(-y * SHADOW_SHIFT.y)}px`
+      )
+    }
+
+    const engage = () => {
+      window.clearTimeout(settleTimer)
+      plane.removeAttribute(ARRIVING_ATTRIBUTE)
+      arrived = true
+      pendingArrival = false
+      arrival.disconnect()
+      tilting = true
+      plane.setAttribute(TILTING_ATTRIBUTE, "")
+      plane.style.willChange = "transform"
+      prepare()
+    }
+
+    const release = () => {
+      window.cancelAnimationFrame(frame)
+      frame = 0
+      if (!tilting) {
+        return
+      }
+      tilting = false
+      plane.removeAttribute(TILTING_ATTRIBUTE)
+      centerShadow()
+      rest(returnMs())
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      // Only a hovering mouse or pen swings it, so a scroll or a tap on a
+      // touch screen never makes the surface flinch.
+      if (event.pointerType === "touch") {
+        return
+      }
+      if (
+        toTilt(settings.current.tilt) <= 0 ||
+        reducedMotion.matches ||
+        document.hidden
+      ) {
+        release()
+        return
+      }
+      if (!tilting || stale || event.timeStamp - lastMove > IDLE_GAP_MS) {
+        measure()
+      }
+      lastMove = event.timeStamp
+      if (!bounds.width || !bounds.height || !hasArea(size)) {
+        return
+      }
+      // Corners that swing past the root still count, at the extremes.
+      pointer = {
+        x: ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
+        y: ((event.clientY - bounds.top) / bounds.height) * 2 - 1,
+      }
+      if (!tilting) {
+        engage()
+      }
+      if (!frame) {
+        frame = window.requestAnimationFrame(update)
+      }
+    }
+
+    if (!arrived) {
+      arrival.observe(root)
+    }
+
+    const resize = new ResizeObserver(() => {
+      stale = true
+      measureSize()
+      if (pendingArrival) {
+        if (canArrive(size)) {
+          arrive()
+        }
+        return
+      }
+      if (!arrived || tilting) {
+        return
+      }
+      if (
+        plane.hasAttribute(ARRIVING_ATTRIBUTE) &&
+        plane.style.transform &&
+        hasArea(size)
+      ) {
+        // The arrival carries on to the new size at its own pace.
+        const target = currentPose()
+        project(target, target)
+        return
+      }
+      rest(0, true)
+    })
+    resize.observe(root)
+
+    const markStale = () => {
+      stale = true
+    }
+
+    const onMotionChange = () => {
+      if (tilting) {
+        release()
+      } else {
+        rest(returnMs())
+      }
+    }
+
+    // A new pose moves the surface there, and turning the tilt off while the
+    // pointer rests on the surface settles it.
+    refreshRef.current = () => {
+      if (!tilting) {
+        rest(returnMs())
+        return
+      }
+      if (toTilt(settings.current.tilt) <= 0) {
+        release()
+        return
+      }
+      if (!frame) {
+        frame = window.requestAnimationFrame(update)
+      }
+    }
+
+    const controller = new AbortController()
+    const { signal } = controller
+    root.addEventListener("pointermove", onPointerMove, { signal })
+    root.addEventListener("pointerleave", release, { signal })
+    window.addEventListener("scroll", markStale, {
+      signal,
+      capture: true,
+      passive: true,
+    })
+    window.addEventListener("blur", release, { signal })
+    document.addEventListener("visibilitychange", release, { signal })
+    reducedMotion.addEventListener("change", onMotionChange, { signal })
+
+    return () => {
+      controller.abort()
+      arrival.disconnect()
+      resize.disconnect()
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(settleTimer)
+      refreshRef.current = null
+      // The pose stays, so a surface shown again holds still. Everything that
+      // only lasts while it moves goes.
+      plane.removeAttribute(TILTING_ATTRIBUTE)
+      plane.removeAttribute(ARRIVING_ATTRIBUTE)
+      plane.style.removeProperty("will-change")
+      centerShadow()
+    }
+  }, [])
+
+  const shadow = clamp(shadowOpacity, 0, 1, DEFAULT_SHADOW_OPACITY)
+  const followTime = toDuration(duration)
+  const variables = {
+    "--poised-duration": `${followTime}s`,
+    "--poised-return": `${followTime * RETURN_FACTOR}s`,
+    "--poised-arrival": `${ARRIVAL_MS}ms`,
+    "--poised-shadow": shadow,
+    "--poised-shadow-rest": shadow * REST_SHADOW,
+  } as CSSProperties
+
+  return (
+    <div
+      className={cn("relative rounded-xl perspective-origin-center", className)}
+      style={{ ...variables, ...style }}
+      {...props}
+    >
+      <div ref={planeRef} className={planeLayer}>
+        {shadow > 0 && (
+          <>
+            <div aria-hidden="true" className={contactShadowLayer} />
+            <div
+              ref={softShadowRef}
+              aria-hidden="true"
+              className={softShadowLayer}
+            />
+          </>
+        )}
+        {children}
+      </div>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: poised-surface-demo =====
+Title: Poised Surface Hero
+
+--- file: example/poised-surface-demo.tsx ---
+import type { CSSProperties } from "react"
+
+import { PoisedSurface } from "@/registry/magicui/poised-surface"
+import { Safari } from "@/registry/magicui/safari"
+
+// The app covers Safari's screen, below its toolbar (52 of 753 units).
+const SAFARI_TOOLBAR = `${(52 / 753) * 100}%`
+
+const GRAPHICS = ["Scoreboard", "Team lineup", "Match moments", "Player stats"]
+
+const SETTINGS = [
+  { label: "Position", value: "Top left" },
+  { label: "Theme", value: "Club colours" },
+  { label: "Transition", value: "Slide in · 300 ms" },
+]
+
+function PitchLines() {
+  return (
+    <div
+      aria-hidden="true"
+      className="border-foreground/10 absolute inset-3 hidden rounded-sm border @md:block @3xl:inset-5"
+    >
+      <div className="border-foreground/10 absolute inset-y-0 left-1/2 border-l" />
+      <div className="border-foreground/10 absolute top-1/2 left-1/2 aspect-square h-[30%] -translate-x-1/2 -translate-y-1/2 rounded-full border" />
+      <div className="border-foreground/10 absolute inset-y-[22%] left-0 w-[12%] border border-l-0" />
+      <div className="border-foreground/10 absolute inset-y-[22%] right-0 w-[12%] border border-r-0" />
+    </div>
+  )
+}
+
+export default function PoisedSurfaceDemo() {
+  return (
+    <section className="bg-background text-foreground w-full overflow-hidden rounded-2xl px-2 py-16 sm:px-10 sm:py-8">
+      <div className="@container mx-auto w-4xl max-w-full">
+        <div className="mb-10 flex flex-col items-center gap-4 px-2 text-center @3xl:mb-8 @3xl:flex-row @3xl:items-end @3xl:justify-between @3xl:px-0 @3xl:text-left">
+          <h2 className="max-w-md text-3xl font-semibold tracking-tight text-balance @lg:text-4xl">
+            Put your next broadcast in a league of its own.
+          </h2>
+          <div className="flex max-w-xs flex-col items-center gap-4 @3xl:items-start">
+            <p className="text-muted-foreground text-sm text-balance">
+              Connected scores, lineups, and match moments, ready for your next
+              stream.
+            </p>
+            <a
+              href="https://magicui.design/docs"
+              className="bg-foreground text-background inline-flex rounded-lg px-4 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              Explore Match Studio
+            </a>
+          </div>
+        </div>
+        <PoisedSurface>
+          <div className="border-border bg-card @container relative grid overflow-hidden rounded-[inherit] border">
+            {/* On a narrow card the app drops the browser frame and sets its own height. */}
+            <Safari
+              url="studio.matchday.app"
+              aria-hidden="true"
+              className="@max-md:hidden"
+            />
+            <div
+              style={{ "--safari-toolbar": SAFARI_TOOLBAR } as CSSProperties}
+              className="bg-card z-20 flex flex-col overflow-hidden p-4 @md:absolute @md:inset-0 @md:top-(--safari-toolbar) @md:p-5 @3xl:p-7"
+            >
+              <div className="flex items-center justify-between gap-2 text-xs @3xl:text-sm">
+                <p className="font-semibold">
+                  Match Studio
+                  <span className="text-muted-foreground hidden font-normal @md:inline">
+                    {" "}
+                    / North League · Matchday 12
+                  </span>
+                </p>
+                <span className="border-border text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5">
+                  <span className="size-1.5 rounded-full bg-emerald-500" />
+                  Live preview
+                </span>
+              </div>
+              <div className="mt-3 grid min-h-0 flex-1 grid-cols-1 gap-3 @md:mt-4 @md:grid-cols-[1fr_2fr] @md:gap-4 @3xl:mt-6 @3xl:grid-cols-[13rem_1fr] @3xl:gap-6">
+                <div className="hidden min-h-0 flex-col gap-3 @md:flex @3xl:gap-4">
+                  <div className="border-border rounded-lg border p-2 text-xs @3xl:text-sm">
+                    <p className="text-muted-foreground px-2 py-1.5 text-xs font-medium tracking-wide uppercase">
+                      Your graphics
+                    </p>
+                    {GRAPHICS.map((graphic, index) => (
+                      <p
+                        key={graphic}
+                        className={
+                          index === 0
+                            ? "bg-muted rounded-md px-2 py-1.5 font-medium"
+                            : "text-muted-foreground px-2 py-1.5"
+                        }
+                      >
+                        {graphic}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="border-border hidden rounded-lg border p-3 text-sm @3xl:block">
+                    <p className="text-muted-foreground text-xs">Match feed</p>
+                    <p className="mt-1 flex items-center gap-2 font-medium">
+                      <span className="size-1.5 rounded-full bg-emerald-500" />
+                      Synced 2s ago
+                    </p>
+                  </div>
+                </div>
+                <div className="flex min-h-0 flex-col gap-3 @3xl:gap-4">
+                  <div className="bg-muted relative flex aspect-video min-h-0 flex-col items-center justify-center gap-2.5 overflow-hidden rounded-lg @md:block @md:aspect-auto @md:flex-1">
+                    <PitchLines />
+                    <p className="text-foreground/70 text-xs font-medium tracking-wide uppercase @md:hidden">
+                      Matchday 12
+                    </p>
+                    <div className="flex items-center gap-2 rounded-md bg-neutral-950 px-2.5 py-1 text-xs font-semibold text-white tabular-nums ring-1 ring-white/10 @md:absolute @md:top-3 @md:left-3 @3xl:top-5 @3xl:left-5 @3xl:gap-3 @3xl:px-3 @3xl:py-1.5 @3xl:text-sm">
+                      <span>ATL</span>
+                      <span className="rounded bg-white/15 px-1.5">2 – 1</span>
+                      <span>CIT</span>
+                      <span className="font-medium text-white/60">67:42</span>
+                    </div>
+                    <div className="border-border bg-background absolute bottom-3 left-3 hidden rounded-md border px-2.5 py-1.5 text-xs @md:block @3xl:bottom-5 @3xl:left-5 @3xl:px-4 @3xl:py-2.5 @3xl:text-sm">
+                      <p className="text-muted-foreground">Goal · 67&apos;</p>
+                      <p className="font-semibold">Maya Okafor, Atlas FC</p>
+                    </div>
+                  </div>
+                  <div className="border-border flex items-center justify-between gap-2 rounded-lg border px-3 py-2.5 text-xs @md:hidden">
+                    <span className="text-muted-foreground">Match feed</span>
+                    <span className="flex items-center gap-2 font-medium">
+                      <span className="size-1.5 rounded-full bg-emerald-500" />
+                      Synced 2s ago
+                    </span>
+                  </div>
+                  <div className="hidden grid-cols-3 gap-4 @3xl:grid">
+                    {SETTINGS.map((setting) => (
+                      <div
+                        key={setting.label}
+                        className="border-border rounded-lg border px-3 py-2.5"
+                      >
+                        <p className="text-muted-foreground text-xs">
+                          {setting.label}
+                        </p>
+                        <p className="mt-0.5 text-sm font-medium">
+                          {setting.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap justify-between gap-x-2 gap-y-1 text-xs @3xl:text-sm">
+                    <span className="text-muted-foreground">
+                      All changes saved
+                    </span>
+                    <span className="font-medium">Ready to broadcast ↗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </PoisedSurface>
+      </div>
+    </section>
+  )
+}
+
+
+===== EXAMPLE: poised-surface-demo-2 =====
+Title: Poised Surface Pose
+
+--- file: example/poised-surface-demo-2.tsx ---
+import type { CSSProperties } from "react"
+
+import { cn } from "@/lib/utils"
+import { Iphone } from "@/registry/magicui/iphone"
+import { PoisedSurface } from "@/registry/magicui/poised-surface"
+
+// The Iphone mock draws a 433 × 882 frame. These numbers come from its
+// screen and island, so the app sits exactly in the screen and the island
+// it covers is drawn again on top.
+const PHONE = { width: 433, height: 882 }
+const SCREEN = {
+  x: 21.25,
+  y: 19.25,
+  width: 389.5,
+  height: 843.5,
+  radius: 55.75,
+}
+const ISLAND = { y: 30, width: 124, height: 37 }
+
+// A neutral-200 bezel inside a neutral-300 hairline, so the light frame reads
+// as a device rather than a white ring. The speaker slot is left out.
+const frame = cn(
+  "[&>svg>path[opacity]]:hidden",
+  "[&>svg>g>path]:fill-neutral-300 dark:[&>svg>g>path]:fill-neutral-700",
+  "[&>svg>g>path:last-child]:fill-neutral-200",
+  "dark:[&>svg>g>path:last-child]:fill-neutral-800"
+)
+
+const percent = (part: number, whole: number) => `${(part / whole) * 100}%`
+
+const screenStyle: CSSProperties = {
+  left: percent(SCREEN.x, PHONE.width),
+  top: percent(SCREEN.y, PHONE.height),
+  width: percent(SCREEN.width, PHONE.width),
+  height: percent(SCREEN.height, PHONE.height),
+  borderRadius: `${percent(SCREEN.radius, SCREEN.width)} / ${percent(SCREEN.radius, SCREEN.height)}`,
+}
+
+const islandStyle: CSSProperties = {
+  top: percent(ISLAND.y - SCREEN.y, SCREEN.height),
+  width: percent(ISLAND.width, SCREEN.width),
+  height: percent(ISLAND.height, SCREEN.height),
+}
+
+const COLLECTION = [
+  { title: "Small rituals, better days", detail: "Journal · 4 min read" },
+  { title: "Notes from the coast", detail: "Travel · 12 photos" },
+  { title: "An idea for tomorrow", detail: "Draft · Edited 9:41" },
+  { title: "Books for the long weekend", detail: "Reading list · 6 books" },
+]
+
+export default function PoisedSurfaceDemo2() {
+  return (
+    <section className="bg-background text-foreground w-full overflow-hidden rounded-2xl px-8 py-16">
+      <div className="mx-auto grid max-w-4xl items-center gap-12 sm:grid-cols-2 sm:gap-16">
+        <PoisedSurface
+          pose="end"
+          className="w-full max-w-68 justify-self-center rounded-[16.9%/8.3%] sm:justify-self-end"
+        >
+          <div className="ring-foreground/10 relative grid rounded-[inherit] ring-1 ring-inset">
+            <Iphone aria-hidden="true" className={frame} />
+            <div
+              style={screenStyle}
+              className="bg-card absolute flex flex-col overflow-hidden px-4 pt-12 pb-6"
+            >
+              <div
+                aria-hidden="true"
+                style={islandStyle}
+                className="absolute left-1/2 -translate-x-1/2 rounded-full bg-neutral-950"
+              />
+              <p className="text-muted-foreground text-[10px] font-medium tracking-wide uppercase">
+                Fieldnotes · Today
+              </p>
+              <h3 className="mt-3 text-xl font-semibold tracking-tight">
+                A little more room to think.
+              </h3>
+              <div className="border-border bg-muted/40 mt-5 space-y-1 rounded-xl border p-3 text-xs">
+                <p className="font-medium">The morning edit</p>
+                <p className="text-foreground/70">
+                  Three ideas worth keeping. One clear next step.
+                </p>
+              </div>
+              <div className="mt-4 text-xs">
+                <p className="mb-1 font-medium">Your collection</p>
+                {COLLECTION.map((note) => (
+                  <div
+                    key={note.title}
+                    className="border-border border-b py-2 last:border-b-0"
+                  >
+                    <p>{note.title}</p>
+                    <p className="text-muted-foreground mt-0.5 text-[10px]">
+                      {note.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted-foreground mt-auto pt-4 text-[10px]">
+                All notes saved · Just for you
+              </p>
+            </div>
+          </div>
+        </PoisedSurface>
+        <div className="max-w-md space-y-4">
+          <p className="text-muted-foreground text-sm font-medium">
+            Fieldnotes for iOS
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Your best ideas travel with you.
+          </h2>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            Capture the thought before it slips away. Fieldnotes keeps your
+            writing, reading, and daily reflections together wherever the day
+            takes you.
+          </p>
+          <a
+            href="https://magicui.design/docs"
+            className="inline-flex rounded-sm text-sm font-medium underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            Explore Fieldnotes
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+===== EXAMPLE: poised-surface-demo-3 =====
+Title: Poised Surface Interactive Content
+
+--- file: example/poised-surface-demo-3.tsx ---
+"use client"
+
+import { useState } from "react"
+
+import { PoisedSurface } from "@/registry/magicui/poised-surface"
+
+const FEATURES = [
+  "Unlimited projects and collections",
+  "Private team workspaces",
+  "Priority support from real people",
+  "Single sign-on and audit logs",
+]
+
+export default function PoisedSurfaceDemo3() {
+  const [annual, setAnnual] = useState(false)
+
+  return (
+    <section className="bg-background text-foreground w-full space-y-8 overflow-hidden rounded-2xl px-6 py-16 sm:px-10">
+      <div className="space-y-2 text-center">
+        <h2 className="text-2xl font-semibold tracking-tight text-balance">
+          Less admin. More shipping.
+        </h2>
+        <p className="text-muted-foreground text-sm text-balance">
+          A workspace that grows at your team&apos;s pace.
+        </p>
+      </div>
+      <PoisedSurface className="mx-auto max-w-3xl">
+        <div className="border-border bg-card text-card-foreground grid gap-8 rounded-[inherit] border p-6 sm:grid-cols-2 sm:p-8">
+          <div className="space-y-4">
+            <p className="text-muted-foreground text-sm font-medium">
+              Studio · Team plan
+            </p>
+            <h3 className="text-3xl font-semibold tabular-nums">
+              ${annual ? 24 : 29}
+              <span className="text-muted-foreground text-sm font-normal">
+                {" "}
+                / seat / month
+              </span>
+            </h3>
+            <p className="text-muted-foreground text-sm">
+              Shared projects, unlimited notes, and a calmer way to work.
+            </p>
+            <button
+              type="button"
+              aria-pressed={annual}
+              onClick={() => setAnnual((current) => !current)}
+              className="border-border hover:bg-muted aria-pressed:bg-muted rounded-lg border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              Pay yearly · save 17%
+            </button>
+            <p aria-live="polite" className="text-muted-foreground text-xs">
+              {annual
+                ? "$288 per seat, billed yearly."
+                : "$29 per seat, billed monthly."}
+            </p>
+          </div>
+          <div className="flex flex-col gap-6">
+            <ul className="space-y-3 text-sm">
+              {FEATURES.map((feature) => (
+                <li key={feature} className="flex items-start gap-2">
+                  <span
+                    aria-hidden="true"
+                    className="bg-foreground mt-1.75 size-1.5 shrink-0 rounded-full"
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="https://magicui.design/docs"
+                className="bg-foreground text-background rounded-lg px-4 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
+                Start your trial
+              </a>
+              <a
+                href="https://magicui.design/docs"
+                className="rounded-sm text-sm underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+              >
+                Read the docs
+              </a>
+            </div>
+          </div>
+        </div>
+      </PoisedSurface>
+    </section>
+  )
+}
+
+
+
 ===== COMPONENT: progressive-blur =====
 Title: Progressive Blur
 Description: The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
@@ -18014,6 +19139,169 @@ export function Safari({
         </g>
       </svg>
     </div>
+  )
+}
+
+
+===== EXAMPLE: poised-surface-demo =====
+Title: Poised Surface Hero
+
+--- file: example/poised-surface-demo.tsx ---
+import type { CSSProperties } from "react"
+
+import { PoisedSurface } from "@/registry/magicui/poised-surface"
+import { Safari } from "@/registry/magicui/safari"
+
+// The app covers Safari's screen, below its toolbar (52 of 753 units).
+const SAFARI_TOOLBAR = `${(52 / 753) * 100}%`
+
+const GRAPHICS = ["Scoreboard", "Team lineup", "Match moments", "Player stats"]
+
+const SETTINGS = [
+  { label: "Position", value: "Top left" },
+  { label: "Theme", value: "Club colours" },
+  { label: "Transition", value: "Slide in · 300 ms" },
+]
+
+function PitchLines() {
+  return (
+    <div
+      aria-hidden="true"
+      className="border-foreground/10 absolute inset-3 hidden rounded-sm border @md:block @3xl:inset-5"
+    >
+      <div className="border-foreground/10 absolute inset-y-0 left-1/2 border-l" />
+      <div className="border-foreground/10 absolute top-1/2 left-1/2 aspect-square h-[30%] -translate-x-1/2 -translate-y-1/2 rounded-full border" />
+      <div className="border-foreground/10 absolute inset-y-[22%] left-0 w-[12%] border border-l-0" />
+      <div className="border-foreground/10 absolute inset-y-[22%] right-0 w-[12%] border border-r-0" />
+    </div>
+  )
+}
+
+export default function PoisedSurfaceDemo() {
+  return (
+    <section className="bg-background text-foreground w-full overflow-hidden rounded-2xl px-2 py-16 sm:px-10 sm:py-8">
+      <div className="@container mx-auto w-4xl max-w-full">
+        <div className="mb-10 flex flex-col items-center gap-4 px-2 text-center @3xl:mb-8 @3xl:flex-row @3xl:items-end @3xl:justify-between @3xl:px-0 @3xl:text-left">
+          <h2 className="max-w-md text-3xl font-semibold tracking-tight text-balance @lg:text-4xl">
+            Put your next broadcast in a league of its own.
+          </h2>
+          <div className="flex max-w-xs flex-col items-center gap-4 @3xl:items-start">
+            <p className="text-muted-foreground text-sm text-balance">
+              Connected scores, lineups, and match moments, ready for your next
+              stream.
+            </p>
+            <a
+              href="https://magicui.design/docs"
+              className="bg-foreground text-background inline-flex rounded-lg px-4 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              Explore Match Studio
+            </a>
+          </div>
+        </div>
+        <PoisedSurface>
+          <div className="border-border bg-card @container relative grid overflow-hidden rounded-[inherit] border">
+            {/* On a narrow card the app drops the browser frame and sets its own height. */}
+            <Safari
+              url="studio.matchday.app"
+              aria-hidden="true"
+              className="@max-md:hidden"
+            />
+            <div
+              style={{ "--safari-toolbar": SAFARI_TOOLBAR } as CSSProperties}
+              className="bg-card z-20 flex flex-col overflow-hidden p-4 @md:absolute @md:inset-0 @md:top-(--safari-toolbar) @md:p-5 @3xl:p-7"
+            >
+              <div className="flex items-center justify-between gap-2 text-xs @3xl:text-sm">
+                <p className="font-semibold">
+                  Match Studio
+                  <span className="text-muted-foreground hidden font-normal @md:inline">
+                    {" "}
+                    / North League · Matchday 12
+                  </span>
+                </p>
+                <span className="border-border text-muted-foreground inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5">
+                  <span className="size-1.5 rounded-full bg-emerald-500" />
+                  Live preview
+                </span>
+              </div>
+              <div className="mt-3 grid min-h-0 flex-1 grid-cols-1 gap-3 @md:mt-4 @md:grid-cols-[1fr_2fr] @md:gap-4 @3xl:mt-6 @3xl:grid-cols-[13rem_1fr] @3xl:gap-6">
+                <div className="hidden min-h-0 flex-col gap-3 @md:flex @3xl:gap-4">
+                  <div className="border-border rounded-lg border p-2 text-xs @3xl:text-sm">
+                    <p className="text-muted-foreground px-2 py-1.5 text-xs font-medium tracking-wide uppercase">
+                      Your graphics
+                    </p>
+                    {GRAPHICS.map((graphic, index) => (
+                      <p
+                        key={graphic}
+                        className={
+                          index === 0
+                            ? "bg-muted rounded-md px-2 py-1.5 font-medium"
+                            : "text-muted-foreground px-2 py-1.5"
+                        }
+                      >
+                        {graphic}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="border-border hidden rounded-lg border p-3 text-sm @3xl:block">
+                    <p className="text-muted-foreground text-xs">Match feed</p>
+                    <p className="mt-1 flex items-center gap-2 font-medium">
+                      <span className="size-1.5 rounded-full bg-emerald-500" />
+                      Synced 2s ago
+                    </p>
+                  </div>
+                </div>
+                <div className="flex min-h-0 flex-col gap-3 @3xl:gap-4">
+                  <div className="bg-muted relative flex aspect-video min-h-0 flex-col items-center justify-center gap-2.5 overflow-hidden rounded-lg @md:block @md:aspect-auto @md:flex-1">
+                    <PitchLines />
+                    <p className="text-foreground/70 text-xs font-medium tracking-wide uppercase @md:hidden">
+                      Matchday 12
+                    </p>
+                    <div className="flex items-center gap-2 rounded-md bg-neutral-950 px-2.5 py-1 text-xs font-semibold text-white tabular-nums ring-1 ring-white/10 @md:absolute @md:top-3 @md:left-3 @3xl:top-5 @3xl:left-5 @3xl:gap-3 @3xl:px-3 @3xl:py-1.5 @3xl:text-sm">
+                      <span>ATL</span>
+                      <span className="rounded bg-white/15 px-1.5">2 – 1</span>
+                      <span>CIT</span>
+                      <span className="font-medium text-white/60">67:42</span>
+                    </div>
+                    <div className="border-border bg-background absolute bottom-3 left-3 hidden rounded-md border px-2.5 py-1.5 text-xs @md:block @3xl:bottom-5 @3xl:left-5 @3xl:px-4 @3xl:py-2.5 @3xl:text-sm">
+                      <p className="text-muted-foreground">Goal · 67&apos;</p>
+                      <p className="font-semibold">Maya Okafor, Atlas FC</p>
+                    </div>
+                  </div>
+                  <div className="border-border flex items-center justify-between gap-2 rounded-lg border px-3 py-2.5 text-xs @md:hidden">
+                    <span className="text-muted-foreground">Match feed</span>
+                    <span className="flex items-center gap-2 font-medium">
+                      <span className="size-1.5 rounded-full bg-emerald-500" />
+                      Synced 2s ago
+                    </span>
+                  </div>
+                  <div className="hidden grid-cols-3 gap-4 @3xl:grid">
+                    {SETTINGS.map((setting) => (
+                      <div
+                        key={setting.label}
+                        className="border-border rounded-lg border px-3 py-2.5"
+                      >
+                        <p className="text-muted-foreground text-xs">
+                          {setting.label}
+                        </p>
+                        <p className="mt-0.5 text-sm font-medium">
+                          {setting.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap justify-between gap-x-2 gap-y-1 text-xs @3xl:text-sm">
+                    <span className="text-muted-foreground">
+                      All changes saved
+                    </span>
+                    <span className="font-medium">Ready to broadcast ↗</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </PoisedSurface>
+      </div>
+    </section>
   )
 }
 

@@ -2,6 +2,47 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "poised-surface-demo",
+    type: "registry:example",
+    title: "Poised Surface Hero",
+    description:
+      "A product hero with an inline broadcast studio inside Safari.",
+    registryDependencies: ["@magicui/poised-surface", "@magicui/safari"],
+    files: [
+      {
+        path: "example/poised-surface-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "poised-surface-demo-2",
+    type: "registry:example",
+    title: "Poised Surface Pose",
+    description:
+      "A mobile writing app in an iPhone turned toward its feature copy.",
+    registryDependencies: ["@magicui/iphone", "@magicui/poised-surface"],
+    files: [
+      {
+        path: "example/poised-surface-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "poised-surface-demo-3",
+    type: "registry:example",
+    title: "Poised Surface Interactive Content",
+    description: "A pricing interface with a working billing toggle.",
+    registryDependencies: ["@magicui/poised-surface"],
+    files: [
+      {
+        path: "example/poised-surface-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",

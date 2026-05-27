@@ -2,6 +2,19 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "poised-surface",
+    type: "registry:ui",
+    title: "Poised Surface",
+    description:
+      "A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.",
+    files: [
+      {
+        path: "magicui/poised-surface.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
