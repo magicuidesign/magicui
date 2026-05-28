@@ -1,0 +1,81 @@
+---
+title: Poised Surface
+date: 2026-11-04
+description: A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="poised-surface-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/poised-surface
+```
+
+</TabsContent>
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="poised-surface" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { PoisedSurface } from "@/components/ui/poised-surface"
+```
+
+```tsx showLineNumbers
+<PoisedSurface className="mb-10 max-w-3xl rounded-2xl">
+  <img
+    src="/dashboard.png"
+    alt="Your app"
+    width={1600}
+    height={1000}
+    className="rounded-[inherit] border"
+  />
+</PoisedSurface>
+```
+
+Put the width and radius on `PoisedSurface`. Give the child `rounded-[inherit]` so the shadow follows its corners; `mb-10` leaves room for the shadow below. A height or aspect ratio on `PoisedSurface` reaches a child with `h-full`.
+
+Portal any dialog, popover or tooltip inside it, as shadcn/ui does by default.
+
+## Props
+
+| Prop            | Type                                    | Default   | Description                                                                                                                 |
+| --------------- | --------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `pose`          | `"front" \| "start" \| "end" \| "flat"` | `"front"` | The angle it leans at before anyone interacts: `front` tips the top edge away, `start` and `end` also turn it to that side. |
+| `tilt`          | `number`                                | `3`       | Maximum swing in degrees toward the pointer, up to `15`. `0` turns it off.                                                  |
+| `duration`      | `number`                                | `0.75`    | Seconds the surface takes to follow the pointer.                                                                            |
+| `shadowOpacity` | `number`                                | `1`       | Opacity of the shadows under the surface, from `0` to `1`. Use `0` for translucent or cut-out children.                     |
+| `children`      | `ReactNode`                             | `-`       | A screenshot, device mock or working interface.                                                                             |
+
+## Examples
+
+### Pose
+
+<ComponentPreview name="poised-surface-demo-2" />
+
+### Interactive Content
+
+<ComponentPreview name="poised-surface-demo-3" />

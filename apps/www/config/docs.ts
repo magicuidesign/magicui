@@ -328,6 +328,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Poised Surface",
+          href: `/docs/components/poised-surface`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
