@@ -5,8 +5,7 @@
   "description": "A product hero with an inline broadcast studio inside Safari.",
   "registryDependencies": [
     "@magicui/poised-surface",
-    "@magicui/safari",
-    "@magicui/poised-surface-pass"
+    "@magicui/safari"
   ],
   "files": [
     {

@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "poised-surface-demo",
     description: "A product hero with an inline broadcast studio inside Safari.",
     type: "registry:example",
-    registryDependencies: ["@magicui/poised-surface","@magicui/safari","@magicui/poised-surface-pass"],
+    registryDependencies: ["@magicui/poised-surface","@magicui/safari"],
     files: [{
       path: "registry/example/poised-surface-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "poised-surface-demo-2",
     description: "A mobile writing app in an iPhone turned toward its feature copy.",
     type: "registry:example",
-    registryDependencies: ["@magicui/iphone","@magicui/poised-surface","@magicui/poised-surface-pass"],
+    registryDependencies: ["@magicui/iphone","@magicui/poised-surface"],
     files: [{
       path: "registry/example/poised-surface-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "poised-surface-demo-3",
     description: "A pricing interface with a working billing toggle.",
     type: "registry:example",
-    registryDependencies: ["@magicui/poised-surface","@magicui/poised-surface-pass"],
+    registryDependencies: ["@magicui/poised-surface"],
     files: [{
       path: "registry/example/poised-surface-demo-3.tsx",
       type: "registry:example",

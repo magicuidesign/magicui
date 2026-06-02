@@ -4,8 +4,7 @@
   "title": "Poised Surface Interactive Content",
   "description": "A pricing interface with a working billing toggle.",
   "registryDependencies": [
-    "@magicui/poised-surface",
-    "@magicui/poised-surface-pass"
+    "@magicui/poised-surface"
   ],
   "files": [
     {

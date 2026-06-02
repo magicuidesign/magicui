@@ -5,8 +5,7 @@
   "description": "A mobile writing app in an iPhone turned toward its feature copy.",
   "registryDependencies": [
     "@magicui/iphone",
-    "@magicui/poised-surface",
-    "@magicui/poised-surface-pass"
+    "@magicui/poised-surface"
   ],
   "files": [
     {
