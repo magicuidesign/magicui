@@ -183,6 +183,12 @@ export const docsConfig: DocsConfig = {
       title: "Components",
       items: [
         {
+          title: "Time Scale Filter",
+          href: "/docs/components/time-scale-filter",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Marquee",
           href: `/docs/components/marquee`,
           items: [],

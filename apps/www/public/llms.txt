@@ -77,6 +77,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Text 3D Flip](https://magicui.design/docs/components/text-3d-flip): A text effect that flips each letter in 3D with a staggered animation on hover.
 - [Text Animate](https://magicui.design/docs/components/text-animate): A text animation component that animates text using a variety of different animations.
 - [Text Reveal](https://magicui.design/docs/components/text-reveal): Fade in text as you scroll down the page.
+- [Time Scale Filter](https://magicui.design/docs/components/time-scale-filter): An analog timeline-based date filter for browsing and filtering data by date.
 - [Tweet Card](https://magicui.design/docs/components/tweet-card): A card that displays a tweet with the author's name, handle, and profile picture.
 - [Typing Animation](https://magicui.design/docs/components/typing-animation): Characters appearing in typed animation
 - [Video Text](https://magicui.design/docs/components/video-text): A component that displays text with a video playing in the background.
@@ -125,6 +126,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Hero Video Dialog Demo](https://github.com/magicuidesign/magicui/blob/main/example/hero-video-dialog-demo.tsx): Example usage
 - [Hero Video Dialog Top In Bottom Out Demo](https://github.com/magicuidesign/magicui/blob/main/example/hero-video-dialog-demo-top-in-bottom-out.tsx): Example usage
 - [Code Comparison Demo](https://github.com/magicuidesign/magicui/blob/main/example/code-comparison-demo.tsx): Example usage
+- [time-scale-filter-demo](https://github.com/magicuidesign/magicui/blob/main/example/time-scale-filter-demo.tsx): Example usage
 - [Marquee Demo](https://github.com/magicuidesign/magicui/blob/main/example/marquee-demo.tsx): Example usage
 - [Marquee Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/example/marquee-demo-vertical.tsx): Example usage
 - [Marquee Logos](https://github.com/magicuidesign/magicui/blob/main/example/marquee-logos.tsx): Example usage

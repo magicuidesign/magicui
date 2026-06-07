@@ -19,6 +19,19 @@
       "cssVars": {}
     },
     {
+      "name": "time-scale-filter",
+      "type": "registry:ui",
+      "title": "Time Scale Filter",
+      "description": "An analog timeline-based date filter for browsing and filtering data by date.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/time-scale-filter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card",
       "type": "registry:ui",
       "title": "Magic Card",
@@ -1960,6 +1973,20 @@
       "files": [
         {
           "path": "registry/example/code-comparison-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "time-scale-filter-demo",
+      "type": "registry:example",
+      "description": "Time Scale Filter demo",
+      "registryDependencies": [
+        "@magicui/time-scale-filter"
+      ],
+      "files": [
+        {
+          "path": "registry/example/time-scale-filter-demo.tsx",
           "type": "registry:example"
         }
       ]

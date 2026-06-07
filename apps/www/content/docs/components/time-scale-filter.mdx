@@ -1,0 +1,58 @@
+---
+title: Time Scale Filter
+date: 2026-06-07
+description: Analog timeline date filtering component
+author: magicui
+published: true
+---
+
+<ComponentPreview name="time-scale-filter-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/time-scale-filter
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<ComponentSource name="time-scale-filter" />
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+<TimeScaleFilter
+  data={orders}
+  dateField="createdAt"
+  renderItem={(order) => <OrderCard key={order.id} order={order} />}
+  initialDate={new Date()}
+/>
+```
+
+## Props
+
+| Prop             | Type                   | Description                                          |
+| ---------------- | ---------------------- | ---------------------------------------------------- |
+| data             | T[]                    | Array of items to filter                             |
+| dateField        | keyof T                | Date field used for filtering                        |
+| renderItem       | (item: T) => ReactNode | Render function for each filtered item               |
+| timelineDays     | number                 | Number of days shown in the timeline                 |
+| emptyMessage     | string                 | Message shown when no items match                    |
+| className        | string                 | Optional wrapper class name                          |
+| contentClassName | string                 | Optional class name for the rendered content section |
+| initialDate      | Date                   | Optional timeline start date                         |

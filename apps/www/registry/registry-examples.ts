@@ -544,6 +544,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "time-scale-filter-demo",
+    type: "registry:example",
+    description: "Time Scale Filter demo",
+    registryDependencies: ["@magicui/time-scale-filter"],
+    files: [
+      {
+        path: "example/time-scale-filter-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "marquee-demo",
     type: "registry:example",
     title: "Marquee Demo",

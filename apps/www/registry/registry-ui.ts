@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "time-scale-filter",
+    type: "registry:ui",
+    title: "Time Scale Filter",
+    description:
+      "An analog timeline-based date filter for browsing and filtering data by date.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/time-scale-filter.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
