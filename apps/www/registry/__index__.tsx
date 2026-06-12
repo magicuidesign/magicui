@@ -423,6 +423,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "glyph-matrix": {
+    name: "glyph-matrix",
+    description: "An animated grid of subtly shifting glyphs with fade effect and theme support.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/glyph-matrix.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/glyph-matrix.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "glare-hover": {
     name: "glare-hover",
     description: "A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).",
@@ -2067,6 +2084,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/globe-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "glyph-matrix-demo": {
+    name: "glyph-matrix-demo",
+    description: "Example showing an animated grid of subtly shifting glyphs.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/glyph-matrix"],
+    files: [{
+      path: "registry/example/glyph-matrix-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/glyph-matrix-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

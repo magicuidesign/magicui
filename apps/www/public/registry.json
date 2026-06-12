@@ -443,6 +443,18 @@
       ]
     },
     {
+      "name": "glyph-matrix",
+      "type": "registry:ui",
+      "title": "Glyph Matrix",
+      "description": "An animated grid of subtly shifting glyphs with fade effect and theme support.",
+      "files": [
+        {
+          "path": "registry/magicui/glyph-matrix.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "glare-hover",
       "type": "registry:ui",
       "title": "Glare Hover",
@@ -2035,6 +2047,21 @@
       "files": [
         {
           "path": "registry/example/globe-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glyph-matrix-demo",
+      "type": "registry:example",
+      "title": "Glyph Matrix Demo",
+      "description": "Example showing an animated grid of subtly shifting glyphs.",
+      "registryDependencies": [
+        "@magicui/glyph-matrix"
+      ],
+      "files": [
+        {
+          "path": "registry/example/glyph-matrix-demo.tsx",
           "type": "registry:example"
         }
       ]
