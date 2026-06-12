@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import {
   Popover,
-  PopoverAnchor,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
@@ -112,7 +111,6 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
   return (
     <Popover>
       <div className="bg-secondary group/buttons relative flex rounded-lg *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
-        <PopoverAnchor />
         <Button
           variant="secondary"
           size="sm"
@@ -143,7 +141,7 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </PopoverTrigger>
         <PopoverContent
           className="bg-background/70 dark:bg-background/60 w-52 !origin-center rounded-lg shadow-sm backdrop-blur-sm"
-          align="start"
+          align="end"
         >
           {Object.entries(menuItems).map(([key, value]) => (
             <Button

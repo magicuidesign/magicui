@@ -229,6 +229,19 @@ export const TweetMedia = ({ tweet }: { tweet: EnrichedTweet }) => {
   )
 }
 
+const withSafeEntities = <T extends { entities?: Tweet["entities"] }>(
+  tweet: T
+): T & { entities: Tweet["entities"] } => ({
+  ...tweet,
+  entities: {
+    ...tweet.entities,
+    hashtags: tweet.entities?.hashtags ?? [],
+    urls: tweet.entities?.urls ?? [],
+    symbols: tweet.entities?.symbols ?? [],
+    user_mentions: tweet.entities?.user_mentions ?? [],
+  },
+})
+
 export const MagicTweet = ({
   tweet,
   className,
@@ -237,7 +250,13 @@ export const MagicTweet = ({
   tweet: Tweet
   className?: string
 }) => {
-  const enrichedTweet = enrichTweet(tweet)
+  const safeTweet: Tweet = {
+    ...withSafeEntities(tweet),
+    quoted_tweet: tweet.quoted_tweet
+      ? withSafeEntities(tweet.quoted_tweet)
+      : undefined,
+  }
+  const enrichedTweet = enrichTweet(safeTweet)
   return (
     <div
       className={cn(
