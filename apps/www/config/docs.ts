@@ -238,12 +238,6 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
-          title: "Icon Honeycomb",
-          href: `/docs/components/icon-honeycomb`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Icon Cloud",
           href: `/docs/components/icon-cloud`,
           items: [],
@@ -276,6 +270,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Dotted Map",
           href: `/docs/components/dotted-map`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Icon Honeycomb",
+          href: `/docs/components/icon-honeycomb`,
           items: [],
           label: "New",
         },
