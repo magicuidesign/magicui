@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "icon-honeycomb",
+    type: "registry:ui",
+    title: "Icon Honeycomb",
+    description:
+      "A draggable honeycomb of round icon tiles that shrink toward the rim and settle on the nearest tile when thrown.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/icon-honeycomb.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",

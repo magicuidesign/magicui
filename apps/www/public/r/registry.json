@@ -19,6 +19,21 @@
       "type": "registry:style"
     },
     {
+      "name": "icon-honeycomb",
+      "title": "Icon Honeycomb",
+      "description": "A draggable honeycomb of round icon tiles that shrink toward the rim and settle on the nearest tile when thrown.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/icon-honeycomb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1388,6 +1403,54 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "icon-honeycomb-demo",
+      "title": "Icon Honeycomb Demo",
+      "description": "An integrations section with 90 brand marks.",
+      "registryDependencies": [
+        "@magicui/icon-honeycomb",
+        "@magicui/icon-honeycomb-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-honeycomb-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "icon-honeycomb-demo-2",
+      "title": "Icon Honeycomb Split Feature",
+      "description": "A responsive feature row beside a panel of 36 dev tools.",
+      "registryDependencies": [
+        "@magicui/icon-honeycomb",
+        "@magicui/icon-honeycomb-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-honeycomb-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "icon-honeycomb-demo-3",
+      "title": "Icon Honeycomb App Picker",
+      "description": "A compact picker that distinguishes a press from a drag.",
+      "registryDependencies": [
+        "@magicui/icon-honeycomb",
+        "@magicui/icon-honeycomb-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/icon-honeycomb-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     },
     {
       "name": "magic-card-demo",
