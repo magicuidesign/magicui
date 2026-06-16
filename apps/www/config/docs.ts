@@ -238,6 +238,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Icon Honeycomb",
+          href: `/docs/components/icon-honeycomb`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Icon Cloud",
           href: `/docs/components/icon-cloud`,
           items: [],

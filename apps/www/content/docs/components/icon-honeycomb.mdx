@@ -1,0 +1,85 @@
+---
+title: Icon Honeycomb
+date: 2026-11-04
+description: A draggable honeycomb of round icon tiles that shrink toward the rim and settle on the nearest tile when thrown.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="icon-honeycomb-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/icon-honeycomb
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="icon-honeycomb" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { IconHoneycomb } from "@/components/ui/icon-honeycomb"
+```
+
+```tsx showLineNumbers
+<IconHoneycomb aria-label="Integrations">
+  {integrations.map(({ name, href, icon: Icon }) => (
+    <a key={name} href={href} aria-label={name}>
+      <Icon className="size-2/5" />
+    </a>
+  ))}
+</IconHoneycomb>
+```
+
+Each child becomes a round tile. The first sits in the centre and the rest spiral outward ring by ring, which is also the reading order, so make each tile a link or a button with an accessible name. Tab enters the field, the arrow keys move between tiles and Home returns to the centre; the focused tile springs to the middle. 7, 19, 37, 61 or 91 tiles fill whole rings; a partial outer ring, and any ring the field is too small for, waits past the rim until dragged into view. The field is `480px` tall by default; set its height with `className`.
+
+## Props
+
+| Prop       | Type        | Default | Description                                                                                     |
+| ---------- | ----------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `children` | `ReactNode` | `-`     | The tiles, centre first and spiralling outward. Links or buttons                                |
+| `iconSize` | `number`    | `64`    | Tile diameter in pixels at the centre of the field                                              |
+| `minScale` | `number`    | `0.45`  | How small the rim tiles may get before the outer ring hides, `0` to `1`. Lower shows more rings |
+| `duration` | `number`    | `14`    | Seconds per loop of the ambient drift. `0` turns the drift off                                  |
+| `delay`    | `number`    | `0`     | Seconds before the entrance ripple starts, once in view                                         |
+
+## Examples
+
+### Split Feature Row
+
+<ComponentPreview name="icon-honeycomb-demo-2" />
+
+### Compact App Picker
+
+<ComponentPreview name="icon-honeycomb-demo-3" />
