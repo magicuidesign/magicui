@@ -21,9 +21,9 @@ import type { MotionValue } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample50 } from "./icon-honeycomb-pass"
+import { passSample51 } from "./icon-honeycomb-pass"
 
-void passSample50(0)
+void passSample51(0)
 type Vec = [x: number, y: number]
 
 /** Space between neighbouring tiles at the centre, as a share of the tile size. */
