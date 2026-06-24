@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "icon-honeycomb-demo",
     description: "An integrations section with 90 brand marks.",
     type: "registry:example",
-    registryDependencies: ["@magicui/icon-honeycomb","@magicui/icon-honeycomb-pass"],
+    registryDependencies: ["@magicui/icon-honeycomb"],
     files: [{
       path: "registry/example/icon-honeycomb-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "icon-honeycomb-demo-2",
     description: "A responsive feature row beside a panel of 36 dev tools.",
     type: "registry:example",
-    registryDependencies: ["@magicui/icon-honeycomb","@magicui/icon-honeycomb-pass"],
+    registryDependencies: ["@magicui/icon-honeycomb"],
     files: [{
       path: "registry/example/icon-honeycomb-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "icon-honeycomb-demo-3",
     description: "A compact picker that distinguishes a press from a drag.",
     type: "registry:example",
-    registryDependencies: ["@magicui/icon-honeycomb","@magicui/icon-honeycomb-pass"],
+    registryDependencies: ["@magicui/icon-honeycomb"],
     files: [{
       path: "registry/example/icon-honeycomb-demo-3.tsx",
       type: "registry:example",

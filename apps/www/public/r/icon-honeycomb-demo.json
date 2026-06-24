@@ -4,8 +4,7 @@
   "title": "Icon Honeycomb Demo",
   "description": "An integrations section with 90 brand marks.",
   "registryDependencies": [
-    "@magicui/icon-honeycomb",
-    "@magicui/icon-honeycomb-pass"
+    "@magicui/icon-honeycomb"
   ],
   "files": [
     {

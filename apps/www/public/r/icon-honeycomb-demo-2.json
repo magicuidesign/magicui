@@ -4,8 +4,7 @@
   "title": "Icon Honeycomb Split Feature",
   "description": "A responsive feature row beside a panel of 36 dev tools.",
   "registryDependencies": [
-    "@magicui/icon-honeycomb",
-    "@magicui/icon-honeycomb-pass"
+    "@magicui/icon-honeycomb"
   ],
   "files": [
     {

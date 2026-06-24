@@ -4,8 +4,7 @@
   "title": "Icon Honeycomb App Picker",
   "description": "A compact picker that distinguishes a press from a drag.",
   "registryDependencies": [
-    "@magicui/icon-honeycomb",
-    "@magicui/icon-honeycomb-pass"
+    "@magicui/icon-honeycomb"
   ],
   "files": [
     {
