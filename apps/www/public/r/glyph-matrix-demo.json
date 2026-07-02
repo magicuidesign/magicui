@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/example/glyph-matrix-demo.tsx",
-      "content": "import { GlyphMatrix } from \"@/registry/magicui/glyph-matrix\"\n\nexport default function GlyphMatrixDemo() {\n  return (\n    <div className=\"border-border bg-background relative h-full w-full overflow-hidden rounded-lg border\">\n      <GlyphMatrix\n        glyphs=\"01·•+*/\\\\<>=\"\n        cellSize={14}\n        mutationRate={0.04}\n        interval={90}\n        fadeBottom={0.6}\n      />\n    </div>\n  )\n}\n",
+      "content": "import { GlyphMatrix } from \"@/registry/magicui/glyph-matrix\"\n\nexport default function GlyphMatrixDemo() {\n  return (\n    <div className=\"border-border bg-background relative h-[400px] w-full overflow-hidden rounded-lg border\">\n      <GlyphMatrix\n        glyphs=\"01·•+*/\\\\<>=\"\n        cellSize={14}\n        mutationRate={0.04}\n        interval={90}\n        fadeBottom={0.6}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ]
