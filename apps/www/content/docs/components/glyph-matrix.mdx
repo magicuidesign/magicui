@@ -1,7 +1,7 @@
 ---
 title: Glyph Matrix
 date: 2026-06-12
-description: An animated grid of subtly shifting glyphs that reads CSS theme tokens directly, so it works in both light and dark mode.
+description: An animated grid of subtly shifting glyphs on a canvas, with a theme-aware color driven by the consumer.
 author: magicui
 published: true
 ---
@@ -62,7 +62,8 @@ import { GlyphMatrix } from "@/registry/magicui/glyph-matrix"
 | `interval`     | `number` | `90`             | Tick interval in milliseconds.               |
 | `className`    | `string` | `-`              | Classes applied to the canvas element.       |
 | `fadeBottom`   | `number` | `0.6`            | Fade strength toward the bottom of the grid. |
+| `color`        | `string` | `"#6B7280"`      | Glyph color (any CSS color).                 |
 
 ## Notes
 
-The component resolves `--foreground` through the browser and normalizes the computed CSS color before drawing. That means Tailwind v4 and shadcn tokens that serialize as `oklch(...)` still render correctly on canvas.
+The component draws with the `color` prop, which accepts any CSS color (hex, `rgb()`, `hsl()`, `oklch()`, ...) and is normalized through canvas before drawing. For light/dark support, drive `color` from the consumer — e.g. with `next-themes` as shown in the demo above.

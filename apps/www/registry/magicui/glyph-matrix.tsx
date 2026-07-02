@@ -17,12 +17,14 @@ interface GlyphMatrixProps extends React.HTMLAttributes<HTMLCanvasElement> {
   className?: string
   /** Fade out toward bottom (0 = no fade) */
   fadeBottom?: number
+  /** Glyph color (any CSS color). Pass a theme-aware value from the consumer. */
+  color?: string
 }
 
 /**
  * GlyphMatrix — an animated grid of subtly shifting glyphs.
- * Uses semantic tokens (--foreground / --background) so it adapts to
- * both light and dark modes automatically.
+ * Pass a `color` prop (e.g. driven by next-themes) to adapt it to
+ * light and dark modes.
  */
 export function GlyphMatrix({
   glyphs = "01·•+*/\\<>=",
@@ -31,6 +33,7 @@ export function GlyphMatrix({
   interval = 90,
   className,
   fadeBottom = 0.6,
+  color = "#6B7280",
   style,
   ...props
 }: GlyphMatrixProps) {
@@ -51,38 +54,20 @@ export function GlyphMatrix({
     let last = 0
     let stopped = false
 
-    const colorCanvas = document.createElement("canvas")
-    colorCanvas.width = 1
-    colorCanvas.height = 1
-    const colorContext = colorCanvas.getContext("2d")
-
-    const readColor = () => {
-      const probe = document.createElement("span")
-      probe.style.color = "var(--foreground)"
-      probe.style.display = "none"
-      document.body.appendChild(probe)
-      const computed = getComputedStyle(probe).color
-      probe.remove()
-      return computed
-    }
-
-    const parseColor = (value: string) => {
-      if (!colorContext) return { r: 0, g: 0, b: 0 }
-
-      colorContext.fillStyle = "#000"
-      colorContext.fillStyle = value
-      const normalized = colorContext.fillStyle
-      colorContext.fillStyle = normalized
-      colorContext.fillRect(0, 0, 1, 1)
-      const pixels = colorContext.getImageData(0, 0, 1, 1).data
-      const r = pixels[0]
-      const g = pixels[1]
-      const b = pixels[2]
-
+    // Resolve the CSS color string to RGB once (handles hex, rgb, hsl, etc.).
+    const toRgb = (value: string) => {
+      const probe = document.createElement("canvas")
+      probe.width = 1
+      probe.height = 1
+      const probeCtx = probe.getContext("2d")
+      if (!probeCtx) return { r: 0, g: 0, b: 0 }
+      probeCtx.fillStyle = value
+      probeCtx.fillRect(0, 0, 1, 1)
+      const [r, g, b] = probeCtx.getImageData(0, 0, 1, 1).data
       return { r, g, b }
     }
 
-    let fgColor = readColor()
+    const { r, g, b } = toRgb(color)
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -101,15 +86,12 @@ export function GlyphMatrix({
       alphas = new Array(cols * rows)
         .fill(0)
         .map(() => 0.05 + Math.random() * 0.35)
-
-      fgColor = readColor()
     }
 
     const draw = () => {
       const { clientWidth: w, clientHeight: h } = canvas
       ctx.clearRect(0, 0, w, h)
 
-      const { r, g, b } = parseColor(fgColor)
       ctx.font = `${cellSize - 2}px ui-monospace, SFMono-Regular, Menlo, monospace`
       ctx.textBaseline = "top"
 
@@ -155,23 +137,12 @@ export function GlyphMatrix({
     })
     ro.observe(canvas)
 
-    // Re-read color when theme changes (class on <html>)
-    const mo = new MutationObserver(() => {
-      fgColor = readColor()
-      draw()
-    })
-    mo.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class", "data-theme"],
-    })
-
     return () => {
       stopped = true
       cancelAnimationFrame(raf)
       ro.disconnect()
-      mo.disconnect()
     }
-  }, [glyphs, cellSize, mutationRate, interval, fadeBottom])
+  }, [glyphs, cellSize, mutationRate, interval, fadeBottom, color])
 
   return (
     <canvas
