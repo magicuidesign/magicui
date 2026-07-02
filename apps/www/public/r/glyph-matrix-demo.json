@@ -4,6 +4,9 @@
   "type": "registry:example",
   "title": "Glyph Matrix Demo",
   "description": "Example showing an animated grid of subtly shifting glyphs.",
+  "dependencies": [
+    "next-themes"
+  ],
   "registryDependencies": [
     "@magicui/glyph-matrix"
   ],

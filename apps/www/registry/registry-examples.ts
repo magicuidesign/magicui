@@ -614,6 +614,7 @@ export const examples: Registry["items"] = [
     title: "Glyph Matrix Demo",
     description: "Example showing an animated grid of subtly shifting glyphs.",
     registryDependencies: ["@magicui/glyph-matrix"],
+    dependencies: ["next-themes"],
     files: [
       {
         path: "example/glyph-matrix-demo.tsx",
