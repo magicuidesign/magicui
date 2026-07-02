@@ -2,7 +2,9 @@
 
 import { useEffect, useRef } from "react"
 
-interface GlyphMatrixProps {
+import { cn } from "@/lib/utils"
+
+interface GlyphMatrixProps extends React.HTMLAttributes<HTMLCanvasElement> {
   /** Characters to randomly pick from */
   glyphs?: string
   /** Cell size in px (also font size) */
@@ -29,6 +31,8 @@ export function GlyphMatrix({
   interval = 90,
   className,
   fadeBottom = 0.6,
+  style,
+  ...props
 }: GlyphMatrixProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
@@ -172,9 +176,10 @@ export function GlyphMatrix({
   return (
     <canvas
       ref={canvasRef}
-      className={className}
-      style={{ width: "100%", height: "100%", display: "block" }}
+      className={cn("pointer-events-none", className)}
+      style={{ width: "100%", height: "100%", display: "block", ...style }}
       aria-hidden="true"
+      {...props}
     />
   )
 }
