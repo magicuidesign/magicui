@@ -7,9 +7,12 @@ import { GlyphMatrix } from "@/registry/magicui/glyph-matrix"
 
 export default function GlyphMatrixDemo() {
   const { resolvedTheme } = useTheme()
-  const [color, setColor] = useState("#ffffff")
+  // Start neutral so the first frame is visible in both themes, then adopt
+  // the resolved theme color once it's known.
+  const [color, setColor] = useState("#6B7280")
 
   useEffect(() => {
+    if (!resolvedTheme) return
     setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000")
   }, [resolvedTheme])
 

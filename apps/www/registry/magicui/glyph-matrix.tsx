@@ -38,6 +38,22 @@ export function GlyphMatrix({
   ...props
 }: GlyphMatrixProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  // Current glyph color as RGB. Kept in a ref so a color change (e.g. theme
+  // toggle) recolors the next frame without restarting the animation.
+  const rgbRef = useRef({ r: 107, g: 114, b: 128 })
+
+  // Resolve the CSS color string to RGB (handles hex, rgb, hsl, oklch, ...).
+  useEffect(() => {
+    const probe = document.createElement("canvas")
+    probe.width = 1
+    probe.height = 1
+    const probeCtx = probe.getContext("2d")
+    if (!probeCtx) return
+    probeCtx.fillStyle = color
+    probeCtx.fillRect(0, 0, 1, 1)
+    const [r, g, b] = probeCtx.getImageData(0, 0, 1, 1).data
+    rgbRef.current = { r, g, b }
+  }, [color])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -53,21 +69,6 @@ export function GlyphMatrix({
     let raf = 0
     let last = 0
     let stopped = false
-
-    // Resolve the CSS color string to RGB once (handles hex, rgb, hsl, etc.).
-    const toRgb = (value: string) => {
-      const probe = document.createElement("canvas")
-      probe.width = 1
-      probe.height = 1
-      const probeCtx = probe.getContext("2d")
-      if (!probeCtx) return { r: 0, g: 0, b: 0 }
-      probeCtx.fillStyle = value
-      probeCtx.fillRect(0, 0, 1, 1)
-      const [r, g, b] = probeCtx.getImageData(0, 0, 1, 1).data
-      return { r, g, b }
-    }
-
-    const { r, g, b } = toRgb(color)
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -95,6 +96,7 @@ export function GlyphMatrix({
       ctx.font = `${cellSize - 2}px ui-monospace, SFMono-Regular, Menlo, monospace`
       ctx.textBaseline = "top"
 
+      const { r, g, b } = rgbRef.current
       for (let y = 0; y < rows; y++) {
         const fade = fadeBottom > 0 ? 1 - (y / rows) * fadeBottom : 1
         for (let x = 0; x < cols; x++) {
@@ -142,7 +144,7 @@ export function GlyphMatrix({
       cancelAnimationFrame(raf)
       ro.disconnect()
     }
-  }, [glyphs, cellSize, mutationRate, interval, fadeBottom, color])
+  }, [glyphs, cellSize, mutationRate, interval, fadeBottom])
 
   return (
     <canvas
