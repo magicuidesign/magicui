@@ -8849,8 +8849,6 @@ interface GlyphMatrixProps extends React.HTMLAttributes<HTMLCanvasElement> {
   mutationRate?: number
   /** Tick interval in ms */
   interval?: number
-  /** Optional className for the wrapping canvas */
-  className?: string
   /** Fade out toward bottom (0 = no fade) */
   fadeBottom?: number
   /** Glyph color (any CSS color). Pass a theme-aware value from the consumer. */
@@ -8874,21 +8872,26 @@ export function GlyphMatrix({
   ...props
 }: GlyphMatrixProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
-  // Current glyph color as RGB. Kept in a ref so a color change (e.g. theme
-  // toggle) recolors the next frame without restarting the animation.
-  const rgbRef = useRef({ r: 107, g: 114, b: 128 })
+  // Current glyph color as RGBA (a in 0-1). Kept in a ref so a color change
+  // (e.g. theme toggle) recolors the next frame without restarting the
+  // animation. Defaults to #6B7280.
+  const rgbaRef = useRef({ r: 107, g: 114, b: 128, a: 1 })
 
-  // Resolve the CSS color string to RGB (handles hex, rgb, hsl, oklch, ...).
+  // Resolve the CSS color string to RGBA (handles hex, rgb, hsl, oklch, ...).
   useEffect(() => {
     const probe = document.createElement("canvas")
     probe.width = 1
     probe.height = 1
     const probeCtx = probe.getContext("2d")
     if (!probeCtx) return
+    // Seed with the default so an invalid color falls back to it: the 2d
+    // context keeps the previous fillStyle when assigned an invalid value
+    // instead of silently turning black.
+    probeCtx.fillStyle = "#6B7280"
     probeCtx.fillStyle = color
     probeCtx.fillRect(0, 0, 1, 1)
-    const [r, g, b] = probeCtx.getImageData(0, 0, 1, 1).data
-    rgbRef.current = { r, g, b }
+    const [r, g, b, a] = probeCtx.getImageData(0, 0, 1, 1).data
+    rgbaRef.current = { r, g, b, a: a / 255 }
   }, [color])
 
   useEffect(() => {
@@ -8932,12 +8935,12 @@ export function GlyphMatrix({
       ctx.font = `${cellSize - 2}px ui-monospace, SFMono-Regular, Menlo, monospace`
       ctx.textBaseline = "top"
 
-      const { r, g, b } = rgbRef.current
+      const { r, g, b, a: colorAlpha } = rgbaRef.current
       for (let y = 0; y < rows; y++) {
         const fade = fadeBottom > 0 ? 1 - (y / rows) * fadeBottom : 1
         for (let x = 0; x < cols; x++) {
           const i = y * cols + x
-          const a = alphas[i] * fade
+          const a = alphas[i] * fade * colorAlpha
           ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`
           ctx.fillText(cells[i], x * cellSize, y * cellSize)
         }
