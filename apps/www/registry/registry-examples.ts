@@ -609,6 +609,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "glyph-matrix-demo",
+    type: "registry:example",
+    title: "Glyph Matrix Demo",
+    description: "Example showing an animated grid of subtly shifting glyphs.",
+    registryDependencies: ["@magicui/glyph-matrix"],
+    dependencies: ["next-themes"],
+    files: [
+      {
+        path: "example/glyph-matrix-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "glare-hover-demo",
     type: "registry:example",
     title: "Glare Hover Demo",

@@ -651,6 +651,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Glyph Matrix",
+          href: `/docs/components/glyph-matrix`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],

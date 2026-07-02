@@ -33,6 +33,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
 - [Glare Hover](https://magicui.design/docs/components/glare-hover): A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).
 - [Globe](https://magicui.design/docs/components/globe): An autorotating, interactive, and highly performant globe made using WebGL.
+- [Glyph Matrix](https://magicui.design/docs/components/glyph-matrix): An animated grid of subtly shifting glyphs with fade effect and theme support.
 - [Grid Pattern](https://magicui.design/docs/components/grid-pattern): A background grid pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Hero Video Dialog](https://magicui.design/docs/components/hero-video-dialog): A hero video dialog component.
 - [Hexagon Pattern](https://magicui.design/docs/components/hexagon-pattern): A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.
@@ -130,6 +131,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Marquee Logos](https://github.com/magicuidesign/magicui/blob/main/example/marquee-logos.tsx): Example usage
 - [Marquee 3D](https://github.com/magicuidesign/magicui/blob/main/example/marquee-3d.tsx): Example usage
 - [Globe Demo](https://github.com/magicuidesign/magicui/blob/main/example/globe-demo.tsx): Example usage
+- [Glyph Matrix Demo](https://github.com/magicuidesign/magicui/blob/main/example/glyph-matrix-demo.tsx): Example usage
 - [Glare Hover Demo](https://github.com/magicuidesign/magicui/blob/main/example/glare-hover-demo.tsx): Example usage
 - [Glare Hover Demo — CTA](https://github.com/magicuidesign/magicui/blob/main/example/glare-hover-demo-cta.tsx): Example usage
 - [Glare Hover Demo — Alerts](https://github.com/magicuidesign/magicui/blob/main/example/glare-hover-demo-alert.tsx): Example usage
