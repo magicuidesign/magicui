@@ -1,0 +1,73 @@
+---
+title: Magnetic Button
+date: 2026-07-08
+description: A button with a smooth magnetic hover effect that follows the cursor.
+author: Tonoy
+published: true
+---
+
+<ComponentPreview name="magnetic-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/magnetic-button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="magnetic-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Install Motion if it isn't already installed.</Step>
+
+```bash
+npm install motion
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { MagneticButton } from "@/components/ui/magnetic-button"
+```
+
+```tsx showLineNumbers
+<MagneticButton>Hover Me</MagneticButton>
+```
+
+## Props
+
+| Prop               | Type                                            | Default                                      | Description                                           |
+| ------------------ | ----------------------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
+| `children`         | `React.ReactNode`                               | `-`                                          | The content displayed inside the button.              |
+| `className`        | `string`                                        | `-`                                          | Additional class names applied to the button.         |
+| `magnetic`         | `boolean`                                       | `true`                                       | Enables or disables the magnetic hover effect.        |
+| `magneticStrength` | `number`                                        | `0.2`                                        | Controls how far the content moves toward the cursor. |
+| `spring`           | `SpringOptions`                                 | `{ stiffness: 180, damping: 18, mass: 0.2 }` | Spring configuration for the magnetic animation.      |
+| `...props`         | `React.ButtonHTMLAttributes<HTMLButtonElement>` | `-`                                          | All native button attributes are supported.           |
+
+## Credits
+
+- Credit to [@Tonoy](https://github.com/Tonoy3951573)

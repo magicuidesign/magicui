@@ -48,6 +48,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Light Rays](https://magicui.design/docs/components/light-rays): A component with animated light rays which shine down from above.
 - [Line Shadow Text](https://magicui.design/docs/components/line-shadow-text): A text component with a moving line shadow.
 - [Magic Card](https://magicui.design/docs/components/magic-card): A spotlight effect that follows your mouse cursor and highlights borders on hover.
+- [Magnetic Button](https://magicui.design/docs/components/magnetic-button): A button with a smooth magnetic hover interaction powered by Motion.
 - [Marquee](https://magicui.design/docs/components/marquee): An infinite scrolling component that can be used to display text, images, or videos.
 - [Meteors](https://magicui.design/docs/components/meteors): A meteor shower effect.
 - [Morphing Text](https://magicui.design/docs/components/morphing-text): A dynamic text morphing component for Magic UI.
@@ -138,6 +139,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Tweet Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-demo.tsx): Example usage
 - [Tweet Card Images](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-images.tsx): Example usage
 - [Tweet Card Meta Preview](https://github.com/magicuidesign/magicui/blob/main/example/tweet-card-meta-preview.tsx): Example usage
+- [magnetic-button-demo](https://github.com/magicuidesign/magicui/blob/main/example/magnetic-button-demo.tsx): Example usage
 - [Shimmer Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/shimmer-button-demo.tsx): Example usage
 - [Bento Demo](https://github.com/magicuidesign/magicui/blob/main/example/bento-demo.tsx): Example usage
 - [Bento Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/example/bento-demo-vertical.tsx): Example usage

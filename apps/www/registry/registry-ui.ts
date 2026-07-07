@@ -439,6 +439,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "magnetic-button",
+    type: "registry:ui",
+    title: "Magnetic Button",
+    description:
+      "A button with a smooth magnetic hover interaction powered by Motion.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/magnetic-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "shimmer-button",
     type: "registry:ui",
     title: "Shimmer Button",

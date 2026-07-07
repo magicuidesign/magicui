@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button-demo",
+  "type": "registry:example",
+  "description": "A demo of the magnetic button.",
+  "registryDependencies": [
+    "@magicui/magnetic-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/magnetic-button-demo.tsx",
+      "content": "import { MagneticButton } from \"../magicui/magnetic-button\"\n\nexport default function MagneticButtonDemo() {\n  return <MagneticButton>Hover me</MagneticButton>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

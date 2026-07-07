@@ -457,6 +457,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "magnetic-button": {
+    name: "magnetic-button",
+    description: "A button with a smooth magnetic hover interaction powered by Motion.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/magnetic-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/magnetic-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "shimmer-button": {
     name: "shimmer-button",
     description: "A button with a shimmering light which travels around the perimeter.",
@@ -2203,6 +2220,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/tweet-card-meta-preview.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "magnetic-button-demo": {
+    name: "magnetic-button-demo",
+    description: "A demo of the magnetic button.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/magnetic-button"],
+    files: [{
+      path: "registry/example/magnetic-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/magnetic-button-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

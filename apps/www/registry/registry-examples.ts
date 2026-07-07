@@ -701,6 +701,18 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "magnetic-button-demo",
+    description: "A demo of the magnetic button.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/magnetic-button"],
+    files: [
+      {
+        path: "example/magnetic-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "shimmer-button-demo",
     type: "registry:example",
     title: "Shimmer Button Demo",

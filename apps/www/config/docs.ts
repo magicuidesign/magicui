@@ -495,6 +495,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Magnetic Button",
+          href: "/docs/components/magnetic-button",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

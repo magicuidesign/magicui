@@ -467,6 +467,21 @@
       ]
     },
     {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "title": "Magnetic Button",
+      "description": "A button with a smooth magnetic hover interaction powered by Motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/magnetic-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "shimmer-button",
       "type": "registry:ui",
       "title": "Shimmer Button",
@@ -2158,6 +2173,20 @@
       "files": [
         {
           "path": "registry/example/tweet-card-meta-preview.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-button-demo",
+      "type": "registry:example",
+      "description": "A demo of the magnetic button.",
+      "registryDependencies": [
+        "@magicui/magnetic-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/magnetic-button-demo.tsx",
           "type": "registry:example"
         }
       ]
