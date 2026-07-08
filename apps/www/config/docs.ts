@@ -334,16 +334,16 @@ export const docsConfig: DocsConfig = {
       title: "Animations",
       items: [
         {
-          title: "Scroll Trace",
-          href: `/docs/components/scroll-trace`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Blur Fade",
           href: `/docs/components/blur-fade`,
           items: [],
           label: "",
+        },
+        {
+          title: "Scroll Trace",
+          href: `/docs/components/scroll-trace`,
+          items: [],
+          label: "New",
         },
       ],
     },
