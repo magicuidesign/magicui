@@ -19,6 +19,21 @@
       "type": "registry:style"
     },
     {
+      "name": "scroll-trace",
+      "title": "Scroll Trace",
+      "description": "A gradient line follows your scroll down a list of steps and lights each one it reaches.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/scroll-trace.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1388,6 +1403,54 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "scroll-trace-demo",
+      "title": "Scroll Trace Demo",
+      "description": "A how-it-works page section where the trace draws down the steps.",
+      "registryDependencies": [
+        "@magicui/scroll-trace",
+        "@magicui/scroll-trace-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-trace-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-trace-demo-2",
+      "title": "Scroll Trace Changelog",
+      "description": "A changelog page section with a straight trace and custom colors.",
+      "registryDependencies": [
+        "@magicui/scroll-trace",
+        "@magicui/scroll-trace-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-trace-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "scroll-trace-demo-3",
+      "title": "Scroll Trace Roadmap",
+      "description": "A roadmap page section with a wider gutter and a stronger curve.",
+      "registryDependencies": [
+        "@magicui/scroll-trace",
+        "@magicui/scroll-trace-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scroll-trace-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     },
     {
       "name": "magic-card-demo",

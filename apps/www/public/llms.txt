@@ -69,6 +69,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Safari](https://magicui.design/docs/components/safari): A safari browser mockup to showcase your website.
 - [Scroll Based Velocity](https://magicui.design/docs/components/scroll-based-velocity): Scrolling text whose speed changes based on scroll speed
 - [Scroll Progress](https://magicui.design/docs/components/scroll-progress): Animated Scroll Progress for your pages
+- [Scroll Trace](https://magicui.design/docs/components/scroll-trace): A gradient line follows your scroll down a list of steps and lights each one it reaches.
 - [Shimmer Button](https://magicui.design/docs/components/shimmer-button): A button with a shimmering light which travels around the perimeter.
 - [Shine Border](https://magicui.design/docs/components/shine-border): Shine border is an animated background border effect.
 - [Shiny Button](https://magicui.design/docs/components/shiny-button): A shiny button component with dynamic styles in the dark mode or light mode.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Scroll Trace Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/scroll-trace-demo.tsx): Example usage
+- [Scroll Trace Changelog](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/scroll-trace-demo-2.tsx): Example usage
+- [Scroll Trace Roadmap](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/scroll-trace-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage
