@@ -23,9 +23,9 @@ import type { MotionValue, Transition } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample42 } from "./scroll-trace-pass"
+import { passSample43 } from "./scroll-trace-pass"
 
-void passSample42(0)
+void passSample43(0)
 /** Outer diameter of a step marker. */
 const MARKER_SIZE = 14
 const MARKER_STROKE = 2
