@@ -1361,6 +1361,19 @@
       ]
     },
     {
+      "name": "nebula-toggle",
+      "type": "registry:ui",
+      "title": "Nebula Toggle",
+      "description": "A cosmic, ethereal theme toggle button with light and dark mode animations.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/nebula-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3946,6 +3959,22 @@
       "files": [
         {
           "path": "registry/example/text-3d-flip-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "nebula-toggle-demo",
+      "type": "registry:example",
+      "title": "Nebula Toggle Demo",
+      "description": "Example showing a cosmic theme toggle with light/dark transition animations.",
+      "registryDependencies": [
+        "nebula-toggle",
+        "@magicui/nebula-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/example/nebula-toggle-demo.tsx",
           "type": "registry:example"
         }
       ]

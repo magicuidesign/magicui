@@ -1324,6 +1324,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "nebula-toggle": {
+    name: "nebula-toggle",
+    description: "A cosmic, ethereal theme toggle button with light and dark mode animations.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/nebula-toggle.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/nebula-toggle.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description: "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -4179,6 +4196,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-3d-flip-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "nebula-toggle-demo": {
+    name: "nebula-toggle-demo",
+    description: "Example showing a cosmic theme toggle with light/dark transition animations.",
+    type: "registry:example",
+    registryDependencies: ["nebula-toggle","@magicui/nebula-toggle"],
+    files: [{
+      path: "registry/example/nebula-toggle-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/nebula-toggle-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

@@ -495,6 +495,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "",
         },
+        {
+          title: "Nebula Toggle",
+          href: "/docs/components/nebula-toggle",
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

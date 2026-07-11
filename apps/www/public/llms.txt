@@ -51,6 +51,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Marquee](https://magicui.design/docs/components/marquee): An infinite scrolling component that can be used to display text, images, or videos.
 - [Meteors](https://magicui.design/docs/components/meteors): A meteor shower effect.
 - [Morphing Text](https://magicui.design/docs/components/morphing-text): A dynamic text morphing component for Magic UI.
+- [Nebula Toggle](https://magicui.design/docs/components/nebula-toggle): A cosmic, ethereal theme toggle button with light and dark mode animations.
 - [Neon Gradient Card](https://magicui.design/docs/components/neon-gradient-card): A beautiful neon card effect
 - [Noise Texture](https://magicui.design/docs/components/noise-texture): An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.
 - [Number Ticker](https://magicui.design/docs/components/number-ticker): Animate numbers to count up or down to a target number
@@ -254,6 +255,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [kinetic-text-demo](https://github.com/magicuidesign/magicui/blob/main/example/kinetic-text-demo.tsx): Example usage
 - [Text 3D Flip Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo.tsx): Example usage
 - [Text 3D Flip Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo-2.tsx): Example usage
+- [Nebula Toggle Demo](https://github.com/magicuidesign/magicui/blob/main/example/nebula-toggle-demo.tsx): Example usage
 
 ## Optional
 

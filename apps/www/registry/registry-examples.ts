@@ -2245,4 +2245,18 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "nebula-toggle-demo",
+    type: "registry:example",
+    title: "Nebula Toggle Demo",
+    description:
+      "Example showing a cosmic theme toggle with light/dark transition animations.",
+    registryDependencies: ["nebula-toggle", "@magicui/nebula-toggle"],
+    files: [
+      {
+        path: "example/nebula-toggle-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

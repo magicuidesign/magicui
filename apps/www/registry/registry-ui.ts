@@ -1312,4 +1312,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "nebula-toggle",
+    type: "registry:ui",
+    title: "Nebula Toggle",
+    description:
+      "A cosmic, ethereal theme toggle button with light and dark mode animations.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/nebula-toggle.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

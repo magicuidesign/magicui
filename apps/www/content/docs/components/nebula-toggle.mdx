@@ -1,0 +1,49 @@
+---
+title: Nebula Toggle
+date: 2026-07-11
+description: A cosmic, ethereal theme toggle switch with light and dark mode animations.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="nebula-toggle-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/nebula-toggle
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="nebula-toggle" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Props
+
+| Prop        | Type                         | Default     | Description                                             |
+| ----------- | ---------------------------- | ----------- | ------------------------------------------------------- |
+| `checked`   | `boolean`                    | `undefined` | Controlled checked state. If omitted, uses local state. |
+| `onChange`  | `(checked: boolean) => void` | `undefined` | Callback fired when the state of the toggle changes.    |
+| `className` | `string`                     | `undefined` | Custom CSS class styles to apply to the container.      |

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "nebula-toggle-demo",
+  "type": "registry:example",
+  "title": "Nebula Toggle Demo",
+  "description": "Example showing a cosmic theme toggle with light/dark transition animations.",
+  "registryDependencies": [
+    "nebula-toggle",
+    "@magicui/nebula-toggle"
+  ],
+  "files": [
+    {
+      "path": "registry/example/nebula-toggle-demo.tsx",
+      "content": "import { NebulaToggle } from \"@/registry/magicui/nebula-toggle\"\n\nexport default function NebulaToggleDemo() {\n  return (\n    <div className=\"relative flex items-center justify-center p-12\">\n      <NebulaToggle />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
