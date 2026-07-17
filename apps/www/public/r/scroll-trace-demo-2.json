@@ -4,8 +4,7 @@
   "title": "Scroll Trace Changelog",
   "description": "A changelog page section with a straight trace and custom colors.",
   "registryDependencies": [
-    "@magicui/scroll-trace",
-    "@magicui/scroll-trace-pass"
+    "@magicui/scroll-trace"
   ],
   "files": [
     {

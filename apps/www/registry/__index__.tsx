@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "scroll-trace-demo",
     description: "A how-it-works page section where the trace draws down the steps.",
     type: "registry:example",
-    registryDependencies: ["@magicui/scroll-trace","@magicui/scroll-trace-pass"],
+    registryDependencies: ["@magicui/scroll-trace"],
     files: [{
       path: "registry/example/scroll-trace-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "scroll-trace-demo-2",
     description: "A changelog page section with a straight trace and custom colors.",
     type: "registry:example",
-    registryDependencies: ["@magicui/scroll-trace","@magicui/scroll-trace-pass"],
+    registryDependencies: ["@magicui/scroll-trace"],
     files: [{
       path: "registry/example/scroll-trace-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "scroll-trace-demo-3",
     description: "A roadmap page section with a wider gutter and a stronger curve.",
     type: "registry:example",
-    registryDependencies: ["@magicui/scroll-trace","@magicui/scroll-trace-pass"],
+    registryDependencies: ["@magicui/scroll-trace"],
     files: [{
       path: "registry/example/scroll-trace-demo-3.tsx",
       type: "registry:example",

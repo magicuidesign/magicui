@@ -4,8 +4,7 @@
   "title": "Scroll Trace Demo",
   "description": "A how-it-works page section where the trace draws down the steps.",
   "registryDependencies": [
-    "@magicui/scroll-trace",
-    "@magicui/scroll-trace-pass"
+    "@magicui/scroll-trace"
   ],
   "files": [
     {

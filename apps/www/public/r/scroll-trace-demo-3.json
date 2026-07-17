@@ -4,8 +4,7 @@
   "title": "Scroll Trace Roadmap",
   "description": "A roadmap page section with a wider gutter and a stronger curve.",
   "registryDependencies": [
-    "@magicui/scroll-trace",
-    "@magicui/scroll-trace-pass"
+    "@magicui/scroll-trace"
   ],
   "files": [
     {
