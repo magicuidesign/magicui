@@ -3,20 +3,30 @@ pre-commit:
   commands:
     build:registry:
       glob: "**/registry/**/*.{ts,tsx}"
-      run: pnpm build:registry && git add --all
-      stage_fixed: true
-    typecheck:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: pnpm typecheck
-      stage_fixed: true
+      # www-scoped script only (the root build:registry also runs a
+      # whole-project lint:fix + format:fix). Stage generated artifacts
+      # by explicit path — never `git add --all`. CI's registry-drift job
+      # checks these same paths, so a new artifact path can't slip through.
+      run: >
+        pnpm --filter=www build:registry &&
+        git add apps/www/registry.json apps/www/registry/__index__.tsx
+        apps/www/public/registry.json apps/www/public/r
+        apps/www/public/llms.txt apps/www/public/llms-full.txt
     lint:fix:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: pnpm lint:fix
+      root: "apps/www/"
+      glob: "*.{js,ts,cjs,mjs,jsx,tsx}"
+      run: pnpm exec eslint --fix --no-warn-ignored {staged_files}
       stage_fixed: true
-    format:fix:silent:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: pnpm format:fix:silent
+    format:fix:
+      root: "apps/www/"
+      glob: "*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc,mdx}"
+      run: pnpm exec prettier --log-level silent --write --cache {staged_files}
       stage_fixed: true
+
+pre-push:
+  commands:
+    typecheck:
+      run: pnpm typecheck
 
 commit-msg:
   commands:
