@@ -169,7 +169,12 @@ export const AnimatedThemeToggler = ({
 
   const toggleTheme = useCallback(() => {
     const button = buttonRef.current
-    if (!button || isTransitioningRef.current) return
+    if (
+      !button ||
+      isTransitioningRef.current ||
+      document.documentElement.dataset.magicuiThemeVt === "active"
+    )
+      return
 
     const viewportWidth = window.visualViewport?.width ?? window.innerWidth
     const viewportHeight = window.visualViewport?.height ?? window.innerHeight
