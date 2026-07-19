@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: ["*"]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -150,6 +154,41 @@ jobs:
         run: pnpm install
 
       - run: pnpm registry-deps:check
+
+  build:
+    runs-on: ubuntu-latest
+    name: pnpm build
+    steps:
+      - uses: actions/checkout@v6
+
+      # pnpm must be installed before setup-node so its built-in pnpm cache works
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9.15.0
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Restore Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: apps/www/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('apps/www/**/*.[jt]s', 'apps/www/**/*.[jt]sx', 'apps/www/**/*.mdx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('pnpm-lock.yaml') }}-
+
+      - name: Build
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_APP_URL: https://magicui.design
 
   registry-drift:
     runs-on: ubuntu-latest
