@@ -3218,9 +3218,7 @@ export const AnimatedThemeToggler = ({
   const [internalIsDark, setInternalIsDark] = useState(false)
   const isDark = isControlled ? theme === "dark" : internalIsDark
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const [isTransitioning, setIsTransitioning] = useState(false)
   const isTransitioningRef = useRef(false)
-  const lastToggleTimeRef = useRef(0)
 
   useEffect(() => {
     if (isControlled) return
@@ -3240,24 +3238,9 @@ export const AnimatedThemeToggler = ({
     return () => observer.disconnect()
   }, [isControlled])
 
-  useEffect(() => {
-    return () => {
-      const root = document.documentElement
-      delete root.dataset.magicuiThemeVt
-      root.style.removeProperty("--magicui-theme-toggle-vt-duration")
-      root.style.removeProperty("--magicui-theme-vt-clip-from")
-      root.removeAttribute("inert")
-    }
-  }, [])
-
   const toggleTheme = useCallback(() => {
     const button = buttonRef.current
-    if (!button || isTransitioningRef.current || isTransitioning) return
-
-    const now = performance.now()
-    // Enforce a strict minimum delay of 500ms between transitions to prevent compositor crashes
-    if (now - lastToggleTimeRef.current < 500) return
-    lastToggleTimeRef.current = now
+    if (!button || isTransitioningRef.current) return
 
     const viewportWidth = window.visualViewport?.width ?? window.innerWidth
     const viewportHeight = window.visualViewport?.height ?? window.innerHeight
@@ -3314,31 +3297,28 @@ export const AnimatedThemeToggler = ({
     // Pin the collapsed clip-path via CSS so Firefox does not paint the new
     // theme unclipped between snapshot and the ready.then() JS animation.
     root.style.setProperty("--magicui-theme-vt-clip-from", clipPath[0])
-
     const cleanup = () => {
+      isTransitioningRef.current = false
       delete root.dataset.magicuiThemeVt
       root.style.removeProperty("--magicui-theme-toggle-vt-duration")
       root.style.removeProperty("--magicui-theme-vt-clip-from")
-      root.removeAttribute("inert")
-      isTransitioningRef.current = false
-      setIsTransitioning(false)
     }
 
     isTransitioningRef.current = true
-    root.setAttribute("inert", "true")
-    flushSync(() => {
-      setIsTransitioning(true)
-    })
-
     const transition = document.startViewTransition(() => {
       flushSync(applyTheme)
     })
+    if (typeof transition?.finished?.finally === "function") {
+      transition.finished.finally(cleanup)
+    } else {
+      cleanup()
+    }
 
     const ready = transition?.ready
     if (ready && typeof ready.then === "function") {
       ready
         .then(() => {
-          const anim = document.documentElement.animate(
+          document.documentElement.animate(
             {
               clipPath,
             },
@@ -3350,56 +3330,22 @@ export const AnimatedThemeToggler = ({
               pseudoElement: "::view-transition-new(root)",
             }
           )
-          anim.finished.then(
-            () => setTimeout(cleanup, 100),
-            () => setTimeout(cleanup, 100)
-          )
         })
-        .catch(() => {
-          cleanup()
-        })
-    } else {
-      cleanup()
+        .catch(() => {})
     }
-  }, [
-    shape,
-    fromCenter,
-    duration,
-    isDark,
-    isControlled,
-    onThemeChange,
-    isTransitioning,
-  ])
+  }, [shape, fromCenter, duration, isDark, isControlled, onThemeChange])
 
   return (
-    <>
-      <style>{`
-        ::view-transition,
-        ::view-transition-group(*),
-        ::view-transition-image-pair(*),
-        ::view-transition-new(*),
-        ::view-transition-old(*) {
-          pointer-events: none !important;
-        }
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-          animation: none;
-          mix-blend-mode: normal;
-        }
-      `}</style>
-      <button
-        type="button"
-        ref={buttonRef}
-        disabled={isTransitioning}
-        style={{ pointerEvents: isTransitioning ? "none" : "auto" }}
-        onClick={toggleTheme}
-        className={cn(className)}
-        {...props}
-      >
-        {isDark ? <Sun /> : <Moon />}
-        <span className="sr-only">Toggle theme</span>
-      </button>
-    </>
+    <button
+      type="button"
+      ref={buttonRef}
+      onClick={toggleTheme}
+      className={cn(className)}
+      {...props}
+    >
+      {isDark ? <Sun /> : <Moon />}
+      <span className="sr-only">Toggle theme</span>
+    </button>
   )
 }
 
