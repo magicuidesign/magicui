@@ -243,7 +243,7 @@ export const AnimatedThemeToggler = ({
       flushSync(applyTheme)
     })
     if (typeof transition?.finished?.finally === "function") {
-      transition.finished.finally(cleanup)
+      transition.finished.finally(cleanup).catch(() => {})
     } else {
       cleanup()
     }
