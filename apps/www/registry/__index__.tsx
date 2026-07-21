@@ -3126,23 +3126,6 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "icon-cloud-demo-4": {
-    name: "icon-cloud-demo-4",
-    description: "Fourth example showing an interactive 3D icon cloud.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/icon-cloud"],
-    files: [{
-      path: "registry/example/icon-cloud-demo-4.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/icon-cloud-demo-4.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "text-animate-demo": {
     name: "text-animate-demo",
     description: "Example showing various text animations.",

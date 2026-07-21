@@ -192,7 +192,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Icon Cloud Demo](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo.tsx): Example usage
 - [Icon Cloud Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo-2.tsx): Example usage
 - [Icon Cloud Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo-3.tsx): Example usage
-- [Icon Cloud Demo 4](https://github.com/magicuidesign/magicui/blob/main/example/icon-cloud-demo-4.tsx): Example usage
 - [Text Animate Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo.tsx): Example usage
 - [Text Animate Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-2.tsx): Example usage
 - [Text Animate Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/text-animate-demo-3.tsx): Example usage
