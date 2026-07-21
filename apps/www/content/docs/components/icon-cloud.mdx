@@ -68,4 +68,10 @@ import { IconCloud } from "@/components/ui/icon-cloud"
 | ------------- | ------------------- | ------- | ------------------------------------------ |
 | `icons`       | `React.ReactNode[]` | `[]`    | Array of icons to render in the cloud      |
 | `images`      | `string[]`          | `[]`    | Array of image URLs to render in the cloud |
-| `showControl` | `boolean`           | `false` | Show play/pause control button             |
+| `showControl` | `boolean`           | `true`  | Show play/pause control button             |
+
+## Accessibility
+
+The cloud rotates automatically, so it ships with a play/pause control by default to satisfy [WCAG 2.1 SC 2.2.2 (Pause, Stop, Hide)](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html).
+
+Rotation also pauses automatically when the user has `prefers-reduced-motion: reduce` enabled. Setting `showControl={false}` removes the only way to resume it, so opt out only when your layout provides its own control.
