@@ -884,7 +884,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Icon Cloud",
     description: "An interactive 3D tag cloud component",
-    dependencies: [],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "magicui/icon-cloud.tsx",
