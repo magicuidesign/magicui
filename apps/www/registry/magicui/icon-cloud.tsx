@@ -317,7 +317,16 @@ export function IconCloud({
 
           ctx.restore()
         })
-        animationFrameRef.current = requestAnimationFrame(animate)
+
+        const hasPendingAssets =
+          Boolean(icons || images) &&
+          !imagesLoadedRef.current.every((loaded) => loaded)
+        const shouldContinue =
+          !isPaused || isDragging || targetRotation !== null || hasPendingAssets
+
+        if (shouldContinue) {
+          animationFrameRef.current = requestAnimationFrame(animate)
+        }
       }
 
       animate()
