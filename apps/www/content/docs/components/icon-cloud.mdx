@@ -46,6 +46,10 @@ npx shadcn@latest add @magicui/icon-cloud
 
 <ComponentPreview name="icon-cloud-demo-3" />
 
+## With Control Button
+
+<ComponentPreview name="icon-cloud-demo-4" />
+
 ## Usage
 
 ```tsx showLineNumbers
@@ -60,7 +64,8 @@ import { IconCloud } from "@/components/ui/icon-cloud"
 
 ## Props
 
-| Prop     | Type                | Default | Description                                |
-| -------- | ------------------- | ------- | ------------------------------------------ |
-| `icons`  | `React.ReactNode[]` | `[]`    | Array of icons to render in the cloud      |
-| `images` | `string[]`          | `[]`    | Array of image URLs to render in the cloud |
+| Prop          | Type                | Default | Description                                |
+| ------------- | ------------------- | ------- | ------------------------------------------ |
+| `icons`       | `React.ReactNode[]` | `[]`    | Array of icons to render in the cloud      |
+| `images`      | `string[]`          | `[]`    | Array of image URLs to render in the cloud |
+| `showControl` | `boolean`           | `false` | Show play/pause control button             |

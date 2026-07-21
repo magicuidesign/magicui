@@ -1432,6 +1432,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "icon-cloud-demo-4",
+    type: "registry:example",
+    title: "Icon Cloud Demo 4",
+    description: "Fourth example showing an interactive 3D icon cloud.",
+    registryDependencies: ["@magicui/icon-cloud"],
+    files: [
+      {
+        path: "example/icon-cloud-demo-4.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "text-animate-demo",
     type: "registry:example",
     title: "Text Animate Demo",
