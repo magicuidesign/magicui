@@ -886,7 +886,7 @@ export const Index: Record<string, any> = {
     name: "icon-cloud",
     description: "An interactive 3D tag cloud component",
     type: "registry:ui",
-    registryDependencies: undefined,
+    registryDependencies: ["button"],
     files: [{
       path: "registry/magicui/icon-cloud.tsx",
       type: "registry:ui",

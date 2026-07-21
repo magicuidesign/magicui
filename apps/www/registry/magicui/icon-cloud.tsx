@@ -1,7 +1,10 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
+import { Pause, Play } from "lucide-react"
 import { renderToString } from "react-dom/server"
+
+import { Button } from "@/components/ui/button"
 
 interface Icon {
   x: number
@@ -15,16 +18,22 @@ interface Icon {
 interface IconCloudProps {
   icons?: React.ReactNode[]
   images?: string[]
+  showControl?: boolean
 }
 
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3)
 }
 
-export function IconCloud({ icons, images }: IconCloudProps) {
+export function IconCloud({
+  icons,
+  images,
+  showControl = true,
+}: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
   const [isDragging, setIsDragging] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [targetRotation, setTargetRotation] = useState<{
@@ -40,6 +49,21 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   const rotationRef = useRef({ x: 0, y: 0 })
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([])
   const imagesLoadedRef = useRef<boolean[]>([])
+
+  // Pause animation if user prefers reduced motion
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    if (mediaQuery.matches) {
+      setIsPaused(true)
+    }
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsPaused(e.matches)
+    }
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
 
   // Create icon canvases once when icons/images change
   useEffect(() => {
@@ -242,7 +266,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
           if (progress >= 1) {
             setTargetRotation(null)
           }
-        } else if (!isDragging) {
+        } else if (!isDragging && !isPaused) {
           rotationRef.current = {
             x: rotationRef.current.x + (dy / canvas.height) * speed,
             y: rotationRef.current.y + (dx / canvas.width) * speed,
@@ -293,7 +317,16 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
           ctx.restore()
         })
-        animationFrameRef.current = requestAnimationFrame(animate)
+
+        const hasPendingAssets =
+          Boolean(icons || images) &&
+          !imagesLoadedRef.current.every((loaded) => loaded)
+        const shouldContinue =
+          !isPaused || isDragging || targetRotation !== null || hasPendingAssets
+
+        if (shouldContinue) {
+          animationFrameRef.current = requestAnimationFrame(animate)
+        }
       }
 
       animate()
@@ -304,20 +337,41 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         cancelAnimationFrame(animationFrameRef.current)
       }
     }
-  }, [icons, images, iconPositions, isDragging, mousePos, targetRotation])
+  }, [
+    icons,
+    images,
+    iconPositions,
+    isDragging,
+    isPaused,
+    mousePos,
+    targetRotation,
+  ])
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={400}
-      height={400}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      className="rounded-lg"
-      aria-label="Interactive 3D Icon Cloud"
-      role="img"
-    />
+    <div className="relative inline-block">
+      <canvas
+        ref={canvasRef}
+        width={400}
+        height={400}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        className="rounded-lg"
+        aria-label="Interactive 3D Icon Cloud"
+        role="img"
+      />
+      {showControl && (
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => setIsPaused(!isPaused)}
+          aria-label={isPaused ? "Play Animation" : "Pause Animation"}
+          className="absolute top-2 right-2"
+        >
+          {isPaused ? <Play size={16} /> : <Pause size={16} />}
+        </Button>
+      )}
+    </div>
   )
 }
