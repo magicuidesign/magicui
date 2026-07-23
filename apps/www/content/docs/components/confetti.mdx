@@ -79,44 +79,68 @@ npm install canvas-confetti
 ### Usage
 
 ```tsx showLineNumbers
-import { Confetti } from "@/components/ui/confetti"
-```
+import { useRef } from "react"
 
-```tsx showLineNumbers
-<Confetti />
+import { Confetti, type ConfettiRef } from "@/components/ui/confetti"
+
+export function ConfettiDemo() {
+  const confettiRef = useRef<ConfettiRef>(null)
+
+  return (
+    <div>
+      <Confetti ref={confettiRef} manualstart />
+      <button onClick={() => confettiRef.current?.fire()}>
+        Trigger Confetti
+      </button>
+    </div>
+  )
+}
 ```
 
 ## Props
 
 ### Confetti
 
-| Prop                      | Type                        | Default                                                                         | Description                                      |
-| ------------------------- | --------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `particleCount`           | `Integer`                   | `50`                                                                            | The number of confetti particles to launch       |
-| `angle`                   | `Number`                    | `90`                                                                            | The angle in degrees at which to launch confetti |
-| `spread`                  | `Number`                    | `45`                                                                            | The spread in degrees of the confetti            |
-| `startVelocity`           | `Number`                    | `45`                                                                            | The initial velocity of the confetti             |
-| `decay`                   | `Number`                    | `0.9`                                                                           | The rate at which confetti slows down            |
-| `gravity`                 | `Number`                    | `1`                                                                             | The gravity applied to confetti particles        |
-| `drift`                   | `Number`                    | `0`                                                                             | The horizontal drift applied to particles        |
-| `flat`                    | `Boolean`                   | `false`                                                                         | Whether confetti particles are flat              |
-| `ticks`                   | `Number`                    | `200`                                                                           | The number of frames confetti lasts              |
-| `origin`                  | `Object`                    | `{ x: 0.5, y: 0.5 }`                                                            | The origin point of the confetti                 |
-| `colors`                  | `Array of Strings`          | `['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff']` | Array of color strings in HEX format             |
-| `shapes`                  | `Array of Strings`          | `['square', 'circle', 'star']`                                                  | Array of shapes for the confetti                 |
-| `zIndex`                  | `Integer`                   | `100`                                                                           | The z-index of the confetti                      |
-| `disableForReducedMotion` | `Boolean`                   | `false`                                                                         | Disables confetti for users who prefer no motion |
-| `useWorker`               | `Boolean`                   | `true`                                                                          | Use Web Worker for better performance            |
-| `resize`                  | `Boolean`                   | `true`                                                                          | Whether to resize the canvas                     |
-| `canvas`                  | `HTMLCanvasElement or null` | `null`                                                                          | Custom canvas element to draw confetti           |
-| `scalar`                  | `Number`                    | `1`                                                                             | Scaling factor for confetti size                 |
+| Prop            | Type                     | Default                             | Description                                                      |
+| --------------- | ------------------------ | ----------------------------------- | ---------------------------------------------------------------- |
+| `ref`           | `React.Ref<ConfettiRef>` | `null`                              | Ref exposing imperative `fire(options?: ConfettiOptions)` method |
+| `options`       | `ConfettiOptions`        | `{}`                                | Default options for automatic or imperative confetti triggers    |
+| `globalOptions` | `ConfettiGlobalOptions`  | `{ resize: true, useWorker: true }` | Global options passed to `canvas-confetti.create()`              |
+| `manualstart`   | `Boolean`                | `false`                             | Prevents automatic confetti firing on component mount            |
+| `className`     | `String`                 | `undefined`                         | Custom CSS classes applied to the portaled canvas element        |
+
+### ConfettiRef
+
+| Method | Parameters                  | Return Type             | Description                                                   |
+| ------ | --------------------------- | ----------------------- | ------------------------------------------------------------- |
+| `fire` | `options?: ConfettiOptions` | `Promise<void> \| void` | Imperatively triggers a confetti burst on the canvas instance |
+
+### ConfettiOptions
+
+| Field           | Type                       | Default                        | Description                                             |
+| --------------- | -------------------------- | ------------------------------ | ------------------------------------------------------- |
+| `particleCount` | `Integer`                  | `50`                           | Number of confetti particles to launch                  |
+| `angle`         | `Number`                   | `90`                           | Launch angle in degrees                                 |
+| `spread`        | `Number`                   | `45`                           | Spread angle in degrees                                 |
+| `startVelocity` | `Number`                   | `45`                           | Initial particle velocity                               |
+| `decay`         | `Number`                   | `0.9`                          | Velocity decay rate                                     |
+| `gravity`       | `Number`                   | `1`                            | Gravity applied to particles                            |
+| `drift`         | `Number`                   | `0`                            | Horizontal drift factor                                 |
+| `flat`          | `Boolean`                  | `false`                        | Renders flat 2D shapes                                  |
+| `ticks`         | `Number`                   | `200`                          | Number of animation frames confetti lasts               |
+| `origin`        | `{ x: number, y: number }` | `{ x: 0.5, y: 0.5 }`           | Normalized viewport origin coordinates (`0.0` to `1.0`) |
+| `colors`        | `Array of Strings`         | `HEX array`                    | Custom HEX color palette                                |
+| `shapes`        | `Array of Strings`         | `['square', 'circle', 'star']` | Particle shapes or custom text shapes                   |
+| `zIndex`        | `Integer`                  | `9999`                         | Z-index of the confetti burst                           |
+| `scalar`        | `Number`                   | `1`                            | Scaling factor for particle dimensions                  |
 
 ### ConfettiButton
 
-| Prop       | Type              | Default | Description                          |
-| ---------- | ----------------- | ------- | ------------------------------------ |
-| `options`  | `Object`          | `{}`    | Options for the confetti             |
-| `children` | `React.ReactNode` | `null`  | Children to render inside the button |
+| Prop       | Type                                      | Default | Description                                       |
+| ---------- | ----------------------------------------- | ------- | ------------------------------------------------- |
+| `options`  | `ConfettiOptions & ConfettiGlobalOptions` | `{}`    | Options for the confetti launched on button click |
+| `children` | `React.ReactNode`                         | `null`  | Button label and child elements                   |
+| `ref`      | `React.Ref<HTMLButtonElement>`            | `null`  | Forwarded DOM reference to the underlying button  |
 
 ## Credits
 
