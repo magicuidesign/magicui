@@ -1,0 +1,81 @@
+---
+title: Contour Field
+date: 2026-11-04
+description: An animated topographic background. Contour lines rise into view, drift slowly and lift under the pointer.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="contour-field-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/contour-field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="contour-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ContourField } from "@/components/ui/contour-field"
+```
+
+```tsx showLineNumbers
+<div className="relative h-96 rounded-lg border">
+  <ContourField />
+  <div className="relative z-10">Your content</div>
+</div>
+```
+
+Place it inside a `relative` parent with a height. To clear space behind your copy, set `--fade-oval` to a gradient that is transparent there:
+
+```tsx showLineNumbers
+<ContourField className="[--fade-oval:radial-gradient(ellipse_340px_220px_at_50%_50%,transparent_55%,black_100%)]" />
+```
+
+Add `[mask-image:none]` to remove the fade.
+
+## Props
+
+| Prop          | Type      | Default          | Description                                                                                                 |
+| ------------- | --------- | ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| `color`       | `string`  | `"currentColor"` | Line color. Any CSS color, such as `var(--primary)`.                                                        |
+| `duration`    | `number`  | `90`             | Seconds for one full drift loop.                                                                            |
+| `levels`      | `number`  | `22`             | How many contour lines stack from the deepest basin to the highest summit. Higher draws more, closer lines. |
+| `interactive` | `boolean` | `true`           | Raise the lines under a mouse or pen, not touch.                                                            |
+
+## Examples
+
+### Brand Color
+
+<ComponentPreview name="contour-field-demo-2" />
+
+### Feature Card
+
+<ComponentPreview name="contour-field-demo-3" />

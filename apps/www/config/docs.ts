@@ -501,6 +501,12 @@ export const docsConfig: DocsConfig = {
       title: "Backgrounds",
       items: [
         {
+          title: "Contour Field",
+          href: `/docs/components/contour-field`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Flickering Grid",
           href: `/docs/components/flickering-grid`,
           items: [],
