@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contour-field-demo-3",
+  "title": "Contour Field Card Demo",
+  "description": "Three network metrics with contour lines behind regional coverage.",
+  "registryDependencies": [
+    "@magicui/contour-field",
+    "@magicui/contour-field-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/contour-field-demo-3.tsx",
+      "content": "import { ContourField } from \"@/registry/magicui/contour-field\"\n\nconst stats = [\n  {\n    label: \"Uptime\",\n    figure: \"99.98%\",\n    caption: \"A steady signal through every deployment.\",\n  },\n  {\n    label: \"Median latency\",\n    figure: \"41 ms\",\n    caption: \"From the edge to your customers, without the guesswork.\",\n  },\n]\n\nexport default function ContourFieldDemo3() {\n  return (\n    <div className=\"grid w-full max-w-3xl gap-4 md:grid-cols-3\">\n      <div className=\"border-border bg-card text-card-foreground relative flex h-72 flex-col overflow-hidden rounded-xl border p-6 md:col-span-2 md:row-span-2 md:h-auto md:min-h-80\">\n        {/* A card among cards stays still under the pointer. */}\n        <ContourField\n          interactive={false}\n          // Clears an oval behind the figure in the top left corner.\n          className=\"[--fade-oval:radial-gradient(ellipse_250px_130px_at_140px_68px,transparent_60%,black_100%)]\"\n        />\n        <div className=\"relative z-10 flex flex-col gap-2\">\n          <p className=\"text-muted-foreground text-sm font-medium\">Coverage</p>\n          <p className=\"text-3xl font-semibold tracking-tight\">38 regions</p>\n          <p className=\"text-muted-foreground text-sm\">\n            Traced end to end, every 15 seconds.\n          </p>\n        </div>\n      </div>\n      {stats.map((stat) => (\n        <div\n          key={stat.label}\n          className=\"border-border bg-card text-card-foreground flex flex-col gap-2 rounded-xl border p-6\"\n        >\n          <p className=\"text-muted-foreground text-sm font-medium\">\n            {stat.label}\n          </p>\n          <p className=\"text-3xl font-semibold tracking-tight tabular-nums\">\n            {stat.figure}\n          </p>\n          <p className=\"text-muted-foreground text-sm\">{stat.caption}</p>\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -24,6 +24,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Code Comparison](https://magicui.design/docs/components/code-comparison): A component which compares two code snippets.
 - [Comic Text](https://magicui.design/docs/components/comic-text): Comic text animation
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
+- [Contour Field](https://magicui.design/docs/components/contour-field): An animated topographic background. Contour lines rise into view, drift slowly and lift under the pointer.
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
 - [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
 - [Dither Field](https://magicui.design/docs/components/dither-field): An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Contour Field Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/contour-field-demo.tsx): Example usage
+- [Contour Field Brand Color Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/contour-field-demo-2.tsx): Example usage
+- [Contour Field Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/contour-field-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage
