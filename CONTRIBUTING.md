@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to MagicUI! We appreciate your support and look forward to your contributions. This guide will help you understand the directory structure and provide detailed instructions on how to add a new component to MagicUI.
 
-Read the [example PR](https://github.com/magicuidesign/magicui/pull/780) to learn which files you need to add. **You only need to change 5 files to add a new component or effect** and it only takes around 10 minutes of work!
+Read the [example PR](https://github.com/magicuidesign/magicui/pull/780) to learn which files you need to add. **You only need to write 5 files to add a new component or effect** (plus committing the registry artifacts that `pnpm build:registry` generates for you) and it only takes around 10 minutes of work!
 
 Once done, open a pull request from your forked repo to the main repo [here](https://github.com/magicuidesign/magicui/compare).
 
@@ -32,6 +32,8 @@ Once done, open a pull request from your forked repo to the main repo [here](htt
    ```
 
 5. **Install dependencies**
+
+   Requires Node 22 (see `.nvmrc`) and pnpm 9.
 
    ```bash
    pnpm i
@@ -239,6 +241,8 @@ Make sure to add any necessary dependencies, tailwind configurations, or other p
 pnpm build:registry
 ```
 
+This regenerates the registry artifacts (`registry.json`, `registry/__index__.tsx`, `public/registry.json`, `public/r`, `public/llms.txt`, `public/llms-full.txt`). **Commit the generated files together with your component** — CI verifies they are up to date and fails otherwise.
+
 ## Adding to the showcase
 
 ### 1. Create your showcase as a MDX file
@@ -259,6 +263,43 @@ affiliation: YC S25, raised $10M
 ### 2. Create an image
 
 Upload an image of your site to `public/showcase/website-name.png`
+
+## Before Opening a Pull Request
+
+Running the checks below locally first saves you a round trip with CI:
+
+1. **Run all checks**
+
+   ```bash
+   pnpm check
+   ```
+
+   This runs `lint`, `typecheck`, `format:check`, and `registry-deps:check` — four of the six CI gates. Most issues can be auto-fixed:
+
+   ```bash
+   pnpm lint:fix
+   pnpm format:fix
+   pnpm registry-deps:fix
+   ```
+
+   Note: `registry-deps:fix` updates `registry/registry-examples.ts`, so run `pnpm build:registry` afterwards to regenerate the artifacts.
+
+2. **Build the registry and commit the generated files** (see "6. Build registry" above) if you changed anything under `registry/` or `config/site.ts`.
+
+3. **Make sure the production build passes**
+
+   ```bash
+   pnpm build
+   ```
+
+   CI runs this too, and it is the slowest gate — catching a build break locally saves the longest round trip.
+
+4. **Use Conventional Commits** (enforced by local git hooks, not by CI)
+
+   Commit messages are validated by [commitlint](https://commitlint.js.org/) (e.g., `feat(marquee): add reverse prop`, `fix(globe): prevent crash on resize`). Use the same format for your PR title.
+
+> [!NOTE]
+> Git hooks (installed automatically with `pnpm i` via lefthook) run lint/format fixes on staged files and regenerate registry artifacts when you commit files under `registry/`, plus `typecheck` on push. They do not cover `registry-deps:check`, the production build, or a `config/site.ts`-only change — run `pnpm build:registry` yourself in that case.
 
 ## Ask for Help
 
