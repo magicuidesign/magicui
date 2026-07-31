@@ -1,4 +1,4 @@
-import { UnistNode, UnistTree } from "types/unist"
+import { type UnistNode, type UnistTree } from "types/unist"
 import { visit } from "unist-util-visit"
 
 export function rehypeNpmCommand() {

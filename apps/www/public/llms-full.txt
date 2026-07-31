@@ -3,7 +3,7 @@ Title: Android
 Description: A mockup of an Android device.
 
 --- file: magicui/android.tsx ---
-import { SVGProps } from "react"
+import { type SVGProps } from "react"
 
 export interface AndroidProps extends SVGProps<SVGSVGElement> {
   width?: number
@@ -4427,7 +4427,7 @@ Description: An animated beam of light which travels along the border of its con
 --- file: magicui/border-beam.tsx ---
 "use client"
 
-import { motion, MotionStyle, Transition } from "motion/react"
+import { motion, type MotionStyle, type Transition } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -4745,7 +4745,7 @@ Description: A client-side version of the tweet card that displays a tweet with 
 --- file: magicui/client-tweet-card.tsx ---
 "use client"
 
-import { TweetProps, useTweet } from "react-tweet"
+import { useTweet, type TweetProps } from "react-tweet"
 
 import {
   MagicTweet,
@@ -5057,7 +5057,7 @@ Description: Comic text animation
 --- file: magicui/comic-text.tsx ---
 "use client"
 
-import { CSSProperties } from "react"
+import { type CSSProperties } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -5638,7 +5638,7 @@ Description: Cool mode effect for buttons, links, and other DOMs
 --- file: magicui/cool-mode.tsx ---
 "use client"
 
-import React, { ReactNode, useEffect, useRef } from "react"
+import React, { useEffect, useRef, type ReactNode } from "react"
 
 export interface BaseParticle {
   element: HTMLElement | SVGSVGElement
@@ -6333,7 +6333,7 @@ Description: An implementation of the MacOS dock using react + tailwindcss + mot
 --- file: magicui/dock.tsx ---
 "use client"
 
-import React, { PropsWithChildren, useRef } from "react"
+import React, { useRef, type PropsWithChildren } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import {
   motion,
@@ -13188,12 +13188,12 @@ Description: A beautiful neon card effect
 "use client"
 
 import {
-  CSSProperties,
-  ReactElement,
-  ReactNode,
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
+  type ReactElement,
+  type ReactNode,
 } from "react"
 
 import { cn } from "@/lib/utils"
@@ -14992,7 +14992,7 @@ Description: An animated button with a rainbow effect.
 --- file: magicui/rainbow-button.tsx ---
 import React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -16062,7 +16062,7 @@ Description: An animated button with ripple useful for user engagement.
 --- file: magicui/ripple-button.tsx ---
 "use client"
 
-import React, { MouseEvent, useEffect, useState } from "react"
+import React, { useEffect, useState, type MouseEvent } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -17257,7 +17257,7 @@ Description: A customizable, physics-based smooth cursor animation component wit
 --- file: magicui/smooth-cursor.tsx ---
 "use client"
 
-import { FC, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type FC } from "react"
 import { motion, useSpring } from "motion/react"
 
 interface Position {
@@ -17543,7 +17543,12 @@ Description: A dynamic text that generates continuous sparkles with smooth trans
 --- file: magicui/sparkles-text.tsx ---
 "use client"
 
-import { CSSProperties, ReactElement, useEffect, useState } from "react"
+import {
+  useEffect,
+  useState,
+  type CSSProperties,
+  type ReactElement,
+} from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -17713,7 +17718,7 @@ Description: The Spinning Text component animates text in a circular motion with
 "use client"
 
 import React, { type ComponentPropsWithoutRef } from "react"
-import { motion, Transition, Variants } from "motion/react"
+import { motion, type Transition, type Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -18694,9 +18699,9 @@ import { memo } from "react"
 import {
   AnimatePresence,
   motion,
-  Variants,
   type DOMMotionComponents,
   type MotionProps,
+  type Variants,
 } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -20179,7 +20184,12 @@ Description: A component that displays text with a video playing in the backgrou
 --- file: magicui/video-text.tsx ---
 "use client"
 
-import React, { ElementType, ReactNode, useEffect, useState } from "react"
+import React, {
+  useEffect,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -20338,7 +20348,7 @@ Description: A card with a time warping background effect.
 --- file: magicui/warp-background.tsx ---
 "use client"
 
-import React, { HTMLAttributes, useCallback, useMemo } from "react"
+import React, { useCallback, useMemo, type HTMLAttributes } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"

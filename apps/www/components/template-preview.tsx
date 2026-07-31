@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { type ReactNode } from "react"
 import Link from "next/link"
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
 

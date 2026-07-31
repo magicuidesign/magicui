@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Page, PageData } from "fumadocs-core/source"
+import { type Page, type PageData } from "fumadocs-core/source"
 import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react"
 
 import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github"

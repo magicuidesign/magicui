@@ -1,4 +1,8 @@
-import { registryIndexSchema, RegistryItem, type Registry } from "shadcn/schema"
+import {
+  registryIndexSchema,
+  type Registry,
+  type RegistryItem,
+} from "shadcn/schema"
 
 import { examples } from "@/registry/registry-examples"
 import { lib } from "@/registry/registry-lib"

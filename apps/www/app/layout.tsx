@@ -1,5 +1,5 @@
 import type { Viewport } from "next"
-import { Metadata } from "next"
+import { type Metadata } from "next"
 import { Provider as JotaiProvider } from "jotai"
 
 import { fontVariables } from "@/lib/fonts"

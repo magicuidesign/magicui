@@ -1,6 +1,6 @@
 "use client"
 
-import React, { ReactNode, useEffect, useRef } from "react"
+import React, { useEffect, useRef, type ReactNode } from "react"
 
 export interface BaseParticle {
   element: HTMLElement | SVGSVGElement
