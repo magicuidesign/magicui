@@ -3,7 +3,7 @@
 import * as React from "react"
 import { CheckIcon, ClipboardIcon } from "lucide-react"
 
-import { Event, trackEvent } from "@/lib/events"
+import { trackEvent, type Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {

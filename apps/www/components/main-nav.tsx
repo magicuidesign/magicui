@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { NavItem } from "@/types"
+import { type NavItem } from "@/types"
 
 import { trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"

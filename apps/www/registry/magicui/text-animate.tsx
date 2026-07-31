@@ -4,9 +4,9 @@ import { memo } from "react"
 import {
   AnimatePresence,
   motion,
-  Variants,
   type DOMMotionComponents,
   type MotionProps,
+  type Variants,
 } from "motion/react"
 
 import { cn } from "@/lib/utils"

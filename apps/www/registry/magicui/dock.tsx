@@ -1,6 +1,6 @@
 "use client"
 
-import React, { PropsWithChildren, useRef } from "react"
+import React, { useRef, type PropsWithChildren } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import {
   motion,

@@ -1,6 +1,6 @@
 import process from "process"
 import type { Metadata } from "next"
-import clsx, { ClassValue } from "clsx"
+import clsx, { type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 import { siteConfig } from "@/config/site"

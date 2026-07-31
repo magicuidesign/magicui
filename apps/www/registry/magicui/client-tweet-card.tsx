@@ -1,6 +1,6 @@
 "use client"
 
-import { TweetProps, useTweet } from "react-tweet"
+import { useTweet, type TweetProps } from "react-tweet"
 
 import {
   MagicTweet,

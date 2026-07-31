@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { NavItemWithChildren } from "@/types"
+import { type NavItemWithChildren } from "@/types"
 
 import { docsConfig } from "@/config/docs"
 import { trackEvent } from "@/lib/events"

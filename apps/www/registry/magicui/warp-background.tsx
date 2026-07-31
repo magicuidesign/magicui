@@ -1,6 +1,6 @@
 "use client"
 
-import React, { HTMLAttributes, useCallback, useMemo } from "react"
+import React, { useCallback, useMemo, type HTMLAttributes } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"

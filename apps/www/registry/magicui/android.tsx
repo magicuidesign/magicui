@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { type SVGProps } from "react"
 
 export interface AndroidProps extends SVGProps<SVGSVGElement> {
   width?: number

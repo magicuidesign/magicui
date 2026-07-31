@@ -1,4 +1,4 @@
-import { NavItem, NavItemWithChildren } from "@/types"
+import { type NavItem, type NavItemWithChildren } from "@/types"
 
 interface DocsConfig {
   mainNav: NavItem[]
