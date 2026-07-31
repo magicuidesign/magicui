@@ -43,7 +43,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm lint
+      - name: pnpm lint
+        run: |
+          pnpm lint || {
+            echo "::error::Lint errors found. Run 'pnpm lint:fix' locally, fix any remaining errors, then commit."
+            exit 1
+          }
 
   format:
     runs-on: ubuntu-latest
@@ -81,7 +86,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm format:check
+      - name: pnpm format:check
+        run: |
+          pnpm format:check || {
+            echo "::error::Formatting issues found. Run 'pnpm format:fix' locally, then commit."
+            exit 1
+          }
 
   tsc:
     runs-on: ubuntu-latest
@@ -153,7 +163,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm registry-deps:check
+      - name: pnpm registry-deps:check
+        run: |
+          pnpm registry-deps:check || {
+            echo "::error::Registry example dependencies are out of sync. Run 'pnpm registry-deps:fix && pnpm build:registry', then commit the generated files."
+            exit 1
+          }
 
   build:
     runs-on: ubuntu-latest
@@ -224,6 +239,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # build:registry must stay regeneration-only: repo-wide lint/format fixes
+      # here could fail on unrelated errors and mask the real drift result.
       - name: Build registry artifacts
         run: pnpm build:registry
 
@@ -238,10 +255,8 @@ jobs:
             apps/www/public/llms-full.txt)"
 
           if [ -n "$CHANGED_FILES" ]; then
-            echo "Registry artifacts are out of date."
+            echo "::error::Registry artifacts are out of date. Run 'pnpm build:registry' and commit the generated files."
             echo "Changed files:"
             printf '%s\n' "$CHANGED_FILES"
-            echo "Run: pnpm build:registry"
-            echo "Then commit generated files."
             exit 1
           fi

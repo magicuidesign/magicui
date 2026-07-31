@@ -18,3 +18,8 @@
 | Before | After |
 | --- | --- |
 |  |  |
+
+## Checklist
+- [ ] `pnpm check` passes locally
+- [ ] `pnpm build:registry` was run and the generated files are committed (CI verifies this on every PR)
+- [ ] PR title follows [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat(marquee): add reverse prop`)

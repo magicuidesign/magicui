@@ -3,10 +3,9 @@ pre-commit:
   commands:
     build:registry:
       glob: "**/registry/**/*.{ts,tsx}"
-      # www-scoped script only (the root build:registry also runs a
-      # whole-project lint:fix + format:fix). Stage generated artifacts
-      # by explicit path — never `git add --all`. CI's registry-drift job
-      # checks these same paths, so a new artifact path can't slip through.
+      # Same regeneration-only command as the root build:registry script and
+      # CI's registry-drift job. Stage generated artifacts by explicit path —
+      # never `git add --all`. CI's registry-drift job checks these same paths.
       run: >
         pnpm --filter=www build:registry &&
         git add apps/www/registry.json apps/www/registry/__index__.tsx
