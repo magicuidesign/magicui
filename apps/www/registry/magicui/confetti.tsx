@@ -73,7 +73,6 @@ const ConfettiComponent = forwardRef<ConfettiRef, Props>((props, ref) => {
   const fire = useCallback(async (opts: ConfettiOptions = {}) => {
     try {
       await instanceRef.current?.({
-        zIndex: 9999,
         ...optionsRef.current,
         ...opts,
       })
