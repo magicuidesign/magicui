@@ -166,7 +166,7 @@ jobs:
       - name: pnpm registry-deps:check
         run: |
           pnpm registry-deps:check || {
-            echo "::error::Registry example dependencies are out of sync. Run 'pnpm registry-deps:fix && pnpm build:registry', then commit the generated files."
+            echo "::error::Registry example dependencies are out of sync. Run 'pnpm registry-deps:fix && pnpm build:registry', then commit registry-examples.ts along with the generated files."
             exit 1
           }
 
@@ -255,7 +255,7 @@ jobs:
             apps/www/public/llms-full.txt)"
 
           if [ -n "$CHANGED_FILES" ]; then
-            echo "::error::Registry artifacts are out of date. Run 'pnpm build:registry' and commit the generated files."
+            echo "::error::Registry artifacts are out of date. Run 'pnpm build:registry', then commit the generated files."
             echo "Changed files:"
             printf '%s\n' "$CHANGED_FILES"
             exit 1

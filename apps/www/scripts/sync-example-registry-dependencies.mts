@@ -656,7 +656,7 @@ async function main() {
       console.error("registry example dependency mismatches found:")
       console.error(blockingIssueSummary)
       console.error("Run: pnpm registry-deps:fix && pnpm build:registry")
-      console.error("Then commit the generated files.")
+      console.error("Then commit registry-examples.ts and the generated files.")
       process.exit(1)
     }
 
