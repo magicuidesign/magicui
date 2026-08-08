@@ -1132,6 +1132,21 @@
       ]
     },
     {
+      "name": "upload-state",
+      "type": "registry:ui",
+      "title": "Upload State",
+      "description": "An accessible file drop area with controlled upload states and progress.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/upload-state.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "blur-fade",
       "type": "registry:ui",
       "title": "Blur Fade",
@@ -3417,6 +3432,21 @@
       "files": [
         {
           "path": "registry/example/file-tree-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "upload-state-demo",
+      "type": "registry:example",
+      "title": "Upload State Demo",
+      "description": "Example showing a file drop area with simulated upload progress.",
+      "registryDependencies": [
+        "@magicui/upload-state"
+      ],
+      "files": [
+        {
+          "path": "registry/example/upload-state-demo.tsx",
           "type": "registry:example"
         }
       ]

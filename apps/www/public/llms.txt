@@ -80,6 +80,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Text Reveal](https://magicui.design/docs/components/text-reveal): Fade in text as you scroll down the page.
 - [Tweet Card](https://magicui.design/docs/components/tweet-card): A card that displays a tweet with the author's name, handle, and profile picture.
 - [Typing Animation](https://magicui.design/docs/components/typing-animation): Characters appearing in typed animation
+- [Upload State](https://magicui.design/docs/components/upload-state): An accessible file drop area with controlled upload states and progress.
 - [Video Text](https://magicui.design/docs/components/video-text): A component that displays text with a video playing in the background.
 - [Warp Background](https://magicui.design/docs/components/warp-background): A card with a time warping background effect.
 - [Word Rotate](https://magicui.design/docs/components/word-rotate): A vertical rotation of words
@@ -219,6 +220,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pulsating Button Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/pulsating-button-demo-2.tsx): Example usage
 - [Ripple Button Demo](https://github.com/magicuidesign/magicui/blob/main/example/ripple-button-demo.tsx): Example usage
 - [File Tree Demo](https://github.com/magicuidesign/magicui/blob/main/example/file-tree-demo.tsx): Example usage
+- [Upload State Demo](https://github.com/magicuidesign/magicui/blob/main/example/upload-state-demo.tsx): Example usage
 - [Blur Fade Demo](https://github.com/magicuidesign/magicui/blob/main/example/blur-fade-demo.tsx): Example usage
 - [Blur Fade Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/blur-fade-text-demo.tsx): Example usage
 - [Safari Demo](https://github.com/magicuidesign/magicui/blob/main/example/safari-demo.tsx): Example usage

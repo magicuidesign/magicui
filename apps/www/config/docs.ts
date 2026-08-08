@@ -580,6 +580,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Upload State",
+          href: `/docs/components/upload-state`,
+          items: [],
+          label: "",
+        },
+        {
           title: "Code Comparison",
           href: `/docs/components/code-comparison`,
           items: [],

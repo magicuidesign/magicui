@@ -1088,6 +1088,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "upload-state",
+    type: "registry:ui",
+    title: "Upload State",
+    description:
+      "An accessible file drop area with controlled upload states and progress.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "magicui/upload-state.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "blur-fade",
     type: "registry:ui",
     title: "Blur Fade",

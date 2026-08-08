@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upload-state-demo",
+  "type": "registry:example",
+  "title": "Upload State Demo",
+  "description": "Example showing a file drop area with simulated upload progress.",
+  "registryDependencies": [
+    "@magicui/upload-state"
+  ],
+  "files": [
+    {
+      "path": "registry/example/upload-state-demo.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState } from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport {\n  UploadState,\n  type UploadStateStatus,\n} from \"@/registry/magicui/upload-state\"\n\nexport default function UploadStateDemo() {\n  const [status, setStatus] = useState<UploadStateStatus>(\"idle\")\n  const [progress, setProgress] = useState(0)\n  const [fileName, setFileName] = useState<string>()\n  const uploadTimer = useRef<ReturnType<typeof setInterval>>(undefined)\n\n  const clearUploadTimer = () => {\n    if (uploadTimer.current) {\n      clearInterval(uploadTimer.current)\n      uploadTimer.current = undefined\n    }\n  }\n\n  useEffect(() => {\n    return () => {\n      if (uploadTimer.current) {\n        clearInterval(uploadTimer.current)\n      }\n    }\n  }, [])\n\n  const handleFiles = (files: File[]) => {\n    clearUploadTimer()\n    setFileName(\n      files.length === 1 ? files[0].name : `${files.length} files selected`\n    )\n    setProgress(0)\n    setStatus(\"uploading\")\n\n    let nextProgress = 0\n    uploadTimer.current = setInterval(() => {\n      nextProgress += 10\n      setProgress(nextProgress)\n\n      if (nextProgress >= 100) {\n        clearUploadTimer()\n        setStatus(\"success\")\n      }\n    }, 220)\n  }\n\n  const reset = () => {\n    clearUploadTimer()\n    setStatus(\"idle\")\n    setProgress(0)\n    setFileName(undefined)\n  }\n\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-4\">\n      <UploadState\n        accept=\"image/*,application/pdf\"\n        multiple\n        status={status}\n        progress={progress}\n        error=\"This is a demo error. Try another file.\"\n        onFiles={handleFiles}\n      />\n      <div className=\"flex items-center justify-between gap-3\">\n        <p className=\"text-muted-foreground min-w-0 truncate text-sm\">\n          {fileName ?? \"Choose an image or PDF to start\"}\n        </p>\n        <div className=\"flex shrink-0 gap-2\">\n          <Button\n            type=\"button\"\n            variant=\"outline\"\n            size=\"sm\"\n            onClick={() => {\n              clearUploadTimer()\n              setStatus(\"error\")\n            }}\n          >\n            Show error\n          </Button>\n          <Button type=\"button\" variant=\"ghost\" size=\"sm\" onClick={reset}>\n            Reset\n          </Button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

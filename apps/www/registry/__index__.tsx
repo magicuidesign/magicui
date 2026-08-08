@@ -1069,6 +1069,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "upload-state": {
+    name: "upload-state",
+    description: "An accessible file drop area with controlled upload states and progress.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/upload-state.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/upload-state.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "blur-fade": {
     name: "blur-fade",
     description: "Blur fade in and out animation. Used to smoothly fade in and out content.",
@@ -3580,6 +3597,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/file-tree-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "upload-state-demo": {
+    name: "upload-state-demo",
+    description: "Example showing a file drop area with simulated upload progress.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/upload-state"],
+    files: [{
+      path: "registry/example/upload-state-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/upload-state-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

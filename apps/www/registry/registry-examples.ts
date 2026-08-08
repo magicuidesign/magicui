@@ -1785,6 +1785,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "upload-state-demo",
+    type: "registry:example",
+    title: "Upload State Demo",
+    description:
+      "Example showing a file drop area with simulated upload progress.",
+    registryDependencies: ["@magicui/upload-state"],
+    files: [
+      {
+        path: "example/upload-state-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "blur-fade-demo",
     type: "registry:example",
     title: "Blur Fade Demo",

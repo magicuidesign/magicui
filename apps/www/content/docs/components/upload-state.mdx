@@ -1,0 +1,84 @@
+---
+title: Upload State
+date: 2026-08-09
+description: An accessible file drop area with controlled upload states and progress.
+author: JAYATIAHUJA
+published: true
+---
+
+<ComponentPreview name="upload-state-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/upload-state
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="upload-state" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { UploadState } from "@/components/ui/upload-state"
+```
+
+```tsx showLineNumbers
+<UploadState
+  accept="image/*,application/pdf"
+  multiple
+  status="uploading"
+  progress={64}
+  onFiles={(files) => {
+    console.log(files)
+  }}
+/>
+```
+
+`UploadState` handles file selection and dropping. Your app decides what happens next, including validation, upload requests, progress updates, and errors.
+
+## Props
+
+| Prop       | Type                                            | Default  | Description                                                         |
+| ---------- | ----------------------------------------------- | -------- | ------------------------------------------------------------------- |
+| `accept`   | `string`                                        | `-`      | File types accepted by the native file picker.                      |
+| `multiple` | `boolean`                                       | `false`  | Whether users can select more than one file.                        |
+| `disabled` | `boolean`                                       | `false`  | Prevents file selection and dropping.                               |
+| `status`   | `"idle" \| "uploading" \| "success" \| "error"` | `"idle"` | The state displayed by the component.                               |
+| `progress` | `number`                                        | `-`      | Upload progress from `0` to `100`. Values outside this range clamp. |
+| `error`    | `string`                                        | `-`      | The message displayed when `status` is `"error"`.                   |
+| `onFiles`  | `(files: File[]) => void`                       | `-`      | Called after files are chosen with the picker or dropped.           |
+
+The component also accepts normal `div` props such as `className`, `id`, and `aria-*` attributes.
+
+## Accessibility
+
+The drop area supports click, Enter, Space, and native file selection. It announces state changes and exposes progress to assistive technology. File selection is locked while the component is uploading or disabled.
+
+## Credits
+
+- Built by [@JAYATIAHUJA](https://github.com/JAYATIAHUJA)
