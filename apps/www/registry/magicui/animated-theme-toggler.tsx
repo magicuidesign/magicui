@@ -165,7 +165,14 @@ export const AnimatedThemeToggler = ({
   const isDark = isControlled ? theme === "dark" : internalIsDark
   const buttonRef = useRef<HTMLButtonElement>(null)
   const isTransitioningRef = useRef(false)
+  const activeAnimRef = useRef<Animation | null>(null)
 
+  const cancelAnim = useCallback(() => {
+    activeAnimRef.current?.cancel()
+    activeAnimRef.current = null
+  }, [])
+
+  useEffect(() => cancelAnim, [cancelAnim])
   useEffect(() => {
     if (isControlled) return
 
@@ -192,6 +199,7 @@ export const AnimatedThemeToggler = ({
       document.documentElement.dataset.magicuiThemeVt === "active"
     )
       return
+    cancelAnim()
 
     // innerWidth/innerHeight (not visualViewport): percentages must resolve
     // against the snapshot reference box, which includes classic scrollbars.
@@ -255,6 +263,7 @@ export const AnimatedThemeToggler = ({
       delete root.dataset.magicuiThemeVt
       root.style.removeProperty("--magicui-theme-toggle-vt-duration")
       root.style.removeProperty("--magicui-theme-vt-clip-from")
+      cancelAnim()
     }
 
     isTransitioningRef.current = true
@@ -271,7 +280,7 @@ export const AnimatedThemeToggler = ({
     if (ready && typeof ready.then === "function") {
       ready
         .then(() => {
-          document.documentElement.animate(
+          const anim = document.documentElement.animate(
             {
               clipPath,
             },
@@ -283,6 +292,7 @@ export const AnimatedThemeToggler = ({
               pseudoElement: "::view-transition-new(root)",
             }
           )
+          activeAnimRef.current = anim
         })
         .catch(() => {})
     }
