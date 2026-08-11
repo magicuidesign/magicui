@@ -209,7 +209,6 @@ export const AnimatedThemeToggler = ({
       document.documentElement.dataset.magicuiThemeVt === "active"
     )
       return
-    cancelAnim()
 
     // innerWidth/innerHeight (not visualViewport): percentages must resolve
     // against the snapshot reference box, which includes classic scrollbars.
