@@ -3243,7 +3243,17 @@ export const AnimatedThemeToggler = ({
     activeAnimRef.current = null
   }, [])
 
-  useEffect(() => cancelAnim, [cancelAnim])
+  useEffect(() => {
+    return () => {
+      cancelAnim()
+      const root = document.documentElement
+      if (root.dataset.magicuiThemeVt !== "active") return
+      delete root.dataset.magicuiThemeVt
+      root.style.removeProperty("--magicui-theme-toggle-vt-duration")
+      root.style.removeProperty("--magicui-theme-vt-clip-from")
+    }
+  }, [cancelAnim])
+
   useEffect(() => {
     if (isControlled) return
 
