@@ -306,7 +306,15 @@ export const AnimatedThemeToggler = ({
         })
         .catch(() => {})
     }
-  }, [shape, fromCenter, duration, isDark, isControlled, onThemeChange])
+  }, [
+    shape,
+    fromCenter,
+    duration,
+    isDark,
+    isControlled,
+    onThemeChange,
+    cancelAnim,
+  ])
 
   return (
     <button
