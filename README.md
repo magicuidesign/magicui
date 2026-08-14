@@ -35,7 +35,7 @@ Have questions, comments or feedback? [Join our discord](http://magicui.design/d
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=magicuidesign/magicui&type=Date)](https://www.star-history.com/#magicuidesign/magicui&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=magicuidesign/magicui&type=Date)](https://star-history.dera.page/#magicuidesign/magicui&Date)
 
 ## License
 
