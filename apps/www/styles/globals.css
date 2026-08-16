@@ -173,6 +173,9 @@
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
+  --animate-radar-sweep: radar-sweep var(--radar-duration, 4s) linear infinite;
+  --animate-radar-blip: radar-blip 2s ease-in-out var(--radar-delay, 0s)
+    infinite;
 
   /* End Animation Variables */
 
@@ -406,6 +409,24 @@
     100% {
       transform: scale(2);
       opacity: 0;
+    }
+  }
+
+  @keyframes radar-sweep {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes radar-blip {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(0.75);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
