@@ -542,6 +542,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "scratch-to-reveal": {
+    name: "scratch-to-reveal",
+    description: "An interactive scratch-off surface that reveals content with pointer or keyboard input.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/scratch-to-reveal.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/scratch-to-reveal.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "number-ticker": {
     name: "number-ticker",
     description: "Animate numbers to count up or down to a target number",
@@ -2390,6 +2407,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/particles-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "scratch-to-reveal-demo": {
+    name: "scratch-to-reveal-demo",
+    description: "Example showing an interactive scratch-off reveal effect.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/scratch-to-reveal"],
+    files: [{
+      path: "registry/example/scratch-to-reveal-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scratch-to-reveal-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

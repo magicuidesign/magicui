@@ -1,0 +1,77 @@
+---
+title: Scratch To Reveal
+date: 2026-08-16
+description: An interactive scratch-off surface that reveals content with pointer or keyboard input.
+author: dipesh_the_dev
+published: true
+---
+
+<ComponentPreview name="scratch-to-reveal-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/scratch-to-reveal
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="scratch-to-reveal" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal"
+```
+
+```tsx showLineNumbers
+<ScratchToReveal width={300} height={200} minScratchPercentage={50}>
+  <p>Revealed content</p>
+</ScratchToReveal>
+```
+
+Drag a mouse, pen, or finger across the cover. When the transparent area reaches `minScratchPercentage`, the remaining cover is removed and `onComplete` runs once. Completion is checked when the pointer is released or canceled, keeping the interaction responsive without scanning the canvas on every move.
+
+The concealed content remains in the accessibility tree. Keyboard users can focus the scratch surface and press <kbd>Enter</kbd> or <kbd>Space</kbd> to reveal it immediately. The canvas itself is hidden from assistive technology.
+
+## Props
+
+| Prop                   | Type                                | Default                             | Description                                                         |
+| ---------------------- | ----------------------------------- | ----------------------------------- | ------------------------------------------------------------------- |
+| `children`             | `ReactNode`                         | —                                   | Content displayed beneath the scratchable cover.                    |
+| `width`                | `number`                            | —                                   | Width of the component in CSS pixels.                               |
+| `height`               | `number`                            | —                                   | Height of the component in CSS pixels.                              |
+| `minScratchPercentage` | `number`                            | `50`                                | Scratched area required for completion, clamped from 0 through 100. |
+| `className`            | `string`                            | —                                   | Classes applied to the outer container.                             |
+| `onComplete`           | `() => void`                        | —                                   | Called once when scratching or keyboard input completes the reveal. |
+| `gradientColors`       | `readonly [string, string, string]` | `["#A97CF8", "#F38CB8", "#FDCC92"]` | Three colors used for the diagonal cover gradient.                  |
+
+Dimensions are normalized to a safe positive canvas size. The canvas is rendered at the device pixel ratio for crisp output while pointer coordinates stay aligned with its CSS size.
+
+Because the cover is drawn directly with CSS color values, it does not load an image and has no cross-origin canvas restrictions.
+
+## Credits
+
+- Credit to [dipesh_the_dev](https://www.x.com/dipesh_the_dev) for the original implementation.

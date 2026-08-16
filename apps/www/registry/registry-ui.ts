@@ -537,6 +537,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "scratch-to-reveal",
+    type: "registry:ui",
+    title: "Scratch To Reveal",
+    description:
+      "An interactive scratch-off surface that reveals content with pointer or keyboard input.",
+    files: [
+      {
+        path: "magicui/scratch-to-reveal.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "number-ticker",
     type: "registry:ui",
     title: "Number Ticker",

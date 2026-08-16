@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scratch-to-reveal-demo",
+  "type": "registry:example",
+  "title": "Scratch To Reveal Demo",
+  "description": "Example showing an interactive scratch-off reveal effect.",
+  "registryDependencies": [
+    "@magicui/scratch-to-reveal"
+  ],
+  "files": [
+    {
+      "path": "registry/example/scratch-to-reveal-demo.tsx",
+      "content": "import { ScratchToReveal } from \"@/registry/magicui/scratch-to-reveal\"\n\nconst COVER_COLORS = [\"#A97CF8\", \"#F38CB8\", \"#FDCC92\"] as const\n\nexport default function ScratchToRevealDemo() {\n  return (\n    <ScratchToReveal\n      width={280}\n      height={180}\n      minScratchPercentage={55}\n      gradientColors={COVER_COLORS}\n      className=\"bg-background flex max-w-full items-center justify-center rounded-2xl border shadow-sm\"\n    >\n      <div className=\"flex size-full flex-col items-center justify-center gap-2 p-6 text-center\">\n        <span className=\"text-4xl\" aria-hidden=\"true\">\n          ✨\n        </span>\n        <p className=\"text-xl font-semibold\">You found the surprise!</p>\n        <p className=\"text-muted-foreground text-sm\">\n          Magic is in the details.\n        </p>\n      </div>\n    </ScratchToReveal>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

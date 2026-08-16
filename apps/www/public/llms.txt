@@ -65,6 +65,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Ripple](https://magicui.design/docs/components/ripple): An animated ripple effect typically used behind elements to emphasize them.
 - [Ripple Button](https://magicui.design/docs/components/ripple-button): An animated button with ripple useful for user engagement.
 - [Safari](https://magicui.design/docs/components/safari): A safari browser mockup to showcase your website.
+- [Scratch To Reveal](https://magicui.design/docs/components/scratch-to-reveal): An interactive scratch-off surface that reveals content with pointer or keyboard input.
 - [Scroll Based Velocity](https://magicui.design/docs/components/scroll-based-velocity): Scrolling text whose speed changes based on scroll speed
 - [Scroll Progress](https://magicui.design/docs/components/scroll-progress): Animated Scroll Progress for your pages
 - [Shimmer Button](https://magicui.design/docs/components/shimmer-button): A button with a shimmering light which travels around the perimeter.
@@ -149,6 +150,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated List Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-list-demo.tsx): Example usage
 - [Animated Shiny Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-shiny-text-demo.tsx): Example usage
 - [Particles Demo](https://github.com/magicuidesign/magicui/blob/main/example/particles-demo.tsx): Example usage
+- [Scratch To Reveal Demo](https://github.com/magicuidesign/magicui/blob/main/example/scratch-to-reveal-demo.tsx): Example usage
 - [Animated Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-grid-pattern-demo.tsx): Example usage
 - [Interactive Grid Pattern Demo](https://github.com/magicuidesign/magicui/blob/main/example/interactive-grid-pattern-demo.tsx): Example usage
 - [Interactive Grid Pattern Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/interactive-grid-pattern-demo-2.tsx): Example usage

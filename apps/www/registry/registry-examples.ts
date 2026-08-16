@@ -857,6 +857,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "scratch-to-reveal-demo",
+    type: "registry:example",
+    title: "Scratch To Reveal Demo",
+    description: "Example showing an interactive scratch-off reveal effect.",
+    registryDependencies: ["@magicui/scratch-to-reveal"],
+    files: [
+      {
+        path: "example/scratch-to-reveal-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "animated-grid-pattern-demo",
     type: "registry:example",
     title: "Animated Grid Pattern Demo",

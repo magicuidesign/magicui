@@ -566,6 +566,18 @@
       ]
     },
     {
+      "name": "scratch-to-reveal",
+      "type": "registry:ui",
+      "title": "Scratch To Reveal",
+      "description": "An interactive scratch-off surface that reveals content with pointer or keyboard input.",
+      "files": [
+        {
+          "path": "registry/magicui/scratch-to-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "number-ticker",
       "type": "registry:ui",
       "title": "Number Ticker",
@@ -2347,6 +2359,21 @@
       "files": [
         {
           "path": "registry/example/particles-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "scratch-to-reveal-demo",
+      "type": "registry:example",
+      "title": "Scratch To Reveal Demo",
+      "description": "Example showing an interactive scratch-off reveal effect.",
+      "registryDependencies": [
+        "@magicui/scratch-to-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/example/scratch-to-reveal-demo.tsx",
           "type": "registry:example"
         }
       ]
