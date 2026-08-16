@@ -39,6 +39,7 @@ export const ScratchToReveal = ({
   gradientColors = DEFAULT_GRADIENT_COLORS,
 }: ScratchToRevealProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const activePointerRef = useRef<number | null>(null)
   const previousPointRef = useRef<{ x: number; y: number } | null>(null)
   const completeRef = useRef(false)
@@ -61,6 +62,10 @@ export const ScratchToReveal = ({
       mountedRef.current = false
     }
   }, [])
+
+  useEffect(() => {
+    if (isComplete) contentRef.current?.focus({ preventScroll: true })
+  }, [isComplete])
 
   const complete = useCallback(() => {
     if (completeRef.current) return
@@ -165,7 +170,12 @@ export const ScratchToReveal = ({
   }
 
   const handlePointerDown = (event: PointerEvent<HTMLButtonElement>) => {
-    if (completeRef.current || activePointerRef.current !== null) return
+    if (
+      event.button !== 0 ||
+      completeRef.current ||
+      activePointerRef.current !== null
+    )
+      return
     activePointerRef.current = event.pointerId
     event.currentTarget.setPointerCapture(event.pointerId)
     scratch(event)
@@ -201,7 +211,12 @@ export const ScratchToReveal = ({
       )}
       style={{ width: normalizedWidth, height: normalizedHeight }}
     >
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div
+        ref={contentRef}
+        className="absolute inset-0 flex items-center justify-center"
+        inert={!isComplete}
+        tabIndex={-1}
+      >
         {children}
       </div>
       {!isComplete && (
@@ -210,6 +225,7 @@ export const ScratchToReveal = ({
           className="focus-visible:ring-ring absolute inset-0 z-10 cursor-crosshair touch-none rounded-[inherit] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           aria-label="Scratch to reveal. Press Enter or Space to reveal immediately."
           onKeyDown={handleKeyDown}
+          onLostPointerCapture={finishPointer}
           onPointerCancel={finishPointer}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}

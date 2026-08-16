@@ -54,7 +54,7 @@ import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal"
 
 Drag a mouse, pen, or finger across the cover. When the transparent area reaches `minScratchPercentage`, the remaining cover is removed and `onComplete` runs once. Completion is checked when the pointer is released or canceled, keeping the interaction responsive without scanning the canvas on every move.
 
-The concealed content remains in the accessibility tree. Keyboard users can focus the scratch surface and press <kbd>Enter</kbd> or <kbd>Space</kbd> to reveal it immediately. The canvas itself is hidden from assistive technology.
+While covered, the concealed content is inert — hidden from assistive technology and excluded from the tab order — so it cannot be read or focused before the reveal. Keyboard users can focus the scratch surface and press <kbd>Enter</kbd> or <kbd>Space</kbd> to reveal it immediately; focus then moves to the revealed content. Only the primary pointer button scratches. The canvas itself is hidden from assistive technology.
 
 ## Props
 
