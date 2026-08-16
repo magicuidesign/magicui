@@ -60,6 +60,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Pointer](https://magicui.design/docs/components/pointer): A component that displays a pointer when hovering over an element
 - [Progressive Blur](https://magicui.design/docs/components/progressive-blur): The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
 - [Pulsating Button](https://magicui.design/docs/components/pulsating-button): An animated pulsating button useful for capturing attention of users.
+- [Radar Sweep](https://magicui.design/docs/components/radar-sweep): A responsive radar surface with a rotating sweep and deterministic target blips.
 - [Rainbow Button](https://magicui.design/docs/components/rainbow-button): An animated button with a rainbow effect.
 - [Retro Grid](https://magicui.design/docs/components/retro-grid): An animated scrolling retro grid effect
 - [Ripple](https://magicui.design/docs/components/ripple): An animated ripple effect typically used behind elements to emphasize them.
@@ -145,6 +146,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Number Ticker Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/number-ticker-demo-2.tsx): Example usage
 - [Number Ticker Decimal Demo](https://github.com/magicuidesign/magicui/blob/main/example/number-ticker-decimal-demo.tsx): Example usage
 - [Ripple Demo](https://github.com/magicuidesign/magicui/blob/main/example/ripple-demo.tsx): Example usage
+- [Radar Sweep Demo](https://github.com/magicuidesign/magicui/blob/main/example/radar-sweep-demo.tsx): Example usage
 - [Retro Grid Demo](https://github.com/magicuidesign/magicui/blob/main/example/retro-grid-demo.tsx): Example usage
 - [Animated List Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-list-demo.tsx): Example usage
 - [Animated Shiny Text Demo](https://github.com/magicuidesign/magicui/blob/main/example/animated-shiny-text-demo.tsx): Example usage

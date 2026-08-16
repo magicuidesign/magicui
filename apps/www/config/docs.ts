@@ -232,6 +232,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Radar Sweep",
+          href: `/docs/components/radar-sweep`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "Avatar Circles",
           href: `/docs/components/avatar-circles`,
           items: [],

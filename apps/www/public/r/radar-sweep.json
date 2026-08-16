@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radar-sweep",
+  "type": "registry:ui",
+  "title": "Radar Sweep",
+  "description": "A responsive radar surface with a rotating sweep and deterministic target blips.",
+  "files": [
+    {
+      "path": "registry/magicui/radar-sweep.tsx",
+      "content": "import type { CSSProperties, HTMLAttributes } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface RadarTarget {\n  x: number\n  y: number\n  size?: number\n  delay?: number\n}\n\nexport interface RadarSweepProps extends HTMLAttributes<HTMLDivElement> {\n  size?: number\n  rings?: number\n  duration?: number\n  color?: string\n  targets?: RadarTarget[]\n}\n\nconst defaultTargets: RadarTarget[] = [\n  { x: 30, y: 35, delay: 0.2 },\n  { x: 65, y: 28, size: 7, delay: 1.1 },\n  { x: 72, y: 68, size: 9, delay: 1.8 },\n]\n\nexport function RadarSweep({\n  className,\n  size = 400,\n  rings = 4,\n  duration = 4,\n  color = \"#22c55e\",\n  targets = defaultTargets,\n  style,\n  ...props\n}: RadarSweepProps) {\n  const radarStyle = {\n    \"--radar-color\": color,\n    \"--radar-duration\": `${duration}s`,\n    width: `min(100%, ${size}px)`,\n    backgroundImage:\n      \"radial-gradient(circle, color-mix(in srgb, var(--radar-color) 10%, transparent), transparent 68%)\",\n    ...style,\n  } as CSSProperties\n\n  return (\n    <div\n      {...props}\n      aria-hidden=\"true\"\n      className={cn(\n        \"border-foreground/10 bg-background relative aspect-square overflow-hidden rounded-full border shadow-[inset_0_0_40px_color-mix(in_srgb,var(--radar-color)_8%,transparent)]\",\n        className\n      )}\n      style={radarStyle}\n    >\n      {Array.from({ length: rings }, (_, index) => index + 1).map((ring) => (\n        <div\n          className=\"border-foreground/10 absolute top-1/2 left-1/2 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full border\"\n          key={ring}\n          style={{ width: `${(ring / rings) * 100}%` }}\n        />\n      ))}\n\n      <div className=\"bg-foreground/10 absolute top-1/2 left-0 h-px w-full -translate-y-1/2\" />\n      <div className=\"bg-foreground/10 absolute top-0 left-1/2 h-full w-px -translate-x-1/2\" />\n\n      <div\n        className=\"animate-radar-sweep absolute inset-0 rounded-full motion-reduce:animate-none\"\n        style={{\n          background:\n            \"conic-gradient(from 0deg, transparent 0deg 300deg, color-mix(in srgb, var(--radar-color) 8%, transparent) 325deg, color-mix(in srgb, var(--radar-color) 55%, transparent) 360deg)\",\n        }}\n      />\n\n      {targets.map((target) => {\n        const targetSize = target.size ?? 8\n        const targetDelay = target.delay ?? 0\n        const targetKey = `${target.x}-${target.y}-${targetSize}-${targetDelay}`\n\n        return (\n          <div\n            className=\"absolute -translate-x-1/2 -translate-y-1/2\"\n            key={targetKey}\n            style={{ left: `${target.x}%`, top: `${target.y}%` }}\n          >\n            <div\n              className=\"animate-radar-blip rounded-full bg-(--radar-color) shadow-[0_0_12px_var(--radar-color)] motion-reduce:animate-none\"\n              style={\n                {\n                  \"--radar-delay\": `${targetDelay}s`,\n                  height: targetSize,\n                  width: targetSize,\n                } as CSSProperties\n              }\n            />\n          </div>\n        )\n      })}\n\n      <div className=\"bg-background absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-(--radar-color) shadow-[0_0_10px_var(--radar-color)]\" />\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-radar-sweep": "radar-sweep var(--radar-duration, 4s) linear infinite",
+      "animate-radar-blip": "radar-blip 2s ease-in-out var(--radar-delay, 0s) infinite"
+    }
+  },
+  "css": {
+    "@keyframes radar-sweep": {
+      "to": {
+        "transform": "rotate(360deg)"
+      }
+    },
+    "@keyframes radar-blip": {
+      "0%, 100%": {
+        "opacity": "0.45",
+        "transform": "scale(0.75)"
+      },
+      "50%": {
+        "opacity": "1",
+        "transform": "scale(1)"
+      }
+    }
+  }
+}

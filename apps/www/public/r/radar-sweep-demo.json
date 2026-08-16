@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radar-sweep-demo",
+  "type": "registry:example",
+  "title": "Radar Sweep Demo",
+  "description": "Example showing a responsive animated radar sweep.",
+  "registryDependencies": [
+    "@magicui/radar-sweep"
+  ],
+  "files": [
+    {
+      "path": "registry/example/radar-sweep-demo.tsx",
+      "content": "import { RadarSweep } from \"@/registry/magicui/radar-sweep\"\n\nconst targets = [\n  { x: 28, y: 36, delay: 0.2 },\n  { x: 62, y: 24, size: 7, delay: 1.4 },\n  { x: 74, y: 58, size: 9, delay: 2.1 },\n  { x: 43, y: 72, size: 6, delay: 0.8 },\n]\n\nexport default function RadarSweepDemo() {\n  return (\n    <div className=\"bg-background relative flex min-h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border p-8\">\n      <RadarSweep className=\"max-w-[400px]\" targets={targets} />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

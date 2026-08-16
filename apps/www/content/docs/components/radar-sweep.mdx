@@ -1,0 +1,120 @@
+---
+title: Radar Sweep
+date: 2026-08-15
+description: A responsive radar surface with a rotating sweep and deterministic target blips.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="radar-sweep-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/radar-sweep
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="radar-sweep" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+Add the following animations to your global CSS file.
+
+```css title="app/globals.css" showLineNumbers {2-3, 5-24}
+@theme inline {
+  --animate-radar-sweep: radar-sweep var(--radar-duration, 4s) linear infinite;
+  --animate-radar-blip: radar-blip 2s ease-in-out var(--radar-delay, 0s)
+    infinite;
+
+  @keyframes radar-sweep {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes radar-blip {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(0.75);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { RadarSweep } from "@/components/ui/radar-sweep"
+```
+
+```tsx showLineNumbers
+const targets = [
+  { x: 30, y: 35, delay: 0.2 },
+  { x: 65, y: 28, size: 7, delay: 1.1 },
+  { x: 72, y: 68, size: 9, delay: 1.8 },
+]
+
+<RadarSweep targets={targets} />
+```
+
+Target coordinates are percentages from `0` through `100`, measured from the top-left corner of the radar surface.
+
+```ts
+interface RadarTarget {
+  x: number
+  y: number
+  size?: number
+  delay?: number
+}
+```
+
+The radar is decorative and hidden from assistive technology. When reduced motion is enabled, the sweep and blip animations stop while the rings, guides, beam, and targets remain visible.
+
+## Props
+
+| Prop        | Type            | Default     | Description                                      |
+| ----------- | --------------- | ----------- | ------------------------------------------------ |
+| `className` | `string`        | `-`         | The class name for the radar surface.            |
+| `size`      | `number`        | `400`       | The maximum width of the radar in pixels.        |
+| `rings`     | `number`        | `4`         | The number of concentric rings.                  |
+| `duration`  | `number`        | `4`         | The sweep rotation duration in seconds.          |
+| `color`     | `string`        | `"#22c55e"` | The CSS color used for the sweep and targets.    |
+| `targets`   | `RadarTarget[]` | See source  | Deterministic targets positioned on the surface. |
+
+### RadarTarget
+
+| Prop    | Type     | Default | Description                                     |
+| ------- | -------- | ------- | ----------------------------------------------- |
+| `x`     | `number` | `-`     | Horizontal position as a percentage from 0–100. |
+| `y`     | `number` | `-`     | Vertical position as a percentage from 0–100.   |
+| `size`  | `number` | `8`     | Target diameter in pixels.                      |
+| `delay` | `number` | `0`     | Pulse animation delay in seconds.               |

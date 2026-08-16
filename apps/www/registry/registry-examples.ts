@@ -803,6 +803,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "radar-sweep-demo",
+    type: "registry:example",
+    title: "Radar Sweep Demo",
+    description: "Example showing a responsive animated radar sweep.",
+    registryDependencies: ["@magicui/radar-sweep"],
+    files: [
+      {
+        path: "example/radar-sweep-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "retro-grid-demo",
     type: "registry:example",
     title: "Retro Grid Demo",

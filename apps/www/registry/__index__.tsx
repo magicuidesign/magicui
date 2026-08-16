@@ -576,6 +576,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "radar-sweep": {
+    name: "radar-sweep",
+    description: "A responsive radar surface with a rotating sweep and deterministic target blips.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/radar-sweep.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/radar-sweep.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "retro-grid": {
     name: "retro-grid",
     description: "An animated scrolling retro grid effect",
@@ -2322,6 +2339,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/ripple-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "radar-sweep-demo": {
+    name: "radar-sweep-demo",
+    description: "Example showing a responsive animated radar sweep.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/radar-sweep"],
+    files: [{
+      path: "registry/example/radar-sweep-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/radar-sweep-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

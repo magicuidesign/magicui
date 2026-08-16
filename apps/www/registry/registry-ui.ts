@@ -579,6 +579,44 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "radar-sweep",
+    type: "registry:ui",
+    title: "Radar Sweep",
+    description:
+      "A responsive radar surface with a rotating sweep and deterministic target blips.",
+    files: [
+      {
+        path: "magicui/radar-sweep.tsx",
+        type: "registry:ui",
+      },
+    ],
+    cssVars: {
+      theme: {
+        "animate-radar-sweep":
+          "radar-sweep var(--radar-duration, 4s) linear infinite",
+        "animate-radar-blip":
+          "radar-blip 2s ease-in-out var(--radar-delay, 0s) infinite",
+      },
+    },
+    css: {
+      "@keyframes radar-sweep": {
+        to: {
+          transform: "rotate(360deg)",
+        },
+      },
+      "@keyframes radar-blip": {
+        "0%, 100%": {
+          opacity: "0.45",
+          transform: "scale(0.75)",
+        },
+        "50%": {
+          opacity: "1",
+          transform: "scale(1)",
+        },
+      },
+    },
+  },
+  {
     name: "retro-grid",
     type: "registry:ui",
     title: "Retro Grid",
