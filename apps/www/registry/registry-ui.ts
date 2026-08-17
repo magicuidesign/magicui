@@ -1313,4 +1313,17 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "floating-3d-particles",
+    type: "registry:ui",
+    title: "Floating 3D Particles",
+    description:
+      "A canvas-based pseudo-3D particle field with perspective projection, rotation and mouse interaction.",
+    files: [
+      {
+        path: "magicui/floating-3d-particles.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]

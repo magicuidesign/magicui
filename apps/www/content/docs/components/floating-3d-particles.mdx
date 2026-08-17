@@ -1,0 +1,94 @@
+---
+title: Floating 3D Particles
+date: 2026-08-16
+description: A canvas-based pseudo-3D particle field with perspective projection, continuous rotation and mouse interaction.
+author: Miles
+published: true
+---
+
+<ComponentPreview name="floating-3d-particles-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/floating-3d-particles
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="floating-3d-particles" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### With hero content
+
+<ComponentPreview name="floating-3d-particles-demo-2" />
+
+## Usage
+
+`Floating3DParticles` renders a full-size `canvas` (absolute, inset 0). Put it inside a `relative` container and layer content above with `z-10` when needed. The canvas never intercepts pointer events, so it can sit directly behind your content while the particle field rotates with mouse movement. Set `mouseInteraction={false}` to disable the mouse rotation and keep only the base `rotationSpeed`.
+
+```tsx showLineNumbers
+import { Floating3DParticles } from "@/components/ui/floating-3d-particles"
+```
+
+```tsx showLineNumbers
+<div className="relative h-64 overflow-hidden rounded-lg border">
+  <Floating3DParticles />
+</div>
+```
+
+## Props
+
+`Floating3DParticlesProps` extends React's `CanvasHTMLAttributes<HTMLCanvasElement>` (minus `width` and `height`). Besides standard canvas attributes, these props are supported:
+
+### Floating3DParticles
+
+| Prop                   | Type      | Default         | Description                                                     |
+| ---------------------- | --------- | --------------- | --------------------------------------------------------------- |
+| `particleCount`        | `number`  | `400`           | Number of particles on desktop.                                 |
+| `mobileParticleCount`  | `number`  | `80`            | Number of particles below the mobile breakpoint.                |
+| `mobileBreakpoint`     | `number`  | `768`           | Viewport width below which the mobile particle count is used.   |
+| `color`                | `string`  | `"#8B5CF6"`     | Particle color, accepts 3 or 6 digit hex.                       |
+| `minParticleSize`      | `number`  | `3`             | Minimum particle radius in px.                                  |
+| `maxParticleSize`      | `number`  | `8`             | Maximum particle radius in px.                                  |
+| `minOpacity`           | `number`  | `0.1`           | Minimum particle opacity.                                       |
+| `maxOpacity`           | `number`  | `0.5`           | Maximum particle opacity.                                       |
+| `rotationSpeed`        | `number`  | `0.002`         | Base angular velocity added to every particle.                  |
+| `floatSpeed`           | `number`  | `0.8`           | Vertical floating speed in px per frame.                        |
+| `radiusScale`          | `number`  | `1.2`           | Max particle orbit radius as a multiple of the container width. |
+| `fov`                  | `number`  | `400`           | Perspective field of view.                                      |
+| `perspectiveDistance`  | `number`  | `500`           | Perspective distance from the viewer.                           |
+| `depthRange`           | `number`  | `200`           | Amplitude of the depth oscillation used by the projection.      |
+| `mouseInteraction`     | `boolean` | `true`          | Whether moving the mouse rotates the particle field.            |
+| `mouseSensitivity`     | `number`  | `0.0001`        | Mouse rotation sensitivity.                                     |
+| `smoothMouse`          | `boolean` | `true`          | Whether mouse rotation is smoothed with linear interpolation.   |
+| `mouseSmoothing`       | `number`  | `0.08`          | Mouse smoothing factor, between 0 and 1.                        |
+| `highDpi`              | `boolean` | `true`          | Whether to scale the canvas by devicePixelRatio.                |
+| `maxDpr`               | `number`  | `2`             | Cap applied to devicePixelRatio.                                |
+| `pauseWhenHidden`      | `boolean` | `true`          | Pause rendering while off-screen or the tab is hidden.          |
+| `respectReducedMotion` | `boolean` | `true`          | Render a static frame instead of animating for reduced motion.  |
+| `background`           | `string`  | `"transparent"` | Background color of the canvas.                                 |
+| `zIndex`               | `number`  | `0`             | CSS z-index of the canvas.                                      |
