@@ -4,9 +4,9 @@ import { useEffect, useRef, type ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample49 } from "./contour-field-pass"
+import { passSample50 } from "./contour-field-pass"
 
-void passSample49(0)
+void passSample50(0)
 export interface ContourFieldProps extends Omit<
   ComponentProps<"div">,
   "children" | "color"
