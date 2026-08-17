@@ -1366,6 +1366,18 @@
       ]
     },
     {
+      "name": "floating-3d-particles",
+      "type": "registry:ui",
+      "title": "Floating 3D Particles",
+      "description": "A canvas-based pseudo-3D particle field with perspective projection, rotation and mouse interaction.",
+      "files": [
+        {
+          "path": "registry/magicui/floating-3d-particles.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3951,6 +3963,36 @@
       "files": [
         {
           "path": "registry/example/text-3d-flip-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "floating-3d-particles-demo",
+      "type": "registry:example",
+      "title": "Floating 3D Particles Demo",
+      "description": "Example showing a floating 3D particle field behind hero content.",
+      "registryDependencies": [
+        "@magicui/floating-3d-particles"
+      ],
+      "files": [
+        {
+          "path": "registry/example/floating-3d-particles-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "floating-3d-particles-demo-2",
+      "type": "registry:example",
+      "title": "Floating 3D Particles Demo 2",
+      "description": "Example showing the particle field layered behind hero content.",
+      "registryDependencies": [
+        "@magicui/floating-3d-particles"
+      ],
+      "files": [
+        {
+          "path": "registry/example/floating-3d-particles-demo-2.tsx",
           "type": "registry:example"
         }
       ]

@@ -1324,6 +1324,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "floating-3d-particles": {
+    name: "floating-3d-particles",
+    description: "A canvas-based pseudo-3D particle field with perspective projection, rotation and mouse interaction.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/floating-3d-particles.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/floating-3d-particles.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description: "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -4179,6 +4196,40 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/text-3d-flip-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "floating-3d-particles-demo": {
+    name: "floating-3d-particles-demo",
+    description: "Example showing a floating 3D particle field behind hero content.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/floating-3d-particles"],
+    files: [{
+      path: "registry/example/floating-3d-particles-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/floating-3d-particles-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "floating-3d-particles-demo-2": {
+    name: "floating-3d-particles-demo-2",
+    description: "Example showing the particle field layered behind hero content.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/floating-3d-particles"],
+    files: [{
+      path: "registry/example/floating-3d-particles-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/floating-3d-particles-demo-2.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

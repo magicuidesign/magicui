@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-3d-particles-demo-2",
+  "type": "registry:example",
+  "title": "Floating 3D Particles Demo 2",
+  "description": "Example showing the particle field layered behind hero content.",
+  "registryDependencies": [
+    "@magicui/floating-3d-particles"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-3d-particles-demo-2.tsx",
+      "content": "\"use client\"\n\nimport { ArrowRight } from \"lucide-react\"\n\nimport { Floating3DParticles } from \"@/registry/magicui/floating-3d-particles\"\n\nexport default function Component() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border\">\n      <Floating3DParticles />\n\n      <div className=\"relative z-10 flex flex-col items-center gap-6 px-6 text-center\">\n        <h2 className=\"text-3xl font-bold tracking-tight md:text-5xl\">\n          Build something magical\n        </h2>\n        <p className=\"text-muted-foreground max-w-xl text-base md:text-lg\">\n          A pseudo-3D particle background that stays behind your content and\n          follows the mouse.\n        </p>\n        <a\n          href=\"#\"\n          className=\"bg-foreground text-background inline-flex h-11 items-center gap-2 rounded-lg px-6 font-medium no-underline transition-opacity hover:opacity-90\"\n        >\n          Get Started\n          <ArrowRight className=\"size-4\" />\n        </a>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

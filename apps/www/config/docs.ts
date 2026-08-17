@@ -562,6 +562,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Floating 3D Particles",
+          href: `/docs/components/floating-3d-particles`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

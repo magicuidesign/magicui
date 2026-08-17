@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-3d-particles-demo",
+  "type": "registry:example",
+  "title": "Floating 3D Particles Demo",
+  "description": "Example showing a floating 3D particle field behind hero content.",
+  "registryDependencies": [
+    "@magicui/floating-3d-particles"
+  ],
+  "files": [
+    {
+      "path": "registry/example/floating-3d-particles-demo.tsx",
+      "content": "\"use client\"\n\nimport { Floating3DParticles } from \"@/registry/magicui/floating-3d-particles\"\n\nexport default function Component() {\n  return (\n    <div className=\"bg-background relative h-[500px] w-full overflow-hidden rounded-lg border\">\n      <Floating3DParticles />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
