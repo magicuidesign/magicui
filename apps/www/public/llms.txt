@@ -29,6 +29,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
+- [Fade Input](https://magicui.design/docs/components/fade-input): An input that dissolves typed text into particles on submit, with a morphing arrow-to-pen icon.
 - [File Tree](https://magicui.design/docs/components/file-tree): A component used to showcase the folder and file structure of a directory.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
 - [Glare Hover](https://magicui.design/docs/components/glare-hover): A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).
@@ -254,6 +255,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [kinetic-text-demo](https://github.com/magicuidesign/magicui/blob/main/example/kinetic-text-demo.tsx): Example usage
 - [Text 3D Flip Demo](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo.tsx): Example usage
 - [Text 3D Flip Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/text-3d-flip-demo-2.tsx): Example usage
+- [Fade Input Demo](https://github.com/magicuidesign/magicui/blob/main/example/fade-input-demo.tsx): Example usage
 
 ## Optional
 

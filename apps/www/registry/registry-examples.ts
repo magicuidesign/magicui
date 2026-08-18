@@ -2245,4 +2245,17 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "fade-input-demo",
+    type: "registry:example",
+    title: "Fade Input Demo",
+    description: "An example of the fade input particle dissolve effect.",
+    registryDependencies: ["@magicui/fade-input"],
+    files: [
+      {
+        path: "example/fade-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

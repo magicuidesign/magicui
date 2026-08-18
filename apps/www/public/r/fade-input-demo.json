@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fade-input-demo",
+  "type": "registry:example",
+  "title": "Fade Input Demo",
+  "description": "An example of the fade input particle dissolve effect.",
+  "registryDependencies": [
+    "@magicui/fade-input"
+  ],
+  "files": [
+    {
+      "path": "registry/example/fade-input-demo.tsx",
+      "content": "import { FadeInput } from \"@/registry/magicui/fade-input\"\n\nexport default function FadeInputDemo() {\n  return (\n    <div className=\"relative w-full max-w-2xl overflow-visible px-6\">\n      <FadeInput />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

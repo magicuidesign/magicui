@@ -1361,6 +1361,22 @@
       ]
     },
     {
+      "name": "fade-input",
+      "type": "registry:ui",
+      "title": "Fade Input",
+      "description": "An input that dissolves typed text into particles on submit, with a morphing arrow-to-pen icon.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/fade-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -3946,6 +3962,21 @@
       "files": [
         {
           "path": "registry/example/text-3d-flip-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "fade-input-demo",
+      "type": "registry:example",
+      "title": "Fade Input Demo",
+      "description": "An example of the fade input particle dissolve effect.",
+      "registryDependencies": [
+        "@magicui/fade-input"
+      ],
+      "files": [
+        {
+          "path": "registry/example/fade-input-demo.tsx",
           "type": "registry:example"
         }
       ]
