@@ -657,6 +657,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Fade Input",
+          href: `/docs/components/fade-input`,
+          items: [],
+          label: "New",
+        },
       ],
     },
   ],

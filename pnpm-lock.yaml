@@ -29,6 +29,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@gsap/react':
+        specifier: ^2.1.2
+        version: 2.1.2(gsap@3.15.0)(react@19.1.1)
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.69.0(react@19.1.1))
@@ -122,6 +125,9 @@ importers:
       geist:
         specifier: ^1.5.1
         version: 1.5.1(next@15.5.20(@babel/core@7.28.5)(@opentelemetry/api@1.9.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
+      gsap:
+        specifier: ^3.15.0
+        version: 3.15.0
       jotai:
         specifier: ^2.14.0
         version: 2.16.0(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.7)(react@19.1.1)
@@ -910,6 +916,12 @@ packages:
 
   '@formatjs/intl-localematcher@0.6.2':
     resolution: {integrity: sha512-XOMO2Hupl0wdd172Y06h6kLpBz6Dv+J4okPLl4LPtzbr8f66WbIoy4ev98EBuZ6ZK4h5ydTN6XneT4QVpD7cdA==}
+
+  '@gsap/react@2.1.2':
+    resolution: {integrity: sha512-JqliybO1837UcgH2hVOM4VO+38APk3ECNrsuSM4MuXp+rbf+/2IG2K1YJiqfTcXQHH7XlA0m3ykniFYstfq0Iw==}
+    peerDependencies:
+      gsap: ^3.12.5
+      react: '>=17'
 
   '@hono/node-server@1.19.14':
     resolution: {integrity: sha512-GwtvgtXxnWsucXvbQXkRgqksiH2Qed37H9xHZocE5sA3N8O8O8/8FA3uclQXxXVzc9XBZuEOMK7+r02FmSpHtw==}
@@ -3645,6 +3657,9 @@ packages:
   graphql@16.12.0:
     resolution: {integrity: sha512-DKKrynuQRne0PNpEbzuEdHlYOMksHSUI8Zc9Unei5gTsMNA2/vMpoMz/yKba50pejK56qj98qM0SjYxAKi13gQ==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+
+  gsap@3.15.0:
+    resolution: {integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==}
 
   has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
@@ -6665,6 +6680,11 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@gsap/react@2.1.2(gsap@3.15.0)(react@19.1.1)':
+    dependencies:
+      gsap: 3.15.0
+      react: 19.1.1
+
   '@hono/node-server@1.19.14(hono@4.12.27)':
     dependencies:
       hono: 4.12.27
@@ -9576,6 +9596,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphql@16.12.0: {}
+
+  gsap@3.15.0: {}
 
   has-bigints@1.1.0: {}
 

@@ -22,6 +22,7 @@
     "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm registry-deps:check"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -53,6 +54,7 @@
     "fumadocs-mdx": "^12.0.1",
     "fumadocs-ui": "^15.7.12",
     "geist": "^1.5.1",
+    "gsap": "^3.15.0",
     "jotai": "^2.14.0",
     "lucide-react": "^0.544.0",
     "masonic": "^4.1.0",

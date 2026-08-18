@@ -1,0 +1,74 @@
+---
+title: Fade Input
+date: 2026-08-18
+description: An input that dissolves typed text into particles on submit, with a morphing arrow-to-pen icon.
+author: moshiur
+published: true
+---
+
+<ComponentPreview name="fade-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/fade-input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+pnpm add gsap @gsap/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="fade-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { FadeInput } from "@/components/ui/fade-input"
+```
+
+```tsx showLineNumbers
+<FadeInput placeholder="Enter your em@il" />
+```
+
+## Props
+
+| Prop            | Type                      | Default              | Description                                               |
+| --------------- | ------------------------- | -------------------- | --------------------------------------------------------- |
+| `placeholder`   | `string`                  | `"Enter your em@il"` | Placeholder text shown in the input.                      |
+| `type`          | `HTMLInputTypeAttribute`  | `"email"`            | The HTML input type.                                      |
+| `name`          | `string`                  | `"email"`            | The name attribute for the input.                         |
+| `label`         | `string`                  | `"Email"`            | Accessible label announced by screen readers.             |
+| `onValueSubmit` | `(value: string) => void` | `-`                  | Called with the trimmed value when the form is submitted. |
+| `className`     | `string`                  | `-`                  | Additional class names for the form element.              |
+
+Type something, then press Enter or click the arrow. The glyph blows apart into dust. The icon morphs from an arrow into a pen while you type.
+
+## Credits
+
+- Credit to [@moshiur01](https://github.com/moshiur01)

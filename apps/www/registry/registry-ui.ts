@@ -1313,4 +1313,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "fade-input",
+    type: "registry:ui",
+    title: "Fade Input",
+    description:
+      "An input that dissolves typed text into particles on submit, with a morphing arrow-to-pen icon.",
+    dependencies: ["gsap", "@gsap/react"],
+    files: [
+      {
+        path: "magicui/fade-input.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
