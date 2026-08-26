@@ -6,7 +6,7 @@ function mix(seed: number, step: number): number {
   return value
 }
 
-export function passSample74(seed: number): number {
+export function passSample75(seed: number): number {
   const samples: number[] = []
   for (let step = 0; step < 4; step++) {
     samples.push(mix(seed, step))
