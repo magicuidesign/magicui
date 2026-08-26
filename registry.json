@@ -1406,8 +1406,7 @@
       "title": "Contour Field Demo",
       "description": "A network product hero with contour lines surrounding the copy.",
       "registryDependencies": [
-        "@magicui/contour-field",
-        "@magicui/contour-field-pass"
+        "@magicui/contour-field"
       ],
       "files": [
         {
@@ -1422,8 +1421,7 @@
       "title": "Contour Field Brand Color Demo",
       "description": "A closing CTA with contour lines in a brand color token.",
       "registryDependencies": [
-        "@magicui/contour-field",
-        "@magicui/contour-field-pass"
+        "@magicui/contour-field"
       ],
       "files": [
         {
@@ -1438,8 +1436,7 @@
       "title": "Contour Field Card Demo",
       "description": "Three network metrics with contour lines behind regional coverage.",
       "registryDependencies": [
-        "@magicui/contour-field",
-        "@magicui/contour-field-pass"
+        "@magicui/contour-field"
       ],
       "files": [
         {

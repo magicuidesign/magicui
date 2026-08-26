@@ -4,8 +4,7 @@
   "title": "Contour Field Brand Color Demo",
   "description": "A closing CTA with contour lines in a brand color token.",
   "registryDependencies": [
-    "@magicui/contour-field",
-    "@magicui/contour-field-pass"
+    "@magicui/contour-field"
   ],
   "files": [
     {

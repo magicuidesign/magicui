@@ -4,8 +4,7 @@
   "title": "Contour Field Card Demo",
   "description": "Three network metrics with contour lines behind regional coverage.",
   "registryDependencies": [
-    "@magicui/contour-field",
-    "@magicui/contour-field-pass"
+    "@magicui/contour-field"
   ],
   "files": [
     {

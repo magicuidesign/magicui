@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "contour-field-demo",
     description: "A network product hero with contour lines surrounding the copy.",
     type: "registry:example",
-    registryDependencies: ["@magicui/contour-field","@magicui/contour-field-pass"],
+    registryDependencies: ["@magicui/contour-field"],
     files: [{
       path: "registry/example/contour-field-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "contour-field-demo-2",
     description: "A closing CTA with contour lines in a brand color token.",
     type: "registry:example",
-    registryDependencies: ["@magicui/contour-field","@magicui/contour-field-pass"],
+    registryDependencies: ["@magicui/contour-field"],
     files: [{
       path: "registry/example/contour-field-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "contour-field-demo-3",
     description: "Three network metrics with contour lines behind regional coverage.",
     type: "registry:example",
-    registryDependencies: ["@magicui/contour-field","@magicui/contour-field-pass"],
+    registryDependencies: ["@magicui/contour-field"],
     files: [{
       path: "registry/example/contour-field-demo-3.tsx",
       type: "registry:example",
