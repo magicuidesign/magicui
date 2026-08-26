@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "water-ripple-demo",
+  "type": "registry:example",
+  "title": "Water Ripple Demo",
+  "description": "Example showing an interactive water ripple background.",
+  "registryDependencies": [
+    "@magicui/water-ripple"
+  ],
+  "files": [
+    {
+      "path": "registry/example/water-ripple-demo.tsx",
+      "content": "import { WaterRipple } from \"@/registry/magicui/water-ripple\"\n\nexport default function Component() {\n  return (\n    <div className=\"relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-neutral-100 dark:bg-neutral-900\">\n      <WaterRipple />\n      <div className=\"relative z-10 flex flex-col items-center gap-3 px-6 text-center\">\n        <h1 className=\"text-foreground text-4xl font-bold tracking-tight md:text-5xl\">\n          Water Ripple\n        </h1>\n        <p className=\"text-muted-foreground max-w-md text-sm md:text-base\">\n          Move your cursor across the surface to send waves through it.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

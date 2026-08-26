@@ -82,6 +82,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Typing Animation](https://magicui.design/docs/components/typing-animation): Characters appearing in typed animation
 - [Video Text](https://magicui.design/docs/components/video-text): A component that displays text with a video playing in the background.
 - [Warp Background](https://magicui.design/docs/components/warp-background): A card with a time warping background effect.
+- [Water Ripple](https://magicui.design/docs/components/water-ripple): An interactive WebGL water surface that ripples where the pointer moves.
 - [Word Rotate](https://magicui.design/docs/components/word-rotate): A vertical rotation of words
 
 ## Examples
@@ -245,6 +246,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Animated Theme Toggler — Star](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-star-demo.tsx): Example usage
 - [Animated Theme Toggler — next-themes](https://github.com/magicuidesign/magicui/blob/main/example/animated-theme-toggler-next-themes-demo.tsx): Example usage
 - [light-rays-demo](https://github.com/magicuidesign/magicui/blob/main/example/light-rays-demo.tsx): Example usage
+- [Water Ripple Demo](https://github.com/magicuidesign/magicui/blob/main/example/water-ripple-demo.tsx): Example usage
 - [Dotted Map Demo](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo.tsx): Example usage
 - [Dotted Map Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-2.tsx): Example usage
 - [Dotted Map Demo 3](https://github.com/magicuidesign/magicui/blob/main/example/dotted-map-demo-3.tsx): Example usage

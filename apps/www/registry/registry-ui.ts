@@ -226,6 +226,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "water-ripple",
+    type: "registry:ui",
+    title: "Water Ripple",
+    description:
+      "An interactive WebGL water surface that ripples where the pointer moves.",
+    files: [
+      {
+        path: "magicui/water-ripple.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "meteors",
     type: "registry:ui",
     title: "Meteors",

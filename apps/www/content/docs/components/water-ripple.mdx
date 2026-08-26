@@ -1,0 +1,112 @@
+---
+title: Water Ripple
+date: 2026-08-26
+description: An interactive WebGL water surface that ripples where the pointer moves.
+author: saumyarex
+published: true
+---
+
+<ComponentPreview name="water-ripple-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/water-ripple
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="water-ripple" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { WaterRipple } from "@/components/ui/water-ripple"
+```
+
+```tsx showLineNumbers
+<div className="relative h-[400px] w-full overflow-hidden rounded-xl border bg-neutral-900">
+  <WaterRipple />
+</div>
+```
+
+The component fills its nearest positioned ancestor, so give the parent
+`position: relative` and a height.
+
+## Examples
+
+### Ambient ripples
+
+Set `autoPlay` to keep the surface moving without any pointer input.
+
+```tsx showLineNumbers
+<WaterRipple autoPlay autoPlayInterval={400} />
+```
+
+### Longer waves
+
+`damping` controls how quickly waves lose energy. Values closer to `1` let
+ripples travel further before they settle.
+
+```tsx showLineNumbers
+<WaterRipple damping={0.995} dropStrength={0.25} />
+```
+
+### Themed surface
+
+`lightColor` and `shadowColor` accept any CSS colour, including custom
+properties, and are re-resolved when the document switches theme.
+
+```tsx showLineNumbers
+<WaterRipple lightColor="var(--primary)" shadowColor="var(--muted)" />
+```
+
+## Notes
+
+- Rendering uses WebGL with a floating point render target. On devices without
+  `OES_texture_float` or `OES_texture_half_float` the component renders nothing
+  rather than falling back to a slower path.
+- The simulation pauses while the container is off-screen and does not run at
+  all when the user prefers reduced motion.
+
+## Props
+
+| Prop               | Type      | Default     | Description                                                      |
+| ------------------ | --------- | ----------- | ---------------------------------------------------------------- |
+| `autoPlay`         | `boolean` | `false`     | Emit ripples automatically at random positions.                  |
+| `autoPlayInterval` | `number`  | `300`       | Milliseconds between automatic ripples.                          |
+| `interactive`      | `boolean` | `true`      | Emit ripples from pointer movement.                              |
+| `damping`          | `number`  | `0.985`     | How quickly waves lose energy. Closer to `1` ripples for longer. |
+| `dropRadius`       | `number`  | `0.04`      | Radius of a single ripple, as a fraction of the container.       |
+| `dropStrength`     | `number`  | `0.15`      | Initial displacement of a single ripple.                         |
+| `resolution`       | `number`  | `4`         | Pixels per simulation texel. Higher is cheaper and softer.       |
+| `lightColor`       | `string`  | `"#faf7f2"` | Colour of the light hitting the water surface.                   |
+| `shadowColor`      | `string`  | `"#6b6661"` | Colour of the shaded side of each wave.                          |
+| `maxOpacity`       | `number`  | `0.4`       | Highest opacity the surface reaches.                             |
+| `className`        | `string`  | `undefined` | Additional class names applied to the wrapper.                   |
+
+## Credits
+
+- Credit to [@saumyarex](https://www.saumyarex.xyz)

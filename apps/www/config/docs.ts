@@ -562,6 +562,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Water Ripple",
+          href: `/docs/components/water-ripple`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

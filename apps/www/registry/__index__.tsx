@@ -236,6 +236,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "water-ripple": {
+    name: "water-ripple",
+    description: "An interactive WebGL water surface that ripples where the pointer moves.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/water-ripple.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/water-ripple.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "meteors": {
     name: "meteors",
     description: "A meteor shower effect.",
@@ -4026,6 +4043,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/light-rays-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "water-ripple-demo": {
+    name: "water-ripple-demo",
+    description: "Example showing an interactive water ripple background.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/water-ripple"],
+    files: [{
+      path: "registry/example/water-ripple-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/water-ripple-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

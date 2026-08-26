@@ -255,6 +255,18 @@
       ]
     },
     {
+      "name": "water-ripple",
+      "type": "registry:ui",
+      "title": "Water Ripple",
+      "description": "An interactive WebGL water surface that ripples where the pointer moves.",
+      "files": [
+        {
+          "path": "registry/magicui/water-ripple.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "meteors",
       "type": "registry:ui",
       "title": "Meteors",
@@ -3817,6 +3829,21 @@
       "files": [
         {
           "path": "registry/example/light-rays-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "water-ripple-demo",
+      "type": "registry:example",
+      "title": "Water Ripple Demo",
+      "description": "Example showing an interactive water ripple background.",
+      "registryDependencies": [
+        "@magicui/water-ripple"
+      ],
+      "files": [
+        {
+          "path": "registry/example/water-ripple-demo.tsx",
           "type": "registry:example"
         }
       ]

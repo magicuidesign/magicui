@@ -2131,6 +2131,19 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "water-ripple-demo",
+    title: "Water Ripple Demo",
+    description: "Example showing an interactive water ripple background.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/water-ripple"],
+    files: [
+      {
+        path: "example/water-ripple-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "dotted-map-demo",
     type: "registry:example",
     title: "Dotted Map Demo",
