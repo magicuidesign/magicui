@@ -104,7 +104,6 @@
     "rimraf": "^6.0.1",
     "shadcn": "3.3.1",
     "shiki": "^2.5.0",
-    "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "unist-builder": "4.0.0",
