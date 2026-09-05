@@ -173,7 +173,7 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    dependencies: ["framer-motion"],
+    dependencies: ["motion"],
   },
   {
     name: "progressive-blur",
