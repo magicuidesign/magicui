@@ -1,0 +1,94 @@
+---
+title: Moire Field
+date: 2026-11-04
+description: Fine concentric rings bloom into a slowly turning rosette behind your content.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="moire-field-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/moire-field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="moire-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { MoireField } from "@/components/ui/moire-field"
+```
+
+```tsx showLineNumbers
+<div className="border-border bg-background text-foreground relative h-[500px] overflow-hidden rounded-lg border">
+  <MoireField />
+  <div className="relative z-10 p-8">
+    <h2>Every release, in focus</h2>
+  </div>
+</div>
+```
+
+The parent needs `relative` positioning and a height. This component is a decorative layer and does not accept children. Place your content alongside it with `relative z-10`.
+
+The default elliptical mask keeps the rosette fully visible in the middle and dissolves it toward the edges. A mask in `className` replaces it. The hero above intersects the default with a soft clearing behind the copy and a short fade before the border. The feature card moves the field beside the copy and gives it a circular mask.
+
+The pattern uses fine lines, so judge it live at the intended size: compressed video and downscaling can hide the fans or add aliasing. Two canvases, each drawn once, create the bands through overlap alone, with 1px strokes at 42% opacity per set. Until they are drawn, a CSS gradient shows the aligned rings, so the server-rendered page is never blank. The aligned rings hold during `delay`, then bloom into orbit without an opacity fade. After the bloom, the fans keep turning and slowly crowd and relax. A mouse or pen steers the fans, and they keep breathing while they face a resting pointer. Touch leaves the orbit running.
+
+Motion pauses off screen and in hidden tabs, and resumes from the same moment. Reduced motion shows a still rosette, also when the preference changes while mounted. Changing props redraws the rings without replaying the bloom; a new `delay` adjusts the hold until the bloom starts. Values outside the documented ranges are clamped, and a value that is not a finite number falls back to the default.
+
+The ring color follows a class or `data-theme` change on `<html>`, the system color scheme and the `color` prop. Other color changes, such as a `.dark` wrapper or a parent changing the CSS variable passed as `color`, are caught through a 1ms color transition on the rings. If your styles turn transitions off, those changes show when the field next comes into view, resizes or the motion preference changes.
+
+Opacity classes and styles apply to the whole layer. On very large fields, the canvases lower their resolution to stay within the canvas size limit of iOS Safari.
+
+## Props
+
+| Prop          | Type      | Default          | Description                                                         |
+| ------------- | --------- | ---------------- | ------------------------------------------------------------------- |
+| `color`       | `string`  | `"currentColor"` | Any CSS color for the rings, including `var(--primary)`.            |
+| `duration`    | `number`  | `24`             | Seconds for the fans to make one full turn. Clamped to at least 16. |
+| `delay`       | `number`  | `0`              | Seconds to hold the aligned rings on first view, before the bloom.  |
+| `size`        | `number`  | `5`              | Distance between rings in CSS pixels. Clamped to at least 3.        |
+| `bands`       | `number`  | `12`             | How many fans appear around the center, from 4 to 12.               |
+| `interactive` | `boolean` | `true`           | Turn the fans toward a mouse or pen inside the field.               |
+| `className`   | `string`  | `-`              | Additional root classes, including a replacement mask.              |
+
+## Examples
+
+### Brand color
+
+Pass a CSS variable as `color` to follow your brand in both themes. Broader rings, fewer fans and a slower orbit give a calmer rosette.
+
+<ComponentPreview name="moire-field-demo-2" />
+
+### Feature cards
+
+A small rosette beside the figure. A `left-*` class moves the field to the right of the copy and a circular mask keeps it inside the card. Pointer steering is disabled.
+
+<ComponentPreview name="moire-field-demo-3" />
