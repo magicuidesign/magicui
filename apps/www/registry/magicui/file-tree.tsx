@@ -24,9 +24,7 @@ type TreeViewElement = {
 }
 
 type TreeSortMode =
-  | "default"
-  | "none"
-  | ((a: TreeViewElement, b: TreeViewElement) => number)
+  "default" | "none" | ((a: TreeViewElement, b: TreeViewElement) => number)
 
 type TreeContextProps = {
   selectedId: string | undefined

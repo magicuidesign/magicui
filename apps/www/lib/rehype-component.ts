@@ -20,8 +20,7 @@ export function rehypeComponent() {
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string
         const fileName = getNodeAttributeByName(node, "fileName")?.value as
-          | string
-          | undefined
+          string | undefined
 
         if (!name && !srcPath) {
           return null
