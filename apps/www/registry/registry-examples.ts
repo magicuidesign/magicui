@@ -2,6 +2,46 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "moire-field-demo",
+    type: "registry:example",
+    title: "Moire Field Hero",
+    description:
+      "A release comparison hero with a clear space behind the copy.",
+    registryDependencies: ["@magicui/moire-field"],
+    files: [
+      {
+        path: "example/moire-field-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "moire-field-demo-2",
+    type: "registry:example",
+    title: "Moire Field Brand Color",
+    description: "A closing call to action with theme-aware violet rings.",
+    registryDependencies: ["@magicui/moire-field"],
+    files: [
+      {
+        path: "example/moire-field-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "moire-field-demo-3",
+    type: "registry:example",
+    title: "Moire Field Feature Cards",
+    description: "A compact comparison metric with pointer steering disabled.",
+    registryDependencies: ["@magicui/moire-field"],
+    files: [
+      {
+        path: "example/moire-field-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",

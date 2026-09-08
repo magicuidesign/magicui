@@ -19,6 +19,19 @@
       "type": "registry:style"
     },
     {
+      "name": "moire-field",
+      "title": "Moire Field",
+      "description": "Fine concentric rings bloom into a slowly turning rosette that follows the pointer.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/moire-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1388,6 +1401,54 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "moire-field-demo",
+      "title": "Moire Field Hero",
+      "description": "A release comparison hero with a clear space behind the copy.",
+      "registryDependencies": [
+        "@magicui/moire-field",
+        "@magicui/moire-field-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/moire-field-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "moire-field-demo-2",
+      "title": "Moire Field Brand Color",
+      "description": "A closing call to action with theme-aware violet rings.",
+      "registryDependencies": [
+        "@magicui/moire-field",
+        "@magicui/moire-field-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/moire-field-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "moire-field-demo-3",
+      "title": "Moire Field Feature Cards",
+      "description": "A compact comparison metric with pointer steering disabled.",
+      "registryDependencies": [
+        "@magicui/moire-field",
+        "@magicui/moire-field-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/moire-field-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     },
     {
       "name": "magic-card-demo",

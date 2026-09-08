@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "moire-field-demo-3",
+  "title": "Moire Field Feature Cards",
+  "description": "A compact comparison metric with pointer steering disabled.",
+  "registryDependencies": [
+    "@magicui/moire-field",
+    "@magicui/moire-field-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/moire-field-demo-3.tsx",
+      "content": "import { MoireField } from \"@/registry/magicui/moire-field\"\n\nexport default function MoireFieldDemo3() {\n  return (\n    <div className=\"bg-background text-foreground grid w-full grid-cols-1 gap-4 md:grid-cols-3\">\n      <div className=\"border-border bg-card flex flex-col gap-3 rounded-lg border p-6\">\n        <p className=\"text-4xl font-semibold tracking-tight text-balance\">\n          14 regions\n        </p>\n        <p className=\"text-muted-foreground text-sm text-balance\">\n          One view across every environment.\n        </p>\n      </div>\n      <div className=\"border-border bg-card relative flex overflow-hidden rounded-lg border p-6\">\n        {/* A small rosette to the right of the copy, centred inside the card\n            and faded out before its border. */}\n        <MoireField\n          interactive={false}\n          size={4}\n          bands={6}\n          className=\"left-[max(40%,8.5rem)] mask-[radial-gradient(circle_closest-side,black_40%,transparent)]\"\n        />\n        <div className=\"relative z-10 flex flex-col gap-3\">\n          <p className=\"text-4xl font-semibold tracking-tight\">1.2 s</p>\n          <p className=\"text-muted-foreground max-w-36 text-sm text-balance\">\n            Median time to a full comparison.\n          </p>\n        </div>\n      </div>\n      <div className=\"border-border bg-card flex flex-col gap-3 rounded-lg border p-6\">\n        <p className=\"text-4xl font-semibold tracking-tight text-balance\">\n          90 days\n        </p>\n        <p className=\"text-muted-foreground text-sm text-balance\">\n          Every deploy kept, ready to trace a regression.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

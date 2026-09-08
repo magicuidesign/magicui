@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "moire-field-demo",
+  "title": "Moire Field Hero",
+  "description": "A release comparison hero with a clear space behind the copy.",
+  "registryDependencies": [
+    "@magicui/moire-field",
+    "@magicui/moire-field-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/moire-field-demo.tsx",
+      "content": "import { MoireField } from \"@/registry/magicui/moire-field\"\n\nexport default function MoireFieldDemo() {\n  return (\n    <div className=\"border-border bg-background text-foreground relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border px-6\">\n      {/* The default edge fade, intersected with a soft clearing behind the\n          copy and a short fade before the border on each side. */}\n      <MoireField className=\"mask-[radial-gradient(ellipse_74%_82%_at_center,black_38%,transparent_100%),radial-gradient(ellipse_var(--clearing)_265px_at_center,transparent_55%,black_100%),linear-gradient(to_right,transparent,black_24px,black_calc(100%-24px),transparent),linear-gradient(transparent,black_24px,black_calc(100%-24px),transparent)] mask-intersect [--clearing:250px] md:[--clearing:340px]\" />\n      <div className=\"relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-6 text-center\">\n        <p className=\"text-xs font-medium tracking-[0.18em] uppercase\">\n          Overlay for release teams\n        </p>\n        <h1 className=\"text-4xl font-semibold tracking-tight text-balance md:text-6xl\">\n          Small changes, plainly visible\n        </h1>\n        <p className=\"text-muted-foreground max-w-lg text-sm leading-relaxed text-balance md:text-base\">\n          Compare any two deploys and see exactly which requests, queries and\n          screens moved.\n        </p>\n        <div className=\"flex flex-wrap justify-center gap-3\">\n          <button\n            type=\"button\"\n            className=\"bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-ring/50 inline-flex h-10 items-center justify-center rounded-lg px-6 text-sm font-medium shadow-xs transition-colors outline-none focus-visible:ring-[3px]\"\n          >\n            Start free\n          </button>\n          <button\n            type=\"button\"\n            className=\"bg-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 dark:border-input inline-flex h-10 items-center justify-center rounded-lg border px-6 text-sm font-medium shadow-xs transition-colors outline-none focus-visible:ring-[3px]\"\n          >\n            Read the docs\n          </button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
