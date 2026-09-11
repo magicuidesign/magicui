@@ -5,9 +5,9 @@ import type { ComponentProps, CSSProperties } from "react"
 
 import { cn } from "@/lib/utils"
 
-import { passSample43 } from "./moire-field-pass"
+import { passSample44 } from "./moire-field-pass"
 
-void passSample43(0)
+void passSample44(0)
 export interface MoireFieldProps extends Omit<
   ComponentProps<"div">,
   "color" | "children"
