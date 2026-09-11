@@ -4,8 +4,7 @@
   "title": "Moire Field Feature Cards",
   "description": "A compact comparison metric with pointer steering disabled.",
   "registryDependencies": [
-    "@magicui/moire-field",
-    "@magicui/moire-field-pass"
+    "@magicui/moire-field"
   ],
   "files": [
     {

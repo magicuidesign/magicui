@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "moire-field-demo",
     description: "A release comparison hero with a clear space behind the copy.",
     type: "registry:example",
-    registryDependencies: ["@magicui/moire-field","@magicui/moire-field-pass"],
+    registryDependencies: ["@magicui/moire-field"],
     files: [{
       path: "registry/example/moire-field-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "moire-field-demo-2",
     description: "A closing call to action with theme-aware violet rings.",
     type: "registry:example",
-    registryDependencies: ["@magicui/moire-field","@magicui/moire-field-pass"],
+    registryDependencies: ["@magicui/moire-field"],
     files: [{
       path: "registry/example/moire-field-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "moire-field-demo-3",
     description: "A compact comparison metric with pointer steering disabled.",
     type: "registry:example",
-    registryDependencies: ["@magicui/moire-field","@magicui/moire-field-pass"],
+    registryDependencies: ["@magicui/moire-field"],
     files: [{
       path: "registry/example/moire-field-demo-3.tsx",
       type: "registry:example",

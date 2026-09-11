@@ -1407,8 +1407,7 @@
       "title": "Moire Field Hero",
       "description": "A release comparison hero with a clear space behind the copy.",
       "registryDependencies": [
-        "@magicui/moire-field",
-        "@magicui/moire-field-pass"
+        "@magicui/moire-field"
       ],
       "files": [
         {
@@ -1423,8 +1422,7 @@
       "title": "Moire Field Brand Color",
       "description": "A closing call to action with theme-aware violet rings.",
       "registryDependencies": [
-        "@magicui/moire-field",
-        "@magicui/moire-field-pass"
+        "@magicui/moire-field"
       ],
       "files": [
         {
@@ -1439,8 +1437,7 @@
       "title": "Moire Field Feature Cards",
       "description": "A compact comparison metric with pointer steering disabled.",
       "registryDependencies": [
-        "@magicui/moire-field",
-        "@magicui/moire-field-pass"
+        "@magicui/moire-field"
       ],
       "files": [
         {

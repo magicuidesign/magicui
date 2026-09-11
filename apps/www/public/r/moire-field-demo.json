@@ -4,8 +4,7 @@
   "title": "Moire Field Hero",
   "description": "A release comparison hero with a clear space behind the copy.",
   "registryDependencies": [
-    "@magicui/moire-field",
-    "@magicui/moire-field-pass"
+    "@magicui/moire-field"
   ],
   "files": [
     {

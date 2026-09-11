@@ -4,8 +4,7 @@
   "title": "Moire Field Brand Color",
   "description": "A closing call to action with theme-aware violet rings.",
   "registryDependencies": [
-    "@magicui/moire-field",
-    "@magicui/moire-field-pass"
+    "@magicui/moire-field"
   ],
   "files": [
     {
