@@ -18,9 +18,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample1 } from "./morph-mask-pass"
+import { passSample2 } from "./morph-mask-pass"
 
-void passSample1(0)
+void passSample2(0)
 /**
  * Every shape is a list of radii measured from the center along the same
  * evenly spaced spokes, clockwise from the top. A radius of 1 touches the
