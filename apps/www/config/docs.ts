@@ -262,6 +262,13 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Rainbow Cursor",
+          href: "/docs/components/rainbow-cursor",
+          items: [],
+          label: "New",
+        },
+
+        {
           title: "Progressive Blur",
           href: `/docs/components/progressive-blur`,
           items: [],
