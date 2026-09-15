@@ -1,0 +1,137 @@
+---
+title: Rainbow Cursor
+date: 2026-09-13
+description: A slim, three-color cursor ribbon with smooth tracking, a tapered tail, and subtle glow.
+author: magicui
+published: true
+---
+
+<ComponentPreview name="rainbow-cursor-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/rainbow-cursor
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the required dependency.</Step>
+
+```bash
+pnpm add ogl
+```
+
+<Step>Copy the component into your project.</Step>
+
+<ComponentSource name="rainbow-cursor" />
+
+<Step>Update the utility import to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { RainbowCursor } from "@/components/ui/rainbow-cursor"
+
+export default function Example() {
+  return (
+    <RainbowCursor className="h-[500px] bg-[#050610]">
+      <div className="p-8 text-white">
+        Move your pointer to draw a ribbon of light.
+      </div>
+    </RainbowCursor>
+  )
+}
+```
+
+Give the component an explicit height or place it inside a parent with a
+defined height. The ribbon is contained within this area.
+
+## Custom colors
+
+The ribbon transitions through three colors, from its head to its tail.
+Colors accept three- or six-digit hexadecimal values.
+
+```tsx
+<RainbowCursor
+  headColor="#FACC15"
+  midColor="#3B82F6"
+  tailColor="#A855F7"
+  className="h-[500px] bg-[#050610]"
+/>
+```
+
+## Appearance
+
+Use `ribbonWidth` to adjust the ribbon thickness and `taperStrength` to control
+how strongly it narrows toward the tail. `ribbonWidth` sets the approximate
+core radius at the head, so the visible core is roughly twice that value.
+
+```tsx
+<RainbowCursor
+  ribbonWidth={1.2}
+  taperStrength={0.95}
+  haloIntensity={0.5}
+  haloSpread={0.6}
+  className="h-[500px] bg-[#050610]"
+/>
+```
+
+The default screen composite mode works best on dark backgrounds. For light
+backgrounds, try `compositeMode="normal"` with darker colors.
+
+## Accessibility and behavior
+
+- The decorative canvas does not intercept clicks or replace the native cursor.
+- Touch input is ignored.
+- The effect is disabled when the user requests reduced motion.
+- Content remains visible when a WebGL context is unavailable.
+- The ribbon fades after inactivity or when the pointer leaves the container.
+- Setting `active={false}` fades out the effect.
+- Disabling the effect does not stop its animation loop.
+
+## Props
+
+| Prop            | Type                                     | Default     | Description                                                                            |
+| --------------- | ---------------------------------------- | ----------- | -------------------------------------------------------------------------------------- |
+| `headColor`     | `string`                                 | `"#FACC15"` | Color at the ribbon head.                                                              |
+| `midColor`      | `string`                                 | `"#3B82F6"` | Color in the middle of the ribbon.                                                     |
+| `tailColor`     | `string`                                 | `"#A855F7"` | Color toward the tail.                                                                 |
+| `ribbonLength`  | `number`                                 | `40`        | Number of smoothed points, from 2 to 64. More points generally produce a longer trail. |
+| `ribbonWidth`   | `number`                                 | `1.8`       | Approximate core radius at the head in CSS pixels, from 0.1 to 100.                    |
+| `taperStrength` | `number`                                 | `0.95`      | Narrowing strength, from 0 to 1.                                                       |
+| `trackingSpeed` | `number`                                 | `0.18`      | Pointer-following speed, from 0.01 to 0.99.                                            |
+| `haloIntensity` | `number`                                 | `0.5`       | Halo intensity, from 0 to 10.                                                          |
+| `haloSpread`    | `number`                                 | `0.6`       | Halo spread, from 0 to 10.                                                             |
+| `headHighlight` | `number`                                 | `0.08`      | White highlight strength at the head, from 0 to 1.                                     |
+| `luminance`     | `number`                                 | `1`         | Color brightness multiplier, from 0 to 10. Output channels are capped at 1.            |
+| `ribbonOpacity` | `number`                                 | `1`         | Overall opacity, from 0 to 1.                                                          |
+| `pulseRate`     | `number`                                 | `0`         | Subtle pulse speed, from -10 to 10. Set to 0 to disable.                               |
+| `fadeOnIdle`    | `boolean`                                | `true`      | Fade after inactivity or pointer exit.                                                 |
+| `idleDelay`     | `number`                                 | `700`       | Inactivity delay before fading, in milliseconds.                                       |
+| `fadeTime`      | `number`                                 | `900`       | Full fade-in or fade-out duration, in milliseconds.                                    |
+| `compositeMode` | `"normal" \| "screen" \| "plus-lighter"` | `"screen"`  | Canvas blend mode.                                                                     |
+| `pixelRatioCap` | `number`                                 | `1.5`       | Render-resolution cap, clamped from 0.5 to 3.                                          |
+| `active`        | `boolean`                                | `true`      | Whether the effect is enabled.                                                         |
+| `className`     | `string`                                 | —           | Additional container classes.                                                          |
+| `style`         | `CSSProperties`                          | —           | Container inline styles.                                                               |
+| `children`      | `ReactNode`                              | —           | Content displayed above the ribbon.                                                    |
