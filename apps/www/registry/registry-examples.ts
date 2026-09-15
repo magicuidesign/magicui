@@ -16,6 +16,20 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "rainbow-cursor-demo",
+    type: "registry:example",
+    title: "Rainbow Cursor Demo",
+    description:
+      "A flowing cursor with yellow, blue, and purple ribbon colors on a dark background.",
+    registryDependencies: ["@magicui/rainbow-cursor"],
+    files: [
+      {
+        path: "example/rainbow-cursor-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo-2",
     type: "registry:example",
     title: "Magic Card Demo 2",
