@@ -279,6 +279,12 @@ export const docsConfig: DocsConfig = {
       title: "Special Effects",
       items: [
         {
+          title: "Morph Mask",
+          href: "/docs/components/morph-mask",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Animated Beam",
           href: `/docs/components/animated-beam`,
           items: [],
