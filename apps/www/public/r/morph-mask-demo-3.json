@@ -8,8 +8,7 @@
   ],
   "registryDependencies": [
     "button",
-    "@magicui/morph-mask",
-    "@magicui/morph-mask-pass"
+    "@magicui/morph-mask"
   ],
   "files": [
     {

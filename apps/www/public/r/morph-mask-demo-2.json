@@ -4,8 +4,7 @@
   "title": "Morph Mask Demo 2",
   "description": "Feature cards whose icon tiles change shape on hover, focus or click.",
   "registryDependencies": [
-    "@magicui/morph-mask",
-    "@magicui/morph-mask-pass"
+    "@magicui/morph-mask"
   ],
   "files": [
     {

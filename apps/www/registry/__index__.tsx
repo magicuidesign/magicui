@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "morph-mask-demo",
     description: "A changelog hero whose app screen is cropped by a looping shape.",
     type: "registry:example",
-    registryDependencies: ["button","@magicui/morph-mask","@magicui/morph-mask-pass"],
+    registryDependencies: ["button","@magicui/morph-mask"],
     files: [{
       path: "registry/example/morph-mask-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "morph-mask-demo-2",
     description: "Feature cards whose icon tiles change shape on hover, focus or click.",
     type: "registry:example",
-    registryDependencies: ["@magicui/morph-mask","@magicui/morph-mask-pass"],
+    registryDependencies: ["@magicui/morph-mask"],
     files: [{
       path: "registry/example/morph-mask-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "morph-mask-demo-3",
     description: "Onboarding steps that set the shape, including a custom one.",
     type: "registry:example",
-    registryDependencies: ["button","@magicui/morph-mask","@magicui/morph-mask-pass"],
+    registryDependencies: ["button","@magicui/morph-mask"],
     files: [{
       path: "registry/example/morph-mask-demo-3.tsx",
       type: "registry:example",
