@@ -11,9 +11,9 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample9 } from "./plucked-rule-pass"
+import { passSample10 } from "./plucked-rule-pass"
 
-void passSample9(0)
+void passSample10(0)
 // Defaults, also used when a numeric prop is not a finite number.
 const DEFAULT_SIZE = 1
 const DEFAULT_AMPLITUDE = 24
