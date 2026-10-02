@@ -1,27 +1,32 @@
 import type { MetadataRoute } from "next"
-import { headers } from "next/headers"
 
-import { blogSource, source } from "@/lib/source"
+import { siteConfig } from "@/config/site"
+import { blogSource, showcaseSource, source } from "@/lib/source"
+
+export const revalidate = false
+export const dynamic = "force-static"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const headersList = await headers()
-  const domain = headersList.get("host") as string
-  const protocol = "https"
+  const domain = siteConfig.url
   const allDocs = source.getPages()
   const allBlogs = blogSource.getPages()
+  const allShowcase = showcaseSource.getPages()
 
   return [
     {
-      url: `${protocol}://${domain}`,
+      url: domain,
       lastModified: new Date(),
     },
     ...allDocs.map((post) => ({
-      url: `${protocol}://${domain}${post.url}`,
+      url: `${domain}${post.url}`,
       lastModified: post.data.date,
     })),
     ...allBlogs.map((post) => ({
-      url: `${protocol}://${domain}${post.url}`,
+      url: `${domain}${post.url}`,
       lastModified: post.data.publishedOn,
+    })),
+    ...allShowcase.map((post) => ({
+      url: `${domain}${post.url}`,
     })),
   ]
 }
