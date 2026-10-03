@@ -30,6 +30,37 @@ const TweetCard = dynamic(() =>
   import("@/registry/magicui/tweet-card").then((module) => module.TweetCard)
 )
 
+// Headings can contain nested elements (e.g. `**bold**` or `` `code` ``), so
+// we have to walk the children tree to get the plain text instead of relying
+// on toString(), which returns "[object Object]" for React elements.
+function getHeadingText(node: React.ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node)
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(getHeadingText).join("")
+  }
+
+  if (React.isValidElement(node)) {
+    return getHeadingText(
+      (node.props as { children?: React.ReactNode }).children
+    )
+  }
+
+  return ""
+}
+
+function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+}
+
 export const mdxComponents = {
   h1: ({ className, ...props }: React.ComponentProps<"h1">) => (
     <h1
@@ -43,12 +74,7 @@ export const mdxComponents = {
   h2: ({ className, ...props }: React.ComponentProps<"h2">) => {
     return (
       <h2
-        id={props.children
-          ?.toString()
-          .replace(/ /g, "-")
-          .replace(/'/g, "")
-          .replace(/\?/g, "")
-          .toLowerCase()}
+        id={slugifyHeading(getHeadingText(props.children))}
         className={cn(
           "font-heading mt-8 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-8 [&+p]:mt-4! *:[code]:text-xl",
           className
