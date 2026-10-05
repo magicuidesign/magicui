@@ -62,6 +62,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Progressive Blur](https://magicui.design/docs/components/progressive-blur): The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
 - [Pulsating Button](https://magicui.design/docs/components/pulsating-button): An animated pulsating button useful for capturing attention of users.
 - [Rainbow Button](https://magicui.design/docs/components/rainbow-button): An animated button with a rainbow effect.
+- [Rainbow Cursor](https://magicui.design/docs/components/rainbow-cursor): A three-color cursor ribbon with smooth tracking, a tapered tail, and subtle glow.
 - [Retro Grid](https://magicui.design/docs/components/retro-grid): An animated scrolling retro grid effect
 - [Ripple](https://magicui.design/docs/components/ripple): An animated ripple effect typically used behind elements to emphasize them.
 - [Ripple Button](https://magicui.design/docs/components/ripple-button): An animated button with ripple useful for user engagement.
@@ -88,6 +89,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 ## Examples
 
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo.tsx): Example usage
+- [Rainbow Cursor Demo](https://github.com/magicuidesign/magicui/blob/main/example/rainbow-cursor-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/example/android-demo.tsx): Example usage
 - [Android Demo 2](https://github.com/magicuidesign/magicui/blob/main/example/android-demo-2.tsx): Example usage

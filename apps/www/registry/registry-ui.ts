@@ -16,6 +16,20 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "rainbow-cursor",
+    type: "registry:ui",
+    title: "Rainbow Cursor",
+    description:
+      "A three-color cursor ribbon with smooth tracking, a tapered tail, and subtle glow.",
+    dependencies: ["ogl"],
+    files: [
+      {
+        path: "magicui/rainbow-cursor.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "android",
     type: "registry:ui",
     title: "Android",
