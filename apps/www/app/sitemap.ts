@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 import { siteConfig } from "@/config/site"
-import { blogSource, showcaseSource, source } from "@/lib/source"
+import { blogSource, source } from "@/lib/source"
 
 export const revalidate = false
 export const dynamic = "force-static"
@@ -10,7 +10,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const domain = siteConfig.url
   const allDocs = source.getPages()
   const allBlogs = blogSource.getPages()
-  const allShowcase = showcaseSource.getPages()
 
   return [
     {
@@ -24,9 +23,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...allBlogs.map((post) => ({
       url: `${domain}${post.url}`,
       lastModified: post.data.publishedOn,
-    })),
-    ...allShowcase.map((post) => ({
-      url: `${domain}${post.url}`,
     })),
   ]
 }
