@@ -2,6 +2,20 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
+    name: "plucked-rule",
+    type: "registry:ui",
+    title: "Plucked Rule",
+    description:
+      "A quiet section divider that bends under the cursor and rings like a plucked string.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/plucked-rule.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",

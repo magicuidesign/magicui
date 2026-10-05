@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "plucked-rule-demo",
+  "title": "Plucked Rule Demo",
+  "description": "A freight landing page with a plucked section divider.",
+  "registryDependencies": [
+    "@magicui/plucked-rule",
+    "@magicui/plucked-rule-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/plucked-rule-demo.tsx",
+      "content": "import { PluckedRule } from \"@/registry/magicui/plucked-rule\"\n\nconst features = [\n  {\n    title: \"Live vessel ETAs\",\n    description:\n      \"Plan the handoff with arrival times that move with your cargo.\",\n  },\n  {\n    title: \"Customs holds, flagged early\",\n    description: \"Give your broker time to clear the next bottleneck.\",\n  },\n  {\n    title: \"Demurrage before it bills\",\n    description:\n      \"Know which containers need a pickup before the clock runs out.\",\n  },\n]\n\nexport default function PluckedRuleDemo() {\n  return (\n    <div className=\"bg-background text-foreground w-full px-6 pt-10 pb-4 sm:px-10 sm:pb-24\">\n      <div className=\"mx-auto max-w-3xl\">\n        <div className=\"pb-8\">\n          <p className=\"text-muted-foreground mb-3 text-xs font-medium tracking-widest uppercase\">\n            Tidewater\n          </p>\n          <h2 className=\"text-2xl font-semibold tracking-tight text-balance sm:text-3xl\">\n            Every container, one timeline\n          </h2>\n          <p className=\"text-muted-foreground mt-3 max-w-lg text-sm leading-relaxed text-pretty\">\n            From the first port call to the last mile, keep your freight and\n            your team on the same page.\n          </p>\n        </div>\n        <PluckedRule />\n        <div className=\"grid gap-7 pt-10 pb-2 sm:grid-cols-3 sm:pb-16\">\n          {features.map((feature) => (\n            <div key={feature.title}>\n              <h3 className=\"text-sm font-medium text-balance\">\n                {feature.title}\n              </h3>\n              <p className=\"text-muted-foreground mt-2 text-sm leading-relaxed text-pretty\">\n                {feature.description}\n              </p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

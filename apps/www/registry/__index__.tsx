@@ -15,6 +15,23 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
+  "plucked-rule": {
+    name: "plucked-rule",
+    description: "A quiet section divider that bends under the cursor and rings like a plucked string.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/plucked-rule.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/plucked-rule.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1353,6 +1370,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/magicui/dither-field.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "plucked-rule-demo": {
+    name: "plucked-rule-demo",
+    description: "A freight landing page with a plucked section divider.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/plucked-rule","@magicui/plucked-rule-pass"],
+    files: [{
+      path: "registry/example/plucked-rule-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/plucked-rule-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "plucked-rule-demo-2": {
+    name: "plucked-rule-demo-2",
+    description: "A compact pricing comparison whose rules pluck in a staggered strum.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/plucked-rule","@magicui/plucked-rule-pass"],
+    files: [{
+      path: "registry/example/plucked-rule-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/plucked-rule-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "plucked-rule-demo-3": {
+    name: "plucked-rule-demo-3",
+    description: "A closing statement with a heavy purple rule and an amber highlight.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/plucked-rule","@magicui/plucked-rule-pass"],
+    files: [{
+      path: "registry/example/plucked-rule-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/plucked-rule-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

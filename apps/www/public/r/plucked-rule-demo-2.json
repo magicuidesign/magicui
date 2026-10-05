@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "plucked-rule-demo-2",
+  "title": "Plucked Rule Demo 2",
+  "description": "A compact pricing comparison whose rules pluck in a staggered strum.",
+  "registryDependencies": [
+    "@magicui/plucked-rule",
+    "@magicui/plucked-rule-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/plucked-rule-demo-2.tsx",
+      "content": "import { PluckedRule } from \"@/registry/magicui/plucked-rule\"\n\n/**\n * Each row's rule is tuned a little differently, so the table rings out\n * like strings strummed by hand.\n */\nconst features = [\n  {\n    name: \"Seats\",\n    starter: \"3\",\n    team: \"Unlimited\",\n    amplitude: 11,\n    frequency: 8.2,\n  },\n  {\n    name: \"Audit log\",\n    starter: \"7 days\",\n    team: \"1 year\",\n    amplitude: 9,\n    frequency: 7.6,\n  },\n  {\n    name: \"SSO\",\n    starter: \"—\",\n    team: \"Included\",\n    amplitude: 12,\n    frequency: 8.8,\n  },\n  {\n    name: \"Support response\",\n    starter: \"2 days\",\n    team: \"4 hours\",\n    amplitude: 10,\n    frequency: 7.9,\n  },\n  {\n    name: \"Data residency\",\n    starter: \"US\",\n    team: \"US or EU\",\n    amplitude: 11.5,\n    frequency: 8.5,\n  },\n]\n\n/** Each row's rule plucks itself a little after the one above it. */\nconst STAGGER_SECONDS = 0.11\n\nexport default function PluckedRuleDemo2() {\n  return (\n    <div className=\"bg-background text-foreground w-full px-5 py-10 sm:px-10\">\n      <div className=\"mx-auto max-w-xl\">\n        <h2 className=\"text-xl font-semibold tracking-tight text-balance\">\n          Compare plans\n        </h2>\n        <p className=\"text-muted-foreground mt-2 text-sm text-pretty\">\n          Start with a small crew. Make room for the whole operation.\n        </p>\n        <div className=\"text-muted-foreground mt-6 flex gap-3 pb-4 text-xs font-medium\">\n          <span className=\"min-w-0 flex-1\">Feature</span>\n          <span className=\"w-16 text-right sm:w-24\">Starter</span>\n          <span className=\"w-20 text-right sm:w-24\">Team</span>\n        </div>\n        {features.map((feature, index) => (\n          <div key={feature.name}>\n            <PluckedRule\n              amplitude={feature.amplitude}\n              frequency={feature.frequency}\n              duration={1}\n              delay={0.4 + index * STAGGER_SECONDS}\n            />\n            <div className=\"flex items-center gap-3 py-5 text-xs sm:text-sm\">\n              <span className=\"min-w-0 flex-1 font-medium\">{feature.name}</span>\n              <span className=\"text-muted-foreground w-16 text-right sm:w-24\">\n                {feature.starter}\n              </span>\n              <span className=\"w-20 text-right sm:w-24\">{feature.team}</span>\n            </div>\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

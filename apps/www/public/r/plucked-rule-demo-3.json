@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "plucked-rule-demo-3",
+  "title": "Plucked Rule Demo 3",
+  "description": "A closing statement with a heavy purple rule and an amber highlight.",
+  "registryDependencies": [
+    "@magicui/plucked-rule",
+    "@magicui/plucked-rule-pass"
+  ],
+  "files": [
+    {
+      "path": "registry/example/plucked-rule-demo-3.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { PluckedRule } from \"@/registry/magicui/plucked-rule\"\n\nconst buttonBase = cn(\n  \"inline-flex h-9 items-center justify-center rounded-lg px-4\",\n  \"text-sm font-medium shadow-xs transition-colors outline-none\",\n  \"focus-visible:ring-ring/50 focus-visible:ring-[3px]\"\n)\n\nexport default function PluckedRuleDemo3() {\n  return (\n    <div className=\"bg-background text-foreground w-full px-4 py-10 sm:px-10 sm:py-14\">\n      <div className=\"bg-card text-card-foreground mx-auto max-w-2xl rounded-xl border shadow-sm\">\n        <div className=\"px-6 pt-8 pb-12 sm:px-10 sm:pt-10\">\n          <p className=\"text-muted-foreground text-xs font-medium tracking-widest uppercase\">\n            Tidewater for teams\n          </p>\n          <h2 className=\"mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl\">\n            See every shipment before it lands\n          </h2>\n        </div>\n        <PluckedRule\n          size={2}\n          amplitude={40}\n          colorFrom=\"#9c40ff\"\n          colorTo=\"#ffaa40\"\n        />\n        <div className=\"px-6 pt-12 pb-8 sm:px-10 sm:pb-10\">\n          <p className=\"text-muted-foreground max-w-md text-sm leading-relaxed text-pretty sm:text-base\">\n            Connect your carriers in an afternoon. Arrival times, customs holds\n            and demurrage land on one timeline your whole team can read.\n          </p>\n          <div className=\"mt-6 flex flex-wrap gap-2\">\n            <button\n              type=\"button\"\n              className={cn(\n                buttonBase,\n                \"bg-primary text-primary-foreground hover:bg-primary/90\"\n              )}\n            >\n              Start tracking\n            </button>\n            <button\n              type=\"button\"\n              className={cn(\n                buttonBase,\n                \"bg-background hover:bg-accent hover:text-accent-foreground border\",\n                \"dark:border-input dark:bg-input/30 dark:hover:bg-input/50\"\n              )}\n            >\n              Book a demo\n            </button>\n          </div>\n          <p className=\"text-muted-foreground mt-4 text-xs\">\n            Free for your first 100 containers. No card required.\n          </p>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -59,6 +59,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Orbiting Circles](https://magicui.design/docs/components/orbiting-circles): A collection of circles which move in orbit along a circular path
 - [Particles](https://magicui.design/docs/components/particles): Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
 - [Pixel Image](https://magicui.design/docs/components/pixel-image): A component that displays an image with a pixelated effect, creating a retro aesthetic.
+- [Plucked Rule](https://magicui.design/docs/components/plucked-rule): A quiet section divider that bends under the cursor and rings like a plucked string.
 - [Pointer](https://magicui.design/docs/components/pointer): A component that displays a pointer when hovering over an element
 - [Progressive Blur](https://magicui.design/docs/components/progressive-blur): The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.
 - [Pulsating Button](https://magicui.design/docs/components/pulsating-button): An animated pulsating button useful for capturing attention of users.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Plucked Rule Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/plucked-rule-demo.tsx): Example usage
+- [Plucked Rule Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/plucked-rule-demo-2.tsx): Example usage
+- [Plucked Rule Demo 3](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/plucked-rule-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage

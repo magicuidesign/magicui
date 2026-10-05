@@ -19,6 +19,19 @@
       "type": "registry:style"
     },
     {
+      "name": "plucked-rule",
+      "title": "Plucked Rule",
+      "description": "A quiet section divider that bends under the cursor and rings like a plucked string.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/magicui/plucked-rule.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1388,6 +1401,54 @@
         }
       ],
       "type": "registry:ui"
+    },
+    {
+      "name": "plucked-rule-demo",
+      "title": "Plucked Rule Demo",
+      "description": "A freight landing page with a plucked section divider.",
+      "registryDependencies": [
+        "@magicui/plucked-rule",
+        "@magicui/plucked-rule-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/plucked-rule-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "plucked-rule-demo-2",
+      "title": "Plucked Rule Demo 2",
+      "description": "A compact pricing comparison whose rules pluck in a staggered strum.",
+      "registryDependencies": [
+        "@magicui/plucked-rule",
+        "@magicui/plucked-rule-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/plucked-rule-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "plucked-rule-demo-3",
+      "title": "Plucked Rule Demo 3",
+      "description": "A closing statement with a heavy purple rule and an amber highlight.",
+      "registryDependencies": [
+        "@magicui/plucked-rule",
+        "@magicui/plucked-rule-pass"
+      ],
+      "files": [
+        {
+          "path": "registry/example/plucked-rule-demo-3.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
     },
     {
       "name": "magic-card-demo",
