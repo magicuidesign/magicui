@@ -1,0 +1,81 @@
+---
+title: Plucked Rule
+date: 2026-11-04
+description: A quiet section divider that bends under the cursor and rings like a plucked string.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="plucked-rule-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/plucked-rule
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="plucked-rule" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { PluckedRule } from "@/components/ui/plucked-rule"
+```
+
+```tsx showLineNumbers
+<PluckedRule className="my-10" />
+```
+
+Leave up to `amplitude` pixels clear above and below the rule, outside any
+`overflow-hidden` parent, and set its color with `colorFrom` and `colorTo`
+rather than a `bg-*` class.
+
+## Props
+
+| Prop        | Type     | Default               | Description                                                     |
+| ----------- | -------- | --------------------- | --------------------------------------------------------------- |
+| `colorFrom` | `string` | `"var(--border)"`     | Color of the line, where the highlight gradient starts          |
+| `colorTo`   | `string` | `"var(--foreground)"` | Color at the pluck point, where the highlight gradient ends     |
+| `size`      | `number` | `1`                   | Thickness of the line in pixels                                 |
+| `amplitude` | `number` | `24`                  | Largest bend in pixels, capped at 6% of the line's width        |
+| `duration`  | `number` | `1.5`                 | Seconds for a ring from the largest bend to settle              |
+| `frequency` | `number` | `5`                   | Vibrations per second. Higher reads as tighter                  |
+| `delay`     | `number` | `0.4`                 | Seconds after first entering view before the rule plucks itself |
+
+## Examples
+
+### Staggered rows
+
+Stagger `delay` so the rows pluck from top to bottom.
+
+<ComponentPreview name="plucked-rule-demo-2" />
+
+### Color and weight
+
+Raise `size` and `amplitude` and pass brand colors for a heavier rule.
+
+<ComponentPreview name="plucked-rule-demo-3" />

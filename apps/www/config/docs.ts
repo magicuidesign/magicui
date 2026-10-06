@@ -279,6 +279,12 @@ export const docsConfig: DocsConfig = {
       title: "Special Effects",
       items: [
         {
+          title: "Plucked Rule",
+          href: "/docs/components/plucked-rule",
+          items: [],
+          label: "New",
+        },
+        {
           title: "Animated Beam",
           href: `/docs/components/animated-beam`,
           items: [],
