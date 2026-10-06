@@ -279,12 +279,6 @@ export const docsConfig: DocsConfig = {
       title: "Special Effects",
       items: [
         {
-          title: "Plucked Rule",
-          href: "/docs/components/plucked-rule",
-          items: [],
-          label: "New",
-        },
-        {
           title: "Animated Beam",
           href: `/docs/components/animated-beam`,
           items: [],
@@ -331,6 +325,12 @@ export const docsConfig: DocsConfig = {
         {
           title: "Animated Theme Toggler",
           href: `/docs/components/animated-theme-toggler`,
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Plucked Rule",
+          href: "/docs/components/plucked-rule",
           items: [],
           label: "New",
         },
