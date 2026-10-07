@@ -1341,6 +1341,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "bridged-carousel": {
+    name: "bridged-carousel",
+    description: "A connected, expanding card carousel with dynamic SVG bridge connectors and slot-based layout.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/bridged-carousel.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/bridged-carousel.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "magic-card-demo": {
     name: "magic-card-demo",
     description: "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -4230,6 +4247,40 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/floating-3d-particles-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "bridged-carousel-demo": {
+    name: "bridged-carousel-demo",
+    description: "Example showing a connected expanding card carousel with terminal content.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/bridged-carousel"],
+    files: [{
+      path: "registry/example/bridged-carousel-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/bridged-carousel-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "bridged-carousel-demo-2": {
+    name: "bridged-carousel-demo-2",
+    description: "Example showing a connected expanding card carousel with media portfolio cards.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/bridged-carousel"],
+    files: [{
+      path: "registry/example/bridged-carousel-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/bridged-carousel-demo-2.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

@@ -273,6 +273,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Bridged Carousel",
+          href: `/docs/components/bridged-carousel`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

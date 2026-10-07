@@ -1,0 +1,139 @@
+---
+title: Bridged Carousel
+date: 2026-10-07
+description: An expanding card carousel with dynamic SVG bridge connectors, slot-based focus layout, and container-query responsiveness.
+author: Miles
+published: true
+---
+
+<ComponentPreview name="bridged-carousel-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/bridged-carousel
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bridged-carousel" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { BridgedCarousel } from "@/components/ui/bridged-carousel"
+
+const items = [
+  {
+    id: "1",
+    title: "Kyoto Lantern Passage",
+    description: "Historic stone alleys framed by glowing paper lanterns.",
+    category: "CULTURE",
+    status: "Featured",
+    badges: ["Kyoto", "Night Walk"],
+    image: {
+      src: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop",
+      alt: "Historic traditional Japanese street illuminated by warm evening lanterns",
+    },
+  },
+  {
+    id: "2",
+    title: "Lofoten Arctic Fjord",
+    description:
+      "Dramatic sea cliffs and mirrored icy waters under golden skies.",
+    category: "NATURE",
+    status: "Expedition",
+    badges: ["Arctic", "Fjords"],
+    image: {
+      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
+      alt: "Misty mountain landscape reflected in clear alpine lake waters",
+    },
+  },
+]
+
+export default function Demo() {
+  return <BridgedCarousel items={items} autoplay={4000} />
+}
+```
+
+## Examples
+
+### Controlled with Custom Tabs
+
+Sync with external UI components using `activeIndex` and `onSlideChange`, with `showControls={false}` and `loop={false}`:
+
+<ComponentPreview name="bridged-carousel-demo-2" />
+
+### Custom Card (`children`)
+
+Pass a render function to customize card markup while preserving 3D slot animations and SVG bridges:
+
+```tsx showLineNumbers
+<BridgedCarousel items={items} cardWidth={680} cardHeight={440}>
+  {(item, { active, select }) => (
+    <div
+      onClick={select}
+      className={`relative h-full w-full overflow-hidden p-6 transition-all ${
+        active
+          ? "bg-card text-card-foreground shadow-xl"
+          : "bg-muted/40 cursor-pointer opacity-70 hover:opacity-100"
+      }`}
+    >
+      {item.image && (
+        <img
+          src={item.image.src}
+          alt={item.image.alt}
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
+        />
+      )}
+      <div className="relative z-10 flex h-full flex-col justify-end">
+        <h3 className="text-xl font-semibold">{item.title}</h3>
+        {active && (
+          <p className="text-muted-foreground mt-2 text-sm">
+            {item.description}
+          </p>
+        )}
+      </div>
+    </div>
+  )}
+</BridgedCarousel>
+```
+
+## Props
+
+| Prop             | Type                         | Default | Description                                                               |
+| ---------------- | ---------------------------- | ------- | ------------------------------------------------------------------------- |
+| `items`          | `BridgedCarouselItem[]`      | `[]`    | Array of card data items to display.                                      |
+| `activeIndex`    | `number`                     | `-`     | Controlled active slide index.                                            |
+| `defaultIndex`   | `number`                     | `0`     | Initial active slide index in uncontrolled mode.                          |
+| `onSlideChange`  | `(index: number) => void`    | `-`     | Callback fired when the active slide changes.                             |
+| `autoplay`       | `number \| false`            | `3000`  | Rotation interval in milliseconds, or `false` to disable.                 |
+| `cardWidth`      | `number \| string`           | `762`   | Width of the active center card.                                          |
+| `cardHeight`     | `number \| string`           | `513`   | Height of the active center card and stage.                               |
+| `loop`           | `boolean`                    | `true`  | Whether navigation wraps around cyclically.                               |
+| `showConnectors` | `boolean`                    | `true`  | Whether to render dynamic SVG bridges between adjacent cards.             |
+| `showControls`   | `boolean`                    | `true`  | Whether to display the navigation arrows and progress bar.                |
+| `children`       | `(item, state) => ReactNode` | `-`     | Custom card render function receiving `(item, { active, slot, select })`. |
+| `className`      | `string`                     | `-`     | Additional class names applied to the container.                          |

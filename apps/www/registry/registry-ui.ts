@@ -1326,4 +1326,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "bridged-carousel",
+    type: "registry:ui",
+    title: "Bridged Carousel",
+    description:
+      "A connected, expanding card carousel with dynamic SVG bridge connectors and slot-based layout.",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "magicui/bridged-carousel.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
