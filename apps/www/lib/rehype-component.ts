@@ -33,17 +33,18 @@ export function rehypeComponent() {
             src = path.join(process.cwd(), srcPath)
           } else {
             const component = Index[name]
-            src = fileName
-              ? (component.files.find((file: unknown) => {
-                  if (typeof file === "string") {
-                    return (
-                      file.endsWith(`${fileName}.tsx`) ||
-                      file.endsWith(`${fileName}.ts`)
-                    )
-                  }
-                  return false
-                }) ?? component.files[0]?.path)
-              : component.files[0]?.path
+            if (fileName) {
+              const matchedFile = component.files.find((file: unknown) => {
+                const filePath = getFilePath(file)
+                return (
+                  filePath?.endsWith(`${fileName}.tsx`) ||
+                  filePath?.endsWith(`${fileName}.ts`)
+                )
+              })
+              src = getFilePath(matchedFile) ?? component.files[0]?.path
+            } else {
+              src = component.files[0]?.path
+            }
           }
 
           // Read the source file.
@@ -146,4 +147,14 @@ export function rehypeComponent() {
 
 function getNodeAttributeByName(node: UnistNode, name: string) {
   return node.attributes?.find((attribute) => attribute.name === name)
+}
+
+// Registry file entries can be either a plain path string or an object
+// like { path, type, target }; pull the path out of either shape.
+function getFilePath(file: unknown): string | undefined {
+  if (typeof file === "string") {
+    return file
+  }
+
+  return (file as { path?: string } | undefined)?.path
 }
