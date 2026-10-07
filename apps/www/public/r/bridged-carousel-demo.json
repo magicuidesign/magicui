@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bridged-carousel-demo",
+  "type": "registry:example",
+  "title": "Bridged Carousel Demo",
+  "description": "Example showing a connected expanding card carousel with terminal content.",
+  "registryDependencies": [
+    "@magicui/bridged-carousel"
+  ],
+  "files": [
+    {
+      "path": "registry/example/bridged-carousel-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  BridgedCarousel,\n  type BridgedCarouselItem,\n} from \"@/registry/magicui/bridged-carousel\"\n\nconst EXPEDITION_ITEMS: BridgedCarouselItem[] = [\n  {\n    id: \"kyoto-dusk\",\n    title: \"Kyoto Lantern Passage\",\n    description:\n      \"A twilight exploration through historic stone alleys framed by traditional wooden machiya architecture and glowing paper lanterns.\",\n    category: \"CULTURE\",\n    status: \"Featured\",\n    badges: [\"Kyoto\", \"Night Walk\", \"Tradition\"],\n    image: {\n      src: \"https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2070&auto=format&fit=crop\",\n      alt: \"Historic traditional Japanese street illuminated by warm evening lanterns\",\n      fit: \"cover\",\n    },\n    links: [{ label: \"Explore Route\", href: \"#\" }],\n  },\n  {\n    id: \"fjord-horizon\",\n    title: \"Lofoten Arctic Fjord\",\n    description:\n      \"Dramatic sea cliffs and mirrored icy waters where midnight sun casts perpetual golden gradients across granite summits.\",\n    category: \"NATURE\",\n    status: \"Expedition\",\n    badges: [\"Arctic\", \"Fjords\", \"Norway\"],\n    image: {\n      src: \"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop\",\n      alt: \"Misty mountain landscape reflected in clear alpine lake waters\",\n      fit: \"cover\",\n    },\n    links: [{ label: \"Field Notes\", href: \"#\" }],\n  },\n  {\n    id: \"atacama-starlight\",\n    title: \"Atacama Starlight Array\",\n    description:\n      \"Ultra-clear high-altitude desert plateaus offering unpolluted views into the core of the Milky Way galaxy.\",\n    category: \"ASTRONOMY\",\n    status: \"Observatory\",\n    badges: [\"Desert\", \"Astrophotography\", \"Chile\"],\n    image: {\n      src: \"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop\",\n      alt: \"Silhouetted snowy mountains beneath star-studded night sky\",\n      fit: \"cover\",\n    },\n    links: [{ label: \"View Stargaze Map\", href: \"#\" }],\n  },\n]\n\nexport default function BridgedCarouselDemo() {\n  return (\n    <div className=\"relative flex w-full flex-col items-center justify-center py-4\">\n      <BridgedCarousel\n        items={EXPEDITION_ITEMS}\n        cardWidth={680}\n        cardHeight={450}\n        autoplay={4000}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

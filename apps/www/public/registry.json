@@ -1378,6 +1378,21 @@
       ]
     },
     {
+      "name": "bridged-carousel",
+      "type": "registry:ui",
+      "title": "Bridged Carousel",
+      "description": "A connected, expanding card carousel with dynamic SVG bridge connectors and slot-based layout.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/bridged-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "magic-card-demo",
       "type": "registry:example",
       "title": "Magic Card Demo",
@@ -4000,6 +4015,36 @@
       "files": [
         {
           "path": "registry/example/floating-3d-particles-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "bridged-carousel-demo",
+      "type": "registry:example",
+      "title": "Bridged Carousel Demo",
+      "description": "Example showing a connected expanding card carousel with terminal content.",
+      "registryDependencies": [
+        "@magicui/bridged-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bridged-carousel-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "bridged-carousel-demo-2",
+      "type": "registry:example",
+      "title": "Bridged Carousel Demo 2",
+      "description": "Example showing a connected expanding card carousel with media portfolio cards.",
+      "registryDependencies": [
+        "@magicui/bridged-carousel"
+      ],
+      "files": [
+        {
+          "path": "registry/example/bridged-carousel-demo-2.tsx",
           "type": "registry:example"
         }
       ]

@@ -2275,4 +2275,32 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "bridged-carousel-demo",
+    type: "registry:example",
+    title: "Bridged Carousel Demo",
+    description:
+      "Example showing a connected expanding card carousel with terminal content.",
+    registryDependencies: ["@magicui/bridged-carousel"],
+    files: [
+      {
+        path: "example/bridged-carousel-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bridged-carousel-demo-2",
+    type: "registry:example",
+    title: "Bridged Carousel Demo 2",
+    description:
+      "Example showing a connected expanding card carousel with media portfolio cards.",
+    registryDependencies: ["@magicui/bridged-carousel"],
+    files: [
+      {
+        path: "example/bridged-carousel-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
