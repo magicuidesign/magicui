@@ -4,8 +4,7 @@
   "title": "Plucked Rule Demo 3",
   "description": "A closing statement with a heavy purple rule and an amber highlight.",
   "registryDependencies": [
-    "@magicui/plucked-rule",
-    "@magicui/plucked-rule-pass"
+    "@magicui/plucked-rule"
   ],
   "files": [
     {

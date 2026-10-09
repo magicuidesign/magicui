@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "plucked-rule-demo",
     description: "A freight landing page with a plucked section divider.",
     type: "registry:example",
-    registryDependencies: ["@magicui/plucked-rule","@magicui/plucked-rule-pass"],
+    registryDependencies: ["@magicui/plucked-rule"],
     files: [{
       path: "registry/example/plucked-rule-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "plucked-rule-demo-2",
     description: "A compact pricing comparison whose rules pluck in a staggered strum.",
     type: "registry:example",
-    registryDependencies: ["@magicui/plucked-rule","@magicui/plucked-rule-pass"],
+    registryDependencies: ["@magicui/plucked-rule"],
     files: [{
       path: "registry/example/plucked-rule-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "plucked-rule-demo-3",
     description: "A closing statement with a heavy purple rule and an amber highlight.",
     type: "registry:example",
-    registryDependencies: ["@magicui/plucked-rule","@magicui/plucked-rule-pass"],
+    registryDependencies: ["@magicui/plucked-rule"],
     files: [{
       path: "registry/example/plucked-rule-demo-3.tsx",
       type: "registry:example",

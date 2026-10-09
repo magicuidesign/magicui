@@ -4,8 +4,7 @@
   "title": "Plucked Rule Demo",
   "description": "A freight landing page with a plucked section divider.",
   "registryDependencies": [
-    "@magicui/plucked-rule",
-    "@magicui/plucked-rule-pass"
+    "@magicui/plucked-rule"
   ],
   "files": [
     {

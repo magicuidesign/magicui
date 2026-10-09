@@ -1407,8 +1407,7 @@
       "title": "Plucked Rule Demo",
       "description": "A freight landing page with a plucked section divider.",
       "registryDependencies": [
-        "@magicui/plucked-rule",
-        "@magicui/plucked-rule-pass"
+        "@magicui/plucked-rule"
       ],
       "files": [
         {
@@ -1423,8 +1422,7 @@
       "title": "Plucked Rule Demo 2",
       "description": "A compact pricing comparison whose rules pluck in a staggered strum.",
       "registryDependencies": [
-        "@magicui/plucked-rule",
-        "@magicui/plucked-rule-pass"
+        "@magicui/plucked-rule"
       ],
       "files": [
         {
@@ -1439,8 +1437,7 @@
       "title": "Plucked Rule Demo 3",
       "description": "A closing statement with a heavy purple rule and an amber highlight.",
       "registryDependencies": [
-        "@magicui/plucked-rule",
-        "@magicui/plucked-rule-pass"
+        "@magicui/plucked-rule"
       ],
       "files": [
         {
