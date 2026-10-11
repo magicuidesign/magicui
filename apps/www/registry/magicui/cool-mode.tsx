@@ -250,6 +250,9 @@ const applyParticleEffect = (
   })
 
   return () => {
+    // Stop generating new particles so existing ones can finish and the
+    // cleanup poll below can release the loop, interval, and container.
+    disableAutoAddParticle()
     element.removeEventListener(move, updateMousePosition)
     element.removeEventListener(tap, tapHandler)
     element.removeEventListener(tapEnd, disableAutoAddParticle)
