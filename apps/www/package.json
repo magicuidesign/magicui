@@ -85,7 +85,6 @@
     "@types/node": "^22.20.1",
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.1",
-    "@types/unist": "^3.0.3",
     "eslint": "^9.36.0",
     "eslint-config-next": "15.5.4",
     "eslint-config-prettier": "^10.1.8",
@@ -104,9 +103,7 @@
     "shadcn": "3.3.1",
     "shiki": "^2.5.0",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2",
-    "unist-builder": "4.0.0",
-    "unist-util-visit": "^5.0.0"
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=22.14.0",
