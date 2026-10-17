@@ -22,7 +22,7 @@ type RippleItem = {
   key: number
 }
 
-function Ripple({
+function ButtonRipple({
   ripple,
   duration,
   rippleColor,
@@ -118,7 +118,7 @@ export const RippleButton = React.forwardRef<
         <div className="relative z-10">{children}</div>
         <span className="pointer-events-none absolute inset-0">
           {buttonRipples.map((ripple) => (
-            <Ripple
+            <ButtonRipple
               key={ripple.key}
               duration={duration}
               onDone={removeRipple}
