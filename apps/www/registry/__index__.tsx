@@ -32,6 +32,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "rainbow-cursor": {
+    name: "rainbow-cursor",
+    description: "A three-color cursor ribbon with smooth tracking, a tapered tail, and subtle glow.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/rainbow-cursor.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/rainbow-cursor.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "android": {
     name: "android",
     description: "A mockup of an Android device.",
@@ -1353,6 +1370,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/magic-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "rainbow-cursor-demo": {
+    name: "rainbow-cursor-demo",
+    description: "A flowing cursor with yellow, blue, and purple ribbon colors on a dark background.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/rainbow-cursor"],
+    files: [{
+      path: "registry/example/rainbow-cursor-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/rainbow-cursor-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

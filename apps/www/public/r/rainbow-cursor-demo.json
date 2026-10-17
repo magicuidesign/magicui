@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rainbow-cursor-demo",
+  "type": "registry:example",
+  "title": "Rainbow Cursor Demo",
+  "description": "A flowing cursor with yellow, blue, and purple ribbon colors on a dark background.",
+  "registryDependencies": [
+    "@magicui/rainbow-cursor"
+  ],
+  "files": [
+    {
+      "path": "registry/example/rainbow-cursor-demo.tsx",
+      "content": "import { RainbowCursor } from \"@/registry/magicui/rainbow-cursor\"\n\nexport default function RainbowCursorDemo() {\n  return (\n    <div className=\"h-[500px] w-full overflow-hidden rounded-xl bg-[#050610]\">\n      <RainbowCursor>\n        <div className=\"flex h-full flex-col items-center justify-center gap-4 px-6 text-center\">\n          <span className=\"text-xs tracking-[0.3em] text-yellow-300 uppercase\">\n            Follow your flow\n          </span>\n\n          <h2 className=\"text-4xl font-semibold tracking-tight text-white sm:text-5xl\">\n            Color in motion.\n          </h2>\n\n          <p className=\"max-w-sm text-sm text-slate-400\">\n            Move your pointer to draw a ribbon of light.\n          </p>\n        </div>\n      </RainbowCursor>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -35,6 +35,21 @@
       ]
     },
     {
+      "name": "rainbow-cursor",
+      "type": "registry:ui",
+      "title": "Rainbow Cursor",
+      "description": "A three-color cursor ribbon with smooth tracking, a tapered tail, and subtle glow.",
+      "dependencies": [
+        "ogl"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/rainbow-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "android",
       "type": "registry:ui",
       "title": "Android",
@@ -1388,6 +1403,21 @@
       "files": [
         {
           "path": "registry/example/magic-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "rainbow-cursor-demo",
+      "type": "registry:example",
+      "title": "Rainbow Cursor Demo",
+      "description": "A flowing cursor with yellow, blue, and purple ribbon colors on a dark background.",
+      "registryDependencies": [
+        "@magicui/rainbow-cursor"
+      ],
+      "files": [
+        {
+          "path": "registry/example/rainbow-cursor-demo.tsx",
           "type": "registry:example"
         }
       ]
