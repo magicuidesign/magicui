@@ -1,0 +1,93 @@
+---
+title: Expanding Frame
+date: 2026-11-04
+description: A rounded product window that grows into view and opens to full width as you scroll.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="expanding-frame-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/expanding-frame
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="expanding-frame" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ExpandingFrame } from "@/components/ui/expanding-frame"
+```
+
+```tsx showLineNumbers
+<ExpandingFrame>
+  <img src="/dashboard.png" alt="Product dashboard" />
+</ExpandingFrame>
+```
+
+- Pad text inside the frame with `px-[calc(var(--frame-inset)+1.5rem)]` so it reads before the frame opens.
+- Use `overflow-x-clip` on `body` and page wrappers, never `overflow-hidden` or `overflow-x-hidden`; either stops the frame from pinning.
+- Under a fixed header, add `scroll-pt-*` to `html` so the frame pins below it.
+- Inside your own scroller, give it `@container-size` so the server HTML matches the final frame size.
+- For a landscape screenshot, set `frameClassName="aspect-video"` (or a responsive ratio); `object-*` on the child controls cropping.
+
+## Props
+
+| Prop             | Type        | Default | Description                                                                                                                                   |
+| ---------------- | ----------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`       | `ReactNode` | `-`     | An image, video or product UI. It fills the frame                                                                                             |
+| `travel`         | `number`    | `460`   | Pixels of scroll the frame stays pinned while it opens. `0` turns off the scroll opening                                                      |
+| `inset`          | `number`    | `9`     | Percent of the width hidden on each side at rest, from `0` to `30`. Frames narrower than `40rem` use 55% of it                                |
+| `borderRadius`   | `number`    | `32`    | Corner radius in pixels at rest, squaring off as the frame opens. Add a `rounded-*` class to `frameClassName` to keep round corners when open |
+| `scale`          | `number`    | `1.13`  | Zoom on the content at rest, easing to `1` as the frame opens. `1` turns the zoom off                                                         |
+| `duration`       | `number`    | `1.15`  | Seconds the frame takes to widen when it first comes into view                                                                                |
+| `delay`          | `number`    | `0`     | Seconds to wait before it widens                                                                                                              |
+| `frameClassName` | `string`    | `""`    | Classes for the frame. It fills the visible height by default; an `aspect-*` or `h-*` class replaces that                                     |
+| `className`      | `string`    | `-`     | Classes for the outer wrapper                                                                                                                 |
+
+## Examples
+
+### Launch Announcement
+
+With `scale={1}` and a deeper `inset`, the frame reveals the page without zooming.
+
+<ComponentPreview name="expanding-frame-demo-2" />
+
+### Feature Section
+
+An `aspect-square rounded-2xl` frame in a narrow column, with a shorter `travel`.
+
+<ComponentPreview name="expanding-frame-demo-3" />
