@@ -2,6 +2,48 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
+    name: "expanding-frame-demo",
+    type: "registry:example",
+    title: "Expanding Frame Demo",
+    description:
+      "A reconciliation workspace revealed beneath a finance product hero.",
+    registryDependencies: ["@magicui/expanding-frame"],
+    files: [
+      {
+        path: "example/expanding-frame-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "expanding-frame-demo-2",
+    type: "registry:example",
+    title: "Expanding Frame Demo 2",
+    description:
+      "A launch announcement uncovered by a pure reveal, without scaling.",
+    registryDependencies: ["@magicui/expanding-frame"],
+    files: [
+      {
+        path: "example/expanding-frame-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "expanding-frame-demo-3",
+    type: "registry:example",
+    title: "Expanding Frame Demo 3",
+    description:
+      "An on-call rota in a square, rounded frame in a narrow feature column with a short track.",
+    registryDependencies: ["@magicui/expanding-frame"],
+    files: [
+      {
+        path: "example/expanding-frame-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",

@@ -30,6 +30,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
+- [Expanding Frame](https://magicui.design/docs/components/expanding-frame): A rounded product window that grows into view and opens to full width as you scroll.
 - [File Tree](https://magicui.design/docs/components/file-tree): A component used to showcase the folder and file structure of a directory.
 - [Flickering Grid](https://magicui.design/docs/components/flickering-grid): A flickering grid background made with SVGs, fully customizable using Tailwind CSS.
 - [Floating 3D Particles](https://magicui.design/docs/components/floating-3d-particles): A canvas-based pseudo-3D particle field with perspective projection, continuous rotation and buoyant drift.
@@ -88,6 +89,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
+- [Expanding Frame Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo.tsx): Example usage
+- [Expanding Frame Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo-2.tsx): Example usage
+- [Expanding Frame Demo 3](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage
