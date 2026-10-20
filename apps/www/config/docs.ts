@@ -334,16 +334,16 @@ export const docsConfig: DocsConfig = {
       title: "Animations",
       items: [
         {
-          title: "Expanding Frame",
-          href: `/docs/components/expanding-frame`,
-          items: [],
-          label: "New",
-        },
-        {
           title: "Blur Fade",
           href: `/docs/components/blur-fade`,
           items: [],
           label: "",
+        },
+        {
+          title: "Expanding Frame",
+          href: `/docs/components/expanding-frame`,
+          items: [],
+          label: "New",
         },
       ],
     },
