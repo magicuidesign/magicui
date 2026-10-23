@@ -4,8 +4,7 @@
   "title": "Expanding Frame Demo",
   "description": "A reconciliation workspace revealed beneath a finance product hero.",
   "registryDependencies": [
-    "@magicui/expanding-frame",
-    "@magicui/expanding-frame-pass"
+    "@magicui/expanding-frame"
   ],
   "files": [
     {

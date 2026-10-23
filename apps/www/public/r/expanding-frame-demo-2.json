@@ -4,8 +4,7 @@
   "title": "Expanding Frame Demo 2",
   "description": "A launch announcement uncovered by a pure reveal, without scaling.",
   "registryDependencies": [
-    "@magicui/expanding-frame",
-    "@magicui/expanding-frame-pass"
+    "@magicui/expanding-frame"
   ],
   "files": [
     {

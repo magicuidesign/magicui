@@ -1379,7 +1379,7 @@ export const Index: Record<string, any> = {
     name: "expanding-frame-demo",
     description: "A reconciliation workspace revealed beneath a finance product hero.",
     type: "registry:example",
-    registryDependencies: ["@magicui/expanding-frame","@magicui/expanding-frame-pass"],
+    registryDependencies: ["@magicui/expanding-frame"],
     files: [{
       path: "registry/example/expanding-frame-demo.tsx",
       type: "registry:example",
@@ -1396,7 +1396,7 @@ export const Index: Record<string, any> = {
     name: "expanding-frame-demo-2",
     description: "A launch announcement uncovered by a pure reveal, without scaling.",
     type: "registry:example",
-    registryDependencies: ["@magicui/expanding-frame","@magicui/expanding-frame-pass"],
+    registryDependencies: ["@magicui/expanding-frame"],
     files: [{
       path: "registry/example/expanding-frame-demo-2.tsx",
       type: "registry:example",
@@ -1413,7 +1413,7 @@ export const Index: Record<string, any> = {
     name: "expanding-frame-demo-3",
     description: "An on-call rota in a square, rounded frame in a narrow feature column with a short track.",
     type: "registry:example",
-    registryDependencies: ["@magicui/expanding-frame","@magicui/expanding-frame-pass"],
+    registryDependencies: ["@magicui/expanding-frame"],
     files: [{
       path: "registry/example/expanding-frame-demo-3.tsx",
       type: "registry:example",

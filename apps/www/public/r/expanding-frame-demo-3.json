@@ -4,8 +4,7 @@
   "title": "Expanding Frame Demo 3",
   "description": "An on-call rota in a square, rounded frame in a narrow feature column with a short track.",
   "registryDependencies": [
-    "@magicui/expanding-frame",
-    "@magicui/expanding-frame-pass"
+    "@magicui/expanding-frame"
   ],
   "files": [
     {

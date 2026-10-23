@@ -1409,8 +1409,7 @@
       "title": "Expanding Frame Demo",
       "description": "A reconciliation workspace revealed beneath a finance product hero.",
       "registryDependencies": [
-        "@magicui/expanding-frame",
-        "@magicui/expanding-frame-pass"
+        "@magicui/expanding-frame"
       ],
       "files": [
         {
@@ -1425,8 +1424,7 @@
       "title": "Expanding Frame Demo 2",
       "description": "A launch announcement uncovered by a pure reveal, without scaling.",
       "registryDependencies": [
-        "@magicui/expanding-frame",
-        "@magicui/expanding-frame-pass"
+        "@magicui/expanding-frame"
       ],
       "files": [
         {
@@ -1441,8 +1439,7 @@
       "title": "Expanding Frame Demo 3",
       "description": "An on-call rota in a square, rounded frame in a narrow feature column with a short track.",
       "registryDependencies": [
-        "@magicui/expanding-frame",
-        "@magicui/expanding-frame-pass"
+        "@magicui/expanding-frame"
       ],
       "files": [
         {

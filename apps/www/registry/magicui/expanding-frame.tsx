@@ -23,9 +23,6 @@ import {
 
 import { cn } from "@/lib/utils"
 
-import { passSample56 } from "./expanding-frame-pass"
-
-void passSample56(0)
 /** Extra side inset, in percent, that the arrival animation removes. */
 const ARRIVAL_INSET = 13
 /** The top and bottom insets are this share of the side inset. */
