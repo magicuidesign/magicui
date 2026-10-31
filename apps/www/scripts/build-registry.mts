@@ -186,7 +186,7 @@ async function generateLlmsContent(registry: Registry) {
       const title = example.title || example.name
       const firstFile = example.files?.[0]?.path || ""
       const url = firstFile
-        ? `${siteConfig.links.github}/blob/main/${firstFile}`
+        ? `${siteConfig.links.github}/blob/main/apps/www/registry/${firstFile}`
         : siteConfig.links.github
       return `- [${title}](${url}): Example usage`
     })
