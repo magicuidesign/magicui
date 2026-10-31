@@ -46,7 +46,6 @@
     "countries-list": "^3.2.2",
     "fumadocs-core": "^15.8.2",
     "fumadocs-mdx": "^12.0.1",
-    "fumadocs-ui": "^15.7.12",
     "geist": "^1.5.1",
     "jotai": "^2.14.0",
     "lucide-react": "^0.544.0",
