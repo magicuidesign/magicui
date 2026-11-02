@@ -6456,7 +6456,7 @@ export interface DitherFieldProps extends Omit<
    */
   dotSize?: number
   /**
-   * Brightness of the field, from 0 (no dots) up. Values above 1 fill more.
+   * Brightness of the field. 0 shows only the pointer glow; above 1 fills more.
    * @default 0.75
    */
   intensity?: number
@@ -6615,6 +6615,9 @@ function compile(gl: WebGL2RenderingContext, fragment: string) {
     if (!shader) return null
     gl.shaderSource(shader, source)
     gl.compileShader(shader)
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      console.warn("DitherField: shader error", gl.getShaderInfoLog(shader))
+    }
     gl.attachShader(program, shader)
     gl.deleteShader(shader)
   }
@@ -6799,7 +6802,11 @@ function resolveRamp(host: HTMLElement, color: DitherColor): Rgba[] {
   return ramp
 }
 
-function loadMedia(src: string, onReady: (media: Media) => void) {
+function loadMedia(
+  src: string,
+  onReady: (media: Media) => void,
+  onError: () => void
+) {
   if (VIDEO_FILE.test(src)) {
     const video = document.createElement("video")
     video.crossOrigin = "anonymous"
@@ -6808,6 +6815,7 @@ function loadMedia(src: string, onReady: (media: Media) => void) {
     video.playsInline = true
     video.preload = "auto"
     video.addEventListener("loadeddata", () => onReady(video), { once: true })
+    video.addEventListener("error", onError, { once: true })
     video.src = src
     return video
   }
@@ -6815,6 +6823,7 @@ function loadMedia(src: string, onReady: (media: Media) => void) {
   image.crossOrigin = "anonymous"
   image.decoding = "async"
   image.addEventListener("load", () => onReady(image), { once: true })
+  image.addEventListener("error", onError, { once: true })
   image.src = src
   return image
 }
@@ -6852,6 +6861,9 @@ export function DitherField({
   const live = useRef({ color, intensity, speed, fps, interactive })
   live.current = { color, intensity, speed, fps, interactive }
   const repaint = useRef(() => {})
+  // Kept across rebuilds, so a field that scrolls back into view resumes.
+  const time = useRef(10)
+  const shown = useRef(false)
   const colorKey = toRamp(color).join("|")
 
   useEffect(() => {
@@ -6859,7 +6871,7 @@ export function DitherField({
     if (!root) return
     const observer = new IntersectionObserver(
       ([entry]) => setNear(entry.isIntersecting),
-      { rootMargin: "200px" }
+      { rootMargin: "100px" }
     )
     observer.observe(root)
     return () => observer.disconnect()
@@ -6890,25 +6902,29 @@ export function DitherField({
         )
       : null
     if (!gl || !renderer) {
+      gl?.getExtension("WEBGL_lose_context")?.loseContext()
       setFallback(true)
       return
     }
     setFallback(false)
+    // A field that comes back into view skips the fade-in.
+    if (shown.current) canvas.dataset.ready = ""
     layer.appendChild(canvas)
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const pointer = { x: 0, y: 0, clientX: 0, clientY: 0, on: false, hover: 0 }
-    let time = 10
     let previous = 0
     let frame = 0
     let cssHeight = 0
     let ready = !src
     let lost = false
+    let disposed = false
 
     const draw = () => {
       if (!ready || !cssHeight || lost) return
-      renderer.draw(time, [pointer.x, pointer.y, pointer.hover])
+      renderer.draw(time.current, [pointer.x, pointer.y, pointer.hover])
       canvas.dataset.ready = ""
+      shown.current = true
     }
 
     const paint = () => {
@@ -6917,12 +6933,20 @@ export function DitherField({
       draw()
     }
     repaint.current = paint
+    // Theme changes can arrive in bursts; resolve the colours once a frame.
+    let paintFrame = 0
+    const schedulePaint = () => {
+      cancelAnimationFrame(paintFrame)
+      paintFrame = requestAnimationFrame(paint)
+    }
 
     // One dot is a whole number of device pixels, so dots stay crisp
     // squares on any screen. The canvas may overhang the root by under a
-    // dot; the root clips it.
+    // dot; the root clips it. Layout size, so transforms on a parent (an
+    // entrance animation, say) do not shrink the grid.
     const resize = () => {
-      const { width, height } = root.getBoundingClientRect()
+      const width = root.clientWidth
+      const height = root.clientHeight
       if (!width || !height) return
       const dpr = window.devicePixelRatio || 1
       const devicePerDot = Math.max(1, Math.round(dotSize * dpr))
@@ -6957,11 +6981,13 @@ export function DitherField({
     const tick = (now: number) => {
       frame = requestAnimationFrame(tick)
       const { speed, fps, interactive } = live.current
-      if (previous && now - previous < 1000 / fps - 2) return
+      if (previous && now - previous < 1000 / Math.max(fps, 1) - 2) return
       const dt = previous ? Math.min((now - previous) / 1000, 0.1) : 0
       previous = now
-      time += dt * speed
+      time.current += dt * speed
       const box = root.getBoundingClientRect()
+      const left = box.left + root.clientLeft
+      const top = box.top + root.clientTop
       const inside =
         interactive &&
         pointer.on &&
@@ -6969,10 +6995,10 @@ export function DitherField({
         pointer.clientX <= box.right &&
         pointer.clientY >= box.top &&
         pointer.clientY <= box.bottom
-      pointer.x = ease(pointer.x, pointer.clientX - box.left, POINTER_EASE, dt)
+      pointer.x = ease(pointer.x, pointer.clientX - left, POINTER_EASE, dt)
       pointer.y = ease(
         pointer.y,
-        box.top + cssHeight - pointer.clientY,
+        top + cssHeight - pointer.clientY,
         POINTER_EASE,
         dt
       )
@@ -6981,12 +7007,19 @@ export function DitherField({
     }
 
     const media = src
-      ? loadMedia(src, (source) => {
-          renderer.setMedia(source)
-          ready = true
-          draw()
-          sync()
-        })
+      ? loadMedia(
+          src,
+          (source) => {
+            if (disposed) return
+            renderer.setMedia(source)
+            ready = true
+            draw()
+            sync()
+          },
+          () => {
+            if (!disposed) setFallback(true)
+          }
+        )
       : null
     const video = media instanceof HTMLVideoElement ? media : null
 
@@ -6994,8 +7027,8 @@ export function DitherField({
       if (event.pointerType === "touch") return
       if (!pointer.on) {
         const box = root.getBoundingClientRect()
-        pointer.x = event.clientX - box.left
-        pointer.y = box.top + cssHeight - event.clientY
+        pointer.x = event.clientX - box.left - root.clientLeft
+        pointer.y = box.top + root.clientTop + cssHeight - event.clientY
       }
       pointer.clientX = event.clientX
       pointer.clientY = event.clientY
@@ -7031,7 +7064,7 @@ export function DitherField({
 
     const resizeObserver = new ResizeObserver(resize)
     // Theme switches usually toggle a class or attribute on <html>.
-    const themeObserver = new MutationObserver(paint)
+    const themeObserver = new MutationObserver(schedulePaint)
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
     resize()
@@ -7041,9 +7074,9 @@ export function DitherField({
     resizeObserver.observe(root)
     themeObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["class", "style", "data-theme"],
+      attributeFilter: ["class", "data-theme"],
     })
-    darkQuery.addEventListener("change", paint)
+    darkQuery.addEventListener("change", schedulePaint)
     reducedMotion.addEventListener("change", sync)
     document.addEventListener("visibilitychange", sync)
     window.addEventListener("pointermove", onPointer, { passive: true })
@@ -7052,12 +7085,14 @@ export function DitherField({
     canvas.addEventListener("webglcontextrestored", onRestored)
 
     return () => {
+      disposed = true
       cancelAnimationFrame(frame)
+      cancelAnimationFrame(paintFrame)
       repaint.current = () => {}
       resizeObserver.disconnect()
       themeObserver.disconnect()
       ratioQuery?.removeEventListener("change", onRatio)
-      darkQuery.removeEventListener("change", paint)
+      darkQuery.removeEventListener("change", schedulePaint)
       reducedMotion.removeEventListener("change", sync)
       document.removeEventListener("visibilitychange", sync)
       window.removeEventListener("pointermove", onPointer)
@@ -7068,6 +7103,8 @@ export function DitherField({
         video.pause()
         video.removeAttribute("src")
         video.load()
+      } else {
+        media?.removeAttribute("src")
       }
       renderer.dispose()
       gl.getExtension("WEBGL_lose_context")?.loseContext()
@@ -7084,6 +7121,8 @@ export function DitherField({
     backgroundImage: `radial-gradient(${mid} 0.6px, transparent 0.9px)`,
     backgroundSize: `${3 * dotSize}px ${3 * dotSize}px`,
     maskImage: "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
+    WebkitMaskImage:
+      "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
     opacity: Math.min(1, intensity),
   }
 
