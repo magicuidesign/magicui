@@ -1380,7 +1380,7 @@
     {
       "name": "dither-field",
       "title": "Dither Field",
-      "description": "An animated Bayer ordered-dithering background in WebGL2. A soft light pattern, image or video becomes crisp square dots coloured from a three-stop ramp, with pointer glow, theme-aware colours and a CSS fallback.",
+      "description": "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one colour or a three-stop ramp, and brighten under the pointer.",
       "files": [
         {
           "path": "registry/magicui/dither-field.tsx",
@@ -4019,7 +4019,7 @@
     {
       "name": "dither-field-demo",
       "title": "Dither Field Demo",
-      "description": "Hero section on a violet dither horizon whose colours switch with the light and dark theme through CSS variables.",
+      "description": "A hero section on a violet dither horizon. CSS variables switch its colours between the light and dark themes.",
       "registryDependencies": [
         "@magicui/dither-field"
       ],
@@ -4049,7 +4049,7 @@
     {
       "name": "dither-field-text-demo",
       "title": "Dither Field Text Demo",
-      "description": "Large heading filled with an aurora dither field using a mix-blend-mode knockout overlay.",
+      "description": "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
       "registryDependencies": [
         "@magicui/dither-field"
       ],
@@ -4064,7 +4064,7 @@
     {
       "name": "dither-field-image-demo",
       "title": "Dither Field Image Demo",
-      "description": "A landscape photo turned into a two-pixel ordered dither with a warm colour ramp.",
+      "description": "A landscape photo dithered into 2px dots with a warm colour ramp.",
       "registryDependencies": [
         "@magicui/dither-field"
       ],
@@ -4079,7 +4079,7 @@
     {
       "name": "dither-field-pointer-demo",
       "title": "Dither Field Pointer Demo",
-      "description": "A quiet cloud field that brightens around the mouse pointer.",
+      "description": "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
       "registryDependencies": [
         "@magicui/dither-field"
       ],

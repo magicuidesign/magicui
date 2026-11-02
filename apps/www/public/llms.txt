@@ -26,7 +26,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
 - [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
-- [Dither Field](https://magicui.design/docs/components/dither-field): An animated Bayer ordered-dithering background in WebGL2. A soft light pattern, image or video becomes crisp square dots coloured from a three-stop ramp, with pointer glow, theme-aware colours and a CSS fallback.
+- [Dither Field](https://magicui.design/docs/components/dither-field): An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one colour or a three-stop ramp, and brighten under the pointer.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.

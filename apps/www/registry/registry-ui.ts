@@ -1331,7 +1331,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Dither Field",
     description:
-      "An animated Bayer ordered-dithering background in WebGL2. A soft light pattern, image or video becomes crisp square dots coloured from a three-stop ramp, with pointer glow, theme-aware colours and a CSS fallback.",
+      "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one colour or a three-stop ramp, and brighten under the pointer.",
     files: [
       {
         path: "magicui/dither-field.tsx",

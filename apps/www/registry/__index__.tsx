@@ -1343,7 +1343,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field": {
     name: "dither-field",
-    description: "An animated Bayer ordered-dithering background in WebGL2. A soft light pattern, image or video becomes crisp square dots coloured from a three-stop ramp, with pointer glow, theme-aware colours and a CSS fallback.",
+    description: "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one colour or a three-stop ramp, and brighten under the pointer.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -4254,7 +4254,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-demo": {
     name: "dither-field-demo",
-    description: "Hero section on a violet dither horizon whose colours switch with the light and dark theme through CSS variables.",
+    description: "A hero section on a violet dither horizon. CSS variables switch its colours between the light and dark themes.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4288,7 +4288,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-text-demo": {
     name: "dither-field-text-demo",
-    description: "Large heading filled with an aurora dither field using a mix-blend-mode knockout overlay.",
+    description: "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4305,7 +4305,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-image-demo": {
     name: "dither-field-image-demo",
-    description: "A landscape photo turned into a two-pixel ordered dither with a warm colour ramp.",
+    description: "A landscape photo dithered into 2px dots with a warm colour ramp.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4322,7 +4322,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-pointer-demo": {
     name: "dither-field-pointer-demo",
-    description: "A quiet cloud field that brightens around the mouse pointer.",
+    description: "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{

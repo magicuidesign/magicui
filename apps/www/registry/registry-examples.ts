@@ -2280,7 +2280,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Demo",
     description:
-      "Hero section on a violet dither horizon whose colours switch with the light and dark theme through CSS variables.",
+      "A hero section on a violet dither horizon. CSS variables switch its colours between the light and dark themes.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2308,7 +2308,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Text Demo",
     description:
-      "Large heading filled with an aurora dither field using a mix-blend-mode knockout overlay.",
+      "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2322,7 +2322,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Image Demo",
     description:
-      "A landscape photo turned into a two-pixel ordered dither with a warm colour ramp.",
+      "A landscape photo dithered into 2px dots with a warm colour ramp.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2335,7 +2335,8 @@ export const examples: Registry["items"] = [
     name: "dither-field-pointer-demo",
     type: "registry:example",
     title: "Dither Field Pointer Demo",
-    description: "A quiet cloud field that brightens around the mouse pointer.",
+    description:
+      "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
