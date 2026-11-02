@@ -18,9 +18,9 @@ async function loadRegistry(): Promise<Registry> {
 
 const PREVIEW_ITEM_TYPES = new Set(["registry:ui", "registry:example"])
 
-const PREVIEW_EXPORT_OVERRIDES: Record<string, string | null> = {
+const PREVIEW_EXPORT_OVERRIDES: Record<string, string> = {
   "file-tree": "Tree",
-  "scroll-based-velocity": null,
+  "scroll-based-velocity": "ScrollVelocityContainer",
 }
 
 function getValueExports(filePath: string, source: string) {

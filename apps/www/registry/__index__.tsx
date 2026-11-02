@@ -871,7 +871,10 @@ export const Index: Record<string, any> = {
       type: "registry:ui",
       target: ""
     }],
-    component: null,
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/scroll-based-velocity")
+      return { default: mod.ScrollVelocityContainer }
+    }),
     meta: undefined,
   },
   "shiny-button": {
