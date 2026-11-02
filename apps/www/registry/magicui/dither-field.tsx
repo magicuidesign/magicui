@@ -108,7 +108,7 @@ export interface DitherFieldProps extends Omit<
    */
   fps?: number
   /**
-   * Brighten the field around the mouse or pen.
+   * Brighten the field around the mouse, the pen or a held finger.
    * @default true
    */
   interactive?: boolean
@@ -664,7 +664,9 @@ export function DitherField({
     const video = media instanceof HTMLVideoElement ? media : null
 
     const onPointer = (event: PointerEvent) => {
-      if (event.pointerType === "touch") return
+      // A finger only counts while it is down. Hover events from a lifted
+      // finger would leave the glow stuck where it last tapped.
+      if (event.pointerType === "touch" && event.buttons === 0) return
       if (!pointer.on) {
         const box = root.getBoundingClientRect()
         pointer.x = event.clientX - box.left - root.clientLeft
@@ -676,6 +678,12 @@ export function DitherField({
     }
     const onLeave = () => {
       pointer.on = false
+    }
+    // Lifting the finger, or the browser taking over the touch to scroll,
+    // fades the glow out. The listeners are passive, so scrolling is never
+    // blocked.
+    const onTouchEnd = (event: PointerEvent) => {
+      if (event.pointerType === "touch") pointer.on = false
     }
 
     // A move to a screen with another pixel ratio changes the dot size
@@ -725,7 +733,10 @@ export function DitherField({
     darkQuery.addEventListener("change", schedulePaint)
     reducedMotion.addEventListener("change", sync)
     document.addEventListener("visibilitychange", sync)
+    window.addEventListener("pointerdown", onPointer, { passive: true })
     window.addEventListener("pointermove", onPointer, { passive: true })
+    window.addEventListener("pointerup", onTouchEnd, { passive: true })
+    window.addEventListener("pointercancel", onTouchEnd, { passive: true })
     document.documentElement.addEventListener("pointerleave", onLeave)
     canvas.addEventListener("webglcontextlost", onLost)
     canvas.addEventListener("webglcontextrestored", onRestored)
@@ -741,7 +752,10 @@ export function DitherField({
       darkQuery.removeEventListener("change", schedulePaint)
       reducedMotion.removeEventListener("change", sync)
       document.removeEventListener("visibilitychange", sync)
+      window.removeEventListener("pointerdown", onPointer)
       window.removeEventListener("pointermove", onPointer)
+      window.removeEventListener("pointerup", onTouchEnd)
+      window.removeEventListener("pointercancel", onTouchEnd)
       document.documentElement.removeEventListener("pointerleave", onLeave)
       canvas.removeEventListener("webglcontextlost", onLost)
       canvas.removeEventListener("webglcontextrestored", onRestored)

@@ -30,10 +30,14 @@ export default function DitherFieldCardDemo() {
           pattern={card.pattern}
           color="var(--muted-foreground)"
           intensity={0.6}
-          className={`bg-card flex h-56 flex-col justify-end rounded-xl border p-6 ${card.className}`}
+          className={`bg-card flex h-44 flex-col justify-end rounded-xl border p-5 md:h-56 md:p-6 ${card.className}`}
         >
-          <h3 className="text-lg font-semibold tracking-tight">{card.title}</h3>
-          <p className="text-muted-foreground text-sm">{card.body}</p>
+          {/* Fades the dots out behind the text so it stays readable. */}
+          <div className="from-card absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t to-transparent" />
+          <h3 className="relative text-lg font-semibold tracking-tight">
+            {card.title}
+          </h3>
+          <p className="text-muted-foreground relative text-sm">{card.body}</p>
         </DitherField>
       ))}
     </div>

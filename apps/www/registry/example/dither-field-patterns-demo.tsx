@@ -9,7 +9,7 @@ export default function DitherFieldPatternsDemo() {
         <DitherField
           key={pattern}
           pattern={pattern}
-          className="bg-background flex h-40 items-end rounded-lg border p-3"
+          className="bg-background flex h-32 items-end rounded-lg border p-3 md:h-40"
         >
           <code className="bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur">
             {pattern}

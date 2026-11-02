@@ -7,7 +7,7 @@ export default function DitherFieldImageDemo() {
       color={["#7c2d12", "#fb923c", "#fff7ed"]}
       dotSize={2}
       intensity={0.8}
-      className="h-[500px] w-full rounded-lg border bg-black"
+      className="h-72 w-full rounded-lg border bg-black md:h-[500px]"
     />
   )
 }

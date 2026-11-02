@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/example/dither-field-monochrome-demo.tsx",
-      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nexport default function DitherFieldMonochromeDemo() {\n  return (\n    <div className=\"grid w-full gap-4 md:grid-cols-2\">\n      <DitherField\n        pattern=\"horizon\"\n        color=\"#0a0a0a\"\n        className=\"flex h-80 items-start rounded-xl border bg-white p-6 text-neutral-950\"\n      >\n        <p className=\"text-sm font-medium\">Ink on paper</p>\n      </DitherField>\n      <DitherField\n        pattern=\"horizon\"\n        color=\"#fafafa\"\n        className=\"flex h-80 items-start rounded-xl border bg-neutral-950 p-6 text-white\"\n      >\n        <p className=\"text-sm font-medium\">Chalk on slate</p>\n      </DitherField>\n    </div>\n  )\n}\n",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nexport default function DitherFieldMonochromeDemo() {\n  return (\n    <div className=\"grid w-full grid-cols-2 gap-3 md:gap-4\">\n      <DitherField\n        pattern=\"horizon\"\n        color=\"#0a0a0a\"\n        className=\"flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 md:h-80 md:p-6\"\n      >\n        <p className=\"text-sm font-medium\">Ink on paper</p>\n      </DitherField>\n      <DitherField\n        pattern=\"horizon\"\n        color=\"#fafafa\"\n        className=\"flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white md:h-80 md:p-6\"\n      >\n        <p className=\"text-sm font-medium\">Chalk on slate</p>\n      </DitherField>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
   ],
