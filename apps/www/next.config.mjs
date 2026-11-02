@@ -10,12 +10,14 @@ const nextConfig = {
     inlineCss: true,
   },
   images: {
-    domains: [
-      "localhost",
-      "cdn.magicui.design",
-      "images.unsplash.com",
-      "img.youtube.com",
-      "pbs.twimg.com",
+    // Cache optimized images for 31 days to avoid repeat transformations.
+    minimumCacheTTL: 2678400,
+    remotePatterns: [
+      { hostname: "localhost" },
+      { hostname: "cdn.magicui.design" },
+      { hostname: "images.unsplash.com" },
+      { hostname: "img.youtube.com" },
+      { hostname: "pbs.twimg.com" },
     ],
   },
   async redirects() {
