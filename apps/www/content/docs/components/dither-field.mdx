@@ -94,7 +94,7 @@ With no `color`, the dots use `currentColor`, so they follow your text colour an
 
 ### Colours
 
-Pass one colour or a `[low, mid, high]` ramp. Dim dots take the `low` colour and bright dots take the `high` colour. One colour fades from 35% to full opacity. Any CSS colour works, including `var(--primary)` and `oklch()` (Chrome 111, Safari 15.4 and Firefox 113 or later; older browsers draw grey). The field updates when the `class` or `data-theme` attribute on `<html>` changes, or when the system colour scheme changes.
+Pass one colour or a `[low, mid, high]` ramp. Dim dots take the `low` colour and bright dots take the `high` colour. One colour fades from 35% to full opacity. Any CSS colour works, including `var(--primary)` and `oklch()` (Chrome 111, Safari 15.4 and Firefox 113 or later; older browsers draw grey). The field updates when the `class` or `data-theme` attribute on `<html>` changes, when the field's own `class` or `style` changes, or when the system colour scheme changes.
 
 ```tsx showLineNumbers
 <DitherField color="var(--primary)" />

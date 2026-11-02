@@ -716,6 +716,12 @@ export function DitherField({
       attributes: true,
       attributeFilter: ["class", "data-theme"],
     })
+    // The root's own class or style can change `currentColor` or a CSS
+    // variable in the ramp, for example text-red-500 to text-blue-500.
+    themeObserver.observe(root, {
+      attributes: true,
+      attributeFilter: ["class", "style"],
+    })
     darkQuery.addEventListener("change", schedulePaint)
     reducedMotion.addEventListener("change", sync)
     document.addEventListener("visibilitychange", sync)
