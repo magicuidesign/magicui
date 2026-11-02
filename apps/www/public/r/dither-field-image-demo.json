@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dither-field-image-demo",
   "title": "Dither Field Image Demo",
-  "description": "A landscape photo dithered into 2px dots with a warm colour ramp.",
+  "description": "A landscape photo dithered into 2px dots with a warm color ramp.",
   "registryDependencies": [
     "@magicui/dither-field"
   ],

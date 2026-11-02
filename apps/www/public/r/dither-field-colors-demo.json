@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-field-colors-demo",
+  "title": "Dither Field Colors Demo",
+  "description": "Four color treatments in one grid: black on white, white on black, an amber glow and a cyan aurora.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-field-colors-demo.tsx",
+      "content": "import {\n  DitherField,\n  type DitherColor,\n  type DitherPattern,\n} from \"@/registry/magicui/dither-field\"\n\nconst tiles: {\n  label: string\n  pattern: DitherPattern\n  color: DitherColor\n  intensity?: number\n  className: string\n}[] = [\n  {\n    label: \"Ink on paper\",\n    pattern: \"horizon\",\n    color: \"#0a0a0a\",\n    className: \"bg-white text-neutral-950\",\n  },\n  {\n    label: \"Chalk on slate\",\n    pattern: \"horizon\",\n    color: \"#fafafa\",\n    className: \"bg-neutral-950 text-white\",\n  },\n  {\n    label: \"Sodium\",\n    pattern: \"glow\",\n    color: [\"#78350f\", \"#f59e0b\", \"#fef3c7\"],\n    className: \"bg-[#140b02] text-amber-50\",\n  },\n  {\n    label: \"Glacier\",\n    pattern: \"aurora\",\n    color: [\"#164e63\", \"#06b6d4\", \"#cffafe\"],\n    intensity: 1.1,\n    className: \"bg-[#020f14] text-cyan-50\",\n  },\n]\n\nexport default function DitherFieldColorsDemo() {\n  return (\n    <div className=\"grid w-full grid-cols-2 gap-3 md:grid-cols-4 md:gap-4\">\n      {tiles.map((tile) => (\n        <DitherField\n          key={tile.label}\n          pattern={tile.pattern}\n          color={tile.color}\n          intensity={tile.intensity}\n          className={`flex h-48 items-start rounded-xl border p-4 select-none md:h-64 ${tile.className}`}\n        >\n          <p className=\"text-sm font-medium\">{tile.label}</p>\n        </DitherField>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -6,14 +6,14 @@ export default function DitherFieldMonochromeDemo() {
       <DitherField
         pattern="horizon"
         color="#0a0a0a"
-        className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 md:h-80 md:p-6"
+        className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Ink on paper</p>
       </DitherField>
       <DitherField
         pattern="horizon"
         color="#fafafa"
-        className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white md:h-80 md:p-6"
+        className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Chalk on slate</p>
       </DitherField>
