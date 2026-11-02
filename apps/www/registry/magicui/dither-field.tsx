@@ -619,7 +619,10 @@ export function DitherField({
       frame = requestAnimationFrame(tick)
       const { speed, fps, interactive } = live.current
       if (previous && now - previous < 1000 / Math.max(fps, 1) - 2) return
-      const dt = previous ? Math.min((now - previous) / 1000, 0.1) : 0
+      // Real time since the last drawn frame, so a low fps keeps the same
+      // speed. The clock restarts on resume, and a stalled main thread
+      // cannot jump the field by more than 2 s.
+      const dt = previous ? Math.min((now - previous) / 1000, 2) : 0
       previous = now
       time.current += dt * speed
       const box = root.getBoundingClientRect()
