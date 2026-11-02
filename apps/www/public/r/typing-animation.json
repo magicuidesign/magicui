@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "typing-animation",
-  "type": "registry:ui",
   "title": "Typing Animation",
   "description": "Characters appearing in typed animation",
   "dependencies": [
@@ -28,5 +27,6 @@
         "opacity": "0"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

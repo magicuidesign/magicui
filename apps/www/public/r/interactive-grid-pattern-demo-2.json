@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "interactive-grid-pattern-demo-2",
-  "type": "registry:example",
   "title": "Interactive Grid Pattern Demo 2",
   "description": "Second example showing an interactive grid pattern background.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { InteractiveGridPattern } from \"@/registry/magicui/interactive-grid-pattern\"\n\nexport default function InteractiveGridPatternDemo() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <InteractiveGridPattern\n        className={cn(\n          \"[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]\"\n        )}\n        width={20}\n        height={20}\n        squares={[80, 80]}\n        squaresClassName=\"hover:fill-blue-500\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

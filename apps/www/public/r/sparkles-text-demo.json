@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sparkles-text-demo",
-  "type": "registry:example",
   "title": "Sparkles Text Demo",
   "description": "Example showing text with animated sparkle effects.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { SparklesText } from \"@/registry/magicui/sparkles-text\"\n\nexport default function SparklesTextDemo() {\n  return <SparklesText>Magic UI</SparklesText>\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "shine-border",
-  "type": "registry:ui",
   "title": "Shine Border",
   "description": "Shine border is an animated background border effect.",
   "files": [
@@ -28,5 +27,6 @@
         "background-position": "0% 0%"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

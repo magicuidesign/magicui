@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "floating-3d-particles-demo",
-  "type": "registry:example",
   "title": "Floating 3D Particles Demo",
   "description": "Example showing a floating 3D particle field behind hero content.",
   "dependencies": [
@@ -17,5 +16,6 @@
       "content": "\"use client\"\n\nimport { ArrowRight } from \"lucide-react\"\nimport { useTheme } from \"next-themes\"\n\nimport { Floating3DParticles } from \"@/registry/magicui/floating-3d-particles\"\n\nexport default function Component() {\n  const { resolvedTheme } = useTheme()\n  const color = resolvedTheme === \"dark\" ? \"#ffffff\" : \"#000000\"\n\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border\">\n      <Floating3DParticles color={color} />\n\n      <div className=\"relative z-10 flex flex-col items-center gap-6 px-6 text-center\">\n        <h2 className=\"text-3xl font-bold tracking-tight md:text-5xl\">\n          Build something magical\n        </h2>\n        <p className=\"text-muted-foreground max-w-xl text-base md:text-lg\">\n          A pseudo-3D particle background that stays behind your content with\n          continuous rotation and buoyant drift.\n        </p>\n        <button\n          type=\"button\"\n          className=\"bg-foreground text-background inline-flex h-11 items-center gap-2 rounded-lg px-6 font-medium no-underline transition-opacity hover:opacity-90\"\n        >\n          Get Started\n          <ArrowRight className=\"size-4\" />\n        </button>\n      </div>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

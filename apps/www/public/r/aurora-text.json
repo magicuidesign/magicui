@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "aurora-text",
-  "type": "registry:ui",
   "title": "Aurora Text",
   "description": "A beautiful aurora text effect",
   "files": [
@@ -39,5 +38,6 @@
         "transform": "rotate(-5deg) scale(0.9)"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

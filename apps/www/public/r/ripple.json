@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ripple",
-  "type": "registry:ui",
   "title": "Ripple",
   "description": "An animated ripple effect typically used behind elements to emphasize them.",
   "files": [
@@ -25,5 +24,6 @@
         "transform": "translate(-50%, -50%) scale(0.9)"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

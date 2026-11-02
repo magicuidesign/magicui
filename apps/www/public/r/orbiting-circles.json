@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "orbiting-circles",
-  "type": "registry:ui",
   "title": "Orbiting Circles",
   "description": "A collection of circles which move in orbit along a circular path",
   "files": [
@@ -25,5 +24,6 @@
         "transform": "rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

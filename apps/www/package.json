@@ -94,7 +94,7 @@
     "remark-code-import": "^1.2.0",
     "remark-gfm": "^4.0.1",
     "rimraf": "^6.0.1",
-    "shadcn": "3.3.1",
+    "shadcn": "4.23.0",
     "shiki": "^2.5.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tweet-card-demo",
-  "type": "registry:example",
   "title": "Tweet Card Demo",
   "description": "Example showing a tweet card with author info.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "content": "import { ClientTweetCard } from \"@/registry/magicui/client-tweet-card\"\n\n/**\n * <TweetCard /> (Server Side Only)\n * <ClientTweetCard /> (Client Side Only)\n */\nexport default function TweetDemo() {\n  return <ClientTweetCard id=\"1668408059125702661\" />\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

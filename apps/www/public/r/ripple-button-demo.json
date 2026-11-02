@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ripple-button-demo",
-  "type": "registry:example",
   "title": "Ripple Button Demo",
   "description": "Example showing an animated button with ripple effect.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { RippleButton } from \"@/registry/magicui/ripple-button\"\n\nexport default function RippleButtonDemo() {\n  return <RippleButton rippleColor=\"#ADD8E6\">Click me</RippleButton>\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

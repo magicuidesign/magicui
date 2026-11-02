@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "scroll-progress-demo",
-  "type": "registry:example",
   "title": "Scroll Progress Demo",
   "description": "Example showing animated scroll progress for your pages.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { ScrollProgress } from \"@/registry/magicui/scroll-progress\"\n\nexport default function ScrollProgressDemo() {\n  return (\n    <div className=\"z-10 rounded-lg p-4\">\n      <ScrollProgress className=\"top-[65px]\" />\n      <h2 className=\"pb-4 font-bold\">\n        Note: The scroll progress is shown below the navbar of the page.\n      </h2>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

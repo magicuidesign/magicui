@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "meteors",
-  "type": "registry:ui",
   "title": "Meteors",
   "description": "A meteor shower effect.",
   "files": [
@@ -30,5 +29,6 @@
         "opacity": "0"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

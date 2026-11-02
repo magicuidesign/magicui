@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "line-shadow-text",
-  "type": "registry:ui",
   "title": "Line Shadow Text",
   "description": "A text component with a moving line shadow.",
   "dependencies": [
@@ -28,5 +27,6 @@
         "background-position": "100% -100%"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

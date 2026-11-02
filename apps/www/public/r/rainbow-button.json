@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "rainbow-button",
-  "type": "registry:ui",
   "title": "Rainbow Button",
   "description": "An animated button with a rainbow effect.",
   "files": [
@@ -39,5 +38,6 @@
         "background-position": "200%"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

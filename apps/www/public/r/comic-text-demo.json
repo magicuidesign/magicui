@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "comic-text-demo",
-  "type": "registry:example",
   "title": "Comic Text Demo",
   "description": "Example showing comic text animation.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { ComicText } from \"@/registry/magicui/comic-text\"\n\nexport default function ComicTextDemo() {\n  return (\n    <div className=\"space-y-8 text-center\">\n      <ComicText fontSize={5}>BOOM!</ComicText>\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

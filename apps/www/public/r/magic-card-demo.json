@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "magic-card-demo",
-  "type": "registry:example",
   "title": "Magic Card Demo",
   "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\n\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\"\nimport { Input } from \"@/components/ui/input\"\nimport { Label } from \"@/components/ui/label\"\nimport { MagicCard } from \"@/registry/magicui/magic-card\"\n\nexport default function MagicCardDemo() {\n  const { theme } = useTheme()\n  return (\n    <Card className=\"w-full max-w-sm border-none p-0 shadow-none\">\n      <MagicCard\n        gradientColor={theme === \"dark\" ? \"#262626\" : \"#D9D9D955\"}\n        className=\"p-0\"\n      >\n        <CardHeader className=\"border-border border-b p-4 [.border-b]:pb-4\">\n          <CardTitle>Login</CardTitle>\n          <CardDescription>\n            Enter your credentials to access your account\n          </CardDescription>\n        </CardHeader>\n        <CardContent className=\"p-4\">\n          <form>\n            <div className=\"grid gap-4\">\n              <div className=\"grid gap-2\">\n                <Label htmlFor=\"email\">Email</Label>\n                <Input id=\"email\" type=\"email\" placeholder=\"name@example.com\" />\n              </div>\n              <div className=\"grid gap-2\">\n                <Label htmlFor=\"password\">Password</Label>\n                <Input id=\"password\" type=\"password\" />\n              </div>\n            </div>\n          </form>\n        </CardContent>\n        <CardFooter className=\"border-border border-t p-4 [.border-t]:pt-4\">\n          <Button className=\"w-full\">Sign In</Button>\n        </CardFooter>\n      </MagicCard>\n    </Card>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

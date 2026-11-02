@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "marquee",
-  "type": "registry:ui",
   "title": "Marquee",
   "description": "An infinite scrolling component that can be used to display text, images, or videos.",
   "files": [
@@ -34,5 +33,6 @@
         "transform": "translateY(calc(-100% - var(--gap)))"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

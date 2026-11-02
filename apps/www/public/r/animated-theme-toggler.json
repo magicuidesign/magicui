@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-theme-toggler",
-  "type": "registry:ui",
   "title": "Theme Toggler",
   "description": "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
   "dependencies": [
@@ -19,5 +18,6 @@
       "animation": "none",
       "mix-blend-mode": "normal"
     }
-  }
+  },
+  "type": "registry:ui"
 }
