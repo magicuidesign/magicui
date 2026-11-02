@@ -22,11 +22,9 @@ const formatCompactCount = (value: number) => {
 
 const getStarsCount = async () => {
   try {
+    // No cache options: fetched at build time, refreshed on each deploy.
     const data = await fetch(
-      "https://api.github.com/repos/magicuidesign/magicui",
-      {
-        next: { revalidate: 86400 }, // Cache for 1 day (86400 seconds)
-      }
+      "https://api.github.com/repos/magicuidesign/magicui"
     )
     if (!data.ok) {
       return 0

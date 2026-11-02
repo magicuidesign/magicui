@@ -23,11 +23,9 @@ const formatCompactCount = (value: number) => {
 
 const getActiveMembersCount = async () => {
   try {
+    // No cache options: fetched at build time, refreshed on each deploy.
     const data = await fetch(
-      "https://discord.com/api/guilds/1151315619246002176/widget.json",
-      {
-        next: { revalidate: 3600 }, // Cache for 1 hour (3600 seconds)
-      }
+      "https://discord.com/api/guilds/1151315619246002176/widget.json"
     )
     if (!data.ok) {
       return 0
