@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-gradient-text",
-  "type": "registry:ui",
   "title": "Animated Gradient Text",
   "description": "An animated gradient background which transitions between colors for text.",
   "files": [
@@ -22,5 +21,6 @@
         "background-position": "var(--bg-size, 300%) 0"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

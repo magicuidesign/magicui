@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "grid-pattern-dashed",
-  "type": "registry:example",
   "title": "Grid Pattern Dashed",
   "description": "Example showing a dashed grid pattern.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport { GridPattern } from \"@/registry/magicui/grid-pattern\"\n\nexport default function GridPatternDashed() {\n  return (\n    <div className=\"bg-background relative flex size-full items-center justify-center overflow-hidden rounded-lg border p-20\">\n      <GridPattern\n        width={30}\n        height={30}\n        x={-1}\n        y={-1}\n        strokeDasharray={\"4 2\"}\n        className={cn(\n          \"[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]\"\n        )}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

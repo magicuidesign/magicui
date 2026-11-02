@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "safari-demo-2",
-  "type": "registry:example",
   "title": "Safari Demo 2",
   "description": "Second example showing a Safari browser mockup.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { Safari } from \"@/registry/magicui/safari\"\n\nexport default function SafariDemo() {\n  return (\n    <div className=\"w-[1203px]\">\n      <Safari\n        url=\"magicui.design\"\n        imageSrc=\"https://placehold.co/1200x750?text=Hello+World\"\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

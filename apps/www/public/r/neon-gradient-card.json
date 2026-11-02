@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "neon-gradient-card",
-  "type": "registry:ui",
   "title": "Neon Gradient Card",
   "description": "A beautiful neon card effect",
   "files": [
@@ -25,5 +24,6 @@
         "background-position": "bottom center"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

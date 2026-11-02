@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "striped-pattern-right",
-  "type": "registry:example",
   "title": "Striped Pattern (Right)",
   "description": "Example showing a background striped pattern slanting to the right using SVG.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:example",
       "target": "components/striped-pattern-right.tsx"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

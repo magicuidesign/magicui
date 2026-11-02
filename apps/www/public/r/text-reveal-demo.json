@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-reveal-demo",
-  "type": "registry:example",
   "title": "Text Reveal Demo",
   "description": "Example showing text that fades in on scroll.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { TextReveal } from \"@/registry/magicui/text-reveal\"\n\nexport default function TextRevealDemo() {\n  return <TextReveal>Magic UI will change the way you design.</TextReveal>\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

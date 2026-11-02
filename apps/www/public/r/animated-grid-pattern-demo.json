@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-grid-pattern-demo",
-  "type": "registry:example",
   "title": "Animated Grid Pattern Demo",
   "description": "Example showing an animated grid pattern background.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { cn } from \"@/lib/utils\"\nimport { AnimatedGridPattern } from \"@/registry/magicui/animated-grid-pattern\"\n\nexport default function AnimatedGridPatternDemo() {\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border p-20\">\n      <AnimatedGridPattern\n        numSquares={30}\n        maxOpacity={0.1}\n        duration={3}\n        repeatDelay={1}\n        className={cn(\n          \"mask-[radial-gradient(500px_circle_at_center,white,transparent)]\",\n          \"inset-x-0 inset-y-[-30%] h-[200%] skew-y-12\"\n        )}\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

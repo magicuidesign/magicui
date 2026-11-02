@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ripple-button",
-  "type": "registry:ui",
   "title": "Ripple Button",
   "description": "An animated button with ripple useful for user engagement.",
   "files": [
@@ -26,5 +25,6 @@
         "opacity": "0"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pulsating-button",
-  "type": "registry:ui",
   "title": "Pulsating Button",
   "description": "An animated pulsating button useful for capturing attention of users.",
   "files": [
@@ -34,5 +33,6 @@
         "boxShadow": "0 0 0 var(--distance) oklch(from var(--pulse-color, var(--bg)) l c h / 0)"
       }
     }
-  }
+  },
+  "type": "registry:ui"
 }

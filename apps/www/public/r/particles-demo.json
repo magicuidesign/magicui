@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "particles-demo",
-  "type": "registry:example",
   "title": "Particles Demo",
   "description": "Example showing interactive particle effects.",
   "dependencies": [
@@ -16,5 +15,6 @@
       "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { useTheme } from \"next-themes\"\n\nimport { Particles } from \"@/registry/magicui/particles\"\n\nexport default function ParticlesDemo() {\n  const { resolvedTheme } = useTheme()\n  const [color, setColor] = useState(\"#ffffff\")\n\n  useEffect(() => {\n    setColor(resolvedTheme === \"dark\" ? \"#ffffff\" : \"#000000\")\n  }, [resolvedTheme])\n\n  return (\n    <div className=\"bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <span className=\"pointer-events-none z-10 text-center text-8xl leading-none font-semibold whitespace-pre-wrap\">\n        Particles\n      </span>\n      <Particles\n        className=\"absolute inset-0 z-0\"\n        quantity={100}\n        ease={80}\n        color={color}\n        refresh\n      />\n    </div>\n  )\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

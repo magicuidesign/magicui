@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "striped-pattern-demo",
-  "type": "registry:example",
   "title": "Striped Pattern Demo",
   "description": "Example showing a background striped pattern made with SVGs.",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:example",
       "target": "components/striped-pattern-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

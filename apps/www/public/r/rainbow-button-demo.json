@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "rainbow-button-demo",
-  "type": "registry:example",
   "title": "Rainbow Button Demo",
   "description": "Example showing an animated button with rainbow effect.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { RainbowButton } from \"@/registry/magicui/rainbow-button\"\n\nexport default function RainbowButtonDemo() {\n  return <RainbowButton>Get Unlimited Access</RainbowButton>\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

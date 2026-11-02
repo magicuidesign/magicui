@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "striped-pattern",
-  "type": "registry:ui",
   "title": "Striped Pattern",
   "description": "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:ui",
       "target": "components/magicui/striped-pattern.tsx"
     }
-  ]
+  ],
+  "type": "registry:ui"
 }

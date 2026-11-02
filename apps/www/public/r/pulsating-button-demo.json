@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pulsating-button-demo",
-  "type": "registry:example",
   "title": "Pulsating Button Demo",
   "description": "Example showing an animated pulsating button.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { PulsatingButton } from \"@/registry/magicui/pulsating-button\"\n\nexport default function PulsatingButtonDemo() {\n  return <PulsatingButton>Join Affiliate Program</PulsatingButton>\n}\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }

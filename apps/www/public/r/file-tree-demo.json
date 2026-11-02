@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "file-tree-demo",
-  "type": "registry:example",
   "title": "File Tree Demo",
   "description": "Example showing a component that displays folder and file structure.",
   "registryDependencies": [
@@ -13,5 +12,6 @@
       "content": "import { Tree } from \"@/registry/magicui/file-tree\"\nimport type { TreeViewElement } from \"@/registry/magicui/file-tree\"\n\nexport default function FileTreeDemo() {\n  return (\n    <div className=\"bg-background relative flex h-[300px] w-full max-w-sm flex-col items-center justify-center overflow-hidden rounded-lg border\">\n      <Tree\n        className=\"bg-background overflow-hidden rounded-md p-2\"\n        initialSelectedId=\"button\"\n        initialExpandedItems={[\"src\", \"app\", \"components\", \"ui\", \"lib\"]}\n        elements={ELEMENTS}\n      />\n    </div>\n  )\n}\n\nconst ELEMENTS: TreeViewElement[] = [\n  {\n    id: \"src\",\n    type: \"folder\",\n    isSelectable: true,\n    name: \"src\",\n    children: [\n      {\n        id: \"lib\",\n        type: \"folder\",\n        isSelectable: true,\n        name: \"lib\",\n        children: [\n          {\n            id: \"utils\",\n            isSelectable: true,\n            name: \"utils.ts\",\n          },\n        ],\n      },\n      {\n        id: \"app\",\n        type: \"folder\",\n        isSelectable: true,\n        name: \"app\",\n        children: [\n          {\n            id: \"page\",\n            isSelectable: true,\n            name: \"page.tsx\",\n          },\n          {\n            id: \"layout\",\n            isSelectable: true,\n            name: \"layout.tsx\",\n          },\n        ],\n      },\n      {\n        id: \"components\",\n        type: \"folder\",\n        isSelectable: true,\n        name: \"components\",\n        children: [\n          {\n            id: \"header\",\n            isSelectable: true,\n            name: \"header.tsx\",\n          },\n          {\n            id: \"ui\",\n            type: \"folder\",\n            isSelectable: true,\n            name: \"ui\",\n            children: [\n              {\n                id: \"button\",\n                isSelectable: true,\n                name: \"button.tsx\",\n              },\n            ],\n          },\n          {\n            id: \"footer\",\n            isSelectable: true,\n            name: \"footer.tsx\",\n          },\n        ],\n      },\n    ],\n  },\n]\n",
       "type": "registry:example"
     }
-  ]
+  ],
+  "type": "registry:example"
 }
