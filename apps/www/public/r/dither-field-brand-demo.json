@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-field-brand-demo",
+  "title": "Dither Field Brand Demo",
+  "description": "A brand-colour pair: an amber glow and a cyan aurora with three-stop colour ramps.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-field-brand-demo.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nexport default function DitherFieldBrandDemo() {\n  return (\n    <div className=\"grid w-full gap-4 md:grid-cols-2\">\n      <DitherField\n        pattern=\"glow\"\n        color={[\"#78350f\", \"#f59e0b\", \"#fef3c7\"]}\n        className=\"flex h-80 items-end rounded-xl border bg-[#140b02] p-6 text-amber-50\"\n      >\n        <p className=\"text-sm font-medium\">Sodium</p>\n      </DitherField>\n      <DitherField\n        pattern=\"aurora\"\n        color={[\"#164e63\", \"#06b6d4\", \"#cffafe\"]}\n        intensity={1.1}\n        className=\"flex h-80 items-end rounded-xl border bg-[#020f14] p-6 text-cyan-50\"\n      >\n        <p className=\"text-sm font-medium\">Glacier</p>\n      </DitherField>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

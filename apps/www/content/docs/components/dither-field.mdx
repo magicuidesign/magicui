@@ -1,0 +1,156 @@
+---
+title: Dither Field
+date: 2026-11-01
+description: An animated Bayer ordered-dithering background. A soft light pattern, image or video becomes crisp square dots coloured from a three-stop ramp.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="dither-field-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/dither-field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dither-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Patterns
+
+<ComponentPreview name="dither-field-patterns-demo" />
+
+### Card Background
+
+<ComponentPreview name="dither-field-card-demo" />
+
+### Text Mask
+
+<ComponentPreview name="dither-field-text-demo" />
+
+### Image
+
+<ComponentPreview name="dither-field-image-demo" />
+
+### Pointer
+
+<ComponentPreview name="dither-field-pointer-demo" />
+
+### Monochrome
+
+<ComponentPreview name="dither-field-monochrome-demo" />
+
+### Brand Colours
+
+<ComponentPreview name="dither-field-brand-demo" />
+
+## Usage
+
+```tsx showLineNumbers
+import { DitherField } from "@/components/ui/dither-field"
+```
+
+`DitherField` is a `div` that fills with dots. Give it a size, and put your content inside it as children. The dots stay behind the children and never block clicks.
+
+```tsx showLineNumbers
+<DitherField className="h-[500px] rounded-lg border">
+  <h1>Your content</h1>
+</DitherField>
+```
+
+With no `color`, the dots use `currentColor`, so they follow your text colour and your theme. To use it as a layer inside another element, add `absolute inset-0`:
+
+```tsx showLineNumbers
+<section className="relative">
+  <DitherField className="absolute inset-0" pattern="glow" />…
+</section>
+```
+
+### Colours
+
+Pass one colour or a `[low, mid, high]` ramp. Dim dots take the `low` colour and bright dots take the `high` colour. One colour fades from 35% to full opacity. Any CSS colour works, including `var(--primary)` and `oklch()`, and the field updates when your theme class changes.
+
+```tsx showLineNumbers
+<DitherField color="var(--primary)" />
+<DitherField color={["#2e1065", "#8b5cf6", "#ede9fe"]} />
+```
+
+To use different ramps in light and dark mode, set CSS variables with Tailwind classes:
+
+```tsx showLineNumbers
+<DitherField
+  color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
+  className="[--dither-high:#4c1d95] [--dither-low:#c4b5fd] [--dither-mid:#7c3aed] dark:[--dither-high:#ede9fe] dark:[--dither-low:#2e1065] dark:[--dither-mid:#8b5cf6]"
+/>
+```
+
+### Image and video
+
+Set `src` to dither an image or a video instead of a pattern. Bright areas get more dots. URLs that end in `.mp4`, `.webm`, `.ogv`, `.mov` or `.m4v` play as muted, looping video. Files on another domain must send CORS headers.
+
+```tsx showLineNumbers
+<DitherField src="/photo.jpg" dotSize={2} />
+<DitherField src="/loop.mp4" interactive={false} />
+```
+
+### Add a pattern
+
+Each pattern is a short GLSL function in the `PATTERNS` table at the top of the file. Add an entry and the `pattern` prop accepts its name. The function gets the position `p` and the size in CSS pixels, and the time `t` in seconds. It returns the light level from 0 to 1. The helpers `noise(p)` and `fbm(p)` are available.
+
+```ts showLineNumbers
+const PATTERNS = {
+  // ...
+  stripes: `
+    return 0.5 + 0.5 * sin(p.x / 24.0 + t);
+  `,
+}
+```
+
+### Performance and accessibility
+
+- The field renders at 60% resolution with a bloom, and draws at most `fps` frames per second.
+- The WebGL context exists only while the field is near the viewport, so a page can hold many fields.
+- Animation stops when the tab is hidden. With `prefers-reduced-motion: reduce`, the field draws one still frame.
+- Without WebGL2, the field shows a static CSS dot pattern in the `mid` colour.
+- The dots are decorative and hidden from screen readers. Keep text contrast high when you place content on a bright field.
+
+## Props
+
+| Prop          | Type                                                     | Default          | Description                                                                         |
+| ------------- | -------------------------------------------------------- | ---------------- | ----------------------------------------------------------------------------------- |
+| `pattern`     | `"horizon" \| "glow" \| "aurora" \| "waves" \| "clouds"` | `"horizon"`      | The light pattern that the dots follow.                                             |
+| `src`         | `string`                                                 | `-`              | An image or video URL to dither instead of the pattern.                             |
+| `color`       | `string \| [string, string, string]`                     | `"currentColor"` | One CSS colour, or a `[low, mid, high]` ramp.                                       |
+| `dotSize`     | `number`                                                 | `1`              | Size of one dot in CSS pixels. Dots snap to whole device pixels.                    |
+| `intensity`   | `number`                                                 | `0.75`           | Brightness of the field. `0` shows no dots; values above `1` fill more of the area. |
+| `speed`       | `number`                                                 | `1`              | Animation speed. `0` holds the pattern still; the pointer glow still moves.         |
+| `fps`         | `number`                                                 | `30`             | Maximum frames per second.                                                          |
+| `interactive` | `boolean`                                                | `true`           | Brighten the field around the mouse or pen.                                         |
+| `className`   | `string`                                                 | `-`              | Classes for the root `div`. Set its size here.                                      |
+| `children`    | `ReactNode`                                              | `-`              | Content that renders above the dots.                                                |

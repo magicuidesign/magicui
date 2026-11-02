@@ -568,6 +568,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Dither Field",
+          href: `/docs/components/dither-field`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
