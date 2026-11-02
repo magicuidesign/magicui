@@ -98,6 +98,41 @@ This is useful for Magic UI because you can now give your AI-assisted IDE direct
 
 </Tabs>
 
+## Use the shadcn MCP server
+
+You can also use the [shadcn MCP server](https://ui.shadcn.com/docs/mcp) with the Magic UI registry.
+
+<Steps>
+
+<Step>Add the `@magicui` registry to your `components.json`:</Step>
+
+```json
+{
+  "registries": {
+    "@magicui": "https://magicui.design/r/{name}.json"
+  }
+}
+```
+
+<Step>Add the following to your MCP config file (Claude Code, Cursor):</Step>
+
+For other clients, see the [shadcn MCP configuration](https://ui.shadcn.com/docs/mcp#configuration).
+
+```json
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
+    }
+  }
+}
+```
+
+<Step>Restart your IDE</Step>
+
+</Steps>
+
 ## Usage
 
 You can now ask your IDE to use any Magic UI component. Here are some examples:
