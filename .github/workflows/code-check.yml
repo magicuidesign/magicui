@@ -247,6 +247,7 @@ jobs:
       - name: Verify registry artifacts are committed
         run: |
           CHANGED_FILES="$(git status --porcelain --untracked-files=all -- \
+            registry.json \
             apps/www/registry.json \
             apps/www/registry/__index__.tsx \
             apps/www/public/registry.json \
