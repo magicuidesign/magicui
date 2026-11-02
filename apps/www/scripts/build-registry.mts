@@ -111,6 +111,14 @@ async function buildRegistryJsonFile(registry: Registry) {
     path.join(process.cwd(), "../www/public/registry.json"),
     { recursive: true }
   )
+
+  // 4. Copy the registry.json to the repo root. External tools fetch it by
+  // raw GitHub URL.
+  await fs.cp(
+    path.join(process.cwd(), "registry.json"),
+    path.join(process.cwd(), "../../registry.json"),
+    { recursive: true }
+  )
 }
 
 type RegistryItem = Registry["items"][number]

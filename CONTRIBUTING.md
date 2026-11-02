@@ -241,7 +241,7 @@ Make sure to add any necessary dependencies, tailwind configurations, or other p
 pnpm build:registry
 ```
 
-This regenerates the registry artifacts (`registry.json`, `registry/__index__.tsx`, `public/registry.json`, `public/r`, `public/llms.txt`, `public/llms-full.txt`). **Commit the generated files together with your component** — CI verifies they are up to date and fails otherwise.
+This regenerates the registry artifacts (the root `registry.json`, `apps/www/registry.json`, `registry/__index__.tsx`, `public/registry.json`, `public/r`, `public/llms.txt`, `public/llms-full.txt`). **Commit the generated files together with your component** — CI verifies they are up to date and fails otherwise.
 
 ## Adding to the showcase
 

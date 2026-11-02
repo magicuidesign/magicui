@@ -8,7 +8,7 @@ pre-commit:
       # never `git add --all`. CI's registry-drift job checks these same paths.
       run: >
         pnpm --filter=www build:registry &&
-        git add apps/www/registry.json apps/www/registry/__index__.tsx
+        git add registry.json apps/www/registry.json apps/www/registry/__index__.tsx
         apps/www/public/registry.json apps/www/public/r
         apps/www/public/llms.txt apps/www/public/llms-full.txt
     lint:fix:
