@@ -6358,7 +6358,7 @@ export default function DiaTextRevealDemo4() {
 
 ===== COMPONENT: dither-field =====
 Title: Dither Field
-Description: An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one colour or a three-stop ramp, and brighten under the pointer.
+Description: An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.
 
 --- file: magicui/dither-field.tsx ---
 "use client"
@@ -7178,13 +7178,13 @@ export default function DitherFieldDemo() {
     <DitherField
       pattern="horizon"
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
-      className="bg-background flex h-[420px] w-full flex-col items-center justify-center gap-4 rounded-lg border px-4 pb-28 text-center [--dither-high:#4c1d95] [--dither-low:#c4b5fd] [--dither-mid:#7c3aed] md:h-[500px] md:gap-6 md:px-6 md:pb-24 dark:[--dither-high:#ede9fe] dark:[--dither-low:#2e1065] dark:[--dither-mid:#8b5cf6]"
+      className="bg-background flex h-[420px] w-full flex-col items-center justify-center gap-4 rounded-lg border px-4 pb-28 text-center select-none [--dither-high:#4c1d95] [--dither-low:#c4b5fd] [--dither-mid:#7c3aed] md:h-[500px] md:gap-6 md:px-6 md:pb-24 dark:[--dither-high:#ede9fe] dark:[--dither-low:#2e1065] dark:[--dither-mid:#8b5cf6]"
     >
       <h1 className="max-w-xl text-3xl font-semibold tracking-tighter text-balance sm:text-4xl md:text-6xl">
         Light, rendered one dot at a time
       </h1>
       <p className="text-muted-foreground max-w-md text-sm text-balance md:text-base">
-        An ordered-dither field that follows your theme, your brand colours and
+        An ordered-dither field that follows your theme, your brand colors and
         your pointer.
       </p>
       <div className="flex flex-wrap justify-center gap-2 md:gap-3">
@@ -7242,7 +7242,7 @@ export default function DitherFieldCardDemo() {
           pattern={card.pattern}
           color="var(--muted-foreground)"
           intensity={0.6}
-          className={`bg-card flex h-44 flex-col justify-end rounded-xl border p-5 md:h-56 md:p-6 ${card.className}`}
+          className={`bg-card flex h-44 flex-col justify-end rounded-xl border p-5 select-none md:h-56 md:p-6 ${card.className}`}
         >
           {/* Fades the dots out behind the text so it stays readable. */}
           <div className="from-card absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t to-transparent" />
@@ -7314,7 +7314,7 @@ export default function DitherFieldPointerDemo() {
       color="var(--foreground)"
       dotSize={2}
       intensity={0.3}
-      className="bg-background flex h-72 w-full items-end justify-center rounded-lg border p-4 md:h-[400px] md:p-6"
+      className="bg-background flex h-72 w-full items-end justify-center rounded-lg border p-4 select-none md:h-[400px] md:p-6"
     >
       <p className="bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-sm backdrop-blur">
         Hover, or touch and hold
@@ -7336,14 +7336,14 @@ export default function DitherFieldMonochromeDemo() {
       <DitherField
         pattern="horizon"
         color="#0a0a0a"
-        className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 md:h-80 md:p-6"
+        className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Ink on paper</p>
       </DitherField>
       <DitherField
         pattern="horizon"
         color="#fafafa"
-        className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white md:h-80 md:p-6"
+        className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Chalk on slate</p>
       </DitherField>
@@ -7364,7 +7364,7 @@ export default function DitherFieldBrandDemo() {
       <DitherField
         pattern="glow"
         color={["#78350f", "#f59e0b", "#fef3c7"]}
-        className="flex h-56 items-end rounded-xl border bg-[#140b02] p-4 text-amber-50 md:h-80 md:p-6"
+        className="flex h-56 items-end rounded-xl border bg-[#140b02] p-4 text-amber-50 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Sodium</p>
       </DitherField>
@@ -7372,10 +7372,73 @@ export default function DitherFieldBrandDemo() {
         pattern="aurora"
         color={["#164e63", "#06b6d4", "#cffafe"]}
         intensity={1.1}
-        className="flex h-56 items-end rounded-xl border bg-[#020f14] p-4 text-cyan-50 md:h-80 md:p-6"
+        className="flex h-56 items-end rounded-xl border bg-[#020f14] p-4 text-cyan-50 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Glacier</p>
       </DitherField>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: dither-field-colors-demo =====
+Title: Dither Field Colors Demo
+
+--- file: example/dither-field-colors-demo.tsx ---
+import {
+  DitherField,
+  type DitherColor,
+  type DitherPattern,
+} from "@/registry/magicui/dither-field"
+
+const tiles: {
+  label: string
+  pattern: DitherPattern
+  color: DitherColor
+  intensity?: number
+  className: string
+}[] = [
+  {
+    label: "Ink on paper",
+    pattern: "horizon",
+    color: "#0a0a0a",
+    className: "bg-white text-neutral-950",
+  },
+  {
+    label: "Chalk on slate",
+    pattern: "horizon",
+    color: "#fafafa",
+    className: "bg-neutral-950 text-white",
+  },
+  {
+    label: "Sodium",
+    pattern: "glow",
+    color: ["#78350f", "#f59e0b", "#fef3c7"],
+    className: "bg-[#140b02] text-amber-50",
+  },
+  {
+    label: "Glacier",
+    pattern: "aurora",
+    color: ["#164e63", "#06b6d4", "#cffafe"],
+    intensity: 1.1,
+    className: "bg-[#020f14] text-cyan-50",
+  },
+]
+
+export default function DitherFieldColorsDemo() {
+  return (
+    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+      {tiles.map((tile) => (
+        <DitherField
+          key={tile.label}
+          pattern={tile.pattern}
+          color={tile.color}
+          intensity={tile.intensity}
+          className={`flex h-48 items-start rounded-xl border p-4 select-none md:h-64 ${tile.className}`}
+        >
+          <p className="text-sm font-medium">{tile.label}</p>
+        </DitherField>
+      ))}
     </div>
   )
 }
@@ -7391,12 +7454,12 @@ const patterns = ["horizon", "glow", "aurora", "waves", "clouds"] as const
 
 export default function DitherFieldPatternsDemo() {
   return (
-    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-3">
+    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-5">
       {patterns.map((pattern) => (
         <DitherField
           key={pattern}
           pattern={pattern}
-          className="bg-background flex h-32 items-end rounded-lg border p-3 md:h-40"
+          className="bg-background flex h-32 items-end rounded-lg border p-3 select-none last:col-span-2 md:h-40 md:last:col-span-1"
         >
           <code className="bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur">
             {pattern}

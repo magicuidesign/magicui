@@ -2280,7 +2280,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Demo",
     description:
-      "A hero section on a violet dither horizon. CSS variables switch its colours between the light and dark themes.",
+      "A hero section on a violet dither horizon. CSS variables switch its colors between the light and dark themes.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2294,7 +2294,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Card Demo",
     description:
-      "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground colour.",
+      "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground color.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2322,7 +2322,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Image Demo",
     description:
-      "A landscape photo dithered into 2px dots with a warm colour ramp.",
+      "A landscape photo dithered into 2px dots with a warm color ramp.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2364,7 +2364,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Field Brand Demo",
     description:
-      "A brand-colour pair: an amber glow and a cyan aurora with three-stop colour ramps.",
+      "A brand-color pair: an amber glow and a cyan aurora with three-stop color ramps.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {
@@ -2374,11 +2374,25 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "dither-field-colors-demo",
+    type: "registry:example",
+    title: "Dither Field Colors Demo",
+    description:
+      "Four color treatments in one grid: black on white, white on black, an amber glow and a cyan aurora.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-colors-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "dither-field-patterns-demo",
     type: "registry:example",
     title: "Dither Field Patterns Demo",
     description:
-      "Every built-in pattern side by side in the current theme colour.",
+      "Every built-in pattern side by side in the current theme color.",
     registryDependencies: ["@magicui/dither-field"],
     files: [
       {

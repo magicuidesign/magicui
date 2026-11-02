@@ -1343,7 +1343,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field": {
     name: "dither-field",
-    description: "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one colour or a three-stop ramp, and brighten under the pointer.",
+    description: "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -4254,7 +4254,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-demo": {
     name: "dither-field-demo",
-    description: "A hero section on a violet dither horizon. CSS variables switch its colours between the light and dark themes.",
+    description: "A hero section on a violet dither horizon. CSS variables switch its colors between the light and dark themes.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4271,7 +4271,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-card-demo": {
     name: "dither-field-card-demo",
-    description: "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground colour.",
+    description: "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground color.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4305,7 +4305,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-image-demo": {
     name: "dither-field-image-demo",
-    description: "A landscape photo dithered into 2px dots with a warm colour ramp.",
+    description: "A landscape photo dithered into 2px dots with a warm color ramp.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4356,7 +4356,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field-brand-demo": {
     name: "dither-field-brand-demo",
-    description: "A brand-colour pair: an amber glow and a cyan aurora with three-stop colour ramps.",
+    description: "A brand-color pair: an amber glow and a cyan aurora with three-stop color ramps.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
@@ -4371,9 +4371,26 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "dither-field-colors-demo": {
+    name: "dither-field-colors-demo",
+    description: "Four color treatments in one grid: black on white, white on black, an amber glow and a cyan aurora.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-field-colors-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-field-colors-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "dither-field-patterns-demo": {
     name: "dither-field-patterns-demo",
-    description: "Every built-in pattern side by side in the current theme colour.",
+    description: "Every built-in pattern side by side in the current theme color.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither-field"],
     files: [{
