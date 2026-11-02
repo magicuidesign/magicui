@@ -2275,4 +2275,130 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dither-field-demo",
+    type: "registry:example",
+    title: "Dither Field Demo",
+    description:
+      "A hero section on a violet dither horizon. CSS variables switch its colors between the light and dark themes.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-card-demo",
+    type: "registry:example",
+    title: "Dither Field Card Demo",
+    description:
+      "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground color.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-card-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-text-demo",
+    type: "registry:example",
+    title: "Dither Field Text Demo",
+    description:
+      "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-text-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-image-demo",
+    type: "registry:example",
+    title: "Dither Field Image Demo",
+    description:
+      "A landscape photo dithered into 2px dots with a warm color ramp.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-image-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-pointer-demo",
+    type: "registry:example",
+    title: "Dither Field Pointer Demo",
+    description:
+      "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-pointer-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-monochrome-demo",
+    type: "registry:example",
+    title: "Dither Field Monochrome Demo",
+    description:
+      "A monochrome pair: black dots on white and white dots on black.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-monochrome-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-brand-demo",
+    type: "registry:example",
+    title: "Dither Field Brand Demo",
+    description:
+      "A brand-color pair: an amber glow and a cyan aurora with three-stop color ramps.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-brand-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-colors-demo",
+    type: "registry:example",
+    title: "Dither Field Colors Demo",
+    description:
+      "Four color treatments in one grid: black on white, white on black, an amber glow and a cyan aurora.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-colors-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-field-patterns-demo",
+    type: "registry:example",
+    title: "Dither Field Patterns Demo",
+    description:
+      "Every built-in pattern side by side in the current theme color.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

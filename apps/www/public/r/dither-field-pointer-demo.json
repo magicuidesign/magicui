@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-field-pointer-demo",
+  "title": "Dither Field Pointer Demo",
+  "description": "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-field-pointer-demo.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nexport default function DitherFieldPointerDemo() {\n  return (\n    <DitherField\n      pattern=\"clouds\"\n      color=\"var(--foreground)\"\n      dotSize={2}\n      intensity={0.3}\n      className=\"bg-background flex h-72 w-full items-end justify-center rounded-lg border p-4 select-none md:h-[400px] md:p-6\"\n    >\n      <p className=\"bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-sm backdrop-blur\">\n        Hover, or touch and hold\n      </p>\n    </DitherField>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

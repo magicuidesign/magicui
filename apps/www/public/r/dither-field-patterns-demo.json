@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-field-patterns-demo",
+  "title": "Dither Field Patterns Demo",
+  "description": "Every built-in pattern side by side in the current theme color.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-field-patterns-demo.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nconst patterns = [\"horizon\", \"glow\", \"aurora\", \"waves\", \"clouds\"] as const\n\nexport default function DitherFieldPatternsDemo() {\n  return (\n    <div className=\"grid w-full grid-cols-2 gap-3 md:grid-cols-5\">\n      {patterns.map((pattern) => (\n        <DitherField\n          key={pattern}\n          pattern={pattern}\n          className=\"bg-background flex h-32 items-end rounded-lg border p-3 select-none last:col-span-2 md:h-40 md:last:col-span-1\"\n        >\n          <code className=\"bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur\">\n            {pattern}\n          </code>\n        </DitherField>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

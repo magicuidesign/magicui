@@ -1,0 +1,88 @@
+---
+title: Dither Field
+date: 2026-11-01
+description: An animated background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, in your theme colors.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="dither-field-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/dither-field
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dither-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { DitherField } from "@/components/ui/dither-field"
+```
+
+```tsx showLineNumbers
+<DitherField className="h-96">
+  <h1>Your content</h1>
+</DitherField>
+```
+
+## Props
+
+| Prop          | Type                 | Default          | Description                                                        |
+| ------------- | -------------------- | ---------------- | ------------------------------------------------------------------ |
+| `pattern`     | `string`             | `"horizon"`      | One of `horizon`, `glow`, `aurora`, `waves` or `clouds`            |
+| `src`         | `string`             | `-`              | Image or video URL to dither instead. Remote files must allow CORS |
+| `color`       | `string \| string[]` | `"currentColor"` | A CSS color, or a `[low, mid, high]` ramp from dim to bright dots  |
+| `dotSize`     | `number`             | `1`              | Size of one dot in CSS pixels                                      |
+| `intensity`   | `number`             | `0.75`           | Brightness of the field                                            |
+| `speed`       | `number`             | `1`              | Animation speed. `0` holds a still frame                           |
+| `fps`         | `number`             | `30`             | Maximum frames per second                                          |
+| `interactive` | `boolean`            | `true`           | Brighten the dots under the pointer                                |
+
+## Examples
+
+### Patterns
+
+<ComponentPreview name="dither-field-patterns-demo" />
+
+### Card Background
+
+<ComponentPreview name="dither-field-card-demo" />
+
+### Text Mask
+
+<ComponentPreview name="dither-field-text-demo" />
+
+### Image
+
+<ComponentPreview name="dither-field-image-demo" />
+
+### Colors
+
+<ComponentPreview name="dither-field-colors-demo" />

@@ -66,6 +66,7 @@ Keep CTA style consistent within one page section.
 - `dot-pattern`
 - `grid-pattern`
 - `light-rays`
+- `dither-field`
 
 Use these as supporting layers, not primary content.
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-field-text-demo",
+  "title": "Dither Field Text Demo",
+  "description": "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-field-text-demo.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nexport default function DitherFieldTextDemo() {\n  return (\n    <DitherField\n      pattern=\"clouds\"\n      color={[\"var(--dither-low)\", \"var(--dither-mid)\", \"var(--dither-high)\"]}\n      intensity={1.1}\n      className=\"h-64 w-full rounded-lg border bg-white [--dither-high:#164e63] [--dither-low:#67e8f9] [--dither-mid:#0891b2] md:h-[400px] dark:bg-black dark:[--dither-high:#ecfeff] dark:[--dither-low:#0e7490] dark:[--dither-mid:#22d3ee]\"\n    >\n      {/* The overlay hides the dots everywhere except inside the letters. */}\n      <div className=\"absolute inset-0 flex items-center justify-center bg-white mix-blend-screen select-none dark:bg-black dark:mix-blend-multiply\">\n        <span className=\"text-7xl leading-none font-black tracking-tighter text-black sm:text-9xl dark:text-white\">\n          Dither\n        </span>\n      </div>\n    </DitherField>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

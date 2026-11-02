@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-field-card-demo",
+  "title": "Dither Field Card Demo",
+  "description": "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground color.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-field-card-demo.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nconst cards = [\n  {\n    pattern: \"glow\",\n    title: \"Live previews\",\n    body: \"Every branch gets a URL the moment you push.\",\n    className: \"md:col-span-2\",\n  },\n  {\n    pattern: \"clouds\",\n    title: \"Edge cache\",\n    body: \"Static assets served from 300 cities.\",\n    className: \"\",\n  },\n  {\n    pattern: \"waves\",\n    title: \"Instant rollbacks\",\n    body: \"Go back to any deploy in one click.\",\n    className: \"md:col-span-3\",\n  },\n] as const\n\nexport default function DitherFieldCardDemo() {\n  return (\n    <div className=\"grid w-full max-w-3xl gap-4 md:grid-cols-3\">\n      {cards.map((card) => (\n        <DitherField\n          key={card.title}\n          pattern={card.pattern}\n          color=\"var(--muted-foreground)\"\n          intensity={0.6}\n          className={`bg-card flex h-44 flex-col justify-end rounded-xl border p-5 select-none md:h-56 md:p-6 ${card.className}`}\n        >\n          {/* Fades the dots out behind the text so it stays readable. */}\n          <div className=\"from-card absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t to-transparent\" />\n          <h3 className=\"relative text-lg font-semibold tracking-tight\">\n            {card.title}\n          </h3>\n          <p className=\"text-muted-foreground relative text-sm\">{card.body}</p>\n        </DitherField>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
