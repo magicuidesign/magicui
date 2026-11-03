@@ -2,9 +2,9 @@ version: 2
 updates:
   # "npm" also covers pnpm. Dependabot reads pnpm-lock.yaml (lockfileVersion 9).
   - package-ecosystem: npm
-    directories:
-      - "/"
-      - "/apps/www"
+    # The root also covers apps/www through pnpm-workspace.yaml.
+    # Listing /apps/www too could open duplicate PRs.
+    directory: "/"
     schedule:
       interval: weekly
       day: monday
