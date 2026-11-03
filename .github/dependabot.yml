@@ -1,0 +1,73 @@
+version: 2
+updates:
+  # "npm" also covers pnpm. Dependabot reads pnpm-lock.yaml (lockfileVersion 9).
+  - package-ecosystem: npm
+    directories:
+      - "/"
+      - "/apps/www"
+    schedule:
+      interval: weekly
+      day: monday
+    # Skip releases younger than 3 days. Version updates only.
+    cooldown:
+      default-days: 3
+    # Caps open version-update PRs. Security PRs have their own fixed limit.
+    open-pull-requests-limit: 5
+    # Conventional Commits, as the PR template requires.
+    commit-message:
+      prefix: "build(deps)"
+    # A package joins the FIRST group it matches. Order matters.
+    groups:
+      next:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+          - "@next/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      radix:
+        patterns:
+          - "@radix-ui/*"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "prettier-plugin-tailwindcss"
+          - "tailwind-merge"
+          - "tw-animate-css"
+      fumadocs:
+        patterns:
+          - "fumadocs-*"
+      shiki:
+        patterns:
+          - "shiki"
+          - "@shikijs/*"
+          - "rehype-pretty-code"
+      commitlint:
+        patterns:
+          - "@commitlint/*"
+      # One weekly PR for all other minor and patch bumps.
+      # Other major bumps stay one PR per package.
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci(deps)"
+    groups:
+      actions:
+        patterns:
+          - "*"
