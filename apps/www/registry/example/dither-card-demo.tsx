@@ -1,4 +1,4 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const cards = [
   {
@@ -21,11 +21,11 @@ const cards = [
   },
 ] as const
 
-export default function DitherFieldCardDemo() {
+export default function DitherCardDemo() {
   return (
     <div className="grid w-full max-w-3xl gap-4 md:grid-cols-3">
       {cards.map((card) => (
-        <DitherField
+        <Dither
           key={card.title}
           pattern={card.pattern}
           color="var(--muted-foreground)"
@@ -38,7 +38,7 @@ export default function DitherFieldCardDemo() {
             {card.title}
           </h3>
           <p className="text-muted-foreground relative text-sm">{card.body}</p>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )

@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherOrbit() {
   return (
-    <DitherField
+    <Dither
       pattern="orbit"
       className="flex h-28 w-full items-center justify-center rounded-xl border px-4 text-center text-[#eceff4] select-none"
     >
@@ -20,6 +20,6 @@ export default function DitherOrbit() {
           Read the release notes
         </button>
       </p>
-    </DitherField>
+    </Dither>
   )
 }

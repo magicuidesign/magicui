@@ -1,12 +1,12 @@
 ---
-title: Dither Field
+title: Dither
 date: 2026-11-01
 description: An animated background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video, in your theme colors.
 author: dillionverma
 published: true
 ---
 
-<ComponentPreview name="dither-field-demo" />
+<ComponentPreview name="dither-demo" />
 
 ## Installation
 
@@ -19,7 +19,7 @@ published: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add @magicui/dither-field
+npx shadcn@latest add @magicui/dither
 ```
 
 </TabsContent>
@@ -30,7 +30,7 @@ npx shadcn@latest add @magicui/dither-field
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="dither-field" />
+<ComponentSource name="dither" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -43,13 +43,13 @@ npx shadcn@latest add @magicui/dither-field
 ## Usage
 
 ```tsx showLineNumbers
-import { DitherField } from "@/components/ui/dither-field"
+import { Dither } from "@/components/ui/dither"
 ```
 
 ```tsx showLineNumbers
-<DitherField className="h-96">
+<Dither className="h-96">
   <h1>Your content</h1>
-</DitherField>
+</Dither>
 ```
 
 ## Props
@@ -72,7 +72,7 @@ import { DitherField } from "@/components/ui/dither-field"
 Twelve palette patterns ship with their own colors, Bayer matrix and dot size, so each one works with no other props. They suit dark surfaces. Pass `palette` to recolor one.
 
 ```tsx showLineNumbers
-<DitherField pattern="veil" className="h-96" />
+<Dither pattern="veil" className="h-96" />
 ```
 
 ### gruvbox-dusk
@@ -151,20 +151,20 @@ Footer.
 
 ### Built-in patterns
 
-<ComponentPreview name="dither-field-patterns-demo" />
+<ComponentPreview name="dither-patterns-demo" />
 
 ### Card Background
 
-<ComponentPreview name="dither-field-card-demo" />
+<ComponentPreview name="dither-card-demo" />
 
 ### Text Mask
 
-<ComponentPreview name="dither-field-text-demo" />
+<ComponentPreview name="dither-text-demo" />
 
 ### Image
 
-<ComponentPreview name="dither-field-image-demo" />
+<ComponentPreview name="dither-image-demo" />
 
 ### Colors
 
-<ComponentPreview name="dither-field-colors-demo" />
+<ComponentPreview name="dither-colors-demo" />

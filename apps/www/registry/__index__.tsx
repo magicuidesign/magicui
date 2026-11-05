@@ -1341,18 +1341,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "dither-field": {
-    name: "dither-field",
+  "dither": {
+    name: "dither",
     description: "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. The dots brighten under the pointer.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
-      path: "registry/magicui/dither-field.tsx",
+      path: "registry/magicui/dither.tsx",
       type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/dither-field.tsx")
+      const mod = await import("@/registry/magicui/dither.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4252,154 +4252,154 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "dither-field-demo": {
-    name: "dither-field-demo",
+  "dither-demo": {
+    name: "dither-demo",
     description: "A hero section on a violet dither horizon. CSS variables switch its colors between the light and dark themes.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-demo.tsx",
+      path: "registry/example/dither-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-demo.tsx")
+      const mod = await import("@/registry/example/dither-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-card-demo": {
-    name: "dither-field-card-demo",
+  "dither-card-demo": {
+    name: "dither-card-demo",
     description: "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground color.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-card-demo.tsx",
+      path: "registry/example/dither-card-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-card-demo.tsx")
+      const mod = await import("@/registry/example/dither-card-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-text-demo": {
-    name: "dither-field-text-demo",
-    description: "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
+  "dither-text-demo": {
+    name: "dither-text-demo",
+    description: "A large heading filled with a cloud dither through a mix-blend-mode overlay.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-text-demo.tsx",
+      path: "registry/example/dither-text-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-text-demo.tsx")
+      const mod = await import("@/registry/example/dither-text-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-image-demo": {
-    name: "dither-field-image-demo",
+  "dither-image-demo": {
+    name: "dither-image-demo",
     description: "A landscape photo dithered into 2px dots with a warm color ramp.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-image-demo.tsx",
+      path: "registry/example/dither-image-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-image-demo.tsx")
+      const mod = await import("@/registry/example/dither-image-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-pointer-demo": {
-    name: "dither-field-pointer-demo",
+  "dither-pointer-demo": {
+    name: "dither-pointer-demo",
     description: "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-pointer-demo.tsx",
+      path: "registry/example/dither-pointer-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-pointer-demo.tsx")
+      const mod = await import("@/registry/example/dither-pointer-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-monochrome-demo": {
-    name: "dither-field-monochrome-demo",
+  "dither-monochrome-demo": {
+    name: "dither-monochrome-demo",
     description: "A monochrome pair: black dots on white and white dots on black.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-monochrome-demo.tsx",
+      path: "registry/example/dither-monochrome-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-monochrome-demo.tsx")
+      const mod = await import("@/registry/example/dither-monochrome-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-brand-demo": {
-    name: "dither-field-brand-demo",
+  "dither-brand-demo": {
+    name: "dither-brand-demo",
     description: "A brand-color pair: an amber glow and a cyan aurora with three-stop color ramps.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-brand-demo.tsx",
+      path: "registry/example/dither-brand-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-brand-demo.tsx")
+      const mod = await import("@/registry/example/dither-brand-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-colors-demo": {
-    name: "dither-field-colors-demo",
+  "dither-colors-demo": {
+    name: "dither-colors-demo",
     description: "Four color treatments in one grid: black on white, white on black, an amber glow and a cyan aurora.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-colors-demo.tsx",
+      path: "registry/example/dither-colors-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-colors-demo.tsx")
+      const mod = await import("@/registry/example/dither-colors-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
     meta: undefined,
   },
-  "dither-field-patterns-demo": {
-    name: "dither-field-patterns-demo",
+  "dither-patterns-demo": {
+    name: "dither-patterns-demo",
     description: "Every built-in pattern side by side in the current theme color.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
-      path: "registry/example/dither-field-patterns-demo.tsx",
+      path: "registry/example/dither-patterns-demo.tsx",
       type: "registry:example",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const mod = await import("@/registry/example/dither-patterns-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4409,7 +4409,7 @@ export const Index: Record<string, any> = {
     name: "dither-gruvbox-dusk",
     description: "A hero with a warm gruvbox dusk dithered behind a headline and call to action.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-gruvbox-dusk.tsx",
       type: "registry:example",
@@ -4426,7 +4426,7 @@ export const Index: Record<string, any> = {
     name: "dither-nord-orbit",
     description: "A stats card over a cool nord orbit pattern.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-nord-orbit.tsx",
       type: "registry:example",
@@ -4443,7 +4443,7 @@ export const Index: Record<string, any> = {
     name: "dither-kanagawa-moonrise",
     description: "A testimonial over a kanagawa moonrise with an 8x8 Bayer matrix.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-kanagawa-moonrise.tsx",
       type: "registry:example",
@@ -4460,7 +4460,7 @@ export const Index: Record<string, any> = {
     name: "dither-orbit",
     description: "A slim announcement banner on a three-tone orbit.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-orbit.tsx",
       type: "registry:example",
@@ -4477,7 +4477,7 @@ export const Index: Record<string, any> = {
     name: "dither-meridian",
     description: "A square upgrade card on a green meridian band.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-meridian.tsx",
       type: "registry:example",
@@ -4494,7 +4494,7 @@ export const Index: Record<string, any> = {
     name: "dither-eclipse-rose",
     description: "A pricing card on a rose eclipse.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-eclipse-rose.tsx",
       type: "registry:example",
@@ -4511,7 +4511,7 @@ export const Index: Record<string, any> = {
     name: "dither-ridgeline",
     description: "A landing header with navigation over layered ridgelines.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-ridgeline.tsx",
       type: "registry:example",
@@ -4528,7 +4528,7 @@ export const Index: Record<string, any> = {
     name: "dither-contour",
     description: "A 404 page over drifting topographic contours.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-contour.tsx",
       type: "registry:example",
@@ -4545,7 +4545,7 @@ export const Index: Record<string, any> = {
     name: "dither-dunes",
     description: "An event card on rolling plum dunes.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-dunes.tsx",
       type: "registry:example",
@@ -4562,7 +4562,7 @@ export const Index: Record<string, any> = {
     name: "dither-eclipse-nord",
     description: "A one-bit eclipse behind a large uptime stat.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-eclipse-nord.tsx",
       type: "registry:example",
@@ -4579,7 +4579,7 @@ export const Index: Record<string, any> = {
     name: "dither-orb",
     description: "A one-bit amber orb behind an assistant prompt box.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-orb.tsx",
       type: "registry:example",
@@ -4596,7 +4596,7 @@ export const Index: Record<string, any> = {
     name: "dither-veil",
     description: "A one-bit veil that fades into a site footer.",
     type: "registry:example",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [{
       path: "registry/example/dither-veil.tsx",
       type: "registry:example",

@@ -1,4 +1,4 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const stats = [
   { label: "Regions", value: "34" },
@@ -8,7 +8,7 @@ const stats = [
 
 export default function DitherNordOrbit() {
   return (
-    <DitherField
+    <Dither
       pattern="nord-orbit"
       className="flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#eceff4] select-none md:p-8"
     >
@@ -28,6 +28,6 @@ export default function DitherNordOrbit() {
           </div>
         ))}
       </dl>
-    </DitherField>
+    </Dither>
   )
 }
