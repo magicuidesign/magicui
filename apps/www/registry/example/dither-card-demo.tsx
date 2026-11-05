@@ -30,6 +30,7 @@ export default function DitherCardDemo() {
           pattern={card.pattern}
           color="var(--muted-foreground)"
           intensity={0.6}
+          interactive
           className={`bg-card flex h-44 flex-col justify-end rounded-xl border p-5 select-none md:h-56 md:p-6 ${card.className}`}
         >
           {/* Fades the dots out behind the text so it stays readable. */}

@@ -1343,7 +1343,7 @@ export const Index: Record<string, any> = {
   },
   "dither": {
     name: "dither",
-    description: "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. The dots brighten under the pointer.",
+    description: "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. Set `interactive` to brighten the dots under the pointer.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{

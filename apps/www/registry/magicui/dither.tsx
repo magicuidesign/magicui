@@ -87,7 +87,9 @@ type Scene = {
  * with a fixed set of colours instead of the `color` ramp. The `field` body
  * returns a level from 0 to `palette.length - 1`. `n` is the dot, counted
  * from the top-left corner, `wh` is the grid size in dots and `sec` counts
- * seconds at normal speed.
+ * seconds at normal speed. Draw shapes in proportion to `wh`. A length in dots
+ * times `uUnit` keeps the size it had at the scene's own `dot`, so a smaller
+ * `dotSize` only makes the dots finer.
  */
 const SCENES = {
   // Sun disc with slatted gaps over a banded sky and a reflecting floor.
@@ -119,8 +121,9 @@ float field(vec2 n, vec2 wh, float sec) {
   if (y < hy) return f;
   float ground = 1.15 * (1.0 - ss(hy, hy + (h - hy) * 0.9, y));
   float down = (y - hy) / (h - hy);
+  float ry = (y - hy) / uUnit;
   bool reflection = abs(x - cx) < r * (1.0 - down * 0.6)
-    && sin((y - hy) * 0.9 + pow(max(y - hy, 0.0), 1.3) * 0.12) > 0.55;
+    && sin(ry * 0.9 + pow(max(ry, 0.0), 1.3) * 0.12) > 0.55;
   if (reflection && y < hy + (h - hy) * 0.7) ground += 1.0;
   return ground;
 }`,
@@ -174,7 +177,7 @@ float field(vec2 n, vec2 wh, float sec) {
   float width = r * (0.55 + depth * 0.6);
   float wob = sin(depth * 22.0 + shimmer);
   bool column = abs(x - cx) < width * (1.0 - 0.35 * wob * wob);
-  bool dash = sin((y - hy) * 0.7 + shimmer + sin(x * 0.05) * 0.6) > 0.15;
+  bool dash = sin((y - hy) / uUnit * 0.7 + shimmer + sin(x / uUnit * 0.05) * 0.6) > 0.15;
   if (column && dash) sea += 1.6 * (1.0 - depth * 0.7);
   return sea;
 }`,
@@ -193,8 +196,8 @@ float field(vec2 n, vec2 wh, float sec) {
   float d = length(vec2(x - cx, y - cy));
   float ring = exp(-pow((d - r) / (0.035 * s), 2.0));
   float halo = exp(-pow((d - r) / (0.22 * s), 2.0));
-  float f = 0.9 * halo + 1.4 * ring;
-  return f * (0.35 + 0.65 * ss(h * 0.55, h * 0.92, y));
+  float f = 0.9 * halo + 1.8 * ring;
+  return f * (0.6 + 0.4 * ss(h * 0.55, h * 0.92, y));
 }`,
   },
   // Three diagonal bars swaying along their normal.
@@ -273,7 +276,7 @@ float field(vec2 n, vec2 wh, float sec) {
     float slope = abs(ridgeAt(n.x + 1.0, h, t, i) - ridgeAt(n.x - 1.0, h, t, i)) * 0.5;
     float depth = y - ridge;
     float val = L.w - 0.9 * ss(0.0, 0.22, depth);
-    bool rim = depth >= 0.0 && depth < max(px, slope * 1.1);
+    bool rim = depth >= 0.0 && depth < max(px, slope * 1.1) * uUnit;
     if (rim) val = 4.6 - 0.9 * float(i);
     if (depth >= 0.0) v = val;
   }
@@ -308,7 +311,7 @@ float field(vec2 n, vec2 wh, float sec) {
   float gx = (lvAt(n + vec2(1.0, 0.0), s, t) - lvAt(n - vec2(1.0, 0.0), s, t)) * 0.5;
   float gy = (lvAt(n + vec2(0.0, 1.0), s, t) - lvAt(n - vec2(0.0, 1.0), s, t)) * 0.5;
   float g = length(vec2(gx, gy));
-  bool edge = frac < clamp(g, 0.02, 0.5);
+  bool edge = frac < clamp(g * uUnit, 0.02, 0.5);
   if (edge && terrace >= 1.0) base += 1.0;
   return base;
 }`,
@@ -463,7 +466,8 @@ export interface DitherProps extends Omit<
    */
   dotSize?: number
   /**
-   * Brightness of the field. 0 shows only the pointer glow; above 1 fills more.
+   * Brightness of the field. 0 shows only the pointer glow, if `interactive`
+   * is on. Above 1 fills more.
    * @default 0.75
    */
   intensity?: number
@@ -479,7 +483,7 @@ export interface DitherProps extends Omit<
   fps?: number
   /**
    * Brighten the field around the mouse, the pen or a held finger.
-   * @default true
+   * @default false
    */
   interactive?: boolean
 }
@@ -641,6 +645,7 @@ precision highp float;
 precision highp sampler2D;
 uniform vec2 uDots;
 uniform float uPx;
+uniform float uUnit;
 uniform float uSec;
 uniform float uGain;
 uniform int uColours;
@@ -733,6 +738,7 @@ const DITHER_UNIFORMS = [
 const SCENE_UNIFORMS = [
   "uDots",
   "uPx",
+  "uUnit",
   "uSec",
   "uGain",
   "uColours",
@@ -1167,6 +1173,7 @@ function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
       const dotPx = css[0] / view[0]
       gl.uniform2f(entry.loc.uDots, view[0], view[1])
       gl.uniform1f(entry.loc.uPx, dotPx)
+      gl.uniform1f(entry.loc.uUnit, scene.dot / dotPx)
       gl.uniform1f(entry.loc.uSec, time - SCENE_START)
       gl.uniform1f(entry.loc.uGain, intensity / SCENE_INTENSITY)
       gl.uniform1i(entry.loc.uColours, ramp.length)
@@ -1304,7 +1311,7 @@ export function Dither({
   intensity = 0.75,
   speed = 1,
   fps = 30,
-  interactive = true,
+  interactive = false,
   className,
   children,
   ...props
