@@ -1343,7 +1343,7 @@ export const Index: Record<string, any> = {
   },
   "dither-field": {
     name: "dither-field",
-    description: "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.",
+    description: "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. The dots brighten under the pointer.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -4400,6 +4400,210 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-gruvbox-dusk": {
+    name: "dither-gruvbox-dusk",
+    description: "A hero with a warm gruvbox dusk dithered behind a headline and call to action.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-gruvbox-dusk.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-gruvbox-dusk.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-nord-orbit": {
+    name: "dither-nord-orbit",
+    description: "A stats card over a cool nord orbit pattern.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-nord-orbit.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-nord-orbit.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-kanagawa-moonrise": {
+    name: "dither-kanagawa-moonrise",
+    description: "A testimonial over a kanagawa moonrise with an 8x8 Bayer matrix.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-kanagawa-moonrise.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-kanagawa-moonrise.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-orbit": {
+    name: "dither-orbit",
+    description: "A slim announcement banner on a three-tone orbit.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-orbit.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-orbit.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-meridian": {
+    name: "dither-meridian",
+    description: "A square upgrade card on a green meridian band.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-meridian.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-meridian.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-eclipse-rose": {
+    name: "dither-eclipse-rose",
+    description: "A pricing card on a rose eclipse.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-eclipse-rose.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-eclipse-rose.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-ridgeline": {
+    name: "dither-ridgeline",
+    description: "A landing header with navigation over layered ridgelines.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-ridgeline.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-ridgeline.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-contour": {
+    name: "dither-contour",
+    description: "A 404 page over drifting topographic contours.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-contour.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-contour.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-dunes": {
+    name: "dither-dunes",
+    description: "An event card on rolling plum dunes.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-dunes.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-dunes.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-eclipse-nord": {
+    name: "dither-eclipse-nord",
+    description: "A one-bit eclipse behind a large uptime stat.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-eclipse-nord.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-eclipse-nord.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-orb": {
+    name: "dither-orb",
+    description: "A one-bit amber orb behind an assistant prompt box.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-orb.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-orb.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-veil": {
+    name: "dither-veil",
+    description: "A one-bit veil that fades into a site footer.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [{
+      path: "registry/example/dither-veil.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-veil.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
