@@ -569,8 +569,8 @@ export const docsConfig: DocsConfig = {
           label: "New",
         },
         {
-          title: "Dither Field",
-          href: `/docs/components/dither-field`,
+          title: "Dither",
+          href: `/docs/components/dither`,
           items: [],
           label: "New",
         },

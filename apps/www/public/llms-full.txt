@@ -6356,11 +6356,11 @@ export default function DiaTextRevealDemo4() {
 
 
 
-===== COMPONENT: dither-field =====
-Title: Dither Field
-Description: An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.
+===== COMPONENT: dither =====
+Title: Dither
+Description: An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. Set `interactive` to brighten the dots under the pointer.
 
---- file: magicui/dither-field.tsx ---
+--- file: magicui/dither.tsx ---
 "use client"
 
 import { useEffect, useRef, useState, type CSSProperties } from "react"
@@ -6368,11 +6368,11 @@ import { useEffect, useRef, useState, type CSSProperties } from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * Each pattern is the GLSL body of `float pattern(vec2 p, vec2 size, float t)`.
- * `p` is the position in CSS pixels from the bottom-left corner, `size` is
- * the field size in CSS pixels and `t` is the time in seconds. Return the
- * light level, where 0 is dark and 1 is full light. Add an entry here to add
- * a pattern; the `pattern` prop type follows.
+ * Light-field patterns. Each is the GLSL body of
+ * `float pattern(vec2 p, vec2 size, float t)`. `p` is the position in CSS
+ * pixels from the bottom-left corner, `size` is the field size in CSS pixels
+ * and `t` is the time in seconds. Return the light level, where 0 is dark and
+ * 1 is full light. They dither in the `color` ramp over a clear background.
  */
 const PATTERNS = {
   // A low sun on the bottom edge, with haze bands that drift up through it.
@@ -6423,17 +6423,375 @@ const PATTERNS = {
   `,
 } as const
 
-export type DitherPattern = keyof typeof PATTERNS
+/**
+ * The 256 lattice permutation bytes, then 256 lattice values (0 to 255), that
+ * drive the value noise of the scenes that use it, as base64.
+ */
+const NOISE = {
+  11: "goQ2w/RYi3UkakR4a9LzHhmb912vxHS0W8EmReyg1FPw6dEzPty6eq3tRhhsn5wwJQ/HqYkhpH00Uk9wl74rzSCrAR0NShE5ecAvCJPW+xLMFLxQP0cDgKLq+oZ/ss+ot2XLI7U8hZhk/arnWusiF5UVYQm45tAWkqcGYDoM2Zot2qVmSeHJj6Yn/4H1ux9yoe5uSP6s43v4OPEOQG/vvSlpxQteTQdV5N2DSxqjrsYEnXOH/OhxHAUsX9hBMc62bZHIji5DuT3lyvZXiLOWCjJCjOAbKmgA8mKemQK/wlHX4n4odxNj1ds7VpBcsUxZlHY3NflU342w0958imcQTsii5sFMpFe/YiffsL6PyHKQEI7QtM1/4RzfXxeedG3ZI51qh38ig9wsAxF1+Av9iR9rNbaKSUHdw29nvPgUKVyBEg44Yr2cBwtz3+ld4u1ovl0nkxapzulyHube95esXy9KuFOwgHL3Knwp731VK5dmIAhklYTm6O/MeoZlZgvMPwd3t29dqCoDl4fdasgFB5k6ESFgVpDiXS+TAWJRYw2Nn7/0WqdxN+O+8NHqIQQzaa9wg8ISrQw/uK5nS9NGCD8Fzx/4Nk6VT2EbYwY56EhFreFLYLbKnS4uwbTlx2si47GTrmJYk3u179hjX+xlzBhzhM7gJ52gJ9WN9TCGUqQ=",
+  5: "rE8+VuhkVChfFxEVsyKSA2+kmmc5PZ3r9roEobFdGv1CegfFasZyWFqTFpErL+RXLhQMUTx9oOBg86OAlhvS/KdJXu+5Y7xGTf7/HcmE3sPljh47nIhwMSwnRPHRJgE2Zcr5IOJmHxk1YjffAm4F2NNBE2F3qnE6m+oAr3X3i/toKtvaCa7BtqtLe1ui1UCYnykQid1SzMuyGIby3M+38EyN7EXImdSmnhxzg2wLUIwjDZU45nlpqePXsILHBhK7lHTW6Vm4XErC4Yf0zb4kSC34R+eXMw+K+jRrfq1T0A542SFDML8IvU5tf1WBkKW0tc4yxIWPCu18dj/AJfXuqD/cKrBAETGtgIx0Rn3rM7tAMVMY710tAA83a5n64z6c6xraZcdSoIEbwtJ7Y/Jf4GtfXA9HOxCKcQYo6iJf8h1pzAUR7a5Dej/k8hKGL2e9tjBVbGOuyVZxEV7xgI6bkc1CUeJ/9SPIeXnhIYNAV9BmyAP/9K0ypzFfCRIoLtY+0gIPEO7QBO46Q5U0+V2Skki7/ZgVzqp9p0NNgxGWL0Hllj6y/uXMVZWVF7GFhbwUNvxMQRJQjwpKQSfK9elwEVmGYbq95Xg96OEgNqjR9QUwbIzGjoQ9ppXxMCBaU3QstNIC6BdOfGw3utY6KoQm8NnVaclkdRsKqzH0kJPkTAM=",
+  23: "Cuf5FSbQduNd7C30tQF7pbrksFfx0+08nlsq/SmGJGXrbIq/1mjOrWdpRtR/rJIjZvrFmHDoWT0nAr5Dp2D8wa8sl/9VEVq3R+G9/sL4ekm4SFz3UvbgEowPGNziS3Qbh8oDjRcWOdiIw1NKoICxnz9EnDIHlY9rHhkFtscumTe00mTbc6b7MwCBs6vPnXKL119eIY5iVhzR80JMTc2Jy6MUKHyb3dqoaqKQqQmCVFHlcZMabaQIWFD1b6odfmGuMeY7Yw1OdZqWMKG5xsw6331PEAZ3JYVAg8gMlNlB7tW7wMlued41DiITBCsLPjhFxPIfeDbq77KE6fC8IJEvNCpgjfhG28hekwf6fifK3rz7R41wo0iud2KyRVT+Y1b27+sZzTal2r4PmCzTOjVbjeYu1mv9ojiCvdR3YLwatGWxFkBKTvfaFpPyzw29x+aUby+YR0mHE3xAdjC+3LHk4pbAJI73vvdQJhAFl7Qs80g8tAd3q487zo2SY/kPQbZOwL5p17Gsi5Hr1D/jm3mJi3v1wBtIXvqPoPTTPEGZgQSK8K4jsy34i+PF94R+EKw9Q5apIIgCCpGzbKDViuJ50aWhfcmi3NiqXPGeRtM6A+M+W3obgGEKXK3sm/WdZJ+f0HrON05uQk5Zwng7Fdy0rhUHUgg1+XK/6H7Gl3TIMT8=",
+} as const
+
+type Scene = {
+  /** Dark to light. Index 0 is the ground. */
+  palette: readonly string[]
+  matrix: 2 | 4 | 8
+  /** The dot size in CSS pixels. */
+  dot: number
+  oneBit?: true
+  seed?: keyof typeof NOISE
+  /** GLSL for `float field(vec2 n, vec2 wh, float sec)`, in levels above the ground. */
+  field: string
+}
+
+/**
+ * Palette scenes. Each is a whole picture, with its own ground colour, drawn
+ * with a fixed set of colours instead of the `color` ramp. The `field` body
+ * returns a level from 0 to `palette.length - 1`. `n` is the dot, counted
+ * from the top-left corner, `wh` is the grid size in dots and `sec` counts
+ * seconds at normal speed. Draw shapes in proportion to `wh`. A length in dots
+ * times `uUnit` keeps the size it had at the scene's own `dot`, so a smaller
+ * `dotSize` only makes the dots finer.
+ */
+const SCENES = {
+  // Sun disc with slatted gaps over a banded sky and a reflecting floor.
+  "gruvbox-dusk": {
+    palette: ["#1d2021", "#3c3836", "#b16286", "#d65d0e", "#fabd2f"],
+    matrix: 8,
+    dot: 4,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = 4.0 * pingpong(sec / 90.0);
+  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+  float hy = h * 0.80;
+  float r = w * 0.30;
+  float cx = w * 0.5;
+  float cy = hy - r * (0.42 - 0.10 * t);
+  float sky = 2.95 * pow(ss(hy * 0.30, hy, y), 2.3);
+  float d = length(vec2(x - cx, y - cy));
+  sky += 0.6 * exp(-max(d - r, 0.0) / (r * 0.8)) * (y < hy ? 1.0 : 0.0);
+  sky = min(sky, 2.9);
+  float sun = 4.4 - 1.6 * ss(cy - r, cy + r * 0.6, y);
+  float rel = (y - cy) / r;
+  bool gap = false;
+  float starts[5] = float[5](0.02, 0.14, 0.24, 0.32, 0.38);
+  for (int i = 0; i < 5; i++) {
+    gap = gap || (rel > starts[i] && rel < starts[i] + 0.025 + 0.012 * float(i));
+  }
+  bool inside = d < r && !gap && y < hy;
+  float f = inside ? sun : ((d < r && gap) ? sky - 1.3 : sky);
+  if (y < hy) return f;
+  float ground = 1.15 * (1.0 - ss(hy, hy + (h - hy) * 0.9, y));
+  float down = (y - hy) / (h - hy);
+  float ry = (y - hy) / uUnit;
+  bool reflection = abs(x - cx) < r * (1.0 - down * 0.6)
+    && sin(ry * 0.9 + pow(max(ry, 0.0), 1.3) * 0.12) > 0.55;
+  if (reflection && y < hy + (h - hy) * 0.7) ground += 1.0;
+  return ground;
+}`,
+  },
+  // A huge planet limb rising from the bottom edge with a halo.
+  "nord-orbit": {
+    palette: ["#2e3440", "#3b4252", "#434c5e", "#5e81ac", "#88c0d0"],
+    matrix: 8,
+    dot: 2,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = 4.0 * pingpong(sec / 90.0);
+  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+  float R = w * 1.25;
+  float cx = w * 0.62;
+  float cy = h + R * 0.72 - t * h * 0.012;
+  float d = length(vec2(x - cx, y - cy));
+  float edge = d - R;
+  float sky = 1.25 * pow(ss(h * 0.18, h, y), 2.4);
+  sky += 1.9 * exp(-max(edge, 0.0) / (h * 0.10));
+  float ang = atan(y - cy, x - cx);
+  float light = 0.55 + 0.45 * cos(ang - (-1.5707963 - 0.35));
+  float limb = 4.6 * exp(-max(-edge, 0.0) / (h * 0.018));
+  float body = 0.1 + limb * light + 0.5 * ss(R * 0.96, R, d) * light;
+  return edge < 0.0 ? min(body, 4.6) : min(sky, 3.2);
+}`,
+  },
+  // A crescent over a sea with shimmering reflection dashes.
+  "kanagawa-moonrise": {
+    palette: ["#16161d", "#223249", "#2d4f67", "#7e9cd8", "#dcd7ba"],
+    matrix: 8,
+    dot: 4,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = 3.0 * pingpong(sec / 90.0);
+  float shimmer = sec * 0.4 * 1.6;
+  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+  float hy = h * 0.84;
+  float r = w * 0.15;
+  float cx = w * 0.58 + t * r * 0.25;
+  float cy = h * 0.52;
+  float sky = 1.75 * pow(ss(h * 0.2, hy, y), 2.4);
+  float d = length(vec2(x - cx, y - cy));
+  sky = min(sky + 1.0 * exp(-max(d - r, 0.0) / (r * 1.5)), 2.5);
+  bool shadow = length(vec2(x - (cx - r * 0.42), y - (cy - r * 0.22))) < r * 0.92;
+  bool lit = d < r && !shadow;
+  float f = lit ? 4.2 : (d < r ? min(sky, 1.2) + 0.25 : sky);
+  if (y < hy) return f;
+  float depth = (y - hy) / (h - hy);
+  float sea = 1.6 - 1.3 * ss(0.0, 0.85, depth);
+  float width = r * (0.55 + depth * 0.6);
+  float wob = sin(depth * 22.0 + shimmer);
+  bool column = abs(x - cx) < width * (1.0 - 0.35 * wob * wob);
+  bool dash = sin((y - hy) / uUnit * 0.7 + shimmer + sin(x / uUnit * 0.05) * 0.6) > 0.15;
+  if (column && dash) sea += 1.6 * (1.0 - depth * 0.7);
+  return sea;
+}`,
+  },
+  // A ring and halo that breathe.
+  orbit: {
+    palette: ["#2e3440", "#3b4252", "#88c0d0"],
+    matrix: 4,
+    dot: 4,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec / 16.0;
+  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+  float cx = w * 0.5, cy = h * 0.98, s = w * 1.6;
+  float r = w * 0.62 * (1.0 + 0.04 * sin(6.2831853 * t));
+  float d = length(vec2(x - cx, y - cy));
+  float ring = exp(-pow((d - r) / (0.035 * s), 2.0));
+  float halo = exp(-pow((d - r) / (0.22 * s), 2.0));
+  float f = 0.9 * halo + 1.8 * ring;
+  return f * (0.6 + 0.4 * ss(h * 0.55, h * 0.92, y));
+}`,
+  },
+  // Three diagonal bars swaying along their normal.
+  meridian: {
+    palette: ["#272e33", "#374145", "#a7c080"],
+    matrix: 4,
+    dot: 4,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec / 20.0;
+  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+  float u = x * 0.866 + y * 0.5;
+  float unit = w * 0.16;
+  vec2 ref = vec2(w * 0.40, h * 0.86);
+  float c0 = ref.x * 0.866 + ref.y * 0.5 + unit * 0.6 * sin(6.2831853 * t);
+  float f = 0.0;
+  float amps[3] = float[3](1.0, 0.72, 0.46);
+  for (int k = 0; k < 3; k++) {
+    float c = c0 + float(k) * unit * 1.6;
+    float e = abs(u - c);
+    f = max(f, amps[k] * (1.0 - ss(unit * 0.42, unit * 0.52, e)));
+  }
+  return 2.0 * f * ss(h * 0.55, h * 1.02, y);
+}`,
+  },
+  // A lit disc with a drifting shadow disc, so the crescent waxes and wanes.
+  "eclipse-rose": {
+    palette: ["#191724", "#26233a", "#c4a7e7", "#ebbcba"],
+    matrix: 4,
+    dot: 2,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec / 24.0;
+  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+  float cx = w * 0.62, cy = h * 0.86, r = w * 0.36;
+  float ox = r * (0.20 + 0.10 * sin(6.2831853 * t));
+  float oy = -r * 0.12;
+  float d1 = length(vec2(x - cx, y - cy));
+  float d2 = length(vec2(x - cx - ox, y - cy - oy));
+  float disc = 1.0 - ss(r * 0.96, r * 1.04, d1);
+  float shadow = ss(r * 0.80, r * 1.10, d2);
+  float lit = disc * shadow;
+  float grad = ss(cy + r, cy - r, y);
+  float glow = exp(-pow(max(d1 - r, 0.0) / (r * 0.55), 2.0)) * (1.0 - disc);
+  float f = lit * (1.6 + 1.4 * grad) + 0.9 * glow + disc * 0.6;
+  return min(f, 1.0 + 2.0 * ss(h * 0.6, h * 0.75, y));
+}`,
+  },
+  // Four fbm ridges in parallax over a misty sky.
+  ridgeline: {
+    palette: ["#1e2326", "#272e33", "#2e383c", "#374145", "#4f585e", "#7a8478"],
+    matrix: 4,
+    dot: 4,
+    seed: 11,
+    field: `
+float ridgeAt(float col, float h, float t, int i) {
+  vec4 L = i == 0 ? vec4(0.76, 0.06, 2.0, 3.4) : (i == 1 ? vec4(0.82, 0.055, 2.6, 2.6) : (i == 2 ? vec4(0.88, 0.05, 3.2, 1.9) : vec4(0.945, 0.04, 3.8, 1.2)));
+  float fi = float(i);
+  float drift = t * 0.02 * (fi + 1.0);
+  float r = fbmN(vec2((col / h + drift) * L.z + 7.7 * fi, 3.1 * fi), 5, 0.55);
+  return L.x - L.y * (r - 0.5) * 3.0;
+}
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec * 0.1;
+  float h = wh.y;
+  float x = n.x / h, y = n.y / h, W = wh.x / h;
+  float horizon = 0.85;
+  float above = max(horizon - y, 0.0);
+  float cx = (x - W * 0.5) / max(W, 1.0);
+  float glow = ss(0.25, 0.0, above + 0.25 * cx * cx);
+  float v = 0.05 + 1.6 * pow(ss(horizon * 0.9, 0.0, above), 2.0) + 1.4 * pow(glow, 3.0);
+  float px = 1.0 / h;
+  for (int i = 0; i < 4; i++) {
+    vec4 L = i == 0 ? vec4(0.76, 0.06, 2.0, 3.4) : (i == 1 ? vec4(0.82, 0.055, 2.6, 2.6) : (i == 2 ? vec4(0.88, 0.05, 3.2, 1.9) : vec4(0.945, 0.04, 3.8, 1.2)));
+    float ridge = ridgeAt(n.x, h, t, i);
+    float slope = abs(ridgeAt(n.x + 1.0, h, t, i) - ridgeAt(n.x - 1.0, h, t, i)) * 0.5;
+    float depth = y - ridge;
+    float val = L.w - 0.9 * ss(0.0, 0.22, depth);
+    bool rim = depth >= 0.0 && depth < max(px, slope * 1.1) * uUnit;
+    if (rim) val = 4.6 - 0.9 * float(i);
+    if (depth >= 0.0) v = val;
+  }
+  return v;
+}`,
+  },
+  // Terraced fbm elevation with rim lines that creep uphill.
+  contour: {
+    palette: ["#2e3440", "#3b4252", "#434c5e", "#4c566a", "#5e81ac", "#88c0d0"],
+    matrix: 2,
+    dot: 2,
+    seed: 5,
+    field: `
+float lvAt(vec2 n, float s, float t) {
+  float x = n.x * s, y = n.y * s;
+  float sc = 0.9;
+  float wx = fbmN(vec2(x * sc + 4.0, y * sc), 3, 0.5);
+  float wy = fbmN(vec2(x * sc, y * sc + 9.0), 3, 0.5);
+  float e = fbmN(vec2(x * 1.1 * sc + wx * 0.8, y * 1.1 * sc + wy * 0.8), 4, 0.4);
+  e = ss(0.36, 0.80, e);
+  e *= 0.15 + 0.85 * ss(0.30, 0.95, y);
+  return e * 10.0 + t * 0.25;
+}
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec * 0.25;
+  float s = 1.0 / wh.y;
+  float lv = lvAt(n, s, t);
+  float terrace = floor(lv);
+  float frac = lv - terrace;
+  float tl = clamp(terrace / 10.0, 0.0, 1.0);
+  float base = floor(tl * 22.0) / 4.0;
+  float gx = (lvAt(n + vec2(1.0, 0.0), s, t) - lvAt(n - vec2(1.0, 0.0), s, t)) * 0.5;
+  float gy = (lvAt(n + vec2(0.0, 1.0), s, t) - lvAt(n - vec2(0.0, 1.0), s, t)) * 0.5;
+  float g = length(vec2(gx, gy));
+  bool edge = frac < clamp(g * uUnit, 0.02, 0.5);
+  if (edge && terrace >= 1.0) base += 1.0;
+  return base;
+}`,
+  },
+  // Warped crests travelling along the wind inside a fixed light mask.
+  dunes: {
+    palette: ["#191724", "#1f1d2e", "#26233a", "#403d52", "#6e6a86", "#c4a7e7"],
+    matrix: 4,
+    dot: 2,
+    seed: 23,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec * 0.15;
+  float s = 1.0 / wh.y;
+  float x = n.x * s, y = n.y * s;
+  float u = x * cos(1.18) + y * sin(1.18);
+  float warp = fbmN(vec2(x * 0.8, y * 0.8 + 2.0), 4, 0.5) * 2.4;
+  float p = (u + warp * 0.45) * 7.0 + t * 0.35;
+  float f = p - floor(p);
+  float lit = ss(0.0, 0.78, f) * ss(1.0, 0.80, f);
+  float crest = ss(0.6, 0.80, f) * ss(0.86, 0.80, f);
+  float amp = ss(0.32, 0.72, fbmN(vec2(x * 0.7 + 30.0, y * 0.7), 3, 0.5));
+  amp = (0.35 + 0.65 * amp) * pow(ss(0.18, 1.0, y), 1.5) * 2.0;
+  return 0.15 + amp * (2.6 * lit + 2.2 * crest);
+}`,
+  },
+  // One-bit corona around a dark disc, the falloff breathing.
+  "eclipse-nord": {
+    palette: ["#2e3440", "#88c0d0"],
+    matrix: 8,
+    dot: 2,
+    oneBit: true,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec / 20.0;
+  float X = (n.x + 0.5) * uPx, Y = (n.y + 0.5) * uPx, W = wh.x * uPx, H = wh.y * uPx;
+  float cx = W * 0.50, cy = H * 0.79, R = W * 0.36;
+  float wd = R * 0.38 * (1.0 + 0.18 * sin(6.2831853 * t));
+  float d = length(vec2(X - cx, Y - cy)) - R;
+  float corona = d > 0.0 ? exp(-d / wd) : 0.0;
+  float rim = d <= 0.0 ? exp(d / (R * 0.035)) * 0.9 : 0.0;
+  float f = (0.92 * corona + rim) * ss(H * 0.30, H * 0.85, Y);
+  return clamp((clamp(f, 0.0, 1.0) - 0.035) / 0.965, 0.0, 1.0);
+}`,
+  },
+  // A sphere lit by a source that orbits slowly.
+  orb: {
+    palette: ["#282828", "#d79921"],
+    matrix: 8,
+    dot: 4,
+    oneBit: true,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec / 30.0;
+  float X = (n.x + 0.5) * uPx, Y = (n.y + 0.5) * uPx, W = wh.x * uPx, H = wh.y * uPx;
+  float cx = W * 0.66, cy = H * 0.82, R = W * 0.52;
+  float a = 6.2831853 * t;
+  vec3 L = normalize(vec3(-0.55 + 0.25 * cos(a), -0.55 + 0.20 * sin(a), 0.62));
+  float dx = (X - cx) / R, dy = (Y - cy) / R;
+  float r2 = dx * dx + dy * dy;
+  if (r2 >= 1.0) return 0.0;
+  float nz = sqrt(clamp(1.0 - r2, 0.0, 1.0));
+  float lam = clamp(dx * L.x + dy * L.y + nz * L.z, 0.0, 1.0);
+  float f = 0.04 + 0.96 * pow(lam, 1.6);
+  float back = clamp(-(dx * L.x + dy * L.y) / sqrt(r2 + 1e-9), 0.0, 1.0);
+  float rim = exp(-(1.0 - sqrt(r2)) / 0.05) * back * 0.75;
+  f = max(f, rim);
+  return clamp((clamp(f, 0.0, 1.0) - 0.035) / 0.965, 0.0, 1.0);
+}`,
+  },
+  // Diagonal light shafts sliding at different rates.
+  veil: {
+    palette: ["#191724", "#c4a7e7"],
+    matrix: 8,
+    dot: 2,
+    oneBit: true,
+    field: `
+float field(vec2 n, vec2 wh, float sec) {
+  float t = sec / 25.0;
+  float X = (n.x + 0.5) * uPx, W = wh.x * uPx, H = wh.y * uPx;
+  float Y = (n.y + 0.5) * uPx;
+  float ang = radians(-70.0);
+  float S = max(W, H);
+  float p = (X * cos(ang) + Y * sin(ang)) / S;
+  vec4 beams[4] = vec4[4](vec4(0.07, 0.045, 0.40, 1.0), vec4(-0.13, 0.090, 0.30, -1.0), vec4(-0.30, 0.035, 0.60, 2.0), vec4(-0.40, 0.070, 0.30, -1.0));
+  float acc = 1.0;
+  for (int i = 0; i < 4; i++) {
+    vec4 b = beams[i];
+    float cc = b.x - 0.5 + 0.03 * b.w * sin(6.2831853 * t);
+    acc *= 1.0 - b.z * exp(-pow((p - cc) / b.y, 2.0));
+  }
+  float f = 1.0 - acc;
+  f *= 0.35 + 0.65 * ss(-0.1, 1.0, Y / H);
+  f *= ss(H * 0.25, H * 0.8, Y);
+  return clamp((clamp(f, 0.0, 1.0) - 0.035) / 0.965, 0.0, 1.0);
+}`,
+  },
+} as const satisfies Record<string, Scene>
+
+type SceneId = keyof typeof SCENES
+
+export type DitherPattern = keyof typeof PATTERNS | SceneId
 
 /** One colour, or a `[low, mid, high]` ramp from dim dots to bright dots. */
 export type DitherColor = string | readonly [string, string, string]
 
-export interface DitherFieldProps extends Omit<
+export interface DitherProps extends Omit<
   React.ComponentPropsWithoutRef<"div">,
   "color"
 > {
   /**
-   * The procedural light field that the dots follow.
+   * The picture the dots follow. `horizon`, `glow`, `aurora`, `waves` and
+   * `clouds` are light fields that dither in `color` over a clear background.
+   * The other twelve are palette scenes with their own ground and colours:
+   * `gruvbox-dusk`, `nord-orbit`, `kanagawa-moonrise`, `orbit`, `meridian`,
+   * `eclipse-rose`, `ridgeline`, `contour`, `dunes`, `eclipse-nord`, `orb`
+   * and `veil`.
    * @default "horizon"
    */
   pattern?: DitherPattern
@@ -6447,16 +6805,32 @@ export interface DitherFieldProps extends Omit<
   /**
    * Any CSS colour, including `var(--primary)` and `currentColor`, or a
    * `[low, mid, high]` ramp. One colour fades from 35% to full opacity.
+   * Palette scenes ignore it; use `palette` there.
    * @default "currentColor"
    */
   color?: DitherColor
   /**
+   * Colours for a palette scene, from the ground to the brightest dots. Any
+   * CSS colours, two or more, including `transparent` for a clear ground. They
+   * are blended to the number of levels the scene uses. The scene's own
+   * palette is the default.
+   */
+  palette?: readonly string[]
+  /**
+   * The size of the dither matrix. Smaller matrices give coarser, more
+   * graphic banding. Palette scenes pick the size they were drawn with.
+   * @default 8
+   */
+  matrix?: 2 | 4 | 8
+  /**
    * The size of one dot in CSS pixels. Dots snap to whole device pixels.
+   * Palette scenes default to the dot size they were drawn with, 2 or 4.
    * @default 1
    */
   dotSize?: number
   /**
-   * Brightness of the field. 0 shows only the pointer glow; above 1 fills more.
+   * Brightness of the field. 0 shows only the pointer glow, if `interactive`
+   * is on. Above 1 fills more.
    * @default 0.75
    */
   intensity?: number
@@ -6472,7 +6846,7 @@ export interface DitherFieldProps extends Omit<
   fps?: number
   /**
    * Brighten the field around the mouse, the pen or a held finger.
-   * @default true
+   * @default false
    */
   interactive?: boolean
 }
@@ -6481,14 +6855,36 @@ type Rgba = [number, number, number, number]
 
 type Media = HTMLImageElement | HTMLVideoElement
 
+/** What one frame needs. The renderer reads it fresh on every draw. */
+type Frame = {
+  /** Light fields: straight [low, mid, high]. Scenes: premultiplied palette. */
+  ramp: Rgba[]
+  intensity: number
+  matrix: 2 | 4 | 8
+  time: number
+  /** x and y in CSS pixels from the bottom-left corner, then 0 to 1 glow. */
+  pointer: readonly [number, number, number]
+}
+
+/** `pending` means a shader is still compiling; draw again next frame. */
+type Drawn = "ok" | "pending" | "failed"
+
 type Renderer = {
   /** Sizes the dot grid (canvas pixels) and the field (CSS pixels). */
   resize: (dotsX: number, dotsY: number, cssX: number, cssY: number) => void
-  setRamp: (ramp: Rgba[]) => void
-  setIntensity: (intensity: number) => void
-  setMedia: (media: Media | null) => void
-  draw: (time: number, pointer: [number, number, number]) => void
-  dispose: () => void
+  setMedia?: (media: Media | null) => void
+  draw: (frame: Frame) => Drawn
+  dispose?: () => void
+}
+
+/**
+ * Where a field shows its dots. Alone on the page, a field shows the hub
+ * canvas itself and `ctx` is null. Otherwise it owns a 2D canvas and copies
+ * its rectangle into it.
+ */
+type Target = {
+  canvas: HTMLCanvasElement
+  ctx: CanvasRenderingContext2D | null
 }
 
 const VERTEX = `#version 300 es
@@ -6496,6 +6892,28 @@ void main() {
   vec2 corner = vec2(gl_VertexID == 1 ? 3.0 : -1.0, gl_VertexID == 2 ? 3.0 : -1.0);
   gl_Position = vec4(corner, 0.0, 1.0);
 }`
+
+// The threshold of a 2x2, 4x4 or 8x8 Bayer matrix, built from the 2x2 matrix
+// [0 2; 3 1]. The lowest bit of the cell position carries the largest weight.
+const BAYER = `
+uniform int uMatrix;
+
+float bayer(vec2 cell) {
+  vec2 c = floor(cell);
+  float sum = 0.0;
+  float cells = float(uMatrix * uMatrix);
+  float weight = cells * 0.25;
+  int levels = uMatrix == 8 ? 3 : (uMatrix == 4 ? 2 : 1);
+  for (int i = 0; i < 3; i++) {
+    if (i >= levels) break;
+    vec2 b = mod(c, 2.0);
+    sum += weight * mod(2.0 * b.x + 3.0 * b.y, 4.0);
+    c = floor(c * 0.5);
+    weight *= 0.25;
+  }
+  return (sum + 0.5) / cells;
+}
+`
 
 const FIELD_HEADER = `#version 300 es
 precision highp float;
@@ -6563,22 +6981,7 @@ uniform float uIntensity;
 uniform vec3 uPointer;
 uniform float uDot;
 out vec4 outColor;
-
-// 8x8 ordered-dither threshold, built from the 2x2 matrix [0 2; 3 1]. The
-// lowest bit of the cell position carries the largest weight.
-float threshold(vec2 cell) {
-  vec2 c = floor(cell);
-  float sum = 0.0;
-  float weight = 16.0;
-  for (int i = 0; i < 3; i++) {
-    vec2 b = mod(c, 2.0);
-    sum += weight * mod(2.0 * b.x + 3.0 * b.y, 4.0);
-    c = floor(c * 0.5);
-    weight *= 0.25;
-  }
-  return (sum + 0.5) / 64.0;
-}
-
+${BAYER}
 void main() {
   vec2 uv = gl_FragCoord.xy / uView;
   float base = texture(uField, uv).r;
@@ -6595,38 +6998,307 @@ void main() {
   // Drop the faintest light, so empty areas stay empty instead of showing
   // a sparse, even grid.
   v = max(v - 0.02, 0.0) / 0.98;
-  float on = step(threshold(gl_FragCoord.xy), v);
+  float on = step(bayer(gl_FragCoord.xy), v);
   vec4 c = v < 0.5 ? mix(uLow, uMid, v * 2.0) : mix(uMid, uHigh, v * 2.0 - 1.0);
   outColor = vec4(c.rgb * c.a, c.a) * on;
 }`
 
+const SCENE_HEAD = `
+precision highp float;
+precision highp sampler2D;
+uniform vec2 uDots;
+uniform float uPx;
+uniform float uUnit;
+uniform float uSec;
+uniform float uGain;
+uniform int uColours;
+uniform vec4 uPal[6];
+uniform sampler2D uNoise;
+uniform vec3 uPointer;
+uniform float uDot;
+out vec4 outColor;
+
+float ss(float a, float b, float x) {
+  float t = clamp((x - a) / (b - a), 0.0, 1.0);
+  return t * t * (3.0 - 2.0 * t);
+}
+// Smooth back-and-forth, 0 to 1 and back, period 1.
+float pingpong(float x) { return 0.5 - 0.5 * cos(6.2831853 * x); }
+
+// Value noise over a 256 x 256 lattice read from a texture.
+float hv(ivec2 p) { return texelFetch(uNoise, ivec2(p.x & 255, p.y & 255), 0).r; }
+float v2(vec2 p) {
+  vec2 i = floor(p);
+  vec2 f = p - i;
+  vec2 s = f * f * (3.0 - 2.0 * f);
+  ivec2 ii = ivec2(i);
+  float a = hv(ii);
+  float b = hv(ii + ivec2(1, 0));
+  float c = hv(ii + ivec2(0, 1));
+  float d = hv(ii + ivec2(1, 1));
+  return (a + (b - a) * s.x) * (1.0 - s.y) + (c + (d - c) * s.x) * s.y;
+}
+float fbmN(vec2 p, int octaves, float gain) {
+  float total = 0.0;
+  float amp = 1.0;
+  float norm = 0.0;
+  float f = 1.0;
+  for (int o = 0; o < 5; o++) {
+    if (o >= octaves) break;
+    float fo = float(o);
+    total += amp * v2(vec2(p.x * f + 17.3 * fo, p.y * f - 9.1 * fo));
+    norm += amp;
+    amp *= gain;
+    f *= 2.03;
+  }
+  return total / norm;
+}
+${BAYER}`
+
+const SCENE_MAIN = `
+void main() {
+  vec2 n = vec2(floor(gl_FragCoord.x), uDots.y - 1.0 - floor(gl_FragCoord.y));
+  float f = field(n, uDots, uSec) * uGain;
+  vec2 away = gl_FragCoord.xy * uDot - uPointer.xy;
+  float glow = uPointer.z * exp(-dot(away, away) / 28000.0);
+  float threshold = bayer(n);
+#ifdef ONE_BIT
+  f += glow * 0.55;
+  int idx = f > threshold ? 1 : 0;
+#else
+  f += glow * 1.4;
+  int idx = int(clamp(floor(f + threshold), 0.0, float(uColours - 1)));
+#endif
+  outColor = uPal[idx];
+}`
+
+const sceneSource = (scene: Scene) =>
+  `#version 300 es\n${scene.oneBit ? "#define ONE_BIT\n" : ""}${SCENE_HEAD}${scene.field}${SCENE_MAIN}`
+
 /** The light field renders at this fraction of the CSS size, then blooms. */
 const FIELD_SCALE = 0.6
 const POINTER_EASE = 6
+/** `intensity` at which a scene draws exactly as designed. */
+const SCENE_INTENSITY = 0.75
+/** A scene starts here, where its slow motion is well into the picture. */
+const SCENE_START = 4
+const MAX_DOTS = 4096
+const HUB_GRACE_MS = 2000
+const COMPLETION_STATUS = 0x91_b1
 const VIDEO_FILE = /^data:video\/|\.(mp4|webm|ogv|mov|m4v)(\?|#|$)/i
 
-function compile(gl: WebGL2RenderingContext, fragment: string) {
-  const program = gl.createProgram()
+const FIELD_UNIFORMS = ["uSize", "uView", "uTime", "uMediaSize"] as const
+const DITHER_UNIFORMS = [
+  "uView",
+  "uLow",
+  "uMid",
+  "uHigh",
+  "uIntensity",
+  "uPointer",
+  "uDot",
+  "uMatrix",
+] as const
+const SCENE_UNIFORMS = [
+  "uDots",
+  "uPx",
+  "uUnit",
+  "uSec",
+  "uGain",
+  "uColours",
+  "uPal",
+  "uPointer",
+  "uDot",
+  "uMatrix",
+] as const
+
+type Entry = {
+  program: WebGLProgram | null
+  state: "pending" | "ready" | "failed"
+  uniforms: readonly string[]
+  /** Sampler uniform name to texture unit. */
+  samplers: Record<string, number>
+  loc: Record<string, WebGLUniformLocation | null>
+}
+
+/**
+ * One WebGL2 context shared by every field on the page. Browsers cap live
+ * contexts at about 16, and each new one recompiles every shader. The hub
+ * draws into its own canvas. A field that has the hub to itself shows that
+ * canvas directly. Once a second field arrives, each field copies its
+ * rectangle out into a plain 2D canvas, so any number of fields cost one
+ * context and compile each program once.
+ */
+type Member = {
+  /** Moves the field from the hub canvas to its own 2D copy. */
+  detach: () => void
+  /** Moves the field from its 2D copy back onto the hub canvas. */
+  attach: () => void
+}
+
+type Hub = {
+  canvas: HTMLCanvasElement
+  gl: WebGL2RenderingContext
+  parallel: boolean
+  maxDots: number
+  programs: Map<string, Entry>
+  noise: Map<number, WebGLTexture | null>
+  refs: number
+  timer: number
+  /** Every field using the hub, whether it shows the hub canvas or a copy. */
+  members: Set<Member>
+  /** The member that shows the hub canvas itself, if any. */
+  owner: Member | null
+  listeners: Set<(event: "lost" | "restored") => void>
+  destroy: () => void
+}
+
+let shared: Hub | null = null
+
+function createHub(): Hub | null {
+  const canvas = document.createElement("canvas")
+  canvas.width = 1
+  canvas.height = 1
+  const gl = canvas.getContext("webgl2", {
+    alpha: true,
+    premultipliedAlpha: true,
+    antialias: false,
+    depth: false,
+    stencil: false,
+    powerPreference: "low-power",
+  })
+  if (!gl) return null
+  const listeners = new Set<(event: "lost" | "restored") => void>()
+  const onLost = (event: Event) => {
+    event.preventDefault()
+    // The next field to mount gets a fresh context.
+    if (shared === hub) shared = null
+    for (const listener of listeners) listener("lost")
+  }
+  const onRestored = () => {
+    for (const listener of listeners) listener("restored")
+  }
+  canvas.addEventListener("webglcontextlost", onLost)
+  canvas.addEventListener("webglcontextrestored", onRestored)
+  const hub: Hub = {
+    canvas,
+    gl,
+    parallel: Boolean(gl.getExtension("KHR_parallel_shader_compile")),
+    maxDots: Math.min(MAX_DOTS, gl.getParameter(gl.MAX_TEXTURE_SIZE)),
+    programs: new Map(),
+    noise: new Map(),
+    refs: 0,
+    timer: 0,
+    members: new Set(),
+    owner: null,
+    listeners,
+    destroy() {
+      if (shared === hub) shared = null
+      canvas.removeEventListener("webglcontextlost", onLost)
+      canvas.removeEventListener("webglcontextrestored", onRestored)
+      gl.getExtension("WEBGL_lose_context")?.loseContext()
+    },
+  }
+  return hub
+}
+
+function acquireHub() {
+  shared ??= createHub()
+  if (!shared) return null
+  window.clearTimeout(shared.timer)
+  shared.refs += 1
+  // The hub canvas is about to be shared, so its owner steps back to a copy.
+  shared.owner?.detach()
+  return shared
+}
+
+/**
+ * Keeps the context for a moment, so a remount or a fast scroll reuses it.
+ * The last field left gets the hub canvas back.
+ */
+function releaseHub(hub: Hub, member: Member | null) {
+  if (member) hub.members.delete(member)
+  hub.refs -= 1
+  if (hub.refs === 1) {
+    for (const last of hub.members) last.attach()
+  }
+  if (hub.refs > 0) return
+  hub.timer = window.setTimeout(() => {
+    if (hub.refs <= 0) hub.destroy()
+  }, HUB_GRACE_MS)
+}
+
+/** Starts a program once per key. It links in the background where it can. */
+function program(
+  hub: Hub,
+  key: string,
+  fragment: string,
+  uniforms: readonly string[],
+  samplers: Record<string, number> = {}
+) {
+  const cached = hub.programs.get(key)
+  if (cached) return cached
+  const { gl } = hub
+  const linked = gl.createProgram()
+  if (!linked) {
+    const failed: Entry = {
+      program: null,
+      state: "failed",
+      uniforms,
+      samplers,
+      loc: {},
+    }
+    hub.programs.set(key, failed)
+    return failed
+  }
+  let state: Entry["state"] = "pending"
   for (const [type, source] of [
     [gl.VERTEX_SHADER, VERTEX],
     [gl.FRAGMENT_SHADER, fragment],
   ] as const) {
     const shader = gl.createShader(type)
-    if (!shader) return null
+    if (!shader) {
+      state = "failed"
+      continue
+    }
     gl.shaderSource(shader, source)
     gl.compileShader(shader)
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      console.warn("DitherField: shader error", gl.getShaderInfoLog(shader))
-    }
-    gl.attachShader(program, shader)
+    gl.attachShader(linked, shader)
     gl.deleteShader(shader)
   }
-  gl.linkProgram(program)
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    gl.deleteProgram(program)
-    return null
+  gl.linkProgram(linked)
+  const entry: Entry = { program: linked, state, uniforms, samplers, loc: {} }
+  hub.programs.set(key, entry)
+  return entry
+}
+
+/** Finishes the link once the driver is done, then reads the uniforms. */
+function poll(hub: Hub, entry: Entry) {
+  const { gl, parallel } = hub
+  const { program: linked } = entry
+  if (entry.state !== "pending" || !linked) return entry.state
+  if (parallel && !gl.getProgramParameter(linked, COMPLETION_STATUS)) {
+    return "pending"
   }
-  return program
+  if (!gl.getProgramParameter(linked, gl.LINK_STATUS)) {
+    console.warn("Dither: shader error", gl.getProgramInfoLog(linked))
+    entry.state = "failed"
+    return "failed"
+  }
+  for (const name of entry.uniforms) {
+    entry.loc[name] = gl.getUniformLocation(linked, name)
+  }
+  gl.useProgram(linked)
+  for (const [name, unit] of Object.entries(entry.samplers)) {
+    gl.uniform1i(gl.getUniformLocation(linked, name), unit)
+  }
+  entry.state = "ready"
+  return "ready"
+}
+
+function waiting(hub: Hub, entries: Entry[]): Drawn {
+  const states = entries.map((entry) => poll(hub, entry))
+  if (states.includes("failed")) return "failed"
+  return states.includes("pending") ? "pending" : "ok"
 }
 
 function createTexture(gl: WebGL2RenderingContext, mipmaps: boolean) {
@@ -6641,25 +7313,88 @@ function createTexture(gl: WebGL2RenderingContext, mipmaps: boolean) {
 }
 
 /**
- * Two passes: the light field renders small into a mipmapped texture, then
- * the dither pass reads it with a bloom from the blurred mip levels and
- * thresholds it into dots, one canvas pixel per dot. Returns null when the
- * shaders do not compile, so the caller can fall back.
+ * The lattice behind a scene's value noise: texel (ix, iy) holds
+ * vals[(perm[ix] + iy) & 255]. Built once per seed and shared by all fields.
  */
-function createRenderer(
-  gl: WebGL2RenderingContext,
-  patternSource: string
-): Renderer | null {
-  const field = compile(gl, `${FIELD_HEADER}${patternSource}${FIELD_MAIN}`)
-  const dither = compile(gl, DITHER)
-  if (!field || !dither) {
-    gl.deleteProgram(field)
-    gl.deleteProgram(dither)
-    return null
+function noiseTexture(hub: Hub, seed: keyof typeof NOISE) {
+  const cached = hub.noise.get(seed)
+  if (cached) return cached
+  const { gl } = hub
+  const bytes = Uint8Array.from(atob(NOISE[seed]), (char) => char.charCodeAt(0))
+  const table = new Uint8Array(256 * 256)
+  for (let iy = 0; iy < 256; iy += 1) {
+    for (let ix = 0; ix < 256; ix += 1) {
+      table[iy * 256 + ix] = bytes[256 + ((bytes[ix] + iy) % 256)]
+    }
   }
-  const at = (program: WebGLProgram, name: string) =>
-    gl.getUniformLocation(program, name)
+  const texture = createTexture(gl, false)
+  gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1)
+  gl.texImage2D(
+    gl.TEXTURE_2D,
+    0,
+    gl.R8,
+    256,
+    256,
+    0,
+    gl.RED,
+    gl.UNSIGNED_BYTE,
+    table
+  )
+  hub.noise.set(seed, texture)
+  return texture
+}
 
+/** Makes room in the hub canvas. It only grows, so fields never fight over it. */
+function fit(hub: Hub, dotsX: number, dotsY: number) {
+  const { canvas, maxDots } = hub
+  if (canvas.width < dotsX) {
+    canvas.width = Math.min(Math.ceil(dotsX / 256) * 256, maxDots)
+  }
+  if (canvas.height < dotsY) {
+    canvas.height = Math.min(Math.ceil(dotsY / 256) * 256, maxDots)
+  }
+}
+
+/**
+ * Copies the finished rectangle, which GL draws from the bottom-left. A field
+ * that shows the hub canvas has nothing to copy.
+ */
+function present(hub: Hub, { ctx }: Target, dotsX: number, dotsY: number) {
+  if (!ctx) return
+  ctx.globalCompositeOperation = "copy"
+  ctx.drawImage(
+    hub.canvas,
+    0,
+    hub.canvas.height - dotsY,
+    dotsX,
+    dotsY,
+    0,
+    0,
+    dotsX,
+    dotsY
+  )
+}
+
+/**
+ * Light fields take two passes: the field renders small into a mipmapped
+ * texture, then the dither pass reads it with a bloom from the blurred mip
+ * levels and thresholds it into dots, one canvas pixel per dot.
+ */
+function createFieldRenderer(
+  hub: Hub,
+  target: Target,
+  key: string,
+  source: string
+): Renderer {
+  const { gl } = hub
+  const field = program(
+    hub,
+    `field:${key}`,
+    `${FIELD_HEADER}${source}${FIELD_MAIN}`,
+    FIELD_UNIFORMS,
+    { uMedia: 1 }
+  )
+  const dither = program(hub, "dither", DITHER, DITHER_UNIFORMS, { uField: 0 })
   const fieldTexture = createTexture(gl, true)
   const mediaTexture = createTexture(gl, false)
   const framebuffer = gl.createFramebuffer()
@@ -6669,11 +7404,6 @@ function createRenderer(
   let view = [1, 1]
   let fieldView = [1, 1]
   let css = [1, 1]
-
-  gl.useProgram(dither)
-  gl.uniform1i(at(dither, "uField"), 0)
-  gl.useProgram(field)
-  gl.uniform1i(at(field, "uMedia"), 1)
 
   return {
     resize(dotsX, dotsY, cssX, cssY) {
@@ -6706,31 +7436,25 @@ function createRenderer(
       )
       gl.bindFramebuffer(gl.FRAMEBUFFER, null)
     },
-    setRamp([low, mid, high]) {
-      gl.useProgram(dither)
-      gl.uniform4f(at(dither, "uLow"), ...low)
-      gl.uniform4f(at(dither, "uMid"), ...mid)
-      gl.uniform4f(at(dither, "uHigh"), ...high)
-    },
-    setIntensity(intensity) {
-      gl.useProgram(dither)
-      gl.uniform1f(at(dither, "uIntensity"), intensity)
-    },
     setMedia(next) {
       media = next
       mediaStale = true
     },
-    draw(time, pointer) {
-      gl.useProgram(field)
-      if (media) {
-        const source = media
+    draw({ ramp, intensity, matrix, time, pointer }) {
+      const ready = waiting(hub, [field, dither])
+      if (ready !== "ok") return ready
+      fit(hub, view[0], view[1])
+
+      gl.useProgram(field.program)
+      const source = media
+      if (source) {
         const isVideo = source instanceof HTMLVideoElement
         const width = isVideo ? source.videoWidth : source.naturalWidth
         const height = isVideo ? source.videoHeight : source.naturalHeight
-        if (!width || !height) return
+        if (!width || !height) return "pending"
+        gl.activeTexture(gl.TEXTURE1)
+        gl.bindTexture(gl.TEXTURE_2D, mediaTexture)
         if (mediaStale || isVideo) {
-          gl.activeTexture(gl.TEXTURE1)
-          gl.bindTexture(gl.TEXTURE_2D, mediaTexture)
           gl.texImage2D(
             gl.TEXTURE_2D,
             0,
@@ -6739,13 +7463,13 @@ function createRenderer(
             gl.UNSIGNED_BYTE,
             source
           )
-          gl.uniform2f(at(field, "uMediaSize"), width, height)
           mediaStale = false
         }
+        gl.uniform2f(field.loc.uMediaSize, width, height)
       }
-      gl.uniform2f(at(field, "uSize"), css[0], css[1])
-      gl.uniform2f(at(field, "uView"), fieldView[0], fieldView[1])
-      gl.uniform1f(at(field, "uTime"), time)
+      gl.uniform2f(field.loc.uSize, css[0], css[1])
+      gl.uniform2f(field.loc.uView, fieldView[0], fieldView[1])
+      gl.uniform1f(field.loc.uTime, time)
       gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer)
       gl.viewport(0, 0, fieldView[0], fieldView[1])
       gl.drawArrays(gl.TRIANGLES, 0, 3)
@@ -6754,16 +7478,22 @@ function createRenderer(
       gl.bindTexture(gl.TEXTURE_2D, fieldTexture)
       gl.generateMipmap(gl.TEXTURE_2D)
 
-      gl.useProgram(dither)
-      gl.uniform2f(at(dither, "uView"), view[0], view[1])
-      gl.uniform1f(at(dither, "uDot"), css[0] / view[0])
-      gl.uniform3f(at(dither, "uPointer"), ...pointer)
+      const [low, mid, high] = ramp
+      gl.useProgram(dither.program)
+      gl.uniform2f(dither.loc.uView, view[0], view[1])
+      gl.uniform4f(dither.loc.uLow, low[0], low[1], low[2], low[3])
+      gl.uniform4f(dither.loc.uMid, mid[0], mid[1], mid[2], mid[3])
+      gl.uniform4f(dither.loc.uHigh, high[0], high[1], high[2], high[3])
+      gl.uniform1f(dither.loc.uIntensity, intensity)
+      gl.uniform1i(dither.loc.uMatrix, matrix)
+      gl.uniform1f(dither.loc.uDot, css[0] / view[0])
+      gl.uniform3f(dither.loc.uPointer, pointer[0], pointer[1], pointer[2])
       gl.viewport(0, 0, view[0], view[1])
       gl.drawArrays(gl.TRIANGLES, 0, 3)
+      present(hub, target, view[0], view[1])
+      return "ok"
     },
     dispose() {
-      gl.deleteProgram(field)
-      gl.deleteProgram(dither)
       gl.deleteTexture(fieldTexture)
       gl.deleteTexture(mediaTexture)
       gl.deleteFramebuffer(framebuffer)
@@ -6771,35 +7501,122 @@ function createRenderer(
   }
 }
 
+/** A scene is one pass: evaluate the picture, add the threshold, pick a colour. */
+function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
+  const { gl } = hub
+  const scene: Scene = SCENES[id]
+  const entry = program(
+    hub,
+    `scene:${id}`,
+    sceneSource(scene),
+    SCENE_UNIFORMS,
+    { uNoise: 2 }
+  )
+  const colours = new Float32Array(24)
+  let view = [1, 1]
+  let css = [1, 1]
+
+  return {
+    resize(dotsX, dotsY, cssX, cssY) {
+      view = [dotsX, dotsY]
+      css = [cssX, cssY]
+    },
+    draw({ ramp, intensity, matrix, time, pointer }) {
+      const ready = waiting(hub, [entry])
+      if (ready !== "ok") return ready
+      fit(hub, view[0], view[1])
+
+      gl.useProgram(entry.program)
+      if (scene.seed) {
+        gl.activeTexture(gl.TEXTURE2)
+        gl.bindTexture(gl.TEXTURE_2D, noiseTexture(hub, scene.seed))
+      }
+      for (const [index, colour] of ramp.entries())
+        colours.set(colour, index * 4)
+      const dotPx = css[0] / view[0]
+      gl.uniform2f(entry.loc.uDots, view[0], view[1])
+      gl.uniform1f(entry.loc.uPx, dotPx)
+      gl.uniform1f(entry.loc.uUnit, scene.dot / dotPx)
+      gl.uniform1f(entry.loc.uSec, time - SCENE_START)
+      gl.uniform1f(entry.loc.uGain, intensity / SCENE_INTENSITY)
+      gl.uniform1i(entry.loc.uColours, ramp.length)
+      gl.uniform4fv(entry.loc.uPal, colours)
+      gl.uniform1i(entry.loc.uMatrix, matrix)
+      gl.uniform1f(entry.loc.uDot, dotPx)
+      gl.uniform3f(entry.loc.uPointer, pointer[0], pointer[1], pointer[2])
+      gl.viewport(0, 0, view[0], view[1])
+      gl.drawArrays(gl.TRIANGLES, 0, 3)
+      present(hub, target, view[0], view[1])
+      return "ok"
+    },
+  }
+}
+
+const isScene = (pattern: DitherPattern): pattern is SceneId =>
+  pattern in SCENES
+
 const toRamp = (color: DitherColor) =>
   typeof color === "string" ? [color, color, color] : [...color]
 
+let probeContext: CanvasRenderingContext2D | null = null
+
 /**
  * Resolves CSS colours (`var(--x)`, `currentColor`, `oklch()`) in the
- * context of `host`, then reads them back as straight RGBA through a
- * 1x1 canvas. A single colour fades from 35% to full opacity.
+ * context of `host`, then reads them back as straight RGBA through one
+ * shared 1x1 canvas.
  */
-function resolveRamp(host: HTMLElement, color: DitherColor): Rgba[] {
+function resolveColors(host: HTMLElement, values: readonly string[]): Rgba[] {
+  probeContext ??= document
+    .createElement("canvas")
+    .getContext("2d", { willReadFrequently: true })
+  const context = probeContext
   const probe = document.createElement("span")
   probe.style.display = "none"
   host.appendChild(probe)
-  const context = document
-    .createElement("canvas")
-    .getContext("2d", { willReadFrequently: true })
-  const fades = typeof color === "string" ? [0.35, 0.75, 1] : [1, 1, 1]
-  const ramp = toRamp(color).map((value, index): Rgba => {
+  const colors = values.map((value): Rgba => {
     probe.style.color = ""
     probe.style.color = value
-    if (!context) return [0.5, 0.5, 0.5, fades[index]]
+    if (!context) return [0.5, 0.5, 0.5, 1]
     context.clearRect(0, 0, 1, 1)
     context.fillStyle = "#808080"
     context.fillStyle = getComputedStyle(probe).color
     context.fillRect(0, 0, 1, 1)
     const [r, g, b, a] = context.getImageData(0, 0, 1, 1).data
-    return [r / 255, g / 255, b / 255, (a / 255) * fades[index]]
+    return [r / 255, g / 255, b / 255, a / 255]
   })
   probe.remove()
-  return ramp
+  return colors
+}
+
+/** A single colour fades from 35% to full opacity. */
+function resolveRamp(host: HTMLElement, color: DitherColor): Rgba[] {
+  const fades = typeof color === "string" ? [0.35, 0.75, 1] : [1, 1, 1]
+  return resolveColors(host, toRamp(color)).map(([r, g, b, a], index): Rgba => [
+    r,
+    g,
+    b,
+    a * fades[index],
+  ])
+}
+
+/** Blends the stops, in premultiplied alpha, down or up to one colour per level. */
+function resolvePalette(
+  host: HTMLElement,
+  scene: Scene,
+  palette: readonly string[] | undefined
+): Rgba[] {
+  const stops = resolveColors(host, palette?.length ? palette : scene.palette)
+  const last = stops.length - 1
+  return scene.palette.map((_, level): Rgba => {
+    const at = (level / (scene.palette.length - 1)) * last
+    const from = Math.floor(at)
+    const [r0, g0, b0, a0] = stops[from]
+    const [r1, g1, b1, a1] = stops[Math.min(from + 1, last)]
+    const k = at - from
+    const alpha = a0 + (a1 - a0) * k
+    const mix = (c0: number, c1: number) => c0 * a0 + (c1 * a1 - c0 * a0) * k
+    return [mix(r0, r1), mix(g0, g1), mix(b0, b1), alpha]
+  })
 }
 
 function loadMedia(
@@ -6828,43 +7645,73 @@ function loadMedia(
   return image
 }
 
+const CANVAS_CLASS =
+  "absolute top-0 left-0 opacity-0 transition-opacity duration-700 [image-rendering:pixelated] data-[ready]:opacity-100 motion-reduce:transition-none"
+
+const hubTarget = (hub: Hub): Target => ({ canvas: hub.canvas, ctx: null })
+
+function copyTarget(): Target | null {
+  const canvas = document.createElement("canvas")
+  const ctx = canvas.getContext("2d")
+  return ctx ? { canvas, ctx } : null
+}
+
 const ease = (from: number, to: number, rate: number, dt: number) =>
   from + (to - from) * (1 - Math.exp(-rate * dt))
 
 /**
- * An animated ordered-dither background. A soft light field, or an image or
- * video, is thresholded against an 8x8 Bayer matrix into crisp square dots
- * coloured from a three-stop ramp. Children render above the dots.
+ * An animated ordered-dither background. A soft light field, a palette scene,
+ * or an image or video is thresholded against a Bayer matrix into crisp square
+ * dots. Children render above the dots.
  */
-export function DitherField({
+export function Dither({
   pattern = "horizon",
   src,
   color = "currentColor",
-  dotSize = 1,
+  palette,
+  matrix,
+  dotSize,
   intensity = 0.75,
   speed = 1,
   fps = 30,
-  interactive = true,
+  interactive = false,
   className,
   children,
   ...props
-}: DitherFieldProps) {
+}: DitherProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const layerRef = useRef<HTMLDivElement>(null)
-  // The GL context only exists while the field is near the viewport, so a
-  // page with many fields stays under the browser's cap of live contexts.
+  // The field only draws while it is near the viewport.
   const [near, setNear] = useState(false)
   const [fallback, setFallback] = useState(false)
   // Bumped when the browser restores a lost WebGL context.
   const [contextKey, setContextKey] = useState(0)
+  const scene = !src && isScene(pattern) ? SCENES[pattern] : null
+  const dot = dotSize ?? scene?.dot ?? 1
   // Read every frame, so changing them never rebuilds the GL state.
-  const live = useRef({ color, intensity, speed, fps, interactive })
-  live.current = { color, intensity, speed, fps, interactive }
+  const live = useRef({
+    color,
+    palette,
+    matrix: matrix ?? scene?.matrix ?? 8,
+    intensity,
+    speed,
+    fps,
+    interactive,
+  })
+  live.current = {
+    color,
+    palette,
+    matrix: matrix ?? scene?.matrix ?? 8,
+    intensity,
+    speed,
+    fps,
+    interactive,
+  }
   const repaint = useRef(() => {})
   // Kept across rebuilds, so a field that scrolls back into view resumes.
   const time = useRef(10)
   const shown = useRef(false)
-  const colorKey = toRamp(color).join("|")
+  const colorKey = `${toRamp(color).join("|")}/${palette?.join("|") ?? ""}`
 
   useEffect(() => {
     const root = rootRef.current
@@ -6882,54 +7729,86 @@ export function DitherField({
     const layer = layerRef.current
     if (!near || !root || !layer) return
 
-    const canvas = document.createElement("canvas")
-    canvas.className =
-      "absolute top-0 left-0 opacity-0 transition-opacity duration-700 [image-rendering:pixelated] data-[ready]:opacity-100 motion-reduce:transition-none"
-    const gl = canvas.getContext("webgl2", {
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: false,
-      depth: false,
-      stencil: false,
-      powerPreference: "low-power",
-    })
-    const renderer = gl
-      ? createRenderer(
-          gl,
-          src
-            ? MEDIA_PATTERN
-            : `float pattern(vec2 p, vec2 size, float t) {${PATTERNS[pattern]}}`
-        )
-      : null
-    if (!gl || !renderer) {
-      gl?.getExtension("WEBGL_lose_context")?.loseContext()
+    const hub = acquireHub()
+    const target = hub && (hub.refs === 1 ? hubTarget(hub) : copyTarget())
+    if (!hub || !target) {
+      if (hub) releaseHub(hub, null)
       setFallback(true)
       return
     }
+    target.canvas.className = CANVAS_CLASS
+    const sceneId = !src && isScene(pattern) ? pattern : null
+    let renderer: Renderer
+    if (sceneId) {
+      renderer = createSceneRenderer(hub, target, sceneId)
+    } else if (src) {
+      renderer = createFieldRenderer(hub, target, "media", MEDIA_PATTERN)
+    } else {
+      const body = PATTERNS[pattern as keyof typeof PATTERNS]
+      renderer = createFieldRenderer(
+        hub,
+        target,
+        pattern,
+        `float pattern(vec2 p, vec2 size, float t) {${body}}`
+      )
+    }
     setFallback(false)
     // A field that comes back into view skips the fade-in.
-    if (shown.current) canvas.dataset.ready = ""
-    layer.appendChild(canvas)
+    if (shown.current) target.canvas.dataset.ready = ""
+    else target.canvas.removeAttribute("data-ready")
+    layer.appendChild(target.canvas)
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const pointer = { x: 0, y: 0, clientX: 0, clientY: 0, on: false, hover: 0 }
+    const frameData: Frame = {
+      ramp: [],
+      intensity: live.current.intensity,
+      matrix: 8,
+      time: 0,
+      pointer: [0, 0, 0],
+    }
     let previous = 0
     let frame = 0
+    let retry = 0
     let cssHeight = 0
+    let glowing = false
     let ready = !src
     let lost = false
     let disposed = false
+    let presented = false
+
+    const resolve = () =>
+      sceneId
+        ? resolvePalette(root, SCENES[sceneId], live.current.palette)
+        : resolveRamp(root, live.current.color)
 
     const draw = () => {
       if (!ready || !cssHeight || lost) return
-      renderer.draw(time.current, [pointer.x, pointer.y, pointer.hover])
-      canvas.dataset.ready = ""
-      shown.current = true
+      frameData.intensity = live.current.intensity
+      frameData.matrix = live.current.matrix
+      frameData.time = time.current
+      frameData.pointer = [pointer.x, pointer.y, pointer.hover]
+      const result = renderer.draw(frameData)
+      if (result === "ok") {
+        target.canvas.dataset.ready = ""
+        shown.current = true
+        presented = true
+      } else if (result === "failed") {
+        lost = true
+        sync()
+        setFallback(true)
+      } else if (!retry) {
+        // Still compiling, or the media is not ready. Retry until the first
+        // frame lands, even when the loop has nothing to redraw.
+        retry = requestAnimationFrame(() => {
+          retry = 0
+          if (!presented) draw()
+        })
+      }
     }
 
     const paint = () => {
-      renderer.setRamp(resolveRamp(root, live.current.color))
-      renderer.setIntensity(live.current.intensity)
+      frameData.ramp = resolve()
       draw()
     }
     repaint.current = paint
@@ -6949,11 +7828,19 @@ export function DitherField({
       const height = root.clientHeight
       if (!width || !height) return
       const dpr = window.devicePixelRatio || 1
-      const devicePerDot = Math.max(1, Math.round(dotSize * dpr))
+      let devicePerDot = Math.max(1, Math.round(dot * dpr))
+      // Stay inside what the GPU can draw in one go.
+      while (
+        Math.ceil((width * dpr) / devicePerDot) > hub.maxDots ||
+        Math.ceil((height * dpr) / devicePerDot) > hub.maxDots
+      ) {
+        devicePerDot += 1
+      }
       const cssPerDot = devicePerDot / dpr
       const dotsX = Math.ceil((width * dpr) / devicePerDot)
       const dotsY = Math.ceil((height * dpr) / devicePerDot)
       cssHeight = dotsY * cssPerDot
+      const { canvas } = target
       canvas.width = dotsX
       canvas.height = dotsY
       canvas.style.width = `${dotsX * cssPerDot}px`
@@ -6988,25 +7875,33 @@ export function DitherField({
       const dt = previous ? Math.min((now - previous) / 1000, 2) : 0
       previous = now
       time.current += dt * speed
-      const box = root.getBoundingClientRect()
-      const left = box.left + root.clientLeft
-      const top = box.top + root.clientTop
-      const inside =
-        interactive &&
-        pointer.on &&
-        pointer.clientX >= box.left &&
-        pointer.clientX <= box.right &&
-        pointer.clientY >= box.top &&
-        pointer.clientY <= box.bottom
-      pointer.x = ease(pointer.x, pointer.clientX - left, POINTER_EASE, dt)
-      pointer.y = ease(
-        pointer.y,
-        top + cssHeight - pointer.clientY,
-        POINTER_EASE,
-        dt
-      )
+
+      let inside = false
+      if (interactive && pointer.on) {
+        const box = root.getBoundingClientRect()
+        const left = box.left + root.clientLeft
+        const top = box.top + root.clientTop
+        inside =
+          pointer.clientX >= box.left &&
+          pointer.clientX <= box.right &&
+          pointer.clientY >= box.top &&
+          pointer.clientY <= box.bottom
+        const x = pointer.clientX - left
+        const y = top + cssHeight - pointer.clientY
+        // Away from the field the glow is off, so the spot can jump to the
+        // pointer and meet it when it arrives.
+        const track = inside || pointer.hover > 0.002
+        pointer.x = track ? ease(pointer.x, x, POINTER_EASE, dt) : x
+        pointer.y = track ? ease(pointer.y, y, POINTER_EASE, dt) : y
+      }
+      const fading = pointer.hover > 0.002
       pointer.hover = ease(pointer.hover, inside ? 1 : 0, 4, dt)
-      draw()
+      if (!inside && !fading) pointer.hover = 0
+      // A still image or a held frame only redraws while the glow moves.
+      const animated = Boolean(video) || (!src && speed !== 0)
+      const moving = inside || fading || glowing
+      glowing = inside || fading
+      if (animated || moving) draw()
     }
 
     const media = src
@@ -7014,7 +7909,7 @@ export function DitherField({
           src,
           (source) => {
             if (disposed) return
-            renderer.setMedia(source)
+            renderer.setMedia?.(source)
             ready = true
             draw()
             sync()
@@ -7065,21 +7960,65 @@ export function DitherField({
     }
 
     // A lost context shows the CSS dots until the browser gives it back.
-    const onLost = (event: Event) => {
-      event.preventDefault()
+    const onHub = (event: "lost" | "restored") => {
+      if (event === "restored") {
+        setContextKey((key) => key + 1)
+        return
+      }
       lost = true
+      target.canvas.removeAttribute("data-ready")
       sync()
       setFallback(true)
     }
-    const onRestored = () => setContextKey((key) => key + 1)
+    hub.listeners.add(onHub)
+
+    // The hub canvas changes hands as fields come and go. One field shows it
+    // directly. Two or more each copy their rectangle into a canvas of their own.
+    const member: Member = {
+      detach: () => {
+        hub.owner = null
+        const own = copyTarget()
+        if (!own) {
+          lost = true
+          sync()
+          setFallback(true)
+          return
+        }
+        const { canvas } = target
+        own.canvas.className = canvas.className
+        own.canvas.style.cssText = canvas.style.cssText
+        own.canvas.width = canvas.width
+        own.canvas.height = canvas.height
+        if (canvas.dataset.ready !== undefined) own.canvas.dataset.ready = ""
+        canvas.replaceWith(own.canvas)
+        target.canvas = own.canvas
+        target.ctx = own.ctx
+        draw()
+      },
+      attach: () => {
+        if (lost || !target.ctx) return
+        const copy = target.canvas
+        const { canvas } = hub
+        canvas.className = copy.className
+        if (copy.dataset.ready !== undefined) canvas.dataset.ready = ""
+        else canvas.removeAttribute("data-ready")
+        copy.replaceWith(canvas)
+        target.canvas = canvas
+        target.ctx = null
+        hub.owner = member
+        resize()
+      },
+    }
+    hub.members.add(member)
+    if (!target.ctx) hub.owner = member
 
     const resizeObserver = new ResizeObserver(resize)
     // Theme switches usually toggle a class or attribute on <html>.
     const themeObserver = new MutationObserver(schedulePaint)
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
+    frameData.ramp = resolve()
     resize()
-    paint()
     sync()
     watchRatio()
     resizeObserver.observe(root)
@@ -7101,12 +8040,11 @@ export function DitherField({
     window.addEventListener("pointerup", onTouchEnd, { passive: true })
     window.addEventListener("pointercancel", onTouchEnd, { passive: true })
     document.documentElement.addEventListener("pointerleave", onLeave)
-    canvas.addEventListener("webglcontextlost", onLost)
-    canvas.addEventListener("webglcontextrestored", onRestored)
 
     return () => {
       disposed = true
       cancelAnimationFrame(frame)
+      cancelAnimationFrame(retry)
       cancelAnimationFrame(paintFrame)
       repaint.current = () => {}
       resizeObserver.disconnect()
@@ -7120,8 +8058,7 @@ export function DitherField({
       window.removeEventListener("pointerup", onTouchEnd)
       window.removeEventListener("pointercancel", onTouchEnd)
       document.documentElement.removeEventListener("pointerleave", onLeave)
-      canvas.removeEventListener("webglcontextlost", onLost)
-      canvas.removeEventListener("webglcontextrestored", onRestored)
+      hub.listeners.delete(onHub)
       if (video) {
         video.pause()
         video.removeAttribute("src")
@@ -7129,25 +8066,33 @@ export function DitherField({
       } else {
         media?.removeAttribute("src")
       }
-      renderer.dispose()
-      gl.getExtension("WEBGL_lose_context")?.loseContext()
-      canvas.remove()
+      renderer.dispose?.()
+      if (hub.owner === member) hub.owner = null
+      releaseHub(hub, member)
+      target.canvas.remove()
     }
-  }, [near, pattern, src, dotSize, contextKey])
+  }, [near, pattern, src, dot, contextKey])
 
   useEffect(() => {
     repaint.current()
-  }, [colorKey, intensity])
+  }, [colorKey, intensity, matrix])
 
-  const [, mid] = toRamp(color)
-  const fallbackStyle: CSSProperties = {
-    backgroundImage: `radial-gradient(${mid} 0.6px, transparent 0.9px)`,
-    backgroundSize: `${3 * dotSize}px ${3 * dotSize}px`,
-    maskImage: "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
-    WebkitMaskImage:
-      "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
-    opacity: Math.min(1, intensity),
-  }
+  const fallbackStyle: CSSProperties = scene
+    ? {
+        backgroundColor: palette?.[0] ?? scene.palette[0],
+        backgroundImage: `radial-gradient(${palette?.at(-1) ?? scene.palette.at(-1)} 0.6px, transparent 0.9px)`,
+        backgroundSize: `${3 * dot}px ${3 * dot}px`,
+        opacity: Math.min(1, intensity / SCENE_INTENSITY),
+      }
+    : {
+        backgroundImage: `radial-gradient(${toRamp(color)[1]} 0.6px, transparent 0.9px)`,
+        backgroundSize: `${3 * dot}px ${3 * dot}px`,
+        maskImage:
+          "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
+        WebkitMaskImage:
+          "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
+        opacity: Math.min(1, intensity),
+      }
 
   return (
     <div
@@ -7167,15 +8112,15 @@ export function DitherField({
 }
 
 
-===== EXAMPLE: dither-field-demo =====
-Title: Dither Field Demo
+===== EXAMPLE: dither-demo =====
+Title: Dither Demo
 
---- file: example/dither-field-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldDemo() {
+export default function DitherDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="horizon"
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
       className="bg-background flex h-[420px] w-full flex-col items-center justify-center gap-4 rounded-lg border px-4 pb-28 text-center select-none [--dither-high:#4c1d95] [--dither-low:#c4b5fd] [--dither-mid:#7c3aed] md:h-[500px] md:gap-6 md:px-6 md:pb-24 dark:[--dither-high:#ede9fe] dark:[--dither-low:#2e1065] dark:[--dither-mid:#8b5cf6]"
@@ -7184,8 +8129,7 @@ export default function DitherFieldDemo() {
         Light, rendered one dot at a time
       </h1>
       <p className="text-muted-foreground max-w-md text-sm text-balance md:text-base">
-        An ordered-dither field that follows your theme, your brand colors and
-        your pointer.
+        An ordered dither that follows your theme and your brand colors.
       </p>
       <div className="flex flex-wrap justify-center gap-2 md:gap-3">
         <button
@@ -7201,16 +8145,16 @@ export default function DitherFieldDemo() {
           Learn more
         </button>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
 
-===== EXAMPLE: dither-field-card-demo =====
-Title: Dither Field Card Demo
+===== EXAMPLE: dither-card-demo =====
+Title: Dither Card Demo
 
---- file: example/dither-field-card-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-card-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
 const cards = [
   {
@@ -7233,15 +8177,16 @@ const cards = [
   },
 ] as const
 
-export default function DitherFieldCardDemo() {
+export default function DitherCardDemo() {
   return (
     <div className="grid w-full max-w-3xl gap-4 md:grid-cols-3">
       {cards.map((card) => (
-        <DitherField
+        <Dither
           key={card.title}
           pattern={card.pattern}
           color="var(--muted-foreground)"
           intensity={0.6}
+          interactive
           className={`bg-card flex h-44 flex-col justify-end rounded-xl border p-5 select-none md:h-56 md:p-6 ${card.className}`}
         >
           {/* Fades the dots out behind the text so it stays readable. */}
@@ -7250,22 +8195,22 @@ export default function DitherFieldCardDemo() {
             {card.title}
           </h3>
           <p className="text-muted-foreground relative text-sm">{card.body}</p>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )
 }
 
 
-===== EXAMPLE: dither-field-text-demo =====
-Title: Dither Field Text Demo
+===== EXAMPLE: dither-text-demo =====
+Title: Dither Text Demo
 
---- file: example/dither-field-text-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-text-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldTextDemo() {
+export default function DitherTextDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="clouds"
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
       intensity={1.1}
@@ -7277,20 +8222,20 @@ export default function DitherFieldTextDemo() {
           Dither
         </span>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
 
-===== EXAMPLE: dither-field-image-demo =====
-Title: Dither Field Image Demo
+===== EXAMPLE: dither-image-demo =====
+Title: Dither Image Demo
 
---- file: example/dither-field-image-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-image-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldImageDemo() {
+export default function DitherImageDemo() {
   return (
-    <DitherField
+    <Dither
       src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
       color={["#7c2d12", "#fb923c", "#fff7ed"]}
       dotSize={2}
@@ -7301,170 +8246,88 @@ export default function DitherFieldImageDemo() {
 }
 
 
-===== EXAMPLE: dither-field-pointer-demo =====
-Title: Dither Field Pointer Demo
+===== EXAMPLE: dither-pointer-demo =====
+Title: Dither Pointer Demo
 
---- file: example/dither-field-pointer-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-pointer-demo.tsx ---
+"use client"
 
-export default function DitherFieldPointerDemo() {
+import { useState } from "react"
+
+import { cn } from "@/lib/utils"
+import { Dither } from "@/registry/magicui/dither"
+
+export default function DitherPointerDemo() {
+  const [interactive, setInteractive] = useState(true)
+
   return (
-    <DitherField
+    <Dither
       pattern="clouds"
       color="var(--foreground)"
       dotSize={2}
       intensity={0.3}
+      interactive={interactive}
       className="bg-background flex h-72 w-full items-end justify-center rounded-lg border p-4 select-none md:h-[400px] md:p-6"
     >
-      <p className="bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-sm backdrop-blur">
-        Hover, or touch and hold
-      </p>
-    </DitherField>
+      <button
+        type="button"
+        aria-pressed={interactive}
+        onClick={() => setInteractive((on) => !on)}
+        className="bg-background/80 relative flex h-9 items-center gap-2 rounded-full border px-4 text-sm font-medium backdrop-blur transition-[scale] duration-150 ease-out active:scale-[0.96]"
+      >
+        <span
+          className={cn(
+            "size-2 rounded-full",
+            interactive ? "bg-emerald-500" : "bg-muted-foreground/40"
+          )}
+        />
+        Mouse interaction {interactive ? "on" : "off"}
+      </button>
+    </Dither>
   )
 }
 
 
-===== EXAMPLE: dither-field-monochrome-demo =====
-Title: Dither Field Monochrome Demo
+===== EXAMPLE: dither-patterns-demo =====
+Title: Dither Patterns Demo
 
---- file: example/dither-field-monochrome-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-patterns-demo.tsx ---
+import { Dither, type DitherPattern } from "@/registry/magicui/dither"
 
-export default function DitherFieldMonochromeDemo() {
+const patterns = [
+  "horizon",
+  "glow",
+  "aurora",
+  "waves",
+  "clouds",
+  "gruvbox-dusk",
+  "nord-orbit",
+  "kanagawa-moonrise",
+  "orbit",
+  "meridian",
+  "eclipse-rose",
+  "ridgeline",
+  "contour",
+  "dunes",
+  "eclipse-nord",
+  "orb",
+  "veil",
+] as const satisfies readonly DitherPattern[]
+
+export default function DitherPatternsDemo() {
   return (
-    <div className="grid w-full grid-cols-2 gap-3 md:gap-4">
-      <DitherField
-        pattern="horizon"
-        color="#0a0a0a"
-        className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Ink on paper</p>
-      </DitherField>
-      <DitherField
-        pattern="horizon"
-        color="#fafafa"
-        className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Chalk on slate</p>
-      </DitherField>
-    </div>
-  )
-}
-
-
-===== EXAMPLE: dither-field-brand-demo =====
-Title: Dither Field Brand Demo
-
---- file: example/dither-field-brand-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
-
-export default function DitherFieldBrandDemo() {
-  return (
-    <div className="grid w-full grid-cols-2 gap-3 md:gap-4">
-      <DitherField
-        pattern="glow"
-        color={["#78350f", "#f59e0b", "#fef3c7"]}
-        className="flex h-56 items-end rounded-xl border bg-[#140b02] p-4 text-amber-50 select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Sodium</p>
-      </DitherField>
-      <DitherField
-        pattern="aurora"
-        color={["#164e63", "#06b6d4", "#cffafe"]}
-        intensity={1.1}
-        className="flex h-56 items-end rounded-xl border bg-[#020f14] p-4 text-cyan-50 select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Glacier</p>
-      </DitherField>
-    </div>
-  )
-}
-
-
-===== EXAMPLE: dither-field-colors-demo =====
-Title: Dither Field Colors Demo
-
---- file: example/dither-field-colors-demo.tsx ---
-import {
-  DitherField,
-  type DitherColor,
-  type DitherPattern,
-} from "@/registry/magicui/dither-field"
-
-const tiles: {
-  label: string
-  pattern: DitherPattern
-  color: DitherColor
-  intensity?: number
-  className: string
-}[] = [
-  {
-    label: "Ink on paper",
-    pattern: "horizon",
-    color: "#0a0a0a",
-    className: "bg-white text-neutral-950",
-  },
-  {
-    label: "Chalk on slate",
-    pattern: "horizon",
-    color: "#fafafa",
-    className: "bg-neutral-950 text-white",
-  },
-  {
-    label: "Sodium",
-    pattern: "glow",
-    color: ["#78350f", "#f59e0b", "#fef3c7"],
-    className: "bg-[#140b02] text-amber-50",
-  },
-  {
-    label: "Glacier",
-    pattern: "aurora",
-    color: ["#164e63", "#06b6d4", "#cffafe"],
-    intensity: 1.1,
-    className: "bg-[#020f14] text-cyan-50",
-  },
-]
-
-export default function DitherFieldColorsDemo() {
-  return (
-    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-      {tiles.map((tile) => (
-        <DitherField
-          key={tile.label}
-          pattern={tile.pattern}
-          color={tile.color}
-          intensity={tile.intensity}
-          className={`flex h-48 items-start rounded-xl border p-4 select-none md:h-64 ${tile.className}`}
-        >
-          <p className="text-sm font-medium">{tile.label}</p>
-        </DitherField>
-      ))}
-    </div>
-  )
-}
-
-
-===== EXAMPLE: dither-field-patterns-demo =====
-Title: Dither Field Patterns Demo
-
---- file: example/dither-field-patterns-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
-
-const patterns = ["horizon", "glow", "aurora", "waves", "clouds"] as const
-
-export default function DitherFieldPatternsDemo() {
-  return (
-    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-5">
+    <div className="grid w-full grid-cols-2 gap-3">
       {patterns.map((pattern) => (
-        <DitherField
+        <Dither
           key={pattern}
           pattern={pattern}
-          className="bg-background flex h-32 items-end rounded-lg border p-3 select-none last:col-span-2 md:h-40 md:last:col-span-1"
+          dotSize={1}
+          className="bg-background flex aspect-4/3 items-end overflow-hidden rounded-lg border p-2 select-none"
         >
-          <code className="bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur">
+          <code className="bg-background/80 text-foreground relative rounded-md border px-1.5 py-0.5 font-mono text-xs backdrop-blur">
             {pattern}
           </code>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )

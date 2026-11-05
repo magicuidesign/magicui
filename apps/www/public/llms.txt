@@ -26,7 +26,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
 - [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
-- [Dither Field](https://magicui.design/docs/components/dither-field): An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.
+- [Dither](https://magicui.design/docs/components/dither): An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. Set `interactive` to brighten the dots under the pointer.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
@@ -258,15 +258,12 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Text 3D Flip Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/text-3d-flip-demo-2.tsx): Example usage
 - [Floating 3D Particles Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/floating-3d-particles-demo.tsx): Example usage
 - [Floating 3D Particles Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/floating-3d-particles-demo-2.tsx): Example usage
-- [Dither Field Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-demo.tsx): Example usage
-- [Dither Field Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-card-demo.tsx): Example usage
-- [Dither Field Text Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-text-demo.tsx): Example usage
-- [Dither Field Image Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-image-demo.tsx): Example usage
-- [Dither Field Pointer Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-pointer-demo.tsx): Example usage
-- [Dither Field Monochrome Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-monochrome-demo.tsx): Example usage
-- [Dither Field Brand Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-brand-demo.tsx): Example usage
-- [Dither Field Colors Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-colors-demo.tsx): Example usage
-- [Dither Field Patterns Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-patterns-demo.tsx): Example usage
+- [Dither Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-demo.tsx): Example usage
+- [Dither Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-card-demo.tsx): Example usage
+- [Dither Text Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-text-demo.tsx): Example usage
+- [Dither Image Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-image-demo.tsx): Example usage
+- [Dither Pointer Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-pointer-demo.tsx): Example usage
+- [Dither Patterns Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-patterns-demo.tsx): Example usage
 
 ## Optional
 

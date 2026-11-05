@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-patterns-demo",
+  "title": "Dither Patterns Demo",
+  "description": "All 17 patterns as same-size background tiles, each labelled with its pattern id.",
+  "registryDependencies": [
+    "@magicui/dither"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-patterns-demo.tsx",
+      "content": "import { Dither, type DitherPattern } from \"@/registry/magicui/dither\"\n\nconst patterns = [\n  \"horizon\",\n  \"glow\",\n  \"aurora\",\n  \"waves\",\n  \"clouds\",\n  \"gruvbox-dusk\",\n  \"nord-orbit\",\n  \"kanagawa-moonrise\",\n  \"orbit\",\n  \"meridian\",\n  \"eclipse-rose\",\n  \"ridgeline\",\n  \"contour\",\n  \"dunes\",\n  \"eclipse-nord\",\n  \"orb\",\n  \"veil\",\n] as const satisfies readonly DitherPattern[]\n\nexport default function DitherPatternsDemo() {\n  return (\n    <div className=\"grid w-full grid-cols-2 gap-3\">\n      {patterns.map((pattern) => (\n        <Dither\n          key={pattern}\n          pattern={pattern}\n          dotSize={1}\n          className=\"bg-background flex aspect-4/3 items-end overflow-hidden rounded-lg border p-2 select-none\"\n        >\n          <code className=\"bg-background/80 text-foreground relative rounded-md border px-1.5 py-0.5 font-mono text-xs backdrop-blur\">\n            {pattern}\n          </code>\n        </Dither>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

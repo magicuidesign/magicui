@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-image-demo",
+  "title": "Dither Image Demo",
+  "description": "A landscape photo dithered into 2px dots with a warm color ramp.",
+  "registryDependencies": [
+    "@magicui/dither"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-image-demo.tsx",
+      "content": "import { Dither } from \"@/registry/magicui/dither\"\n\nexport default function DitherImageDemo() {\n  return (\n    <Dither\n      src=\"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop\"\n      color={[\"#7c2d12\", \"#fb923c\", \"#fff7ed\"]}\n      dotSize={2}\n      intensity={0.8}\n      className=\"h-72 w-full rounded-lg border bg-black md:h-[500px]\"\n    />\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
