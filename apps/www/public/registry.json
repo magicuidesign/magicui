@@ -1380,7 +1380,7 @@
     {
       "name": "dither-field",
       "title": "Dither Field",
-      "description": "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.",
+      "description": "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. The dots brighten under the pointer.",
       "files": [
         {
           "path": "registry/magicui/dither-field.tsx",
@@ -4146,6 +4146,186 @@
       "files": [
         {
           "path": "registry/example/dither-field-patterns-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-gruvbox-dusk",
+      "title": "Dither Gruvbox Dusk",
+      "description": "A hero with a warm gruvbox dusk dithered behind a headline and call to action.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-gruvbox-dusk.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-nord-orbit",
+      "title": "Dither Nord Orbit",
+      "description": "A stats card over a cool nord orbit pattern.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-nord-orbit.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-kanagawa-moonrise",
+      "title": "Dither Kanagawa Moonrise",
+      "description": "A testimonial over a kanagawa moonrise with an 8x8 Bayer matrix.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-kanagawa-moonrise.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-orbit",
+      "title": "Dither Orbit",
+      "description": "A slim announcement banner on a three-tone orbit.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-orbit.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-meridian",
+      "title": "Dither Meridian",
+      "description": "A square upgrade card on a green meridian band.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-meridian.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-eclipse-rose",
+      "title": "Dither Eclipse Rose",
+      "description": "A pricing card on a rose eclipse.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-eclipse-rose.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-ridgeline",
+      "title": "Dither Ridgeline",
+      "description": "A landing header with navigation over layered ridgelines.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-ridgeline.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-contour",
+      "title": "Dither Contour",
+      "description": "A 404 page over drifting topographic contours.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-contour.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-dunes",
+      "title": "Dither Dunes",
+      "description": "An event card on rolling plum dunes.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-dunes.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-eclipse-nord",
+      "title": "Dither Eclipse Nord",
+      "description": "A one-bit eclipse behind a large uptime stat.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-eclipse-nord.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-orb",
+      "title": "Dither Orb",
+      "description": "A one-bit amber orb behind an assistant prompt box.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-orb.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-veil",
+      "title": "Dither Veil",
+      "description": "A one-bit veil that fades into a site footer.",
+      "registryDependencies": [
+        "@magicui/dither-field"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-veil.tsx",
           "type": "registry:example"
         }
       ],

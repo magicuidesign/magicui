@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-kanagawa-moonrise",
+  "title": "Dither Kanagawa Moonrise",
+  "description": "A testimonial over a kanagawa moonrise with an 8x8 Bayer matrix.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-kanagawa-moonrise.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nexport default function DitherKanagawaMoonrise() {\n  return (\n    <DitherField\n      pattern=\"kanagawa-moonrise\"\n      className=\"h-96 w-full max-w-2xl rounded-xl border p-6 text-[#dcd7ba] select-none md:p-10\"\n    >\n      <figure className=\"max-w-sm\">\n        <blockquote className=\"text-xl leading-snug font-medium text-balance md:text-2xl\">\n          “We moved the whole company over a weekend. Monday felt like nothing\n          had changed.”\n        </blockquote>\n        <figcaption className=\"mt-4 text-sm text-[#c8c093]\">\n          Mira Tanaka, Head of Platform\n        </figcaption>\n      </figure>\n    </DitherField>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

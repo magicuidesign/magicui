@@ -2401,4 +2401,162 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "dither-gruvbox-dusk",
+    type: "registry:example",
+    title: "Dither Gruvbox Dusk",
+    description:
+      "A hero with a warm gruvbox dusk dithered behind a headline and call to action.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-gruvbox-dusk.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-nord-orbit",
+    type: "registry:example",
+    title: "Dither Nord Orbit",
+    description: "A stats card over a cool nord orbit pattern.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-nord-orbit.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-kanagawa-moonrise",
+    type: "registry:example",
+    title: "Dither Kanagawa Moonrise",
+    description:
+      "A testimonial over a kanagawa moonrise with an 8x8 Bayer matrix.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-kanagawa-moonrise.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-orbit",
+    type: "registry:example",
+    title: "Dither Orbit",
+    description: "A slim announcement banner on a three-tone orbit.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-orbit.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-meridian",
+    type: "registry:example",
+    title: "Dither Meridian",
+    description: "A square upgrade card on a green meridian band.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-meridian.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-eclipse-rose",
+    type: "registry:example",
+    title: "Dither Eclipse Rose",
+    description: "A pricing card on a rose eclipse.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-eclipse-rose.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-ridgeline",
+    type: "registry:example",
+    title: "Dither Ridgeline",
+    description: "A landing header with navigation over layered ridgelines.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-ridgeline.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-contour",
+    type: "registry:example",
+    title: "Dither Contour",
+    description: "A 404 page over drifting topographic contours.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-contour.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-dunes",
+    type: "registry:example",
+    title: "Dither Dunes",
+    description: "An event card on rolling plum dunes.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-dunes.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-eclipse-nord",
+    type: "registry:example",
+    title: "Dither Eclipse Nord",
+    description: "A one-bit eclipse behind a large uptime stat.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-eclipse-nord.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-orb",
+    type: "registry:example",
+    title: "Dither Orb",
+    description: "A one-bit amber orb behind an assistant prompt box.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-orb.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-veil",
+    type: "registry:example",
+    title: "Dither Veil",
+    description: "A one-bit veil that fades into a site footer.",
+    registryDependencies: ["@magicui/dither-field"],
+    files: [
+      {
+        path: "example/dither-veil.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]
