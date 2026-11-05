@@ -30,6 +30,20 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
   const containerRef = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 })
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  // Draw one static frame instead of animating if the user prefers reduced motion
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    setPrefersReducedMotion(mediaQuery.matches)
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches)
+    }
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
 
   const memoizedColor = useMemo(() => {
     const toRGBA = (color: string) => {
@@ -119,11 +133,27 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     let gridParams: ReturnType<typeof setupCanvas> | null = null
 
     if (canvas && container && ctx) {
+      const drawFrame = () => {
+        if (!gridParams) return
+        drawGrid(
+          ctx,
+          canvas.width,
+          canvas.height,
+          gridParams.cols,
+          gridParams.rows,
+          gridParams.squares,
+          gridParams.dpr
+        )
+      }
+
       const updateCanvasSize = () => {
         const newWidth = width || container.clientWidth
         const newHeight = height || container.clientHeight
         setCanvasSize({ width: newWidth, height: newHeight })
         gridParams = setupCanvas(canvas, newWidth, newHeight)
+        if (prefersReducedMotion) {
+          drawFrame()
+        }
       }
 
       updateCanvasSize()
@@ -136,15 +166,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         lastTime = time
 
         updateSquares(gridParams.squares, deltaTime)
-        drawGrid(
-          ctx,
-          canvas.width,
-          canvas.height,
-          gridParams.cols,
-          gridParams.rows,
-          gridParams.squares,
-          gridParams.dpr
-        )
+        drawFrame()
         animationFrameId = requestAnimationFrame(animate)
       }
 
@@ -161,7 +183,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       )
       intersectionObserver.observe(canvas)
 
-      if (isInView) {
+      if (isInView && !prefersReducedMotion) {
         animationFrameId = requestAnimationFrame(animate)
       }
     }
@@ -177,7 +199,15 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         intersectionObserver.disconnect()
       }
     }
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView])
+  }, [
+    setupCanvas,
+    updateSquares,
+    drawGrid,
+    width,
+    height,
+    isInView,
+    prefersReducedMotion,
+  ])
 
   return (
     <div
