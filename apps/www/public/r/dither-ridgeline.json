@@ -4,12 +4,12 @@
   "title": "Dither Ridgeline",
   "description": "A landing header with navigation over layered ridgelines.",
   "registryDependencies": [
-    "@magicui/dither-field"
+    "@magicui/dither"
   ],
   "files": [
     {
       "path": "registry/example/dither-ridgeline.tsx",
-      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nconst links = [\"Routes\", \"Gear\", \"Journal\"] as const\n\nexport default function DitherRidgeline() {\n  return (\n    <DitherField\n      pattern=\"ridgeline\"\n      className=\"flex h-[26rem] w-full flex-col rounded-xl border text-[#d3c6aa] select-none\"\n    >\n      <nav className=\"flex items-center justify-between px-6 py-4 text-sm\">\n        <span className=\"font-semibold tracking-tight text-[#e5dcc0]\">\n          Alpine\n        </span>\n        <div className=\"flex gap-5\">\n          {links.map((link) => (\n            <button\n              key={link}\n              type=\"button\"\n              className=\"hover:text-[#e5dcc0] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a7c080]\"\n            >\n              {link}\n            </button>\n          ))}\n        </div>\n      </nav>\n      <div className=\"px-6 pt-8 md:px-10\">\n        <h2 className=\"max-w-md text-4xl font-semibold tracking-tight text-balance text-[#e5dcc0] md:text-5xl\">\n          Find your line\n        </h2>\n        <p className=\"mt-3 max-w-sm text-sm text-[#9da9a0]\">\n          Trail maps and conditions for every ridge, updated every hour.\n        </p>\n      </div>\n    </DitherField>\n  )\n}\n",
+      "content": "import { Dither } from \"@/registry/magicui/dither\"\n\nconst links = [\"Routes\", \"Gear\", \"Journal\"] as const\n\nexport default function DitherRidgeline() {\n  return (\n    <Dither\n      pattern=\"ridgeline\"\n      className=\"flex h-[26rem] w-full flex-col rounded-xl border text-[#d3c6aa] select-none\"\n    >\n      <nav className=\"flex items-center justify-between px-6 py-4 text-sm\">\n        <span className=\"font-semibold tracking-tight text-[#e5dcc0]\">\n          Alpine\n        </span>\n        <div className=\"flex gap-5\">\n          {links.map((link) => (\n            <button\n              key={link}\n              type=\"button\"\n              className=\"hover:text-[#e5dcc0] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a7c080]\"\n            >\n              {link}\n            </button>\n          ))}\n        </div>\n      </nav>\n      <div className=\"px-6 pt-8 md:px-10\">\n        <h2 className=\"max-w-md text-4xl font-semibold tracking-tight text-balance text-[#e5dcc0] md:text-5xl\">\n          Find your line\n        </h2>\n        <p className=\"mt-3 max-w-sm text-sm text-[#9da9a0]\">\n          Trail maps and conditions for every ridge, updated every hour.\n        </p>\n      </div>\n    </Dither>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

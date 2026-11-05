@@ -2276,127 +2276,127 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "dither-field-demo",
+    name: "dither-demo",
     type: "registry:example",
-    title: "Dither Field Demo",
+    title: "Dither Demo",
     description:
       "A hero section on a violet dither horizon. CSS variables switch its colors between the light and dark themes.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-demo.tsx",
+        path: "example/dither-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-card-demo",
+    name: "dither-card-demo",
     type: "registry:example",
-    title: "Dither Field Card Demo",
+    title: "Dither Card Demo",
     description:
       "Bento grid of feature cards, each on a quiet dither pattern in the muted foreground color.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-card-demo.tsx",
+        path: "example/dither-card-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-text-demo",
+    name: "dither-text-demo",
     type: "registry:example",
-    title: "Dither Field Text Demo",
+    title: "Dither Text Demo",
     description:
-      "A large heading filled with a cloud dither field through a mix-blend-mode overlay.",
-    registryDependencies: ["@magicui/dither-field"],
+      "A large heading filled with a cloud dither through a mix-blend-mode overlay.",
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-text-demo.tsx",
+        path: "example/dither-text-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-image-demo",
+    name: "dither-image-demo",
     type: "registry:example",
-    title: "Dither Field Image Demo",
+    title: "Dither Image Demo",
     description:
       "A landscape photo dithered into 2px dots with a warm color ramp.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-image-demo.tsx",
+        path: "example/dither-image-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-pointer-demo",
+    name: "dither-pointer-demo",
     type: "registry:example",
-    title: "Dither Field Pointer Demo",
+    title: "Dither Pointer Demo",
     description:
       "A quiet cloud field that brightens under the mouse, the pen or a held finger.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-pointer-demo.tsx",
+        path: "example/dither-pointer-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-monochrome-demo",
+    name: "dither-monochrome-demo",
     type: "registry:example",
-    title: "Dither Field Monochrome Demo",
+    title: "Dither Monochrome Demo",
     description:
       "A monochrome pair: black dots on white and white dots on black.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-monochrome-demo.tsx",
+        path: "example/dither-monochrome-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-brand-demo",
+    name: "dither-brand-demo",
     type: "registry:example",
-    title: "Dither Field Brand Demo",
+    title: "Dither Brand Demo",
     description:
       "A brand-color pair: an amber glow and a cyan aurora with three-stop color ramps.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-brand-demo.tsx",
+        path: "example/dither-brand-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-colors-demo",
+    name: "dither-colors-demo",
     type: "registry:example",
-    title: "Dither Field Colors Demo",
+    title: "Dither Colors Demo",
     description:
       "Four color treatments in one grid: black on white, white on black, an amber glow and a cyan aurora.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-colors-demo.tsx",
+        path: "example/dither-colors-demo.tsx",
         type: "registry:example",
       },
     ],
   },
   {
-    name: "dither-field-patterns-demo",
+    name: "dither-patterns-demo",
     type: "registry:example",
-    title: "Dither Field Patterns Demo",
+    title: "Dither Patterns Demo",
     description:
       "Every built-in pattern side by side in the current theme color.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
-        path: "example/dither-field-patterns-demo.tsx",
+        path: "example/dither-patterns-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -2407,7 +2407,7 @@ export const examples: Registry["items"] = [
     title: "Dither Gruvbox Dusk",
     description:
       "A hero with a warm gruvbox dusk dithered behind a headline and call to action.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-gruvbox-dusk.tsx",
@@ -2420,7 +2420,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Nord Orbit",
     description: "A stats card over a cool nord orbit pattern.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-nord-orbit.tsx",
@@ -2434,7 +2434,7 @@ export const examples: Registry["items"] = [
     title: "Dither Kanagawa Moonrise",
     description:
       "A testimonial over a kanagawa moonrise with an 8x8 Bayer matrix.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-kanagawa-moonrise.tsx",
@@ -2447,7 +2447,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Orbit",
     description: "A slim announcement banner on a three-tone orbit.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-orbit.tsx",
@@ -2460,7 +2460,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Meridian",
     description: "A square upgrade card on a green meridian band.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-meridian.tsx",
@@ -2473,7 +2473,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Eclipse Rose",
     description: "A pricing card on a rose eclipse.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-eclipse-rose.tsx",
@@ -2486,7 +2486,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Ridgeline",
     description: "A landing header with navigation over layered ridgelines.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-ridgeline.tsx",
@@ -2499,7 +2499,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Contour",
     description: "A 404 page over drifting topographic contours.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-contour.tsx",
@@ -2512,7 +2512,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Dunes",
     description: "An event card on rolling plum dunes.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-dunes.tsx",
@@ -2525,7 +2525,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Eclipse Nord",
     description: "A one-bit eclipse behind a large uptime stat.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-eclipse-nord.tsx",
@@ -2538,7 +2538,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Orb",
     description: "A one-bit amber orb behind an assistant prompt box.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-orb.tsx",
@@ -2551,7 +2551,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Veil",
     description: "A one-bit veil that fades into a site footer.",
-    registryDependencies: ["@magicui/dither-field"],
+    registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-veil.tsx",

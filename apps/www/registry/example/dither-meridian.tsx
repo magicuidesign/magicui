@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherMeridian() {
   return (
-    <DitherField
+    <Dither
       pattern="meridian"
       className="flex h-72 w-72 flex-col rounded-xl border p-5 text-[#d3c6aa] select-none"
     >
@@ -21,6 +21,6 @@ export default function DitherMeridian() {
       >
         Upgrade
       </button>
-    </DitherField>
+    </Dither>
   )
 }

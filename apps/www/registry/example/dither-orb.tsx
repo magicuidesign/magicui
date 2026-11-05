@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherOrb() {
   return (
-    <DitherField
+    <Dither
       pattern="orb"
       className="flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#ebdbb2] select-none"
     >
@@ -26,6 +26,6 @@ export default function DitherOrb() {
           Ask
         </button>
       </div>
-    </DitherField>
+    </Dither>
   )
 }

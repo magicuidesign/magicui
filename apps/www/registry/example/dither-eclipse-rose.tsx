@@ -1,4 +1,4 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const perks = [
   "Unlimited eclipses",
@@ -8,7 +8,7 @@ const perks = [
 
 export default function DitherEclipseRose() {
   return (
-    <DitherField
+    <Dither
       pattern="eclipse-rose"
       className="h-96 w-full max-w-sm rounded-xl border p-6 text-[#e0def4] select-none"
     >
@@ -25,6 +25,6 @@ export default function DitherEclipseRose() {
           </li>
         ))}
       </ul>
-    </DitherField>
+    </Dither>
   )
 }

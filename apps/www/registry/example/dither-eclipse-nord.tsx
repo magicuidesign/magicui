@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherEclipseNord() {
   return (
-    <DitherField
+    <Dither
       pattern="eclipse-nord"
       className="flex h-96 w-full flex-col items-center pt-12 text-center text-[#eceff4] select-none md:pt-16"
     >
@@ -13,6 +13,6 @@ export default function DitherEclipseNord() {
       <p className="mt-2 text-sm text-[#d8dee9]">
         Uptime across every region, with zero data loss.
       </p>
-    </DitherField>
+    </Dither>
   )
 }

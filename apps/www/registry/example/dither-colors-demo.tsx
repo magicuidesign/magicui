@@ -1,8 +1,8 @@
 import {
-  DitherField,
+  Dither,
   type DitherColor,
   type DitherPattern,
-} from "@/registry/magicui/dither-field"
+} from "@/registry/magicui/dither"
 
 const tiles: {
   label: string
@@ -38,11 +38,11 @@ const tiles: {
   },
 ]
 
-export default function DitherFieldColorsDemo() {
+export default function DitherColorsDemo() {
   return (
     <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
       {tiles.map((tile) => (
-        <DitherField
+        <Dither
           key={tile.label}
           pattern={tile.pattern}
           color={tile.color}
@@ -50,7 +50,7 @@ export default function DitherFieldColorsDemo() {
           className={`flex h-48 items-start rounded-xl border p-4 select-none md:h-64 ${tile.className}`}
         >
           <p className="text-sm font-medium">{tile.label}</p>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )

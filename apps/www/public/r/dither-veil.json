@@ -4,12 +4,12 @@
   "title": "Dither Veil",
   "description": "A one-bit veil that fades into a site footer.",
   "registryDependencies": [
-    "@magicui/dither-field"
+    "@magicui/dither"
   ],
   "files": [
     {
       "path": "registry/example/dither-veil.tsx",
-      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nconst columns = [\n  { title: \"Product\", links: [\"Features\", \"Pricing\", \"Changelog\"] },\n  { title: \"Company\", links: [\"About\", \"Careers\", \"Contact\"] },\n  { title: \"Legal\", links: [\"Privacy\", \"Terms\", \"Security\"] },\n] as const\n\nexport default function DitherVeil() {\n  return (\n    <DitherField\n      pattern=\"veil\"\n      className=\"w-full rounded-xl border px-6 pt-24 pb-8 text-[#e0def4] select-none md:px-10 md:pt-32\"\n    >\n      <div className=\"grid gap-8 md:grid-cols-[1.5fr_repeat(3,1fr)]\">\n        <div>\n          <p className=\"text-lg font-semibold tracking-tight\">Veil</p>\n          <p className=\"mt-1 max-w-[14rem] text-sm text-[#908caa]\">\n            Private notes that stay yours.\n          </p>\n        </div>\n        {columns.map((column) => (\n          <div key={column.title}>\n            <p className=\"text-sm font-medium text-[#c4a7e7]\">{column.title}</p>\n            <ul className=\"mt-3 space-y-2 text-sm text-[#e0def4]\">\n              {column.links.map((link) => (\n                <li key={link}>{link}</li>\n              ))}\n            </ul>\n          </div>\n        ))}\n      </div>\n    </DitherField>\n  )\n}\n",
+      "content": "import { Dither } from \"@/registry/magicui/dither\"\n\nexport default function DitherVeil() {\n  return (\n    <Dither\n      pattern=\"veil\"\n      className=\"mx-auto flex aspect-[4/5] w-full max-w-md flex-col rounded-xl border p-8 text-[#e0def4] select-none\"\n    >\n      <p className=\"text-sm font-medium text-[#c4a7e7]\">Veil</p>\n      <h3 className=\"mt-2 text-3xl font-semibold tracking-tight text-balance\">\n        Private notes that stay yours.\n      </h3>\n      <p className=\"mt-3 text-sm text-[#908caa]\">\n        End-to-end encrypted, on every device you own.\n      </p>\n      <button\n        type=\"button\"\n        className=\"mt-6 w-fit rounded-full bg-[#e0def4] px-5 py-2 text-sm font-medium text-[#191724]\"\n      >\n        Join the waitlist\n      </button>\n    </Dither>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

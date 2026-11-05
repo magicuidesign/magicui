@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherContour() {
   return (
-    <DitherField
+    <Dither
       pattern="contour"
       className="flex h-96 w-full flex-col items-center justify-center rounded-xl border px-6 text-center text-[#eceff4] select-none"
     >
@@ -19,6 +19,6 @@ export default function DitherContour() {
       >
         Back to home
       </button>
-    </DitherField>
+    </Dither>
   )
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-monochrome-demo",
+  "title": "Dither Monochrome Demo",
+  "description": "A monochrome pair: black dots on white and white dots on black.",
+  "registryDependencies": [
+    "@magicui/dither"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-monochrome-demo.tsx",
+      "content": "import { Dither } from \"@/registry/magicui/dither\"\n\nexport default function DitherMonochromeDemo() {\n  return (\n    <div className=\"grid w-full grid-cols-2 gap-3 md:gap-4\">\n      <Dither\n        pattern=\"horizon\"\n        color=\"#0a0a0a\"\n        className=\"flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 select-none md:h-80 md:p-6\"\n      >\n        <p className=\"text-sm font-medium\">Ink on paper</p>\n      </Dither>\n      <Dither\n        pattern=\"horizon\"\n        color=\"#fafafa\"\n        className=\"flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white select-none md:h-80 md:p-6\"\n      >\n        <p className=\"text-sm font-medium\">Chalk on slate</p>\n      </Dither>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

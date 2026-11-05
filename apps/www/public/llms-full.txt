@@ -6356,11 +6356,11 @@ export default function DiaTextRevealDemo4() {
 
 
 
-===== COMPONENT: dither-field =====
-Title: Dither Field
+===== COMPONENT: dither =====
+Title: Dither
 Description: An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. The dots brighten under the pointer.
 
---- file: magicui/dither-field.tsx ---
+--- file: magicui/dither.tsx ---
 "use client"
 
 import { useEffect, useRef, useState, type CSSProperties } from "react"
@@ -6778,7 +6778,7 @@ export type DitherPattern = keyof typeof PATTERNS | SceneId
 /** One colour, or a `[low, mid, high]` ramp from dim dots to bright dots. */
 export type DitherColor = string | readonly [string, string, string]
 
-export interface DitherFieldProps extends Omit<
+export interface DitherProps extends Omit<
   React.ComponentPropsWithoutRef<"div">,
   "color"
 > {
@@ -6873,9 +6873,14 @@ type Renderer = {
   dispose: () => void
 }
 
+/**
+ * Where a field shows its dots. Alone on the page, a field shows the hub
+ * canvas itself and `ctx` is null. Otherwise it owns a 2D canvas and copies
+ * its rectangle into it.
+ */
 type Target = {
   canvas: HTMLCanvasElement
-  ctx: CanvasRenderingContext2D
+  ctx: CanvasRenderingContext2D | null
 }
 
 const VERTEX = `#version 300 es
@@ -7112,9 +7117,10 @@ type Entry = {
 /**
  * One WebGL2 context shared by every field on the page. Browsers cap live
  * contexts at about 16, and each new one recompiles every shader. The hub
- * draws into its own canvas, and each field copies its rectangle out into a
- * plain 2D canvas, so any number of fields cost one context and compile each
- * program once.
+ * draws into its own canvas. A field that has the hub to itself shows that
+ * canvas directly. Once a second field arrives, each field copies its
+ * rectangle out into a plain 2D canvas, so any number of fields cost one
+ * context and compile each program once.
  */
 type Hub = {
   canvas: HTMLCanvasElement
@@ -7125,6 +7131,8 @@ type Hub = {
   noise: Map<number, WebGLTexture | null>
   refs: number
   timer: number
+  /** The field that shows the hub canvas itself, if any. */
+  owner: { detach: () => void } | null
   listeners: Set<(event: "lost" | "restored") => void>
   destroy: () => void
 }
@@ -7165,6 +7173,7 @@ function createHub(): Hub | null {
     noise: new Map(),
     refs: 0,
     timer: 0,
+    owner: null,
     listeners,
     destroy() {
       if (shared === hub) shared = null
@@ -7181,6 +7190,8 @@ function acquireHub() {
   if (!shared) return null
   window.clearTimeout(shared.timer)
   shared.refs += 1
+  // The hub canvas is about to be shared, so its owner steps back to a copy.
+  shared.owner?.detach()
   return shared
 }
 
@@ -7205,6 +7216,17 @@ function program(
   if (cached) return cached
   const { gl } = hub
   const linked = gl.createProgram()
+  if (!linked) {
+    const failed: Entry = {
+      program: null,
+      state: "failed",
+      uniforms,
+      samplers,
+      loc: {},
+    }
+    hub.programs.set(key, failed)
+    return failed
+  }
   let state: Entry["state"] = "pending"
   for (const [type, source] of [
     [gl.VERTEX_SHADER, VERTEX],
@@ -7235,7 +7257,7 @@ function poll(hub: Hub, entry: Entry) {
     return "pending"
   }
   if (!gl.getProgramParameter(linked, gl.LINK_STATUS)) {
-    console.warn("DitherField: shader error", gl.getProgramInfoLog(linked))
+    console.warn("Dither: shader error", gl.getProgramInfoLog(linked))
     entry.state = "failed"
     return "failed"
   }
@@ -7279,7 +7301,7 @@ function noiseTexture(hub: Hub, seed: keyof typeof NOISE) {
   const table = new Uint8Array(256 * 256)
   for (let iy = 0; iy < 256; iy += 1) {
     for (let ix = 0; ix < 256; ix += 1) {
-      table[iy * 256 + ix] = bytes[256 + ((bytes[ix] + iy) & 255)]
+      table[iy * 256 + ix] = bytes[256 + ((bytes[ix] + iy) % 256)]
     }
   }
   const texture = createTexture(gl, false)
@@ -7310,8 +7332,12 @@ function fit(hub: Hub, dotsX: number, dotsY: number) {
   }
 }
 
-/** Copies the finished rectangle, which GL draws from the bottom-left. */
+/**
+ * Copies the finished rectangle, which GL draws from the bottom-left. A field
+ * that shows the hub canvas has nothing to copy.
+ */
 function present(hub: Hub, { ctx }: Target, dotsX: number, dotsY: number) {
+  if (!ctx) return
   ctx.globalCompositeOperation = "copy"
   ctx.drawImage(
     hub.canvas,
@@ -7597,6 +7623,17 @@ function loadMedia(
   return image
 }
 
+const CANVAS_CLASS =
+  "absolute top-0 left-0 opacity-0 transition-opacity duration-700 [image-rendering:pixelated] data-[ready]:opacity-100 motion-reduce:transition-none"
+
+const hubTarget = (hub: Hub): Target => ({ canvas: hub.canvas, ctx: null })
+
+function copyTarget(): Target | null {
+  const canvas = document.createElement("canvas")
+  const ctx = canvas.getContext("2d")
+  return ctx ? { canvas, ctx } : null
+}
+
 const ease = (from: number, to: number, rate: number, dt: number) =>
   from + (to - from) * (1 - Math.exp(-rate * dt))
 
@@ -7605,7 +7642,7 @@ const ease = (from: number, to: number, rate: number, dt: number) =>
  * or an image or video is thresholded against a Bayer matrix into crisp square
  * dots. Children render above the dots.
  */
-export function DitherField({
+export function Dither({
   pattern = "horizon",
   src,
   color = "currentColor",
@@ -7619,7 +7656,7 @@ export function DitherField({
   className,
   children,
   ...props
-}: DitherFieldProps) {
+}: DitherProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const layerRef = useRef<HTMLDivElement>(null)
   // The field only draws while it is near the viewport.
@@ -7671,16 +7708,13 @@ export function DitherField({
     if (!near || !root || !layer) return
 
     const hub = acquireHub()
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    if (!hub || !ctx) {
+    const target = hub && (hub.refs === 1 ? hubTarget(hub) : copyTarget())
+    if (!hub || !target) {
       if (hub) releaseHub(hub)
       setFallback(true)
       return
     }
-    canvas.className =
-      "absolute top-0 left-0 opacity-0 transition-opacity duration-700 [image-rendering:pixelated] data-[ready]:opacity-100 motion-reduce:transition-none"
-    const target: Target = { canvas, ctx }
+    target.canvas.className = CANVAS_CLASS
     const sceneId = !src && isScene(pattern) ? pattern : null
     let renderer: Renderer
     if (sceneId) {
@@ -7698,8 +7732,9 @@ export function DitherField({
     }
     setFallback(false)
     // A field that comes back into view skips the fade-in.
-    if (shown.current) canvas.dataset.ready = ""
-    layer.appendChild(canvas)
+    if (shown.current) target.canvas.dataset.ready = ""
+    else target.canvas.removeAttribute("data-ready")
+    layer.appendChild(target.canvas)
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const pointer = { x: 0, y: 0, clientX: 0, clientY: 0, on: false, hover: 0 }
@@ -7718,6 +7753,7 @@ export function DitherField({
     let ready = !src
     let lost = false
     let disposed = false
+    let presented = false
 
     const resolve = () =>
       sceneId
@@ -7732,17 +7768,19 @@ export function DitherField({
       frameData.pointer = [pointer.x, pointer.y, pointer.hover]
       const result = renderer.draw(frameData)
       if (result === "ok") {
-        canvas.dataset.ready = ""
+        target.canvas.dataset.ready = ""
         shown.current = true
+        presented = true
       } else if (result === "failed") {
         lost = true
         sync()
         setFallback(true)
-      } else if (!frame && !retry) {
-        // Still compiling. The animation loop retries on its own.
+      } else if (!retry) {
+        // Still compiling, or the media is not ready. Retry until the first
+        // frame lands, even when the loop has nothing to redraw.
         retry = requestAnimationFrame(() => {
           retry = 0
-          draw()
+          if (!presented) draw()
         })
       }
     }
@@ -7780,6 +7818,7 @@ export function DitherField({
       const dotsX = Math.ceil((width * dpr) / devicePerDot)
       const dotsY = Math.ceil((height * dpr) / devicePerDot)
       cssHeight = dotsY * cssPerDot
+      const { canvas } = target
       canvas.width = dotsX
       canvas.height = dotsY
       canvas.style.width = `${dotsX * cssPerDot}px`
@@ -7905,11 +7944,36 @@ export function DitherField({
         return
       }
       lost = true
-      canvas.removeAttribute("data-ready")
+      target.canvas.removeAttribute("data-ready")
       sync()
       setFallback(true)
     }
     hub.listeners.add(onHub)
+
+    // Another field wants the hub, so this one moves to its own canvas.
+    const owner = {
+      detach: () => {
+        hub.owner = null
+        const own = copyTarget()
+        if (!own) {
+          lost = true
+          sync()
+          setFallback(true)
+          return
+        }
+        const { canvas } = target
+        own.canvas.className = canvas.className
+        own.canvas.style.cssText = canvas.style.cssText
+        own.canvas.width = canvas.width
+        own.canvas.height = canvas.height
+        if (canvas.dataset.ready !== undefined) own.canvas.dataset.ready = ""
+        canvas.replaceWith(own.canvas)
+        target.canvas = own.canvas
+        target.ctx = own.ctx
+        draw()
+      },
+    }
+    if (!target.ctx) hub.owner = owner
 
     const resizeObserver = new ResizeObserver(resize)
     // Theme switches usually toggle a class or attribute on <html>.
@@ -7966,8 +8030,9 @@ export function DitherField({
         media?.removeAttribute("src")
       }
       renderer.dispose()
+      if (hub.owner === owner) hub.owner = null
       releaseHub(hub)
-      canvas.remove()
+      target.canvas.remove()
     }
   }, [near, pattern, src, dot, contextKey])
 
@@ -8010,15 +8075,15 @@ export function DitherField({
 }
 
 
-===== EXAMPLE: dither-field-demo =====
-Title: Dither Field Demo
+===== EXAMPLE: dither-demo =====
+Title: Dither Demo
 
---- file: example/dither-field-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldDemo() {
+export default function DitherDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="horizon"
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
       className="bg-background flex h-[420px] w-full flex-col items-center justify-center gap-4 rounded-lg border px-4 pb-28 text-center select-none [--dither-high:#4c1d95] [--dither-low:#c4b5fd] [--dither-mid:#7c3aed] md:h-[500px] md:gap-6 md:px-6 md:pb-24 dark:[--dither-high:#ede9fe] dark:[--dither-low:#2e1065] dark:[--dither-mid:#8b5cf6]"
@@ -8027,8 +8092,8 @@ export default function DitherFieldDemo() {
         Light, rendered one dot at a time
       </h1>
       <p className="text-muted-foreground max-w-md text-sm text-balance md:text-base">
-        An ordered-dither field that follows your theme, your brand colors and
-        your pointer.
+        An ordered dither that follows your theme, your brand colors and your
+        pointer.
       </p>
       <div className="flex flex-wrap justify-center gap-2 md:gap-3">
         <button
@@ -8044,16 +8109,16 @@ export default function DitherFieldDemo() {
           Learn more
         </button>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
 
-===== EXAMPLE: dither-field-card-demo =====
-Title: Dither Field Card Demo
+===== EXAMPLE: dither-card-demo =====
+Title: Dither Card Demo
 
---- file: example/dither-field-card-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-card-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
 const cards = [
   {
@@ -8076,11 +8141,11 @@ const cards = [
   },
 ] as const
 
-export default function DitherFieldCardDemo() {
+export default function DitherCardDemo() {
   return (
     <div className="grid w-full max-w-3xl gap-4 md:grid-cols-3">
       {cards.map((card) => (
-        <DitherField
+        <Dither
           key={card.title}
           pattern={card.pattern}
           color="var(--muted-foreground)"
@@ -8093,22 +8158,22 @@ export default function DitherFieldCardDemo() {
             {card.title}
           </h3>
           <p className="text-muted-foreground relative text-sm">{card.body}</p>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )
 }
 
 
-===== EXAMPLE: dither-field-text-demo =====
-Title: Dither Field Text Demo
+===== EXAMPLE: dither-text-demo =====
+Title: Dither Text Demo
 
---- file: example/dither-field-text-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-text-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldTextDemo() {
+export default function DitherTextDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="clouds"
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
       intensity={1.1}
@@ -8120,20 +8185,20 @@ export default function DitherFieldTextDemo() {
           Dither
         </span>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
 
-===== EXAMPLE: dither-field-image-demo =====
-Title: Dither Field Image Demo
+===== EXAMPLE: dither-image-demo =====
+Title: Dither Image Demo
 
---- file: example/dither-field-image-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-image-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldImageDemo() {
+export default function DitherImageDemo() {
   return (
-    <DitherField
+    <Dither
       src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
       color={["#7c2d12", "#fb923c", "#fff7ed"]}
       dotSize={2}
@@ -8144,15 +8209,15 @@ export default function DitherFieldImageDemo() {
 }
 
 
-===== EXAMPLE: dither-field-pointer-demo =====
-Title: Dither Field Pointer Demo
+===== EXAMPLE: dither-pointer-demo =====
+Title: Dither Pointer Demo
 
---- file: example/dither-field-pointer-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-pointer-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldPointerDemo() {
+export default function DitherPointerDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="clouds"
       color="var(--foreground)"
       dotSize={2}
@@ -8162,77 +8227,77 @@ export default function DitherFieldPointerDemo() {
       <p className="bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-sm backdrop-blur">
         Hover, or touch and hold
       </p>
-    </DitherField>
+    </Dither>
   )
 }
 
 
-===== EXAMPLE: dither-field-monochrome-demo =====
-Title: Dither Field Monochrome Demo
+===== EXAMPLE: dither-monochrome-demo =====
+Title: Dither Monochrome Demo
 
---- file: example/dither-field-monochrome-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-monochrome-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldMonochromeDemo() {
+export default function DitherMonochromeDemo() {
   return (
     <div className="grid w-full grid-cols-2 gap-3 md:gap-4">
-      <DitherField
+      <Dither
         pattern="horizon"
         color="#0a0a0a"
         className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Ink on paper</p>
-      </DitherField>
-      <DitherField
+      </Dither>
+      <Dither
         pattern="horizon"
         color="#fafafa"
         className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Chalk on slate</p>
-      </DitherField>
+      </Dither>
     </div>
   )
 }
 
 
-===== EXAMPLE: dither-field-brand-demo =====
-Title: Dither Field Brand Demo
+===== EXAMPLE: dither-brand-demo =====
+Title: Dither Brand Demo
 
---- file: example/dither-field-brand-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-brand-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldBrandDemo() {
+export default function DitherBrandDemo() {
   return (
     <div className="grid w-full grid-cols-2 gap-3 md:gap-4">
-      <DitherField
+      <Dither
         pattern="glow"
         color={["#78350f", "#f59e0b", "#fef3c7"]}
         className="flex h-56 items-end rounded-xl border bg-[#140b02] p-4 text-amber-50 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Sodium</p>
-      </DitherField>
-      <DitherField
+      </Dither>
+      <Dither
         pattern="aurora"
         color={["#164e63", "#06b6d4", "#cffafe"]}
         intensity={1.1}
         className="flex h-56 items-end rounded-xl border bg-[#020f14] p-4 text-cyan-50 select-none md:h-80 md:p-6"
       >
         <p className="text-sm font-medium">Glacier</p>
-      </DitherField>
+      </Dither>
     </div>
   )
 }
 
 
-===== EXAMPLE: dither-field-colors-demo =====
-Title: Dither Field Colors Demo
+===== EXAMPLE: dither-colors-demo =====
+Title: Dither Colors Demo
 
---- file: example/dither-field-colors-demo.tsx ---
+--- file: example/dither-colors-demo.tsx ---
 import {
-  DitherField,
+  Dither,
   type DitherColor,
   type DitherPattern,
-} from "@/registry/magicui/dither-field"
+} from "@/registry/magicui/dither"
 
 const tiles: {
   label: string
@@ -8268,11 +8333,11 @@ const tiles: {
   },
 ]
 
-export default function DitherFieldColorsDemo() {
+export default function DitherColorsDemo() {
   return (
     <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
       {tiles.map((tile) => (
-        <DitherField
+        <Dither
           key={tile.label}
           pattern={tile.pattern}
           color={tile.color}
@@ -8280,26 +8345,26 @@ export default function DitherFieldColorsDemo() {
           className={`flex h-48 items-start rounded-xl border p-4 select-none md:h-64 ${tile.className}`}
         >
           <p className="text-sm font-medium">{tile.label}</p>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )
 }
 
 
-===== EXAMPLE: dither-field-patterns-demo =====
-Title: Dither Field Patterns Demo
+===== EXAMPLE: dither-patterns-demo =====
+Title: Dither Patterns Demo
 
---- file: example/dither-field-patterns-demo.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+--- file: example/dither-patterns-demo.tsx ---
+import { Dither } from "@/registry/magicui/dither"
 
 const patterns = ["horizon", "glow", "aurora", "waves", "clouds"] as const
 
-export default function DitherFieldPatternsDemo() {
+export default function DitherPatternsDemo() {
   return (
     <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-5">
       {patterns.map((pattern) => (
-        <DitherField
+        <Dither
           key={pattern}
           pattern={pattern}
           className="bg-background flex h-32 items-end rounded-lg border p-3 select-none last:col-span-2 md:h-40 md:last:col-span-1"
@@ -8307,7 +8372,7 @@ export default function DitherFieldPatternsDemo() {
           <code className="bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur">
             {pattern}
           </code>
-        </DitherField>
+        </Dither>
       ))}
     </div>
   )
@@ -8318,11 +8383,11 @@ export default function DitherFieldPatternsDemo() {
 Title: Dither Gruvbox Dusk
 
 --- file: example/dither-gruvbox-dusk.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherGruvboxDusk() {
   return (
-    <DitherField
+    <Dither
       pattern="gruvbox-dusk"
       className="flex h-[26rem] w-full flex-col items-center justify-center rounded-xl border px-4 text-center text-[#ebdbb2] select-none md:h-[30rem]"
     >
@@ -8343,7 +8408,7 @@ export default function DitherGruvboxDusk() {
           Start deploying
         </button>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8352,7 +8417,7 @@ export default function DitherGruvboxDusk() {
 Title: Dither Nord Orbit
 
 --- file: example/dither-nord-orbit.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const stats = [
   { label: "Regions", value: "34" },
@@ -8362,7 +8427,7 @@ const stats = [
 
 export default function DitherNordOrbit() {
   return (
-    <DitherField
+    <Dither
       pattern="nord-orbit"
       className="flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#eceff4] select-none md:p-8"
     >
@@ -8382,7 +8447,7 @@ export default function DitherNordOrbit() {
           </div>
         ))}
       </dl>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8391,11 +8456,11 @@ export default function DitherNordOrbit() {
 Title: Dither Kanagawa Moonrise
 
 --- file: example/dither-kanagawa-moonrise.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherKanagawaMoonrise() {
   return (
-    <DitherField
+    <Dither
       pattern="kanagawa-moonrise"
       className="h-96 w-full max-w-2xl rounded-xl border p-6 text-[#dcd7ba] select-none md:p-10"
     >
@@ -8408,7 +8473,7 @@ export default function DitherKanagawaMoonrise() {
           Mira Tanaka, Head of Platform
         </figcaption>
       </figure>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8417,11 +8482,11 @@ export default function DitherKanagawaMoonrise() {
 Title: Dither Orbit
 
 --- file: example/dither-orbit.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherOrbit() {
   return (
-    <DitherField
+    <Dither
       pattern="orbit"
       className="flex h-28 w-full items-center justify-center rounded-xl border px-4 text-center text-[#eceff4] select-none"
     >
@@ -8439,7 +8504,7 @@ export default function DitherOrbit() {
           Read the release notes
         </button>
       </p>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8448,11 +8513,11 @@ export default function DitherOrbit() {
 Title: Dither Meridian
 
 --- file: example/dither-meridian.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherMeridian() {
   return (
-    <DitherField
+    <Dither
       pattern="meridian"
       className="flex h-72 w-72 flex-col rounded-xl border p-5 text-[#d3c6aa] select-none"
     >
@@ -8471,7 +8536,7 @@ export default function DitherMeridian() {
       >
         Upgrade
       </button>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8480,7 +8545,7 @@ export default function DitherMeridian() {
 Title: Dither Eclipse Rose
 
 --- file: example/dither-eclipse-rose.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const perks = [
   "Unlimited eclipses",
@@ -8490,7 +8555,7 @@ const perks = [
 
 export default function DitherEclipseRose() {
   return (
-    <DitherField
+    <Dither
       pattern="eclipse-rose"
       className="h-96 w-full max-w-sm rounded-xl border p-6 text-[#e0def4] select-none"
     >
@@ -8507,7 +8572,7 @@ export default function DitherEclipseRose() {
           </li>
         ))}
       </ul>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8516,13 +8581,13 @@ export default function DitherEclipseRose() {
 Title: Dither Ridgeline
 
 --- file: example/dither-ridgeline.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const links = ["Routes", "Gear", "Journal"] as const
 
 export default function DitherRidgeline() {
   return (
-    <DitherField
+    <Dither
       pattern="ridgeline"
       className="flex h-[26rem] w-full flex-col rounded-xl border text-[#d3c6aa] select-none"
     >
@@ -8550,7 +8615,7 @@ export default function DitherRidgeline() {
           Trail maps and conditions for every ridge, updated every hour.
         </p>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8559,11 +8624,11 @@ export default function DitherRidgeline() {
 Title: Dither Contour
 
 --- file: example/dither-contour.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherContour() {
   return (
-    <DitherField
+    <Dither
       pattern="contour"
       className="flex h-96 w-full flex-col items-center justify-center rounded-xl border px-6 text-center text-[#eceff4] select-none"
     >
@@ -8580,7 +8645,7 @@ export default function DitherContour() {
       >
         Back to home
       </button>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8589,11 +8654,11 @@ export default function DitherContour() {
 Title: Dither Dunes
 
 --- file: example/dither-dunes.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherDunes() {
   return (
-    <DitherField
+    <Dither
       pattern="dunes"
       className="flex h-64 w-full max-w-2xl flex-col rounded-xl border p-6 text-[#e0def4] select-none md:p-8"
     >
@@ -8614,7 +8679,7 @@ export default function DitherDunes() {
           <span className="text-lg font-semibold">14</span>
         </p>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8623,11 +8688,11 @@ export default function DitherDunes() {
 Title: Dither Eclipse Nord
 
 --- file: example/dither-eclipse-nord.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherEclipseNord() {
   return (
-    <DitherField
+    <Dither
       pattern="eclipse-nord"
       className="flex h-96 w-full flex-col items-center pt-12 text-center text-[#eceff4] select-none md:pt-16"
     >
@@ -8638,7 +8703,7 @@ export default function DitherEclipseNord() {
       <p className="mt-2 text-sm text-[#d8dee9]">
         Uptime across every region, with zero data loss.
       </p>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8647,11 +8712,11 @@ export default function DitherEclipseNord() {
 Title: Dither Orb
 
 --- file: example/dither-orb.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherOrb() {
   return (
-    <DitherField
+    <Dither
       pattern="orb"
       className="flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#ebdbb2] select-none"
     >
@@ -8675,7 +8740,7 @@ export default function DitherOrb() {
           Ask
         </button>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
 
@@ -8684,39 +8749,28 @@ export default function DitherOrb() {
 Title: Dither Veil
 
 --- file: example/dither-veil.tsx ---
-import { DitherField } from "@/registry/magicui/dither-field"
-
-const columns = [
-  { title: "Product", links: ["Features", "Pricing", "Changelog"] },
-  { title: "Company", links: ["About", "Careers", "Contact"] },
-  { title: "Legal", links: ["Privacy", "Terms", "Security"] },
-] as const
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherVeil() {
   return (
-    <DitherField
+    <Dither
       pattern="veil"
-      className="w-full rounded-xl border px-6 pt-24 pb-8 text-[#e0def4] select-none md:px-10 md:pt-32"
+      className="mx-auto flex aspect-[4/5] w-full max-w-md flex-col rounded-xl border p-8 text-[#e0def4] select-none"
     >
-      <div className="grid gap-8 md:grid-cols-[1.5fr_repeat(3,1fr)]">
-        <div>
-          <p className="text-lg font-semibold tracking-tight">Veil</p>
-          <p className="mt-1 max-w-[14rem] text-sm text-[#908caa]">
-            Private notes that stay yours.
-          </p>
-        </div>
-        {columns.map((column) => (
-          <div key={column.title}>
-            <p className="text-sm font-medium text-[#c4a7e7]">{column.title}</p>
-            <ul className="mt-3 space-y-2 text-sm text-[#e0def4]">
-              {column.links.map((link) => (
-                <li key={link}>{link}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </DitherField>
+      <p className="text-sm font-medium text-[#c4a7e7]">Veil</p>
+      <h3 className="mt-2 text-3xl font-semibold tracking-tight text-balance">
+        Private notes that stay yours.
+      </h3>
+      <p className="mt-3 text-sm text-[#908caa]">
+        End-to-end encrypted, on every device you own.
+      </p>
+      <button
+        type="button"
+        className="mt-6 w-fit rounded-full bg-[#e0def4] px-5 py-2 text-sm font-medium text-[#191724]"
+      >
+        Join the waitlist
+      </button>
+    </Dither>
   )
 }
 

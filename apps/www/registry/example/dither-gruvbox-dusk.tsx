@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherGruvboxDusk() {
   return (
-    <DitherField
+    <Dither
       pattern="gruvbox-dusk"
       className="flex h-[26rem] w-full flex-col items-center justify-center rounded-xl border px-4 text-center text-[#ebdbb2] select-none md:h-[30rem]"
     >
@@ -23,6 +23,6 @@ export default function DitherGruvboxDusk() {
           Start deploying
         </button>
       </div>
-    </DitherField>
+    </Dither>
   )
 }

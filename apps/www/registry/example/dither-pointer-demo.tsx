@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldPointerDemo() {
+export default function DitherPointerDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="clouds"
       color="var(--foreground)"
       dotSize={2}
@@ -12,6 +12,6 @@ export default function DitherFieldPointerDemo() {
       <p className="bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-sm backdrop-blur">
         Hover, or touch and hold
       </p>
-    </DitherField>
+    </Dither>
   )
 }

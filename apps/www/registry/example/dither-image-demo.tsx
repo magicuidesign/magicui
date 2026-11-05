@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldImageDemo() {
+export default function DitherImageDemo() {
   return (
-    <DitherField
+    <Dither
       src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop"
       color={["#7c2d12", "#fb923c", "#fff7ed"]}
       dotSize={2}

@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherDunes() {
   return (
-    <DitherField
+    <Dither
       pattern="dunes"
       className="flex h-64 w-full max-w-2xl flex-col rounded-xl border p-6 text-[#e0def4] select-none md:p-8"
     >
@@ -23,6 +23,6 @@ export default function DitherDunes() {
           <span className="text-lg font-semibold">14</span>
         </p>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
