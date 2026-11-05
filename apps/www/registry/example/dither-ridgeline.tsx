@@ -1,10 +1,10 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 const links = ["Routes", "Gear", "Journal"] as const
 
 export default function DitherRidgeline() {
   return (
-    <DitherField
+    <Dither
       pattern="ridgeline"
       className="flex h-[26rem] w-full flex-col rounded-xl border text-[#d3c6aa] select-none"
     >
@@ -32,6 +32,6 @@ export default function DitherRidgeline() {
           Trail maps and conditions for every ridge, updated every hour.
         </p>
       </div>
-    </DitherField>
+    </Dither>
   )
 }

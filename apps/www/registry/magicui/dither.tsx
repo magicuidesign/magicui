@@ -415,7 +415,7 @@ export type DitherPattern = keyof typeof PATTERNS | SceneId
 /** One colour, or a `[low, mid, high]` ramp from dim dots to bright dots. */
 export type DitherColor = string | readonly [string, string, string]
 
-export interface DitherFieldProps extends Omit<
+export interface DitherProps extends Omit<
   React.ComponentPropsWithoutRef<"div">,
   "color"
 > {
@@ -510,9 +510,14 @@ type Renderer = {
   dispose: () => void
 }
 
+/**
+ * Where a field shows its dots. Alone on the page, a field shows the hub
+ * canvas itself and `ctx` is null. Otherwise it owns a 2D canvas and copies
+ * its rectangle into it.
+ */
 type Target = {
   canvas: HTMLCanvasElement
-  ctx: CanvasRenderingContext2D
+  ctx: CanvasRenderingContext2D | null
 }
 
 const VERTEX = `#version 300 es
@@ -749,9 +754,10 @@ type Entry = {
 /**
  * One WebGL2 context shared by every field on the page. Browsers cap live
  * contexts at about 16, and each new one recompiles every shader. The hub
- * draws into its own canvas, and each field copies its rectangle out into a
- * plain 2D canvas, so any number of fields cost one context and compile each
- * program once.
+ * draws into its own canvas. A field that has the hub to itself shows that
+ * canvas directly. Once a second field arrives, each field copies its
+ * rectangle out into a plain 2D canvas, so any number of fields cost one
+ * context and compile each program once.
  */
 type Hub = {
   canvas: HTMLCanvasElement
@@ -762,6 +768,8 @@ type Hub = {
   noise: Map<number, WebGLTexture | null>
   refs: number
   timer: number
+  /** The field that shows the hub canvas itself, if any. */
+  owner: { detach: () => void } | null
   listeners: Set<(event: "lost" | "restored") => void>
   destroy: () => void
 }
@@ -802,6 +810,7 @@ function createHub(): Hub | null {
     noise: new Map(),
     refs: 0,
     timer: 0,
+    owner: null,
     listeners,
     destroy() {
       if (shared === hub) shared = null
@@ -818,6 +827,8 @@ function acquireHub() {
   if (!shared) return null
   window.clearTimeout(shared.timer)
   shared.refs += 1
+  // The hub canvas is about to be shared, so its owner steps back to a copy.
+  shared.owner?.detach()
   return shared
 }
 
@@ -842,6 +853,17 @@ function program(
   if (cached) return cached
   const { gl } = hub
   const linked = gl.createProgram()
+  if (!linked) {
+    const failed: Entry = {
+      program: null,
+      state: "failed",
+      uniforms,
+      samplers,
+      loc: {},
+    }
+    hub.programs.set(key, failed)
+    return failed
+  }
   let state: Entry["state"] = "pending"
   for (const [type, source] of [
     [gl.VERTEX_SHADER, VERTEX],
@@ -872,7 +894,7 @@ function poll(hub: Hub, entry: Entry) {
     return "pending"
   }
   if (!gl.getProgramParameter(linked, gl.LINK_STATUS)) {
-    console.warn("DitherField: shader error", gl.getProgramInfoLog(linked))
+    console.warn("Dither: shader error", gl.getProgramInfoLog(linked))
     entry.state = "failed"
     return "failed"
   }
@@ -916,7 +938,7 @@ function noiseTexture(hub: Hub, seed: keyof typeof NOISE) {
   const table = new Uint8Array(256 * 256)
   for (let iy = 0; iy < 256; iy += 1) {
     for (let ix = 0; ix < 256; ix += 1) {
-      table[iy * 256 + ix] = bytes[256 + ((bytes[ix] + iy) & 255)]
+      table[iy * 256 + ix] = bytes[256 + ((bytes[ix] + iy) % 256)]
     }
   }
   const texture = createTexture(gl, false)
@@ -947,8 +969,12 @@ function fit(hub: Hub, dotsX: number, dotsY: number) {
   }
 }
 
-/** Copies the finished rectangle, which GL draws from the bottom-left. */
+/**
+ * Copies the finished rectangle, which GL draws from the bottom-left. A field
+ * that shows the hub canvas has nothing to copy.
+ */
 function present(hub: Hub, { ctx }: Target, dotsX: number, dotsY: number) {
+  if (!ctx) return
   ctx.globalCompositeOperation = "copy"
   ctx.drawImage(
     hub.canvas,
@@ -1234,6 +1260,17 @@ function loadMedia(
   return image
 }
 
+const CANVAS_CLASS =
+  "absolute top-0 left-0 opacity-0 transition-opacity duration-700 [image-rendering:pixelated] data-[ready]:opacity-100 motion-reduce:transition-none"
+
+const hubTarget = (hub: Hub): Target => ({ canvas: hub.canvas, ctx: null })
+
+function copyTarget(): Target | null {
+  const canvas = document.createElement("canvas")
+  const ctx = canvas.getContext("2d")
+  return ctx ? { canvas, ctx } : null
+}
+
 const ease = (from: number, to: number, rate: number, dt: number) =>
   from + (to - from) * (1 - Math.exp(-rate * dt))
 
@@ -1242,7 +1279,7 @@ const ease = (from: number, to: number, rate: number, dt: number) =>
  * or an image or video is thresholded against a Bayer matrix into crisp square
  * dots. Children render above the dots.
  */
-export function DitherField({
+export function Dither({
   pattern = "horizon",
   src,
   color = "currentColor",
@@ -1256,7 +1293,7 @@ export function DitherField({
   className,
   children,
   ...props
-}: DitherFieldProps) {
+}: DitherProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const layerRef = useRef<HTMLDivElement>(null)
   // The field only draws while it is near the viewport.
@@ -1308,16 +1345,13 @@ export function DitherField({
     if (!near || !root || !layer) return
 
     const hub = acquireHub()
-    const canvas = document.createElement("canvas")
-    const ctx = canvas.getContext("2d")
-    if (!hub || !ctx) {
+    const target = hub && (hub.refs === 1 ? hubTarget(hub) : copyTarget())
+    if (!hub || !target) {
       if (hub) releaseHub(hub)
       setFallback(true)
       return
     }
-    canvas.className =
-      "absolute top-0 left-0 opacity-0 transition-opacity duration-700 [image-rendering:pixelated] data-[ready]:opacity-100 motion-reduce:transition-none"
-    const target: Target = { canvas, ctx }
+    target.canvas.className = CANVAS_CLASS
     const sceneId = !src && isScene(pattern) ? pattern : null
     let renderer: Renderer
     if (sceneId) {
@@ -1335,8 +1369,9 @@ export function DitherField({
     }
     setFallback(false)
     // A field that comes back into view skips the fade-in.
-    if (shown.current) canvas.dataset.ready = ""
-    layer.appendChild(canvas)
+    if (shown.current) target.canvas.dataset.ready = ""
+    else target.canvas.removeAttribute("data-ready")
+    layer.appendChild(target.canvas)
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const pointer = { x: 0, y: 0, clientX: 0, clientY: 0, on: false, hover: 0 }
@@ -1355,6 +1390,7 @@ export function DitherField({
     let ready = !src
     let lost = false
     let disposed = false
+    let presented = false
 
     const resolve = () =>
       sceneId
@@ -1369,17 +1405,19 @@ export function DitherField({
       frameData.pointer = [pointer.x, pointer.y, pointer.hover]
       const result = renderer.draw(frameData)
       if (result === "ok") {
-        canvas.dataset.ready = ""
+        target.canvas.dataset.ready = ""
         shown.current = true
+        presented = true
       } else if (result === "failed") {
         lost = true
         sync()
         setFallback(true)
-      } else if (!frame && !retry) {
-        // Still compiling. The animation loop retries on its own.
+      } else if (!retry) {
+        // Still compiling, or the media is not ready. Retry until the first
+        // frame lands, even when the loop has nothing to redraw.
         retry = requestAnimationFrame(() => {
           retry = 0
-          draw()
+          if (!presented) draw()
         })
       }
     }
@@ -1417,6 +1455,7 @@ export function DitherField({
       const dotsX = Math.ceil((width * dpr) / devicePerDot)
       const dotsY = Math.ceil((height * dpr) / devicePerDot)
       cssHeight = dotsY * cssPerDot
+      const { canvas } = target
       canvas.width = dotsX
       canvas.height = dotsY
       canvas.style.width = `${dotsX * cssPerDot}px`
@@ -1542,11 +1581,36 @@ export function DitherField({
         return
       }
       lost = true
-      canvas.removeAttribute("data-ready")
+      target.canvas.removeAttribute("data-ready")
       sync()
       setFallback(true)
     }
     hub.listeners.add(onHub)
+
+    // Another field wants the hub, so this one moves to its own canvas.
+    const owner = {
+      detach: () => {
+        hub.owner = null
+        const own = copyTarget()
+        if (!own) {
+          lost = true
+          sync()
+          setFallback(true)
+          return
+        }
+        const { canvas } = target
+        own.canvas.className = canvas.className
+        own.canvas.style.cssText = canvas.style.cssText
+        own.canvas.width = canvas.width
+        own.canvas.height = canvas.height
+        if (canvas.dataset.ready !== undefined) own.canvas.dataset.ready = ""
+        canvas.replaceWith(own.canvas)
+        target.canvas = own.canvas
+        target.ctx = own.ctx
+        draw()
+      },
+    }
+    if (!target.ctx) hub.owner = owner
 
     const resizeObserver = new ResizeObserver(resize)
     // Theme switches usually toggle a class or attribute on <html>.
@@ -1603,8 +1667,9 @@ export function DitherField({
         media?.removeAttribute("src")
       }
       renderer.dispose()
+      if (hub.owner === owner) hub.owner = null
       releaseHub(hub)
-      canvas.remove()
+      target.canvas.remove()
     }
   }, [near, pattern, src, dot, contextKey])
 

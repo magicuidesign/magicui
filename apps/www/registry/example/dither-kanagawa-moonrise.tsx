@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherKanagawaMoonrise() {
   return (
-    <DitherField
+    <Dither
       pattern="kanagawa-moonrise"
       className="h-96 w-full max-w-2xl rounded-xl border p-6 text-[#dcd7ba] select-none md:p-10"
     >
@@ -15,6 +15,6 @@ export default function DitherKanagawaMoonrise() {
           Mira Tanaka, Head of Platform
         </figcaption>
       </figure>
-    </DitherField>
+    </Dither>
   )
 }

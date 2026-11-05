@@ -4,12 +4,12 @@
   "title": "Dither Nord Orbit",
   "description": "A stats card over a cool nord orbit pattern.",
   "registryDependencies": [
-    "@magicui/dither-field"
+    "@magicui/dither"
   ],
   "files": [
     {
       "path": "registry/example/dither-nord-orbit.tsx",
-      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nconst stats = [\n  { label: \"Regions\", value: \"34\" },\n  { label: \"Uptime\", value: \"99.99%\" },\n  { label: \"Latency\", value: \"12 ms\" },\n] as const\n\nexport default function DitherNordOrbit() {\n  return (\n    <DitherField\n      pattern=\"nord-orbit\"\n      className=\"flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#eceff4] select-none md:p-8\"\n    >\n      <div>\n        <h3 className=\"text-2xl font-semibold tracking-tight\">Global edge</h3>\n        <p className=\"mt-1 max-w-xs text-sm text-[#d8dee9]\">\n          Your app runs close to every user, on every continent.\n        </p>\n      </div>\n      <dl className=\"grid grid-cols-3 gap-4\">\n        {stats.map((stat) => (\n          <div key={stat.label}>\n            <dt className=\"text-xs tracking-wide text-[#d8dee9] uppercase\">\n              {stat.label}\n            </dt>\n            <dd className=\"text-xl font-semibold tabular-nums\">{stat.value}</dd>\n          </div>\n        ))}\n      </dl>\n    </DitherField>\n  )\n}\n",
+      "content": "import { Dither } from \"@/registry/magicui/dither\"\n\nconst stats = [\n  { label: \"Regions\", value: \"34\" },\n  { label: \"Uptime\", value: \"99.99%\" },\n  { label: \"Latency\", value: \"12 ms\" },\n] as const\n\nexport default function DitherNordOrbit() {\n  return (\n    <Dither\n      pattern=\"nord-orbit\"\n      className=\"flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#eceff4] select-none md:p-8\"\n    >\n      <div>\n        <h3 className=\"text-2xl font-semibold tracking-tight\">Global edge</h3>\n        <p className=\"mt-1 max-w-xs text-sm text-[#d8dee9]\">\n          Your app runs close to every user, on every continent.\n        </p>\n      </div>\n      <dl className=\"grid grid-cols-3 gap-4\">\n        {stats.map((stat) => (\n          <div key={stat.label}>\n            <dt className=\"text-xs tracking-wide text-[#d8dee9] uppercase\">\n              {stat.label}\n            </dt>\n            <dd className=\"text-xl font-semibold tabular-nums\">{stat.value}</dd>\n          </div>\n        ))}\n      </dl>\n    </Dither>\n  )\n}\n",
       "type": "registry:example"
     }
   ],

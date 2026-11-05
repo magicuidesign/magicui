@@ -1,8 +1,8 @@
-import { DitherField } from "@/registry/magicui/dither-field"
+import { Dither } from "@/registry/magicui/dither"
 
-export default function DitherFieldTextDemo() {
+export default function DitherTextDemo() {
   return (
-    <DitherField
+    <Dither
       pattern="clouds"
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
       intensity={1.1}
@@ -14,6 +14,6 @@ export default function DitherFieldTextDemo() {
           Dither
         </span>
       </div>
-    </DitherField>
+    </Dither>
   )
 }
