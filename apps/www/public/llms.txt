@@ -263,22 +263,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dither Text Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-text-demo.tsx): Example usage
 - [Dither Image Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-image-demo.tsx): Example usage
 - [Dither Pointer Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-pointer-demo.tsx): Example usage
-- [Dither Monochrome Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-monochrome-demo.tsx): Example usage
-- [Dither Brand Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-brand-demo.tsx): Example usage
-- [Dither Colors Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-colors-demo.tsx): Example usage
 - [Dither Patterns Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-patterns-demo.tsx): Example usage
-- [Dither Gruvbox Dusk](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-gruvbox-dusk.tsx): Example usage
-- [Dither Nord Orbit](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-nord-orbit.tsx): Example usage
-- [Dither Kanagawa Moonrise](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-kanagawa-moonrise.tsx): Example usage
-- [Dither Orbit](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-orbit.tsx): Example usage
-- [Dither Meridian](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-meridian.tsx): Example usage
-- [Dither Eclipse Rose](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-eclipse-rose.tsx): Example usage
-- [Dither Ridgeline](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-ridgeline.tsx): Example usage
-- [Dither Contour](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-contour.tsx): Example usage
-- [Dither Dunes](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-dunes.tsx): Example usage
-- [Dither Eclipse Nord](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-eclipse-nord.tsx): Example usage
-- [Dither Orb](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-orb.tsx): Example usage
-- [Dither Veil](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-veil.tsx): Example usage
 
 ## Optional
 

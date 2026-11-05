@@ -40,6 +40,30 @@ npx shadcn@latest add @magicui/dither
 
 </Tabs>
 
+## Examples
+
+### Card Backgrounds
+
+<ComponentPreview name="dither-card-demo" />
+
+### Mouse Interaction
+
+<ComponentPreview name="dither-pointer-demo" />
+
+### Text Mask
+
+<ComponentPreview name="dither-text-demo" />
+
+### Image
+
+<ComponentPreview name="dither-image-demo" />
+
+## Patterns
+
+Pass any of these ids to `pattern`. The first five are light patterns in your `color`. The other twelve ship with their own colors, Bayer matrix and dot size. Pass `palette` to recolor one.
+
+<ComponentPreview name="dither-patterns-demo" />
+
 ## Usage
 
 ```tsx showLineNumbers
@@ -60,111 +84,9 @@ import { Dither } from "@/components/ui/dither"
 | `src`         | `string`             | `-`              | Image or video URL to dither instead. Remote files must allow CORS                                                |
 | `color`       | `string \| string[]` | `"currentColor"` | A CSS color, or a `[low, mid, high]` ramp from dim to bright dots. Palette patterns ignore it                     |
 | `palette`     | `string[]`           | `-`              | Override the colors of a palette pattern, from darkest to brightest. Any CSS color works                          |
-| `matrix`      | `2 \| 4 \| 8`        | `-`              | Size of the Bayer matrix. Larger matrices give finer, smoother steps. Palette patterns pick their own             |
+| `matrix`      | `2 \| 4 \| 8`        | `8`              | Size of the Bayer matrix. Larger matrices give finer, smoother steps. Palette patterns pick their own             |
 | `dotSize`     | `number`             | `1`              | Size of one dot in CSS pixels. Palette patterns pick their own size unless you set it                             |
 | `intensity`   | `number`             | `0.75`           | Brightness of the field                                                                                           |
 | `speed`       | `number`             | `1`              | Animation speed. `0` holds a still frame                                                                          |
 | `fps`         | `number`             | `30`             | Maximum frames per second                                                                                         |
 | `interactive` | `boolean`            | `true`           | Brighten the dots under the pointer                                                                               |
-
-## Patterns
-
-Twelve palette patterns ship with their own colors, Bayer matrix and dot size, so each one works with no other props. They suit dark surfaces. Pass `palette` to recolor one.
-
-```tsx showLineNumbers
-<Dither pattern="veil" className="h-96" />
-```
-
-### gruvbox-dusk
-
-Hero.
-
-<ComponentPreview name="dither-gruvbox-dusk" />
-
-### nord-orbit
-
-Stats card.
-
-<ComponentPreview name="dither-nord-orbit" />
-
-### kanagawa-moonrise
-
-Testimonial.
-
-<ComponentPreview name="dither-kanagawa-moonrise" />
-
-### orbit
-
-Announcement banner.
-
-<ComponentPreview name="dither-orbit" />
-
-### meridian
-
-Upgrade card.
-
-<ComponentPreview name="dither-meridian" />
-
-### eclipse-rose
-
-Pricing card.
-
-<ComponentPreview name="dither-eclipse-rose" />
-
-### ridgeline
-
-Landing header.
-
-<ComponentPreview name="dither-ridgeline" />
-
-### contour
-
-404 page.
-
-<ComponentPreview name="dither-contour" />
-
-### dunes
-
-Event card.
-
-<ComponentPreview name="dither-dunes" />
-
-### eclipse-nord
-
-Big stat.
-
-<ComponentPreview name="dither-eclipse-nord" />
-
-### orb
-
-Assistant prompt.
-
-<ComponentPreview name="dither-orb" />
-
-### veil
-
-Footer.
-
-<ComponentPreview name="dither-veil" />
-
-## Examples
-
-### Built-in patterns
-
-<ComponentPreview name="dither-patterns-demo" />
-
-### Card Background
-
-<ComponentPreview name="dither-card-demo" />
-
-### Text Mask
-
-<ComponentPreview name="dither-text-demo" />
-
-### Image
-
-<ComponentPreview name="dither-image-demo" />
-
-### Colors
-
-<ComponentPreview name="dither-colors-demo" />

@@ -8243,141 +8243,40 @@ export default function DitherImageDemo() {
 Title: Dither Pointer Demo
 
 --- file: example/dither-pointer-demo.tsx ---
+"use client"
+
+import { useState } from "react"
+
+import { cn } from "@/lib/utils"
 import { Dither } from "@/registry/magicui/dither"
 
 export default function DitherPointerDemo() {
+  const [interactive, setInteractive] = useState(true)
+
   return (
     <Dither
       pattern="clouds"
       color="var(--foreground)"
       dotSize={2}
       intensity={0.3}
+      interactive={interactive}
       className="bg-background flex h-72 w-full items-end justify-center rounded-lg border p-4 select-none md:h-[400px] md:p-6"
     >
-      <p className="bg-background/80 text-muted-foreground rounded-full border px-3 py-1 text-sm backdrop-blur">
-        Hover, or touch and hold
-      </p>
+      <button
+        type="button"
+        aria-pressed={interactive}
+        onClick={() => setInteractive((on) => !on)}
+        className="bg-background/80 relative flex h-9 items-center gap-2 rounded-full border px-4 text-sm font-medium backdrop-blur transition-[scale] duration-150 ease-out active:scale-[0.96]"
+      >
+        <span
+          className={cn(
+            "size-2 rounded-full",
+            interactive ? "bg-emerald-500" : "bg-muted-foreground/40"
+          )}
+        />
+        Mouse interaction {interactive ? "on" : "off"}
+      </button>
     </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-monochrome-demo =====
-Title: Dither Monochrome Demo
-
---- file: example/dither-monochrome-demo.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherMonochromeDemo() {
-  return (
-    <div className="grid w-full grid-cols-2 gap-3 md:gap-4">
-      <Dither
-        pattern="horizon"
-        color="#0a0a0a"
-        className="flex h-56 items-start rounded-xl border bg-white p-4 text-neutral-950 select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Ink on paper</p>
-      </Dither>
-      <Dither
-        pattern="horizon"
-        color="#fafafa"
-        className="flex h-56 items-start rounded-xl border bg-neutral-950 p-4 text-white select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Chalk on slate</p>
-      </Dither>
-    </div>
-  )
-}
-
-
-===== EXAMPLE: dither-brand-demo =====
-Title: Dither Brand Demo
-
---- file: example/dither-brand-demo.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherBrandDemo() {
-  return (
-    <div className="grid w-full grid-cols-2 gap-3 md:gap-4">
-      <Dither
-        pattern="glow"
-        color={["#78350f", "#f59e0b", "#fef3c7"]}
-        className="flex h-56 items-end rounded-xl border bg-[#140b02] p-4 text-amber-50 select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Sodium</p>
-      </Dither>
-      <Dither
-        pattern="aurora"
-        color={["#164e63", "#06b6d4", "#cffafe"]}
-        intensity={1.1}
-        className="flex h-56 items-end rounded-xl border bg-[#020f14] p-4 text-cyan-50 select-none md:h-80 md:p-6"
-      >
-        <p className="text-sm font-medium">Glacier</p>
-      </Dither>
-    </div>
-  )
-}
-
-
-===== EXAMPLE: dither-colors-demo =====
-Title: Dither Colors Demo
-
---- file: example/dither-colors-demo.tsx ---
-import {
-  Dither,
-  type DitherColor,
-  type DitherPattern,
-} from "@/registry/magicui/dither"
-
-const tiles: {
-  label: string
-  pattern: DitherPattern
-  color: DitherColor
-  intensity?: number
-  className: string
-}[] = [
-  {
-    label: "Ink on paper",
-    pattern: "horizon",
-    color: "#0a0a0a",
-    className: "bg-white text-neutral-950",
-  },
-  {
-    label: "Chalk on slate",
-    pattern: "horizon",
-    color: "#fafafa",
-    className: "bg-neutral-950 text-white",
-  },
-  {
-    label: "Sodium",
-    pattern: "glow",
-    color: ["#78350f", "#f59e0b", "#fef3c7"],
-    className: "bg-[#140b02] text-amber-50",
-  },
-  {
-    label: "Glacier",
-    pattern: "aurora",
-    color: ["#164e63", "#06b6d4", "#cffafe"],
-    intensity: 1.1,
-    className: "bg-[#020f14] text-cyan-50",
-  },
-]
-
-export default function DitherColorsDemo() {
-  return (
-    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-      {tiles.map((tile) => (
-        <Dither
-          key={tile.label}
-          pattern={tile.pattern}
-          color={tile.color}
-          intensity={tile.intensity}
-          className={`flex h-48 items-start rounded-xl border p-4 select-none md:h-64 ${tile.className}`}
-        >
-          <p className="text-sm font-medium">{tile.label}</p>
-        </Dither>
-      ))}
-    </div>
   )
 }
 
@@ -8386,421 +8285,43 @@ export default function DitherColorsDemo() {
 Title: Dither Patterns Demo
 
 --- file: example/dither-patterns-demo.tsx ---
-import { Dither } from "@/registry/magicui/dither"
+import { Dither, type DitherPattern } from "@/registry/magicui/dither"
 
-const patterns = ["horizon", "glow", "aurora", "waves", "clouds"] as const
+const patterns = [
+  "horizon",
+  "glow",
+  "aurora",
+  "waves",
+  "clouds",
+  "gruvbox-dusk",
+  "nord-orbit",
+  "kanagawa-moonrise",
+  "orbit",
+  "meridian",
+  "eclipse-rose",
+  "ridgeline",
+  "contour",
+  "dunes",
+  "eclipse-nord",
+  "orb",
+  "veil",
+] as const satisfies readonly DitherPattern[]
 
 export default function DitherPatternsDemo() {
   return (
-    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-5">
+    <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3">
       {patterns.map((pattern) => (
         <Dither
           key={pattern}
           pattern={pattern}
-          className="bg-background flex h-32 items-end rounded-lg border p-3 select-none last:col-span-2 md:h-40 md:last:col-span-1"
+          className="bg-background flex aspect-4/3 items-end overflow-hidden rounded-lg border p-2 select-none"
         >
-          <code className="bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur">
+          <code className="bg-background/80 text-foreground relative rounded-md border px-1.5 py-0.5 font-mono text-xs backdrop-blur">
             {pattern}
           </code>
         </Dither>
       ))}
     </div>
-  )
-}
-
-
-===== EXAMPLE: dither-gruvbox-dusk =====
-Title: Dither Gruvbox Dusk
-
---- file: example/dither-gruvbox-dusk.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherGruvboxDusk() {
-  return (
-    <Dither
-      pattern="gruvbox-dusk"
-      className="flex h-[26rem] w-full flex-col items-center justify-center rounded-xl border px-4 text-center text-[#ebdbb2] select-none md:h-[30rem]"
-    >
-      <div className="rounded-xl bg-[#1d2021]/80 px-6 py-6 backdrop-blur-sm md:px-10 md:py-8">
-        <p className="text-sm font-medium tracking-widest text-[#fabd2f] uppercase">
-          Deploy anywhere
-        </p>
-        <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-balance md:text-4xl">
-          Ship before the sun sets
-        </h2>
-        <p className="mx-auto mt-3 max-w-sm text-sm text-[#d5c4a1]">
-          Push to main and watch every region go live in under a minute.
-        </p>
-        <button
-          type="button"
-          className="mt-6 rounded-md bg-[#fabd2f] px-5 py-2.5 text-sm font-medium text-[#1d2021] transition-colors hover:bg-[#fe8019] focus-visible:ring-2 focus-visible:ring-[#fabd2f] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1d2021] focus-visible:outline-none"
-        >
-          Start deploying
-        </button>
-      </div>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-nord-orbit =====
-Title: Dither Nord Orbit
-
---- file: example/dither-nord-orbit.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-const stats = [
-  { label: "Regions", value: "34" },
-  { label: "Uptime", value: "99.99%" },
-  { label: "Latency", value: "12 ms" },
-] as const
-
-export default function DitherNordOrbit() {
-  return (
-    <Dither
-      pattern="nord-orbit"
-      className="flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#eceff4] select-none md:p-8"
-    >
-      <div>
-        <h3 className="text-2xl font-semibold tracking-tight">Global edge</h3>
-        <p className="mt-1 max-w-xs text-sm text-[#d8dee9]">
-          Your app runs close to every user, on every continent.
-        </p>
-      </div>
-      <dl className="grid grid-cols-3 gap-4">
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <dt className="text-xs tracking-wide text-[#d8dee9] uppercase">
-              {stat.label}
-            </dt>
-            <dd className="text-xl font-semibold tabular-nums">{stat.value}</dd>
-          </div>
-        ))}
-      </dl>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-kanagawa-moonrise =====
-Title: Dither Kanagawa Moonrise
-
---- file: example/dither-kanagawa-moonrise.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherKanagawaMoonrise() {
-  return (
-    <Dither
-      pattern="kanagawa-moonrise"
-      className="h-96 w-full max-w-2xl rounded-xl border p-6 text-[#dcd7ba] select-none md:p-10"
-    >
-      <figure className="max-w-sm">
-        <blockquote className="text-xl leading-snug font-medium text-balance md:text-2xl">
-          “We moved the whole company over a weekend. Monday felt like nothing
-          had changed.”
-        </blockquote>
-        <figcaption className="mt-4 text-sm text-[#c8c093]">
-          Mira Tanaka, Head of Platform
-        </figcaption>
-      </figure>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-orbit =====
-Title: Dither Orbit
-
---- file: example/dither-orbit.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherOrbit() {
-  return (
-    <Dither
-      pattern="orbit"
-      className="flex h-28 w-full items-center justify-center rounded-xl border px-4 text-center text-[#eceff4] select-none"
-    >
-      <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm md:text-base">
-        <span className="rounded-full bg-[#88c0d0] px-2.5 py-0.5 text-xs font-semibold text-[#2e3440]">
-          New
-        </span>
-        <span className="font-medium">
-          Orbit 2.0 is here with live cursors.
-        </span>
-        <button
-          type="button"
-          className="font-medium text-[#88c0d0] underline underline-offset-4 hover:text-[#8fbcbb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#88c0d0]"
-        >
-          Read the release notes
-        </button>
-      </p>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-meridian =====
-Title: Dither Meridian
-
---- file: example/dither-meridian.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherMeridian() {
-  return (
-    <Dither
-      pattern="meridian"
-      className="flex h-72 w-72 flex-col rounded-xl border p-5 text-[#d3c6aa] select-none"
-    >
-      <p className="text-xs font-medium tracking-widest text-[#a7c080] uppercase">
-        Pro plan
-      </p>
-      <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#e5dcc0]">
-        Unlock unlimited projects
-      </h3>
-      <p className="mt-1 text-sm text-[#9da9a0]">
-        Build as many sites as you like with priority support.
-      </p>
-      <button
-        type="button"
-        className="mt-auto self-start rounded-md bg-[#a7c080] px-4 py-2 text-sm font-medium text-[#272e33] transition-colors hover:bg-[#b8d08f] focus-visible:ring-2 focus-visible:ring-[#a7c080] focus-visible:ring-offset-2 focus-visible:ring-offset-[#272e33] focus-visible:outline-none"
-      >
-        Upgrade
-      </button>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-eclipse-rose =====
-Title: Dither Eclipse Rose
-
---- file: example/dither-eclipse-rose.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-const perks = [
-  "Unlimited eclipses",
-  "Priority rendering",
-  "Team sharing",
-] as const
-
-export default function DitherEclipseRose() {
-  return (
-    <Dither
-      pattern="eclipse-rose"
-      className="h-96 w-full max-w-sm rounded-xl border p-6 text-[#e0def4] select-none"
-    >
-      <h3 className="text-sm font-medium text-[#c4a7e7]">Studio</h3>
-      <p className="mt-2 flex items-baseline gap-1">
-        <span className="text-4xl font-semibold tracking-tight">$19</span>
-        <span className="text-sm text-[#908caa]">per month</span>
-      </p>
-      <ul className="mt-5 space-y-2 text-sm">
-        {perks.map((perk) => (
-          <li key={perk} className="flex items-center gap-2">
-            <span className="size-1.5 rounded-full bg-[#ebbcba]" />
-            {perk}
-          </li>
-        ))}
-      </ul>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-ridgeline =====
-Title: Dither Ridgeline
-
---- file: example/dither-ridgeline.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-const links = ["Routes", "Gear", "Journal"] as const
-
-export default function DitherRidgeline() {
-  return (
-    <Dither
-      pattern="ridgeline"
-      className="flex h-[26rem] w-full flex-col rounded-xl border text-[#d3c6aa] select-none"
-    >
-      <nav className="flex items-center justify-between px-6 py-4 text-sm">
-        <span className="font-semibold tracking-tight text-[#e5dcc0]">
-          Alpine
-        </span>
-        <div className="flex gap-5">
-          {links.map((link) => (
-            <button
-              key={link}
-              type="button"
-              className="hover:text-[#e5dcc0] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a7c080]"
-            >
-              {link}
-            </button>
-          ))}
-        </div>
-      </nav>
-      <div className="px-6 pt-8 md:px-10">
-        <h2 className="max-w-md text-4xl font-semibold tracking-tight text-balance text-[#e5dcc0] md:text-5xl">
-          Find your line
-        </h2>
-        <p className="mt-3 max-w-sm text-sm text-[#9da9a0]">
-          Trail maps and conditions for every ridge, updated every hour.
-        </p>
-      </div>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-contour =====
-Title: Dither Contour
-
---- file: example/dither-contour.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherContour() {
-  return (
-    <Dither
-      pattern="contour"
-      className="flex h-96 w-full flex-col items-center justify-center rounded-xl border px-6 text-center text-[#eceff4] select-none"
-    >
-      <p className="font-mono text-sm text-[#88c0d0]">404</p>
-      <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-        You are off the map
-      </h2>
-      <p className="mt-2 max-w-xs text-sm text-[#d8dee9]">
-        This page moved, or it never existed. Head back to a known trail.
-      </p>
-      <button
-        type="button"
-        className="mt-6 rounded-md border border-[#88c0d0] bg-[#2e3440]/90 px-4 py-2 text-sm font-medium text-[#88c0d0] transition-colors hover:bg-[#88c0d0] hover:text-[#2e3440] focus-visible:ring-2 focus-visible:ring-[#88c0d0] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2e3440] focus-visible:outline-none"
-      >
-        Back to home
-      </button>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-dunes =====
-Title: Dither Dunes
-
---- file: example/dither-dunes.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherDunes() {
-  return (
-    <Dither
-      pattern="dunes"
-      className="flex h-64 w-full max-w-2xl flex-col rounded-xl border p-6 text-[#e0def4] select-none md:p-8"
-    >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-xs font-medium tracking-widest text-[#c4a7e7] uppercase">
-            Live music
-          </p>
-          <h3 className="mt-1 text-2xl font-semibold tracking-tight md:text-3xl">
-            Dune Festival
-          </h3>
-          <p className="mt-1 text-sm text-[#e0def4]">
-            Three nights under open sky, Wadi Rum, Jordan.
-          </p>
-        </div>
-        <p className="shrink-0 rounded-md border border-[#6e6a86] px-3 py-1.5 text-center text-sm leading-tight">
-          <span className="block text-xs text-[#908caa]">OCT</span>
-          <span className="text-lg font-semibold">14</span>
-        </p>
-      </div>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-eclipse-nord =====
-Title: Dither Eclipse Nord
-
---- file: example/dither-eclipse-nord.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherEclipseNord() {
-  return (
-    <Dither
-      pattern="eclipse-nord"
-      className="flex h-96 w-full flex-col items-center pt-12 text-center text-[#eceff4] select-none md:pt-16"
-    >
-      <p className="text-sm text-[#88c0d0]">Last 90 days</p>
-      <p className="mt-2 text-6xl font-semibold tracking-tighter tabular-nums md:text-8xl">
-        99.99%
-      </p>
-      <p className="mt-2 text-sm text-[#d8dee9]">
-        Uptime across every region, with zero data loss.
-      </p>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-orb =====
-Title: Dither Orb
-
---- file: example/dither-orb.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherOrb() {
-  return (
-    <Dither
-      pattern="orb"
-      className="flex h-80 w-full max-w-xl flex-col justify-between rounded-xl border p-6 text-[#ebdbb2] select-none"
-    >
-      <div className="max-w-[17rem] self-start rounded-lg bg-[#282828]/85 px-4 py-3 backdrop-blur-sm">
-        <h3 className="text-2xl font-semibold tracking-tight">Meet Orb</h3>
-        <p className="mt-1 text-sm text-[#d5c4a1]">
-          An assistant that reads your docs and answers in seconds.
-        </p>
-      </div>
-      <div className="flex max-w-xs items-center gap-2 rounded-lg border border-[#504945] bg-[#282828]/90 p-1.5 backdrop-blur">
-        <input
-          type="text"
-          aria-label="Ask Orb"
-          placeholder="Ask anything"
-          className="min-w-0 flex-1 bg-transparent px-2 py-1 text-sm text-[#ebdbb2] placeholder:text-[#a89984] focus-visible:outline-none"
-        />
-        <button
-          type="button"
-          className="rounded-md bg-[#d79921] px-3 py-1.5 text-sm font-medium text-[#282828] hover:bg-[#fabd2f] focus-visible:ring-2 focus-visible:ring-[#d79921] focus-visible:outline-none"
-        >
-          Ask
-        </button>
-      </div>
-    </Dither>
-  )
-}
-
-
-===== EXAMPLE: dither-veil =====
-Title: Dither Veil
-
---- file: example/dither-veil.tsx ---
-import { Dither } from "@/registry/magicui/dither"
-
-export default function DitherVeil() {
-  return (
-    <Dither
-      pattern="veil"
-      className="mx-auto flex aspect-[4/5] w-full max-w-md flex-col rounded-xl border p-8 text-[#e0def4] select-none"
-    >
-      <p className="text-sm font-medium text-[#c4a7e7]">Veil</p>
-      <h3 className="mt-2 text-3xl font-semibold tracking-tight text-balance">
-        Private notes that stay yours.
-      </h3>
-      <p className="mt-3 text-sm text-[#908caa]">
-        End-to-end encrypted, on every device you own.
-      </p>
-      <button
-        type="button"
-        className="mt-6 w-fit rounded-full bg-[#e0def4] px-5 py-2 text-sm font-medium text-[#191724]"
-      >
-        Join the waitlist
-      </button>
-    </Dither>
   )
 }
 
