@@ -11,8 +11,7 @@ export default function DitherDemo() {
         Light, rendered one dot at a time
       </h1>
       <p className="text-muted-foreground max-w-md text-sm text-balance md:text-base">
-        An ordered dither that follows your theme, your brand colors and your
-        pointer.
+        An ordered dither that follows your theme and your brand colors.
       </p>
       <div className="flex flex-wrap justify-center gap-2 md:gap-3">
         <button
