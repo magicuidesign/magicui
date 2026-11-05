@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-eclipse-rose",
+  "title": "Dither Eclipse Rose",
+  "description": "A pricing card on a rose eclipse.",
+  "registryDependencies": [
+    "@magicui/dither-field"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-eclipse-rose.tsx",
+      "content": "import { DitherField } from \"@/registry/magicui/dither-field\"\n\nconst perks = [\n  \"Unlimited eclipses\",\n  \"Priority rendering\",\n  \"Team sharing\",\n] as const\n\nexport default function DitherEclipseRose() {\n  return (\n    <DitherField\n      pattern=\"eclipse-rose\"\n      className=\"h-96 w-full max-w-sm rounded-xl border p-6 text-[#e0def4] select-none\"\n    >\n      <h3 className=\"text-sm font-medium text-[#c4a7e7]\">Studio</h3>\n      <p className=\"mt-2 flex items-baseline gap-1\">\n        <span className=\"text-4xl font-semibold tracking-tight\">$19</span>\n        <span className=\"text-sm text-[#908caa]\">per month</span>\n      </p>\n      <ul className=\"mt-5 space-y-2 text-sm\">\n        {perks.map((perk) => (\n          <li key={perk} className=\"flex items-center gap-2\">\n            <span className=\"size-1.5 rounded-full bg-[#ebbcba]\" />\n            {perk}\n          </li>\n        ))}\n      </ul>\n    </DitherField>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

@@ -26,7 +26,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Confetti](https://magicui.design/docs/components/confetti): Confetti animations are best used to delight your users when something special happens
 - [Cool Mode](https://magicui.design/docs/components/cool-mode): Cool mode effect for buttons, links, and other DOMs
 - [Dia Text Reveal](https://magicui.design/docs/components/dia-text-reveal): A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.
-- [Dither Field](https://magicui.design/docs/components/dither-field): An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.
+- [Dither Field](https://magicui.design/docs/components/dither-field): An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. The dots brighten under the pointer.
 - [Dock](https://magicui.design/docs/components/dock): An implementation of the MacOS dock using react + tailwindcss + motion
 - [Dot Pattern](https://magicui.design/docs/components/dot-pattern): A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 - [Dotted Map](https://magicui.design/docs/components/dotted-map): A component with a dotted map.
@@ -267,6 +267,18 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dither Field Brand Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-brand-demo.tsx): Example usage
 - [Dither Field Colors Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-colors-demo.tsx): Example usage
 - [Dither Field Patterns Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-patterns-demo.tsx): Example usage
+- [Dither Gruvbox Dusk](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-gruvbox-dusk.tsx): Example usage
+- [Dither Nord Orbit](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-nord-orbit.tsx): Example usage
+- [Dither Kanagawa Moonrise](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-kanagawa-moonrise.tsx): Example usage
+- [Dither Orbit](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-orbit.tsx): Example usage
+- [Dither Meridian](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-meridian.tsx): Example usage
+- [Dither Eclipse Rose](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-eclipse-rose.tsx): Example usage
+- [Dither Ridgeline](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-ridgeline.tsx): Example usage
+- [Dither Contour](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-contour.tsx): Example usage
+- [Dither Dunes](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-dunes.tsx): Example usage
+- [Dither Eclipse Nord](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-eclipse-nord.tsx): Example usage
+- [Dither Orb](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-orb.tsx): Example usage
+- [Dither Veil](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-veil.tsx): Example usage
 
 ## Optional
 
