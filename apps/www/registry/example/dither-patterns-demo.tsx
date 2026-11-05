@@ -1,17 +1,35 @@
-import { Dither } from "@/registry/magicui/dither"
+import { Dither, type DitherPattern } from "@/registry/magicui/dither"
 
-const patterns = ["horizon", "glow", "aurora", "waves", "clouds"] as const
+const patterns = [
+  "horizon",
+  "glow",
+  "aurora",
+  "waves",
+  "clouds",
+  "gruvbox-dusk",
+  "nord-orbit",
+  "kanagawa-moonrise",
+  "orbit",
+  "meridian",
+  "eclipse-rose",
+  "ridgeline",
+  "contour",
+  "dunes",
+  "eclipse-nord",
+  "orb",
+  "veil",
+] as const satisfies readonly DitherPattern[]
 
 export default function DitherPatternsDemo() {
   return (
-    <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-5">
+    <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3">
       {patterns.map((pattern) => (
         <Dither
           key={pattern}
           pattern={pattern}
-          className="bg-background flex h-32 items-end rounded-lg border p-3 select-none last:col-span-2 md:h-40 md:last:col-span-1"
+          className="bg-background flex aspect-4/3 items-end overflow-hidden rounded-lg border p-2 select-none"
         >
-          <code className="bg-background/80 rounded px-1.5 py-0.5 text-xs backdrop-blur">
+          <code className="bg-background/80 text-foreground relative rounded-md border px-1.5 py-0.5 font-mono text-xs backdrop-blur">
             {pattern}
           </code>
         </Dither>
