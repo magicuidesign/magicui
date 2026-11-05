@@ -505,9 +505,9 @@ type Drawn = "ok" | "pending" | "failed"
 type Renderer = {
   /** Sizes the dot grid (canvas pixels) and the field (CSS pixels). */
   resize: (dotsX: number, dotsY: number, cssX: number, cssY: number) => void
-  setMedia: (media: Media | null) => void
+  setMedia?: (media: Media | null) => void
   draw: (frame: Frame) => Drawn
-  dispose: () => void
+  dispose?: () => void
 }
 
 /**
@@ -759,6 +759,13 @@ type Entry = {
  * rectangle out into a plain 2D canvas, so any number of fields cost one
  * context and compile each program once.
  */
+type Member = {
+  /** Moves the field from the hub canvas to its own 2D copy. */
+  detach: () => void
+  /** Moves the field from its 2D copy back onto the hub canvas. */
+  attach: () => void
+}
+
 type Hub = {
   canvas: HTMLCanvasElement
   gl: WebGL2RenderingContext
@@ -768,8 +775,10 @@ type Hub = {
   noise: Map<number, WebGLTexture | null>
   refs: number
   timer: number
-  /** The field that shows the hub canvas itself, if any. */
-  owner: { detach: () => void } | null
+  /** Every field using the hub, whether it shows the hub canvas or a copy. */
+  members: Set<Member>
+  /** The member that shows the hub canvas itself, if any. */
+  owner: Member | null
   listeners: Set<(event: "lost" | "restored") => void>
   destroy: () => void
 }
@@ -810,6 +819,7 @@ function createHub(): Hub | null {
     noise: new Map(),
     refs: 0,
     timer: 0,
+    members: new Set(),
     owner: null,
     listeners,
     destroy() {
@@ -832,9 +842,16 @@ function acquireHub() {
   return shared
 }
 
-/** Keeps the context for a moment, so a remount or a fast scroll reuses it. */
-function releaseHub(hub: Hub) {
+/**
+ * Keeps the context for a moment, so a remount or a fast scroll reuses it.
+ * The last field left gets the hub canvas back.
+ */
+function releaseHub(hub: Hub, member: Member | null) {
+  if (member) hub.members.delete(member)
   hub.refs -= 1
+  if (hub.refs === 1) {
+    for (const last of hub.members) last.attach()
+  }
   if (hub.refs > 0) return
   hub.timer = window.setTimeout(() => {
     if (hub.refs <= 0) hub.destroy()
@@ -1135,7 +1152,6 @@ function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
       view = [dotsX, dotsY]
       css = [cssX, cssY]
     },
-    setMedia() {},
     draw({ ramp, intensity, matrix, time, pointer }) {
       const ready = waiting(hub, [entry])
       if (ready !== "ok") return ready
@@ -1163,7 +1179,6 @@ function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
       present(hub, target, view[0], view[1])
       return "ok"
     },
-    dispose() {},
   }
 }
 
@@ -1347,7 +1362,7 @@ export function Dither({
     const hub = acquireHub()
     const target = hub && (hub.refs === 1 ? hubTarget(hub) : copyTarget())
     if (!hub || !target) {
-      if (hub) releaseHub(hub)
+      if (hub) releaseHub(hub, null)
       setFallback(true)
       return
     }
@@ -1524,7 +1539,7 @@ export function Dither({
           src,
           (source) => {
             if (disposed) return
-            renderer.setMedia(source)
+            renderer.setMedia?.(source)
             ready = true
             draw()
             sync()
@@ -1587,8 +1602,9 @@ export function Dither({
     }
     hub.listeners.add(onHub)
 
-    // Another field wants the hub, so this one moves to its own canvas.
-    const owner = {
+    // The hub canvas changes hands as fields come and go. One field shows it
+    // directly. Two or more each copy their rectangle into a canvas of their own.
+    const member: Member = {
       detach: () => {
         hub.owner = null
         const own = copyTarget()
@@ -1609,8 +1625,22 @@ export function Dither({
         target.ctx = own.ctx
         draw()
       },
+      attach: () => {
+        if (lost || !target.ctx) return
+        const copy = target.canvas
+        const { canvas } = hub
+        canvas.className = copy.className
+        if (copy.dataset.ready !== undefined) canvas.dataset.ready = ""
+        else canvas.removeAttribute("data-ready")
+        copy.replaceWith(canvas)
+        target.canvas = canvas
+        target.ctx = null
+        hub.owner = member
+        resize()
+      },
     }
-    if (!target.ctx) hub.owner = owner
+    hub.members.add(member)
+    if (!target.ctx) hub.owner = member
 
     const resizeObserver = new ResizeObserver(resize)
     // Theme switches usually toggle a class or attribute on <html>.
@@ -1666,9 +1696,9 @@ export function Dither({
       } else {
         media?.removeAttribute("src")
       }
-      renderer.dispose()
-      if (hub.owner === owner) hub.owner = null
-      releaseHub(hub)
+      renderer.dispose?.()
+      if (hub.owner === member) hub.owner = null
+      releaseHub(hub, member)
       target.canvas.remove()
     }
   }, [near, pattern, src, dot, contextKey])
