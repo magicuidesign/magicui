@@ -1343,7 +1343,7 @@ export const Index: Record<string, any> = {
   },
   "dither": {
     name: "dither",
-    description: "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. Set `interactive` to brighten the dots under the pointer.",
+    description: "An animated WebGL2 layer of Bayer-dithered square dots that fills its parent. Pick one of 17 patterns, dither an image or a video, or write your own GLSL field. Set `colors` to one color or a list of stops, and `interactive` to brighten the dots under the pointer.",
     type: "registry:ui",
     registryDependencies: undefined,
     files: [{
@@ -4305,7 +4305,7 @@ export const Index: Record<string, any> = {
   },
   "dither-image-demo": {
     name: "dither-image-demo",
-    description: "A landscape photo dithered into 2px dots with a warm color ramp.",
+    description: "A landscape photo dithered into 2px dots in three warm colors.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither"],
     files: [{
@@ -4339,7 +4339,7 @@ export const Index: Record<string, any> = {
   },
   "dither-patterns-demo": {
     name: "dither-patterns-demo",
-    description: "All 17 patterns as same-size background tiles, each labelled with its pattern id.",
+    description: "All 17 patterns from `DITHER_PATTERNS` as same-size tiles, each labelled with its pattern id.",
     type: "registry:example",
     registryDependencies: ["@magicui/dither"],
     files: [{
@@ -4349,6 +4349,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "dither-shader-demo": {
+    name: "dither-shader-demo",
+    description: "Your own GLSL field, warped ribbons in the primary color, through the `shader` prop.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/dither"],
+    files: [{
+      path: "registry/example/dither-shader-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/dither-shader-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

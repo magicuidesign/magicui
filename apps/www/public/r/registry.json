@@ -1380,7 +1380,7 @@
     {
       "name": "dither",
       "title": "Dither",
-      "description": "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. Set `interactive` to brighten the dots under the pointer.",
+      "description": "An animated WebGL2 layer of Bayer-dithered square dots that fills its parent. Pick one of 17 patterns, dither an image or a video, or write your own GLSL field. Set `colors` to one color or a list of stops, and `interactive` to brighten the dots under the pointer.",
       "files": [
         {
           "path": "registry/magicui/dither.tsx",
@@ -4064,7 +4064,7 @@
     {
       "name": "dither-image-demo",
       "title": "Dither Image Demo",
-      "description": "A landscape photo dithered into 2px dots with a warm color ramp.",
+      "description": "A landscape photo dithered into 2px dots in three warm colors.",
       "registryDependencies": [
         "@magicui/dither"
       ],
@@ -4094,13 +4094,28 @@
     {
       "name": "dither-patterns-demo",
       "title": "Dither Patterns Demo",
-      "description": "All 17 patterns as same-size background tiles, each labelled with its pattern id.",
+      "description": "All 17 patterns from `DITHER_PATTERNS` as same-size tiles, each labelled with its pattern id.",
       "registryDependencies": [
         "@magicui/dither"
       ],
       "files": [
         {
           "path": "registry/example/dither-patterns-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "dither-shader-demo",
+      "title": "Dither Shader Demo",
+      "description": "Your own GLSL field, warped ribbons in the primary color, through the `shader` prop.",
+      "registryDependencies": [
+        "@magicui/dither"
+      ],
+      "files": [
+        {
+          "path": "registry/example/dither-shader-demo.tsx",
           "type": "registry:example"
         }
       ],
