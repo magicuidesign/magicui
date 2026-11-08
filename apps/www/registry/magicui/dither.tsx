@@ -1,68 +1,42 @@
 "use client"
 
-import { useEffect, useRef, useState, type CSSProperties } from "react"
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentProps,
+  type CSSProperties,
+} from "react"
 
 import { cn } from "@/lib/utils"
 
-/**
- * Light-field patterns. Each is the GLSL body of
- * `float pattern(vec2 p, vec2 size, float t)`. `p` is the position in CSS
- * pixels from the bottom-left corner, `size` is the field size in CSS pixels
- * and `t` is the time in seconds. Return the light level, where 0 is dark and
- * 1 is full light. They dither in the `color` ramp over a clear background.
- */
-const PATTERNS = {
-  // A low sun on the bottom edge, with haze bands that drift up through it.
-  horizon: `
-    float r = max(min(size.x * 0.42, size.y * 0.8), 90.0);
-    vec2 d = (p - vec2(0.5 * size.x, -0.15 * r)) / vec2(1.25 * r, r);
-    float wobble = fbm(vec2(atan(d.y, d.x) * 1.8, t * 0.04)) - 0.5;
-    float rim = length(d) * (1.0 + 0.14 * wobble);
-    float sun = exp(-3.4 * max(rim - 0.42, 0.0)) * 0.78;
-    float h = p.y / r;
-    float drift = (fbm(vec2(p.x / 320.0, t * 0.03)) - 0.5) * 2.4;
-    float band = 0.5 + 0.5 * sin(log(1.0 + 7.0 * h) * 8.0 - t * 0.45 + drift);
-    float haze = smoothstep(0.25, 0.95, band) * exp(-1.9 * h) * 0.5;
-    float ground = exp(-p.y / 22.0) * 0.32;
-    float sides = smoothstep(0.0, 0.2, p.x / size.x) * smoothstep(1.0, 0.8, p.x / size.x);
-    return (sun * (1.0 + haze) + haze * 0.35 + ground) * sides * (1.0 + 0.04 * sin(t * 0.4));
-  `,
-  // A soft orb in the middle that breathes and wanders a little.
-  glow: `
-    vec2 c = 0.5 * size + vec2(sin(t * 0.21), cos(t * 0.17)) * 0.05 * size;
-    float r = 0.5 * min(size.x, size.y);
-    float d = length(p - c) / r;
-    float n = fbm(p / 170.0 + vec2(t * 0.05, -t * 0.04));
-    return exp(-1.7 * d * d) * (0.75 + 0.45 * n) + 0.12 * n * exp(-d);
-  `,
-  // Curtains of light that hang from the top and sway.
-  aurora: `
-    float sway = fbm(vec2(p.x / 600.0, t * 0.05));
-    float d = p.y / size.y - (0.45 + 0.35 * (sway - 0.5));
-    float curtain = d > 0.0 ? exp(-d * 4.0) : exp(d * 22.0);
-    float rays = fbm(vec2(p.x / 70.0 + sway * 6.0, p.y / 900.0 - t * 0.08));
-    float shimmer = fbm(vec2(p.x / 40.0 - t * 0.05, 3.0));
-    return curtain * (0.25 + 0.75 * smoothstep(0.3, 0.75, rays)) * (0.6 + 0.5 * shimmer);
-  `,
-  // Slow diagonal swells, like dunes or contour lines.
-  waves: `
-    vec2 q = p / 32.0;
-    float warp = fbm(q * 0.09 + vec2(t * 0.035, t * 0.02));
-    float s = 0.5 + 0.5 * sin(q.x * 0.9 + q.y * 0.6 + warp * 5.0 - t * 0.4);
-    float crest = s * s * s * s;
-    return crest * (0.5 + 0.5 * p.y / size.y) + 0.12 * warp;
-  `,
-  // Drifting clouds that fill the whole area evenly.
-  clouds: `
-    float n = fbm(p / 210.0 + vec2(t * 0.03, t * 0.012));
-    float m = fbm(p / 80.0 - vec2(t * 0.02, 0.0));
-    return smoothstep(0.28, 0.78, n) * (0.7 + 0.5 * m);
-  `,
-} as const
+export const DITHER_PATTERNS = [
+  "horizon",
+  "glow",
+  "aurora",
+  "waves",
+  "clouds",
+  "sunset",
+  "planet",
+  "moonrise",
+  "orbit",
+  "meridian",
+  "eclipse",
+  "ridgeline",
+  "contour",
+  "dunes",
+  "corona",
+  "orb",
+  "veil",
+] as const
+
+export type DitherPattern = (typeof DITHER_PATTERNS)[number]
 
 /**
  * The 256 lattice permutation bytes, then 256 lattice values (0 to 255), that
- * drive the value noise of the scenes that use it, as base64.
+ * drive `fbmN`, as base64.
  */
 const NOISE = {
   11: "goQ2w/RYi3UkakR4a9LzHhmb912vxHS0W8EmReyg1FPw6dEzPty6eq3tRhhsn5wwJQ/HqYkhpH00Uk9wl74rzSCrAR0NShE5ecAvCJPW+xLMFLxQP0cDgKLq+oZ/ss+ot2XLI7U8hZhk/arnWusiF5UVYQm45tAWkqcGYDoM2Zot2qVmSeHJj6Yn/4H1ux9yoe5uSP6s43v4OPEOQG/vvSlpxQteTQdV5N2DSxqjrsYEnXOH/OhxHAUsX9hBMc62bZHIji5DuT3lyvZXiLOWCjJCjOAbKmgA8mKemQK/wlHX4n4odxNj1ds7VpBcsUxZlHY3NflU342w0958imcQTsii5sFMpFe/YiffsL6PyHKQEI7QtM1/4RzfXxeedG3ZI51qh38ig9wsAxF1+Av9iR9rNbaKSUHdw29nvPgUKVyBEg44Yr2cBwtz3+ld4u1ovl0nkxapzulyHube95esXy9KuFOwgHL3Knwp731VK5dmIAhklYTm6O/MeoZlZgvMPwd3t29dqCoDl4fdasgFB5k6ESFgVpDiXS+TAWJRYw2Nn7/0WqdxN+O+8NHqIQQzaa9wg8ISrQw/uK5nS9NGCD8Fzx/4Nk6VT2EbYwY56EhFreFLYLbKnS4uwbTlx2si47GTrmJYk3u179hjX+xlzBhzhM7gJ52gJ9WN9TCGUqQ=",
@@ -70,41 +44,105 @@ const NOISE = {
   23: "Cuf5FSbQduNd7C30tQF7pbrksFfx0+08nlsq/SmGJGXrbIq/1mjOrWdpRtR/rJIjZvrFmHDoWT0nAr5Dp2D8wa8sl/9VEVq3R+G9/sL4ekm4SFz3UvbgEowPGNziS3Qbh8oDjRcWOdiIw1NKoICxnz9EnDIHlY9rHhkFtscumTe00mTbc6b7MwCBs6vPnXKL119eIY5iVhzR80JMTc2Jy6MUKHyb3dqoaqKQqQmCVFHlcZMabaQIWFD1b6odfmGuMeY7Yw1OdZqWMKG5xsw6331PEAZ3JYVAg8gMlNlB7tW7wMlued41DiITBCsLPjhFxPIfeDbq77KE6fC8IJEvNCpgjfhG28hekwf6fifK3rz7R41wo0iud2KyRVT+Y1b27+sZzTal2r4PmCzTOjVbjeYu1mv9ojiCvdR3YLwatGWxFkBKTvfaFpPyzw29x+aUby+YR0mHE3xAdjC+3LHk4pbAJI73vvdQJhAFl7Qs80g8tAd3q487zo2SY/kPQbZOwL5p17Gsi5Hr1D/jm3mJi3v1wBtIXvqPoPTTPEGZgQSK8K4jsy34i+PF94R+EKw9Q5apIIgCCpGzbKDViuJ50aWhfcmi3NiqXPGeRtM6A+M+W3obgGEKXK3sm/WdZJ+f0HrON05uQk5Zwng7Fdy0rhUHUgg1+XK/6H7Gl3TIMT8=",
 } as const
 
-type Scene = {
-  /** Dark to light. Index 0 is the ground. */
+type Seed = keyof typeof NOISE
+
+/** Draws with a fixed set of colours and its own ground. */
+type PalettePattern = {
+  field: string
+  /** From the ground to the brightest dots. Two colours draw one-bit. */
   palette: readonly string[]
   matrix: 2 | 4 | 8
-  /** The dot size in CSS pixels. */
-  dot: number
-  oneBit?: true
-  seed?: keyof typeof NOISE
-  /** GLSL for `float field(vec2 n, vec2 wh, float sec)`, in levels above the ground. */
-  field: string
+  /** The lattice that `fbmN` reads. */
+  seed?: Seed
 }
 
 /**
- * Palette scenes. Each is a whole picture, with its own ground colour, drawn
- * with a fixed set of colours instead of the `color` ramp. The `field` body
- * returns a level from 0 to `palette.length - 1`. `n` is the dot, counted
- * from the top-left corner, `wh` is the grid size in dots and `sec` counts
- * seconds at normal speed. Draw shapes in proportion to `wh`. A length in dots
- * times `uUnit` keeps the size it had at the scene's own `dot`, so a smaller
- * `dotSize` only makes the dots finer.
+ * A light pattern dithers in `colors` over a clear background and blooms.
+ * Every `field` is GLSL for `float field(vec2 uv, float t)`, the same
+ * contract as the `shader` prop.
  */
-const SCENES = {
+type PatternSpec = { field: string } | PalettePattern
+
+const PATTERNS: Record<DitherPattern, PatternSpec> = {
+  // A low sun on the bottom edge, with haze bands that drift up through it.
+  horizon: {
+    field: `
+float field(vec2 uv, float t) {
+  vec2 p = uv * uSize;
+  vec2 size = uSize;
+  float r = max(min(size.x * 0.42, size.y * 0.8), 90.0);
+  vec2 d = (p - vec2(0.5 * size.x, -0.15 * r)) / vec2(1.25 * r, r);
+  float wobble = fbm(vec2(atan(d.y, d.x) * 1.8, t * 0.04)) - 0.5;
+  float rim = length(d) * (1.0 + 0.14 * wobble);
+  float sun = exp(-3.4 * max(rim - 0.42, 0.0)) * 0.78;
+  float h = p.y / r;
+  float drift = (fbm(vec2(p.x / 320.0, t * 0.03)) - 0.5) * 2.4;
+  float band = 0.5 + 0.5 * sin(log(1.0 + 7.0 * h) * 8.0 - t * 0.45 + drift);
+  float haze = smoothstep(0.25, 0.95, band) * exp(-1.9 * h) * 0.5;
+  float ground = exp(-p.y / 22.0) * 0.32;
+  float sides = smoothstep(0.0, 0.2, uv.x) * smoothstep(1.0, 0.8, uv.x);
+  return (sun * (1.0 + haze) + haze * 0.35 + ground) * sides * (1.0 + 0.04 * sin(t * 0.4));
+}`,
+  },
+  // A soft orb in the middle that breathes and wanders a little.
+  glow: {
+    field: `
+float field(vec2 uv, float t) {
+  vec2 p = uv * uSize;
+  vec2 c = 0.5 * uSize + vec2(sin(t * 0.21), cos(t * 0.17)) * 0.05 * uSize;
+  float r = 0.5 * min(uSize.x, uSize.y);
+  float d = length(p - c) / r;
+  float n = fbm(p / 170.0 + vec2(t * 0.05, -t * 0.04));
+  return exp(-1.7 * d * d) * (0.75 + 0.45 * n) + 0.12 * n * exp(-d);
+}`,
+  },
+  // Curtains of light that hang from the top and sway.
+  aurora: {
+    field: `
+float field(vec2 uv, float t) {
+  vec2 p = uv * uSize;
+  float sway = fbm(vec2(p.x / 600.0, t * 0.05));
+  float d = uv.y - (0.45 + 0.35 * (sway - 0.5));
+  float curtain = d > 0.0 ? exp(-d * 4.0) : exp(d * 22.0);
+  float rays = fbm(vec2(p.x / 70.0 + sway * 6.0, p.y / 900.0 - t * 0.08));
+  float shimmer = fbm(vec2(p.x / 40.0 - t * 0.05, 3.0));
+  return curtain * (0.25 + 0.75 * smoothstep(0.3, 0.75, rays)) * (0.6 + 0.5 * shimmer);
+}`,
+  },
+  // Slow diagonal swells, like dunes or contour lines.
+  waves: {
+    field: `
+float field(vec2 uv, float t) {
+  vec2 q = uv * uSize / 32.0;
+  float warp = fbm(q * 0.09 + vec2(t * 0.035, t * 0.02));
+  float s = 0.5 + 0.5 * sin(q.x * 0.9 + q.y * 0.6 + warp * 5.0 - t * 0.4);
+  float crest = s * s * s * s;
+  return crest * (0.5 + 0.5 * uv.y) + 0.12 * warp;
+}`,
+  },
+  // Drifting clouds that fill the whole area evenly.
+  clouds: {
+    field: `
+float field(vec2 uv, float t) {
+  vec2 p = uv * uSize;
+  float n = fbm(p / 210.0 + vec2(t * 0.03, t * 0.012));
+  float m = fbm(p / 80.0 - vec2(t * 0.02, 0.0));
+  return smoothstep(0.28, 0.78, n) * (0.7 + 0.5 * m);
+}`,
+  },
   // Sun disc with slatted gaps over a banded sky and a reflecting floor.
-  "gruvbox-dusk": {
+  sunset: {
     palette: ["#1d2021", "#3c3836", "#b16286", "#d65d0e", "#fabd2f"],
     matrix: 8,
-    dot: 4,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = 4.0 * pingpong(sec / 90.0);
-  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+float field(vec2 uv, float t) {
+  float rise = 4.0 * (0.5 - 0.5 * cos(6.2831853 * t / 90.0));
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float x = p.x, y = p.y, w = uSize.x, h = uSize.y;
   float hy = h * 0.80;
   float r = w * 0.30;
   float cx = w * 0.5;
-  float cy = hy - r * (0.42 - 0.10 * t);
+  float cy = hy - r * (0.42 - 0.10 * rise);
   float sky = 2.95 * pow(ss(hy * 0.30, hy, y), 2.3);
   float d = length(vec2(x - cx, y - cy));
   sky += 0.6 * exp(-max(d - r, 0.0) / (r * 0.8)) * (y < hy ? 1.0 : 0.0);
@@ -118,28 +156,28 @@ float field(vec2 n, vec2 wh, float sec) {
   }
   bool inside = d < r && !gap && y < hy;
   float f = inside ? sun : ((d < r && gap) ? sky - 1.3 : sky);
-  if (y < hy) return f;
+  if (y < hy) return f / 4.0;
   float ground = 1.15 * (1.0 - ss(hy, hy + (h - hy) * 0.9, y));
   float down = (y - hy) / (h - hy);
-  float ry = (y - hy) / uUnit;
+  float ry = (y - hy) / 4.0;
   bool reflection = abs(x - cx) < r * (1.0 - down * 0.6)
     && sin(ry * 0.9 + pow(max(ry, 0.0), 1.3) * 0.12) > 0.55;
   if (reflection && y < hy + (h - hy) * 0.7) ground += 1.0;
-  return ground;
+  return ground / 4.0;
 }`,
   },
   // A huge planet limb rising from the bottom edge with a halo.
-  "nord-orbit": {
+  planet: {
     palette: ["#2e3440", "#3b4252", "#434c5e", "#5e81ac", "#88c0d0"],
     matrix: 8,
-    dot: 2,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = 4.0 * pingpong(sec / 90.0);
-  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+float field(vec2 uv, float t) {
+  float rise = 4.0 * (0.5 - 0.5 * cos(6.2831853 * t / 90.0));
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float x = p.x, y = p.y, w = uSize.x, h = uSize.y;
   float R = w * 1.25;
   float cx = w * 0.62;
-  float cy = h + R * 0.72 - t * h * 0.012;
+  float cy = h + R * 0.72 - rise * h * 0.012;
   float d = length(vec2(x - cx, y - cy));
   float edge = d - R;
   float sky = 1.25 * pow(ss(h * 0.18, h, y), 2.4);
@@ -148,22 +186,22 @@ float field(vec2 n, vec2 wh, float sec) {
   float light = 0.55 + 0.45 * cos(ang - (-1.5707963 - 0.35));
   float limb = 4.6 * exp(-max(-edge, 0.0) / (h * 0.018));
   float body = 0.1 + limb * light + 0.5 * ss(R * 0.96, R, d) * light;
-  return edge < 0.0 ? min(body, 4.6) : min(sky, 3.2);
+  return (edge < 0.0 ? min(body, 4.6) : min(sky, 3.2)) / 4.0;
 }`,
   },
   // A crescent over a sea with shimmering reflection dashes.
-  "kanagawa-moonrise": {
+  moonrise: {
     palette: ["#16161d", "#223249", "#2d4f67", "#7e9cd8", "#dcd7ba"],
     matrix: 8,
-    dot: 4,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = 3.0 * pingpong(sec / 90.0);
-  float shimmer = sec * 0.4 * 1.6;
-  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+float field(vec2 uv, float t) {
+  float drift = 3.0 * (0.5 - 0.5 * cos(6.2831853 * t / 90.0));
+  float shimmer = t * 0.4 * 1.6;
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float x = p.x, y = p.y, w = uSize.x, h = uSize.y;
   float hy = h * 0.84;
   float r = w * 0.15;
-  float cx = w * 0.58 + t * r * 0.25;
+  float cx = w * 0.58 + drift * r * 0.25;
   float cy = h * 0.52;
   float sky = 1.75 * pow(ss(h * 0.2, hy, y), 2.4);
   float d = length(vec2(x - cx, y - cy));
@@ -171,48 +209,46 @@ float field(vec2 n, vec2 wh, float sec) {
   bool shadow = length(vec2(x - (cx - r * 0.42), y - (cy - r * 0.22))) < r * 0.92;
   bool lit = d < r && !shadow;
   float f = lit ? 4.2 : (d < r ? min(sky, 1.2) + 0.25 : sky);
-  if (y < hy) return f;
+  if (y < hy) return f / 4.0;
   float depth = (y - hy) / (h - hy);
   float sea = 1.6 - 1.3 * ss(0.0, 0.85, depth);
   float width = r * (0.55 + depth * 0.6);
   float wob = sin(depth * 22.0 + shimmer);
   bool column = abs(x - cx) < width * (1.0 - 0.35 * wob * wob);
-  bool dash = sin((y - hy) / uUnit * 0.7 + shimmer + sin(x / uUnit * 0.05) * 0.6) > 0.15;
+  bool dash = sin((y - hy) / 4.0 * 0.7 + shimmer + sin(x / 4.0 * 0.05) * 0.6) > 0.15;
   if (column && dash) sea += 1.6 * (1.0 - depth * 0.7);
-  return sea;
+  return sea / 4.0;
 }`,
   },
   // A ring and halo that breathe.
   orbit: {
     palette: ["#2e3440", "#3b4252", "#88c0d0"],
     matrix: 4,
-    dot: 4,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec / 16.0;
-  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+float field(vec2 uv, float t) {
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float x = p.x, y = p.y, w = uSize.x, h = uSize.y;
   float cx = w * 0.5, cy = h * 0.98, s = w * 1.6;
-  float r = w * 0.62 * (1.0 + 0.04 * sin(6.2831853 * t));
+  float r = w * 0.62 * (1.0 + 0.04 * sin(6.2831853 * t / 16.0));
   float d = length(vec2(x - cx, y - cy));
   float ring = exp(-pow((d - r) / (0.035 * s), 2.0));
   float halo = exp(-pow((d - r) / (0.22 * s), 2.0));
   float f = 0.9 * halo + 1.8 * ring;
-  return f * (0.6 + 0.4 * ss(h * 0.55, h * 0.92, y));
+  return f * (0.6 + 0.4 * ss(h * 0.55, h * 0.92, y)) / 2.0;
 }`,
   },
   // Three diagonal bars swaying along their normal.
   meridian: {
     palette: ["#272e33", "#374145", "#a7c080"],
     matrix: 4,
-    dot: 4,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec / 20.0;
-  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+float field(vec2 uv, float t) {
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float x = p.x, y = p.y, w = uSize.x, h = uSize.y;
   float u = x * 0.866 + y * 0.5;
   float unit = w * 0.16;
   vec2 ref = vec2(w * 0.40, h * 0.86);
-  float c0 = ref.x * 0.866 + ref.y * 0.5 + unit * 0.6 * sin(6.2831853 * t);
+  float c0 = ref.x * 0.866 + ref.y * 0.5 + unit * 0.6 * sin(6.2831853 * t / 20.0);
   float f = 0.0;
   float amps[3] = float[3](1.0, 0.72, 0.46);
   for (int k = 0; k < 3; k++) {
@@ -220,20 +256,19 @@ float field(vec2 n, vec2 wh, float sec) {
     float e = abs(u - c);
     f = max(f, amps[k] * (1.0 - ss(unit * 0.42, unit * 0.52, e)));
   }
-  return 2.0 * f * ss(h * 0.55, h * 1.02, y);
+  return f * ss(h * 0.55, h * 1.02, y);
 }`,
   },
   // A lit disc with a drifting shadow disc, so the crescent waxes and wanes.
-  "eclipse-rose": {
+  eclipse: {
     palette: ["#191724", "#26233a", "#c4a7e7", "#ebbcba"],
     matrix: 4,
-    dot: 2,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec / 24.0;
-  float x = n.x, y = n.y, w = wh.x, h = wh.y;
+float field(vec2 uv, float t) {
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float x = p.x, y = p.y, w = uSize.x, h = uSize.y;
   float cx = w * 0.62, cy = h * 0.86, r = w * 0.36;
-  float ox = r * (0.20 + 0.10 * sin(6.2831853 * t));
+  float ox = r * (0.20 + 0.10 * sin(6.2831853 * t / 24.0));
   float oy = -r * 0.12;
   float d1 = length(vec2(x - cx, y - cy));
   float d2 = length(vec2(x - cx - ox, y - cy - oy));
@@ -243,117 +278,113 @@ float field(vec2 n, vec2 wh, float sec) {
   float grad = ss(cy + r, cy - r, y);
   float glow = exp(-pow(max(d1 - r, 0.0) / (r * 0.55), 2.0)) * (1.0 - disc);
   float f = lit * (1.6 + 1.4 * grad) + 0.9 * glow + disc * 0.6;
-  return min(f, 1.0 + 2.0 * ss(h * 0.6, h * 0.75, y));
+  return min(f, 1.0 + 2.0 * ss(h * 0.6, h * 0.75, y)) / 3.0;
 }`,
   },
   // Four fbm ridges in parallax over a misty sky.
   ridgeline: {
     palette: ["#1e2326", "#272e33", "#2e383c", "#374145", "#4f585e", "#7a8478"],
     matrix: 4,
-    dot: 4,
     seed: 11,
     field: `
-float ridgeAt(float col, float h, float t, int i) {
-  vec4 L = i == 0 ? vec4(0.76, 0.06, 2.0, 3.4) : (i == 1 ? vec4(0.82, 0.055, 2.6, 2.6) : (i == 2 ? vec4(0.88, 0.05, 3.2, 1.9) : vec4(0.945, 0.04, 3.8, 1.2)));
+vec4 ridgeShape(int i) {
+  return i == 0 ? vec4(0.76, 0.06, 2.0, 3.4) : (i == 1 ? vec4(0.82, 0.055, 2.6, 2.6) : (i == 2 ? vec4(0.88, 0.05, 3.2, 1.9) : vec4(0.945, 0.04, 3.8, 1.2)));
+}
+float ridgeAt(float x, float k, int i) {
+  vec4 L = ridgeShape(i);
   float fi = float(i);
-  float drift = t * 0.02 * (fi + 1.0);
-  float r = fbmN(vec2((col / h + drift) * L.z + 7.7 * fi, 3.1 * fi), 5, 0.55);
+  float drift = k * 0.02 * (fi + 1.0);
+  float r = fbmN(vec2((x + drift) * L.z + 7.7 * fi, 3.1 * fi), 5, 0.55);
   return L.x - L.y * (r - 0.5) * 3.0;
 }
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec * 0.1;
-  float h = wh.y;
-  float x = n.x / h, y = n.y / h, W = wh.x / h;
+float field(vec2 uv, float t) {
+  float k = t * 0.1;
+  float x = uv.x * uAspect, y = 1.0 - uv.y, W = uAspect;
   float horizon = 0.85;
   float above = max(horizon - y, 0.0);
   float cx = (x - W * 0.5) / max(W, 1.0);
   float glow = ss(0.25, 0.0, above + 0.25 * cx * cx);
   float v = 0.05 + 1.6 * pow(ss(horizon * 0.9, 0.0, above), 2.0) + 1.4 * pow(glow, 3.0);
-  float px = 1.0 / h;
+  float px = 1.0 / uSize.y;
   for (int i = 0; i < 4; i++) {
-    vec4 L = i == 0 ? vec4(0.76, 0.06, 2.0, 3.4) : (i == 1 ? vec4(0.82, 0.055, 2.6, 2.6) : (i == 2 ? vec4(0.88, 0.05, 3.2, 1.9) : vec4(0.945, 0.04, 3.8, 1.2)));
-    float ridge = ridgeAt(n.x, h, t, i);
-    float slope = abs(ridgeAt(n.x + 1.0, h, t, i) - ridgeAt(n.x - 1.0, h, t, i)) * 0.5;
+    vec4 L = ridgeShape(i);
+    float ridge = ridgeAt(x, k, i);
+    float slope = abs(ridgeAt(x + px, k, i) - ridgeAt(x - px, k, i)) * 0.5;
     float depth = y - ridge;
     float val = L.w - 0.9 * ss(0.0, 0.22, depth);
-    bool rim = depth >= 0.0 && depth < max(px, slope * 1.1) * uUnit;
+    bool rim = depth >= 0.0 && depth < 4.0 * max(px, slope * 1.1);
     if (rim) val = 4.6 - 0.9 * float(i);
     if (depth >= 0.0) v = val;
   }
-  return v;
+  return v / 5.0;
 }`,
   },
   // Terraced fbm elevation with rim lines that creep uphill.
   contour: {
     palette: ["#2e3440", "#3b4252", "#434c5e", "#4c566a", "#5e81ac", "#88c0d0"],
     matrix: 2,
-    dot: 2,
     seed: 5,
     field: `
-float lvAt(vec2 n, float s, float t) {
-  float x = n.x * s, y = n.y * s;
+float level(vec2 q, float k) {
   float sc = 0.9;
-  float wx = fbmN(vec2(x * sc + 4.0, y * sc), 3, 0.5);
-  float wy = fbmN(vec2(x * sc, y * sc + 9.0), 3, 0.5);
-  float e = fbmN(vec2(x * 1.1 * sc + wx * 0.8, y * 1.1 * sc + wy * 0.8), 4, 0.4);
+  float wx = fbmN(vec2(q.x * sc + 4.0, q.y * sc), 3, 0.5);
+  float wy = fbmN(vec2(q.x * sc, q.y * sc + 9.0), 3, 0.5);
+  float e = fbmN(vec2(q.x * 1.1 * sc + wx * 0.8, q.y * 1.1 * sc + wy * 0.8), 4, 0.4);
   e = ss(0.36, 0.80, e);
-  e *= 0.15 + 0.85 * ss(0.30, 0.95, y);
-  return e * 10.0 + t * 0.25;
+  e *= 0.15 + 0.85 * ss(0.30, 0.95, q.y);
+  return e * 10.0 + k * 0.25;
 }
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec * 0.25;
-  float s = 1.0 / wh.y;
-  float lv = lvAt(n, s, t);
+float field(vec2 uv, float t) {
+  float k = t * 0.25;
+  vec2 q = vec2(uv.x * uAspect, 1.0 - uv.y);
+  float px = 1.0 / uSize.y;
+  float lv = level(q, k);
   float terrace = floor(lv);
   float frac = lv - terrace;
   float tl = clamp(terrace / 10.0, 0.0, 1.0);
   float base = floor(tl * 22.0) / 4.0;
-  float gx = (lvAt(n + vec2(1.0, 0.0), s, t) - lvAt(n - vec2(1.0, 0.0), s, t)) * 0.5;
-  float gy = (lvAt(n + vec2(0.0, 1.0), s, t) - lvAt(n - vec2(0.0, 1.0), s, t)) * 0.5;
+  float gx = (level(q + vec2(px, 0.0), k) - level(q - vec2(px, 0.0), k)) * 0.5;
+  float gy = (level(q + vec2(0.0, px), k) - level(q - vec2(0.0, px), k)) * 0.5;
   float g = length(vec2(gx, gy));
-  bool edge = frac < clamp(g * uUnit, 0.02, 0.5);
+  bool edge = frac < clamp(g * 2.0, 0.02, 0.5);
   if (edge && terrace >= 1.0) base += 1.0;
-  return base;
+  return base / 5.0;
 }`,
   },
   // Warped crests travelling along the wind inside a fixed light mask.
   dunes: {
     palette: ["#191724", "#1f1d2e", "#26233a", "#403d52", "#6e6a86", "#c4a7e7"],
     matrix: 4,
-    dot: 2,
     seed: 23,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec * 0.15;
-  float s = 1.0 / wh.y;
-  float x = n.x * s, y = n.y * s;
+float field(vec2 uv, float t) {
+  float k = t * 0.15;
+  float x = uv.x * uAspect, y = 1.0 - uv.y;
   float u = x * cos(1.18) + y * sin(1.18);
   float warp = fbmN(vec2(x * 0.8, y * 0.8 + 2.0), 4, 0.5) * 2.4;
-  float p = (u + warp * 0.45) * 7.0 + t * 0.35;
-  float f = p - floor(p);
+  float wave = (u + warp * 0.45) * 7.0 + k * 0.35;
+  float f = wave - floor(wave);
   float lit = ss(0.0, 0.78, f) * ss(1.0, 0.80, f);
   float crest = ss(0.6, 0.80, f) * ss(0.86, 0.80, f);
   float amp = ss(0.32, 0.72, fbmN(vec2(x * 0.7 + 30.0, y * 0.7), 3, 0.5));
   amp = (0.35 + 0.65 * amp) * pow(ss(0.18, 1.0, y), 1.5) * 2.0;
-  return 0.15 + amp * (2.6 * lit + 2.2 * crest);
+  return (0.15 + amp * (2.6 * lit + 2.2 * crest)) / 5.0;
 }`,
   },
   // One-bit corona around a dark disc, the falloff breathing.
-  "eclipse-nord": {
+  corona: {
     palette: ["#2e3440", "#88c0d0"],
     matrix: 8,
-    dot: 2,
-    oneBit: true,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec / 20.0;
-  float X = (n.x + 0.5) * uPx, Y = (n.y + 0.5) * uPx, W = wh.x * uPx, H = wh.y * uPx;
+float field(vec2 uv, float t) {
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float W = uSize.x, H = uSize.y;
   float cx = W * 0.50, cy = H * 0.79, R = W * 0.36;
-  float wd = R * 0.38 * (1.0 + 0.18 * sin(6.2831853 * t));
-  float d = length(vec2(X - cx, Y - cy)) - R;
+  float wd = R * 0.38 * (1.0 + 0.18 * sin(6.2831853 * t / 20.0));
+  float d = length(p - vec2(cx, cy)) - R;
   float corona = d > 0.0 ? exp(-d / wd) : 0.0;
   float rim = d <= 0.0 ? exp(d / (R * 0.035)) * 0.9 : 0.0;
-  float f = (0.92 * corona + rim) * ss(H * 0.30, H * 0.85, Y);
+  float f = (0.92 * corona + rim) * ss(H * 0.30, H * 0.85, p.y);
   return clamp((clamp(f, 0.0, 1.0) - 0.035) / 0.965, 0.0, 1.0);
 }`,
   },
@@ -361,16 +392,14 @@ float field(vec2 n, vec2 wh, float sec) {
   orb: {
     palette: ["#282828", "#d79921"],
     matrix: 8,
-    dot: 4,
-    oneBit: true,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec / 30.0;
-  float X = (n.x + 0.5) * uPx, Y = (n.y + 0.5) * uPx, W = wh.x * uPx, H = wh.y * uPx;
+float field(vec2 uv, float t) {
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float W = uSize.x, H = uSize.y;
   float cx = W * 0.66, cy = H * 0.82, R = W * 0.52;
-  float a = 6.2831853 * t;
+  float a = 6.2831853 * t / 30.0;
   vec3 L = normalize(vec3(-0.55 + 0.25 * cos(a), -0.55 + 0.20 * sin(a), 0.62));
-  float dx = (X - cx) / R, dy = (Y - cy) / R;
+  float dx = (p.x - cx) / R, dy = (p.y - cy) / R;
   float r2 = dx * dx + dy * dy;
   if (r2 >= 1.0) return 0.0;
   float nz = sqrt(clamp(1.0 - r2, 0.0, 1.0));
@@ -386,120 +415,129 @@ float field(vec2 n, vec2 wh, float sec) {
   veil: {
     palette: ["#191724", "#c4a7e7"],
     matrix: 8,
-    dot: 2,
-    oneBit: true,
     field: `
-float field(vec2 n, vec2 wh, float sec) {
-  float t = sec / 25.0;
-  float X = (n.x + 0.5) * uPx, W = wh.x * uPx, H = wh.y * uPx;
-  float Y = (n.y + 0.5) * uPx;
+float field(vec2 uv, float t) {
+  vec2 p = vec2(uv.x, 1.0 - uv.y) * uSize;
+  float W = uSize.x, H = uSize.y;
   float ang = radians(-70.0);
   float S = max(W, H);
-  float p = (X * cos(ang) + Y * sin(ang)) / S;
+  float along = (p.x * cos(ang) + p.y * sin(ang)) / S;
   vec4 beams[4] = vec4[4](vec4(0.07, 0.045, 0.40, 1.0), vec4(-0.13, 0.090, 0.30, -1.0), vec4(-0.30, 0.035, 0.60, 2.0), vec4(-0.40, 0.070, 0.30, -1.0));
   float acc = 1.0;
   for (int i = 0; i < 4; i++) {
     vec4 b = beams[i];
-    float cc = b.x - 0.5 + 0.03 * b.w * sin(6.2831853 * t);
-    acc *= 1.0 - b.z * exp(-pow((p - cc) / b.y, 2.0));
+    float cc = b.x - 0.5 + 0.03 * b.w * sin(6.2831853 * t / 25.0);
+    acc *= 1.0 - b.z * exp(-pow((along - cc) / b.y, 2.0));
   }
   float f = 1.0 - acc;
-  f *= 0.35 + 0.65 * ss(-0.1, 1.0, Y / H);
-  f *= ss(H * 0.25, H * 0.8, Y);
+  f *= 0.35 + 0.65 * ss(-0.1, 1.0, p.y / H);
+  f *= ss(H * 0.25, H * 0.8, p.y);
   return clamp((clamp(f, 0.0, 1.0) - 0.035) / 0.965, 0.0, 1.0);
 }`,
   },
-} as const satisfies Record<string, Scene>
-
-type SceneId = keyof typeof SCENES
-
-export type DitherPattern = keyof typeof PATTERNS | SceneId
-
-/** One colour, or a `[low, mid, high]` ramp from dim dots to bright dots. */
-export type DitherColor = string | readonly [string, string, string]
-
-export interface DitherProps extends Omit<
-  React.ComponentPropsWithoutRef<"div">,
-  "color"
-> {
-  /**
-   * The picture the dots follow. `horizon`, `glow`, `aurora`, `waves` and
-   * `clouds` are light fields that dither in `color` over a clear background.
-   * The other twelve are palette scenes with their own ground and colours:
-   * `gruvbox-dusk`, `nord-orbit`, `kanagawa-moonrise`, `orbit`, `meridian`,
-   * `eclipse-rose`, `ridgeline`, `contour`, `dunes`, `eclipse-nord`, `orb`
-   * and `veil`.
-   * @default "horizon"
-   */
-  pattern?: DitherPattern
-  /**
-   * An image or video URL to dither instead of the pattern. Bright areas get
-   * more dots. URLs ending in .mp4, .webm, .ogv, .mov or .m4v (or
-   * `data:video/` URLs) play as muted, looping video. Remote files must allow
-   * CORS.
-   */
-  src?: string
-  /**
-   * Any CSS colour, including `var(--primary)` and `currentColor`, or a
-   * `[low, mid, high]` ramp. One colour fades from 35% to full opacity.
-   * Palette scenes ignore it; use `palette` there.
-   * @default "currentColor"
-   */
-  color?: DitherColor
-  /**
-   * Colours for a palette scene, from the ground to the brightest dots. Any
-   * CSS colours, two or more, including `transparent` for a clear ground. They
-   * are blended to the number of levels the scene uses. The scene's own
-   * palette is the default.
-   */
-  palette?: readonly string[]
-  /**
-   * The size of the dither matrix. Smaller matrices give coarser, more
-   * graphic banding. Palette scenes pick the size they were drawn with.
-   * @default 8
-   */
-  matrix?: 2 | 4 | 8
-  /**
-   * The size of one dot in CSS pixels. Dots snap to whole device pixels.
-   * Palette scenes default to the dot size they were drawn with, 2 or 4.
-   * @default 1
-   */
-  dotSize?: number
-  /**
-   * Brightness of the field. 0 shows only the pointer glow, if `interactive`
-   * is on. Above 1 fills more.
-   * @default 0.75
-   */
-  intensity?: number
-  /**
-   * Animation speed multiplier. `0` holds a still frame.
-   * @default 1
-   */
-  speed?: number
-  /**
-   * Frame rate cap. The dots read as a still texture, so 30 is plenty.
-   * @default 30
-   */
-  fps?: number
-  /**
-   * Brighten the field around the mouse, the pen or a held finger.
-   * @default false
-   */
-  interactive?: boolean
 }
+
+type DitherSource =
+  | {
+      /**
+       * A built-in picture. `horizon`, `glow`, `aurora`, `waves` and `clouds`
+       * are light patterns that dither in `colors` over a clear background.
+       * The others are palette patterns with their own ground and colours.
+       * @default "horizon"
+       */
+      pattern?: DitherPattern
+      src?: never
+      shader?: never
+    }
+  | {
+      /**
+       * An image or video URL to dither. Bright areas get more dots. URLs
+       * that end in .mp4, .webm, .ogv, .mov or .m4v, and `data:video/` URLs,
+       * play as muted, looping video. Remote files must allow CORS.
+       */
+      src: string
+      pattern?: never
+      shader?: never
+    }
+  | {
+      /**
+       * GLSL that defines `float field(vec2 uv, float t)`. `uv` runs from 0
+       * to 1 across the element, from the bottom-left corner. `t` is the time
+       * in seconds times `speed`. Return the brightness from 0 to 1.
+       */
+      shader: string
+      pattern?: never
+      src?: never
+    }
+
+export type DitherProps = Omit<ComponentProps<"div">, "children" | "color"> &
+  DitherSource & {
+    /**
+     * One CSS colour, or colour stops from the dimmest dots to the brightest.
+     * `var(--primary)`, `currentColor` and `transparent` all work. One colour
+     * fades from 35% to full opacity. Palette patterns default to their own
+     * palette, and one colour there draws over a clear ground.
+     * @default "currentColor"
+     */
+    colors?: string | readonly string[]
+    /**
+     * The size of the Bayer matrix. Smaller matrices give coarser, more
+     * graphic banding.
+     * @default 8, or the size the pattern was drawn with
+     */
+    matrix?: 2 | 4 | 8
+    /**
+     * The size of one dot in CSS pixels. Dots snap to whole device pixels.
+     * @default 1
+     */
+    dotSize?: number
+    /**
+     * Brightness of the field. 0 shows only the pointer glow, if
+     * `interactive` is on. Above 1 fills more.
+     * @default 0.75
+     */
+    intensity?: number
+    /**
+     * Animation speed multiplier. `0` holds a still frame.
+     * @default 1
+     */
+    speed?: number
+    /**
+     * Frame rate cap. The dots read as a still texture, so 30 is plenty.
+     * @default 30
+     */
+    fps?: number
+    /**
+     * Brighten the field around the mouse, the pen or a held finger.
+     * @default false
+     */
+    interactive?: boolean
+  }
 
 type Rgba = [number, number, number, number]
 
 type Media = HTMLImageElement | HTMLVideoElement
 
+/** What the effect draws, resolved once from `pattern`, `src` or `shader`. */
+type Layer = {
+  /** The program cache key. */
+  key: string
+  /** GLSL that defines `float field(vec2 uv, float t)`. */
+  field: string
+  /** The clock reading of the first frame, in seconds. */
+  start: number
+  palette: PalettePattern | null
+  media: string | null
+}
+
 /** What one frame needs. The renderer reads it fresh on every draw. */
 type Frame = {
-  /** Light fields: straight [low, mid, high]. Scenes: premultiplied palette. */
-  ramp: Rgba[]
+  /** Premultiplied colours, dim to bright. */
+  stops: Rgba[]
   intensity: number
   matrix: 2 | 4 | 8
   time: number
-  /** x and y in CSS pixels from the bottom-left corner, then 0 to 1 glow. */
+  /** x and y from 0 to 1 from the bottom-left corner, then 0 to 1 glow. */
   pointer: readonly [number, number, number]
 }
 
@@ -513,6 +551,12 @@ type Renderer = {
   draw: (frame: Frame) => Drawn
   dispose?: () => void
 }
+
+/**
+ * `dots` is the CSS fallback for no WebGL, a lost context or a media error.
+ * `blank` is a shader that did not compile.
+ */
+type Status = "pending" | "ready" | "dots" | "blank"
 
 /**
  * Where a field shows its dots. Alone on the page, a field shows the hub
@@ -552,11 +596,17 @@ float bayer(vec2 cell) {
 }
 `
 
-const FIELD_HEADER = `#version 300 es
-precision highp float;
-uniform vec2 uSize;
+// Everything a field can read. `uView` is the render target in pixels.
+const FIELD_HEAD = `precision highp float;
+precision highp sampler2D;
 uniform vec2 uView;
+uniform vec2 uSize;
+uniform float uAspect;
+uniform float uDot;
 uniform float uTime;
+uniform vec2 uPointer;
+uniform float uPointerOn;
+uniform sampler2D uNoise;
 out vec4 outColor;
 
 float hash(vec2 p) {
@@ -585,82 +635,11 @@ float fbm(vec2 p) {
   }
   return sum;
 }
-`
-
-const FIELD_MAIN = `
-void main() {
-  vec2 p = gl_FragCoord.xy / uView * uSize;
-  float v = pattern(p, uSize, uTime);
-  outColor = vec4(clamp(v, 0.0, 1.0), 0.0, 0.0, 1.0);
-}`
-
-// Image and video: luminance under a cover fit, so bright areas get more dots.
-const MEDIA_PATTERN = `
-uniform sampler2D uMedia;
-uniform vec2 uMediaSize;
-
-float pattern(vec2 p, vec2 size, float t) {
-  float scale = max(size.x / uMediaSize.x, size.y / uMediaSize.y);
-  vec2 uv = (p - 0.5 * size) / (uMediaSize * scale) + 0.5;
-  vec4 c = texture(uMedia, vec2(uv.x, 1.0 - uv.y));
-  return dot(c.rgb, vec3(0.2126, 0.7152, 0.0722));
-}
-`
-
-const DITHER = `#version 300 es
-precision highp float;
-uniform sampler2D uField;
-uniform vec2 uView;
-uniform vec4 uLow;
-uniform vec4 uMid;
-uniform vec4 uHigh;
-uniform float uIntensity;
-uniform vec3 uPointer;
-uniform float uDot;
-out vec4 outColor;
-${BAYER}
-void main() {
-  vec2 uv = gl_FragCoord.xy / uView;
-  float base = texture(uField, uv).r;
-  float halo = textureLod(uField, uv, 1.0).r * 0.45
-    + textureLod(uField, uv, 2.2).r * 0.35
-    + textureLod(uField, uv, 3.4).r * 0.2;
-  float v = base + 0.55 * halo;
-  float over = max(v - 0.85, 0.0);
-  v = min(v, 0.85) + over / (1.0 + 4.0 * over);
-  v = clamp(v * uIntensity, 0.0, 1.0);
-  // The pointer glow comes after intensity, so it shows on quiet fields too.
-  vec2 away = gl_FragCoord.xy * uDot - uPointer.xy;
-  v = min(v + uPointer.z * exp(-dot(away, away) / 28000.0) * (0.35 + 0.5 * v), 1.0);
-  // Drop the faintest light, so empty areas stay empty instead of showing
-  // a sparse, even grid.
-  v = max(v - 0.02, 0.0) / 0.98;
-  float on = step(bayer(gl_FragCoord.xy), v);
-  vec4 c = v < 0.5 ? mix(uLow, uMid, v * 2.0) : mix(uMid, uHigh, v * 2.0 - 1.0);
-  outColor = vec4(c.rgb * c.a, c.a) * on;
-}`
-
-const SCENE_HEAD = `
-precision highp float;
-precision highp sampler2D;
-uniform vec2 uDots;
-uniform float uPx;
-uniform float uUnit;
-uniform float uSec;
-uniform float uGain;
-uniform int uColours;
-uniform vec4 uPal[6];
-uniform sampler2D uNoise;
-uniform vec3 uPointer;
-uniform float uDot;
-out vec4 outColor;
 
 float ss(float a, float b, float x) {
   float t = clamp((x - a) / (b - a), 0.0, 1.0);
   return t * t * (3.0 - 2.0 * t);
 }
-// Smooth back-and-forth, 0 to 1 and back, period 1.
-float pingpong(float x) { return 0.5 - 0.5 * cos(6.2831853 * x); }
 
 // Value noise over a 256 x 256 lattice read from a texture.
 float hv(ivec2 p) { return texelFetch(uNoise, ivec2(p.x & 255, p.y & 255), 0).r; }
@@ -690,15 +669,26 @@ float fbmN(vec2 p, int octaves, float gain) {
   }
   return total / norm;
 }
-${BAYER}`
+`
 
-const SCENE_MAIN = `
+const LIGHT_MAIN = `
 void main() {
-  vec2 n = vec2(floor(gl_FragCoord.x), uDots.y - 1.0 - floor(gl_FragCoord.y));
-  float f = field(n, uDots, uSec) * uGain;
-  vec2 away = gl_FragCoord.xy * uDot - uPointer.xy;
-  float glow = uPointer.z * exp(-dot(away, away) / 28000.0);
-  float threshold = bayer(n);
+  float v = field(gl_FragCoord.xy / uView, uTime);
+  outColor = vec4(clamp(v, 0.0, 1.0), 0.0, 0.0, 1.0);
+}`
+
+// One pass: evaluate the field, add the threshold, pick a palette colour.
+const PALETTE_MAIN = `
+uniform float uGain;
+uniform int uColours;
+uniform vec4 uPal[6];
+${BAYER}
+void main() {
+  vec2 uv = gl_FragCoord.xy / uView;
+  float f = clamp(field(uv, uTime), 0.0, 1.0) * float(uColours - 1) * uGain;
+  vec2 away = (uv - uPointer) * uSize;
+  float glow = uPointerOn * exp(-dot(away, away) / 28000.0);
+  float threshold = bayer(vec2(floor(gl_FragCoord.x), uView.y - 1.0 - floor(gl_FragCoord.y)));
 #ifdef ONE_BIT
   f += glow * 0.55;
   int idx = f > threshold ? 1 : 0;
@@ -709,52 +699,120 @@ void main() {
   outColor = uPal[idx];
 }`
 
-const sceneSource = (scene: Scene) =>
-  `#version 300 es\n${scene.oneBit ? "#define ONE_BIT\n" : ""}${SCENE_HEAD}${scene.field}${SCENE_MAIN}`
+// Image and video: luminance under a cover fit, so bright areas get more dots.
+const MEDIA_FIELD = `
+uniform sampler2D uMedia;
+uniform vec2 uMediaSize;
+
+float field(vec2 uv, float t) {
+  float scale = max(uSize.x / uMediaSize.x, uSize.y / uMediaSize.y);
+  vec2 q = (uv - 0.5) * uSize / (uMediaSize * scale) + 0.5;
+  vec4 c = texture(uMedia, vec2(q.x, 1.0 - q.y));
+  return dot(c.rgb, vec3(0.2126, 0.7152, 0.0722));
+}`
+
+const DITHER = `#version 300 es
+precision highp float;
+uniform sampler2D uField;
+uniform vec2 uView;
+uniform vec2 uSize;
+uniform vec4 uStops[8];
+uniform int uCount;
+uniform float uIntensity;
+uniform vec2 uPointer;
+uniform float uPointerOn;
+out vec4 outColor;
+${BAYER}
+void main() {
+  vec2 uv = gl_FragCoord.xy / uView;
+  float base = texture(uField, uv).r;
+  float halo = textureLod(uField, uv, 1.0).r * 0.45
+    + textureLod(uField, uv, 2.2).r * 0.35
+    + textureLod(uField, uv, 3.4).r * 0.2;
+  float v = base + 0.55 * halo;
+  float over = max(v - 0.85, 0.0);
+  v = min(v, 0.85) + over / (1.0 + 4.0 * over);
+  v = clamp(v * uIntensity, 0.0, 1.0);
+  // The pointer glow comes after intensity, so it shows on quiet fields too.
+  vec2 away = (uv - uPointer) * uSize;
+  v = min(v + uPointerOn * exp(-dot(away, away) / 28000.0) * (0.35 + 0.5 * v), 1.0);
+  // Drop the faintest light, so empty areas stay empty instead of showing
+  // a sparse, even grid.
+  v = max(v - 0.02, 0.0) / 0.98;
+  float on = step(bayer(gl_FragCoord.xy), v);
+  float at = v * float(uCount - 1);
+  int i = int(min(floor(at), float(uCount - 2)));
+  outColor = mix(uStops[i], uStops[i + 1], at - float(i)) * on;
+}`
+
+/** The field source, and how many lines come before it in the program. */
+type FieldSource = { source: string; offset: number }
+
+type Fragment = { text: string; field?: FieldSource }
+
+function fragment(field: string, main: string, define = ""): Fragment {
+  const head = `#version 300 es\n${define}${FIELD_HEAD}`
+  return {
+    text: `${head}${field}\n${main}`,
+    field: { source: field, offset: head.split("\n").length - 1 },
+  }
+}
 
 /** The light field renders at this fraction of the CSS size, then blooms. */
 const FIELD_SCALE = 0.6
 const POINTER_EASE = 6
-/** `intensity` at which a scene draws exactly as designed. */
-const SCENE_INTENSITY = 0.75
-/** A scene starts here, where its slow motion is well into the picture. */
-const SCENE_START = 4
+/** `intensity` at which a palette pattern draws exactly as designed. */
+const PALETTE_INTENSITY = 0.75
+/** Where the clock starts, so slow motion is well into the picture. */
+const LIGHT_START = 10
+const PALETTE_START = 6
+const MAX_STOPS = 8
+/** A single colour fades from dim to full opacity. */
+const FADES = [0.35, 0.75, 1]
 const MAX_DOTS = 4096
 const HUB_GRACE_MS = 2000
 const COMPLETION_STATUS = 0x91_b1
 const VIDEO_FILE = /^data:video\/|\.(mp4|webm|ogv|mov|m4v)(\?|#|$)/i
+const ERROR_LINE = /^ERROR: \d+:(\d+): (.*)$/
 
-const FIELD_UNIFORMS = ["uSize", "uView", "uTime", "uMediaSize"] as const
-const DITHER_UNIFORMS = [
+const FIELD_UNIFORMS = [
   "uView",
-  "uLow",
-  "uMid",
-  "uHigh",
-  "uIntensity",
-  "uPointer",
+  "uSize",
+  "uAspect",
   "uDot",
-  "uMatrix",
+  "uTime",
+  "uPointer",
+  "uPointerOn",
+  "uMediaSize",
 ] as const
-const SCENE_UNIFORMS = [
-  "uDots",
-  "uPx",
-  "uUnit",
-  "uSec",
+const PALETTE_UNIFORMS = [
+  ...FIELD_UNIFORMS,
   "uGain",
   "uColours",
   "uPal",
+  "uMatrix",
+] as const
+const DITHER_UNIFORMS = [
+  "uView",
+  "uSize",
+  "uStops",
+  "uCount",
+  "uIntensity",
   "uPointer",
-  "uDot",
+  "uPointerOn",
   "uMatrix",
 ] as const
 
 type Entry = {
   program: WebGLProgram | null
+  /** Kept until the link resolves, so a failure can read their logs. */
+  shaders: WebGLShader[]
   state: "pending" | "ready" | "failed"
   uniforms: readonly string[]
   /** Sampler uniform name to texture unit. */
   samplers: Record<string, number>
   loc: Record<string, WebGLUniformLocation | null>
+  field?: FieldSource
 }
 
 /**
@@ -868,44 +926,59 @@ function releaseHub(hub: Hub, member: Member | null) {
 function program(
   hub: Hub,
   key: string,
-  fragment: string,
+  { text, field }: Fragment,
   uniforms: readonly string[],
-  samplers: Record<string, number> = {}
+  samplers: Record<string, number>
 ) {
   const cached = hub.programs.get(key)
   if (cached) return cached
   const { gl } = hub
-  const linked = gl.createProgram()
-  if (!linked) {
-    const failed: Entry = {
-      program: null,
-      state: "failed",
-      uniforms,
-      samplers,
-      loc: {},
-    }
-    hub.programs.set(key, failed)
-    return failed
+  const entry: Entry = {
+    program: gl.createProgram(),
+    shaders: [],
+    state: "pending",
+    uniforms,
+    samplers,
+    loc: {},
+    field,
   }
-  let state: Entry["state"] = "pending"
+  hub.programs.set(key, entry)
+  if (!entry.program) {
+    entry.state = "failed"
+    return entry
+  }
   for (const [type, source] of [
     [gl.VERTEX_SHADER, VERTEX],
-    [gl.FRAGMENT_SHADER, fragment],
+    [gl.FRAGMENT_SHADER, text],
   ] as const) {
     const shader = gl.createShader(type)
     if (!shader) {
-      state = "failed"
+      entry.state = "failed"
       continue
     }
     gl.shaderSource(shader, source)
     gl.compileShader(shader)
-    gl.attachShader(linked, shader)
-    gl.deleteShader(shader)
+    gl.attachShader(entry.program, shader)
+    entry.shaders.push(shader)
   }
-  gl.linkProgram(linked)
-  const entry: Entry = { program: linked, state, uniforms, samplers, loc: {} }
-  hub.programs.set(key, entry)
+  gl.linkProgram(entry.program)
   return entry
+}
+
+/** Logs each compile error against the line of the field source it is on. */
+function reportError(log: string, field: FieldSource | undefined) {
+  const lines = field?.source.split("\n") ?? []
+  const messages = log
+    .trim()
+    .split("\n")
+    .map((entry) => {
+      const match = ERROR_LINE.exec(entry.trim())
+      const line = match && field ? Number(match[1]) - field.offset : 0
+      const code = lines[line - 1]
+      if (!match || code === undefined) return entry
+      return `line ${line}: ${match[2]}\n    ${code.trim()}`
+    })
+  console.error(`Dither: the shader did not compile.\n${messages.join("\n")}`)
 }
 
 /** Finishes the link once the driver is done, then reads the uniforms. */
@@ -916,8 +989,17 @@ function poll(hub: Hub, entry: Entry) {
   if (parallel && !gl.getProgramParameter(linked, COMPLETION_STATUS)) {
     return "pending"
   }
-  if (!gl.getProgramParameter(linked, gl.LINK_STATUS)) {
-    console.warn("Dither: shader error", gl.getProgramInfoLog(linked))
+  const linkedOk = Boolean(gl.getProgramParameter(linked, gl.LINK_STATUS))
+  if (!linkedOk) {
+    const log = entry.shaders
+      .map((shader) => gl.getShaderInfoLog(shader) ?? "")
+      .join("\n")
+      .trim()
+    reportError(log || (gl.getProgramInfoLog(linked) ?? ""), entry.field)
+  }
+  for (const shader of entry.shaders) gl.deleteShader(shader)
+  entry.shaders = []
+  if (!linkedOk) {
     entry.state = "failed"
     return "failed"
   }
@@ -950,13 +1032,17 @@ function createTexture(gl: WebGL2RenderingContext, mipmaps: boolean) {
 }
 
 /**
- * The lattice behind a scene's value noise: texel (ix, iy) holds
+ * Binds the lattice behind `fbmN` to unit 2: texel (ix, iy) holds
  * vals[(perm[ix] + iy) & 255]. Built once per seed and shared by all fields.
  */
-function noiseTexture(hub: Hub, seed: keyof typeof NOISE) {
-  const cached = hub.noise.get(seed)
-  if (cached) return cached
+function bindNoise(hub: Hub, seed: Seed) {
   const { gl } = hub
+  gl.activeTexture(gl.TEXTURE2)
+  const cached = hub.noise.get(seed)
+  if (cached) {
+    gl.bindTexture(gl.TEXTURE_2D, cached)
+    return
+  }
   const bytes = Uint8Array.from(atob(NOISE[seed]), (char) => char.charCodeAt(0))
   const table = new Uint8Array(256 * 256)
   for (let iy = 0; iy < 256; iy += 1) {
@@ -978,7 +1064,6 @@ function noiseTexture(hub: Hub, seed: keyof typeof NOISE) {
     table
   )
   hub.noise.set(seed, texture)
-  return texture
 }
 
 /** Makes room in the hub canvas. It only grows, so fields never fight over it. */
@@ -1012,29 +1097,45 @@ function present(hub: Hub, { ctx }: Target, dotsX: number, dotsY: number) {
   )
 }
 
+/** Sets what every field can read. `view` is the render target in pixels. */
+function setField(
+  gl: WebGL2RenderingContext,
+  loc: Entry["loc"],
+  view: number[],
+  css: number[],
+  dot: number,
+  { time, pointer }: Frame
+) {
+  gl.uniform2f(loc.uView, view[0], view[1])
+  gl.uniform2f(loc.uSize, css[0], css[1])
+  gl.uniform1f(loc.uAspect, css[0] / css[1])
+  gl.uniform1f(loc.uDot, dot)
+  gl.uniform1f(loc.uTime, time)
+  gl.uniform2f(loc.uPointer, pointer[0], pointer[1])
+  gl.uniform1f(loc.uPointerOn, pointer[2])
+}
+
 /**
  * Light fields take two passes: the field renders small into a mipmapped
  * texture, then the dither pass reads it with a bloom from the blurred mip
  * levels and thresholds it into dots, one canvas pixel per dot.
  */
-function createFieldRenderer(
-  hub: Hub,
-  target: Target,
-  key: string,
-  source: string
-): Renderer {
+function createFieldRenderer(hub: Hub, target: Target, layer: Layer): Renderer {
   const { gl } = hub
   const field = program(
     hub,
-    `field:${key}`,
-    `${FIELD_HEADER}${source}${FIELD_MAIN}`,
+    layer.key,
+    fragment(layer.field, LIGHT_MAIN),
     FIELD_UNIFORMS,
-    { uMedia: 1 }
+    { uMedia: 1, uNoise: 2 }
   )
-  const dither = program(hub, "dither", DITHER, DITHER_UNIFORMS, { uField: 0 })
+  const dither = program(hub, "dither", { text: DITHER }, DITHER_UNIFORMS, {
+    uField: 0,
+  })
   const fieldTexture = createTexture(gl, true)
   const mediaTexture = createTexture(gl, false)
   const framebuffer = gl.createFramebuffer()
+  const stops = new Float32Array(MAX_STOPS * 4)
   let media: Media | null = null
   // Images upload once; video uploads a new frame on every draw.
   let mediaStale = false
@@ -1077,7 +1178,7 @@ function createFieldRenderer(
       media = next
       mediaStale = true
     },
-    draw({ ramp, intensity, matrix, time, pointer }) {
+    draw(frame) {
       const ready = waiting(hub, [field, dither])
       if (ready !== "ok") return ready
       fit(hub, view[0], view[1])
@@ -1104,9 +1205,8 @@ function createFieldRenderer(
         }
         gl.uniform2f(field.loc.uMediaSize, width, height)
       }
-      gl.uniform2f(field.loc.uSize, css[0], css[1])
-      gl.uniform2f(field.loc.uView, fieldView[0], fieldView[1])
-      gl.uniform1f(field.loc.uTime, time)
+      bindNoise(hub, 11)
+      setField(gl, field.loc, fieldView, css, css[0] / view[0], frame)
       gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer)
       gl.viewport(0, 0, fieldView[0], fieldView[1])
       gl.drawArrays(gl.TRIANGLES, 0, 3)
@@ -1115,16 +1215,18 @@ function createFieldRenderer(
       gl.bindTexture(gl.TEXTURE_2D, fieldTexture)
       gl.generateMipmap(gl.TEXTURE_2D)
 
-      const [low, mid, high] = ramp
+      for (const [index, colour] of frame.stops.entries()) {
+        stops.set(colour, index * 4)
+      }
       gl.useProgram(dither.program)
       gl.uniform2f(dither.loc.uView, view[0], view[1])
-      gl.uniform4f(dither.loc.uLow, low[0], low[1], low[2], low[3])
-      gl.uniform4f(dither.loc.uMid, mid[0], mid[1], mid[2], mid[3])
-      gl.uniform4f(dither.loc.uHigh, high[0], high[1], high[2], high[3])
-      gl.uniform1f(dither.loc.uIntensity, intensity)
-      gl.uniform1i(dither.loc.uMatrix, matrix)
-      gl.uniform1f(dither.loc.uDot, css[0] / view[0])
-      gl.uniform3f(dither.loc.uPointer, pointer[0], pointer[1], pointer[2])
+      gl.uniform2f(dither.loc.uSize, css[0], css[1])
+      gl.uniform4fv(dither.loc.uStops, stops)
+      gl.uniform1i(dither.loc.uCount, frame.stops.length)
+      gl.uniform1f(dither.loc.uIntensity, frame.intensity)
+      gl.uniform1i(dither.loc.uMatrix, frame.matrix)
+      gl.uniform2f(dither.loc.uPointer, frame.pointer[0], frame.pointer[1])
+      gl.uniform1f(dither.loc.uPointerOn, frame.pointer[2])
       gl.viewport(0, 0, view[0], view[1])
       gl.drawArrays(gl.TRIANGLES, 0, 3)
       present(hub, target, view[0], view[1])
@@ -1138,15 +1240,19 @@ function createFieldRenderer(
   }
 }
 
-/** A scene is one pass: evaluate the picture, add the threshold, pick a colour. */
-function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
+function createPaletteRenderer(
+  hub: Hub,
+  target: Target,
+  layer: Layer,
+  palette: PalettePattern
+): Renderer {
   const { gl } = hub
-  const scene: Scene = SCENES[id]
+  const oneBit = palette.palette.length === 2 ? "#define ONE_BIT\n" : ""
   const entry = program(
     hub,
-    `scene:${id}`,
-    sceneSource(scene),
-    SCENE_UNIFORMS,
+    layer.key,
+    fragment(layer.field, PALETTE_MAIN, oneBit),
+    PALETTE_UNIFORMS,
     { uNoise: 2 }
   )
   const colours = new Float32Array(24)
@@ -1158,29 +1264,21 @@ function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
       view = [dotsX, dotsY]
       css = [cssX, cssY]
     },
-    draw({ ramp, intensity, matrix, time, pointer }) {
+    draw(frame) {
       const ready = waiting(hub, [entry])
       if (ready !== "ok") return ready
       fit(hub, view[0], view[1])
 
       gl.useProgram(entry.program)
-      if (scene.seed) {
-        gl.activeTexture(gl.TEXTURE2)
-        gl.bindTexture(gl.TEXTURE_2D, noiseTexture(hub, scene.seed))
-      }
-      for (const [index, colour] of ramp.entries())
+      bindNoise(hub, palette.seed ?? 11)
+      for (const [index, colour] of frame.stops.entries()) {
         colours.set(colour, index * 4)
-      const dotPx = css[0] / view[0]
-      gl.uniform2f(entry.loc.uDots, view[0], view[1])
-      gl.uniform1f(entry.loc.uPx, dotPx)
-      gl.uniform1f(entry.loc.uUnit, scene.dot / dotPx)
-      gl.uniform1f(entry.loc.uSec, time - SCENE_START)
-      gl.uniform1f(entry.loc.uGain, intensity / SCENE_INTENSITY)
-      gl.uniform1i(entry.loc.uColours, ramp.length)
+      }
+      setField(gl, entry.loc, view, css, css[0] / view[0], frame)
+      gl.uniform1f(entry.loc.uGain, frame.intensity / PALETTE_INTENSITY)
+      gl.uniform1i(entry.loc.uColours, frame.stops.length)
       gl.uniform4fv(entry.loc.uPal, colours)
-      gl.uniform1i(entry.loc.uMatrix, matrix)
-      gl.uniform1f(entry.loc.uDot, dotPx)
-      gl.uniform3f(entry.loc.uPointer, pointer[0], pointer[1], pointer[2])
+      gl.uniform1i(entry.loc.uMatrix, frame.matrix)
       gl.viewport(0, 0, view[0], view[1])
       gl.drawArrays(gl.TRIANGLES, 0, 3)
       present(hub, target, view[0], view[1])
@@ -1189,11 +1287,59 @@ function createSceneRenderer(hub: Hub, target: Target, id: SceneId): Renderer {
   }
 }
 
-const isScene = (pattern: DitherPattern): pattern is SceneId =>
-  pattern in SCENES
+function layerOf(
+  pattern: DitherPattern,
+  src: string | undefined,
+  shader: string | undefined
+): Layer {
+  if (src) {
+    return {
+      key: "field:media",
+      field: MEDIA_FIELD,
+      start: 0,
+      palette: null,
+      media: src,
+    }
+  }
+  // The source itself is the key, so each unique shader compiles once.
+  if (shader) {
+    return {
+      key: `field:shader:${shader}`,
+      field: shader,
+      start: 0,
+      palette: null,
+      media: null,
+    }
+  }
+  const spec = PATTERNS[pattern]
+  if ("palette" in spec) {
+    return {
+      key: `palette:${pattern}`,
+      field: spec.field,
+      start: PALETTE_START,
+      palette: spec,
+      media: null,
+    }
+  }
+  return {
+    key: `field:${pattern}`,
+    field: spec.field,
+    start: LIGHT_START,
+    palette: null,
+    media: null,
+  }
+}
 
-const toRamp = (color: DitherColor) =>
-  typeof color === "string" ? [color, color, color] : [...color]
+/** The CSS colours to resolve, dim to bright. */
+function colorStops(
+  colors: DitherProps["colors"],
+  palette: PalettePattern | null
+): readonly string[] {
+  const list = typeof colors === "string" ? [colors] : colors
+  if (!palette) return list?.length ? list : ["currentColor"]
+  if (!list?.length) return palette.palette
+  return list.length === 1 ? ["transparent", list[0]] : list
+}
 
 let probeContext: CanvasRenderingContext2D | null = null
 
@@ -1225,35 +1371,42 @@ function resolveColors(host: HTMLElement, values: readonly string[]): Rgba[] {
   return colors
 }
 
-/** A single colour fades from 35% to full opacity. */
-function resolveRamp(host: HTMLElement, color: DitherColor): Rgba[] {
-  const fades = typeof color === "string" ? [0.35, 0.75, 1] : [1, 1, 1]
-  return resolveColors(host, toRamp(color)).map(([r, g, b, a], index): Rgba => [
-    r,
-    g,
-    b,
-    a * fades[index],
-  ])
+/** Blends premultiplied stops evenly down or up to `count` colours. */
+function resample(stops: Rgba[], count: number): Rgba[] {
+  const last = stops.length - 1
+  return Array.from({ length: count }, (_, index): Rgba => {
+    const at = (index / Math.max(count - 1, 1)) * last
+    const from = Math.floor(at)
+    const low = stops[from]
+    const high = stops[Math.min(from + 1, last)]
+    const k = at - from
+    const mix = (channel: 0 | 1 | 2 | 3) =>
+      low[channel] + (high[channel] - low[channel]) * k
+    return [mix(0), mix(1), mix(2), mix(3)]
+  })
 }
 
-/** Blends the stops, in premultiplied alpha, down or up to one colour per level. */
-function resolvePalette(
+/** Premultiplied colours, one per palette level or up to `MAX_STOPS`. */
+function resolveStops(
   host: HTMLElement,
-  scene: Scene,
-  palette: readonly string[] | undefined
+  values: readonly string[],
+  palette: PalettePattern | null
 ): Rgba[] {
-  const stops = resolveColors(host, palette?.length ? palette : scene.palette)
-  const last = stops.length - 1
-  return scene.palette.map((_, level): Rgba => {
-    const at = (level / (scene.palette.length - 1)) * last
-    const from = Math.floor(at)
-    const [r0, g0, b0, a0] = stops[from]
-    const [r1, g1, b1, a1] = stops[Math.min(from + 1, last)]
-    const k = at - from
-    const alpha = a0 + (a1 - a0) * k
-    const mix = (c0: number, c1: number) => c0 * a0 + (c1 * a1 - c0 * a0) * k
-    return [mix(r0, r1), mix(g0, g1), mix(b0, b1), alpha]
-  })
+  let colors = resolveColors(host, values)
+  if (!palette && colors.length === 1) {
+    const [r, g, b, a] = colors[0]
+    colors = FADES.map((fade): Rgba => [r, g, b, a * fade])
+  }
+  const premultiplied = colors.map(([r, g, b, a]): Rgba => [
+    r * a,
+    g * a,
+    b * a,
+    a,
+  ])
+  const count = palette
+    ? palette.palette.length
+    : Math.min(premultiplied.length, MAX_STOPS)
+  return resample(premultiplied, count)
 }
 
 function loadMedia(
@@ -1297,58 +1450,62 @@ const ease = (from: number, to: number, rate: number, dt: number) =>
   from + (to - from) * (1 - Math.exp(-rate * dt))
 
 /**
- * An animated ordered-dither background. A soft light field, a palette scene,
- * or an image or video is thresholded against a Bayer matrix into crisp square
- * dots. Children render above the dots.
+ * An animated ordered-dither layer. A light pattern, a palette pattern, an
+ * image or video, or your own GLSL field is thresholded against a Bayer
+ * matrix into crisp square dots. It fills its nearest positioned parent.
  */
 export function Dither({
   pattern = "horizon",
   src,
-  color = "currentColor",
-  palette,
+  shader,
+  colors,
   matrix,
-  dotSize,
+  dotSize = 1,
   intensity = 0.75,
   speed = 1,
   fps = 30,
   interactive = false,
   className,
-  children,
+  style,
+  ref,
   ...props
 }: DitherProps) {
-  const rootRef = useRef<HTMLDivElement>(null)
-  const layerRef = useRef<HTMLDivElement>(null)
+  const rootRef = useRef<HTMLDivElement | null>(null)
   // The field only draws while it is near the viewport.
   const [near, setNear] = useState(false)
-  const [fallback, setFallback] = useState(false)
+  const [status, setStatus] = useState<Status>("pending")
   // Bumped when the browser restores a lost WebGL context.
   const [contextKey, setContextKey] = useState(0)
-  const scene = !src && isScene(pattern) ? SCENES[pattern] : null
-  const dot = dotSize ?? scene?.dot ?? 1
+  const layer = useMemo(
+    () => layerOf(pattern, src, shader),
+    [pattern, src, shader]
+  )
+  const stops = colorStops(colors, layer.palette)
+  const colorKey = stops.join("|")
+  const dither = matrix ?? layer.palette?.matrix ?? 8
   // Read every frame, so changing them never rebuilds the GL state.
   const live = useRef({
-    color,
-    palette,
-    matrix: matrix ?? scene?.matrix ?? 8,
+    stops,
+    matrix: dither,
     intensity,
     speed,
     fps,
     interactive,
   })
-  live.current = {
-    color,
-    palette,
-    matrix: matrix ?? scene?.matrix ?? 8,
-    intensity,
-    speed,
-    fps,
-    interactive,
-  }
-  const repaint = useRef(() => {})
+  live.current = { stops, matrix: dither, intensity, speed, fps, interactive }
+  const repaint = useRef<(() => void) | null>(null)
   // Kept across rebuilds, so a field that scrolls back into view resumes.
-  const time = useRef(10)
+  const clock = useRef(0)
   const shown = useRef(false)
-  const colorKey = `${toRamp(color).join("|")}/${palette?.join("|") ?? ""}`
+
+  const setRoot = useCallback(
+    (node: HTMLDivElement | null) => {
+      rootRef.current = node
+      if (typeof ref === "function") ref(node)
+      else if (ref) ref.current = node
+    },
+    [ref]
+  )
 
   useEffect(() => {
     const root = rootRef.current
@@ -1363,42 +1520,29 @@ export function Dither({
 
   useEffect(() => {
     const root = rootRef.current
-    const layer = layerRef.current
-    if (!near || !root || !layer) return
+    if (!near || !root) return
 
     const hub = acquireHub()
     const target = hub && (hub.refs === 1 ? hubTarget(hub) : copyTarget())
     if (!hub || !target) {
       if (hub) releaseHub(hub, null)
-      setFallback(true)
+      setStatus("dots")
       return
     }
     target.canvas.className = CANVAS_CLASS
-    const sceneId = !src && isScene(pattern) ? pattern : null
-    let renderer: Renderer
-    if (sceneId) {
-      renderer = createSceneRenderer(hub, target, sceneId)
-    } else if (src) {
-      renderer = createFieldRenderer(hub, target, "media", MEDIA_PATTERN)
-    } else {
-      const body = PATTERNS[pattern as keyof typeof PATTERNS]
-      renderer = createFieldRenderer(
-        hub,
-        target,
-        pattern,
-        `float pattern(vec2 p, vec2 size, float t) {${body}}`
-      )
-    }
-    setFallback(false)
+    const renderer = layer.palette
+      ? createPaletteRenderer(hub, target, layer, layer.palette)
+      : createFieldRenderer(hub, target, layer)
+    setStatus(shown.current ? "ready" : "pending")
     // A field that comes back into view skips the fade-in.
     if (shown.current) target.canvas.dataset.ready = ""
     else target.canvas.removeAttribute("data-ready")
-    layer.appendChild(target.canvas)
+    root.appendChild(target.canvas)
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
     const pointer = { x: 0, y: 0, clientX: 0, clientY: 0, on: false, hover: 0 }
     const frameData: Frame = {
-      ramp: [],
+      stops: [],
       intensity: live.current.intensity,
       matrix: 8,
       time: 0,
@@ -1407,33 +1551,36 @@ export function Dither({
     let previous = 0
     let frame = 0
     let retry = 0
+    let cssWidth = 0
     let cssHeight = 0
     let glowing = false
-    let ready = !src
-    let lost = false
+    let ready = !layer.media
+    let stopped = false
     let disposed = false
     let presented = false
 
-    const resolve = () =>
-      sceneId
-        ? resolvePalette(root, SCENES[sceneId], live.current.palette)
-        : resolveRamp(root, live.current.color)
+    const resolve = () => resolveStops(root, live.current.stops, layer.palette)
 
     const draw = () => {
-      if (!ready || !cssHeight || lost) return
+      if (!ready || !cssHeight || stopped) return
       frameData.intensity = live.current.intensity
       frameData.matrix = live.current.matrix
-      frameData.time = time.current
-      frameData.pointer = [pointer.x, pointer.y, pointer.hover]
+      frameData.time = layer.start + clock.current
+      frameData.pointer = [
+        pointer.x / cssWidth,
+        pointer.y / cssHeight,
+        pointer.hover,
+      ]
       const result = renderer.draw(frameData)
       if (result === "ok") {
         target.canvas.dataset.ready = ""
+        if (!presented) setStatus("ready")
         shown.current = true
         presented = true
       } else if (result === "failed") {
-        lost = true
+        stopped = true
         sync()
-        setFallback(true)
+        setStatus("blank")
       } else if (!retry) {
         // Still compiling, or the media is not ready. Retry until the first
         // frame lands, even when the loop has nothing to redraw.
@@ -1444,8 +1591,15 @@ export function Dither({
       }
     }
 
+    const fallBack = () => {
+      stopped = true
+      target.canvas.removeAttribute("data-ready")
+      sync()
+      setStatus("dots")
+    }
+
     const paint = () => {
-      frameData.ramp = resolve()
+      frameData.stops = resolve()
       draw()
     }
     repaint.current = paint
@@ -1465,7 +1619,7 @@ export function Dither({
       const height = root.clientHeight
       if (!width || !height) return
       const dpr = window.devicePixelRatio || 1
-      let devicePerDot = Math.max(1, Math.round(dot * dpr))
+      let devicePerDot = Math.max(1, Math.round(dotSize * dpr))
       // Stay inside what the GPU can draw in one go.
       while (
         Math.ceil((width * dpr) / devicePerDot) > hub.maxDots ||
@@ -1476,13 +1630,14 @@ export function Dither({
       const cssPerDot = devicePerDot / dpr
       const dotsX = Math.ceil((width * dpr) / devicePerDot)
       const dotsY = Math.ceil((height * dpr) / devicePerDot)
+      cssWidth = dotsX * cssPerDot
       cssHeight = dotsY * cssPerDot
       const { canvas } = target
       canvas.width = dotsX
       canvas.height = dotsY
-      canvas.style.width = `${dotsX * cssPerDot}px`
+      canvas.style.width = `${cssWidth}px`
       canvas.style.height = `${cssHeight}px`
-      renderer.resize(dotsX, dotsY, dotsX * cssPerDot, cssHeight)
+      renderer.resize(dotsX, dotsY, cssWidth, cssHeight)
       draw()
     }
 
@@ -1490,7 +1645,7 @@ export function Dither({
     // Otherwise hold the last frame.
     const sync = () => {
       const running =
-        ready && !lost && !document.hidden && !reducedMotion.matches
+        ready && !stopped && !document.hidden && !reducedMotion.matches
       if (running && !frame) {
         previous = 0
         frame = requestAnimationFrame(tick)
@@ -1511,7 +1666,7 @@ export function Dither({
       // cannot jump the field by more than 2 s.
       const dt = previous ? Math.min((now - previous) / 1000, 2) : 0
       previous = now
-      time.current += dt * speed
+      clock.current += dt * speed
 
       let inside = false
       if (interactive && pointer.on) {
@@ -1535,15 +1690,15 @@ export function Dither({
       pointer.hover = ease(pointer.hover, inside ? 1 : 0, 4, dt)
       if (!inside && !fading) pointer.hover = 0
       // A still image or a held frame only redraws while the glow moves.
-      const animated = Boolean(video) || (!src && speed !== 0)
+      const animated = Boolean(video) || (!layer.media && speed !== 0)
       const moving = inside || fading || glowing
       glowing = inside || fading
       if (animated || moving) draw()
     }
 
-    const media = src
+    const media = layer.media
       ? loadMedia(
-          src,
+          layer.media,
           (source) => {
             if (disposed) return
             renderer.setMedia?.(source)
@@ -1552,7 +1707,7 @@ export function Dither({
             sync()
           },
           () => {
-            if (!disposed) setFallback(true)
+            if (!disposed) fallBack()
           }
         )
       : null
@@ -1598,14 +1753,8 @@ export function Dither({
 
     // A lost context shows the CSS dots until the browser gives it back.
     const onHub = (event: "lost" | "restored") => {
-      if (event === "restored") {
-        setContextKey((key) => key + 1)
-        return
-      }
-      lost = true
-      target.canvas.removeAttribute("data-ready")
-      sync()
-      setFallback(true)
+      if (event === "restored") setContextKey((key) => key + 1)
+      else fallBack()
     }
     hub.listeners.add(onHub)
 
@@ -1616,9 +1765,7 @@ export function Dither({
         hub.owner = null
         const own = copyTarget()
         if (!own) {
-          lost = true
-          sync()
-          setFallback(true)
+          fallBack()
           return
         }
         const { canvas } = target
@@ -1633,7 +1780,7 @@ export function Dither({
         draw()
       },
       attach: () => {
-        if (lost || !target.ctx) return
+        if (stopped || !target.ctx) return
         const copy = target.canvas
         const { canvas } = hub
         canvas.className = copy.className
@@ -1654,7 +1801,7 @@ export function Dither({
     const themeObserver = new MutationObserver(schedulePaint)
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
-    frameData.ramp = resolve()
+    frameData.stops = resolve()
     resize()
     sync()
     watchRatio()
@@ -1664,7 +1811,7 @@ export function Dither({
       attributeFilter: ["class", "data-theme"],
     })
     // The root's own class or style can change `currentColor` or a CSS
-    // variable in the ramp, for example text-red-500 to text-blue-500.
+    // variable in the colours, for example text-red-500 to text-blue-500.
     themeObserver.observe(root, {
       attributes: true,
       attributeFilter: ["class", "style"],
@@ -1683,7 +1830,7 @@ export function Dither({
       cancelAnimationFrame(frame)
       cancelAnimationFrame(retry)
       cancelAnimationFrame(paintFrame)
-      repaint.current = () => {}
+      repaint.current = null
       resizeObserver.disconnect()
       themeObserver.disconnect()
       ratioQuery?.removeEventListener("change", onRatio)
@@ -1708,22 +1855,22 @@ export function Dither({
       releaseHub(hub, member)
       target.canvas.remove()
     }
-  }, [near, pattern, src, dot, contextKey])
+  }, [near, layer, dotSize, contextKey])
 
   useEffect(() => {
-    repaint.current()
-  }, [colorKey, intensity, matrix])
+    repaint.current?.()
+  }, [colorKey, intensity, dither])
 
-  const fallbackStyle: CSSProperties = scene
+  const fallbackStyle: CSSProperties = layer.palette
     ? {
-        backgroundColor: palette?.[0] ?? scene.palette[0],
-        backgroundImage: `radial-gradient(${palette?.at(-1) ?? scene.palette.at(-1)} 0.6px, transparent 0.9px)`,
-        backgroundSize: `${3 * dot}px ${3 * dot}px`,
-        opacity: Math.min(1, intensity / SCENE_INTENSITY),
+        backgroundColor: stops[0],
+        backgroundImage: `radial-gradient(${stops.at(-1)} 0.6px, transparent 0.9px)`,
+        backgroundSize: `${3 * dotSize}px ${3 * dotSize}px`,
+        opacity: Math.min(1, intensity / PALETTE_INTENSITY),
       }
     : {
-        backgroundImage: `radial-gradient(${toRamp(color)[1]} 0.6px, transparent 0.9px)`,
-        backgroundSize: `${3 * dot}px ${3 * dot}px`,
+        backgroundImage: `radial-gradient(${stops.at(-1)} 0.6px, transparent 0.9px)`,
+        backgroundSize: `${3 * dotSize}px ${3 * dotSize}px`,
         maskImage:
           "radial-gradient(ellipse at 50% 70%, black, transparent 75%)",
         WebkitMaskImage:
@@ -1733,17 +1880,16 @@ export function Dither({
 
   return (
     <div
-      ref={rootRef}
-      className={cn("relative isolate overflow-hidden", className)}
+      ref={setRoot}
+      data-slot="dither"
+      data-state={status === "dots" || status === "blank" ? "fallback" : status}
+      aria-hidden="true"
+      className={cn(
+        "pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]",
+        className
+      )}
+      style={status === "dots" ? { ...style, ...fallbackStyle } : style}
       {...props}
-    >
-      <div
-        ref={layerRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={fallback ? fallbackStyle : undefined}
-      />
-      {children}
-    </div>
+    />
   )
 }

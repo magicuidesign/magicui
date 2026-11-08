@@ -9,14 +9,14 @@ export default function DitherPointerDemo() {
   const [interactive, setInteractive] = useState(true)
 
   return (
-    <Dither
-      pattern="clouds"
-      color="var(--foreground)"
-      dotSize={2}
-      intensity={0.3}
-      interactive={interactive}
-      className="bg-background flex h-72 w-full items-end justify-center rounded-lg border p-4 select-none md:h-[400px] md:p-6"
-    >
+    <div className="bg-background relative flex h-72 w-full items-end justify-center overflow-hidden rounded-lg border p-4 select-none md:h-[400px] md:p-6">
+      <Dither
+        pattern="clouds"
+        colors="var(--foreground)"
+        dotSize={2}
+        intensity={0.3}
+        interactive={interactive}
+      />
       <button
         type="button"
         aria-pressed={interactive}
@@ -31,6 +31,6 @@ export default function DitherPointerDemo() {
         />
         Mouse interaction {interactive ? "on" : "off"}
       </button>
-    </Dither>
+    </div>
   )
 }

@@ -1331,7 +1331,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Dither",
     description:
-      "An animated WebGL2 background of Bayer-dithered square dots. Pick one of 17 patterns, or dither an image or a video. Use one color, a three-stop ramp or a full palette. Set `interactive` to brighten the dots under the pointer.",
+      "An animated WebGL2 layer of Bayer-dithered square dots that fills its parent. Pick one of 17 patterns, dither an image or a video, or write your own GLSL field. Set `colors` to one color or a list of stops, and `interactive` to brighten the dots under the pointer.",
     files: [
       {
         path: "magicui/dither.tsx",
