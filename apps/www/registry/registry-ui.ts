@@ -2,31 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "agent-trace",
-    type: "registry:ui",
-    title: "Agent Trace",
-    description:
-      "An animated checklist that ticks off each step with a running timer, then shows the result.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/agent-trace.tsx",
-        type: "registry:ui",
-      },
-    ],
-    cssVars: {
-      theme: {
-        "animate-agent-trace-sheen": "agent-trace-sheen 1.5s linear infinite",
-      },
-    },
-    css: {
-      "@keyframes agent-trace-sheen": {
-        from: { "background-position": "100% 0" },
-        to: { "background-position": "0 0" },
-      },
-    },
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1363,5 +1338,30 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
+  },
+  {
+    name: "agent-trace",
+    type: "registry:ui",
+    title: "Agent Trace",
+    description:
+      "An animated checklist that ticks off each step with a running timer, then shows the result.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/agent-trace.tsx",
+        type: "registry:ui",
+      },
+    ],
+    cssVars: {
+      theme: {
+        "animate-agent-trace-sheen": "agent-trace-sheen 1.5s linear infinite",
+      },
+    },
+    css: {
+      "@keyframes agent-trace-sheen": {
+        from: { "background-position": "100% 0" },
+        to: { "background-position": "0 0" },
+      },
+    },
   },
 ]
