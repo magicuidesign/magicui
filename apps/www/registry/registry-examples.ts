@@ -2324,7 +2324,7 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Image Demo",
     description:
-      "A landscape photo dithered into 2px dots with a warm color ramp.",
+      "A landscape photo dithered into 2px dots in three warm colors.",
     registryDependencies: ["@magicui/dither"],
     files: [
       {
@@ -2352,11 +2352,25 @@ export const examples: Registry["items"] = [
     type: "registry:example",
     title: "Dither Patterns Demo",
     description:
-      "All 17 patterns as same-size background tiles, each labelled with its pattern id.",
+      "All 17 patterns from `DITHER_PATTERNS` as same-size tiles, each labelled with its pattern id.",
     registryDependencies: ["@magicui/dither"],
     files: [
       {
         path: "example/dither-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "dither-shader-demo",
+    type: "registry:example",
+    title: "Dither Shader Demo",
+    description:
+      "Your own GLSL field, warped ribbons in the primary color, through the `shader` prop.",
+    registryDependencies: ["@magicui/dither"],
+    files: [
+      {
+        path: "example/dither-shader-demo.tsx",
         type: "registry:example",
       },
     ],
