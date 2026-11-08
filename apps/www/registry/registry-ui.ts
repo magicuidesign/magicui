@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "live-island",
-    type: "registry:ui",
-    title: "Live Island",
-    description:
-      "A live pill that opens into one notification at a time, like a payment or a deploy, without moving the layout around it.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/live-island.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "live-island",
+    type: "registry:ui",
+    title: "Live Island",
+    description:
+      "A live pill that opens into one notification at a time, like a payment or a deploy, without moving the layout around it.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/live-island.tsx",
         type: "registry:ui",
       },
     ],

@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "live-island": {
-    name: "live-island",
-    description: "A live pill that opens into one notification at a time, like a payment or a deploy, without moving the layout around it.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/live-island.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/live-island.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "live-island-demo": {
-    name: "live-island-demo",
-    description: "A live pill cycling through a payment, a signup and a deploy.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/live-island"],
+  "live-island": {
+    name: "live-island",
+    description: "A live pill that opens into one notification at a time, like a payment or a deploy, without moving the layout around it.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/live-island-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/live-island.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/live-island-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "live-island-demo-2": {
-    name: "live-island-demo-2",
-    description: "Store orders, refunds and reviews with one accent color.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/live-island"],
-    files: [{
-      path: "registry/example/live-island-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/live-island-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "live-island-demo-3": {
-    name: "live-island-demo-3",
-    description: "A smaller inbox island, scaled with a font-size class.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/live-island"],
-    files: [{
-      path: "registry/example/live-island-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/live-island-demo-3.tsx")
+      const mod = await import("@/registry/magicui/live-island.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "live-island-demo": {
+    name: "live-island-demo",
+    description: "A live pill cycling through a payment, a signup and a deploy.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/live-island"],
+    files: [{
+      path: "registry/example/live-island-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/live-island-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "live-island-demo-2": {
+    name: "live-island-demo-2",
+    description: "Store orders, refunds and reviews with one accent color.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/live-island"],
+    files: [{
+      path: "registry/example/live-island-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/live-island-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "live-island-demo-3": {
+    name: "live-island-demo-3",
+    description: "A smaller inbox island, scaled with a font-size class.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/live-island"],
+    files: [{
+      path: "registry/example/live-island-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/live-island-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

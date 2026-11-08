@@ -2,46 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "live-island-demo",
-    type: "registry:example",
-    title: "Live Island Demo",
-    description:
-      "A live pill cycling through a payment, a signup and a deploy.",
-    registryDependencies: ["@magicui/live-island"],
-    files: [
-      {
-        path: "example/live-island-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "live-island-demo-2",
-    type: "registry:example",
-    title: "Live Island Custom Updates Demo",
-    description: "Store orders, refunds and reviews with one accent color.",
-    registryDependencies: ["@magicui/live-island"],
-    files: [
-      {
-        path: "example/live-island-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "live-island-demo-3",
-    type: "registry:example",
-    title: "Live Island Compact Demo",
-    description: "A smaller inbox island, scaled with a font-size class.",
-    registryDependencies: ["@magicui/live-island"],
-    files: [
-      {
-        path: "example/live-island-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2437,6 +2397,46 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "live-island-demo",
+    type: "registry:example",
+    title: "Live Island Demo",
+    description:
+      "A live pill cycling through a payment, a signup and a deploy.",
+    registryDependencies: ["@magicui/live-island"],
+    files: [
+      {
+        path: "example/live-island-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "live-island-demo-2",
+    type: "registry:example",
+    title: "Live Island Custom Updates Demo",
+    description: "Store orders, refunds and reviews with one accent color.",
+    registryDependencies: ["@magicui/live-island"],
+    files: [
+      {
+        path: "example/live-island-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "live-island-demo-3",
+    type: "registry:example",
+    title: "Live Island Compact Demo",
+    description: "A smaller inbox island, scaled with a font-size class.",
+    registryDependencies: ["@magicui/live-island"],
+    files: [
+      {
+        path: "example/live-island-demo-3.tsx",
         type: "registry:example",
       },
     ],
