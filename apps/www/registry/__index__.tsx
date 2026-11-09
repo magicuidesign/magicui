@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "ink-reveal": {
-    name: "ink-reveal",
-    description: "A spreading ink stain that reveals content as it scrolls into view.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/ink-reveal.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/ink-reveal.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "ink-reveal-demo": {
-    name: "ink-reveal-demo",
-    description: "A product hero with a detailed revenue dashboard revealed by ink.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/ink-reveal"],
+  "ink-reveal": {
+    name: "ink-reveal",
+    description: "A spreading ink stain that reveals content as it scrolls into view.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/ink-reveal-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/ink-reveal.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/ink-reveal-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "ink-reveal-demo-2": {
-    name: "ink-reveal-demo-2",
-    description: "Three feature cards revealed one after another with a staggered delay.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/ink-reveal"],
-    files: [{
-      path: "registry/example/ink-reveal-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/ink-reveal-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "ink-reveal-demo-3": {
-    name: "ink-reveal-demo-3",
-    description: "An integrations panel on a tinted surface, with a matching cover and brand ink.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/ink-reveal"],
-    files: [{
-      path: "registry/example/ink-reveal-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/ink-reveal-demo-3.tsx")
+      const mod = await import("@/registry/magicui/ink-reveal.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "ink-reveal-demo": {
+    name: "ink-reveal-demo",
+    description: "A product hero with a detailed revenue dashboard revealed by ink.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/ink-reveal"],
+    files: [{
+      path: "registry/example/ink-reveal-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/ink-reveal-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "ink-reveal-demo-2": {
+    name: "ink-reveal-demo-2",
+    description: "Three feature cards revealed one after another with a staggered delay.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/ink-reveal"],
+    files: [{
+      path: "registry/example/ink-reveal-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/ink-reveal-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "ink-reveal-demo-3": {
+    name: "ink-reveal-demo-3",
+    description: "An integrations panel on a tinted surface, with a matching cover and brand ink.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/ink-reveal"],
+    files: [{
+      path: "registry/example/ink-reveal-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/ink-reveal-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
