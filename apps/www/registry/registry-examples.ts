@@ -2,48 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "scroll-trace-demo",
-    type: "registry:example",
-    title: "Scroll Trace Demo",
-    description:
-      "A how-it-works page section where the trace draws down the steps.",
-    registryDependencies: ["@magicui/scroll-trace"],
-    files: [
-      {
-        path: "example/scroll-trace-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "scroll-trace-demo-2",
-    type: "registry:example",
-    title: "Scroll Trace Changelog",
-    description:
-      "A changelog page section with a straight trace and custom colors.",
-    registryDependencies: ["@magicui/scroll-trace"],
-    files: [
-      {
-        path: "example/scroll-trace-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "scroll-trace-demo-3",
-    type: "registry:example",
-    title: "Scroll Trace Roadmap",
-    description:
-      "A roadmap page section with a wider gutter and a stronger curve.",
-    registryDependencies: ["@magicui/scroll-trace"],
-    files: [
-      {
-        path: "example/scroll-trace-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2439,6 +2397,48 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "scroll-trace-demo",
+    type: "registry:example",
+    title: "Scroll Trace Demo",
+    description:
+      "A how-it-works page section where the trace draws down the steps.",
+    registryDependencies: ["@magicui/scroll-trace"],
+    files: [
+      {
+        path: "example/scroll-trace-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "scroll-trace-demo-2",
+    type: "registry:example",
+    title: "Scroll Trace Changelog",
+    description:
+      "A changelog page section with a straight trace and custom colors.",
+    registryDependencies: ["@magicui/scroll-trace"],
+    files: [
+      {
+        path: "example/scroll-trace-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "scroll-trace-demo-3",
+    type: "registry:example",
+    title: "Scroll Trace Roadmap",
+    description:
+      "A roadmap page section with a wider gutter and a stronger curve.",
+    registryDependencies: ["@magicui/scroll-trace"],
+    files: [
+      {
+        path: "example/scroll-trace-demo-3.tsx",
         type: "registry:example",
       },
     ],

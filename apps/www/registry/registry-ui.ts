@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "scroll-trace",
-    type: "registry:ui",
-    title: "Scroll Trace",
-    description:
-      "A gradient line follows your scroll down a list of steps and lights each one it reaches.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/scroll-trace.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "scroll-trace",
+    type: "registry:ui",
+    title: "Scroll Trace",
+    description:
+      "A gradient line follows your scroll down a list of steps and lights each one it reaches.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/scroll-trace.tsx",
         type: "registry:ui",
       },
     ],

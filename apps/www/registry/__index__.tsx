@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "scroll-trace": {
-    name: "scroll-trace",
-    description: "A gradient line follows your scroll down a list of steps and lights each one it reaches.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/scroll-trace.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/scroll-trace.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "scroll-trace-demo": {
-    name: "scroll-trace-demo",
-    description: "A how-it-works page section where the trace draws down the steps.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/scroll-trace"],
+  "scroll-trace": {
+    name: "scroll-trace",
+    description: "A gradient line follows your scroll down a list of steps and lights each one it reaches.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/scroll-trace-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/scroll-trace.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/scroll-trace-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "scroll-trace-demo-2": {
-    name: "scroll-trace-demo-2",
-    description: "A changelog page section with a straight trace and custom colors.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/scroll-trace"],
-    files: [{
-      path: "registry/example/scroll-trace-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/scroll-trace-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "scroll-trace-demo-3": {
-    name: "scroll-trace-demo-3",
-    description: "A roadmap page section with a wider gutter and a stronger curve.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/scroll-trace"],
-    files: [{
-      path: "registry/example/scroll-trace-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/scroll-trace-demo-3.tsx")
+      const mod = await import("@/registry/magicui/scroll-trace.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "scroll-trace-demo": {
+    name: "scroll-trace-demo",
+    description: "A how-it-works page section where the trace draws down the steps.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/scroll-trace"],
+    files: [{
+      path: "registry/example/scroll-trace-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-trace-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "scroll-trace-demo-2": {
+    name: "scroll-trace-demo-2",
+    description: "A changelog page section with a straight trace and custom colors.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/scroll-trace"],
+    files: [{
+      path: "registry/example/scroll-trace-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-trace-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "scroll-trace-demo-3": {
+    name: "scroll-trace-demo-3",
+    description: "A roadmap page section with a wider gutter and a stronger curve.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/scroll-trace"],
+    files: [{
+      path: "registry/example/scroll-trace-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/scroll-trace-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
