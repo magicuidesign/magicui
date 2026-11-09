@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "peek-list": {
-    name: "peek-list",
-    description: "A large typographic list with one floating card that opens beside the pointer and glides between rows.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/peek-list.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/peek-list.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "peek-list-demo": {
-    name: "peek-list-demo",
-    description: "Customer stories from fictional companies, each with a result and a quote in the card.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/peek-list"],
+  "peek-list": {
+    name: "peek-list",
+    description: "A large typographic list with one floating card that opens beside the pointer and glides between rows.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/peek-list-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/peek-list.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/peek-list-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "peek-list-demo-2": {
-    name: "peek-list-demo-2",
-    description: "Integrations with brand marks and a small product view for each tool.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/peek-list"],
-    files: [{
-      path: "registry/example/peek-list-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/peek-list-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "peek-list-demo-3": {
-    name: "peek-list-demo-3",
-    description: "Linked field notes in a narrow column, where the card becomes a static panel above the list.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/peek-list"],
-    files: [{
-      path: "registry/example/peek-list-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/peek-list-demo-3.tsx")
+      const mod = await import("@/registry/magicui/peek-list.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "peek-list-demo": {
+    name: "peek-list-demo",
+    description: "Customer stories from fictional companies, each with a result and a quote in the card.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/peek-list"],
+    files: [{
+      path: "registry/example/peek-list-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/peek-list-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "peek-list-demo-2": {
+    name: "peek-list-demo-2",
+    description: "Integrations with brand marks and a small product view for each tool.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/peek-list"],
+    files: [{
+      path: "registry/example/peek-list-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/peek-list-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "peek-list-demo-3": {
+    name: "peek-list-demo-3",
+    description: "Linked field notes in a narrow column, where the card becomes a static panel above the list.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/peek-list"],
+    files: [{
+      path: "registry/example/peek-list-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/peek-list-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
