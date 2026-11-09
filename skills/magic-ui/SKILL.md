@@ -60,7 +60,7 @@ npx shadcn@latest add @magicui/magic-card
 
 ## Quick Component Selection Heuristics
 
-- Social proof/logo rails: `marquee`, `avatar-circles`
+- Social proof/logo rails: `marquee`, `avatar-circles`, `icon-honeycomb`
 - Hero visual impact: `globe`, `warp-background`, `animated-grid-pattern`
 - Text animation: `blur-fade`, `text-animate`, `word-rotate`, `sparkles-text`
 - CTA emphasis: `shiny-button`, `shimmer-button`, `rainbow-button`
