@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "footer-wordmark": {
-    name: "footer-wordmark",
-    description: "A wordmark that spans its container edge to edge, fitted to the ink of your font, and rises into view letter by letter.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/footer-wordmark.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/footer-wordmark.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "footer-wordmark-demo": {
-    name: "footer-wordmark-demo",
-    description: "A fitted wordmark beneath a scheduling product's footer.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/footer-wordmark"],
+  "footer-wordmark": {
+    name: "footer-wordmark",
+    description: "A wordmark that spans its container edge to edge, fitted to the ink of your font, and rises into view letter by letter.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/footer-wordmark-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/footer-wordmark.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/footer-wordmark-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "footer-wordmark-demo-2": {
-    name: "footer-wordmark-demo-2",
-    description: "A cropped sign-off at the bottom of a footer card.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/footer-wordmark"],
-    files: [{
-      path: "registry/example/footer-wordmark-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/footer-wordmark-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "footer-wordmark-demo-3": {
-    name: "footer-wordmark-demo-3",
-    description: "A serif wordmark beneath a design tool's closing call to action.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/footer-wordmark"],
-    files: [{
-      path: "registry/example/footer-wordmark-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/footer-wordmark-demo-3.tsx")
+      const mod = await import("@/registry/magicui/footer-wordmark.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "footer-wordmark-demo": {
+    name: "footer-wordmark-demo",
+    description: "A fitted wordmark beneath a scheduling product's footer.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/footer-wordmark"],
+    files: [{
+      path: "registry/example/footer-wordmark-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/footer-wordmark-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "footer-wordmark-demo-2": {
+    name: "footer-wordmark-demo-2",
+    description: "A cropped sign-off at the bottom of a footer card.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/footer-wordmark"],
+    files: [{
+      path: "registry/example/footer-wordmark-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/footer-wordmark-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "footer-wordmark-demo-3": {
+    name: "footer-wordmark-demo-3",
+    description: "A serif wordmark beneath a design tool's closing call to action.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/footer-wordmark"],
+    files: [{
+      path: "registry/example/footer-wordmark-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/footer-wordmark-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

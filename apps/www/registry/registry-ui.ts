@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "footer-wordmark",
-    type: "registry:ui",
-    title: "Footer Wordmark",
-    description:
-      "A wordmark that spans its container edge to edge, fitted to the ink of your font, and rises into view letter by letter.",
-    dependencies: [],
-    files: [
-      {
-        path: "magicui/footer-wordmark.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "footer-wordmark",
+    type: "registry:ui",
+    title: "Footer Wordmark",
+    description:
+      "A wordmark that spans its container edge to edge, fitted to the ink of your font, and rises into view letter by letter.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/footer-wordmark.tsx",
         type: "registry:ui",
       },
     ],
