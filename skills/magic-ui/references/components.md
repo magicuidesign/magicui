@@ -47,6 +47,7 @@ Use one primary visual anchor per hero to keep hierarchy clear.
 - `word-rotate`
 - `sparkles-text`
 - `typing-animation`
+- `footer-wordmark`
 
 Use when product messaging needs motion emphasis.
 
