@@ -63,7 +63,7 @@ npx shadcn@latest add @magicui/magic-card
 - Social proof/logo rails: `marquee`, `avatar-circles`
 - Hero visual impact: `globe`, `warp-background`, `animated-grid-pattern`
 - Text animation: `blur-fade`, `text-animate`, `word-rotate`, `sparkles-text`
-- CTA emphasis: `shiny-button`, `shimmer-button`, `rainbow-button`
+- CTA emphasis: `shiny-button`, `shimmer-button`, `rainbow-button`, `cursor-lean`
 - Ambient backgrounds: `grid-pattern`, `dot-pattern`, `particles`, `flickering-grid`, `dither-field`
 
 Start with 1 core component + 1 supporting effect, then expand only if needed.
