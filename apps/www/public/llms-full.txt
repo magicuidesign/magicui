@@ -13584,13 +13584,13 @@ export default function InkRevealDemo() {
                     Every release. Measured.
                   </p>
                 </div>
-                <span className="border-border bg-background text-muted-foreground rounded-md border px-2 py-1 text-[10px]">
+                <span className="border-border bg-background text-muted-foreground rounded-md border px-2 py-1 text-[10px] whitespace-nowrap">
                   Last 30 days
                 </span>
               </div>
               <dl
                 id="halden-revenue"
-                className="grid grid-cols-3 gap-2 sm:gap-4"
+                className="flex justify-between gap-2 sm:gap-4 md:grid md:grid-cols-3"
               >
                 {figures.map(({ label, value, change }) => (
                   <div key={label} className="space-y-1">
