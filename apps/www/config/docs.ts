@@ -330,7 +330,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Ink Reveal",
-          href: "/docs/components/ink-reveal",
+          href: `/docs/components/ink-reveal`,
           items: [],
           label: "New",
         },
