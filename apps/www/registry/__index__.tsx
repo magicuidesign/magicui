@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "departure-board": {
-    name: "departure-board",
-    description: "A split-flap board that flips each character into place, like an airport departure sign.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/departure-board.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/departure-board.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "departure-board-demo": {
-    name: "departure-board-demo",
-    description: "A stats band with teams, uptime, and countries.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/departure-board"],
+  "departure-board": {
+    name: "departure-board",
+    description: "A split-flap board that flips each character into place, like an airport departure sign.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/departure-board-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/departure-board.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/departure-board-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "departure-board-demo-2": {
-    name: "departure-board-demo-2",
-    description: "A responsive launch banner with an early access action.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/departure-board"],
-    files: [{
-      path: "registry/example/departure-board-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/departure-board-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "departure-board-demo-3": {
-    name: "departure-board-demo-3",
-    description: "An interactive waitlist showing a change in queue position.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/departure-board"],
-    files: [{
-      path: "registry/example/departure-board-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/departure-board-demo-3.tsx")
+      const mod = await import("@/registry/magicui/departure-board.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "departure-board-demo": {
+    name: "departure-board-demo",
+    description: "A stats band with teams, uptime, and countries.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/departure-board"],
+    files: [{
+      path: "registry/example/departure-board-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/departure-board-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "departure-board-demo-2": {
+    name: "departure-board-demo-2",
+    description: "A responsive launch banner with an early access action.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/departure-board"],
+    files: [{
+      path: "registry/example/departure-board-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/departure-board-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "departure-board-demo-3": {
+    name: "departure-board-demo-3",
+    description: "An interactive waitlist showing a change in queue position.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/departure-board"],
+    files: [{
+      path: "registry/example/departure-board-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/departure-board-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

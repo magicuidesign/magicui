@@ -2,45 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "departure-board-demo",
-    type: "registry:example",
-    title: "Departure Board Stats",
-    description: "A stats band with teams, uptime, and countries.",
-    registryDependencies: ["@magicui/departure-board"],
-    files: [
-      {
-        path: "example/departure-board-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "departure-board-demo-2",
-    type: "registry:example",
-    title: "Departure Board Launch Banner",
-    description: "A responsive launch banner with an early access action.",
-    registryDependencies: ["@magicui/departure-board"],
-    files: [
-      {
-        path: "example/departure-board-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "departure-board-demo-3",
-    type: "registry:example",
-    title: "Departure Board Waitlist",
-    description: "An interactive waitlist showing a change in queue position.",
-    registryDependencies: ["@magicui/departure-board"],
-    files: [
-      {
-        path: "example/departure-board-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2436,6 +2397,45 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "departure-board-demo",
+    type: "registry:example",
+    title: "Departure Board Stats",
+    description: "A stats band with teams, uptime, and countries.",
+    registryDependencies: ["@magicui/departure-board"],
+    files: [
+      {
+        path: "example/departure-board-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "departure-board-demo-2",
+    type: "registry:example",
+    title: "Departure Board Launch Banner",
+    description: "A responsive launch banner with an early access action.",
+    registryDependencies: ["@magicui/departure-board"],
+    files: [
+      {
+        path: "example/departure-board-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "departure-board-demo-3",
+    type: "registry:example",
+    title: "Departure Board Waitlist",
+    description: "An interactive waitlist showing a change in queue position.",
+    registryDependencies: ["@magicui/departure-board"],
+    files: [
+      {
+        path: "example/departure-board-demo-3.tsx",
         type: "registry:example",
       },
     ],
