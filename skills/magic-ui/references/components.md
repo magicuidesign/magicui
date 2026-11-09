@@ -56,6 +56,7 @@ Use when product messaging needs motion emphasis.
 - `shimmer-button`
 - `rainbow-button`
 - `ripple-button`
+- `liquid-segment`
 
 Keep CTA style consistent within one page section.
 
