@@ -2,48 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "morph-mask-demo",
-    type: "registry:example",
-    title: "Morph Mask Demo",
-    description:
-      "A changelog hero whose app screen is cropped by a looping shape.",
-    registryDependencies: ["button", "@magicui/morph-mask"],
-    files: [
-      {
-        path: "example/morph-mask-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "morph-mask-demo-2",
-    type: "registry:example",
-    title: "Morph Mask Demo 2",
-    description:
-      "Feature cards whose icon tiles change shape on hover, focus or click.",
-    registryDependencies: ["@magicui/morph-mask"],
-    files: [
-      {
-        path: "example/morph-mask-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "morph-mask-demo-3",
-    type: "registry:example",
-    title: "Morph Mask Demo 3",
-    description: "Onboarding steps that set the shape, including a custom one.",
-    dependencies: ["motion"],
-    registryDependencies: ["button", "@magicui/morph-mask"],
-    files: [
-      {
-        path: "example/morph-mask-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2439,6 +2397,48 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "morph-mask-demo",
+    type: "registry:example",
+    title: "Morph Mask Demo",
+    description:
+      "A changelog hero whose app screen is cropped by a looping shape.",
+    registryDependencies: ["button", "@magicui/morph-mask"],
+    files: [
+      {
+        path: "example/morph-mask-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "morph-mask-demo-2",
+    type: "registry:example",
+    title: "Morph Mask Demo 2",
+    description:
+      "Feature cards whose icon tiles change shape on hover, focus or click.",
+    registryDependencies: ["@magicui/morph-mask"],
+    files: [
+      {
+        path: "example/morph-mask-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "morph-mask-demo-3",
+    type: "registry:example",
+    title: "Morph Mask Demo 3",
+    description: "Onboarding steps that set the shape, including a custom one.",
+    dependencies: ["motion"],
+    registryDependencies: ["button", "@magicui/morph-mask"],
+    files: [
+      {
+        path: "example/morph-mask-demo-3.tsx",
         type: "registry:example",
       },
     ],

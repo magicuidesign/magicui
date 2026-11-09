@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "morph-mask": {
-    name: "morph-mask",
-    description: "A mask that springs between rounded shapes while the content inside stays still.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/morph-mask.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/morph-mask.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "morph-mask-demo": {
-    name: "morph-mask-demo",
-    description: "A changelog hero whose app screen is cropped by a looping shape.",
-    type: "registry:example",
-    registryDependencies: ["button","@magicui/morph-mask"],
+  "morph-mask": {
+    name: "morph-mask",
+    description: "A mask that springs between rounded shapes while the content inside stays still.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/morph-mask-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/morph-mask.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/morph-mask-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "morph-mask-demo-2": {
-    name: "morph-mask-demo-2",
-    description: "Feature cards whose icon tiles change shape on hover, focus or click.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/morph-mask"],
-    files: [{
-      path: "registry/example/morph-mask-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/morph-mask-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "morph-mask-demo-3": {
-    name: "morph-mask-demo-3",
-    description: "Onboarding steps that set the shape, including a custom one.",
-    type: "registry:example",
-    registryDependencies: ["button","@magicui/morph-mask"],
-    files: [{
-      path: "registry/example/morph-mask-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/morph-mask-demo-3.tsx")
+      const mod = await import("@/registry/magicui/morph-mask.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "morph-mask-demo": {
+    name: "morph-mask-demo",
+    description: "A changelog hero whose app screen is cropped by a looping shape.",
+    type: "registry:example",
+    registryDependencies: ["button","@magicui/morph-mask"],
+    files: [{
+      path: "registry/example/morph-mask-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/morph-mask-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "morph-mask-demo-2": {
+    name: "morph-mask-demo-2",
+    description: "Feature cards whose icon tiles change shape on hover, focus or click.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/morph-mask"],
+    files: [{
+      path: "registry/example/morph-mask-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/morph-mask-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "morph-mask-demo-3": {
+    name: "morph-mask-demo-3",
+    description: "Onboarding steps that set the shape, including a custom one.",
+    type: "registry:example",
+    registryDependencies: ["button","@magicui/morph-mask"],
+    files: [{
+      path: "registry/example/morph-mask-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/morph-mask-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

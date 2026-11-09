@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "morph-mask",
-    type: "registry:ui",
-    title: "Morph Mask",
-    description:
-      "A mask that springs between rounded shapes while the content inside stays still.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/morph-mask.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "morph-mask",
+    type: "registry:ui",
+    title: "Morph Mask",
+    description:
+      "A mask that springs between rounded shapes while the content inside stays still.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/morph-mask.tsx",
         type: "registry:ui",
       },
     ],
