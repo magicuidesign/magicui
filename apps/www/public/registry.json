@@ -19,21 +19,6 @@
       "type": "registry:style"
     },
     {
-      "name": "liquid-segment",
-      "title": "Liquid Segment",
-      "description": "A segmented control whose selection stretches like liquid between options and inverts the labels it covers.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/magicui/liquid-segment.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1405,49 +1390,19 @@
       "type": "registry:ui"
     },
     {
-      "name": "liquid-segment-demo",
-      "title": "Liquid Segment Demo",
-      "description": "A billing switch in a team pricing card.",
-      "registryDependencies": [
-        "@magicui/liquid-segment"
+      "name": "liquid-segment",
+      "title": "Liquid Segment",
+      "description": "A segmented control whose selection stretches like liquid between options and inverts the labels it covers.",
+      "dependencies": [
+        "motion"
       ],
       "files": [
         {
-          "path": "registry/example/liquid-segment-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/magicui/liquid-segment.tsx",
+          "type": "registry:ui"
         }
       ],
-      "type": "registry:example"
-    },
-    {
-      "name": "liquid-segment-demo-2",
-      "title": "Liquid Segment Demo 2",
-      "description": "A controlled package manager switch with a long liquid hop.",
-      "registryDependencies": [
-        "@magicui/liquid-segment"
-      ],
-      "files": [
-        {
-          "path": "registry/example/liquid-segment-demo-2.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "liquid-segment-demo-3",
-      "title": "Liquid Segment Demo 3",
-      "description": "A newsletter signup card with a branded frequency switch and a disabled option.",
-      "registryDependencies": [
-        "@magicui/liquid-segment"
-      ],
-      "files": [
-        {
-          "path": "registry/example/liquid-segment-demo-3.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
+      "type": "registry:ui"
     },
     {
       "name": "magic-card-demo",
@@ -4206,6 +4161,51 @@
       "files": [
         {
           "path": "registry/example/dither-field-patterns-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "liquid-segment-demo",
+      "title": "Liquid Segment Demo",
+      "description": "A billing switch in a team pricing card.",
+      "registryDependencies": [
+        "@magicui/liquid-segment"
+      ],
+      "files": [
+        {
+          "path": "registry/example/liquid-segment-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "liquid-segment-demo-2",
+      "title": "Liquid Segment Demo 2",
+      "description": "A controlled package manager switch with a long liquid hop.",
+      "registryDependencies": [
+        "@magicui/liquid-segment"
+      ],
+      "files": [
+        {
+          "path": "registry/example/liquid-segment-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "liquid-segment-demo-3",
+      "title": "Liquid Segment Demo 3",
+      "description": "A newsletter signup card with a branded frequency switch and a disabled option.",
+      "registryDependencies": [
+        "@magicui/liquid-segment"
+      ],
+      "files": [
+        {
+          "path": "registry/example/liquid-segment-demo-3.tsx",
           "type": "registry:example"
         }
       ],
