@@ -2,19 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "contour-field",
-    type: "registry:ui",
-    title: "Contour Field",
-    description:
-      "An animated topographic background. Contour lines rise into view, drift slowly and lift under the pointer.",
-    files: [
-      {
-        path: "magicui/contour-field.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1348,6 +1335,19 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "contour-field",
+    type: "registry:ui",
+    title: "Contour Field",
+    description:
+      "An animated topographic background. Contour lines rise into view, drift slowly and lift under the pointer.",
+    files: [
+      {
+        path: "magicui/contour-field.tsx",
         type: "registry:ui",
       },
     ],

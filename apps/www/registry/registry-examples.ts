@@ -2,47 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "contour-field-demo",
-    type: "registry:example",
-    title: "Contour Field Demo",
-    description:
-      "A network product hero with contour lines surrounding the copy.",
-    registryDependencies: ["@magicui/contour-field"],
-    files: [
-      {
-        path: "example/contour-field-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "contour-field-demo-2",
-    type: "registry:example",
-    title: "Contour Field Brand Color Demo",
-    description: "A closing CTA with contour lines in a brand color token.",
-    registryDependencies: ["@magicui/contour-field"],
-    files: [
-      {
-        path: "example/contour-field-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "contour-field-demo-3",
-    type: "registry:example",
-    title: "Contour Field Card Demo",
-    description:
-      "Three network metrics with contour lines behind regional coverage.",
-    registryDependencies: ["@magicui/contour-field"],
-    files: [
-      {
-        path: "example/contour-field-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2438,6 +2397,47 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "contour-field-demo",
+    type: "registry:example",
+    title: "Contour Field Demo",
+    description:
+      "A network product hero with contour lines surrounding the copy.",
+    registryDependencies: ["@magicui/contour-field"],
+    files: [
+      {
+        path: "example/contour-field-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "contour-field-demo-2",
+    type: "registry:example",
+    title: "Contour Field Brand Color Demo",
+    description: "A closing CTA with contour lines in a brand color token.",
+    registryDependencies: ["@magicui/contour-field"],
+    files: [
+      {
+        path: "example/contour-field-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "contour-field-demo-3",
+    type: "registry:example",
+    title: "Contour Field Card Demo",
+    description:
+      "Three network metrics with contour lines behind regional coverage.",
+    registryDependencies: ["@magicui/contour-field"],
+    files: [
+      {
+        path: "example/contour-field-demo-3.tsx",
         type: "registry:example",
       },
     ],

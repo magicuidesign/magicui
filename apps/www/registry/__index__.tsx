@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "contour-field": {
-    name: "contour-field",
-    description: "An animated topographic background. Contour lines rise into view, drift slowly and lift under the pointer.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/contour-field.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/contour-field.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "contour-field-demo": {
-    name: "contour-field-demo",
-    description: "A network product hero with contour lines surrounding the copy.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/contour-field"],
+  "contour-field": {
+    name: "contour-field",
+    description: "An animated topographic background. Contour lines rise into view, drift slowly and lift under the pointer.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/contour-field-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/contour-field.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/contour-field-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "contour-field-demo-2": {
-    name: "contour-field-demo-2",
-    description: "A closing CTA with contour lines in a brand color token.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/contour-field"],
-    files: [{
-      path: "registry/example/contour-field-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/contour-field-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "contour-field-demo-3": {
-    name: "contour-field-demo-3",
-    description: "Three network metrics with contour lines behind regional coverage.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/contour-field"],
-    files: [{
-      path: "registry/example/contour-field-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/contour-field-demo-3.tsx")
+      const mod = await import("@/registry/magicui/contour-field.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "contour-field-demo": {
+    name: "contour-field-demo",
+    description: "A network product hero with contour lines surrounding the copy.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/contour-field"],
+    files: [{
+      path: "registry/example/contour-field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/contour-field-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "contour-field-demo-2": {
+    name: "contour-field-demo-2",
+    description: "A closing CTA with contour lines in a brand color token.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/contour-field"],
+    files: [{
+      path: "registry/example/contour-field-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/contour-field-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "contour-field-demo-3": {
+    name: "contour-field-demo-3",
+    description: "Three network metrics with contour lines behind regional coverage.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/contour-field"],
+    files: [{
+      path: "registry/example/contour-field-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/contour-field-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
