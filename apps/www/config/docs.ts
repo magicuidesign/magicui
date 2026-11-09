@@ -330,7 +330,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Morph Mask",
-          href: "/docs/components/morph-mask",
+          href: `/docs/components/morph-mask`,
           items: [],
           label: "New",
         },
