@@ -330,7 +330,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Plucked Rule",
-          href: "/docs/components/plucked-rule",
+          href: `/docs/components/plucked-rule`,
           items: [],
           label: "New",
         },
