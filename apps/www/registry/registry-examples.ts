@@ -2,47 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "plucked-rule-demo",
-    type: "registry:example",
-    title: "Plucked Rule Demo",
-    description: "A freight landing page with a plucked section divider.",
-    registryDependencies: ["@magicui/plucked-rule"],
-    files: [
-      {
-        path: "example/plucked-rule-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "plucked-rule-demo-2",
-    type: "registry:example",
-    title: "Plucked Rule Demo 2",
-    description:
-      "A compact pricing comparison whose rules pluck in a staggered strum.",
-    registryDependencies: ["@magicui/plucked-rule"],
-    files: [
-      {
-        path: "example/plucked-rule-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "plucked-rule-demo-3",
-    type: "registry:example",
-    title: "Plucked Rule Demo 3",
-    description:
-      "A closing statement with a heavy purple rule and an amber highlight.",
-    registryDependencies: ["@magicui/plucked-rule"],
-    files: [
-      {
-        path: "example/plucked-rule-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2438,6 +2397,47 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "plucked-rule-demo",
+    type: "registry:example",
+    title: "Plucked Rule Demo",
+    description: "A freight landing page with a plucked section divider.",
+    registryDependencies: ["@magicui/plucked-rule"],
+    files: [
+      {
+        path: "example/plucked-rule-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "plucked-rule-demo-2",
+    type: "registry:example",
+    title: "Plucked Rule Demo 2",
+    description:
+      "A compact pricing comparison whose rules pluck in a staggered strum.",
+    registryDependencies: ["@magicui/plucked-rule"],
+    files: [
+      {
+        path: "example/plucked-rule-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "plucked-rule-demo-3",
+    type: "registry:example",
+    title: "Plucked Rule Demo 3",
+    description:
+      "A closing statement with a heavy purple rule and an amber highlight.",
+    registryDependencies: ["@magicui/plucked-rule"],
+    files: [
+      {
+        path: "example/plucked-rule-demo-3.tsx",
         type: "registry:example",
       },
     ],
