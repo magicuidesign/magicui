@@ -19522,16 +19522,16 @@ export default function ScrollTraceDemo() {
             title="Preview every branch"
             description="Every push gets its own URL, so reviewers open a link instead of pulling code."
           >
-            <div className="flex items-center justify-between gap-2">
-              <span className="font-mono">feat/search</span>
-              <span className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+              <span className="truncate font-mono">feat/search</span>
+              <span className="ml-auto flex items-center gap-1.5 whitespace-nowrap">
                 <span className="size-1.5 rounded-full bg-green-500" />
                 Ready · 18s
               </span>
             </div>
-            <div className="text-muted-foreground mt-2 flex items-center justify-between gap-2">
-              <span className="font-mono">fix/cart-total</span>
-              <span>Building</span>
+            <div className="text-muted-foreground mt-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+              <span className="truncate font-mono">fix/cart-total</span>
+              <span className="ml-auto whitespace-nowrap">Building</span>
             </div>
           </Step>
 
