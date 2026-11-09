@@ -576,7 +576,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Moire Field",
-          href: "/docs/components/moire-field",
+          href: `/docs/components/moire-field`,
           items: [],
           label: "New",
         },
