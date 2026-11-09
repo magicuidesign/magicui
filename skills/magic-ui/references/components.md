@@ -28,6 +28,7 @@ If the project does not use `@/` aliases, adapt import paths to local convention
 - `marquee`
 - `avatar-circles`
 - `bento-grid`
+- `scroll-trace`
 
 Use for logo rails, testimonial movement, and feature grids.
 
