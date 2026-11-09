@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "icon-honeycomb": {
-    name: "icon-honeycomb",
-    description: "A draggable honeycomb of round icon tiles that shrink toward the rim and settle on the nearest tile when thrown.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/icon-honeycomb.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/icon-honeycomb.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "icon-honeycomb-demo": {
-    name: "icon-honeycomb-demo",
-    description: "An integrations section with 90 brand marks.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/icon-honeycomb"],
+  "icon-honeycomb": {
+    name: "icon-honeycomb",
+    description: "A draggable honeycomb of round icon tiles that shrink toward the rim and settle on the nearest tile when thrown.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/icon-honeycomb-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/icon-honeycomb.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/icon-honeycomb-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "icon-honeycomb-demo-2": {
-    name: "icon-honeycomb-demo-2",
-    description: "A responsive feature row beside a panel of 36 dev tools.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/icon-honeycomb"],
-    files: [{
-      path: "registry/example/icon-honeycomb-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/icon-honeycomb-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "icon-honeycomb-demo-3": {
-    name: "icon-honeycomb-demo-3",
-    description: "A compact picker that distinguishes a press from a drag.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/icon-honeycomb"],
-    files: [{
-      path: "registry/example/icon-honeycomb-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/icon-honeycomb-demo-3.tsx")
+      const mod = await import("@/registry/magicui/icon-honeycomb.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "icon-honeycomb-demo": {
+    name: "icon-honeycomb-demo",
+    description: "An integrations section with 90 brand marks.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/icon-honeycomb"],
+    files: [{
+      path: "registry/example/icon-honeycomb-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/icon-honeycomb-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "icon-honeycomb-demo-2": {
+    name: "icon-honeycomb-demo-2",
+    description: "A responsive feature row beside a panel of 36 dev tools.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/icon-honeycomb"],
+    files: [{
+      path: "registry/example/icon-honeycomb-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/icon-honeycomb-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "icon-honeycomb-demo-3": {
+    name: "icon-honeycomb-demo-3",
+    description: "A compact picker that distinguishes a press from a drag.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/icon-honeycomb"],
+    files: [{
+      path: "registry/example/icon-honeycomb-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/icon-honeycomb-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

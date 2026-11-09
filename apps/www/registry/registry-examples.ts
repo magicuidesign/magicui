@@ -2,45 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "icon-honeycomb-demo",
-    type: "registry:example",
-    title: "Icon Honeycomb Demo",
-    description: "An integrations section with 90 brand marks.",
-    registryDependencies: ["@magicui/icon-honeycomb"],
-    files: [
-      {
-        path: "example/icon-honeycomb-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "icon-honeycomb-demo-2",
-    type: "registry:example",
-    title: "Icon Honeycomb Split Feature",
-    description: "A responsive feature row beside a panel of 36 dev tools.",
-    registryDependencies: ["@magicui/icon-honeycomb"],
-    files: [
-      {
-        path: "example/icon-honeycomb-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "icon-honeycomb-demo-3",
-    type: "registry:example",
-    title: "Icon Honeycomb App Picker",
-    description: "A compact picker that distinguishes a press from a drag.",
-    registryDependencies: ["@magicui/icon-honeycomb"],
-    files: [
-      {
-        path: "example/icon-honeycomb-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2436,6 +2397,45 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "icon-honeycomb-demo",
+    type: "registry:example",
+    title: "Icon Honeycomb Demo",
+    description: "An integrations section with 90 brand marks.",
+    registryDependencies: ["@magicui/icon-honeycomb"],
+    files: [
+      {
+        path: "example/icon-honeycomb-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "icon-honeycomb-demo-2",
+    type: "registry:example",
+    title: "Icon Honeycomb Split Feature",
+    description: "A responsive feature row beside a panel of 36 dev tools.",
+    registryDependencies: ["@magicui/icon-honeycomb"],
+    files: [
+      {
+        path: "example/icon-honeycomb-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "icon-honeycomb-demo-3",
+    type: "registry:example",
+    title: "Icon Honeycomb App Picker",
+    description: "A compact picker that distinguishes a press from a drag.",
+    registryDependencies: ["@magicui/icon-honeycomb"],
+    files: [
+      {
+        path: "example/icon-honeycomb-demo-3.tsx",
         type: "registry:example",
       },
     ],
