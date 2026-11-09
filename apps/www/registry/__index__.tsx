@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "moire-field": {
-    name: "moire-field",
-    description: "Fine concentric rings bloom into a slowly turning rosette that follows the pointer.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/moire-field.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/moire-field.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "moire-field-demo": {
-    name: "moire-field-demo",
-    description: "A release comparison hero with a clear space behind the copy.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/moire-field"],
+  "moire-field": {
+    name: "moire-field",
+    description: "Fine concentric rings bloom into a slowly turning rosette that follows the pointer.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/moire-field-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/moire-field.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/moire-field-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "moire-field-demo-2": {
-    name: "moire-field-demo-2",
-    description: "A closing call to action with theme-aware violet rings.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/moire-field"],
-    files: [{
-      path: "registry/example/moire-field-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/moire-field-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "moire-field-demo-3": {
-    name: "moire-field-demo-3",
-    description: "A compact comparison metric with pointer steering disabled.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/moire-field"],
-    files: [{
-      path: "registry/example/moire-field-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/moire-field-demo-3.tsx")
+      const mod = await import("@/registry/magicui/moire-field.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "moire-field-demo": {
+    name: "moire-field-demo",
+    description: "A release comparison hero with a clear space behind the copy.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/moire-field"],
+    files: [{
+      path: "registry/example/moire-field-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/moire-field-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "moire-field-demo-2": {
+    name: "moire-field-demo-2",
+    description: "A closing call to action with theme-aware violet rings.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/moire-field"],
+    files: [{
+      path: "registry/example/moire-field-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/moire-field-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "moire-field-demo-3": {
+    name: "moire-field-demo-3",
+    description: "A compact comparison metric with pointer steering disabled.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/moire-field"],
+    files: [{
+      path: "registry/example/moire-field-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/moire-field-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

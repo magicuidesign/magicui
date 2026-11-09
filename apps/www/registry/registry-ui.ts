@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "moire-field",
-    type: "registry:ui",
-    title: "Moire Field",
-    description:
-      "Fine concentric rings bloom into a slowly turning rosette that follows the pointer.",
-    dependencies: [],
-    files: [
-      {
-        path: "magicui/moire-field.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "moire-field",
+    type: "registry:ui",
+    title: "Moire Field",
+    description:
+      "Fine concentric rings bloom into a slowly turning rosette that follows the pointer.",
+    dependencies: [],
+    files: [
+      {
+        path: "magicui/moire-field.tsx",
         type: "registry:ui",
       },
     ],
