@@ -21,8 +21,15 @@ interface RegistryItemFileWithContent extends RegistryItemFile {
   content: string
 }
 
-const registryImportPattern =
-  /@\/(.+?)\/((?:.*?\/)?(?:components|ui|hooks|lib))\/([\w-]+)/g
+// Registry source imports `@/registry/<dir>/<name>`. Consumers install each
+// directory under the alias that matches its target in getFileTarget.
+const registryImportAliases: Record<string, string> = {
+  example: "@/components",
+  lib: "@/lib",
+  magicui: "@/components/ui",
+}
+
+const registryImportPattern = /@\/registry\/(example|lib|magicui)\/([\w-]+)/g
 
 const getCachedFileContent = cache(
   async (filePath: string, fileType: RegistryItem["type"] | undefined) => {
@@ -147,26 +154,11 @@ function fixFilePaths(files: RegistryItemFileWithContent[]) {
 }
 
 export function fixImport(content: string) {
-  const replacement = (
-    match: string,
-    _sourcePath: string,
-    type: string,
-    component: string
-  ) => {
-    if (type.endsWith("components")) {
-      return `@/components/${component}`
-    } else if (type.endsWith("ui")) {
-      return `@/components/ui/${component}`
-    } else if (type.endsWith("hooks")) {
-      return `@/hooks/${component}`
-    } else if (type.endsWith("lib")) {
-      return `@/lib/${component}`
-    }
-
-    return match
-  }
-
-  return content.replace(registryImportPattern, replacement)
+  return content.replace(
+    registryImportPattern,
+    (_match, dir: string, name: string) =>
+      `${registryImportAliases[dir]}/${name}`
+  )
 }
 
 export type FileTree = {
