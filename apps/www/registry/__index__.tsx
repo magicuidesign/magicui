@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "expanding-frame": {
-    name: "expanding-frame",
-    description: "A rounded product window that grows into view and opens to full width as you scroll.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/expanding-frame.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/expanding-frame.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "expanding-frame-demo": {
-    name: "expanding-frame-demo",
-    description: "A reconciliation workspace revealed beneath a finance product hero.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/expanding-frame"],
+  "expanding-frame": {
+    name: "expanding-frame",
+    description: "A rounded product window that grows into view and opens to full width as you scroll.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/expanding-frame-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/expanding-frame.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/expanding-frame-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "expanding-frame-demo-2": {
-    name: "expanding-frame-demo-2",
-    description: "A launch announcement uncovered by a pure reveal, without scaling.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/expanding-frame"],
-    files: [{
-      path: "registry/example/expanding-frame-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/expanding-frame-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "expanding-frame-demo-3": {
-    name: "expanding-frame-demo-3",
-    description: "An on-call rota in a square, rounded frame in a narrow feature column with a short track.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/expanding-frame"],
-    files: [{
-      path: "registry/example/expanding-frame-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/expanding-frame-demo-3.tsx")
+      const mod = await import("@/registry/magicui/expanding-frame.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "expanding-frame-demo": {
+    name: "expanding-frame-demo",
+    description: "A reconciliation workspace revealed beneath a finance product hero.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/expanding-frame"],
+    files: [{
+      path: "registry/example/expanding-frame-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/expanding-frame-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "expanding-frame-demo-2": {
+    name: "expanding-frame-demo-2",
+    description: "A launch announcement uncovered by a pure reveal, without scaling.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/expanding-frame"],
+    files: [{
+      path: "registry/example/expanding-frame-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/expanding-frame-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "expanding-frame-demo-3": {
+    name: "expanding-frame-demo-3",
+    description: "An on-call rota in a square, rounded frame in a narrow feature column with a short track.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/expanding-frame"],
+    files: [{
+      path: "registry/example/expanding-frame-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/expanding-frame-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "expanding-frame",
-    type: "registry:ui",
-    title: "Expanding Frame",
-    description:
-      "A rounded product window that grows into view and opens to full width as you scroll.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/expanding-frame.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "expanding-frame",
+    type: "registry:ui",
+    title: "Expanding Frame",
+    description:
+      "A rounded product window that grows into view and opens to full width as you scroll.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/expanding-frame.tsx",
         type: "registry:ui",
       },
     ],

@@ -89,9 +89,6 @@ This file provides LLM-friendly entry points to documentation and examples.
 
 ## Examples
 
-- [Expanding Frame Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo.tsx): Example usage
-- [Expanding Frame Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo-2.tsx): Example usage
-- [Expanding Frame Demo 3](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo-3.tsx): Example usage
 - [Magic Card Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo.tsx): Example usage
 - [Magic Card Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/magic-card-demo2.tsx): Example usage
 - [Android Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/android-demo.tsx): Example usage
@@ -271,6 +268,9 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Dither Field Brand Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-brand-demo.tsx): Example usage
 - [Dither Field Colors Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-colors-demo.tsx): Example usage
 - [Dither Field Patterns Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/dither-field-patterns-demo.tsx): Example usage
+- [Expanding Frame Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo.tsx): Example usage
+- [Expanding Frame Demo 2](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo-2.tsx): Example usage
+- [Expanding Frame Demo 3](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/expanding-frame-demo-3.tsx): Example usage
 
 ## Optional
 
