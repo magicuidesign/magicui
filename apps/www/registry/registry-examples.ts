@@ -2401,4 +2401,46 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "ink-reveal-demo",
+    type: "registry:example",
+    title: "Ink Reveal Demo",
+    description:
+      "A product hero with a detailed revenue dashboard revealed by ink.",
+    registryDependencies: ["@magicui/ink-reveal"],
+    files: [
+      {
+        path: "example/ink-reveal-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "ink-reveal-demo-2",
+    type: "registry:example",
+    title: "Ink Reveal Demo 2",
+    description:
+      "Three feature cards revealed one after another with a staggered delay.",
+    registryDependencies: ["@magicui/ink-reveal"],
+    files: [
+      {
+        path: "example/ink-reveal-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "ink-reveal-demo-3",
+    type: "registry:example",
+    title: "Ink Reveal Demo 3",
+    description:
+      "An integrations panel on a tinted surface, with a matching cover and brand ink.",
+    registryDependencies: ["@magicui/ink-reveal"],
+    files: [
+      {
+        path: "example/ink-reveal-demo-3.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
 ]

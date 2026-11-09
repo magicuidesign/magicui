@@ -1,0 +1,82 @@
+---
+title: Ink Reveal
+date: 2026-11-04
+description: A spreading ink stain that reveals content as it scrolls into view.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="ink-reveal-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/ink-reveal
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ink-reveal" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { InkReveal } from "@/components/ui/ink-reveal"
+```
+
+```tsx showLineNumbers
+<InkReveal className="rounded-xl border">
+  <img src="/dashboard.png" alt="The revenue dashboard" />
+</InkReveal>
+```
+
+The reveal plays once, when the frame scrolls into view. Change its `key` to replay it.
+
+The cover is a solid sheet of `background`, so set `background` to the surface behind the frame. Put `rounded-*`, `border` and `shadow-*` on `InkReveal` itself, since it clips its children.
+
+## Props
+
+`InkReveal` accepts every `div` prop.
+
+| Prop         | Type     | Default                     | Description                                      |
+| ------------ | -------- | --------------------------- | ------------------------------------------------ |
+| `duration`   | `number` | `1.5`                       | Length of the reveal, in seconds.                |
+| `delay`      | `number` | `0`                         | Seconds to wait after the frame comes into view. |
+| `color`      | `string` | `"var(--muted-foreground)"` | Color of the ink at the stain's edge.            |
+| `background` | `string` | `"var(--background)"`       | Color of the cover.                              |
+
+## Examples
+
+### Staggered Cards
+
+Stagger neighboring frames with `delay`.
+
+<ComponentPreview name="ink-reveal-demo-2" />
+
+### Tinted Surface
+
+Tint the ink with `color`.
+
+<ComponentPreview name="ink-reveal-demo-3" />

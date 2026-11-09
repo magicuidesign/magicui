@@ -328,6 +328,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Ink Reveal",
+          href: `/docs/components/ink-reveal`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {
