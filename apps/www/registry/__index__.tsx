@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "cursor-lean": {
-    name: "cursor-lean",
-    description: "Draws a button or link toward a nearby cursor, with an optional text layer that travels further.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/cursor-lean.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/cursor-lean.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "cursor-lean-demo": {
-    name: "cursor-lean-demo",
-    description: "A portfolio hero with one layered primary action.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/cursor-lean"],
+  "cursor-lean": {
+    name: "cursor-lean",
+    description: "Draws a button or link toward a nearby cursor, with an optional text layer that travels further.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/cursor-lean-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/cursor-lean.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/cursor-lean-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "cursor-lean-demo-2": {
-    name: "cursor-lean-demo-2",
-    description: "Two adjacent calls to action that lean independently toward the cursor.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/cursor-lean"],
-    files: [{
-      path: "registry/example/cursor-lean-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/cursor-lean-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "cursor-lean-demo-3": {
-    name: "cursor-lean-demo-3",
-    description: "A pricing section with cursor attraction on the recommended plan.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/cursor-lean"],
-    files: [{
-      path: "registry/example/cursor-lean-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/cursor-lean-demo-3.tsx")
+      const mod = await import("@/registry/magicui/cursor-lean.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "cursor-lean-demo": {
+    name: "cursor-lean-demo",
+    description: "A portfolio hero with one layered primary action.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/cursor-lean"],
+    files: [{
+      path: "registry/example/cursor-lean-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/cursor-lean-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "cursor-lean-demo-2": {
+    name: "cursor-lean-demo-2",
+    description: "Two adjacent calls to action that lean independently toward the cursor.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/cursor-lean"],
+    files: [{
+      path: "registry/example/cursor-lean-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/cursor-lean-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "cursor-lean-demo-3": {
+    name: "cursor-lean-demo-3",
+    description: "A pricing section with cursor attraction on the recommended plan.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/cursor-lean"],
+    files: [{
+      path: "registry/example/cursor-lean-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/cursor-lean-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
