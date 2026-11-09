@@ -2,45 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
-    name: "keycap-sequence-demo",
-    type: "registry:example",
-    title: "Keycap Sequence Demo",
-    description: "A notes app hero with Command K in its command bar.",
-    registryDependencies: ["@magicui/keycap-sequence"],
-    files: [
-      {
-        path: "example/keycap-sequence-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "keycap-sequence-demo-2",
-    type: "registry:example",
-    title: "Keycap Sequence Feature Card",
-    description: "An editor feature card with a three-key release shortcut.",
-    registryDependencies: ["@magicui/keycap-sequence"],
-    files: [
-      {
-        path: "example/keycap-sequence-demo-2.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "keycap-sequence-demo-3",
-    type: "registry:example",
-    title: "Keycap Sequence Shortcut List",
-    description: "Staggered shortcuts with compact and word-labeled keycaps.",
-    registryDependencies: ["@magicui/keycap-sequence"],
-    files: [
-      {
-        path: "example/keycap-sequence-demo-3.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "magic-card-demo",
     type: "registry:example",
     title: "Magic Card Demo",
@@ -2436,6 +2397,45 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "example/dither-field-patterns-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "keycap-sequence-demo",
+    type: "registry:example",
+    title: "Keycap Sequence Demo",
+    description: "A notes app hero with Command K in its command bar.",
+    registryDependencies: ["@magicui/keycap-sequence"],
+    files: [
+      {
+        path: "example/keycap-sequence-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "keycap-sequence-demo-2",
+    type: "registry:example",
+    title: "Keycap Sequence Feature Card",
+    description: "An editor feature card with a three-key release shortcut.",
+    registryDependencies: ["@magicui/keycap-sequence"],
+    files: [
+      {
+        path: "example/keycap-sequence-demo-2.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "keycap-sequence-demo-3",
+    type: "registry:example",
+    title: "Keycap Sequence Shortcut List",
+    description: "Staggered shortcuts with compact and word-labeled keycaps.",
+    registryDependencies: ["@magicui/keycap-sequence"],
+    files: [
+      {
+        path: "example/keycap-sequence-demo-3.tsx",
         type: "registry:example",
       },
     ],

@@ -2,20 +2,6 @@ import { type Registry } from "shadcn/schema"
 
 export const ui: Registry["items"] = [
   {
-    name: "keycap-sequence",
-    type: "registry:ui",
-    title: "Keycap Sequence",
-    description:
-      "Keycaps that press through a keyboard shortcut and spring back in reverse order.",
-    dependencies: ["motion"],
-    files: [
-      {
-        path: "magicui/keycap-sequence.tsx",
-        type: "registry:ui",
-      },
-    ],
-  },
-  {
     name: "magic-card",
     type: "registry:ui",
     title: "Magic Card",
@@ -1349,6 +1335,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "magicui/dither-field.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "keycap-sequence",
+    type: "registry:ui",
+    title: "Keycap Sequence",
+    description:
+      "Keycaps that press through a keyboard shortcut and spring back in reverse order.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/keycap-sequence.tsx",
         type: "registry:ui",
       },
     ],
