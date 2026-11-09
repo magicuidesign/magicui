@@ -37,6 +37,7 @@ Use for logo rails, testimonial movement, and feature grids.
 - `warp-background`
 - `animated-grid-pattern`
 - `retro-grid`
+- `morph-mask`
 
 Use one primary visual anchor per hero to keep hierarchy clear.
 
