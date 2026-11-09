@@ -62,7 +62,7 @@ npx shadcn@latest add @magicui/magic-card
 
 - Social proof/logo rails: `marquee`, `avatar-circles`
 - Hero visual impact: `globe`, `warp-background`, `animated-grid-pattern`
-- Text animation: `blur-fade`, `text-animate`, `word-rotate`, `sparkles-text`
+- Text animation: `blur-fade`, `text-animate`, `word-rotate`, `sparkles-text`, `departure-board`
 - CTA emphasis: `shiny-button`, `shimmer-button`, `rainbow-button`
 - Ambient backgrounds: `grid-pattern`, `dot-pattern`, `particles`, `flickering-grid`, `dither-field`
 
