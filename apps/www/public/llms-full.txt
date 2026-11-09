@@ -12860,6 +12860,51 @@ export function Iphone({
 }
 
 
+===== EXAMPLE: iphone-demo =====
+Title: iPhone Demo
+
+--- file: example/iphone-demo.tsx ---
+import { Iphone } from "@/registry/magicui/iphone"
+
+export default function Demo() {
+  return (
+    <div className="w-[434px]">
+      <Iphone />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: iphone-demo-2 =====
+Title: iPhone Demo 2
+
+--- file: example/iphone-demo-2.tsx ---
+import { Iphone } from "@/registry/magicui/iphone"
+
+export default function Demo() {
+  return (
+    <div className="w-[434px]">
+      <Iphone src="https://placehold.co/900x1600?text=Hello+World" />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: iphone-demo-3 =====
+Title: iPhone Demo 3
+
+--- file: example/iphone-demo-3.tsx ---
+import { Iphone } from "@/registry/magicui/iphone"
+
+export default function Demo() {
+  return (
+    <div className="w-[434px]">
+      <Iphone videoSrc="https://videos.pexels.com/video-files/8946986/8946986-uhd_1440_2732_25fps.mp4" />
+    </div>
+  )
+}
+
+
 ===== EXAMPLE: poised-surface-demo-2 =====
 Title: Poised Surface Pose
 
@@ -12987,51 +13032,6 @@ export default function PoisedSurfaceDemo2() {
         </div>
       </div>
     </section>
-  )
-}
-
-
-===== EXAMPLE: iphone-demo =====
-Title: iPhone Demo
-
---- file: example/iphone-demo.tsx ---
-import { Iphone } from "@/registry/magicui/iphone"
-
-export default function Demo() {
-  return (
-    <div className="w-[434px]">
-      <Iphone />
-    </div>
-  )
-}
-
-
-===== EXAMPLE: iphone-demo-2 =====
-Title: iPhone Demo 2
-
---- file: example/iphone-demo-2.tsx ---
-import { Iphone } from "@/registry/magicui/iphone"
-
-export default function Demo() {
-  return (
-    <div className="w-[434px]">
-      <Iphone src="https://placehold.co/900x1600?text=Hello+World" />
-    </div>
-  )
-}
-
-
-===== EXAMPLE: iphone-demo-3 =====
-Title: iPhone Demo 3
-
---- file: example/iphone-demo-3.tsx ---
-import { Iphone } from "@/registry/magicui/iphone"
-
-export default function Demo() {
-  return (
-    <div className="w-[434px]">
-      <Iphone videoSrc="https://videos.pexels.com/video-files/8946986/8946986-uhd_1440_2732_25fps.mp4" />
-    </div>
   )
 }
 
@@ -19140,6 +19140,72 @@ export function Safari({
 }
 
 
+===== EXAMPLE: safari-demo =====
+Title: Safari Demo
+
+--- file: example/safari-demo.tsx ---
+import { Safari } from "@/registry/magicui/safari"
+
+export default function SafariDemo() {
+  return (
+    <div className="w-[1203px]">
+      <Safari url="magicui.design" />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: safari-demo-2 =====
+Title: Safari Demo 2
+
+--- file: example/safari-demo-2.tsx ---
+import { Safari } from "@/registry/magicui/safari"
+
+export default function SafariDemo() {
+  return (
+    <div className="w-[1203px]">
+      <Safari
+        url="magicui.design"
+        imageSrc="https://placehold.co/1200x750?text=Hello+World"
+      />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: safari-demo-3 =====
+Title: Safari Demo 3
+
+--- file: example/safari-demo-3.tsx ---
+import { Safari } from "@/registry/magicui/safari"
+
+export default function SafariDemo() {
+  return (
+    <div className="w-[1203px]">
+      <Safari
+        url="magicui.design"
+        videoSrc="https://videos.pexels.com/video-files/27180348/12091515_2560_1440_50fps.mp4"
+      />
+    </div>
+  )
+}
+
+
+===== EXAMPLE: safari-demo-4 =====
+Title: Safari Demo 4
+
+--- file: example/safari-demo-4.tsx ---
+import { Safari } from "@/registry/magicui/safari"
+
+export default function SafariDemo() {
+  return (
+    <div className="w-[1203px]">
+      <Safari url="magicui.design" mode="simple" />
+    </div>
+  )
+}
+
+
 ===== EXAMPLE: poised-surface-demo =====
 Title: Poised Surface Hero
 
@@ -19299,72 +19365,6 @@ export default function PoisedSurfaceDemo() {
         </PoisedSurface>
       </div>
     </section>
-  )
-}
-
-
-===== EXAMPLE: safari-demo =====
-Title: Safari Demo
-
---- file: example/safari-demo.tsx ---
-import { Safari } from "@/registry/magicui/safari"
-
-export default function SafariDemo() {
-  return (
-    <div className="w-[1203px]">
-      <Safari url="magicui.design" />
-    </div>
-  )
-}
-
-
-===== EXAMPLE: safari-demo-2 =====
-Title: Safari Demo 2
-
---- file: example/safari-demo-2.tsx ---
-import { Safari } from "@/registry/magicui/safari"
-
-export default function SafariDemo() {
-  return (
-    <div className="w-[1203px]">
-      <Safari
-        url="magicui.design"
-        imageSrc="https://placehold.co/1200x750?text=Hello+World"
-      />
-    </div>
-  )
-}
-
-
-===== EXAMPLE: safari-demo-3 =====
-Title: Safari Demo 3
-
---- file: example/safari-demo-3.tsx ---
-import { Safari } from "@/registry/magicui/safari"
-
-export default function SafariDemo() {
-  return (
-    <div className="w-[1203px]">
-      <Safari
-        url="magicui.design"
-        videoSrc="https://videos.pexels.com/video-files/27180348/12091515_2560_1440_50fps.mp4"
-      />
-    </div>
-  )
-}
-
-
-===== EXAMPLE: safari-demo-4 =====
-Title: Safari Demo 4
-
---- file: example/safari-demo-4.tsx ---
-import { Safari } from "@/registry/magicui/safari"
-
-export default function SafariDemo() {
-  return (
-    <div className="w-[1203px]">
-      <Safari url="magicui.design" mode="simple" />
-    </div>
   )
 }
 

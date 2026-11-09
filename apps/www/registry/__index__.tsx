@@ -15,23 +15,6 @@ export const Index: Record<string, any> = {
     component: null,
     meta: undefined,
   },
-  "poised-surface": {
-    name: "poised-surface",
-    description: "A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.",
-    type: "registry:ui",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/magicui/poised-surface.tsx",
-      type: "registry:ui",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/magicui/poised-surface.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
   "magic-card": {
     name: "magic-card",
     description: "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1375,52 +1358,18 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
-  "poised-surface-demo": {
-    name: "poised-surface-demo",
-    description: "A product hero with an inline broadcast studio inside Safari.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/poised-surface","@magicui/safari"],
+  "poised-surface": {
+    name: "poised-surface",
+    description: "A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.",
+    type: "registry:ui",
+    registryDependencies: undefined,
     files: [{
-      path: "registry/example/poised-surface-demo.tsx",
-      type: "registry:example",
+      path: "registry/magicui/poised-surface.tsx",
+      type: "registry:ui",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/example/poised-surface-demo.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "poised-surface-demo-2": {
-    name: "poised-surface-demo-2",
-    description: "A mobile writing app in an iPhone turned toward its feature copy.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/iphone","@magicui/poised-surface"],
-    files: [{
-      path: "registry/example/poised-surface-demo-2.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/poised-surface-demo-2.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
-      return { default: mod.default ?? mod[exportName] }
-    }),
-    meta: undefined,
-  },
-  "poised-surface-demo-3": {
-    name: "poised-surface-demo-3",
-    description: "A pricing interface with a working billing toggle.",
-    type: "registry:example",
-    registryDependencies: ["@magicui/poised-surface"],
-    files: [{
-      path: "registry/example/poised-surface-demo-3.tsx",
-      type: "registry:example",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/example/poised-surface-demo-3.tsx")
+      const mod = await import("@/registry/magicui/poised-surface.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),
@@ -4468,6 +4417,57 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/dither-field-patterns-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "poised-surface-demo": {
+    name: "poised-surface-demo",
+    description: "A product hero with an inline broadcast studio inside Safari.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/poised-surface","@magicui/safari"],
+    files: [{
+      path: "registry/example/poised-surface-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/poised-surface-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "poised-surface-demo-2": {
+    name: "poised-surface-demo-2",
+    description: "A mobile writing app in an iPhone turned toward its feature copy.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/iphone","@magicui/poised-surface"],
+    files: [{
+      path: "registry/example/poised-surface-demo-2.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/poised-surface-demo-2.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "poised-surface-demo-3": {
+    name: "poised-surface-demo-3",
+    description: "A pricing interface with a working billing toggle.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/poised-surface"],
+    files: [{
+      path: "registry/example/poised-surface-demo-3.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/poised-surface-demo-3.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

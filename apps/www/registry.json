@@ -19,18 +19,6 @@
       "type": "registry:style"
     },
     {
-      "name": "poised-surface",
-      "title": "Poised Surface",
-      "description": "A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.",
-      "files": [
-        {
-          "path": "registry/magicui/poised-surface.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "type": "registry:ui"
-    },
-    {
       "name": "magic-card",
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -1402,51 +1390,16 @@
       "type": "registry:ui"
     },
     {
-      "name": "poised-surface-demo",
-      "title": "Poised Surface Hero",
-      "description": "A product hero with an inline broadcast studio inside Safari.",
-      "registryDependencies": [
-        "@magicui/poised-surface",
-        "@magicui/safari"
-      ],
+      "name": "poised-surface",
+      "title": "Poised Surface",
+      "description": "A container that leans a product screenshot or device mock back in perspective and swings it slightly toward the pointer.",
       "files": [
         {
-          "path": "registry/example/poised-surface-demo.tsx",
-          "type": "registry:example"
+          "path": "registry/magicui/poised-surface.tsx",
+          "type": "registry:ui"
         }
       ],
-      "type": "registry:example"
-    },
-    {
-      "name": "poised-surface-demo-2",
-      "title": "Poised Surface Pose",
-      "description": "A mobile writing app in an iPhone turned toward its feature copy.",
-      "registryDependencies": [
-        "@magicui/iphone",
-        "@magicui/poised-surface"
-      ],
-      "files": [
-        {
-          "path": "registry/example/poised-surface-demo-2.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
-    },
-    {
-      "name": "poised-surface-demo-3",
-      "title": "Poised Surface Interactive Content",
-      "description": "A pricing interface with a working billing toggle.",
-      "registryDependencies": [
-        "@magicui/poised-surface"
-      ],
-      "files": [
-        {
-          "path": "registry/example/poised-surface-demo-3.tsx",
-          "type": "registry:example"
-        }
-      ],
-      "type": "registry:example"
+      "type": "registry:ui"
     },
     {
       "name": "magic-card-demo",
@@ -4205,6 +4158,53 @@
       "files": [
         {
           "path": "registry/example/dither-field-patterns-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "poised-surface-demo",
+      "title": "Poised Surface Hero",
+      "description": "A product hero with an inline broadcast studio inside Safari.",
+      "registryDependencies": [
+        "@magicui/poised-surface",
+        "@magicui/safari"
+      ],
+      "files": [
+        {
+          "path": "registry/example/poised-surface-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "poised-surface-demo-2",
+      "title": "Poised Surface Pose",
+      "description": "A mobile writing app in an iPhone turned toward its feature copy.",
+      "registryDependencies": [
+        "@magicui/iphone",
+        "@magicui/poised-surface"
+      ],
+      "files": [
+        {
+          "path": "registry/example/poised-surface-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "poised-surface-demo-3",
+      "title": "Poised Surface Interactive Content",
+      "description": "A pricing interface with a working billing toggle.",
+      "registryDependencies": [
+        "@magicui/poised-surface"
+      ],
+      "files": [
+        {
+          "path": "registry/example/poised-surface-demo-3.tsx",
           "type": "registry:example"
         }
       ],
