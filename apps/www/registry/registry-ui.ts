@@ -352,7 +352,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Code Comparison",
     description: "A component which compares two code snippets.",
-    dependencies: ["shiki"],
+    dependencies: ["shiki", "@shikijs/transformers"],
     files: [
       {
         path: "magicui/code-comparison.tsx",
