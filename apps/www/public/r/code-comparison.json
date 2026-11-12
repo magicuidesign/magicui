@@ -4,7 +4,8 @@
   "title": "Code Comparison",
   "description": "A component which compares two code snippets.",
   "dependencies": [
-    "shiki"
+    "shiki",
+    "@shikijs/transformers"
   ],
   "files": [
     {
