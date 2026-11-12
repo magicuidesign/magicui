@@ -62,9 +62,7 @@ npx shadcn@latest add @magicui/dither
 
 <ComponentPreview name="dither-shader-demo" />
 
-## Patterns
-
-`DITHER_PATTERNS` lists every pattern id. The first five are light patterns. They dither in your `colors` over a clear background. The other twelve are palette patterns. Each one has its own ground, colors and Bayer matrix. Pass `colors` to recolor one. `DITHER_PATTERNS` comes from a client module, so read it in a client component.
+### Patterns
 
 <ComponentPreview name="dither-patterns-demo" />
 
@@ -74,18 +72,29 @@ npx shadcn@latest add @magicui/dither
 import { Dither } from "@/components/ui/dither"
 ```
 
-`Dither` is a layer. It fills its nearest positioned parent and takes no children. Put it first in a `relative` parent. Give the parent `isolate` and the layer `-z-10` to keep it behind the content.
-
 ```tsx showLineNumbers
-<section className="relative isolate">
+<div className="relative isolate h-[400px] w-full overflow-hidden rounded-xl border">
   <Dither pattern="horizon" colors="var(--primary)" className="-z-10" />
-  <h1>Your content</h1>
-</section>
+</div>
 ```
 
-## Shader
+## Props
 
-Pass GLSL to `shader` to draw your own field. It must define this function:
+| Prop          | Type                          | Default          | Description                                                               |
+| ------------- | ----------------------------- | ---------------- | ------------------------------------------------------------------------- |
+| `pattern`     | `DitherPattern`               | `"horizon"`      | One of the 17 built-in patterns, listed in `DITHER_PATTERNS`.             |
+| `src`         | `string`                      | `-`              | Image or video URL to dither. Remote files must allow CORS.               |
+| `shader`      | `string`                      | `-`              | GLSL that defines `float field(vec2 uv, float t)`. See [Shader](#shader). |
+| `colors`      | `string \| readonly string[]` | `"currentColor"` | One CSS color, or color stops from dim to bright.                         |
+| `matrix`      | `2 \| 4 \| 8`                 | `8`              | Size of the Bayer matrix. Smaller sizes give coarser bands.               |
+| `dotSize`     | `number`                      | `1`              | Size of one dot in CSS pixels.                                            |
+| `intensity`   | `number`                      | `0.75`           | Brightness of the field.                                                  |
+| `speed`       | `number`                      | `1`              | Animation speed. `0` holds a still frame.                                 |
+| `fps`         | `number`                      | `30`             | Maximum frames per second.                                                |
+| `interactive` | `boolean`                     | `false`          | Brightens the dots under the pointer.                                     |
+| `className`   | `string`                      | `-`              | Classes applied to the layer.                                             |
+
+## Shader
 
 ```glsl
 float field(vec2 uv, float t) {
@@ -93,49 +102,8 @@ float field(vec2 uv, float t) {
 }
 ```
 
-- `uv` runs from 0 to 1 across the element, from the bottom-left corner. Multiply `uv.x` by `uAspect` to get circles that stay round.
-- `t` is the time in seconds, multiplied by `speed`.
-- Return the brightness from 0 to 1. `Dither` maps it onto `colors`, from the first stop to the last.
+`uv` runs from 0 to 1 from the bottom-left corner. `t` is the time in seconds times `speed`. Return a brightness from 0 to 1. The shader can read `uSize`, `uAspect`, `uDot`, `uPointer` and `uPointerOn`, and call `noise(vec2)` and `fbm(vec2)`.
 
-The function can read these uniforms and helpers:
+## Notes
 
-| Name                      | Type    | Description                                               |
-| ------------------------- | ------- | --------------------------------------------------------- |
-| `uSize`                   | `vec2`  | The element size in CSS pixels                            |
-| `uAspect`                 | `float` | Width divided by height                                   |
-| `uDot`                    | `float` | The size of one dot in CSS pixels                         |
-| `uPointer`                | `vec2`  | The pointer position, 0 to 1, from the bottom-left corner |
-| `uPointerOn`              | `float` | The pointer glow, 0 when off and 1 when on                |
-| `noise(vec2)`             | `float` | Value noise, 0 to 1                                       |
-| `fbm(vec2)`               | `float` | Five octaves of `noise`                                   |
-| `ss(float, float, float)` | `float` | `smoothstep` that also works when the edges are reversed  |
-
-Each unique shader string compiles once and all instances share it. If it does not compile, the console shows the error with its line in your source. The layer stays blank and gets `data-state="fallback"`.
-
-## Props
-
-`Dither` also accepts every `div` prop except `children` and `color`. Set only one of `pattern`, `src` and `shader`.
-
-| Prop          | Type                          | Default          | Description                                                                                                                   |
-| ------------- | ----------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `pattern`     | `DitherPattern`               | `"horizon"`      | One of the ids in [Patterns](#patterns)                                                                                       |
-| `src`         | `string`                      | `-`              | An image or video URL to dither. Remote files must allow CORS                                                                 |
-| `shader`      | `string`                      | `-`              | GLSL that defines `float field(vec2 uv, float t)`. See [Shader](#shader)                                                      |
-| `colors`      | `string \| readonly string[]` | `"currentColor"` | One CSS color, or color stops from dim to bright. One color fades from 35% to full. Palette patterns use their own by default |
-| `matrix`      | `2 \| 4 \| 8`                 | `8`              | Size of the Bayer matrix. Smaller matrices give coarser bands. Palette patterns default to their own                          |
-| `dotSize`     | `number`                      | `1`              | Size of one dot in CSS pixels                                                                                                 |
-| `intensity`   | `number`                      | `0.75`           | Brightness of the field                                                                                                       |
-| `speed`       | `number`                      | `1`              | Animation speed. `0` holds a still frame                                                                                      |
-| `fps`         | `number`                      | `30`             | Maximum frames per second                                                                                                     |
-| `interactive` | `boolean`                     | `false`          | Brighten the dots under the pointer                                                                                           |
-
-The root element has `data-slot="dither"` and `data-state`. The state is `pending` until the first frame, then `ready`. It is `fallback` when WebGL is not available or a shader does not compile.
-
-## Breaking Changes
-
-The earlier API of this component changed as follows:
-
-- `Dither` is a layer and takes no children. Wrap it in a positioned parent, as in [Usage](#usage).
-- One prop, `colors`, replaces the earlier single-color and palette props.
-- Five palette patterns have new ids: `sunset`, `planet`, `moonrise`, `eclipse` and `corona`. The earlier ids do not work.
-- `dotSize` is `1` for every pattern. Set it to get the larger dots that some palette patterns used before.
+`Dither` is a layer. It fills its nearest positioned parent and takes no children. Set only one of `pattern`, `src` and `shader`. Palette patterns use their own colors unless you pass `colors`.
