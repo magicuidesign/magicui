@@ -1,4 +1,4 @@
-import { blog, docs, showcase } from "@/.source"
+import { blog, docs, showcase } from "@/.source/server"
 import { loader } from "fumadocs-core/source"
 
 export const source = loader({

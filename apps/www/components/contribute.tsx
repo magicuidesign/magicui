@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { type Page, type PageData } from "fumadocs-core/source"
+import type { Page } from "fumadocs-core/source"
 import { BugIcon, LightbulbIcon, PencilIcon } from "lucide-react"
 
 import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github"
 
-export function Contribute({ page }: { page: Page<PageData> }) {
+export function Contribute({ page }: { page: Page }) {
   const contributeLinks = [
     {
       text: "Report an issue",
