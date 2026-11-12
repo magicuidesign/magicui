@@ -24,7 +24,7 @@
     "@commitlint/config-conventional": "^19.8.1",
     "js-yaml": "^4.1.0",
     "lefthook": "^1.13.4",
-    "turbo": "^2.5.8",
+    "turbo": "^2.11.10",
     "ultracite": "5.4.4"
   },
   "engines": {
