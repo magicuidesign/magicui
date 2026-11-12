@@ -5,7 +5,7 @@ import { mdxComponents } from "@/mdx-components"
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react"
 import type { BreadcrumbItem } from "fumadocs-core/breadcrumb"
 import { getBreadcrumbItems } from "fumadocs-core/breadcrumb"
-import { findNeighbour } from "fumadocs-core/server"
+import { findNeighbour } from "fumadocs-core/page-tree"
 import type { BreadcrumbList, TechArticle, WithContext } from "schema-dts"
 
 import { getNeighboursFromConfig } from "@/config/docs"
@@ -94,10 +94,10 @@ export default async function DocPage({ params }: DocPageProps) {
     previous: configNeighbours.previous ?? treeNeighbours.previous,
     next: configNeighbours.next ?? treeNeighbours.next,
   }
-  const breadcrumbs = getBreadcrumbItems(page.url, source.pageTree, {
-    includeRoot: { url: "/docs" },
-    includePage: true,
-  })
+  const breadcrumbs: BreadcrumbItem[] = [
+    { name: source.pageTree.name, url: "/docs" },
+    ...getBreadcrumbItems(page.url, source.pageTree, { includePage: true }),
+  ]
   const lastBreadcrumb = breadcrumbs.at(-1)
 
   const resolveBreadcrumbName = (item: BreadcrumbItem): string => {
@@ -132,7 +132,6 @@ export default async function DocPage({ params }: DocPageProps) {
     url: absoluteUrl(page.url),
     inLanguage: "en-US",
     datePublished: doc.date?.toString(),
-    dateModified: doc.lastModified?.toString(),
     mainEntityOfPage: absoluteUrl(page.url),
     publisher: {
       "@type": "Organization",

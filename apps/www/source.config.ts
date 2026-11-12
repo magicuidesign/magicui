@@ -43,7 +43,7 @@ export const docs = defineDocs({
   dir: "content/docs",
   docs: {
     schema: frontmatterSchema.extend({
-      date: z.date().optional(),
+      date: z.coerce.date().optional(),
       author: z.string().optional(),
       published: z.boolean().optional().default(true),
       video: z.string().optional(),
