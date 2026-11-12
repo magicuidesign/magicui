@@ -72,7 +72,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
-    "@shikijs/transformers": "^2.5.0",
+    "@shikijs/transformers": "^4.6.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/canvas-confetti": "^1.9.0",
     "@types/mdx": "^2.0.13",
