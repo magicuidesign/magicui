@@ -7,7 +7,7 @@ export const ui: Registry["items"] = [
     title: "Magic Card",
     description:
       "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
-    dependencies: ["motion", "next-themes"],
+    dependencies: ["motion"],
     files: [
       {
         path: "magicui/magic-card.tsx",
@@ -352,7 +352,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Code Comparison",
     description: "A component which compares two code snippets.",
-    dependencies: ["shiki", "next-themes"],
+    dependencies: ["shiki"],
     files: [
       {
         path: "magicui/code-comparison.tsx",

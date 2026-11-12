@@ -1,12 +1,11 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import {
   transformerNotationDiff,
   transformerNotationFocus,
 } from "@shikijs/transformers"
 import { FileIcon } from "lucide-react"
-import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 
@@ -29,16 +28,10 @@ export function CodeComparison({
   darkTheme,
   highlightColor = "#ff3333",
 }: CodeComparisonProps) {
-  const { theme, systemTheme } = useTheme()
   const [highlightedBefore, setHighlightedBefore] = useState("")
   const [highlightedAfter, setHighlightedAfter] = useState("")
   const [hasLeftFocus, setHasLeftFocus] = useState(false)
   const [hasRightFocus, setHasRightFocus] = useState(false)
-
-  const selectedTheme = useMemo(() => {
-    const currentTheme = theme === "system" ? systemTheme : theme
-    return currentTheme === "dark" ? darkTheme : lightTheme
-  }, [theme, systemTheme, darkTheme, lightTheme])
 
   useEffect(() => {
     if (highlightedBefore || highlightedAfter) {
@@ -56,7 +49,7 @@ export function CodeComparison({
 
         const before = await codeToHtml(beforeCode, {
           lang: language,
-          theme: selectedTheme,
+          themes: { light: lightTheme, dark: darkTheme },
           transformers: [
             transformerNotationHighlight({ matchAlgorithm: "v3" }),
             transformerNotationDiff({ matchAlgorithm: "v3" }),
@@ -65,7 +58,7 @@ export function CodeComparison({
         })
         const after = await codeToHtml(afterCode, {
           lang: language,
-          theme: selectedTheme,
+          themes: { light: lightTheme, dark: darkTheme },
           transformers: [
             transformerNotationHighlight({ matchAlgorithm: "v3" }),
             transformerNotationDiff({ matchAlgorithm: "v3" }),
@@ -81,7 +74,7 @@ export function CodeComparison({
       }
     }
     highlightCode()
-  }, [beforeCode, afterCode, language, selectedTheme])
+  }, [beforeCode, afterCode, language, lightTheme, darkTheme])
 
   const renderCode = (code: string, highlighted: string) => {
     if (highlighted) {
@@ -91,6 +84,8 @@ export function CodeComparison({
           className={cn(
             "bg-background h-full w-full overflow-auto font-mono text-xs",
             "[&>pre]:h-full [&>pre]:w-screen! [&>pre]:py-2",
+            "dark:[&>pre]:bg-(--shiki-dark-bg)! dark:[&>pre]:text-(color:--shiki-dark)!",
+            "dark:[&_span]:[font-weight:var(--shiki-dark-font-weight)]! dark:[&_span]:text-(color:--shiki-dark)! dark:[&_span]:[font-style:var(--shiki-dark-font-style)]! dark:[&_span]:[text-decoration:var(--shiki-dark-text-decoration)]!",
             "[&>pre>code]:inline-block! [&>pre>code]:w-full!",
             "[&>pre>code>span]:inline-block! [&>pre>code>span]:w-full [&>pre>code>span]:px-4 [&>pre>code>span]:py-0.5",
             "[&>pre>code>.highlighted]:inline-block [&>pre>code>.highlighted]:w-full [&>pre>code>.highlighted]:bg-(--highlight-color)!",
