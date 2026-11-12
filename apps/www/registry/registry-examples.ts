@@ -8,6 +8,7 @@ export const examples: Registry["items"] = [
     description:
       "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
     registryDependencies: ["@magicui/magic-card"],
+    dependencies: ["next-themes"],
     files: [
       {
         path: "example/magic-card-demo.tsx",
@@ -21,6 +22,7 @@ export const examples: Registry["items"] = [
     title: "Magic Card Demo 2",
     description: "Example showing a magic card with an orb effect.",
     registryDependencies: ["@magicui/magic-card", "@magicui/avatar-circles"],
+    dependencies: ["next-themes"],
     files: [
       {
         path: "example/magic-card-demo2.tsx",

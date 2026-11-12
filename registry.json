@@ -23,8 +23,7 @@
       "title": "Magic Card",
       "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
       "dependencies": [
-        "motion",
-        "next-themes"
+        "motion"
       ],
       "files": [
         {
@@ -379,8 +378,7 @@
       "title": "Code Comparison",
       "description": "A component which compares two code snippets.",
       "dependencies": [
-        "shiki",
-        "next-themes"
+        "shiki"
       ],
       "files": [
         {
@@ -1381,6 +1379,9 @@
       "name": "magic-card-demo",
       "title": "Magic Card Demo",
       "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
+      "dependencies": [
+        "next-themes"
+      ],
       "registryDependencies": [
         "@magicui/magic-card"
       ],
@@ -1396,6 +1397,9 @@
       "name": "magic-card-demo-2",
       "title": "Magic Card Demo 2",
       "description": "Example showing a magic card with an orb effect.",
+      "dependencies": [
+        "next-themes"
+      ],
       "registryDependencies": [
         "@magicui/magic-card",
         "@magicui/avatar-circles"

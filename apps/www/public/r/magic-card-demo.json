@@ -3,6 +3,9 @@
   "name": "magic-card-demo",
   "title": "Magic Card Demo",
   "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
+  "dependencies": [
+    "next-themes"
+  ],
   "registryDependencies": [
     "@magicui/magic-card"
   ],

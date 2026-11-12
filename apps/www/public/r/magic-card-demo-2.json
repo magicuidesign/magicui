@@ -3,6 +3,9 @@
   "name": "magic-card-demo-2",
   "title": "Magic Card Demo 2",
   "description": "Example showing a magic card with an orb effect.",
+  "dependencies": [
+    "next-themes"
+  ],
   "registryDependencies": [
     "@magicui/magic-card",
     "@magicui/avatar-circles"
