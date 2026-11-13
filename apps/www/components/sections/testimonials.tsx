@@ -71,6 +71,7 @@ function Tweet({ id, className }: { id: string; className?: string }) {
         className="border-border bg-card group-hover/tweet:border-foreground/30 max-w-none rounded-xl border transition-colors [&_a]:relative [&_a]:z-20 [&_video]:max-h-64 [&_video]:w-full [&_video]:object-cover"
       />
       <a
+        data-card-link
         href={`https://x.com/i/status/${id}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -79,7 +80,7 @@ function Tweet({ id, className }: { id: string; className?: string }) {
         <span className="sr-only">View post on X</span>
       </a>
       <Pointer>
-        <div className="bg-foreground text-background flex translate-x-[62%] translate-y-[85%] items-center gap-1 rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-lg">
+        <div className="bg-foreground text-background hidden -translate-x-1/2 translate-y-3 items-center gap-1 rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-lg [@media(hover:hover)]:group-has-[[data-card-link]:hover]/tweet:flex">
           View post
           <ArrowTopRightIcon className="size-3.5" />
         </div>
