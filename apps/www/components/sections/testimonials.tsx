@@ -68,6 +68,7 @@ function Tweet({ id, className }: { id: string; className?: string }) {
     <div className={cn("group/tweet relative", className)}>
       <TweetCard
         id={id}
+        logo="x"
         className="border-border bg-card group-hover/tweet:border-foreground/30 max-w-none rounded-xl border transition-colors [&_a]:relative [&_a]:z-20 [&_video]:max-h-64 [&_video]:w-full [&_video]:object-cover"
       />
       <a
