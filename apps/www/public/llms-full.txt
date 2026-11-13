@@ -14547,6 +14547,974 @@ export default function MeteorDemo() {
 
 
 
+===== COMPONENT: morph-mask =====
+Title: Morph Mask
+Description: A mask that springs between rounded shapes while the content inside stays still.
+
+--- file: magicui/morph-mask.tsx ---
+"use client"
+
+import {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ComponentProps,
+} from "react"
+import {
+  animate,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "motion/react"
+
+import { cn } from "@/lib/utils"
+
+/**
+ * Every shape is a list of radii measured from the center along the same
+ * evenly spaced spokes, clockwise from the top. A radius of 1 touches the
+ * edge of the box. Because all shapes share these spokes, a morph only
+ * slides each point along its own spoke, so it can never twist or fold.
+ */
+const SPOKES = 180
+const SPOKE_ANGLE = (Math.PI * 2) / SPOKES
+
+/**
+ * The direction of every spoke in screen axes, where y points down. Each is
+ * 50 long, so a radius of 1 lands on the edge of a box measured in percent.
+ */
+const DIRECTIONS = Array.from({ length: SPOKES }, (_, spoke) => ({
+  x: 50 * Math.sin(spoke * SPOKE_ANGLE),
+  y: -50 * Math.cos(spoke * SPOKE_ANGLE),
+}))
+
+/** How far the circles of a named shape reach before it is scaled. */
+const REACH = 0.96
+
+/**
+ * Every named shape is scaled to look as large as a circle with this radius,
+ * so a morph changes the outline and never seems to change its size.
+ */
+const APPARENT_RADIUS = 0.8
+
+/**
+ * A named shape is `count` equal circles set in a ring that touches the
+ * reach. Straight sides join neighbouring circles into a rounded polygon.
+ * Otherwise the circles overlap into lobes, and a small circle of radius
+ * `notch` rounds the dip between each pair.
+ */
+interface ShapeRecipe {
+  count: number
+  radius: number
+  straight?: boolean
+  notch?: number
+}
+
+export type MorphMaskShapeName =
+  "squircle" | "clover" | "scallop" | "hexagon" | "trefoil" | "circle"
+
+const RECIPES: Record<MorphMaskShapeName, ShapeRecipe> = {
+  squircle: { count: 4, radius: 0.3, straight: true },
+  clover: { count: 4, radius: 0.5, notch: 0.3 },
+  scallop: { count: 12, radius: 0.36, notch: 0.4 },
+  hexagon: { count: 6, radius: 0.26, straight: true },
+  trefoil: { count: 3, radius: 0.56, notch: 0.4 },
+  circle: { count: 1, radius: REACH },
+}
+
+/**
+ * A named shape, or a pure function that takes an angle in radians,
+ * clockwise from the top, and returns a radius from 0 at the center to 1 at
+ * the edge. Functions compare by reference, so define them outside render:
+ * a new function counts as a new shape and morphs again.
+ */
+export type MorphMaskShape = MorphMaskShapeName | ((angle: number) => number)
+
+const DEFAULT_SHAPES: readonly MorphMaskShape[] = [
+  "squircle",
+  "hexagon",
+  "circle",
+]
+
+const DEFAULT_DURATION = 0.4
+const DEFAULT_REPEAT_DELAY = 2
+/** Keeps the spring's overshoot under 1%, so a morph settles calmly. */
+const MORPH_BOUNCE = 0.15
+/** The loop never morphs more often than this, whatever the props say. */
+const MIN_LOOP_SECONDS = 0.5
+/** How long the first shape rests after the mask first comes into view. */
+const FIRST_MORPH_DELAY_MS = 800
+/** Steps under one half let `isInView` track masks taller than the viewport. */
+const VIEW_THRESHOLDS = [0, 0.1, 0.2, 0.3, 0.4, 0.5]
+
+/**
+ * Named shapes never change, so each one's radii are worked out once. The
+ * arrays are shared between masks, so nothing may write to them.
+ */
+const NAMED_RADII = new Map<MorphMaskShapeName, Float64Array>()
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value))
+}
+
+function wrap(index: number, length: number) {
+  const whole = Number.isFinite(index) ? Math.trunc(index) : 0
+  return ((whole % length) + length) % length
+}
+
+/** A non-negative number of seconds, or the fallback for anything else. */
+function seconds(value: number, fallback: number) {
+  return Number.isFinite(value) ? Math.max(0, value) : fallback
+}
+
+/** Where a spoke `delta` radians off a circle's center line leaves it. */
+function leaveCircle(center: number, radius: number, delta: number) {
+  const offAxis = center * Math.sin(delta)
+  const inside = Math.sqrt(Math.max(0, radius ** 2 - offAxis ** 2))
+  return center * Math.cos(delta) + inside
+}
+
+/** The radius of a recipe along the spoke at `angle`, before scaling. */
+function recipeRadius(recipe: ShapeRecipe, angle: number) {
+  const { count, radius, straight = false, notch = 0 } = recipe
+  const wedge = (Math.PI * 2) / count
+  const halfWedge = wedge / 2
+  const center = REACH - radius
+
+  // Even counts turn by half a wedge, so a flat side or a notch faces up.
+  const offset = count % 2 === 0 ? halfWedge : 0
+  // Angle between this spoke and the center of the nearest circle.
+  const fromCircle = angle - offset
+  const delta = Math.abs(fromCircle - wedge * Math.round(fromCircle / wedge))
+
+  if (straight) {
+    // Past the tangent point the spoke meets the straight side, which faces
+    // the middle of the wedge.
+    const tangent = Math.atan2(
+      radius * Math.sin(halfWedge),
+      center + radius * Math.cos(halfWedge)
+    )
+    if (delta > tangent) {
+      const side = center * Math.cos(halfWedge) + radius
+      return side / Math.cos(halfWedge - delta)
+    }
+  } else if (notch > 0) {
+    // The notch circle sits on the middle of the wedge, touching both
+    // neighbours. Past the point where it touches this circle, the spoke
+    // meets the notch circle's inner edge instead.
+    const middle =
+      center * Math.cos(halfWedge) +
+      Math.sqrt((radius + notch) ** 2 - (center * Math.sin(halfWedge)) ** 2)
+    const touch = Math.atan2(
+      middle * Math.sin(halfWedge) * radius,
+      middle * Math.cos(halfWedge) * radius + center * notch
+    )
+    if (delta > touch) {
+      const fromMiddle = halfWedge - delta
+      const offAxis = middle * Math.sin(fromMiddle)
+      const inside = Math.sqrt(Math.max(0, notch ** 2 - offAxis ** 2))
+      return middle * Math.cos(fromMiddle) - inside
+    }
+  }
+
+  return leaveCircle(center, radius, delta)
+}
+
+/**
+ * The radius of a circle that looks as large as these radii. Equal areas do
+ * not look equal: the eye mostly compares how far an outline reaches across
+ * the box, so lobes and points look larger than their area. The half-size of
+ * the outline's bounding box counts twice as much as the radius of a circle
+ * with the same area.
+ */
+function apparentRadius(radii: Float64Array) {
+  let squares = 0
+  let left = 0
+  let right = 0
+  let top = 0
+  let bottom = 0
+
+  for (const [spoke, { x, y }] of DIRECTIONS.entries()) {
+    const radius = radii[spoke]
+    squares += radius ** 2
+    left = Math.min(left, radius * x)
+    right = Math.max(right, radius * x)
+    top = Math.min(top, radius * y)
+    bottom = Math.max(bottom, radius * y)
+  }
+
+  const areaRadius = Math.sqrt(squares / SPOKES)
+  // The directions are in percent, so the full box measures 100.
+  const halfSize = Math.max(right - left, bottom - top) / 100
+  return (areaRadius + 2 * halfSize) / 3
+}
+
+/** A named shape's radii, scaled so every named shape looks the same size. */
+function namedRadii(name: MorphMaskShapeName) {
+  const cached = NAMED_RADII.get(name)
+  if (cached) {
+    return cached
+  }
+
+  // Plain JavaScript callers can pass any string, so fall back to a circle.
+  const recipe = RECIPES[name] ?? RECIPES.circle
+  const radii = Float64Array.from({ length: SPOKES }, (_, spoke) =>
+    recipeRadius(recipe, spoke * SPOKE_ANGLE)
+  )
+  const scale = APPARENT_RADIUS / apparentRadius(radii)
+  const scaled = radii.map((radius) => radius * scale)
+  NAMED_RADII.set(name, scaled)
+  return scaled
+}
+
+function shapeRadii(shape: MorphMaskShape) {
+  if (typeof shape !== "function") {
+    return namedRadii(shape)
+  }
+
+  return Float64Array.from({ length: SPOKES }, (_, spoke) => {
+    const radius = shape(spoke * SPOKE_ANGLE)
+    return Number.isFinite(radius) ? clamp(radius, 0, 1) : 0
+  })
+}
+
+interface Flight {
+  /** Radii on screen when the current morph started. */
+  from: Float64Array
+  /** Radii of the shape being morphed to. */
+  to: Float64Array
+  /** Index of the shape being morphed to. */
+  position: number
+  /** The shape being morphed to, so a new `shapes` list is noticed. */
+  shape: MorphMaskShape
+}
+
+/** A mask at rest on the shape at `index`, or on the first shape. */
+function restingFlight(
+  cycle: readonly MorphMaskShape[],
+  index: number | undefined
+): Flight {
+  const position = index === undefined ? 0 : wrap(index, cycle.length)
+  const shape = cycle[position]
+  const radii = shapeRadii(shape)
+  return { from: radii, to: radii, position, shape }
+}
+
+/**
+ * A CSS polygon in percentages. It follows any resize without measuring and
+ * renders the same on the server and the client.
+ */
+function toPolygon({ from, to }: Flight, progress: number) {
+  const points = DIRECTIONS.map(({ x, y }, spoke) => {
+    const radius = from[spoke] + (to[spoke] - from[spoke]) * progress
+    const left = 50 + radius * x
+    const top = 50 + radius * y
+    return `${left.toFixed(2)}% ${top.toFixed(2)}%`
+  })
+  return `polygon(${points.join(",")})`
+}
+
+/**
+ * Half of the mask counts as in view. A mask more than twice as tall as the
+ * viewport can never be half visible, so filling half the viewport's height
+ * also counts, as long as at least half of the mask's width shows.
+ */
+function isInView(entry: IntersectionObserverEntry) {
+  const { boundingClientRect, intersectionRect, intersectionRatio } = entry
+  const viewport = entry.rootBounds?.height ?? window.innerHeight
+  const fillsViewport =
+    intersectionRect.height >= viewport / 2 &&
+    intersectionRect.width >= boundingClientRect.width / 2
+  return intersectionRatio >= 0.5 || fillsViewport
+}
+
+/**
+ * Calls `onChange` whenever the element starts or stops being active: in
+ * view while the tab is visible. Returns a function that stops watching.
+ */
+function observeActive(element: Element, onChange: (active: boolean) => void) {
+  let inView = false
+  let active = false
+
+  const update = () => {
+    const next = inView && !document.hidden
+    if (next !== active) {
+      active = next
+      onChange(active)
+    }
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      // Several crossings can arrive together; the last one is current.
+      const entry = entries.at(-1)
+      if (entry) {
+        inView = isInView(entry)
+        update()
+      }
+    },
+    { threshold: VIEW_THRESHOLDS }
+  )
+
+  observer.observe(element)
+  document.addEventListener("visibilitychange", update)
+
+  return () => {
+    observer.disconnect()
+    document.removeEventListener("visibilitychange", update)
+  }
+}
+
+export interface MorphMaskProps extends ComponentProps<"div"> {
+  /**
+   * Shapes to cycle through, in order. Each is `squircle`, `clover`,
+   * `scallop`, `hexagon`, `trefoil`, `circle` or an `(angle) => radius`
+   * function, with the angle in radians clockwise from the top and the radius
+   * from 0 to 1. Named shapes match a circle of radius `0.8`, so keep custom
+   * radii near it.
+   * @default ["squircle", "hexagon", "circle"]
+   */
+  shapes?: readonly MorphMaskShape[]
+  /**
+   * Position in `shapes` to show, wrapping at either end. Leave unset to loop.
+   * @default undefined
+   */
+  index?: number
+  /**
+   * Seconds each morph takes.
+   * @default 0.4
+   */
+  duration?: number
+  /**
+   * Seconds the shape rests between morphs while looping.
+   * @default 2
+   */
+  repeatDelay?: number
+}
+
+export function MorphMask({
+  children,
+  className,
+  ref,
+  shapes = DEFAULT_SHAPES,
+  index,
+  duration = DEFAULT_DURATION,
+  repeatDelay = DEFAULT_REPEAT_DELAY,
+  ...props
+}: MorphMaskProps) {
+  const root = useRef<HTMLDivElement>(null)
+  const layer = useRef<HTMLDivElement>(null)
+  const cycle = shapes.length > 0 ? shapes : DEFAULT_SHAPES
+  const looping = index === undefined
+  const canMorph = cycle.length > 1
+  const reduced = useReducedMotion() ?? false
+  const morphSeconds = seconds(duration, DEFAULT_DURATION)
+  const restSeconds = seconds(repeatDelay, DEFAULT_REPEAT_DELAY)
+  const loopMs = Math.max(morphSeconds + restSeconds, MIN_LOOP_SECONDS) * 1000
+
+  // `ref` is a plain prop in React 19, so hand it the root element.
+  useImperativeHandle(ref, () => root.current as HTMLDivElement, [])
+
+  // The first shape is a pure function of props, so hydration matches. React
+  // renders this clip once and never changes it, so it leaves every later
+  // clip that the redraws write alone.
+  const [initial] = useState(() => {
+    const resting = restingFlight(cycle, index)
+    return { flight: resting, clip: toPolygon(resting, 1) }
+  })
+  // Each morph replaces the flight here. Nothing reads it during render.
+  const flight = useRef(initial.flight)
+  // Whether the loop has morphed yet, so the quick first morph runs once.
+  const seen = useRef(false)
+
+  // Morphs and timers read the latest props here without re-subscribing.
+  // It updates before the layout effect below, which morphs with it.
+  const latest = useRef({ cycle, morphSeconds, reduced })
+  useLayoutEffect(() => {
+    latest.current = { cycle, morphSeconds, reduced }
+  })
+
+  const progress = useMotionValue(1)
+
+  // Redraw the clip whenever the morph moves. Each redraw writes the clip
+  // straight to the layer, so it lands even when the string is unchanged.
+  const redraw = useCallback((value: number) => {
+    const node = layer.current
+    if (node) {
+      node.style.clipPath = toPolygon(flight.current, value)
+    }
+  }, [])
+  useMotionValueEvent(progress, "change", redraw)
+
+  const morph = useCallback(
+    (target: number) => {
+      const settings = latest.current
+      const position = wrap(target, settings.cycle.length)
+      const shape = settings.cycle[position]
+      const to = shapeRadii(shape)
+
+      // Start from the shape on screen right now, so a morph that
+      // interrupts another never pops.
+      const { from, to: previous } = flight.current
+      const current = progress.get()
+      const onScreen = from.map(
+        (radius, spoke) => radius + (previous[spoke] - radius) * current
+      )
+
+      // With reduced motion or no duration, jump straight to the new shape.
+      const still = settings.reduced || settings.morphSeconds === 0
+      flight.current = { from: still ? to : onScreen, to, position, shape }
+
+      // Restarting from 0 redraws the clip even when progress was already 1.
+      progress.jump(0)
+      if (still) {
+        progress.jump(1)
+        return
+      }
+
+      animate(progress, 1, {
+        type: "spring",
+        visualDuration: settings.morphSeconds,
+        bounce: MORPH_BOUNCE,
+      })
+    },
+    [progress]
+  )
+
+  // When an <Activity> hides the mask, or it unmounts, the cleanup settles
+  // any morph on its target shape. When the mask shows again, the effect
+  // redraws the clip from that settled flight before the browser paints,
+  // whatever clip the layer kept while it was hidden.
+  useLayoutEffect(() => {
+    redraw(progress.get())
+    return () => progress.jump(1)
+  }, [progress, redraw])
+
+  // Morph when a set `index` moves, or when `shapes` puts a different shape
+  // at the current position. A layout effect starts the morph on the same
+  // frame as any other change from the same render, such as a highlight.
+  useLayoutEffect(() => {
+    const target = wrap(index ?? flight.current.position, cycle.length)
+    const moved = target !== flight.current.position
+    if (moved || cycle[target] !== flight.current.shape) {
+      morph(target)
+    }
+  }, [cycle, index, morph])
+
+  // An unset `index` loops through the shapes while the mask is in view.
+  useEffect(() => {
+    const element = root.current
+    if (!element || !looping || !canMorph || reduced) {
+      return
+    }
+
+    let timer: number | undefined
+
+    // Each tick arms the next one, and only while the mask can be seen, so
+    // a hidden tab or an off-screen mask runs no timers.
+    const schedule = (delayMs: number) => {
+      timer = window.setTimeout(() => {
+        seen.current = true
+        morph(flight.current.position + 1)
+        schedule(loopMs)
+      }, delayMs)
+    }
+
+    const stopObserving = observeActive(element, (active) => {
+      window.clearTimeout(timer)
+      if (!active) {
+        // A morph that leaves the screen finishes on its own. A hidden tab
+        // draws no frames, so settle the shape there instead.
+        if (document.hidden) {
+          progress.jump(1)
+        }
+        return
+      }
+
+      // Until the first morph runs, each view morphs soon, so the effect
+      // shows itself; later views wait a full loop.
+      schedule(seen.current ? loopMs : FIRST_MORPH_DELAY_MS)
+    })
+
+    return () => {
+      window.clearTimeout(timer)
+      stopObserving()
+    }
+  }, [canMorph, looping, loopMs, morph, progress, reduced])
+
+  return (
+    <div
+      ref={root}
+      className={cn(
+        "relative aspect-square w-80 max-w-full rounded-full",
+        // The clip layer would cut off a child's focus ring, so the
+        // unclipped root draws one that surrounds every shape.
+        "outline-foreground outline-offset-2 has-focus-visible:outline-2",
+        className
+      )}
+      {...props}
+    >
+      <div
+        ref={layer}
+        className={cn(
+          "bg-muted absolute inset-0 grid place-items-center overflow-hidden",
+          // Every child fills the mask, stacked in a single grid cell.
+          "*:col-start-1 *:row-start-1 *:size-full",
+          "[&>img]:object-cover [&>video]:object-cover"
+        )}
+        style={{ clipPath: initial.clip }}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+
+===== EXAMPLE: morph-mask-demo =====
+Title: Morph Mask Demo
+
+--- file: example/morph-mask-demo.tsx ---
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { MorphMask } from "@/registry/magicui/morph-mask"
+
+const navigation = ["Releases", "Drafts", "Readers", "Settings"]
+
+const changes = [
+  { label: "Scheduled releases", color: "bg-[#9c40ff]" },
+  { label: "Faster GitHub import", color: "bg-[#ffaa40]" },
+  { label: "Slack link previews", color: "bg-foreground/40" },
+]
+
+const olderReleases = [
+  { version: "v4.1", title: "Winter release" },
+  { version: "v4.0", title: "Custom domains" },
+  { version: "v3.9", title: "Team roles" },
+  { version: "v3.8", title: "Usage alerts" },
+]
+
+/**
+ * A releases screen measured in the mask's own units: positions in percent
+ * of the mask and type in `cqw`, so it scales as one piece. Every shape
+ * keeps the area that holds the text and marks, so a morph only re-crops
+ * the surfaces that run to the edge: the header, the sidebar rule and the
+ * open release card.
+ *
+ * Under 24rem the screen drops the sidebar and a few details for larger
+ * type. From 32rem the type steps down, so the screen reads as an app
+ * rather than a close-up.
+ */
+function ReleasesScreen() {
+  return (
+    <div className="bg-muted dark:bg-muted/50 relative text-[length:4.2cqw] leading-normal @sm/mask:text-[length:2.9cqw] @lg/mask:text-[length:2.3cqw]">
+      <div className="absolute inset-x-0 top-0 h-[30%] border-b" />
+      <div className="absolute inset-x-[29%] bottom-[72.5%] flex items-center justify-between gap-[1em] @sm/mask:inset-x-[28%]">
+        <div className="flex items-center gap-[0.45em]">
+          <span
+            aria-hidden="true"
+            className="bg-foreground size-[1em] shrink-0 rounded-[0.3em]"
+          />
+          <span className="font-semibold">Northbeam</span>
+        </div>
+        <span className="bg-foreground text-background hidden rounded-[0.4em] px-[0.6em] py-[0.15em] font-medium @sm/mask:inline">
+          Publish
+        </span>
+      </div>
+
+      <div className="absolute top-[30%] bottom-0 left-0 hidden w-[35%] border-r @sm/mask:block" />
+      <ul className="text-foreground/70 absolute top-[36%] left-[20%] hidden space-y-[0.6em] @sm/mask:block">
+        {navigation.map((item) => (
+          <li key={item} className="first:text-foreground first:font-medium">
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      {/* The card runs past the right edge, so each shape crops it anew. */}
+      <div className="absolute top-[34%] -right-[4%] bottom-[19%] left-[25%] flex flex-col gap-[1em] @sm/mask:top-[35%] @sm/mask:left-[38%]">
+        <article className="bg-background dark:bg-card shrink-0 rounded-[0.6em] border p-[0.9em] shadow-sm">
+          <div className="flex items-center gap-[0.45em]">
+            <span className="rounded-full border px-[0.5em] font-medium tabular-nums">
+              v4.2
+            </span>
+            <h3 className="font-semibold">Spring release</h3>
+          </div>
+          <p className="text-muted-foreground mt-[0.25em] hidden @sm/mask:block">
+            May 14 · 24 changes
+          </p>
+          <ul className="mt-[0.6em] space-y-[0.3em]">
+            {changes.map((change, position) => (
+              <li
+                key={change.label}
+                className={cn(
+                  "flex items-center gap-[0.45em]",
+                  // The narrow screen has room for two changes.
+                  position > 1 && "hidden @sm/mask:flex"
+                )}
+              >
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "size-[0.45em] shrink-0 rounded-full",
+                    change.color
+                  )}
+                />
+                {change.label}
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        {/* A row that would run past the bottom wraps into a second column,
+            which is clipped, so the list always ends on a whole row. The
+            inset is a margin, since overflow still paints in padding. */}
+        <ul className="text-foreground/70 mx-[0.9em] flex min-h-0 flex-1 flex-col flex-wrap content-start gap-y-[0.5em] overflow-hidden">
+          {olderReleases.map((release) => (
+            <li key={release.version} className="w-full">
+              <span className="text-foreground font-medium tabular-nums">
+                {release.version}
+              </span>{" "}
+              {release.title}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+export default function MorphMaskDemo() {
+  return (
+    // A @container has no intrinsic width, so w-full collapses to the padding
+    // inside a shrink-to-fit parent. w-screen capped by max-w-full fills it.
+    <section className="bg-background text-foreground @container w-screen max-w-full rounded-xl border p-6 sm:p-10">
+      {/* Side by side when the preview is wide enough, stacked otherwise. */}
+      {/* Every shape sits about 11% inside the mask, so the mask needs no
+          gap of its own: the outline already clears the copy by ~60px. */}
+      <div className="grid grid-cols-1 items-center justify-items-center gap-4 @4xl:grid-cols-[minmax(0,24rem)_minmax(0,580px)] @4xl:justify-center @4xl:gap-0">
+        <div className="space-y-5 text-center @4xl:text-left">
+          <p className="text-muted-foreground text-sm font-medium">
+            Northbeam Changelog
+          </p>
+          <h2 className="mx-auto max-w-sm text-4xl font-semibold tracking-tight text-balance @4xl:mx-0">
+            Every release, on one page.
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-sm leading-relaxed @4xl:mx-0">
+            Northbeam turns merged pull requests into a changelog your customers
+            actually read.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 @4xl:justify-start">
+            <Button type="button">Start free</Button>
+            <Button type="button" variant="outline">
+              See a sample
+            </Button>
+          </div>
+        </div>
+        <MorphMask className="@container/mask w-full max-w-[440px] @4xl:max-w-none">
+          <ReleasesScreen />
+        </MorphMask>
+      </div>
+    </section>
+  )
+}
+
+
+===== EXAMPLE: morph-mask-demo-2 =====
+Title: Morph Mask Demo 2
+
+--- file: example/morph-mask-demo-2.tsx ---
+"use client"
+
+import { useState, type ReactNode } from "react"
+
+import { cn } from "@/lib/utils"
+import { MorphMask, type MorphMaskShape } from "@/registry/magicui/morph-mask"
+
+interface Feature {
+  title: string
+  copy: string
+  detail: string
+  /** Every tile rests on the squircle and opens into its own shape. */
+  shapes: readonly MorphMaskShape[]
+  icon: ReactNode
+}
+
+const features: Feature[] = [
+  {
+    title: "Audit logs",
+    copy: "Every change, accounted for.",
+    detail:
+      "Audit logs keep a searchable record of every workspace change for 365 days.",
+    shapes: ["squircle", "clover"],
+    icon: (
+      <>
+        <path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" />
+        <rect x="9" y="2.5" width="6" height="3" rx="1" />
+        <path d="M9 11h6M9 15h4" />
+      </>
+    ),
+  },
+  {
+    title: "Single sign-on",
+    copy: "One identity across your workspace.",
+    detail:
+      "Single sign-on connects your team to Northbeam through your existing identity provider.",
+    shapes: ["squircle", "circle"],
+    icon: (
+      <>
+        <circle cx="8" cy="15" r="4" />
+        <path d="m10.8 12.2 8.7-8.7M16.5 6.5l2 2M14 9l1.5 1.5" />
+      </>
+    ),
+  },
+  {
+    title: "Usage alerts",
+    copy: "Get notified before a project hits its limit.",
+    detail:
+      "Usage alerts notify workspace owners before a project reaches its monthly limit.",
+    shapes: ["squircle", "hexagon"],
+    icon: (
+      <>
+        <path d="M6 15.5V11a6 6 0 0 1 12 0v4.5l1.5 2.5h-15Z" />
+        <path d="M10 21a2.2 2.2 0 0 0 4 0" />
+      </>
+    ),
+  },
+]
+
+/** Seconds the tile morph takes. The card highlight's `duration-200` matches. */
+const MORPH_SECONDS = 0.2
+
+export default function MorphMaskDemo2() {
+  // The pressed card, chosen by click or keyboard focus.
+  const [selected, setSelected] = useState(0)
+  // The card under the pointer. It previews the card without selecting it,
+  // so the pressed state and the description below stay put.
+  const [hovered, setHovered] = useState<number | null>(null)
+
+  return (
+    <section className="bg-background text-foreground w-full rounded-xl border p-6">
+      <div className="grid gap-4 sm:grid-cols-3">
+        {features.map((feature, index) => {
+          const pressed = index === selected
+          const previewed = index === hovered && !pressed
+
+          // The button fills the whole card, so the whole card responds. A
+          // button may only hold text, so the icon tile sits beside it, over
+          // its empty top padding. The highlight and the tile change in the
+          // same render and settle over the same time.
+          return (
+            <div key={feature.title} className="relative">
+              <button
+                type="button"
+                aria-pressed={pressed}
+                onPointerEnter={() => setHovered(index)}
+                onPointerLeave={() =>
+                  setHovered((current) => (current === index ? null : current))
+                }
+                onFocus={() => setSelected(index)}
+                onClick={() => setSelected(index)}
+                className={cn(
+                  "flex size-full cursor-pointer flex-col rounded-xl border p-5 pt-20 text-left transition-[background-color,border-color,box-shadow] duration-200 ease-out",
+                  "focus-visible:border-ring focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]",
+                  pressed && "bg-muted/50",
+                  previewed && "bg-muted/25"
+                )}
+              >
+                <span className="block font-medium">{feature.title}</span>
+                <span className="text-muted-foreground mt-1 block text-sm">
+                  {feature.copy}
+                </span>
+              </button>
+              {/* The squircle sits inside its box, so the box starts a little
+                  left of the text for the tile's edge to line up with it. */}
+              <MorphMask
+                aria-hidden="true"
+                index={pressed || previewed ? 1 : 0}
+                shapes={feature.shapes}
+                duration={MORPH_SECONDS}
+                className="pointer-events-none absolute top-3.5 left-3.5 w-14"
+              >
+                <span className="bg-foreground text-background grid place-items-center">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    className="size-6"
+                  >
+                    {feature.icon}
+                  </svg>
+                </span>
+              </MorphMask>
+            </div>
+          )
+        })}
+      </div>
+      <p
+        aria-live="polite"
+        className="text-muted-foreground mt-5 min-h-10 text-sm"
+      >
+        {features[selected].detail}
+      </p>
+    </section>
+  )
+}
+
+
+===== EXAMPLE: morph-mask-demo-3 =====
+Title: Morph Mask Demo 3
+
+--- file: example/morph-mask-demo-3.tsx ---
+"use client"
+
+import { useState } from "react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+
+import { Button } from "@/components/ui/button"
+import { MorphMask, type MorphMaskShape } from "@/registry/magicui/morph-mask"
+
+// Defined outside render: a function counts as the same shape only while it
+// is the same function.
+const shapes: readonly MorphMaskShape[] = [
+  "squircle",
+  "hexagon",
+  // Eight soft scallops, from a radius function of the demo's own.
+  (angle) => 0.76 + 0.07 * Math.cos(angle * 8),
+]
+
+const steps = [
+  {
+    label: "Connect",
+    title: "Bring your team together",
+    copy: "Connect your GitHub workspace with one secure authorization.",
+  },
+  {
+    label: "Import",
+    title: "Your history, ready to publish",
+    copy: "Import merged pull requests and turn them into your first release.",
+  },
+  {
+    label: "Go live",
+    title: "Make every release count",
+    copy: "Publish a changelog that keeps your customers in the loop.",
+  },
+]
+
+/**
+ * The old step lifts 4px and fades, and the new one rises in just behind
+ * it, so the two barely overlap and the badge numeral stays sharp.
+ */
+const swap = {
+  initial: { opacity: 0, y: 4 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.08, duration: 0.15, ease: "easeOut" },
+  },
+  exit: {
+    opacity: 0,
+    y: -4,
+    transition: { duration: 0.12, ease: "easeIn" },
+  },
+} as const
+
+/**
+ * With reduced motion, the step changes at once and nothing moves. It
+ * animates the same keys as `swap`, so the server, which cannot know the
+ * preference, renders the same styles as the client.
+ */
+const instantSwap = {
+  initial: { opacity: 0, y: 0 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0 } },
+  exit: { opacity: 0, y: 0, transition: { duration: 0 } },
+} as const
+
+export default function MorphMaskDemo3() {
+  // GitHub is already connected, so setup resumes on the import step.
+  const [index, setIndex] = useState(1)
+  const step = steps[index]
+  const reduced = useReducedMotion()
+  const stepSwap = reduced ? instantSwap : swap
+
+  return (
+    <section className="bg-background text-foreground w-full space-y-8 rounded-xl border p-6 sm:p-8">
+      <fieldset
+        aria-label="Setup steps"
+        className="flex min-w-0 flex-wrap gap-2"
+      >
+        {steps.map((item, position) => (
+          <Button
+            key={item.label}
+            type="button"
+            size="sm"
+            variant={position === index ? "default" : "outline"}
+            aria-pressed={position === index}
+            onClick={() => setIndex(position)}
+          >
+            {position < index && (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            )}
+            {item.label}
+          </Button>
+        ))}
+      </fieldset>
+      <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        <MorphMask shapes={shapes} index={index} className="w-20 shrink-0">
+          {/* Only the digits swap; the badge itself never fades. */}
+          <div className="bg-primary text-primary-foreground grid place-items-center *:col-start-1 *:row-start-1">
+            <AnimatePresence initial={false}>
+              <motion.span
+                key={index}
+                {...stepSwap}
+                className="text-[28px] font-semibold tabular-nums"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+        </MorphMask>
+        <div
+          aria-live="polite"
+          className="grid max-w-xs *:col-start-1 *:row-start-1"
+        >
+          <AnimatePresence initial={false}>
+            <motion.div key={index} {...stepSwap} className="space-y-2">
+              <p className="text-muted-foreground text-sm font-medium">
+                Step {index + 1} of {steps.length}
+              </p>
+              <h3 className="text-xl font-semibold tracking-tight">
+                {step.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {step.copy}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+
 ===== COMPONENT: morphing-text =====
 Title: Morphing Text
 Description: A dynamic text morphing component for Magic UI.
