@@ -1,0 +1,109 @@
+---
+title: Dither
+date: 2026-11-01
+description: An animated layer of Bayer-dithered square dots. Pick one of 17 patterns, dither an image or a video, or write your own GLSL field, in your theme colors.
+author: dillionverma
+published: true
+---
+
+<ComponentPreview name="dither-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/dither
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dither" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Examples
+
+### Card Backgrounds
+
+<ComponentPreview name="dither-card-demo" />
+
+### Mouse Interaction
+
+<ComponentPreview name="dither-pointer-demo" />
+
+### Text Mask
+
+<ComponentPreview name="dither-text-demo" />
+
+### Image
+
+<ComponentPreview name="dither-image-demo" />
+
+### Custom Shader
+
+<ComponentPreview name="dither-shader-demo" />
+
+### Patterns
+
+<ComponentPreview name="dither-patterns-demo" />
+
+## Usage
+
+```tsx showLineNumbers
+import { Dither } from "@/components/ui/dither"
+```
+
+```tsx showLineNumbers
+<div className="relative isolate h-[400px] w-full overflow-hidden rounded-xl border">
+  <Dither pattern="horizon" colors="var(--primary)" className="-z-10" />
+</div>
+```
+
+## Props
+
+| Prop          | Type                          | Default          | Description                                                               |
+| ------------- | ----------------------------- | ---------------- | ------------------------------------------------------------------------- |
+| `pattern`     | `DitherPattern`               | `"horizon"`      | One of the 17 built-in patterns, listed in `DITHER_PATTERNS`.             |
+| `src`         | `string`                      | `-`              | Image or video URL to dither. Remote files must allow CORS.               |
+| `shader`      | `string`                      | `-`              | GLSL that defines `float field(vec2 uv, float t)`. See [Shader](#shader). |
+| `colors`      | `string \| readonly string[]` | `"currentColor"` | One CSS color, or color stops from dim to bright.                         |
+| `matrix`      | `2 \| 4 \| 8`                 | `8`              | Size of the Bayer matrix. Smaller sizes give coarser bands.               |
+| `dotSize`     | `number`                      | `1`              | Size of one dot in CSS pixels.                                            |
+| `intensity`   | `number`                      | `0.75`           | Brightness of the field.                                                  |
+| `speed`       | `number`                      | `1`              | Animation speed. `0` holds a still frame.                                 |
+| `fps`         | `number`                      | `30`             | Maximum frames per second.                                                |
+| `interactive` | `boolean`                     | `false`          | Brightens the dots under the pointer.                                     |
+| `className`   | `string`                      | `-`              | Classes applied to the layer.                                             |
+
+## Shader
+
+```glsl
+float field(vec2 uv, float t) {
+  return 0.5 + 0.5 * sin((uv.x + uv.y) * 12.0 + t);
+}
+```
+
+`uv` runs from 0 to 1 from the bottom-left corner. `t` is the time in seconds times `speed`. Return a brightness from 0 to 1. The shader can read `uSize`, `uAspect`, `uDot`, `uPointer` and `uPointerOn`, and call `noise(vec2)` and `fbm(vec2)`.
+
+## Notes
+
+`Dither` is a layer. It fills its nearest positioned parent and takes no children. Set only one of `pattern`, `src` and `shader`. Palette patterns use their own colors unless you pass `colors`.
