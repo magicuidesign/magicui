@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agent-trace-demo-3",
+  "title": "Agent Trace Support Demo",
+  "description": "A support ticket that plays its refund steps once.",
+  "registryDependencies": [
+    "@magicui/agent-trace"
+  ],
+  "files": [
+    {
+      "path": "registry/example/agent-trace-demo-3.tsx",
+      "content": "import { AgentTrace } from \"@/registry/magicui/agent-trace\"\n\nexport default function AgentTraceDemo3() {\n  return (\n    <section className=\"bg-background text-foreground w-full min-w-0 p-4 sm:p-8\">\n      <div className=\"border-border bg-card mx-auto max-w-md rounded-xl border\">\n        <header className=\"border-border border-b px-4 py-3\">\n          <h2 className=\"text-sm font-semibold\">Ticket #7316</h2>\n        </header>\n        <p className=\"text-muted-foreground px-4 py-5 text-sm text-pretty\">\n          Refund order 90412 and let Priya know.\n        </p>\n        <div className=\"border-border border-t p-1.5\">\n          <AgentTrace\n            loop={false}\n            className=\"max-w-none border-0 bg-transparent p-0\"\n            steps={[\n              { label: \"Find the order\", duration: 0.8 },\n              { label: \"Check the refund policy\", duration: 1.9 },\n              { label: \"Issue the refund\", duration: 1.2 },\n              { label: \"Email Priya\", duration: 0.6 },\n            ]}\n            result=\"Refunded $84.00 and emailed Priya\"\n          />\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}
