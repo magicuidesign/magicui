@@ -474,6 +474,23 @@ export const Index: Record<string, any> = {
     }),
     meta: undefined,
   },
+  "slide-swap-button": {
+    name: "slide-swap-button",
+    description: "An interactive button with a smooth sliding icon, text exchange, and left-to-right animated background fill.",
+    type: "registry:ui",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/magicui/slide-swap-button.tsx",
+      type: "registry:ui",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/magicui/slide-swap-button.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
   "tweet-card": {
     name: "tweet-card",
     description: "A card that displays a tweet with the author's name, handle, and profile picture.",
@@ -2254,6 +2271,23 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/example/shimmer-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
+      return { default: mod.default ?? mod[exportName] }
+    }),
+    meta: undefined,
+  },
+  "slide-swap-button-demo": {
+    name: "slide-swap-button-demo",
+    description: "Example showcasing an animated button with a sliding icon and background fill transition.",
+    type: "registry:example",
+    registryDependencies: ["@magicui/slide-swap-button"],
+    files: [{
+      path: "registry/example/slide-swap-button-demo.tsx",
+      type: "registry:example",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/example/slide-swap-button-demo.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') ?? item.name
       return { default: mod.default ?? mod[exportName] }
     }),

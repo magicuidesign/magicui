@@ -505,6 +505,18 @@
       "type": "registry:ui"
     },
     {
+      "name": "slide-swap-button",
+      "title": "Slide Swap Button",
+      "description": "An interactive button with a smooth sliding icon, text exchange, and left-to-right animated background fill.",
+      "files": [
+        {
+          "path": "registry/magicui/slide-swap-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "type": "registry:ui"
+    },
+    {
       "name": "tweet-card",
       "title": "Tweet Card",
       "description": "A card that displays a tweet with the author's name, handle, and profile picture.",
@@ -2206,6 +2218,21 @@
       "files": [
         {
           "path": "registry/example/shimmer-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "slide-swap-button-demo",
+      "title": "Slide Swap Button Demo",
+      "description": "Example showcasing an animated button with a sliding icon and background fill transition.",
+      "registryDependencies": [
+        "@magicui/slide-swap-button"
+      ],
+      "files": [
+        {
+          "path": "registry/example/slide-swap-button-demo.tsx",
           "type": "registry:example"
         }
       ],

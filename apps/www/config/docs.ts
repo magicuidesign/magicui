@@ -586,6 +586,12 @@ export const docsConfig: DocsConfig = {
           label: "",
         },
         {
+          title: "Slide Swap Button",
+          href: `/docs/components/slide-swap-button`,
+          items: [],
+          label: "New",
+        },
+        {
           title: "File Tree",
           href: `/docs/components/file-tree`,
           items: [],

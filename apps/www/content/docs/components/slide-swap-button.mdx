@@ -1,0 +1,139 @@
+---
+title: Slide Swap Button
+date: 2026-11-13
+description: An animated button with a smooth sliding icon, moving label, and background wipe transition.
+author: Vijaysinghnegi007
+published: true
+---
+
+<ComponentPreview name="slide-swap-button-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/slide-swap-button
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="slide-swap-button" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>
+  Make sure your project has the `cn` utility available at `@/lib/utils`.
+</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+Import the component:
+
+```tsx
+import { SlideSwapButton } from "@/components/ui/slide-swap-button"
+```
+
+Use the component:
+
+```tsx
+<SlideSwapButton>Get Started</SlideSwapButton>
+```
+
+## Custom Icon
+
+Pass a custom React node through the `icon` prop to replace the default arrow icon.
+
+```tsx
+import { ArrowUpRight } from "lucide-react"
+
+import { SlideSwapButton } from "@/components/ui/slide-swap-button"
+
+export default function Demo() {
+  return <SlideSwapButton icon={<ArrowUpRight />}>Explore More</SlideSwapButton>
+}
+```
+
+## Link Usage
+
+Provide an `href` to render the component as a native anchor element instead of a button.
+
+```tsx
+<SlideSwapButton href="/docs">Explore Documentation</SlideSwapButton>
+```
+
+## Customization
+
+Customize the button's dimensions, colors, and animation timing using CSS variables through the `style` prop.
+
+```tsx
+<SlideSwapButton
+  style={{
+    "--swap-btn-height": "56px",
+    "--swap-btn-radius": "12px",
+    "--swap-btn-font-size": "12px",
+    "--swap-btn-icon-size": "32px",
+    "--swap-btn-accent": "#2563eb",
+    "--swap-btn-move-duration": "0.6s",
+    "--swap-btn-fill-duration": "0.5s",
+  }}
+>
+  Customize Button
+</SlideSwapButton>
+```
+
+## Props
+
+| Prop        | Type                              | Default        | Description                                               |
+| ----------- | --------------------------------- | -------------- | --------------------------------------------------------- |
+| `children`  | `ReactNode`                       | Required       | Content displayed as the button label.                    |
+| `icon`      | `ReactNode`                       | Default arrow  | Custom icon displayed inside the circular icon container. |
+| `href`      | `string`                          | `undefined`    | Renders an anchor element when provided.                  |
+| `className` | `string`                          | `undefined`    | Additional CSS classes for customization.                 |
+| `style`     | `SwapButtonStyle`                 | Default styles | Custom CSS properties and inline styles.                  |
+| `type`      | `"button" \| "submit" \| "reset"` | `"button"`     | Native button type.                                       |
+
+All standard HTML button and anchor attributes are supported by their respective variants.
+
+## CSS Variables
+
+| Variable                      | Default                                            |
+| ----------------------------- | -------------------------------------------------- |
+| `--swap-btn-height`           | `52px`                                             |
+| `--swap-btn-radius`           | `999px`                                            |
+| `--swap-btn-font-size`        | `11px`                                             |
+| `--swap-btn-letter-spacing`   | `2.5px`                                            |
+| `--swap-btn-icon-size`        | `28px`                                             |
+| `--swap-btn-move-duration`    | `var(--dur-move, 0.55s)`                           |
+| `--swap-btn-fill-duration`    | `var(--dur-fill, 0.50s)`                           |
+| `--swap-btn-color-duration`   | `var(--dur-color, 0.35s)`                          |
+| `--swap-btn-easing`           | `var(--ease-swap, cubic-bezier(0.76, 0, 0.24, 1))` |
+| `--swap-btn-accent`           | `var(--color-accent-red, #FF4D36)`                 |
+| `--swap-btn-text`             | `var(--color-primary-black, #0B0B0B)`              |
+| `--swap-btn-text-hover`       | `#FFFFFF`                                          |
+| `--swap-btn-border`           | `var(--color-primary-black, #FFFFFF)`              |
+| `--swap-btn-icon-bg`          | `var(--swap-btn-accent)`                           |
+| `--swap-btn-icon-color`       | `#FFFFFF`                                          |
+| `--swap-btn-icon-bg-hover`    | `#FFFFFF`                                          |
+| `--swap-btn-icon-color-hover` | `var(--swap-btn-accent)`                           |
+| `--swap-btn-focus-ring`       | `var(--swap-btn-accent)`                           |
+| `--swap-btn-focus-offset`     | `transparent`                                      |
