@@ -3,6 +3,7 @@ import { ArrowTopRightIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { getTweet } from "react-tweet/api"
 
 import { cn } from "@/lib/utils"
+import { TestimonialsMore } from "@/components/sections/testimonials-more"
 import { AvatarCircles } from "@/registry/magicui/avatar-circles"
 import { BorderBeam } from "@/registry/magicui/border-beam"
 import { DotPattern } from "@/registry/magicui/dot-pattern"
@@ -10,8 +11,9 @@ import { NumberTicker } from "@/registry/magicui/number-ticker"
 import { Pointer } from "@/registry/magicui/pointer"
 import { TweetCard } from "@/registry/magicui/tweet-card"
 
-// The first nine are shown on the home page, in layout order:
-// three left, the featured one, one below it, four right.
+// The first nine are always shown, in layout order: three left, the
+// featured one, one below it, four right. The rest sit behind "Show more",
+// which only exists from md up.
 const allTweets = [
   "https://x.com/chronark_/status/1754781648262967323",
   "https://x.com/DmytroKrasun/status/1793642777873633543",
@@ -148,29 +150,38 @@ export function Testimonials() {
           <ChevronRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
         </Link>
       </div>
-      <div className="container grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div className="flex flex-col gap-4">
-          <Stats />
-          {allTweets.slice(0, 3).map((id, index) => (
-            <Tweet
-              key={id}
-              id={id}
-              className={index > 0 ? "hidden md:block" : undefined}
-            />
-          ))}
-        </div>
-        <div className="flex flex-col gap-4">
-          <div className="relative flex grow flex-col overflow-hidden rounded-xl">
-            <Tweet id={featured} />
-            <BorderBeam size={180} duration={8} />
+      <div className="container">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-4">
+            <Stats />
+            {allTweets.slice(0, 3).map((id, index) => (
+              <Tweet
+                key={id}
+                id={id}
+                className={index > 0 ? "max-md:hidden" : undefined}
+              />
+            ))}
           </div>
-          <Tweet id={below} />
+          <div className="flex flex-col gap-4">
+            <div className="relative flex grow flex-col overflow-hidden rounded-xl">
+              <Tweet id={featured} />
+              <BorderBeam size={180} duration={8} />
+            </div>
+            <Tweet id={below} />
+          </div>
+          <div className="flex flex-col gap-4 max-md:hidden md:col-span-2 md:grid md:grid-cols-2 lg:col-span-1 lg:flex">
+            {allTweets.slice(5, 9).map((id) => (
+              <Tweet key={id} id={id} />
+            ))}
+          </div>
         </div>
-        <div className="hidden flex-col gap-4 md:col-span-2 md:grid md:grid-cols-2 lg:col-span-1 lg:flex">
-          {allTweets.slice(5, 9).map((id) => (
-            <Tweet key={id} id={id} />
-          ))}
-        </div>
+        <TestimonialsMore>
+          <div className="columns-2 gap-4 lg:columns-3">
+            {allTweets.slice(9).map((id) => (
+              <Tweet key={id} id={id} className="mb-4 break-inside-avoid" />
+            ))}
+          </div>
+        </TestimonialsMore>
       </div>
     </section>
   )
