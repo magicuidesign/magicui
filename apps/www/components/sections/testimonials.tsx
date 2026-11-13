@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { ArrowTopRightIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { getTweet } from "react-tweet/api"
 
 import { cn } from "@/lib/utils"
@@ -7,6 +7,7 @@ import { AvatarCircles } from "@/registry/magicui/avatar-circles"
 import { BorderBeam } from "@/registry/magicui/border-beam"
 import { DotPattern } from "@/registry/magicui/dot-pattern"
 import { NumberTicker } from "@/registry/magicui/number-ticker"
+import { Pointer } from "@/registry/magicui/pointer"
 import { TweetCard } from "@/registry/magicui/tweet-card"
 
 // The first nine are shown on the home page, in layout order:
@@ -62,8 +63,30 @@ const allTweets = [
   // "https://x.com/DutchEngIishman/status/1795888864202043645",
 ].map((t) => t.split("/").slice(-1)[0])
 
-const card =
-  "border-border bg-card hover:border-foreground/30 max-w-none rounded-xl border transition-colors"
+function Tweet({ id, className }: { id: string; className?: string }) {
+  return (
+    <div className={cn("group/tweet relative", className)}>
+      <TweetCard
+        id={id}
+        className="border-border bg-card group-hover/tweet:border-foreground/30 max-w-none rounded-xl border transition-colors [&_a]:relative [&_a]:z-20 [&_video]:max-h-64 [&_video]:w-full [&_video]:object-cover"
+      />
+      <a
+        href={`https://x.com/i/status/${id}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 z-10 cursor-none rounded-xl"
+      >
+        <span className="sr-only">View post on X</span>
+      </a>
+      <Pointer>
+        <div className="bg-foreground text-background flex translate-x-[62%] translate-y-[85%] items-center gap-1 rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap shadow-lg">
+          View post
+          <ArrowTopRightIcon className="size-3.5" />
+        </div>
+      </Pointer>
+    </div>
+  )
+}
 
 async function Stats() {
   const tweets = await Promise.all(
@@ -131,26 +154,23 @@ export function Testimonials() {
         <div className="flex flex-col gap-4">
           <Stats />
           {allTweets.slice(0, 3).map((id, index) => (
-            <TweetCard
+            <Tweet
               key={id}
               id={id}
-              className={cn(card, index > 0 && "hidden md:flex")}
+              className={index > 0 ? "hidden md:block" : undefined}
             />
           ))}
         </div>
         <div className="flex flex-col gap-4">
           <div className="relative h-fit overflow-hidden rounded-xl">
-            <TweetCard
-              id={featured}
-              className={`${card} [&_video]:max-h-64 [&_video]:w-full [&_video]:object-cover`}
-            />
+            <Tweet id={featured} />
             <BorderBeam size={180} duration={8} />
           </div>
-          <TweetCard id={below} className={card} />
+          <Tweet id={below} />
         </div>
         <div className="hidden flex-col gap-4 md:col-span-2 md:grid md:grid-cols-2 lg:col-span-1 lg:flex">
           {allTweets.slice(5, 9).map((id) => (
-            <TweetCard key={id} id={id} className={card} />
+            <Tweet key={id} id={id} />
           ))}
         </div>
       </div>
