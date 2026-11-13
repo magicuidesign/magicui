@@ -215,7 +215,7 @@ export function SlideSwapButton(props: SwapButtonProps) {
         aria-hidden="true"
         className={[
           iconPositionClasses,
-          "`h-(--swap-btn-icon-size)",
+          "h-(--swap-btn-icon-size)",
           "w-(--swap-btn-icon-size)",
         ].join(" ")}
       >
