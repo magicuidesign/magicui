@@ -481,6 +481,20 @@ export const ui: Registry["items"] = [
     },
   },
   {
+    name: "slide-swap-button",
+    type: "registry:ui",
+    title: "Slide Swap Button",
+    description:
+      "An interactive button with a smooth sliding icon, text exchange, and left-to-right animated background fill.",
+    files: [
+      {
+        path: "magicui/slide-swap-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+
+  {
     name: "tweet-card",
     type: "registry:ui",
     title: "Tweet Card",

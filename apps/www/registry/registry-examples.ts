@@ -713,6 +713,22 @@ export const examples: Registry["items"] = [
       },
     ],
   },
+
+  {
+    name: "slide-swap-button-demo",
+    type: "registry:example",
+    title: "Slide Swap Button Demo",
+    description:
+      "Example showcasing an animated button with a sliding icon and background fill transition.",
+    registryDependencies: ["@magicui/slide-swap-button"],
+    files: [
+      {
+        path: "example/slide-swap-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+
   {
     name: "bento-demo",
     type: "registry:example",

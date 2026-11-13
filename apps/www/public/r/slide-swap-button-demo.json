@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-swap-button-demo",
+  "title": "Slide Swap Button Demo",
+  "description": "Example showcasing an animated button with a sliding icon and background fill transition.",
+  "registryDependencies": [
+    "@magicui/slide-swap-button"
+  ],
+  "files": [
+    {
+      "path": "registry/example/slide-swap-button-demo.tsx",
+      "content": "import { SlideSwapButton } from \"@/registry/magicui/slide-swap-button\"\n\nexport default function SlideSwapButtonDemo() {\n  return (\n    <div className=\"flex min-h-75 w-full items-center justify-center p-8\">\n      <SlideSwapButton>Get Started</SlideSwapButton>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

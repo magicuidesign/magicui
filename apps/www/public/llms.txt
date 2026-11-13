@@ -72,6 +72,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Shimmer Button](https://magicui.design/docs/components/shimmer-button): A button with a shimmering light which travels around the perimeter.
 - [Shine Border](https://magicui.design/docs/components/shine-border): Shine border is an animated background border effect.
 - [Shiny Button](https://magicui.design/docs/components/shiny-button): A shiny button component with dynamic styles in the dark mode or light mode.
+- [Slide Swap Button](https://magicui.design/docs/components/slide-swap-button): An interactive button with a smooth sliding icon, text exchange, and left-to-right animated background fill.
 - [smooth-cursor](https://magicui.design/docs/components/smooth-cursor): A customizable, physics-based smooth cursor animation component with spring animations and rotation effects
 - [Sparkles Text](https://magicui.design/docs/components/sparkles-text): A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.
 - [Spinning Text](https://magicui.design/docs/components/spinning-text): The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.
@@ -141,6 +142,7 @@ This file provides LLM-friendly entry points to documentation and examples.
 - [Tweet Card Images](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/tweet-card-images.tsx): Example usage
 - [Tweet Card Meta Preview](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/tweet-card-meta-preview.tsx): Example usage
 - [Shimmer Button Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/shimmer-button-demo.tsx): Example usage
+- [Slide Swap Button Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/slide-swap-button-demo.tsx): Example usage
 - [Bento Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/bento-demo.tsx): Example usage
 - [Bento Vertical Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/bento-demo-vertical.tsx): Example usage
 - [Number Ticker Demo](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/example/number-ticker-demo.tsx): Example usage
