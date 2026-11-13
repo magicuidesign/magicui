@@ -54,32 +54,76 @@ export function ShowcaseCard({
   )
 }
 
-export function Showcase() {
-  const showcases = showcaseSource.getPages()
+function OverlayCard({ title, image, href, affiliation }: ShowcaseCardProps) {
+  const isExternal = isExternalHref(href)
   return (
-    <section id="showcase" className="container py-10 md:py-14">
-      <h2 className="text-foreground mb-2 text-center text-3xl leading-[1.2] font-semibold tracking-tighter text-balance md:text-4xl lg:text-5xl">
-        Showcase
-      </h2>
-      <h3 className="text-foreground/80 mx-auto mb-8 text-center text-lg font-medium tracking-tight text-balance">
-        Companies choose Magic UI to build their landing pages.
-      </h3>
-      <div className="relative flex flex-col">
-        <Marquee className="max-w-screen [--duration:90s]">
-          {showcases
-            .filter((showcase) => showcase.data.featured)
-            .map((showcase, idx) => (
-              <ShowcaseCard
-                key={idx}
-                href={showcase.data.href ?? showcase.url}
-                title={showcase.data.title ?? ""}
-                affiliation={showcase.data.affiliation ?? ""}
-                image={showcase.data.image ?? ""}
-              />
-            ))}
+    <Link
+      href={href}
+      prefetch={isExternal ? false : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      target={isExternal ? "_blank" : undefined}
+      className="group relative block h-[200px] w-[320px] overflow-hidden rounded-xl border"
+    >
+      <Image
+        src={image}
+        alt={title}
+        width={480}
+        height={300}
+        className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+      />
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 to-transparent p-3 pt-10 text-white">
+        <span className="truncate text-sm font-semibold">{title}</span>
+        <span className="max-w-[55%] truncate text-[11px] text-white/70">
+          {affiliation}
+        </span>
+      </div>
+    </Link>
+  )
+}
+
+export function Showcase() {
+  const items: ShowcaseCardProps[] = showcaseSource
+    .getPages()
+    .filter((showcase) => showcase.data.featured)
+    .map((showcase) => ({
+      title: showcase.data.title ?? "",
+      image: showcase.data.image ?? "",
+      href: showcase.data.href ?? showcase.url,
+      affiliation: showcase.data.affiliation ?? "",
+    }))
+  const half = Math.ceil(items.length / 2)
+  return (
+    <section id="showcase" className="py-10 md:py-14">
+      <div className="container mb-8 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 className="text-foreground text-3xl leading-[1.2] font-semibold tracking-tighter md:text-4xl">
+            Showcase
+          </h2>
+          <p className="text-muted-foreground mt-1 text-base tracking-tight">
+            Real sites built with Magic UI.
+          </p>
+        </div>
+        <Link
+          href="/showcase"
+          className="text-foreground/80 hover:text-foreground group inline-flex items-center gap-1 text-sm font-medium"
+        >
+          View all showcase
+          <ChevronRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+      </div>
+      <div className="relative flex flex-col gap-4">
+        <Marquee pauseOnHover className="[--duration:70s]">
+          {items.slice(0, half).map((item) => (
+            <OverlayCard key={item.href} {...item} />
+          ))}
         </Marquee>
-        <div className="from-background pointer-events-none absolute inset-y-0 left-0 h-full w-1/12 bg-linear-to-r"></div>
-        <div className="from-background pointer-events-none absolute inset-y-0 right-0 h-full w-1/12 bg-linear-to-l"></div>
+        <Marquee pauseOnHover reverse className="[--duration:70s]">
+          {items.slice(half).map((item) => (
+            <OverlayCard key={item.href} {...item} />
+          ))}
+        </Marquee>
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 hidden w-1/12 bg-linear-to-r md:block" />
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 hidden w-1/12 bg-linear-to-l md:block" />
       </div>
     </section>
   )
