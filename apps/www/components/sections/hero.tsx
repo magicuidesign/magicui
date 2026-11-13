@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { TechStack } from "@/components/tech-stack"
+import { DitherField } from "@/registry/magicui/dither-field"
 
 export function Hero() {
   const pages = source.getPages() as Array<{
@@ -24,8 +25,21 @@ export function Hero() {
 
   return (
     <section id="hero">
-      <div className="relative h-full overflow-hidden py-5 md:py-14">
-        <div className="z-10 flex flex-col">
+      <div className="relative isolate h-full overflow-hidden py-5 md:py-14">
+        <div className="absolute inset-0 -z-10 mask-[linear-gradient(to_bottom,black_70%,transparent)]">
+          <DitherField
+            pattern="clouds"
+            intensity={0.7}
+            color={[
+              "var(--dither-low)",
+              "var(--dither-mid)",
+              "var(--dither-high)",
+            ]}
+            className="bg-background absolute inset-0 [--dither-high:#171717] [--dither-low:#e5e5e5] [--dither-mid:#737373] dark:[--dither-high:#a3a3a3] dark:[--dither-low:#171717] dark:[--dither-mid:#525252]"
+          />
+          <div className="animate-rainbow pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2),var(--color-1))] bg-size-[200%] mix-blend-screen [--speed:8s] motion-reduce:animate-none dark:mix-blend-multiply" />
+        </div>
+        <div className="relative z-10 flex flex-col">
           <div className="mt-10 grid grid-cols-1 md:mt-20">
             <div className="flex flex-col items-start gap-6 px-7 pb-8 text-center md:items-center md:px-10">
               <Link
