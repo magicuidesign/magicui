@@ -67,8 +67,8 @@ function OverlayCard({ title, image, href, affiliation }: ShowcaseCardProps) {
       <Image
         src={image}
         alt={title}
-        width={480}
-        height={300}
+        width={320}
+        height={200}
         className="size-full object-cover object-top transition-transform duration-500 group-hover/card:scale-105"
       />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 to-transparent p-3 pt-10 text-white">
