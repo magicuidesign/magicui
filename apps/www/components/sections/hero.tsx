@@ -69,16 +69,16 @@ export function Hero() {
                 </h1>
               </div>
 
-              <p className="text-primary max-w-xl text-left text-base tracking-tight text-balance md:text-center md:text-lg">
+              <p className="text-primary max-w-xl text-left text-base font-medium tracking-tight text-balance md:text-center md:text-xl">
                 150+ free and open-source animated components and effects built
-                with <b className="font-[550] dark:font-[580]">React</b>,{" "}
-                <b className="font-[550] dark:font-[580]">Typescript</b>,{" "}
-                <b className="font-[550] dark:font-[580]">Tailwind CSS</b>, and{" "}
-                <b className="font-[550] dark:font-[580]">Motion</b>
+                with <b className="font-semibold">React</b>,{" "}
+                <b className="font-semibold">Typescript</b>,{" "}
+                <b className="font-semibold">Tailwind CSS</b>, and{" "}
+                <b className="font-semibold">Motion</b>
                 .
                 <br />
-                Perfect companion for{" "}
-                <b className="font-[550] dark:font-[580]">shadcn/ui</b>.
+                Perfect companion for <b className="font-semibold">shadcn/ui</b>
+                .
               </p>
 
               <div className="flex w-full flex-col gap-4 gap-y-2 md:mx-auto md:max-w-xs md:flex-row md:justify-center">
