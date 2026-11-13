@@ -44,4 +44,3 @@ next-env.d.ts
 
 # turbo cache
 .turbo
-.codegraph/
