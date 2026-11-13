@@ -5,35 +5,22 @@ import { useState } from "react"
 import Image from "next/image"
 import { motion } from "motion/react"
 
-const YOUTUBE_THUMBNAIL_BASE_URL = "https://img.youtube.com/vi"
-const VIDEO_EMBEDS = [
-  "https://www.youtube.com/embed/UGm8djxwC5s",
-  "https://www.youtube.com/embed/qh3NGpYRG3I",
-  "https://www.youtube.com/embed/AkN6xJcnVYs",
-  "https://www.youtube.com/embed/hlSu_ldrbQw",
-  "https://www.youtube.com/embed/ZYvvTehpA5I",
-] as const
+const videoIds = [
+  "UGm8djxwC5s",
+  "qh3NGpYRG3I",
+  "AkN6xJcnVYs",
+  "hlSu_ldrbQw",
+  "ZYvvTehpA5I",
+]
 
-function extractVideoId(url: string) {
-  try {
-    const parsed = new URL(url)
-    const pathnameParts = parsed.pathname.split("/")
-    const lastSegment = pathnameParts.at(-1)
-    if (!lastSegment) {
-      return ""
-    }
-    return lastSegment.split("?").at(0) ?? ""
-  } catch {
-    return ""
+function tile(index: number) {
+  if (index === 0) {
+    return { span: "md:col-span-4 md:row-span-2 md:aspect-auto", width: "66vw" }
   }
-}
-
-function buildEmbedSrc(url: string, shouldAutoplay: boolean) {
-  if (!shouldAutoplay) {
-    return url
+  if (index <= 2) {
+    return { span: "md:col-span-2", width: "33vw" }
   }
-
-  return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`
+  return { span: "md:col-span-3", width: "50vw" }
 }
 
 function PlayIcon(props: SVGProps<SVGSVGElement>) {
@@ -56,31 +43,23 @@ export function VideoTestimonials() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   return (
-    <section
-      id="video-testimonials"
-      className="container mx-auto py-10 md:py-14"
-    >
-      <h2 className="text-foreground mb-10 text-center text-3xl leading-[1.2] font-semibold tracking-tighter text-balance md:text-4xl lg:text-5xl">
-        Featured on YouTube
-      </h2>
-      <div className="grid auto-rows-[280px] grid-cols-1 gap-4 md:auto-rows-[300px] md:grid-cols-6 md:gap-6 lg:auto-rows-[320px]">
-        {VIDEO_EMBEDS.map((embedUrl, index) => {
-          const videoId = extractVideoId(embedUrl)
+    <section id="video-testimonials" className="py-10 md:py-14">
+      <div className="container mb-8">
+        <h2 className="text-foreground text-3xl leading-[1.2] font-semibold tracking-tighter md:text-4xl">
+          Featured on YouTube
+        </h2>
+        <p className="text-muted-foreground mt-1 text-base tracking-tight">
+          Creators building with Magic UI.
+        </p>
+      </div>
+      <div className="container grid grid-cols-1 gap-4 md:grid-cols-6 md:gap-6">
+        {videoIds.map((id, index) => {
           const isActive = activeIndex === index
-          const thumbnailSrc = videoId
-            ? `${YOUTUBE_THUMBNAIL_BASE_URL}/${videoId}/hqdefault.jpg`
-            : undefined
-
-          const columnClasses =
-            index === 0
-              ? "md:col-span-4 md:row-span-2"
-              : index === 1 || index === 2
-                ? "md:col-span-2 md:row-span-1"
-                : "md:col-span-3 md:row-span-1"
+          const { span, width } = tile(index)
 
           return (
             <motion.button
-              key={embedUrl}
+              key={id}
               type="button"
               aria-pressed={isActive}
               aria-label={`Play testimonial ${index + 1}`}
@@ -93,35 +72,29 @@ export function VideoTestimonials() {
                   setActiveIndex(index)
                 }
               }}
-              className={`group bg-card focus-visible:outline-primary border-border hover:border-border/80 relative cursor-pointer overflow-hidden rounded-xl border transition-[border-color,transform] duration-200 ease-in-out focus-visible:outline focus-visible:outline-offset-2 ${columnClasses}`}
+              className={`group bg-card focus-visible:outline-primary border-border hover:border-border/80 relative aspect-video cursor-pointer overflow-hidden rounded-xl border transition-[border-color,transform] duration-200 ease-in-out focus-visible:outline focus-visible:outline-offset-2 ${span}`}
               whileHover={{ scale: 1.01 }}
             >
               {!isActive && (
                 <>
-                  {thumbnailSrc ? (
-                    <Image
-                      fill
-                      priority={index === 0}
-                      src={thumbnailSrc}
-                      alt={`Preview still for testimonial ${index + 1}`}
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    />
-                  ) : (
-                    <span className="bg-muted text-muted-foreground flex h-full w-full items-center justify-center">
-                      Video preview unavailable
-                    </span>
-                  )}
+                  <Image
+                    fill
+                    priority={index === 0}
+                    src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+                    alt=""
+                    className="object-cover"
+                    sizes={`(min-width: 768px) ${width}, 100vw`}
+                  />
                   <div className="bg-card/5 pointer-events-none absolute inset-0 z-10 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <span className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-                    <PlayIcon className="h-20 w-20 drop-shadow-xl transition-transform duration-200 group-hover:scale-[1.08]" />
+                    <PlayIcon className="size-14 drop-shadow-xl transition-transform duration-200 group-hover:scale-[1.08] lg:size-20" />
                   </span>
                 </>
               )}
               {isActive && (
                 <iframe
-                  src={buildEmbedSrc(embedUrl, true)}
+                  src={`https://www.youtube.com/embed/${id}?autoplay=1`}
                   title={`YouTube testimonial ${index + 1}`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
