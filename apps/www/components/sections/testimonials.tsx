@@ -119,11 +119,7 @@ async function Stats() {
           posts from people building with Magic UI.
         </p>
       </div>
-      <AvatarCircles
-        className="relative"
-        avatarUrls={avatars}
-        numPeople={allTweets.length - avatars.length}
-      />
+      <AvatarCircles className="relative" avatarUrls={avatars} />
     </div>
   )
 }
