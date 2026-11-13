@@ -65,11 +65,11 @@ const allTweets = [
 
 function Tweet({ id, className }: { id: string; className?: string }) {
   return (
-    <div className={cn("group/tweet relative", className)}>
+    <div className={cn("group/tweet relative flex grow flex-col", className)}>
       <TweetCard
         id={id}
         logo="x"
-        className="border-border bg-card group-hover/tweet:border-foreground/30 max-w-none rounded-xl border transition-colors [&_a]:relative [&_a]:z-20 [&_video]:max-h-64 [&_video]:w-full [&_video]:object-cover"
+        className="border-border bg-card group-hover/tweet:border-foreground/30 max-w-none grow rounded-xl border transition-colors [&_a]:relative [&_a]:z-20 [&_video]:max-h-64 [&_video]:w-full [&_video]:object-cover"
       />
       <a
         data-card-link
@@ -105,7 +105,7 @@ async function Stats() {
       : []
   )
   return (
-    <div className="bg-card relative flex flex-col justify-between gap-6 overflow-hidden rounded-xl border p-6">
+    <div className="bg-card relative flex grow flex-col justify-between gap-6 overflow-hidden rounded-xl border p-6">
       <DotPattern
         width={16}
         height={16}
@@ -160,7 +160,7 @@ export function Testimonials() {
           ))}
         </div>
         <div className="flex flex-col gap-4">
-          <div className="relative h-fit overflow-hidden rounded-xl">
+          <div className="relative flex grow flex-col overflow-hidden rounded-xl">
             <Tweet id={featured} />
             <BorderBeam size={180} duration={8} />
           </div>
