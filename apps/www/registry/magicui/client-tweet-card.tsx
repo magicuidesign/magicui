@@ -6,6 +6,7 @@ import {
   MagicTweet,
   TweetNotFound,
   TweetSkeleton,
+  type TweetLogo,
 } from "@/registry/magicui/tweet-card"
 
 export const ClientTweetCard = ({
@@ -16,7 +17,7 @@ export const ClientTweetCard = ({
   fetchOptions,
   onError,
   ...props
-}: TweetProps & { className?: string }) => {
+}: TweetProps & { className?: string; logo?: TweetLogo }) => {
   const { data, error, isLoading } = useTweet(id, apiUrl, fetchOptions)
 
   if (isLoading) return fallback

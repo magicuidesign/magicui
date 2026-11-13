@@ -79,6 +79,12 @@ export default function App() {
 }
 ```
 
+To show the X logo instead of the Twitter logo:
+
+```tsx showLineNumbers
+<TweetCard id="1441032681968212480" logo="x" />
+```
+
 ## Examples
 
 ### Tweet Card With Image Carousel
@@ -93,15 +99,17 @@ export default function App() {
 
 ### ClientTweetCard
 
-| Prop | Type     | Default | Description                     |
-| ---- | -------- | ------- | ------------------------------- |
-| `id` | `string` | `-`     | The id of the tweet to display. |
+| Prop   | Type               | Default     | Description                             |
+| ------ | ------------------ | ----------- | --------------------------------------- |
+| `id`   | `string`           | `-`         | The id of the tweet to display.         |
+| `logo` | `"twitter" \| "x"` | `"twitter"` | The logo shown in the top right corner. |
 
 ### TweetCard
 
-| Prop | Type     | Default | Description                     |
-| ---- | -------- | ------- | ------------------------------- |
-| `id` | `string` | `-`     | The id of the tweet to display. |
+| Prop   | Type               | Default     | Description                             |
+| ------ | ------------------ | ----------- | --------------------------------------- |
+| `id`   | `string`           | `-`         | The id of the tweet to display.         |
+| `logo` | `"twitter" \| "x"` | `"twitter"` | The logo shown in the top right corner. |
 
 ## Credits
 

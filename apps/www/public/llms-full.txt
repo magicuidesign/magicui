@@ -4778,6 +4778,7 @@ import {
   MagicTweet,
   TweetNotFound,
   TweetSkeleton,
+  type TweetLogo,
 } from "@/registry/magicui/tweet-card"
 
 export const ClientTweetCard = ({
@@ -4788,7 +4789,7 @@ export const ClientTweetCard = ({
   fetchOptions,
   onError,
   ...props
-}: TweetProps & { className?: string }) => {
+}: TweetProps & { className?: string; logo?: TweetLogo }) => {
   const { data, error, isLoading } = useTweet(id, apiUrl, fetchOptions)
 
   if (isLoading) return fallback
@@ -21032,6 +21033,24 @@ const Twitter = ({ className, ...props }: TwitterIconProps) => (
   </svg>
 )
 
+const X = ({ className, ...props }: TwitterIconProps) => (
+  <svg
+    fill="currentColor"
+    viewBox="-2 -2 28 28"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path>
+  </svg>
+)
+
+const logos = { twitter: Twitter, x: X }
+
+export type TweetLogo = keyof typeof logos
+
 const Verified = ({ className, ...props }: TwitterIconProps) => (
   <svg
     aria-label="Verified Account"
@@ -21099,55 +21118,64 @@ export const TweetNotFound = ({
   </div>
 )
 
-export const TweetHeader = ({ tweet }: { tweet: EnrichedTweet }) => (
-  <div className="flex flex-row items-start justify-between tracking-normal">
-    <div className="flex items-center space-x-3">
-      <a
-        href={tweet.user.url}
-        target="_blank"
-        rel="noreferrer"
-        className="shrink-0"
-      >
-        <img
-          title={`Profile picture of ${tweet.user.name}`}
-          alt={tweet.user.screen_name}
-          height={48}
-          width={48}
-          src={tweet.user.profile_image_url_https}
-          className="border-border/50 overflow-hidden rounded-full border"
-        />
-      </a>
-      <div className="flex flex-col gap-0.5">
+export const TweetHeader = ({
+  tweet,
+  logo = "twitter",
+}: {
+  tweet: EnrichedTweet
+  logo?: TweetLogo
+}) => {
+  const Logo = logos[logo]
+  return (
+    <div className="flex flex-row items-start justify-between tracking-normal">
+      <div className="flex items-center space-x-3">
         <a
           href={tweet.user.url}
           target="_blank"
           rel="noreferrer"
-          className="text-foreground flex items-center font-medium whitespace-nowrap transition-opacity hover:opacity-80"
+          className="shrink-0"
         >
-          {truncate(tweet.user.name, 20)}
-          {tweet.user.verified ||
-            (tweet.user.is_blue_verified && (
-              <Verified className="ml-1 inline size-4 text-blue-500" />
-            ))}
+          <img
+            title={`Profile picture of ${tweet.user.name}`}
+            alt={tweet.user.screen_name}
+            height={48}
+            width={48}
+            src={tweet.user.profile_image_url_https}
+            className="border-border/50 overflow-hidden rounded-full border"
+          />
         </a>
-        <div className="flex items-center space-x-1">
+        <div className="flex flex-col gap-0.5">
           <a
             href={tweet.user.url}
             target="_blank"
             rel="noreferrer"
-            className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+            className="text-foreground flex items-center font-medium whitespace-nowrap transition-opacity hover:opacity-80"
           >
-            @{truncate(tweet.user.screen_name, 16)}
+            {truncate(tweet.user.name, 20)}
+            {tweet.user.verified ||
+              (tweet.user.is_blue_verified && (
+                <Verified className="ml-1 inline size-4 text-blue-500" />
+              ))}
           </a>
+          <div className="flex items-center space-x-1">
+            <a
+              href={tweet.user.url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+            >
+              @{truncate(tweet.user.screen_name, 16)}
+            </a>
+          </div>
         </div>
       </div>
+      <a href={tweet.url} target="_blank" rel="noreferrer">
+        <span className="sr-only">Link to tweet</span>
+        <Logo className="text-muted-foreground hover:text-foreground size-5 items-start transition-all ease-in-out hover:scale-105" />
+      </a>
     </div>
-    <a href={tweet.url} target="_blank" rel="noreferrer">
-      <span className="sr-only">Link to tweet</span>
-      <Twitter className="text-muted-foreground hover:text-foreground size-5 items-start transition-all ease-in-out hover:scale-105" />
-    </a>
-  </div>
-)
+  )
+}
 
 export const TweetBody = ({ tweet }: { tweet: EnrichedTweet }) => (
   <div className="text-[15px] leading-relaxed tracking-normal wrap-break-word">
@@ -21249,10 +21277,12 @@ const withSafeEntities = <T extends { entities?: Tweet["entities"] }>(
 
 export const MagicTweet = ({
   tweet,
+  logo,
   className,
   ...props
 }: {
   tweet: Tweet
+  logo?: TweetLogo
   className?: string
 }) => {
   const safeTweet: Tweet = {
@@ -21270,7 +21300,7 @@ export const MagicTweet = ({
       )}
       {...props}
     >
-      <TweetHeader tweet={enrichedTweet} />
+      <TweetHeader tweet={enrichedTweet} logo={logo} />
       <TweetBody tweet={enrichedTweet} />
       <TweetMedia tweet={enrichedTweet} />
     </div>
@@ -21285,9 +21315,11 @@ export const TweetCard = async ({
   components,
   fallback = <TweetSkeleton />,
   onError,
+  logo,
   ...props
 }: TweetProps & {
   className?: string
+  logo?: TweetLogo
 }) => {
   const tweet = id
     ? await getTweet(id).catch((err) => {
@@ -21306,7 +21338,7 @@ export const TweetCard = async ({
 
   return (
     <Suspense fallback={fallback}>
-      <MagicTweet tweet={tweet} {...props} />
+      <MagicTweet tweet={tweet} logo={logo} {...props} />
     </Suspense>
   )
 }
