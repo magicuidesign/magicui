@@ -79,7 +79,6 @@ export function VideoTestimonials() {
                 <>
                   <Image
                     fill
-                    priority={index === 0}
                     src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
                     alt=""
                     className="object-cover"
