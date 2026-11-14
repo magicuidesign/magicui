@@ -24,6 +24,10 @@ const allTweets = [
   "https://x.com/avansteenweghen/status/1783271768138146086",
   "https://x.com/mckaywrigley/status/1831185841051590857",
   "https://x.com/aidenybai/status/1793403298843869672",
+  "https://x.com/faris_shaikh247/status/1989028526478315611",
+  "https://x.com/xhxaidi/status/2083772906820256135",
+  "https://x.com/iagooar/status/1969617898202415156",
+  "https://x.com/ChiragAsarpota/status/1989652816680612291",
   "https://x.com/phuctm97/status/1793443202592288914",
   "https://x.com/RayFernando1337/status/1821208623638573211",
   "https://x.com/SullyOmarr/status/1668506160620769280",
@@ -92,6 +96,8 @@ function Tweet({ id, className }: { id: string; className?: string }) {
   )
 }
 
+const xMentions = 1300
+
 async function Stats() {
   const tweets = await Promise.all(
     allTweets.slice(0, 5).map((id) => getTweet(id).catch(() => undefined))
@@ -116,10 +122,10 @@ async function Stats() {
       />
       <div className="relative">
         <div className="text-foreground text-6xl font-semibold tracking-tighter">
-          <NumberTicker value={allTweets.length} />+
+          <NumberTicker value={xMentions} />+
         </div>
         <p className="text-muted-foreground mt-2 text-sm">
-          posts from people building with Magic UI.
+          posts about Magic UI on X.
         </p>
       </div>
       <AvatarCircles className="relative" avatarUrls={avatars} />
