@@ -47,7 +47,7 @@
     "fumadocs-core": "^16.19.0",
     "fumadocs-mdx": "^15.6.0",
     "geist": "^1.9.2",
-    "jotai": "^2.14.0",
+    "jotai": "^3.0.2",
     "lucide-react": "^0.544.0",
     "masonic": "^4.1.0",
     "motion": "^12.23.12",
