@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dither-shader-demo",
+  "title": "Dither Shader Demo",
+  "description": "Your own GLSL field, warped ribbons in the primary color, through the `shader` prop.",
+  "registryDependencies": [
+    "@magicui/dither"
+  ],
+  "files": [
+    {
+      "path": "registry/example/dither-shader-demo.tsx",
+      "content": "import { Dither } from \"@/registry/magicui/dither\"\n\nconst ribbons = `\nfloat field(vec2 uv, float t) {\n  vec2 p = vec2(uv.x * uAspect, uv.y);\n  float warp = fbm(p * 2.0 + vec2(t * 0.1, 0.0)) * 3.0;\n  float ribbon = 0.5 + 0.5 * sin((p.x + p.y) * 10.0 + warp - t);\n  return ribbon * ribbon * smoothstep(0.0, 0.6, uv.y);\n}`\n\nexport default function DitherShaderDemo() {\n  return (\n    <div className=\"bg-background relative h-72 w-full overflow-hidden rounded-lg border md:h-[400px]\">\n      <Dither colors={[\"transparent\", \"var(--primary)\"]} shader={ribbons} />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ],
+  "type": "registry:example"
+}

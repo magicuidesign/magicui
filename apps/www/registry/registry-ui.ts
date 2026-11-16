@@ -1327,14 +1327,14 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "dither-field",
+    name: "dither",
     type: "registry:ui",
-    title: "Dither Field",
+    title: "Dither",
     description:
-      "An animated WebGL2 background of Bayer-dithered square dots. The dots follow a light pattern, an image or a video, take one color or a three-stop ramp, and brighten under the pointer.",
+      "An animated WebGL2 layer of Bayer-dithered square dots that fills its parent. Pick one of 17 patterns, dither an image or a video, or write your own GLSL field. Set `colors` to one color or a list of stops, and `interactive` to brighten the dots under the pointer.",
     files: [
       {
-        path: "magicui/dither-field.tsx",
+        path: "magicui/dither.tsx",
         type: "registry:ui",
       },
     ],
