@@ -80,7 +80,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.36.0",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "16.4.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "mdast-util-toc": "^7.1.0",
