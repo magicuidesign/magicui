@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/config-conventional": "^21.2.4",
     "js-yaml": "^4.1.0",
     "lefthook": "^1.13.4",
     "turbo": "^2.11.10",
