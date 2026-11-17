@@ -20,7 +20,6 @@ const eslintConfig = defineConfig([
       "react-hooks/purity": "warn",
       "react-hooks/refs": "warn",
       "react-hooks/static-components": "warn",
-      "react-hooks/preserve-manual-memoization": "warn",
     },
   },
   {
