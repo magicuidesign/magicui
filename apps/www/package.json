@@ -70,7 +70,6 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@shikijs/transformers": "^4.6.0",
     "@tailwindcss/typography": "^0.5.16",
@@ -80,7 +79,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.36.0",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "16.4.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "mdast-util-toc": "^7.1.0",
