@@ -17,7 +17,6 @@ const eslintConfig = defineConfig([
     rules: {
       "@next/next/no-duplicate-head": "off",
       "react-hooks/set-state-in-effect": "warn",
-      "react-hooks/refs": "warn",
     },
   },
   {
