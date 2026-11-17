@@ -19,7 +19,6 @@ const eslintConfig = defineConfig([
       "react-hooks/set-state-in-effect": "warn",
       "react-hooks/purity": "warn",
       "react-hooks/refs": "warn",
-      "react-hooks/static-components": "warn",
     },
   },
   {

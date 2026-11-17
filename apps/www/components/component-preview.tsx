@@ -1,8 +1,8 @@
 import * as React from "react"
 
-import { getRegistryComponent } from "@/lib/registry"
 import { ComponentPreviewTabs } from "@/components/component-preview-tabs"
 import { ComponentSource } from "@/components/component-source"
+import { Index } from "@/registry/__index__"
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -18,7 +18,7 @@ export function ComponentPreview({
   hideCode = false,
   ...props
 }: ComponentPreviewProps) {
-  const Component = getRegistryComponent(name)
+  const Component = Index[name]?.component
 
   if (!Component) {
     return (

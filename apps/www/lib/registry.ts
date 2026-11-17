@@ -13,10 +13,6 @@ interface RegistryItemFile {
   target?: string
 }
 
-export function getRegistryComponent(name: string) {
-  return Index[name]?.component
-}
-
 interface RegistryItemFileWithContent extends RegistryItemFile {
   content: string
 }
