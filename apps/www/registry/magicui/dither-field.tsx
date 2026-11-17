@@ -496,7 +496,9 @@ export function DitherField({
   const [contextKey, setContextKey] = useState(0)
   // Read every frame, so changing them never rebuilds the GL state.
   const live = useRef({ color, intensity, speed, fps, interactive })
-  live.current = { color, intensity, speed, fps, interactive }
+  useEffect(() => {
+    live.current = { color, intensity, speed, fps, interactive }
+  })
   const repaint = useRef(() => {})
   // Kept across rebuilds, so a field that scrolls back into view resumes.
   const time = useRef(10)

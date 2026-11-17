@@ -143,29 +143,15 @@ export function DiaTextReveal({
   const prefersReducedMotion = useReducedMotion()
 
   const spanRef = useRef<HTMLSpanElement>(null)
-  const optsRef = useRef({
-    colors,
-    textColor,
-    duration,
-    delay,
-    repeat,
-    repeatDelay,
-    texts,
+  const opts = { duration, delay, repeat, repeatDelay, texts }
+  const optsRef = useRef(opts)
+  useEffect(() => {
+    optsRef.current = opts
   })
-  optsRef.current = {
-    colors,
-    textColor,
-    duration,
-    delay,
-    repeat,
-    repeatDelay,
-    texts,
-  }
 
   const indexRef = useRef(0)
   const hasPlayedRef = useRef(false)
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
-  const playRef = useRef<() => void>(null!)
   const stopRef = useRef<(() => void) | null>(null)
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -174,7 +160,7 @@ export function DiaTextReveal({
   const sweepPos = useMotionValue(SWEEP_START)
 
   const backgroundImage = useTransform(sweepPos, (pos) =>
-    buildGradient(pos, optsRef.current.colors, optsRef.current.textColor)
+    buildGradient(pos, colors, textColor)
   )
 
   const isInView = useInView(spanRef, { once, amount: 0.1 })
@@ -185,29 +171,6 @@ export function DiaTextReveal({
     setMeasuredWidths(measureWidths(el, texts))
   }, [Array.isArray(text) ? text.join("\0") : text])
 
-  playRef.current = () => {
-    const { duration, delay, repeat, repeatDelay, texts } = optsRef.current
-
-    sweepPos.set(SWEEP_START)
-
-    const controls = animate(sweepPos, SWEEP_END, {
-      duration,
-      delay,
-      ease: sweepEase,
-      onComplete() {
-        if (!repeat) return
-        timerRef.current = setTimeout(() => {
-          const next = (indexRef.current + 1) % texts.length
-          indexRef.current = next
-          setActiveIndex(next)
-          playRef.current()
-        }, repeatDelay * 1000)
-      },
-    })
-
-    stopRef.current = () => controls.stop()
-  }
-
   useEffect(() => {
     if (prefersReducedMotion) {
       sweepPos.set(SWEEP_END)
@@ -216,7 +179,30 @@ export function DiaTextReveal({
     if (startOnView && !isInView) return
     if (once && hasPlayedRef.current) return
     hasPlayedRef.current = true
-    playRef.current()
+
+    const play = () => {
+      const { duration, delay, repeat, repeatDelay, texts } = optsRef.current
+
+      sweepPos.set(SWEEP_START)
+
+      const controls = animate(sweepPos, SWEEP_END, {
+        duration,
+        delay,
+        ease: sweepEase,
+        onComplete() {
+          if (!repeat) return
+          timerRef.current = setTimeout(() => {
+            const next = (indexRef.current + 1) % texts.length
+            indexRef.current = next
+            setActiveIndex(next)
+            play()
+          }, repeatDelay * 1000)
+        },
+      })
+
+      stopRef.current = () => controls.stop()
+    }
+    play()
 
     return () => {
       stopRef.current?.()
