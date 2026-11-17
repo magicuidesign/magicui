@@ -30,15 +30,8 @@ export function CodeComparison({
 }: CodeComparisonProps) {
   const [highlightedBefore, setHighlightedBefore] = useState("")
   const [highlightedAfter, setHighlightedAfter] = useState("")
-  const [hasLeftFocus, setHasLeftFocus] = useState(false)
-  const [hasRightFocus, setHasRightFocus] = useState(false)
-
-  useEffect(() => {
-    if (highlightedBefore || highlightedAfter) {
-      setHasLeftFocus(highlightedBefore.includes('class="line focused"'))
-      setHasRightFocus(highlightedAfter.includes('class="line focused"'))
-    }
-  }, [highlightedBefore, highlightedAfter])
+  const hasLeftFocus = highlightedBefore.includes('class="line focused"')
+  const hasRightFocus = highlightedAfter.includes('class="line focused"')
 
   useEffect(() => {
     async function highlightCode() {

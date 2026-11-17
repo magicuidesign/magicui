@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { Pause, Play } from "lucide-react"
 import { renderToString } from "react-dom/server"
 
@@ -31,7 +31,6 @@ export function IconCloud({
   showControl = true,
 }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [iconPositions, setIconPositions] = useState<Icon[]>([])
   const [isDragging, setIsDragging] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
@@ -118,7 +117,7 @@ export function IconCloud({
   }, [icons, images])
 
   // Generate initial icon positions on a sphere
-  useEffect(() => {
+  const iconPositions = useMemo(() => {
     const items = icons ?? images ?? []
     const newIcons: Icon[] = []
     const numIcons = items.length || 20
@@ -144,7 +143,7 @@ export function IconCloud({
         id: i,
       })
     }
-    setIconPositions(newIcons)
+    return newIcons
   }, [icons, images])
 
   // Handle mouse events
