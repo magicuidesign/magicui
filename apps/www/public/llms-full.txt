@@ -4877,15 +4877,8 @@ export function CodeComparison({
 }: CodeComparisonProps) {
   const [highlightedBefore, setHighlightedBefore] = useState("")
   const [highlightedAfter, setHighlightedAfter] = useState("")
-  const [hasLeftFocus, setHasLeftFocus] = useState(false)
-  const [hasRightFocus, setHasRightFocus] = useState(false)
-
-  useEffect(() => {
-    if (highlightedBefore || highlightedAfter) {
-      setHasLeftFocus(highlightedBefore.includes('class="line focused"'))
-      setHasRightFocus(highlightedAfter.includes('class="line focused"'))
-    }
-  }, [highlightedBefore, highlightedAfter])
+  const hasLeftFocus = highlightedBefore.includes('class="line focused"')
+  const hasRightFocus = highlightedAfter.includes('class="line focused"')
 
   useEffect(() => {
     async function highlightCode() {
@@ -10608,21 +10601,16 @@ Title: Glyph Matrix Demo
 --- file: example/glyph-matrix-demo.tsx ---
 "use client"
 
-import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 
 import { GlyphMatrix } from "@/registry/magicui/glyph-matrix"
 
 export default function GlyphMatrixDemo() {
   const { resolvedTheme } = useTheme()
-  // Start neutral so the first frame is visible in both themes, then adopt
-  // the resolved theme color once it's known.
-  const [color, setColor] = useState("#6B7280")
-
-  useEffect(() => {
-    if (!resolvedTheme) return
-    setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000")
-  }, [resolvedTheme])
+  const themeColor = resolvedTheme === "dark" ? "#ffffff" : "#000000"
+  // Stay neutral until the theme resolves so the first frame is visible in
+  // both themes.
+  const color = resolvedTheme ? themeColor : "#6B7280"
 
   return (
     <div className="border-border bg-background relative h-[400px] w-full overflow-hidden rounded-lg border">
@@ -11875,7 +11863,7 @@ Description: An interactive 3D tag cloud component
 --- file: magicui/icon-cloud.tsx ---
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { Pause, Play } from "lucide-react"
 import { renderToString } from "react-dom/server"
 
@@ -11906,7 +11894,6 @@ export function IconCloud({
   showControl = true,
 }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [iconPositions, setIconPositions] = useState<Icon[]>([])
   const [isDragging, setIsDragging] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
@@ -11993,7 +11980,7 @@ export function IconCloud({
   }, [icons, images])
 
   // Generate initial icon positions on a sphere
-  useEffect(() => {
+  const iconPositions = useMemo(() => {
     const items = icons ?? images ?? []
     const newIcons: Icon[] = []
     const numIcons = items.length || 20
@@ -12019,7 +12006,7 @@ export function IconCloud({
         id: i,
       })
     }
-    setIconPositions(newIcons)
+    return newIcons
   }, [icons, images])
 
   // Handle mouse events
@@ -15827,18 +15814,13 @@ Title: Particles Demo
 --- file: example/particles-demo.tsx ---
 "use client"
 
-import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 
 import { Particles } from "@/registry/magicui/particles"
 
 export default function ParticlesDemo() {
   const { resolvedTheme } = useTheme()
-  const [color, setColor] = useState("#ffffff")
-
-  useEffect(() => {
-    setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000")
-  }, [resolvedTheme])
+  const color = resolvedTheme === "dark" ? "#ffffff" : "#000000"
 
   return (
     <div className="bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border">
@@ -21522,12 +21504,14 @@ export function TypingAnimation({
     [words, children]
   )
 
-  useEffect(() => {
+  const [prevSourceKey, setPrevSourceKey] = useState(animationSourceKey)
+  if (prevSourceKey !== animationSourceKey) {
+    setPrevSourceKey(animationSourceKey)
     setDisplayedText("")
     setCurrentWordIndex(0)
     setCurrentCharIndex(0)
     setPhase("typing")
-  }, [animationSourceKey])
+  }
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout> | null = null

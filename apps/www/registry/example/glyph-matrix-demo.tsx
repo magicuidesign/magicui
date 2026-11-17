@@ -1,20 +1,15 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 
 import { GlyphMatrix } from "@/registry/magicui/glyph-matrix"
 
 export default function GlyphMatrixDemo() {
   const { resolvedTheme } = useTheme()
-  // Start neutral so the first frame is visible in both themes, then adopt
-  // the resolved theme color once it's known.
-  const [color, setColor] = useState("#6B7280")
-
-  useEffect(() => {
-    if (!resolvedTheme) return
-    setColor(resolvedTheme === "dark" ? "#ffffff" : "#000000")
-  }, [resolvedTheme])
+  const themeColor = resolvedTheme === "dark" ? "#ffffff" : "#000000"
+  // Stay neutral until the theme resolves so the first frame is visible in
+  // both themes.
+  const color = resolvedTheme ? themeColor : "#6B7280"
 
   return (
     <div className="border-border bg-background relative h-[400px] w-full overflow-hidden rounded-lg border">
