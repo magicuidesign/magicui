@@ -8119,6 +8119,54 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   [key: string]: unknown
 }
 
+function Dot({
+  cx,
+  cy,
+  r,
+  glow,
+  gradientId,
+}: {
+  cx: number
+  cy: number
+  r: number
+  glow: boolean
+  gradientId: string
+}) {
+  const [timing] = useState(() => ({
+    delay: Math.random() * 5,
+    duration: Math.random() * 3 + 2,
+  }))
+
+  return (
+    <motion.circle
+      cx={cx}
+      cy={cy}
+      r={r}
+      fill={glow ? `url(#${gradientId})` : "currentColor"}
+      initial={glow ? { opacity: 0.4, scale: 1 } : {}}
+      animate={
+        glow
+          ? {
+              opacity: [0.4, 1, 0.4],
+              scale: [1, 1.5, 1],
+            }
+          : {}
+      }
+      transition={
+        glow
+          ? {
+              duration: timing.duration,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: timing.delay,
+              ease: "easeInOut",
+            }
+          : {}
+      }
+    />
+  )
+}
+
 /**
  * DotPattern Component
  *
@@ -8190,8 +8238,6 @@ export function DotPattern({
       return {
         x: col * width + cx + x,
         y: row * height + cy + y,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
       }
     }
   )
@@ -8213,32 +8259,13 @@ export function DotPattern({
         </radialGradient>
       </defs>
       {dots.map((dot) => (
-        <motion.circle
+        <Dot
           key={`${dot.x}-${dot.y}`}
           cx={dot.x}
           cy={dot.y}
           r={cr}
-          fill={glow ? `url(#${id}-gradient)` : "currentColor"}
-          initial={glow ? { opacity: 0.4, scale: 1 } : {}}
-          animate={
-            glow
-              ? {
-                  opacity: [0.4, 1, 0.4],
-                  scale: [1, 1.5, 1],
-                }
-              : {}
-          }
-          transition={
-            glow
-              ? {
-                  duration: dot.duration,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: dot.delay,
-                  ease: "easeInOut",
-                }
-              : {}
-          }
+          glow={glow}
+          gradientId={`${id}-gradient`}
         />
       ))}
     </svg>
@@ -15888,6 +15915,10 @@ export const PixelImage = ({
   const MIN_GRID = 1
   const MAX_GRID = 16
 
+  const [delaySeeds] = useState(() =>
+    Array.from({ length: MAX_GRID * MAX_GRID }, () => Math.random())
+  )
+
   const { rows, cols } = useMemo(() => {
     const isValidGrid = (grid?: Grid) => {
       if (!grid) return false
@@ -15926,13 +15957,13 @@ export const PixelImage = ({
         ${col * (100 / cols)}% ${(row + 1) * (100 / rows)}%
       )`
 
-      const delay = Math.random() * maxAnimationDelay
+      const delay = delaySeeds[index] * maxAnimationDelay
       return {
         clipPath,
         delay,
       }
     })
-  }, [rows, cols, maxAnimationDelay])
+  }, [rows, cols, maxAnimationDelay, delaySeeds])
 
   return (
     <div className="relative h-72 w-72 select-none md:h-96 md:w-96">
@@ -18934,7 +18965,7 @@ export function SmoothCursor({
 }: SmoothCursorProps) {
   const lastMousePos = useRef<Position>({ x: 0, y: 0 })
   const velocity = useRef<Position>({ x: 0, y: 0 })
-  const lastUpdateTime = useRef(Date.now())
+  const lastUpdateTime = useRef(0)
   const previousAngle = useRef(0)
   const accumulatedRotation = useRef(0)
   const [isEnabled, setIsEnabled] = useState(false)
@@ -18952,6 +18983,10 @@ export function SmoothCursor({
     stiffness: 500,
     damping: 35,
   })
+
+  useEffect(() => {
+    lastUpdateTime.current = Date.now()
+  }, [])
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(DESKTOP_POINTER_QUERY)
@@ -21959,7 +21994,12 @@ Description: A card with a time warping background effect.
 --- file: magicui/warp-background.tsx ---
 "use client"
 
-import React, { useCallback, useMemo, type HTMLAttributes } from "react"
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  type HTMLAttributes,
+} from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -21986,8 +22026,8 @@ const Beam = ({
   delay: number
   duration: number
 }) => {
-  const hue = Math.floor(Math.random() * 360)
-  const ar = Math.floor(Math.random() * 10) + 1
+  const [hue] = useState(() => Math.floor(Math.random() * 360))
+  const [ar] = useState(() => Math.floor(Math.random() * 10) + 1)
 
   return (
     <motion.div
