@@ -6150,29 +6150,15 @@ export function DiaTextReveal({
   const prefersReducedMotion = useReducedMotion()
 
   const spanRef = useRef<HTMLSpanElement>(null)
-  const optsRef = useRef({
-    colors,
-    textColor,
-    duration,
-    delay,
-    repeat,
-    repeatDelay,
-    texts,
+  const opts = { duration, delay, repeat, repeatDelay, texts }
+  const optsRef = useRef(opts)
+  useEffect(() => {
+    optsRef.current = opts
   })
-  optsRef.current = {
-    colors,
-    textColor,
-    duration,
-    delay,
-    repeat,
-    repeatDelay,
-    texts,
-  }
 
   const indexRef = useRef(0)
   const hasPlayedRef = useRef(false)
   const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined)
-  const playRef = useRef<() => void>(null!)
   const stopRef = useRef<(() => void) | null>(null)
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -6181,7 +6167,7 @@ export function DiaTextReveal({
   const sweepPos = useMotionValue(SWEEP_START)
 
   const backgroundImage = useTransform(sweepPos, (pos) =>
-    buildGradient(pos, optsRef.current.colors, optsRef.current.textColor)
+    buildGradient(pos, colors, textColor)
   )
 
   const isInView = useInView(spanRef, { once, amount: 0.1 })
@@ -6192,29 +6178,6 @@ export function DiaTextReveal({
     setMeasuredWidths(measureWidths(el, texts))
   }, [Array.isArray(text) ? text.join("\0") : text])
 
-  playRef.current = () => {
-    const { duration, delay, repeat, repeatDelay, texts } = optsRef.current
-
-    sweepPos.set(SWEEP_START)
-
-    const controls = animate(sweepPos, SWEEP_END, {
-      duration,
-      delay,
-      ease: sweepEase,
-      onComplete() {
-        if (!repeat) return
-        timerRef.current = setTimeout(() => {
-          const next = (indexRef.current + 1) % texts.length
-          indexRef.current = next
-          setActiveIndex(next)
-          playRef.current()
-        }, repeatDelay * 1000)
-      },
-    })
-
-    stopRef.current = () => controls.stop()
-  }
-
   useEffect(() => {
     if (prefersReducedMotion) {
       sweepPos.set(SWEEP_END)
@@ -6223,7 +6186,30 @@ export function DiaTextReveal({
     if (startOnView && !isInView) return
     if (once && hasPlayedRef.current) return
     hasPlayedRef.current = true
-    playRef.current()
+
+    const play = () => {
+      const { duration, delay, repeat, repeatDelay, texts } = optsRef.current
+
+      sweepPos.set(SWEEP_START)
+
+      const controls = animate(sweepPos, SWEEP_END, {
+        duration,
+        delay,
+        ease: sweepEase,
+        onComplete() {
+          if (!repeat) return
+          timerRef.current = setTimeout(() => {
+            const next = (indexRef.current + 1) % texts.length
+            indexRef.current = next
+            setActiveIndex(next)
+            play()
+          }, repeatDelay * 1000)
+        },
+      })
+
+      stopRef.current = () => controls.stop()
+    }
+    play()
 
     return () => {
       stopRef.current?.()
@@ -6855,7 +6841,9 @@ export function DitherField({
   const [contextKey, setContextKey] = useState(0)
   // Read every frame, so changing them never rebuilds the GL state.
   const live = useRef({ color, intensity, speed, fps, interactive })
-  live.current = { color, intensity, speed, fps, interactive }
+  useEffect(() => {
+    live.current = { color, intensity, speed, fps, interactive }
+  })
   const repaint = useRef(() => {})
   // Kept across rebuilds, so a field that scrolls back into view resumes.
   const time = useRef(10)
@@ -9668,7 +9656,9 @@ export function Floating3DParticles({
   // Read fresh on every frame, so recolouring (e.g. a theme switch) does not
   // tear down the effect and respawn the whole field.
   const colorRef = React.useRef(color)
-  colorRef.current = color
+  React.useEffect(() => {
+    colorRef.current = color
+  }, [color])
 
   React.useEffect(() => {
     const canvas = canvasRef.current
@@ -15481,6 +15471,7 @@ Description: Particles are a fun way to add some visual flair to your website. T
 
 import React, {
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type ComponentPropsWithoutRef,
@@ -15783,9 +15774,12 @@ export const Particles: React.FC<ParticlesProps> = ({
     rafID.current = window.requestAnimationFrame(animateRef.current)
   }
 
-  initCanvasRef.current = initCanvas
-  onMouseMoveRef.current = onMouseMove
-  animateRef.current = animate
+  // Layout effects run before the passive effects above that call these.
+  useLayoutEffect(() => {
+    initCanvasRef.current = initCanvas
+    onMouseMoveRef.current = onMouseMove
+    animateRef.current = animate
+  })
 
   return (
     <div

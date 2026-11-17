@@ -149,7 +149,9 @@ export function Floating3DParticles({
   // Read fresh on every frame, so recolouring (e.g. a theme switch) does not
   // tear down the effect and respawn the whole field.
   const colorRef = React.useRef(color)
-  colorRef.current = color
+  React.useEffect(() => {
+    colorRef.current = color
+  }, [color])
 
   React.useEffect(() => {
     const canvas = canvasRef.current
