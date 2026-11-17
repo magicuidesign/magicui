@@ -44,6 +44,10 @@ export const PixelImage = ({
   const MIN_GRID = 1
   const MAX_GRID = 16
 
+  const [delaySeeds] = useState(() =>
+    Array.from({ length: MAX_GRID * MAX_GRID }, () => Math.random())
+  )
+
   const { rows, cols } = useMemo(() => {
     const isValidGrid = (grid?: Grid) => {
       if (!grid) return false
@@ -82,13 +86,13 @@ export const PixelImage = ({
         ${col * (100 / cols)}% ${(row + 1) * (100 / rows)}%
       )`
 
-      const delay = Math.random() * maxAnimationDelay
+      const delay = delaySeeds[index] * maxAnimationDelay
       return {
         clipPath,
         delay,
       }
     })
-  }, [rows, cols, maxAnimationDelay])
+  }, [rows, cols, maxAnimationDelay, delaySeeds])
 
   return (
     <div className="relative h-72 w-72 select-none md:h-96 md:w-96">

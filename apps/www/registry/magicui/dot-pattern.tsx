@@ -31,6 +31,54 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   [key: string]: unknown
 }
 
+function Dot({
+  cx,
+  cy,
+  r,
+  glow,
+  gradientId,
+}: {
+  cx: number
+  cy: number
+  r: number
+  glow: boolean
+  gradientId: string
+}) {
+  const [timing] = useState(() => ({
+    delay: Math.random() * 5,
+    duration: Math.random() * 3 + 2,
+  }))
+
+  return (
+    <motion.circle
+      cx={cx}
+      cy={cy}
+      r={r}
+      fill={glow ? `url(#${gradientId})` : "currentColor"}
+      initial={glow ? { opacity: 0.4, scale: 1 } : {}}
+      animate={
+        glow
+          ? {
+              opacity: [0.4, 1, 0.4],
+              scale: [1, 1.5, 1],
+            }
+          : {}
+      }
+      transition={
+        glow
+          ? {
+              duration: timing.duration,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: timing.delay,
+              ease: "easeInOut",
+            }
+          : {}
+      }
+    />
+  )
+}
+
 /**
  * DotPattern Component
  *
@@ -102,8 +150,6 @@ export function DotPattern({
       return {
         x: col * width + cx + x,
         y: row * height + cy + y,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
       }
     }
   )
@@ -125,32 +171,13 @@ export function DotPattern({
         </radialGradient>
       </defs>
       {dots.map((dot) => (
-        <motion.circle
+        <Dot
           key={`${dot.x}-${dot.y}`}
           cx={dot.x}
           cy={dot.y}
           r={cr}
-          fill={glow ? `url(#${id}-gradient)` : "currentColor"}
-          initial={glow ? { opacity: 0.4, scale: 1 } : {}}
-          animate={
-            glow
-              ? {
-                  opacity: [0.4, 1, 0.4],
-                  scale: [1, 1.5, 1],
-                }
-              : {}
-          }
-          transition={
-            glow
-              ? {
-                  duration: dot.duration,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: dot.delay,
-                  ease: "easeInOut",
-                }
-              : {}
-          }
+          glow={glow}
+          gradientId={`${id}-gradient`}
         />
       ))}
     </svg>
