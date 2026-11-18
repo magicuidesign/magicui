@@ -1,0 +1,116 @@
+---
+title: Agent Trace
+date: 2026-11-04
+description: An animated checklist that ticks off each step with a running timer, then shows the result.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="agent-trace-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/agent-trace
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="agent-trace" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+<Step>Add the required CSS animations</Step>
+
+Add the following animations to your global CSS file.
+
+```css title="app/globals.css"
+@theme inline {
+  --animate-agent-trace-sheen: agent-trace-sheen 1.5s linear infinite;
+
+  @keyframes agent-trace-sheen {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+}
+```
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { AgentTrace } from "@/components/ui/agent-trace"
+```
+
+```tsx showLineNumbers
+<AgentTrace
+  steps={[
+    { label: "Validate the import" },
+    { label: "Match customer records", duration: 2.1 },
+    { label: "Save the changes" },
+  ]}
+  result="Imported 248 customers"
+/>
+```
+
+Labels truncate to one line. Playback follows each step's `duration`, not real progress, and a pause button sits beside the total time while it plays. Every step and the hold play for at least 0.4s, so very short durations still hand off visibly.
+
+To place it inside your own card, pass `className="max-w-none border-0 bg-transparent p-0"`.
+
+## Props
+
+### AgentTrace
+
+| Prop          | Type               | Default                                                                 | Description                                                                 |
+| ------------- | ------------------ | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `steps`       | `AgentTraceStep[]` | Five sample steps                                                       | The steps to work through, in order                                         |
+| `result`      | `string`           | `"Pull request #482 is ready for review"` (sample steps), else `"Done"` | Line shown once every step is done                                          |
+| `repeatDelay` | `number`           | `3.6`                                                                   | Seconds the finished trace holds before it plays again                      |
+| `color`       | `string`           | `"#9c40ff"`                                                             | Accent color of the spinner, check marks and connecting line                |
+| `loop`        | `boolean`          | `true`                                                                  | Plays again after `repeatDelay`; `false` plays once and rests on the result |
+
+### AgentTraceStep
+
+| Prop       | Type     | Default | Description                                      |
+| ---------- | -------- | ------- | ------------------------------------------------ |
+| `label`    | `string` | `-`     | The step, shown on one line                      |
+| `duration` | `number` | `1.2`   | Seconds the step runs, shown beside it once done |
+
+## Examples
+
+### Custom Color
+
+<ComponentPreview name="agent-trace-demo-2" />
+
+### Play Once
+
+<ComponentPreview name="agent-trace-demo-3" />

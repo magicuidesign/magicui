@@ -273,6 +273,12 @@ export const docsConfig: DocsConfig = {
           items: [],
           label: "New",
         },
+        {
+          title: "Agent Trace",
+          href: `/docs/components/agent-trace`,
+          items: [],
+          label: "New",
+        },
       ],
     },
     {

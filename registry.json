@@ -1389,6 +1389,36 @@
       "type": "registry:ui"
     },
     {
+      "name": "agent-trace",
+      "title": "Agent Trace",
+      "description": "An animated checklist that ticks off each step with a running timer, then shows the result.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/magicui/agent-trace.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-agent-trace-sheen": "agent-trace-sheen 1.5s linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes agent-trace-sheen": {
+          "from": {
+            "background-position": "100% 0"
+          },
+          "to": {
+            "background-position": "0 0"
+          }
+        }
+      },
+      "type": "registry:ui"
+    },
+    {
       "name": "magic-card-demo",
       "title": "Magic Card Demo",
       "description": "Example showing a spotlight effect that follows your mouse cursor and highlights borders on hover.",
@@ -4151,6 +4181,51 @@
       "files": [
         {
           "path": "registry/example/dither-field-patterns-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "agent-trace-demo",
+      "title": "Agent Trace Demo",
+      "description": "A coding-agent hero whose trace ends in a pull request.",
+      "registryDependencies": [
+        "@magicui/agent-trace"
+      ],
+      "files": [
+        {
+          "path": "registry/example/agent-trace-demo.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "agent-trace-demo-2",
+      "title": "Agent Trace Deploy Demo",
+      "description": "A deploy section with a custom color and five pipeline checks.",
+      "registryDependencies": [
+        "@magicui/agent-trace"
+      ],
+      "files": [
+        {
+          "path": "registry/example/agent-trace-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ],
+      "type": "registry:example"
+    },
+    {
+      "name": "agent-trace-demo-3",
+      "title": "Agent Trace Support Demo",
+      "description": "A support ticket that plays its refund steps once.",
+      "registryDependencies": [
+        "@magicui/agent-trace"
+      ],
+      "files": [
+        {
+          "path": "registry/example/agent-trace-demo-3.tsx",
           "type": "registry:example"
         }
       ],
