@@ -1,0 +1,82 @@
+---
+title: Morph Mask
+date: 2026-11-04
+description: A mask that springs between rounded shapes while the content inside stays still.
+author: Julian-AT
+published: true
+---
+
+<ComponentPreview name="morph-mask-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add @magicui/morph-mask
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="morph-mask" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { MorphMask } from "@/components/ui/morph-mask"
+```
+
+```tsx showLineNumbers
+<MorphMask className="w-64">
+  <img src="/release.png" alt="Spring release" />
+</MorphMask>
+```
+
+Put backgrounds on a child: `className` styles the unclipped root, so a `bg-*` there fills a circle around the shape. A `drop-shadow-*` in `className` follows the shape. Define shape functions outside the component, since an inline one is a new shape on every render and morphs again. Shape functions can only be passed from a client component (`"use client"`); named shapes work from server components.
+
+## Props
+
+| Prop          | Type                        | Default                             | Description                                                                                                                                                                                                                                                                                           |
+| ------------- | --------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `shapes`      | `readonly MorphMaskShape[]` | `["squircle", "hexagon", "circle"]` | Shapes to cycle through, in order. Each is `squircle`, `clover`, `scallop`, `hexagon`, `trefoil`, `circle` or an `(angle) => radius` function, with the angle in radians clockwise from the top and the radius from 0 to 1. Named shapes match a circle of radius `0.8`, so keep custom radii near it |
+| `index`       | `number`                    | `-`                                 | Position in `shapes` to show, wrapping at either end. Leave unset to loop                                                                                                                                                                                                                             |
+| `duration`    | `number`                    | `0.4`                               | Seconds each morph takes                                                                                                                                                                                                                                                                              |
+| `repeatDelay` | `number`                    | `2`                                 | Seconds the shape rests between morphs while looping                                                                                                                                                                                                                                                  |
+| `className`   | `string`                    | `-`                                 | Set the width here. The mask stays square, and named shapes sit about 11% inside its edges                                                                                                                                                                                                            |
+| `children`    | `React.ReactNode`           | `-`                                 | Content clipped to the shape. Each direct child fills the mask and they stack, so wrap a layout in one element. Keep text inside a centered circle 60% across                                                                                                                                         |
+
+## Examples
+
+### Hover Cards
+
+<ComponentPreview name="morph-mask-demo-2" />
+
+### Custom Shape
+
+<ComponentPreview name="morph-mask-demo-3" />

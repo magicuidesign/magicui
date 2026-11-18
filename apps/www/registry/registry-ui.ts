@@ -1339,4 +1339,18 @@ export const ui: Registry["items"] = [
       },
     ],
   },
+  {
+    name: "morph-mask",
+    type: "registry:ui",
+    title: "Morph Mask",
+    description:
+      "A mask that springs between rounded shapes while the content inside stays still.",
+    dependencies: ["motion"],
+    files: [
+      {
+        path: "magicui/morph-mask.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
 ]
