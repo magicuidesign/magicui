@@ -196,9 +196,16 @@ const applyParticleEffect = (
   }
 
   let animationFrame: number | undefined
+  let disposed = false
 
   let lastParticleTimestamp = 0
   const particleGenerationDelay = 30
+
+  const release = () => {
+    if (--instanceCounter === 0) {
+      container.remove()
+    }
+  }
 
   function loop() {
     const currentTime = performance.now()
@@ -212,10 +219,23 @@ const applyParticleEffect = (
     }
 
     refreshParticles()
-    animationFrame = requestAnimationFrame(loop)
+
+    if (autoAddParticle || particles.length > 0) {
+      animationFrame = requestAnimationFrame(loop)
+      return
+    }
+
+    animationFrame = undefined
+    if (disposed) {
+      release()
+    }
   }
 
-  loop()
+  const startLoop = () => {
+    if (animationFrame === undefined) {
+      animationFrame = requestAnimationFrame(loop)
+    }
+  }
 
   const isTouchInteraction = "ontouchstart" in window
 
@@ -236,6 +256,7 @@ const applyParticleEffect = (
   const tapHandler = (e: MouseEvent | TouchEvent) => {
     updateMousePosition(e)
     autoAddParticle = true
+    startLoop()
   }
 
   const disableAutoAddParticle = () => {
@@ -250,24 +271,16 @@ const applyParticleEffect = (
   })
 
   return () => {
-    // Stop generating new particles so existing ones can finish and the
-    // cleanup poll below can release the loop, interval, and container.
     disableAutoAddParticle()
+    disposed = true
     element.removeEventListener(move, updateMousePosition)
     element.removeEventListener(tap, tapHandler)
     element.removeEventListener(tapEnd, disableAutoAddParticle)
     element.removeEventListener("mouseleave", disableAutoAddParticle)
 
-    const interval = setInterval(() => {
-      if (animationFrame && particles.length === 0) {
-        cancelAnimationFrame(animationFrame)
-        clearInterval(interval)
-
-        if (--instanceCounter === 0) {
-          container.remove()
-        }
-      }
-    }, 500)
+    if (animationFrame === undefined) {
+      release()
+    }
   }
 }
 
