@@ -104,12 +104,38 @@ export const Particles: React.FC<ParticlesProps> = ({
   const onMouseMoveRef = useRef<() => void>(() => {})
   const animateRef = useRef<() => void>(() => {})
 
+  const isInViewRef = useRef(true)
+  const isPageVisibleRef = useRef(true)
+  const prefersReducedMotionRef = useRef(false)
+
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d")
     }
     initCanvasRef.current()
     animateRef.current()
+
+    let io: IntersectionObserver | null = null
+    if (canvasContainerRef.current && typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(([entry]) => {
+        isInViewRef.current = entry.isIntersecting
+      })
+      io.observe(canvasContainerRef.current)
+    }
+    const handleVisibility = () => {
+      isPageVisibleRef.current = document.visibilityState === "visible"
+    }
+    document.addEventListener("visibilitychange", handleVisibility, { passive: true })
+    const mq = typeof window !== "undefined" && window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)")
+      : null
+    const handlePRM = () => {
+      if (mq) prefersReducedMotionRef.current = mq.matches
+    }
+    if (mq) {
+      mq.addEventListener("change", handlePRM)
+      handlePRM()
+    }
 
     const handleResize = () => {
       if (resizeTimeout.current) {
@@ -129,6 +155,9 @@ export const Particles: React.FC<ParticlesProps> = ({
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current)
       }
+      if (io) io.disconnect()
+      document.removeEventListener("visibilitychange", handleVisibility)
+      if (mq) mq.removeEventListener("change", handlePRM)
       window.removeEventListener("resize", handleResize)
     }
   }, [color])
@@ -256,6 +285,10 @@ export const Particles: React.FC<ParticlesProps> = ({
   }
 
   const animate = () => {
+    if (!isInViewRef.current || !isPageVisibleRef.current || prefersReducedMotionRef.current) {
+      rafID.current = window.requestAnimationFrame(animateRef.current)
+      return
+    }
     clearContext()
     circles.current.forEach((circle: Circle, i: number) => {
       // Handle the alpha value

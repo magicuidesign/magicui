@@ -65,6 +65,10 @@ const DEFAULT_CHARACTER_SET = Object.freeze(
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 ) as readonly string[]
 
+const DEFAULT_ARABIC_CHARACTER_SET = Object.freeze(
+  "أبتثجحخدذرزسشصضطظعغفقكلمنهوي".split("")
+) as readonly string[]
+
 const getRandomInt = (max: number): number => Math.floor(Math.random() * max)
 
 export function HyperText({
@@ -75,13 +79,16 @@ export function HyperText({
   as: Component = "div",
   startOnView = false,
   animateOnHover = true,
-  characterSet = DEFAULT_CHARACTER_SET,
+  characterSet,
   ...props
 }: HyperTextProps) {
   const MotionComponent = motionElements[Component] as HyperTextMotionComponent
+  const hasArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(children)
+  const resolvedCharacterSet =
+    characterSet ?? (hasArabic ? DEFAULT_ARABIC_CHARACTER_SET : DEFAULT_CHARACTER_SET)
 
   const [displayText, setDisplayText] = useState<string[]>(() =>
-    children.split("")
+    Array.from(children)
   )
   const [isAnimating, setIsAnimating] = useState(false)
   const iterationCount = useRef(0)
@@ -141,8 +148,8 @@ export function HyperText({
             letter === " "
               ? letter
               : index <= iterationCount.current
-                ? children[index]
-                : characterSet[getRandomInt(characterSet.length)]
+                ? Array.from(children)[index]
+                : resolvedCharacterSet[getRandomInt(resolvedCharacterSet.length)]
           )
         )
 
@@ -161,7 +168,7 @@ export function HyperText({
         cancelAnimationFrame(animationFrameId)
       }
     }
-  }, [children, duration, isAnimating, characterSet])
+  }, [children, duration, isAnimating, resolvedCharacterSet])
 
   return (
     <MotionComponent
@@ -170,16 +177,20 @@ export function HyperText({
       onMouseEnter={handleAnimationTrigger}
       {...props}
     >
-      <AnimatePresence>
-        {displayText.map((letter, index) => (
-          <motion.span
-            key={index}
-            className={cn("font-mono", letter === " " ? "w-3" : "")}
-          >
-            {letter.toUpperCase()}
-          </motion.span>
-        ))}
-      </AnimatePresence>
+      {hasArabic ? (
+        <span>{displayText.join("")}</span>
+      ) : (
+        <AnimatePresence>
+          {displayText.map((letter, index) => (
+            <motion.span
+              key={index}
+              className={cn("font-mono", letter === " " ? "w-3" : "")}
+            >
+              {letter.toUpperCase()}
+            </motion.span>
+          ))}
+        </AnimatePresence>
+      )}
     </MotionComponent>
   )
 }

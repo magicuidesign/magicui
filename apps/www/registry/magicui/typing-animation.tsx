@@ -215,11 +215,15 @@ export function TypingAnimation({
     }
   }
 
+  const hasArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(
+    animationSourceKey
+  )
+
   return (
     <MotionComponent
       ref={elementRef}
       className={cn(
-        "leading-20 tracking-[-0.02em]",
+        hasArabic ? "leading-20 tracking-normal" : "leading-20 tracking-[-0.02em]",
         Component === "span" && "inline-block",
         className
       )}

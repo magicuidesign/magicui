@@ -4,6 +4,7 @@ import { memo } from "react"
 import {
   AnimatePresence,
   motion,
+  useReducedMotion,
   type DOMMotionComponents,
   type MotionProps,
   type Variants,
@@ -344,14 +345,26 @@ const TextAnimateBase = ({
   ...props
 }: TextAnimateProps) => {
   const MotionComponent = motionElements[Component]
+  const prefersReducedMotion = useReducedMotion()
+  const hasArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(children)
+  const effectiveBy: AnimationType =
+    by === "character" && hasArabic ? "word" : by
 
   let segments: string[] = []
-  switch (by) {
+  switch (effectiveBy) {
     case "word":
       segments = children.split(/(\s+)/)
       break
     case "character":
-      segments = children.split("")
+      segments =
+        typeof Intl !== "undefined" && "Segmenter" in Intl
+          ? Array.from(
+              new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(
+                children
+              ),
+              (s) => s.segment
+            )
+          : Array.from(children)
       break
     case "line":
       segments = children.split("\n")
@@ -423,12 +436,12 @@ const TextAnimateBase = ({
         {accessible && <span className="sr-only">{children}</span>}
         {segments.map((segment, i) => (
           <motion.span
-            key={`${by}-${segment}-${i}`}
-            variants={finalVariants.item}
-            custom={i * staggerTimings[by]}
+            key={`${effectiveBy}-${segment}-${i}`}
+            variants={prefersReducedMotion ? defaultItemVariants : finalVariants.item}
+            custom={i * staggerTimings[effectiveBy]}
             className={cn(
-              by === "line" ? "block" : "inline-block whitespace-pre",
-              by === "character" && "",
+              effectiveBy === "line" ? "block" : "inline-block whitespace-pre",
+              effectiveBy === "character" && "",
               segmentClassName
             )}
             aria-hidden={accessible ? true : undefined}
