@@ -20,8 +20,8 @@
     "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm registry-deps:check"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "js-yaml": "^4.1.0",
     "lefthook": "^1.13.4",
     "turbo": "^2.11.13",
