@@ -4,7 +4,6 @@ import { memo } from "react"
 import {
   AnimatePresence,
   motion,
-  useReducedMotion,
   type DOMMotionComponents,
   type MotionProps,
   type Variants,
@@ -345,7 +344,6 @@ const TextAnimateBase = ({
   ...props
 }: TextAnimateProps) => {
   const MotionComponent = motionElements[Component]
-  const prefersReducedMotion = useReducedMotion()
   const hasArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(children)
   const effectiveBy: AnimationType =
     by === "character" && hasArabic ? "word" : by
@@ -437,9 +435,7 @@ const TextAnimateBase = ({
         {segments.map((segment, i) => (
           <motion.span
             key={`${effectiveBy}-${segment}-${i}`}
-            variants={
-              prefersReducedMotion ? defaultItemVariants : finalVariants.item
-            }
+            variants={finalVariants.item}
             custom={i * staggerTimings[effectiveBy]}
             className={cn(
               effectiveBy === "line" ? "block" : "inline-block whitespace-pre",
