@@ -85,7 +85,8 @@ export function HyperText({
   const MotionComponent = motionElements[Component] as HyperTextMotionComponent
   const hasArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(children)
   const resolvedCharacterSet =
-    characterSet ?? (hasArabic ? DEFAULT_ARABIC_CHARACTER_SET : DEFAULT_CHARACTER_SET)
+    characterSet ??
+    (hasArabic ? DEFAULT_ARABIC_CHARACTER_SET : DEFAULT_CHARACTER_SET)
 
   const [displayText, setDisplayText] = useState<string[]>(() =>
     Array.from(children)
@@ -149,7 +150,9 @@ export function HyperText({
               ? letter
               : index <= iterationCount.current
                 ? Array.from(children)[index]
-                : resolvedCharacterSet[getRandomInt(resolvedCharacterSet.length)]
+                : resolvedCharacterSet[
+                    getRandomInt(resolvedCharacterSet.length)
+                  ]
           )
         )
 

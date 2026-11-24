@@ -116,7 +116,10 @@ export const Particles: React.FC<ParticlesProps> = ({
     animateRef.current()
 
     let io: IntersectionObserver | null = null
-    if (canvasContainerRef.current && typeof IntersectionObserver !== "undefined") {
+    if (
+      canvasContainerRef.current &&
+      typeof IntersectionObserver !== "undefined"
+    ) {
       io = new IntersectionObserver(([entry]) => {
         isInViewRef.current = entry.isIntersecting
       })
@@ -125,10 +128,13 @@ export const Particles: React.FC<ParticlesProps> = ({
     const handleVisibility = () => {
       isPageVisibleRef.current = document.visibilityState === "visible"
     }
-    document.addEventListener("visibilitychange", handleVisibility, { passive: true })
-    const mq = typeof window !== "undefined" && window.matchMedia
-      ? window.matchMedia("(prefers-reduced-motion: reduce)")
-      : null
+    document.addEventListener("visibilitychange", handleVisibility, {
+      passive: true,
+    })
+    const mq =
+      typeof window !== "undefined" && window.matchMedia
+        ? window.matchMedia("(prefers-reduced-motion: reduce)")
+        : null
     const handlePRM = () => {
       if (mq) prefersReducedMotionRef.current = mq.matches
     }
@@ -285,7 +291,11 @@ export const Particles: React.FC<ParticlesProps> = ({
   }
 
   const animate = () => {
-    if (!isInViewRef.current || !isPageVisibleRef.current || prefersReducedMotionRef.current) {
+    if (
+      !isInViewRef.current ||
+      !isPageVisibleRef.current ||
+      prefersReducedMotionRef.current
+    ) {
       rafID.current = window.requestAnimationFrame(animateRef.current)
       return
     }

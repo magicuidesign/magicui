@@ -223,7 +223,9 @@ export function TypingAnimation({
     <MotionComponent
       ref={elementRef}
       className={cn(
-        hasArabic ? "leading-20 tracking-normal" : "leading-20 tracking-[-0.02em]",
+        hasArabic
+          ? "leading-20 tracking-normal"
+          : "leading-20 tracking-[-0.02em]",
         Component === "span" && "inline-block",
         className
       )}

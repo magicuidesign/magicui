@@ -359,9 +359,9 @@ const TextAnimateBase = ({
       segments =
         typeof Intl !== "undefined" && "Segmenter" in Intl
           ? Array.from(
-              new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(
-                children
-              ),
+              new Intl.Segmenter(undefined, {
+                granularity: "grapheme",
+              }).segment(children),
               (s) => s.segment
             )
           : Array.from(children)
@@ -437,7 +437,9 @@ const TextAnimateBase = ({
         {segments.map((segment, i) => (
           <motion.span
             key={`${effectiveBy}-${segment}-${i}`}
-            variants={prefersReducedMotion ? defaultItemVariants : finalVariants.item}
+            variants={
+              prefersReducedMotion ? defaultItemVariants : finalVariants.item
+            }
             custom={i * staggerTimings[effectiveBy]}
             className={cn(
               effectiveBy === "line" ? "block" : "inline-block whitespace-pre",
