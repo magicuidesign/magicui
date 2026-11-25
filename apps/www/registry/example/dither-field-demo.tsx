@@ -7,9 +7,9 @@ export default function DitherFieldDemo() {
       color={["var(--dither-low)", "var(--dither-mid)", "var(--dither-high)"]}
       className="bg-background flex h-[420px] w-full flex-col items-center justify-center gap-4 rounded-lg border px-4 pb-28 text-center select-none [--dither-high:#4c1d95] [--dither-low:#c4b5fd] [--dither-mid:#7c3aed] md:h-[500px] md:gap-6 md:px-6 md:pb-24 dark:[--dither-high:#ede9fe] dark:[--dither-low:#2e1065] dark:[--dither-mid:#8b5cf6]"
     >
-      <h1 className="max-w-xl text-3xl font-semibold tracking-tighter text-balance sm:text-4xl md:text-6xl">
+      <h2 className="max-w-xl text-3xl font-semibold tracking-tighter text-balance sm:text-4xl md:text-6xl">
         Light, rendered one dot at a time
-      </h1>
+      </h2>
       <p className="text-muted-foreground max-w-md text-sm text-balance md:text-base">
         An ordered-dither field that follows your theme, your brand colors and
         your pointer.
