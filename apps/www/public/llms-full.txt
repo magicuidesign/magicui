@@ -7830,7 +7830,9 @@ export function Dither({
     fps,
     interactive,
   })
-  live.current = { stops, matrix: dither, intensity, speed, fps, interactive }
+  useEffect(() => {
+    live.current = { stops, matrix: dither, intensity, speed, fps, interactive }
+  })
   const repaint = useRef<(() => void) | null>(null)
   // Kept across rebuilds, so a field that scrolls back into view resumes.
   const clock = useRef(0)
