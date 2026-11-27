@@ -146,10 +146,9 @@ export const TweetHeader = ({
             className="text-foreground flex items-center font-medium whitespace-nowrap transition-opacity hover:opacity-80"
           >
             {truncate(tweet.user.name, 20)}
-            {tweet.user.verified ||
-              (tweet.user.is_blue_verified && (
-                <Verified className="ml-1 inline size-4 text-blue-500" />
-              ))}
+            {(tweet.user.verified || tweet.user.is_blue_verified) && (
+              <Verified className="ml-1 inline size-4 text-blue-500" />
+            )}
           </a>
           <div className="flex items-center space-x-1">
             <a
