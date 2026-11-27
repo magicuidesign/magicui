@@ -1,3 +1,4 @@
+import type { Event } from "@/lib/events"
 import { Icons } from "@/components/icons"
 
 export interface NavItem {
