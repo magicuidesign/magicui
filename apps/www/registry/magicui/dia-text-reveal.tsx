@@ -178,7 +178,6 @@ export function DiaTextReveal({
     }
     if (startOnView && !isInView) return
     if (once && hasPlayedRef.current) return
-    hasPlayedRef.current = true
 
     const play = () => {
       const { duration, delay, repeat, repeatDelay, texts } = optsRef.current
@@ -190,6 +189,7 @@ export function DiaTextReveal({
         delay,
         ease: sweepEase,
         onComplete() {
+          hasPlayedRef.current = true
           if (!repeat) return
           timerRef.current = setTimeout(() => {
             const next = (indexRef.current + 1) % texts.length
