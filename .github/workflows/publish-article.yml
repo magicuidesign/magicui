@@ -49,6 +49,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
+          if [ ! -s written-articles.txt ]; then
+            echo "No articles written"
+            exit 0
+          fi
+          git add --pathspec-from-file=written-articles.txt
           git commit -m "Add blog article from webhook" || echo "No changes"
           git push
